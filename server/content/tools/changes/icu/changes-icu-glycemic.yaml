@@ -1,0 +1,621 @@
+theme: icu-glycemic
+changes:
+- kind: word
+  id: w-frequently
+  fields:
+  - ko
+  why: '같은 ko가 은행에 둘 이상: often(자주)과 가른다'
+- kind: word
+  id: w-quick
+  fields:
+  - en
+  - ipa
+  - ko
+  - example
+  why: '같은 ko가 은행에 둘 이상: fast(빠른)와 가른다 / 부사 quickly 쪽이 문장 6개 중 4개라 헤드워드를 부사로 바꾼다(형용사로 쓴 1.4·3.4는 태그를 뺀다)'
+- kind: word
+  id: w-level
+  fields:
+  - ko
+  why: '같은 ko가 은행에 둘 이상: number·value(수치)와 가른다'
+- kind: word
+  id: w-number
+  fields:
+  - ko
+  why: '같은 ko가 은행에 둘 이상: level·value(수치)와 가른다'
+- kind: word
+  id: w-sick
+  fields:
+  - ko
+  why: '같은 ko가 은행에 둘 이상: ill(아픈)과 가른다'
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-update
+  fields:
+  - ko
+  why: '같은 ko가 은행에 둘 이상: notify(알리다)와 가른다'
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-cut
+  fields:
+  - ko
+  why: '같은 ko가 은행에 둘 이상: decrease(줄이다)와 가른다'
+- kind: word
+  id: w-bump
+  fields:
+  - ko
+  why: '같은 ko가 은행에 둘 이상: raise(올리다)와 가른다 — 기준표에서 한 칸'
+- kind: word-remove
+  id: w-afternoon
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-day
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-go
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-few
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(목록 밖 판단분)
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-clear
+  fields:
+  - ko
+  why: '같은 ko가 은행에 둘 이상: remove(제거하다)와 정답이 둘이 되지 않게 가른다 — 문장은 분명하다·나아지다·배출되다 / 11.0 배출 뜻을 덮도록 ko를 가른다'
+- kind: word-remove
+  id: w-long
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(목록 밖 판단분)
+- kind: word-remove
+  id: w-easy
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(목록 밖 판단분)
+- kind: word
+  id: w-drive
+  fields:
+  - ko
+  why: '같은 ko가 은행에 둘 이상: cause(일으키다)와 가른다 — 변동·고혈당을 밀어붙이는 원인'
+- kind: word
+  id: w-up
+  fields:
+  - ko
+  why: '같은 ko가 은행에 둘 이상: rise(오름)와 가른다'
+- kind: word
+  id: w-down
+  fields:
+  - ko
+  why: '같은 ko가 은행에 둘 이상: up과 짝을 맞춘다'
+- kind: word-remove
+  id: w-big
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(목록 밖 판단분)
+- kind: word-remove
+  id: w-come
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-small
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(목록 밖 판단분)
+- kind: word-remove
+  id: w-good
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-confirm
+  fields:
+  - ko
+  why: '같은 ko가 은행에 둘 이상: check·verify(확인하다)와 가른다 — 다른 검사로 못 박다'
+- kind: word
+  id: w-verify
+  fields:
+  - ko
+  why: '같은 ko가 은행에 둘 이상: check·confirm(확인하다)과 가른다'
+- kind: word
+  id: w-document
+  fields:
+  - ko
+  why: '같은 ko가 은행에 둘 이상: record(기록하다)와 가른다'
+- kind: word-remove
+  id: w-get
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(목록 밖 판단분)
+- kind: word-remove
+  id: w-bad
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-someone
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(목록 밖 판단분)
+- kind: word-remove
+  id: w-whole
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(목록 밖 판단분)
+- kind: word-remove
+  id: w-third
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(목록 밖 판단분)
+- kind: word-remove
+  id: w-today
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-other
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(목록 밖 판단분)
+- kind: sentence
+  situation: 저혈당 징후 인지
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 인슐린 주입 적정 titration
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 스테로이드 유발 고혈당 관리
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 스테로이드 유발 고혈당 관리
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 스테로이드 유발 고혈당 관리
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 저혈당 예방·교정 프로토콜
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 저혈당 예방·교정 프로토콜
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 장관영양 중단 시 인슐린 조정
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 주입에서 피하 전환 관리
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 주입에서 피하 전환 관리
+  index: 3
+  fields:
+  - chunks
+  - words
+  why: 쉬운 단어 태그 빼기 / 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 신부전 환자 인슐린 조정
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 신부전 환자 인슐린 조정
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 신부전 환자 인슐린 조정
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 혈당 변동성 관리
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 혈당 변동성 관리
+  index: 4
+  fields:
+  - ko
+  - chunks
+  - words
+  why: 쉬운 단어 태그 빼기 / 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 심한 저혈당 의식저하 위기
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 고혈당 위기 DKA 진행 인지
+  index: 4
+  fields:
+  - chunks
+  - words
+  why: 쉬운 단어 태그 빼기 / 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 급식 중단 후 저혈당 급변
+  index: 3
+  fields:
+  - chunks
+  - words
+  why: 쉬운 단어 태그 빼기 / 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 반복 저혈당 프로토콜 재설계
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 반복 저혈당 프로토콜 재설계
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 반복 저혈당 프로토콜 재설계
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 혈당 급변·의식변화 감별
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 혈당 급변·의식변화 감별
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: word
+  id: w-forever
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-stop
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-improve
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-away
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 구 right away를 가르친다(away만으로는 뜻이 안 선다)
+- kind: word
+  id: w-stick
+  fields:
+  - ko
+  why: 두 문장 모두 명사 finger stick인데 ko가 동사였다
+- kind: word
+  id: w-scan
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-skip
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-meal
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-flag
+  fields:
+  - ko
+  why: 문제로 짚어 팀에 알린다는 뜻으로 ko를 바로잡는다
+- kind: word
+  id: w-stable
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word-remove
+  id: w-remove
+  why: 검토 반영 — 문장을 고쳐 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-line
+  why: 검토 반영 — 문장을 고쳐 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-trust
+  why: 검토 반영 — 문장을 고쳐 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-call
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word-remove
+  id: w-rapid
+  why: 검토 반영 — 문장을 고쳐 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-response
+  why: 검토 반영 — 문장을 고쳐 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-double
+  fields:
+  - en
+  - ipa
+  - ko
+  why: double-check 전체를 가르친다(double만 떼면 '두 번의'가 된다)
+- kind: word
+  id: w-flow
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-sheet
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-regimen
+  fields:
+  - ko
+  why: 처방이 아니라 투여 계획(요법)
+- kind: sentence
+  situation: POC 혈당 측정·기록
+  index: 4
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: 인슐린 주입 프로토콜 이해
+  index: 3
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: 인슐린 주입 프로토콜 이해
+  index: 6
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 저혈당 징후 인지
+  index: 4
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: 영양 연계 혈당 관리
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 혈당 경향 보고
+  index: 4
+  fields:
+  - ko
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 저혈당 예방·교정 프로토콜
+  index: 3
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: 주입에서 피하 전환 관리
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 혈당 변동성 관리
+  index: 1
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: 패혈증 중 혈당 불안정 관리
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 패혈증 중 혈당 불안정 관리
+  index: 4
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: POC와 정맥혈당 불일치 인지
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: POC와 정맥혈당 불일치 인지
+  index: 4
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: 심한 저혈당 의식저하 위기
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 인슐린 용량사고 위기
+  index: 3
+  fields:
+  - chunks
+  - words
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 고혈당 위기 DKA 진행 인지
+  index: 2
+  fields:
+  - ko
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 고혈당 위기 DKA 진행 인지
+  index: 3
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: 급식 중단 후 저혈당 급변
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 혈당 급변·의식변화 감별
+  index: 2
+  fields:
+  - ko
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 심한 저혈당 의식저하 위기
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): five minutes → fifteen minutes(D50 뒤 재측정 표준 15분, KP 8.0과 숫자 통일)'
+- kind: word
+  id: w-repeat
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 인슐린 용량사고 위기
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): start dextrose → get dextrose ready(간호사 단독 시작으로 읽힘); −w-start(9.1 등에서 계속 씀)'
+- kind: sentence
+  situation: 급식 중단 후 저혈당 급변
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): Start dextrose → Follow the hypoglycemia protocol(간호사 단독 판단으로 읽힘); −w-start −w-dextrose(9.1·16.1에서 계속 씀) +w-follow +w-protocol'
+- kind: word
+  id: w-immediately
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 반복 저혈당 프로토콜 재설계
+  index: 0
+  fields:
+  - en
+  - chunks
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): means → mean(복수 주어 수 일치) — ko는 그대로'
+- kind: word
+  id: w-review
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-regimen
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 저혈당 징후 인지
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Those shaky / , sweaty feelings / can mean a low sugar / , so let''s check now) → Those shaky, sweaty feelings / can mean / a low sugar / , so let''s check now — 문장은 그대로'
+- kind: sentence
+  situation: 혈당 경향 보고
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s look / at the pattern / over the last / several checks together) → Let''s look at / the pattern / over the last several checks / together — 문장은 그대로'
+- kind: sentence
+  situation: 주입에서 피하 전환 관리
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We give your first / long-acting shot / before stopping / the drip) → We give / your first long-acting shot / before stopping / the drip — 문장은 그대로'
+- kind: sentence
+  situation: 주입에서 피하 전환 관리
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): keyPhrase chunks가 구 경계를 끊음(That overlap / keeps your sugar / covered during / the switch) → That overlap / keeps your sugar / covered / during the switch — 문장은 그대로'
+- kind: sentence
+  situation: 혈당 변동성 관리
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Smoother insulin adjustments / help level out / the ups / and downs) → Smoother insulin adjustments / help / level out / the ups and downs — 문장은 그대로'
+- kind: sentence
+  situation: POC와 정맥혈당 불일치 인지
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): keyPhrase chunks가 구 경계를 끊음(If they conflict / , we confirm / with a venous / sample) → If they conflict / , we / confirm / with a venous sample — 문장은 그대로'
+- kind: sentence
+  situation: 혈당 급변·의식변화 감별
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): keyPhrase chunks가 구 경계를 끊음(First I''ll check his sugar / , since a low / or high / can cause confusion) → First I''ll check his sugar / , since a low or high / can cause / confusion — 문장은 그대로'

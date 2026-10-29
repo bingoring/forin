@@ -1,0 +1,103 @@
+situations:
+- title: 반복 발작 약물 단계화
+  s:
+  - ["단계 설명", compass, "'stepwise ladder'는 단계가 차례로 올라가는 치료 순서를 사다리에 빗댄 표현이에요. 'keep recurring'은 되풀이될 때 다음 단계로 간다는 조건을 알려요.", "for the family", "발작이 계속 반복되면 단계별 사다리를 보여 드려요.", "발작이 계속 반복되면 단계별 사다리를 설명해 드려요.", "ladder", "bridge", "fence", "window"]
+  - ["치료 단계", pill, "'After A and B'로 앞선 두 단계를 묶어 다음 단계가 무엇인지 순서대로 보여 줘요. 'benzos'는 benzodiazepines의 현장 줄임말이에요.", "for the team", "벤조와 2차 약제 다음에는 지속주입을 설명해요.", "벤조와 2차 약제 다음에는 이송을 고려해요.", "infusions", "visits", "reports", "meals"]
+  - ["다음 준비", pill, "'have … ready'는 아직 주지 않았지만 바로 줄 수 있게 둔다는 뜻이에요. 'without delay'는 시간을 끌지 않겠다는 약속이에요.", "for the pharmacy", "다음 약물을 지체 없이 줄 수 있게 약국에 전화하죠.", "다음 약물을 지체 없이 줄 수 있게 이름을 확인하죠.", "ready", "empty", "cold", "loud"]
+  - ["단계 약속", compass, "'If he seizes again'은 조건을 먼저 말하고, 'right away'로 망설이지 않겠다는 약속을 해요. 'move to the next step'은 사다리를 한 칸 올라간다는 뜻이에요.", "in a while", "또 발작하면 바로 다음 단계를 보여 드려요.", "또 발작하면 바로 다음 단계를 가족께 말씀드려요.", "again", "early", "alone", "twice"]
+  - ["준비 상태", pill, "'already'는 이미 거기까지 왔다는 뜻을 더해요. 'so'로 현재 단계와 준비 상태를 이유와 결과로 이어요.", "for the day", "이미 2차 약제까지 왔으니 다음 모니터도 준비돼 있어요.", "이미 2차 약제까지 왔으니 다음 병실도 준비돼 있어요.", "ready", "late", "empty", "closed"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 반복 발작 단계 설명 4문장 순서
+    why: 단계를 따른다고 알리고, 지금 어디까지 왔는지 말하고, 다음 약물을 준비한 뒤, 다시 발작하면 어떻게 할지 약속해요.
+    lines:
+    - ["We follow a stepwise ladder when seizures keep recurring.", compass, "발작이 반복되면 단계별로 따라가요", "단계"]
+    - ["We're already on the second agent now.", pill, "이미 2차 약제까지 왔어요", "현재"]
+    - ["With that in mind, let's have the next medication ready.", pill, "그걸 감안해 다음 약물을 준비해 두죠", "준비"]
+    - ["If he seizes again after that, we move to the next step right away.", compass, "그 뒤에 또 발작하면 바로 다음 단계로 가요", "약속"]
+- title: 기도확보 준비·삽관 판단
+  s:
+  - ["위험 설명", stetho, "'may mean'은 확정이 아니라 가능성이라 걱정을 키우지 않으면서 위험을 알려요. 'protect his airway'는 삼키고 기침해서 기도를 지키는 능력을 가리켜요.", "for the nurse", "의식이 떨어지고 있다는 건 약을 스스로 삼키지 못한다는 뜻일 수 있어요.", "의식이 떨어지고 있다는 건 질문을 스스로 이해하지 못한다는 뜻일 수 있어요.", "airway", "wallet", "schedule", "passport"]
+  - ["장비 준비", pager, "'have … ready'는 지금 쓰지는 않지만 바로 쓸 수 있게 해 두라는 뜻이에요. 장비와 사람을 한 문장에 묶어 같이 준비하게 해요.", "the cart", "삽관 장비와 약물을 준비해두죠.", "삽관 장비와 침대를 준비해두죠.", "intubation", "dialysis", "feeding", "laundry"]
+  - ["계획 설명", stetho, "'If he deteriorates further'는 조건을 먼저 말해 지금은 아니지만 대비한다는 뜻이에요. 'secure the airway'는 기도를 안전하게 확보한다는 의료 표현이에요.", "for now", "더 악화되면 병상을 확보할게요.", "더 악화되면 연락처를 확보할게요.", "deteriorates", "improves", "sleeps", "relaxes"]
+  - ["상태 보고", monitor, "'no longer'는 이전에는 가능했던 일이 지금은 안 된다는 변화를 보여 줘요. 'when he coughs'는 어떤 상황에서 확인했는지 알려요.", "in the bed", "기침할 때 더 이상 스스로 물을 삼키지 못하고 있어요.", "기침할 때 더 이상 스스로 몸을 일으키지 못하고 있어요.", "coughs", "smiles", "blinks", "laughs"]
+  - ["도움 요청", pager, "'now'가 지금 바로 부른다는 긴급함을 전해요. 'to decide on'은 아직 결정하지 않았다는 뜻이라 삽관이 확정이 아님을 알려요.", "for the room", "삽관 도구를 확인하려고 지금 마취과를 부르고 있어요.", "수술실을 확인하려고 지금 마취과를 부르고 있어요.", "anesthesia", "radiology", "pharmacy", "housekeeping"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기도확보 판단 4문장 순서
+    why: 의식 저하가 기도에 미치는 위험을 알리고, 기도 반사가 떨어진 것을 확인한 뒤, 마취과를 부르고, 장비와 팀을 준비해요.
+    lines:
+    - ["His declining consciousness may mean he can't protect his airway.", stetho, "의식 저하는 기도를 못 지킨다는 뜻일 수 있어요", "위험"]
+    - ["Sure enough, he's no longer protecting it when he coughs.", monitor, "아니나 다를까 기침할 때 더는 기도를 지키지 못해요", "확인"]
+    - ["Because of that, we're calling anesthesia now.", pager, "그래서 지금 마취과를 부르고 있어요", "요청"]
+    - ["Meanwhile, let's have the intubation equipment and team ready.", pager, "그러는 사이 삽관 장비와 팀을 준비해 두죠", "준비"]
+- title: 항경련제 혈중농도·부작용
+  s:
+  - ["농도 확인", lab, "'therapeutic'은 효과가 있으면서 안전한 범위라는 뜻의 임상어예요. 'to confirm'은 확인의 목적을 붙여요.", "for the team", "약물 혈중농도를 채혈해서 치료 범위인지 봐요.", "약물 혈중농도를 확인해서 정상 수치인지 봐요.", "therapeutic", "expired", "mislabeled", "refrigerated"]
+  - ["부작용 감시", monitor, "'watching for'는 아직 일어나지 않았지만 생길 수 있는 것을 미리 본다는 뜻이에요. 세 가지를 나열해 약의 부작용 목록을 한 번에 말해요.", "for the doctor", "진정, 저혈압, 호흡 변화를 지켜보고 있어요.", "진정, 저혈압, 체온 변화를 지켜보고 있어요.", "sedation", "hunger", "boredom", "laughter"]
+  - ["용량 조정", pill, "'based on'은 조정의 근거를 말해 임의로 바꾸지 않는다는 점을 알려요. 'levels'는 혈중 농도 수치를 가리켜요.", "for the day", "수치와 반응에 따라 식사를 조정할게요.", "수치와 반응에 따라 침대를 조정할게요.", "adjust", "label", "store", "return"]
+  - ["결과 보고", lab, "'came back'은 검사 결과가 돌아왔다는 현장 표현이에요. 'within … range'는 범위 안이라는 뜻의 정형 표현이에요.", "this morning", "혈당이 치료 범위 안으로 나왔어요.", "체중이 치료 범위 안으로 나왔어요.", "within", "above", "below", "beyond"]
+  - ["경과 보고", monitor, "'since'는 그 시점부터 지금까지라는 뜻이라 용량 조정 이후의 변화를 말해요. 'No new'는 새로 생긴 것이 없다는 짧은 보고 형식이에요.", "for the week", "용량을 조정한 뒤로 새로운 통증은 없어요.", "용량을 조정한 뒤로 새로운 처방은 없어요.", "adjusted", "discharged", "transferred", "admitted"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 혈중농도 확인 4문장 순서
+    why: 농도를 확인하자고 하고, 결과를 알린 뒤, 그에 맞춰 용량을 조정하고, 조정 뒤 상태를 보고해요.
+    lines:
+    - ["Let's check his drug levels to confirm they're therapeutic.", lab, "혈중농도가 치료 범위인지 확인하죠", "확인"]
+    - ["His level came back within the therapeutic range.", lab, "수치가 치료 범위 안으로 나왔어요", "결과"]
+    - ["Given that result, we'll adjust the dose based on his response.", pill, "그 결과를 보고 반응에 따라 용량을 조정할게요", "조정"]
+    - ["There have been no new side effects since we did that.", monitor, "그렇게 한 뒤로 새 부작용은 없어요", "경과"]
+- title: 비경련성 SE 인지
+  s:
+  - ["위험 설명", bulb, "'can mean'은 단정하지 않고 가능성을 말해요. 'ongoing'은 지금도 이어지는 발작이라는 뜻이에요.", "in the room", "지속되는 무반응은 뇌압이 올라가고 있다는 뜻일 수 있어요.", "지속되는 무반응은 저혈당이 계속되고 있다는 뜻일 수 있어요.", "unresponsiveness", "appetite", "thirst", "itching"]
+  - ["검사 제안", monitor, "'urgent'는 기다리지 않고 바로 하자는 뜻이에요. 'to check'로 검사의 목적을 한마디로 붙여요.", "for the nurse", "가족에게 보여 주러 응급 EEG를 받죠.", "연구에 쓰려고 응급 EEG를 받죠.", "activity", "insurance", "schedule", "mood"]
+  - ["보고 약속", speech, "'flag'는 눈에 띄게 표시해서 알린다는 현장 동사예요. 'right away'로 지체하지 않겠다는 약속을 해요.", "to the family", "바로 신경과 팀에 물어볼게요.", "바로 신경과 팀에 메시지를 남길게요.", "flag", "mail", "return", "carry"]
+  - ["조심 설명", faceWorried, "'looks calm'은 겉모습을 말하고 'doesn't rule out'은 그래도 가능성이 남는다는 뜻이에요. 'but'으로 둘을 대비시켜요.", "in his bed", "차분해 보이지만 그렇다고 숨은 뇌출혈이 없다는 건 아니에요.", "차분해 보이지만 그렇다고 숨은 통증이 없다는 건 아니에요.", "hidden", "daily", "recent", "final"]
+  - ["처방 진행", pencil, "'getting … ordered'는 직접 처방하지 않고 처방받는 과정을 말해요. 'right now'로 지금 진행 중임을 강조해요.", "for tomorrow", "지금 바로 EEG 결과를 처방받고 있어요.", "지금 바로 EEG 장비를 처방받고 있어요.", "ordered", "printed", "framed", "washed"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 비경련성 발작 설명 4문장 순서
+    why: 무반응이 뜻할 수 있는 바를 알리고, 겉모습만으로는 알 수 없다고 덧붙이고, EEG를 처방받고, 신경과에 알려요.
+    lines:
+    - ["Persistent unresponsiveness can mean ongoing nonconvulsive seizures.", bulb, "지속되는 무반응은 비경련성 발작일 수 있어요", "위험"]
+    - ["Even if he looks calm, that doesn't rule one out.", faceWorried, "차분해 보여도 그걸 배제할 수는 없어요", "주의"]
+    - ["So I'm getting an EEG ordered right now to check.", pencil, "그래서 확인하려고 지금 EEG를 처방받고 있어요", "처방"]
+    - ["Once it's ordered, I'll flag this to the neuro team.", speech, "처방되면 이걸 신경과 팀에 알릴게요", "보고"]
+- title: 발작 관련 손상·흡인 관리
+  s:
+  - ["흡인 처치", scalpel, "'gently'는 부드럽게 하자는 뜻이라 점막 손상을 피하려는 마음이 담겨요. 'and check'로 석션 뒤 살피는 일까지 이어서 말해요.", "for the nurse", "살살 석션하고 코와 입 안을 확인하죠.", "살살 석션하고 기도와 입술을 확인하죠.", "gently", "loudly", "twice", "late"]
+  - ["흡인 감시", monitor, "'signs of aspiration'은 흡인이 의심되는 신호를 뜻하는 표현이에요. 'like low oxygen or fever'로 구체적인 예를 들어요.", "for the day", "저산소나 기침 같은 흡인 징후를 지켜보고 있어요.", "저산소나 구토 같은 흡인 징후를 지켜보고 있어요.", "aspiration", "allergy", "dehydration", "infection"]
+  - ["손상 사정", stetho, "'assess for'는 있는지 없는지 살펴본다는 뜻의 임상 표현이에요. 'any injuries'로 아직 모르는 상태를 전제해요.", "to the unit", "발작으로 인한 손상이 있는지 보여 드릴게요.", "발작으로 인한 손상이 있는지 설명할게요.", "injuries", "visitors", "orders", "allergies"]
+  - ["혀 확인", stetho, "'for any bite marks'는 찾는 대상을 구체적으로 말해요. 'Let's check'로 같이 확인하자고 제안해요.", "in his hair", "혀에 물린 자국이 있는지 확인하죠.", "혀에 하얀 반점이 있는지 확인하죠.", "tongue", "knee", "shoulder", "elbow"]
+  - ["수치 보고", monitor, "'look fine'은 지금 보이는 수치가 괜찮다는 짧은 보고예요. 'right now'로 앞으로는 변할 수 있다는 여지를 남겨요.", "for the day", "지금은 체온과 호흡 수치 모두 괜찮아 보여요.", "지금은 체온과 혈압 수치 모두 괜찮아 보여요.", "temperature", "weight", "height", "diet"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 발작 후 손상 관리 4문장 순서
+    why: 기도와 입 안을 살살 정리하고, 흡인 징후를 지켜보고, 혀와 몸의 손상을 확인한 뒤, 현재 수치를 보고해요.
+    lines:
+    - ["Let's suction gently and check his airway and mouth.", scalpel, "살살 석션하고 기도와 입 안을 확인하죠", "석션"]
+    - ["Next, I'm watching for signs of aspiration.", monitor, "다음으로 흡인 징후를 지켜보고 있어요", "감시"]
+    - ["Along with that, let's check his tongue for bite marks.", stetho, "그와 함께 혀에 물린 자국이 있는지 확인하죠", "혀"]
+    - ["For now, his temperature and oxygen level look fine.", monitor, "지금은 체온과 산소 수치가 괜찮아 보여요", "수치"]
+- title: 원인별 치료 연계
+  s:
+  - ["원인 설명", bulb, "'whether it's A or B'로 아직 모르는 두 가지 가능성을 나란히 말해요. 'We're identifying'은 지금 찾는 중이라는 진행형이에요.", "for the day", "원인을 파악하고 있어요, 뇌졸중이든 감염이든요.", "원인을 파악하고 있어요, 뇌출혈이든 종양이든요.", "stroke", "fever", "rash", "sprain"]
+  - ["치료 설명", bulb, "'depends on'은 치료가 결과에 따라 달라진다는 뜻이에요. 'what we find'는 아직 모르는 결과를 가리켜요.", "in the lab", "영상 검사에서 무엇이 나오느냐에 따라 일정이 달라져요.", "혈액 검사에서 무엇이 나오느냐에 따라 치료가 달라져요.", "imaging", "visiting", "billing", "parking"]
+  - ["협진 설명", speech, "'guide the next steps'는 앞으로의 단계를 이끈다는 뜻이에요. 'with us'로 우리와 함께한다는 점을 알려요.", "for the family", "신경과 팀이 저희와 함께 다음 단계를 설명해줄 거예요.", "마취과 팀이 저희와 함께 다음 단계를 이끌어줄 거예요.", "guide", "block", "skip", "end"]
+  - ["영상 설명", bulb, "'whether … a stroke, a tumor, or something else'는 가능성 셋을 나열해 아직 모른다는 점을 전해요. 'will show'는 검사 결과를 주어로 삼아요.", "to the room", "영상 검사가 뇌졸중인지 종양인지 다른 무엇인지 설명해줄 거예요.", "혈액 검사가 뇌졸중인지 종양인지 다른 무엇인지 보여줄 거예요.", "tumor", "fever", "sprain", "rash"]
+  - ["계획 약속", handshake2, "'Once we know'는 앞의 일이 끝난 뒤를 가리켜요. 'together'로 가족과 함께 의논하겠다는 약속을 해요.", "for the week", "원인을 알게 되면 치료 계획을 천천히 설명해드릴게요.", "원인을 알게 되면 치료 계획을 서면으로 설명해드릴게요.", "explain", "cancel", "forget", "change"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 원인 찾기와 계획 4문장 순서
+    why: 원인을 찾는 중이라고 알리고, 영상이 보여 줄 것을 설명하고, 신경과 팀이 이끈다고 알린 뒤, 계획을 함께 설명하겠다고 약속해요.
+    lines:
+    - ["We're identifying the cause, whether it's a stroke or a mass.", bulb, "뇌졸중이든 종양이든 원인을 파악 중이에요", "원인"]
+    - ["The imaging will show which one it is.", bulb, "영상이 어느 쪽인지 보여줄 거예요", "영상"]
+    - ["The neuro team will guide the next steps based on that.", speech, "그걸 바탕으로 신경과 팀이 다음 단계를 이끌어요", "협진"]
+    - ["Once we know, we'll explain the plan together.", handshake2, "알게 되면 계획을 함께 설명해드릴게요", "약속"]

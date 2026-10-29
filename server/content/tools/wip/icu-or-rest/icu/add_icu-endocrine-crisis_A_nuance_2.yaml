@@ -1,0 +1,140 @@
+7:
+  - kind: slider
+    words: [w-fall]
+    cue: "Potassium was 4.0, then 3.9, then 3.8 on three checks."
+    scale: [drifting down, falling fast, dropping sharply]
+    answerAt: 0
+    why: "0.1씩 천천히 내려가면 drifting down이에요. 인슐린이 들어가는 동안은 칼륨이 계속 내려갈 수 있어서, 방향을 보고 정해진 주기로 재확인해 보고해요."
+    example: "His potassium is drifting down."
+    exKo: "그의 칼륨이 서서히 내려가고 있어요."
+  - kind: context
+    words: [w-monitor]
+    word: monitor
+    ko: 모니터링하다
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Monitor potassium closely while the insulin drip is running.", ok: true}
+      - {who: 야간 인계, icon: board, en: "I'll monitor his potassium with every lab draw while the insulin runs.", ok: true}
+      - {who: 환자에게, icon: me, en: "We will monitor your serum potassium and magnesium levels per protocol.", ok: false, fix: "We'll check your blood potassium every few hours to keep you safe."}
+    why: "의료진끼리는 무엇을 어떤 주기로 보는지 짧게 말해요. 환자에게는 serum·protocol 대신 '혈액 검사로 자주 확인한다'고 쉬운 말로 전하세요."
+  - kind: swap
+    words: [w-pause]
+    who: "환자에게 · 인슐린 조절 안내"
+    icon: me
+    before: ["We might ", "hold your insulin", " if your potassium drops again."]
+    options: [pause your insulin for a while, hold your insulin, discontinue your insulin]
+    answer: pause your insulin for a while
+    notes: {pause your insulin for a while: "잠깐 멈췄다 다시 한다는 뜻이 분명해요.", hold your insulin: "의료진 어법이라 환자에게는 뜻이 흐릿할 수 있어요.", discontinue your insulin: "영구 중단처럼 들려서 사실과 달라요."}
+    why: "칼륨이 다시 내려가면 인슐린을 잠시 멈추는 것은 일시적인 조치예요. 중단으로 들리지 않게 '잠시'를 분명히 말해요."
+    ko: "칼륨이 다시 떨어지면 인슐린을 잠시 멈출 수 있어요"
+8:
+  - kind: slider
+    words: [w-tolerate]
+    cue: "He keeps down juice but feels sick after a few crackers."
+    scale: [not tolerating, tolerating a little, tolerating well]
+    answerAt: 1
+    why: "소량은 견디지만 크래커 뒤 메스꺼우면 tolerating a little이에요. 식사가 안정적인지 아직 확실하지 않으니 전환을 서두르지 말고 상태를 팀에 알려요."
+    example: "He's tolerating a little food so far."
+    exKo: "지금까지는 음식을 조금 견디고 있어요."
+  - kind: context
+    words: [w-switch]
+    word: switch
+    ko: 전환하다
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Once the gap has closed, we'll switch him to subcutaneous insulin.", ok: true}
+      - {who: 야간 인계, icon: board, en: "The plan is to switch to basal-bolus after his next meal.", ok: true}
+      - {who: 환자에게, icon: me, en: "We will switch your insulin infusion to a subcutaneous basal-bolus regimen.", ok: false, fix: "Soon we'll move you from the IV insulin to insulin shots, and we'll make the change safely."}
+    why: "의료진끼리는 정맥 주입에서 피하 주사로의 전환을 이렇게 압축해서 말해요. 환자에게는 basal-bolus regimen 대신 '주사로 바꾼다'로 쉽게 설명하세요."
+  - kind: swap
+    words: [w-gap]
+    who: "환자에게 · 좋은 소식 전하기"
+    icon: me
+    before: ["Good news: your ", "anion gap has closed", "."]
+    options: [blood acid is back to normal, anion gap has closed, AG has normalized]
+    answer: blood acid is back to normal
+    notes: {blood acid is back to normal: "환자가 바로 이해하는 말로 좋은 소식이 전해져요.", anion gap has closed: "의료진끼리의 수치 이름이라 환자는 의미를 몰라요.", AG has normalized: "약어까지 써서 환자가 더 알아듣기 어려워요."}
+    why: "간극이 닫혔다는 건 혈액의 산이 정상으로 돌아왔다는 뜻이에요. 환자에게는 수치 이름보다 의미를 먼저 말해요."
+    ko: "좋은 소식이에요, 혈액 산도가 정상으로 돌아왔어요"
+9:
+  - kind: slider
+    words: [w-correct]
+    cue: "The plan lowers her sugar and sodium toward normal at a safe pace."
+    scale: [within minutes, within an hour or two, over a day or two]
+    answerAt: 2
+    why: "HHS는 아주 농축된 상태라 하루이틀에 걸쳐 천천히 교정하는 것이 안전해요. 너무 빨리 낮추면 뇌부종 위험이 올라서 over a day or two가 맞아요."
+    example: "We're correcting it over a day or two."
+    exKo: "하루이틀에 걸쳐 교정하고 있어요."
+  - kind: context
+    words: [w-confusion]
+    word: confusion
+    ko: 혼란
+    scenes:
+      - {who: 의사 호출, icon: speech, en: "New confusion could mean her osmolality is falling too fast.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Her confusion improved overnight as her sugar came down.", ok: true}
+      - {who: 가족에게, icon: me, en: "She is exhibiting confusion consistent with hyperosmolar encephalopathy.", ok: false, fix: "She's been confused because her blood is very concentrated, and it should clear as we treat it."}
+    why: "의료진끼리는 원인을 바로 연결하는 정확한 말이 빨라요. 가족에게는 encephalopathy 같은 진단명 대신 왜 혼란스러운지와 어떻게 나아질지를 쉽게 전하세요."
+  - kind: swap
+    words: [w-concentrate]
+    who: "가족에게 · 상태 설명"
+    icon: me
+    before: ["Her blood is ", "hyperosmolar", " right now."]
+    options: [very concentrated, hyperosmolar, thick like syrup]
+    answer: very concentrated
+    notes: {very concentrated: "가족이 이해하고 사실에도 맞는 설명이에요.", hyperosmolar: "의료진끼리의 진단 용어라 가족은 뜻을 몰라요.", thick like syrup: "실제와 달리 피가 걸쭉하다는 인상을 줘서 정확하지 않아요."}
+    why: "HHS의 핵심은 혈액 속 당과 나트륨이 매우 진해진 것이에요. 가족에게는 진한 상태라고만 쉽게 말해도 이유가 전해져요."
+    ko: "지금 혈액이 아주 농축돼 있어요"
+10:
+  - kind: slider
+    words: [w-fast, w-drop]
+    cue: "Glucose went from 250 to 190 in an hour on insulin and dextrose."
+    scale: [too slowly, at a safe pace, too fast]
+    answerAt: 1
+    why: "시간당 60 정도 하락은 많은 프로토콜의 목표(시간당 50~75 mg/dL) 안이라 at a safe pace예요. 포도당을 같이 넣으면서 저혈당을 막고 케톤은 계속 없애요."
+    example: "His sugar is dropping at a safe pace."
+    exKo: "그의 혈당이 안전한 속도로 내려가고 있어요."
+  - kind: context
+    words: [w-glucose]
+    word: glucose
+    ko: 혈당
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Recheck the glucose hourly while the dextrose is running.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Glucose was 190 at 0400, so dextrose was added per protocol.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your glucose will be maintained within parameters via a dextrose co-infusion.", ok: false, fix: "We're adding some sugar water to your IV so your glucose stays safe while the insulin keeps working."}
+    why: "의료진끼리는 수치와 시점을 짧게 말해요. 환자에게는 co-infusion 같은 말 대신 '당을 같이 넣어 혈당을 지킨다'로 알려 주세요."
+  - kind: swap
+    words: [w-dextrose]
+    who: "환자에게 · 포도당 병용 안내"
+    icon: me
+    before: ["We're adding ", "dextrose", " to your IV so your sugar doesn't drop too low."]
+    options: [some sugar water, dextrose, D5W]
+    answer: some sugar water
+    notes: {some sugar water: "환자가 바로 이해하는 말이에요.", dextrose: "정확하지만 환자는 포도당이 뭔지 모를 수 있어요.", D5W: "약어라 환자는 알아들을 수 없어요."}
+    why: "인슐린이 케톤을 없애는 동안 혈당이 너무 낮아지지 않도록 당을 같이 넣어요. 환자에게는 쉬운 말로 이유를 전해요."
+    ko: "혈당이 너무 낮아지지 않게 수액에 당을 더 넣을게요"
+11:
+  - kind: slider
+    words: [w-help, w-risk]
+    cue: "Treating his infection will lower the chance of another DKA episode."
+    scale: [might help a bit, helps lower the risk, guarantees it won't happen]
+    answerAt: 1
+    why: "원인을 치료하면 재발 위험을 낮출 수 있지만 없애 준다고 약속할 수는 없어요. helps lower the risk가 정확하고, guarantees는 지킬 수 없는 약속이에요."
+    example: "Treating the cause helps lower the risk."
+    exKo: "원인을 치료하면 위험을 낮추는 데 도움이 돼요."
+  - kind: context
+    words: [w-trigger]
+    word: trigger
+    ko: 유발 요인
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Infection is a common trigger, so let's send cultures.", ok: true}
+      - {who: 야간 인계, icon: board, en: "No clear trigger yet, and cultures are pending.", ok: true}
+      - {who: 환자에게, icon: me, en: "The precipitating trigger of your DKA is most likely an infectious etiology.", ok: false, fix: "Something like an infection may have set this off, so we're running tests to find out."}
+    why: "의료진끼리는 trigger와 원인 추정을 압축해서 말해요. 환자에게는 precipitating·etiology 대신 '이런 것이 시작이 되었을 수 있다'고 쉽게 전해 주세요."
+  - kind: swap
+    words: [w-infection]
+    who: "환자에게 · 검사 이유"
+    icon: me
+    before: ["We're testing for ", "an infectious etiology", " that may have set this off."]
+    options: [an infection, an infectious etiology, a bacteremia]
+    answer: an infection
+    notes: {an infection: "환자가 이해하는 말로 무엇을 찾는지 전해져요.", an infectious etiology: "의료진끼리 쓰는 말이라 환자는 낯설어요.", a bacteremia: "혈류 감염이 확인된 것처럼 들려 아직 모르는 진단을 단정해요."}
+    why: "아직 검사 중이니 확진처럼 들리지 않게 '감염이 있는지 본다'고만 말해요."
+    ko: "시작의 원인이 됐을 수 있는 감염이 있는지 검사하고 있어요"

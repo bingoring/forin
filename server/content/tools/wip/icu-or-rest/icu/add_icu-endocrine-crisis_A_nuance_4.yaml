@@ -1,0 +1,112 @@
+17:
+  - kind: slider
+    words: [w-crash]
+    cue: "His systolic pressure went from 110 to 62 in ten minutes."
+    scale: [dipped slightly, dropped, crashed]
+    answerAt: 2
+    why: "10분 만에 110에서 62로 떨어지면 crashed예요. 부신위기에서는 순환이 갑자기 무너질 수 있어서 바로 호출하고 처방된 수액과 승압제를 준비해요."
+    example: "His pressure crashed, so I'm calling now."
+    exKo: "혈압이 급락해서 지금 호출할게요."
+  - kind: context
+    words: [w-bolus]
+    word: bolus
+    ko: 볼루스
+    scenes:
+      - {who: 의사 호출, icon: speech, en: "Give a fluid bolus while we set up the vasopressor.", ok: true}
+      - {who: 야간 인계, icon: board, en: "He got a bolus and the pressor is titrating up.", ok: true}
+      - {who: 가족에게, icon: me, en: "He received a fluid bolus and is now on a vasopressor infusion.", ok: false, fix: "We gave him a lot of fluid quickly through the IV and started a medicine to raise his blood pressure."}
+    why: "의료진끼리 bolus는 짧은 시간에 한꺼번에 주는 방식을 정확히 가리켜요. 가족에게는 bolus·infusion 대신 무엇을 어떻게 줬는지 쉽게 풀어 주세요."
+  - kind: swap
+    words: [w-pressor]
+    who: "가족에게 · 승압제 설명"
+    icon: me
+    before: ["We started ", "a pressor drip", " for his blood pressure."]
+    options: [a medicine, a pressor drip, a vasopressor]
+    answer: a medicine
+    notes: {a medicine: "가족이 바로 이해하고 무엇을 위한 것인지 뒤 문장이 알려 줘요.", a pressor drip: "의료진 은어라 가족은 뜻을 몰라요.", a vasopressor: "정확한 약 이름이지만 가족에게는 낯설어요."}
+    why: "위급할 때 가족에게는 약 종류보다 '혈압을 위한 약을 시작했다'는 사실이 먼저예요. 자세한 이름은 물어볼 때 설명해요."
+    ko: "혈압을 위한 약을 시작했어요"
+18:
+  - kind: slider
+    words: [w-drowsy]
+    cue: "He opens his eyes to a loud voice, says one word, then drifts off again."
+    scale: [alert, drowsy, unresponsive]
+    answerAt: 1
+    why: "큰 소리에 눈은 뜨지만 금방 다시 잠들면 drowsy예요. alert는 또렷이 대화가 이어지는 상태, unresponsive는 불러도 반응이 없는 상태예요. 더 나빠지면 혈당부터 확인해요."
+    example: "He's drowsy, so let's check his sugar now."
+    exKo: "졸려 하시니 지금 혈당을 확인해요."
+  - kind: context
+    words: [w-airway]
+    word: airway
+    ko: 기도
+    scenes:
+      - {who: 의사 호출, icon: speech, en: "Protect his airway while the dextrose goes in.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Airway is open, but he's still drowsy, and suction is at the bedside.", ok: true}
+      - {who: 가족에게, icon: me, en: "We are performing airway management and glucose resuscitation.", ok: false, fix: "We're making sure he can breathe safely while we give him sugar."}
+    why: "의료진끼리는 airway 한 단어로 숨길의 안전을 말해요. 가족에게는 airway management·resuscitation 대신 숨을 안전하게 쉬게 하는 일이라고 쉽게 알려 주세요."
+  - kind: swap
+    words: [w-unresponsive]
+    who: "가족에게 · 현재 상태"
+    icon: me
+    before: ["He is ", "obtunded", " right now because his sugar is so low."]
+    options: [not waking up, obtunded, in a hypoglycemic coma]
+    answer: not waking up
+    notes: {not waking up: "가족이 이해하는 말로 지금 보이는 모습을 정확히 전해요.", obtunded: "의식 저하를 가리키는 의료 용어라 가족은 모르는 말이에요.", in a hypoglycemic coma: "아직 확정하지 않은 상태를 무겁게 단정하는 말이에요."}
+    why: "가족은 의료 용어보다 눈앞의 모습을 그대로 말해 줄 때 상황을 이해해요. 원인은 혈당이 낮다는 것만 쉽게 덧붙여요."
+    ko: "혈당이 너무 낮아서 지금은 깨어나지 않고 계세요"
+19:
+  - kind: slider
+    words: [w-critical]
+    cue: "She is cold, barely rousable, and her breathing is slow and shallow."
+    scale: [concerning, serious, critical]
+    answerAt: 2
+    why: "차갑고 겨우 깨우며 호흡이 느리고 얕으면 critical이에요. 점액수종 혼수는 생명이 위태로운 상태라 호흡과 의식을 계속 보며 즉시 보고해요."
+    example: "Her condition is critical, so we're treating her urgently."
+    exKo: "상태가 위중해서 응급으로 치료하고 있어요."
+  - kind: context
+    words: [w-urgently]
+    word: urgently
+    ko: 응급으로
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "We need to treat this urgently with IV thyroid hormone.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Endocrine was called urgently and the steroid is already in.", ok: true}
+      - {who: 가족에게, icon: me, en: "We are urgently initiating liothyronine and levothyroxine replacement.", ok: false, fix: "We need to treat this right away, and we're giving her thyroid medicine now."}
+    why: "의료진끼리는 urgently와 약 이름을 짧게 말해도 정확해요. 가족에게는 liothyronine 같은 약 이름 대신 서둘러 갑상선 약을 주고 있다고 쉽게 전하세요."
+  - kind: swap
+    words: [w-warm]
+    who: "가족에게 · 체온 올리는 방법"
+    icon: me
+    before: ["We're ", "passively rewarming her", " with blankets, slowly and safely."]
+    options: [warming her up, passively rewarming her, applying external heat to her]
+    answer: warming her up
+    notes: {warming her up: "가족이 이해하는 말로 담요로 서서히 데운다는 뜻이 전해져요.", passively rewarming her: "의료진끼리의 용어라 가족은 뜻을 몰라요.", applying external heat to her: "가열 장치를 대는 것처럼 들려 사실과 달라요."}
+    why: "점액수종 혼수에서는 담요 등으로 서서히 데우는 것이 안전해요. 가족에게는 '천천히 데운다'는 점이 전해지면 충분해요."
+    ko: "담요로 천천히 안전하게 몸을 따뜻하게 해 드리고 있어요"
+20:
+  - kind: slider
+    words: [w-strain]
+    cue: "His creatinine rose slightly, and his oxygen needs are the same."
+    scale: [mild strain, significant strain, organ failure]
+    answerAt: 0
+    why: "크레아티닌이 조금 오르고 산소 요구량이 그대로면 mild strain이에요. 다장기 악화에서는 변화가 빠를 수 있으니 추세를 계속 보고 달라지면 바로 알려요."
+    example: "His kidneys are under mild strain right now."
+    exKo: "지금은 콩팥에 가벼운 무리가 가고 있어요."
+  - kind: context
+    words: [w-update]
+    word: update
+    ko: 알려주다
+    scenes:
+      - {who: 가족 면담, icon: me, en: "I'll give you an update as soon as the specialists weigh in.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Quick update: urine output is down and the kidneys are under strain.", ok: true}
+      - {who: 가족에게, icon: me, en: "Update: patient with multiorgan dysfunction syndrome, now with AKI and ARDS.", ok: false, fix: "Here's where things stand: his kidneys and lungs are both struggling, and we're helping them."}
+    why: "인계에서는 약어와 수치를 짧게 전하는 것이 빨라요. 가족에게는 같은 update를 약어 없이 지금 상황과 하는 일 위주로 풀어 주세요."
+  - kind: swap
+    words: [w-news]
+    who: "가족에게 · 나쁜 소식 전하기"
+    icon: me
+    before: ["I'm sorry — I have ", "unfavorable findings", " to share."]
+    options: [hard news, unfavorable findings, adverse results]
+    answer: hard news
+    notes: {hard news: "쉬운 말로 공감을 담아 어려운 소식임을 알려요.", unfavorable findings: "보고서 같은 딱딱한 말이라 가족에게 차갑게 들려요.", adverse results: "의료 문서 표현이라 가족에게 거리감을 줘요."}
+    why: "나쁜 소식은 먼저 어려운 소식이라는 걸 쉬운 말로 알리면 가족이 마음의 준비를 해요. 숨기지 않고 솔직하게 이어서 설명해요."
+    ko: "죄송하지만 어려운 소식을 전해야 해요"

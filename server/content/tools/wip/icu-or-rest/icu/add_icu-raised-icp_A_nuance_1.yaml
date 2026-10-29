@@ -1,0 +1,128 @@
+"신경학적 사정":
+  - kind: slider
+    words: [w-alert]
+    cue: "Chart: \"He opens his eyes only when I call his name loudly.\""
+    scale: [alert, to voice, to pain, none]
+    answerAt: 1
+    why: "신경 ICU에서는 의식 수준을 흔히 AVPU로 적어요. alert는 스스로 깨어 있는 상태, to voice는 부르면 눈을 뜨는 상태, to pain은 통증 자극에만 반응하는 상태, 마지막은 반응이 없는 상태예요. 소리쳐 불러야 눈을 뜬다면 to voice예요."
+    example: "He's alert at baseline, but now he only opens his eyes to voice."
+    exKo: "원래는 또렷했는데 지금은 부를 때만 눈을 떠요."
+  - kind: context
+    words: [w-reactive]
+    word: reactive
+    ko: 반응하는
+    scenes:
+      - {who: 의사에게 보고, icon: monitor, en: "Left pupil is no longer reactive to light, and he's more drowsy.", ok: true}
+      - {who: 가족에게, icon: me, en: "Pupils reactive bilaterally, PERRL, GCS 14, no acute change.", ok: false, fix: "His eyes still react to light, which is a good sign, and we're checking them often."}
+      - {who: 차트 기록, icon: board, en: "Pupils equal, round, and reactive to light at 0800.", ok: true}
+    why: "의료진끼리는 PERRL, GCS 같은 약어가 빠르고 정확해요. 하지만 가족에게는 무슨 뜻인지 알 수 없고 오히려 불안하게 들려요. 같은 사실을 눈이 빛에 반응한다는 쉬운 말로 풀어 주세요."
+  - kind: swap
+    words: [w-change]
+    who: "가족에게 · 변화 안내"
+    icon: me
+    before: ["We'll tell you right away if there is any ", "neuro change", " in him."]
+    options: [difference you can see, neuro change, GCS drop]
+    answer: difference you can see
+    notes: {difference you can see: "가족도 바로 알아볼 수 있는 쉬운 말이라 무엇을 알려 주겠다는 건지 분명하다.", neuro change: "의료진끼리 쓰는 말이라 가족은 무엇이 바뀌는지 감이 오지 않는다.", GCS drop: "점수 용어라 가족에게는 낯설고 놀라게 할 수 있다."}
+    why: "가족에게는 눈에 보이는 변화를 쉬운 말로 설명하고, 점수나 약어는 의료진끼리 쓰는 말로 남겨 두세요."
+    ko: "그분에게 눈에 띄는 변화가 있으면 바로 알려 드릴게요"
+"두부 거상·중립 체위":
+  - kind: pair
+    words: [w-keep, w-avoid, w-check]
+    pairs: [[keep, his head up and midline], [avoid, sharp turns of his neck], [check, his alignment after each turn]]
+    decoys: [a dinner tray]
+    why: "미국 신경 ICU에서는 침상 머리를 약 30도 올리고 머리와 목을 중립(정중선)에 두어 정맥 배액을 돕는 것이 기본이에요. 목을 꺾거나 돌리면 배액이 방해될 수 있어 피하고, 체위를 바꿀 때마다 정렬을 확인해요."
+  - kind: swap
+    words: [w-midline]
+    who: "가족에게 · 자세 설명"
+    icon: me
+    before: ["We keep his head ", "midline", " so blood can leave his brain."]
+    options: [straight, midline, in neutral alignment]
+    answer: straight
+    notes: {straight: "가족이 바로 그림을 떠올릴 수 있는 쉬운 말이다.", midline: "의료진끼리 쓰는 말이라 가족에게는 어디가 중심인지 모호하다.", in neutral alignment: "정확하지만 길고 딱딱해서 가족에게는 어렵게 들린다."}
+    why: "가족에게는 고개를 곧게 둔다는 쉬운 말로, 의료진끼리는 midline과 neutral alignment 같은 용어로 말해요."
+    ko: "뇌에서 피가 잘 빠지도록 머리를 곧게 두고 있어요"
+"EVD 시스템·영점 이해":
+  - kind: slider
+    words: [w-precisely]
+    cue: "After every position change, the zero point has to be set at the exact reference spot again."
+    scale: [loosely, roughly, precisely]
+    answerAt: 2
+    why: "EVD는 영점(기준점) 높이에 따라 배액되는 양과 측정값이 달라져요. 그래서 대충(loosely, roughly) 맞추지 않고 정확하게(precisely) 맞춰요. 기준점은 병원 프로토콜에 따라 정해져 있고 보통 귀 부근이에요."
+    example: "I level the drain precisely at the reference point every time."
+    exKo: "배액관을 매번 기준점에 정확히 맞춰요."
+  - kind: swap
+    words: [w-drain]
+    who: "가족에게 · EVD 설명"
+    icon: me
+    before: ["This ", "EVD", " lets extra fluid drain out of his brain area."]
+    options: [small tube, EVD, ventriculostomy catheter]
+    answer: small tube
+    notes: {small tube: "가족이 눈으로 보이는 것을 그대로 부르는 쉬운 말이다.", EVD: "약어라 가족은 무슨 장치인지 알 수 없다.", ventriculostomy catheter: "정확한 의학 용어지만 가족에게는 너무 길고 어렵다."}
+    why: "처음 듣는 가족에게는 작은 관이 여분의 체액을 빼 준다고 쉬운 말로 먼저 알려 주세요."
+    ko: "이 작은 관이 뇌 주변의 여분의 체액을 빼내 줘요"
+"ICP·CPP 모니터 판독":
+  - kind: pair
+    words: [w-icp, w-cpp, w-target]
+    pairs: [[ICP, the pressure inside his head], [CPP, the pressure pushing blood into his brain], [target, a range the doctor sets]]
+    decoys: [the weight on his chart]
+    why: "ICP는 두개내압, CPP는 뇌관류압이에요. CPP는 평균동맥압(MAP)에서 ICP를 뺀 값이라 ICP가 오르거나 혈압이 떨어지면 낮아져요. 목표 범위는 환자와 지침에 따라 의사가 정해요."
+  - kind: swap
+    words: [w-icp]
+    who: "가족에게 · 모니터 설명"
+    icon: me
+    before: ["That number on the screen is his ", "ICP", "."]
+    options: [pressure inside his head, ICP, intracranial pressure]
+    answer: pressure inside his head
+    notes: {pressure inside his head: "화면 숫자가 무엇인지 바로 알려 주는 쉬운 말이다.", ICP: "약어라 가족은 알아듣지 못한다.", intracranial pressure: "정확하지만 가족에게는 어려운 용어다."}
+    why: "화면의 숫자를 가리키며 머릿속 압력이라고 쉬운 말로 알려 주면 가족도 무엇을 지켜보는지 이해해요."
+    ko: "화면의 그 숫자는 환자분의 머릿속 압력이에요"
+"진정·통증 관리 협조":
+  - kind: slider
+    words: [w-spike]
+    cue: "ICP jumps from 12 to 28 for twenty seconds during suctioning, then comes back down."
+    scale: [drift, spike, plateau]
+    answerAt: 1
+    why: "drift는 서서히 변하는 것, spike는 짧게 갑자기 솟았다가 내려오는 것, plateau는 높은 상태가 한동안 이어지는 것이에요. 흡인이나 체위 변경 때 잠깐 치솟는 건 spike라고 해요."
+    example: "His ICP spiked during suctioning and came back down."
+    exKo: "흡인할 때 ICP가 급상승했다가 다시 내려왔어요."
+  - kind: context
+    words: [w-spike]
+    word: spike
+    ko: 급상승
+    scenes:
+      - {who: 의사에게 보고, icon: monitor, en: "ICP spiked to 28 with suctioning and came back in a minute.", ok: true}
+      - {who: 가족에게, icon: me, en: "His pressure spiked to 28 and he's in serious trouble.", ok: false, fix: "His pressure went up for a short time when we turned him, and we're helping it settle."}
+      - {who: 차트 기록, icon: board, en: "ICP spike x2 with turns, resolved after sedation bolus.", ok: true}
+    why: "의료진끼리는 spike가 짧은 급상승을 뜻하는 흔한 말이에요. 하지만 가족에게 serious trouble처럼 단정하면 필요 이상으로 겁을 줘요. 무슨 일이 있었고 지금 무엇을 하는지 차분히 말해 주세요."
+"자극 최소화":
+  - kind: pair
+    words: [w-dim, w-cluster, w-speak]
+    pairs: [[dim, the lights in the room], [cluster, his care into one visit], [speak, softly at the bedside]]
+    decoys: [his dinner tray]
+    why: "자극을 줄이는 기본은 불빛은 낮추고(dim), 처치는 한꺼번에 묶고(cluster), 소곤소곤 말하는(speak softly) 것이에요. 자극이 잦으면 ICP가 오를 수 있어서 쉬는 시간을 지켜 줘요."
+  - kind: context
+    words: [w-quiet]
+    word: quiet
+    ko: 조용한
+    scenes:
+      - {who: 간호사끼리, icon: board, en: "Quiet room, lights dim, care clustered every two hours.", ok: true}
+      - {who: 방문한 가족에게, icon: me, en: "Be quiet! He needs complete rest.", ok: false, fix: "Could we keep the room quiet by speaking softly so he can rest?"}
+      - {who: 새 간호사에게 인계, icon: speech, en: "Keep it quiet in there — his ICP rises with noise.", ok: true}
+    why: "의료진끼리는 짧고 직설적으로 말해도 돼요. 하지만 가족에게 명령조로 말하면 쫓아내는 것처럼 들려요. 왜 조용해야 하는지와 함께 부탁하는 말투로 해 주세요."
+"ICP 상승 단계별 중재":
+  - kind: pair
+    words: [w-position, w-sedation, w-mannitol]
+    pairs: [[position, his head up and neck neutral], [sedation, deepened if he's agitated], [mannitol, ordered if ICP stays high]]
+    decoys: [a quiet hallway cart]
+    why: "ICP가 오르면 보통 가벼운 것부터 단계적으로 해요. 먼저 체위와 목 중립을 점검하고, 진정·진통을 조절한 뒤, 그래도 높으면 처방에 따라 만니톨 같은 삼투요법을 써요."
+  - kind: swap
+    words: [w-mannitol]
+    who: "가족에게 · 치료 설명"
+    icon: me
+    before: ["If it stays high, we'll give ", "mannitol", "."]
+    options: [a medicine to ease the swelling, mannitol, an osmotic bolus]
+    answer: a medicine to ease the swelling
+    notes: {a medicine to ease the swelling: "가족이 약의 목적을 바로 이해하는 쉬운 말이다.", mannitol: "약 이름만으로는 가족이 무엇을 하는 약인지 알 수 없다.", an osmotic bolus: "의료진끼리 쓰는 용어라 가족에게는 어렵다."}
+    why: "가족에게는 약 이름보다 무엇을 위한 약인지를 쉬운 말로 먼저 알려 주세요."
+    ko: "계속 높으면 부기를 가라앉히는 약을 드릴 거예요"

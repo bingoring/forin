@@ -1,0 +1,196 @@
+0:
+  - kind: slider
+    words: [w-fast]
+    cue: "Her breathing rate is 34 breaths a minute, and each breath is deep."
+    scale: [a little fast, fast, very fast]
+    answerAt: 2
+    why: "성인의 정상 호흡수는 보통 분당 12~20회예요. 34회에 깊은 호흡이 이어지면 very fast이고, DKA에서는 산을 내보내려는 몸의 반응일 수 있어서 바로 팀에 보고해요."
+    example: "Her breathing is very fast and deep."
+    exKo: "그녀의 호흡이 아주 빠르고 깊어요."
+  - kind: context
+    words: [w-sign]
+    word: sign
+    ko: 징후
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "He has early signs of DKA — deep, fast breathing and a dry mouth.", ok: true}
+      - {who: 야간 인계, icon: board, en: "No new signs of fluid overload overnight.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your Kussmaul respirations are a sign of severe metabolic acidosis.", ok: false, fix: "Your fast, deep breathing is a sign that your blood has too much acid, and we're treating it."}
+    why: "의료진끼리는 Kussmaul·metabolic acidosis 같은 용어가 정확하고 빨라요. 환자에게는 같은 sign을 쉬운 말로 풀어 무엇이 일어나고 있고 무엇을 하는지 알려 주세요."
+  - kind: swap
+    words: [w-hydration]
+    who: "환자에게 · 첫 사정 설명"
+    icon: me
+    before: ["I'm checking ", "your volume status", " first."]
+    options: [how dry you are, your volume status, your hypovolemia]
+    answer: how dry you are
+    notes: {how dry you are: "환자가 바로 알아듣고, 무엇을 보는지 분명해요.", your volume status: "의료진끼리 쓰는 말이라 환자는 무슨 뜻인지 모를 수 있어요.", your hypovolemia: "어려운 진단명을 환자에게 그대로 던지는 말이라 불안만 키워요."}
+    why: "탈수 사정은 환자 몸 상태를 묻는 일이라, 진단명 대신 '얼마나 말라 있는지' 같은 쉬운 말로 시작해요."
+    ko: "먼저 몸에 수분이 얼마나 모자란지 확인할게요"
+1:
+  - kind: slider
+    words: [w-level]
+    cue: "Glucose read 480, then 360, then 290 on three hourly checks."
+    scale: [rising, falling steadily, dropping suddenly]
+    answerAt: 1
+    why: "세 번 연속 조금씩 내려가면 falling steadily예요. rising은 올라갈 때, dropping suddenly는 한 번에 크게 떨어질 때라 달라요. 시간 순서로 이어 보면 치료 반응이 보여요."
+    example: "His glucose level is falling steadily."
+    exKo: "그의 혈당 수치는 꾸준히 내려가고 있어요."
+  - kind: context
+    words: [w-number]
+    word: number
+    ko: 수치
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "The ketone numbers are coming down, so the insulin drip is working.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Sugar numbers stayed between 180 and 220 on the hourly checks.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your beta-hydroxybutyrate and anion gap numbers are normalizing.", ok: false, fix: "Your blood acid and ketone numbers are getting better."}
+    why: "의료진끼리는 beta-hydroxybutyrate나 anion gap 같은 이름이 정확해요. 환자에게는 어떤 수치가 어떻게 달라졌는지를 쉬운 말로 알려 주세요."
+  - kind: swap
+    words: [w-check]
+    who: "환자에게 · 반복 검사 안내"
+    icon: me
+    before: ["Time for ", "your hourly POC glucose", "."]
+    options: [your hourly finger stick, your hourly POC glucose, your hourly capillary sampling]
+    answer: your hourly finger stick
+    notes: {your hourly finger stick: "환자가 바로 아는 말이라 무엇을 하는지 전해져요.", your hourly POC glucose: "POC는 의료진 약어라 환자는 알아듣기 어려워요.", your hourly capillary sampling: "정확하지만 딱딱하고 낯선 말이에요."}
+    why: "반복 검사는 환자가 자주 불편해하는 일이라, 낯선 약어 대신 손끝 검사처럼 아는 말로 알려야 협조가 쉬워요."
+    ko: "매시간 하는 손끝 혈당 검사 시간이에요"
+2:
+  - kind: slider
+    words: [w-quickly]
+    cue: "Order: run the first fluid fast for the first hour, then slow down."
+    scale: [gradually, steadily, quickly]
+    answerAt: 2
+    why: "DKA 첫 수액은 처음 한 시간 동안 빠르게 넣고 이후 속도를 줄이는 것이 일반적이라 quickly예요. 속도는 처방과 프로토콜대로 맞추고 폐 소리와 호흡을 같이 봐요."
+    example: "We're replacing the fluid quickly at first."
+    exKo: "처음에는 수액을 빠르게 보충하고 있어요."
+  - kind: context
+    words: [w-lose]
+    word: lose
+    ko: 잃다
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "She lost a lot of fluid through vomiting and urinating.", ok: true}
+      - {who: 야간 인계, icon: board, en: "He lost a lot of fluid, so the first bolus is running per protocol.", ok: true}
+      - {who: 환자에게, icon: me, en: "You lost a large volume of intravascular fluid from osmotic diuresis.", ok: false, fix: "You lost a lot of water because of the high sugar, so we're giving it back through your IV."}
+    why: "의료진끼리는 intravascular fluid나 osmotic diuresis가 정확해요. 환자에게는 같은 사실을 왜 물을 잃었는지, 무엇으로 채우는지로 쉽게 풀어 주세요."
+  - kind: swap
+    words: [w-saline]
+    who: "환자에게 · 수액 시작 안내"
+    icon: me
+    before: ["We're starting ", "isotonic crystalloid", " to replace what you lost."]
+    options: [IV fluids, isotonic crystalloid, a volume expander]
+    answer: IV fluids
+    notes: {IV fluids: "환자가 아는 말이라 무엇을 시작하는지 바로 전해져요.", isotonic crystalloid: "수액 종류를 가리키는 전문 용어라 환자는 모르는 말이에요.", a volume expander: "다른 종류의 약(혈장 증량제)처럼 들려 오해를 줄 수 있어요."}
+    why: "환자에게는 수액의 종류 이름보다 '정맥으로 수분을 채운다'는 사실이 중요해서 쉬운 말로 알려요."
+    ko: "잃으신 수분을 보충하려고 수액을 시작할게요"
+3:
+  - kind: slider
+    words: [w-rate, w-pump]
+    cue: "The order says 5 units an hour, but the pump screen shows 50."
+    scale: [rounding difference, small difference, tenfold error]
+    answerAt: 2
+    why: "5와 50은 소수점·자릿수 때문에 생기는 10배 차이라 tenfold error예요. 인슐린은 고위험 약이라 멈추고 처방과 대조해 확인한 뒤 동료와 이중 확인하고 보고해요."
+    example: "That's a tenfold error, so stop and check the order."
+    exKo: "10배 오류예요, 멈추고 처방을 확인하세요."
+  - kind: context
+    words: [w-confirm]
+    word: confirm
+    ko: 맞는지 확인하다
+    scenes:
+      - {who: 동료 간호사에게, icon: speech, en: "Can you confirm the concentration matches the order before I start?", ok: true}
+      - {who: 약사에게, icon: speech, en: "I'd like to confirm the insulin concentration on this bag.", ok: true}
+      - {who: 환자에게, icon: me, en: "I'm going to confirm your insulin concentration and pump rate against the order.", ok: false, fix: "I'm double-checking your insulin settings with another nurse so it's safe."}
+    why: "동료·약사에게는 농도와 속도를 처방과 대조한다고 구체적으로 말하는 게 좋아요. 환자에게는 같은 일을 '다시 확인하고 있다'고 쉽게 알려 주세요."
+  - kind: swap
+    words: [w-prime]
+    who: "환자에게 · 주입 준비 설명"
+    icon: me
+    before: ["I'm ", "priming the line", " so the insulin goes in safely."]
+    options: [getting the tubing ready, priming the line, purging the lumen]
+    answer: getting the tubing ready
+    notes: {getting the tubing ready: "환자가 이해하는 말로 무엇을 하는지 전해요.", priming the line: "의료진끼리 쓰는 말이라 환자는 뜻을 몰라요.", purging the lumen: "어려운 기술 용어라 환자에게 낯설고 딱딱해요."}
+    why: "프라이밍은 관 안을 약이나 수액으로 채워 공기를 빼는 일이에요. 환자에게는 용어보다 '준비하고 있다'는 안심이 먼저 전해져야 해요."
+    ko: "인슐린이 안전하게 들어가도록 관을 준비하고 있어요"
+4:
+  - kind: slider
+    words: [w-low]
+    cue: "Potassium is 3.4, just below the normal range."
+    scale: [a little low, clearly low, critically low]
+    answerAt: 0
+    why: "정상 하한(보통 3.5 전후)보다 살짝 낮은 정도라 a little low예요. 프로토콜마다 인슐린을 보류하는 기준(예: 3.3 미만)이 있으니 수치를 기준과 비교하고 처방대로 칼륨 보충과 인슐린 시작을 확인해요."
+    example: "His potassium is a little low."
+    exKo: "그의 칼륨이 약간 낮아요."
+  - kind: context
+    words: [w-potassium]
+    word: potassium
+    ko: 칼륨
+    scenes:
+      - {who: 의사 호출, icon: speech, en: "Potassium is 3.0, so per protocol I'm holding the insulin and need a replacement order.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Potassium came back at 4.2, so we can start the insulin drip.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your serum potassium is 3.0 mEq/L, which contraindicates insulin initiation.", ok: false, fix: "Your potassium is low, so we'll give some through your IV before the insulin starts."}
+    why: "의사에게는 수치와 필요한 처방을 바로 말하는 게 좋아요. 환자에게는 contraindicates 같은 말 대신 '낮아서 먼저 보충한다'로 이유와 순서를 알려 주세요."
+  - kind: swap
+    words: [w-dangerous]
+    who: "환자에게 · 왜 먼저 확인하는지"
+    icon: me
+    before: ["Low potassium can be ", "arrhythmogenic", " with insulin."]
+    options: [risky for your heartbeat, arrhythmogenic, deadly]
+    answer: risky for your heartbeat
+    notes: {risky for your heartbeat: "무엇이 왜 위험한지 겁주지 않고 정확히 전해요.", arrhythmogenic: "부정맥을 일으킨다는 전문 용어라 환자는 모르는 말이에요.", deadly: "사실보다 무겁게 들려 불필요하게 겁을 줘요."}
+    why: "칼륨이 낮은 채 인슐린이 들어가면 칼륨이 더 내려가 심장 리듬에 영향을 줄 수 있어요. 이유는 환자가 이해할 만큼만, 겁주지 않게 말해요."
+    ko: "칼륨이 낮을 때 인슐린이 들어가면 심장 박동에 위험할 수 있어요"
+5:
+  - kind: slider
+    words: [w-improvement]
+    cue: "He says his name now, but he falls asleep as soon as you stop talking."
+    scale: [a little better, much better, fully recovered]
+    answerAt: 0
+    why: "이름은 말하지만 대화가 끊기면 바로 잠드는 정도라 a little better예요. 호전은 단계적이라 회복을 단정하지 말고 계속 재평가하고 변화를 팀에 알려요."
+    example: "There's a little improvement in his alertness."
+    exKo: "의식이 조금 나아졌어요."
+  - kind: context
+    words: [w-recheck]
+    word: recheck
+    ko: 다시 확인하다
+    scenes:
+      - {who: 야간 인계, icon: board, en: "Recheck vitals and neuro status in one hour.", ok: true}
+      - {who: 의사 호출, icon: speech, en: "I'll recheck his glucose and his neuro status in an hour.", ok: true}
+      - {who: 환자에게, icon: me, en: "I will recheck your hemodynamic parameters per protocol.", ok: false, fix: "I'll check your blood pressure and heartbeat again in a little while."}
+    why: "인계와 호출에서는 무엇을 언제 다시 보는지 짧고 정확하게 말해요. 환자에게는 hemodynamic parameters 대신 혈압과 맥박처럼 아는 말로 알려 주세요."
+  - kind: swap
+    words: [w-clear]
+    who: "환자에게 · 의식 호전 전하기"
+    icon: me
+    before: ["I'm glad you feel ", "less obtunded", " than before."]
+    options: [clearer, less obtunded, less encephalopathic]
+    answer: clearer
+    notes: {clearer: "환자가 바로 알아듣고 기분 좋게 받아들여요.", less obtunded: "의식 저하를 가리키는 의료 용어라 환자는 낯설고 기분이 상할 수 있어요.", less encephalopathic: "뇌병증이라는 어려운 진단명이라 환자를 놀라게 할 수 있어요."}
+    why: "의식이 나아진 걸 전할 때는 환자가 알아듣는 쉬운 비교 표현이 안심을 줘요."
+    ko: "전보다 정신이 맑아지셔서 다행이에요"
+6:
+  - kind: slider
+    words: [w-drop, w-pace]
+    cue: "Glucose fell by only 10 in two hours on the insulin drip."
+    scale: [slower than goal, on target, faster than goal]
+    answerAt: 0
+    why: "많은 DKA 프로토콜은 시간당 50~75 mg/dL 정도 하락을 목표로 해요. 2시간에 10이면 목표보다 느린 거라 slower than goal이고, 보고해서 처방과 속도를 확인해요."
+    example: "His glucose is dropping slower than goal."
+    exKo: "그의 혈당이 목표보다 느리게 내려가고 있어요."
+  - kind: context
+    words: [w-titrate]
+    word: titrate
+    ko: 적정하다
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Titrate the insulin drip per the DKA protocol.", ok: true}
+      - {who: 약사와 통화, icon: speech, en: "We titrate it against the hourly glucose, not by guess.", ok: true}
+      - {who: 환자에게, icon: me, en: "I'm going to titrate your insulin infusion based on your serial POC glucose values.", ok: false, fix: "I'm adjusting your insulin a little at a time based on your sugar checks."}
+    why: "의료진끼리 titrate는 용량을 조금씩 맞춘다는 정확한 말이에요. 환자에게는 serial POC glucose 같은 말 대신 '조금씩 맞춘다'로 알려 주세요."
+  - kind: swap
+    words: [w-carefully]
+    who: "환자에게 · 속도를 낮추는 이유"
+    icon: me
+    before: ["We're bringing your sugar down ", "in a titrated fashion", "."]
+    options: [a little at a time, in a titrated fashion, at a controlled rate]
+    answer: a little at a time
+    notes: {a little at a time: "환자가 이해하는 말로 속도를 조절한다는 뜻이 전해져요.", in a titrated fashion: "titrate를 환자에게 그대로 말하면 낯설고 딱딱해요.", at a controlled rate: "틀리진 않지만 얼마나 천천히인지가 흐릿해요."}
+    why: "혈당을 천천히 내리는 이유를 환자가 이해하면 불안이 줄어요. '조금씩'이 가장 쉽게 전달돼요."
+    ko: "혈당을 조금씩 낮추고 있어요"

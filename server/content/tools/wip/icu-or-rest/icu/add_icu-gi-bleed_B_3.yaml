@@ -1,0 +1,58 @@
+situations:
+- title: NPO·위관 관리
+  s:
+  - ["관 설명", stetho, "'helps us'는 관이 환자가 아니라 팀을 돕는 도구라는 틀이에요. 'empty and check'로 두 쓰임을 한 번에 말해요.", "for the doctors", "이 관은 방광을 비우고 확인하는 데 도움이 돼요.", "이 관은 장을 비우고 확인하는 데 도움이 돼요.", "stomach", "bladder", "kidneys", "spine"]
+  - ["금식 안내", lock, "'keep you from'은 막는다는 뜻이라 금지를 부드럽게 말해요. 'until it's safe'로 기한 대신 기준을 알려요.", "for now", "내시경이 끝날 때까지 금식을 유지할 거예요.", "피가 멈출 때까지 금식을 유지할 거예요.", "eating", "talking", "reading", "texting"]
+  - ["이유 설명", bulb, "'This helps'로 앞 문장의 관이 하는 일을 이어 설명해요. 'see if'는 결과를 아직 모른다는 열린 표현이에요.", "on the screen", "출혈이 멈췄는지 간호사들이 보는 데도 도움이 돼요.", "출혈이 어디서 나는지 의사 선생님들이 보는 데도 도움이 돼요.", "stopped", "started", "doubled", "spread"]
+  - ["색깔 확인", monitor, "'every few hours'는 정확한 시각 대신 규칙적인 간격을 알려요. 'write it down'으로 확인한 결과를 남긴다고 약속해요.", "by the bed", "몇 시간마다 배액 주머니를 비워서 기록할게요.", "몇 시간마다 배액 색깔을 확인해서 팀에 보고할게요.", "color", "smell", "sound", "shape"]
+  - ["단계 안내", calendar, "'Once'가 조건이고 'small sips'가 아주 조금씩 시작한다는 한계를 알려요. 'try'는 확정이 아니라 시도해 본다는 말이에요.", "by mouth", "위가 안정되면 관을 조금씩 빼 볼게요.", "위가 안정되면 입을 조금씩 헹궈 볼게요.", "settles", "aches", "bleeds", "burns"]
+  - ["보고 약속", pager, "'If … again'이 조건이고 'right away'가 지체 없이라는 약속이에요. 'let the team know'는 누구에게 알리는지까지 말해요.", "this afternoon", "배액이 다시 맑아지면 바로 팀에 알릴게요.", "배액이 다시 짙은 갈색으로 바뀌면 바로 팀에 알릴게요.", "bright red", "clear", "yellow", "green"]
+  - ["공감·설득", faceWorried, "'I know'로 먼저 불편함을 인정한 뒤 'but'으로 이유를 붙여요. 'right now'는 지금만의 이유라는 뜻이에요.", "for you", "아프신 거 알아요, 그래도 지금은 위를 보호하고 있는 거예요.", "불편하신 거 알아요, 그래도 지금은 간을 보호하고 있는 거예요.", "protecting", "irritating", "burning", "stretching"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 위관·금식 설명 4문장 순서
+    why: 불편함을 먼저 인정하고, 같은 관이 하는 일을 설명한 뒤, 금식을 알리고, 안정되면 시작할 다음 단계를 약속해요.
+    lines:
+    - ["I know the tube is uncomfortable, but it's protecting your stomach.", faceWorried, "관이 불편한 거 알지만 위를 보호하고 있어요", "공감"]
+    - ["That same tube lets us empty and check your stomach.", stetho, "그 관으로 위를 비우고 확인할 수 있어요", "설명"]
+    - ["Until the doctors say it's safe, we keep you from eating.", lock, "의사 선생님이 안전하다고 할 때까지 금식을 유지해요", "금식"]
+    - ["Once your stomach settles, we'll try small sips of water.", calendar, "위가 안정되면 물을 조금씩 시도해 볼게요", "다음"]
+- title: 출혈 병력·항응고 검토
+  s:
+  - ["중요성 설명", bulb, "'That's important to know'로 환자의 말에 가치를 부여해요. 'can affect'는 단정하지 않는 가능성 표현이에요.", "for us", "그건 중요한 정보고, 수술에 영향을 줄 수 있어요.", "그건 중요한 정보고, 혈압에 영향을 줄 수 있어요.", "bleeding", "healing", "hearing", "digestion"]
+  - ["복약 질문", speech, "'Which … and when'으로 두 가지를 이어서 물어 한 번에 답하게 해요. 'last dose'는 마지막으로 복용한 때를 가리키는 고정 표현이에요.", "this week", "어떤 혈액희석제를 드시나요, 마지막 식사는 언제였나요?", "어떤 혈액희석제를 드시나요, 마지막 출혈은 언제였나요?", "dose", "meal", "shower", "visit"]
+  - ["정보 공유", handshake2, "'make sure'는 책임지고 확인한다는 뜻이에요. 'all your medications'로 하나도 빠뜨리지 않겠다는 범위를 말해요.", "at rounds", "약사가 복용 중인 약을 다 알도록 전달할게요.", "보호자가 복용 중인 약을 다 알도록 전달할게요.", "medications", "appointments", "diets", "schedules"]
+  - ["비난 방지", faceWorried, "'for a good reason'으로 먼저 약의 필요성을 인정해요. 'because of blame'은 비난 때문이 아니라고 분명히 말해 줘요.", "at home", "급해서 드시던 약이고, 문제 삼으려고 끊는 게 아니에요.", "필요해서 드시던 약이고, 문제 삼으려고 묻는 게 아니에요.", "blame", "money", "habit", "cost"]
+  - ["상황 설명", bulb, "'just'를 넣어 큰 결정이 아니라 지금의 균형이라고 낮춰 말해요. 'for now'는 잠정적이라는 뜻이에요.", "with you", "지금은 통증이랑 균형을 맞추고 있는 거예요.", "지금은 혈압이랑 균형을 맞추고 있는 거예요.", "bleeding", "pain", "fever", "nausea"]
+  - ["기록 약속", pencil, "'note … in your chart'는 기록으로 남겨 책임을 분명히 한다는 말이에요. 'for the doctor'는 누구에게 전달되는지 밝혀요.", "by name", "복용량과 시간을 차트에 적어서 약사한테 전달할게요.", "복용량과 시간을 메모에 적어서 의사한테 전달할게요.", "dose", "height", "weight", "pulse"]
+  - ["병력 질문", speech, "'Have you ever had'는 과거 경험을 묻는 현재완료 틀이에요. 'like'로 예를 들어 환자가 쉽게 떠올리게 해요.", "this year", "예전에 궤양이나 코피 같은 호흡 문제가 있으셨나요?", "예전에 궤양이나 두통 같은 위장 문제가 있으셨나요?", "ulcers", "fractures", "rashes", "colds"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 항응고제 병력 확인 4문장 순서
+    why: 약과 마지막 복용 시각을 묻고, 답이 왜 중요한지 말한 뒤, 기록으로 남기고, 그 기록을 바탕으로 균형을 잡는다고 알려요.
+    lines:
+    - ["Which blood thinner do you take, and when was your last dose?", speech, "어떤 혈액희석제를 드시나요, 마지막 복용은 언제였나요?", "질문"]
+    - ["That's important to know, and it can affect bleeding.", bulb, "그건 중요한 정보고 출혈에 영향을 줄 수 있어요", "중요성"]
+    - ["I'll note the dose and time in your chart for the doctor.", pencil, "복용량과 시간을 차트에 적어서 의사한테 전달할게요", "기록"]
+    - ["With that on record, we're just balancing your medicine against the bleeding for now.", handshake2, "그게 기록되면 지금은 약을 출혈이랑 균형 맞추고 있는 거예요", "균형"]
+- title: 정맥류 출혈 초기 관리
+  s:
+  - ["처치 시작", pill, "'let's start'는 팀이 함께 한다는 제안형이라 지시보다 부드러워요. 'now'가 지체하지 않는다는 신호예요.", "by pump", "네, 지금 옥트레오타이드 주입 라인을 열죠.", "네, 옥트레오타이드 시작했으니 지켜보죠.", "drip", "tray", "cart", "chart"]
+  - ["항생제 투여", pill, "'prophylactic'은 감염을 미리 막으려는 목적을 나타내요. 'as ordered'는 처방대로 한다는 고정 표현이에요.", "at bedside", "예방적 항생제 전에 라인부터 씻을게요.", "예방적 항생제 후에 라인을 다시 씻을게요.", "ordered", "needed", "usual", "expected"]
+  - ["기도 보호", shield, "'Keep … protected'는 지속해서 유지하라는 명령형이에요. 'while we stabilize'로 그 기간을 알려요.", "with her", "안정시키는 동안 기도를 흡인해 주세요.", "안정시키는 동안 산소를 연결해 주세요.", "airway", "skin", "privacy", "ID"]
+  - ["원인 설명", bulb, "'not a stomach ulcer'를 덧붙여 헷갈리기 쉬운 원인과 구분해 줘요. 'from her liver disease'는 원인을 한 구로 말해요.", "in the liver", "이건 위궤양이 아니라 신장질환으로 인한 정맥류 출혈이에요.", "이건 위염이 아니라 간질환으로 인한 정맥류 출혈이에요.", "liver", "kidney", "lung", "heart"]
+  - ["상황 판단", monitor, "'holding for now, but'으로 현재는 안정이지만 안심하지 않는다는 대비를 만들어요. 'let's keep'은 함께 유지하자는 제안형이에요.", "for now", "지금은 맥박이 유지되고 있지만, 라인 두 개는 계속 열어 두죠.", "지금은 혈압이 유지되고 있지만, 모니터 두 개는 계속 켜 두죠.", "holding", "rising", "falling", "spiking"]
+  - ["효과 설명", bulb, "'should'는 약이 확실히 듣는다고 단정하지 않는 완곡한 말이에요. 'from the varices'로 어디의 출혈인지 정확히 말해요.", "in time", "옥트레오타이드가 식도 염증을 줄여 줄 거예요.", "옥트레오타이드가 간 염증을 줄여 줄 거예요.", "slow", "speed", "spread", "widen"]
+  - ["호출 요청", pager, "'If she starts'로 변화가 시작되는 순간을 조건으로 삼아요. 'immediately'는 기다리지 말고 즉시라는 뜻이에요.", "by phone", "다시 어지러워하기 시작하면 바로 불러 주세요.", "다시 숨이 차기 시작하면 바로 불러 주세요.", "vomiting", "sleeping", "drinking", "walking"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 정맥류 출혈 초기 대응 4문장 순서
+    why: 원인을 짚고, 기도를 지키며, 그와 함께 약과 항생제를 시작하고, 변화가 생기면 부르게 해요.
+    lines:
+    - ["This is a variceal bleed from her liver disease, not a stomach ulcer.", bulb, "이건 위궤양이 아니라 간질환으로 인한 정맥류 출혈이에요", "진단"]
+    - ["So keep her airway protected while we stabilize.", shield, "그러니 안정시키는 동안 기도를 보호해 주세요", "기도"]
+    - ["Alongside that, let's start the octreotide drip and give the antibiotic as ordered.", pill, "그와 함께 옥트레오타이드 주입을 시작하고 항생제를 지시대로 줘요", "약물"]
+    - ["With all of that running, if she starts vomiting blood again, call me immediately.", pager, "그게 다 들어가는 중에 다시 피를 토하면 바로 불러 주세요", "호출"]

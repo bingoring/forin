@@ -1,0 +1,58 @@
+situations:
+- title: 응고장애 교정
+  s:
+  - ["투여 제안", pill, "'Let's give'는 함께 한다는 제안형이라 지시처럼 들리지 않아요. 'as ordered'가 처방에 따른다는 고정 표현이에요.", "for the lab", "지시대로 혈장이랑 혈소판을 해동하죠.", "지시대로 혈장이랑 혈소판을 받으러 가죠.", "ordered", "needed", "usual", "scheduled"]
+  - ["재검 약속", lab, "'recheck'는 이미 한 검사를 다시 한다는 뜻이에요. 'after correction'이 재검 시점을 정해요.", "this hour", "교정 후에 응고 검체를 다시 채혈할게요.", "교정 후에 응고 수치를 다시 의사에게 알릴게요.", "coags", "cultures", "lipids", "enzymes"]
+  - ["목표 설명", compass, "'We want'은 팀의 바람을 전하는 부드러운 틀이에요. 'corrected'는 이상 수치를 바로잡았다는 뜻이에요.", "on the unit", "시술 전에 서류를 끝내고 싶어요.", "시술 전에 수액을 끝내고 싶어요.", "corrected", "weighed", "measured", "photographed"]
+  - ["원인 설명", bulb, "'so'로 수치와 증상의 원인-결과를 한 문장에 이어요. 'longer than it should'는 정상보다 오래라는 비교예요.", "in the blood", "INR이 높아서 검사가 원래보다 오래 걸려요.", "INR이 높아서 회복이 원래보다 오래 걸려요.", "high", "low", "normal", "flat"]
+  - ["원리 설명", bulb, "'mean'으로 수치가 뜻하는 바를 풀어 줘요. 'on his own'은 도움 없이 스스로라는 뜻이에요.", "for him", "혈소판이 낮으면 스스로 좋은 혈전을 풀지 못해요.", "백혈구가 낮으면 스스로 좋은 혈전을 만들지 못해요.", "platelets", "hemoglobin", "sodium", "glucose"]
+  - ["후속 계획", calendar, "'Once'가 선행 조건을 알려요. 'about an hour'의 about이 정확한 시각이 아니라 대략이라는 뜻이에요.", "in the morning", "수혈이 끝나면 한 시간쯤 뒤에 라인을 다시 씻을게요.", "수혈이 끝나면 한 시간쯤 뒤에 빈 팩을 다시 반납할게요.", "labs", "gases", "urine", "sputum"]
+  - ["연기 설명", faceWorried, "'hold'는 일단 멈춰 둔다는 뜻이라 취소처럼 들리지 않아요. 'until'이 멈춤의 끝을 기준으로 알려요.", "for today", "수치가 더 안전해질 때까지 이송은 미룰게요.", "수치가 더 안전해질 때까지 가족 면담은 미룰게요.", "scope", "visit", "shower", "walk"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 응고장애 교정 4문장 순서
+    why: 원인을 짚고, 시술 전 교정이 목표임을 말하고, 그 방법으로 제제를 투여한 뒤, 교정 후 재검을 약속해요.
+    lines:
+    - ["His INR is high, so clotting takes longer than it should.", bulb, "INR이 높아서 응고가 원래보다 오래 걸려요", "원인"]
+    - ["That's why we want him corrected before the procedure.", compass, "그래서 시술 전에 교정을 끝내고 싶어요", "목표"]
+    - ["To get there, let's give the plasma and platelets as ordered.", pill, "그러려고 지시대로 혈장이랑 혈소판을 투여하죠", "투여"]
+    - ["After that, I'll recheck the coags.", lab, "그 뒤에 응고 수치를 다시 확인할게요", "재검"]
+- title: balloon tamponade 보조
+  s:
+  - ["물품 준비", gear, "'I'll test … and gather'로 두 가지 준비를 한 문장에 순서대로 말해요. 'the supplies'는 그 시술에 필요한 물품 전체를 가리켜요.", "in the tray", "풍선을 포장지에서 꺼내고 물품을 챙길게요.", "풍선을 카트에 싣고 물품을 챙길게요.", "supplies", "forms", "keys", "charts"]
+  - ["순서 설명", shield, "'before we insert'가 순서를 분명히 하는 연결어예요. 'secured'는 기도를 안전하게 확보했다는 뜻이에요.", "at the head", "삽입하기 전에 윤활제를 먼저 발라요.", "삽입하기 전에 체위를 먼저 잡아요.", "secured", "measured", "labeled", "weighed"]
+  - ["감시 제안", monitor, "'mark'는 표시해 두어 변화를 눈으로 알아보게 한다는 뜻이에요. 'closely'가 감시의 강도를 말해요.", "on the tube", "견인 무게를 재고 자세히 감시하죠.", "견인 위치를 표시하고 가위를 옆에 두죠.", "traction", "label", "door", "floor"]
+  - ["필요성 설명", bulb, "'last resort'는 다른 방법이 다 듣지 않을 때 쓰는 마지막 수단이라는 표현이에요. 'any other way'로 다른 방법의 한계를 말해요.", "for him", "이건 다른 방법으로도 멈추지 않는 위궤양 출혈에 쓰는 최후 수단이에요.", "이건 다른 방법으로는 멈추지 않는 정맥류 출혈에 쓰는 마지막 약이에요.", "variceal", "ulcer", "nasal", "rectal"]
+  - ["위험 설명", faceWorried, "'Too much'로 과함의 위험을 먼저 말하고 'so'로 그래서 하는 일을 이어요. 'often'은 정기적인 확인이라는 뜻이에요.", "in the tube", "견인이 너무 세면 폐가 손상될 수 있어서 무게를 자주 확인해요.", "견인이 너무 세면 식도가 손상될 수 있어서 가위를 옆에 둬요.", "esophagus", "kidney", "spleen", "liver"]
+  - ["고정 단계", pushpin, "'Once both'가 두 풍선이 모두 부푼 뒤라는 선행 조건이에요. 'in place'는 제자리에 고정한다는 뜻이에요.", "by hand", "풍선 두 개가 다 부풀면 관 위치를 엑스레이로 확인해요.", "풍선 두 개가 다 부풀면 견인 무게를 걸어요.", "tape", "wash", "bend", "label"]
+  - ["정기 조치", calendar, "'on schedule'은 정해 놓은 간격대로 한다는 뜻이에요. 'to protect'가 목적을 한 구로 붙여요.", "with care", "조직을 보호하려고 정해진 시간에 입안 석션을 해요.", "조직을 보호하려고 정해진 시간에 코 주변 피부를 살펴요.", "tissue", "family", "staff", "bed"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 풍선 탐포네이드 보조 4문장 순서
+    why: 물품과 풍선을 준비하고, 기도를 확보한 뒤 삽입하고, 풍선을 부풀려 고정한 다음, 정해진 때에 식도 풍선의 바람을 빼요.
+    lines:
+    - ["I'll test the balloons and gather the supplies.", gear, "풍선을 테스트하고 물품을 챙길게요", "준비"]
+    - ["Once the supplies are ready and his airway is secured, we insert the tube.", shield, "물품이 준비되고 기도가 확보되면 관을 삽입해요", "삽입"]
+    - ["Once both balloons are inflated, we tape the tube in place.", pushpin, "풍선 두 개가 다 부풀면 관을 고정해서 테이프로 붙여요", "고정"]
+    - ["Once it's taped, we'll deflate the esophageal balloon on schedule to protect the tissue.", calendar, "고정되면 조직을 보호하려고 정해진 시간에 식도 풍선의 바람을 빼요", "관리"]
+- title: 하부출혈 감별·검사
+  s:
+  - ["원인 설명", bulb, "'usually'는 예외가 있다는 여지를 줘요. 'points to'는 가능성을 가리킨다는 완곡한 표현이에요.", "in the colon", "검붉은 피는 보통 소화관 아래쪽에서 나는 거예요.", "선홍색 피는 보통 간 아래쪽에서 나는 거예요.", "gut", "lung", "brain", "kidney"]
+  - ["검사 안내", lab, "'exactly'로 목표가 정확한 위치라는 점을 알려요. 'coming from'은 전치사로 끝나는 구어체 어순이에요.", "by hand", "정확히 어디서 나는지 찾으려고 채혈부터 할게요.", "정확히 어디서 나는지 검사 동의부터 받을게요.", "tests", "rounds", "visits", "handoffs"]
+  - ["감시 약속", monitor, "'while we sort this out'은 해결하는 동안이라는 뜻이라 지켜보는 것이 계속된다는 약속이에요. 'I'm watching'은 지금 하고 있는 일이에요.", "by the bed", "이 문제를 해결하는 동안 이불을 덮어 드리고 있어요.", "이 문제를 해결하는 동안 모니터를 더 가까이 두고 있어요.", "watching", "drying", "packing", "moving"]
+  - ["가능성 설명", bulb, "'could be'는 확정하지 않고 후보를 늘어놓는 표현이에요. 'or something higher up'은 목록의 마지막에 열린 가능성을 남겨요.", "in the gut", "치핵이나 게실증, 아니면 더 아래쪽 문제일 수도 있어요.", "치핵이나 변비, 아니면 더 위쪽 문제일 수도 있어요.", "hemorrhoids", "hernias", "cramps", "bruises"]
+  - ["검사 설명", stetho, "'will let the doctor'는 검사가 의사에게 무엇을 가능하게 하는지 말하는 틀이에요. 'directly'는 영상이 아니라 직접 본다는 뜻이에요.", "for the team", "대장내시경으로 의사가 위를 직접 볼 수 있어요.", "CT로 의사가 장을 직접 볼 수 있어요.", "colonoscopy", "bronchoscopy", "cystoscopy", "biopsy"]
+  - ["상태 안내", check, "'look steady'는 지금 보이는 모습이라는 표현이라 단정하지 않아요. 'right now'로 지금 기준임을 분명히 해요.", "on the monitor", "지금은 혈압이랑 맥박을 다시 재고 있어요.", "지금은 혈압이랑 맥박을 의사에게 보여 드리고 있어요.", "blood pressure", "mood", "weight", "skin"]
+  - ["기록 부탁", pencil, "'Keep track of'는 계속 기억하거나 적어 두라는 뜻이에요. 'each time'이 보고의 빈도를 알려요.", "in the bathroom", "피가 어디서 보이는지 기록해 두고 그때마다 말씀해 주세요.", "변이 얼마나 나오는지 기록해 두고 그때마다 말씀해 주세요.", "blood", "soap", "water", "hair"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 하부출혈 감별 4문장 순서
+    why: 피의 색이 뜻하는 바를 먼저 말하고, 가능한 원인을 늘어놓은 뒤, 가려내려는 검사를 알리고, 대표 검사를 설명해요.
+    lines:
+    - ["Bright red blood usually points to lower down in the gut.", bulb, "선홍색 피는 보통 소화관 아래쪽에서 나는 거예요", "의미"]
+    - ["It could be from hemorrhoids, diverticulosis, or something higher up.", bulb, "치핵이나 게실증, 더 위쪽 문제일 수도 있어요", "원인"]
+    - ["To tell which it is, we'll do tests to find exactly where it's coming from.", lab, "어느 쪽인지 알려고 정확히 어디서 나는지 검사해요", "검사"]
+    - ["The main one is a colonoscopy, which lets the doctor look directly at the bowel.", stetho, "대표 검사는 대장내시경으로 장을 직접 볼 수 있어요", "설명"]

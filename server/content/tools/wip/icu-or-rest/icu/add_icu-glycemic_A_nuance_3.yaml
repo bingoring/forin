@@ -1,0 +1,137 @@
+14:
+  - kind: slider
+    words: [w-differ]
+    cue: "The finger stick says 210, and the lab says 205."
+    scale: [close, off a bit, way off]
+    answerAt: 0
+    why: "두 값 차이가 작으면 close로 봐요. 얼마나 차이 나야 불일치로 보는지는 병원 기준을 따르고, 크게 다르면 정맥 검체로 확인해요."
+    example: "The two numbers are close."
+    exKo: "두 수치가 비슷해요."
+  - kind: context
+    words: [w-reading]
+    word: reading
+    ko: 측정값
+    scenes:
+      - {who: 의사에게, icon: speech, en: "The POC reading doesn't match the lab, so I'll confirm with a venous sample.", ok: true}
+      - {who: 인계, icon: board, en: "The finger-stick reading was off, probably from poor perfusion.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your capillary POC reading is discordant with the venous plasma value.", ok: false, fix: "The finger-stick number doesn't match the blood test, so we're checking again to be sure."}
+    why: "discordant·venous plasma value는 의료진끼리의 말이에요. 환자에게는 두 수치가 안 맞아서 다시 확인한다는 사실만 쉽게 전하세요."
+  - kind: swap
+    words: [w-sample]
+    who: "환자에게 · 정맥혈 확인 안내"
+    icon: me
+    before: ["I need to take a ", "venipuncture specimen", " to double-check."]
+    options: [venipuncture specimen, blood sample from your arm, venous sample]
+    answer: blood sample from your arm
+    notes: {blood sample from your arm: "어디서 뭘 뽑는지 쉽게 알려 줘요.", venipuncture specimen: "차트용 표현이라 환자에게는 딱딱해요.", venous sample: "의료진 용어라 환자는 뜻을 몰라요."}
+    why: "채혈 전에는 어디서 무엇을 뽑는지 쉬운 말로 알려 주면 환자가 덜 불안해요."
+    ko: "다시 확인하려고 팔에서 피를 조금 뽑을게요"
+15:
+  - kind: slider
+    words: [w-call, w-rapid]
+    cue: "He is unresponsive and his sugar is very low. You decide how to ask for help."
+    scale: [bring it up at rounds, page the team later, call RRT now]
+    answerAt: 2
+    why: "반응이 없고 혈당이 매우 낮으면 바로 신속대응팀을 불러야 해요. 라운드까지 기다리거나 나중에 호출하면 처치가 늦어져요."
+    example: "Call the rapid response team now."
+    exKo: "지금 신속대응팀을 불러 주세요."
+  - kind: context
+    words: [w-treat]
+    word: treat
+    ko: 치료하다
+    scenes:
+      - {who: 의사 콜, icon: speech, en: "Treat the low first, then we'll find out why it happened.", ok: true}
+      - {who: 간호사끼리, icon: board, en: "I'm treating the low with D50 per protocol.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We're treating his neuroglycopenia with IV D50 right now.", ok: false, fix: "His sugar is dangerously low, so we're treating it right now with sugar through his IV."}
+    why: "neuroglycopenia·D50은 의료진끼리의 말이에요. 가족에게는 혈당이 위험하게 낮고 정맥으로 당을 넣는 중이라고 쉽게 말하세요."
+16:
+  - kind: slider
+    words: [w-blame]
+    cue: "A colleague gave the wrong dose. In the event report you describe it with..."
+    scale: [facts only, some blame, heavy blame]
+    answerAt: 0
+    why: "사고 보고는 누구 탓인지가 아니라 무슨 일이 언제 있었고 어떻게 조치했는지 사실만 적는 게 원칙이에요. 비난이 들어가면 보고를 꺼리게 돼요."
+    example: "Just the facts, no blame."
+    exKo: "탓하지 말고 사실만 적어요."
+  - kind: context
+    words: [w-document]
+    word: document
+    ko: 기록하다
+    scenes:
+      - {who: 의사 지시, icon: speech, en: "Document the dose, the time, and what we did next.", ok: true}
+      - {who: 간호사끼리, icon: board, en: "I'll document the event in the safety report.", ok: true}
+      - {who: 동료 간호사에게, icon: me, en: "Document whose fault this was so everyone knows.", ok: false, fix: "Document exactly what happened and when, just the facts."}
+    why: "사고 기록은 책임자를 찾는 게 아니라 사실을 남기는 일이에요. 누구 잘못인지 적자는 말은 동료를 위축시키고 보고 문화를 해쳐요."
+17:
+  - kind: slider
+    words: [w-escalate]
+    cue: "Labs show ketones and acid building up, and she is breathing fast."
+    scale: [recheck later, tell the provider, escalate now]
+    answerAt: 2
+    why: "DKA가 의심되면 치료를 바로 올려야 해서 escalate now예요. 나중에 재확인하거나 알리기만 하면 진행되는 동안 시간을 잃어요."
+    example: "We escalate her treatment now."
+    exKo: "치료 단계를 바로 올려요."
+  - kind: swap
+    words: [w-short]
+    who: "환자에게 · 증상 문의"
+    icon: me
+    before: ["Are you feeling ", "dyspneic", " or sick to your stomach?"]
+    options: [dyspneic, short of breath, tachypneic]
+    answer: short of breath
+    notes: {short of breath: "환자가 바로 대답할 수 있는 쉬운 말이에요.", dyspneic: "의료진 용어라 환자는 못 알아들어요.", tachypneic: "숨이 빠르다는 관찰 용어라 환자가 느끼는 증상이 아니에요."}
+    why: "증상을 물을 때는 환자가 스스로 느낀 대로 답할 수 있는 말(short of breath)이 정확한 정보를 빨리 줘요."
+    ko: "숨이 차거나 속이 메스꺼우세요?"
+18:
+  - kind: slider
+    words: [w-immediately]
+    cue: "The feeding stopped an hour ago while the insulin kept running, and his sugar is low."
+    scale: [shortly, quickly, immediately]
+    answerAt: 2
+    why: "영양 공급이 멈춘 채 인슐린이 계속 들어가 혈당이 낮아졌다면 바로 처치하고 재확인해야 해요. 미루면 저혈당이 깊어져요."
+    example: "Recheck his sugar immediately."
+    exKo: "즉시 혈당을 재확인해요."
+  - kind: context
+    words: [w-alert]
+    word: alert
+    ko: 알람
+    scenes:
+      - {who: 인계, icon: board, en: "I set an alert on the pump so a stopped feeding gets noticed.", ok: true}
+      - {who: 의사에게, icon: speech, en: "Add an alert to the flow sheet whenever feeding is held.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We're implementing a systems alert to prevent a recurrence of this adverse event.", ok: false, fix: "We're setting an alarm so everyone is warned right away if his feeding stops again."}
+    why: "adverse event·recurrence는 의료진끼리 쓰는 말이에요. 가족에게는 재발을 막으려고 무슨 조치를 하는지를 쉬운 말로 전하세요."
+19:
+  - kind: slider
+    words: [w-propose]
+    cue: "After three lows you talk to the doctor about changing the protocol."
+    scale: ["Maybe we could try something?", "I propose a safer protocol", "We must change this now"]
+    answerAt: 1
+    why: "간호사가 의사에게 근거를 들어 제안할 때는 I propose처럼 분명하되 존중하는 말이 맞아요. 너무 약하면 안 들리고, 명령조는 협력을 해쳐요."
+    example: "I propose a safer protocol."
+    exKo: "더 안전한 프로토콜을 제안할게요."
+  - kind: context
+    words: [w-review]
+    word: review
+    ko: 다시 살펴보다
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Let's review the whole insulin regimen after three lows.", ok: true}
+      - {who: 팀 회의, icon: speech, en: "The team will review the feeding schedule and his renal function.", ok: true}
+      - {who: 환자에게, icon: me, en: "A root cause analysis review will be conducted on your hypoglycemic events.", ok: false, fix: "We're going to look carefully at your insulin and feeding to find out why your sugar kept dropping."}
+    why: "root cause analysis는 의료진·병원 안전팀의 말이에요. 환자에게는 왜 떨어졌는지 같이 살펴본다고 쉽게 말하세요."
+20:
+  - kind: slider
+    words: [w-confusion]
+    cue: "He can't say where he is and keeps repeating the same question."
+    scale: [mild confusion, deep confusion, unresponsive]
+    answerAt: 0
+    why: "장소를 모르고 같은 질문을 반복하는 정도는 mild confusion이에요. 반응이 없을 때만 unresponsive라 하고, 정도와 상관없이 혈당부터 확인해야 해요."
+    example: "He has mild confusion."
+    exKo: "가벼운 혼란이 있어요."
+  - kind: context
+    words: [w-check]
+    word: check
+    ko: 확인하다
+    scenes:
+      - {who: 의사에게, icon: speech, en: "Check his sugar first, since a low or a high can cause confusion.", ok: true}
+      - {who: 인계, icon: board, en: "I checked his sugar when he became confused, and it was normal.", ok: true}
+      - {who: 환자에게, icon: me, en: "I'll check your POC glucose to rule out a metabolic cause of the altered mentation.", ok: false, fix: "I'm going to check your sugar first, because it can make you feel confused."}
+    why: "rule out·metabolic cause·altered mentation은 의료진끼리의 말이에요. 환자에게는 혈당부터 확인하는 이유를 쉬운 말로 전하세요."

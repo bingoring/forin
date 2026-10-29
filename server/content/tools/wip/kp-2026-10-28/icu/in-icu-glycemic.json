@@ -1,0 +1,446 @@
+{
+ "theme": "icu-glycemic",
+ "situations": [
+  {
+   "title": "중환자 혈당 목표 이해",
+   "tagline": "The last hospital kept my sugar really tight — why are you letting it run higher here?",
+   "room": "SICU BED 2",
+   "brief": "중환자 혈당 목표 140-180 범위의 근거를 이해하고 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "혈당 목표 이해",
+    "근거 설명",
+    "환자 교육"
+   ],
+   "keyPhrases": [
+    "In the ICU we aim for a sugar between 140 and 180 for your safety.",
+    "Keeping it too tight here can cause dangerous lows.",
+    "This target lowers your risk while you're critically ill."
+   ],
+   "goals": [
+    "중환자 혈당 목표 범위의 근거를 이해한다",
+    "목표 범위를 환자에게 쉽게 설명한다"
+   ]
+  },
+  {
+   "title": "POC 혈당 측정·기록",
+   "tagline": "You just checked my sugar an hour ago — why do you need to do it again already?",
+   "room": "SICU BED 2",
+   "brief": "POC 혈당을 정확하게 측정하고 주기에 맞춰 기록하세요.",
+   "role": "patient",
+   "skills": [
+    "POC 측정",
+    "정확성 확보",
+    "기록"
+   ],
+   "keyPhrases": [
+    "We check frequently so we can adjust your insulin safely.",
+    "I'll warm your finger and use a fresh drop for an accurate reading.",
+    "I'm recording each result so the team sees your trend."
+   ],
+   "goals": [
+    "POC 혈당을 정확하게 측정한다",
+    "측정값을 주기에 맞춰 정확히 기록한다"
+   ]
+  },
+  {
+   "title": "인슐린 주입 프로토콜 이해",
+   "tagline": "Can you explain how this insulin drip decides how much I get each hour?",
+   "room": "SICU BED 2",
+   "brief": "nomogram 기반 인슐린 주입 프로토콜의 원리를 이해하고 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "프로토콜 이해",
+    "nomogram 적용",
+    "설명"
+   ],
+   "keyPhrases": [
+    "The drip follows a chart that sets the rate from your sugar level.",
+    "As your sugar changes, the protocol tells us how to adjust it.",
+    "This keeps your insulin dose safe and consistent."
+   ],
+   "goals": [
+    "nomogram 기반 주입 프로토콜의 원리를 이해한다",
+    "프로토콜 작동 방식을 환자에게 설명한다"
+   ]
+  },
+  {
+   "title": "저혈당 징후 인지",
+   "tagline": "I'm feeling shaky and sweaty all of a sudden — is my sugar dropping?",
+   "room": "SICU BED 2",
+   "brief": "자율신경과 신경당결핍 증상을 통해 저혈당 징후를 인지하세요.",
+   "role": "patient",
+   "skills": [
+    "저혈당 인지",
+    "자율신경 증상",
+    "신속 확인"
+   ],
+   "keyPhrases": [
+    "Those shaky, sweaty feelings can mean a low sugar, so let's check now.",
+    "Tell me right away if you feel confused or lightheaded.",
+    "I'll treat it quickly if your sugar is low."
+   ],
+   "goals": [
+    "자율신경과 신경당결핍 증상을 저혈당으로 인지한다",
+    "저혈당 의심 시 즉시 혈당을 확인한다"
+   ]
+  },
+  {
+   "title": "영양 연계 혈당 관리",
+   "tagline": "They just started my tube feeding — is that why my sugar keeps changing?",
+   "room": "SICU BED 2",
+   "brief": "TPN과 장관 공급 변화에 맞춰 혈당을 연계 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "영양 연계",
+    "혈당 변동 관리",
+    "공급 조정"
+   ],
+   "keyPhrases": [
+    "Your feeding adds sugar, so we adjust your insulin along with it.",
+    "When your nutrition changes, your sugar can change too.",
+    "I'll match your insulin to your feeding to keep it steady."
+   ],
+   "goals": [
+    "TPN과 장관 공급 변화가 혈당에 미치는 영향을 이해한다",
+    "영양 변화에 맞춰 혈당을 연계 관리한다"
+   ]
+  },
+  {
+   "title": "혈당 경향 보고",
+   "tagline": "His sugars have been creeping up over the last few hours — should we flag it?",
+   "room": "SICU BED 2",
+   "brief": "혈당의 추세를 파악하고 팀에 명확히 소통하세요.",
+   "role": "colleague",
+   "skills": [
+    "추세 파악",
+    "경향 보고",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "His sugars are trending up, so I'll update the provider.",
+    "Let's look at the pattern over the last several checks together.",
+    "I'll report the trend, not just the single value."
+   ],
+   "goals": [
+    "혈당의 추세를 정확히 파악한다",
+    "추세를 팀에 명확하게 보고한다"
+   ]
+  },
+  {
+   "title": "인슐린 주입 적정 titration",
+   "tagline": "His numbers keep bouncing — how are you deciding to change the drip rate?",
+   "room": "SICU BED 2",
+   "brief": "프로토콜에 따라 인슐린 주입 속도를 적정하게 조정하세요.",
+   "role": "colleague",
+   "skills": [
+    "주입 적정",
+    "프로토콜 조정",
+    "추세 판단"
+   ],
+   "keyPhrases": [
+    "I adjust the rate based on his current sugar and how fast it's changing.",
+    "The protocol tells me how much to increase or decrease.",
+    "I'll recheck in an hour and titrate again as needed."
+   ],
+   "goals": [
+    "혈당과 변화 속도를 근거로 주입을 적정한다",
+    "프로토콜에 따라 titration을 수행한다"
+   ]
+  },
+  {
+   "title": "스테로이드 유발 고혈당 관리",
+   "tagline": "Ever since they started the steroids, my sugar's been sky high — what now?",
+   "room": "SICU BED 2",
+   "brief": "스테로이드 유발 고혈당을 인지하고 인슐린을 조정하세요.",
+   "role": "patient",
+   "skills": [
+    "스테로이드 고혈당 인지",
+    "인슐린 조정",
+    "시간대 관리"
+   ],
+   "keyPhrases": [
+    "Steroids can raise your sugar, so we increase your insulin to match.",
+    "Your sugar often peaks in the afternoon with steroids.",
+    "As the steroid dose changes, we'll adjust your insulin too."
+   ],
+   "goals": [
+    "스테로이드 유발 고혈당을 인지한다",
+    "스테로이드 용량에 맞춰 인슐린을 조정한다"
+   ]
+  },
+  {
+   "title": "저혈당 예방·교정 프로토콜",
+   "tagline": "My sugar dropped low again — how are you going to bring it back up?",
+   "room": "SICU BED 2",
+   "brief": "15/15 규칙을 적용해 저혈당을 예방하고 교정하세요.",
+   "role": "patient",
+   "skills": [
+    "저혈당 교정",
+    "15/15 규칙",
+    "재확인"
+   ],
+   "keyPhrases": [
+    "I'm treating your low with fast sugar and rechecking in fifteen minutes.",
+    "If it's still low, we'll treat again until you're safe.",
+    "Then we'll look at why it dropped to prevent the next one."
+   ],
+   "goals": [
+    "15/15 규칙으로 저혈당을 교정한다",
+    "교정 후 재확인하고 원인을 평가한다"
+   ]
+  },
+  {
+   "title": "장관영양 중단 시 인슐린 조정",
+   "tagline": "They stopped my feeding for a test — won't the insulin drop my sugar too low now?",
+   "room": "SICU BED 2",
+   "brief": "장관영양 중단 등 급식 변동 시 인슐린을 안전하게 조정하세요.",
+   "role": "patient",
+   "skills": [
+    "급식 변동 대응",
+    "인슐린 조정",
+    "저혈당 예방"
+   ],
+   "keyPhrases": [
+    "When your feeding stops, we adjust your insulin so you don't go low.",
+    "I may start some dextrose to keep your sugar steady.",
+    "I'll check your sugar more often while feeding is paused."
+   ],
+   "goals": [
+    "급식 중단 시 저혈당 위험을 인지한다",
+    "인슐린과 포도당을 조정해 혈당을 유지한다"
+   ]
+  },
+  {
+   "title": "주입에서 피하 전환 관리",
+   "tagline": "Are you finally taking me off this IV drip and switching to shots?",
+   "room": "SICU BED 2",
+   "brief": "주입에서 피하 인슐린으로 안전하게 전환하며 overlap을 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "피하 전환",
+    "overlap 관리",
+    "전환 교육"
+   ],
+   "keyPhrases": [
+    "We give your first long-acting shot before stopping the drip.",
+    "That overlap keeps your sugar covered during the switch.",
+    "I'll watch your sugar closely for a few hours after."
+   ],
+   "goals": [
+    "주입 종료 전 피하 인슐린 overlap을 확보한다",
+    "전환 후 혈당을 면밀히 관찰한다"
+   ]
+  },
+  {
+   "title": "신부전 환자 인슐린 조정",
+   "tagline": "My kidneys aren't working right — does that change how much insulin I need?",
+   "room": "SICU BED 2",
+   "brief": "신부전 환자의 인슐린 청소 저하를 고려해 용량을 조정하세요.",
+   "role": "patient",
+   "skills": [
+    "신부전 고려",
+    "청소 저하 인지",
+    "인슐린 조정"
+   ],
+   "keyPhrases": [
+    "Your kidneys clear insulin slower, so it can last longer in your body.",
+    "We often need less insulin to avoid lows.",
+    "I'll monitor your sugar carefully and adjust gently."
+   ],
+   "goals": [
+    "신부전의 인슐린 청소 저하를 인지한다",
+    "청소 저하를 고려해 인슐린 용량을 조정한다"
+   ]
+  },
+  {
+   "title": "혈당 변동성 관리",
+   "tagline": "My sugar keeps swinging high then low — how do we make it stop bouncing?",
+   "room": "SICU BED 2",
+   "brief": "혈당의 급변을 완화하도록 변동성을 안정적으로 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "변동성 관리",
+    "급변 완화",
+    "원인 분석"
+   ],
+   "keyPhrases": [
+    "We look for what's driving the swings, like feeding or timing.",
+    "Smoother insulin adjustments help level out the ups and downs.",
+    "I'll check your sugar more often until it's more stable."
+   ],
+   "goals": [
+    "혈당 변동의 원인을 파악한다",
+    "조정을 통해 급변을 완화한다"
+   ]
+  },
+  {
+   "title": "패혈증 중 혈당 불안정 관리",
+   "tagline": "His sugars are all over the place since the sepsis started — is that expected?",
+   "room": "SICU BED 2",
+   "brief": "패혈증의 스트레스 고혈당으로 인한 혈당 불안정을 관리하세요.",
+   "role": "colleague",
+   "skills": [
+    "스트레스 고혈당 인지",
+    "불안정 관리",
+    "빈번 감시"
+   ],
+   "keyPhrases": [
+    "Sepsis causes stress hyperglycemia, so his sugars can be unstable.",
+    "We check more often and titrate the drip closely.",
+    "As his infection improves, the sugars should settle."
+   ],
+   "goals": [
+    "패혈증의 스트레스 고혈당을 인지한다",
+    "빈번한 감시와 적정으로 혈당을 관리한다"
+   ]
+  },
+  {
+   "title": "POC와 정맥혈당 불일치 인지",
+   "tagline": "The finger stick and the lab draw came back really different — which one do we trust?",
+   "room": "SICU BED 2",
+   "brief": "POC와 정맥혈당의 불일치를 인지하고 측정 한계를 고려하세요.",
+   "role": "colleague",
+   "skills": [
+    "불일치 인지",
+    "측정 한계 이해",
+    "검증"
+   ],
+   "keyPhrases": [
+    "Point-of-care readings can differ from a lab draw in certain conditions.",
+    "If they conflict, we confirm with a venous sample.",
+    "Poor perfusion or anemia can skew the finger stick."
+   ],
+   "goals": [
+    "POC와 정맥혈당의 불일치를 인지한다",
+    "측정 한계를 고려해 정맥혈당으로 검증한다"
+   ]
+  },
+  {
+   "title": "심한 저혈당 의식저하 위기",
+   "tagline": "He's suddenly unresponsive and clammy — his sugar has to be dangerously low!",
+   "room": "SICU BED 2",
+   "brief": "심한 저혈당 의식저하에 응급 D50와 소생 대응을 시행하세요.",
+   "role": "colleague",
+   "skills": [
+    "저혈당 위기 인지",
+    "응급 D50",
+    "소생 대응"
+   ],
+   "keyPhrases": [
+    "Stop the insulin and push D50 now — check a stat glucose.",
+    "I'm protecting his airway while we treat the low.",
+    "Recheck in five minutes and repeat if he's still low."
+   ],
+   "goals": [
+    "심한 저혈당 의식저하를 즉시 인지한다",
+    "인슐린 중단과 응급 포도당으로 소생 대응한다"
+   ]
+  },
+  {
+   "title": "인슐린 용량사고 위기",
+   "tagline": "Wait — I think the wrong insulin dose may have gone in, we need to act fast.",
+   "room": "SICU BED 2",
+   "brief": "인슐린 용량사고를 이중확인으로 인지하고 즉시 대응하세요.",
+   "role": "colleague",
+   "skills": [
+    "투약사고 인지",
+    "이중확인",
+    "즉시 대응"
+   ],
+   "keyPhrases": [
+    "Let's stop the drip and verify exactly what was given.",
+    "Check his sugar now and start dextrose if he's dropping.",
+    "I'll notify the provider and document the event."
+   ],
+   "goals": [
+    "인슐린 용량사고를 신속히 인지한다",
+    "혈당 확인과 포도당으로 즉시 대응하고 보고한다"
+   ]
+  },
+  {
+   "title": "고혈당 위기 DKA 진행 인지",
+   "tagline": "My sugar's been high for hours and now I feel nauseous and out of breath — what's wrong?",
+   "room": "SICU BED 2",
+   "brief": "지속 고혈당에서 산증 에스컬레이션과 DKA 진행을 인지하세요.",
+   "role": "patient",
+   "skills": [
+    "DKA 진행 인지",
+    "산증 감별",
+    "에스컬레이션"
+   ],
+   "keyPhrases": [
+    "Your symptoms could mean acid is building up, so we're checking now.",
+    "I'm drawing labs for ketones and blood acid right away.",
+    "We'll escalate your treatment quickly if it's progressing to DKA."
+   ],
+   "goals": [
+    "지속 고혈당에서 DKA 진행을 인지한다",
+    "산증 검사를 시행하고 신속히 에스컬레이션한다"
+   ]
+  },
+  {
+   "title": "급식 중단 후 저혈당 급변",
+   "tagline": "The feeding pump stopped but the insulin's still running — his sugar's crashing!",
+   "room": "SICU BED 2",
+   "brief": "급식 중단 후 인슐린 미조정으로 인한 저혈당 급변에 대응하세요.",
+   "role": "colleague",
+   "skills": [
+    "급식 중단 인지",
+    "주입 중단 대응",
+    "저혈당 교정"
+   ],
+   "keyPhrases": [
+    "The feeding stopped so we must stop or cut the insulin now.",
+    "Start dextrose and recheck his sugar immediately.",
+    "Let's set an alert so this doesn't happen again."
+   ],
+   "goals": [
+    "급식 중단과 인슐린 지속의 위험을 즉시 인지한다",
+    "주입을 중단하고 저혈당을 교정한다"
+   ]
+  },
+  {
+   "title": "반복 저혈당 프로토콜 재설계",
+   "tagline": "This is the third low today — can we please rethink his whole insulin plan?",
+   "room": "SICU BED 2",
+   "brief": "반복 저혈당의 원인을 재평가하고 프로토콜을 안전하게 재설계하세요.",
+   "role": "colleague",
+   "skills": [
+    "반복 저혈당 분석",
+    "안전 재평가",
+    "프로토콜 재설계"
+   ],
+   "keyPhrases": [
+    "Three lows means we need to review the whole regimen with the team.",
+    "Let's look at feeding, renal function, and dosing together.",
+    "I'll propose a safer protocol to prevent the next low."
+   ],
+   "goals": [
+    "반복 저혈당의 원인을 체계적으로 분석한다",
+    "팀과 함께 프로토콜을 안전하게 재설계한다"
+   ]
+  },
+  {
+   "title": "혈당 급변·의식변화 감별",
+   "tagline": "He got confused all of a sudden — is it his sugar or something else entirely?",
+   "room": "SICU BED 2",
+   "brief": "혈당 급변과 의식변화의 원인을 감별하고 적절히 에스컬레이션하세요.",
+   "role": "colleague",
+   "skills": [
+    "의식변화 감별",
+    "원인 분석",
+    "에스컬레이션"
+   ],
+   "keyPhrases": [
+    "First I'll check his sugar, since a low or high can cause confusion.",
+    "If the sugar is normal, we look for other causes right away.",
+    "Either way, I'm escalating this change to the team."
+   ],
+   "goals": [
+    "혈당 급변과 의식변화의 원인을 감별한다",
+    "원인에 따라 적절히 에스컬레이션한다"
+   ]
+  }
+ ]
+}

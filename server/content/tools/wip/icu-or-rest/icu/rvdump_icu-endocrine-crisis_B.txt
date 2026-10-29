@@ -1,0 +1,1815 @@
+
+######## S0 DKA 초기 사정
+--- 0.0 [사정 안내|check] words=['w-check', 'w-hydration', 'w-breathing', 'w-alert', 'w-feel']
+EN: I'm going to check your hydration, your breathing, and how alert you feel.
+KO: 수분 상태랑 호흡, 의식이 얼마나 또렷한지 확인해 볼게요. (32)
+X1: 동료가 수분 상태랑 호흡, 의식이 얼마나 또렷한지 확인해요. (33)
+X2: 선배가 수분 상태랑 호흡, 의식이 얼마나 또렷한지 확인해요. (33)
+WHY: 'how alert you feel'은 의식 상태를 환자가 느끼는 정도로 묻는 간접 의문절이라 검사처럼 들리지 않고 부드러워요.
+ B* I'm going to check your hydration, your [breathing], and how alert you feel.
+ B  I'm going to check your hydration, your [walking], and how alert you feel.
+ B  I'm going to check your hydration, your [bathing], and how alert you feel.
+ B  I'm going to check your hydration, your [dressing], and how alert you feel.
+CH: ["I'm going to check", 'your hydration,', 'your breathing,', 'and how alert you feel', '.'] | DECOY: your slippers
+  D: <your slippers> your hydration, your breathing, and how alert you feel .
+  D: I'm going to check <your slippers> your breathing, and how alert you feel .
+  D: I'm going to check your hydration, <your slippers> and how alert you feel .
+  D: I'm going to check your hydration, your breathing, <your slippers> .
+--- 0.1 [병력 질문|speech] words=['w-keep', 'w-fluid']
+EN: Have you been able to keep any fluids down today?
+KO: 오늘 물이나 음료를 좀 삼킬 수 있었어요? (23)
+X1: 어젯밤 물이나 음료를 좀 삼킬 수 있었어요? (24)
+X2: 이틀 동안 물이나 음료를 좀 삼킬 수 있었어요? (26)
+WHY: 'keep down'은 삼킨 것을 토하지 않고 유지한다는 숙어라 구토가 있는 환자에게 딱 맞아요. 'been able to'가 못 했을 때도 부담 없이 답하게 해요.
+ B* Have you been able to [keep] any fluids down today?
+ B  Have you been able to [pour] any fluids down today?
+ B  Have you been able to [spill] any fluids down today?
+ B  Have you been able to [wash] any fluids down today?
+CH: ['Have you been able', 'to keep', 'any fluids down', 'today', '?'] | DECOY: for your visitors
+  D: <for your visitors> to keep any fluids down today ?
+  D: Have you been able <for your visitors> any fluids down today ?
+  D: Have you been able to keep <for your visitors> today ?
+  D: Have you been able to keep any fluids down <for your visitors> ?
+--- 0.2 [원인 설명|lab] words=['w-fast', 'w-breathing', 'w-react', 'w-acid', 'w-watch', 'w-closely']
+EN: Your fast breathing can be your body reacting to acid, so I'm watching it closely.
+KO: 숨이 빠른 건 몸이 산에 반응하는 걸 수도 있어서, 제가 잘 지켜보고 있어요. (43)
+X1: 숨이 빠른 건 몸이 열에 반응하는 걸 수도 있어서, 제가 잘 지켜보고 있어요. (43)
+X2: 숨이 빠른 건 몸이 약에 반응하는 걸 수도 있어서, 제가 잘 지켜보고 있어요. (43)
+WHY: 'can be'는 확정이 아니라 가능성이라 환자를 겁주지 않고 설명해요. 'reacting to'로 몸이 하는 반응이라는 틀을 줘요.
+ B* Your fast breathing can be your body reacting to [acid], so I'm watching it closely.
+ B  Your fast breathing can be your body reacting to [noise], so I'm watching it closely.
+ B  Your fast breathing can be your body reacting to [sunlight], so I'm watching it closely.
+ B  Your fast breathing can be your body reacting to [pollen], so I'm watching it closely.
+CH: ['Your fast breathing', 'can be your body', 'reacting to acid,', "so I'm watching it closely", '.'] | DECOY: your morning meal
+  D: <your morning meal> can be your body reacting to acid, so I'm watching it closely .
+  D: Your fast breathing <your morning meal> reacting to acid, so I'm watching it closely .
+  D: Your fast breathing can be your body <your morning meal> so I'm watching it closely .
+  D: Your fast breathing can be your body reacting to acid, <your morning meal> .
+--- 0.3 [의식 확인|bulb] words=['w-ask', 'w-question', 'w-check', 'w-alert']
+EN: I'll ask you a few questions to check how alert you are.
+KO: 의식이 얼마나 또렷한지 확인하려고 몇 가지 여쭤볼게요. (30)
+X1: 의식이 얼마나 또렷한지 확인하려고 후배가 몇 가지 여쭤봐요. (33)
+X2: 의식이 얼마나 또렷한지 확인하려고 의사가 몇 가지 여쭤봐요. (33)
+WHY: 'a few questions'는 부담 없는 분량처럼 들려 환자가 협조하기 쉬워요. 'to check'로 질문하는 목적을 먼저 밝혀요.
+ B* I'll [ask] you a few questions to check how alert you are.
+ B  I'll [show] you a few questions to check how alert you are.
+ B  I'll [tell] you a few questions to check how alert you are.
+ B  I'll [teach] you a few questions to check how alert you are.
+CH: ["I'll ask you", 'a few questions', 'to check how alert', 'you are', '.'] | DECOY: about your diet
+  D: <about your diet> a few questions to check how alert you are .
+  D: I'll ask you <about your diet> to check how alert you are .
+  D: I'll ask you a few questions <about your diet> you are .
+  D: I'll ask you a few questions to check how alert <about your diet> .
+--- 0.4 [보고|siren] words=['w-sign', 'w-report', 'w-team']
+EN: I'm seeing early signs of DKA, so I'll report this to the team right away.
+KO: 당뇨병성 케토산증 초기 소견이 보여서, 바로 팀에 보고할게요. (34)
+X1: 당뇨병성 케토산증 뚜렷한 소견이 보여서, 바로 팀에 보고할게요. (35)
+X2: 당뇨병성 케토산증 애매한 소견이 보여서, 바로 팀에 보고할게요. (35)
+WHY: 'early signs'는 확정 진단이 아니라 초기 단서라는 뜻이에요. 'this'가 방금 본 소견을 가리켜 무엇을 보고하는지 분명해요.
+ B* I'm seeing early [signs] of DKA, so I'll report this to the team right away.
+ B  I'm seeing early [causes] of DKA, so I'll report this to the team right away.
+ B  I'm seeing early [doses] of DKA, so I'll report this to the team right away.
+ B  I'm seeing early [scars] of DKA, so I'll report this to the team right away.
+CH: ["I'm seeing early signs", 'of DKA,', "so I'll report this", 'to the team right away', '.'] | DECOY: to his sister
+  D: <to his sister> of DKA, so I'll report this to the team right away .
+  D: I'm seeing early signs <to his sister> so I'll report this to the team right away .
+  D: I'm seeing early signs of DKA, <to his sister> to the team right away .
+  D: I'm seeing early signs of DKA, so I'll report this <to his sister> .
+--- 0.5 [곁에 있기|me] words=['w-stay', 'w-calm']
+EN: I'm right here with you, so try to stay calm.
+KO: 제가 바로 옆에 있으니까 최대한 편하게 있으세요. (27)
+X1: 친구가 바로 옆에 있으니까 최대한 편하게 있으세요. (28)
+X2: 제가 바로 옆에 있으니까 최대한 조용히 있으세요. (27)
+WHY: 'right here with you'는 물리적으로 곁에 있다는 말이라 불안한 환자에게 안심을 줘요. 'try to'는 명령이 아니라 권유로 들려요.
+ B* I'm right here with you, so try to stay [calm].
+ B  I'm right here with you, so try to stay [angry].
+ B  I'm right here with you, so try to stay [lonely].
+ B  I'm right here with you, so try to stay [hungry].
+CH: ["I'm right here", 'with you,', 'so try', 'to stay calm', '.'] | DECOY: in the hallway
+  D: <in the hallway> with you, so try to stay calm .
+  D: I'm right here <in the hallway> so try to stay calm .
+  D: I'm right here with you, <in the hallway> to stay calm .
+  D: I'm right here with you, so try <in the hallway> .
+== ORDER ko=DKA 초기 사정 4문장 순서 | tag=대화 흐름 icon=compass
+   why=무엇을 확인할지 알리고, 수분 상태를 병력으로 묻고, 어느 쪽이든 빠른 숨의 이유를 설명한 뒤, 소견을 보고한다고 알려요.
+   - I'm going to check your hydration, your breathing, and how alert you feel. (13w) | 수분 상태랑 호흡, 의식을 확인해 볼게요 | 사정 | check
+   - For your hydration, have you been able to keep any fluids down today? (13w) | 수분 상태 때문에, 오늘 물이나 음료를 삼킬 수 있었어요? | 질문 | speech
+   - Either way, that fast breathing can be your body reacting to acid. (12w) | 어느 쪽이든 그 빠른 숨은 몸이 산에 반응하는 걸 수도 있어요 | 설명 | lab
+   - Because of all that, I'll report these early signs to the team. (12w) | 그 모든 걸 바탕으로 이 초기 소견을 팀에 보고할게요 | 보고 | siren
+   SWAP 1<->2: For your hydration, have you been able to keep any fluids down today? / I'm going to check your hydration, your breathing, and how alert you feel. / Either way, that fast breathing can be your body reacting to acid. / Because of all that, I'll report these early signs to the team.
+   SWAP 2<->3: I'm going to check your hydration, your breathing, and how alert you feel. / Either way, that fast breathing can be your body reacting to acid. / For your hydration, have you been able to keep any fluids down today? / Because of all that, I'll report these early signs to the team.
+   SWAP 3<->4: I'm going to check your hydration, your breathing, and how alert you feel. / For your hydration, have you been able to keep any fluids down today? / Because of all that, I'll report these early signs to the team. / Either way, that fast breathing can be your body reacting to acid.
+
+######## S1 혈당·케톤·ABG 모니터
+--- 1.0 [모니터 이유|monitor] words=['w-check', 'w-sugar', 'w-ketone', 'w-blood', 'w-acid', 'w-keep', 'w-safe']
+EN: We check your sugar, your ketones, and your blood acid every hour to keep you safe.
+KO: 안전하게 지켜드리려고 혈당이랑 케톤, 혈액 산도를 매시간 확인하고 있어요. (41)
+X1: 편안하게 지켜드리려고 혈당이랑 케톤, 혈액 산도를 매시간 확인하고 있어요. (41)
+X2: 빨리 퇴원시켜 드리려고 혈당이랑 케톤, 혈액 산도를 매시간 확인하고 있어요. (42)
+WHY: 'to keep you safe'로 반복 검사의 목적을 환자의 안전으로 밝혀 귀찮은 검사라는 느낌을 줄여요. 'every hour'가 간격을 정확히 알려요.
+ B* We check your sugar, your ketones, and your blood acid every hour to keep you [safe].
+ B  We check your sugar, your ketones, and your blood acid every hour to keep you [busy].
+ B  We check your sugar, your ketones, and your blood acid every hour to keep you [bored].
+ B  We check your sugar, your ketones, and your blood acid every hour to keep you [cheerful].
+CH: ['We check your sugar,', 'your ketones,', 'and your blood acid', 'every hour', 'to keep you safe', '.'] | DECOY: for the nurse
+  D: <for the nurse> your ketones, and your blood acid every hour to keep you safe .
+  D: We check your sugar, <for the nurse> and your blood acid every hour to keep you safe .
+  D: We check your sugar, your ketones, <for the nurse> every hour to keep you safe .
+  D: We check your sugar, your ketones, and your blood acid <for the nurse> to keep you safe .
+  D: We check your sugar, your ketones, and your blood acid every hour <for the nurse> .
+--- 1.1 [수치 해석|chartup] words=['w-number', 'w-tell', 'w-treatment', 'w-work']
+EN: These numbers tell us how your treatment is working.
+KO: 이 수치들이 치료가 잘 되고 있는지를 말해줘요. (26)
+X1: 이 수치들이 식사가 잘 되고 있는지를 말해줘요. (26)
+X2: 이 수치들이 수액이 잘 들어가고 있는지를 말해줘요. (28)
+WHY: 'tell us how'는 숫자가 정보를 준다는 틀이라 수치를 쉬운 말로 풀어줘요. 'working'은 치료가 작동 중이라는 뜻이에요.
+ B* These numbers tell us how your treatment is [working].
+ B  These numbers tell us how your treatment is [waiting].
+ B  These numbers tell us how your treatment is [sleeping].
+ B  These numbers tell us how your treatment is [lasting].
+CH: ['These numbers', 'tell us', 'how your treatment', 'is working', '.'] | DECOY: your home address
+  D: <your home address> tell us how your treatment is working .
+  D: These numbers <your home address> how your treatment is working .
+  D: These numbers tell us <your home address> is working .
+  D: These numbers tell us how your treatment <your home address> .
+--- 1.2 [진행 약속|speech] words=['w-level', 'w-start', 'w-move', 'w-way']
+EN: I'll let you know as soon as your levels start moving the right way.
+KO: 수치가 좋은 방향으로 움직이기 시작하면 바로 알려드릴게요. (32)
+X1: 수치가 좋은 방향으로 움직이기 시작하면 병동 간호사가 알려드려요. (36)
+X2: 수치가 좋은 방향으로 움직이기 시작하면 담당 선생님이 알려드려요. (36)
+WHY: 'as soon as'는 변화가 생긴 순간에 알린다는 약속이에요. 'the right way'는 좋아지는 방향을 쉬운 말로 가리켜요.
+ B* I'll let you know as soon as your [levels] start moving the right way.
+ B  I'll let you know as soon as your [doses] start moving the right way.
+ B  I'll let you know as soon as your [orders] start moving the right way.
+ B  I'll let you know as soon as your [lines] start moving the right way.
+CH: ["I'll let you know", 'as soon as', 'your levels start moving', 'the right way', '.'] | DECOY: your insurance
+  D: <your insurance> as soon as your levels start moving the right way .
+  D: I'll let you know <your insurance> your levels start moving the right way .
+  D: I'll let you know as soon as <your insurance> the right way .
+  D: I'll let you know as soon as your levels start moving <your insurance> .
+--- 1.3 [채혈 안내|lab] words=['w-check', 'w-draw', 'w-lab', 'w-schedule']
+EN: I'll check your finger stick and draw your labs on schedule.
+KO: 정해진 시간에 손끝 혈당이랑 검사 채혈을 할게요. (27)
+X1: 주치의가 정해진 시간에 손끝 혈당이랑 검사 채혈을 해요. (31)
+X2: 전문의가 정해진 시간에 손끝 혈당이랑 검사 채혈을 해요. (31)
+WHY: 'on schedule'은 정해진 계획대로 한다는 뜻이라 갑자기 채혈하는 게 아니라는 안심을 줘요. 'finger stick'은 손끝 혈당 검사를 부르는 현장 용어예요.
+ B* I'll check your finger stick and [draw] your labs on schedule.
+ B  I'll check your finger stick and [wash] your labs on schedule.
+ B  I'll check your finger stick and [carry] your labs on schedule.
+ B  I'll check your finger stick and [hang] your labs on schedule.
+CH: ["I'll check", 'your finger stick', 'and draw your labs', 'on schedule', '.'] | DECOY: at the front desk
+  D: <at the front desk> your finger stick and draw your labs on schedule .
+  D: I'll check <at the front desk> and draw your labs on schedule .
+  D: I'll check your finger stick <at the front desk> on schedule .
+  D: I'll check your finger stick and draw your labs <at the front desk> .
+--- 1.4 [호전 설명|chartup] words=['w-ketone', 'w-number', 'w-mean', 'w-treatment', 'w-work']
+EN: Your ketone number is coming down, which means the treatment is working.
+KO: 케톤 수치가 내려가고 있는데, 이건 치료가 잘 듣고 있다는 뜻이에요. (38)
+X1: 케톤 수치가 내려가고 있는데, 이건 몸이 잘 쉬고 있다는 뜻이에요. (37)
+X2: 케톤 수치가 내려가고 있는데, 이건 환자분이 잘 버티고 있다는 뜻이에요. (40)
+WHY: 'which means'로 수치의 뜻을 바로 이어 설명해요. 'coming down'은 계속 내려가는 중이라는 진행형이에요.
+ B* Your ketone number is coming down, which means the treatment is [working].
+ B  Your ketone number is coming down, which means the treatment is [resting].
+ B  Your ketone number is coming down, which means the treatment is [hiding].
+ B  Your ketone number is coming down, which means the treatment is [stalling].
+CH: ['Your ketone number', 'is coming down,', 'which means', 'the treatment is working', '.'] | DECOY: the blood sugar
+  D: <the blood sugar> is coming down, which means the treatment is working .
+  D: Your ketone number <the blood sugar> which means the treatment is working .
+  D: Your ketone number is coming down, <the blood sugar> the treatment is working .
+  D: Your ketone number is coming down, which means <the blood sugar> .
+== ORDER ko=혈당·케톤 모니터 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=무엇을 얼마나 자주 재는지 알리고, 수치의 뜻을 설명한 뒤, 그 수치를 얻는 검사를 안내하고, 결과를 해석해요.
+   - We check your sugar, ketones, and blood acid every hour to keep you safe. (14w) | 안전을 위해 혈당, 케톤, 혈액 산도를 매시간 확인해요 | 안내 | monitor
+   - Those numbers tell us how your treatment is working. (9w) | 그 수치들이 치료가 잘 되고 있는지 알려줘요 | 설명 | chartup
+   - To get them, I'll do your finger stick on schedule. (10w) | 그 수치를 얻으려고 일정대로 손끝 혈당을 잴게요 | 검사 | lab
+   - So far your ketone number is coming down, which means it's working. (12w) | 지금까지 케톤 수치가 내려가고 있고, 효과가 있다는 뜻이에요 | 해석 | chartup
+   SWAP 1<->2: Those numbers tell us how your treatment is working. / We check your sugar, ketones, and blood acid every hour to keep you safe. / To get them, I'll do your finger stick on schedule. / So far your ketone number is coming down, which means it's working.
+   SWAP 2<->3: We check your sugar, ketones, and blood acid every hour to keep you safe. / To get them, I'll do your finger stick on schedule. / Those numbers tell us how your treatment is working. / So far your ketone number is coming down, which means it's working.
+   SWAP 3<->4: We check your sugar, ketones, and blood acid every hour to keep you safe. / Those numbers tell us how your treatment is working. / So far your ketone number is coming down, which means it's working. / To get them, I'll do your finger stick on schedule.
+
+######## S2 수액 소생 시작
+--- 2.0 [이유 설명|board] words=['w-lose', 'w-fluid', 'w-replace', 'w-quickly', 'w-first']
+EN: You lost a lot of fluid, so we're replacing it quickly at first.
+KO: 체액을 많이 잃으셔서, 처음에는 빠르게 보충해 드리고 있어요. (34)
+X1: 열이 높으셔서, 처음에는 빠르게 보충해 드리고 있어요. (30)
+X2: 숨이 차시니까, 처음에는 빠르게 보충해 드리고 있어요. (30)
+WHY: 'so'로 원인과 결과를 이어 환자가 이 수액이 왜 필요한지 바로 알아요. 'at first'가 처음에만 빠르다는 점을 알려 불안을 덜어요.
+ B* You [lost] a lot of fluid, so we're replacing it quickly at first.
+ B  You [spilled] a lot of fluid, so we're replacing it quickly at first.
+ B  You [donated] a lot of fluid, so we're replacing it quickly at first.
+ B  You [shared] a lot of fluid, so we're replacing it quickly at first.
+CH: ['You lost a lot', 'of fluid,', "so we're replacing it", 'quickly at first', '.'] | DECOY: from the pharmacy
+  D: <from the pharmacy> of fluid, so we're replacing it quickly at first .
+  D: You lost a lot <from the pharmacy> so we're replacing it quickly at first .
+  D: You lost a lot of fluid, <from the pharmacy> quickly at first .
+  D: You lost a lot of fluid, so we're replacing it <from the pharmacy> .
+--- 2.1 [감시 안내|monitor] words=['w-keep', 'w-watch', 'w-blood', 'w-pressure', 'w-urine', 'w-fluid']
+EN: I'll keep watching your blood pressure and urine as the fluids go in.
+KO: 수액이 들어가는 동안 혈압이랑 소변량을 계속 지켜볼게요. (31)
+X1: 수액이 들어가는 동안 레지던트가 혈압이랑 소변량을 계속 지켜봐요. (36)
+X2: 수액이 들어가는 동안 당직의가 혈압이랑 소변량을 계속 지켜봐요. (35)
+WHY: 'as the fluids go in'이 감시하는 시점을 수액이 들어가는 동안으로 정해요. 혈압과 소변량은 수액 반응을 보는 지표예요.
+ B* I'll keep watching your blood pressure and urine as the fluids go [in].
+ B  I'll keep watching your blood pressure and urine as the fluids go [out].
+ B  I'll keep watching your blood pressure and urine as the fluids go [off].
+ B  I'll keep watching your blood pressure and urine as the fluids go [over].
+CH: ["I'll keep watching", 'your blood pressure', 'and urine', 'as the fluids go in', '.'] | DECOY: the room lights
+  D: <the room lights> your blood pressure and urine as the fluids go in .
+  D: I'll keep watching <the room lights> and urine as the fluids go in .
+  D: I'll keep watching your blood pressure <the room lights> as the fluids go in .
+  D: I'll keep watching your blood pressure and urine <the room lights> .
+--- 2.2 [증상 알림|bell] words=['w-tell', 'w-feel', 'w-tightness', 'w-chest', 'w-trouble', 'w-breathing']
+EN: Tell me if you feel any tightness in your chest or trouble breathing.
+KO: 가슴이 답답하거나 숨쉬기 힘들면 바로 말씀해 주세요. (29)
+X1: 가슴이 답답하거나 다리가 붓는 것 같으면 바로 말씀해 주세요. (34)
+X2: 목이 마르거나 숨쉬기 힘들면 바로 말씀해 주세요. (27)
+WHY: 'Tell me if'는 환자가 해야 할 일을 부담 없이 알려줘요. 가슴 답답함과 숨참은 수액이 너무 많을 때 나올 수 있는 증상이에요.
+ B* Tell me if you feel any [tightness] in your chest or trouble breathing.
+ B  Tell me if you feel any [itching] in your chest or trouble breathing.
+ B  Tell me if you feel any [numbness] in your chest or trouble breathing.
+ B  Tell me if you feel any [sweating] in your chest or trouble breathing.
+CH: ['Tell me', 'if you feel any tightness', 'in your chest', 'or trouble breathing', '.'] | DECOY: about your lunch
+  D: <about your lunch> if you feel any tightness in your chest or trouble breathing .
+  D: Tell me <about your lunch> in your chest or trouble breathing .
+  D: Tell me if you feel any tightness <about your lunch> or trouble breathing .
+  D: Tell me if you feel any tightness in your chest <about your lunch> .
+--- 2.3 [처치 안내|gear] words=['w-start', 'w-saline', 'w-bring', 'w-fluid', 'w-level']
+EN: We're starting normal saline now to bring your fluid level back up.
+KO: 체액 수준을 다시 올리려고 지금 생리식염수를 시작할게요. (31)
+X1: 혈압 수준을 다시 올리려고 지금 생리식염수를 시작할게요. (31)
+X2: 소변량을 다시 늘리려고 지금 생리식염수를 시작할게요. (29)
+WHY: 'to bring … back up'은 낮아진 것을 원래대로 올린다는 뜻이에요. 'now'가 지금 시작한다는 점을 분명히 말해요.
+ B* We're starting normal saline now to bring your fluid [level] back up.
+ B  We're starting normal saline now to bring your fluid [color] back up.
+ B  We're starting normal saline now to bring your fluid [smell] back up.
+ B  We're starting normal saline now to bring your fluid [temperature] back up.
+CH: ["We're starting normal saline", 'now', 'to bring your fluid level', 'back up', '.'] | DECOY: for your breakfast
+  D: <for your breakfast> now to bring your fluid level back up .
+  D: We're starting normal saline <for your breakfast> to bring your fluid level back up .
+  D: We're starting normal saline now <for your breakfast> back up .
+  D: We're starting normal saline now to bring your fluid level <for your breakfast> .
+--- 2.4 [폐 확인|stetho] words=['w-check', 'w-lung', 'w-catch', 'w-fluid', 'w-overload', 'w-early']
+EN: I'll check your lungs so we catch any fluid overload early.
+KO: 수액 과부하가 있는지 일찍 알아채려고 폐 소리를 확인할게요. (33)
+X1: 폐렴이 있는지 일찍 알아채려고 폐 소리를 확인할게요. (29)
+X2: 천명음이 있는지 일찍 알아채려고 폐 소리를 확인할게요. (30)
+WHY: 'so we catch … early'는 확인하는 목적을 먼저 밝혀 환자가 놀라지 않게 해요. 'overload'는 수액이 너무 많이 들어간 상태예요.
+ B* I'll check your lungs so we catch any fluid [overload] early.
+ B  I'll check your lungs so we catch any fluid [shortage] early.
+ B  I'll check your lungs so we catch any fluid [leak] early.
+ B  I'll check your lungs so we catch any fluid [spill] early.
+CH: ["I'll check your lungs", 'so we catch', 'any fluid overload', 'early', '.'] | DECOY: your belly
+  D: <your belly> so we catch any fluid overload early .
+  D: I'll check your lungs <your belly> any fluid overload early .
+  D: I'll check your lungs so we catch <your belly> early .
+  D: I'll check your lungs so we catch any fluid overload <your belly> .
+== ORDER ko=수액 소생 안내 4문장 순서 | tag=대화 흐름 icon=compass
+   why=왜 필요한지 설명하고, 지금 시작함을 알린 뒤, 들어가는 동안 볼 것과 환자가 알려야 할 증상을 말해요.
+   - You lost a lot of fluid, so we're replacing it quickly at first. (13w) | 체액을 많이 잃어서 처음엔 빠르게 보충해요 | 이유 | board
+   - That's why we're starting normal saline now. (7w) | 그래서 지금 생리식염수를 시작해요 | 시작 | gear
+   - As it goes in, I'll keep watching your blood pressure and urine. (12w) | 들어가는 동안 혈압과 소변량을 계속 볼게요 | 감시 | monitor
+   - Tell me about any chest tightness or trouble breathing you notice with it. (13w) | 그것 때문에 가슴이 답답하거나 숨쉬기 힘들면 말씀해 주세요 | 알림 | bell
+   SWAP 1<->2: That's why we're starting normal saline now. / You lost a lot of fluid, so we're replacing it quickly at first. / As it goes in, I'll keep watching your blood pressure and urine. / Tell me about any chest tightness or trouble breathing you notice with it.
+   SWAP 2<->3: You lost a lot of fluid, so we're replacing it quickly at first. / As it goes in, I'll keep watching your blood pressure and urine. / That's why we're starting normal saline now. / Tell me about any chest tightness or trouble breathing you notice with it.
+   SWAP 3<->4: You lost a lot of fluid, so we're replacing it quickly at first. / That's why we're starting normal saline now. / Tell me about any chest tightness or trouble breathing you notice with it. / As it goes in, I'll keep watching your blood pressure and urine.
+
+######## S3 인슐린 주입 준비
+--- 3.0 [라인 준비|gear] words=['w-prime', 'w-line', 'w-insulin', 'w-drip', 'w-protocol']
+EN: I'm priming a dedicated line for the insulin drip per protocol.
+KO: 프로토콜대로 인슐린 주입 전용 라인을 프라이밍하고 있어요. (32)
+X1: 프로토콜대로 담당의가 인슐린 주입 전용 라인을 프라이밍해요. (33)
+X2: 프로토콜대로 책임자가 인슐린 주입 전용 라인을 프라이밍해요. (33)
+WHY: 'dedicated'는 다른 약과 섞이지 않는 전용 라인이라는 뜻이에요. 'per protocol'은 임의가 아니라 병원 지침대로 한다는 안심을 줘요.
+ B* I'm priming a dedicated [line] for the insulin drip per protocol.
+ B  I'm priming a dedicated [pole] for the insulin drip per protocol.
+ B  I'm priming a dedicated [cart] for the insulin drip per protocol.
+ B  I'm priming a dedicated [bed] for the insulin drip per protocol.
+CH: ["I'm priming", 'a dedicated line', 'for the insulin drip', 'per protocol', '.'] | DECOY: for the blood draw
+  D: <for the blood draw> a dedicated line for the insulin drip per protocol .
+  D: I'm priming <for the blood draw> for the insulin drip per protocol .
+  D: I'm priming a dedicated line <for the blood draw> per protocol .
+  D: I'm priming a dedicated line for the insulin drip <for the blood draw> .
+--- 3.1 [이중 확인|check] words=['w-check', 'w-concentration', 'w-pump', 'w-setting', 'w-together']
+EN: Let's double-check the concentration and pump settings together.
+KO: 농도랑 펌프 설정을 같이 다시 확인해요. (22)
+X1: 농도랑 펌프 설정을 따로 다시 확인해요. (22)
+X2: 농도랑 펌프 설정을 천천히 다시 확인해요. (23)
+WHY: 'Let's'는 함께한다는 틀이라 동료에게 확인을 요청하기 자연스러워요. 농도와 설정은 인슐린에서 가장 위험한 두 변수예요.
+ B* Let's double-check the concentration and [pump] settings together.
+ B  Let's double-check the concentration and [door] settings together.
+ B  Let's double-check the concentration and [phone] settings together.
+ B  Let's double-check the concentration and [window] settings together.
+CH: ["Let's double-check", 'the concentration and pump settings', 'together', '.'] | DECOY: the bed alarm
+  D: <the bed alarm> the concentration and pump settings together .
+  D: Let's double-check <the bed alarm> together .
+  D: Let's double-check the concentration and pump settings <the bed alarm> .
+--- 3.2 [시작 조건|lab] words=['w-start', 'w-infusion', 'w-potassium', 'w-confirm', 'w-safe']
+EN: I'll start the infusion once potassium is confirmed safe.
+KO: 칼륨이 안전하다고 확인되면 주입을 시작할게요. (25)
+X1: 칼륨이 안전하다고 확인되면 야간조가 주입을 시작해요. (29)
+X2: 칼륨이 안전하다고 확인되면 주간조가 주입을 시작해요. (29)
+WHY: 'once'가 시작의 조건을 정해 칼륨을 확인한 뒤에야 시작한다는 순서를 밝혀요. 'confirmed safe'는 추정이 아니라 확인되어야 한다는 뜻이에요.
+ B* I'll start the [infusion] once potassium is confirmed safe.
+ B  I'll start the [transfer] once potassium is confirmed safe.
+ B  I'll start the [discharge] once potassium is confirmed safe.
+ B  I'll start the [dressing] once potassium is confirmed safe.
+CH: ["I'll start", 'the infusion', 'once potassium is confirmed', 'safe', '.'] | DECOY: after the meal
+  D: <after the meal> the infusion once potassium is confirmed safe .
+  D: I'll start <after the meal> once potassium is confirmed safe .
+  D: I'll start the infusion <after the meal> safe .
+  D: I'll start the infusion once potassium is confirmed <after the meal> .
+--- 3.3 [펌프 상태|monitor] words=['w-pump', 'w-set', 'w-protocol', 'w-rate', 'w-ready']
+EN: Pump's set to the protocol rate, ready to go.
+KO: 펌프는 프로토콜 속도로 맞춰졌고, 시작할 준비 됐어요. (30)
+X1: 펌프는 프로토콜 속도로 맞춰졌고, 교대할 준비 됐어요. (30)
+X2: 펌프는 프로토콜 속도로 맞춰졌고, 이동할 준비 됐어요. (30)
+WHY: 'set to … rate'는 속도 설정을 말하는 쉬운 표현이에요. 'ready to go'는 시작 직전이라는 구어체예요.
+ B* Pump's [set] to the protocol rate, ready to go.
+ B  Pump's [locked] to the protocol rate, ready to go.
+ B  Pump's [taped] to the protocol rate, ready to go.
+ B  Pump's [tied] to the protocol rate, ready to go.
+CH: ["Pump's set", 'to the protocol rate,', 'ready', 'to go', '.'] | DECOY: to the doctor
+  D: <to the doctor> to the protocol rate, ready to go .
+  D: Pump's set <to the doctor> ready to go .
+  D: Pump's set to the protocol rate, <to the doctor> to go .
+  D: Pump's set to the protocol rate, ready <to the doctor> .
+--- 3.4 [처방 대조|board] words=['w-confirm', 'w-concentration', 'w-order', 'w-start']
+EN: Can you confirm the concentration matches the order before we start?
+KO: 시작하기 전에 농도가 처방이랑 맞는지 확인해 줄 수 있어요? (33)
+X1: 시작하기 전에 농도가 처방이랑 맞는지 제가 확인해 드릴까요? (33)
+X2: 시작하기 전에 농도가 처방이랑 맞는지 약사님이 확인해 줄 수 있어요? (38)
+WHY: 'matches the order'는 처방과 실제가 일치하는지 확인한다는 뜻이에요. 'before we start'로 시점을 시작 전으로 고정해요.
+ B* Can you confirm the concentration matches the [order] before we start?
+ B  Can you confirm the concentration matches the [menu] before we start?
+ B  Can you confirm the concentration matches the [receipt] before we start?
+ B  Can you confirm the concentration matches the [poster] before we start?
+CH: ['Can you confirm', 'the concentration matches', 'the order', 'before we start', '?'] | DECOY: the visiting hours
+  D: <the visiting hours> the concentration matches the order before we start ?
+  D: Can you confirm <the visiting hours> the order before we start ?
+  D: Can you confirm the concentration matches <the visiting hours> before we start ?
+  D: Can you confirm the concentration matches the order <the visiting hours> ?
+== ORDER ko=인슐린 주입 준비 4문장 순서 | tag=대화 흐름 icon=compass
+   why=라인을 준비하고, 준비된 뒤 농도와 설정을 함께 확인하고, 그 확인을 바탕으로 속도를 맞춘 뒤, 칼륨 조건이 충족되면 시작해요.
+   - I'm priming a dedicated line for the insulin drip per protocol. (11w) | 프로토콜대로 인슐린 전용 라인을 프라이밍하고 있어요 | 준비 | gear
+   - Once it's primed, let's double-check the concentration against the order together. (11w) | 프라이밍이 끝나면 농도를 처방과 같이 다시 확인해요 | 이중 확인 | check
+   - Once that's confirmed, the pump gets set to the protocol rate. (11w) | 그게 확인되면 펌프를 프로토콜 속도로 맞춰요 | 설정 | monitor
+   - With the pump ready, I'll start the infusion once potassium is confirmed safe. (13w) | 펌프가 준비되면 칼륨이 안전하다고 확인되는 대로 시작할게요 | 시작 | lab
+   SWAP 1<->2: Once it's primed, let's double-check the concentration against the order together. / I'm priming a dedicated line for the insulin drip per protocol. / Once that's confirmed, the pump gets set to the protocol rate. / With the pump ready, I'll start the infusion once potassium is confirmed safe.
+   SWAP 2<->3: I'm priming a dedicated line for the insulin drip per protocol. / Once that's confirmed, the pump gets set to the protocol rate. / Once it's primed, let's double-check the concentration against the order together. / With the pump ready, I'll start the infusion once potassium is confirmed safe.
+   SWAP 3<->4: I'm priming a dedicated line for the insulin drip per protocol. / Once it's primed, let's double-check the concentration against the order together. / With the pump ready, I'll start the infusion once potassium is confirmed safe. / Once that's confirmed, the pump gets set to the protocol rate.
+
+######## S4 인슐린 전 K 확인
+--- 4.0 [보류 이유|lab] words=['w-hold', 'w-insulin', 'w-potassium', 'w-safe', 'w-confirm', 'w-level', 'w-first']
+EN: We hold insulin until potassium is safe, so let's confirm the level first.
+KO: 칼륨이 안전할 때까지 인슐린을 보류하니까, 먼저 수치부터 확인해요. (37)
+X1: 칼륨이 안전할 때까지 인슐린을 보류하니까, 먼저 수치부터 확인해 줄래요? (40)
+X2: 칼륨이 안전할 때까지 인슐린을 보류하니까, 제가 먼저 수치부터 확인할게요. (41)
+WHY: 'until'이 보류의 끝 조건을 정해 수치를 확인하는 이유를 바로 알려요. 'Let's'로 함께 확인하자는 팀 어조예요.
+ B* We hold insulin until potassium is safe, so let's confirm the level [first].
+ B  We hold insulin until potassium is safe, so let's confirm the level [twice].
+ B  We hold insulin until potassium is safe, so let's confirm the level [slowly].
+ B  We hold insulin until potassium is safe, so let's confirm the level [quietly].
+CH: ['We hold insulin', 'until potassium is safe,', "so let's confirm", 'the level first', '.'] | DECOY: the blood bank
+  D: <the blood bank> until potassium is safe, so let's confirm the level first .
+  D: We hold insulin <the blood bank> so let's confirm the level first .
+  D: We hold insulin until potassium is safe, <the blood bank> the level first .
+  D: We hold insulin until potassium is safe, so let's confirm <the blood bank> .
+--- 4.1 [위험 설명|pill] words=['w-insulin', 'w-potassium', 'w-cell', 'w-low', 'w-value', 'w-dangerous']
+EN: Insulin drives potassium into cells, so a low value could be dangerous.
+KO: 인슐린이 칼륨을 세포 안으로 밀어 넣어서, 수치가 낮으면 위험할 수 있어요. (42)
+X1: 인슐린이 칼륨을 소변으로 내보내서, 수치가 낮으면 위험할 수 있어요. (38)
+X2: 인슐린이 칼륨을 위장으로 밀어 넣어서, 수치가 낮으면 위험할 수 있어요. (40)
+WHY: 'drives … into cells'는 인슐린이 칼륨을 세포 안으로 옮긴다는 작용을 쉬운 동사로 풀어요. 'could be'는 가능성 표현이에요.
+ B* Insulin drives potassium into [cells], so a low value could be dangerous.
+ B  Insulin drives potassium into [urine], so a low value could be dangerous.
+ B  Insulin drives potassium into [stool], so a low value could be dangerous.
+ B  Insulin drives potassium into [sweat], so a low value could be dangerous.
+CH: ['Insulin drives potassium', 'into cells,', 'so a low value', 'could be dangerous', '.'] | DECOY: in the blood bank
+  D: <in the blood bank> into cells, so a low value could be dangerous .
+  D: Insulin drives potassium <in the blood bank> so a low value could be dangerous .
+  D: Insulin drives potassium into cells, <in the blood bank> could be dangerous .
+  D: Insulin drives potassium into cells, so a low value <in the blood bank> .
+--- 4.2 [보충 계획|pill] words=['w-low', 'w-replace', 'w-potassium', 'w-start', 'w-drip']
+EN: If it's low, we'll replace potassium before starting the drip.
+KO: 낮으면 주입 시작 전에 칼륨부터 보충할 거예요. (26)
+X1: 낮으면 주입 시작 전에 교대자가 칼륨부터 보충해요. (28)
+X2: 낮으면 주입 시작 전에 전담자가 칼륨부터 보충해요. (28)
+WHY: 'before starting'으로 보충이 시작보다 앞선다는 순서를 말해요. 'If it's low'는 조건이 칼륨 수치라는 점을 밝혀요.
+ B* If it's low, we'll replace potassium before starting the [drip].
+ B  If it's low, we'll replace potassium before starting the [meal].
+ B  If it's low, we'll replace potassium before starting the [bath].
+ B  If it's low, we'll replace potassium before starting the [walk].
+CH: ["If it's low,", "we'll replace potassium", 'before starting', 'the drip', '.'] | DECOY: after breakfast
+  D: <after breakfast> we'll replace potassium before starting the drip .
+  D: If it's low, <after breakfast> before starting the drip .
+  D: If it's low, we'll replace potassium <after breakfast> the drip .
+  D: If it's low, we'll replace potassium before starting <after breakfast> .
+--- 4.3 [차트 확인|board] words=['w-pull', 'w-chart', 'w-check', 'w-potassium', 'w-result']
+EN: Let's pull his chart and check the last potassium result.
+KO: 차트를 열어서 마지막 칼륨 결과를 확인해요. (24)
+X1: 컴퓨터를 켜서 마지막 칼륨 결과를 확인해요. (24)
+X2: 벽 모니터로 마지막 칼륨 결과를 확인해요. (23)
+WHY: 'pull his chart'는 차트를 열어 본다는 병원 구어예요. 'the last'는 가장 최근 결과를 가리켜요.
+ B* Let's pull his [chart] and check the last potassium result.
+ B  Let's pull his [drawer] and check the last potassium result.
+ B  Let's pull his [curtain] and check the last potassium result.
+ B  Let's pull his [shoes] and check the last potassium result.
+CH: ["Let's pull", 'his chart', 'and check', 'the last potassium result', '.'] | DECOY: the old film
+  D: <the old film> his chart and check the last potassium result .
+  D: Let's pull <the old film> and check the last potassium result .
+  D: Let's pull his chart <the old film> the last potassium result .
+  D: Let's pull his chart and check <the old film> .
+--- 4.4 [낮을 때 보고|siren] words=['w-potassium', 'w-low', 'w-replacement']
+EN: If potassium comes back low, I'll get the replacement ordered right away.
+KO: 칼륨 결과가 낮게 나오면 바로 보충 처방을 받을게요. (29)
+X1: 칼륨 결과가 낮게 나오면 바로 팀장님이 보충 처방을 받아요. (33)
+X2: 칼륨 결과가 낮게 나오면 바로 팀장이 보충 처방을 받아요. (32)
+WHY: 'comes back low'는 검사 결과가 나왔는데 낮다는 뜻이에요. 'get the replacement ordered'는 내가 처방을 받아낸다는 뜻이에요.
+ B* If potassium comes back low, I'll get the replacement [ordered] right away.
+ B  If potassium comes back low, I'll get the replacement [stored] right away.
+ B  If potassium comes back low, I'll get the replacement [packed] right away.
+ B  If potassium comes back low, I'll get the replacement [mailed] right away.
+CH: ['If potassium comes back low,', "I'll get the replacement", 'ordered', 'right away', '.'] | DECOY: from the lab
+  D: <from the lab> I'll get the replacement ordered right away .
+  D: If potassium comes back low, <from the lab> ordered right away .
+  D: If potassium comes back low, I'll get the replacement <from the lab> right away .
+  D: If potassium comes back low, I'll get the replacement ordered <from the lab> .
+== ORDER ko=인슐린 전 칼륨 확인 4문장 순서 | tag=대화 흐름 icon=compass
+   why=보류 이유를 말하고, 위험을 설명한 뒤, 차트에서 결과를 확인하고, 낮을 때의 보충 계획을 알려요.
+   - We hold insulin until potassium is safe. (7w) | 칼륨이 안전할 때까지 인슐린을 보류해요 | 보류 | lab
+   - That's because insulin drives potassium into cells, so a low value could be dangerous. (14w) | 인슐린이 칼륨을 세포 안으로 밀어 넣어서 낮으면 위험해서예요 | 위험 | pill
+   - To check, let's pull his chart for the last potassium result. (11w) | 확인하려고 차트에서 마지막 칼륨 결과를 봐요 | 확인 | board
+   - Based on what it shows, if it's low we'll replace potassium before starting the drip. (15w) | 결과에 따라 낮으면 주입 전에 칼륨부터 보충해요 | 보충 | pill
+   SWAP 1<->2: That's because insulin drives potassium into cells, so a low value could be dangerous. / We hold insulin until potassium is safe. / To check, let's pull his chart for the last potassium result. / Based on what it shows, if it's low we'll replace potassium before starting the drip.
+   SWAP 2<->3: We hold insulin until potassium is safe. / To check, let's pull his chart for the last potassium result. / That's because insulin drives potassium into cells, so a low value could be dangerous. / Based on what it shows, if it's low we'll replace potassium before starting the drip.
+   SWAP 3<->4: We hold insulin until potassium is safe. / That's because insulin drives potassium into cells, so a low value could be dangerous. / Based on what it shows, if it's low we'll replace potassium before starting the drip. / To check, let's pull his chart for the last potassium result.
+
+######## S5 활력·의식 재평가
+--- 5.0 [안심과 재확인|faceWorried] words=['w-feel', 'w-clear', 'w-recheck', 'w-vital', 'w-confirm']
+EN: I'm glad you feel clearer, and I'll recheck your vitals to confirm.
+KO: 정신이 맑아지셨다니 다행이에요, 확인 차 활력징후를 다시 재볼게요. (37)
+X1: 정신이 맑아지셨다니 다행이에요, 확인 차 활력징후를 과장이 다시 재요. (39)
+X2: 정신이 맑아지셨다니 다행이에요, 확인 차 활력징후를 교수가 다시 재요. (39)
+WHY: 'I'm glad'로 환자의 호전에 먼저 공감한 뒤 확인을 알려요. 'to confirm'이 재측정의 목적을 밝혀요.
+ B* I'm [glad] you feel clearer, and I'll recheck your vitals to confirm.
+ B  I'm [sorry] you feel clearer, and I'll recheck your vitals to confirm.
+ B  I'm [afraid] you feel clearer, and I'll recheck your vitals to confirm.
+ B  I'm [upset] you feel clearer, and I'll recheck your vitals to confirm.
+CH: ["I'm glad", 'you feel clearer,', "and I'll recheck", 'your vitals to confirm', '.'] | DECOY: for your family
+  D: <for your family> you feel clearer, and I'll recheck your vitals to confirm .
+  D: I'm glad <for your family> and I'll recheck your vitals to confirm .
+  D: I'm glad you feel clearer, <for your family> your vitals to confirm .
+  D: I'm glad you feel clearer, and I'll recheck <for your family> .
+--- 5.1 [지남력 확인|bulb] words=['w-tell']
+EN: Can you tell me your name and where you are for me?
+KO: 성함이랑 지금 어디 계신지 말씀해 주실 수 있어요? (28)
+X1: 성함이랑 누구와 오셨는지 말씀해 주실 수 있어요? (27)
+X2: 성함이랑 어디서 오셨는지 말씀해 주실 수 있어요? (27)
+WHY: 이름과 장소를 묻는 건 의식 상태와 지남력을 보는 표준 질문이에요. 'for me'가 환자를 시험하는 느낌을 덜어요.
+ B* Can you [tell] me your name and where you are for me?
+ B  Can you [ask] me your name and where you are for me?
+ B  Can you [show] me your name and where you are for me?
+ B  Can you [give] me your name and where you are for me?
+CH: ['Can you tell me', 'your name', 'and where you are', 'for me', '?'] | DECOY: your phone number
+  D: <your phone number> your name and where you are for me ?
+  D: Can you tell me <your phone number> and where you are for me ?
+  D: Can you tell me your name <your phone number> for me ?
+  D: Can you tell me your name and where you are <your phone number> ?
+--- 5.2 [호전 설명|chartup] words=['w-number', 'w-direction', 'w-sign']
+EN: Your numbers are heading the right direction, which is a good sign.
+KO: 수치들이 좋은 방향으로 가고 있는데, 이건 좋은 신호예요. (32)
+X1: 수치들이 좋은 방향으로 가고 있는데, 이건 모두 약 덕분이에요. (35)
+X2: 수치들이 좋은 방향으로 가고 있는데, 이건 이틀째 계속돼요. (33)
+WHY: 'heading the right direction'은 수치의 방향을 쉬운 말로 풀어요. 'a good sign'으로 수치의 의미를 짧게 정리해요.
+ B* Your numbers are heading the right [direction], which is a good sign.
+ B  Your numbers are heading the right [corner], which is a good sign.
+ B  Your numbers are heading the right [lane], which is a good sign.
+ B  Your numbers are heading the right [side], which is a good sign.
+CH: ['Your numbers are heading', 'the right direction,', 'which is', 'a good sign', '.'] | DECOY: a bad dream
+  D: <a bad dream> the right direction, which is a good sign .
+  D: Your numbers are heading <a bad dream> which is a good sign .
+  D: Your numbers are heading the right direction, <a bad dream> a good sign .
+  D: Your numbers are heading the right direction, which is <a bad dream> .
+--- 5.3 [활력 비교|monitor] words=['w-blood', 'w-pressure', 'w-heart', 'w-rate', 'w-steady']
+EN: Your blood pressure and heart rate look steadier than before.
+KO: 혈압이랑 심박수가 전보다 더 안정적으로 보여요. (26)
+X1: 혈압이랑 심박수가 어제보다 더 안정적으로 보여요. (27)
+X2: 혈압이랑 심박수가 아침보다 더 안정적으로 보여요. (27)
+WHY: 'steadier than before'는 전보다 안정적이라는 비교 표현이에요. 혈압과 심박수는 활력징후 중 가장 먼저 보는 두 가지예요.
+ B* Your blood pressure and heart rate look [steadier] than before.
+ B  Your blood pressure and heart rate look [louder] than before.
+ B  Your blood pressure and heart rate look [brighter] than before.
+ B  Your blood pressure and heart rate look [cleaner] than before.
+CH: ['Your blood pressure', 'and heart rate', 'look steadier', 'than before', '.'] | DECOY: than your sister
+  D: <than your sister> and heart rate look steadier than before .
+  D: Your blood pressure <than your sister> look steadier than before .
+  D: Your blood pressure and heart rate <than your sister> than before .
+  D: Your blood pressure and heart rate look steadier <than your sister> .
+--- 5.4 [기록과 공유|pencil] words=['w-chart', 'w-improvement', 'w-team']
+EN: I'm charting these improvements and letting the team know.
+KO: 이렇게 나아진 부분을 기록하고 팀에도 알릴게요. (26)
+X1: 이렇게 나아진 부분을 기록하고 교수님께도 알릴게요. (28)
+X2: 이렇게 나아진 부분을 기록하고 약사에게도 알릴게요. (28)
+WHY: 'letting the team know'는 한 일을 팀과 공유한다는 뜻이에요. 호전된 부분도 기록해야 흐름이 이어져요.
+ B* I'm [charting] these improvements and letting the team know.
+ B  I'm [painting] these improvements and letting the team know.
+ B  I'm [filming] these improvements and letting the team know.
+ B  I'm [framing] these improvements and letting the team know.
+CH: ["I'm charting", 'these improvements', 'and letting the team', 'know', '.'] | DECOY: to the pharmacist
+  D: <to the pharmacist> these improvements and letting the team know .
+  D: I'm charting <to the pharmacist> and letting the team know .
+  D: I'm charting these improvements <to the pharmacist> know .
+  D: I'm charting these improvements and letting the team <to the pharmacist> .
+== ORDER ko=활력·의식 재평가 4문장 순서 | tag=대화 흐름 icon=compass
+   why=호전에 공감하고 재측정을 알린 뒤, 확인하려고 의식을 묻고, 측정 결과를 설명하고, 그 호전을 기록·공유한다고 말해요.
+   - I'm glad you feel clearer, and I'll recheck your vitals to confirm. (12w) | 맑아지셔서 다행이에요, 확인 차 활력징후를 다시 잴게요 | 공감 | faceWorried
+   - To confirm, can you tell me your name and where you are? (12w) | 확인하려고 성함과 계신 곳을 말해 주실래요? | 질문 | bulb
+   - After checking, your blood pressure and heart rate look steadier than before. (12w) | 재보니 혈압과 심박수가 전보다 안정적으로 보여요 | 결과 | monitor
+   - I'm charting these improvements and letting the team know. (9w) | 나아진 부분을 기록하고 팀에도 알려요 | 공유 | pencil
+   SWAP 1<->2: To confirm, can you tell me your name and where you are? / I'm glad you feel clearer, and I'll recheck your vitals to confirm. / After checking, your blood pressure and heart rate look steadier than before. / I'm charting these improvements and letting the team know.
+   SWAP 2<->3: I'm glad you feel clearer, and I'll recheck your vitals to confirm. / After checking, your blood pressure and heart rate look steadier than before. / To confirm, can you tell me your name and where you are? / I'm charting these improvements and letting the team know.
+   SWAP 3<->4: I'm glad you feel clearer, and I'll recheck your vitals to confirm. / To confirm, can you tell me your name and where you are? / I'm charting these improvements and letting the team know. / After checking, your blood pressure and heart rate look steadier than before.
+
+######## S6 DKA 인슐린 주입 적정
+--- 6.0 [조절 이유|gear] words=['w-adjust', 'w-insulin', 'w-sugar', 'w-safe', 'w-pace']
+EN: We adjust the insulin so your sugar comes down at a safe pace.
+KO: 혈당이 안전한 속도로 내려가도록 인슐린을 조절해요. (28)
+X1: 혈당이 안전한 속도로 내려가도록 인턴이 인슐린을 조절해요. (32)
+X2: 혈당이 안전한 속도로 내려가도록 사수가 인슐린을 조절해요. (32)
+WHY: 'so'로 인슐린을 조절하는 목적을 이어 말해 환자가 이유를 바로 알아요. 'a safe pace'는 속도 자체가 안전의 기준이라는 말이에요.
+ B* We adjust the insulin so your sugar comes down at a safe [pace].
+ B  We adjust the insulin so your sugar comes down at a safe [route].
+ B  We adjust the insulin so your sugar comes down at a safe [brand].
+ B  We adjust the insulin so your sugar comes down at a safe [color].
+CH: ['We adjust the insulin', 'so your sugar', 'comes down', 'at a safe pace', '.'] | DECOY: at the bedside
+  D: <at the bedside> so your sugar comes down at a safe pace .
+  D: We adjust the insulin <at the bedside> comes down at a safe pace .
+  D: We adjust the insulin so your sugar <at the bedside> at a safe pace .
+  D: We adjust the insulin so your sugar comes down <at the bedside> .
+--- 6.1 [위험 설명|shield] words=['w-bring', 'w-fast', 'w-risky', 'w-titrate', 'w-carefully']
+EN: Bringing it down too fast can be risky, so we titrate carefully.
+KO: 너무 빨리 내리면 위험할 수 있어서, 조심스럽게 적정하고 있어요. (36)
+X1: 너무 빨리 내리면 위험할 수 있어서, 선임이 조심스럽게 적정해요. (36)
+X2: 너무 빨리 내리면 위험할 수 있어서, 수간호사가 조심스럽게 적정해요. (38)
+WHY: 'can be'는 가능성을 말해 겁주지 않으면서 조심할 이유를 줘요. 'titrate'는 반응을 보며 조금씩 맞춘다는 임상 동사예요.
+ B* Bringing it down too fast can be [risky], so we titrate carefully.
+ B  Bringing it down too fast can be [costly], so we titrate carefully.
+ B  Bringing it down too fast can be [noisy], so we titrate carefully.
+ B  Bringing it down too fast can be [lucky], so we titrate carefully.
+CH: ['Bringing it down', 'too fast', 'can be risky,', 'so we titrate carefully', '.'] | DECOY: to your family
+  D: <to your family> too fast can be risky, so we titrate carefully .
+  D: Bringing it down <to your family> can be risky, so we titrate carefully .
+  D: Bringing it down too fast <to your family> so we titrate carefully .
+  D: Bringing it down too fast can be risky, <to your family> .
+--- 6.2 [재확인|monitor] words=['w-recheck', 'w-glucose', 'w-set', 'w-rate', 'w-protocol']
+EN: I'll recheck your glucose and set the new rate per protocol.
+KO: 혈당을 다시 확인하고 프로토콜대로 새 속도를 맞출게요. (30)
+X1: 동료가 혈당을 다시 확인하고 프로토콜대로 새 속도를 맞춰요. (33)
+X2: 선배가 혈당을 다시 확인하고 프로토콜대로 새 속도를 맞춰요. (33)
+WHY: 'per protocol'은 임의가 아니라 병원 지침대로 속도를 맞춘다는 안심을 줘요. 'recheck'의 're-'가 앞서 한 측정을 다시 한다는 뜻을 만들어요.
+ B* I'll recheck your glucose and set the new [rate] per protocol.
+ B  I'll recheck your glucose and set the new [bed] per protocol.
+ B  I'll recheck your glucose and set the new [size] per protocol.
+ B  I'll recheck your glucose and set the new [name] per protocol.
+CH: ["I'll recheck your glucose", 'and set', 'the new rate', 'per protocol', '.'] | DECOY: the call light
+  D: <the call light> and set the new rate per protocol .
+  D: I'll recheck your glucose <the call light> the new rate per protocol .
+  D: I'll recheck your glucose and set <the call light> per protocol .
+  D: I'll recheck your glucose and set the new rate <the call light> .
+--- 6.3 [처방 준수|pencil] words=['w-follow', 'w-scale', 'w-order']
+EN: We're following the sliding scale exactly as ordered.
+KO: 처방된 대로 슬라이딩 스케일을 정확히 따르고 있어요. (29)
+X1: 처방된 대로 후배가 슬라이딩 스케일을 정확히 따르고 있어요. (33)
+X2: 처방된 대로 의사가 슬라이딩 스케일을 정확히 따라요. (29)
+WHY: 'exactly as ordered'는 처방에서 벗어나지 않는다는 뜻이라 환자·가족이 안심해요. 'sliding scale'은 혈당에 따라 용량이 달라지는 방식을 가리켜요.
+ B* We're following the [sliding] scale exactly as ordered.
+ B  We're following the [rolling] scale exactly as ordered.
+ B  We're following the [jumping] scale exactly as ordered.
+ B  We're following the [falling] scale exactly as ordered.
+CH: ["We're following", 'the sliding scale', 'exactly as ordered', '.'] | DECOY: on the whiteboard
+  D: <on the whiteboard> the sliding scale exactly as ordered .
+  D: We're following <on the whiteboard> exactly as ordered .
+  D: We're following the sliding scale <on the whiteboard> .
+--- 6.4 [호전 설명|chartup] words=['w-sugar', 'w-drop', 'w-steady']
+EN: Your sugar's dropping steadily, which is exactly what we want.
+KO: 혈당이 꾸준히 내려가고 있는데, 이게 바로 저희가 원하는 거예요. (36)
+X1: 혈당이 꾸준히 내려가고 있는데, 이게 바로 오늘 계획이에요. (33)
+X2: 혈당이 꾸준히 내려가고 있는데, 이게 바로 의사 선생님이 원하는 거예요. (40)
+WHY: 'exactly what we want'는 수치가 계획대로 움직인다는 짧은 확인이라 환자 불안을 줄여요. 'steadily'는 급락이 아니라 꾸준하다는 점이 핵심이에요.
+ B* Your sugar's [dropping] steadily, which is exactly what we want.
+ B  Your sugar's [jumping] steadily, which is exactly what we want.
+ B  Your sugar's [spilling] steadily, which is exactly what we want.
+ B  Your sugar's [freezing] steadily, which is exactly what we want.
+CH: ["Your sugar's dropping", 'steadily,', 'which is exactly', 'what we want', '.'] | DECOY: for your lunch
+  D: <for your lunch> steadily, which is exactly what we want .
+  D: Your sugar's dropping <for your lunch> which is exactly what we want .
+  D: Your sugar's dropping steadily, <for your lunch> what we want .
+  D: Your sugar's dropping steadily, which is exactly <for your lunch> .
+== ORDER ko=인슐린 적정 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=조절 목적을 말하고, 위험을 설명한 뒤, 그 위험을 피하려는 재확인을 알리고, 결과를 확인해 줘요.
+   - We adjust the insulin so your sugar comes down at a safe pace. (13w) | 혈당이 안전한 속도로 내려가도록 인슐린을 조절해요 | 목적 | gear
+   - It's because bringing it down too fast can be risky. (10w) | 너무 빨리 내리면 위험할 수 있어서예요 | 이유 | shield
+   - To avoid that, I'll recheck your glucose and set the new rate per protocol. (14w) | 그걸 피하려고 혈당을 다시 확인하고 새 속도를 맞춰요 | 재확인 | monitor
+   - So far, your sugar's dropping steadily, which is exactly what we want. (12w) | 지금까지 혈당이 꾸준히 내려가고 있고, 바로 원하는 거예요 | 결과 | chartup
+   SWAP 1<->2: It's because bringing it down too fast can be risky. / We adjust the insulin so your sugar comes down at a safe pace. / To avoid that, I'll recheck your glucose and set the new rate per protocol. / So far, your sugar's dropping steadily, which is exactly what we want.
+   SWAP 2<->3: We adjust the insulin so your sugar comes down at a safe pace. / To avoid that, I'll recheck your glucose and set the new rate per protocol. / It's because bringing it down too fast can be risky. / So far, your sugar's dropping steadily, which is exactly what we want.
+   SWAP 3<->4: We adjust the insulin so your sugar comes down at a safe pace. / It's because bringing it down too fast can be risky. / So far, your sugar's dropping steadily, which is exactly what we want. / To avoid that, I'll recheck your glucose and set the new rate per protocol.
+
+######## S7 K 보정·인슐린 균형
+--- 7.0 [동시 관리|monitor] words=['w-replace', 'w-potassium', 'w-keep', 'w-monitor', 'w-closely', 'w-insulin', 'w-run']
+EN: Let's replace potassium and keep monitoring it closely with the insulin running.
+KO: 칼륨을 보충하면서 인슐린이 들어가는 동안 계속 자세히 모니터링해요. (37)
+X1: 칼륨을 보충하면서 인슐린이 들어가는 동안 주치의가 계속 자세히 모니터링해요. (42)
+X2: 칼륨을 보충하면서 인슐린이 들어가는 동안 전문의가 계속 자세히 모니터링해요. (42)
+WHY: 'keep monitoring'은 한 번이 아니라 계속 본다는 뜻이에요. 'with the insulin running'은 인슐린이 들어가는 동안이라는 위험한 시간대를 가리켜요.
+ B* Let's replace potassium and keep [monitoring] it closely with the insulin running.
+ B  Let's replace potassium and keep [labeling] it closely with the insulin running.
+ B  Let's replace potassium and keep [decorating] it closely with the insulin running.
+ B  Let's replace potassium and keep [announcing] it closely with the insulin running.
+CH: ["Let's replace potassium", 'and keep monitoring it closely', 'with the insulin', 'running', '.'] | DECOY: in the lobby
+  D: <in the lobby> and keep monitoring it closely with the insulin running .
+  D: Let's replace potassium <in the lobby> with the insulin running .
+  D: Let's replace potassium and keep monitoring it closely <in the lobby> running .
+  D: Let's replace potassium and keep monitoring it closely with the insulin <in the lobby> .
+--- 7.1 [조절 가능성|gear] words=['w-need', 'w-slow', 'w-insulin', 'w-potassium', 'w-fall']
+EN: We may need to slow the insulin if potassium keeps falling.
+KO: 칼륨이 계속 떨어지면 인슐린을 늦춰야 할 수도 있어요. (30)
+X1: 칼륨이 계속 떨어지면 레지던트가 인슐린을 늦춰야 할 수도 있어요. (36)
+X2: 칼륨이 계속 떨어지면 당직의가 인슐린을 늦춰야 할 수도 있어요. (35)
+WHY: 'may need to'는 확정이 아니라 필요할 수도 있다는 완곡한 표현이에요. 'keeps falling'은 계속 떨어지는 추세를 말해요.
+ B* We may [need] to slow the insulin if potassium keeps falling.
+ B  We may [hope] to slow the insulin if potassium keeps falling.
+ B  We may [wish] to slow the insulin if potassium keeps falling.
+ B  We may [dare] to slow the insulin if potassium keeps falling.
+CH: ['We may need', 'to slow', 'the insulin', 'if potassium keeps falling', '.'] | DECOY: with your family
+  D: <with your family> to slow the insulin if potassium keeps falling .
+  D: We may need <with your family> the insulin if potassium keeps falling .
+  D: We may need to slow <with your family> if potassium keeps falling .
+  D: We may need to slow the insulin <with your family> .
+--- 7.2 [재검 안내|lab] words=['w-draw', 'w-repeat', 'w-level', 'w-replacement', 'w-confirm']
+EN: I'll draw a repeat level after the replacement to confirm.
+KO: 보충한 뒤에 확인차 칼륨 수치를 다시 채혈할게요. (27)
+X1: 보충한 뒤에 확인차 칼륨 수치를 담당의가 다시 채혈해요. (31)
+X2: 보충한 뒤에 확인차 칼륨 수치를 책임자가 다시 채혈해요. (31)
+WHY: 'repeat level'은 같은 검사를 한 번 더 한다는 뜻이에요. 'to confirm'이 재검의 목적을 밝혀요.
+ B* I'll draw a repeat level after the [replacement] to confirm.
+ B  I'll draw a repeat level after the [removal] to confirm.
+ B  I'll draw a repeat level after the [delivery] to confirm.
+ B  I'll draw a repeat level after the [dressing] to confirm.
+CH: ["I'll draw", 'a repeat level', 'after the replacement', 'to confirm', '.'] | DECOY: at noon
+  D: <at noon> a repeat level after the replacement to confirm .
+  D: I'll draw <at noon> after the replacement to confirm .
+  D: I'll draw a repeat level <at noon> to confirm .
+  D: I'll draw a repeat level after the replacement <at noon> .
+--- 7.3 [진행 허락|check] words=['w-potassium', 'w-normal', 'w-clear', 'w-keep', 'w-drip']
+EN: Potassium's back to normal, so we're clear to keep the drip going.
+KO: 칼륨이 정상으로 돌아와서, 주입을 계속 진행해도 괜찮아요. (32)
+X1: 칼륨이 정상으로 돌아와서, 면회를 계속 진행해도 괜찮아요. (32)
+X2: 칼륨이 정상으로 돌아와서, 검사를 계속 진행해도 괜찮아요. (32)
+WHY: 'clear to'는 계속해도 된다는 허락의 뜻이에요. 'back to normal'이 그 근거를 쉬운 말로 줘요.
+ B* Potassium's back to normal, so we're clear to keep the [drip] going.
+ B  Potassium's back to normal, so we're clear to keep the [diet] going.
+ B  Potassium's back to normal, so we're clear to keep the [tour] going.
+ B  Potassium's back to normal, so we're clear to keep the [visit] going.
+CH: ["Potassium's back to normal,", "so we're clear", 'to keep the drip', 'going', '.'] | DECOY: for the weekend
+  D: <for the weekend> so we're clear to keep the drip going .
+  D: Potassium's back to normal, <for the weekend> to keep the drip going .
+  D: Potassium's back to normal, so we're clear <for the weekend> going .
+  D: Potassium's back to normal, so we're clear to keep the drip <for the weekend> .
+--- 7.4 [조건부 중단|siren] words=['w-drop', 'w-pause', 'w-insulin', 'w-recheck']
+EN: If it drops again, we'll pause the insulin and recheck.
+KO: 다시 떨어지면 인슐린을 잠시 멈추고 다시 확인할 거예요. (31)
+X1: 다시 떨어지면 야간조가 인슐린을 잠시 멈추고 다시 확인해요. (33)
+X2: 다시 떨어지면 주간조가 인슐린을 잠시 멈추고 다시 확인해요. (33)
+WHY: 'If it drops again'이 중단의 조건을 분명히 해요. 'pause'는 영구 중단이 아니라 잠시 멈춘다는 뜻이에요.
+ B* If it drops again, we'll pause the insulin and [recheck].
+ B  If it drops again, we'll pause the insulin and [refill].
+ B  If it drops again, we'll pause the insulin and [relabel].
+ B  If it drops again, we'll pause the insulin and [rewrite].
+CH: ['If it drops again,', "we'll pause", 'the insulin', 'and recheck', '.'] | DECOY: for dinner
+  D: <for dinner> we'll pause the insulin and recheck .
+  D: If it drops again, <for dinner> the insulin and recheck .
+  D: If it drops again, we'll pause <for dinner> and recheck .
+  D: If it drops again, we'll pause the insulin <for dinner> .
+== ORDER ko=칼륨 보정과 인슐린 균형 4문장 순서 | tag=대화 흐름 icon=compass
+   why=보충과 감시를 시작하고, 보충 뒤 재검을 하고, 정상이면 계속 진행하고, 다시 떨어질 때의 계획을 알려요.
+   - Let's replace potassium and keep monitoring it closely with the insulin running. (12w) | 칼륨을 보충하고 인슐린이 들어가는 동안 계속 자세히 모니터링해요 | 보충 | monitor
+   - After the replacement, I'll draw a repeat level to confirm. (10w) | 보충한 뒤에 확인차 다시 채혈할게요 | 재검 | lab
+   - Once it's back to normal, we're clear to keep the drip going. (12w) | 정상으로 돌아오면 주입을 계속해도 돼요 | 진행 | check
+   - If it drops again after that, we'll pause the insulin and recheck. (12w) | 그 뒤에 다시 떨어지면 인슐린을 멈추고 다시 확인해요 | 대비 | siren
+   SWAP 1<->2: After the replacement, I'll draw a repeat level to confirm. / Let's replace potassium and keep monitoring it closely with the insulin running. / Once it's back to normal, we're clear to keep the drip going. / If it drops again after that, we'll pause the insulin and recheck.
+   SWAP 2<->3: Let's replace potassium and keep monitoring it closely with the insulin running. / Once it's back to normal, we're clear to keep the drip going. / After the replacement, I'll draw a repeat level to confirm. / If it drops again after that, we'll pause the insulin and recheck.
+   SWAP 3<->4: Let's replace potassium and keep monitoring it closely with the insulin running. / After the replacement, I'll draw a repeat level to confirm. / If it drops again after that, we'll pause the insulin and recheck. / Once it's back to normal, we're clear to keep the drip going.
+
+######## S8 anion gap 종결 판단
+--- 8.0 [전환 계획|gear] words=['w-gap', 'w-close', 'w-plan', 'w-switch', 'w-subcutaneous', 'w-insulin']
+EN: The gap has closed, so we can plan the switch to subcutaneous insulin.
+KO: 간극이 닫혀서, 이제 피하 인슐린으로 전환할 계획을 세울 수 있어요. (38)
+X1: 간극이 닫혀서, 이제 피하 인슐린으로 전환할 계획을 교대자가 세울 수 있어요. (43)
+X2: 간극이 닫혀서, 이제 피하 인슐린으로 전환할 계획을 전담자가 세울 수 있어요. (43)
+WHY: 'so'로 근거(간극이 닫힘)와 결론(전환 계획)을 이었어요. 'plan the switch'는 당장 바꾸는 게 아니라 계획한다는 뜻이에요.
+ B* The gap has closed, so we can plan the [switch] to subcutaneous insulin.
+ B  The gap has closed, so we can plan the [pump] to subcutaneous insulin.
+ B  The gap has closed, so we can plan the [trip] to subcutaneous insulin.
+ B  The gap has closed, so we can plan the [vote] to subcutaneous insulin.
+CH: ['The gap has closed,', 'so we can plan', 'the switch', 'to subcutaneous insulin', '.'] | DECOY: to the pharmacy
+  D: <to the pharmacy> so we can plan the switch to subcutaneous insulin .
+  D: The gap has closed, <to the pharmacy> the switch to subcutaneous insulin .
+  D: The gap has closed, so we can plan <to the pharmacy> to subcutaneous insulin .
+  D: The gap has closed, so we can plan the switch <to the pharmacy> .
+--- 8.1 [겹쳐 투여|pill] words=['w-overlap', 'w-drip', 'w-first', 'w-dose', 'w-stop']
+EN: We overlap the drip with the first long-acting dose before stopping.
+KO: 중단하기 전에 첫 지속형 용량이랑 주입을 겹쳐서 줘요. (30)
+X1: 중단하기 전에 팀장이 첫 지속형 용량이랑 주입을 겹쳐서 줘요. (34)
+X2: 중단하기 전에 과장이 첫 지속형 용량이랑 주입을 겹쳐서 줘요. (34)
+WHY: 'overlap'은 두 가지를 잠시 함께 쓴다는 뜻이에요. 'before stopping'으로 주입을 끊는 시점이 겹친 다음임을 밝혀요.
+ B* We overlap the drip with the first long-acting dose before [stopping].
+ B  We overlap the drip with the first long-acting dose before [labeling].
+ B  We overlap the drip with the first long-acting dose before [moving].
+ B  We overlap the drip with the first long-acting dose before [weighing].
+CH: ['We overlap the drip', 'with the first', 'long-acting dose', 'before stopping', '.'] | DECOY: after dinner
+  D: <after dinner> with the first long-acting dose before stopping .
+  D: We overlap the drip <after dinner> long-acting dose before stopping .
+  D: We overlap the drip with the first <after dinner> before stopping .
+  D: We overlap the drip with the first long-acting dose <after dinner> .
+--- 8.2 [전환 전 확인|check] words=['w-confirm', 'w-lab', 'w-stable', 'w-first']
+EN: Let me confirm he's eating and the labs are stable first.
+KO: 먼저 식사가 되는지랑 검사 수치가 안정적인지부터 확인할게요. (33)
+X1: 먼저 식사가 되는지랑 검사 수치가 안정적인지부터 교수가 확인해요. (36)
+X2: 먼저 식사가 되는지랑 검사 수치가 안정적인지부터 인턴이 확인해요. (36)
+WHY: 'Let me'는 허락을 구하며 내가 하겠다고 알리는 부드러운 표현이에요. 'first'가 전환보다 앞서 확인한다는 순서를 줘요.
+ B* Let me confirm he's [eating] and the labs are stable first.
+ B  Let me confirm he's [sleeping] and the labs are stable first.
+ B  Let me confirm he's [walking] and the labs are stable first.
+ B  Let me confirm he's [talking] and the labs are stable first.
+CH: ['Let me confirm', "he's eating", 'and the labs', 'are stable first', '.'] | DECOY: on the chart
+  D: <on the chart> he's eating and the labs are stable first .
+  D: Let me confirm <on the chart> and the labs are stable first .
+  D: Let me confirm he's eating <on the chart> are stable first .
+  D: Let me confirm he's eating and the labs <on the chart> .
+--- 8.3 [해결 선언|chartup] words=['w-acid', 'w-level', 'w-normal', 'w-resolve']
+EN: His acid levels are back to normal, so the DKA has resolved.
+KO: 산 수치가 정상으로 돌아와서, 케토산증이 해결됐어요. (29)
+X1: 산 수치가 정상으로 돌아와서, 케토산증이 많이 좋아졌어요. (32)
+X2: 산 수치가 정상으로 돌아와서, 환자분 컨디션이 좋아졌어요. (32)
+WHY: 'so'로 수치가 정상이라는 근거에서 해결됐다는 결론으로 넘어가요. 'resolved'는 병이 해결됐다는 임상 표현이에요.
+ B* His acid levels are back to normal, so the DKA has [resolved].
+ B  His acid levels are back to normal, so the DKA has [worsened].
+ B  His acid levels are back to normal, so the DKA has [spread].
+ B  His acid levels are back to normal, so the DKA has [moved].
+CH: ['His acid levels', 'are back to normal,', 'so the DKA', 'has resolved', '.'] | DECOY: by the window
+  D: <by the window> are back to normal, so the DKA has resolved .
+  D: His acid levels <by the window> so the DKA has resolved .
+  D: His acid levels are back to normal, <by the window> has resolved .
+  D: His acid levels are back to normal, so the DKA <by the window> .
+--- 8.4 [평소 약 복귀|home] words=['w-tolerate', 'w-switch', 'w-insulin']
+EN: Once he's tolerating food, we'll switch him to his home insulin.
+KO: 식사를 잘 견디시면, 평소 쓰시던 인슐린으로 바꿔 드릴게요. (33)
+X1: 식사를 잘 견디시면, 평소 쓰시던 인슐린으로 사수가 바꿔 드려요. (36)
+X2: 식사를 잘 견디시면, 평소 쓰시던 인슐린으로 선임이 바꿔 드려요. (36)
+WHY: 'Once'가 조건(식사를 견딤)을 앞에 세워 전환 시점을 분명히 해요. 'home insulin'은 평소 쓰던 약을 쉬운 말로 가리켜요.
+ B* Once he's tolerating food, we'll [switch] him to his home insulin.
+ B  Once he's tolerating food, we'll [walk] him to his home insulin.
+ B  Once he's tolerating food, we'll [carry] him to his home insulin.
+ B  Once he's tolerating food, we'll [mail] him to his home insulin.
+CH: ["Once he's tolerating food,", "we'll switch him", 'to his home', 'insulin', '.'] | DECOY: to the nurse
+  D: <to the nurse> we'll switch him to his home insulin .
+  D: Once he's tolerating food, <to the nurse> to his home insulin .
+  D: Once he's tolerating food, we'll switch him <to the nurse> insulin .
+  D: Once he's tolerating food, we'll switch him to his home <to the nurse> .
+== ORDER ko=케토산증 종결과 전환 4문장 순서 | tag=대화 흐름 icon=compass
+   why=해결을 알리고, 전환 계획을 말하고, 겹쳐 투여하는 방법을 설명한 뒤, 식사 조건을 걸어 평소 인슐린 복귀를 알려요.
+   - His acid levels are back to normal, so the DKA has resolved. (12w) | 산 수치가 정상으로 돌아와서 케토산증이 해결됐어요 | 해결 | chartup
+   - On that basis, we can plan the switch to subcutaneous insulin. (11w) | 그 근거로 피하 인슐린 전환을 계획할 수 있어요 | 계획 | gear
+   - Before stopping the drip, we overlap it with the first long-acting dose. (12w) | 주입을 멈추기 전에 첫 지속형 용량과 겹쳐요 | 겹침 | pill
+   - After that overlap, once he's tolerating food, we'll switch him to his home insulin. (14w) | 그 뒤 식사를 견디면 평소 인슐린으로 바꿀게요 | 복귀 | home
+   SWAP 1<->2: On that basis, we can plan the switch to subcutaneous insulin. / His acid levels are back to normal, so the DKA has resolved. / Before stopping the drip, we overlap it with the first long-acting dose. / After that overlap, once he's tolerating food, we'll switch him to his home insulin.
+   SWAP 2<->3: His acid levels are back to normal, so the DKA has resolved. / Before stopping the drip, we overlap it with the first long-acting dose. / On that basis, we can plan the switch to subcutaneous insulin. / After that overlap, once he's tolerating food, we'll switch him to his home insulin.
+   SWAP 3<->4: His acid levels are back to normal, so the DKA has resolved. / On that basis, we can plan the switch to subcutaneous insulin. / After that overlap, once he's tolerating food, we'll switch him to his home insulin. / Before stopping the drip, we overlap it with the first long-acting dose.
+
+######## S9 HHS 고삼투 관리
+--- 9.0 [교정 설명|lab] words=['w-sugar', 'w-blood', 'w-concentrate', 'w-correct', 'w-slow', 'w-safe']
+EN: Her sugar and blood are very concentrated, so we're correcting it slowly and safely.
+KO: 혈당이랑 혈액이 아주 농축돼 있어서, 천천히 안전하게 교정하고 있어요. (39)
+X1: 혈당이랑 혈액이 아주 농축돼 있어서, 수간호사가 천천히 안전하게 교정하고 있어요. (45)
+X2: 혈당이랑 혈액이 아주 농축돼 있어서, 동료가 천천히 안전하게 교정하고 있어요. (43)
+WHY: 'so'로 상태(농축)와 대응(천천히)을 이었어요. 'slowly and safely'는 속도와 안전을 함께 말해 환자를 안심시켜요.
+ B* Her sugar and blood are very [concentrated], so we're correcting it slowly and safely.
+ B  Her sugar and blood are very [diluted], so we're correcting it slowly and safely.
+ B  Her sugar and blood are very [separated], so we're correcting it slowly and safely.
+ B  Her sugar and blood are very [contaminated], so we're correcting it slowly and safely.
+CH: ['Her sugar and blood', 'are very concentrated,', "so we're correcting it", 'slowly and safely', '.'] | DECOY: in the lab
+  D: <in the lab> are very concentrated, so we're correcting it slowly and safely .
+  D: Her sugar and blood <in the lab> so we're correcting it slowly and safely .
+  D: Her sugar and blood are very concentrated, <in the lab> slowly and safely .
+  D: Her sugar and blood are very concentrated, so we're correcting it <in the lab> .
+--- 9.1 [위험 설명|shield] words=['w-fast', 'w-affect', 'w-brain', 'w-take']
+EN: Going too fast could affect her brain, so we take our time.
+KO: 너무 빠르게 하면 뇌에 영향을 줄 수 있어서, 시간을 두고 하고 있어요. (40)
+X1: 너무 빠르게 하면 신장에 영향을 줄 수 있어서, 시간을 두고 하고 있어요. (41)
+X2: 너무 빠르게 하면 심장에 영향을 줄 수 있어서, 시간을 두고 하고 있어요. (41)
+WHY: 'could'는 가능성을 말해 겁을 덜어요. 'take our time'은 일부러 서두르지 않는다는 쉬운 관용구예요.
+ B* Going too fast could affect her [brain], so we take our time.
+ B  Going too fast could affect her [hair], so we take our time.
+ B  Going too fast could affect her [nails], so we take our time.
+ B  Going too fast could affect her [voice], so we take our time.
+CH: ['Going too fast', 'could affect her brain,', 'so we take', 'our time', '.'] | DECOY: at home
+  D: <at home> could affect her brain, so we take our time .
+  D: Going too fast <at home> so we take our time .
+  D: Going too fast could affect her brain, <at home> our time .
+  D: Going too fast could affect her brain, so we take <at home> .
+--- 9.2 [의식 관찰|bulb] words=['w-watch', 'w-mental', 'w-status', 'w-closely', 'w-improve']
+EN: We'll watch her mental status closely as she improves.
+KO: 나아지는 동안 의식 상태를 자세히 지켜볼게요. (25)
+X1: 나아지는 동안 선배가 의식 상태를 자세히 지켜봐요. (28)
+X2: 나아지는 동안 후배가 의식 상태를 자세히 지켜봐요. (28)
+WHY: 'as she improves'는 좋아지는 과정 전체를 관찰한다는 뜻이에요. 'mental status'는 의식·판단 상태를 가리키는 임상어예요.
+ B* We'll watch her mental status closely as she [improves].
+ B  We'll watch her mental status closely as she [sleeps].
+ B  We'll watch her mental status closely as she [eats].
+ B  We'll watch her mental status closely as she [walks].
+CH: ["We'll watch", 'her mental status', 'closely', 'as she improves', '.'] | DECOY: on the monitor
+  D: <on the monitor> her mental status closely as she improves .
+  D: We'll watch <on the monitor> closely as she improves .
+  D: We'll watch her mental status <on the monitor> as she improves .
+  D: We'll watch her mental status closely <on the monitor> .
+--- 9.3 [부종 위험|shield] words=['w-correct', 'w-sodium', 'w-quickly', 'w-cause', 'w-brain', 'w-swell', 'w-slow']
+EN: Correcting her sodium too quickly could cause brain swelling, so we go slowly.
+KO: 나트륨을 너무 빨리 교정하면 뇌부종이 생길 수 있어서, 천천히 하고 있어요. (42)
+X1: 나트륨을 너무 빨리 교정하면 폐부종이 생길 수 있어서, 천천히 하고 있어요. (42)
+X2: 나트륨을 너무 빨리 교정하면 탈수가 생길 수 있어서, 천천히 하고 있어요. (41)
+WHY: 'could cause'는 위험을 가능성으로 말해요. 'so we go slowly'가 위험 때문에 속도를 줄인다는 인과를 밝혀요.
+ B* Correcting her sodium too quickly could cause brain [swelling], so we go slowly.
+ B  Correcting her sodium too quickly could cause brain [pain], so we go slowly.
+ B  Correcting her sodium too quickly could cause brain [itching], so we go slowly.
+ B  Correcting her sodium too quickly could cause brain [bruising], so we go slowly.
+CH: ['Correcting her sodium too quickly', 'could cause brain swelling,', 'so we go', 'slowly', '.'] | DECOY: in her room
+  D: <in her room> could cause brain swelling, so we go slowly .
+  D: Correcting her sodium too quickly <in her room> so we go slowly .
+  D: Correcting her sodium too quickly could cause brain swelling, <in her room> slowly .
+  D: Correcting her sodium too quickly could cause brain swelling, so we go <in her room> .
+--- 9.4 [호전 해석|chartup] words=['w-confusion', 'w-start', 'w-clear', 'w-tell', 'w-respond']
+EN: Her confusion is starting to clear, which tells us she's responding well.
+KO: 혼란스러워하시던 게 나아지기 시작했는데, 이건 잘 반응하고 있다는 뜻이에요. (42)
+X1: 혼란스러워하시던 게 나아지기 시작했는데, 이건 약이 잘 맞는다는 뜻이에요. (41)
+X2: 혼란스러워하시던 게 나아지기 시작했는데, 이건 가족을 알아본다는 뜻이에요. (41)
+WHY: 'starting to'는 막 시작했다는 진행의 표현이에요. 'tells us'는 증상이 신호라는 틀이라 해석이 쉬워요.
+ B* Her confusion is starting to clear, which tells us she's [responding] well.
+ B  Her confusion is starting to clear, which tells us she's [complaining] well.
+ B  Her confusion is starting to clear, which tells us she's [resting] well.
+ B  Her confusion is starting to clear, which tells us she's [waiting] well.
+CH: ['Her confusion is starting', 'to clear,', 'which tells us', "she's responding well", '.'] | DECOY: for her visit
+  D: <for her visit> to clear, which tells us she's responding well .
+  D: Her confusion is starting <for her visit> which tells us she's responding well .
+  D: Her confusion is starting to clear, <for her visit> she's responding well .
+  D: Her confusion is starting to clear, which tells us <for her visit> .
+== ORDER ko=HHS 교정 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=상태와 교정 방침을 알리고, 서두르지 않는 이유를 설명한 뒤, 관찰을 약속하고, 호전을 해석해요.
+   - Her sugar and blood are very concentrated, so we're correcting it slowly and safely. (14w) | 혈당과 혈액이 아주 농축돼서 천천히 안전하게 교정해요 | 상태 | lab
+   - Going too fast could affect her brain, so we take our time. (12w) | 너무 빠르면 뇌에 영향을 줄 수 있어서 시간을 둬요 | 이유 | shield
+   - We'll watch her mental status closely the whole time. (9w) | 그동안 의식 상태를 계속 자세히 지켜볼게요 | 관찰 | bulb
+   - Her confusion is starting to clear, which tells us she's responding well. (12w) | 혼란이 나아지고 있어 잘 반응한다는 뜻이에요 | 호전 | chartup
+   SWAP 1<->2: Going too fast could affect her brain, so we take our time. / Her sugar and blood are very concentrated, so we're correcting it slowly and safely. / We'll watch her mental status closely the whole time. / Her confusion is starting to clear, which tells us she's responding well.
+   SWAP 2<->3: Her sugar and blood are very concentrated, so we're correcting it slowly and safely. / We'll watch her mental status closely the whole time. / Going too fast could affect her brain, so we take our time. / Her confusion is starting to clear, which tells us she's responding well.
+   SWAP 3<->4: Her sugar and blood are very concentrated, so we're correcting it slowly and safely. / Going too fast could affect her brain, so we take our time. / Her confusion is starting to clear, which tells us she's responding well. / We'll watch her mental status closely the whole time.
+
+######## S10 저혈당 예방·포도당 병용
+--- 10.0 [병용 이유|pill] words=['w-sugar', 'w-reach', 'w-threshold', 'w-add', 'w-dextrose', 'w-continue', 'w-insulin']
+EN: Once his sugar reaches the threshold, we add dextrose while continuing insulin.
+KO: 혈당이 기준치에 도달하면, 인슐린은 유지하면서 포도당을 추가해요. (36)
+X1: 혈당이 기준치에 도달하면, 인슐린은 유지하면서 원장님이 포도당을 추가해요. (41)
+X2: 혈당이 기준치에 도달하면, 인슐린은 유지하면서 주치의가 포도당을 추가해요. (41)
+WHY: 'Once'가 포도당을 더하는 시점을 기준치 도달로 정해요. 'while continuing'은 인슐린을 멈추지 않는다는 점을 한 문장에 담아요.
+ B* Once his sugar reaches the [threshold], we add dextrose while continuing insulin.
+ B  Once his sugar reaches the [ceiling], we add dextrose while continuing insulin.
+ B  Once his sugar reaches the [doorway], we add dextrose while continuing insulin.
+ B  Once his sugar reaches the [border], we add dextrose while continuing insulin.
+CH: ['Once his sugar reaches', 'the threshold,', 'we add dextrose', 'while continuing insulin', '.'] | DECOY: to the kitchen
+  D: <to the kitchen> the threshold, we add dextrose while continuing insulin .
+  D: Once his sugar reaches <to the kitchen> we add dextrose while continuing insulin .
+  D: Once his sugar reaches the threshold, <to the kitchen> while continuing insulin .
+  D: Once his sugar reaches the threshold, we add dextrose <to the kitchen> .
+--- 10.1 [목적 설명|chartup] words=['w-keep', 'w-clear', 'w-ketone', 'w-drop', 'w-low']
+EN: This lets us keep clearing the ketones without dropping too low.
+KO: 이렇게 하면 혈당이 너무 낮아지지 않으면서 케톤을 계속 없앨 수 있어요. (40)
+X1: 이렇게 하면 혈당이 너무 낮아지지 않으면서 케톤을 빨리 없앨 수 있어요. (40)
+X2: 이렇게 하면 혈당이 너무 낮아지지 않으면서 케톤을 충분히 없앨 수 있어요. (41)
+WHY: 'without dropping'은 부작용을 피한다는 조건을 짧게 담아요. 'keep clearing'은 처치가 이어진다는 진행의 뜻이에요.
+ B* This lets us keep clearing the ketones without [dropping] too low.
+ B  This lets us keep clearing the ketones without [jumping] too low.
+ B  This lets us keep clearing the ketones without [spilling] too low.
+ B  This lets us keep clearing the ketones without [climbing] too low.
+CH: ['This lets us', 'keep clearing', 'the ketones', 'without dropping too low', '.'] | DECOY: at the desk
+  D: <at the desk> keep clearing the ketones without dropping too low .
+  D: This lets us <at the desk> the ketones without dropping too low .
+  D: This lets us keep clearing <at the desk> without dropping too low .
+  D: This lets us keep clearing the ketones <at the desk> .
+--- 10.2 [동시 조절|gear] words=['w-recheck', 'w-glucose', 'w-adjust', 'w-drip', 'w-together']
+EN: I'll recheck the glucose and adjust both drips together.
+KO: 혈당을 다시 확인하고 두 주입 속도를 같이 조절할게요. (30)
+X1: 혈당을 다시 확인하고 두 주입 속도를 전문의가 같이 조절해요. (34)
+X2: 혈당을 다시 확인하고 두 주입 속도를 레지던트가 같이 조절해요. (35)
+WHY: 'both … together'는 두 주입을 한 쌍으로 보고 함께 맞춘다는 뜻이에요. 're-'는 이미 한 확인을 되풀이한다는 접두사예요.
+ B* I'll [recheck] the glucose and adjust both drips together.
+ B  I'll [recount] the glucose and adjust both drips together.
+ B  I'll [rename] the glucose and adjust both drips together.
+ B  I'll [retune] the glucose and adjust both drips together.
+CH: ["I'll recheck the glucose", 'and adjust', 'both drips', 'together', '.'] | DECOY: in the morning
+  D: <in the morning> and adjust both drips together .
+  D: I'll recheck the glucose <in the morning> both drips together .
+  D: I'll recheck the glucose and adjust <in the morning> together .
+  D: I'll recheck the glucose and adjust both drips <in the morning> .
+--- 10.3 [감시 목적|monitor] words=['w-watch', 'w-closely', 'w-sugar', 'w-drop', 'w-low', 'w-fast']
+EN: We watch closely so his sugar doesn't drop too low too fast.
+KO: 혈당이 너무 빨리 너무 낮아지지 않도록 자세히 지켜보고 있어요. (35)
+X1: 혈당이 너무 빨리 너무 낮아지지 않도록 당직의가 자세히 지켜봐요. (36)
+X2: 혈당이 너무 빨리 너무 낮아지지 않도록 담당의가 자세히 지켜봐요. (36)
+WHY: 'so'로 지켜보는 이유(저혈당 예방)를 이었어요. 'too low too fast'는 수치와 속도 두 가지 위험을 함께 짚어요.
+ B* We watch closely so his sugar doesn't drop too [low] too fast.
+ B  We watch closely so his sugar doesn't drop too [wide] too fast.
+ B  We watch closely so his sugar doesn't drop too [tall] too fast.
+ B  We watch closely so his sugar doesn't drop too [thick] too fast.
+CH: ['We watch closely', "so his sugar doesn't drop", 'too low', 'too fast', '.'] | DECOY: in the room
+  D: <in the room> so his sugar doesn't drop too low too fast .
+  D: We watch closely <in the room> too low too fast .
+  D: We watch closely so his sugar doesn't drop <in the room> too fast .
+  D: We watch closely so his sugar doesn't drop too low <in the room> .
+--- 10.4 [지속 강조|siren] words=['w-clear', 'w-ketone', 'w-stop', 'w-insulin']
+EN: We're still clearing the ketones, so don't stop the insulin yet.
+KO: 아직 케톤을 없애는 중이라서, 인슐린을 아직 멈추면 안 돼요. (34)
+X1: 아직 혈당이 높은 편이라서, 인슐린을 아직 멈추면 안 돼요. (33)
+X2: 아직 산도가 낮은 편이라서, 인슐린을 아직 멈추면 안 돼요. (33)
+WHY: 'still'이 아직 치료 중이라는 현재 상태를 말해요. 'yet'은 지금은 멈추지 말라는 뜻을 더해요.
+ B* We're still [clearing] the ketones, so don't stop the insulin yet.
+ B  We're still [counting] the ketones, so don't stop the insulin yet.
+ B  We're still [filing] the ketones, so don't stop the insulin yet.
+ B  We're still [moving] the ketones, so don't stop the insulin yet.
+CH: ["We're still clearing", 'the ketones,', "so don't stop", 'the insulin yet', '.'] | DECOY: for tonight
+  D: <for tonight> the ketones, so don't stop the insulin yet .
+  D: We're still clearing <for tonight> so don't stop the insulin yet .
+  D: We're still clearing the ketones, <for tonight> the insulin yet .
+  D: We're still clearing the ketones, so don't stop <for tonight> .
+== ORDER ko=포도당 병용 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=병용 시점을 말하고, 그 목적을 설명한 뒤, 저혈당을 막는 조절을 알리고, 인슐린을 멈추지 말라고 당부해요.
+   - Once his sugar reaches the threshold, we add dextrose while continuing insulin. (12w) | 기준치에 도달하면 인슐린은 유지하며 포도당을 추가해요 | 병용 | pill
+   - This lets us keep clearing the ketones without dropping too low. (11w) | 이러면 너무 낮아지지 않으며 케톤을 계속 없애요 | 목적 | chartup
+   - To stay ahead of a drop, I'll recheck the glucose and adjust both drips together. (15w) | 떨어지기 전에 대응하려고 혈당을 확인하고 두 주입을 조절해요 | 조절 | gear
+   - Even then, we're still clearing the ketones, so don't stop the insulin yet. (13w) | 그때도 케톤을 없애는 중이라 인슐린을 멈추지 마세요 | 당부 | siren
+   SWAP 1<->2: This lets us keep clearing the ketones without dropping too low. / Once his sugar reaches the threshold, we add dextrose while continuing insulin. / To stay ahead of a drop, I'll recheck the glucose and adjust both drips together. / Even then, we're still clearing the ketones, so don't stop the insulin yet.
+   SWAP 2<->3: Once his sugar reaches the threshold, we add dextrose while continuing insulin. / To stay ahead of a drop, I'll recheck the glucose and adjust both drips together. / This lets us keep clearing the ketones without dropping too low. / Even then, we're still clearing the ketones, so don't stop the insulin yet.
+   SWAP 3<->4: Once his sugar reaches the threshold, we add dextrose while continuing insulin. / This lets us keep clearing the ketones without dropping too low. / Even then, we're still clearing the ketones, so don't stop the insulin yet. / To stay ahead of a drop, I'll recheck the glucose and adjust both drips together.
+
+######## S11 유발원인 동반 치료
+--- 11.0 [원인 탐색|magnify] words=['w-look', 'w-trigger', 'w-infection', 'w-treat', 'w-alongside']
+EN: We're looking for a trigger like an infection and treating it alongside the DKA.
+KO: 감염 같은 유발 원인을 찾고 있고, 케토산증과 함께 그것도 치료하고 있어요. (42)
+X1: 과식 같은 유발 원인을 찾고 있고, 케토산증과 함께 그것도 치료하고 있어요. (42)
+X2: 수면 부족 같은 유발 원인을 찾고 있고, 케토산증과 함께 그것도 치료하고 있어요. (45)
+WHY: 'like an infection'은 유발 원인의 예를 쉬운 말로 들어 줘요. 'alongside'는 원인 치료를 케토산증 치료와 나란히 한다는 뜻이에요.
+ B* We're looking for a [trigger] like an infection and treating it alongside the DKA.
+ B  We're looking for a [symptom] like an infection and treating it alongside the DKA.
+ B  We're looking for a [outcome] like an infection and treating it alongside the DKA.
+ B  We're looking for a [result] like an infection and treating it alongside the DKA.
+CH: ["We're looking for a trigger", 'like an infection', 'and treating it', 'alongside the DKA', '.'] | DECOY: your breakfast
+  D: <your breakfast> like an infection and treating it alongside the DKA .
+  D: We're looking for a trigger <your breakfast> and treating it alongside the DKA .
+  D: We're looking for a trigger like an infection <your breakfast> alongside the DKA .
+  D: We're looking for a trigger like an infection and treating it <your breakfast> .
+--- 11.1 [재발 방지|shield] words=['w-fix', 'w-cause', 'w-help', 'w-prevent']
+EN: Fixing the cause helps prevent this from coming back.
+KO: 원인을 해결하면 이게 다시 생기는 걸 막는 데 도움이 돼요. (33)
+X1: 원인을 해결하면 퇴원을 준비하는 데 도움이 돼요. (27)
+X2: 원인을 해결하면 회복을 앞당기는 데 도움이 돼요. (27)
+WHY: 'helps prevent'는 확실히 막는다가 아니라 도움이 된다는 정확한 표현이에요. 'coming back'은 재발을 쉬운 말로 풀어요.
+ B* Fixing the [cause] helps prevent this from coming back.
+ B  Fixing the [name] helps prevent this from coming back.
+ B  Fixing the [price] helps prevent this from coming back.
+ B  Fixing the [shape] helps prevent this from coming back.
+CH: ['Fixing the cause', 'helps prevent this', 'from coming', 'back', '.'] | DECOY: by the elevator
+  D: <by the elevator> helps prevent this from coming back .
+  D: Fixing the cause <by the elevator> from coming back .
+  D: Fixing the cause helps prevent this <by the elevator> back .
+  D: Fixing the cause helps prevent this from coming <by the elevator> .
+--- 11.2 [배양 안내|lab] words=['w-start', 'w-culture', 'w-adjust', 'w-treatment', 'w-base', 'w-result']
+EN: We've started cultures and will adjust treatment based on the results.
+KO: 배양 검사를 시작했고, 결과에 따라 치료를 조절할 거예요. (32)
+X1: 배양 검사를 시작했고, 결과에 따라 면회를 조절할 거예요. (32)
+X2: 배양 검사를 시작했고, 결과에 따라 병실을 조절할 거예요. (32)
+WHY: 'based on the results'는 결과가 나오면 그에 맞춰 바꾼다는 뜻이라 지금 약이 끝이 아니라는 설명이 돼요. 'cultures'는 균을 키워 보는 검사예요.
+ B* We've [started] cultures and will adjust treatment based on the results.
+ B  We've [ended] cultures and will adjust treatment based on the results.
+ B  We've [closed] cultures and will adjust treatment based on the results.
+ B  We've [lost] cultures and will adjust treatment based on the results.
+CH: ["We've started cultures", 'and will adjust treatment', 'based on', 'the results', '.'] | DECOY: in the supply room
+  D: <in the supply room> and will adjust treatment based on the results .
+  D: We've started cultures <in the supply room> based on the results .
+  D: We've started cultures and will adjust treatment <in the supply room> the results .
+  D: We've started cultures and will adjust treatment based on <in the supply room> .
+--- 11.3 [검사 목적|lab] words=['w-check', 'w-blood', 'w-urine', 'w-find', 'w-infection', 'w-start']
+EN: We're checking his blood and urine to find where the infection started.
+KO: 감염이 어디서 시작됐는지 찾으려고 혈액이랑 소변을 확인하고 있어요. (37)
+X1: 열이 왜 나는지 찾으려고 혈액이랑 소변을 확인하고 있어요. (32)
+X2: 염증이 얼마나 심한지 찾으려고 혈액이랑 소변을 확인하고 있어요. (35)
+WHY: 'to find where'로 검사의 목적을 먼저 밝혀요. 혈액과 소변은 감염 위치를 찾는 기본 검체예요.
+ B* We're checking his blood and urine to find where the [infection] started.
+ B  We're checking his blood and urine to find where the [bleeding] started.
+ B  We're checking his blood and urine to find where the [fracture] started.
+ B  We're checking his blood and urine to find where the [rash] started.
+CH: ["We're checking his blood", 'and urine', 'to find where', 'the infection started', '.'] | DECOY: at the station
+  D: <at the station> and urine to find where the infection started .
+  D: We're checking his blood <at the station> to find where the infection started .
+  D: We're checking his blood and urine <at the station> the infection started .
+  D: We're checking his blood and urine to find where <at the station> .
+--- 11.4 [치료 전망|chartup] words=['w-cause', 'w-treat', 'w-lower', 'w-risk']
+EN: Once we know the cause, we can treat it and lower the risk of this happening again.
+KO: 원인을 알면 치료도 하고 다시 생길 위험도 낮출 수 있어요. (33)
+X1: 원인을 알면 치료도 하고 회복 기간도 줄일 수 있어요. (30)
+X2: 원인을 알면 치료도 하고 입원 기간도 줄일 수 있어요. (30)
+WHY: 'Once'가 원인을 아는 것이 치료의 전제라는 순서를 줘요. 'lower the risk'는 위험이 없어진다가 아니라 줄어든다는 정직한 표현이에요.
+ B* Once we know the cause, we can treat it and lower the [risk] of this happening again.
+ B  Once we know the cause, we can treat it and lower the [cost] of this happening again.
+ B  Once we know the cause, we can treat it and lower the [noise] of this happening again.
+ B  Once we know the cause, we can treat it and lower the [size] of this happening again.
+CH: ['Once we know the cause,', 'we can treat it', 'and lower the risk', 'of this happening again', '.'] | DECOY: by tomorrow
+  D: <by tomorrow> we can treat it and lower the risk of this happening again .
+  D: Once we know the cause, <by tomorrow> and lower the risk of this happening again .
+  D: Once we know the cause, we can treat it <by tomorrow> of this happening again .
+  D: Once we know the cause, we can treat it and lower the risk <by tomorrow> .
+== ORDER ko=유발 원인 치료 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=원인을 찾는다고 알리고, 찾는 방법을 말한 뒤, 원인을 알았을 때의 치료를 설명하고, 재발 방지를 말해요.
+   - We're looking for a trigger like an infection and treating it alongside the DKA. (14w) | 감염 같은 유발 원인을 찾고 케토산증과 함께 치료해요 | 탐색 | magnify
+   - To find it, we're checking his blood and urine and have started cultures. (13w) | 찾으려고 혈액·소변을 확인하고 배양을 시작했어요 | 검사 | lab
+   - Once we know the cause, we can treat it alongside the DKA. (12w) | 원인을 알면 케토산증과 함께 치료할 수 있어요 | 치료 | gear
+   - Fixing it helps prevent this from coming back. (8w) | 그걸 해결하면 다시 생기는 걸 막는 데 도움이 돼요 | 재발 | shield
+   SWAP 1<->2: To find it, we're checking his blood and urine and have started cultures. / We're looking for a trigger like an infection and treating it alongside the DKA. / Once we know the cause, we can treat it alongside the DKA. / Fixing it helps prevent this from coming back.
+   SWAP 2<->3: We're looking for a trigger like an infection and treating it alongside the DKA. / Once we know the cause, we can treat it alongside the DKA. / To find it, we're checking his blood and urine and have started cultures. / Fixing it helps prevent this from coming back.
+   SWAP 3<->4: We're looking for a trigger like an infection and treating it alongside the DKA. / To find it, we're checking his blood and urine and have started cultures. / Fixing it helps prevent this from coming back. / Once we know the cause, we can treat it alongside the DKA.
+
+######## S12 부신위기 스테로이드 투여
+--- 12.0 [이유 설명|pill] words=['w-make', 'w-stress', 'w-hormone', 'w-give']
+EN: His body can't make enough stress hormone, so we're giving it now.
+KO: 몸이 스트레스 호르몬을 충분히 만들지 못해서, 지금 대신 주고 있어요. (39)
+X1: 스트레스 호르몬이 더 필요해져서, 지금 대신 주고 있어요. (32)
+X2: 몸이 스트레스 호르몬을 제대로 쓰지 못해서, 지금 대신 주고 있어요. (38)
+WHY: 'so'로 원인(호르몬 부족)과 처치(투여)를 이어 환자·가족이 이유를 바로 알아요. 'can't make enough'는 아예 없는 게 아니라 부족하다는 정확한 표현이에요.
+ B* His [body] can't make enough stress hormone, so we're giving it now.
+ B  His [liver] can't make enough stress hormone, so we're giving it now.
+ B  His [skin] can't make enough stress hormone, so we're giving it now.
+ B  His [lungs] can't make enough stress hormone, so we're giving it now.
+CH: ["His body can't make", 'enough stress hormone,', "so we're giving it", 'now', '.'] | DECOY: in the pharmacy
+  D: <in the pharmacy> enough stress hormone, so we're giving it now .
+  D: His body can't make <in the pharmacy> so we're giving it now .
+  D: His body can't make enough stress hormone, <in the pharmacy> now .
+  D: His body can't make enough stress hormone, so we're giving it <in the pharmacy> .
+--- 12.1 [효과 설명|chartup] words=['w-steroid', 'w-quickly', 'w-stabilize', 'w-blood', 'w-pressure']
+EN: This steroid can quickly stabilize his blood pressure.
+KO: 이 스테로이드가 혈압을 빠르게 안정시켜 줄 수 있어요. (30)
+X1: 이 스테로이드가 통증을 빠르게 가라앉혀 줄 수 있어요. (30)
+X2: 이 스테로이드가 열을 빠르게 내려 줄 수 있어요. (27)
+WHY: 'can'은 보장이 아니라 가능성이라 과장하지 않아요. 'quickly stabilize'는 급한 혈압 문제라는 점을 짧게 알려요.
+ B* This steroid can quickly [stabilize] his blood pressure.
+ B  This steroid can quickly [interrupt] his blood pressure.
+ B  This steroid can quickly [replace] his blood pressure.
+ B  This steroid can quickly [borrow] his blood pressure.
+CH: ['This steroid', 'can quickly stabilize', 'his blood pressure', '.'] | DECOY: his heart rate
+  D: <his heart rate> can quickly stabilize his blood pressure .
+  D: This steroid <his heart rate> his blood pressure .
+  D: This steroid can quickly stabilize <his heart rate> .
+--- 12.2 [추가 투여|monitor] words=['w-keep', 'w-monitor', 'w-give', 'w-stress', 'w-level', 'w-demand']
+EN: We'll keep monitoring and give more if his stress level demands it.
+KO: 계속 지켜보다가 스트레스 수준이 필요로 하면 더 드릴 거예요. (34)
+X1: 계속 지켜보다가 스트레스 수준이 필요로 하면 책임자가 더 줘요. (35)
+X2: 계속 지켜보다가 스트레스 수준이 필요로 하면 야간조가 더 줘요. (35)
+WHY: 'if'로 추가 투여의 조건을 걸어 필요한 만큼만 준다는 설명이 돼요. 'demands it'은 몸의 필요가 기준이라는 뜻이에요.
+ B* We'll keep monitoring and [give] more if his stress level demands it.
+ B  We'll keep monitoring and [lend] more if his stress level demands it.
+ B  We'll keep monitoring and [sell] more if his stress level demands it.
+ B  We'll keep monitoring and [hide] more if his stress level demands it.
+CH: ["We'll keep monitoring", 'and give more', 'if his stress level', 'demands it', '.'] | DECOY: to the family
+  D: <to the family> and give more if his stress level demands it .
+  D: We'll keep monitoring <to the family> if his stress level demands it .
+  D: We'll keep monitoring and give more <to the family> demands it .
+  D: We'll keep monitoring and give more if his stress level <to the family> .
+--- 12.3 [투여 안내|siren] words=['w-give', 'w-stress', 'w-dose', 'w-steroid', 'w-support']
+EN: We're giving him a stress dose of steroid right away to support his body.
+KO: 몸을 지지하려고 스트레스 용량 스테로이드를 지금 바로 드리고 있어요. (38)
+X1: 혈압을 지지하려고 스트레스 용량 스테로이드를 지금 바로 드리고 있어요. (39)
+X2: 염증을 가라앉히려고 스트레스 용량 스테로이드를 지금 바로 드리고 있어요. (40)
+WHY: 'a stress dose'는 평소보다 많은 위기용 용량을 가리키는 임상어예요. 'right away'가 시점을 즉시로 못 박아요.
+ B* We're giving him a stress dose of steroid right away to [support] his body.
+ B  We're giving him a stress dose of steroid right away to [blame] his body.
+ B  We're giving him a stress dose of steroid right away to [doubt] his body.
+ B  We're giving him a stress dose of steroid right away to [tire] his body.
+CH: ["We're giving him", 'a stress dose', 'of steroid', 'right away to support his body', '.'] | DECOY: on the cart
+  D: <on the cart> a stress dose of steroid right away to support his body .
+  D: We're giving him <on the cart> of steroid right away to support his body .
+  D: We're giving him a stress dose <on the cart> right away to support his body .
+  D: We're giving him a stress dose of steroid <on the cart> .
+--- 12.4 [반응 확인|chartup] words=['w-blood', 'w-pressure', 'w-respond', 'w-medicine']
+EN: His blood pressure is already responding well to the medicine.
+KO: 혈압이 벌써 약에 잘 반응하고 있어요. (21)
+X1: 혈압이 벌써 수액에 잘 반응하고 있어요. (22)
+X2: 혈압이 벌써 산소에 잘 반응하고 있어요. (22)
+WHY: 'already'는 예상보다 빠르다는 뜻의 부사예요. 'responding well'은 효과가 보인다는 쉬운 표현이에요.
+ B* His blood pressure is already [responding] well to the medicine.
+ B  His blood pressure is already [belonging] well to the medicine.
+ B  His blood pressure is already [listening] well to the medicine.
+ B  His blood pressure is already [relating] well to the medicine.
+CH: ['His blood pressure', 'is already', 'responding well', 'to the medicine', '.'] | DECOY: to the visitors
+  D: <to the visitors> is already responding well to the medicine .
+  D: His blood pressure <to the visitors> responding well to the medicine .
+  D: His blood pressure is already <to the visitors> to the medicine .
+  D: His blood pressure is already responding well <to the visitors> .
+== ORDER ko=부신위기 스테로이드 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=왜 주는지 설명하고, 약의 효과를 알린 뒤, 추가 투여의 기준을 말하고, 반응이 보이면 알려요.
+   - His body can't make enough stress hormone, so we're giving it now. (12w) | 스트레스 호르몬이 부족해서 지금 대신 주고 있어요 | 이유 | pill
+   - That's why this steroid can quickly stabilize his blood pressure. (10w) | 그래서 이 스테로이드가 혈압을 빠르게 안정시켜 줄 수 있어요 | 효과 | chartup
+   - We'll keep monitoring and give more if his stress level demands it. (12w) | 계속 지켜보다가 필요하면 더 드릴 거예요 | 추가 | monitor
+   - So far, his blood pressure is already responding well to the medicine. (12w) | 지금까지 혈압이 약에 벌써 잘 반응하고 있어요 | 반응 | chartup
+   SWAP 1<->2: That's why this steroid can quickly stabilize his blood pressure. / His body can't make enough stress hormone, so we're giving it now. / We'll keep monitoring and give more if his stress level demands it. / So far, his blood pressure is already responding well to the medicine.
+   SWAP 2<->3: His body can't make enough stress hormone, so we're giving it now. / We'll keep monitoring and give more if his stress level demands it. / That's why this steroid can quickly stabilize his blood pressure. / So far, his blood pressure is already responding well to the medicine.
+   SWAP 3<->4: His body can't make enough stress hormone, so we're giving it now. / That's why this steroid can quickly stabilize his blood pressure. / So far, his blood pressure is already responding well to the medicine. / We'll keep monitoring and give more if his stress level demands it.
+
+######## S13 갑상선기능저하 점액수종 관리
+--- 13.0 [상태 설명|lab] words=['w-thyroid', 'w-low', 'w-slow', 'w-heart', 'w-drop', 'w-temperature']
+EN: Her thyroid is very low, which slows her heart and drops her temperature.
+KO: 갑상선 기능이 아주 낮아서, 심장이 느려지고 체온이 떨어지고 있어요. (38)
+X1: 갑상선 기능이 아주 낮아서, 눈이 건조해지고 체온이 떨어지고 있어요. (38)
+X2: 갑상선 기능이 아주 낮아서, 심장이 느려지고 시력이 떨어지고 있어요. (38)
+WHY: 'which'가 앞 문장 전체를 받아 결과를 이어 붙여 원인과 증상을 한 문장에 설명해요. 'drops'는 체온이 내려간다는 쉬운 동사예요.
+ B* Her thyroid is very low, which [slows] her heart and drops her temperature.
+ B  Her thyroid is very low, which [speeds] her heart and drops her temperature.
+ B  Her thyroid is very low, which [raises] her heart and drops her temperature.
+ B  Her thyroid is very low, which [warms] her heart and drops her temperature.
+CH: ['Her thyroid is very low,', 'which slows her heart', 'and drops', 'her temperature', '.'] | DECOY: near the exit
+  D: <near the exit> which slows her heart and drops her temperature .
+  D: Her thyroid is very low, <near the exit> and drops her temperature .
+  D: Her thyroid is very low, which slows her heart <near the exit> her temperature .
+  D: Her thyroid is very low, which slows her heart and drops <near the exit> .
+--- 13.1 [치료 안내|gear] words=['w-warm', 'w-gently', 'w-give', 'w-thyroid', 'w-hormone']
+EN: We're warming her gently and giving thyroid hormone.
+KO: 천천히 따뜻하게 해드리면서 갑상선 호르몬을 드리고 있어요. (32)
+X1: 천천히 따뜻하게 해드리면서 주간조가 갑상선 호르몬을 줘요. (32)
+X2: 천천히 따뜻하게 해드리면서 교대자가 갑상선 호르몬을 줘요. (32)
+WHY: 'gently'는 체온을 서서히 올린다는 방식을 알려요. 'and'로 두 처치를 함께 말해 전체 계획이 한눈에 보여요.
+ B* We're warming her [gently] and giving thyroid hormone.
+ B  We're warming her [loudly] and giving thyroid hormone.
+ B  We're warming her [brightly] and giving thyroid hormone.
+ B  We're warming her [rudely] and giving thyroid hormone.
+CH: ["We're warming her gently", 'and giving', 'thyroid hormone', '.'] | DECOY: at the window
+  D: <at the window> and giving thyroid hormone .
+  D: We're warming her gently <at the window> thyroid hormone .
+  D: We're warming her gently and giving <at the window> .
+--- 13.2 [감시 약속|monitor] words=['w-monitor', 'w-heart', 'w-rate', 'w-temperature', 'w-closely']
+EN: We'll monitor her heart rate and temperature very closely.
+KO: 심박수랑 체온을 아주 자세히 지켜볼게요. (22)
+X1: 심박수랑 체온을 아주 자세히 전담자가 지켜봐요. (26)
+X2: 심박수랑 체온을 아주 자세히 팀장이 지켜봐요. (25)
+WHY: 'very closely'는 평소보다 자주 본다는 강조예요. 심박수와 체온은 이 상태에서 가장 먼저 변하는 두 지표예요.
+ B* We'll [monitor] her heart rate and temperature very closely.
+ B  We'll [photograph] her heart rate and temperature very closely.
+ B  We'll [announce] her heart rate and temperature very closely.
+ B  We'll [translate] her heart rate and temperature very closely.
+CH: ["We'll monitor", 'her heart rate', 'and temperature', 'very closely', '.'] | DECOY: at night
+  D: <at night> her heart rate and temperature very closely .
+  D: We'll monitor <at night> and temperature very closely .
+  D: We'll monitor her heart rate <at night> very closely .
+  D: We'll monitor her heart rate and temperature <at night> .
+--- 13.3 [서맥 설명|monitor] words=['w-heart', 'w-rate', 'w-slow', 'w-watch', 'w-closely', 'w-monitor']
+EN: Her heart rate is very slow, so we're watching her closely on the monitor.
+KO: 심박수가 아주 느려서, 모니터로 자세히 지켜보고 있어요. (31)
+X1: 심박수가 아주 느려서, 곁에서 자세히 지켜보고 있어요. (30)
+X2: 심박수가 아주 느려서, 과장이 자세히 지켜보고 있어요. (30)
+WHY: 'so'로 이유(느린 맥)와 행동(지켜보기)을 이어요. 'on the monitor'는 화면으로 계속 본다는 뜻이에요.
+ B* Her heart rate is very slow, so we're watching her closely on the [monitor].
+ B  Her heart rate is very slow, so we're watching her closely on the [window].
+ B  Her heart rate is very slow, so we're watching her closely on the [speaker].
+ B  Her heart rate is very slow, so we're watching her closely on the [clock].
+CH: ['Her heart rate', 'is very slow,', "so we're watching her closely", 'on the monitor', '.'] | DECOY: from the bed
+  D: <from the bed> is very slow, so we're watching her closely on the monitor .
+  D: Her heart rate <from the bed> so we're watching her closely on the monitor .
+  D: Her heart rate is very slow, <from the bed> on the monitor .
+  D: Her heart rate is very slow, so we're watching her closely <from the bed> .
+--- 13.4 [회복 전망|chartup] words=['w-hormone', 'w-take', 'w-effect', 'w-energy', 'w-temperature', 'w-slow', 'w-improve']
+EN: As the hormone takes effect, her energy and temperature should slowly improve.
+KO: 호르몬이 효과를 내면서 기운이랑 체온이 서서히 좋아질 거예요. (34)
+X1: 호르몬이 효과를 내면서 식욕이랑 체온이 서서히 좋아질 거예요. (34)
+X2: 호르몬이 효과를 내면서 기운이랑 목소리가 서서히 좋아질 거예요. (35)
+WHY: 'should'는 보장이 아니라 기대라는 정직한 표현이에요. 'slowly'가 급격한 호전을 기대하지 않게 해요.
+ B* As the hormone takes effect, her [energy] and temperature should slowly improve.
+ B  As the hormone takes effect, her [hunger] and temperature should slowly improve.
+ B  As the hormone takes effect, her [humor] and temperature should slowly improve.
+ B  As the hormone takes effect, her [hair] and temperature should slowly improve.
+CH: ['As the hormone takes effect,', 'her energy', 'and temperature should slowly', 'improve', '.'] | DECOY: in a week
+  D: <in a week> her energy and temperature should slowly improve .
+  D: As the hormone takes effect, <in a week> and temperature should slowly improve .
+  D: As the hormone takes effect, her energy <in a week> improve .
+  D: As the hormone takes effect, her energy and temperature should slowly <in a week> .
+== ORDER ko=점액수종 관리 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=상태를 설명하고, 치료를 알린 뒤, 호르몬이 듣기 시작할 때의 변화를 말하고, 그 변화를 확인하는 감시를 약속해요.
+   - Her thyroid is very low, which slows her heart and drops her temperature. (13w) | 갑상선이 아주 낮아서 심장이 느려지고 체온이 떨어져요 | 상태 | lab
+   - For that, we're warming her gently and giving thyroid hormone. (10w) | 그래서 천천히 따뜻하게 하고 호르몬을 드려요 | 치료 | gear
+   - As the hormone takes effect, her energy and temperature should slowly improve. (12w) | 호르몬이 효과를 내면 기운과 체온이 서서히 좋아져요 | 전망 | chartup
+   - To confirm that, we'll monitor her heart rate and temperature very closely. (12w) | 그걸 확인하려고 심박수와 체온을 아주 자세히 지켜볼게요 | 감시 | monitor
+   SWAP 1<->2: For that, we're warming her gently and giving thyroid hormone. / Her thyroid is very low, which slows her heart and drops her temperature. / As the hormone takes effect, her energy and temperature should slowly improve. / To confirm that, we'll monitor her heart rate and temperature very closely.
+   SWAP 2<->3: Her thyroid is very low, which slows her heart and drops her temperature. / As the hormone takes effect, her energy and temperature should slowly improve. / For that, we're warming her gently and giving thyroid hormone. / To confirm that, we'll monitor her heart rate and temperature very closely.
+   SWAP 3<->4: Her thyroid is very low, which slows her heart and drops her temperature. / For that, we're warming her gently and giving thyroid hormone. / To confirm that, we'll monitor her heart rate and temperature very closely. / As the hormone takes effect, her energy and temperature should slowly improve.
+
+######## S14 교정속도 뇌부종 위험 인지
+--- 14.0 [위험 설명|shield] words=['w-correct', 'w-quickly', 'w-cause', 'w-dangerous', 'w-brain', 'w-swell']
+EN: Correcting too quickly can cause dangerous brain swelling.
+KO: 너무 빠르게 교정하면 위험한 뇌부종이 생길 수 있어요. (30)
+X1: 너무 빠르게 교정하면 위험한 저혈당이 생길 수 있어요. (30)
+X2: 너무 빠르게 교정하면 위험한 감염이 생길 수 있어요. (29)
+WHY: 'can cause'는 항상이 아니라 일어날 수 있다는 정확한 표현이에요. 'dangerous'가 가볍게 넘기지 말라는 강조예요.
+ B* Correcting too quickly can cause [dangerous] brain swelling.
+ B  Correcting too quickly can cause [famous] brain swelling.
+ B  Correcting too quickly can cause [painful] brain swelling.
+ B  Correcting too quickly can cause [fancy] brain swelling.
+CH: ['Correcting too quickly', 'can cause dangerous', 'brain swelling', '.'] | DECOY: in the waiting area
+  D: <in the waiting area> can cause dangerous brain swelling .
+  D: Correcting too quickly <in the waiting area> brain swelling .
+  D: Correcting too quickly can cause dangerous <in the waiting area> .
+--- 14.1 [속도 근거|shield] words=['w-slow', 'w-steady', 'w-pace', 'w-safe', 'w-way', 'w-help']
+EN: A slow, steady pace is actually the safest way to help him.
+KO: 천천히 꾸준한 속도가 사실 가장 안전하게 도와드리는 방법이에요. (35)
+X1: 천천히 꾸준한 속도가 사실 가장 편안하게 도와드리는 방법이에요. (35)
+X2: 천천히 꾸준한 속도가 사실 가장 조용하게 도와드리는 방법이에요. (35)
+WHY: 'actually'는 느린 게 오히려 낫다는 반전을 줘 환자 가족의 조바심을 풀어요. 'safest'는 최상급으로 안전함을 강조해요.
+ B* A slow, steady pace is actually the [safest] way to help him.
+ B  A slow, steady pace is actually the [cheapest] way to help him.
+ B  A slow, steady pace is actually the [quietest] way to help him.
+ B  A slow, steady pace is actually the [loudest] way to help him.
+CH: ['A slow, steady pace', 'is actually', 'the safest way', 'to help him', '.'] | DECOY: under the blanket
+  D: <under the blanket> is actually the safest way to help him .
+  D: A slow, steady pace <under the blanket> the safest way to help him .
+  D: A slow, steady pace is actually <under the blanket> to help him .
+  D: A slow, steady pace is actually the safest way <under the blanket> .
+--- 14.2 [감시 안내|monitor] words=['w-watch', 'w-neuro', 'w-status', 'w-correct', 'w-carefully']
+EN: We're watching his neuro status while we correct carefully.
+KO: 조심스럽게 교정하면서 신경학적 상태를 지켜보고 있어요. (30)
+X1: 조심스럽게 교정하면서 신경학적 상태를 교수가 지켜봐요. (30)
+X2: 조심스럽게 교정하면서 신경학적 상태를 인턴이 지켜봐요. (30)
+WHY: 'while'은 교정과 감시를 동시에 한다는 뜻이에요. 'carefully'가 교정 방식을 알려요.
+ B* We're watching his neuro status while we [correct] carefully.
+ B  We're watching his neuro status while we [complain] carefully.
+ B  We're watching his neuro status while we [borrow] carefully.
+ B  We're watching his neuro status while we [paint] carefully.
+CH: ["We're watching", 'his neuro status', 'while we correct', 'carefully', '.'] | DECOY: on the shelf
+  D: <on the shelf> his neuro status while we correct carefully .
+  D: We're watching <on the shelf> while we correct carefully .
+  D: We're watching his neuro status <on the shelf> carefully .
+  D: We're watching his neuro status while we correct <on the shelf> .
+--- 14.3 [위험 증가|chartup] words=['w-correct', 'w-fast', 'w-swell', 'w-risk']
+EN: If we correct him too fast, the swelling risk goes up.
+KO: 너무 빠르게 교정하면 부종 위험이 올라가요. (24)
+X1: 너무 빠르게 교정하면 탈수 위험이 올라가요. (24)
+X2: 너무 빠르게 교정하면 감염 위험이 올라가요. (24)
+WHY: 'If'가 조건을 앞에 세우고 'goes up'이 결과를 쉬운 말로 말해요. 'too fast'는 속도가 원인이라는 점을 짚어요.
+ B* If we correct him too fast, the swelling [risk] goes up.
+ B  If we correct him too fast, the swelling [price] goes up.
+ B  If we correct him too fast, the swelling [speed] goes up.
+ B  If we correct him too fast, the swelling [pile] goes up.
+CH: ['If we correct him', 'too fast,', 'the swelling risk', 'goes up', '.'] | DECOY: in the kitchen
+  D: <in the kitchen> too fast, the swelling risk goes up .
+  D: If we correct him <in the kitchen> the swelling risk goes up .
+  D: If we correct him too fast, <in the kitchen> goes up .
+  D: If we correct him too fast, the swelling risk <in the kitchen> .
+--- 14.4 [공감 설명|faceWorried] words=['w-feel', 'w-slow', 'w-pace', 'w-protect', 'w-brain']
+EN: I know it feels slow, but this pace protects his brain.
+KO: 느리게 느껴지실 수 있지만, 이 속도가 뇌를 지켜드리는 거예요. (35)
+X1: 느리게 느껴지실 수 있지만, 이 속도가 심장을 지켜드리는 거예요. (36)
+X2: 느리게 느껴지실 수 있지만, 이 속도가 폐를 지켜드리는 거예요. (35)
+WHY: 'I know'로 공감부터 하고 'but'으로 이유를 붙여요. 'protects'는 느린 속도가 보호라는 긍정적 표현이에요.
+ B* I know it feels [slow], but this pace protects his brain.
+ B  I know it feels [cold], but this pace protects his brain.
+ B  I know it feels [heavy], but this pace protects his brain.
+ B  I know it feels [sweet], but this pace protects his brain.
+CH: ['I know', 'it feels slow,', 'but this pace', 'protects his brain', '.'] | DECOY: for your trip
+  D: <for your trip> it feels slow, but this pace protects his brain .
+  D: I know <for your trip> but this pace protects his brain .
+  D: I know it feels slow, <for your trip> protects his brain .
+  D: I know it feels slow, but this pace <for your trip> .
+== ORDER ko=교정 속도 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=위험을 먼저 말하고, 그래서 느린 속도가 안전하다고 설명한 뒤, 그동안의 감시를 알리고, 느리다는 느낌에 공감해요.
+   - Correcting too quickly can cause dangerous brain swelling. (8w) | 너무 빠르게 교정하면 위험한 뇌부종이 생길 수 있어요 | 위험 | shield
+   - That's why a slow, steady pace is actually the safest way to help him. (14w) | 그래서 느리고 꾸준한 속도가 가장 안전해요 | 근거 | shield
+   - At that pace, we're watching his neuro status while we correct carefully. (12w) | 그 속도로 조심스럽게 교정하며 신경 상태를 봐요 | 감시 | monitor
+   - I know it feels slow, but with all this watching, this pace protects his brain. (15w) | 느리게 느껴져도 이렇게 지켜보면서 이 속도가 뇌를 지켜요 | 공감 | faceWorried
+   SWAP 1<->2: That's why a slow, steady pace is actually the safest way to help him. / Correcting too quickly can cause dangerous brain swelling. / At that pace, we're watching his neuro status while we correct carefully. / I know it feels slow, but with all this watching, this pace protects his brain.
+   SWAP 2<->3: Correcting too quickly can cause dangerous brain swelling. / At that pace, we're watching his neuro status while we correct carefully. / That's why a slow, steady pace is actually the safest way to help him. / I know it feels slow, but with all this watching, this pace protects his brain.
+   SWAP 3<->4: Correcting too quickly can cause dangerous brain swelling. / That's why a slow, steady pace is actually the safest way to help him. / I know it feels slow, but with all this watching, this pace protects his brain. / At that pace, we're watching his neuro status while we correct carefully.
+
+######## S15 DKA 뇌부종 급변 위기
+--- 15.0 [위기 선언|siren] words=['w-sudden', 'w-change', 'w-serious', 'w-call', 'w-team']
+EN: This sudden change is serious and I'm calling the team right now.
+KO: 이렇게 갑작스러운 변화는 심각해서, 지금 바로 팀을 부르고 있어요. (37)
+X1: 이렇게 갑작스러운 변화는 심각해서, 사수가 지금 바로 팀을 부르고 있어요. (41)
+X2: 이렇게 갑작스러운 변화는 심각해서, 선임이 지금 바로 팀을 부르고 있어요. (41)
+WHY: 'serious'가 가볍게 넘길 수 없는 상황이라는 걸 바로 알려요. 'right now'는 지금 즉시 부른다는 뜻이에요.
+ B* This [sudden] change is serious and I'm calling the team right now.
+ B  This [gradual] change is serious and I'm calling the team right now.
+ B  This [expected] change is serious and I'm calling the team right now.
+ B  This [familiar] change is serious and I'm calling the team right now.
+CH: ['This sudden change', 'is serious', "and I'm calling the team", 'right now', '.'] | DECOY: at the front door
+  D: <at the front door> is serious and I'm calling the team right now .
+  D: This sudden change <at the front door> and I'm calling the team right now .
+  D: This sudden change is serious <at the front door> right now .
+  D: This sudden change is serious and I'm calling the team <at the front door> .
+--- 15.1 [즉각 처치|gear] words=['w-raise', 'w-recheck', 'w-neuro', 'w-status']
+EN: I'm raising the head of the bed and rechecking his neuro status.
+KO: 침대 머리를 올리고 신경학적 상태를 다시 확인하고 있어요. (32)
+X1: 침대 머리를 올리고 신경학적 상태를 수간호사가 다시 확인하고 있어요. (38)
+X2: 침대 머리를 올리고 신경학적 상태를 동료가 다시 확인하고 있어요. (36)
+WHY: 'raising the head'는 머리를 높여 뇌압을 낮추는 처치를 쉬운 말로 말해요. 'rechecking'은 앞서 본 것을 다시 본다는 뜻이에요.
+ B* I'm raising the head of the bed and [rechecking] his neuro status.
+ B  I'm raising the head of the bed and [rewriting] his neuro status.
+ B  I'm raising the head of the bed and [repainting] his neuro status.
+ B  I'm raising the head of the bed and [renaming] his neuro status.
+CH: ["I'm raising the head", 'of the bed', 'and rechecking', 'his neuro status', '.'] | DECOY: of the table
+  D: <of the table> of the bed and rechecking his neuro status .
+  D: I'm raising the head <of the table> and rechecking his neuro status .
+  D: I'm raising the head of the bed <of the table> his neuro status .
+  D: I'm raising the head of the bed and rechecking <of the table> .
+--- 15.2 [목적 선언|shield] words=['w-act', 'w-immediately', 'w-protect', 'w-brain']
+EN: We're acting immediately to protect his brain.
+KO: 뇌를 지키려고 바로 조치하고 있어요. (20)
+X1: 생명을 지키려고 바로 조치하고 있어요. (21)
+X2: 회복을 돕고자 바로 조치하고 있어요. (20)
+WHY: 'acting immediately'는 기다리지 않고 바로 움직인다는 뜻이에요. 'to protect'가 행동의 목적을 밝혀요.
+ B* We're acting immediately to [protect] his brain.
+ B  We're acting immediately to [admire] his brain.
+ B  We're acting immediately to [count] his brain.
+ B  We're acting immediately to [trace] his brain.
+CH: ["We're acting immediately", 'to protect', 'his brain', '.'] | DECOY: by the sink
+  D: <by the sink> to protect his brain .
+  D: We're acting immediately <by the sink> his brain .
+  D: We're acting immediately to protect <by the sink> .
+--- 15.3 [급변 보고|siren] words=['w-respond', 'w-escalate']
+EN: He was talking a minute ago and now he's barely responding, so I'm escalating this now.
+KO: 방금 전까지 말씀하셨는데 지금은 거의 반응이 없으셔서, 바로 상급 보고를 하고 있어요. (48)
+X1: 방금 전까지 웃으셨는데 지금은 거의 반응이 없으셔서, 바로 상급 보고를 하고 있어요. (47)
+X2: 방금 전까지 눈을 뜨셨는데 지금은 거의 반응이 없으셔서, 바로 상급 보고를 하고 있어요. (49)
+WHY: 'a minute ago'와 'now'의 대비로 변화가 얼마나 빨랐는지 한 문장에 보여줘요. 'barely'는 거의 없다는 정도 부사예요.
+ B* He was talking a minute ago and now he's [barely] responding, so I'm escalating this now.
+ B  He was talking a minute ago and now he's [fully] responding, so I'm escalating this now.
+ B  He was talking a minute ago and now he's [easily] responding, so I'm escalating this now.
+ B  He was talking a minute ago and now he's [clearly] responding, so I'm escalating this now.
+CH: ['He was talking a minute ago', "and now he's barely responding,", "so I'm escalating", 'this now', '.'] | DECOY: this morning
+  D: <this morning> and now he's barely responding, so I'm escalating this now .
+  D: He was talking a minute ago <this morning> so I'm escalating this now .
+  D: He was talking a minute ago and now he's barely responding, <this morning> this now .
+  D: He was talking a minute ago and now he's barely responding, so I'm escalating <this morning> .
+--- 15.4 [곁 안심|me] words=['w-way', 'w-stay', 'w-side']
+EN: The doctor is on the way, and I'm staying right at his side.
+KO: 의사 선생님이 오고 계시고, 저는 바로 옆에 있을게요. (30)
+X1: 가족이 오고 계시고, 저는 바로 옆에 있을게요. (26)
+X2: 약사 선생님이 오고 계시고, 저는 바로 옆에 있을게요. (30)
+WHY: 'on the way'는 도움이 오고 있다는 확실한 안심이에요. 'right at his side'는 혼자가 아니라는 신체적 안심이에요.
+ B* The [doctor] is on the way, and I'm staying right at his side.
+ B  The [pharmacist] is on the way, and I'm staying right at his side.
+ B  The [chaplain] is on the way, and I'm staying right at his side.
+ B  The [dietitian] is on the way, and I'm staying right at his side.
+CH: ['The doctor is on the way,', "and I'm staying", 'right at', 'his side', '.'] | DECOY: at the door
+  D: <at the door> and I'm staying right at his side .
+  D: The doctor is on the way, <at the door> right at his side .
+  D: The doctor is on the way, and I'm staying <at the door> his side .
+  D: The doctor is on the way, and I'm staying right at <at the door> .
+== ORDER ko=DKA 뇌부종 급변 대응 4문장 순서 | tag=대화 흐름 icon=compass
+   why=변화를 알리고, 심각함을 선언하며 팀을 부르고, 뇌를 보호하는 처치를 하고, 곁에 있겠다고 안심시켜요.
+   - He was talking a minute ago and now he's barely responding, so I'm escalating this now. (16w) | 방금 말씀하셨는데 지금은 거의 반응이 없어서 상급 보고를 해요 | 변화 | siren
+   - This sudden change is serious and I'm calling the team right now. (12w) | 이 갑작스러운 변화는 심각해서 지금 바로 팀을 불러요 | 호출 | siren
+   - To protect his brain, I'm raising the head of the bed and rechecking his neuro status. (16w) | 뇌를 지키려고 침대 머리를 올리고 신경 상태를 다시 확인해요 | 처치 | gear
+   - The doctor is on the way, and I'm staying right at his side. (13w) | 의사 선생님이 오고 계시고 저는 바로 옆에 있어요 | 안심 | me
+   SWAP 1<->2: This sudden change is serious and I'm calling the team right now. / He was talking a minute ago and now he's barely responding, so I'm escalating this now. / To protect his brain, I'm raising the head of the bed and rechecking his neuro status. / The doctor is on the way, and I'm staying right at his side.
+   SWAP 2<->3: He was talking a minute ago and now he's barely responding, so I'm escalating this now. / To protect his brain, I'm raising the head of the bed and rechecking his neuro status. / This sudden change is serious and I'm calling the team right now. / The doctor is on the way, and I'm staying right at his side.
+   SWAP 3<->4: He was talking a minute ago and now he's barely responding, so I'm escalating this now. / This sudden change is serious and I'm calling the team right now. / The doctor is on the way, and I'm staying right at his side. / To protect his brain, I'm raising the head of the bed and rechecking his neuro status.
+
+######## S16 갑상선폭풍 위기
+--- 16.0 [상태 설명|lab] words=['w-thyroid', 'w-dangerous', 'w-overactive', 'w-cause', 'w-fever', 'w-race', 'w-heart']
+EN: Her thyroid is dangerously overactive, causing this fever and racing heart.
+KO: 갑상선이 위험할 만큼 너무 활발해져서 열이 나고 심장이 빠르게 뛰고 있어요. (42)
+X1: 갑상선이 위험할 만큼 너무 활발해져서 몸이 떨리고 심장이 빠르게 뛰고 있어요. (43)
+X2: 갑상선이 위험할 만큼 너무 활발해져서 열이 나고 숨이 차고 있어요. (37)
+WHY: 'causing'은 원인과 증상을 한 문장에 이어 환자가 상황을 이해하게 해요. 'dangerously'가 위험하다는 강조예요.
+ B* Her thyroid is dangerously [overactive], causing this fever and racing heart.
+ B  Her thyroid is dangerously [underactive], causing this fever and racing heart.
+ B  Her thyroid is dangerously [sleepy], causing this fever and racing heart.
+ B  Her thyroid is dangerously [lazy], causing this fever and racing heart.
+CH: ['Her thyroid is dangerously overactive,', 'causing this fever', 'and racing', 'heart', '.'] | DECOY: on the tray
+  D: <on the tray> causing this fever and racing heart .
+  D: Her thyroid is dangerously overactive, <on the tray> and racing heart .
+  D: Her thyroid is dangerously overactive, causing this fever <on the tray> heart .
+  D: Her thyroid is dangerously overactive, causing this fever and racing <on the tray> .
+--- 16.1 [치료 설명|pill] words=['w-give', 'w-several', 'w-medicine', 'w-together', 'w-bring', 'w-control']
+EN: We're giving several medicines together to bring it under control.
+KO: 조절하려고 여러 약을 같이 드리고 있어요. (23)
+X1: 조절하려고 여러 약을 선배가 같이 드려요. (23)
+X2: 조절하려고 여러 약을 후배가 같이 드려요. (23)
+WHY: 'together'는 약 여러 개를 동시에 쓴다는 뜻이에요. 'under control'은 통제된다는 관용구예요.
+ B* We're giving several medicines together to bring it under [control].
+ B  We're giving several medicines together to bring it under [pressure].
+ B  We're giving several medicines together to bring it under [review].
+ B  We're giving several medicines together to bring it under [notice].
+CH: ["We're giving several medicines", 'together', 'to bring it', 'under control', '.'] | DECOY: at the pharmacy
+  D: <at the pharmacy> together to bring it under control .
+  D: We're giving several medicines <at the pharmacy> to bring it under control .
+  D: We're giving several medicines together <at the pharmacy> under control .
+  D: We're giving several medicines together to bring it <at the pharmacy> .
+--- 16.2 [냉각·감시|monitor] words=['w-cool', 'w-watch', 'w-heart', 'w-continuously']
+EN: We're cooling her and watching her heart continuously.
+KO: 체온을 낮춰드리면서 심장을 계속 지켜보고 있어요. (27)
+X1: 체온을 낮춰드리면서 심장을 의사가 계속 지켜봐요. (27)
+X2: 체온을 낮춰드리면서 심장을 주치의가 계속 지켜봐요. (28)
+WHY: 'continuously'는 끊김 없이 본다는 뜻이에요. 냉각과 심장 감시를 한 문장에 묶어 두 가지를 동시에 한다는 점이 전해져요.
+ B* We're cooling her and [watching] her heart continuously.
+ B  We're cooling her and [carrying] her heart continuously.
+ B  We're cooling her and [tasting] her heart continuously.
+ B  We're cooling her and [trimming] her heart continuously.
+CH: ["We're cooling her", 'and watching her heart', 'continuously', '.'] | DECOY: in the bath
+  D: <in the bath> and watching her heart continuously .
+  D: We're cooling her <in the bath> continuously .
+  D: We're cooling her and watching her heart <in the bath> .
+--- 16.3 [위기 선언|siren] words=['w-heart', 'w-rate', 'w-race', 'w-fever', 'w-climb', 'w-crisis']
+EN: Her heart rate is racing and her fever keeps climbing, so this is a crisis.
+KO: 심박수가 빠르게 뛰고 열도 계속 오르고 있어서, 이건 위기 상황이에요. (39)
+X1: 심박수가 빠르게 뛰고 땀도 계속 나고 있어서, 이건 위기 상황이에요. (38)
+X2: 심박수가 빠르게 뛰고 숨도 계속 차고 있어서, 이건 위기 상황이에요. (38)
+WHY: 'so this is a crisis'로 수치들이 쌓여 위기라는 결론으로 이어져요. 'keeps climbing'은 계속 오른다는 진행형이에요.
+ B* Her heart rate is racing and her fever keeps climbing, so this is a [crisis].
+ B  Her heart rate is racing and her fever keeps climbing, so this is a [habit].
+ B  Her heart rate is racing and her fever keeps climbing, so this is a [holiday].
+ B  Her heart rate is racing and her fever keeps climbing, so this is a [hobby].
+CH: ['Her heart rate is racing', 'and her fever keeps climbing,', 'so this is', 'a crisis', '.'] | DECOY: in the closet
+  D: <in the closet> and her fever keeps climbing, so this is a crisis .
+  D: Her heart rate is racing <in the closet> so this is a crisis .
+  D: Her heart rate is racing and her fever keeps climbing, <in the closet> a crisis .
+  D: Her heart rate is racing and her fever keeps climbing, so this is <in the closet> .
+--- 16.4 [투약 시작|pill] words=['w-start', 'w-medicine']
+EN: We're starting the antithyroid medicine and beta-blocker right away.
+KO: 항갑상선제랑 베타차단제를 바로 시작할게요. (23)
+X1: 전문의가 항갑상선제랑 베타차단제를 바로 시작해요. (27)
+X2: 레지던트가 항갑상선제랑 베타차단제를 바로 시작해요. (28)
+WHY: 'antithyroid'는 갑상선 호르몬 생성을 막는 약을 뜻해요. 'right away'가 시점을 즉시로 정해요.
+ B* We're [starting] the antithyroid medicine and beta-blocker right away.
+ B  We're [storing] the antithyroid medicine and beta-blocker right away.
+ B  We're [labeling] the antithyroid medicine and beta-blocker right away.
+ B  We're [counting] the antithyroid medicine and beta-blocker right away.
+CH: ["We're starting", 'the antithyroid medicine', 'and beta-blocker', 'right away', '.'] | DECOY: for her husband
+  D: <for her husband> the antithyroid medicine and beta-blocker right away .
+  D: We're starting <for her husband> and beta-blocker right away .
+  D: We're starting the antithyroid medicine <for her husband> right away .
+  D: We're starting the antithyroid medicine and beta-blocker <for her husband> .
+== ORDER ko=갑상선폭풍 대응 4문장 순서 | tag=대화 흐름 icon=compass
+   why=위기임을 알리고, 원인을 설명한 뒤, 약으로 조절하고, 냉각과 감시를 함께 알려요.
+   - Her heart rate is racing and her fever keeps climbing, so this is a crisis. (15w) | 심박수와 열이 계속 올라 위기예요 | 위기 | siren
+   - Her thyroid is dangerously overactive, causing this. (7w) | 갑상선이 위험하게 활발해서 이렇게 돼요 | 원인 | lab
+   - To control it, we're giving several medicines together. (8w) | 조절하려고 여러 약을 같이 드려요 | 투약 | pill
+   - Along with them, we're cooling her and watching her heart continuously. (11w) | 그와 함께 체온을 낮추고 심장을 계속 지켜봐요 | 냉각 | monitor
+   SWAP 1<->2: Her thyroid is dangerously overactive, causing this. / Her heart rate is racing and her fever keeps climbing, so this is a crisis. / To control it, we're giving several medicines together. / Along with them, we're cooling her and watching her heart continuously.
+   SWAP 2<->3: Her heart rate is racing and her fever keeps climbing, so this is a crisis. / To control it, we're giving several medicines together. / Her thyroid is dangerously overactive, causing this. / Along with them, we're cooling her and watching her heart continuously.
+   SWAP 3<->4: Her heart rate is racing and her fever keeps climbing, so this is a crisis. / Her thyroid is dangerously overactive, causing this. / Along with them, we're cooling her and watching her heart continuously. / To control it, we're giving several medicines together.
+
+######## S17 부신위기 순환붕괴
+--- 17.0 [동시 처치|siren] words=['w-push', 'w-stress', 'w-steroid', 'w-start', 'w-pressor', 'w-together']
+EN: Let's push the stress-dose steroid and start a pressor together now.
+KO: 스트레스 용량 스테로이드를 주고 승압제도 같이 시작해요. (31)
+X1: 스트레스 용량 스테로이드를 주고 승압제도 제가 시작할게요. (32)
+X2: 스트레스 용량 스테로이드를 주고 승압제도 당직의가 시작해요. (33)
+WHY: 'Let's'는 팀이 함께 움직이자는 부탁이에요. 'together'가 스테로이드와 승압제를 동시에 시작한다는 점을 밝혀요.
+ B* Let's [push] the stress-dose steroid and start a pressor together now.
+ B  Let's [tape] the stress-dose steroid and start a pressor together now.
+ B  Let's [carry] the stress-dose steroid and start a pressor together now.
+ B  Let's [wrap] the stress-dose steroid and start a pressor together now.
+CH: ["Let's push", 'the stress-dose steroid', 'and start a pressor', 'together now', '.'] | DECOY: near the window
+  D: <near the window> the stress-dose steroid and start a pressor together now .
+  D: Let's push <near the window> and start a pressor together now .
+  D: Let's push the stress-dose steroid <near the window> together now .
+  D: Let's push the stress-dose steroid and start a pressor <near the window> .
+--- 17.1 [병행 처치|gear] words=['w-give', 'w-fluid', 'w-bolus', 'w-titrate', 'w-vasopressor']
+EN: I'm giving a fluid bolus while we titrate the vasopressor.
+KO: 승압제를 적정하는 동안 수액을 볼루스로 주고 있어요. (29)
+X1: 승압제를 적정하는 동안 수액을 담당의가 볼루스로 주고 있어요. (34)
+X2: 승압제를 적정하는 동안 수액을 책임자가 볼루스로 주고 있어요. (34)
+WHY: 'while'이 두 처치가 동시에 진행된다는 뜻이에요. 'titrate'는 반응을 보며 용량을 조금씩 맞춘다는 임상 동사예요.
+ B* I'm [giving] a fluid bolus while we titrate the vasopressor.
+ B  I'm [counting] a fluid bolus while we titrate the vasopressor.
+ B  I'm [wrapping] a fluid bolus while we titrate the vasopressor.
+ B  I'm [trading] a fluid bolus while we titrate the vasopressor.
+CH: ["I'm giving", 'a fluid bolus', 'while we titrate', 'the vasopressor', '.'] | DECOY: behind the curtain
+  D: <behind the curtain> a fluid bolus while we titrate the vasopressor .
+  D: I'm giving <behind the curtain> while we titrate the vasopressor .
+  D: I'm giving a fluid bolus <behind the curtain> the vasopressor .
+  D: I'm giving a fluid bolus while we titrate <behind the curtain> .
+--- 17.2 [의사 호출|siren] words=['w-call', 'w-intensivist', 'w-true', 'w-adrenal', 'w-crisis']
+EN: Call the intensivist — this is a true adrenal crisis.
+KO: 중환자전문의를 불러 주세요, 진짜 부신위기예요. (26)
+X1: 중환자전문의를 불러 주세요, 진짜 위급 상황이에요. (28)
+X2: 중환자전문의를 불러 주세요, 진짜 쇼크 상태예요. (27)
+WHY: 명령형 'Call'이 짧고 분명해 위급할 때 쓰기 좋아요. 'true'는 진짜 위기라고 강조해 바로 오게 만들어요.
+ B* [Call] the intensivist — this is a true adrenal crisis.
+ B  [Thank] the intensivist — this is a true adrenal crisis.
+ B  [Greet] the intensivist — this is a true adrenal crisis.
+ B  [Photograph] the intensivist — this is a true adrenal crisis.
+CH: ['Call', 'the intensivist —', 'this is', 'a true adrenal crisis', '.'] | DECOY: at the pharmacy door
+  D: <at the pharmacy door> the intensivist — this is a true adrenal crisis .
+  D: Call <at the pharmacy door> this is a true adrenal crisis .
+  D: Call the intensivist — <at the pharmacy door> a true adrenal crisis .
+  D: Call the intensivist — this is <at the pharmacy door> .
+--- 17.3 [근거 설명|chartup] words=['w-pressure', 'w-crash', 'w-sudden', 'w-true', 'w-adrenal', 'w-crisis']
+EN: His pressure crashed suddenly, so this looks like true adrenal crisis.
+KO: 혈압이 갑자기 떨어져서, 진짜 부신위기처럼 보여요. (28)
+X1: 혈압이 갑자기 떨어져서, 진짜 쇼크처럼 보여요. (26)
+X2: 혈압이 갑자기 떨어져서, 진짜 패혈증처럼 보여요. (27)
+WHY: 'crashed'는 급락을 뜻하는 구어적 동사예요. 'so this looks like'는 근거에서 판단으로 넘어가요.
+ B* His pressure [crashed] suddenly, so this looks like true adrenal crisis.
+ B  His pressure [climbed] suddenly, so this looks like true adrenal crisis.
+ B  His pressure [jumped] suddenly, so this looks like true adrenal crisis.
+ B  His pressure [soared] suddenly, so this looks like true adrenal crisis.
+CH: ['His pressure crashed suddenly,', 'so this looks', 'like true adrenal', 'crisis', '.'] | DECOY: on the clipboard
+  D: <on the clipboard> so this looks like true adrenal crisis .
+  D: His pressure crashed suddenly, <on the clipboard> like true adrenal crisis .
+  D: His pressure crashed suddenly, so this looks <on the clipboard> crisis .
+  D: His pressure crashed suddenly, so this looks like true adrenal <on the clipboard> .
+--- 17.4 [반응 보고|chartup] words=['w-pressor', 'w-titrate', 'w-pressure', 'w-start', 'w-respond']
+EN: The pressor is titrating up, and his pressure is starting to respond.
+KO: 승압제를 올리고 있고, 혈압이 반응하기 시작했어요. (28)
+X1: 승압제를 올리고 있고, 소변이 나오기 시작했어요. (27)
+X2: 승압제를 올리고 있고, 의식이 돌아오기 시작했어요. (28)
+WHY: 'is starting to'는 이제 막 시작했다는 진행의 뜻이에요. 'titrating up'은 용량을 올려 가는 중이라는 뜻이에요.
+ B* The pressor is titrating up, and his pressure is starting to [respond].
+ B  The pressor is titrating up, and his pressure is starting to [complain].
+ B  The pressor is titrating up, and his pressure is starting to [refuse].
+ B  The pressor is titrating up, and his pressure is starting to [argue].
+CH: ['The pressor is titrating up,', 'and his pressure', 'is starting', 'to respond', '.'] | DECOY: by the door
+  D: <by the door> and his pressure is starting to respond .
+  D: The pressor is titrating up, <by the door> is starting to respond .
+  D: The pressor is titrating up, and his pressure <by the door> to respond .
+  D: The pressor is titrating up, and his pressure is starting <by the door> .
+== ORDER ko=부신위기 순환붕괴 대응 4문장 순서 | tag=대화 흐름 icon=compass
+   why=상황을 판단하고, 스테로이드와 승압제를 시작한 뒤, 전문의를 부르고, 반응이 오는지 확인해요.
+   - His pressure crashed suddenly, so this looks like true adrenal crisis. (11w) | 혈압이 갑자기 떨어져서 진짜 부신위기 같아요 | 판단 | chartup
+   - Let's push the stress-dose steroid and start a pressor together now. (11w) | 스트레스 용량 스테로이드와 승압제를 같이 시작해요 | 처치 | siren
+   - Call the intensivist to help us titrate the vasopressor. (9w) | 승압제 적정을 도울 중환자전문의를 불러 주세요 | 호출 | siren
+   - Once it is titrating up, his pressure should start to respond. (11w) | 그게 올라가면 혈압이 반응하기 시작할 거예요 | 반응 | chartup
+   SWAP 1<->2: Let's push the stress-dose steroid and start a pressor together now. / His pressure crashed suddenly, so this looks like true adrenal crisis. / Call the intensivist to help us titrate the vasopressor. / Once it is titrating up, his pressure should start to respond.
+   SWAP 2<->3: His pressure crashed suddenly, so this looks like true adrenal crisis. / Call the intensivist to help us titrate the vasopressor. / Let's push the stress-dose steroid and start a pressor together now. / Once it is titrating up, his pressure should start to respond.
+   SWAP 3<->4: His pressure crashed suddenly, so this looks like true adrenal crisis. / Let's push the stress-dose steroid and start a pressor together now. / Once it is titrating up, his pressure should start to respond. / Call the intensivist to help us titrate the vasopressor.
+
+######## S18 심한 저혈당 의식소실 위기
+--- 18.0 [즉시 처치|siren] words=['w-check', 'w-stat', 'w-glucose', 'w-push', 'w-unresponsive']
+EN: Check a stat glucose and push D50 now — he's unresponsive.
+KO: 지금 즉시 혈당 확인하고 D50 주세요, 반응이 없어요. (31)
+X1: 지금 즉시 혈당 확인하고 D50 주세요, 땀을 많이 흘려요. (33)
+X2: 지금 즉시 혈당 확인하고 D50 주세요, 맥박이 빨라요. (31)
+WHY: 'stat'은 즉시를 뜻하는 병원 약어예요. 'now'가 시점을 못 박아 기다리지 않게 해요.
+ B* [Check] a stat glucose and push D50 now — he's unresponsive.
+ B  [Wrap] a stat glucose and push D50 now — he's unresponsive.
+ B  [Paint] a stat glucose and push D50 now — he's unresponsive.
+ B  [Fold] a stat glucose and push D50 now — he's unresponsive.
+CH: ['Check', 'a stat glucose', 'and push D50', 'now —', "he's unresponsive", '.'] | DECOY: in the parking lot
+  D: <in the parking lot> a stat glucose and push D50 now — he's unresponsive .
+  D: Check <in the parking lot> and push D50 now — he's unresponsive .
+  D: Check a stat glucose <in the parking lot> now — he's unresponsive .
+  D: Check a stat glucose and push D50 <in the parking lot> he's unresponsive .
+  D: Check a stat glucose and push D50 now — <in the parking lot> .
+--- 18.1 [기도 보호|gear] words=['w-protect', 'w-airway', 'w-dextrose']
+EN: I'm protecting his airway while the dextrose goes in.
+KO: 포도당이 들어가는 동안 기도를 보호하고 있어요. (26)
+X1: 포도당이 들어가는 동안 기도를 야간조가 보호해요. (27)
+X2: 포도당이 들어가는 동안 기도를 주간조가 보호해요. (27)
+WHY: 'while'이 두 가지를 동시에 한다는 뜻이에요. 'protecting his airway'는 의식이 없을 때 가장 먼저 지켜야 할 것을 말해요.
+ B* I'm [protecting] his airway while the dextrose goes in.
+ B  I'm [greeting] his airway while the dextrose goes in.
+ B  I'm [grading] his airway while the dextrose goes in.
+ B  I'm [sketching] his airway while the dextrose goes in.
+CH: ["I'm protecting", 'his airway', 'while the dextrose', 'goes in', '.'] | DECOY: at the gift shop
+  D: <at the gift shop> his airway while the dextrose goes in .
+  D: I'm protecting <at the gift shop> while the dextrose goes in .
+  D: I'm protecting his airway <at the gift shop> goes in .
+  D: I'm protecting his airway while the dextrose <at the gift shop> .
+--- 18.2 [재확인|monitor] words=['w-recheck', 'w-sugar', 'w-stay', 'w-ready', 'w-repeat']
+EN: Recheck the sugar in a few minutes and stay ready to repeat.
+KO: 몇 분 뒤에 혈당을 다시 확인하고, 반복할 준비를 하고 있어요. (35)
+X1: 몇 분 뒤에 혈당을 다시 확인하고, 교대자가 반복할 준비를 해요. (36)
+X2: 몇 분 뒤에 혈당을 다시 확인하고, 전담자가 반복할 준비를 해요. (36)
+WHY: 'a few minutes'는 정확한 시간이 아니라 대략적인 짧은 시간을 가리켜요. 'stay ready to repeat'는 한 번으로 끝이 아닐 수 있다는 대비예요.
+ B* Recheck the sugar in a few minutes and stay ready to [repeat].
+ B  Recheck the sugar in a few minutes and stay ready to [retire].
+ B  Recheck the sugar in a few minutes and stay ready to [rename].
+ B  Recheck the sugar in a few minutes and stay ready to [relocate].
+CH: ['Recheck the sugar', 'in a few minutes', 'and stay ready', 'to repeat', '.'] | DECOY: in the elevator
+  D: <in the elevator> in a few minutes and stay ready to repeat .
+  D: Recheck the sugar <in the elevator> and stay ready to repeat .
+  D: Recheck the sugar in a few minutes <in the elevator> to repeat .
+  D: Recheck the sugar in a few minutes and stay ready <in the elevator> .
+--- 18.3 [원인 판단|bulb] words=['w-drowsy', 'w-unresponsive', 'w-sugar', 'w-critically', 'w-low']
+EN: He was drowsy and now he's completely unresponsive, so his sugar must be critically low.
+KO: 졸려하시더니 지금은 아예 반응이 없으셔서, 혈당이 위험할 정도로 낮은 것 같아요. (45)
+X1: 웃으시더니 지금은 아예 반응이 없으셔서, 혈당이 위험할 정도로 낮은 것 같아요. (44)
+X2: 말씀하시더니 지금은 아예 반응이 없으셔서, 혈당이 위험할 정도로 낮은 것 같아요. (45)
+WHY: 'drowsy'와 'completely unresponsive'의 대비로 의식이 나빠진 경과가 보여요. 'must be'는 강한 추정이라 확진이 아님을 알려요.
+ B* He was [drowsy] and now he's completely unresponsive, so his sugar must be critically low.
+ B  He was [angry] and now he's completely unresponsive, so his sugar must be critically low.
+ B  He was [cheerful] and now he's completely unresponsive, so his sugar must be critically low.
+ B  He was [hungry] and now he's completely unresponsive, so his sugar must be critically low.
+CH: ['He was drowsy', "and now he's completely unresponsive,", 'so his sugar must be', 'critically low', '.'] | DECOY: at lunch
+  D: <at lunch> and now he's completely unresponsive, so his sugar must be critically low .
+  D: He was drowsy <at lunch> so his sugar must be critically low .
+  D: He was drowsy and now he's completely unresponsive, <at lunch> critically low .
+  D: He was drowsy and now he's completely unresponsive, so his sugar must be <at lunch> .
+--- 18.4 [호전 후 관찰|monitor] words=['w-sugar', 'w-stay', 'w-recheck', 'w-shortly']
+EN: His sugar's coming up, so let's stay by him and recheck it shortly.
+KO: 혈당이 올라오고 있으니까, 옆에서 지켜보다가 곧 다시 확인해요. (35)
+X1: 혈당이 올라오고 있으니까, 옆에서 지켜보다가 곧 제가 다시 확인할게요. (39)
+X2: 혈당이 올라오고 있으니까, 옆에서 지켜보다가 곧 팀장이 다시 확인해요. (39)
+WHY: 'so'로 호전을 근거로 계속 곁에 있자는 판단을 이어요. 'shortly'는 곧 하겠다는 뜻이에요.
+ B* His sugar's coming up, so let's stay [by] him and recheck it shortly.
+ B  His sugar's coming up, so let's stay [on] him and recheck it shortly.
+ B  His sugar's coming up, so let's stay [for] him and recheck it shortly.
+ B  His sugar's coming up, so let's stay [at] him and recheck it shortly.
+CH: ["His sugar's coming up,", "so let's stay by him", 'and recheck it', 'shortly', '.'] | DECOY: on the wall
+  D: <on the wall> so let's stay by him and recheck it shortly .
+  D: His sugar's coming up, <on the wall> and recheck it shortly .
+  D: His sugar's coming up, so let's stay by him <on the wall> shortly .
+  D: His sugar's coming up, so let's stay by him and recheck it <on the wall> .
+== ORDER ko=심한 저혈당 의식소실 대응 4문장 순서 | tag=대화 흐름 icon=compass
+   why=경과로 저혈당을 추정하고, 즉시 확인과 포도당을 주고, 기도를 보호하며, 재확인을 대비해요.
+   - He was drowsy and now he's completely unresponsive, so his sugar must be critically low. (15w) | 졸려하더니 아예 반응이 없어서 혈당이 아주 낮은 것 같아요 | 판단 | bulb
+   - Check a stat glucose and push D50 now — he's unresponsive. (11w) | 즉시 혈당을 확인하고 D50을 주세요 | 처치 | siren
+   - I'm protecting his airway while the dextrose goes in. (9w) | 포도당이 들어가는 동안 기도를 보호하고 있어요 | 기도 | gear
+   - Recheck the sugar in a few minutes and stay ready to repeat. (12w) | 몇 분 뒤에 혈당을 다시 확인하고 반복할 준비를 해요 | 재확인 | monitor
+   SWAP 1<->2: Check a stat glucose and push D50 now — he's unresponsive. / He was drowsy and now he's completely unresponsive, so his sugar must be critically low. / I'm protecting his airway while the dextrose goes in. / Recheck the sugar in a few minutes and stay ready to repeat.
+   SWAP 2<->3: He was drowsy and now he's completely unresponsive, so his sugar must be critically low. / I'm protecting his airway while the dextrose goes in. / Check a stat glucose and push D50 now — he's unresponsive. / Recheck the sugar in a few minutes and stay ready to repeat.
+   SWAP 3<->4: He was drowsy and now he's completely unresponsive, so his sugar must be critically low. / Check a stat glucose and push D50 now — he's unresponsive. / Recheck the sugar in a few minutes and stay ready to repeat. / I'm protecting his airway while the dextrose goes in.
+
+######## S19 점액수종 혼수 위기
+--- 19.0 [위중 설명|siren] words=['w-thyroid', 'w-failure', 'w-become', 'w-critical', 'w-treat', 'w-urgently']
+EN: Her thyroid failure has become critical, and we're treating it urgently.
+KO: 갑상선 기능부전이 위중해져서, 응급으로 치료하고 있어요. (31)
+X1: 갑상선 기능부전이 위중해져서, 과장이 응급으로 치료해요. (31)
+X2: 갑상선 기능부전이 위중해져서, 교수가 응급으로 치료해요. (31)
+WHY: 'has become critical'은 이미 위중해졌다는 현재완료예요. 'urgently'가 치료의 속도를 말해요.
+ B* Her thyroid [failure] has become critical, and we're treating it urgently.
+ B  Her thyroid [infection] has become critical, and we're treating it urgently.
+ B  Her thyroid [surgery] has become critical, and we're treating it urgently.
+ B  Her thyroid [allergy] has become critical, and we're treating it urgently.
+CH: ['Her thyroid failure', 'has become critical,', "and we're treating it", 'urgently', '.'] | DECOY: over the door
+  D: <over the door> has become critical, and we're treating it urgently .
+  D: Her thyroid failure <over the door> and we're treating it urgently .
+  D: Her thyroid failure has become critical, <over the door> urgently .
+  D: Her thyroid failure has become critical, and we're treating it <over the door> .
+--- 19.1 [치료 요약|pill] words=['w-give', 'w-thyroid', 'w-hormone', 'w-warm', 'w-support']
+EN: We're giving thyroid hormone and warming and supporting her body.
+KO: 갑상선 호르몬을 드리면서 몸을 따뜻하게 하고 지지해 드리고 있어요. (37)
+X1: 갑상선 호르몬을 드리면서 몸을 따뜻하게 하고 인턴이 지지해요. (34)
+X2: 갑상선 호르몬을 드리면서 몸을 따뜻하게 하고 사수가 지지해요. (34)
+WHY: 세 가지 처치를 'and'로 한 번에 말해 전체 계획을 보여줘요. 'supporting'은 호흡·혈압 등을 곁에서 받치는 일반 표현이에요.
+ B* We're giving thyroid hormone and warming and [supporting] her body.
+ B  We're giving thyroid hormone and warming and [photographing] her body.
+ B  We're giving thyroid hormone and warming and [interviewing] her body.
+ B  We're giving thyroid hormone and warming and [admiring] her body.
+CH: ["We're giving", 'thyroid hormone', 'and warming', 'and supporting her body', '.'] | DECOY: by the stairs
+  D: <by the stairs> thyroid hormone and warming and supporting her body .
+  D: We're giving <by the stairs> and warming and supporting her body .
+  D: We're giving thyroid hormone <by the stairs> and supporting her body .
+  D: We're giving thyroid hormone and warming <by the stairs> .
+--- 19.2 [감시 안내|monitor] words=['w-watch', 'w-breathing', 'w-heart', 'w-closely']
+EN: We're watching her breathing and heart very closely.
+KO: 호흡이랑 심장을 아주 자세히 지켜보고 있어요. (25)
+X1: 호흡이랑 심장을 아주 자세히 선임이 지켜봐요. (25)
+X2: 호흡이랑 심장을 아주 자세히 수간호사가 지켜봐요. (27)
+WHY: 'very closely'는 평소보다 자주 본다는 강조예요. 호흡과 심장은 이 상태에서 가장 위험한 두 곳이에요.
+ B* We're [watching] her breathing and heart very closely.
+ B  We're [raising] her breathing and heart very closely.
+ B  We're [pricing] her breathing and heart very closely.
+ B  We're [borrowing] her breathing and heart very closely.
+CH: ["We're watching her breathing", 'and heart', 'very closely', '.'] | DECOY: in the hall
+  D: <in the hall> and heart very closely .
+  D: We're watching her breathing <in the hall> very closely .
+  D: We're watching her breathing and heart <in the hall> .
+--- 19.3 [위중 근거|bulb] words=['w-respond', 'w-feel', 'w-critical']
+EN: She won't respond and she feels ice cold, so this is critical.
+KO: 반응이 없으시고 얼음처럼 차가우셔서, 위중한 상태예요. (30)
+X1: 반응이 없으시고 숨소리가 약해서, 위중한 상태예요. (28)
+X2: 반응이 없으시고 입술이 파래서, 위중한 상태예요. (27)
+WHY: 'won't respond'와 'ice cold'를 나열해 근거를 보여주고 'so'로 결론을 이어요. 'critical'은 위중하다는 의료 표현이에요.
+ B* She won't respond and she feels ice cold, so this is [critical].
+ B  She won't respond and she feels ice cold, so this is [famous].
+ B  She won't respond and she feels ice cold, so this is [pleasant].
+ B  She won't respond and she feels ice cold, so this is [official].
+CH: ["She won't respond", 'and she feels', 'ice cold,', 'so this is critical', '.'] | DECOY: on the whiteboard
+  D: <on the whiteboard> and she feels ice cold, so this is critical .
+  D: She won't respond <on the whiteboard> ice cold, so this is critical .
+  D: She won't respond and she feels <on the whiteboard> so this is critical .
+  D: She won't respond and she feels ice cold, <on the whiteboard> .
+--- 19.4 [필요 설명|home] words=['w-need', 'w-thyroid', 'w-hormone', 'w-wake', 'w-warm', 'w-safe']
+EN: Her body needs the thyroid hormone to wake back up and warm up safely.
+KO: 몸이 다시 깨어나고 안전하게 따뜻해지려면 갑상선 호르몬이 필요해요. (37)
+X1: 몸이 다시 깨어나고 안전하게 따뜻해지려면 시간이 필요해요. (32)
+X2: 몸이 다시 깨어나고 안전하게 따뜻해지려면 안정이 필요해요. (32)
+WHY: 'needs … to'는 필요와 목적을 한 틀에 담아요. 'safely'가 서서히 따뜻해져야 한다는 점을 담아요.
+ B* Her body needs the thyroid hormone to [wake] back up and warm up safely.
+ B  Her body needs the thyroid hormone to [sit] back up and warm up safely.
+ B  Her body needs the thyroid hormone to [stand] back up and warm up safely.
+ B  Her body needs the thyroid hormone to [jump] back up and warm up safely.
+CH: ['Her body needs', 'the thyroid hormone', 'to wake back up', 'and warm up safely', '.'] | DECOY: by the elevator
+  D: <by the elevator> the thyroid hormone to wake back up and warm up safely .
+  D: Her body needs <by the elevator> to wake back up and warm up safely .
+  D: Her body needs the thyroid hormone <by the elevator> and warm up safely .
+  D: Her body needs the thyroid hormone to wake back up <by the elevator> .
+== ORDER ko=점액수종 혼수 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=증상으로 위중함을 알리고, 그래서 치료가 급하다고 말하고, 치료 내용을 알린 뒤, 호르몬이 필요한 이유를 설명해요.
+   - She won't respond and she feels ice cold, so this is critical. (12w) | 반응이 없고 얼음처럼 차가워서 위중해요 | 위중 | siren
+   - That means her thyroid failure has become critical, and we're treating it urgently. (13w) | 그래서 갑상선 기능부전이 위중해 응급 치료를 해요 | 설명 | siren
+   - We're giving thyroid hormone and warming and supporting her body. (10w) | 호르몬을 드리고 몸을 따뜻하게 지지해요 | 치료 | pill
+   - Her body needs the thyroid hormone to wake back up and warm up safely. (14w) | 몸이 깨어나고 안전하게 따뜻해지려면 호르몬이 필요해요 | 이유 | home
+   SWAP 1<->2: That means her thyroid failure has become critical, and we're treating it urgently. / She won't respond and she feels ice cold, so this is critical. / We're giving thyroid hormone and warming and supporting her body. / Her body needs the thyroid hormone to wake back up and warm up safely.
+   SWAP 2<->3: She won't respond and she feels ice cold, so this is critical. / We're giving thyroid hormone and warming and supporting her body. / That means her thyroid failure has become critical, and we're treating it urgently. / Her body needs the thyroid hormone to wake back up and warm up safely.
+   SWAP 3<->4: She won't respond and she feels ice cold, so this is critical. / That means her thyroid failure has become critical, and we're treating it urgently. / Her body needs the thyroid hormone to wake back up and warm up safely. / We're giving thyroid hormone and warming and supporting her body.
+
+######## S20 내분비 위기 다장기 악화
+--- 20.0 [상황 공유|hospital] words=['w-several', 'w-organ', 'w-stress', 'w-team', 'w-involve']
+EN: Several of his organs are under stress, and the whole team is involved.
+KO: 여러 장기가 스트레스를 받고 있어서, 전체 팀이 함께하고 있어요. (36)
+X1: 여러 장기가 스트레스를 받고 있어서, 병원 전체가 걱정하고 있어요. (37)
+X2: 여러 장기가 스트레스를 받고 있어서, 가족 전체가 함께하고 있어요. (37)
+WHY: 'Several of'는 일부가 아니라 여러 곳이라는 뜻이에요. 'involved'는 전체 팀이 맡고 있다는 안심을 줘요.
+ B* Several of his [organs] are under stress, and the whole team is involved.
+ B  Several of his [limbs] are under stress, and the whole team is involved.
+ B  Several of his [bones] are under stress, and the whole team is involved.
+ B  Several of his [fingers] are under stress, and the whole team is involved.
+CH: ['Several of his organs', 'are under stress,', 'and the whole team', 'is involved', '.'] | DECOY: in the supply room
+  D: <in the supply room> are under stress, and the whole team is involved .
+  D: Several of his organs <in the supply room> and the whole team is involved .
+  D: Several of his organs are under stress, <in the supply room> is involved .
+  D: Several of his organs are under stress, and the whole team <in the supply room> .
+--- 20.1 [소통 약속|speech] words=['w-give', 'w-clear', 'w-update', 'w-specialist', 'w-weigh']
+EN: I'll give you a clear update as each specialist weighs in.
+KO: 각 전문의 의견이 나올 때마다 명확하게 알려드릴게요. (29)
+X1: 각 전문의 의견이 나올 때마다 동료가 명확하게 알려드려요. (32)
+X2: 각 전문의 의견이 나올 때마다 선배가 명확하게 알려드려요. (32)
+WHY: 'as each … weighs in'은 의견이 나올 때마다라는 뜻이에요. 'clear'가 어렵지 않게 풀어서 말한다는 약속이에요.
+ B* I'll give you a clear update as each [specialist] weighs in.
+ B  I'll give you a clear update as each [tourist] weighs in.
+ B  I'll give you a clear update as each [neighbor] weighs in.
+ B  I'll give you a clear update as each [stranger] weighs in.
+CH: ["I'll give you", 'a clear update', 'as each specialist', 'weighs in', '.'] | DECOY: at the station
+  D: <at the station> a clear update as each specialist weighs in .
+  D: I'll give you <at the station> as each specialist weighs in .
+  D: I'll give you a clear update <at the station> weighs in .
+  D: I'll give you a clear update as each specialist <at the station> .
+--- 20.2 [곁 약속|me] words=['w-escalate', 'w-care', 'w-stay', 'w-bedside']
+EN: We're escalating his care and staying right at his bedside.
+KO: 치료를 상급으로 올리면서 침상 곁에 계속 있을게요. (28)
+X1: 치료를 상급으로 올리면서 가족 곁에 계속 있을게요. (28)
+X2: 치료를 상급으로 올리면서 의료진 곁에 계속 있을게요. (29)
+WHY: 'escalating'은 치료 단계를 올린다는 임상어예요. 'right at his bedside'가 곁에서 떠나지 않겠다는 뜻이에요.
+ B* We're [escalating] his care and staying right at his bedside.
+ B  We're [photographing] his care and staying right at his bedside.
+ B  We're [decorating] his care and staying right at his bedside.
+ B  We're [calculating] his care and staying right at his bedside.
+CH: ["We're escalating", 'his care', 'and staying right', 'at his bedside', '.'] | DECOY: on the cart
+  D: <on the cart> his care and staying right at his bedside .
+  D: We're escalating <on the cart> and staying right at his bedside .
+  D: We're escalating his care <on the cart> at his bedside .
+  D: We're escalating his care and staying right <on the cart> .
+--- 20.3 [전문의 호출|hospital] words=['w-kidney', 'w-lung', 'w-strain', 'w-call', 'w-specialist']
+EN: His kidneys and lungs are both under strain, so we've called in extra specialists.
+KO: 콩팥이랑 폐가 둘 다 무리가 가고 있어서, 전문의를 추가로 불렀어요. (38)
+X1: 콩팥이랑 심장이 둘 다 무리가 가고 있어서, 전문의를 추가로 불렀어요. (39)
+X2: 간이랑 폐가 둘 다 무리가 가고 있어서, 전문의를 추가로 불렀어요. (37)
+WHY: 'both'로 두 장기를 함께 묶어 말해요. 'called in'은 필요해서 불러왔다는 뜻이에요.
+ B* His kidneys and lungs are both under strain, so we've called in [extra] specialists.
+ B  His kidneys and lungs are both under strain, so we've called in [local] specialists.
+ B  His kidneys and lungs are both under strain, so we've called in [retired] specialists.
+ B  His kidneys and lungs are both under strain, so we've called in [junior] specialists.
+CH: ['His kidneys and lungs', 'are both under strain,', "so we've called in", 'extra specialists', '.'] | DECOY: near the exit
+  D: <near the exit> are both under strain, so we've called in extra specialists .
+  D: His kidneys and lungs <near the exit> so we've called in extra specialists .
+  D: His kidneys and lungs are both under strain, <near the exit> extra specialists .
+  D: His kidneys and lungs are both under strain, so we've called in <near the exit> .
+--- 20.4 [정직 약속|faceWorried] words=['w-keep', 'w-update', 'w-honestly', 'w-news']
+EN: I'll keep you updated honestly, even when the news is hard.
+KO: 힘든 소식이더라도 솔직하게 계속 알려드릴게요. (25)
+X1: 힘든 소식이더라도 후배가 솔직하게 알려드려요. (25)
+X2: 힘든 소식이더라도 의사가 솔직하게 알려드려요. (25)
+WHY: 'even when'이 나쁜 소식도 숨기지 않겠다는 약속이에요. 'honestly'가 신뢰를 쌓는 핵심 부사예요.
+ B* I'll keep you updated honestly, even when the news is [hard].
+ B  I'll keep you updated honestly, even when the news is [boring].
+ B  I'll keep you updated honestly, even when the news is [funny].
+ B  I'll keep you updated honestly, even when the news is [fresh].
+CH: ["I'll keep you updated", 'honestly,', 'even when', 'the news is hard', '.'] | DECOY: in the waiting area
+  D: <in the waiting area> honestly, even when the news is hard .
+  D: I'll keep you updated <in the waiting area> even when the news is hard .
+  D: I'll keep you updated honestly, <in the waiting area> the news is hard .
+  D: I'll keep you updated honestly, even when <in the waiting area> .
+== ORDER ko=다장기 악화 가족 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=상황을 알리고, 전문의를 불렀다고 말한 뒤, 의견이 나올 때마다 알리겠다고 약속하고, 나쁜 소식도 솔직하게 전하겠다고 해요.
+   - Several of his organs are under stress, and the whole team is involved. (13w) | 여러 장기가 스트레스를 받아 전체 팀이 함께해요 | 상황 | hospital
+   - His kidneys and lungs are both under strain, so we've called in extra specialists. (14w) | 콩팥과 폐가 둘 다 무리라 전문의를 추가로 불렀어요 | 호출 | hospital
+   - I'll give you a clear update as each specialist weighs in. (11w) | 전문의 의견이 나올 때마다 명확히 알려드릴게요 | 약속 | speech
+   - Even when what they say is hard, I'll keep you updated honestly. (12w) | 그들 말이 힘들어도 솔직하게 계속 알려드릴게요 | 정직 | faceWorried
+   SWAP 1<->2: His kidneys and lungs are both under strain, so we've called in extra specialists. / Several of his organs are under stress, and the whole team is involved. / I'll give you a clear update as each specialist weighs in. / Even when what they say is hard, I'll keep you updated honestly.
+   SWAP 2<->3: Several of his organs are under stress, and the whole team is involved. / I'll give you a clear update as each specialist weighs in. / His kidneys and lungs are both under strain, so we've called in extra specialists. / Even when what they say is hard, I'll keep you updated honestly.
+   SWAP 3<->4: Several of his organs are under stress, and the whole team is involved. / His kidneys and lungs are both under strain, so we've called in extra specialists. / Even when what they say is hard, I'll keep you updated honestly. / I'll give you a clear update as each specialist weighs in.

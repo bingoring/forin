@@ -1,0 +1,156 @@
+0:
+  - kind: slider
+    words: [w-low]
+    cue: "Chart: his sugar is a little under the target range, and he feels fine."
+    scale: [a bit low, low, dangerously low]
+    answerAt: 0
+    why: "목표보다 조금 낮을 뿐 증상이 없으니 a bit low가 맞아요. dangerously low는 증상이 있거나 값이 크게 떨어졌을 때 쓰는 말이고, 바로 프로토콜대로 처치해야 해요."
+    example: "His sugar is a bit low, but he feels fine."
+    exKo: "혈당이 조금 낮지만 환자는 괜찮다고 해요."
+  - kind: context
+    words: [w-target]
+    word: target
+    ko: 목표치
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Our target for his sugar is between 140 and 180 while he's critically ill.", ok: true}
+      - {who: 환자에게, icon: me, en: "Our target for you is a sugar between 140 and 180 for now.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His glycemic target is a time-in-range of 140 to 180 with hourly POC checks.", ok: false, fix: "We want his sugar between 140 and 180 for now, and we'll check it often."}
+    why: "의료진끼리는 target과 POC·time-in-range 같은 말이 정확하고 빨라요. 가족에게는 숫자 범위와 '자주 확인한다'는 사실만 쉬운 말로 전하세요."
+1:
+  - kind: slider
+    words: [w-pinch]
+    cue: "Before a finger stick, you want the patient to expect only a very brief, mild feeling."
+    scale: [quick pinch, sting, sharp pain]
+    answerAt: 0
+    why: "손끝 검사는 짧고 약해서 quick pinch가 사실에 가까워요. sharp pain이라고 하면 겁을 주고, 별것 아니라고 부풀려 말하지도 마세요."
+    example: "You'll feel a quick pinch."
+    exKo: "잠깐 따끔하실 거예요."
+  - kind: context
+    words: [w-trend]
+    word: trend
+    ko: 추세
+    scenes:
+      - {who: 의사 콜, icon: speech, en: "The sugar trend is down over the last three checks.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Glucose trend overnight is flat, no lows.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your glycemic trend shows a negative slope on the insulin chart.", ok: false, fix: "Your sugar has come down with each check, which is what we want."}
+    why: "trend는 의료진끼리 쓰기 좋은 말이에요. 환자에게는 '기울기' 같은 표현 대신 수치가 어떻게 움직였는지 쉬운 말로 알려 주세요."
+  - kind: swap
+    words: [w-site]
+    who: "환자에게 · 손가락 돌려가며 찌르기"
+    icon: me
+    before: ["I'll use a different ", "puncture site", " each time so your fingers don't get sore."]
+    options: [puncture site, spot, wound]
+    answer: spot
+    notes: {spot: "쉬운 말이라 환자가 바로 알아들어요.", puncture site: "차트용 표현이라 환자에게는 딱딱해요.", wound: "상처라고 들려 환자를 놀라게 해요."}
+    why: "채혈 부위를 돌려 쓰는 건 사실이지만, 환자에게는 임상 용어 대신 spot처럼 쉬운 말이 안심돼요."
+    ko: "손가락이 아프지 않게 매번 다른 자리를 쓸게요"
+2:
+  - kind: slider
+    words: [w-forever]
+    cue: "She has no history of diabetes. She asks how long she will be on insulin."
+    scale: [for now, for a year, forever]
+    answerAt: 0
+    why: "당뇨가 없던 환자가 아파서 오른 혈당은 호전되면 인슐린을 끊는 게 보통이라 for now가 맞아요. 평생이라는 말은 사실과 다르고 환자를 불안하게 해요."
+    example: "You'll need the insulin for now, not forever."
+    exKo: "인슐린은 당분간만 필요하고 평생 맞는 게 아니에요."
+  - kind: context
+    words: [w-protocol]
+    word: protocol
+    ko: 프로토콜
+    scenes:
+      - {who: 간호사끼리, icon: board, en: "The insulin drip is running per the protocol.", ok: true}
+      - {who: 의사에게, icon: speech, en: "Per protocol, I recheck his sugar on schedule and adjust the rate.", ok: true}
+      - {who: 환자에게, icon: me, en: "Per protocol, we titrate your insulin gtt using the nomogram algorithm.", ok: false, fix: "We follow a set plan that tells us how to adjust your insulin after each sugar check."}
+    why: "protocol은 의료진끼리 짧고 정확한 말이에요. gtt·nomogram·algorithm까지 섞이면 환자는 못 알아들으니 '정해진 계획'처럼 풀어서 말하세요."
+  - kind: swap
+    words: [w-nomogram]
+    who: "환자에게 · 인슐린 속도표 설명"
+    icon: me
+    before: ["It's a ", "titration algorithm", " that tells us how fast to run the insulin."]
+    options: [titration algorithm, simple chart, nomogram]
+    answer: simple chart
+    notes: {simple chart: "쉬운 말이라 환자가 부담 없이 이해해요.", titration algorithm: "의료진끼리의 말이라 환자에게는 어려워요.", nomogram: "전문 용어라 환자는 뜻을 몰라요."}
+    why: "같은 표라도 환자에게는 simple chart처럼 쉬운 말로 설명하면 겁먹지 않아요."
+    ko: "인슐린을 얼마나 빨리 넣을지 알려 주는 간단한 표예요"
+3:
+  - kind: slider
+    words: [w-away]
+    cue: "She is shaky and sweaty and says she feels confused. You want her to speak up."
+    scale: [when you can, soon, right away]
+    answerAt: 2
+    why: "혈당이 낮을 때의 증상은 빨리 확인하고 처치해야 해서 right away라고 해야 해요. when you can이면 환자가 미루다 늦게 알려요."
+    example: "Tell me right away if that happens."
+    exKo: "그런 일이 있으면 바로 말씀해 주세요."
+  - kind: context
+    words: [w-sign]
+    word: sign
+    ko: 신호
+    scenes:
+      - {who: 야간 인계, icon: board, en: "Shaky hands and sweating are warning signs of a low sugar.", ok: true}
+      - {who: 환자에게, icon: me, en: "Feeling shaky or sweaty can be a sign your sugar is low, so tell me.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His adrenergic signs are consistent with hypoglycemia.", ok: false, fix: "The shaking and sweating are signs his sugar may be low, so we're checking it right now."}
+    why: "adrenergic signs·hypoglycemia는 의료진끼리의 말이에요. 가족에게는 몸에 보이는 모습을 쉬운 말로 설명하고 지금 뭘 하는지 알려 주세요."
+  - kind: swap
+    words: [w-confused]
+    who: "환자에게 · 증상 안내"
+    icon: me
+    before: ["Tell me right away if you feel ", "disoriented", " or lightheaded."]
+    options: [disoriented, confused, encephalopathic]
+    answer: confused
+    notes: {confused: "환자가 바로 알아듣는 쉬운 말이에요.", disoriented: "의료진 용어에 가까워 환자에게는 딱딱해요.", encephalopathic: "진단명 같은 말이라 환자는 알아듣지 못해요."}
+    why: "환자에게 증상을 물을 때는 본인이 느낀 대로 대답할 수 있는 말(confused, lightheaded)을 써야 빨리 알려 줘요."
+    ko: "혼란스럽거나 어지러우면 바로 말씀해 주세요"
+4:
+  - kind: slider
+    words: [w-skip]
+    cue: "Tube feeding is held for a scan, but the insulin drip is still running."
+    scale: [keep the rate, lower the rate, stop all fluids]
+    answerAt: 1
+    why: "영양이 끊기면 혈당이 떨어질 위험이 커서 프로토콜대로 인슐린 속도를 줄이거나 멈추고 혈당을 더 자주 확인해요. 그대로 두면 저혈당 위험이 크고, 수액을 다 끊는 건 지나쳐요."
+    example: "If you skip a meal, we lower the rate first."
+    exKo: "식사를 거르면 먼저 속도를 낮춰요."
+  - kind: context
+    words: [w-feeding]
+    word: feeding
+    ko: 급식
+    scenes:
+      - {who: 간호사끼리, icon: board, en: "His feeding is paused, so I'm watching his sugar closely.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your tube feeding is paused for the scan, so we'll check your sugar more often.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His enteral feeding is held, so we're titrating the insulin-to-carb ratio.", ok: false, fix: "His tube feeding is paused for a test, so we're lowering his insulin and checking his sugar more often."}
+    why: "enteral·insulin-to-carb ratio는 의료진끼리의 말이에요. 가족에게는 영양이 멈춰서 인슐린을 줄이고 더 자주 확인한다는 사실만 쉽게 전하세요."
+5:
+  - kind: slider
+    words: [w-climb]
+    cue: "His last three sugars were each a little higher than the one before."
+    scale: [stable, edging up, spiking]
+    answerAt: 1
+    why: "조금씩 계속 오르고 있어 edging up이 맞아요. spiking은 갑자기 크게 치솟을 때 쓰고, stable은 오르내림이 없을 때예요. 추세는 한 번의 값보다 이어서 봐야 해요."
+    example: "His sugar is edging up."
+    exKo: "혈당이 조금씩 오르고 있어요."
+  - kind: context
+    words: [w-pattern]
+    word: pattern
+    ko: 패턴
+    scenes:
+      - {who: 간호사끼리, icon: board, en: "The sugar pattern over the last several checks is rising.", ok: true}
+      - {who: 의사 콜, icon: speech, en: "I see a pattern of highs after each feeding.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your chart shows a pattern of hyperglycemic excursions.", ok: false, fix: "Your sugar has gone up after each feeding, so we're letting your doctor know."}
+    why: "pattern은 의료진끼리 쓰기 좋아요. hyperglycemic excursions 같은 표현은 환자가 못 알아들으니 무슨 일이 있었는지를 쉬운 말로 전하세요."
+6:
+  - kind: slider
+    words: [w-drop]
+    cue: "His sugar fell from 210 to 120 in two hours."
+    scale: [dropping slowly, dropping, dropping fast]
+    answerAt: 2
+    why: "두 시간에 크게 떨어졌으면 dropping fast예요. 프로토콜은 변화 속도가 빠르면 인슐린 속도를 줄이고 더 일찍 재확인하라고 안내해요."
+    example: "It's dropping fast, so I cut the rate."
+    exKo: "빨리 떨어지고 있어서 속도를 줄여요."
+  - kind: context
+    words: [w-titrate]
+    word: titrate
+    ko: 적정하다
+    scenes:
+      - {who: 의사 콜, icon: speech, en: "I titrate the insulin drip each time I get a new sugar.", ok: true}
+      - {who: 인계, icon: board, en: "I titrated the insulin rate down after the last two checks.", ok: true}
+      - {who: 환자에게, icon: me, en: "We are titrating your insulin gtt toward euglycemia.", ok: false, fix: "We're changing how fast your insulin goes in, based on each sugar check."}
+    why: "titrate는 용량을 반응에 맞춰 조절한다는 임상어예요. 의료진끼리는 정확하지만 환자에게는 어려우니 '속도를 바꾼다'고 풀어 말하세요."

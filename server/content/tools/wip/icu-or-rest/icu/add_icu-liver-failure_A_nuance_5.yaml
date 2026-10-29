@@ -1,0 +1,168 @@
+15:
+  - kind: slider
+    words: [w-immediately]
+    cue: "His left pupil just blew, and he stopped responding to my voice."
+    scale: [later, soon, immediately]
+    answerAt: 2
+    why: "동공이 갑자기 커지고 반응이 없어지면 뇌탈출 징후일 수 있어서 기다리지 않고 immediately 연락해요. 의사와 신속대응팀을 바로 호출하고 처방된 치료를 준비해요."
+    example: "Call the physician immediately."
+    exKo: "즉시 의사에게 연락하세요."
+  - kind: context
+    words: [w-sluggish]
+    word: sluggish
+    ko: 둔한
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "His right pupil is sluggish, and I'm worried about herniation.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Both pupils were sluggish at 0300, and neuro was notified.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Bilateral sluggish pupils with a Cushing response suggest impending uncal herniation.", ok: false, fix: "His eyes are reacting more slowly to light, which tells us his brain is under pressure."}
+    why: "의료진끼리는 Cushing response, uncal herniation 같은 용어가 정확해요. 보호자에게는 같은 sluggish를 빛에 더디게 반응한다는 쉬운 말로 풀고, 그것이 무엇을 뜻하는지 알려 주세요."
+  - kind: swap
+    words: [w-emergency]
+    who: "보호자에게 · 상황 설명"
+    icon: me
+    before: ["This is ", "a little concerning", ", and we're acting on it right now."]
+    options: [an emergency, a little concerning, no cause for alarm]
+    answer: an emergency
+    notes: {an emergency: "상황을 있는 그대로 말하면서 지금 조치 중임을 알려요.", a little concerning: "실제보다 가볍게 들려서 가족이 위험을 놓칠 수 있어요.", no cause for alarm: "사실과 달라서 신뢰를 잃게 해요."}
+    why: "응급일 때는 상황을 축소하지 않고 분명하게 말하면서 지금 무엇을 하는지 함께 알려야 가족이 이해하고 기다릴 수 있어요."
+    ko: "이건 응급 상황이고, 지금 바로 조치하고 있어요"
+16:
+  - kind: slider
+    words: [w-frequently]
+    cue: "He's actively bleeding and receiving blood products. How often should fibrinogen and coags be rechecked?"
+    scale: [rarely, sometimes, frequently]
+    answerAt: 2
+    why: "활동성 출혈 중 수혈할 때는 응고 수치와 피브리노겐을 자주 재검해서 어떤 제제가 더 필요한지 정해요. 정확한 간격은 대량수혈 프로토콜과 처방을 따라요."
+    example: "We recheck his labs frequently."
+    exKo: "그의 검사를 자주 재확인해요."
+  - kind: context
+    words: [w-product]
+    word: product
+    ko: 혈액제제
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Keep giving blood products in balanced ratios while he's bleeding.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Blood products are on the way from the blood bank.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He's receiving a 1:1:1 ratio of blood products per the massive transfusion protocol.", ok: false, fix: "He's getting donated blood and the parts of blood that help it clot, to stop the bleeding."}
+    why: "의료진끼리는 1:1:1 ratio, massive transfusion protocol 같은 용어가 정확하고 빨라요. 보호자에게는 같은 product를 무엇을 왜 주는지 쉬운 말로 풀어 주세요."
+  - kind: swap
+    words: [w-shock, w-watch]
+    who: "보호자에게 · 상태 설명"
+    icon: me
+    before: ["We're watching closely for ", "hemorrhagic shock", "."]
+    options: [low blood pressure from blood loss, hemorrhagic shock, exsanguination]
+    answer: low blood pressure from blood loss
+    notes: {low blood pressure from blood loss: "보호자가 무슨 일인지 바로 알아들어요.", hemorrhagic shock: "의료진끼리 쓰는 말이라 보호자는 뜻을 모를 수 있어요.", exsanguination: "피가 다 빠진다는 극단적인 말이라 가족을 심하게 놀라게 해요."}
+    why: "응급 상황일수록 가족이 알아들을 수 있는 말이 필요해요. 위험을 줄이지도 부풀리지도 않으면서 무엇을 지켜보는지 알려 주세요."
+    ko: "출혈로 혈압이 떨어지는지 자세히 지켜보고 있어요"
+17:
+  - kind: slider
+    words: [w-difficult]
+    cue: "His mouth opens only one finger-width, and his neck is stiff."
+    scale: [routine, difficult, failed]
+    answerAt: 1
+    why: "입이 거의 벌어지지 않고 목이 뻣뻣하면 어려운 기도(difficult airway)를 예상해요. 어려운 기도 카트와 숙련된 도움을 미리 준비해요. failed는 이미 시도했는데 실패한 경우예요."
+    example: "This could be a difficult airway."
+    exKo: "어려운 기도일 수 있어요."
+  - kind: context
+    words: [w-airway]
+    word: airway
+    ko: 기도
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "I'm worried about his airway, because he isn't protecting it.", ok: true}
+      - {who: 야간 인계, icon: board, en: "His airway was patent overnight, and he was suctioned twice for secretions.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He has lost his airway protective reflexes and requires definitive airway control.", ok: false, fix: "He can't keep his airway safe on his own, so a breathing tube will help him."}
+    why: "의료진끼리는 protective reflexes, definitive airway control 같은 용어가 정확해요. 보호자에게는 같은 airway를 숨길을 스스로 지키지 못한다는 쉬운 말로 풀어 주세요."
+  - kind: swap
+    words: [w-intubation]
+    who: "보호자에게 · 삽관 안내"
+    icon: me
+    before: ["We need to place ", "an endotracheal tube", " to help him breathe safely."]
+    options: [a breathing tube, an endotracheal tube, an ET tube]
+    answer: a breathing tube
+    notes: {a breathing tube: "보호자가 바로 알아듣고 무엇을 하는지 분명해요.", an endotracheal tube: "정확한 이름이지만 가족에게는 길고 낯설어요.", an ET tube: "약어라 가족은 못 알아들어요."}
+    why: "삽관은 가족이 크게 놀라는 처치라 쉬운 말로 이유와 함께 알려요. 동의와 위험 설명은 의사가 해요."
+    ko: "안전하게 숨 쉬도록 돕기 위해 기도에 관을 넣어야 해요"
+18:
+  - kind: slider
+    words: [w-spiral]
+    cue: "Within two hours his pressure, oxygen, and urine output all worsened, and they're still dropping fast."
+    scale: [slowly worsening, worsening, spiraling]
+    answerAt: 2
+    why: "여러 장기가 짧은 시간에 함께 급격히 나빠지면 spiraling이라고 해요. 그때는 혼자 버티지 말고 즉시 의사에게 에스컬레이션하고 도움을 더 불러요. slowly worsening과 worsening은 속도가 느릴 때예요."
+    example: "He is spiraling right now."
+    exKo: "그의 상태가 급격히 나빠지고 있어요."
+  - kind: context
+    words: [w-support]
+    word: support
+    ko: 지지하다
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "He needs more support for his lungs and kidneys.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Vent support was increased overnight, and the pressors are unchanged.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He's on maximal multiorgan support with a poor prognosis.", ok: false, fix: "His body needs a lot of help right now, and machines are supporting his breathing and kidneys."}
+    why: "의료진끼리는 maximal multiorgan support 같은 표현이 정확하고 빨라요. 보호자에게는 같은 support를 지금 무엇이 몸을 돕고 있는지 쉬운 말로 풀어 주세요. 예후는 의사가 직접 설명해요."
+  - kind: swap
+    words: [w-dialysis]
+    who: "보호자에게 · 투석 설명"
+    icon: me
+    before: ["His kidneys have stopped working well, so he may need ", "renal replacement therapy", "."]
+    options: [dialysis, renal replacement therapy, CRRT]
+    answer: dialysis
+    notes: {dialysis: "가족이 가장 잘 아는 말이에요.", renal replacement therapy: "정확하지만 가족에게는 길고 어려워요.", CRRT: "약어라 가족은 못 알아들어요."}
+    why: "투석은 가족이 이미 알고 있는 경우가 많아서 아는 말을 쓰면 이해가 빨라요. 시작 여부는 의사가 정하고 설명해요."
+    ko: "신장이 잘 작동하지 않아서 투석이 필요할 수도 있어요"
+19:
+  - kind: slider
+    words: [w-handoff]
+    cue: "You told the transplant center only his diagnosis and current vitals, with no meds, labs, or lines."
+    scale: [partial handoff, standard handoff, full handoff]
+    answerAt: 0
+    why: "진단과 활력징후만 전하고 약, 검사, 라인이 빠지면 partial handoff예요. 이식센터 인계에는 진단, 투약, 검사 추이, 라인과 튜브, 가족 상황까지 담아야 안전해요."
+    example: "That was only a partial handoff."
+    exKo: "그건 일부만 인계한 거였어요."
+  - kind: context
+    words: [w-transfer]
+    word: transfer
+    ko: 이송
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "The accepting physician is ready, so the transfer is approved.", ok: true}
+      - {who: 야간 인계, icon: board, en: "The transfer to the transplant center is set for 0600.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We're initiating an interfacility transfer under EMTALA.", ok: false, fix: "We're moving him to the transplant hospital so the liver team there can care for him."}
+    why: "의료진끼리는 interfacility transfer, EMTALA 같은 용어가 정확해요. 보호자에게는 같은 transfer를 어디로 왜 옮기는지 쉬운 말로 풀어 주세요."
+  - kind: swap
+    words: [w-center, w-accept]
+    who: "보호자에게 · 이송 안내"
+    icon: me
+    before: ["He'll go to ", "the quaternary referral facility", " once they accept him."]
+    options: [the transplant hospital, the tertiary transplant center, the quaternary referral facility]
+    answer: the transplant hospital
+    notes: {the transplant hospital: "가족이 바로 알아듣고 어디로 가는지 분명해요.", the tertiary transplant center: "의료진끼리 쓰는 분류 표현이라 가족에게는 어려워요.", the quaternary referral facility: "행정 용어에 가까워서 가족 대화에는 맞지 않아요."}
+    why: "이송 장소는 가족이 가장 궁금해하는 정보라서 알아듣는 말로 알려요. 받아 주기 전에는 일정이 확정이 아니라는 점도 함께 전해요."
+    ko: "그쪽에서 받아 주면 이식병원으로 가게 돼요"
+20:
+  - kind: slider
+    words: [w-pain]
+    cue: "He winces only when he's turned, and says it's sore."
+    scale: [soreness, pain, agony]
+    answerAt: 0
+    why: "움직일 때만 쓰라리다고 하면 soreness 쪽이에요. 통증은 환자의 말과 통증 척도로 확인하고, 말을 못 하면 표정과 자세 같은 비언어 척도로 평가해서 처방에 따라 완화해요."
+    example: "His soreness comes only when we turn him."
+    exKo: "그는 몸을 돌릴 때만 쓰라려해요."
+  - kind: context
+    words: [w-comfortable]
+    word: comfortable
+    ko: 편안한
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "The goal is to keep him comfortable, so we're focusing on symptom control.", ok: true}
+      - {who: 야간 인계, icon: board, en: "He looks comfortable and is sleeping.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He is comfortable, meaning we have achieved adequate symptom palliation.", ok: false, fix: "He isn't hurting right now, and we'll keep working to keep him comfortable."}
+    why: "의료진끼리는 symptom palliation 같은 용어가 정확해요. 보호자에게는 같은 comfortable을 지금 아파 보이지 않고 계속 신경 쓰겠다는 쉬운 말로 풀어 주세요."
+  - kind: swap
+    words: [w-safe, w-option, w-transplant]
+    who: "가족에게 · 이식 불가 설명"
+    icon: me
+    before: ["The transplant team said ", "he isn't a candidate", "."]
+    options: [a transplant isn't a safe option for him, he isn't a candidate, he's been rejected]
+    answer: a transplant isn't a safe option for him
+    notes: {a transplant isn't a safe option for him: "이유를 분명히 하면서 가족이 알아들어요.", he isn't a candidate: "의료진끼리 쓰는 말이라 가족에게는 이유가 전해지지 않아요.", he's been rejected: "사실과 달리 버려졌다는 느낌을 줘서 상처가 돼요."}
+    why: "이식이 어렵다는 소식은 가족에게 큰 충격이라, 왜 안전하지 않은지를 쉬운 말로 알려야 해요. 이어서 편안함을 위해 할 수 있는 일을 알려 주세요."
+    ko: "이식팀은 그에게 이식이 안전한 선택지가 아니라고 했어요"

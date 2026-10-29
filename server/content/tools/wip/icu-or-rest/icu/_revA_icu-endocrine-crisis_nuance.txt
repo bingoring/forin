@@ -1,0 +1,505 @@
+
+===== S0 DKA 초기 사정 | I've been throwing up all day and I just feel so dried out and out of it. | role=patient
+  [0] I'm going to check your hydration, your breathing, and how alert you feel. | 수분 상태랑 호흡, 의식이 얼마나 또렷한지 확인해 볼게요. | ['w-check', 'w-hydration', 'w-breathing', 'w-alert', 'w-feel']
+  [1] Have you been able to keep any fluids down today? | 오늘 물이나 음료를 좀 삼킬 수 있었어요? | ['w-keep', 'w-fluid']
+  [2] Your fast breathing can be your body reacting to acid, so I'm watching it closely. | 숨이 빠른 건 몸이 산에 반응하는 걸 수도 있어서, 제가 잘 지켜보고 있어요. | ['w-fast', 'w-breathing', 'w-react', 'w-acid', 'w-watch', 'w-closely']
+  [3] I'll ask you a few questions to check how alert you are. | 의식이 얼마나 또렷한지 확인하려고 몇 가지 여쭤볼게요. | ['w-ask', 'w-question', 'w-check', 'w-alert']
+  [4] I'm seeing early signs of DKA, so I'll report this to the team right away. | 당뇨병성 케토산증 초기 소견이 보여서, 바로 팀에 보고할게요. | ['w-sign', 'w-report', 'w-team']
+  [5] I'm right here with you, so try to stay calm. | 제가 바로 옆에 있으니까 최대한 편하게 있으세요. | ['w-stay', 'w-calm']
+  -- slider words=['w-fast']
+     cue=Her breathing rate is 34 breaths a minute, and each breath is deep.
+     scale=['a little fast', 'fast', 'very fast'] answerAt=2
+     why=성인의 정상 호흡수는 보통 분당 12~20회예요. 34회에 깊은 호흡이 이어지면 very fast이고, DKA에서는 산을 내보내려는 몸의 반응일 수 있어서 바로 팀에 보고해요.
+     ex=Her breathing is very fast and deep. / 그녀의 호흡이 아주 빠르고 깊어요.
+  -- context words=['w-sign']
+     word=sign ko=징후
+     [의사 라운드/monitor/True] He has early signs of DKA — deep, fast breathing and a dry mouth.
+     [야간 인계/board/True] No new signs of fluid overload overnight.
+     [환자에게/me/False] Your Kussmaul respirations are a sign of severe metabolic acidosis.  FIX: Your fast, deep breathing is a sign that your blood has too much acid, and we're treating it.
+     why=의료진끼리는 Kussmaul·metabolic acidosis 같은 용어가 정확하고 빨라요. 환자에게는 같은 sign을 쉬운 말로 풀어 무엇이 일어나고 있고 무엇을 하는지 알려 주세요.
+  -- swap words=['w-hydration']
+     who=환자에게 · 첫 사정 설명 before=["I'm checking ", 'your volume status', ' first.'] answer=how dry you are ko=먼저 몸에 수분이 얼마나 모자란지 확인할게요
+       > I'm checking how dry you are first.  || 환자가 바로 알아듣고, 무엇을 보는지 분명해요.
+       > I'm checking your volume status first.  || 의료진끼리 쓰는 말이라 환자는 무슨 뜻인지 모를 수 있어요.
+       > I'm checking your hypovolemia first.  || 어려운 진단명을 환자에게 그대로 던지는 말이라 불안만 키워요.
+     why=탈수 사정은 환자 몸 상태를 묻는 일이라, 진단명 대신 '얼마나 말라 있는지' 같은 쉬운 말로 시작해요.
+
+===== S1 혈당·케톤·ABG 모니터 | Why do you keep pricking my finger and drawing my blood over and over? | role=patient
+  [0] We check your sugar, your ketones, and your blood acid every hour to keep you safe. | 안전하게 지켜드리려고 혈당이랑 케톤, 혈액 산도를 매시간 확인하고 있어요. | ['w-check', 'w-sugar', 'w-ketone', 'w-blood', 'w-acid', 'w-keep', 'w-safe']
+  [1] These numbers tell us how your treatment is working. | 이 수치들이 치료가 잘 되고 있는지를 말해줘요. | ['w-number', 'w-tell', 'w-treatment', 'w-work']
+  [2] I'll let you know as soon as your levels start moving the right way. | 수치가 좋은 방향으로 움직이기 시작하면 바로 알려드릴게요. | ['w-level', 'w-start', 'w-move', 'w-way']
+  [3] I'll check your finger stick and draw your labs on schedule. | 정해진 시간에 손끝 혈당이랑 검사 채혈을 할게요. | ['w-check', 'w-draw', 'w-lab', 'w-schedule']
+  [4] Your ketone number is coming down, which means the treatment is working. | 케톤 수치가 내려가고 있는데, 이건 치료가 잘 듣고 있다는 뜻이에요. | ['w-ketone', 'w-number', 'w-mean', 'w-treatment', 'w-work']
+  -- slider words=['w-level']
+     cue=Glucose read 480, then 360, then 290 on three hourly checks.
+     scale=['rising', 'falling steadily', 'dropping suddenly'] answerAt=1
+     why=세 번 연속 조금씩 내려가면 falling steadily예요. rising은 올라갈 때, dropping suddenly는 한 번에 크게 떨어질 때라 달라요. 시간 순서로 이어 보면 치료 반응이 보여요.
+     ex=His glucose level is falling steadily. / 그의 혈당 수치는 꾸준히 내려가고 있어요.
+  -- context words=['w-number']
+     word=number ko=수치
+     [의사 라운드/monitor/True] The ketone numbers are coming down, so the insulin drip is working.
+     [야간 인계/board/True] Sugar numbers stayed between 180 and 220 on the hourly checks.
+     [환자에게/me/False] Your beta-hydroxybutyrate and anion gap numbers are normalizing.  FIX: Your blood acid and ketone numbers are getting better.
+     why=의료진끼리는 beta-hydroxybutyrate나 anion gap 같은 이름이 정확해요. 환자에게는 어떤 수치가 어떻게 달라졌는지를 쉬운 말로 알려 주세요.
+  -- swap words=['w-check']
+     who=환자에게 · 반복 검사 안내 before=['Time for ', 'your hourly POC glucose', '.'] answer=your hourly finger stick ko=매시간 하는 손끝 혈당 검사 시간이에요
+       > Time for your hourly finger stick.  || 환자가 바로 아는 말이라 무엇을 하는지 전해져요.
+       > Time for your hourly POC glucose.  || POC는 의료진 약어라 환자는 알아듣기 어려워요.
+       > Time for your hourly capillary sampling.  || 정확하지만 딱딱하고 낯선 말이에요.
+     why=반복 검사는 환자가 자주 불편해하는 일이라, 낯선 약어 대신 손끝 검사처럼 아는 말로 알려야 협조가 쉬워요.
+
+===== S2 수액 소생 시작 | That bag is running in so fast — is all that fluid really okay for me? | role=patient
+  [0] You lost a lot of fluid, so we're replacing it quickly at first. | 체액을 많이 잃으셔서, 처음에는 빠르게 보충해 드리고 있어요. | ['w-lose', 'w-fluid', 'w-replace', 'w-quickly', 'w-first']
+  [1] I'll keep watching your blood pressure and urine as the fluids go in. | 수액이 들어가는 동안 혈압이랑 소변량을 계속 지켜볼게요. | ['w-keep', 'w-watch', 'w-blood', 'w-pressure', 'w-urine', 'w-fluid']
+  [2] Tell me if you feel any tightness in your chest or trouble breathing. | 가슴이 답답하거나 숨쉬기 힘들면 바로 말씀해 주세요. | ['w-tell', 'w-feel', 'w-tightness', 'w-chest', 'w-trouble', 'w-breathing']
+  [3] We're starting normal saline now to bring your fluid level back up. | 체액 수준을 다시 올리려고 지금 생리식염수를 시작할게요. | ['w-start', 'w-saline', 'w-bring', 'w-fluid', 'w-level']
+  [4] I'll check your lungs so we catch any fluid overload early. | 수액 과부하가 있는지 일찍 알아채려고 폐 소리를 확인할게요. | ['w-check', 'w-lung', 'w-catch', 'w-fluid', 'w-overload', 'w-early']
+  -- slider words=['w-quickly']
+     cue=Order: run the first fluid fast for the first hour, then slow down.
+     scale=['gradually', 'steadily', 'quickly'] answerAt=2
+     why=DKA 첫 수액은 처음 한 시간 동안 빠르게 넣고 이후 속도를 줄이는 것이 일반적이라 quickly예요. 속도는 처방과 프로토콜대로 맞추고 폐 소리와 호흡을 같이 봐요.
+     ex=We're replacing the fluid quickly at first. / 처음에는 수액을 빠르게 보충하고 있어요.
+  -- context words=['w-lose']
+     word=lose ko=잃다
+     [의사 라운드/monitor/True] She lost a lot of fluid through vomiting and urinating.  !!NOWORD
+     [야간 인계/board/True] He lost a lot of fluid, so the first bolus is running per protocol.  !!NOWORD
+     [환자에게/me/False] You lost a large volume of intravascular fluid from osmotic diuresis.  FIX: You lost a lot of water because of the high sugar, so we're giving it back through your IV.  !!NOWORD
+     why=의료진끼리는 intravascular fluid나 osmotic diuresis가 정확해요. 환자에게는 같은 사실을 왜 물을 잃었는지, 무엇으로 채우는지로 쉽게 풀어 주세요.
+  -- swap words=['w-saline']
+     who=환자에게 · 수액 시작 안내 before=["We're starting ", 'isotonic crystalloid', ' to replace what you lost.'] answer=IV fluids ko=잃으신 수분을 보충하려고 수액을 시작할게요
+       > We're starting IV fluids to replace what you lost.  || 환자가 아는 말이라 무엇을 시작하는지 바로 전해져요.
+       > We're starting isotonic crystalloid to replace what you lost.  || 수액 종류를 가리키는 전문 용어라 환자는 모르는 말이에요.
+       > We're starting a volume expander to replace what you lost.  || 다른 종류의 약(혈장 증량제)처럼 들려 오해를 줄 수 있어요.
+     why=환자에게는 수액의 종류 이름보다 '정맥으로 수분을 채운다'는 사실이 중요해서 쉬운 말로 알려요.
+
+===== S3 인슐린 주입 준비 | Could you walk me through how you're setting up this insulin drip before you start it? | role=colleague
+  [0] I'm priming a dedicated line for the insulin drip per protocol. | 프로토콜대로 인슐린 주입 전용 라인을 프라이밍하고 있어요. | ['w-prime', 'w-line', 'w-insulin', 'w-drip', 'w-protocol']
+  [1] Let's double-check the concentration and pump settings together. | 농도랑 펌프 설정을 같이 다시 확인해요. | ['w-check', 'w-concentration', 'w-pump', 'w-setting', 'w-together']
+  [2] I'll start the infusion once potassium is confirmed safe. | 칼륨이 안전하다고 확인되면 주입을 시작할게요. | ['w-start', 'w-infusion', 'w-potassium', 'w-confirm', 'w-safe']
+  [3] Pump's set to the protocol rate, ready to go. | 펌프는 프로토콜 속도로 맞춰졌고, 시작할 준비 됐어요. | ['w-pump', 'w-set', 'w-protocol', 'w-rate', 'w-ready']
+  [4] Can you confirm the concentration matches the order before we start? | 시작하기 전에 농도가 처방이랑 맞는지 확인해 줄 수 있어요? | ['w-confirm', 'w-concentration', 'w-order', 'w-start']
+  -- slider words=['w-rate', 'w-pump']
+     cue=The order says 5 units an hour, but the pump screen shows 50.
+     scale=['rounding difference', 'small difference', 'tenfold error'] answerAt=2
+     why=5와 50은 소수점·자릿수 때문에 생기는 10배 차이라 tenfold error예요. 인슐린은 고위험 약이라 멈추고 처방과 대조해 확인한 뒤 동료와 이중 확인하고 보고해요.
+     ex=That's a tenfold error, so stop and check the order. / 10배 오류예요, 멈추고 처방을 확인하세요.
+  -- context words=['w-confirm']
+     word=confirm ko=맞는지 확인하다
+     [동료 간호사에게/speech/True] Can you confirm the concentration matches the order before I start?
+     [약사에게/speech/True] I'd like to confirm the insulin concentration on this bag.
+     [환자에게/me/False] I'm going to confirm your insulin concentration and pump rate against the order.  FIX: I'm double-checking your insulin settings with another nurse so it's safe.
+     why=동료·약사에게는 농도와 속도를 처방과 대조한다고 구체적으로 말하는 게 좋아요. 환자에게는 같은 일을 '다시 확인하고 있다'고 쉽게 알려 주세요.
+  -- swap words=['w-prime']
+     who=환자에게 · 주입 준비 설명 before=["I'm ", 'priming the line', ' so the insulin goes in safely.'] answer=getting the tubing ready ko=인슐린이 안전하게 들어가도록 관을 준비하고 있어요
+       > I'm getting the tubing ready so the insulin goes in safely.  || 환자가 이해하는 말로 무엇을 하는지 전해요.
+       > I'm priming the line so the insulin goes in safely.  || 의료진끼리 쓰는 말이라 환자는 뜻을 몰라요.
+       > I'm purging the lumen so the insulin goes in safely.  || 어려운 기술 용어라 환자에게 낯설고 딱딱해요.
+     why=프라이밍은 관 안을 약이나 수액으로 채워 공기를 빼는 일이에요. 환자에게는 용어보다 '준비하고 있다'는 안심이 먼저 전해져야 해요.
+
+===== S4 인슐린 전 K 확인 | His potassium result just came back — do you want to look before we start insulin? | role=colleague
+  [0] We hold insulin until potassium is safe, so let's confirm the level first. | 칼륨이 안전할 때까지 인슐린을 보류하니까, 먼저 수치부터 확인해요. | ['w-hold', 'w-insulin', 'w-potassium', 'w-safe', 'w-confirm', 'w-level', 'w-first']
+  [1] Insulin drives potassium into cells, so a low value could be dangerous. | 인슐린이 칼륨을 세포 안으로 밀어 넣어서, 수치가 낮으면 위험할 수 있어요. | ['w-insulin', 'w-potassium', 'w-cell', 'w-low', 'w-value', 'w-dangerous']
+  [2] If it's low, we'll replace potassium before starting the drip. | 낮으면 주입 시작 전에 칼륨부터 보충할 거예요. | ['w-low', 'w-replace', 'w-potassium', 'w-start', 'w-drip']
+  [3] Let's pull his chart and check the last potassium result. | 차트를 열어서 마지막 칼륨 결과를 확인해요. | ['w-pull', 'w-chart', 'w-check', 'w-potassium', 'w-result']
+  [4] If potassium comes back low, I'll get the replacement ordered right away. | 칼륨 결과가 낮게 나오면 바로 보충 처방을 받을게요. | ['w-potassium', 'w-low', 'w-replacement']
+  -- slider words=['w-low']
+     cue=Potassium is 3.4, just below the normal range.
+     scale=['a little low', 'clearly low', 'critically low'] answerAt=0
+     why=정상 하한(보통 3.5 전후)보다 살짝 낮은 정도라 a little low예요. 프로토콜마다 인슐린을 보류하는 기준(예: 3.3 미만)이 있으니 수치를 기준과 비교하고 처방대로 칼륨 보충과 인슐린 시작을 확인해요.
+     ex=His potassium is a little low. / 그의 칼륨이 약간 낮아요.
+  -- context words=['w-potassium']
+     word=potassium ko=칼륨
+     [의사 호출/speech/True] Potassium is 3.0, so per protocol I'm holding the insulin and need a replacement order.
+     [야간 인계/board/True] Potassium came back at 4.2, so we can start the insulin drip.
+     [환자에게/me/False] Your serum potassium is 3.0 mEq/L, which contraindicates insulin initiation.  FIX: Your potassium is low, so we'll give some through your IV before the insulin starts.
+     why=의사에게는 수치와 필요한 처방을 바로 말하는 게 좋아요. 환자에게는 contraindicates 같은 말 대신 '낮아서 먼저 보충한다'로 이유와 순서를 알려 주세요.
+  -- swap words=['w-dangerous']
+     who=환자에게 · 왜 먼저 확인하는지 before=['Low potassium can be ', 'arrhythmogenic', ' with insulin.'] answer=risky for your heartbeat ko=칼륨이 낮을 때 인슐린이 들어가면 심장 박동에 위험할 수 있어요
+       > Low potassium can be risky for your heartbeat with insulin.  || 무엇이 왜 위험한지 겁주지 않고 정확히 전해요.
+       > Low potassium can be arrhythmogenic with insulin.  || 부정맥을 일으킨다는 전문 용어라 환자는 모르는 말이에요.
+       > Low potassium can be deadly with insulin.  || 사실보다 무겁게 들려 불필요하게 겁을 줘요.
+     why=칼륨이 낮은 채 인슐린이 들어가면 칼륨이 더 내려가 심장 리듬에 영향을 줄 수 있어요. 이유는 환자가 이해할 만큼만, 겁주지 않게 말해요.
+
+===== S5 활력·의식 재평가 | I think I'm a little more with it now — my head doesn't feel as foggy. | role=patient
+  [0] I'm glad you feel clearer, and I'll recheck your vitals to confirm. | 정신이 맑아지셨다니 다행이에요, 확인 차 활력징후를 다시 재볼게요. | ['w-feel', 'w-clear', 'w-recheck', 'w-vital', 'w-confirm']
+  [1] Can you tell me your name and where you are for me? | 성함이랑 지금 어디 계신지 말씀해 주실 수 있어요? | ['w-tell']
+  [2] Your numbers are heading the right direction, which is a good sign. | 수치들이 좋은 방향으로 가고 있는데, 이건 좋은 신호예요. | ['w-number', 'w-direction', 'w-sign']
+  [3] Your blood pressure and heart rate look steadier than before. | 혈압이랑 심박수가 전보다 더 안정적으로 보여요. | ['w-blood', 'w-pressure', 'w-heart', 'w-rate', 'w-steady']
+  [4] I'm charting these improvements and letting the team know. | 이렇게 나아진 부분을 기록하고 팀에도 알릴게요. | ['w-chart', 'w-improvement', 'w-team']
+  -- slider words=['w-improvement']
+     cue=He says his name now, but he falls asleep as soon as you stop talking.
+     scale=['a little better', 'much better', 'fully recovered'] answerAt=0
+     why=이름은 말하지만 대화가 끊기면 바로 잠드는 정도라 a little better예요. 호전은 단계적이라 회복을 단정하지 말고 계속 재평가하고 변화를 팀에 알려요.
+     ex=There's a little improvement in his alertness. / 의식이 조금 나아졌어요.
+  -- context words=['w-recheck']
+     word=recheck ko=다시 확인하다
+     [야간 인계/board/True] Recheck vitals and neuro status in one hour.
+     [의사 호출/speech/True] I'll recheck his glucose and his neuro status in an hour.
+     [환자에게/me/False] I will recheck your hemodynamic parameters per protocol.  FIX: I'll check your blood pressure and heartbeat again in a little while.
+     why=인계와 호출에서는 무엇을 언제 다시 보는지 짧고 정확하게 말해요. 환자에게는 hemodynamic parameters 대신 혈압과 맥박처럼 아는 말로 알려 주세요.
+  -- swap words=['w-clear']
+     who=환자에게 · 의식 호전 전하기 before=["I'm glad you feel ", 'less obtunded', ' than before.'] answer=clearer ko=전보다 정신이 맑아지셔서 다행이에요
+       > I'm glad you feel clearer than before.  || 환자가 바로 알아듣고 기분 좋게 받아들여요.
+       > I'm glad you feel less obtunded than before.  || 의식 저하를 가리키는 의료 용어라 환자는 낯설고 기분이 상할 수 있어요.
+       > I'm glad you feel less encephalopathic than before.  || 뇌병증이라는 어려운 진단명이라 환자를 놀라게 할 수 있어요.
+     why=의식이 나아진 걸 전할 때는 환자가 알아듣는 쉬운 비교 표현이 안심을 줘요.
+
+===== S6 DKA 인슐린 주입 적정 | My sugar dropped a lot already — are you going to turn the insulin down now? | role=patient
+  [0] We adjust the insulin so your sugar comes down at a safe pace. | 혈당이 안전한 속도로 내려가도록 인슐린을 조절해요. | ['w-adjust', 'w-insulin', 'w-sugar', 'w-safe', 'w-pace']
+  [1] Bringing it down too fast can be risky, so we titrate carefully. | 너무 빨리 내리면 위험할 수 있어서, 조심스럽게 적정하고 있어요. | ['w-bring', 'w-fast', 'w-risky', 'w-titrate', 'w-carefully']
+  [2] I'll recheck your glucose and set the new rate per protocol. | 혈당을 다시 확인하고 프로토콜대로 새 속도를 맞출게요. | ['w-recheck', 'w-glucose', 'w-set', 'w-rate', 'w-protocol']
+  [3] We're following the sliding scale exactly as ordered. | 처방된 대로 슬라이딩 스케일을 정확히 따르고 있어요. | ['w-follow', 'w-scale', 'w-order']
+  [4] Your sugar's dropping steadily, which is exactly what we want. | 혈당이 꾸준히 내려가고 있는데, 이게 바로 저희가 원하는 거예요. | ['w-sugar', 'w-drop', 'w-steady']
+  -- slider words=['w-drop', 'w-pace']
+     cue=Glucose fell by only 10 in two hours on the insulin drip.
+     scale=['slower than goal', 'on target', 'faster than goal'] answerAt=0
+     why=많은 DKA 프로토콜은 시간당 50~75 mg/dL 정도 하락을 목표로 해요. 2시간에 10이면 목표보다 느린 거라 slower than goal이고, 보고해서 처방과 속도를 확인해요.
+     ex=His glucose is dropping slower than goal. / 그의 혈당이 목표보다 느리게 내려가고 있어요.
+  -- context words=['w-titrate']
+     word=titrate ko=적정하다
+     [의사 라운드/monitor/True] Titrate the insulin drip per the DKA protocol.
+     [약사와 통화/speech/True] We titrate it against the hourly glucose, not by guess.
+     [환자에게/me/False] I'm going to titrate your insulin infusion based on your serial POC glucose values.  FIX: I'm adjusting your insulin a little at a time based on your sugar checks.
+     why=의료진끼리 titrate는 용량을 조금씩 맞춘다는 정확한 말이에요. 환자에게는 serial POC glucose 같은 말 대신 '조금씩 맞춘다'로 알려 주세요.
+  -- swap words=['w-carefully']
+     who=환자에게 · 속도를 낮추는 이유 before=["We're bringing your sugar down ", 'in a titrated fashion', '.'] answer=a little at a time ko=혈당을 조금씩 낮추고 있어요
+       > We're bringing your sugar down a little at a time.  || 환자가 이해하는 말로 속도를 조절한다는 뜻이 전해져요.
+       > We're bringing your sugar down in a titrated fashion.  || titrate를 환자에게 그대로 말하면 낯설고 딱딱해요.
+       > We're bringing your sugar down at a controlled rate.  || 틀리진 않지만 얼마나 천천히인지가 흐릿해요.
+     why=혈당을 천천히 내리는 이유를 환자가 이해하면 불안이 줄어요. '조금씩'이 가장 쉽게 전달돼요.
+
+===== S7 K 보정·인슐린 균형 | His potassium is trending down again while the insulin's running — how do you want to handle it? | role=colleague
+  [0] Let's replace potassium and keep monitoring it closely with the insulin running. | 칼륨을 보충하면서 인슐린이 들어가는 동안 계속 자세히 모니터링해요. | ['w-replace', 'w-potassium', 'w-keep', 'w-monitor', 'w-closely', 'w-insulin', 'w-run']
+  [1] We may need to slow the insulin if potassium keeps falling. | 칼륨이 계속 떨어지면 인슐린을 늦춰야 할 수도 있어요. | ['w-need', 'w-slow', 'w-insulin', 'w-potassium', 'w-fall']
+  [2] I'll draw a repeat level after the replacement to confirm. | 보충한 뒤에 확인차 칼륨 수치를 다시 채혈할게요. | ['w-draw', 'w-repeat', 'w-level', 'w-replacement', 'w-confirm']
+  [3] Potassium's back to normal, so we're clear to keep the drip going. | 칼륨이 정상으로 돌아와서, 주입을 계속 진행해도 괜찮아요. | ['w-potassium', 'w-normal', 'w-clear', 'w-keep', 'w-drip']
+  [4] If it drops again, we'll pause the insulin and recheck. | 다시 떨어지면 인슐린을 잠시 멈추고 다시 확인할 거예요. | ['w-drop', 'w-pause', 'w-insulin', 'w-recheck']
+  -- slider words=['w-fall']
+     cue=Potassium was 4.0, then 3.9, then 3.8 on three checks.
+     scale=['drifting down', 'falling fast', 'dropping sharply'] answerAt=0
+     why=0.1씩 천천히 내려가면 drifting down이에요. 인슐린이 들어가는 동안은 칼륨이 계속 내려갈 수 있어서, 방향을 보고 정해진 주기로 재확인해 보고해요.
+     ex=His potassium is drifting down. / 그의 칼륨이 서서히 내려가고 있어요.
+  -- context words=['w-monitor']
+     word=monitor ko=모니터링하다
+     [의사 라운드/monitor/True] Monitor potassium closely while the insulin drip is running.
+     [야간 인계/board/True] I'll monitor his potassium with every lab draw while the insulin runs.
+     [환자에게/me/False] We will monitor your serum potassium and magnesium levels per protocol.  FIX: We'll check your blood potassium every few hours to keep you safe.
+     why=의료진끼리는 무엇을 어떤 주기로 보는지 짧게 말해요. 환자에게는 serum·protocol 대신 '혈액 검사로 자주 확인한다'고 쉬운 말로 전하세요.
+  -- swap words=['w-pause']
+     who=환자에게 · 인슐린 조절 안내 before=['We might ', 'hold your insulin', ' if your potassium drops again.'] answer=pause your insulin for a while ko=칼륨이 다시 떨어지면 인슐린을 잠시 멈출 수 있어요
+       > We might pause your insulin for a while if your potassium drops again.  || 잠깐 멈췄다 다시 한다는 뜻이 분명해요.
+       > We might hold your insulin if your potassium drops again.  || 의료진 어법이라 환자에게는 뜻이 흐릿할 수 있어요.
+       > We might discontinue your insulin if your potassium drops again.  || 영구 중단처럼 들려서 사실과 달라요.
+     why=칼륨이 다시 내려가면 인슐린을 잠시 멈추는 것은 일시적인 조치예요. 중단으로 들리지 않게 '잠시'를 분명히 말해요.
+
+===== S8 anion gap 종결 판단 | His anion gap has closed and the bicarb looks better — is he ready to transition? | role=colleague
+  [0] The gap has closed, so we can plan the switch to subcutaneous insulin. | 간극이 닫혀서, 이제 피하 인슐린으로 전환할 계획을 세울 수 있어요. | ['w-gap', 'w-close', 'w-plan', 'w-switch', 'w-subcutaneous', 'w-insulin']
+  [1] We overlap the drip with the first long-acting dose before stopping. | 중단하기 전에 첫 지속형 용량이랑 주입을 겹쳐서 줘요. | ['w-overlap', 'w-drip', 'w-first', 'w-dose', 'w-stop']
+  [2] Let me confirm he's eating and the labs are stable first. | 먼저 식사가 되는지랑 검사 수치가 안정적인지부터 확인할게요. | ['w-confirm', 'w-lab', 'w-stable', 'w-first']
+  [3] His acid levels are back to normal, so the DKA has resolved. | 산 수치가 정상으로 돌아와서, 케토산증이 해결됐어요. | ['w-acid', 'w-level', 'w-normal', 'w-resolve']
+  [4] Once he's tolerating food, we'll switch him to his home insulin. | 식사를 잘 견디시면, 평소 쓰시던 인슐린으로 바꿔 드릴게요. | ['w-tolerate', 'w-switch', 'w-insulin']
+  -- slider words=['w-tolerate']
+     cue=He keeps down juice but feels sick after a few crackers.
+     scale=['not tolerating', 'tolerating a little', 'tolerating well'] answerAt=1
+     why=소량은 견디지만 크래커 뒤 메스꺼우면 tolerating a little이에요. 식사가 안정적인지 아직 확실하지 않으니 전환을 서두르지 말고 상태를 팀에 알려요.
+     ex=He's tolerating a little food so far. / 지금까지는 음식을 조금 견디고 있어요.
+  -- context words=['w-switch']
+     word=switch ko=전환하다
+     [의사 라운드/monitor/True] Once the gap has closed, we'll switch him to subcutaneous insulin.
+     [야간 인계/board/True] The plan is to switch to basal-bolus after his next meal.
+     [환자에게/me/False] We will switch your insulin infusion to a subcutaneous basal-bolus regimen.  FIX: Soon we'll move you from the IV insulin to insulin shots, and we'll make the change safely.
+     why=의료진끼리는 정맥 주입에서 피하 주사로의 전환을 이렇게 압축해서 말해요. 환자에게는 basal-bolus regimen 대신 '주사로 바꾼다'로 쉽게 설명하세요.
+  -- swap words=['w-gap']
+     who=환자에게 · 좋은 소식 전하기 before=['Good news: your ', 'anion gap has closed', '.'] answer=blood acid is back to normal ko=좋은 소식이에요, 혈액 산도가 정상으로 돌아왔어요
+       > Good news: your blood acid is back to normal.  || 환자가 바로 이해하는 말로 좋은 소식이 전해져요.
+       > Good news: your anion gap has closed.  || 의료진끼리의 수치 이름이라 환자는 의미를 몰라요.
+       > Good news: your AG has normalized.  || 약어까지 써서 환자가 더 알아듣기 어려워요.
+     why=간극이 닫혔다는 건 혈액의 산이 정상으로 돌아왔다는 뜻이에요. 환자에게는 수치 이름보다 의미를 먼저 말해요.
+
+===== S9 HHS 고삼투 관리 | My mother's been so confused and terribly thirsty for days — what's happening to her? | role=family
+  [0] Her sugar and blood are very concentrated, so we're correcting it slowly and safely. | 혈당이랑 혈액이 아주 농축돼 있어서, 천천히 안전하게 교정하고 있어요. | ['w-sugar', 'w-blood', 'w-concentrate', 'w-correct', 'w-slow', 'w-safe']
+  [1] Going too fast could affect her brain, so we take our time. | 너무 빠르게 하면 뇌에 영향을 줄 수 있어서, 시간을 두고 하고 있어요. | ['w-fast', 'w-affect', 'w-brain', 'w-take']
+  [2] We'll watch her mental status closely as she improves. | 나아지는 동안 의식 상태를 자세히 지켜볼게요. | ['w-watch', 'w-mental', 'w-status', 'w-closely', 'w-improve']
+  [3] Correcting her sodium too quickly could cause brain swelling, so we go slowly. | 나트륨을 너무 빨리 교정하면 뇌부종이 생길 수 있어서, 천천히 하고 있어요. | ['w-correct', 'w-sodium', 'w-quickly', 'w-cause', 'w-brain', 'w-swell', 'w-slow']
+  [4] Her confusion is starting to clear, which tells us she's responding well. | 혼란스러워하시던 게 나아지기 시작했는데, 이건 잘 반응하고 있다는 뜻이에요. | ['w-confusion', 'w-start', 'w-clear', 'w-tell', 'w-respond']
+  -- slider words=['w-correct']
+     cue=The plan lowers her sugar and sodium toward normal at a safe pace.
+     scale=['within minutes', 'within an hour or two', 'over a day or two'] answerAt=2
+     why=HHS는 아주 농축된 상태라 하루이틀에 걸쳐 천천히 교정하는 것이 안전해요. 너무 빨리 낮추면 뇌부종 위험이 올라서 over a day or two가 맞아요.
+     ex=We're correcting it over a day or two. / 하루이틀에 걸쳐 교정하고 있어요.
+  -- context words=['w-confusion']
+     word=confusion ko=혼란
+     [의사 호출/speech/True] New confusion could mean her osmolality is falling too fast.
+     [야간 인계/board/True] Her confusion improved overnight as her sugar came down.
+     [가족에게/me/False] She is exhibiting confusion consistent with hyperosmolar encephalopathy.  FIX: She's been confused because her blood is very concentrated, and it should clear as we treat it.
+     why=의료진끼리는 원인을 바로 연결하는 정확한 말이 빨라요. 가족에게는 encephalopathy 같은 진단명 대신 왜 혼란스러운지와 어떻게 나아질지를 쉽게 전하세요.
+  -- swap words=['w-concentrate']
+     who=가족에게 · 상태 설명 before=['Her blood is ', 'hyperosmolar', ' right now.'] answer=very concentrated ko=지금 혈액이 아주 농축돼 있어요
+       > Her blood is very concentrated right now.  || 가족이 이해하고 사실에도 맞는 설명이에요.
+       > Her blood is hyperosmolar right now.  || 의료진끼리의 진단 용어라 가족은 뜻을 몰라요.
+       > Her blood is thick like syrup right now.  || 실제와 달리 피가 걸쭉하다는 인상을 줘서 정확하지 않아요.
+     why=HHS의 핵심은 혈액 속 당과 나트륨이 매우 진해진 것이에요. 가족에게는 진한 상태라고만 쉽게 말해도 이유가 전해져요.
+
+===== S10 저혈당 예방·포도당 병용 | His sugar's coming down nicely — should we start the dextrose now? | role=colleague
+  [0] Once his sugar reaches the threshold, we add dextrose while continuing insulin. | 혈당이 기준치에 도달하면, 인슐린은 유지하면서 포도당을 추가해요. | ['w-sugar', 'w-reach', 'w-threshold', 'w-add', 'w-dextrose', 'w-continue', 'w-insulin']
+  [1] This lets us keep clearing the ketones without dropping too low. | 이렇게 하면 혈당이 너무 낮아지지 않으면서 케톤을 계속 없앨 수 있어요. | ['w-keep', 'w-clear', 'w-ketone', 'w-drop', 'w-low']
+  [2] I'll recheck the glucose and adjust both drips together. | 혈당을 다시 확인하고 두 주입 속도를 같이 조절할게요. | ['w-recheck', 'w-glucose', 'w-adjust', 'w-drip', 'w-together']
+  [3] We watch closely so his sugar doesn't drop too low too fast. | 혈당이 너무 빨리 너무 낮아지지 않도록 자세히 지켜보고 있어요. | ['w-watch', 'w-closely', 'w-sugar', 'w-drop', 'w-low', 'w-fast']
+  [4] We're still clearing the ketones, so don't stop the insulin yet. | 아직 케톤을 없애는 중이라서, 인슐린을 아직 멈추면 안 돼요. | ['w-clear', 'w-ketone', 'w-stop', 'w-insulin']
+  -- slider words=['w-fast', 'w-drop']
+     cue=Glucose went from 250 to 190 in an hour on insulin and dextrose.
+     scale=['too slowly', 'at a safe pace', 'too fast'] answerAt=1
+     why=시간당 60 정도 하락은 많은 프로토콜의 목표(시간당 50~75 mg/dL) 안이라 at a safe pace예요. 포도당을 같이 넣으면서 저혈당을 막고 케톤은 계속 없애요.
+     ex=His sugar is dropping at a safe pace. / 그의 혈당이 안전한 속도로 내려가고 있어요.
+  -- context words=['w-glucose']
+     word=glucose ko=혈당
+     [의사 라운드/monitor/True] Recheck the glucose hourly while the dextrose is running.
+     [야간 인계/board/True] Glucose was 190 at 0400, so dextrose was added per protocol.
+     [환자에게/me/False] Your glucose will be maintained within parameters via a dextrose co-infusion.  FIX: We're adding some sugar water to your IV so your glucose stays safe while the insulin keeps working.
+     why=의료진끼리는 수치와 시점을 짧게 말해요. 환자에게는 co-infusion 같은 말 대신 '당을 같이 넣어 혈당을 지킨다'로 알려 주세요.
+  -- swap words=['w-dextrose']
+     who=환자에게 · 포도당 병용 안내 before=["We're adding ", 'dextrose', " to your IV so your sugar doesn't drop too low."] answer=some sugar water ko=혈당이 너무 낮아지지 않게 수액에 당을 더 넣을게요
+       > We're adding some sugar water to your IV so your sugar doesn't drop too low.  || 환자가 바로 이해하는 말이에요.
+       > We're adding dextrose to your IV so your sugar doesn't drop too low.  || 정확하지만 환자는 포도당이 뭔지 모를 수 있어요.
+       > We're adding D5W to your IV so your sugar doesn't drop too low.  || 약어라 환자는 알아들을 수 없어요.
+     why=인슐린이 케톤을 없애는 동안 혈당이 너무 낮아지지 않도록 당을 같이 넣어요. 환자에게는 쉬운 말로 이유를 전해요.
+
+===== S11 유발원인 동반 치료 | So what set all this off — was it an infection that put him in here? | role=family
+  [0] We're looking for a trigger like an infection and treating it alongside the DKA. | 감염 같은 유발 원인을 찾고 있고, 케토산증과 함께 그것도 치료하고 있어요. | ['w-look', 'w-trigger', 'w-infection', 'w-treat', 'w-alongside']
+  [1] Fixing the cause helps prevent this from coming back. | 원인을 해결하면 이게 다시 생기는 걸 막는 데 도움이 돼요. | ['w-fix', 'w-cause', 'w-help', 'w-prevent']
+  [2] We've started cultures and will adjust treatment based on the results. | 배양 검사를 시작했고, 결과에 따라 치료를 조절할 거예요. | ['w-start', 'w-culture', 'w-adjust', 'w-treatment', 'w-base', 'w-result']
+  [3] We're checking his blood and urine to find where the infection started. | 감염이 어디서 시작됐는지 찾으려고 혈액이랑 소변을 확인하고 있어요. | ['w-check', 'w-blood', 'w-urine', 'w-find', 'w-infection', 'w-start']
+  [4] Once we know the cause, we can treat it and lower the risk of this happening again. | 원인을 알면 치료도 하고 다시 생길 위험도 낮출 수 있어요. | ['w-cause', 'w-treat', 'w-lower', 'w-risk']
+  -- slider words=['w-help', 'w-risk']
+     cue=Treating his infection will lower the chance of another DKA episode.
+     scale=['might help a bit', 'helps lower the risk', "guarantees it won't happen"] answerAt=1
+     why=원인을 치료하면 재발 위험을 낮출 수 있지만 없애 준다고 약속할 수는 없어요. helps lower the risk가 정확하고, guarantees는 지킬 수 없는 약속이에요.
+     ex=Treating the cause helps lower the risk. / 원인을 치료하면 위험을 낮추는 데 도움이 돼요.
+  -- context words=['w-trigger']
+     word=trigger ko=유발 요인
+     [의사 라운드/monitor/True] Infection is a common trigger, so let's send cultures.
+     [야간 인계/board/True] No clear trigger yet, and cultures are pending.
+     [환자에게/me/False] The precipitating trigger of your DKA is most likely an infectious etiology.  FIX: Something like an infection may have set this off, so we're running tests to find out.
+     why=의료진끼리는 trigger와 원인 추정을 압축해서 말해요. 환자에게는 precipitating·etiology 대신 '이런 것이 시작이 되었을 수 있다'고 쉽게 전해 주세요.
+  -- swap words=['w-infection']
+     who=환자에게 · 검사 이유 before=["We're testing for ", 'an infectious etiology', ' that may have set this off.'] answer=an infection ko=시작의 원인이 됐을 수 있는 감염이 있는지 검사하고 있어요
+       > We're testing for an infection that may have set this off.  || 환자가 이해하는 말로 무엇을 찾는지 전해져요.
+       > We're testing for an infectious etiology that may have set this off.  || 의료진끼리 쓰는 말이라 환자는 낯설어요.
+       > We're testing for a bacteremia that may have set this off.  || 혈류 감염이 확인된 것처럼 들려 아직 모르는 진단을 단정해요.
+     why=아직 검사 중이니 확진처럼 들리지 않게 '감염이 있는지 본다'고만 말해요.
+
+===== S12 부신위기 스테로이드 투여 | He crashed so suddenly — why does he need this steroid shot right now? | role=family
+  [0] His body can't make enough stress hormone, so we're giving it now. | 몸이 스트레스 호르몬을 충분히 만들지 못해서, 지금 대신 주고 있어요. | ['w-make', 'w-stress', 'w-hormone', 'w-give']
+  [1] This steroid can quickly stabilize his blood pressure. | 이 스테로이드가 혈압을 빠르게 안정시켜 줄 수 있어요. | ['w-steroid', 'w-quickly', 'w-stabilize', 'w-blood', 'w-pressure']
+  [2] We'll keep monitoring and give more if his stress level demands it. | 계속 지켜보다가 스트레스 수준이 필요로 하면 더 드릴 거예요. | ['w-keep', 'w-monitor', 'w-give', 'w-stress', 'w-level', 'w-demand']
+  [3] We're giving him a stress dose of steroid right away to support his body. | 몸을 지지하려고 스트레스 용량 스테로이드를 지금 바로 드리고 있어요. | ['w-give', 'w-stress', 'w-dose', 'w-steroid', 'w-support']
+  [4] His blood pressure is already responding well to the medicine. | 혈압이 벌써 약에 잘 반응하고 있어요. | ['w-blood', 'w-pressure', 'w-respond', 'w-medicine']
+  -- slider words=['w-stabilize', 'w-pressure']
+     cue=After the first steroid dose, his blood pressure is a little higher but still low.
+     scale=['still crashing', 'starting to stabilize', 'fully stabilized'] answerAt=1
+     why=혈압이 조금 올랐지만 아직 낮으면 starting to stabilize예요. 안정됐다고 단정하지 말고 계속 재고, 처방된 수액·약에 따른 반응을 팀에 알려요.
+     ex=His pressure is starting to stabilize. / 그의 혈압이 안정되기 시작했어요.
+  -- context words=['w-support']
+     word=support ko=지지하다
+     [의사 호출/speech/True] We gave the stress-dose hydrocortisone to support his blood pressure.
+     [야간 인계/board/True] His pressure needs support overnight from fluids and steroids.
+     [가족에게/me/False] Hemodynamic support is ongoing with stress-dose corticosteroids.  FIX: We're giving him a strong steroid and fluids to help hold his blood pressure up.
+     why=의료진끼리는 hemodynamic support처럼 짧은 말이 정확하고 빨라요. 가족에게는 무엇을 줘서 무엇을 돕는지 쉬운 말로 풀어 주세요.
+  -- swap words=['w-hormone']
+     who=가족에게 · 부신 기능 설명 before=["His body can't make enough ", 'cortisol', " when he's this sick."] answer=stress hormone ko=아주 아플 때 몸이 스트레스 호르몬을 충분히 만들지 못해요
+       > His body can't make enough stress hormone when he's this sick.  || 가족이 이해하는 말로 아플 때 몸에 필요한 호르몬을 설명해요.
+       > His body can't make enough cortisol when he's this sick.  || 정확하지만 가족에게는 낯설 수 있어요.
+       > His body can't make enough glucocorticoid when he's this sick.  || 약물 계열 이름이라 가족은 알아듣기 어려워요.
+     why=부신위기는 아플 때 필요한 스트레스 호르몬이 부족해 생겨요. 가족에게는 호르몬 이름보다 쉬운 설명이 먼저예요.
+
+===== S13 갑상선기능저하 점액수종 관리 | She's so cold to the touch and her heart rate is really slow — is she going to be okay? | role=family
+  [0] Her thyroid is very low, which slows her heart and drops her temperature. | 갑상선 기능이 아주 낮아서, 심장이 느려지고 체온이 떨어지고 있어요. | ['w-thyroid', 'w-low', 'w-slow', 'w-heart', 'w-drop', 'w-temperature']
+  [1] We're warming her gently and giving thyroid hormone. | 천천히 따뜻하게 해드리면서 갑상선 호르몬을 드리고 있어요. | ['w-warm', 'w-gently', 'w-give', 'w-thyroid', 'w-hormone']
+  [2] We'll monitor her heart rate and temperature very closely. | 심박수랑 체온을 아주 자세히 지켜볼게요. | ['w-monitor', 'w-heart', 'w-rate', 'w-temperature', 'w-closely']
+  [3] Her heart rate is very slow, so we're watching her closely on the monitor. | 심박수가 아주 느려서, 모니터로 자세히 지켜보고 있어요. | ['w-heart', 'w-rate', 'w-slow', 'w-watch', 'w-closely', 'w-monitor']
+  [4] As the hormone takes effect, her energy and temperature should slowly improve. | 호르몬이 효과를 내면서 기운이랑 체온이 서서히 좋아질 거예요. | ['w-hormone', 'w-take', 'w-effect', 'w-energy', 'w-temperature', 'w-slow', 'w-improve']
+  -- slider words=['w-gently', 'w-warm']
+     cue=She is cold and her pressure is soft, and you're rewarming her.
+     scale=['gently', 'briskly', 'aggressively'] answerAt=0
+     why=점액수종에서는 담요 등으로 서서히 데우는 것이 안전하다고 알려져 있어요. 빨리 데우면 혈관이 늘어나 혈압이 더 떨어질 수 있어서 gently가 맞아요.
+     ex=We're warming her gently with blankets. / 담요로 부드럽게 따뜻하게 해드리고 있어요.
+  -- context words=['w-temperature']
+     word=temperature ko=체온
+     [의사 호출/speech/True] Her temperature is 92.1°F, so we're rewarming her slowly with blankets.
+     [야간 인계/board/True] Temperature trended up slowly overnight and is now 95.4°F.
+     [가족에게/me/False] She has a core temperature of 92.1°F, consistent with myxedema coma.  FIX: Her body temperature is very low because her thyroid is so slow, and we're warming her gently.
+     why=의료진끼리는 수치와 진단을 함께 말해도 돼요. 가족에게는 myxedema coma 같은 진단명을 바로 던지기보다 체온이 왜 낮은지 쉬운 말로 알려 주세요.
+  -- swap words=['w-thyroid']
+     who=가족에게 · 상태 설명 before=['Her body is ', 'severely hypothyroid', ' right now.'] answer=running very slowly ko=지금 몸의 기능이 아주 느리게 돌아가고 있어요
+       > Her body is running very slowly right now.  || 갑상선 기능이 낮아 몸이 느려진 상태를 쉬운 말로 전해요.
+       > Her body is severely hypothyroid right now.  || 의료진끼리의 진단 표현이라 가족은 의미를 몰라요.
+       > Her body is in myxedema right now.  || 생소한 병명이라 가족에게 불안과 혼란만 줄 수 있어요.
+     why=점액수종은 갑상선 호르몬이 아주 낮아 몸 전체가 느려진 상태예요. 가족에게는 병명보다 이 느려진 모습을 먼저 설명해요.
+
+===== S14 교정속도 뇌부종 위험 인지 | You keep saying slow and steady — why can't you just fix his numbers faster? | role=family
+  [0] Correcting too quickly can cause dangerous brain swelling. | 너무 빠르게 교정하면 위험한 뇌부종이 생길 수 있어요. | ['w-correct', 'w-quickly', 'w-cause', 'w-dangerous', 'w-brain', 'w-swell']
+  [1] A slow, steady pace is actually the safest way to help him. | 천천히 꾸준한 속도가 사실 가장 안전하게 도와드리는 방법이에요. | ['w-slow', 'w-steady', 'w-pace', 'w-safe', 'w-way', 'w-help']
+  [2] We're watching his neuro status while we correct carefully. | 조심스럽게 교정하면서 신경학적 상태를 지켜보고 있어요. | ['w-watch', 'w-neuro', 'w-status', 'w-correct', 'w-carefully']
+  [3] If we correct him too fast, the swelling risk goes up. | 너무 빠르게 교정하면 부종 위험이 올라가요. | ['w-correct', 'w-fast', 'w-swell', 'w-risk']
+  [4] I know it feels slow, but this pace protects his brain. | 느리게 느껴지실 수 있지만, 이 속도가 뇌를 지켜드리는 거예요. | ['w-feel', 'w-slow', 'w-pace', 'w-protect', 'w-brain']
+  -- slider words=['w-risk']
+     cue=Her sodium and sugar are coming down as planned, and her alertness hasn't changed.
+     scale=['low risk', 'some risk', 'high risk'] answerAt=0
+     why=계획한 속도로 내려가고 의식 변화가 없으면 뇌부종 위험은 낮은 쪽이에요. 그래도 위험이 없는 건 아니라서 신경학적 확인은 계속하고, 변화가 생기면 바로 보고해요.
+     ex=The risk is low as long as we go slowly. / 천천히 하는 동안은 위험이 낮아요.
+  -- context words=['w-pace']
+     word=pace ko=속도
+     [의사 라운드/monitor/True] Keep the correction pace slow so the brain has time to adjust.
+     [야간 인계/board/True] The fluid pace is set per protocol, so don't speed it up.
+     [가족에게/me/False] The osmolar correction pace is limited to avoid cerebral edema.  FIX: We're going slowly on purpose, because moving too fast could make his brain swell.
+     why=의료진끼리는 pace와 교정 목표를 압축해서 말해요. 가족에게는 osmolar·cerebral edema 대신 천천히 하는 이유를 쉬운 말로 알려 주세요.
+  -- swap words=['w-swell']
+     who=환자에게 · 천천히 하는 이유 before=['Going too fast could cause ', 'cerebral edema', '.'] answer=swelling in your brain ko=너무 빠르게 하면 뇌가 부을 수 있어요
+       > Going too fast could cause swelling in your brain.  || 환자가 이해하는 말로 위험의 이유를 전해요.
+       > Going too fast could cause cerebral edema.  || 의료진끼리의 정확한 용어라 환자는 모를 수 있어요.
+       > Going too fast could cause intracranial hypertension.  || 어려운 진단명이라 환자가 놀라고 이해하기 어려워요.
+     why=이유를 알아야 환자가 천천히 하는 치료를 이해하고 기다릴 수 있어요. 겁주지 말고 쉬운 말로 설명해요.
+
+===== S15 DKA 뇌부종 급변 위기 | He was talking a minute ago and now he's barely responding — please, something's wrong! | role=family
+  [0] This sudden change is serious and I'm calling the team right now. | 이렇게 갑작스러운 변화는 심각해서, 지금 바로 팀을 부르고 있어요. | ['w-sudden', 'w-change', 'w-serious', 'w-call', 'w-team']
+  [1] I'm raising the head of the bed and rechecking his neuro status. | 침대 머리를 올리고 신경학적 상태를 다시 확인하고 있어요. | ['w-raise', 'w-recheck', 'w-neuro', 'w-status']
+  [2] We're acting immediately to protect his brain. | 뇌를 지키려고 바로 조치하고 있어요. | ['w-act', 'w-immediately', 'w-protect', 'w-brain']
+  [3] He was talking a minute ago and now he's barely responding, so I'm escalating this now. | 방금 전까지 말씀하셨는데 지금은 거의 반응이 없으셔서, 바로 상급 보고를 하고 있어요. | ['w-respond', 'w-escalate']
+  [4] The doctor is on the way, and I'm staying right at his side. | 의사 선생님이 오고 계시고, 저는 바로 옆에 있을게요. | ['w-way', 'w-stay', 'w-side']
+  -- slider words=['w-sudden', 'w-change']
+     cue=His headache got worse, he vomited, and then he became hard to wake, all within the hour.
+     scale=['no change', 'gradual change', 'sudden change'] answerAt=2
+     why=한 시간 안에 두통, 구토, 깨우기 힘든 상태로 이어지면 sudden change예요. DKA 치료 중 이런 변화는 뇌부종 신호일 수 있어서 바로 호출해요.
+     ex=This is a sudden change, so I'm calling now. / 갑작스러운 변화라서 지금 호출할게요.
+  -- context words=['w-escalate']
+     word=escalate ko=상급 보고하다
+     [야간 간호사 → 담당의/speech/True] I need to escalate this now. His neuro status is changing.
+     [의사 호출/speech/True] I'm escalating because he went from talking to barely responding.  !!NOWORD
+     [가족에게/me/False] We are escalating his level of care per rapid response criteria.  FIX: He's getting worse quickly, so I've called more doctors to help right now.  !!NOWORD
+     why=의료진끼리는 escalate가 상급에 올려 도움을 청한다는 정확한 말이에요. 가족에게는 rapid response criteria 대신 무슨 일이 생겼고 무엇을 했는지로 알려 주세요.
+  -- swap words=['w-act']
+     who=가족에게 · 즉각 대응 설명 before=["We're ", 'implementing the cerebral edema protocol', ' right now.'] answer=acting to protect his brain ko=지금 바로 뇌를 지키려고 조치하고 있어요
+       > We're acting to protect his brain right now.  || 가족이 이해하는 말로 지금 하는 일이 전해져요.
+       > We're implementing the cerebral edema protocol right now.  || 의료진끼리 쓰는 말이라 가족은 의미를 몰라요.
+       > We're activating the rapid response right now.  || 팀 호출을 뜻하는 말이라 지금 치료하는 내용은 전해지지 않아요.
+     why=위급할수록 가족에게는 짧고 분명한 말이 필요해요. 절차 이름보다 지금 무엇을 위해 움직이는지를 말해요.
+
+===== S16 갑상선폭풍 위기 | She's burning up and her heart is pounding out of control — what is going on? | role=family
+  [0] Her thyroid is dangerously overactive, causing this fever and racing heart. | 갑상선이 위험할 만큼 너무 활발해져서 열이 나고 심장이 빠르게 뛰고 있어요. | ['w-thyroid', 'w-dangerous', 'w-overactive', 'w-cause', 'w-fever', 'w-race', 'w-heart']
+  [1] We're giving several medicines together to bring it under control. | 조절하려고 여러 약을 같이 드리고 있어요. | ['w-give', 'w-several', 'w-medicine', 'w-together', 'w-bring', 'w-control']
+  [2] We're cooling her and watching her heart continuously. | 체온을 낮춰드리면서 심장을 계속 지켜보고 있어요. | ['w-cool', 'w-watch', 'w-heart', 'w-continuously']
+  [3] Her heart rate is racing and her fever keeps climbing, so this is a crisis. | 심박수가 빠르게 뛰고 열도 계속 오르고 있어서, 이건 위기 상황이에요. | ['w-heart', 'w-rate', 'w-race', 'w-fever', 'w-climb', 'w-crisis']
+  [4] We're starting the antithyroid medicine and beta-blocker right away. | 항갑상선제랑 베타차단제를 바로 시작할게요. | ['w-start', 'w-medicine']
+  -- slider words=['w-race', 'w-heart']
+     cue=Her pulse is 110 and she says her heart is beating a bit hard.
+     scale=['normal', 'a little fast', 'racing'] answerAt=1
+     why=110은 정상(분당 60~100)보다 조금 높아서 a little fast예요. 갑상선폭풍에서는 훨씬 높아질 수 있어서 racing으로 바뀌는지 계속 재요.
+     ex=Her heart is a little fast, so I'm watching it. / 그녀의 심장이 조금 빨라서 지켜보고 있어요.
+  -- context words=['w-control']
+     word=control ko=조절
+     [의사 호출/speech/True] We need to bring her heart rate under control with a beta-blocker.
+     [야간 인계/board/True] Her fever is under control after cooling and acetaminophen.
+     [가족에게/me/False] We are working to achieve hemodynamic and thermoregulatory control.  FIX: We're giving her several medicines to bring her heart rate and fever down.
+     why=의료진끼리는 control 한마디로 목표를 말해요. 가족에게는 hemodynamic·thermoregulatory 대신 무엇을 낮추려고 무엇을 하는지 쉽게 전하세요.
+  -- swap words=['w-overactive']
+     who=가족에게 · 갑상선 상태 before=['Her thyroid is ', 'in a hypermetabolic state', ' and putting stress on her heart.'] answer=working far too hard ko=갑상선이 너무 무리하게 일해서 심장에 부담을 주고 있어요
+       > Her thyroid is working far too hard and putting stress on her heart.  || 가족이 이해하는 말로 과활성의 뜻이 전해져요.
+       > Her thyroid is in a hypermetabolic state and putting stress on her heart.  || 의료진끼리의 말이라 가족은 낯설어요.
+       > Her thyroid is thyrotoxic and putting stress on her heart.  || 어려운 진단 용어라 가족에게는 의미가 닿지 않아요.
+     why=갑상선폭풍은 갑상선 호르몬이 너무 많아 몸이 과하게 돌아가는 상태예요. 가족에게는 '너무 무리하게 일한다'처럼 쉬운 비유가 이해를 도와요.
+
+===== S17 부신위기 순환붕괴 | Her pressure just bottomed out — the steroids aren't working, are they? | role=colleague
+  [0] Let's push the stress-dose steroid and start a pressor together now. | 스트레스 용량 스테로이드를 주고 승압제도 같이 시작해요. | ['w-push', 'w-stress', 'w-steroid', 'w-start', 'w-pressor', 'w-together']
+  [1] I'm giving a fluid bolus while we titrate the vasopressor. | 승압제를 적정하는 동안 수액을 볼루스로 주고 있어요. | ['w-give', 'w-fluid', 'w-bolus', 'w-titrate', 'w-vasopressor']
+  [2] Call the intensivist — this is a true adrenal crisis. | 중환자전문의를 불러 주세요, 진짜 부신위기예요. | ['w-call', 'w-intensivist', 'w-true', 'w-adrenal', 'w-crisis']
+  [3] His pressure crashed suddenly, so this looks like true adrenal crisis. | 혈압이 갑자기 떨어져서, 진짜 부신위기처럼 보여요. | ['w-pressure', 'w-crash', 'w-sudden', 'w-true', 'w-adrenal', 'w-crisis']
+  [4] The pressor is titrating up, and his pressure is starting to respond. | 승압제를 올리고 있고, 혈압이 반응하기 시작했어요. | ['w-pressor', 'w-titrate', 'w-pressure', 'w-start', 'w-respond']
+  -- slider words=['w-crash']
+     cue=His systolic pressure went from 110 to 62 in ten minutes.
+     scale=['dipped slightly', 'dropped', 'crashed'] answerAt=2
+     why=10분 만에 110에서 62로 떨어지면 crashed예요. 부신위기에서는 순환이 갑자기 무너질 수 있어서 바로 호출하고 처방된 수액과 승압제를 준비해요.
+     ex=His pressure crashed, so I'm calling now. / 혈압이 급락해서 지금 호출할게요.
+  -- context words=['w-bolus']
+     word=bolus ko=볼루스
+     [의사 호출/speech/True] Give a fluid bolus while we set up the vasopressor.
+     [야간 인계/board/True] He got a bolus and the pressor is titrating up.
+     [가족에게/me/False] He received a fluid bolus and is now on a vasopressor infusion.  FIX: We gave him a lot of fluid quickly through the IV and started a medicine to raise his blood pressure.
+     why=의료진끼리 bolus는 짧은 시간에 한꺼번에 주는 방식을 정확히 가리켜요. 가족에게는 bolus·infusion 대신 무엇을 어떻게 줬는지 쉽게 풀어 주세요.
+  -- swap words=['w-pressor']
+     who=가족에게 · 승압제 설명 before=['We started ', 'a pressor drip', ' for his blood pressure.'] answer=a medicine ko=혈압을 위한 약을 시작했어요
+       > We started a medicine for his blood pressure.  || 가족이 바로 이해하고 무엇을 위한 것인지 뒤 문장이 알려 줘요.
+       > We started a pressor drip for his blood pressure.  || 의료진 은어라 가족은 뜻을 몰라요.
+       > We started a vasopressor for his blood pressure.  || 정확한 약 이름이지만 가족에게는 낯설어요.
+     why=위급할 때 가족에게는 약 종류보다 '혈압을 위한 약을 시작했다'는 사실이 먼저예요. 자세한 이름은 물어볼 때 설명해요.
+
+===== S18 심한 저혈당 의식소실 위기 | He was drowsy and now he won't wake up at all — his sugar must be too low! | role=colleague
+  [0] Check a stat glucose and push D50 now — he's unresponsive. | 지금 즉시 혈당 확인하고 D50 주세요, 반응이 없어요. | ['w-check', 'w-stat', 'w-glucose', 'w-push', 'w-unresponsive']
+  [1] I'm protecting his airway while the dextrose goes in. | 포도당이 들어가는 동안 기도를 보호하고 있어요. | ['w-protect', 'w-airway', 'w-dextrose']
+  [2] Recheck the sugar in a few minutes and stay ready to repeat. | 몇 분 뒤에 혈당을 다시 확인하고, 반복할 준비를 하고 있어요. | ['w-recheck', 'w-sugar', 'w-stay', 'w-ready', 'w-repeat']
+  [3] He was drowsy and now he's completely unresponsive, so his sugar must be critically low. | 졸려하시더니 지금은 아예 반응이 없으셔서, 혈당이 위험할 정도로 낮은 것 같아요. | ['w-drowsy', 'w-unresponsive', 'w-sugar', 'w-critically', 'w-low']
+  [4] His sugar's coming up, so let's stay by him and recheck it shortly. | 혈당이 올라오고 있으니까, 옆에서 지켜보다가 곧 다시 확인해요. | ['w-sugar', 'w-stay', 'w-recheck', 'w-shortly']
+  -- slider words=['w-drowsy']
+     cue=He opens his eyes to a loud voice, says one word, then drifts off again.
+     scale=['alert', 'drowsy', 'unresponsive'] answerAt=1
+     why=큰 소리에 눈은 뜨지만 금방 다시 잠들면 drowsy예요. alert는 또렷이 대화가 이어지는 상태, unresponsive는 불러도 반응이 없는 상태예요. 더 나빠지면 혈당부터 확인해요.
+     ex=He's drowsy, so let's check his sugar now. / 졸려 하시니 지금 혈당을 확인해요.
+  -- context words=['w-airway']
+     word=airway ko=기도
+     [의사 호출/speech/True] Protect his airway while the dextrose goes in.
+     [야간 인계/board/True] Airway is open, but he's still drowsy, and suction is at the bedside.
+     [가족에게/me/False] We are performing airway management and glucose resuscitation.  FIX: We're making sure he can breathe safely while we give him sugar.
+     why=의료진끼리는 airway 한 단어로 숨길의 안전을 말해요. 가족에게는 airway management·resuscitation 대신 숨을 안전하게 쉬게 하는 일이라고 쉽게 알려 주세요.
+  -- swap words=['w-unresponsive']
+     who=가족에게 · 현재 상태 before=['He is ', 'obtunded', ' right now because his sugar is so low.'] answer=not waking up ko=혈당이 너무 낮아서 지금은 깨어나지 않고 계세요
+       > He is not waking up right now because his sugar is so low.  || 가족이 이해하는 말로 지금 보이는 모습을 정확히 전해요.
+       > He is obtunded right now because his sugar is so low.  || 의식 저하를 가리키는 의료 용어라 가족은 모르는 말이에요.
+       > He is in a hypoglycemic coma right now because his sugar is so low.  || 아직 확정하지 않은 상태를 무겁게 단정하는 말이에요.
+     why=가족은 의료 용어보다 눈앞의 모습을 그대로 말해 줄 때 상황을 이해해요. 원인은 혈당이 낮다는 것만 쉽게 덧붙여요.
+
+===== S19 점액수종 혼수 위기 | She won't respond and she feels ice cold — is she slipping into a coma? | role=family
+  [0] Her thyroid failure has become critical, and we're treating it urgently. | 갑상선 기능부전이 위중해져서, 응급으로 치료하고 있어요. | ['w-thyroid', 'w-failure', 'w-become', 'w-critical', 'w-treat', 'w-urgently']
+  [1] We're giving thyroid hormone and warming and supporting her body. | 갑상선 호르몬을 드리면서 몸을 따뜻하게 하고 지지해 드리고 있어요. | ['w-give', 'w-thyroid', 'w-hormone', 'w-warm', 'w-support']
+  [2] We're watching her breathing and heart very closely. | 호흡이랑 심장을 아주 자세히 지켜보고 있어요. | ['w-watch', 'w-breathing', 'w-heart', 'w-closely']
+  [3] She won't respond and she feels ice cold, so this is critical. | 반응이 없으시고 얼음처럼 차가우셔서, 위중한 상태예요. | ['w-respond', 'w-feel', 'w-critical']
+  [4] Her body needs the thyroid hormone to wake back up and warm up safely. | 몸이 다시 깨어나고 안전하게 따뜻해지려면 갑상선 호르몬이 필요해요. | ['w-need', 'w-thyroid', 'w-hormone', 'w-wake', 'w-warm', 'w-safe']
+  -- slider words=['w-critical']
+     cue=She is cold, barely rousable, and her breathing is slow and shallow.
+     scale=['concerning', 'serious', 'critical'] answerAt=2
+     why=차갑고 겨우 깨우며 호흡이 느리고 얕으면 critical이에요. 점액수종 혼수는 생명이 위태로운 상태라 호흡과 의식을 계속 보며 즉시 보고해요.
+     ex=Her condition is critical, so we're treating her urgently. / 상태가 위중해서 응급으로 치료하고 있어요.
+  -- context words=['w-urgently']
+     word=urgently ko=응급으로
+     [의사 라운드/monitor/True] We need to treat this urgently with IV thyroid hormone.
+     [야간 인계/board/True] Endocrine was called urgently and the steroid is already in.
+     [가족에게/me/False] We are urgently initiating liothyronine and levothyroxine replacement.  FIX: We need to treat this right away, and we're giving her thyroid medicine now.
+     why=의료진끼리는 urgently와 약 이름을 짧게 말해도 정확해요. 가족에게는 liothyronine 같은 약 이름 대신 서둘러 갑상선 약을 주고 있다고 쉽게 전하세요.
+  -- swap words=['w-warm']
+     who=가족에게 · 체온 올리는 방법 before=["We're ", 'passively rewarming her', ' with blankets, slowly and safely.'] answer=warming her up ko=담요로 천천히 안전하게 몸을 따뜻하게 해 드리고 있어요
+       > We're warming her up with blankets, slowly and safely.  || 가족이 이해하는 말로 담요로 서서히 데운다는 뜻이 전해져요.
+       > We're passively rewarming her with blankets, slowly and safely.  || 의료진끼리의 용어라 가족은 뜻을 몰라요.
+       > We're applying external heat to her with blankets, slowly and safely.  || 가열 장치를 대는 것처럼 들려 사실과 달라요.
+     why=점액수종 혼수에서는 담요 등으로 서서히 데우는 것이 안전해요. 가족에게는 '천천히 데운다'는 점이 전해지면 충분해요.
+
+===== S20 내분비 위기 다장기 악화 | Everything seems to be failing at once — I need someone to tell me the real picture. | role=family
+  [0] Several of his organs are under stress, and the whole team is involved. | 여러 장기가 스트레스를 받고 있어서, 전체 팀이 함께하고 있어요. | ['w-several', 'w-organ', 'w-stress', 'w-team', 'w-involve']
+  [1] I'll give you a clear update as each specialist weighs in. | 각 전문의 의견이 나올 때마다 명확하게 알려드릴게요. | ['w-give', 'w-clear', 'w-update', 'w-specialist', 'w-weigh']
+  [2] We're escalating his care and staying right at his bedside. | 치료를 상급으로 올리면서 침상 곁에 계속 있을게요. | ['w-escalate', 'w-care', 'w-stay', 'w-bedside']
+  [3] His kidneys and lungs are both under strain, so we've called in extra specialists. | 콩팥이랑 폐가 둘 다 무리가 가고 있어서, 전문의를 추가로 불렀어요. | ['w-kidney', 'w-lung', 'w-strain', 'w-call', 'w-specialist']
+  [4] I'll keep you updated honestly, even when the news is hard. | 힘든 소식이더라도 솔직하게 계속 알려드릴게요. | ['w-keep', 'w-update', 'w-honestly', 'w-news']
+  -- slider words=['w-strain']
+     cue=His creatinine rose slightly, and his oxygen needs are the same.
+     scale=['mild strain', 'significant strain', 'organ failure'] answerAt=0
+     why=크레아티닌이 조금 오르고 산소 요구량이 그대로면 mild strain이에요. 다장기 악화에서는 변화가 빠를 수 있으니 추세를 계속 보고 달라지면 바로 알려요.
+     ex=His kidneys are under mild strain right now. / 지금은 콩팥에 가벼운 무리가 가고 있어요.
+  -- context words=['w-update']
+     word=update ko=알려주다
+     [가족 면담/me/True] I'll give you an update as soon as the specialists weigh in.
+     [야간 인계/board/True] Quick update: urine output is down and the kidneys are under strain.
+     [가족에게/me/False] Update: patient with multiorgan dysfunction syndrome, now with AKI and ARDS.  FIX: Here's where things stand: his kidneys and lungs are both struggling, and we're helping them.
+     why=인계에서는 약어와 수치를 짧게 전하는 것이 빨라요. 가족에게는 같은 update를 약어 없이 지금 상황과 하는 일 위주로 풀어 주세요.
+  -- swap words=['w-news']
+     who=가족에게 · 나쁜 소식 전하기 before=["I'm sorry — I have ", 'unfavorable findings', ' to share.'] answer=hard news ko=죄송하지만 어려운 소식을 전해야 해요
+       > I'm sorry — I have hard news to share.  || 쉬운 말로 공감을 담아 어려운 소식임을 알려요.
+       > I'm sorry — I have unfavorable findings to share.  || 보고서 같은 딱딱한 말이라 가족에게 차갑게 들려요.
+       > I'm sorry — I have adverse results to share.  || 의료 문서 표현이라 가족에게 거리감을 줘요.
+     why=나쁜 소식은 먼저 어려운 소식이라는 걸 쉬운 말로 알리면 가족이 마음의 준비를 해요. 숨기지 않고 솔직하게 이어서 설명해요.

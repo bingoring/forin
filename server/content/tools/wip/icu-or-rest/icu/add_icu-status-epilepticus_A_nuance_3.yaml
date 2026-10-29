@@ -1,0 +1,130 @@
+- situation: "원인별 치료 연계"
+  items:
+    - kind: slider
+      words: [w-imaging, w-tumor, w-depend]
+      cue: "Family member: \"Is it a tumor?\""
+      scale: ["we won't know until the imaging is read", "yes it is most likely going to be a tumor", "no there is no chance of that"]
+      answerAt: 0
+      why: "원인은 영상 검사 결과가 나와야 알 수 있어요. 결과 전에 종양이라고 단정하거나 아니라고 장담하지 않고, 확인 중이며 나오면 함께 설명하겠다고 솔직히 말해요."
+      example: "The treatment depends on what we find on imaging."
+      exKo: "영상 검사에서 무엇이 나오느냐에 따라 치료가 달라져요."
+    - kind: context
+      words: [w-depend]
+      word: depend
+      ko: 달려 있다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Further treatment will depend on the imaging.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Next steps depend on what the CT shows.", ok: true}
+        - {who: 가족에게, icon: me, en: "Management depends on whether the lesion is neoplastic or vascular.", ok: false, fix: "What we do next depends on what the scan shows."}
+      why: "의료진끼리는 neoplastic이나 vascular 같은 말이 정확해요. 가족에게는 낯설어 불안만 키우니, 검사 결과에 따라 달라진다고 쉽게 전해요."
+- situation: "불응성 SE 마취약 주입 위기"
+  items:
+    - kind: slider
+      words: [w-continuous, w-infusion, w-secure]
+      cue: "Colleague: \"The doctor wants a continuous midazolam infusion started, and he isn't intubated.\""
+      scale: [start it right now since he's breathing, start it and intubate later, secure the airway before it starts]
+      answerAt: 2
+      why: "지속 마취성 주입은 호흡을 억제하므로 시작 전에 기도를 확보하고 호흡을 지지할 준비를 해요. 호흡하고 있다고 먼저 시작하거나 삽관을 나중으로 미루지 않아요."
+      example: "We've secured his airway before starting this infusion."
+      exKo: "이 주입을 시작하기 전에 기도를 확보했어요."
+    - kind: context
+      words: [w-titrate]
+      word: titrate
+      ko: 적정하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'll titrate the infusion to seizure control on EEG.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Titrate slowly and watch his pressure.", ok: true}
+        - {who: 가족에게, icon: me, en: "We're titrating the midazolam to an EEG target.", ok: false, fix: "We're adjusting the medicine bit by bit until his brain activity calms down."}
+      why: "의료진끼리는 titrate가 정확하고 짧은 말이에요. 가족에게는 낯선 용어와 약 이름이 어렵게 들리니, 조금씩 조절한다는 뜻을 쉬운 말로 전해요."
+- situation: "초불응성 SE 관리"
+  items:
+    - kind: pair
+      words: [w-burst, w-suppression, w-third, w-agent, w-deepen, w-sedation]
+      pairs: [[burst, suppression], [third, agent], [deepen, the sedation]]
+      decoys: [stable]
+      why: "burst suppression은 활동 덩어리 사이에 거의 평평한 구간이 반복되는 EEG 패턴이에요. 처방에 따라 이 깊이를 목표로 삼기도 해요. 약을 더할 때는 third agent라고 하고, 진정을 깊게(deepen) 하면 혈압이 떨어질 수 있어 함께 지지해요."
+    - kind: context
+      words: [w-support]
+      word: support
+      ko: 지지하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'll support his pressure with a pressor if it drops.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Support his blood pressure while we deepen the sedation.", ok: true}
+        - {who: 가족에게, icon: me, en: "We're supporting his MAP with vasopressors as we deepen the infusion.", ok: false, fix: "His blood pressure may dip with the medicine, so we're giving him extra help to keep it up."}
+      why: "의료진끼리는 MAP이나 vasopressor 같은 말이 짧고 정확해요. 가족에게는 낯선 약어라, 혈압을 유지하도록 돕는다고 쉽게 전해요."
+- situation: "발작 중 심한 저산소·서맥 위기"
+  items:
+    - kind: slider
+      words: [w-bag, w-high-flow, w-open, w-help]
+      cue: "Colleague: \"He's seizing, his saturation is dropping fast, and his heart rate is falling.\""
+      scale: ["wait for the seizure to stop on its own first", "open airway, bag with oxygen, call for help", "just keep watching the heart rate drop"]
+      answerAt: 1
+      why: "저산소와 서맥이 겹치면 발작이 끝나길 기다릴 수 없어요. 기도를 열고 고유량 산소로 백-마스크 환기를 하면서 바로 도움(신속대응·코드)을 불러요. 모니터만 보며 기다리지 않아요."
+      example: "Open the airway, bag him with oxygen, and call for help."
+      exKo: "기도를 열고 산소로 백을 짜고 도움을 요청하세요."
+    - kind: context
+      words: [w-call]
+      word: call
+      ko: 부르다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'm calling a code, he's bradycardic and desaturating.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Call for help, I'll start bagging.", ok: true}
+        - {who: 가족에게, icon: me, en: "We called a code because he was bradycardic and desaturating.", ok: false, fix: "His heart is slowing and his oxygen is low, so we've called more people to help right now."}
+      why: "의료진끼리는 code, bradycardic 같은 말이 짧고 정확해요. 가족에게는 낯설고 겁을 주니, 무슨 일이 생겼고 사람을 더 불렀다는 사실을 쉽게 전해요."
+- situation: "발작 후 뇌부종·ICP 위기"
+  items:
+    - kind: slider
+      words: [w-pupil, w-uneven, w-report]
+      cue: "Colleague: \"One pupil is bigger than the other, and he's harder to wake.\""
+      scale: [report it to neuro right now, recheck at the next routine vitals, keep his head flat so he can rest]
+      answerAt: 0
+      why: "한쪽 동공이 커지고 깨우기 어려워지면 뇌압 상승 신호일 수 있어 바로 보고해요. 다음 정규 활력까지 미루거나 머리를 눕혀 두지 않아요(보통 머리를 올려요). 영상 검사와 치료는 의료진이 정해요."
+      example: "His pupils look uneven, so I'm reporting it right away."
+      exKo: "동공이 불균등해 보여서 바로 보고하고 있어요."
+    - kind: context
+      words: [w-report]
+      word: report
+      ko: 보고하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'm reporting uneven pupils and a drop in his level of consciousness.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Report any change in his pupils to the neuro team.", ok: true}
+        - {who: 가족에게, icon: me, en: "I'm reporting new anisocoria with a declining GCS.", ok: false, fix: "I'm telling the doctors right away that his eyes look different and he's harder to wake."}
+      why: "의료진끼리는 anisocoria나 GCS 같은 말이 짧고 정확해요. 가족에게는 낯설고 무서우니, 무엇을 보았고 누구에게 알리는지만 쉽게 전해요."
+- situation: "항경련 마취 중 혈역학 붕괴"
+  items:
+    - kind: slider
+      words: [w-pressure, w-drop, w-reassess, w-infusion]
+      cue: "Colleague: \"His pressure dropped right after we deepened the infusion.\""
+      scale: [turn the infusion up to stop the seizure faster still, support his pressure and have the team reassess, just record the number]
+      answerAt: 1
+      why: "마취성 주입을 깊게 한 뒤 혈압이 떨어지면 처방대로 승압제나 수액으로 혈압을 지지하고 팀이 주입 속도를 다시 평가해요. 발작을 빨리 잡겠다고 올리거나 숫자만 기록하고 넘기지 않아요."
+      example: "I'll support his pressure and reassess the infusion rate with the team."
+      exKo: "혈압을 지지하고 팀과 함께 주입 속도를 다시 평가할게요."
+    - kind: context
+      words: [w-pressure]
+      word: pressure
+      ko: 혈압
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His pressure dropped after we deepened the infusion.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Check his pressure again before you change the rate.", ok: true}
+        - {who: 가족에게, icon: me, en: "His mean arterial pressure fell below target, so we're escalating vasopressors.", ok: false, fix: "His blood pressure dropped from the medicine, so we're giving him extra help to bring it back up."}
+      why: "의료진끼리는 mean arterial pressure나 vasopressor 같은 말이 정확해요. 가족에게는 낯선 말이라, 혈압이 떨어져 도움을 주고 있다고 쉽게 전해요."
+- situation: "지속 SE 예후·목표 소통"
+  items:
+    - kind: slider
+      words: [w-honest, w-serious, w-support]
+      cue: "Family member: \"Will he be okay? Please just tell me he'll be fine.\""
+      scale: [promise that he will definitely be fine, say it's too early to talk about any of it, be honest it's serious and stay with them]
+      answerAt: 2
+      why: "결과를 장담하는 약속은 지킬 수 없어요. 심각한 상황임을 솔직히 말하고 곁에서 계속 알려 주며 돕겠다고 해요. 말을 돌리면 가족이 더 불안해해요."
+      example: "I'll be honest with you: this is serious, and we'll stay with you."
+      exKo: "솔직히 말씀드릴게요. 심각한 상황이고, 저희가 곁에 있을게요."
+    - kind: context
+      words: [w-honest]
+      word: honest
+      ko: 솔직한
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I was honest with the family that his condition is serious.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Be honest with them about the uncertainty.", ok: true}
+        - {who: 가족에게, icon: me, en: "Honestly, his prognosis is poor and meaningful recovery is unlikely.", ok: false, fix: "I want to be honest: this is serious, and we'll stay with you through it."}
+      why: "솔직하게 말하는 것은 중요하지만, 가족에게는 결론을 차갑게 단정하면 안 돼요. 심각하다는 사실을 말하되 곁에 있겠다는 말을 함께 전해요."

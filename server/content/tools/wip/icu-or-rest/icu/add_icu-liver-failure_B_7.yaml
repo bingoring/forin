@@ -1,0 +1,55 @@
+situations:
+- title: 급성 간부전 뇌부종 뇌탈출 위기
+  s:
+  - ["즉시 지시", siren, "명령문은 주어 없이 동사로 시작해서 위급할 때 짧게 전달돼요. 고장성 식염수와 머리 거상은 뇌압을 낮추는 두 가지 조치예요.", "right now", "고장성 식염수를 주고 조명을 어둡게 하세요.", "고장성 식염수를 주고 머리맡 서랍을 닫으세요.", "elevate", "wash", "shave", "cover"]
+  - ["긴급 호출", pager, "'immediately'는 기다리지 않고 바로라는 뜻이에요. 'I'm calling'은 진행형이라 지금 하고 있다고 팀에 알려요.", "to the unit", "신경팀과 의사 번호를 즉시 확인하고 있어요.", "신경팀과 의사의 이름을 즉시 적고 있어요.", "neuro", "pharmacy", "radiology", "dietary"]
+  - ["CO2 조절", monitor, "'Let's'는 위급한 순간에도 팀이 함께 한다는 느낌을 줘요. CO2가 오르면 뇌혈관이 넓어져 뇌압이 더 오를 수 있어요.", "to keep", "CO2를 조절하고 그의 시트를 정리합시다.", "CO2를 조절하고 쓴 장갑을 버립시다.", "still", "awake", "alone", "warm"]
+  - ["위기 선언", siren, "'just became'는 방금 바뀌었다는 시점을, 'an emergency'는 위급함을 한 문장에서 분명히 말해요. 동공이 둔해지는 것은 뇌압이 오른 신호예요.", "that is", "동공이 방금 커졌고, 이건 응급 상황이에요.", "눈꺼풀이 방금 둔해졌고, 이건 응급 상황이에요.", "emergency", "exception", "experiment", "opportunity"]
+  - ["투여 중 보고", pill, "'now'로 지금 하고 있다고 알리고 'I need'로 다음 요청을 이어요. 상태가 바뀌었으니 영상으로 다시 봐야 해요.", "right away", "지금 식염수를 투여하고 있고, 머리 CT 결과를 다시 봐야 해요.", "지금 식염수를 투여하고 있고, 머리 CT 영상을 보호자께 보여 드려야 해요.", "repeat", "routine", "private", "scheduled"]
+  - ["진정 유지", pill, "'so'로 이유를 붙이면 왜 진정을 안정시키는지 팀이 알아들어요. 환자가 인공호흡기와 싸우면 흉강 압력이 올라 뇌압도 오를 수 있어요.", "as long", "그가 인공호흡기와 안 싸우도록 진정을 안정되게 기록할게요.", "그가 인공호흡기와 안 싸우도록 진정을 안정되게 설명할게요.", "sedation", "feeding", "lighting", "hydration"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 뇌탈출 위기 4문장 순서
+    why: 동공 변화를 먼저 알리고, 즉시 식염수와 머리 거상을 지시한 뒤, 투여 사실과 CT 요청을 알리며 의사에게 모든 걸 보고해요.
+    lines:
+    - ["His pupil just became sluggish, and this is an emergency.", siren, "동공이 방금 둔해졌고, 이건 응급 상황이에요", "선언"]
+    - ["I'm calling neuro and the physician immediately.", pager, "신경팀과 의사에게 즉시 연락하고 있어요", "호출"]
+    - ["While they're on the way, give the hypertonic saline and elevate his head.", siren, "그들이 오는 동안 고장성 식염수를 주고 머리를 높이세요", "지시"]
+    - ["I'm pushing it now, and I need a repeat head CT.", pill, "지금 투여하고 있고, 머리 CT를 다시 찍어야 해요", "보고"]
+- title: 대량 출혈·응고붕괴 위기
+  s:
+  - ["제제 요청", bandage, "명령문에 'now'를 붙여 지금 바로 가져오라는 뜻을 분명히 해요. 응고붕괴에서는 혈장, 혈소판, 동결침전제제를 함께 채워요.", "from the", "혈장, 혈소판, 보온 담요를 지금 가져오세요.", "혈장, 새 장갑, 동결침전제제를 지금 가져오세요.", "cryo", "saline", "towels", "gowns"]
+  - ["수혈 원칙", pill, "'balanced ratios'는 한 가지 제제만 몰아 주지 않는다는 뜻이에요. 체온이 떨어지면 응고가 더 나빠져서 따뜻하게 유지해요.", "in equal", "균형 잡힌 비율로 수혈하고 빈 팩을 따로 모으세요.", "균형 잡힌 비율로 수혈하고 팩 번호를 따로 적으세요.", "ratios", "shifts", "colors", "sizes"]
+  - ["수치 재확인", lab, "'frequently'는 한 번이 아니라 거듭 확인한다는 뜻이에요. 피브리노겐은 피가 굳는 데 쓰이는 재료라 수혈 중에도 계속 봐요.", "as often", "피브리노겐과 응고 수치를 자주 기록하세요.", "피브리노겐과 응고 수치를 자주 보고하세요.", "fibrinogen", "cholesterol", "thyroid", "vitamin"]
+  - ["위기 설명", siren, "'so'로 상황과 필요를 이으면 왜 서두르는지 팀이 이해해요. 'fast'는 시간이 곧 생명이라는 뜻이에요.", "for the", "그가 곳곳에서 출혈하고 있어서 제제가 많이 필요해요.", "그가 곳곳에서 출혈하고 있어서 침대가 빨리 필요해요.", "bleeding", "sweating", "itching", "hurting"]
+  - ["교차시험 재의뢰", lab, "'while we transfuse'는 수혈을 멈추지 않고 동시에 검사를 보낸다는 뜻이에요. 혈액형 검사와 교차시험은 다음 혈액 제제를 맞추는 데 필요해요.", "once we", "수혈하는 동안 혈액형 검사와 교차시험을 다시 기록합시다.", "수혈하는 동안 혈액형 검사와 교차시험을 다시 설명합시다.", "type", "tube", "scan", "culture"]
+  - ["보온과 감시", monitor, "수액을 데우는 일과 쇼크 징후를 보는 일을 한 문장에 담아 두 가지를 동시에 한다고 알려요.", "for any", "수액을 데우고 쇼크 징후를 기록할게요.", "수액을 데우고 쇼크 징후를 설명할게요.", "shock", "fever", "anemia", "edema"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 대량 출혈 대응 4문장 순서
+    why: 상황을 알린 뒤 제제를 가져오게 하고, 균형 있게 수혈하며, 들어가는 동안 수치를 자주 다시 확인해요.
+    lines:
+    - ["He's bleeding from everywhere, so we need products fast.", siren, "그가 곳곳에서 출혈하고 있어서 제제가 빨리 필요해요", "상황"]
+    - ["Get plasma, platelets, and cryo now.", bandage, "혈장, 혈소판, 동결침전제제를 지금 가져오세요", "요청"]
+    - ["Transfuse them in balanced ratios and keep him warm.", pill, "그것들을 균형 잡힌 비율로 수혈하고 그를 따뜻하게 유지하세요", "수혈"]
+    - ["Recheck fibrinogen and coags frequently as they go in.", lab, "들어가는 동안 피브리노겐과 응고 수치를 자주 재확인하세요", "재검"]
+- title: 급성 의식저하 기도 위기
+  s:
+  - ["삽관 준비", gear, "'get … ready'는 가져오는 일과 쓸 수 있게 만드는 일을 함께 말해요. 의식이 떨어지면 삽관과 흡인이 곧 필요해요.", "to the", "삽관 트레이와 흡인 점검표를 가져올게요.", "삽관 트레이와 흡인 설명서를 가져올게요.", "intubation", "dressing", "suture", "specimen"]
+  - ["준비 단계", gear, "예비 산소화는 삽관하는 동안 쓸 산소를 미리 채워 두는 일이에요. 'position'은 기도가 일직선이 되게 자세를 잡는다는 뜻이에요.", "to help", "예비 산소화하고 기도 자세를 기록합시다.", "예비 산소화하고 기도 자세를 설명합시다.", "airway", "arm", "hip", "leg"]
+  - ["준비 완료 보고", check, "'ready to assist'는 보조할 준비가 끝났다는 보고라서 시술자가 바로 진행해요. 흡인이 켜져 있으면 구토나 분비물에 즉시 대응해요.", "to be", "산소가 켜져 있고 저는 보조할 준비가 됐어요.", "흡인이 켜져 있고 저는 기록할 준비가 됐어요.", "Suction", "Oxygen", "Monitor", "Light"]
+  - ["위기 보고", siren, "'just dropped'는 방금 떨어졌다는 변화의 시점을 알려요. 'can't protect'는 기침과 삼킴으로 기도를 못 지킨다는 뜻이에요.", "and it", "정신 상태가 방금 떨어졌고, 눈을 뜨지 못해요.", "혈압이 방금 떨어졌고, 기도를 지키지 못해요.", "protect", "clean", "measure", "change"]
+  - ["예비 장비", compass, "'just in case'는 필요하지 않을 수도 있지만 미리 둔다는 뜻이에요. 어려운 기도 카트는 한 번에 안 들어갈 때를 대비한 장비예요.", "for the", "혹시 몰라서 어려운 기도 카트 점검표를 침상 옆에 둡시다.", "혹시 몰라서 어려운 기도 카트 설명서를 침상 옆에 둡시다.", "difficult", "pediatric", "spare", "old"]
+  - ["윤상연골 압박", handshake2, "'while you pass the tube'로 두 사람이 동시에 일한다는 점을 분명히 해요. 압박은 삽관하는 동안 이어져야 해서 동작이 겹쳐요.", "when you", "당신이 튜브를 넣는 동안 고정 테이프를 잘라 둘게요.", "당신이 튜브를 넣는 동안 흡인 카테터를 잡고 있을게요.", "cricoid", "chest", "nasal", "brow"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기도 위기 4문장 순서
+    why: 기도를 못 지키는 상태를 알리고, 장비를 준비한 뒤 산소화와 자세를 잡으며, 마지막으로 삽관하는 동안 압박을 맡아요.
+    lines:
+    - ["His mental status just dropped, and he can't protect his airway.", siren, "정신 상태가 방금 떨어졌고, 기도를 지키지 못해요", "보고"]
+    - ["I'll get the intubation tray and suction ready.", gear, "삽관 트레이와 흡인 준비를 가져올게요", "준비"]
+    - ["While that's coming, let's preoxygenate and position his airway.", gear, "그게 오는 동안 예비 산소화하고 기도 자세를 잡읍시다", "산소화"]
+    - ["With him positioned like that, I'll hold cricoid pressure while you pass the tube.", handshake2, "그렇게 자세가 잡히면 당신이 튜브를 넣는 동안 윤상연골 압박을 유지할게요", "압박"]

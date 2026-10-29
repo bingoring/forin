@@ -1,0 +1,84 @@
+0:
+  - kind: slider
+    words: [w-oriented]
+    cue: "He gives his name and knows he's in the hospital, but says the year is wrong."
+    scale: [fully oriented, partly oriented, not oriented]
+    answerAt: 1
+    why: "이름과 장소는 알아도 날짜를 틀리면 일부만 지남력이 있는 상태예요. 사람·장소·시간을 모두 묻고, 어제 기저치와 비교해 달라진 점을 기록해 팀에 알려요."
+    example: "He's only partly oriented this morning."
+    exKo: "그는 오늘 아침 일부만 지남력이 있어요."
+  - kind: context
+    words: [w-confusion]
+    word: confusion
+    ko: 혼란
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "New confusion in a liver patient can mean hepatic encephalopathy.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Mild confusion overnight; he is oriented to person only.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Your husband's confusion is a portosystemic encephalopathy with an altered sensorium.", ok: false, fix: "Your husband's confusion is because his liver isn't filtering toxins well, and we're treating it."}
+    why: "의료진끼리는 hepatic encephalopathy 같은 용어가 정확하고 빨라요. 보호자에게는 같은 confusion을 간이 독소를 잘 못 걸러서 생긴 일이라고 쉬운 말로 풀어 주세요."
+  - kind: swap
+    words: [w-baseline]
+    who: "보호자에게 · 변화 설명"
+    icon: me
+    before: ["I'm comparing how he is now to ", "his baseline", " every shift."]
+    options: [how he normally is, his baseline, his premorbid status]
+    answer: how he normally is
+    notes: {how he normally is: "보호자가 바로 알아듣고, 무엇과 비교하는지 분명해요.", his baseline: "의료진끼리 쓰는 말이라 보호자는 뜻을 모를 수 있어요.", his premorbid status: "병이 생기기 전 상태를 뜻하는 격식 있는 말이라 가족 대화에는 딱딱해요."}
+    why: "변화 관찰은 보호자도 도울 수 있는 일이라, 기준 상태를 '평소 모습'처럼 쉬운 말로 알려 주면 협조가 쉬워요."
+    ko: "근무 때마다 지금 상태를 평소 모습과 비교하고 있어요"
+1:
+  - kind: slider
+    words: [w-level]
+    cue: "Ammonia came back 80, then 120, then 190 on three checks."
+    scale: [steady, rising, spiking]
+    answerAt: 1
+    why: "세 번 연속 조금씩 오르면 rising이에요. steady는 변화가 없을 때, spiking은 한 번에 갑자기 치솟을 때예요. 암모니아가 오르면 혼란이 심해질 수 있어 의식 상태를 같이 보고 수치는 의사에게 알려요."
+    example: "Her ammonia level is rising."
+    exKo: "그녀의 암모니아 농도가 오르고 있어요."
+  - kind: context
+    words: [w-high]
+    word: high
+    ko: 높은
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "His enzymes are high, so the liver cells are injured.", ok: true}
+      - {who: 야간 인계, icon: board, en: "INR is still high at 2.8, and there's no new bleeding.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your ALT is high enough to indicate hepatocellular necrosis.", ok: false, fix: "Your liver enzymes are high because the liver cells are stressed."}
+    why: "의료진끼리는 ALT, hepatocellular necrosis 같은 용어가 정확해요. 환자에게는 같은 high를 간세포가 힘들어서 수치가 높다고 쉬운 말로 알려 주세요."
+  - kind: swap
+    words: [w-clot]
+    who: "환자에게 · 검사 설명"
+    icon: me
+    before: ["This test shows how well ", "your hemostasis is functioning", "."]
+    options: [your blood can clot, your hemostasis is functioning, your coags are trending]
+    answer: your blood can clot
+    notes: {your blood can clot: "환자가 바로 알아듣고, 검사가 무엇을 보는지 분명해요.", your hemostasis is functioning: "의료진끼리 쓰는 말이라 환자는 무슨 뜻인지 모를 수 있어요.", your coags are trending: "응고 수치의 추세를 말하는 의료진 용어라 환자 설명에는 맞지 않아요."}
+    why: "응고 검사는 환자가 출혈과 연결해서 걱정하는 경우가 많아서, 무엇을 보는 검사인지 쉬운 말로 알려야 해요."
+    ko: "이 검사는 피가 얼마나 잘 굳는지 보여 줘요"
+2:
+  - kind: slider
+    words: [w-watery]
+    cue: "He has had six thin, shapeless stools since morning, like water."
+    scale: [formed, soft, watery]
+    answerAt: 2
+    why: "모양 없이 물 같은 변이 하루에 여러 번이면 watery예요. 락툴로오스의 목표는 보통 하루 두세 번의 무른 변이라, 이렇게 묽고 잦으면 탈수와 전해질 이상 위험이 있어 의사에게 알려요. 용량 조정은 처방자가 해요."
+    example: "His stools are watery today."
+    exKo: "오늘 그의 변이 묽어요."
+  - kind: context
+    words: [w-dose]
+    word: dose
+    ko: 용량
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "The lactulose dose is titrated to two or three soft stools a day.", ok: true}
+      - {who: 야간 인계, icon: board, en: "The next lactulose dose is due at 0600, and he's had three stools.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your dose is a nonabsorbable disaccharide that acidifies the colon.", ok: false, fix: "This dose helps your bowels clear the toxins that cloud your thinking."}
+    why: "의료진끼리는 nonabsorbable disaccharide 같은 약리 용어가 정확해요. 환자에게는 같은 dose를 이 약이 무슨 일을 하는지 쉬운 말로 풀어 주세요."
+  - kind: swap
+    words: [w-bowel]
+    who: "환자에게 · 배변 안내"
+    icon: me
+    before: ["Please tell us each time you have ", "a defecation", "."]
+    options: [a bowel movement, a stool, a defecation]
+    answer: a bowel movement
+    notes: {a bowel movement: "환자와 가족이 편하게 알아듣는 표준적인 말이에요.", a stool: "차트와 의료진 사이에서 쓰는 말이라 환자 대화에는 약간 딱딱해요.", a defecation: "격식을 갖춘 의학 용어라 환자에게는 어색해요."}
+    why: "배변은 민망해하는 환자가 많아서, 담담하고 쉬운 표현을 쓰면 횟수를 더 잘 알려 줘요."
+    ko: "배변을 할 때마다 저희에게 알려 주세요"

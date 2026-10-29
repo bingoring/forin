@@ -1,0 +1,69 @@
+situations:
+- title: 발작 후 상태 사정
+  s:
+  - ["안심 설명", shield, "'it's normal to…'는 증상을 정상 범위로 먼저 알려 가족을 안심시키는 틀이에요. 'for a while'로 일시적이라는 점도 전해요.", "for the night", "발작 후에는 잠시 배고프고 혼란스러운 게 정상이에요.", "발작 후에는 잠시 졸리고 걱정되는 게 정상이에요.", "drowsy", "thirsty", "cheerful", "jealous"]
+  - ["상태 사정", stetho, "'as he recovers'는 사정이 회복 과정 내내 이어진다는 뜻이에요. 'responsiveness'는 자극에 반응하는 정도를 가리키는 임상어예요.", "every day", "자는 동안 반응성을 확인하고 있어요.", "회복실에서 반응성을 확인하고 있어요.", "responsiveness", "schedule", "paperwork", "insurance"]
+  - ["관찰 약속", monitor, "'any sign'은 작은 징후까지 포함한다는 뜻이고, 'closely'가 주의 깊게 본다는 약속을 더해요.", "for the family", "또 다른 발작의 징후가 있는지 가까이서 지켜볼게요.", "또 다른 발작의 징후가 있는지 함께 지켜볼게요.", "sign", "name", "copy", "cost"]
+  - ["가족 안심", faceWorried, "'This is normal'로 먼저 안심시킨 뒤, 'wasn't in pain'으로 가족이 가장 걱정하는 점을 직접 다뤄요.", "in the hall", "정상적인 거예요, 발작 중에 기억하지는 못할 수 있어요.", "정상적인 거예요, 발작 중에 열은 나지 않았어요.", "pain", "school", "line", "charge"]
+  - ["죄책감 덜기", faceWorried, "'You didn't do anything wrong'은 목격한 가족이 흔히 갖는 죄책감을 먼저 덜어 줘요. 세미콜론 뒤에서 앞으로의 역할을 맡겠다고 말해요.", "for the family", "놀라신 거 당연해요. 다음 발작을 지켜보는 건 이제 제 역할이에요.", "잘못하신 거 하나도 없어요. 다음 설명을 드리는 건 이제 제 역할이에요.", "wrong", "special", "strange", "weak"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 발작 후 설명 4문장 순서
+    why: 정상 증상을 먼저 알리고, 회복 상태를 확인하고, 계속 지켜보겠다고 약속한 뒤, 가족의 죄책감을 덜어 줘요.
+    lines:
+    - ["After a seizure, feeling drowsy and confused for a while is normal.", shield, "발작 후 잠시 졸리고 혼란스러운 건 정상이에요", "정상"]
+    - ["While he recovers from that, I'm checking his responsiveness.", stetho, "그 회복 동안 반응성을 확인하고 있어요", "확인"]
+    - ["Along with those checks, I'll watch closely for another seizure.", monitor, "그 확인과 함께 또 다른 발작을 자세히 지켜볼게요", "관찰"]
+    - ["Through all of this, you did nothing wrong.", faceWorried, "이 모든 과정에서 잘못하신 건 없어요", "위로"]
+- title: 2차 항경련제 로딩
+  s:
+  - ["약 설명", pill, "'Yes,'로 먼저 질문에 답하고, 'like levetiracetam'으로 약 이름을 예로 들어 가족이 이해하기 쉽게 해요.", "like the first one", "네, 레비티라세탐 같은 2차 항경련제를 로딩한 뒤 지켜보고 있어요.", "네, 레비티라세탐 같은 새로운 항경련제를 로딩하고 있어요.", "levetiracetam", "ondansetron", "ibuprofen", "famotidine"]
+  - ["투약 확인", pill, "'weight-based'는 체중에 맞춰 계산한다는 복합 형용사예요. 'Let's'로 같이 확인하자고 해서 혼자 정하지 않는 분위기를 만들어요.", "the order", "체중에 따른 용량과 주입 속도를 확인하고 시작하죠.", "체중을 재서 용량과 주입 속도를 확인하죠.", "weight-based", "room-based", "color-based", "ward-based"]
+  - ["감시 약속", monitor, "'during the load'로 약이 들어가는 동안이 감시 기간임을 분명히 해요. 'rhythm and pressure'는 두 활력 수치를 짝지어 말해요.", "for the team", "로딩하기 전에 심장리듬과 혈압을 확인할게요.", "로딩한 뒤에 심장리듬과 혈압을 확인할게요.", "rhythm", "diet", "visitors", "laundry"]
+  - ["진행 보고", pill, "대시 앞에서 지난 시간을 말하고 뒤에서 지금 하는 일을 말해요. 'the first … the second'로 순서가 분명해요.", "with his family", "첫 투여 후 환자가 졸려 하고 있어요 — 이제 2차 약물을 로딩하고 있어요.", "첫 투여 후 가족이 도착했어요 — 이제 2차 약물을 로딩하고 있어요.", "second", "spare", "short", "single"]
+  - ["부작용 감시", monitor, "'watching for'는 일어날 수 있는 일을 미리 지켜본다는 표현이에요. 'sedation or low pressure'는 약이 일으킬 수 있는 두 가지를 짝지어요.", "after the bag", "로딩하는 동안 진정이나 호흡곤란이 있는지 지켜보고 있어요.", "로딩하는 동안 두통이나 구역이 있는지 지켜보고 있어요.", "sedation", "pregnancy", "hunger", "laughter"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 2차 항경련제 로딩 4문장 순서
+    why: 약이 무엇인지 알리고, 체중 기준 용량을 확인하고, 로딩을 시작한 뒤, 로딩 동안의 감시를 약속해요.
+    lines:
+    - ["We're giving a second anti-seizure drug.", pill, "2차 항경련제를 줄 거예요", "약"]
+    - ["First, let's confirm the weight-based dose and rate.", pill, "먼저 체중 기준 용량과 속도를 확인하죠", "확인"]
+    - ["With those confirmed, I'm loading it now.", pill, "그것들이 확인됐으니 지금 로딩해요", "로딩"]
+    - ["As it goes in, I'll watch his rhythm and pressure.", monitor, "들어가는 동안 심장리듬과 혈압을 지켜볼게요", "감시"]
+- title: 지속 EEG 모니터 연계
+  s:
+  - ["이유 설명", bulb, "'can continue'는 가능성을 말하는 틀이에요. 'even without shaking'은 눈에 보이지 않아도 계속될 수 있다는 점을 쉽게 알려요.", "for hours", "발작은 몸이 떨지 않아도 뇌 안에서 계속될 수 있어요.", "발작은 몸이 떨리면 뇌 안에서 더 심해질 수 있어요.", "shaking", "bleeding", "talking", "walking"]
+  - ["검사 설명", monitor, "'lets us catch'는 검사가 우리에게 해 주는 일을 주어로 삼아 쉽게 풀어요. 'hidden'은 눈에 안 보이는 발작을 한 단어로 가리켜요.", "to his brain", "지속 뇌파검사(EEG)로 그런 숨은 발작을 잡아낼 수 있어요.", "지속 뇌파검사(EEG)로 그런 새 발작을 막아낼 수 있어요.", "hidden", "daily", "mild", "recent"]
+  - ["역할 설명", speech, "'to guide'는 목적을 보여 줘서 결과를 누가 어떻게 쓰는지 알려요. 'neuro team'은 신경과 팀을 줄인 현장 표현이에요.", "for the family", "신경과 팀이 그것을 읽고 치료 방향을 정해요.", "중환자 팀이 그것을 읽고 치료 방향을 정해요.", "guide", "delay", "refuse", "shorten"]
+  - ["처치 설명", monitor, "'to watch'는 붙이는 목적을 말해 환자 가족이 이유를 이해하게 해요. 'put … on his scalp'는 두피에 붙인다는 쉬운 동작 표현이에요.", "on his chest", "뇌파를 지켜보려고 두피에 EEG 선을 붙이는 거예요.", "심장을 지켜보려고 가슴에 심전도 선을 붙이는 거예요.", "scalp", "wrist", "ankle", "shoulder"]
+  - ["모니터 설명", monitor, "'Even if'로 겉모습과 실제가 다를 수 있음을 앞에 깔아요. 'is still seizing'은 지금 진행 중이라는 뜻을 진행형으로 보여 줘요.", "in his sleep", "몸이 가만히 있어 보여도, 모니터가 뇌에서 아직 발작 중인지 알려줘요.", "몸이 힘들어 보여도, 모니터가 뇌에서 아직 쉬는 중인지 알려줘요.", "still", "never", "rarely", "barely"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 지속 EEG 설명 4문장 순서
+    why: 보이지 않는 발작이 있다고 알리고, EEG가 하는 일을 설명한 뒤, 붙이는 방법을 말하고, 결과를 누가 쓰는지 알려요.
+    lines:
+    - ["A seizure can keep going in the brain without any shaking.", bulb, "발작은 떨림 없이도 뇌에서 계속될 수 있어요", "이유"]
+    - ["That's why continuous EEG lets us catch it.", monitor, "그래서 지속 EEG로 그걸 잡아낼 수 있어요", "EEG"]
+    - ["We put the leads on his scalp to do that.", monitor, "그러려고 두피에 선을 붙여요", "부착"]
+    - ["The neuro team reads what comes of it to guide his treatment.", speech, "신경과 팀이 그 결과를 읽고 치료를 이끌어요", "활용"]
+- title: 유발원인 검사·교정
+  s:
+  - ["검사 설명", lab, "'together'가 문장 끝에서 두 검사를 한꺼번에 한다는 뜻을 전해요. 'infection and metabolic causes'는 원인 두 갈래를 짝지어 말해요.", "this morning", "감염과 대사 원인을 가능한 한 천천히 검사하고 있어요.", "감염과 호흡 원인을 함께 검사하고 있어요.", "together", "alone", "twice", "later"]
+  - ["핵심 설명", bulb, "'is key'는 가장 중요한 점을 짚는 표현이에요. 'Correcting the trigger'를 주어로 삼아 치료의 중심을 먼저 말해요.", "for the family", "유발 요인을 설명하는 게 발작을 멈추는 핵심이에요.", "유발 요인을 찾는 게 발작을 멈추는 핵심이에요.", "key", "late", "cheap", "brief"]
+  - ["검사 약속", lab, "'send'는 검체를 검사실로 보낸다는 현장 동사예요. 'treat what we find'는 결과에 따라 움직이겠다는 약속이에요.", "to the front desk", "배양검사와 검사를 보내고, 나온 결과를 설명할게요.", "배양검사와 검사를 보내고, 나온 결과를 기록할게요.", "cultures", "photos", "menus", "forms"]
+  - ["원인 설명", bulb, "'can also set off'의 'also'는 다른 원인도 있다는 점을 덧붙여요. 'fever or infection'은 감염 쪽 원인을 두 가지로 풀어 줘요.", "for a day", "열이나 탈수도 발작을 유발할 수 있어요.", "열이나 감염은 발작을 막을 수 있어요.", "fever", "hunger", "laughter", "walking"]
+  - ["예상 설명", shield, "'Once'는 앞의 일이 끝난 다음을 가리켜 순서를 보여 줘요. 'usually'는 대부분 그렇다는 말이라 약속을 과장하지 않아요.", "with the team", "원인을 교정하고 나면 발작은 대개 줄어요.", "원인을 설명하고 나면 발작은 보통 멈춰요.", "usually", "never", "slowly", "rarely"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 유발원인 설명 4문장 순서
+    why: 무엇을 검사하는지 알리고, 검체를 보내겠다고 약속하고, 결과가 나오면 교정하고, 그 뒤 기대를 말해요.
+    lines:
+    - ["We're testing for infection and metabolic causes together.", lab, "감염과 대사 원인을 함께 검사해요", "검사"]
+    - ["I'll send the samples to the lab for those tests.", lab, "그 검사를 위해 검체를 검사실로 보낼게요", "검체"]
+    - ["Whatever we find from them, we'll correct it.", lab, "거기서 나오는 것은 무엇이든 교정할게요", "교정"]
+    - ["After that, the seizures usually stop.", shield, "그러고 나면 발작은 보통 멈춰요", "기대"]

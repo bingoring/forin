@@ -1,0 +1,1804 @@
+
+######## S0 발작 관찰·시간 기록
+--- 0.0 [발작 관찰|monitor] words=['w-seizure', 'w-watch', 'w-exactly', 'w-happen']
+EN: I'm timing the seizure right now and watching exactly what's happening.
+KO: 지금 발작 시간을 재면서 무슨 일이 일어나는지 정확히 지켜보고 있어요. (39)
+X1: 지금 발작 시간을 재면서 무슨 일이 일어나는지 가까이서 지켜보고 있어요. (40)
+X2: 지금 발작 시간을 재면서 무슨 일이 일어나는지 조용히 지켜보고 있어요. (39)
+WHY: 'I'm timing'과 'right now'가 만나 지금 곁에서 하는 일임이 분명해져요. 'exactly what's happening'은 있는 그대로 본다는 약속이에요.
+ B* I'm timing the seizure right now and watching [exactly] what's happening.
+ B  I'm timing the seizure right now and watching [roughly] what's happening.
+ B  I'm timing the seizure right now and watching [loosely] what's happening.
+ B  I'm timing the seizure right now and watching [briefly] what's happening.
+CH: ["I'm timing", 'the seizure', 'right now', 'and watching exactly', "what's happening", '.'] | DECOY: for the doctor
+  D: <for the doctor> the seizure right now and watching exactly what's happening .
+  D: I'm timing <for the doctor> right now and watching exactly what's happening .
+  D: I'm timing the seizure <for the doctor> and watching exactly what's happening .
+  D: I'm timing the seizure right now <for the doctor> what's happening .
+  D: I'm timing the seizure right now and watching exactly <for the doctor> .
+--- 0.1 [이유 설명|bulb] words=['w-duration', 'w-type', 'w-help', 'w-team', 'w-treat', 'w-correctly']
+EN: The duration and type help the team treat him correctly.
+KO: 지속시간과 양상을 알아야 팀이 정확히 치료할 수 있어요. (31)
+X1: 지속시간과 양상을 알아야 팀이 빠르게 치료할 수 있어요. (31)
+X2: 지속시간과 횟수를 알아야 팀이 정확히 치료할 수 있어요. (31)
+WHY: 'help the team'은 기록이 팀의 일을 돕는다는 틀이라, 재고 적는 이유가 부담 없이 전해져요.
+ B* The [duration] and type help the team treat him correctly.
+ B  The [insurance] and type help the team treat him correctly.
+ B  The [visitor] and type help the team treat him correctly.
+ B  The [dressing] and type help the team treat him correctly.
+CH: ['The duration and type', 'help the team', 'treat him', 'correctly', '.'] | DECOY: for the chart
+  D: <for the chart> help the team treat him correctly .
+  D: The duration and type <for the chart> treat him correctly .
+  D: The duration and type help the team <for the chart> correctly .
+  D: The duration and type help the team treat him <for the chart> .
+--- 0.2 [감사|handshake2] words=['w-thank', 'w-call', 'w-note', 'w-start']
+EN: Thank you for calling us; I'm noting when it started.
+KO: 알려주셔서 감사해요. 언제 시작됐는지 기록하고 있어요. (30)
+X1: 도와주셔서 감사해요. 언제 시작됐는지 기록하고 있어요. (30)
+X2: 기다려 주셔서 감사해요. 언제 시작됐는지 기록하고 있어요. (32)
+WHY: 'Thank you for…' 뒤에 동명사를 붙여 상대가 한 행동을 구체적으로 인정해요. 세미콜론 뒤에서 곧바로 지금 하는 일을 말해요.
+ B* Thank you for calling us; I'm [noting] when it started.
+ B  Thank you for calling us; I'm [guessing] when it started.
+ B  Thank you for calling us; I'm [wondering] when it started.
+ B  Thank you for calling us; I'm [hoping] when it started.
+CH: ['Thank you', 'for calling us;', "I'm noting", 'when it started', '.'] | DECOY: for waiting
+  D: <for waiting> for calling us; I'm noting when it started .
+  D: Thank you <for waiting> I'm noting when it started .
+  D: Thank you for calling us; <for waiting> when it started .
+  D: Thank you for calling us; I'm noting <for waiting> .
+--- 0.3 [시작 확인|calendar] words=['w-exactly', 'w-seizure', 'w-start']
+EN: I need to know exactly when this seizure started.
+KO: 이 발작이 정확히 언제 시작됐는지 알아야 해요. (26)
+X1: 이 발작이 정확히 어디서 시작됐는지 알아야 해요. (27)
+X2: 이 발작이 정확히 어떻게 시작됐는지 알아야 해요. (27)
+WHY: 'exactly when'을 한 덩어리로 앞에 놓아 시각이 핵심임을 강조해요. 'I need to know'는 도움을 청하는 직접적인 표현이에요.
+ B* I need to know exactly when this [seizure] started.
+ B  I need to know exactly when this [infection] started.
+ B  I need to know exactly when this [allergy] started.
+ B  I need to know exactly when this [rash] started.
+CH: ['I need to know', 'exactly when', 'this seizure', 'started', '.'] | DECOY: from the family
+  D: <from the family> exactly when this seizure started .
+  D: I need to know <from the family> this seizure started .
+  D: I need to know exactly when <from the family> started .
+  D: I need to know exactly when this seizure <from the family> .
+--- 0.4 [기록 약속|pencil] words=['w-write', 'w-last', 'w-move']
+EN: I'll write down how long it lasts and how his body moves.
+KO: 얼마나 오래 지속되는지, 몸이 어떻게 움직이는지 적어둘게요. (33)
+X1: 얼마나 오래 지속되는지, 눈이 어떻게 움직이는지 적어둘게요. (33)
+X2: 얼마나 오래 지속되는지, 소리가 어떻게 나는지 적어둘게요. (32)
+WHY: 'write down'은 지금 보이는 것을 바로 적는다는 약속이에요. 'how long'과 'how'로 적을 두 가지를 나란히 말해요.
+ B* I'll write down how long it [lasts] and how his body moves.
+ B  I'll write down how long it [starts] and how his body moves.
+ B  I'll write down how long it [ends] and how his body moves.
+ B  I'll write down how long it [stops] and how his body moves.
+CH: ["I'll write down", 'how long it lasts', 'and how', 'his body moves', '.'] | DECOY: in the room
+  D: <in the room> how long it lasts and how his body moves .
+  D: I'll write down <in the room> and how his body moves .
+  D: I'll write down how long it lasts <in the room> his body moves .
+  D: I'll write down how long it lasts and how <in the room> .
+== ORDER ko=발작 관찰과 기록 4문장 순서 | tag=대화 흐름 icon=compass
+   why=가족의 알림에 먼저 감사하고, 지금 하는 일을 말한 뒤, 기록하는 이유를 설명하고, 적을 내용을 약속해요.
+   - Thank you for calling us right away. (7w) | 바로 알려 주셔서 감사해요 | 감사 | handshake2
+   - I'm timing the seizure and watching it closely. (8w) | 발작 시간을 재고 가까이서 지켜보고 있어요 | 관찰 | monitor
+   - That tells the team how to treat him correctly. (9w) | 그게 팀이 어떻게 치료할지 알려 줘요 | 이유 | bulb
+   - I'll write down what I see when it ends. (9w) | 끝나면 본 것을 적어 둘게요 | 기록 | pencil
+   SWAP 1<->2: I'm timing the seizure and watching it closely. / Thank you for calling us right away. / That tells the team how to treat him correctly. / I'll write down what I see when it ends.
+   SWAP 2<->3: Thank you for calling us right away. / That tells the team how to treat him correctly. / I'm timing the seizure and watching it closely. / I'll write down what I see when it ends.
+   SWAP 3<->4: Thank you for calling us right away. / I'm timing the seizure and watching it closely. / I'll write down what I see when it ends. / That tells the team how to treat him correctly.
+
+######## S1 발작 중 기도·안전 확보
+--- 1.0 [자세 안전|shield] words=['w-turn', 'w-side', 'w-protect']
+EN: I'm turning him on his side and protecting his head.
+KO: 옆으로 돌려서 머리를 보호하고 있어요. (21)
+X1: 옆으로 돌려서 침구를 정리하고 있어요. (21)
+X2: 옆으로 돌려서 숨소리를 듣고 있어요. (20)
+WHY: 'turning him on his side'가 먼저, 'and protecting'이 이어 두 동작을 한 문장에 묶어요. 진행형이라 지금 곁에서 하고 있다는 말이에요.
+ B* I'm turning him on his side and protecting his [head].
+ B  I'm turning him on his side and protecting his [chart].
+ B  I'm turning him on his side and protecting his [name].
+ B  I'm turning him on his side and protecting his [shift].
+CH: ["I'm turning him", 'on his side', 'and protecting', 'his head', '.'] | DECOY: on the stretcher
+  D: <on the stretcher> on his side and protecting his head .
+  D: I'm turning him <on the stretcher> and protecting his head .
+  D: I'm turning him on his side <on the stretcher> his head .
+  D: I'm turning him on his side and protecting <on the stretcher> .
+--- 1.1 [금기 설명|shield] words=['w-keep', 'w-area', 'w-clear', 'w-never', 'w-put', 'w-anything']
+EN: We keep the area clear and never put anything in his mouth.
+KO: 주변을 치우고, 입 안에는 절대 아무것도 넣지 않아요. (30)
+X1: 주변을 조용히 하고, 입 안에는 절대 아무것도 넣지 않아요. (33)
+X2: 주변을 살피고, 입 안에는 절대 아무것도 넣지 않아요. (30)
+WHY: 'never put anything'은 금기를 단호하게 말하는 틀이에요. 하는 일과 하지 않는 일을 한 문장에 함께 알려요.
+ B* We keep the [area] clear and never put anything in his mouth.
+ B  We keep the [ceiling] clear and never put anything in his mouth.
+ B  We keep the [mattress] clear and never put anything in his mouth.
+ B  We keep the [window] clear and never put anything in his mouth.
+CH: ['We keep', 'the area clear', 'and never', 'put anything', 'in his mouth', '.'] | DECOY: the bed low
+  D: <the bed low> the area clear and never put anything in his mouth .
+  D: We keep <the bed low> and never put anything in his mouth .
+  D: We keep the area clear <the bed low> put anything in his mouth .
+  D: We keep the area clear and never <the bed low> in his mouth .
+  D: We keep the area clear and never put anything <the bed low> .
+--- 1.2 [기도 확인|stetho] words=['w-make', 'w-airway', 'w-stay', 'w-open']
+EN: I'm making sure his airway stays open.
+KO: 기도가 계속 열려 있도록 확인하고 있어요. (23)
+X1: 기도가 계속 열려 있도록 몸을 받치고 있어요. (25)
+X2: 기도가 계속 열려 있도록 침대를 낮추고 있어요. (26)
+WHY: 'making sure'는 한 번 하고 끝이 아니라 계속 살핀다는 뜻이에요. 'stays open'은 상태가 유지되는지에 초점을 둬요.
+ B* I'm making sure his airway stays [open].
+ B  I'm making sure his airway stays [cold].
+ B  I'm making sure his airway stays [wet].
+ B  I'm making sure his airway stays [short].
+CH: ["I'm making sure", 'his airway', 'stays open', '.'] | DECOY: stays warm
+  D: <stays warm> his airway stays open .
+  D: I'm making sure <stays warm> stays open .
+  D: I'm making sure his airway <stays warm> .
+--- 1.3 [부상 예방|shield] words=['w-protect', 'w-pillow', 'w-hit', 'w-anything', 'w-hard']
+EN: I'm protecting his head with a pillow so he doesn't hit anything hard.
+KO: 단단한 것에 부딪히지 않도록 베개로 머리를 보호하고 있어요. (33)
+X1: 단단한 것에 부딪히지 않도록 주변 물건을 치우고 있어요. (31)
+X2: 단단한 것에 부딪히지 않도록 침대 높이를 낮추고 있어요. (31)
+WHY: 'so he doesn't'는 목적을 부정형으로 말해 무엇을 막는지 바로 보여 줘요. 'anything hard'는 딱딱한 물건을 쉽게 가리켜요.
+ B* I'm protecting his head with a [pillow] so he doesn't hit anything hard.
+ B  I'm protecting his head with a [pencil] so he doesn't hit anything hard.
+ B  I'm protecting his head with a [basin] so he doesn't hit anything hard.
+ B  I'm protecting his head with a [folder] so he doesn't hit anything hard.
+CH: ["I'm protecting", 'his head', 'with a pillow', "so he doesn't", 'hit anything hard', '.'] | DECOY: with a folder
+  D: <with a folder> his head with a pillow so he doesn't hit anything hard .
+  D: I'm protecting <with a folder> with a pillow so he doesn't hit anything hard .
+  D: I'm protecting his head <with a folder> so he doesn't hit anything hard .
+  D: I'm protecting his head with a pillow <with a folder> hit anything hard .
+  D: I'm protecting his head with a pillow so he doesn't <with a folder> .
+--- 1.4 [금기 약속|handshake2] words=['w-keep', 'w-airway', 'w-open', 'w-never', 'w-force', 'w-anything']
+EN: I'll keep the airway open and never force anything between his teeth.
+KO: 기도를 열어두고, 이 사이에 절대 억지로 아무것도 넣지 않을게요. (36)
+X1: 기도를 살펴보고, 이 사이에 절대 억지로 아무것도 넣지 않을게요. (36)
+X2: 기도를 열어두고, 팔다리를 절대 억지로 잡지 않을게요. (30)
+WHY: 'never force'는 힘으로 무언가를 하지 않겠다는 약속이에요. 입을 벌리려 하지 않는다는 점을 가족에게 알려 줘요.
+ B* I'll keep the airway open and never force anything between his [teeth].
+ B  I'll keep the airway open and never force anything between his [knees].
+ B  I'll keep the airway open and never force anything between his [elbows].
+ B  I'll keep the airway open and never force anything between his [shoulders].
+CH: ["I'll keep", 'the airway open', 'and never force', 'anything between', 'his teeth', '.'] | DECOY: a pillow
+  D: <a pillow> the airway open and never force anything between his teeth .
+  D: I'll keep <a pillow> and never force anything between his teeth .
+  D: I'll keep the airway open <a pillow> anything between his teeth .
+  D: I'll keep the airway open and never force <a pillow> his teeth .
+  D: I'll keep the airway open and never force anything between <a pillow> .
+== ORDER ko=발작 중 안전 확보 4문장 순서 | tag=대화 흐름 icon=compass
+   why=몸을 돌려 자세를 잡고, 그다음 머리를 보호하고, 기도가 열려 있는지 살핀 뒤, 입에 넣지 않겠다고 알려요.
+   - First, I'm turning him on his side. (7w) | 먼저 옆으로 돌리고 있어요 | 자세 | shield
+   - Then his head stays protected with a pillow. (8w) | 그러고 나서 베개로 머리를 보호해요 | 보호 | shield
+   - With him like that, I keep checking that his airway stays open. (12w) | 그 자세에서 기도가 열려 있는지 계속 확인해요 | 기도 | stetho
+   - Because of that, nothing goes in his mouth. (8w) | 그래서 입에는 아무것도 넣지 않아요 | 금기 | shield
+   SWAP 1<->2: Then his head stays protected with a pillow. / First, I'm turning him on his side. / With him like that, I keep checking that his airway stays open. / Because of that, nothing goes in his mouth.
+   SWAP 2<->3: First, I'm turning him on his side. / With him like that, I keep checking that his airway stays open. / Then his head stays protected with a pillow. / Because of that, nothing goes in his mouth.
+   SWAP 3<->4: First, I'm turning him on his side. / Then his head stays protected with a pillow. / Because of that, nothing goes in his mouth. / With him like that, I keep checking that his airway stays open.
+
+######## S2 벤조디아제핀 초기 투여 보조
+--- 2.0 [약 설명|pill] words=['w-benzodiazepine', 'w-first-line', 'w-medication', 'w-stop']
+EN: Yes, this benzodiazepine is our first-line medication to stop it.
+KO: 네, 이 벤조디아제핀이 발작을 멈추는 1차 약물이에요. (30)
+X1: 네, 이 벤조디아제핀이 발작을 멈추는 새로운 약물이에요. (31)
+X2: 네, 이 벤조디아제핀이 발작을 멈추는 주사 약물이에요. (30)
+WHY: 'first-line'은 가장 먼저 쓰는 약이라는 의료 표현이에요. 'Yes,'로 시작해 가족의 질문에 바로 답해요.
+ B* Yes, this benzodiazepine is our [first-line] medication to stop it.
+ B  Yes, this benzodiazepine is our [last-minute] medication to stop it.
+ B  Yes, this benzodiazepine is our [over-the-counter] medication to stop it.
+ B  Yes, this benzodiazepine is our [second-hand] medication to stop it.
+CH: ['Yes,', 'this benzodiazepine', 'is our first-line medication', 'to stop it', '.'] | DECOY: at the desk
+  D: <at the desk> this benzodiazepine is our first-line medication to stop it .
+  D: Yes, <at the desk> is our first-line medication to stop it .
+  D: Yes, this benzodiazepine <at the desk> to stop it .
+  D: Yes, this benzodiazepine is our first-line medication <at the desk> .
+--- 2.1 [투약 확인|pill] words=['w-confirm', 'w-dose', 'w-give']
+EN: Let's confirm the dose and give it now.
+KO: 용량을 확인하고 지금 투여하죠. (17)
+X1: 라벨을 확인하고 지금 투여하죠. (17)
+X2: 용량을 확인하고 팀과 투여하죠. (17)
+WHY: 'Let's'로 함께 확인하자고 제안해 팀이 같이 움직이게 해요. 'confirm … and give it'은 확인과 투여를 이어서 말해요.
+ B* Let's confirm the [dose] and give it now.
+ B  Let's confirm the [price] and give it now.
+ B  Let's confirm the [brand] and give it now.
+ B  Let's confirm the [shape] and give it now.
+CH: ["Let's confirm", 'the dose', 'and give it', 'now', '.'] | DECOY: and sign
+  D: <and sign> the dose and give it now .
+  D: Let's confirm <and sign> and give it now .
+  D: Let's confirm the dose <and sign> now .
+  D: Let's confirm the dose and give it <and sign> .
+--- 2.2 [호흡 감시|stetho] words=['w-watch', 'w-breathe', 'w-closely', 'w-after', 'w-give']
+EN: I'll watch his breathing closely after we give it.
+KO: 투여 후에 호흡을 자세히 지켜볼게요. (20)
+X1: 투여 후에 호흡을 가까이서 지켜볼게요. (21)
+X2: 투여 후에 호흡을 같이 지켜볼게요. (19)
+WHY: 'closely'는 눈을 떼지 않는다는 뜻의 부사예요. 'after we give it'으로 투여 뒤에 살필 시점을 정해요.
+ B* I'll watch his breathing [closely] after we give it.
+ B  I'll watch his breathing [loudly] after we give it.
+ B  I'll watch his breathing [happily] after we give it.
+ B  I'll watch his breathing [politely] after we give it.
+CH: ["I'll watch", 'his breathing closely', 'after we', 'give it', '.'] | DECOY: with the cart
+  D: <with the cart> his breathing closely after we give it .
+  D: I'll watch <with the cart> after we give it .
+  D: I'll watch his breathing closely <with the cart> give it .
+  D: I'll watch his breathing closely after we <with the cart> .
+--- 2.3 [확인 진행|pill] words=['w-confirm', 'w-weight', 'w-dose', 'w-before', 'w-push']
+EN: Confirming weight and dose before we push it.
+KO: 주입하기 전에 체중과 용량을 확인 중이에요. (24)
+X1: 주입하기 전에 체중과 라벨을 확인 중이에요. (24)
+X2: 주입하기 전에 키와 용량을 확인 중이에요. (23)
+WHY: 'before we push it'은 주입 직전이 확인의 마지막 기회라는 뜻이에요. 'Confirming'은 주어를 줄인 진행형이라 현장 말투예요.
+ B* Confirming [weight] and dose before we push it.
+ B  Confirming [color] and dose before we push it.
+ B  Confirming [gender] and dose before we push it.
+ B  Confirming [address] and dose before we push it.
+CH: ['Confirming weight', 'and dose', 'before we push it', '.'] | DECOY: the vial
+  D: <the vial> and dose before we push it .
+  D: Confirming weight <the vial> before we push it .
+  D: Confirming weight and dose <the vial> .
+--- 2.4 [상태 보고|monitor] words=['w-vital', 'w-stable', 'w-respiratory', 'w-depression', 'w-far']
+EN: Vitals are stable; no respiratory depression so far.
+KO: 활력징후는 안정적이고, 아직 호흡억제는 없어요. (26)
+X1: 활력징후는 안정적이고, 아직 혈압저하는 없어요. (26)
+X2: 활력징후는 안정적이고, 아직 졸림은 없어요. (24)
+WHY: 'so far'는 지금까지는 그렇다는 한정이라 앞으로도 계속 지켜본다는 여지를 남겨요. 'no … depression'은 부작용이 없다는 보고예요.
+ B* Vitals are stable; no respiratory [depression] so far.
+ B  Vitals are stable; no respiratory [infection] so far.
+ B  Vitals are stable; no respiratory [allergy] so far.
+ B  Vitals are stable; no respiratory [bleeding] so far.
+CH: ['Vitals are', 'stable;', 'no respiratory depression', 'so far', '.'] | DECOY: since lunch
+  D: <since lunch> stable; no respiratory depression so far .
+  D: Vitals are <since lunch> no respiratory depression so far .
+  D: Vitals are stable; <since lunch> so far .
+  D: Vitals are stable; no respiratory depression <since lunch> .
+== ORDER ko=벤조디아제핀 투여 4문장 순서 | tag=대화 흐름 icon=compass
+   why=약이 무엇인지 먼저 알리고, 용량을 확인한 뒤 투여하고, 그 뒤 호흡 감시를 약속해요.
+   - This is our first-line medication for stopping a seizure. (9w) | 발작을 멈추는 1차 약물이에요 | 약 | pill
+   - Let's confirm the weight and the dose together. (8w) | 체중과 용량을 함께 확인하죠 | 확인 | pill
+   - Once it's confirmed, I'll give it. (6w) | 확인되면 제가 투여할게요 | 투여 | pill
+   - After that, I'll keep watching his breathing closely. (8w) | 그 뒤에는 호흡을 계속 자세히 지켜볼게요 | 감시 | stetho
+   SWAP 1<->2: Let's confirm the weight and the dose together. / This is our first-line medication for stopping a seizure. / Once it's confirmed, I'll give it. / After that, I'll keep watching his breathing closely.
+   SWAP 2<->3: This is our first-line medication for stopping a seizure. / Once it's confirmed, I'll give it. / Let's confirm the weight and the dose together. / After that, I'll keep watching his breathing closely.
+   SWAP 3<->4: This is our first-line medication for stopping a seizure. / Let's confirm the weight and the dose together. / After that, I'll keep watching his breathing closely. / Once it's confirmed, I'll give it.
+
+######## S3 활력·산소 감시
+--- 3.0 [산소 지지|monitor] words=['w-apply', 'w-oxygen', 'w-watch', 'w-saturation', 'w-closely']
+EN: I'm applying oxygen and watching his saturation closely.
+KO: 산소를 적용하고 포화도를 자세히 지켜보고 있어요. (27)
+X1: 산소를 적용하고 포화도를 가까이서 지켜보고 있어요. (28)
+X2: 산소를 적용하고 포화도를 조용히 지켜보고 있어요. (27)
+WHY: 'applying'은 지금 하고 있는 처치를, 'watching'은 동시에 하는 감시를 말해요. 두 동작을 'and'로 묶어 같이 한다는 뜻이에요.
+ B* I'm applying oxygen and watching his [saturation] closely.
+ B  I'm applying oxygen and watching his [invoice] closely.
+ B  I'm applying oxygen and watching his [paperwork] closely.
+ B  I'm applying oxygen and watching his [weekend] closely.
+CH: ["I'm applying oxygen", 'and watching', 'his saturation', 'closely', '.'] | DECOY: by the bed
+  D: <by the bed> and watching his saturation closely .
+  D: I'm applying oxygen <by the bed> his saturation closely .
+  D: I'm applying oxygen and watching <by the bed> closely .
+  D: I'm applying oxygen and watching his saturation <by the bed> .
+--- 3.1 [이유 설명|bulb] words=['w-seizure', 'w-raise', 'w-oxygen', 'w-demand', 'w-support', 'w-breathe']
+EN: Seizures raise oxygen demand, so we support his breathing.
+KO: 발작은 산소 요구량을 높이니까 호흡을 지지해줘요. (27)
+X1: 발작은 심박수를 높이니까 호흡을 지지해줘요. (24)
+X2: 발작은 근육 긴장을 높이니까 호흡을 지지해줘요. (26)
+WHY: 'so'로 이유와 결과를 이어서 왜 호흡을 돕는지 알려 줘요. 'demand'는 몸이 필요로 하는 양이라는 뜻이에요.
+ B* Seizures raise oxygen [demand], so we support his breathing.
+ B  Seizures raise oxygen [supply], so we support his breathing.
+ B  Seizures raise oxygen [source], so we support his breathing.
+ B  Seizures raise oxygen [cost], so we support his breathing.
+CH: ['Seizures raise', 'oxygen demand,', 'so we support', 'his breathing', '.'] | DECOY: on the wall
+  D: <on the wall> oxygen demand, so we support his breathing .
+  D: Seizures raise <on the wall> so we support his breathing .
+  D: Seizures raise oxygen demand, <on the wall> his breathing .
+  D: Seizures raise oxygen demand, so we support <on the wall> .
+--- 3.2 [장비 준비|pager] words=['w-keep', 'w-suction', 'w-airway', 'w-equipment', 'w-ready']
+EN: Let's keep suction and airway equipment ready.
+KO: 석션과 기도 장비를 준비해 둡시다. (19)
+X1: 석션과 산소 장비를 준비해 둡시다. (19)
+X2: 석션과 모니터 장비를 준비해 둡시다. (20)
+WHY: 'keep … ready'는 쓰기 전에 손 닿는 곳에 두라는 뜻이에요. 'Let's'로 팀 전체에 제안해요.
+ B* Let's keep [suction] and airway equipment ready.
+ B  Let's keep [pillow] and airway equipment ready.
+ B  Let's keep [blanket] and airway equipment ready.
+ B  Let's keep [curtain] and airway equipment ready.
+CH: ["Let's keep suction", 'and airway', 'equipment ready', '.'] | DECOY: the wall light
+  D: <the wall light> and airway equipment ready .
+  D: Let's keep suction <the wall light> equipment ready .
+  D: Let's keep suction and airway <the wall light> .
+--- 3.3 [수치 보고|monitor] words=['w-oxygen', 'w-saturation', 'w-hold', 'w-steady']
+EN: His oxygen saturation is ninety-two percent and holding steady.
+KO: 산소포화도는 92퍼센트이고 안정적으로 유지되고 있어요. (30)
+X1: 산소포화도는 92퍼센트이고 계속 재는 중이에요. (26)
+X2: 산소포화도는 92퍼센트이고 방금 다시 재 봤어요. (27)
+WHY: 숫자를 말할 때 'is ninety-two percent'처럼 단위까지 풀어서 말해요. 'holding steady'는 수치가 변하지 않는다는 쉬운 표현이에요.
+ B* His oxygen saturation is ninety-two percent and holding [steady].
+ B  His oxygen saturation is ninety-two percent and holding [loose].
+ B  His oxygen saturation is ninety-two percent and holding [empty].
+ B  His oxygen saturation is ninety-two percent and holding [wide].
+CH: ['His oxygen saturation', 'is ninety-two percent', 'and holding', 'steady', '.'] | DECOY: in the corner
+  D: <in the corner> is ninety-two percent and holding steady .
+  D: His oxygen saturation <in the corner> and holding steady .
+  D: His oxygen saturation is ninety-two percent <in the corner> steady .
+  D: His oxygen saturation is ninety-two percent and holding <in the corner> .
+--- 3.4 [대비 설명|pager] words=['w-keep', 'w-suction', 'w-ready', 'w-case']
+EN: I'm keeping the suction ready in case he needs it.
+KO: 혹시 필요할 경우를 대비해 석션을 준비해 두고 있어요. (30)
+X1: 혹시 필요할 경우를 대비해 산소를 준비해 두고 있어요. (30)
+X2: 혹시 필요할 경우를 대비해 장갑을 준비해 두고 있어요. (30)
+WHY: 'in case'는 아직 필요하지 않지만 필요해질 때를 대비한다는 표현이에요. 'he needs it'은 지시어 it으로 앞의 석션을 가리켜요.
+ B* I'm keeping the suction [ready] in case he needs it.
+ B  I'm keeping the suction [wet] in case he needs it.
+ B  I'm keeping the suction [full] in case he needs it.
+ B  I'm keeping the suction [dry] in case he needs it.
+CH: ["I'm keeping", 'the suction ready', 'in case', 'he needs it', '.'] | DECOY: to his bed
+  D: <to his bed> the suction ready in case he needs it .
+  D: I'm keeping <to his bed> in case he needs it .
+  D: I'm keeping the suction ready <to his bed> he needs it .
+  D: I'm keeping the suction ready in case <to his bed> .
+== ORDER ko=산소 감시 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=산소를 주고 있다고 알리고, 이유를 설명하고, 장비를 준비하고, 수치를 보고해요.
+   - I'm applying oxygen to his face now. (7w) | 지금 얼굴에 산소를 대고 있어요 | 산소 | monitor
+   - That's because a seizure raises how much oxygen he needs. (10w) | 발작이 산소 요구량을 높이기 때문이에요 | 이유 | bulb
+   - So I'm keeping suction ready beside the bed. (8w) | 그래서 침대 옆에 석션을 준비해 두고 있어요 | 장비 | pager
+   - His saturation is holding steady with all of that. (9w) | 그렇게 하니 포화도는 안정적으로 유지되고 있어요 | 수치 | monitor
+   SWAP 1<->2: That's because a seizure raises how much oxygen he needs. / I'm applying oxygen to his face now. / So I'm keeping suction ready beside the bed. / His saturation is holding steady with all of that.
+   SWAP 2<->3: I'm applying oxygen to his face now. / So I'm keeping suction ready beside the bed. / That's because a seizure raises how much oxygen he needs. / His saturation is holding steady with all of that.
+   SWAP 3<->4: I'm applying oxygen to his face now. / That's because a seizure raises how much oxygen he needs. / His saturation is holding steady with all of that. / So I'm keeping suction ready beside the bed.
+
+######## S4 혈당·전해질 확인
+--- 4.0 [검사 제안|lab] words=['w-check', 'w-stat', 'w-glucose', 'w-electrolyte']
+EN: Let's check a stat glucose and electrolytes right away.
+KO: 지금 바로 혈당과 전해질을 긴급으로 확인하죠. (25)
+X1: 지금 바로 혈당과 전해질을 정확히 확인하죠. (24)
+X2: 지금 바로 혈당과 전해질을 따로 확인하죠. (23)
+WHY: 'stat'은 지금 바로 해 달라는 응급 검사 용어예요. 'right away'가 한 번 더 긴급함을 강조해요.
+ B* Let's check a [stat] glucose and electrolytes right away.
+ B  Let's check a [fasting] glucose and electrolytes right away.
+ B  Let's check a [dental] glucose and electrolytes right away.
+ B  Let's check a [annual] glucose and electrolytes right away.
+CH: ["Let's check", 'a stat glucose', 'and electrolytes', 'right away', '.'] | DECOY: at the door
+  D: <at the door> a stat glucose and electrolytes right away .
+  D: Let's check <at the door> and electrolytes right away .
+  D: Let's check a stat glucose <at the door> right away .
+  D: Let's check a stat glucose and electrolytes <at the door> .
+--- 4.1 [원인 설명|bulb] words=['w-low', 'w-sugar', 'w-sodium', 'w-trigger', 'w-seizure']
+EN: A low sugar or sodium can trigger seizures.
+KO: 낮은 혈당이나 나트륨이 발작을 유발할 수 있어요. (27)
+X1: 낮은 혈당이나 나트륨이 두통을 유발할 수 있어요. (27)
+X2: 낮은 혈당이나 나트륨이 졸림을 유발할 수 있어요. (27)
+WHY: 'can trigger'는 가능성을 말해 단정하지 않아요. 'low sugar or sodium'은 원인 후보를 두 개 나란히 보여 줘요.
+ B* A low sugar or sodium can [trigger] seizures.
+ B  A low sugar or sodium can [cure] seizures.
+ B  A low sugar or sodium can [heal] seizures.
+ B  A low sugar or sodium can [ease] seizures.
+CH: ['A low sugar', 'or sodium', 'can trigger seizures', '.'] | DECOY: for the lab
+  D: <for the lab> or sodium can trigger seizures .
+  D: A low sugar <for the lab> can trigger seizures .
+  D: A low sugar or sodium <for the lab> .
+--- 4.2 [교정 계획|lab] words=['w-find', 'w-cause', 'w-correct', 'w-immediately']
+EN: If we find a cause, we correct it immediately.
+KO: 원인을 찾으면 바로 교정할게요. (17)
+X1: 원인을 찾으면 바로 팀에 알릴게요. (19)
+X2: 원인을 찾으면 바로 약사께 알릴게요. (20)
+WHY: 'If we find'는 아직 모르는 상태를 전제로 해서 결과에 따라 움직인다는 계획을 말해요. 'immediately'는 시간을 끌지 않겠다는 뜻이에요.
+ B* If we find a cause, we [correct] it immediately.
+ B  If we find a cause, we [record] it immediately.
+ B  If we find a cause, we [predict] it immediately.
+ B  If we find a cause, we [repeat] it immediately.
+CH: ['If we find', 'a cause,', 'we correct it', 'immediately', '.'] | DECOY: in the hall
+  D: <in the hall> a cause, we correct it immediately .
+  D: If we find <in the hall> we correct it immediately .
+  D: If we find a cause, <in the hall> immediately .
+  D: If we find a cause, we correct it <in the hall> .
+--- 4.3 [결과 보고|lab] words=['w-glucose', 'w-back', 'w-low', 'w-treat']
+EN: His glucose came back low, so we're treating it now.
+KO: 혈당 결과가 낮게 나와서 지금 치료하고 있어요. (26)
+X1: 나트륨 결과가 낮게 나와서 지금 치료하고 있어요. (27)
+X2: 칼슘 결과가 낮게 나와서 지금 치료하고 있어요. (26)
+WHY: 'came back'은 검사 결과가 돌아왔다는 현장 표현이에요. 'so we're treating it now'로 결과와 행동을 이어서 말해요.
+ B* His glucose came back [low], so we're treating it now.
+ B  His glucose came back [odd], so we're treating it now.
+ B  His glucose came back [lost], so we're treating it now.
+ B  His glucose came back [blue], so we're treating it now.
+CH: ['His glucose came back', 'low,', "so we're treating it", 'now', '.'] | DECOY: from the unit
+  D: <from the unit> low, so we're treating it now .
+  D: His glucose came back <from the unit> so we're treating it now .
+  D: His glucose came back low, <from the unit> now .
+  D: His glucose came back low, so we're treating it <from the unit> .
+--- 4.4 [교정 설명|lab] words=['w-correct', 'w-sodium', 'w-level', 'w-stop', 'w-further', 'w-seizure']
+EN: We're correcting his sodium level to stop further seizures.
+KO: 추가 발작을 막기 위해 나트륨 수치를 교정하고 있어요. (30)
+X1: 추가 검사를 줄이기 위해 나트륨 수치를 교정하고 있어요. (31)
+X2: 수면을 돕기 위해 나트륨 수치를 교정하고 있어요. (27)
+WHY: 'to stop'은 교정하는 목적이 발작을 막는 것임을 보여 줘요. 'further'는 이미 일어난 발작 말고 더 이어질 발작을 가리켜요.
+ B* We're correcting his [sodium] level to stop further seizures.
+ B  We're correcting his [weight] level to stop further seizures.
+ B  We're correcting his [height] level to stop further seizures.
+ B  We're correcting his [pulse] level to stop further seizures.
+CH: ["We're correcting", 'his sodium level', 'to stop', 'further seizures', '.'] | DECOY: at the station
+  D: <at the station> his sodium level to stop further seizures .
+  D: We're correcting <at the station> to stop further seizures .
+  D: We're correcting his sodium level <at the station> further seizures .
+  D: We're correcting his sodium level to stop <at the station> .
+== ORDER ko=혈당·전해질 확인 4문장 순서 | tag=대화 흐름 icon=compass
+   why=검사를 먼저 하자고 제안하고, 이유를 설명하고, 결과를 보고한 뒤, 그에 맞는 교정을 알려요.
+   - Let's check a stat glucose and electrolytes. (7w) | 혈당과 전해질을 긴급으로 확인하죠 | 검사 | lab
+   - Either one can trigger seizures when it's off. (8w) | 둘 중 하나라도 어긋나면 발작을 유발할 수 있어요 | 이유 | bulb
+   - The glucose came back low. (5w) | 혈당이 낮게 나왔어요 | 결과 | lab
+   - So we're treating that now to stop more seizures. (9w) | 그래서 추가 발작을 막으려고 지금 치료해요 | 교정 | lab
+   SWAP 1<->2: Either one can trigger seizures when it's off. / Let's check a stat glucose and electrolytes. / The glucose came back low. / So we're treating that now to stop more seizures.
+   SWAP 2<->3: Let's check a stat glucose and electrolytes. / The glucose came back low. / Either one can trigger seizures when it's off. / So we're treating that now to stop more seizures.
+   SWAP 3<->4: Let's check a stat glucose and electrolytes. / Either one can trigger seizures when it's off. / So we're treating that now to stop more seizures. / The glucose came back low.
+
+######## S5 발작 후 상태 사정
+--- 5.0 [안심 설명|shield] words=['w-seizure', 'w-normal', 'w-drowsy', 'w-confused', 'w-while']
+EN: After a seizure it's normal to be drowsy and confused for a while.
+KO: 발작 후에는 잠시 졸리고 혼란스러운 게 정상이에요. (28)
+X1: 발작 후에는 잠시 배고프고 혼란스러운 게 정상이에요. (29)
+X2: 발작 후에는 잠시 졸리고 걱정되는 게 정상이에요. (27)
+WHY: 'it's normal to…'는 증상을 정상 범위로 먼저 알려 가족을 안심시키는 틀이에요. 'for a while'로 일시적이라는 점도 전해요.
+ B* After a seizure it's normal to be [drowsy] and confused for a while.
+ B  After a seizure it's normal to be [thirsty] and confused for a while.
+ B  After a seizure it's normal to be [cheerful] and confused for a while.
+ B  After a seizure it's normal to be [jealous] and confused for a while.
+CH: ['After a seizure', "it's normal", 'to be drowsy and confused', 'for a while', '.'] | DECOY: for the night
+  D: <for the night> it's normal to be drowsy and confused for a while .
+  D: After a seizure <for the night> to be drowsy and confused for a while .
+  D: After a seizure it's normal <for the night> for a while .
+  D: After a seizure it's normal to be drowsy and confused <for the night> .
+--- 5.1 [상태 사정|stetho] words=['w-check', 'w-responsiveness', 'w-recover']
+EN: I'm checking his responsiveness as he recovers.
+KO: 회복하는 동안 반응성을 확인하고 있어요. (22)
+X1: 자는 동안 반응성을 확인하고 있어요. (20)
+X2: 회복실에서 반응성을 확인하고 있어요. (20)
+WHY: 'as he recovers'는 사정이 회복 과정 내내 이어진다는 뜻이에요. 'responsiveness'는 자극에 반응하는 정도를 가리키는 임상어예요.
+ B* I'm [checking] his responsiveness as he recovers.
+ B  I'm [adjusting] his responsiveness as he recovers.
+ B  I'm [ordering] his responsiveness as he recovers.
+ B  I'm [printing] his responsiveness as he recovers.
+CH: ["I'm checking", 'his responsiveness', 'as he recovers', '.'] | DECOY: in the lobby
+  D: <in the lobby> his responsiveness as he recovers .
+  D: I'm checking <in the lobby> as he recovers .
+  D: I'm checking his responsiveness <in the lobby> .
+--- 5.2 [관찰 약속|monitor] words=['w-watch', 'w-closely', 'w-sign', 'w-another', 'w-seizure']
+EN: I'll watch closely for any sign of another seizure.
+KO: 또 다른 발작의 징후가 있는지 자세히 지켜볼게요. (27)
+X1: 또 다른 발작의 징후가 있는지 가까이서 지켜볼게요. (28)
+X2: 또 다른 발작의 징후가 있는지 함께 지켜볼게요. (26)
+WHY: 'any sign'은 작은 징후까지 포함한다는 뜻이고, 'closely'가 주의 깊게 본다는 약속을 더해요.
+ B* I'll watch closely for any [sign] of another seizure.
+ B  I'll watch closely for any [name] of another seizure.
+ B  I'll watch closely for any [copy] of another seizure.
+ B  I'll watch closely for any [cost] of another seizure.
+CH: ["I'll watch", 'closely', 'for any sign', 'of another seizure', '.'] | DECOY: near the sink
+  D: <near the sink> closely for any sign of another seizure .
+  D: I'll watch <near the sink> for any sign of another seizure .
+  D: I'll watch closely <near the sink> of another seizure .
+  D: I'll watch closely for any sign <near the sink> .
+--- 5.3 [가족 안심|faceWorried] words=['w-normal', 'w-during', 'w-seizure']
+EN: This is normal, and he wasn't in pain during the seizure.
+KO: 정상적인 거예요, 발작 중에 통증을 느끼지는 않았어요. (30)
+X1: 정상적인 거예요, 발작 중에 기억하지는 못할 수 있어요. (31)
+X2: 정상적인 거예요, 발작 중에 열은 나지 않았어요. (27)
+WHY: 'This is normal'로 먼저 안심시킨 뒤, 'wasn't in pain'으로 가족이 가장 걱정하는 점을 직접 다뤄요.
+ B* This is normal, and he wasn't in [pain] during the seizure.
+ B  This is normal, and he wasn't in [school] during the seizure.
+ B  This is normal, and he wasn't in [line] during the seizure.
+ B  This is normal, and he wasn't in [charge] during the seizure.
+CH: ['This is normal,', "and he wasn't", 'in pain', 'during the seizure', '.'] | DECOY: at home
+  D: <at home> and he wasn't in pain during the seizure .
+  D: This is normal, <at home> in pain during the seizure .
+  D: This is normal, and he wasn't <at home> during the seizure .
+  D: This is normal, and he wasn't in pain <at home> .
+--- 5.4 [죄책감 덜기|faceWorried] words=['w-anything', 'w-wrong', 'w-watch', 'w-another', 'w-seizure', 'w-job']
+EN: You didn't do anything wrong; watching for another seizure is my job now.
+KO: 잘못하신 거 하나도 없어요. 다음 발작을 지켜보는 건 이제 제 역할이에요. (41)
+X1: 놀라신 거 당연해요. 다음 발작을 지켜보는 건 이제 제 역할이에요. (37)
+X2: 잘못하신 거 하나도 없어요. 다음 면회를 안내하는 건 이제 제 역할이에요. (41)
+WHY: 'You didn't do anything wrong'은 목격한 가족이 흔히 갖는 죄책감을 먼저 덜어 줘요. 세미콜론 뒤에서 앞으로의 역할을 맡겠다고 말해요.
+ B* You didn't do anything [wrong]; watching for another seizure is my job now.
+ B  You didn't do anything [special]; watching for another seizure is my job now.
+ B  You didn't do anything [strange]; watching for another seizure is my job now.
+ B  You didn't do anything [weak]; watching for another seizure is my job now.
+CH: ["You didn't do", 'anything wrong;', 'watching for another seizure', 'is my job now', '.'] | DECOY: for the visit
+  D: <for the visit> anything wrong; watching for another seizure is my job now .
+  D: You didn't do <for the visit> watching for another seizure is my job now .
+  D: You didn't do anything wrong; <for the visit> is my job now .
+  D: You didn't do anything wrong; watching for another seizure <for the visit> .
+== ORDER ko=발작 후 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=정상 증상을 먼저 알리고, 회복 상태를 확인하고, 계속 지켜보겠다고 약속한 뒤, 가족의 죄책감을 덜어 줘요.
+   - After a seizure, feeling drowsy and confused for a while is normal. (12w) | 발작 후 잠시 졸리고 혼란스러운 건 정상이에요 | 정상 | shield
+   - While he recovers from that, I'm checking his responsiveness. (9w) | 그 회복 동안 반응성을 확인하고 있어요 | 확인 | stetho
+   - Along with those checks, I'll watch closely for another seizure. (10w) | 그 확인과 함께 또 다른 발작을 자세히 지켜볼게요 | 관찰 | monitor
+   - Through all of this, you did nothing wrong. (8w) | 이 모든 과정에서 잘못하신 건 없어요 | 위로 | faceWorried
+   SWAP 1<->2: While he recovers from that, I'm checking his responsiveness. / After a seizure, feeling drowsy and confused for a while is normal. / Along with those checks, I'll watch closely for another seizure. / Through all of this, you did nothing wrong.
+   SWAP 2<->3: After a seizure, feeling drowsy and confused for a while is normal. / Along with those checks, I'll watch closely for another seizure. / While he recovers from that, I'm checking his responsiveness. / Through all of this, you did nothing wrong.
+   SWAP 3<->4: After a seizure, feeling drowsy and confused for a while is normal. / While he recovers from that, I'm checking his responsiveness. / Through all of this, you did nothing wrong. / Along with those checks, I'll watch closely for another seizure.
+
+######## S6 2차 항경련제 로딩
+--- 6.0 [약 설명|pill] words=['w-load', 'w-second', 'w-anti-seizure', 'w-drug', 'w-levetiracetam']
+EN: Yes, we're loading a second anti-seizure drug like levetiracetam.
+KO: 네, 레비티라세탐 같은 2차 항경련제를 로딩하고 있어요. (31)
+X1: 네, 레비티라세탐 같은 2차 항경련제를 로딩한 뒤 보고 있어요. (35)
+X2: 네, 레비티라세탐 같은 새로운 항경련제를 로딩하고 있어요. (32)
+WHY: 'Yes,'로 먼저 질문에 답하고, 'like levetiracetam'으로 약 이름을 예로 들어 가족이 이해하기 쉽게 해요.
+ B* Yes, we're loading a second anti-seizure drug like [levetiracetam].
+ B  Yes, we're loading a second anti-seizure drug like [ondansetron].
+ B  Yes, we're loading a second anti-seizure drug like [ibuprofen].
+ B  Yes, we're loading a second anti-seizure drug like [famotidine].
+CH: ['Yes,', "we're loading", 'a second anti-seizure drug', 'like levetiracetam', '.'] | DECOY: like the first one
+  D: <like the first one> we're loading a second anti-seizure drug like levetiracetam .
+  D: Yes, <like the first one> a second anti-seizure drug like levetiracetam .
+  D: Yes, we're loading <like the first one> like levetiracetam .
+  D: Yes, we're loading a second anti-seizure drug <like the first one> .
+--- 6.1 [투약 확인|pill] words=['w-confirm', 'w-weight-based', 'w-dose', 'w-infusion', 'w-rate']
+EN: Let's confirm the weight-based dose and infusion rate.
+KO: 체중에 따른 용량과 주입 속도를 확인하죠. (23)
+X1: 체중에 따른 용량과 주입 속도를 확인하고 시작하죠. (28)
+X2: 체중을 재서 용량과 주입 속도를 확인하죠. (23)
+WHY: 'weight-based'는 체중에 맞춰 계산한다는 복합 형용사예요. 'Let's'로 같이 확인하자고 해서 혼자 정하지 않는 분위기를 만들어요.
+ B* Let's confirm the [weight-based] dose and infusion rate.
+ B  Let's confirm the [room-based] dose and infusion rate.
+ B  Let's confirm the [color-based] dose and infusion rate.
+ B  Let's confirm the [ward-based] dose and infusion rate.
+CH: ["Let's confirm", 'the weight-based dose', 'and infusion', 'rate', '.'] | DECOY: the order
+  D: <the order> the weight-based dose and infusion rate .
+  D: Let's confirm <the order> and infusion rate .
+  D: Let's confirm the weight-based dose <the order> rate .
+  D: Let's confirm the weight-based dose and infusion <the order> .
+--- 6.2 [감시 약속|monitor] words=['w-monitor', 'w-rhythm', 'w-pressure', 'w-during', 'w-load']
+EN: I'll monitor his rhythm and pressure during the load.
+KO: 로딩하는 동안 심장리듬과 혈압을 감시할게요. (24)
+X1: 로딩하기 전에 심장리듬과 혈압을 재 둘게요. (24)
+X2: 로딩한 뒤에 심장리듬과 혈압을 재 둘게요. (23)
+WHY: 'during the load'로 약이 들어가는 동안이 감시 기간임을 분명히 해요. 'rhythm and pressure'는 두 활력 수치를 짝지어 말해요.
+ B* I'll monitor his [rhythm] and pressure during the load.
+ B  I'll monitor his [diet] and pressure during the load.
+ B  I'll monitor his [visitors] and pressure during the load.
+ B  I'll monitor his [laundry] and pressure during the load.
+CH: ["I'll monitor", 'his rhythm', 'and pressure', 'during the load', '.'] | DECOY: on the screen
+  D: <on the screen> his rhythm and pressure during the load .
+  D: I'll monitor <on the screen> and pressure during the load .
+  D: I'll monitor his rhythm <on the screen> during the load .
+  D: I'll monitor his rhythm and pressure <on the screen> .
+--- 6.3 [진행 보고|pill] words=['w-since', 'w-first', 'w-dose', 'w-load', 'w-second', 'w-drug']
+EN: That's twenty minutes since the first dose — we're loading the second drug now.
+KO: 첫 투여 후 20분이 지났어요 — 이제 2차 약물을 로딩하고 있어요. (38)
+X1: 첫 투여 후 환자가 졸려 하고 있어요 — 이제 2차 약물을 로딩하고 있어요. (42)
+X2: 첫 투여 후 보호자가 도착했어요 — 이제 2차 약물을 로딩하고 있어요. (39)
+WHY: 대시 앞에서 지난 시간을 말하고 뒤에서 지금 하는 일을 말해요. 'the first … the second'로 순서가 분명해요.
+ B* That's twenty minutes since the first dose — we're loading the [second] drug now.
+ B  That's twenty minutes since the first dose — we're loading the [spare] drug now.
+ B  That's twenty minutes since the first dose — we're loading the [short] drug now.
+ B  That's twenty minutes since the first dose — we're loading the [loose] drug now.
+CH: ["That's twenty minutes", 'since the first dose', "— we're loading", 'the second drug', 'now', '.'] | DECOY: for the cart
+  D: <for the cart> since the first dose — we're loading the second drug now .
+  D: That's twenty minutes <for the cart> — we're loading the second drug now .
+  D: That's twenty minutes since the first dose <for the cart> the second drug now .
+  D: That's twenty minutes since the first dose — we're loading <for the cart> now .
+  D: That's twenty minutes since the first dose — we're loading the second drug <for the cart> .
+--- 6.4 [부작용 감시|monitor] words=['w-watch', 'w-sedation', 'w-low', 'w-pressure', 'w-give', 'w-load']
+EN: I'm watching for sedation or low pressure as we give the load.
+KO: 로딩하는 동안 진정이나 저혈압이 있는지 지켜보고 있어요. (31)
+X1: 로딩하는 동안 진정이나 어지러움이 있는지 지켜보고 있어요. (32)
+X2: 로딩하는 동안 두통이나 구역이 있는지 지켜보고 있어요. (30)
+WHY: 'watching for'는 일어날 수 있는 일을 미리 지켜본다는 표현이에요. 'sedation or low pressure'는 약이 일으킬 수 있는 두 가지를 짝지어요.
+ B* I'm watching for [sedation] or low pressure as we give the load.
+ B  I'm watching for [pregnancy] or low pressure as we give the load.
+ B  I'm watching for [hunger] or low pressure as we give the load.
+ B  I'm watching for [laughter] or low pressure as we give the load.
+CH: ["I'm watching", 'for sedation', 'or low pressure', 'as we give', 'the load', '.'] | DECOY: after the bag
+  D: <after the bag> for sedation or low pressure as we give the load .
+  D: I'm watching <after the bag> or low pressure as we give the load .
+  D: I'm watching for sedation <after the bag> as we give the load .
+  D: I'm watching for sedation or low pressure <after the bag> the load .
+  D: I'm watching for sedation or low pressure as we give <after the bag> .
+== ORDER ko=2차 항경련제 로딩 4문장 순서 | tag=대화 흐름 icon=compass
+   why=약이 무엇인지 알리고, 체중 기준 용량을 확인하고, 로딩을 시작한 뒤, 로딩 동안의 감시를 약속해요.
+   - We're giving a second anti-seizure drug. (6w) | 2차 항경련제를 줄 거예요 | 약 | pill
+   - First, let's confirm the weight-based dose and rate. (8w) | 먼저 체중 기준 용량과 속도를 확인하죠 | 확인 | pill
+   - With those confirmed, I'm loading it now. (7w) | 그것들이 확인됐으니 지금 로딩해요 | 로딩 | pill
+   - As it goes in, I'll watch his rhythm and pressure. (10w) | 들어가는 동안 심장리듬과 혈압을 지켜볼게요 | 감시 | monitor
+   SWAP 1<->2: First, let's confirm the weight-based dose and rate. / We're giving a second anti-seizure drug. / With those confirmed, I'm loading it now. / As it goes in, I'll watch his rhythm and pressure.
+   SWAP 2<->3: We're giving a second anti-seizure drug. / With those confirmed, I'm loading it now. / First, let's confirm the weight-based dose and rate. / As it goes in, I'll watch his rhythm and pressure.
+   SWAP 3<->4: We're giving a second anti-seizure drug. / First, let's confirm the weight-based dose and rate. / As it goes in, I'll watch his rhythm and pressure. / With those confirmed, I'm loading it now.
+
+######## S7 지속 EEG 모니터 연계
+--- 7.0 [이유 설명|bulb] words=['w-seizure', 'w-continue', 'w-brain', 'w-even', 'w-without', 'w-shake']
+EN: Seizures can continue in the brain even without shaking.
+KO: 발작은 몸이 떨지 않아도 뇌 안에서 계속될 수 있어요. (30)
+X1: 발작은 몸이 떨지 않아도 눈 안에서 계속될 수 있어요. (30)
+X2: 발작은 몸이 떨지 않아도 밤에만 계속될 수 있어요. (28)
+WHY: 'can continue'는 가능성을 말하는 틀이에요. 'even without shaking'은 눈에 보이지 않아도 계속될 수 있다는 점을 쉽게 알려요.
+ B* Seizures can continue in the brain even without [shaking].
+ B  Seizures can continue in the brain even without [bleeding].
+ B  Seizures can continue in the brain even without [talking].
+ B  Seizures can continue in the brain even without [walking].
+CH: ['Seizures can continue', 'in the brain', 'even without', 'shaking', '.'] | DECOY: in the dark
+  D: <in the dark> in the brain even without shaking .
+  D: Seizures can continue <in the dark> even without shaking .
+  D: Seizures can continue in the brain <in the dark> shaking .
+  D: Seizures can continue in the brain even without <in the dark> .
+--- 7.1 [검사 설명|monitor] words=['w-continuous', 'w-eeg', 'w-catch', 'w-hidden', 'w-seizure']
+EN: Continuous EEG lets us catch those hidden seizures.
+KO: 지속 뇌파검사(EEG)로 그런 숨은 발작을 잡아낼 수 있어요. (34)
+X1: 지속 뇌파검사(EEG)로 그런 새 발작을 막아낼 수 있어요. (33)
+X2: 지속 뇌파검사(EEG)로 그런 작은 발작을 잡아낼 수 있어요. (34)
+WHY: 'lets us catch'는 검사가 우리에게 해 주는 일을 주어로 삼아 쉽게 풀어요. 'hidden'은 눈에 안 보이는 발작을 한 단어로 가리켜요.
+ B* Continuous EEG lets us catch those [hidden] seizures.
+ B  Continuous EEG lets us catch those [daily] seizures.
+ B  Continuous EEG lets us catch those [mild] seizures.
+ B  Continuous EEG lets us catch those [recent] seizures.
+CH: ['Continuous EEG', 'lets us catch', 'those hidden', 'seizures', '.'] | DECOY: to his brain
+  D: <to his brain> lets us catch those hidden seizures .
+  D: Continuous EEG <to his brain> those hidden seizures .
+  D: Continuous EEG lets us catch <to his brain> seizures .
+  D: Continuous EEG lets us catch those hidden <to his brain> .
+--- 7.2 [역할 설명|speech] words=['w-neuro', 'w-team', 'w-read', 'w-guide', 'w-treatment']
+EN: The neuro team reads it to guide his treatment.
+KO: 신경과 팀이 그것을 읽고 치료 방향을 정해요. (25)
+X1: 중환자 팀이 그것을 읽고 치료 방향을 정해요. (25)
+X2: 신경과 팀이 그것을 읽고 면회 시간을 정해요. (25)
+WHY: 'to guide'는 목적을 보여 줘서 결과를 누가 어떻게 쓰는지 알려요. 'neuro team'은 신경과 팀을 줄인 현장 표현이에요.
+ B* The neuro team reads it to [guide] his treatment.
+ B  The neuro team reads it to [paint] his treatment.
+ B  The neuro team reads it to [sell] his treatment.
+ B  The neuro team reads it to [wrap] his treatment.
+CH: ['The neuro team', 'reads it', 'to guide', 'his treatment', '.'] | DECOY: on the chart
+  D: <on the chart> reads it to guide his treatment .
+  D: The neuro team <on the chart> to guide his treatment .
+  D: The neuro team reads it <on the chart> his treatment .
+  D: The neuro team reads it to guide <on the chart> .
+--- 7.3 [처치 설명|monitor] words=['w-put', 'w-eeg', 'w-lead', 'w-scalp', 'w-watch', 'w-brain', 'w-wave']
+EN: We put EEG leads on his scalp to watch his brain waves.
+KO: 뇌파를 지켜보려고 두피에 EEG 선을 붙이는 거예요. (29)
+X1: 심장을 지켜보려고 가슴에 심전도 선을 붙이는 거예요. (29)
+X2: 뇌파를 보여 주려고 두피에 EEG 선을 붙이는 거예요. (30)
+WHY: 'to watch'는 붙이는 목적을 말해 환자 가족이 이유를 이해하게 해요. 'put … on his scalp'는 두피에 붙인다는 쉬운 동작 표현이에요.
+ B* We put EEG leads on his [scalp] to watch his brain waves.
+ B  We put EEG leads on his [wrist] to watch his brain waves.
+ B  We put EEG leads on his [ankle] to watch his brain waves.
+ B  We put EEG leads on his [shoulder] to watch his brain waves.
+CH: ['We put', 'EEG leads', 'on his scalp', 'to watch', 'his brain waves', '.'] | DECOY: on his pillow
+  D: <on his pillow> EEG leads on his scalp to watch his brain waves .
+  D: We put <on his pillow> on his scalp to watch his brain waves .
+  D: We put EEG leads <on his pillow> to watch his brain waves .
+  D: We put EEG leads on his scalp <on his pillow> his brain waves .
+  D: We put EEG leads on his scalp to watch <on his pillow> .
+--- 7.4 [모니터 설명|monitor] words=['w-even', 'w-still', 'w-monitor', 'w-tell', 'w-brain', 'w-seize']
+EN: Even if his body looks still, the monitor tells us if his brain is still seizing.
+KO: 몸이 가만히 있어 보여도, 모니터가 뇌에서 아직 발작 중인지 알려줘요. (39)
+X1: 몸이 힘들어 보여도, 모니터가 뇌에서 아직 쉬는 중인지 알려줘요. (36)
+X2: 몸이 가만히 있어 보여도, 모니터가 뇌에서 아직 잠든 중인지 알려줘요. (39)
+WHY: 'Even if'로 겉모습과 실제가 다를 수 있음을 앞에 깔아요. 'is still seizing'은 지금 진행 중이라는 뜻을 진행형으로 보여 줘요.
+ B* Even if his body looks still, the monitor tells us if his [brain] is still seizing.
+ B  Even if his body looks still, the monitor tells us if his [heart] is still seizing.
+ B  Even if his body looks still, the monitor tells us if his [lung] is still seizing.
+ B  Even if his body looks still, the monitor tells us if his [skin] is still seizing.
+CH: ['Even if his body', 'looks still,', 'the monitor tells us', 'if his brain', 'is still seizing', '.'] | DECOY: in his sleep
+  D: <in his sleep> looks still, the monitor tells us if his brain is still seizing .
+  D: Even if his body <in his sleep> the monitor tells us if his brain is still seizing .
+  D: Even if his body looks still, <in his sleep> if his brain is still seizing .
+  D: Even if his body looks still, the monitor tells us <in his sleep> is still seizing .
+  D: Even if his body looks still, the monitor tells us if his brain <in his sleep> .
+== ORDER ko=지속 EEG 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=보이지 않는 발작이 있다고 알리고, EEG가 하는 일을 설명한 뒤, 붙이는 방법을 말하고, 결과를 누가 쓰는지 알려요.
+   - A seizure can keep going in the brain without any shaking. (11w) | 발작은 떨림 없이도 뇌에서 계속될 수 있어요 | 이유 | bulb
+   - That's why continuous EEG lets us catch it. (8w) | 그래서 지속 EEG로 그걸 잡아낼 수 있어요 | EEG | monitor
+   - We put the leads on his scalp to do that. (10w) | 그러려고 두피에 선을 붙여요 | 부착 | monitor
+   - The neuro team reads what comes of it to guide his treatment. (12w) | 신경과 팀이 그 결과를 읽고 치료를 이끌어요 | 활용 | speech
+   SWAP 1<->2: That's why continuous EEG lets us catch it. / A seizure can keep going in the brain without any shaking. / We put the leads on his scalp to do that. / The neuro team reads what comes of it to guide his treatment.
+   SWAP 2<->3: A seizure can keep going in the brain without any shaking. / We put the leads on his scalp to do that. / That's why continuous EEG lets us catch it. / The neuro team reads what comes of it to guide his treatment.
+   SWAP 3<->4: A seizure can keep going in the brain without any shaking. / That's why continuous EEG lets us catch it. / The neuro team reads what comes of it to guide his treatment. / We put the leads on his scalp to do that.
+
+######## S8 유발원인 검사·교정
+--- 8.0 [검사 설명|lab] words=['w-test', 'w-infection', 'w-metabolic', 'w-cause', 'w-together']
+EN: We're testing for infection and metabolic causes together.
+KO: 감염과 대사 원인을 함께 검사하고 있어요. (23)
+X1: 감염과 약물 원인을 함께 검사하고 있어요. (23)
+X2: 감염과 외상 원인을 함께 검사하고 있어요. (23)
+WHY: 'together'가 문장 끝에서 두 검사를 한꺼번에 한다는 뜻을 전해요. 'infection and metabolic causes'는 원인 두 갈래를 짝지어 말해요.
+ B* We're testing for infection and metabolic causes [together].
+ B  We're testing for infection and metabolic causes [alone].
+ B  We're testing for infection and metabolic causes [blindly].
+ B  We're testing for infection and metabolic causes [loudly].
+CH: ["We're testing", 'for infection', 'and metabolic causes', 'together', '.'] | DECOY: at the bedside
+  D: <at the bedside> for infection and metabolic causes together .
+  D: We're testing <at the bedside> and metabolic causes together .
+  D: We're testing for infection <at the bedside> together .
+  D: We're testing for infection and metabolic causes <at the bedside> .
+--- 8.1 [핵심 설명|bulb] words=['w-correct', 'w-key', 'w-stop', 'w-seizure']
+EN: Correcting the trigger is key to stopping the seizures.
+KO: 유발 요인을 교정하는 게 발작을 멈추는 핵심이에요. (28)
+X1: 유발 요인을 모으는 게 발작을 멈추는 핵심이에요. (27)
+X2: 유발 요인을 적는 게 발작을 멈추는 핵심이에요. (26)
+WHY: 'is key'는 가장 중요한 점을 짚는 표현이에요. 'Correcting the trigger'를 주어로 삼아 치료의 중심을 먼저 말해요.
+ B* Correcting the trigger is [key] to stopping the seizures.
+ B  Correcting the trigger is [cheap] to stopping the seizures.
+ B  Correcting the trigger is [brief] to stopping the seizures.
+ B  Correcting the trigger is [rare] to stopping the seizures.
+CH: ['Correcting the trigger', 'is key', 'to stopping', 'the seizures', '.'] | DECOY: with a pen
+  D: <with a pen> is key to stopping the seizures .
+  D: Correcting the trigger <with a pen> to stopping the seizures .
+  D: Correcting the trigger is key <with a pen> the seizures .
+  D: Correcting the trigger is key to stopping <with a pen> .
+--- 8.2 [검사 약속|lab] words=['w-send', 'w-culture', 'w-lab', 'w-treat', 'w-find']
+EN: I'll send cultures and labs and treat what we find.
+KO: 배양검사와 검사를 보내고, 나온 결과를 치료할게요. (28)
+X1: 배양검사와 검사를 받고, 나온 결과를 치료할게요. (27)
+X2: 배양검사와 영상을 보내고, 나온 결과를 치료할게요. (28)
+WHY: 'send'는 검체를 검사실로 보낸다는 현장 동사예요. 'treat what we find'는 결과에 따라 움직이겠다는 약속이에요.
+ B* I'll send [cultures] and labs and treat what we find.
+ B  I'll send [photos] and labs and treat what we find.
+ B  I'll send [menus] and labs and treat what we find.
+ B  I'll send [forms] and labs and treat what we find.
+CH: ["I'll send", 'cultures and labs', 'and treat', 'what we find', '.'] | DECOY: to the front desk
+  D: <to the front desk> cultures and labs and treat what we find .
+  D: I'll send <to the front desk> and treat what we find .
+  D: I'll send cultures and labs <to the front desk> what we find .
+  D: I'll send cultures and labs and treat <to the front desk> .
+--- 8.3 [원인 설명|bulb] words=['w-fever', 'w-infection', 'w-set-off', 'w-seizure']
+EN: A fever or an infection can also set off seizures.
+KO: 열이나 감염도 발작을 유발할 수 있어요. (22)
+X1: 열이나 탈수도 발작을 유발할 수 있어요. (22)
+X2: 열이나 감염도 두통을 유발할 수 있어요. (22)
+WHY: 'can also set off'의 'also'는 다른 원인도 있다는 점을 덧붙여요. 'fever or infection'은 감염 쪽 원인을 두 가지로 풀어 줘요.
+ B* A [fever] or an infection can also set off seizures.
+ B  A [hunger] or an infection can also set off seizures.
+ B  A [laughter] or an infection can also set off seizures.
+ B  A [walking] or an infection can also set off seizures.
+CH: ['A fever', 'or an infection', 'can also', 'set off seizures', '.'] | DECOY: for a day
+  D: <for a day> or an infection can also set off seizures .
+  D: A fever <for a day> can also set off seizures .
+  D: A fever or an infection <for a day> set off seizures .
+  D: A fever or an infection can also <for a day> .
+--- 8.4 [예상 설명|shield] words=['w-once', 'w-correct', 'w-cause', 'w-seizure', 'w-usually', 'w-stop']
+EN: Once we correct the cause, the seizures usually stop.
+KO: 원인을 교정하고 나면 발작은 보통 멈춰요. (23)
+X1: 원인을 교정하고 나면 열은 보통 내려가요. (23)
+X2: 원인을 교정하고 나면 검사는 보통 끝나요. (23)
+WHY: 'Once'는 앞의 일이 끝난 다음을 가리켜 순서를 보여 줘요. 'usually'는 대부분 그렇다는 말이라 약속을 과장하지 않아요.
+ B* Once we correct the cause, the seizures usually [stop].
+ B  Once we correct the cause, the seizures usually [bounce].
+ B  Once we correct the cause, the seizures usually [sing].
+ B  Once we correct the cause, the seizures usually [whisper].
+CH: ['Once we correct', 'the cause,', 'the seizures', 'usually stop', '.'] | DECOY: with the staff
+  D: <with the staff> the cause, the seizures usually stop .
+  D: Once we correct <with the staff> the seizures usually stop .
+  D: Once we correct the cause, <with the staff> usually stop .
+  D: Once we correct the cause, the seizures <with the staff> .
+== ORDER ko=유발원인 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=무엇을 검사하는지 알리고, 검체를 보내겠다고 약속하고, 결과가 나오면 교정하고, 그 뒤 기대를 말해요.
+   - We're testing for infection and metabolic causes together. (8w) | 감염과 대사 원인을 함께 검사해요 | 검사 | lab
+   - I'll send the samples to the lab for those tests. (10w) | 그 검사를 위해 검체를 검사실로 보낼게요 | 검체 | lab
+   - Whatever we find from them, we'll correct it. (8w) | 거기서 나오는 것은 무엇이든 교정할게요 | 교정 | lab
+   - After that, the seizures usually stop. (6w) | 그러고 나면 발작은 보통 멈춰요 | 기대 | shield
+   SWAP 1<->2: I'll send the samples to the lab for those tests. / We're testing for infection and metabolic causes together. / Whatever we find from them, we'll correct it. / After that, the seizures usually stop.
+   SWAP 2<->3: We're testing for infection and metabolic causes together. / Whatever we find from them, we'll correct it. / I'll send the samples to the lab for those tests. / After that, the seizures usually stop.
+   SWAP 3<->4: We're testing for infection and metabolic causes together. / I'll send the samples to the lab for those tests. / After that, the seizures usually stop. / Whatever we find from them, we'll correct it.
+
+######## S9 반복 발작 약물 단계화
+--- 9.0 [단계 설명|compass] words=['w-follow', 'w-stepwise', 'w-ladder', 'w-seizure', 'w-keep', 'w-recur']
+EN: We follow a stepwise ladder when seizures keep recurring.
+KO: 발작이 계속 반복되면 단계별 사다리를 따라가요. (26)
+X1: 발작이 계속 반복되면 단계별 사다리를 보여 드려요. (28)
+X2: 발작이 계속 반복되면 단계별 사다리를 안내해 드려요. (29)
+WHY: 'stepwise ladder'는 단계가 차례로 올라가는 치료 순서를 사다리에 빗댄 표현이에요. 'keep recurring'은 되풀이될 때 다음 단계로 간다는 조건을 알려요.
+ B* We follow a stepwise [ladder] when seizures keep recurring.
+ B  We follow a stepwise [bridge] when seizures keep recurring.
+ B  We follow a stepwise [fence] when seizures keep recurring.
+ B  We follow a stepwise [window] when seizures keep recurring.
+CH: ['We follow', 'a stepwise ladder', 'when seizures', 'keep recurring', '.'] | DECOY: for the unit
+  D: <for the unit> a stepwise ladder when seizures keep recurring .
+  D: We follow <for the unit> when seizures keep recurring .
+  D: We follow a stepwise ladder <for the unit> keep recurring .
+  D: We follow a stepwise ladder when seizures <for the unit> .
+--- 9.1 [치료 단계|pill] words=['w-after', 'w-benzo', 'w-second', 'w-agent', 'w-consider', 'w-infusion']
+EN: After benzos and the second agent, we consider infusions.
+KO: 벤조와 2차 약제 다음에는 지속주입을 고려해요. (26)
+X1: 벤조와 2차 약제 다음에는 지속주입을 안내해요. (26)
+X2: 벤조와 2차 약제 다음에는 이송을 고려해요. (24)
+WHY: 'After A and B'로 앞선 두 단계를 묶어 다음 단계가 무엇인지 순서대로 보여 줘요. 'benzos'는 benzodiazepines의 현장 줄임말이에요.
+ B* After benzos and the second agent, we consider [infusions].
+ B  After benzos and the second agent, we consider [visits].
+ B  After benzos and the second agent, we consider [reports].
+ B  After benzos and the second agent, we consider [meals].
+CH: ['After benzos', 'and the second agent,', 'we consider', 'infusions', '.'] | DECOY: for the team
+  D: <for the team> and the second agent, we consider infusions .
+  D: After benzos <for the team> we consider infusions .
+  D: After benzos and the second agent, <for the team> infusions .
+  D: After benzos and the second agent, we consider <for the team> .
+--- 9.2 [다음 준비|pill] words=['w-next', 'w-medication', 'w-ready', 'w-give', 'w-without', 'w-delay']
+EN: Let's have the next medication ready to give without delay.
+KO: 다음 약물을 지체 없이 줄 수 있게 준비해두죠. (26)
+X1: 다음 약물을 지체 없이 줄 수 있게 약국에 전화하죠. (29)
+X2: 다음 약물을 지체 없이 줄 수 있게 이름을 읽어 두죠. (30)
+WHY: 'have … ready'는 아직 주지 않았지만 바로 줄 수 있게 둔다는 뜻이에요. 'without delay'는 시간을 끌지 않겠다는 약속이에요.
+ B* Let's have the next medication [ready] to give without delay.
+ B  Let's have the next medication [empty] to give without delay.
+ B  Let's have the next medication [cold] to give without delay.
+ B  Let's have the next medication [bare] to give without delay.
+CH: ["Let's have", 'the next medication', 'ready to give', 'without delay', '.'] | DECOY: for the pharmacy
+  D: <for the pharmacy> the next medication ready to give without delay .
+  D: Let's have <for the pharmacy> ready to give without delay .
+  D: Let's have the next medication <for the pharmacy> without delay .
+  D: Let's have the next medication ready to give <for the pharmacy> .
+--- 9.3 [단계 약속|compass] words=['w-seize', 'w-move', 'w-next', 'w-step']
+EN: If he seizes again, we move to the next step right away.
+KO: 또 발작하면 바로 다음 단계로 넘어가요. (22)
+X1: 또 발작하면 바로 다음 단계를 보여 드려요. (24)
+X2: 또 발작하면 바로 팀과 다음 단계를 의논해요. (25)
+WHY: 'If he seizes again'은 조건을 먼저 말하고, 'right away'로 망설이지 않겠다는 약속을 해요. 'move to the next step'은 사다리를 한 칸 올라간다는 뜻이에요.
+ B* If he seizes [again], we move to the next step right away.
+ B  If he seizes [early], we move to the next step right away.
+ B  If he seizes [alone], we move to the next step right away.
+ B  If he seizes [blind], we move to the next step right away.
+CH: ['If he seizes again,', 'we move', 'to the next step', 'right away', '.'] | DECOY: on the list
+  D: <on the list> we move to the next step right away .
+  D: If he seizes again, <on the list> to the next step right away .
+  D: If he seizes again, we move <on the list> right away .
+  D: If he seizes again, we move to the next step <on the list> .
+--- 9.4 [준비 상태|pill] words=['w-already', 'w-second', 'w-agent', 'w-next', 'w-infusion', 'w-ready']
+EN: We're already on the second agent, so the next infusion is ready.
+KO: 이미 2차 약제까지 왔으니 다음 지속주입도 준비돼 있어요. (32)
+X1: 이미 2차 약제까지 왔으니 다음 모니터도 준비돼 있어요. (31)
+X2: 이미 2차 약제까지 왔으니 다음 병실도 준비돼 있어요. (30)
+WHY: 'already'는 이미 거기까지 왔다는 뜻을 더해요. 'so'로 현재 단계와 준비 상태를 이유와 결과로 이어요.
+ B* We're already on the second agent, so the next infusion is [ready].
+ B  We're already on the second agent, so the next infusion is [empty].
+ B  We're already on the second agent, so the next infusion is [closed].
+ B  We're already on the second agent, so the next infusion is [torn].
+CH: ["We're already", 'on the second agent,', 'so the next infusion', 'is ready', '.'] | DECOY: on the cart
+  D: <on the cart> on the second agent, so the next infusion is ready .
+  D: We're already <on the cart> so the next infusion is ready .
+  D: We're already on the second agent, <on the cart> is ready .
+  D: We're already on the second agent, so the next infusion <on the cart> .
+== ORDER ko=반복 발작 단계 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=단계를 따른다고 알리고, 지금 어디까지 왔는지 말하고, 다음 약물을 준비한 뒤, 다시 발작하면 어떻게 할지 약속해요.
+   - We follow a stepwise ladder when seizures keep recurring. (9w) | 발작이 반복되면 단계별로 따라가요 | 단계 | compass
+   - We're already on the second agent now. (7w) | 이미 2차 약제까지 왔어요 | 현재 | pill
+   - With that in mind, let's have the next medication ready. (10w) | 그걸 감안해 다음 약물을 준비해 두죠 | 준비 | pill
+   - If he seizes again after that, we move to the next step right away. (14w) | 그 뒤에 또 발작하면 바로 다음 단계로 가요 | 약속 | compass
+   SWAP 1<->2: We're already on the second agent now. / We follow a stepwise ladder when seizures keep recurring. / With that in mind, let's have the next medication ready. / If he seizes again after that, we move to the next step right away.
+   SWAP 2<->3: We follow a stepwise ladder when seizures keep recurring. / With that in mind, let's have the next medication ready. / We're already on the second agent now. / If he seizes again after that, we move to the next step right away.
+   SWAP 3<->4: We follow a stepwise ladder when seizures keep recurring. / We're already on the second agent now. / If he seizes again after that, we move to the next step right away. / With that in mind, let's have the next medication ready.
+
+######## S10 기도확보 준비·삽관 판단
+--- 10.0 [위험 설명|stetho] words=['w-decline', 'w-consciousness', 'w-mean', 'w-protect', 'w-airway']
+EN: His declining consciousness may mean he can't protect his airway.
+KO: 의식이 떨어지고 있다는 건 기도를 스스로 보호하지 못한다는 뜻일 수 있어요. (42)
+X1: 의식이 떨어지고 있다는 건 약을 스스로 삼키지 못한다는 뜻일 수 있어요. (40)
+X2: 의식이 떨어지고 있다는 건 질문을 스스로 이해하지 못한다는 뜻일 수 있어요. (42)
+WHY: 'may mean'은 확정이 아니라 가능성이라 걱정을 키우지 않으면서 위험을 알려요. 'protect his airway'는 삼키고 기침해서 기도를 지키는 능력을 가리켜요.
+ B* His declining consciousness may mean he can't protect his [airway].
+ B  His declining consciousness may mean he can't protect his [wallet].
+ B  His declining consciousness may mean he can't protect his [passport].
+ B  His declining consciousness may mean he can't protect his [keys].
+CH: ['His declining consciousness', 'may mean', "he can't protect", 'his airway', '.'] | DECOY: at the counter
+  D: <at the counter> may mean he can't protect his airway .
+  D: His declining consciousness <at the counter> he can't protect his airway .
+  D: His declining consciousness may mean <at the counter> his airway .
+  D: His declining consciousness may mean he can't protect <at the counter> .
+--- 10.1 [장비 준비|pager] words=['w-intubation', 'w-equipment', 'w-team', 'w-ready']
+EN: Let's have intubation equipment and the team ready.
+KO: 삽관 장비와 팀을 준비해두죠. (16)
+X1: 삽관 장비와 약물을 준비해두죠. (17)
+X2: 삽관 장비와 침대를 준비해두죠. (17)
+WHY: 'have … ready'는 지금 쓰지는 않지만 바로 쓸 수 있게 해 두라는 뜻이에요. 장비와 사람을 한 문장에 묶어 같이 준비하게 해요.
+ B* Let's have [intubation] equipment and the team ready.
+ B  Let's have [dialysis] equipment and the team ready.
+ B  Let's have [feeding] equipment and the team ready.
+ B  Let's have [laundry] equipment and the team ready.
+CH: ["Let's have", 'intubation equipment', 'and the team', 'ready', '.'] | DECOY: the cart
+  D: <the cart> intubation equipment and the team ready .
+  D: Let's have <the cart> and the team ready .
+  D: Let's have intubation equipment <the cart> ready .
+  D: Let's have intubation equipment and the team <the cart> .
+--- 10.2 [계획 설명|stetho] words=['w-deteriorate', 'w-further', 'w-secure', 'w-airway']
+EN: If he deteriorates further, we'll secure the airway.
+KO: 더 악화되면 기도를 확보할게요. (17)
+X1: 더 악화되면 병상을 확보할게요. (17)
+X2: 더 악화되면 연락처를 확보할게요. (18)
+WHY: 'If he deteriorates further'는 조건을 먼저 말해 지금은 아니지만 대비한다는 뜻이에요. 'secure the airway'는 기도를 안전하게 확보한다는 의료 표현이에요.
+ B* If he [deteriorates] further, we'll secure the airway.
+ B  If he [stabilizes] further, we'll secure the airway.
+ B  If he [recovers] further, we'll secure the airway.
+ B  If he [improves] further, we'll secure the airway.
+CH: ['If he deteriorates', 'further,', "we'll secure", 'the airway', '.'] | DECOY: for now
+  D: <for now> further, we'll secure the airway .
+  D: If he deteriorates <for now> we'll secure the airway .
+  D: If he deteriorates further, <for now> the airway .
+  D: If he deteriorates further, we'll secure <for now> .
+--- 10.3 [상태 보고|monitor] words=['w-protect', 'w-airway', 'w-cough']
+EN: He's no longer protecting his own airway when he coughs.
+KO: 기침할 때 더 이상 스스로 기도를 보호하지 못하고 있어요. (32)
+X1: 기침할 때 더 이상 스스로 물을 삼키지 못하고 있어요. (30)
+X2: 기침할 때 더 이상 스스로 몸을 일으키지 못하고 있어요. (31)
+WHY: 'no longer'는 이전에는 가능했던 일이 지금은 안 된다는 변화를 보여 줘요. 'when he coughs'는 어떤 상황에서 확인했는지 알려요.
+ B* He's no longer protecting his own airway when he [coughs].
+ B  He's no longer protecting his own airway when he [smiles].
+ B  He's no longer protecting his own airway when he [blinks].
+ B  He's no longer protecting his own airway when he [laughs].
+CH: ["He's no longer", 'protecting', 'his own airway', 'when he coughs', '.'] | DECOY: in the bed
+  D: <in the bed> protecting his own airway when he coughs .
+  D: He's no longer <in the bed> his own airway when he coughs .
+  D: He's no longer protecting <in the bed> when he coughs .
+  D: He's no longer protecting his own airway <in the bed> .
+--- 10.4 [도움 요청|pager] words=['w-call', 'w-anesthesia', 'w-decide', 'w-intubation']
+EN: We're calling anesthesia now to decide on intubation.
+KO: 삽관 여부를 결정하려고 지금 마취과를 부르고 있어요. (29)
+X1: 삽관 도구를 챙기려고 지금 마취과를 부르고 있어요. (28)
+X2: 수술실을 잡으려고 지금 마취과를 부르고 있어요. (26)
+WHY: 'now'가 지금 바로 부른다는 긴급함을 전해요. 'to decide on'은 아직 결정하지 않았다는 뜻이라 삽관이 확정이 아님을 알려요.
+ B* We're calling [anesthesia] now to decide on intubation.
+ B  We're calling [radiology] now to decide on intubation.
+ B  We're calling [pharmacy] now to decide on intubation.
+ B  We're calling [housekeeping] now to decide on intubation.
+CH: ["We're calling anesthesia", 'now', 'to decide', 'on intubation', '.'] | DECOY: for the room
+  D: <for the room> now to decide on intubation .
+  D: We're calling anesthesia <for the room> to decide on intubation .
+  D: We're calling anesthesia now <for the room> on intubation .
+  D: We're calling anesthesia now to decide <for the room> .
+== ORDER ko=기도확보 판단 4문장 순서 | tag=대화 흐름 icon=compass
+   why=의식 저하가 기도에 미치는 위험을 알리고, 기도 반사가 떨어진 것을 확인한 뒤, 마취과를 부르고, 장비와 팀을 준비해요.
+   - His declining consciousness may mean he can't protect his airway. (10w) | 의식 저하는 기도를 못 지킨다는 뜻일 수 있어요 | 위험 | stetho
+   - Sure enough, he's no longer protecting it when he coughs. (10w) | 아니나 다를까 기침할 때 더는 기도를 지키지 못해요 | 확인 | monitor
+   - Because of that, we're calling anesthesia now. (7w) | 그래서 지금 마취과를 부르고 있어요 | 요청 | pager
+   - Meanwhile, let's have the intubation equipment and team ready. (9w) | 그러는 사이 삽관 장비와 팀을 준비해 두죠 | 준비 | pager
+   SWAP 1<->2: Sure enough, he's no longer protecting it when he coughs. / His declining consciousness may mean he can't protect his airway. / Because of that, we're calling anesthesia now. / Meanwhile, let's have the intubation equipment and team ready.
+   SWAP 2<->3: His declining consciousness may mean he can't protect his airway. / Because of that, we're calling anesthesia now. / Sure enough, he's no longer protecting it when he coughs. / Meanwhile, let's have the intubation equipment and team ready.
+   SWAP 3<->4: His declining consciousness may mean he can't protect his airway. / Sure enough, he's no longer protecting it when he coughs. / Meanwhile, let's have the intubation equipment and team ready. / Because of that, we're calling anesthesia now.
+
+######## S11 항경련제 혈중농도·부작용
+--- 11.0 [농도 확인|lab] words=['w-check', 'w-drug', 'w-level', 'w-confirm', 'w-therapeutic']
+EN: Let's check his drug levels to confirm they're therapeutic.
+KO: 약물 혈중농도를 확인해서 치료 범위인지 봐요. (25)
+X1: 약물 혈중농도를 채혈해서 치료 범위인지 봐요. (25)
+X2: 약물 혈중농도를 확인해서 정상 수치인지 봐요. (25)
+WHY: 'therapeutic'은 효과가 있으면서 안전한 범위라는 뜻의 임상어예요. 'to confirm'은 확인의 목적을 붙여요.
+ B* Let's check his drug levels to confirm they're [therapeutic].
+ B  Let's check his drug levels to confirm they're [expired].
+ B  Let's check his drug levels to confirm they're [mislabeled].
+ B  Let's check his drug levels to confirm they're [refrigerated].
+CH: ["Let's check", 'his drug levels', 'to confirm', "they're therapeutic", '.'] | DECOY: from the lab
+  D: <from the lab> his drug levels to confirm they're therapeutic .
+  D: Let's check <from the lab> to confirm they're therapeutic .
+  D: Let's check his drug levels <from the lab> they're therapeutic .
+  D: Let's check his drug levels to confirm <from the lab> .
+--- 11.1 [부작용 감시|monitor] words=['w-watch', 'w-sedation', 'w-low', 'w-pressure', 'w-rhythm', 'w-change']
+EN: I'm watching for sedation, low pressure, and rhythm changes.
+KO: 진정, 저혈압, 리듬 변화를 지켜보고 있어요. (25)
+X1: 진정, 저혈압, 의식 변화를 지켜보고 있어요. (25)
+X2: 진정, 저혈압, 통증 변화를 지켜보고 있어요. (25)
+WHY: 'watching for'는 아직 일어나지 않았지만 생길 수 있는 것을 미리 본다는 뜻이에요. 세 가지를 나열해 약의 부작용 목록을 한 번에 말해요.
+ B* I'm watching for [sedation], low pressure, and rhythm changes.
+ B  I'm watching for [hunger], low pressure, and rhythm changes.
+ B  I'm watching for [boredom], low pressure, and rhythm changes.
+ B  I'm watching for [laughter], low pressure, and rhythm changes.
+CH: ["I'm watching", 'for sedation,', 'low pressure,', 'and rhythm changes', '.'] | DECOY: by the window
+  D: <by the window> for sedation, low pressure, and rhythm changes .
+  D: I'm watching <by the window> low pressure, and rhythm changes .
+  D: I'm watching for sedation, <by the window> and rhythm changes .
+  D: I'm watching for sedation, low pressure, <by the window> .
+--- 11.2 [용량 조정|pill] words=['w-adjust', 'w-dose', 'w-based', 'w-level', 'w-response']
+EN: We'll adjust the dose based on levels and his response.
+KO: 수치와 반응에 따라 용량을 조정할게요. (21)
+X1: 수치와 반응에 따라 식사를 조정할게요. (21)
+X2: 수치와 반응에 따라 침대를 조정할게요. (21)
+WHY: 'based on'은 조정의 근거를 말해 임의로 바꾸지 않는다는 점을 알려요. 'levels'는 혈중 농도 수치를 가리켜요.
+ B* We'll [adjust] the dose based on levels and his response.
+ B  We'll [label] the dose based on levels and his response.
+ B  We'll [store] the dose based on levels and his response.
+ B  We'll [return] the dose based on levels and his response.
+CH: ["We'll adjust", 'the dose', 'based on levels', 'and his response', '.'] | DECOY: in the corner
+  D: <in the corner> the dose based on levels and his response .
+  D: We'll adjust <in the corner> based on levels and his response .
+  D: We'll adjust the dose <in the corner> and his response .
+  D: We'll adjust the dose based on levels <in the corner> .
+--- 11.3 [결과 보고|lab] words=['w-level', 'w-back', 'w-therapeutic', 'w-range']
+EN: His level came back within the therapeutic range.
+KO: 수치가 치료 범위 안으로 나왔어요. (19)
+X1: 혈당이 치료 범위 안으로 나왔어요. (19)
+X2: 체중이 치료 범위 안으로 나왔어요. (19)
+WHY: 'came back'은 검사 결과가 돌아왔다는 현장 표현이에요. 'within … range'는 범위 안이라는 뜻의 정형 표현이에요.
+ B* His level came back [within] the therapeutic range.
+ B  His level came back [above] the therapeutic range.
+ B  His level came back [below] the therapeutic range.
+ B  His level came back [beyond] the therapeutic range.
+CH: ['His level', 'came back', 'within the therapeutic range', '.'] | DECOY: on the screen
+  D: <on the screen> came back within the therapeutic range .
+  D: His level <on the screen> within the therapeutic range .
+  D: His level came back <on the screen> .
+--- 11.4 [경과 보고|monitor] words=['w-effect', 'w-since', 'w-adjust', 'w-dose']
+EN: No new side effects since we adjusted the dose.
+KO: 용량을 조정한 뒤로 새로운 부작용은 없어요. (24)
+X1: 용량을 조정한 뒤로 새로운 통증은 없어요. (23)
+X2: 용량을 조정한 뒤로 새로운 처방은 없어요. (23)
+WHY: 'since'는 그 시점부터 지금까지라는 뜻이라 용량 조정 이후의 변화를 말해요. 'No new'는 새로 생긴 것이 없다는 짧은 보고 형식이에요.
+ B* No new side effects since we [adjusted] the dose.
+ B  No new side effects since we [discharged] the dose.
+ B  No new side effects since we [transferred] the dose.
+ B  No new side effects since we [admitted] the dose.
+CH: ['No new', 'side effects', 'since we adjusted', 'the dose', '.'] | DECOY: at the door
+  D: <at the door> side effects since we adjusted the dose .
+  D: No new <at the door> since we adjusted the dose .
+  D: No new side effects <at the door> the dose .
+  D: No new side effects since we adjusted <at the door> .
+== ORDER ko=혈중농도 확인 4문장 순서 | tag=대화 흐름 icon=compass
+   why=농도를 확인하자고 하고, 결과를 알린 뒤, 그에 맞춰 용량을 조정하고, 조정 뒤 상태를 보고해요.
+   - Let's check his drug levels to confirm they're therapeutic. (9w) | 혈중농도가 치료 범위인지 확인하죠 | 확인 | lab
+   - His level came back within the therapeutic range. (8w) | 수치가 치료 범위 안으로 나왔어요 | 결과 | lab
+   - Given that result, we'll adjust the dose based on his response. (11w) | 그 결과를 보고 반응에 따라 용량을 조정할게요 | 조정 | pill
+   - There have been no new side effects since we did that. (11w) | 그렇게 한 뒤로 새 부작용은 없어요 | 경과 | monitor
+   SWAP 1<->2: His level came back within the therapeutic range. / Let's check his drug levels to confirm they're therapeutic. / Given that result, we'll adjust the dose based on his response. / There have been no new side effects since we did that.
+   SWAP 2<->3: Let's check his drug levels to confirm they're therapeutic. / Given that result, we'll adjust the dose based on his response. / His level came back within the therapeutic range. / There have been no new side effects since we did that.
+   SWAP 3<->4: Let's check his drug levels to confirm they're therapeutic. / His level came back within the therapeutic range. / There have been no new side effects since we did that. / Given that result, we'll adjust the dose based on his response.
+
+######## S12 비경련성 SE 인지
+--- 12.0 [위험 설명|bulb] words=['w-persistent', 'w-unresponsiveness', 'w-mean', 'w-ongoing', 'w-nonconvulsive', 'w-seizure']
+EN: Persistent unresponsiveness can mean ongoing nonconvulsive seizures.
+KO: 지속되는 무반응은 비경련성 발작이 계속되고 있다는 뜻일 수 있어요. (37)
+X1: 지속되는 무반응은 뇌압이 올라가고 있다는 뜻일 수 있어요. (32)
+X2: 지속되는 무반응은 저혈당이 계속되고 있다는 뜻일 수 있어요. (33)
+WHY: 'can mean'은 단정하지 않고 가능성을 말해요. 'ongoing'은 지금도 이어지는 발작이라는 뜻이에요.
+ B* Persistent [unresponsiveness] can mean ongoing nonconvulsive seizures.
+ B  Persistent [dissatisfaction] can mean ongoing nonconvulsive seizures.
+ B  Persistent [hospitalization] can mean ongoing nonconvulsive seizures.
+ B  Persistent [appetite] can mean ongoing nonconvulsive seizures.
+CH: ['Persistent unresponsiveness', 'can mean', 'ongoing nonconvulsive seizures', '.'] | DECOY: near the sink
+  D: <near the sink> can mean ongoing nonconvulsive seizures .
+  D: Persistent unresponsiveness <near the sink> ongoing nonconvulsive seizures .
+  D: Persistent unresponsiveness can mean <near the sink> .
+--- 12.1 [검사 제안|monitor] words=['w-get', 'w-urgent', 'w-eeg', 'w-check', 'w-brain', 'w-activity']
+EN: Let's get an urgent EEG to check his brain activity.
+KO: 뇌 활동을 확인하러 응급 EEG를 받죠. (22)
+X1: 보호자에게 보여 주러 응급 EEG를 받죠. (23)
+X2: 연구에 쓰려고 응급 EEG를 받죠. (19)
+WHY: 'urgent'는 기다리지 않고 바로 하자는 뜻이에요. 'to check'로 검사의 목적을 한마디로 붙여요.
+ B* Let's get an urgent EEG to check his brain [activity].
+ B  Let's get an urgent EEG to check his brain [insurance].
+ B  Let's get an urgent EEG to check his brain [budget].
+ B  Let's get an urgent EEG to check his brain [mood].
+CH: ["Let's get", 'an urgent EEG', 'to check', 'his brain activity', '.'] | DECOY: with a tray
+  D: <with a tray> an urgent EEG to check his brain activity .
+  D: Let's get <with a tray> to check his brain activity .
+  D: Let's get an urgent EEG <with a tray> his brain activity .
+  D: Let's get an urgent EEG to check <with a tray> .
+--- 12.2 [보고 약속|speech] words=['w-flag', 'w-neuro', 'w-team']
+EN: I'll flag this to the neuro team right away.
+KO: 바로 신경과 팀에 알릴게요. (15)
+X1: 바로 신경과 팀에 물어볼게요. (16)
+X2: 바로 신경과 팀에 상의할게요. (16)
+WHY: 'flag'는 눈에 띄게 표시해서 알린다는 현장 동사예요. 'right away'로 지체하지 않겠다는 약속을 해요.
+ B* I'll [flag] this to the neuro team right away.
+ B  I'll [mail] this to the neuro team right away.
+ B  I'll [return] this to the neuro team right away.
+ B  I'll [carry] this to the neuro team right away.
+CH: ["I'll flag", 'this', 'to the neuro team', 'right away', '.'] | DECOY: to the nurse
+  D: <to the nurse> this to the neuro team right away .
+  D: I'll flag <to the nurse> to the neuro team right away .
+  D: I'll flag this <to the nurse> right away .
+  D: I'll flag this to the neuro team <to the nurse> .
+--- 12.3 [조심 설명|faceWorried] words=['w-calm', 'w-rule-out', 'w-hidden', 'w-seizure']
+EN: He looks calm, but that doesn't rule out a hidden seizure.
+KO: 차분해 보이지만 그렇다고 숨은 발작이 없다는 건 아니에요. (32)
+X1: 차분해 보이지만 그렇다고 숨은 뇌출혈이 없다는 건 아니에요. (33)
+X2: 차분해 보이지만 그렇다고 숨은 통증이 없다는 건 아니에요. (32)
+WHY: 'looks calm'은 겉모습을 말하고 'doesn't rule out'은 그래도 가능성이 남는다는 뜻이에요. 'but'으로 둘을 대비시켜요.
+ B* He looks calm, but that doesn't rule out a [hidden] seizure.
+ B  He looks calm, but that doesn't rule out a [daily] seizure.
+ B  He looks calm, but that doesn't rule out a [recent] seizure.
+ B  He looks calm, but that doesn't rule out a [final] seizure.
+CH: ['He looks calm,', "but that doesn't", 'rule out', 'a hidden seizure', '.'] | DECOY: in his room
+  D: <in his room> but that doesn't rule out a hidden seizure .
+  D: He looks calm, <in his room> rule out a hidden seizure .
+  D: He looks calm, but that doesn't <in his room> a hidden seizure .
+  D: He looks calm, but that doesn't rule out <in his room> .
+--- 12.4 [처방 진행|pencil] words=['w-get', 'w-eeg', 'w-order']
+EN: I'm getting the EEG ordered right now.
+KO: 지금 바로 EEG를 처방받고 있어요. (20)
+X1: 지금 바로 EEG 장비를 처방받고 있어요. (23)
+X2: 지금 바로 EEG를 보고받고 있어요. (20)
+WHY: 'getting … ordered'는 직접 처방하지 않고 처방받는 과정을 말해요. 'right now'로 지금 진행 중임을 강조해요.
+ B* I'm getting the EEG [ordered] right now.
+ B  I'm getting the EEG [printed] right now.
+ B  I'm getting the EEG [framed] right now.
+ B  I'm getting the EEG [washed] right now.
+CH: ["I'm getting", 'the EEG ordered', 'right now', '.'] | DECOY: for the label
+  D: <for the label> the EEG ordered right now .
+  D: I'm getting <for the label> right now .
+  D: I'm getting the EEG ordered <for the label> .
+== ORDER ko=비경련성 발작 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=무반응이 뜻할 수 있는 바를 알리고, 겉모습만으로는 알 수 없다고 덧붙이고, EEG를 처방받고, 신경과에 알려요.
+   - Persistent unresponsiveness can mean ongoing nonconvulsive seizures. (7w) | 지속되는 무반응은 비경련성 발작일 수 있어요 | 위험 | bulb
+   - Even if he looks calm, that doesn't rule one out. (10w) | 차분해 보여도 그걸 배제할 수는 없어요 | 주의 | faceWorried
+   - So I'm getting an EEG ordered right now to check. (10w) | 그래서 확인하려고 지금 EEG를 처방받고 있어요 | 처방 | pencil
+   - Once it's ordered, I'll flag this to the neuro team. (10w) | 처방되면 이걸 신경과 팀에 알릴게요 | 보고 | speech
+   SWAP 1<->2: Even if he looks calm, that doesn't rule one out. / Persistent unresponsiveness can mean ongoing nonconvulsive seizures. / So I'm getting an EEG ordered right now to check. / Once it's ordered, I'll flag this to the neuro team.
+   SWAP 2<->3: Persistent unresponsiveness can mean ongoing nonconvulsive seizures. / So I'm getting an EEG ordered right now to check. / Even if he looks calm, that doesn't rule one out. / Once it's ordered, I'll flag this to the neuro team.
+   SWAP 3<->4: Persistent unresponsiveness can mean ongoing nonconvulsive seizures. / Even if he looks calm, that doesn't rule one out. / Once it's ordered, I'll flag this to the neuro team. / So I'm getting an EEG ordered right now to check.
+
+######## S13 발작 관련 손상·흡인 관리
+--- 13.0 [흡인 처치|scalpel] words=['w-suction', 'w-gently', 'w-check', 'w-airway']
+EN: Let's suction gently and check his airway and mouth.
+KO: 살살 석션하고 기도와 입 안을 확인하죠. (22)
+X1: 살살 석션하고 코와 입 안을 확인하죠. (21)
+X2: 살살 석션하고 기도와 입술을 확인하죠. (21)
+WHY: 'gently'는 부드럽게 하자는 뜻이라 점막 손상을 피하려는 마음이 담겨요. 'and check'로 석션 뒤 살피는 일까지 이어서 말해요.
+ B* Let's suction [gently] and check his airway and mouth.
+ B  Let's suction [loudly] and check his airway and mouth.
+ B  Let's suction [noisily] and check his airway and mouth.
+ B  Let's suction [rudely] and check his airway and mouth.
+CH: ["Let's suction gently", 'and check', 'his airway', 'and mouth', '.'] | DECOY: at the station
+  D: <at the station> and check his airway and mouth .
+  D: Let's suction gently <at the station> his airway and mouth .
+  D: Let's suction gently and check <at the station> and mouth .
+  D: Let's suction gently and check his airway <at the station> .
+--- 13.1 [흡인 감시|monitor] words=['w-watch', 'w-sign', 'w-aspiration', 'w-low', 'w-oxygen', 'w-fever']
+EN: I'm watching for signs of aspiration like low oxygen or fever.
+KO: 저산소나 발열 같은 흡인 징후를 지켜보고 있어요. (27)
+X1: 저혈압이나 발열 같은 흡인 징후를 지켜보고 있어요. (28)
+X2: 저산소나 발진 같은 흡인 징후를 지켜보고 있어요. (27)
+WHY: 'signs of aspiration'은 흡인이 의심되는 신호를 뜻하는 표현이에요. 'like low oxygen or fever'로 구체적인 예를 들어요.
+ B* I'm watching for signs of [aspiration] like low oxygen or fever.
+ B  I'm watching for signs of [allergy] like low oxygen or fever.
+ B  I'm watching for signs of [dehydration] like low oxygen or fever.
+ B  I'm watching for signs of [contamination] like low oxygen or fever.
+CH: ["I'm watching", 'for signs', 'of aspiration', 'like low oxygen', 'or fever', '.'] | DECOY: in the unit
+  D: <in the unit> for signs of aspiration like low oxygen or fever .
+  D: I'm watching <in the unit> of aspiration like low oxygen or fever .
+  D: I'm watching for signs <in the unit> like low oxygen or fever .
+  D: I'm watching for signs of aspiration <in the unit> or fever .
+  D: I'm watching for signs of aspiration like low oxygen <in the unit> .
+--- 13.2 [손상 사정|stetho] words=['w-assess', 'w-injury', 'w-seizure']
+EN: We'll assess for any injuries from the seizure.
+KO: 발작으로 인한 손상이 있는지 평가할게요. (22)
+X1: 발작으로 인한 통증이 있는지 평가할게요. (22)
+X2: 발작으로 인한 두통이 있는지 평가할게요. (22)
+WHY: 'assess for'는 있는지 없는지 살펴본다는 뜻의 임상 표현이에요. 'any injuries'로 아직 모르는 상태를 전제해요.
+ B* We'll assess for any [injuries] from the seizure.
+ B  We'll assess for any [visitors] from the seizure.
+ B  We'll assess for any [orders] from the seizure.
+ B  We'll assess for any [allergies] from the seizure.
+CH: ["We'll assess", 'for any injuries', 'from the seizure', '.'] | DECOY: from the desk
+  D: <from the desk> for any injuries from the seizure .
+  D: We'll assess <from the desk> from the seizure .
+  D: We'll assess for any injuries <from the desk> .
+--- 13.3 [혀 확인|stetho] words=['w-check', 'w-bite', 'w-mark']
+EN: Let's check his tongue for any bite marks.
+KO: 혀에 물린 자국이 있는지 확인하죠. (19)
+X1: 혀에 하얀 반점이 있는지 확인하죠. (19)
+X2: 입술에 물린 자국이 있는지 확인하죠. (20)
+WHY: 'for any bite marks'는 찾는 대상을 구체적으로 말해요. 'Let's check'로 같이 확인하자고 제안해요.
+ B* Let's check his [tongue] for any bite marks.
+ B  Let's check his [knee] for any bite marks.
+ B  Let's check his [shoulder] for any bite marks.
+ B  Let's check his [elbow] for any bite marks.
+CH: ["Let's check", 'his tongue', 'for any bite marks', '.'] | DECOY: in his hair
+  D: <in his hair> his tongue for any bite marks .
+  D: Let's check <in his hair> for any bite marks .
+  D: Let's check his tongue <in his hair> .
+--- 13.4 [수치 보고|monitor] words=['w-temperature', 'w-oxygen', 'w-level']
+EN: His temperature and oxygen level look fine right now.
+KO: 지금은 체온과 산소 수치 모두 괜찮아 보여요. (25)
+X1: 지금은 체온과 혈당 수치 모두 괜찮아 보여요. (25)
+X2: 지금은 체중과 산소 수치 모두 괜찮아 보여요. (25)
+WHY: 'look fine'은 지금 보이는 수치가 괜찮다는 짧은 보고예요. 'right now'로 앞으로는 변할 수 있다는 여지를 남겨요.
+ B* His [temperature] and oxygen level look fine right now.
+ B  His [registration] and oxygen level look fine right now.
+ B  His [signature] and oxygen level look fine right now.
+ B  His [weight] and oxygen level look fine right now.
+CH: ['His temperature', 'and oxygen level', 'look fine', 'right now', '.'] | DECOY: by the door
+  D: <by the door> and oxygen level look fine right now .
+  D: His temperature <by the door> look fine right now .
+  D: His temperature and oxygen level <by the door> right now .
+  D: His temperature and oxygen level look fine <by the door> .
+== ORDER ko=발작 후 손상 관리 4문장 순서 | tag=대화 흐름 icon=compass
+   why=기도와 입 안을 살살 정리하고, 흡인 징후를 지켜보고, 혀와 몸의 손상을 확인한 뒤, 현재 수치를 보고해요.
+   - Let's suction gently and check his airway and mouth. (9w) | 살살 석션하고 기도와 입 안을 확인하죠 | 석션 | scalpel
+   - Next, I'm watching for signs of aspiration. (7w) | 다음으로 흡인 징후를 지켜보고 있어요 | 감시 | monitor
+   - Along with that, let's check his tongue for bite marks. (10w) | 그와 함께 혀에 물린 자국이 있는지 확인하죠 | 혀 | stetho
+   - For now, his temperature and oxygen level look fine. (9w) | 지금은 체온과 산소 수치가 괜찮아 보여요 | 수치 | monitor
+   SWAP 1<->2: Next, I'm watching for signs of aspiration. / Let's suction gently and check his airway and mouth. / Along with that, let's check his tongue for bite marks. / For now, his temperature and oxygen level look fine.
+   SWAP 2<->3: Let's suction gently and check his airway and mouth. / Along with that, let's check his tongue for bite marks. / Next, I'm watching for signs of aspiration. / For now, his temperature and oxygen level look fine.
+   SWAP 3<->4: Let's suction gently and check his airway and mouth. / Next, I'm watching for signs of aspiration. / For now, his temperature and oxygen level look fine. / Along with that, let's check his tongue for bite marks.
+
+######## S14 원인별 치료 연계
+--- 14.0 [원인 설명|bulb] words=['w-identify', 'w-cause', 'w-stroke', 'w-mass']
+EN: We're identifying the cause, whether it's a stroke or a mass.
+KO: 원인을 파악하고 있어요, 뇌졸중이든 종양이든요. (26)
+X1: 원인을 파악하고 있어요, 뇌졸중이든 감염이든요. (26)
+X2: 원인을 파악하고 있어요, 뇌출혈이든 종양이든요. (26)
+WHY: 'whether it's A or B'로 아직 모르는 두 가지 가능성을 나란히 말해요. 'We're identifying'은 지금 찾는 중이라는 진행형이에요.
+ B* We're identifying the cause, whether it's a [stroke] or a mass.
+ B  We're identifying the cause, whether it's a [fever] or a mass.
+ B  We're identifying the cause, whether it's a [rash] or a mass.
+ B  We're identifying the cause, whether it's a [sprain] or a mass.
+CH: ["We're identifying", 'the cause,', "whether it's", 'a stroke', 'or a mass', '.'] | DECOY: for the ward
+  D: <for the ward> the cause, whether it's a stroke or a mass .
+  D: We're identifying <for the ward> whether it's a stroke or a mass .
+  D: We're identifying the cause, <for the ward> a stroke or a mass .
+  D: We're identifying the cause, whether it's <for the ward> or a mass .
+  D: We're identifying the cause, whether it's a stroke <for the ward> .
+--- 14.1 [치료 설명|bulb] words=['w-treatment', 'w-depend', 'w-find', 'w-imaging']
+EN: The treatment depends on what we find on imaging.
+KO: 영상 검사에서 무엇이 나오느냐에 따라 치료가 달라져요. (30)
+X1: 영상 검사에서 무엇이 나오느냐에 따라 일정이 달라져요. (30)
+X2: 혈액 검사에서 무엇이 나오느냐에 따라 치료가 달라져요. (30)
+WHY: 'depends on'은 치료가 결과에 따라 달라진다는 뜻이에요. 'what we find'는 아직 모르는 결과를 가리켜요.
+ B* The treatment depends on what we find on [imaging].
+ B  The treatment depends on what we find on [visiting].
+ B  The treatment depends on what we find on [billing].
+ B  The treatment depends on what we find on [parking].
+CH: ['The treatment depends', 'on what', 'we find', 'on imaging', '.'] | DECOY: in the lab
+  D: <in the lab> on what we find on imaging .
+  D: The treatment depends <in the lab> we find on imaging .
+  D: The treatment depends on what <in the lab> on imaging .
+  D: The treatment depends on what we find <in the lab> .
+--- 14.2 [협진 설명|speech] words=['w-neuro', 'w-team', 'w-guide', 'w-next', 'w-step']
+EN: The neuro team will guide the next steps with us.
+KO: 신경과 팀이 저희와 함께 다음 단계를 이끌어줄 거예요. (30)
+X1: 마취과 팀이 저희와 함께 다음 단계를 이끌어줄 거예요. (30)
+X2: 신경과 팀이 저희와 함께 다음 단계를 안내해줄 거예요. (30)
+WHY: 'guide the next steps'는 앞으로의 단계를 이끈다는 뜻이에요. 'with us'로 우리와 함께한다는 점을 알려요.
+ B* The neuro team will [guide] the next steps with us.
+ B  The neuro team will [trade] the next steps with us.
+ B  The neuro team will [rent] the next steps with us.
+ B  The neuro team will [wrap] the next steps with us.
+CH: ['The neuro team', 'will guide', 'the next steps', 'with us', '.'] | DECOY: at the counter
+  D: <at the counter> will guide the next steps with us .
+  D: The neuro team <at the counter> the next steps with us .
+  D: The neuro team will guide <at the counter> with us .
+  D: The neuro team will guide the next steps <at the counter> .
+--- 14.3 [영상 설명|bulb] words=['w-imaging', 'w-show', 'w-stroke', 'w-tumor', 'w-else']
+EN: The imaging will show whether this came from a stroke, a tumor, or something else.
+KO: 영상 검사가 뇌졸중인지 종양인지 다른 무엇인지 보여줄 거예요. (34)
+X1: 혈액 검사가 뇌졸중인지 종양인지 다른 무엇인지 보여줄 거예요. (34)
+X2: 영상 검사가 뇌졸중인지 감염인지 다른 무엇인지 보여줄 거예요. (34)
+WHY: 'whether … a stroke, a tumor, or something else'는 가능성 셋을 나열해 아직 모른다는 점을 전해요. 'will show'는 검사 결과를 주어로 삼아요.
+ B* The imaging will show whether this came from a stroke, a [tumor], or something else.
+ B  The imaging will show whether this came from a stroke, a [fever], or something else.
+ B  The imaging will show whether this came from a stroke, a [sprain], or something else.
+ B  The imaging will show whether this came from a stroke, a [rash], or something else.
+CH: ['The imaging will show', 'whether this came from', 'a stroke,', 'a tumor,', 'or something else', '.'] | DECOY: to the room
+  D: <to the room> whether this came from a stroke, a tumor, or something else .
+  D: The imaging will show <to the room> a stroke, a tumor, or something else .
+  D: The imaging will show whether this came from <to the room> a tumor, or something else .
+  D: The imaging will show whether this came from a stroke, <to the room> or something else .
+  D: The imaging will show whether this came from a stroke, a tumor, <to the room> .
+--- 14.4 [계획 약속|handshake2] words=['w-cause', 'w-explain', 'w-treatment', 'w-plan', 'w-together']
+EN: Once we know the cause, we'll explain the treatment plan together.
+KO: 원인을 알게 되면 치료 계획을 함께 설명해드릴게요. (28)
+X1: 원인을 알게 되면 치료 계획을 서면으로 설명해드릴게요. (30)
+X2: 원인을 알게 되면 치료 계획을 따로 설명해드릴게요. (28)
+WHY: 'Once we know'는 앞의 일이 끝난 뒤를 가리켜요. 'together'로 가족과 함께 의논하겠다는 약속을 해요.
+ B* Once we know the cause, we'll [explain] the treatment plan together.
+ B  Once we know the cause, we'll [print] the treatment plan together.
+ B  Once we know the cause, we'll [sign] the treatment plan together.
+ B  Once we know the cause, we'll [copy] the treatment plan together.
+CH: ['Once we know', 'the cause,', "we'll explain", 'the treatment plan', 'together', '.'] | DECOY: on paper
+  D: <on paper> the cause, we'll explain the treatment plan together .
+  D: Once we know <on paper> we'll explain the treatment plan together .
+  D: Once we know the cause, <on paper> the treatment plan together .
+  D: Once we know the cause, we'll explain <on paper> together .
+  D: Once we know the cause, we'll explain the treatment plan <on paper> .
+== ORDER ko=원인 찾기와 계획 4문장 순서 | tag=대화 흐름 icon=compass
+   why=원인을 찾는 중이라고 알리고, 영상이 보여 줄 것을 설명하고, 신경과 팀이 이끈다고 알린 뒤, 계획을 함께 설명하겠다고 약속해요.
+   - We're identifying the cause, whether it's a stroke or a mass. (11w) | 뇌졸중이든 종양이든 원인을 파악 중이에요 | 원인 | bulb
+   - The imaging will show which one it is. (8w) | 영상이 어느 쪽인지 보여줄 거예요 | 영상 | bulb
+   - The neuro team will guide the next steps based on that. (11w) | 그걸 바탕으로 신경과 팀이 다음 단계를 이끌어요 | 협진 | speech
+   - Once we know, we'll explain the plan together. (8w) | 알게 되면 계획을 함께 설명해드릴게요 | 약속 | handshake2
+   SWAP 1<->2: The imaging will show which one it is. / We're identifying the cause, whether it's a stroke or a mass. / The neuro team will guide the next steps based on that. / Once we know, we'll explain the plan together.
+   SWAP 2<->3: We're identifying the cause, whether it's a stroke or a mass. / The neuro team will guide the next steps based on that. / The imaging will show which one it is. / Once we know, we'll explain the plan together.
+   SWAP 3<->4: We're identifying the cause, whether it's a stroke or a mass. / The imaging will show which one it is. / Once we know, we'll explain the plan together. / The neuro team will guide the next steps based on that.
+
+######## S15 불응성 SE 마취약 주입 위기
+--- 15.0 [약 설명|pill] words=['w-start', 'w-continuous', 'w-midazolam', 'w-propofol', 'w-infusion']
+EN: Yes, we're starting a continuous midazolam or propofol infusion.
+KO: 네, 미다졸람이나 프로포폴 지속주입을 시작하고 있어요. (30)
+X1: 네, 미다졸람이나 프로포폴 지속주입을 시작한 뒤 지켜봐요. (32)
+X2: 네, 미다졸람이나 프로포폴 지속주입을 시작한 뒤 기도를 봐요. (34)
+WHY: 'Yes,'로 가족의 질문을 먼저 인정한 뒤 계획을 말해요. 'continuous'는 한 번이 아니라 계속 들어가는 주입이라는 뜻이에요.
+ B* Yes, we're starting a [continuous] midazolam or propofol infusion.
+ B  Yes, we're starting a [convenient] midazolam or propofol infusion.
+ B  Yes, we're starting a [spare] midazolam or propofol infusion.
+ B  Yes, we're starting a [signed] midazolam or propofol infusion.
+CH: ['Yes,', "we're starting", 'a continuous midazolam', 'or propofol infusion', '.'] | DECOY: by the bed
+  D: <by the bed> we're starting a continuous midazolam or propofol infusion .
+  D: Yes, <by the bed> a continuous midazolam or propofol infusion .
+  D: Yes, we're starting <by the bed> or propofol infusion .
+  D: Yes, we're starting a continuous midazolam <by the bed> .
+--- 15.1 [필요 설명|monitor] words=['w-require', 'w-airway', 'w-secure', 'w-close', 'w-hemodynamic', 'w-monitor']
+EN: This requires the airway secured and close hemodynamic monitoring.
+KO: 이건 기도확보와 밀착 혈역학 감시가 필요해요. (25)
+X1: 이건 기도확보와 밀착 호흡 감시가 필요해요. (24)
+X2: 이건 기도확보와 밀착 신경 감시가 필요해요. (24)
+WHY: 'requires'는 꼭 해야 하는 것을 단정하듯 알려 줘요. 'airway secured'는 기도가 확보된 상태를 가리켜요.
+ B* This requires the airway secured and close [hemodynamic] monitoring.
+ B  This requires the airway secured and close [dietary] monitoring.
+ B  This requires the airway secured and close [financial] monitoring.
+ B  This requires the airway secured and close [visiting] monitoring.
+CH: ['This requires', 'the airway secured', 'and close', 'hemodynamic monitoring', '.'] | DECOY: for the tour
+  D: <for the tour> the airway secured and close hemodynamic monitoring .
+  D: This requires <for the tour> and close hemodynamic monitoring .
+  D: This requires the airway secured <for the tour> hemodynamic monitoring .
+  D: This requires the airway secured and close <for the tour> .
+--- 15.2 [적정 약속|pill] words=['w-titrate', 'w-seizure', 'w-control', 'w-eeg']
+EN: I'll titrate to seizure control on EEG.
+KO: EEG상 발작 조절이 될 때까지 적정할게요. (24)
+X1: EEG상 발작 조절이 될 때까지 지켜볼게요. (24)
+X2: EEG상 발작 조절이 될 때까지 의논할게요. (24)
+WHY: 'titrate'는 효과를 보면서 용량을 조금씩 조절한다는 뜻이에요. 'to seizure control'은 조절의 끝 목표를 보여 줘요.
+ B* I'll [titrate] to seizure control on EEG.
+ B  I'll [refill] to seizure control on EEG.
+ B  I'll [label] to seizure control on EEG.
+ B  I'll [store] to seizure control on EEG.
+CH: ["I'll titrate", 'to seizure control', 'on EEG', '.'] | DECOY: with the staff
+  D: <with the staff> to seizure control on EEG .
+  D: I'll titrate <with the staff> on EEG .
+  D: I'll titrate to seizure control <with the staff> .
+--- 15.3 [상태 보고|shield] words=['w-secure', 'w-airway', 'w-before', 'w-start', 'w-infusion']
+EN: We've secured his airway before starting this infusion.
+KO: 이 주입을 시작하기 전에 기도를 확보했어요. (24)
+X1: 이 주입을 시작하기 전에 침대를 확보했어요. (24)
+X2: 이 주입을 시작하기 전에 동의를 확보했어요. (24)
+WHY: 'We've'는 현재완료라 이미 끝난 일이 지금도 의미 있다는 뜻이에요. 'before starting'은 순서를 분명히 해요.
+ B* We've [secured] his airway before starting this infusion.
+ B  We've [weighed] his airway before starting this infusion.
+ B  We've [photographed] his airway before starting this infusion.
+ B  We've [signed] his airway before starting this infusion.
+CH: ["We've secured", 'his airway', 'before starting this infusion', '.'] | DECOY: at the door
+  D: <at the door> his airway before starting this infusion .
+  D: We've secured <at the door> before starting this infusion .
+  D: We've secured his airway <at the door> .
+--- 15.4 [적정 보고|pill] words=['w-titrate', 'w-dose', 'w-eeg', 'w-show', 'w-seizure', 'w-control']
+EN: I'm titrating the dose until the EEG shows seizure control.
+KO: EEG에서 발작이 조절될 때까지 용량을 적정하고 있어요. (31)
+X1: EEG에서 발작이 조절될 때까지 용량을 지켜보고 있어요. (31)
+X2: EEG에서 발작이 조절될 때까지 용량을 보여 드리고 있어요. (33)
+WHY: 'until'은 끝 조건을 말해 계속 조절하는 이유를 알려요. 'shows'는 EEG가 보여 주는 결과를 주어로 삼아요.
+ B* I'm [titrating] the dose until the EEG shows seizure control.
+ B  I'm [refilling] the dose until the EEG shows seizure control.
+ B  I'm [labeling] the dose until the EEG shows seizure control.
+ B  I'm [storing] the dose until the EEG shows seizure control.
+CH: ["I'm titrating", 'the dose', 'until the EEG', 'shows seizure control', '.'] | DECOY: in the hall
+  D: <in the hall> the dose until the EEG shows seizure control .
+  D: I'm titrating <in the hall> until the EEG shows seizure control .
+  D: I'm titrating the dose <in the hall> shows seizure control .
+  D: I'm titrating the dose until the EEG <in the hall> .
+== ORDER ko=지속주입 시작 4문장 순서 | tag=대화 흐름 icon=compass
+   why=어떤 약을 쓰는지 알리고, 먼저 기도를 확보했다고 말하고, 용량을 조절한다고 알린 뒤, 필요한 감시를 설명해요.
+   - We're starting a continuous midazolam or propofol infusion. (8w) | 미다졸람이나 프로포폴 지속주입을 시작해요 | 약 | pill
+   - Before starting it, we've secured his airway. (7w) | 시작하기 전에 기도를 확보했어요 | 기도 | shield
+   - With it running, I'll titrate to seizure control on EEG. (10w) | 주입 중에 EEG상 발작 조절이 되도록 적정할게요 | 적정 | pill
+   - That means he needs close hemodynamic monitoring from here. (9w) | 그러니 이제부터 밀착 혈역학 감시가 필요해요 | 감시 | monitor
+   SWAP 1<->2: Before starting it, we've secured his airway. / We're starting a continuous midazolam or propofol infusion. / With it running, I'll titrate to seizure control on EEG. / That means he needs close hemodynamic monitoring from here.
+   SWAP 2<->3: We're starting a continuous midazolam or propofol infusion. / With it running, I'll titrate to seizure control on EEG. / Before starting it, we've secured his airway. / That means he needs close hemodynamic monitoring from here.
+   SWAP 3<->4: We're starting a continuous midazolam or propofol infusion. / Before starting it, we've secured his airway. / That means he needs close hemodynamic monitoring from here. / With it running, I'll titrate to seizure control on EEG.
+
+######## S16 초불응성 SE 관리
+--- 16.0 [치료 단계|pill] words=['w-add', 'w-another', 'w-agent', 'w-target', 'w-burst', 'w-suppression', 'w-eeg']
+EN: We add another agent and target burst suppression on EEG.
+KO: 약제를 하나 더 추가하고 EEG상 burst suppression을 목표로 해요. (45)
+X1: 약제를 하나 더 추가하고 EEG상 burst suppression을 지켜봐요. (43)
+X2: 약제를 하나 더 추가하고 신경과와 burst suppression을 목표로 해요. (45)
+WHY: 'target'은 약이 도달해야 할 지점을 목표로 삼는다는 뜻이에요. 'on EEG'는 뇌파로 확인한다는 표시예요.
+ B* We add another [agent] and target burst suppression on EEG.
+ B  We add another [monitor] and target burst suppression on EEG.
+ B  We add another [cart] and target burst suppression on EEG.
+ B  We add another [chair] and target burst suppression on EEG.
+CH: ['We add', 'another agent', 'and target', 'burst suppression', 'on EEG', '.'] | DECOY: with a tray
+  D: <with a tray> another agent and target burst suppression on EEG .
+  D: We add <with a tray> and target burst suppression on EEG .
+  D: We add another agent <with a tray> burst suppression on EEG .
+  D: We add another agent and target <with a tray> on EEG .
+  D: We add another agent and target burst suppression <with a tray> .
+--- 16.1 [혈압 유지|monitor] words=['w-keep', 'w-pressure', 'w-support', 'w-deepen', 'w-infusion']
+EN: Let's keep his pressure supported as we deepen the infusion.
+KO: 주입을 깊게 하는 동안 혈압을 지지해 둡시다. (25)
+X1: 주입을 깊게 하는 동안 호흡을 지지해 둡시다. (25)
+X2: 주입을 깊게 하는 동안 온도를 지지해 둡시다. (25)
+WHY: 'keep … supported'는 상태를 계속 받쳐 준다는 뜻이에요. 'as we deepen'은 약을 깊게 하는 동안 동시에 한다는 뜻이에요.
+ B* Let's keep his pressure [supported] as we deepen the infusion.
+ B  Let's keep his pressure [printed] as we deepen the infusion.
+ B  Let's keep his pressure [framed] as we deepen the infusion.
+ B  Let's keep his pressure [photographed] as we deepen the infusion.
+CH: ["Let's keep", 'his pressure supported', 'as we deepen', 'the infusion', '.'] | DECOY: near the sink
+  D: <near the sink> his pressure supported as we deepen the infusion .
+  D: Let's keep <near the sink> as we deepen the infusion .
+  D: Let's keep his pressure supported <near the sink> the infusion .
+  D: Let's keep his pressure supported as we deepen <near the sink> .
+--- 16.2 [역할 설명|speech] words=['w-neuro', 'w-team', 'w-guide', 'w-depth', 'w-duration']
+EN: The neuro team will guide the depth and duration.
+KO: 신경과 팀이 깊이와 지속시간을 이끌어줄 거예요. (26)
+X1: 마취과 팀이 깊이와 지속시간을 이끌어줄 거예요. (26)
+X2: 신경과 팀이 깊이와 종류를 이끌어줄 거예요. (24)
+WHY: 'will guide'는 앞으로 방향을 잡아 준다는 뜻이에요. 'depth and duration'은 두 가지 기준을 짝지어 말해요.
+ B* The neuro team will guide the depth and [duration].
+ B  The neuro team will guide the depth and [location].
+ B  The neuro team will guide the depth and [price].
+ B  The neuro team will guide the depth and [color].
+CH: ['The neuro team', 'will guide', 'the depth', 'and duration', '.'] | DECOY: on the wall
+  D: <on the wall> will guide the depth and duration .
+  D: The neuro team <on the wall> the depth and duration .
+  D: The neuro team will guide <on the wall> and duration .
+  D: The neuro team will guide the depth <on the wall> .
+--- 16.3 [상태 보고|monitor] words=['w-pressure', 'w-stay', 'w-stable', 'w-even', 'w-deepen', 'w-sedation']
+EN: His pressure stayed stable even after we deepened the sedation.
+KO: 진정을 깊게 한 뒤에도 혈압은 안정적으로 유지됐어요. (29)
+X1: 진정을 깊게 한 뒤에도 맥박은 안정적으로 유지됐어요. (29)
+X2: 진정을 깊게 한 뒤에도 열은 안정적으로 유지됐어요. (28)
+WHY: 'even after'는 걱정했던 일이 일어나지 않았다는 놀라움을 담아요. 'stayed stable'은 변하지 않고 유지됐다는 뜻이에요.
+ B* His pressure stayed [stable] even after we deepened the sedation.
+ B  His pressure stayed [high] even after we deepened the sedation.
+ B  His pressure stayed [low] even after we deepened the sedation.
+ B  His pressure stayed [wide] even after we deepened the sedation.
+CH: ['His pressure stayed', 'stable', 'even after', 'we deepened', 'the sedation', '.'] | DECOY: from the desk
+  D: <from the desk> stable even after we deepened the sedation .
+  D: His pressure stayed <from the desk> even after we deepened the sedation .
+  D: His pressure stayed stable <from the desk> we deepened the sedation .
+  D: His pressure stayed stable even after <from the desk> the sedation .
+  D: His pressure stayed stable even after we deepened <from the desk> .
+--- 16.4 [계획 설명|compass] words=['w-add', 'w-third', 'w-agent', 'w-burst', 'w-suppression', 'w-reach']
+EN: We'll add a third agent if burst suppression isn't reached.
+KO: burst suppression에 도달하지 못하면 3번째 약제를 추가할게요. (42)
+X1: burst suppression에 도달하지 못하면 3번째 약제를 의논할게요. (42)
+X2: burst suppression에 도달하지 못하면 3번째 약제를 약국에 요청할게요. (46)
+WHY: 'if'로 조건을 먼저 깔아 다음 단계가 자동이 아니라 결과에 달렸다는 뜻이에요. 'a third agent'는 세 번째 약제를 가리켜요.
+ B* We'll add a [third] agent if burst suppression isn't reached.
+ B  We'll add a [spare] agent if burst suppression isn't reached.
+ B  We'll add a [central] agent if burst suppression isn't reached.
+ B  We'll add a [quiet] agent if burst suppression isn't reached.
+CH: ["We'll add", 'a third agent', 'if burst suppression', "isn't reached", '.'] | DECOY: for the report
+  D: <for the report> a third agent if burst suppression isn't reached .
+  D: We'll add <for the report> if burst suppression isn't reached .
+  D: We'll add a third agent <for the report> isn't reached .
+  D: We'll add a third agent if burst suppression <for the report> .
+== ORDER ko=초불응성 관리 4문장 순서 | tag=대화 흐름 icon=compass
+   why=약제를 추가하는 계획을 말하고, 주입을 깊게 하는 동안 혈압을 지지하고, 혈압이 유지됐다고 보고한 뒤, 목표에 못 닿을 때의 다음 단계를 말해요.
+   - We add another agent and target burst suppression on EEG. (10w) | 약제를 추가하고 burst suppression을 목표로 해요 | 계획 | pill
+   - Let's keep his pressure supported as we deepen the infusion. (10w) | 주입을 깊게 하는 동안 혈압을 지지해 둡시다 | 혈압 | monitor
+   - His pressure stayed stable even after we deepened it. (9w) | 깊게 한 뒤에도 혈압은 안정적으로 유지됐어요 | 보고 | monitor
+   - If that target isn't reached, we'll add a third agent. (10w) | 그 목표에 못 닿으면 3번째 약제를 추가할게요 | 다음 | compass
+   SWAP 1<->2: Let's keep his pressure supported as we deepen the infusion. / We add another agent and target burst suppression on EEG. / His pressure stayed stable even after we deepened it. / If that target isn't reached, we'll add a third agent.
+   SWAP 2<->3: We add another agent and target burst suppression on EEG. / His pressure stayed stable even after we deepened it. / Let's keep his pressure supported as we deepen the infusion. / If that target isn't reached, we'll add a third agent.
+   SWAP 3<->4: We add another agent and target burst suppression on EEG. / Let's keep his pressure supported as we deepen the infusion. / If that target isn't reached, we'll add a third agent. / His pressure stayed stable even after we deepened it.
+
+######## S17 발작 중 심한 저산소·서맥 위기
+--- 17.0 [응급 지시|siren] words=['w-open', 'w-airway', 'w-bag', 'w-high-flow', 'w-oxygen']
+EN: Open the airway and bag him with high-flow oxygen now.
+KO: 기도를 열고 고유량 산소로 지금 백을 짜세요. (25)
+X1: 기도를 열고 입 안을 지금 석션하세요. (21)
+X2: 기도를 열고 입 안 분비물을 지금 닦으세요. (24)
+WHY: 명령문은 'Open'·'bag'처럼 동사로 바로 시작해 급할 때 군더더기 없이 말해요. 'now'를 끝에 붙여 지금 바로 하라는 뜻을 분명히 해요.
+ B* Open the [airway] and bag him with high-flow oxygen now.
+ B  Open the [chart] and bag him with high-flow oxygen now.
+ B  Open the [folder] and bag him with high-flow oxygen now.
+ B  Open the [window] and bag him with high-flow oxygen now.
+CH: ['Open the airway', 'and bag him', 'with high-flow oxygen', 'now', '.'] | DECOY: in the corner
+  D: <in the corner> and bag him with high-flow oxygen now .
+  D: Open the airway <in the corner> with high-flow oxygen now .
+  D: Open the airway and bag him <in the corner> now .
+  D: Open the airway and bag him with high-flow oxygen <in the corner> .
+--- 17.1 [응급 지시|siren] words=['w-call', 'w-help', 'w-prepare', 'w-intubation']
+EN: Call for help and prepare for intubation.
+KO: 도움을 요청하고 삽관을 준비하세요. (19)
+X1: 도움을 요청하고 흡인을 준비하세요. (19)
+X2: 도움을 요청하고 산소 장비를 준비하세요. (22)
+WHY: 'Call for help'는 혼자 하지 말고 사람을 부르라는 뜻이에요. 'prepare for'는 아직 하지 않았지만 곧 할 수 있게 준비하라는 뜻이에요.
+ B* Call for help and prepare for [intubation].
+ B  Call for help and prepare for [discharge].
+ B  Call for help and prepare for [visitation].
+ B  Call for help and prepare for [lunch].
+CH: ['Call for help', 'and prepare', 'for intubation', '.'] | DECOY: in the lobby
+  D: <in the lobby> and prepare for intubation .
+  D: Call for help <in the lobby> for intubation .
+  D: Call for help and prepare <in the lobby> .
+--- 17.2 [응급 지시|siren] words=['w-watch', 'w-heart', 'w-rate', 'w-ready', 'w-escalate', 'w-resuscitation']
+EN: Watch the heart rate and be ready to escalate resuscitation.
+KO: 심박수를 지켜보고 소생술을 확대할 준비를 하세요. (27)
+X1: 심박수를 지켜보고 소생술 장비를 옮길 준비를 하세요. (29)
+X2: 심박수를 지켜보고 소생술을 확대할 방을 준비하세요. (28)
+WHY: 'be ready to'는 아직 아니지만 바로 움직일 수 있게 하라는 뜻이에요. 'escalate'는 한 단계 더 높은 처치로 올린다는 임상 동사예요.
+ B* Watch the heart rate and be ready to escalate [resuscitation].
+ B  Watch the heart rate and be ready to escalate [registration].
+ B  Watch the heart rate and be ready to escalate [admission].
+ B  Watch the heart rate and be ready to escalate [orientation].
+CH: ['Watch the heart rate', 'and be ready', 'to escalate', 'resuscitation', '.'] | DECOY: at the bedside
+  D: <at the bedside> and be ready to escalate resuscitation .
+  D: Watch the heart rate <at the bedside> to escalate resuscitation .
+  D: Watch the heart rate and be ready <at the bedside> resuscitation .
+  D: Watch the heart rate and be ready to escalate <at the bedside> .
+--- 17.3 [위기 보고|siren] words=['w-heart', 'w-rate', 'w-drop', 'w-fast', 'w-still', 'w-seize']
+EN: His heart rate is dropping fast while he's still seizing.
+KO: 발작이 계속되는 동안 심박수가 빠르게 떨어지고 있어요. (30)
+X1: 발작이 계속되는 동안 혈압이 빠르게 떨어지고 있어요. (29)
+X2: 발작이 계속되는 동안 온도가 빠르게 떨어지고 있어요. (29)
+WHY: 'while he's still seizing'은 지금도 발작이 이어지는 중이라는 뜻이에요. 'dropping fast'는 빠르게 떨어진다는 위험 신호예요.
+ B* His heart rate is [dropping] fast while he's still seizing.
+ B  His heart rate is [climbing] fast while he's still seizing.
+ B  His heart rate is [jumping] fast while he's still seizing.
+ B  His heart rate is [shaking] fast while he's still seizing.
+CH: ['His heart rate', 'is dropping fast', "while he's", 'still seizing', '.'] | DECOY: on the list
+  D: <on the list> is dropping fast while he's still seizing .
+  D: His heart rate <on the list> while he's still seizing .
+  D: His heart rate is dropping fast <on the list> still seizing .
+  D: His heart rate is dropping fast while he's <on the list> .
+--- 17.4 [응급 보고|siren] words=['w-get', 'w-bag', 'w-ready', 'w-call', 'w-code']
+EN: I've got the bag ready — call the code now.
+KO: 백은 준비됐어요 — 지금 코드를 부르세요. (23)
+X1: 산소는 준비됐어요 — 지금 코드를 부르세요. (24)
+X2: 석션은 준비됐어요 — 지금 코드를 부르세요. (24)
+WHY: 대시 앞에서 내 준비를 보고하고, 뒤에서 상대에게 바로 할 일을 지시해요. 'I've got'은 이미 갖췄다는 구어 표현이에요.
+ B* I've got the bag [ready] — call the code now.
+ B  I've got the bag [full] — call the code now.
+ B  I've got the bag [torn] — call the code now.
+ B  I've got the bag [bare] — call the code now.
+CH: ["I've got", 'the bag ready', '— call the code', 'now', '.'] | DECOY: for the label
+  D: <for the label> the bag ready — call the code now .
+  D: I've got <for the label> — call the code now .
+  D: I've got the bag ready <for the label> now .
+  D: I've got the bag ready — call the code <for the label> .
+== ORDER ko=저산소·서맥 위기 4문장 순서 | tag=대화 흐름 icon=compass
+   why=위기를 먼저 알리고, 기도를 열어 백으로 환기한 뒤, 사람을 부르며 삽관을 준비하고, 소생술 확대에 대비해요.
+   - His heart rate is dropping fast while he's still seizing. (10w) | 발작 중에 심박수가 빠르게 떨어지고 있어요 | 위기 | siren
+   - Open his airway and bag him with high-flow oxygen now. (10w) | 기도를 열고 고유량 산소로 지금 백을 짜세요 | 환기 | siren
+   - That bagging is why you call for help and prepare for intubation. (12w) | 그 백 환기 때문에 도움을 요청하고 삽관을 준비해요 | 삽관 | siren
+   - With intubation being prepared, watch the heart rate and be ready to escalate resuscitation. (14w) | 삽관 준비 중에 심박수를 보고 소생술 확대에 대비하세요 | 대비 | siren
+   SWAP 1<->2: Open his airway and bag him with high-flow oxygen now. / His heart rate is dropping fast while he's still seizing. / That bagging is why you call for help and prepare for intubation. / With intubation being prepared, watch the heart rate and be ready to escalate resuscitation.
+   SWAP 2<->3: His heart rate is dropping fast while he's still seizing. / That bagging is why you call for help and prepare for intubation. / Open his airway and bag him with high-flow oxygen now. / With intubation being prepared, watch the heart rate and be ready to escalate resuscitation.
+   SWAP 3<->4: His heart rate is dropping fast while he's still seizing. / Open his airway and bag him with high-flow oxygen now. / With intubation being prepared, watch the heart rate and be ready to escalate resuscitation. / That bagging is why you call for help and prepare for intubation.
+
+######## S18 발작 후 뇌부종·ICP 위기
+--- 18.0 [위험 설명|bulb] words=['w-prolonged', 'w-seizure', 'w-brain', 'w-swelling', 'w-raise', 'w-pressure']
+EN: Prolonged seizures can cause brain swelling and raised pressure.
+KO: 장시간 발작은 뇌부종과 압력 상승을 일으킬 수 있어요. (30)
+X1: 장시간 발작은 뇌부종과 근육통을 일으킬 수 있어요. (28)
+X2: 장시간 발작은 뇌출혈과 압력 상승을 일으킬 수 있어요. (30)
+WHY: 'can cause'는 원인과 결과를 단정하지 않고 가능성으로 말해요. 'raised pressure'는 뇌압이 올라간 상태를 쉬운 말로 가리켜요.
+ B* Prolonged seizures can cause brain [swelling] and raised pressure.
+ B  Prolonged seizures can cause brain [smell] and raised pressure.
+ B  Prolonged seizures can cause brain [taste] and raised pressure.
+ B  Prolonged seizures can cause brain [memory] and raised pressure.
+CH: ['Prolonged seizures', 'can cause', 'brain swelling', 'and raised pressure', '.'] | DECOY: for the visit
+  D: <for the visit> can cause brain swelling and raised pressure .
+  D: Prolonged seizures <for the visit> brain swelling and raised pressure .
+  D: Prolonged seizures can cause <for the visit> and raised pressure .
+  D: Prolonged seizures can cause brain swelling <for the visit> .
+--- 18.1 [처치 보고|stetho] words=['w-elevate', 'w-recheck', 'w-neuro', 'w-exam']
+EN: I'm elevating his head and rechecking his neuro exam.
+KO: 머리를 올리고 신경학적 검진을 다시 확인하고 있어요. (29)
+X1: 머리를 올리고 호흡 검진을 다시 확인하고 있어요. (27)
+X2: 머리를 올리고 피부 검진을 다시 확인하고 있어요. (27)
+WHY: 'elevating'은 머리 쪽을 올린다는 뜻이고 'rechecking'은 다시 확인한다는 진행형이에요. 두 동작을 'and'로 묶어요.
+ B* I'm [elevating] his head and rechecking his neuro exam.
+ B  I'm [washing] his head and rechecking his neuro exam.
+ B  I'm [combing] his head and rechecking his neuro exam.
+ B  I'm [shaving] his head and rechecking his neuro exam.
+CH: ["I'm elevating", 'his head', 'and rechecking', 'his neuro exam', '.'] | DECOY: in his room
+  D: <in his room> his head and rechecking his neuro exam .
+  D: I'm elevating <in his room> and rechecking his neuro exam .
+  D: I'm elevating his head <in his room> his neuro exam .
+  D: I'm elevating his head and rechecking <in his room> .
+--- 18.2 [검사 제안|magnify] words=['w-get', 'w-imaging', 'w-consider', 'w-osmotic', 'w-therapy']
+EN: Let's get imaging and consider osmotic therapy.
+KO: 영상 검사를 받고 삼투 치료를 고려하죠. (22)
+X1: 영상 검사를 받고 삼투 치료를 의논하죠. (22)
+X2: 영상 검사를 받고 삼투 치료를 안내하죠. (22)
+WHY: 'Let's'로 팀에 제안해요. 'consider'는 확정이 아니라 검토한다는 뜻이에요.
+ B* Let's get imaging and [consider] osmotic therapy.
+ B  Let's get imaging and [sign] osmotic therapy.
+ B  Let's get imaging and [rename] osmotic therapy.
+ B  Let's get imaging and [print] osmotic therapy.
+CH: ["Let's get imaging", 'and consider', 'osmotic therapy', '.'] | DECOY: from the lab
+  D: <from the lab> and consider osmotic therapy .
+  D: Let's get imaging <from the lab> osmotic therapy .
+  D: Let's get imaging and consider <from the lab> .
+--- 18.3 [위험 설명|bulb] words=['w-pupil', 'w-uneven', 'w-point', 'w-rise', 'w-pressure', 'w-brain']
+EN: His pupils look uneven, which can point to rising pressure in his brain.
+KO: 동공이 불균등해 보이는데, 뇌압 상승을 가리킬 수 있어요. (32)
+X1: 동공이 불균등해 보이는데, 혈압 상승을 가리킬 수 있어요. (32)
+X2: 눈꺼풀이 불균등해 보이는데, 뇌압 상승을 가리킬 수 있어요. (33)
+WHY: 'which'가 앞 문장 전체를 받아 설명을 덧붙여요. 'can point to'는 단정하지 않고 가리킬 수 있다는 완곡한 표현이에요.
+ B* His pupils look [uneven], which can point to rising pressure in his brain.
+ B  His pupils look [dry], which can point to rising pressure in his brain.
+ B  His pupils look [red], which can point to rising pressure in his brain.
+ B  His pupils look [loud], which can point to rising pressure in his brain.
+CH: ['His pupils look uneven,', 'which can point', 'to rising pressure', 'in his brain', '.'] | DECOY: by the window
+  D: <by the window> which can point to rising pressure in his brain .
+  D: His pupils look uneven, <by the window> to rising pressure in his brain .
+  D: His pupils look uneven, which can point <by the window> in his brain .
+  D: His pupils look uneven, which can point to rising pressure <by the window> .
+--- 18.4 [보고|speech] words=['w-report', 'w-neuro', 'w-team']
+EN: I'm reporting this to the neuro team right away.
+KO: 바로 신경과 팀에 보고하고 있어요. (19)
+X1: 바로 신경과 팀에 메시지를 남기고 있어요. (23)
+X2: 바로 신경과 팀에 질문하고 있어요. (19)
+WHY: 'reporting this'의 this는 방금 본 소견을 가리켜요. 'right away'로 지체하지 않고 알린다는 뜻이에요.
+ B* I'm reporting this to the [neuro] team right away.
+ B  I'm reporting this to the [billing] team right away.
+ B  I'm reporting this to the [dietary] team right away.
+ B  I'm reporting this to the [housekeeping] team right away.
+CH: ["I'm reporting", 'this', 'to the neuro team', 'right away', '.'] | DECOY: by the door
+  D: <by the door> this to the neuro team right away .
+  D: I'm reporting <by the door> to the neuro team right away .
+  D: I'm reporting this <by the door> right away .
+  D: I'm reporting this to the neuro team <by the door> .
+== ORDER ko=뇌압 위기 설명 4문장 순서 | tag=대화 흐름 icon=compass
+   why=위험을 알리고, 머리를 올리며 검진을 다시 하고, 동공 소견을 말한 뒤, 이를 신경과에 보고해요.
+   - Prolonged seizures can cause brain swelling and raised pressure. (9w) | 장시간 발작은 뇌부종과 압력 상승을 일으킬 수 있어요 | 위험 | bulb
+   - I'm elevating his head and rechecking his neuro exam for that. (11w) | 그래서 머리를 올리고 신경학적 검진을 다시 해요 | 처치 | stetho
+   - On that exam, his pupils look uneven. (7w) | 그 검진에서 동공이 불균등해 보여요 | 소견 | stetho
+   - I'm reporting that finding to the neuro team right away. (10w) | 그 소견을 바로 신경과 팀에 보고하고 있어요 | 보고 | speech
+   SWAP 1<->2: I'm elevating his head and rechecking his neuro exam for that. / Prolonged seizures can cause brain swelling and raised pressure. / On that exam, his pupils look uneven. / I'm reporting that finding to the neuro team right away.
+   SWAP 2<->3: Prolonged seizures can cause brain swelling and raised pressure. / On that exam, his pupils look uneven. / I'm elevating his head and rechecking his neuro exam for that. / I'm reporting that finding to the neuro team right away.
+   SWAP 3<->4: Prolonged seizures can cause brain swelling and raised pressure. / I'm elevating his head and rechecking his neuro exam for that. / I'm reporting that finding to the neuro team right away. / On that exam, his pupils look uneven.
+
+######## S19 항경련 마취 중 혈역학 붕괴
+--- 19.0 [응급 지시|siren] words=['w-start', 'w-pressor', 'w-give', 'w-fluid', 'w-support', 'w-pressure']
+EN: Start a pressor and give fluid to support his pressure.
+KO: 승압제를 시작하고 수액을 줘서 혈압을 지지하세요. (27)
+X1: 승압제를 시작하고 수액을 줘서 호흡을 지지하세요. (27)
+X2: 승압제를 시작하고 수액을 줘서 온도를 지지하세요. (27)
+WHY: 'Start'와 'give'를 'and'로 이어 지금 할 두 가지를 한 번에 지시해요. 'to support'는 하는 목적을 붙여요.
+ B* Start a [pressor] and give fluid to support his pressure.
+ B  Start a [diet] and give fluid to support his pressure.
+ B  Start a [chart] and give fluid to support his pressure.
+ B  Start a [tour] and give fluid to support his pressure.
+CH: ['Start a pressor', 'and give fluid', 'to support', 'his pressure', '.'] | DECOY: for the ward
+  D: <for the ward> and give fluid to support his pressure .
+  D: Start a pressor <for the ward> to support his pressure .
+  D: Start a pressor and give fluid <for the ward> his pressure .
+  D: Start a pressor and give fluid to support <for the ward> .
+--- 19.1 [원칙 설명|compass] words=['w-balance', 'w-seizure', 'w-control', 'w-against', 'w-hemodynamic']
+EN: We balance seizure control against his hemodynamics.
+KO: 발작 조절과 혈역학 사이에서 균형을 맞춰요. (24)
+X1: 발작 조절과 호흡 상태 사이에서 균형을 맞춰요. (26)
+X2: 발작 조절과 영양 상태 사이에서 균형을 맞춰요. (26)
+WHY: 'balance A against B'는 둘을 저울에 올려 맞춘다는 표현이에요. 'hemodynamics'는 혈액순환 상태를 한 단어로 말해요.
+ B* We [balance] seizure control against his hemodynamics.
+ B  We [count] seizure control against his hemodynamics.
+ B  We [bill] seizure control against his hemodynamics.
+ B  We [paint] seizure control against his hemodynamics.
+CH: ['We balance', 'seizure control', 'against his hemodynamics', '.'] | DECOY: to the nurse
+  D: <to the nurse> seizure control against his hemodynamics .
+  D: We balance <to the nurse> against his hemodynamics .
+  D: We balance seizure control <to the nurse> .
+--- 19.2 [재평가|monitor] words=['w-reassess', 'w-infusion', 'w-rate', 'w-team']
+EN: Let's reassess the infusion rate with the team.
+KO: 팀과 함께 주입 속도를 다시 평가하죠. (21)
+X1: 보호자와 함께 주입 속도를 다시 평가하죠. (23)
+X2: 약사와 함께 주입 속도를 다시 평가하죠. (22)
+WHY: 'reassess'는 이미 했던 평가를 다시 한다는 뜻이에요. 'with the team'은 혼자 정하지 않는다는 점을 알려요.
+ B* Let's [reassess] the infusion rate with the team.
+ B  Let's [rename] the infusion rate with the team.
+ B  Let's [reprint] the infusion rate with the team.
+ B  Let's [relabel] the infusion rate with the team.
+CH: ["Let's reassess", 'the infusion rate', 'with the team', '.'] | DECOY: at home
+  D: <at home> the infusion rate with the team .
+  D: Let's reassess <at home> with the team .
+  D: Let's reassess the infusion rate <at home> .
+--- 19.3 [위기 보고|siren] words=['w-pressure', 'w-drop', 'w-fast', 'w-after', 'w-deepen', 'w-infusion']
+EN: His pressure dropped fast right after we deepened the infusion.
+KO: 주입을 깊게 한 직후 혈압이 빠르게 떨어졌어요. (26)
+X1: 주입을 깊게 한 직후 맥박이 빠르게 떨어졌어요. (26)
+X2: 주입을 깊게 한 직후 열이 빠르게 떨어졌어요. (25)
+WHY: 'right after'는 앞의 처치 직후에 일어난 변화라는 뜻이에요. 'dropped fast'는 빠르게 떨어졌다는 보고예요.
+ B* His pressure [dropped] fast right after we deepened the infusion.
+ B  His pressure [rose] fast right after we deepened the infusion.
+ B  His pressure [held] fast right after we deepened the infusion.
+ B  His pressure [jumped] fast right after we deepened the infusion.
+CH: ['His pressure dropped fast', 'right after', 'we deepened', 'the infusion', '.'] | DECOY: at the station
+  D: <at the station> right after we deepened the infusion .
+  D: His pressure dropped fast <at the station> we deepened the infusion .
+  D: His pressure dropped fast right after <at the station> the infusion .
+  D: His pressure dropped fast right after we deepened <at the station> .
+--- 19.4 [지지 설명|shield] words=['w-give', 'w-fluid', 'w-support', 'w-keep', 'w-treat', 'w-seizure']
+EN: We're giving fluid now to support him while we keep treating the seizure.
+KO: 발작 치료를 계속하는 동안 지금 수액을 줘서 지지하고 있어요. (34)
+X1: 발작 치료를 계속하는 동안 지금 산소를 줘서 지지하고 있어요. (34)
+X2: 발작 치료를 계속하는 동안 지금 자세를 바꿔서 지지하고 있어요. (35)
+WHY: 'while we keep treating'은 한 가지를 하면서 다른 하나를 멈추지 않는다는 뜻이에요. 'to support him'은 하는 목적을 붙여요.
+ B* We're giving fluid [now] to support him while we keep treating the seizure.
+ B  We're giving fluid [daily] to support him while we keep treating the seizure.
+ B  We're giving fluid [hourly] to support him while we keep treating the seizure.
+ B  We're giving fluid [quietly] to support him while we keep treating the seizure.
+CH: ["We're giving fluid now", 'to support him', 'while we keep', 'treating the seizure', '.'] | DECOY: from the unit
+  D: <from the unit> to support him while we keep treating the seizure .
+  D: We're giving fluid now <from the unit> while we keep treating the seizure .
+  D: We're giving fluid now to support him <from the unit> treating the seizure .
+  D: We're giving fluid now to support him while we keep <from the unit> .
+== ORDER ko=혈압 붕괴 대응 4문장 순서 | tag=대화 흐름 icon=compass
+   why=혈압이 떨어졌다고 알리고, 승압제와 수액으로 받치고, 주입 속도를 팀과 다시 보고, 균형 원칙을 설명해요.
+   - His pressure dropped fast right after we deepened the infusion. (10w) | 주입을 깊게 한 직후 혈압이 빠르게 떨어졌어요 | 위기 | siren
+   - Start a pressor and give fluid to support his pressure right now. (12w) | 지금 승압제를 시작하고 수액을 줘서 혈압을 지지하세요 | 지지 | siren
+   - With the pressor going in, let's reassess the infusion rate with the team. (13w) | 승압제가 들어가는 중에 팀과 주입 속도를 다시 평가하죠 | 재평가 | monitor
+   - With that rate in mind, we balance seizure control against his hemodynamics. (12w) | 그 속도를 고려해 발작 조절과 혈역학 사이 균형을 맞춰요 | 균형 | compass
+   SWAP 1<->2: Start a pressor and give fluid to support his pressure right now. / His pressure dropped fast right after we deepened the infusion. / With the pressor going in, let's reassess the infusion rate with the team. / With that rate in mind, we balance seizure control against his hemodynamics.
+   SWAP 2<->3: His pressure dropped fast right after we deepened the infusion. / With the pressor going in, let's reassess the infusion rate with the team. / Start a pressor and give fluid to support his pressure right now. / With that rate in mind, we balance seizure control against his hemodynamics.
+   SWAP 3<->4: His pressure dropped fast right after we deepened the infusion. / Start a pressor and give fluid to support his pressure right now. / With that rate in mind, we balance seizure control against his hemodynamics. / With the pressor going in, let's reassess the infusion rate with the team.
+
+######## S20 지속 SE 예후·목표 소통
+--- 20.0 [솔직한 설명|handshake2] words=['w-prolonged', 'w-seizure', 'w-serious', 'w-honest']
+EN: The prolonged seizures are serious, and I'll be honest with you.
+KO: 장시간 지속된 발작은 심각한 상황이에요, 솔직히 말씀드릴게요. (34)
+X1: 장시간 지속된 발작은 심각한 상황이에요, 천천히 말씀드릴게요. (34)
+X2: 장시간 지속된 발작은 심각한 상황이에요, 조용히 말씀드릴게요. (34)
+WHY: 'serious'와 'honest'를 함께 써서 나쁜 소식을 숨기지 않겠다는 태도를 보여 줘요. 'I'll be honest with you'는 어려운 말 앞에 흔히 붙이는 구예요.
+ B* The prolonged seizures are serious, and I'll be [honest] with you.
+ B  The prolonged seizures are serious, and I'll be [loud] with you.
+ B  The prolonged seizures are serious, and I'll be [tall] with you.
+ B  The prolonged seizures are serious, and I'll be [early] with you.
+CH: ['The prolonged seizures', 'are serious,', "and I'll be", 'honest with you', '.'] | DECOY: with the staff
+  D: <with the staff> are serious, and I'll be honest with you .
+  D: The prolonged seizures <with the staff> and I'll be honest with you .
+  D: The prolonged seizures are serious, <with the staff> honest with you .
+  D: The prolonged seizures are serious, and I'll be <with the staff> .
+--- 20.1 [회복 설명|speech] words=['w-team', 'w-explain', 'w-recovery', 'w-might', 'w-look']
+EN: The team will explain what recovery might look like.
+KO: 팀이 회복이 어떤 모습일지 설명해드릴 거예요. (25)
+X1: 팀이 퇴원이 어떤 모습일지 설명해드릴 거예요. (25)
+X2: 팀이 치료가 어떤 모습일지 설명해드릴 거예요. (25)
+WHY: 'what recovery might look like'는 모양을 그려 보게 하는 표현이라 막연한 불안을 줄여요. 'might'로 아직 확정이 아님을 알려요.
+ B* The team will explain what [recovery] might look like.
+ B  The team will explain what [visiting] might look like.
+ B  The team will explain what [billing] might look like.
+ B  The team will explain what [parking] might look like.
+CH: ['The team will explain', 'what recovery', 'might look', 'like', '.'] | DECOY: to the front desk
+  D: <to the front desk> what recovery might look like .
+  D: The team will explain <to the front desk> might look like .
+  D: The team will explain what recovery <to the front desk> like .
+  D: The team will explain what recovery might look <to the front desk> .
+--- 20.2 [가치 묻기|handshake2] words=['w-talk', 'w-wish', 'w-matter', 'w-most']
+EN: Let's talk about his wishes and what matters most to him.
+KO: 환자분이 원하시는 것과 가장 중요하게 여기시는 것에 대해 이야기 나눠요. (40)
+X1: 환자분이 원하시는 것과 가장 걱정하시는 것에 대해 이야기 나눠요. (36)
+X2: 환자분이 원하시는 것과 가장 좋아하시는 것에 대해 이야기 나눠요. (36)
+WHY: 'what matters most to him'은 의학 사실 말고 환자의 가치를 묻는 열린 표현이에요. 'wishes'는 바라는 것을 가리켜요.
+ B* Let's talk about his [wishes] and what matters most to him.
+ B  Let's talk about his [bills] and what matters most to him.
+ B  Let's talk about his [meals] and what matters most to him.
+ B  Let's talk about his [parking] and what matters most to him.
+CH: ["Let's talk", 'about his wishes', 'and what matters', 'most to him', '.'] | DECOY: on paper
+  D: <on paper> about his wishes and what matters most to him .
+  D: Let's talk <on paper> and what matters most to him .
+  D: Let's talk about his wishes <on paper> most to him .
+  D: Let's talk about his wishes and what matters <on paper> .
+--- 20.3 [공감|faceWorried] words=['w-hear', 'w-hide', 'w-anything']
+EN: I know this is hard to hear, and I won't hide anything from you.
+KO: 듣기 힘드시다는 거 알아요, 아무것도 숨기지 않을게요. (30)
+X1: 듣기 힘드시다는 거 알아요, 아무것도 서두르지 않을게요. (31)
+X2: 듣기 힘드시다는 거 알아요, 아무것도 약속하지 않을게요. (31)
+WHY: 'I know this is hard to hear'로 상대의 감정을 먼저 인정해요. 'won't hide anything'은 솔직하게 알리겠다는 약속이에요.
+ B* I know this is [hard] to hear, and I won't hide anything from you.
+ B  I know this is [late] to hear, and I won't hide anything from you.
+ B  I know this is [cold] to hear, and I won't hide anything from you.
+ B  I know this is [loud] to hear, and I won't hide anything from you.
+CH: ['I know this', 'is hard to hear,', "and I won't", 'hide anything', 'from you', '.'] | DECOY: in the chart
+  D: <in the chart> is hard to hear, and I won't hide anything from you .
+  D: I know this <in the chart> and I won't hide anything from you .
+  D: I know this is hard to hear, <in the chart> hide anything from you .
+  D: I know this is hard to hear, and I won't <in the chart> from you .
+  D: I know this is hard to hear, and I won't hide anything <in the chart> .
+--- 20.4 [지지 약속|handshake2] words=['w-support', 'w-whatever', 'w-matter', 'w-most']
+EN: We'll support whatever matters most to your family.
+KO: 가족분께 가장 중요한 게 무엇이든 저희가 지지할게요. (29)
+X1: 가족분께 가장 걱정되는 게 무엇이든 저희가 지지할게요. (30)
+X2: 가족분께 가장 급한 게 무엇이든 저희가 지지할게요. (28)
+WHY: 'whatever'는 어떤 것이든 가리지 않고 지지한다는 뜻이에요. 'matters most to your family'는 가족의 가치가 기준이라는 말이에요.
+ B* We'll [support] whatever matters most to your family.
+ B  We'll [count] whatever matters most to your family.
+ B  We'll [copy] whatever matters most to your family.
+ B  We'll [pay] whatever matters most to your family.
+CH: ["We'll support", 'whatever matters most', 'to your family', '.'] | DECOY: for the tour
+  D: <for the tour> whatever matters most to your family .
+  D: We'll support <for the tour> to your family .
+  D: We'll support whatever matters most <for the tour> .
+== ORDER ko=예후 소통 4문장 순서 | tag=대화 흐름 icon=compass
+   why=상황이 심각하다고 솔직히 알리고, 힘든 마음을 인정한 뒤, 환자의 가치를 묻고, 그에 맞춰 회복 설명을 약속해요.
+   - The prolonged seizures are serious, and I'll be honest with you. (11w) | 장시간 발작은 심각해요, 솔직히 말씀드릴게요 | 솔직 | handshake2
+   - That's hard to hear, I know. (6w) | 듣기 힘드시다는 거 알아요 | 공감 | faceWorried
+   - Let's talk about his wishes and what matters most to him. (11w) | 원하는 것과 가장 중요한 것에 대해 이야기해요 | 가치 | handshake2
+   - Based on what matters to him, the team will explain what recovery might look like. (15w) | 중요한 것을 바탕으로 회복이 어떨지 설명해드려요 | 설명 | speech
+   SWAP 1<->2: That's hard to hear, I know. / The prolonged seizures are serious, and I'll be honest with you. / Let's talk about his wishes and what matters most to him. / Based on what matters to him, the team will explain what recovery might look like.
+   SWAP 2<->3: The prolonged seizures are serious, and I'll be honest with you. / Let's talk about his wishes and what matters most to him. / That's hard to hear, I know. / Based on what matters to him, the team will explain what recovery might look like.
+   SWAP 3<->4: The prolonged seizures are serious, and I'll be honest with you. / That's hard to hear, I know. / Based on what matters to him, the team will explain what recovery might look like. / Let's talk about his wishes and what matters most to him.

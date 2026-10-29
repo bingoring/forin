@@ -1,0 +1,143 @@
+- situation: "발작 관찰·시간 기록"
+  items:
+    - kind: slider
+      words: [w-duration, w-last]
+      cue: "Colleague: \"The shaking has gone on for over five minutes and he still isn't responding.\""
+      scale: [wait a while to see if it stops by itself, call for help and ready the ordered drug, give any drug you can find on the cart]
+      answerAt: 1
+      why: "5분 넘게 이어지는 발작은 저절로 멈추길 기다리지 않고 지속 상태로 봐요. 바로 도움을 부르고 처방·프로토콜대로 1차 약(벤조디아제핀)을 준비해요. 처방 없이 아무 약이나 주지는 않아요."
+      example: "It has lasted over five minutes, so I'm calling for help and getting the ordered drug ready."
+      exKo: "5분 넘게 이어져서, 도움을 부르고 처방된 약을 준비하고 있어요."
+    - kind: context
+      words: [w-note]
+      word: note
+      ko: 기록하다
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Noted: seizure onset 14:32, generalized shaking, no response.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you note the start time while I watch his breathing?", ok: true}
+        - {who: 가족에게, icon: me, en: "Seizure onset noted at 14:32 with generalized tonic-clonic activity.", ok: false, fix: "I'm noting when it started so the team knows how long it lasts."}
+      why: "의료진끼리는 시각과 양상을 짧고 정확한 기록 용어로 주고받아요. 가족에게는 tonic-clonic 같은 말이 낯설어서, 무엇을 왜 적는지를 쉬운 말로 알려 줘요."
+- situation: "발작 중 기도·안전 확보"
+  items:
+    - kind: slider
+      words: [w-never, w-put, w-anything]
+      cue: "Family member: \"Should I put something in his mouth so he doesn't bite his tongue?\""
+      scale: [a soft cloth between his teeth, a spoon across his tongue, nothing at all in his mouth]
+      answerAt: 2
+      why: "발작 중에는 입에 아무것도 넣지 않아요. 혀를 삼킬 위험은 없고, 물건은 이를 다치게 하거나 기도를 막을 수 있어요. 옆으로 눕히고 머리를 보호하는 것이 안전해요."
+      example: "We never put anything in his mouth during a seizure."
+      exKo: "발작 중에는 입에 아무것도 절대 넣지 않아요."
+    - kind: context
+      words: [w-turn]
+      word: turn
+      ko: 돌리다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "We turned him onto his side as soon as the seizure started.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Help me turn him onto his side and cushion his head.", ok: true}
+        - {who: 가족에게, icon: me, en: "We are turning the patient to a lateral decubitus position for airway protection.", ok: false, fix: "I'm turning him onto his side so he can breathe easily."}
+      why: "의료진끼리는 lateral position 같은 말이 정확하고 짧아요. 가족에게는 낯선 용어라 겁만 주니, 왜 옆으로 돌리는지를 쉬운 말로 전해요."
+- situation: "벤조디아제핀 초기 투여 보조"
+  items:
+    - kind: slider
+      words: [w-breathe, w-depression, w-closely]
+      cue: "Colleague: \"His breathing is getting slow and shallow after the benzodiazepine.\""
+      scale: ["write it down and recheck it again much later", "stay, support his breathing, call for help", "leave his side to go find the doctor now"]
+      answerAt: 1
+      why: "벤조디아제핀 뒤에 호흡이 느리고 얕아지면 호흡억제일 수 있어요. 곁을 지키며 기도와 호흡을 지지하고 바로 도움을 불러요. 기록만 하고 넘기거나 환자를 두고 자리를 뜨지 않아요."
+      example: "I'll watch his breathing closely after we give it."
+      exKo: "투여 후에 호흡을 자세히 지켜볼게요."
+    - kind: context
+      words: [w-dose]
+      word: dose
+      ko: 용량
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The dose matches the order and his weight.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you check the dose with me before I push it?", ok: true}
+        - {who: 가족에게, icon: me, en: "We're verifying the milligram-per-kilogram dose of the benzodiazepine against the order.", ok: false, fix: "I'm double-checking the amount of medicine so he gets exactly the right dose."}
+      why: "의료진끼리는 체중 기준 계산과 단위를 그대로 말해도 돼요. 가족에게는 mg/kg 같은 말이 어렵고 불안만 키우니, 확인한다는 사실만 쉬운 말로 전해요."
+- situation: "활력·산소 감시"
+  items:
+    - kind: slider
+      words: [w-oxygen, w-apply, w-saturation]
+      cue: "Colleague: \"His oxygen saturation is falling and he's still seizing.\""
+      scale: [wait until the seizure has stopped on its own, keep watching the number drop, apply oxygen and open the airway]
+      answerAt: 2
+      why: "발작 중에는 산소 요구량이 올라가고 호흡이 흔들려 포화도가 떨어질 수 있어요. 끝나기를 기다리지 말고 지금 산소를 대고 기도를 열어 호흡을 지지해요."
+      example: "I'm applying oxygen and watching his saturation closely."
+      exKo: "산소를 적용하고 포화도를 자세히 지켜보고 있어요."
+    - kind: context
+      words: [w-saturation]
+      word: saturation
+      ko: 포화도
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His saturation is holding steady on high-flow oxygen.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Call out his saturation if it starts to drop.", ok: true}
+        - {who: 가족에게, icon: me, en: "His oxygen saturation dipped, so I'm titrating the FiO2 upward.", ok: false, fix: "His oxygen level dipped a little, so we're giving him more oxygen."}
+      why: "의료진끼리는 saturation이나 FiO2 같은 말이 정확해요. 가족에게는 수치와 약어가 낯서니, 무슨 일이고 무엇을 하는지만 쉬운 말로 전해요."
+- situation: "혈당·전해질 확인"
+  items:
+    - kind: slider
+      words: [w-glucose, w-low, w-treat]
+      cue: "Colleague: \"His fingerstick glucose came back low and he's seizing.\""
+      scale: [treat the low glucose now per the order, recheck it at the next vitals, delay the seizure drugs until it's normal]
+      answerAt: 0
+      why: "발작 중 혈당이 낮으면 저혈당이 원인일 수 있어서 처방·프로토콜대로 바로 교정해요. 다음 활력 때까지 미루지 않고, 혈당을 고친다고 발작 약을 늦추지도 않아요."
+      example: "His glucose is low, so I'm treating it now per the order."
+      exKo: "혈당이 낮아서 처방대로 지금 치료하고 있어요."
+    - kind: context
+      words: [w-correct]
+      word: correct
+      ko: 교정하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'll correct the glucose per protocol and recheck it.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Let's correct the low sodium as ordered.", ok: true}
+        - {who: 가족에게, icon: me, en: "We're correcting his hyponatremia with a hypertonic saline bolus.", ok: false, fix: "His sodium level was low, so we're slowly bringing it back to normal."}
+      why: "의료진끼리는 진단명과 약 이름을 그대로 써도 돼요. 가족에게는 낯선 말이 불안만 키우니, 무엇이 낮았고 어떻게 되돌리는지를 쉬운 말로 전해요. 나트륨은 천천히 맞춘다는 점도 사실이에요."
+- situation: "발작 후 상태 사정"
+  items:
+    - kind: slider
+      words: [w-drowsy, w-confused]
+      cue: "Nurse: \"He opens his eyes to his name, then falls back asleep.\""
+      scale: [drowsy, confused, unresponsive]
+      answerAt: 0
+      why: "이름을 부르면 눈을 떴다가 다시 잠드는 건 졸린(drowsy) 상태예요. 혼란(confused)은 장소·시간을 헷갈리는 것이고, 반응 없음(unresponsive)은 자극해도 반응이 없는 거예요. 발작 후 잠시 졸린 건 흔하지만 반응이 없으면 바로 보고해요."
+      example: "He's drowsy but opens his eyes when I say his name."
+      exKo: "졸려 하지만 이름을 부르면 눈을 떠요."
+    - kind: context
+      words: [w-normal]
+      word: normal
+      ko: 정상적인
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Some drowsiness is normal after a seizure, and his responsiveness is improving.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "This is normal after a seizure, but call me if he's harder to wake.", ok: true}
+        - {who: 가족에게, icon: me, en: "A normal postictal state with a stable GCS is expected.", ok: false, fix: "It's normal to be sleepy and confused for a while after a seizure."}
+      why: "의료진끼리는 postictal이나 GCS 같은 말로 상태를 짧게 전해요. 가족에게는 이 말들이 낯서니, 졸리고 헷갈리는 게 한동안은 흔하다고 쉬운 말로 안심시켜요."
+    - kind: swap
+      words: [w-drowsy, w-confused, w-normal]
+      who: "보호자에게 · 발작 후 설명"
+      icon: me
+      before: ["It's normal for him to be ", "postictal", " for a while."]
+      options: [sleepy and confused, postictal, completely unresponsive]
+      answer: sleepy and confused
+      notes: {sleepy and confused: "가족에게 쉬운 말. 발작 후 한동안 흔한 모습을 바로 이해해요.", postictal: "의료진끼리의 말. 가족은 무슨 뜻인지 몰라요.", completely unresponsive: "반응이 전혀 없는 것은 정상이라고 안심시킬 일이 아니에요. 바로 평가하고 보고해요."}
+      why: "발작 후 졸림과 혼란은 한동안 흔하다고 쉬운 말로 알리되, 반응이 전혀 없는 상태는 안심시키지 않고 바로 알려요."
+      ko: "그는 한동안 졸리고 혼란스러운 게 정상이에요"
+- situation: "2차 항경련제 로딩"
+  items:
+    - kind: slider
+      words: [w-second, w-anti-seizure, w-load]
+      cue: "Colleague: \"He's still seizing after the first benzodiazepine dose.\""
+      scale: [move on to the ordered second drug, stop all medicine and only watch him closely, wait to see if it stops by itself]
+      answerAt: 0
+      why: "첫 벤조디아제핀에도 발작이 계속되면 기다리지 않고 처방된 2차 항경련제(예: levetiracetam)를 준비해 로딩해요. 약을 끊고 지켜만 보거나 저절로 멈추길 기다리지 않아요."
+      example: "He's still seizing, so we're loading the second drug now."
+      exKo: "아직 발작 중이라 이제 2차 약물을 로딩하고 있어요."
+    - kind: context
+      words: [w-monitor]
+      word: monitor
+      ko: 감시하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'm monitoring his rhythm and pressure during the load.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you monitor his pressure while I run the infusion?", ok: true}
+        - {who: 가족에게, icon: me, en: "We're continuously monitoring telemetry and arterial pressure during the loading dose.", ok: false, fix: "We're watching his heart rhythm and blood pressure closely while the medicine goes in."}
+      why: "의료진끼리는 telemetry나 arterial pressure처럼 짧고 정확한 말을 써요. 가족에게는 낯선 용어라, 무엇을 지켜보는지만 쉬운 말로 전해요."

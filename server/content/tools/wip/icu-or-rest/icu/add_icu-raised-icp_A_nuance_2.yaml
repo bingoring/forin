@@ -1,0 +1,126 @@
+"삼투요법 투여":
+  - kind: pair
+    words: [w-confirm, w-trend, w-hang]
+    pairs: [[confirm, the dose is weight-based], [trend, sodium and osmolality over hours], [hang, the ordered bag after checks]]
+    decoys: [the visitor list]
+    why: "삼투요법은 처방대로 투여하고, 달기 전에 체중 기반 용량인지 확인해요(confirm). 나트륨·삼투압은 한 번의 값보다 시간에 따른 추이(trend)를 보며, 확인이 끝난 약을 걸어요(hang)."
+  - kind: swap
+    words: [w-sodium]
+    who: "가족에게 · 검사 설명"
+    icon: me
+    before: ["We'll check his ", "sodium", " again in four hours."]
+    options: [blood salt level, sodium, Na]
+    answer: blood salt level
+    notes: {blood salt level: "가족이 바로 알아듣는 쉬운 말이다.", sodium: "정확한 용어지만 가족에게는 무엇인지 설명이 필요하다.", Na: "화학 기호 약어라 가족은 알아듣지 못한다."}
+    why: "가족에게는 무엇을 재는지 쉬운 말로 먼저 말하고, 용어는 그다음에 덧붙여요."
+    ko: "네 시간 뒤에 혈액 속 염분 수치를 다시 확인할게요"
+"EVD 배액량·파형 관리":
+  - kind: slider
+    words: [w-dampen]
+    cue: "The waveform is still there, but it's small and weak compared with this morning."
+    scale: [strong, dampened, flat]
+    answerAt: 1
+    why: "strong은 뚜렷한 파형, dampened는 파형이 있지만 약해진 상태, flat은 거의 파형이 없는 상태예요. 약해진 파형은 막힘이나 위치 문제의 신호일 수 있어서 수평, 튜빙, 파동을 확인하고 신경외과에 알려요."
+    example: "The waveform looks dampened, so I'm checking the tubing."
+    exKo: "파형이 약해져 보여서 튜빙을 확인하고 있어요."
+  - kind: swap
+    words: [w-waveform]
+    who: "가족에게 · 모니터 설명"
+    icon: me
+    before: ["The ", "waveform", " on the screen tells us if the drain is working."]
+    options: [moving line, waveform, ICP trace]
+    answer: moving line
+    notes: {moving line: "가족이 화면에서 바로 찾을 수 있는 쉬운 말이다.", waveform: "의료진 용어라 가족에게는 낯설다.", ICP trace: "약어가 섞여 가족은 알아듣기 어렵다."}
+    why: "가족에게는 화면의 움직이는 선이라고 가리키며 쉬운 말로 설명해요."
+    ko: "화면에서 움직이는 선이 배액관이 잘 작동하는지 알려 줘요"
+"CPP 목표 승압·수액 유지":
+  - kind: slider
+    words: [w-adequate]
+    cue: "Volume status: he's filled to the target, not dry and not overloaded."
+    scale: [inadequate, adequate, excessive]
+    answerAt: 1
+    why: "inadequate는 모자란 상태, adequate는 필요한 만큼 충분한 상태, excessive는 지나친 상태예요. CPP를 유지하려면 수액을 부족하지도 넘치지도 않게 맞추는 것이 목표예요."
+    example: "His fluid status is adequate, so we won't add more."
+    exKo: "수액 상태가 충분해서 더 추가하지 않을 거예요."
+  - kind: swap
+    words: [w-pressor]
+    who: "가족에게 · 약 설명"
+    icon: me
+    before: ["We're giving a ", "pressor", " to support his blood pressure."]
+    options: [medicine that raises his blood pressure, pressor, vasopressor]
+    answer: medicine that raises his blood pressure
+    notes: {medicine that raises his blood pressure: "약이 하는 일을 그대로 설명해 가족이 이해하기 쉽다.", pressor: "줄임말이라 가족은 알아듣지 못한다.", vasopressor: "정확한 약 분류지만 가족에게는 어렵다."}
+    why: "약의 종류보다 무슨 일을 하는 약인지를 쉬운 말로 먼저 말해 주세요."
+    ko: "혈압을 지지하려고 혈압을 올려 주는 약을 쓰고 있어요"
+"과호흡 일시 사용 이해":
+  - kind: slider
+    words: [w-brief]
+    cue: "Hyperventilation is used only for a few minutes as a bridge until other treatments work."
+    scale: [brief, ongoing, lifelong]
+    answerAt: 0
+    why: "과호흡은 CO2를 낮춰 뇌혈관을 좁혀 뇌압을 잠시 낮추지만, 너무 오래 하면 뇌 혈류가 줄어요. 그래서 짧게(brief) 쓰고 지속적인 요법(ongoing)으로 쓰지 않아요."
+    example: "We use hyperventilation for a brief time only."
+    exKo: "과호흡은 짧은 시간에만 써요."
+  - kind: swap
+    words: [w-hyperventilation]
+    who: "가족에게 · 호흡 설명"
+    icon: me
+    before: ["We're using ", "hyperventilation", " for a few minutes."]
+    options: [faster breathing, hyperventilation, a CO2 wash-out]
+    answer: faster breathing
+    notes: {faster breathing: "가족이 장면을 바로 그릴 수 있는 쉬운 말이다.", hyperventilation: "의료 용어라 가족에게는 어렵다.", a CO2 wash-out: "원리를 말하지만 가족에게는 낯선 표현이다."}
+    why: "가족에게는 무엇을 하는지(더 빠르게 숨 쉬게 함)를 쉬운 말로, 의료진끼리는 용어로 말해요."
+    ko: "몇 분 동안 숨을 더 빠르게 쉬게 하고 있어요"
+"발작 예방·감시":
+  - kind: slider
+    words: [w-subtle]
+    cue: "One eyelid and the corner of his mouth twitch a little, easy to miss."
+    scale: [subtle, obvious, severe]
+    answerAt: 0
+    why: "subtle은 눈에 잘 띄지 않는 미묘한 움직임, obvious는 누구나 알아볼 만한 것, severe는 심한 것이에요. 미묘한 발작은 눈꺼풀 씰룩거림이나 눈 편위로만 나타날 수 있어 EEG로도 확인해요."
+    example: "The signs are subtle, so we watch his face closely."
+    exKo: "징후가 미묘해서 얼굴을 자세히 지켜봐요."
+  - kind: swap
+    words: [w-eeg]
+    who: "가족에게 · 검사 설명"
+    icon: me
+    before: ["He has a ", "continuous EEG", " in place to catch seizures."]
+    options: [brain-wave monitor, continuous EEG, cEEG]
+    answer: brain-wave monitor
+    notes: {brain-wave monitor: "무엇을 하는 장치인지 바로 알 수 있는 쉬운 말이다.", continuous EEG: "정확한 용어지만 가족에게는 설명이 필요하다.", cEEG: "약어라 가족은 알아듣지 못한다."}
+    why: "가족에게는 뇌파를 보는 장치라고 쉬운 말로 먼저 알려 주세요."
+    ko: "발작을 잡아내려고 뇌파 모니터를 붙여 두었어요"
+"나트륨 목표 관리":
+  - kind: slider
+    words: [w-slowly]
+    cue: "To avoid rebound swelling, the sodium is allowed to come down gradually."
+    scale: [slowly, quickly, instantly]
+    answerAt: 0
+    why: "고장성 요법 뒤 나트륨을 급하게 내리면 반동 부종이 생길 수 있어서 천천히 바로잡아요. slowly가 맞고 quickly나 instantly는 반대예요."
+    example: "We correct his sodium slowly to protect his brain."
+    exKo: "뇌를 지키려고 나트륨을 천천히 바로잡아요."
+  - kind: context
+    words: [w-swing]
+    word: swing
+    ko: 급변
+    scenes:
+      - {who: 의사에게 보고, icon: monitor, en: "No big swings in sodium overnight, still in the target range.", ok: true}
+      - {who: 가족에게, icon: me, en: "We want no wild swings in his serum sodium.", ok: false, fix: "We want his salt level to change slowly, not jump up and down."}
+      - {who: 차트 기록, icon: board, en: "Na 150 to 149, no large swings this shift.", ok: true}
+    why: "의료진끼리는 swing과 serum sodium이 간결하고 정확한 표현이에요. 가족에게는 같은 말이 어렵게 들려요. 무엇이 어떻게 바뀌는지 쉬운 말로 풀어 주세요."
+"이송·검사 중 ICP 관리":
+  - kind: pair
+    words: [w-clamp, w-sedate, w-keep]
+    pairs: [[clamp, the EVD only as protocol says], [sedate, him a little deeper before CT], [keep, the bolus ready for his return]]
+    decoys: [the elevator buttons]
+    why: "이송 중에는 진정과 머리 높이를 유지하고, EVD는 병원 프로토콜대로 잠그거나 관리해요. CT 전에는 움직임과 ICP 상승을 막으려고 진정을 조금 더 깊게 하고, 돌아오면 바로 쓸 수 있게 삼투 약을 준비해 둬요."
+  - kind: swap
+    words: [w-transport]
+    who: "가족에게 · 이동 안내"
+    icon: me
+    before: ["We'll keep him comfortable during ", "transport", " to CT."]
+    options: [the trip to the scanner, transport, patient transfer]
+    answer: the trip to the scanner
+    notes: {the trip to the scanner: "가족이 상황을 바로 그릴 수 있는 쉬운 말이다.", transport: "병원 용어라 가족에게는 딱딱하다.", patient transfer: "침대 간 옮김처럼 들려 뜻이 달라진다."}
+    why: "가족에게는 어디로 가는지 쉬운 말로 설명해야 걱정이 줄어요."
+    ko: "CT 촬영하러 가는 동안 편안하게 해 드릴게요"

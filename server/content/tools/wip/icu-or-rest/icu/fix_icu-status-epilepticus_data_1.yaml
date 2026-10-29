@@ -1,0 +1,166 @@
+# A 검토 + 새로 쓰는 문장의 v46 필드. 상황 제목 + 옛 en으로 위치를 찾는다.
+sentence_rewrites:
+  - sit: 지속 SE 예후·목표 소통
+    old_en: "I know this is hard to hear, and I won't hide anything from you."
+    en: "I know this is hard to hear, and we'll keep you updated as we learn more."
+    ko: "듣기 힘드시다는 거 알아요. 새로 알게 되는 것이 있으면 계속 알려 드릴게요."
+    chunks: ["I know this", "is hard to hear,", "and we'll keep you updated", "as we learn more", "."]
+    words: [w-hear, w-update]
+    why: "'we'll keep you updated'는 결과를 장담하는 대신 계속 알리겠다는 약속이에요. 'I know this is hard to hear'로 먼저 상대의 마음을 인정해요."
+    decoy: "as the shift ends"
+    distractorsKo:
+      - "믿기 힘드시다는 거 알아요. 새로 알게 되는 것이 있으면 계속 알려 드릴게요."
+      - "듣기 힘드시다는 거 알아요. 새로 알게 되는 것이 있으면 내일 알려 드릴게요."
+    blank: {answer: hard, wrong: [easy, nice, great]}
+  - sit: 지속 SE 예후·목표 소통
+    old_en: "We'll support whatever matters most to your family."
+    en: "We'll support your family as we focus on what matters most to him."
+    ko: "환자분께 가장 중요한 것에 집중하면서, 가족분들도 저희가 도와 드릴게요."
+    chunks: ["We'll support your family", "as we focus", "on what matters most", "to him", "."]
+    words: [w-support, w-matter, w-most]
+    why: "'as we focus on what matters most to him'으로 결정의 기준이 환자(him)의 가치임을 분명히 해요. 'We'll support your family'로 가족은 지지를 받는 사람으로 말해요."
+    decoy: "for the tour"
+    distractorsKo:
+      - "환자분께 가장 급한 것에 집중하면서, 가족분들도 저희가 도와 드릴게요."
+      - "환자분께 가장 중요한 것에 집중하면서, 친구분들도 저희가 도와 드릴게요."
+    blank: {answer: support, wrong: [question, judge, record]}
+  - sit: 발작 후 상태 사정
+    old_en: "This is normal, and he wasn't in pain during the seizure."
+    en: "This is normal, and he most likely wasn't aware of anything during the seizure."
+    ko: "정상적인 거예요. 발작하는 동안에는 아마 아무것도 의식하지 못하셨을 거예요."
+    chunks: ["This is normal,", "and he most likely", "wasn't aware of anything", "during the seizure", "."]
+    words: [w-normal, w-anything, w-during, w-seizure]
+    why: "'This is normal'로 먼저 안심시키고, 'most likely'로 간호사가 확인할 수 없는 부분은 단정하지 않고 가능성으로 말해요."
+    decoy: "for the staff"
+    distractorsKo:
+      - "정상적인 거예요. 발작하기 전에는 아마 아무것도 의식하지 못하셨을 거예요."
+      - "다행이에요. 발작하는 동안에는 아마 아무것도 의식하지 못하셨을 거예요."
+    blank: {answer: aware, wrong: [proud, ashamed, jealous]}
+chunk_fixes:
+  - {sit: 발작 관찰·시간 기록, en: "I'll write down how long it lasts and how his body moves.", chunks: ["I'll write down", "how long it lasts", "and", "how his body moves", "."]}
+  - {sit: 발작 중 기도·안전 확보, en: "I'll keep the airway open and never force anything between his teeth.", chunks: ["I'll keep", "the airway open", "and never force anything", "between his teeth", "."]}
+  - {sit: 활력·산소 감시, en: "His oxygen saturation is ninety-two percent and holding steady.", chunks: ["His oxygen saturation", "is ninety-two percent", "and", "holding steady", "."]}
+  - {sit: 항경련제 혈중농도·부작용, en: "No new side effects since we adjusted the dose.", chunks: ["No new side effects", "since", "we adjusted", "the dose", "."]}
+  - {sit: 비경련성 SE 인지, en: "He looks calm, but that doesn't rule out a hidden seizure.", chunks: ["He looks calm,", "but that", "doesn't rule out", "a hidden seizure", "."]}
+  - {sit: 발작 중 심한 저산소·서맥 위기, en: "His heart rate is dropping fast while he's still seizing.", chunks: ["His heart rate", "is dropping fast", "while", "he's still seizing", "."]}
+kp_ko:
+  - sit: 비경련성 SE 인지
+    en: "Let's get an urgent EEG to check his brain activity."
+    ko: "뇌 활동을 확인하게 응급 EEG를 하죠."
+    distractorsKo: ["보호자에게 보여 주게 응급 EEG를 하죠.", "연구에 쓰려고 응급 EEG를 하죠."]
+sentence_words_remove:   # 결정 11 — (상황, en, 뺄 word)
+  - {sit: 비경련성 SE 인지, en: "Let's get an urgent EEG to check his brain activity.", rm: w-get}
+  - {sit: 비경련성 SE 인지, en: "I'm getting the EEG ordered right now.", rm: w-get}
+  - {sit: 발작 중 심한 저산소·서맥 위기, en: "I've got the bag ready — call the code now.", rm: w-get}
+  - {sit: 발작 후 뇌부종·ICP 위기, en: "Let's get imaging and consider osmotic therapy.", rm: w-get}
+  - {sit: 발작 중 심한 저산소·서맥 위기, en: "Open the airway and bag him with high-flow oxygen now.", rm: w-open}
+  - {sit: 발작 후 뇌부종·ICP 위기, en: "Prolonged seizures can cause brain swelling and raised pressure.", rm: w-pressure}
+  - {sit: 발작 후 뇌부종·ICP 위기, en: "His pupils look uneven, which can point to rising pressure in his brain.", rm: w-pressure}
+word_remove: [w-hide, w-whatever, w-get]
+word_add:
+  - id: w-update
+    en: update
+    ipa: "/ʌpˈdeɪt/"
+    ko: 새 소식을 알리다
+    icon: speech
+    example: "I know this is hard to hear, and we'll keep you updated as we learn more."
+    exKo: "듣기 힘드시다는 거 알아요. 새로 알게 되는 것이 있으면 계속 알려 드릴게요."
+    cue: 상태가 바뀔 때마다 가족에게 바뀐 내용을 전해 주는 동사
+    tag: 소통·팀
+    distractorsEn: [upgrade, uphold]
+    distractorsKo: [미뤄 두다, 감춰 두다]
+    chips: [[up, date]]
+    decoyChips: [op, data]
+word_set:
+  w-clear:
+    ko: "(물건 없이) 비워 둔"
+    cue: 침대 둘레에 부딪힐 만한 물건이 하나도 없이 비워진 상태
+    distractorsEn: [close, clever]
+    distractorsKo: [물건이 가득한, 어질러져 있는]
+  w-thank: {cue: 발작을 보자마자 간호사를 불러 준 보호자에게 고마움을 전하는 동사}
+  w-trigger: {cue: 발작 같은 일이 방아쇠를 당기듯 터지게 만드는 동사}
+  w-target: {cue: 치료가 이르러야 할 수준을 겨냥해 정하는 동사}
+  w-sign: {distractorsKo: [원인, 처방]}
+  w-agent: {distractorsKo: [용량, 간호사]}
+  w-stroke: {distractorsKo: [뇌전증, 치매]}
+decoy_chips:   # id: [옛, 새]
+  w-level: [ale, eel]
+  w-correctly: [wrecked, rocked]
+  w-immediately: [dye, lay]
+  w-burst: [bust, burnt]
+  w-control: [troll, toll]
+distractors_en:   # id: {옛: 새}
+  w-thank: {thick: thaw}
+  w-steady: {study: speedy}
+  w-stat: {stack: static, stair: stale}
+  w-trigger: {tiger: trickle}
+  w-while: {white: whiff}
+  w-since: {sense: until, science: unless}
+  w-first: {fist: firm}
+  w-together: {tougher: forever}
+  w-fever: {fewer: favor}
+  w-next: {text: neat, nest: near}
+  w-urgent: {agent: urban}
+  w-flag: {flat: flash}
+  w-calm: {clam: clammy, palm: balmy}
+  w-identify: {identity: intensify}
+  w-stroke: {stoke: strobe, struck: stripe}
+  w-imaging: {imagine: aging, imaginary: imprint}
+  w-target: {market: barter}
+  w-third: {thirst: thirsty, throat: thorough}
+  w-fluid: {fluent: fluke}
+  w-serious: {series: curious}
+  w-honest: {honor: hollow}
+  w-secure: {second: sedate, secret: seclude}
+  w-still: {stall: seldom, steal: steadily}
+  w-stepwise: {likewise: streetwise}
+  w-order: {border: obey}
+  w-bite: {bike: bide}
+  w-heart: {heard: heat}
+  w-exam: {exact: exile}
+  w-might: {mind: should}
+  w-hear: {hair: heed}
+nuance:
+  # (상황, kind, 앞에서 몇 번째 같은 kind 인지) → 바꿀 필드
+  - {sit: 혈당·전해질 확인, kind: context, set: {
+      fix_for_scene_idx: 2,
+      fix: "His sodium is very low, so we're carefully bringing it up with a special IV fluid.",
+      why: "의료진끼리는 진단명과 약 이름을 그대로 써도 돼요. 가족에게는 낯선 말이 불안만 키우니, 무엇이 낮았고 어떻게 되돌리는지를 쉬운 말로 전해요. 발작을 일으킬 만큼 낮은 나트륨은 처방에 따라 고장성 식염수로 처음에 조금 빠르게 올리고, 그 뒤에는 하루에 올리는 폭을 넘지 않게 지켜봐요(너무 빨리 교정하면 삼투성 탈수초 위험)."}}
+  - {sit: 지속 SE 예후·목표 소통, kind: context, set: {
+      scene_en_idx: 2,
+      scene_en: "Honestly, his status epilepticus is refractory and his prognosis is guarded.",
+      fix_for_scene_idx: 2,
+      fix: "I want to be honest: this is very serious. The doctors will sit down with you to talk about what it means, and we'll stay with you.",
+      why: "솔직하게 말하는 것은 중요하지만, 가족에게 refractory나 guarded prognosis 같은 말은 낯설고 차갑게 들려요. 예후는 의사가 가족과 함께 설명하고, 간호사는 심각하다는 사실과 곁에 있겠다는 말을 쉬운 말로 전해요."}}
+  - {sit: 2차 항경련제 로딩, kind: slider, set: {
+      cue: "Colleague: \"He's still seizing after two doses of the benzodiazepine.\"",
+      scale: [wait to see if it stops by itself, move on to the ordered second drug, keep repeating benzos with no limit],
+      answerAt: 1,
+      why: "벤조디아제핀을 충분히 주고(보통 한 번 반복)도 발작이 계속되면 기다리지 않고 처방된 2차 항경련제(예: levetiracetam)로 넘어가요. 저절로 멈추길 기다리거나, 벤조디아제핀만 끝없이 되풀이하지 않아요(호흡억제 위험).",
+      example: "He's still seizing after two doses, so we're loading the second drug now.",
+      exKo: "벤조디아제핀을 두 번 줬는데도 아직 발작 중이라 이제 2차 약물을 로딩하고 있어요."}}
+  - {sit: 발작 중 기도·안전 확보, kind: slider, set: {scale: [nothing at all in his mouth, a soft cloth between his teeth, a spoon across his tongue], answerAt: 0}}
+  - {sit: 벤조디아제핀 초기 투여 보조, kind: slider, set: {
+      scale: [write it down and recheck it again much later, "stay, support his breathing, call for help", give flumazenil on your own to reverse it],
+      answerAt: 1,
+      why: "벤조디아제핀 뒤에 호흡이 느리고 얕아지면 호흡억제일 수 있어요. 곁을 지키며 기도와 호흡을 지지하고 바로 도움을 불러요. 기록만 하고 한참 뒤에 다시 보지 않아요. 플루마제닐은 벤조디아제핀으로 발작을 누르고 있는 환자에게 발작을 다시 일으킬 수 있어 간호사가 혼자 주지 않아요."}}
+  - {sit: 발작 후 상태 사정, kind: slider, set: {
+      words: [w-drowsy],
+      scale: [drowsy, stuporous, unresponsive],
+      answerAt: 0,
+      why: "이름을 부르면 눈을 떴다가 다시 잠드는 건 졸린(drowsy) 상태예요. 세게 자극해야 잠깐 반응하면 stuporous, 자극해도 반응이 없으면 unresponsive예요. 발작 후 잠시 졸린 건 흔하지만, 깨우기 점점 어려워지거나 반응이 없으면 바로 보고해요."}}
+  - {sit: 혈당·전해질 확인, kind: slider, set: {scale: [recheck it at the next vitals, treat the low glucose now per the order, "delay the seizure drugs until it's normal"], answerAt: 1}}
+  - {sit: 지속 EEG 모니터 연계, kind: slider, set: {scale: [the seizure is definitely over, the EEG will show if it continues, the seizure is definitely still going], answerAt: 1}}
+  - {sit: 유발원인 검사·교정, kind: slider, set: {scale: ["assume it's only the seizure", send cultures and look for an infection, stop seizure drugs until the fever is gone for good], answerAt: 1}}
+  - {sit: 반복 발작 약물 단계화, kind: slider, set: {scale: [wait and see what happens next, "tell the team, start the next step", double the second drug on your own now], answerAt: 1}}
+  - {sit: 기도확보 준비·삽관 판단, kind: slider, set: {scale: [just keep watching him for now and chart it, "call the team, ready airway equipment", try to intubate him yourself], answerAt: 1}}
+  - {sit: 항경련제 혈중농도·부작용, kind: slider, set: {scale: [treat it as fine because the level is normal, report the new sleepiness to the team, raise the dose to be safe], answerAt: 1}}
+  - {sit: 원인별 치료 연계, kind: slider, set: {scale: [no there is no chance of that, "we won't know until the imaging is read", yes it is most likely going to be a tumor], answerAt: 1}}
+  - {sit: 발작 중 심한 저산소·서맥 위기, kind: slider, set: {
+      words: [w-bag, w-high-flow, w-help],
+      scale: [wait for the seizure to stop on its own first, just keep watching the heart rate drop, "open airway, bag with oxygen, call for help"],
+      answerAt: 2}}
+  - {sit: 발작 후 뇌부종·ICP 위기, kind: slider, set: {scale: [keep his head flat so he can rest, recheck at the next routine vitals, report it to neuro right now], answerAt: 2}}
+  - {sit: 항경련 마취 중 혈역학 붕괴, kind: slider, set: {scale: [turn the infusion up to stop the seizure faster, support his pressure and have the team reassess, just record the number], answerAt: 1}}
+  - {sit: 발작 후 상태 사정, kind: swap, set: {ko: 한동안 졸리고 혼란스러워하는 건 정상이에요}}
+  - {sit: 기도확보 준비·삽관 판단, kind: swap, set: {ko: 안전을 위해 호흡관이 필요할 수 있어요}}
