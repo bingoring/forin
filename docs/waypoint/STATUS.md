@@ -6,6 +6,10 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-10-28
 
+> 🔨 **ICU 한 번에 저작 묶음 6 — 4주제 합침(2026-10-29).** gi-bleed·liver-failure·stroke-icu·brain-death: 저작 A‖B → Opus 검토 A‖B(안전 186건) → Sonnet 수정 →
+> keyPhrase 63/63 대조 → keyPhrase 결정(사용자 '추천대로': 바꿈 13·유지 18, chunks 31문장) → 정본 합침, ICU 위반 0(새 주제 경고 0). B 저작 실패 유형을 TASK.md에 더 적음.
+> **운영 배포는 묶어서(묶음 4·5·6 미배포).** PR #29(묶음 5) 위에 쌓은 브랜치. 묶음 7(invasive-lines·nutrition) 수정 진행 중. 남은 ICU: 미착수 7 · OR 33.
+
 > 🔨 **ICU 한 번에 저작 묶음 5 — 4주제 합침(2026-10-28).** endocrine-crisis·glycemic·raised-icp·status-epilepticus: 저작 A‖B → Opus 검토 A‖B(안전 178건) → Sonnet 수정 →
 > keyPhrase 63/63 대조 → keyPhrase 결정(사용자: 안전 6·표현 5 바꿈, 유지 권고분도 대안대로 → 22문장 바꿈, chunks 24문장) → 정본 합침, ICU 위반 0(새 주제 경고 0).
 > B 저작의 되풀이 실패 7가지를 `pipeline/TASK.md`에 적음. **운영 배포는 묶어서(묶음 4·5 미배포).** 묶음 6(gi-bleed·liver-failure 검토, stroke-icu·brain-death 저작) 진행 중. 남은 ICU: 미착수 11 · OR 33.
