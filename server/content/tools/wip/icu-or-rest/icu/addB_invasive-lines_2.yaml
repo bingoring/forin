@@ -1,0 +1,86 @@
+situations:
+- title: 장치 제거 보조 준비
+  s:
+  - ["제거 준비", bandage, "supine은 반듯이 눕는 자세로, 중심정맥관을 뺄 때 공기가 들어가지 않게 하는 자세예요. have … ready로 쓸 물품을 손 닿는 곳에 둔다고 말해요.", "and have a pillow", "앙와위로 눕히고 거즈랑 알코올솜도 준비해둘게요.", "앙와위로 눕히고 장갑이랑 밀폐 드레싱도 준비해둘게요.", "gauze", "soap", "ice", "water"]
+  - ["호흡 안내", speech, "Ask him to …는 환자에게 부탁하는 모양이라 지시처럼 들리지 않아요. 제거하는 순간 숨을 참으면 공기가 혈관으로 빨려 들어가는 것을 줄여요.", "to squeeze my hand", "제거하는 동안 공기 들어가지 않게 손 꼭 잡아 달라고 부탁드릴게요.", "제거하는 동안 공기 들어가지 않게 고개 돌려 달라고 부탁드릴게요.", "hold", "catch", "save", "lose"]
+  - ["압박 후 덮기", bandage, "and then으로 두 동작의 순서를 분명히 말해요. 먼저 눌러 출혈을 멈추고 나서 덮는다는 순서가 그대로 들려요.", "an ice pack", "단단히 압박한 다음 이름표를 붙일게요.", "단단히 압박한 다음 베개 높이를 조절할게요.", "dressing", "ointment", "lotion", "heat"]
+  - ["환자 준비", handshake2, "when you are는 앞의 말을 반복하지 않고 줄인 표현이라 짧고 자연스러워요. 환자가 이해했고 준비됐다는 두 보고를 먼저 하면 시술자가 안심하고 시작해요.", "the schedule", "동의도 하셨고, 선생님만 준비되면 시작할 수 있어요.", "계획도 이해하셨고, 보호자분만 준비되면 시작할 수 있어요.", "plan", "risks", "form", "menu"]
+  - ["물품 정리", board, "I've got everything …은 필요한 걸 다 갖췄다는 안심 표현이에요. laid out은 쓸 순서대로 펼쳐 둔 상태를 말해요.", "in the supply room", "거즈는 다 멸균 시야에 늘어놓았어요.", "필요한 건 다 병실 문 옆 카트 위에 늘어놓았어요.", "sterile", "clean", "small", "wet"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 장치 제거 준비 4문장 순서
+    why: 환자가 계획을 이해했는지부터 확인하고, 자세와 물품을 갖춘 뒤, 빼는 순간 숨 참기를 부탁하고, 빠진 직후에 압박과 드레싱으로 닫아요.
+    lines:
+    - ["He understands the plan and he's ready when you are.", handshake2, "계획 이해하셨고 선생님 준비되면 돼요", "환자 준비"]
+    - ["With that settled, I'll place him supine and have gauze ready.", bandage, "그게 정리됐으니 눕히고 거즈를 준비할게요", "자세"]
+    - ["Once he's set, ask him to hold his breath as the line comes out.", speech, "자리 잡으면 빠지는 동안 숨을 참아 달라고 해 주세요", "호흡"]
+    - ["As soon as it's out, I'll hold firm pressure and then apply the dressing.", bandage, "빠지자마자 단단히 압박하고 드레싱을 붙일게요", "압박"]
+- title: 중심라인 삽입 중 합병증 감시
+  s:
+  - ["부정맥 보고", monitor, "as로 두 일이 동시에 일어난다고 말해 철사 위치와 리듬 변화를 연결해요. 철사가 너무 깊이 들어가면 부정맥이 생길 수 있어 바로 시술자에게 알려요.", "runs of static", "그가 숨을 쉬면서 심실조기수축이 연달아 보여요.", "철사가 전진하면서 모니터 알람이 연달아 울려요.", "wire", "needle", "dilator", "tube"]
+  - ["합병증 보고", siren, "sats는 산소포화도의 현장 약어고, 두 징후를 and로 이어 한 번에 보고하면 기흉 의심이 바로 전달돼요. on the right까지 말해야 어느 쪽인지 알아요.", "and bowel sounds", "혈압이 떨어지고 오른쪽 호흡음이 줄었어요.", "산소포화도가 떨어지고 오른쪽 가슴이 아프대요.", "breath", "heart", "bowel", "alarm"]
+  - ["확인 영상", lab, "rule out은 있는지 확인해서 없다고 확정한다는 뜻이에요. 중심정맥관 삽입 뒤의 엑스레이는 기흉 확인과 끝 위치 확인을 겸해요.", "to rule out fractures", "기흉 배제하려고 이동식으로 흉부 엑스레이 찍을게요.", "기흉 배제하려고 시술 후 흉부 엑스레이 두 장 찍을게요.", "pneumothorax", "pneumonia", "effusion", "edema"]
+  - ["즉시 보고", bell, "the second는 ~하는 순간이라는 접속사처럼 쓰여요. call out은 소리 내어 알린다는 뜻이라 시술 중인 사람이 못 듣고 지나치지 않게 해요.", "the tray opens", "뭐든 바뀌는 순간 바로 팀장님께 알릴게요.", "뭐든 바뀌는 순간 바로 손을 들어 알릴게요.", "call", "write", "spell", "work"]
+  - ["경과 보고", monitor, "now that은 이제 ~했으니라는 뜻으로 이유에 가까워요. 철사를 뺀 뒤 리듬이 돌아왔다는 인과를 한 번에 전해요.", "His pressure", "철사가 빠지니 맥박도 기저치로 돌아왔어요.", "철사가 빠지니 혈압도 기저치로 돌아왔어요.", "rhythm", "pulse", "color", "breathing"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 삽입 중 합병증 보고 4문장 순서
+    why: 철사가 들어갈 때 리듬 이상을 알리고, 그 때문에 철사를 뒤로 빼 달라 하고, 빠진 뒤 리듬이 돌아온 것을 확인한 다음 새로 생긴 호흡 징후를 이어서 보고해요.
+    lines:
+    - ["I'm seeing runs of PVCs as the wire advances.", monitor, "철사가 전진하면서 심실조기수축이 연달아 보여요", "이상"]
+    - ["Because of that, I'll ask the physician to pull the wire back.", speech, "그래서 선생님께 철사를 빼 달라고 할게요", "요청"]
+    - ["Now that the wire's out, his rhythm is back to baseline.", check, "철사가 빠졌으니 리듬은 기저치로 돌아왔어요", "회복"]
+    - ["But his sats are dropping and breath sounds are down on the right.", siren, "하지만 산소포화도가 떨어지고 오른쪽 호흡음이 줄었어요", "새 징후"]
+- title: 동맥관 파형 이상 문제해결
+  s:
+  - ["원인 점검", magnify, "대시 앞에 문제를, 뒤에 곧바로 할 일을 말하면 상황과 행동이 한 호흡에 전달돼요. overdamped 파형은 공기나 꺾인 곳 때문에 눌려 보이는 것이에요.", "for noise and static", "파형이 불규칙해요, 공기나 꺾인 곳 있는지 확인할게요.", "파형이 과도하게 감쇠됐어요, 전선이나 꺾인 곳 있는지 확인할게요.", "overdamped", "underdamped", "unzeroed", "unleveled"]
+  - ["감쇠 검사", gear, "run a test는 검사를 실행한다는 말이고, to assess로 목적을 바로 붙여요. 방형파 검사는 감쇠가 알맞은지 파형 모양으로 보여 줘요.", "the cuff", "모니터 평가하려고 방형파 검사를 해볼게요.", "압력백 평가하려고 방형파 검사를 해볼게요.", "assess", "replace", "upgrade", "restart"]
+  - ["압력백 점검", gear, "수치(300)를 그대로 말하면 대충이 아니라 정확히 했다는 느낌을 줘요. 압력백을 300mmHg로 유지해야 세척액이 일정하게 흘러요.", "the bag", "압력백은 300에 맞췄고 라인도 다시 고정했어요.", "압력백은 300에 맞췄고 라벨도 다시 붙였어요.", "flushed", "wiped", "capped", "clamped"]
+  - ["위험 설명", bulb, "can hide는 항상은 아니지만 그럴 수 있다는 가능성을 말해요. 감쇠된 파형은 수치를 왜곡해서, 파형이 이상하면 숫자만 믿지 말라는 이유를 전해요.", "A noisy trace", "감쇠된 파형은 실제로 압력이 얼마나 높은지 감출 수 있어요.", "감쇠된 파형은 실제로 산소포화도가 얼마나 낮은지 감출 수 있어요.", "hide", "reveal", "measure", "predict"]
+  - ["호전 보고", check, "now와 again으로 방금까지 문제였다가 해결됐다는 흐름을 짧게 담아요. patent는 막힘 없이 열려 있다는 뜻이에요.", "and the screen", "이제 라인도 고정됐고 파형도 다시 또렷해요.", "이제 라인도 개통됐고 알람도 다시 정상이에요.", "patent", "capped", "removed", "labeled"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 동맥관 파형 문제해결 4문장 순서
+    why: 먼저 파형이 눌린 원인을 점검하고, 찾은 공기를 세척으로 없앤 다음, 방형파 검사로 시스템을 평가하고, 파형이 돌아온 것을 확인해요.
+    lines:
+    - ["The waveform looks flat, so I'm checking for air and kinks.", magnify, "파형이 납작해서 공기랑 꺾인 곳을 확인하고 있어요", "점검"]
+    - ["I found a bubble, so I re-flushed the line with the bag at 300.", gear, "기포를 찾아서 압력백 300으로 라인을 다시 세척했어요", "세척"]
+    - ["After that fix, I'll run a square-wave test to assess the system.", gear, "그렇게 고친 뒤 방형파 검사로 시스템을 평가할게요", "검사"]
+    - ["With a good square-wave test, the line's patent and the trace looks crisp.", check, "방형파 검사가 좋으니 라인도 개통됐고 파형도 또렷해요", "확인"]
+- title: 흉관 배액량·기포 감시
+  s:
+  - ["기포 해석", magnify, "suggests는 단정하지 않고 가능성을 말해요. 수봉 챔버에서 끊임없이 기포가 오르면 공기가 새고 있을 수 있다는 신호예요.", "a full canister", "계속 기포가 나는 건 시스템 어딘가 물이 새는 걸 시사해요.", "계속 기포가 나는 건 몸 어딘가 공기가 새는 걸 시사해요.", "leak", "clot", "kink", "spill"]
+  - ["연결부 점검", magnify, "before assuming은 결론 내리기 전에라는 순서를 말해요. 새는 곳을 환자 쪽에서 찾기 전에 쉬운 연결부부터 보는 게 순서예요.", "all the labels", "환자 쪽이라고 단정하기 전에 연결부 라벨부터 다 확인할게요.", "환자 쪽이라고 단정하기 전에 배액통 눈금부터 다 확인할게요.", "before", "after", "while", "without"]
+  - ["급증 보고", siren, "jumped to처럼 동사로 변화를 말하면 숫자만 읽을 때보다 급하다는 느낌이 전해져요. 신선한 혈액이 한 시간에 200mL면 바로 알려야 하는 양이에요.", "of clear fluid", "배출량이 두 시간 만에 신선한 혈액 200mL로 급증했어요.", "수집통이 한 시간 만에 신선한 혈액 200mL로 가득 찼어요.", "fresh", "old", "dark", "dried"]
+  - ["튜빙 추적", magnify, "from … to …로 시작점과 끝점을 말하면 어디까지 봤는지 빠짐없이 들려요. 새는 곳을 찾으려고 가슴벽에서 배액통까지 눈과 손으로 따라가요.", "to the wall outlet", "흉벽부터 흡인 벽 연결구까지 튜빙을 쭉 따라가봤어요.", "흉벽부터 배액통까지 튜빙을 쭉 닦아봤어요.", "traced", "wiped", "measured", "photographed"]
+  - ["기포 판단", speech, "isn't A — it's B는 흔한 오해를 부정하고 바로 정답을 말하는 대조 틀이에요. 기침 때 잠깐 나는 기포와 계속 나는 기포는 달라요.", "sneezing", "이 정도 기포는 재채기 때문이 아니에요, 새는 거예요.", "이 정도 기포는 체위 때문이 아니에요, 새는 거예요.", "leak", "kink", "clot", "crack"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 흉관 기포 감시 4문장 순서
+    why: 기포가 호흡 때문이 아니라는 판단이 먼저, 이어 연결부를 확인하고, 튜빙을 따라가며 찾고, 그래도 계속되면 선생님께 알려요.
+    lines:
+    - ["This much bubbling isn't from him breathing — it's a leak.", speech, "이 정도 기포는 호흡 때문이 아니에요, 새는 거예요", "판단"]
+    - ["To find it, I'll check all connections before assuming it's the patient.", magnify, "찾으려고 환자 쪽이라 단정하기 전에 연결부를 다 볼게요", "점검"]
+    - ["Once the connections are tight, I'll trace the tubing from the chest wall to the canister.", magnify, "연결부가 조여지면 흉벽부터 배액통까지 튜빙을 따라갈게요", "추적"]
+    - ["If it still bubbles after that, I'll call the physician.", bell, "그래도 기포가 나면 의사를 부를게요", "보고"]
+- title: 흉관 파동·개통 확인
+  s:
+  - ["개통 판단", monitor, "so로 관찰 뒤에 결론을 바로 붙이는 구조예요. 호흡에 맞춰 물높이가 움직이면 관이 흉강과 이어져 막히지 않았다는 뜻이에요.", "with the suction,", "수봉이 재채기에 맞춰 오르내리니까 개통돼 있는 거예요.", "수봉이 호흡에 맞춰 오르내리니까 그가 편안한 거예요.", "respiration", "compression", "medication", "temperature"]
+  - ["원인 설명", bulb, "could mean은 확정이 아니라 가능성이라서 아직 원인을 단정하지 않는 말투예요. 움직임이 없을 때 막힌 이유를 두 가지로 나눠 말하면 다음 점검이 쉬워져요.", "a low reading", "물결이 없으면 혈전이거나 관이 빠진 걸 수도 있어요.", "물결이 없으면 공기이거나 관이 꺾인 걸 수도 있어요.", "clot", "leak", "bubble", "crack"]
+  - ["개통 시도", gear, "gently and reassess는 부드럽게 한 뒤 반드시 다시 확인한다는 흐름을 한 구에 담아요. 막힌 것 같아도 세게 하지 않는 안전한 태도예요. 훑어내는 방법은 병원 지침에 따라요.", "gently and measure", "튜빙을 부드럽게 닦아내고 다시 평가할게요.", "튜빙을 부드럽게 풀어내고 다시 평가할게요.", "reassess", "restart", "replace", "relabel"]
+  - ["수위 관찰", chartup, "a few centimeters처럼 대략의 크기를 말하면 얼마나 움직이는지 그려져요. each breath는 호흡 한 번마다 반복된다는 뜻이라 계속되는 움직임을 알려요.", "The air pressure", "호흡할 때마다 액체 높이가 몇 밀리미터씩 오르내려요.", "움직일 때마다 액체 높이가 몇 센티미터씩 오르내려요.", "breath", "hour", "shift", "day"]
+  - ["기침 유도", stetho, "ask him to로 환자에게 협조를 구하는 말투라 지시가 아니라 부탁으로 들려요. 기침은 흉강 압력을 올려서 수봉이 움직이는지 보게 해 줘요.", "to wave once", "한 번 기침해달라고 하고 기포가 올라오는지 지켜볼게요.", "두 번 기침해달라고 하고 물결치는 움직임이 있는지 지켜볼게요.", "cough", "blink", "wave", "nod"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 흉관 개통 확인 4문장 순서
+    why: 움직임이 약하다는 관찰이 먼저이고, 가능한 원인을 말한 뒤, 부드럽게 조작해 보고, 마지막에 호흡마다 움직이는지 다시 확인해요.
+    lines:
+    - ["The water seal is barely tidaling, so I'm checking it.", monitor, "수봉이 거의 안 움직여서 살펴보고 있어요", "관찰"]
+    - ["That could mean a clot or a kinked tube.", bulb, "혈전이거나 관이 꺾인 걸 수도 있어요", "원인"]
+    - ["To clear it, I'll milk the tubing gently and reassess.", gear, "풀려고 튜빙을 부드럽게 훑어내고 다시 평가할게요", "조치"]
+    - ["Now the fluid level rises and falls a few centimeters each breath.", chartup, "이제 호흡마다 액체 높이가 몇 센티미터씩 오르내려요", "재확인"]

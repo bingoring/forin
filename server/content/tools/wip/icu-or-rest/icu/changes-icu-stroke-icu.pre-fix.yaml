@@ -1,0 +1,439 @@
+theme: icu-stroke-icu
+changes:
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-word
+  fields:
+  - ko
+  why: 같은 ko(말)인 speech(말·언어)와 가른다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-turn
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 구 단위 헤드워드로(문장 쓰임에 맞춤); 구(turn down)에 맞추고 같은 ko(줄이다)인 reduce와 가른다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-difficult
+  fields:
+  - ko
+  why: 문장 "not trying to be difficult"은 까다롭게 굴다 뜻이라 힘든(hard)과 가른다
+- kind: word
+  id: w-clear
+  fields:
+  - ko
+  why: 문장 "words aren't clear"에 맞추고 맑아지다(동사)는 형용사 쓰임과 맞지 않는다
+- kind: word-remove
+  id: w-bad
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-call
+  fields:
+  - ko
+  why: 문장이 연락하다 쓰임이 대부분이라 맞춘다
+- kind: word-remove
+  id: w-head
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-doctor
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-rule
+  fields:
+  - en
+  - ipa
+  why: 구 단위 헤드워드로(문장 쓰임에 맞춤)
+- kind: word
+  id: w-update
+  fields:
+  - ko
+  why: 같은 ko(알리다)인 notify와 가른다
+- kind: word
+  id: w-react
+  fields:
+  - ko
+  why: 같은 ko(반응하다)인 respond와 가르고 문장(pupils reacting)과 맞춘다
+- kind: word
+  id: w-confirm
+  fields:
+  - ko
+  why: 같은 ko(확인하다)인 check와 정답이 둘이 되지 않게 가른다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-reduce
+  fields:
+  - ko
+  why: 같은 ko(줄이다)인 turn down과 가른다
+- kind: word-remove
+  id: w-go
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-day
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-stat
+  fields:
+  - ko
+  why: 같은 ko(즉시)인 immediately와 가른다
+- kind: word-remove
+  id: w-come
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-make
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word
+  id: w-notify
+  fields:
+  - ko
+  why: 같은 ko(알리다)인 update와 가른다
+- kind: word
+  id: w-move
+  fields:
+  - ko
+  why: 문장 쓰임이 옮기다·움직이다·이동하다로 갈려 둘을 덮는 ko로 맞춘다
+- kind: word-remove
+  id: w-way
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-easy
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-later
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word
+  id: w-med
+  fields:
+  - ko
+  why: 같은 ko(약)인 medicine과 가른다 — 줄임말
+- kind: word-remove
+  id: w-room
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-assist
+  fields:
+  - ko
+  why: 같은 ko(돕다)인 help와 정답이 둘이 되지 않게 가른다
+- kind: word
+  id: w-fast
+  fields:
+  - ko
+  why: 같은 ko 계열인 quickly와 소리 선택에서 헷갈리지 않게 가른다
+- kind: word-remove
+  id: w-good
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-talk
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-want
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: sentence
+  situation: NIHSS 신경 사정
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: NIHSS 신경 사정
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: NIHSS 신경 사정
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 혈압 목표 관리
+  index: 2
+  fields:
+  - words
+  why: bring down(낮추다)이라 가져오다(헤드워드 bring)와 쓰임이 다르다
+- kind: sentence
+  situation: 삼킴 전 금식·흡인 예방
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 삼킴 전 금식·흡인 예방
+  index: 4
+  fields:
+  - words
+  why: clear가 통과시키다 뜻이라 헤드워드 clear(또렷한)와 맞지 않는다
+- kind: sentence
+  situation: 재관류 후 감시
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 재관류 후 감시
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 재관류 후 감시
+  index: 5
+  fields:
+  - words
+  why: call button(호출 버튼)이라 헤드워드 call(연락하다)과 맞지 않는다
+- kind: sentence
+  situation: 두부 거상·체위
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 두부 거상·체위
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 두부 거상·체위
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 두부 거상·체위
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 의식 변화 관찰
+  index: 1
+  fields:
+  - words
+  why: keep -ing(계속 ~하다)라 유지하다(헤드워드 keep)와 맞지 않는다
+- kind: sentence
+  situation: 의식 변화 관찰
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 의식 변화 관찰
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 의식 변화 관찰
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 대뇌부종 진행 감시
+  index: 1
+  fields:
+  - words
+  why: 명사 check(검진)라 동사 헤드워드 check(확인하다)와 맞지 않는다
+- kind: sentence
+  situation: 대뇌부종 진행 감시
+  index: 4
+  fields:
+  - words
+  why: 동사 changes(바뀌다)라 명사 헤드워드 change(변화)와 맞지 않는다
+- kind: sentence
+  situation: 혈압 변동 정밀 조절
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 혈압 변동 정밀 조절
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 삼킴장애 관리·영양 경로
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 삼킴장애 관리·영양 경로
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 출혈성 뇌졸중 응고 역전
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 혈전제거 후 재관류 관리
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 혈전제거 후 재관류 관리
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 발작 동반 관리
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 발작 동반 관리
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 발작 동반 관리
+  index: 4
+  fields:
+  - words
+  why: less than이라 헤드워드 little(약간의)과 맞지 않는다
+- kind: sentence
+  situation: 발작 동반 관리
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 조기 재활·합병증 예방
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 조기 재활·합병증 예방
+  index: 2
+  fields:
+  - words
+  why: 동사 changing(바꾸다)이라 명사 헤드워드 change(변화)와 맞지 않는다
+- kind: sentence
+  situation: 조기 재활·합병증 예방
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 이송·영상 조율
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 악성 대뇌부종 뇌탈출 위기
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 악성 대뇌부종 뇌탈출 위기
+  index: 5
+  fields:
+  - words
+  why: keep you updated(계속 알리다)라 유지하다(헤드워드 keep)와 맞지 않는다
+- kind: sentence
+  situation: 대혈관 급성 악화
+  index: 0
+  fields:
+  - words
+  why: get ready는 데려가다(헤드워드 get)와 쓰임이 다르다
+- kind: sentence
+  situation: 대혈관 급성 악화
+  index: 2
+  fields:
+  - words
+  why: call report(인계 보고하다) 관용 표현이라 헤드워드 call(연락하다)과 맞지 않는다
+- kind: sentence
+  situation: 대혈관 급성 악화
+  index: 3
+  fields:
+  - words
+  why: last가 형용사(지난)라 지속되다(헤드워드)와 맞지 않는다
+- kind: sentence
+  situation: 대혈관 급성 악화
+  index: 5
+  fields:
+  - words
+  why: last(마지막)와 well(멀쩡한)이 헤드워드 뜻과 맞지 않는다
+- kind: sentence
+  situation: 급성 의식저하 기도 위기
+  index: 0
+  fields:
+  - words
+  why: get ready는 데려가다(헤드워드 get)와 쓰임이 다르다
+- kind: sentence
+  situation: 급성 의식저하 기도 위기
+  index: 1
+  fields:
+  - words
+  why: 동사 position(위치를 잡다)이라 명사 헤드워드 position(자세)과 맞지 않는다
+- kind: sentence
+  situation: 급성 의식저하 기도 위기
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 심각 흡인성폐렴 급변
+  index: 2
+  fields:
+  - words
+  why: keep -ing(계속)와 명사 support(보조 치료)가 헤드워드 뜻과 맞지 않는다
+- kind: sentence
+  situation: 심각 흡인성폐렴 급변
+  index: 3
+  fields:
+  - words
+  why: 동사 dropped라 명사 헤드워드 drop(하락)과 맞지 않는다
+- kind: sentence
+  situation: 심각 흡인성폐렴 급변
+  index: 4
+  fields:
+  - words
+  why: get(구하다)이라 데려가다(헤드워드 get)와 쓰임이 다르다
+- kind: sentence
+  situation: 광범위 뇌손상 목표·예후 소통
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 광범위 뇌손상 목표·예후 소통
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 광범위 뇌손상 목표·예후 소통
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기

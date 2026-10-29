@@ -1,0 +1,41 @@
+# tag, icon, why, decoy, d1, d2, ans, w1, w2, w3
+D = {}
+D[0] = dict(s=[
+("근력 사정","stetho","'so please'로 이유를 먼저 말하고 요청을 이으면 왜 쥐라는지 알고 따라 해요. 'both'는 양쪽 힘을 견줘 본다는 신호예요.","both of my feet",
+ "힘을 확인할 테니 제 두 손가락을 꽉 쥐어 보세요.","힘을 확인할 테니 제 한 손을 꽉 쥐어 보세요.","strength","balance","vision","hearing"),
+("지남력 확인","calendar","'where'와 'what month'를 한 문장에 묶으면 장소와 시기를 한 번에 물어요. 'Can you'는 명령이 아니라 부탁이라 환자가 덜 위축돼요.","and what year",
+ "여기가 어디인지, 지금 몇 시인지 말씀해 주시겠어요?","여기가 어디인지, 지금 몇 요일인지 말씀해 주시겠어요?","month","minute","second","decade"),
+("눈 따라가기","magnify","'just your eyes'로 범위를 정하면 고개를 돌리지 않고 눈만 움직이면 된다는 걸 알아요. 'please'를 끝에 붙이면 지시가 부드러워져요.","my badge",
+ "눈으로만 제 손바닥을 따라와 주세요.","고개로만 제 손가락을 따라와 주세요.","eyes","ears","lips","chin"),
+("안심시키기","shield","'no rush'는 대답이 느려도 괜찮다는 안심을 줘요. 재촉하지 않으면 말이 막힌 환자가 덜 긴장해요.","to explain",
+ "천천히 하셔도 돼요, 긴장하지 않으셔도 됩니다.","다시 하셔도 돼요, 서두르지 않으셔도 됩니다.","time","seat","turn","pill"),
+("대체 표현","speech","'you can point instead'는 말이 막혀도 다른 방법으로 답할 길을 열어 줘요. 'won't come'은 환자 잘못이 아니라 단어가 떠오르지 않는 상태라는 뜻이에요.","if you feel tired",
+ "말이 안 나와도 괜찮아요, 대신 손으로 쓰셔도 돼요.","이름이 안 나와도 괜찮아요, 대신 손으로 가리키셔도 돼요.","okay","rude","wrong","silly"),
+("위치 안내","me","'so you can see me'는 서는 위치의 목적을 말해요. 시야 한쪽이 비는 환자는 보이는 쪽에 서야 해서 어느 쪽인지 함께 알려요.","at the foot of the bed",
+ "제가 보이시도록 왼쪽에 서 있을게요.","제가 보이시도록 문 쪽에 서 있을게요.","side","arm","foot","shoulder"),
+], order=dict(ko="신경 사정 안내 4문장 순서",
+ why="근력 요청으로 시작해 앞 답을 받아 장소·시기 질문으로 넘어가고, 그 답을 받아 눈 추적을 요청한 뒤, 세 가지를 모두 마친 환자에게 감사해요.",
+ lines=[("I'm going to check your strength, so please squeeze both of my hands.","stetho","힘을 확인할 테니 제 두 손을 꽉 쥐어 보세요","근력"),
+  ("Nice and firm. Now tell me what month it is.","calendar","좋아요 단단하네요 이제 지금 몇 월인지 말해 주세요","지남력"),
+  ("Good, that's right. Now follow my finger with just your eyes.","magnify","좋아요 맞아요 이제 눈으로만 제 손가락을 따라와 주세요","눈 추적"),
+  ("Thank you for doing all three of those with me.","star","세 가지를 모두 함께 해 주셔서 감사해요","감사")]))
+
+D[1] = dict(s=[
+("혈압 설명","monitor","'to protect your brain'을 끝에 붙이면 범위를 정한 이유가 먼저 환자에게 닿아요. 'specific range'는 한 숫자가 아니라 정해진 구간이라는 말이에요.","on the bedside monitor",
+ "심장을 보호하기 위해 혈압을 정해진 범위 안으로 유지하고 있어요.","폐를 보호하기 위해 혈압을 정해진 범위 안으로 유지하고 있어요.","range","rhythm","order","place"),
+("알람 안심","bell","'just means'는 알람이 곧 위험이라는 오해를 풀어 줘요. 'very closely'는 감시를 강조해 안심을 줘요.","to the doctor",
+ "화면은 그냥 저희가 수치를 아주 자세히 지켜보고 있다는 뜻이에요.","표시등은 그냥 저희가 수치를 아주 자세히 지켜보고 있다는 뜻이에요.","alarm","cuff","wire","screen"),
+("약 설명","pill","'gently'는 혈압을 급하게 떨어뜨리지 않는다는 말이에요. 뇌 혈류가 줄지 않게 천천히 낮춰요.","through the line",
+ "통증을 부드럽게 줄이는 약을 드리고 있어요.","열을 부드럽게 낮추는 약을 드리고 있어요.","medicine","blanket","pillow","snack"),
+("수치 설명","chartup","'still within our target'은 수치가 올랐어도 허용 범위라는 근거를 알려요. 'a little'은 변화 폭이 작다는 말이에요.","above our alarm",
+ "수치가 조금 올라갔지만, 아직 평소 범위 안이에요.","수치가 조금 올라갔지만, 아직 알람 범위 안이에요.","target","budget","bill","order"),
+("알람 조정","bell","'but I still need it on'으로 소리는 줄여도 알람 자체는 끄지 않는다는 점을 분명히 해요. 'for safety'가 이유예요.","for the night",
+ "밝기는 줄여 드릴게요, 다만 안전을 위해 켜 두어야 해요.","소리는 줄여 드릴게요, 다만 기록을 위해 켜 두어야 해요.","volume","pressure","speed","color"),
+("뇌출혈 설명","board","'Because this was a bleed'로 이유를 먼저 말하면 목표가 다른 까닭이 분명해요. 'than we would for a clot'은 비교 대상이에요.","than we would for a fever",
+ "이건 출혈이라 감염일 때보다 혈압을 더 낮게 유지해요.","이건 외상이라 혈전일 때보다 혈압을 더 낮게 유지해요.","bleed","burn","cut","bruise"),
+], order=dict(ko="혈압 목표 설명 4문장 순서",
+ why="범위를 정해 유지하는 이유를 먼저 말하고, 범위를 벗어나면 알람이 울린다고 설명한 뒤, 그 알람 소리만 줄이겠다고 하고, 소리를 줄여도 계속 지켜본다고 맺어요.",
+ lines=[("We're keeping your pressure in a specific range to protect your brain.","monitor","뇌를 보호하기 위해 혈압을 정해진 범위로 유지하고 있어요","이유"),
+  ("The alarm sounds when it moves outside that range.","bell","그 범위를 벗어나면 알람이 울려요","알람"),
+  ("I'll turn down the volume on it, but it stays on.","speaker","그 소리는 줄이지만 알람은 계속 켜 둬요","소리"),
+  ("Even with the volume down, we're watching your numbers very closely.","magnify","소리를 줄여도 수치는 아주 자세히 지켜보고 있어요","감시")]))

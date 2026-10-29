@@ -1,0 +1,606 @@
+sent:
+- s: 0
+  i: 0
+  d2: 감각을 확인할 테니 제 두 손을 꽉 쥐어 보세요.
+- s: 0
+  i: 1
+  dko:
+  - 여기가 어디인지, 지금 몇 월인지 적어 주시겠어요?
+  - 여기가 어디인지, 지금 몇 월인지 떠올려 보시겠어요?
+- s: 0
+  i: 2
+  d2: 눈으로만 제 볼펜을 따라와 주세요.
+  decoy: Follow my badge
+- s: 0
+  i: 3
+  decoy: Take your seat
+- s: 1
+  i: 1
+  decoy: your meals
+  blank:
+    answer: alarm
+    options:
+    - alarm
+    - cuff
+    - wire
+    - pump
+- s: 1
+  i: 2
+  d1: 혈압을 꾸준히 낮추는 약을 드리고 있어요.
+  d2: 혈압을 부드럽게 낮추는 약을 방금 새로 달았어요.
+  decoy: a warm blanket
+  blank:
+    answer: medicine
+    options:
+    - medicine
+    - blanket
+    - bath
+    - drink
+- s: 1
+  i: 3
+  blank:
+    answer: target
+    options:
+    - target
+    - baseline
+    - schedule
+    - order
+- s: 1
+  i: 5
+  decoy: for a fever
+- s: 2
+  i: 0
+  decoy: you eat
+- s: 2
+  i: 2
+  blank:
+    answer: moisten
+    options:
+    - moisten
+    - wrap
+    - numb
+    - scrub
+- s: 2
+  i: 4
+  decoy: a popsicle
+  blank:
+    answer: once
+    options:
+    - once
+    - because
+    - although
+    - whereas
+- s: 3
+  i: 0
+  d2: 새로운 위약감이나 두통이 있으면 바로 보고할게요.
+- s: 3
+  i: 1
+  dko:
+  - 두통이 심해지면 바로 콜벨을 눌러 주세요.
+  - 두통이 심해지면 바로 손을 흔들어 주세요.
+  decoy: if your back
+- s: 3
+  i: 2
+  d2: 출혈 징후가 있는지 밤새 지켜보고 있어요.
+- s: 4
+  i: 2
+  decoy: any draft
+- s: 4
+  i: 4
+  d2: 들것 머리 쪽을 약 삼십 도 정도 세워 둡니다.
+  decoy: the side rails
+- s: 5
+  i: 1
+  d1: 작은 변화도 중요하니까 간호사실에 알려주세요.
+  decoy: letting him
+- s: 5
+  i: 2
+  decoy: sleeps
+  blank:
+    answer: wake
+    options:
+    - wake
+    - weigh
+    - dress
+    - wash
+- s: 5
+  i: 4
+  dko:
+  - 가족분 손을 꽉 쥐고 눈을 떠 보시라고 요청해 볼게요.
+  - 제 손을 꽉 쥐고 눈을 떠 보시라고 크게 불러 볼게요.
+- s: 5
+  i: 5
+  dko:
+  - 어제보다 깨우기 힘들어지면 바로 의사 선생님께 연락할게요.
+  - 낮보다 깨우기 힘들어지면 바로 의사 선생님께 연락할게요.
+- s: 6
+  i: 0
+  d2: 가려움이 심해지는 건 저희가 아주 심각하게 받아들이는 신호예요.
+  decoy: A mild headache
+- s: 6
+  i: 1
+  dko:
+  - 신경학적 검진을 확인하고 지금 CT실에 연락드릴게요.
+  - 신경학적 검진을 확인하고 지금 담당 간호사께 연락드릴게요.
+- s: 6
+  i: 2
+  decoy: a urine test
+- s: 6
+  i: 4
+  d2: 동공과 쥐는 힘 결과를 지금 바로 의사께 알릴게요.
+- s: 6
+  i: 5
+  decoy: fix the bed
+  blank:
+    answer: close
+    options:
+    - close
+    - late
+    - up
+    - warm
+- s: 7
+  i: 2
+  d2: 동공과 반응을 둘이서 번갈아 지켜보고 있어요.
+- s: 7
+  i: 3
+  d2: 통증은 두개골 안의 압력을 높여요.
+  blank:
+    answer: pressure
+    options:
+    - pressure
+    - heat
+    - noise
+    - oxygen
+- s: 7
+  i: 4
+  decoy: the pharmacy
+  blank:
+    answer: page
+    options:
+    - page
+    - follow
+    - relieve
+    - thank
+- s: 8
+  i: 0
+  dko:
+  - 인계하기 전에 목표 범위부터 확인하죠.
+  - 이송하기 전에 목표 범위부터 확인하죠.
+  decoy: the diet order
+  blank:
+    answer: range
+    options:
+    - range
+    - name
+    - shape
+    - room
+- s: 8
+  i: 1
+  dko:
+  - 적정하기 전에 니카르디핀 펌프 설정부터 확인해 주세요.
+  - 니카르디핀을 천천히 적정하는 동안 곁을 지켜 주세요.
+  blank:
+    answer: titrate
+    options:
+    - titrate
+    - label
+    - hang
+    - chart
+- s: 8
+  i: 3
+  decoy: one-twenty and one-fifty
+- s: 8
+  i: 5
+  dko:
+  - 오 분 뒤에 혈압을 다시 확인하고 차트에 적을게요.
+  - 오 분 뒤에 혈압을 다시 확인하고 펌프를 맞출게요.
+  blank:
+    answer: recheck
+    options:
+    - recheck
+    - predict
+    - estimate
+    - announce
+- s: 9
+  i: 0
+  decoy: her pillow
+  blank:
+    answer: small
+    options:
+    - small
+    - huge
+    - stiff
+    - heavy
+- s: 9
+  i: 2
+  blank:
+    answer: evaluate
+    options:
+    - evaluate
+    - cancel
+    - photograph
+    - reschedule
+- s: 9
+  i: 3
+  dko:
+  - 코에 넣은 뒤 테이프로 고정해요.
+  - 코로 넣기 전에 길이를 재요.
+- s: 9
+  i: 5
+  d1: 안전하다고 확인되면 부드러운 음식 목록을 드릴게요.
+- s: 10
+  i: 0
+  dko:
+  - 네, 지금 역전제와 비타민 K를 투여하죠.
+  - 네, 지금 역전제와 비타민 K를 처방받죠.
+  blank:
+    answer: prepare
+    options:
+    - prepare
+    - warm
+    - count
+    - scan
+- s: 10
+  i: 1
+  dko:
+  - 응고 검사를 채혈하고 그 자리를 꾹 눌러 주세요.
+  - 응고 검사 튜브에 환자 라벨을 붙여 주세요.
+  decoy: and freeze it
+- s: 10
+  i: 2
+  decoy: the swelling
+  blank:
+    answer: reverse
+    options:
+    - reverse
+    - document
+    - explain
+    - photograph
+- s: 10
+  i: 5
+  dko:
+  - 투여하고 나면 한 시간 동안 반응을 지켜볼게요.
+  - 투여하고 나면 주사 줄을 생리식염수로 씻을게요.
+  blank:
+    answer: labs
+    options:
+    - labs
+    - weight
+    - dressing
+    - diet
+- s: 11
+  i: 0
+  blank:
+    answer: closely
+    options:
+    - closely
+    - briefly
+    - remotely
+    - rarely
+- s: 11
+  i: 1
+  dko:
+  - 위약감이 다시 생기면 바로 콜벨을 눌러 주세요.
+  - 위약감이 다시 생기면 바로 손을 들어 주세요.
+  decoy: if any itching
+- s: 11
+  i: 2
+  blank:
+    answer: steady
+    options:
+    - steady
+    - fast
+    - slow
+    - thick
+- s: 11
+  i: 4
+  tag: 재폐색 설명
+  d2: 동맥은 다시 열렸지만, 또 부을 수도 있어요.
+- s: 11
+  i: 5
+  why: '''helps''는 확실히 막아 준다는 약속이 아니라 도움이 된다는 표현이에요. ''that''은 앞 문장의 다시 좁아짐(재폐색)을 가리켜요.'
+  decoy: Keeping your temperature
+  blank:
+    answer: prevent
+    options:
+    - prevent
+    - cause
+    - predict
+    - measure
+- s: 12
+  i: 1
+  dko:
+  - 안전하게 조치했고, 지금 의사 선생님이 오고 계세요.
+  - 안전하게 조치했고, 지금 담당 간호사께 알리고 있어요.
+  blank:
+    answer: notifying
+    options:
+    - notifying
+    - relieving
+    - following
+    - thanking
+- s: 12
+  i: 2
+  d1: 가족분과 함께 지켜보고, 더 생기지 않도록 약을 시작할 수도 있어요.
+  decoy: an ice pack
+  blank:
+    answer: closely
+    options:
+    - closely
+    - briefly
+    - remotely
+    - rarely
+- s: 12
+  i: 3
+  decoy: lean on
+- s: 12
+  i: 4
+  decoy: two seconds
+- s: 13
+  i: 1
+  dko:
+  - 천천히 할 거고, 끝나면 제가 의자에 앉혀 드릴게요.
+  - 천천히 할 거고, 먼저 제가 보조 벨트를 채워 드릴게요.
+  blank:
+    answer: support
+    options:
+    - support
+    - praise
+    - time
+    - quiz
+- s: 14
+  i: 1
+  dko:
+  - 휴대용 산소통이 가득 찼는지 먼저 볼게요.
+  - 휴대용 산소와 응급 약은 침대 아래에 둘게요.
+- s: 14
+  i: 2
+  decoy: for lunch
+  blank:
+    answer: ready
+    options:
+    - ready
+    - late
+    - full
+    - closed
+- s: 14
+  i: 4
+  dko:
+  - 이송용 모니터 배터리가 찼는지 볼게요.
+  - 이송용 모니터와 백밸브마스크는 발치에 둘게요.
+  blank:
+    answer: transport
+    options:
+    - transport
+    - fetal
+    - baby
+    - glucose
+- s: 14
+  i: 5
+  decoy: to call
+  blank:
+    answer: leave
+    options:
+    - leave
+    - arrive
+    - rest
+    - pack
+- s: 15
+  i: 1
+  d1: 압력을 완화하기 위해 수술 동의서를 받을 수도 있어요.
+  blank:
+    answer: surgery
+    options:
+    - surgery
+    - bedrest
+    - dialysis
+    - rehab
+- s: 15
+  i: 2
+  blank:
+    answer: brain
+    options:
+    - brain
+    - heart
+    - lungs
+    - kidneys
+- s: 15
+  i: 3
+  blank:
+    answer: swell
+    options:
+    - swell
+    - drain
+    - breathe
+    - rest
+- s: 16
+  i: 0
+  dko:
+  - tPA를 중단하고 역전 중에 활력징후를 재세요.
+  - tPA를 중단하고 역전 중에 출혈 부위를 보세요.
+- s: 16
+  i: 1
+  decoy: a blanket
+- s: 16
+  i: 2
+  dko:
+  - 지금 바로 동맥관 수치를 띄우죠.
+  - 지금 바로 혈압 커프를 바꾸죠.
+  blank:
+    answer: control
+    options:
+    - control
+    - chart
+    - discuss
+    - print
+- s: 17
+  i: 0
+  dko:
+  - 즉시 혈관조영을 위해 동의서를 받죠.
+  - 즉시 혈관조영을 위해 이송팀을 부르죠.
+  blank:
+    answer: ready
+    options:
+    - ready
+    - dressed
+    - seated
+    - washed
+- s: 17
+  i: 1
+  dko:
+  - 이동하기 전에 기도와 라인부터 정리하세요.
+  - 이동하기 전에 기도와 라인을 테이프로 고정하세요.
+  decoy: and glasses
+  blank:
+    answer: move
+    options:
+    - move
+    - document
+    - talk
+    - sign
+- s: 17
+  i: 2
+  decoy: to the front desk
+- s: 17
+  i: 3
+  d1: 지난 십 분 사이 왼쪽이 완전히 저렸어요.
+  decoy: Her left hand
+- s: 17
+  i: 4
+  blank:
+    answer: opening
+    options:
+    - opening
+    - closing
+    - cleaning
+    - inspecting
+- s: 17
+  i: 5
+  dko:
+  - 마지막으로 멀쩡했던 시각과 NIHSS 점수를 화면으로 보여드릴게요.
+  - 마지막으로 멀쩡했던 시각을 가족분께 다시 여쭤볼게요.
+  decoy: and her pain
+  blank:
+    answer: score
+    options:
+    - score
+    - card
+    - form
+    - sticker
+- s: 18
+  i: 0
+  dko:
+  - 삽관 트레이와 흡인은 머리맡에 둘게요.
+  - 삽관 트레이와 흡인은 다 쓰면 치워 둘게요.
+  decoy: and lunch ready
+- s: 18
+  i: 1
+  dko:
+  - 사전 산소화하는 동안 흡인을 켜 두죠.
+  - 사전 산소화하면서 마스크를 꼭 맞추죠.
+  decoy: his IV pole
+  blank:
+    answer: position
+    options:
+    - position
+    - describe
+    - document
+    - photograph
+- s: 18
+  i: 2
+  decoy: to sign
+  blank:
+    answer: ready
+    options:
+    - ready
+    - late
+    - scheduled
+    - assigned
+- s: 18
+  i: 3
+  decoy: his left arm anymore
+- s: 18
+  i: 4
+  dko:
+  - 준비되시면 튜브 커프부터 확인해 드릴게요.
+  - 튜브를 건네기 전에 스타일렛을 넣어 둘게요.
+  decoy: the gloves
+- s: 18
+  i: 5
+  blank:
+    answer: steady
+    options:
+    - steady
+    - low
+    - high
+    - short
+- s: 19
+  i: 0
+  dko:
+  - 기도를 흡인하고 흡인 통을 갈죠.
+  - 기도를 흡인하고 산소 줄 연결을 보죠.
+  decoy: the lights
+  blank:
+    answer: raise
+    options:
+    - raise
+    - read
+    - note
+    - print
+- s: 19
+  i: 3
+  decoy: into the nineties
+- s: 19
+  i: 4
+  dko:
+  - 스탯으로 흉부 엑스레이 판을 등 뒤에 넣죠.
+  - 스탯으로 흉부 엑스레이와 ABG 결과를 같이 보죠.
+- s: 19
+  i: 5
+  dko:
+  - 비재호흡마스크로 바꾸고 백이 부푸는지 볼게요.
+  - 맞는 크기의 비재호흡마스크로 바꾸고 백을 채울게요.
+  decoy: to the cardiac monitor
+  blank:
+    answer: liters
+    options:
+    - liters
+    - percent
+    - drops
+    - milliliters
+- s: 20
+  i: 0
+  decoy: quick
+- s: 20
+  i: 1
+  blank:
+    answer: severe
+    options:
+    - severe
+    - mild
+    - small
+    - simple
+- s: 20
+  i: 2
+  d1: 그분이 원하셨을 것에 대해 의사 선생님과 이야기해 봐요.
+  decoy: you would have
+  blank:
+    answer: wanted
+    options:
+    - wanted
+    - feared
+    - regretted
+    - earned
+- s: 20
+  i: 3
+  decoy: in the hallway
+  blank:
+    answer: aware
+    options:
+    - aware
+    - proud
+    - fond
+    - tired
+- s: 20
+  i: 5
+  decoy: Take whatever food

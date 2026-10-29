@@ -1,0 +1,168 @@
+0:
+  - kind: slider
+    words: [w-strength]
+    cue: "His left arm lifts off the bed, but he can't push back against the nurse's hand."
+    scale: [normal strength, reduced strength, no strength]
+    answerAt: 1
+    why: "들어 올릴 수는 있어도 저항을 이기지 못하면 힘이 줄어든 상태예요. NIHSS 운동 항목은 중력을 이기는지, 저항에 버티는지를 보므로 본 대로 구체적으로 기록하고, 전보다 약해졌다면 바로 팀에 알려요."
+    example: "His strength is reduced on the left."
+    exKo: "왼쪽 힘이 떨어져 있어요."
+  - kind: context
+    words: [w-point]
+    word: point
+    ko: 가리키다
+    scenes:
+      - {who: 침상 옆에서, icon: me, en: "It's okay if the word won't come — you can point instead.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Unable to name objects, but able to point to each one correctly.", ok: true}
+      - {who: 환자에게, icon: me, en: "Please point to the object so we can document your expressive aphasia.", ok: false, fix: "If the word won't come, just point to what you mean."}
+    why: "의료진끼리는 aphasia 같은 용어가 정확하고 빨라요. 말이 막혀 불안한 환자에게는 같은 point를 용어 없이, 부담 주지 않는 말로 건네세요."
+  - kind: swap
+    words: [w-rush]
+    who: "환자에게 · 사정 안내"
+    icon: me
+    before: ["Take your time, ", "answer as fast as you can", "."]
+    options: ["there's no rush to answer", "answer as fast as you can", "please respond at your earliest convenience"]
+    answer: "there's no rush to answer"
+    notes: {"there's no rush to answer": "서두르지 않아도 된다고 분명히 알려 줘서 긴장을 풀어 줘요.", "answer as fast as you can": "앞의 'Take your time'과 부딪히고, 말이 막힌 환자를 더 조급하게 해요.", "please respond at your earliest convenience": "격식 차린 업무 문구라 침상에서는 어색하게 들려요."}
+    why: "말이 잘 안 나오는 환자는 조급해지기 쉬워서, 답할 시간이 충분하다고 직접 말해 주는 것이 사정에도 도움이 돼요."
+    ko: "천천히 하셔도 돼요, 서두르지 않으셔도 돼요"
+1:
+  - kind: slider
+    words: [w-little]
+    cue: "His pressure moved from 150 to 154, and the ordered range is 140 to 180."
+    scale: [a little higher, much higher, dangerously high]
+    answerAt: 0
+    why: "범위 안에서 조금 오른 것은 a little higher예요. 계속 지켜보다가, 처방된 목표 범위를 벗어나면 처방과 프로토콜대로 보고해요."
+    example: "Your number went up a little."
+    exKo: "수치가 조금 올라갔어요."
+  - kind: context
+    words: [w-target]
+    word: target
+    ko: 목표
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "What's the pressure target for this ischemic stroke?", ok: true}
+      - {who: 환자에게, icon: me, en: "Your target is strictly regulated to avoid hyperperfusion injury.", ok: false, fix: "We've set a safe range for your blood pressure, and your number is in it."}
+      - {who: 야간 인계, icon: board, en: "The target is in the order, and he's within target now.", ok: true}
+    why: "의료진끼리는 hyperperfusion 같은 용어와 목표를 바로 말해도 돼요. 환자에게는 같은 target을 안전한 범위와 지금 수치가 어떤지로 쉽게 풀어 주세요."
+  - kind: swap
+    words: [w-alarm]
+    who: "환자에게 · 모니터 설명"
+    icon: me
+    before: ["The alarm just means ", "the monitor detected an out-of-range parameter", "."]
+    options: ["we're watching your numbers closely", "the monitor detected an out-of-range parameter", "you are in immediate danger"]
+    answer: "we're watching your numbers closely"
+    notes: {"we're watching your numbers closely": "환자가 바로 알아듣고, 사람이 보고 있다는 안심을 줘요.", "the monitor detected an out-of-range parameter": "장비 용어라 환자는 무슨 뜻인지 몰라 더 불안해져요.", "you are in immediate danger": "사실과 달라서 환자를 겁먹게 해요."}
+    why: "알람 소리에 놀라는 환자에게는 기계의 판정보다 사람이 보고 있다는 사실을 먼저 알려 주세요."
+    ko: "알람은 저희가 수치를 자세히 지켜보고 있다는 뜻이에요"
+2:
+  - kind: slider
+    words: [w-thirsty]
+    cue: "Patient: \"I can't stop thinking about water — my throat feels like sandpaper.\""
+    scale: [a bit dry, thirsty, parched]
+    answerAt: 2
+    why: "목이 타는 듯하면 parched 쪽이에요. 갈증이 심해도 삼킴 선별 전에는 입으로 물을 드리지 않고, 입 안 관리로 불편을 줄이며 선별 시점은 처방과 프로토콜대로 알려 드려요."
+    example: "I know you're thirsty."
+    exKo: "목마르신 거 알아요."
+  - kind: context
+    words: [w-wait]
+    word: wait
+    ko: 기다리다
+    scenes:
+      - {who: 침상 옆에서, icon: me, en: "Water could go into your lungs right now, so let's wait.", ok: true}
+      - {who: 의사 라운드, icon: monitor, en: "Keep him NPO and wait for the swallow screen before any PO.", ok: true}
+      - {who: 환자에게, icon: me, en: "Deglutition screening is pending, so you will wait.", ok: false, fix: "You can't drink yet, so we'll wait for your swallow check first."}
+    why: "의료진끼리는 NPO, PO 같은 줄임말이 정확하고 빨라요. 목마른 환자에게는 같은 wait를 이유와 함께 쉬운 말로 설명해야 협조를 얻어요."
+  - kind: swap
+    words: [w-moisten]
+    who: "환자에게 · 구강 관리"
+    icon: me
+    before: ["I can ", "moisten your oral mucosa", " to help with the dryness."]
+    options: ["moisten your lips and mouth", "moisten your oral mucosa", "hydrate your buccal surfaces"]
+    answer: "moisten your lips and mouth"
+    notes: {"moisten your lips and mouth": "환자가 어디를 해 주는지 바로 알아들어요.", "moisten your oral mucosa": "해부학 용어라 환자는 낯설어해요.", "hydrate your buccal surfaces": "의학 용어를 겹쳐 써서 어색하고 정확히 어디인지 와닿지 않아요."}
+    why: "물을 못 마시는 환자에게는 무엇을 해 줄 수 있는지가 중요해서, 어디를 어떻게 하는지 쉬운 말로 알려 주세요."
+    ko: "건조한 게 나아지도록 입술과 입 안을 촉촉하게 해 드릴게요"
+3:
+  - kind: slider
+    words: [w-headache]
+    cue: "Two hours after the clot-busting drug: \"Suddenly my head is pounding, the worst headache I've ever had.\""
+    scale: [chart it later, tell the team soon, report immediately]
+    answerAt: 2
+    why: "혈전용해 치료 뒤 갑자기 생긴 심한 두통은 출혈 징후일 수 있어요. 기다리지 않고 바로 의사에게 알리고, 영상 검사 등 이후 처치는 지시대로 준비해요."
+    example: "Tell me if your headache gets worse."
+    exKo: "두통이 심해지면 말씀해 주세요."
+  - kind: context
+    words: [w-bleed]
+    word: bleed
+    ko: 출혈되다
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Any new neuro change after the lytic raises concern for a bleed.", ok: true}
+      - {who: 환자에게, icon: me, en: "You are at risk for hemorrhagic conversion, and any bleed would be catastrophic.", ok: false, fix: "We're watching closely for any bleeding, and we'll act right away if we see it."}
+      - {who: 야간 인계, icon: board, en: "No groin or gum bleed this shift, and the neuro exam is stable.", ok: true}
+    why: "의료진끼리는 hemorrhagic conversion 같은 용어와 위험을 그대로 말해도 돼요. 환자에게 같은 bleed를 파국처럼 말하면 겁만 주니, 무엇을 보고 있고 어떻게 대응할지로 풀어 주세요."
+  - kind: swap
+    words: [w-weakness]
+    who: "환자에게 · 감시 안내"
+    icon: me
+    before: ["I'll be checking you often for any new ", "motor deficit", " or headache."]
+    options: ["weakness", "motor deficit", "hemiparesis"]
+    answer: weakness
+    notes: {weakness: "환자가 몸에서 느끼는 말이라 바로 알아듣고 말해 줘요.", "motor deficit": "의료진끼리의 용어라 환자는 보고하기 어려워요.", hemiparesis: "한쪽 마비를 뜻하는 전문 용어라 환자에게는 낯설어요."}
+    why: "환자가 새 증상을 직접 알려야 하므로, 몸에서 느끼는 대로 말할 수 있는 쉬운 말로 물어보세요."
+    ko: "새로운 위약감이나 두통이 있는지 자주 확인할게요"
+4:
+  - kind: slider
+    words: [w-discomfort]
+    cue: "Patient: \"It's just a little uncomfortable, nothing sharp.\""
+    scale: [discomfort, pain, agony]
+    answerAt: 0
+    why: "날카롭지 않고 거북한 정도면 discomfort예요. 각도 때문이면 조정해서 덜어 주지만, 갑자기 심해진 통증이나 새 증상은 따로 사정하고 알려요."
+    example: "Tell me about any discomfort."
+    exKo: "불편함이 있으면 알려 주세요."
+  - kind: context
+    words: [w-raise]
+    word: raise
+    ko: 올리다
+    scenes:
+      - {who: 야간 인계, icon: board, en: "Head of bed is raised per the order, and he tolerated it well.", ok: true}
+      - {who: 환자에게, icon: me, en: "We will raise the cephalic end of your bed to optimize cerebral perfusion.", ok: false, fix: "We'll raise the head of your bed a little, and tell us if it bothers you."}
+      - {who: 의사 라운드, icon: monitor, en: "Raise the head of the bed to the ordered angle.", ok: true}
+    why: "의료진끼리는 처방한 각도와 용어로 짧게 말하면 충분해요. 환자에게는 같은 raise를 cephalic end 같은 말 대신, 침대 머리 쪽을 올린다고 쉽게 말해 주세요."
+  - kind: swap
+    words: [w-adjust]
+    who: "환자에게 · 체위 조정"
+    icon: me
+    before: ["I'll ", "modify the incline parameter", " if you're uncomfortable."]
+    options: ["adjust the angle a little", "modify the incline parameter", "recalibrate the elevation setting"]
+    answer: "adjust the angle a little"
+    notes: {"adjust the angle a little": "무엇을 어떻게 바꿀지 환자가 바로 알아들어요.", "modify the incline parameter": "장비 설정처럼 들려 환자와의 대화에는 딱딱해요.", "recalibrate the elevation setting": "기기 보정 용어라 침상 대화에는 맞지 않아요."}
+    why: "불편함을 말해도 괜찮다는 느낌을 주려면 어떻게 도와줄지를 일상어로 말해 주세요."
+    ko: "불편하시면 각도를 조금 조정해 드릴게요"
+5:
+  - kind: slider
+    words: [w-alertness]
+    cue: "He opens his eyes to his name and answers, but drifts off between questions."
+    scale: [awake, drowsy, hard to wake]
+    answerAt: 1
+    why: "이름에 눈을 뜨고 대답은 하지만 금방 잠들면 drowsy예요. 전보다 졸림이 늘었다는 변화가 중요하니, 각성 정도를 반복해서 사정하고 변화는 바로 의사에게 알려요."
+    example: "I'll check his level of alertness."
+    exKo: "각성 상태를 확인해 볼게요."
+  - kind: context
+    words: [w-wake]
+    word: wake
+    ko: 깨우다
+    scenes:
+      - {who: 보호자에게, icon: me, en: "He is obtunded and does not wake to voice, so I'll try a stronger stimulus.", ok: false, fix: "He isn't waking up to my voice, so I'm checking him closely and calling the doctor now."}
+      - {who: 의사 라운드, icon: monitor, en: "Wake him for the neuro check, and note how easily he wakes.", ok: true}
+      - {who: 야간 인계, icon: board, en: "He wakes to voice and falls back asleep, so I'll wake him for each check.", ok: true}
+    why: "의료진끼리는 obtunded 같은 용어가 정확해요. 보호자에게는 같은 wake를 용어와 자극 설명 대신, 지금 무엇을 보고 어떻게 대응하는지로 알려 주세요."
+  - kind: swap
+    words: [w-ask]
+    who: "보호자에게 · 검사 설명"
+    icon: me
+    before: ["I'll ", "command him to execute hand grip", " and open his eyes."]
+    options: ["ask him to squeeze my hand", "command him to execute hand grip", "instruct him to perform a grasp"]
+    answer: "ask him to squeeze my hand"
+    notes: {"ask him to squeeze my hand": "무엇을 하는지 보호자가 바로 알아듣고 안심해요.", "command him to execute hand grip": "명령조 용어라 환자를 대하는 말로 차갑게 들려요.", "instruct him to perform a grasp": "의료 용어라 보호자에게는 낯설고 딱딱해요."}
+    why: "보호자가 지켜보는 앞에서는 환자에게 무엇을 부탁하는지 쉬운 말로 말해야 검사가 낯설지 않아요."
+    ko: "제 손을 꽉 쥐고 눈을 떠 보시라고 요청해 볼게요"

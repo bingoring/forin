@@ -1,0 +1,95 @@
+- title: 영양관·위관 위치 재확인
+  nuance:
+    - kind: slider
+      words: [w-xray, w-ph, w-length]
+      cue: "Colleague: \"Which check is the most reliable before we restart feeds?\""
+      scale: [the mark matches, the aspirate pH fits, an x-ray confirms]
+      answerAt: 2
+      why: "외부 길이 표시와 흡인물 산도는 참고일 뿐이고, 엑스레이로 관 끝 위치를 확인하는 게 가장 믿을 만해요. 확인 전에는 병원 지침과 처방대로 급식을 보류해요."
+      example: "I'll verify placement with an x-ray first."
+      exKo: "먼저 엑스레이로 위치를 확인할게요."
+    - kind: context
+      words: [w-placement]
+      word: placement
+      ko: 위치
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'll verify placement with x-ray before restarting feeds.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you double-check the tube placement against the mark?", ok: true}
+        - {who: 환자에게, icon: me, en: "We need an x-ray to verify the gastric placement of your tube.", ok: false, fix: "We'll take a picture to make sure the end of the tube is in your stomach."}
+      why: "의료진끼리는 placement와 verify가 정확하고 짧아요. 환자에게는 gastric placement가 낯설어서, 사진으로 관 끝이 위 안에 있는지 본다고 말해요."
+- title: 라인 다중접근 관리
+  nuance:
+    - kind: slider
+      words: [w-compatible, w-separate, w-lumen]
+      cue: "Pharmacy: \"Those two drips aren't compatible.\""
+      scale: [same lumen is fine, use separate lumens, stop both drips]
+      answerAt: 1
+      why: "배합이 안 되는 약은 같은 관강으로 같이 넣지 않고 관강을 나눠요. 약을 멈추는 건 처방 사항이라, 확실하지 않으면 약사나 의사에게 확인해요."
+      example: "They aren't compatible, so I'll use separate lumens."
+      exKo: "배합이 안 돼서 관강을 따로 쓸게요."
+    - kind: context
+      words: [w-drip]
+      word: drip
+      ko: 방울주입
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The two drips are incompatible, so I'll split the lumens.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you hang the new drip in the proximal lumen?", ok: true}
+        - {who: 환자에게, icon: me, en: "These two drips are incompatible, so I'm separating the lumens.", ok: false, fix: "Two of your medicines can't mix in the same tube, so I'm giving them through separate tubes."}
+      why: "의료진끼리는 drip과 lumen으로 짧게 말해요. 환자에게 incompatible과 lumen은 낯서니, 두 약이 한 관에서 섞이면 안 돼서 따로 준다고 말해요."
+- title: 장치 제거 후 지혈·관찰
+  nuance:
+    - kind: slider
+      words: [w-hematoma, w-watch]
+      cue: "Colleague: \"The spot under the dressing is getting bigger and tight.\""
+      scale: [a little bruising, a growing hematoma, a severe bleed]
+      answerAt: 1
+      why: "커지는 혈종은 출혈이 계속된다는 신호일 수 있어요. 압박을 유지하고 크기를 표시해 의사에게 알려요."
+      example: "The hematoma is growing, so I'm calling the physician."
+      exKo: "혈종이 커져서 의사에게 연락할게요."
+    - kind: context
+      words: [w-pulse]
+      word: pulse
+      ko: 맥박
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The distal pulse is present and the site is dry.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you check his pulse below the site while I hold pressure?", ok: true}
+        - {who: 환자에게, icon: me, en: "Distal pulse intact, and I'm monitoring for hematoma.", ok: false, fix: "I'm feeling the pulse below the spot to make sure blood is flowing well."}
+      why: "의료진끼리는 distal pulse와 hematoma 같은 짧은 말이 정확해요. 환자에게는 차트 같은 말투가 낯서니, 무엇을 만져 보고 왜 확인하는지 쉽게 말해요."
+- title: 중심라인 삽입 중 기흉·혈흉 위기
+  nuance:
+    - kind: slider
+      words: [w-tension, w-pneumothorax, w-trachea]
+      cue: "Colleague: \"No breath sounds on one side, BP dropping, and the trachea is shifting.\""
+      scale: [a small pneumothorax, a pneumothorax with distress, a tension pneumothorax]
+      answerAt: 2
+      why: "한쪽 호흡음 소실, 저혈압, 기관 편위가 함께 보이면 긴장성 기흉을 의심해요. 바로 의사에게 알리고 감압 물품을 준비해 곁에서 도와요."
+      example: "This looks like a tension pneumothorax, so I'm calling now."
+      exKo: "긴장성 기흉으로 보여서 지금 바로 부를게요."
+    - kind: context
+      words: [w-stat]
+      word: stat
+      ko: 즉시
+      scenes:
+        - {who: 동료 간호사, icon: handshake2, en: "Can someone get the ultrasound stat?", ok: true}
+        - {who: 의사에게 보고, icon: stetho, en: "Absent breath sounds and hypotension — I need a portable film stat.", ok: true}
+        - {who: 환자에게, icon: me, en: "We need a stat film of your chest right now.", ok: false, fix: "We're taking a picture of your chest right away to see what's going on."}
+      why: "stat은 의료진끼리 지금 바로라는 뜻으로 쓰는 말이에요. 환자에게는 낯설고 다급하게 들리니, 곧바로 사진을 찍는다고 침착하게 말해요."
+- title: 동맥관 우발적 분리 실혈 위기
+  nuance:
+    - kind: slider
+      words: [w-loss, w-significant, w-blood]
+      cue: "Doctor: \"How much did she lose?\" You: the sheet and floor are soaked, but her pressure is holding for now."
+      scale: [a little blood, significant blood loss, a trace of blood]
+      answerAt: 1
+      why: "침대와 바닥이 젖을 만큼이면 significant예요. 압박과 클램프를 유지하면서 혈압을 계속 보고, 실혈량을 의사에게 구체적으로 전해요."
+      example: "Her blood loss is significant, so I'm holding pressure."
+      exKo: "실혈량이 상당해서 압박하고 있어요."
+    - kind: context
+      words: [w-loss, w-blood]
+      word: blood loss
+      ko: 실혈
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Estimated blood loss is significant, and I'm holding direct pressure.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you write down the blood loss while I hold pressure?", ok: true}
+        - {who: 가족에게, icon: home, en: "Her estimated blood loss is significant and she's hypotensive.", ok: false, fix: "She lost a good amount of blood, and we're watching her blood pressure closely."}
+      why: "의료진끼리는 estimated blood loss와 hypotensive가 정확하고 짧아요. 가족에게는 차트 같은 말투가 차갑게 들려서, 피를 꽤 잃었고 혈압을 보고 있다고 풀어 줘요."

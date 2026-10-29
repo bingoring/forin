@@ -88,3 +88,13 @@ keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't a
   | icu-status-epilepticus | 66(1) | 136(37·14) + 빈칸 60 다시 | 96 |
   B 저작은 "확인 대상만 바꾸지 말라"를 "처치하는 사람만 바꾸기"로 피해 갔다 → `../../pipeline/TASK.md` B 절에 되풀이된 실패 7가지를 적음(묶음 6부터 저작 지시에 넣음).
   keyPhrase 결정(사용자 2026-10-28): 안전·사실 6 바꿈(15분 재측정·D50 조건·인슐린 보류·독립 이중 확인·EVD clamp·can mean per protocol), 표현 5 바꿈, 유지 권고 14건도 '검토 대안대로 모두 바꿈'(대안 없는 3건은 유지) → 22문장 바꿈 + keyPhrase chunks 다시 자르기 24문장. 작업 `../kp-2026-10-28/`.
+
+- **묶음 6 (ICU 4주제, 2026-10-28~29)**: gi-bleed·liver-failure·stroke-icu·brain-death, 처음부터. 사용량 한도로 서브에이전트가 한 번 끊겼다가 이어서 마침.
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | changes(수정 후) |
+  |---|---|---|---|
+  | icu-gi-bleed | 52(6) | 300(43·32) — decoy 147개 전부·조건 표지 44문장 | 164 |
+  | icu-liver-failure | 82(6) — 칼륨 수액백 직접 혼합 | 218(47·25) — decoy 118개 | 140 |
+  | icu-stroke-icu | 42(5) — tPA 뒤 졸림 '정상' | 147(47·29) | 113 |
+  | icu-brain-death | 58(1) | 137(31·13) | 85 |
+  keyPhrase 결정(사용자 2026-10-29 '추천대로'): 바꿈 13(octreotide as ordered·MTP is activated·ordered fluids / 예방적 교정·암모니아·hypertonic as ordered / 두부 거상 혈류·reversal orders / Max the pressors(안전)·질문형 2·as ordered 2), 유지 18, chunks 31문장, gi-bleed 11.5에 엑스레이 위치 확인 단계(비KP). 작업 `../kp-2026-10-29/`.
+  `pipeline/TASK.md` B 절에 끊긴 조각 decoy·위기 장면 옆 일·같은 상황 정답 재사용·decoy 낱말 몰림 실패를 덧붙임.

@@ -1,0 +1,103 @@
+situations:
+- title: 중심라인 삽입 중 기흉·혈흉 위기
+  s:
+  - ["위기 인지", siren, "두 징후를 나열한 뒤 대시 뒤에서 this is로 진단을 단정해 위기임을 분명히 알려요. 긴장성 기흉은 기다리지 않고 바로 감압해야 해서 확신 있게 말해요.", "and a rash", "호흡음이 약하고 저혈압까지, 이건 긴장성 기흉이에요.", "호흡음이 없고 고혈압까지, 이건 긴장성 기흉이에요.", "tension", "simple", "open", "small"]
+  - ["즉시 요청", bell, "I'm calling for …는 직접 하는 게 아니라 필요한 시술과 사람을 부른다는 뜻이에요. 문장 끝 now가 기다릴 시간이 없다는 급박함을 더해요.", "and a transport bed", "지금 바로 바늘감압이랑 소독 물품을 부를게요.", "지금 바로 바늘감압이랑 초음파를 부를게요.", "needle", "gastric", "bladder", "spinal"]
+  - ["장비 요청", pager, "Someone get …은 누구에게 시키는지 정하지 않고 도움을 구하는 급할 때 말투예요. stat은 지금 당장이라는 의학 약어예요.", "the stretcher", "누가 초음파랑 즉시 이동식 휠체어 좀 가져다주세요.", "누가 소독솜이랑 즉시 이동식 촬영 좀 가져다주세요.", "film", "cart", "kit", "bed"]
+  - ["징후 보고", magnify, "away from은 그쪽에서 멀어지는 방향을 말해 방향 정보를 정확히 줘요. 긴장성 기흉에서는 기관이 아픈 쪽의 반대로 밀리는 것이 후기 징후예요.", "His tongue", "기관지가 영향받은 쪽 반대로 밀리고 있어요.", "기관이 영향받은 쪽 반대로 꺾이고 있어요.", "affected", "painful", "bruised", "swollen"]
+  - ["키트 대기", pager, "I've got …으로 이미 손에 있다고 알리고, tell me where로 시술자의 결정을 기다려요. 위치는 시술자가 정하므로 간호사는 묻고 준비해요.", "how you want it", "감압 키트 가져왔어요, 어디에 둘지 말씀해주세요.", "감압 키트 가져왔어요, 또 뭐가 필요한지 말씀해주세요.", "decompression", "dialysis", "pacing", "transfusion"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 긴장성 기흉 위기 대응 4문장 순서
+    why: 위기를 먼저 알아보고, 바로 필요한 시술을 부르고, 키트를 들고 시술자의 지시를 기다린 뒤, 시술이 끝나면 영상으로 확인해요.
+    lines:
+    - ["Absent breath sounds and hypotension — this is a tension pneumothorax.", siren, "호흡음이 없고 저혈압이에요, 긴장성 기흉이에요", "인지"]
+    - ["Because of that, I'm calling for needle decompression and a chest tube now.", bell, "그래서 지금 바늘감압이랑 흉관을 부를게요", "호출"]
+    - ["While they come, I've got the decompression kit — tell me where you want it.", pager, "그동안 감압 키트 가져왔어요, 어디로 넣을지 말씀해주세요", "대기"]
+    - ["Once it's in, someone get the ultrasound and a stat portable film.", pager, "넣고 나면 누가 초음파랑 즉시 이동식 촬영 가져다주세요", "확인"]
+- title: 동맥관 우발적 분리 실혈 위기
+  s:
+  - ["지혈 우선", siren, "I've clamped는 이미 끝낸 일, I'm holding은 지금 하는 일이라 현재완료와 현재진행으로 순서가 들려요. 동맥 출혈은 먼저 잠그고 눌러 피를 막는 것이 우선이에요.", "the drain", "라인을 잠갔고 팔을 심장보다 높이 들고 있어요.", "라인을 잠갔고 그를 직접 안심시키고 있어요.", "clamped", "capped", "wiped", "tied"]
+  - ["실혈 평가", monitor, "Estimated … is significant로 크기를 평가한 뒤 대시 뒤에서 바로 확인하는 행동을 말해요. 출혈이 많으면 혈압이 떨어질 수 있어서 곧바로 수치를 봐요.", "her wristband", "수혈량이 상당해요, 혈압 확인하고 있어요.", "추정 소변량이 상당해요, 혈압 확인하고 있어요.", "Estimated", "Measured", "Visible", "Reported"]
+  - ["연결 고정", lock, "re-secure의 re-는 이미 했던 것을 다시 단단히 한다는 뜻이에요. Luer lock은 돌려 잠그는 연결이라 빠지지 않아서 다시 분리되는 사고를 막아요.", "all the cables", "루어락으로 모든 연결부를 다시 닦을게요.", "루어락으로 모든 케이블을 다시 고정할게요.", "connections", "adapters", "extensions", "attachments"]
+  - ["물품 요청", pager, "Someone grab …은 누가 하든 지금 필요하다는 급한 요청이에요. fresh는 새로 꺼낸 것이라 빠졌거나 못 쓰게 된 백 대신 쓴다는 뜻이에요.", "a spare monitor cable", "누가 새 압력백 가져와서 여기 놓아주세요.", "누가 새 모니터 가져와서 다시 달아주세요.", "bag", "cuff", "pump", "line"]
+  - ["수액로 확보", speech, "for now는 지금은이라고 한정해서 안심하지 말라는 뜻을 담아요. but I want으로 지금 괜찮아 보여도 대비가 필요하다고 이어요. 굵은 정맥주사는 많은 수액이나 혈액을 빠르게 넣기 위해서예요.", "two more pumps", "혈압은 지금은 버티는데, 수액 두 팩은 확보하고 싶어요.", "혈압은 지금은 버티는데, 큰 모니터 두 대는 확보하고 싶어요.", "IVs", "units", "bags", "tubes"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 동맥관 분리 실혈 대응 4문장 순서
+    why: 먼저 잠그고 눌러 출혈을 막고, 그 상태에서 혈압을 확인한 뒤, 수액로를 확보하고, 안정되면 연결을 다시 고정해요.
+    lines:
+    - ["I've clamped the line and I'm holding direct pressure.", siren, "라인을 잠갔고 직접 압박하고 있어요", "지혈"]
+    - ["Holding pressure, I see blood loss is significant, so I'm checking her pressure.", monitor, "누르고 있는데 실혈이 상당해서 혈압을 확인하고 있어요", "평가"]
+    - ["Based on that reading, her pressure's holding for now, but I want two large-bore IVs.", speech, "그 수치로 혈압은 버티지만 굵은 정맥주사 두 개를 원해요", "확보"]
+    - ["Once the IVs are in, I'll re-secure all connections with Luer locks.", lock, "정맥주사가 들어가면 루어락으로 연결부를 다시 고정할게요", "고정"]
+- title: 흉관 우발적 제거 개방기흉 위기
+  s:
+  - ["개방 상처 덮기", bandage, "taped on three sides는 한쪽을 열어 두어 공기가 나갈 길을 남긴다는 점을 정확히 알려요. 사면을 모두 막으면 긴장성 기흉이 될 수 있어서 삼면만 붙여요.", "the tubing", "상처를 밀폐 드레싱으로 덮고 삼면에 날짜를 적었어요.", "상처를 밀폐 드레싱으로 덮고 삼면에 거즈를 붙였어요.", "covering", "cleaning", "measuring", "photographing"]
+  - ["감시 요청", magnify, "Watch for …는 동료에게 특정 위험을 눈여겨보라고 요청하는 명령형이에요. as I seal it으로 내가 손이 묶인 동안 다른 사람이 감시한다는 역할 분담이 들려요.", "for any bleeding", "제가 소독하는 동안 긴장성 기흉 생기는지 지켜봐주세요.", "제가 옮기는 동안 긴장성 기흉 생기는지 지켜봐주세요.", "seal", "clean", "empty", "count"]
+  - ["외과 호출", pager, "Call … — we need …는 요청 뒤에 이유를 대시로 붙여 급한 이유를 바로 알려요. stat은 지금 즉시라는 뜻이라 기다릴 수 없다는 신호예요.", "a new bed", "약사 선생님 불러주세요, 새 흉관이 즉시 필요해요.", "수술실 불러주세요, 새 흉관이 즉시 필요해요.", "surgeon", "pharmacist", "dietitian", "chaplain"]
+  - ["호전 확인", check, "the moment는 ~하자마자라는 접속사처럼 쓰여 원인과 결과가 바로 이어졌다는 느낌을 줘요. 밀폐 직후 호흡이 나아졌다는 것은 처치가 통했다는 신호예요.", "the bag", "상처를 밀폐하자마자 바로 맥박이 안정됐어요.", "상처를 밀폐하자마자 바로 표정이 편해졌어요.", "breathing", "pulse", "color", "speech"]
+  - ["재평가", stetho, "listen for는 특정 소리가 나는지 귀 기울여 확인한다는 뜻이에요. 양쪽이 같은지 비교해야 한쪽 폐가 안 펴지는 문제를 찾을 수 있어요.", "for equal heart sounds", "양쪽 가슴이 같이 오르는지 지금 지켜보고 있어요.", "양쪽 팔 맥박이 같은지 지금 짚어보고 있어요.", "listening", "looking", "feeling", "counting"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 흉관 우발적 제거 대응 4문장 순서
+    why: 먼저 삼면 드레싱으로 덮고, 그동안 외과를 부르고, 도착 전까지 긴장성 기흉을 감시하며, 감시하는 동안 호흡음을 다시 들어요.
+    lines:
+    - ["I'm covering the wound with an occlusive dressing taped on three sides.", bandage, "상처를 밀폐 드레싱으로 덮고 삼면에 테이프를 붙였어요", "덮기"]
+    - ["While that goes on, call the surgeon — we need a new chest tube stat.", pager, "그러는 동안 외과 선생님 불러주세요, 새 흉관이 즉시 필요해요", "호출"]
+    - ["Until he arrives, watch for a tension pneumothorax.", magnify, "그분이 올 때까지 긴장성 기흉을 지켜봐주세요", "감시"]
+    - ["As you watch, I'm listening for equal breath sounds on both sides now.", stetho, "지켜보는 동안 저는 양쪽 호흡음을 청진하고 있어요", "청진"]
+- title: 라인 개방 공기색전 위기
+  s:
+  - ["체위 변경", siren, "Place him in … position now는 위치와 시점을 모두 짧게 말하는 명령형이에요. 왼쪽 옆으로 머리를 낮추면 공기가 심장 안에서 떠올라 폐로 가는 길을 막아요.", "in a comfortable", "지금 바로 침대를 좌측 벽에서 떼어 놓을게요.", "지금 바로 양쪽 침상 난간을 모두 올려서 고정할게요.", "lateral", "dorsal", "ventral", "medial"]
+  - ["차단·산소", siren, "I've clamped는 이미 끝낸 일, I'm giving은 지금 하는 일이라 순서가 들려요. 라인을 막아 공기 유입을 멈추고 100% 산소로 질소를 몰아내 기포를 줄여요.", "the pump", "라인을 닦았고 산소 100%로 주고 있어요.", "라인을 잠갔고 산소포화도 100%로 맞춰요.", "oxygen", "fluid", "saline", "blood"]
+  - ["위기 호출", bell, "looks like는 확진 전에도 가능성을 말해 행동을 시작하게 해요. 대시 뒤에 바로 호출을 붙여 판단과 행동이 같은 호흡에 나가요.", "an allergic reaction", "혈전색전으로 보여요, 코드팀 부를게요.", "공기색전으로 보여요, 외과팀 부를게요.", "air", "oil", "amniotic", "arterial"]
+  - ["상황 설명", speech, "right when은 두 일이 거의 동시에 일어났다는 뜻이라 원인 추정에 쓰여요. 숨을 들이쉬는 순간 열린 라인으로 공기가 빨려 들어갈 수 있어서 이 시점을 정확히 전해요.", "on that bottle", "그 관강 뚜껑이 풀리는 순간 환자가 헉하고 눈을 질끈 감았어요.", "그 관강 뚜껑이 풀리는 순간 환자가 헉하고 팔을 움찔했어요.", "gasped", "coughed", "yawned", "sneezed"]
+  - ["청진 확인", stetho, "that classic …은 교과서에 나오는 전형적인 소견을 짚는 말이에요. mill-wheel murmur는 심장 안 공기가 만드는 철벅거리는 소리라 공기색전을 시사해요.", "crackling sound", "지금 그 전형적인 천명음 소리가 들리는지 청진하고 있어요.", "지금 그 전형적인 수포음이 들리는지 청진하고 있어요.", "classic", "new", "rare", "mild"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 공기색전 위기 대응 4문장 순서
+    why: 무슨 일이 있었는지 알리고, 곧바로 라인을 막고 산소를 주고, 체위를 잡은 뒤, 공기색전으로 판단해 코드팀을 불러요.
+    lines:
+    - ["He gasped right when the cap came loose on that lumen.", speech, "그 관강 뚜껑이 풀리는 순간 헉하고 숨을 들이쉬었어요", "상황"]
+    - ["Right after that, I've clamped the line and I'm giving 100% oxygen.", siren, "그 직후 라인을 잠갔고 산소 100%를 주고 있어요", "차단"]
+    - ["With the line shut, place him in left lateral Trendelenburg position now.", siren, "라인을 막았으니 지금 좌측 측와위 트렌델렌버그로 눕혀요", "체위"]
+    - ["Because of all that, this looks like an air embolism — I'm calling the code team.", bell, "그 모든 것 때문에 공기색전으로 보여요, 코드팀 부를게요", "호출"]
+- title: PA 카테터 폐동맥 파열 위기
+  s:
+  - ["위험 인지", siren, "객혈이라는 사실을 먼저 말하고 대시 뒤에 걱정을 붙여 이유와 판단이 이어져요. I'm worried about …은 급한 상황에서 판단을 숨기지 않고 공유하는 표현이에요.", "Coughing after meals", "쐐기압 잰 뒤 가슴 통증이라, 폐동맥 파열이 걱정돼요.", "카테터 넣은 뒤 객혈이라, 폐동맥 파열이 걱정돼요.", "rupture", "infection", "spasm", "narrowing"]
+  - ["체위·호출", siren, "Position … and call …처럼 두 동작을 and로 잇는 명령형이라 한 번에 두 가지 지시를 내려요. 출혈 쪽을 아래로 하면 피가 반대쪽 폐로 번지는 것을 줄여요.", "the pharmacy stat", "출혈 쪽을 아래로 눕히고 마취과를 즉시 불러주세요.", "출혈 쪽을 아래로 눕히고 영상의학과를 즉시 불러주세요.", "thoracic", "plastic", "dental", "eye"]
+  - ["금지 지시", shield, "Do not은 예외 없는 금지라서 위기 때 짧고 단호한 지시로 써요. 파열이 의심되는 혈관에 풍선을 다시 부풀리면 출혈이 더 커질 수 있어요.", "the stopcock", "카테터를 더 깊이 넣지 마세요.", "라인으로 다시 채혈하지 마세요.", "balloon", "cuff", "valve", "bulb"]
+  - ["기도 확보", shield, "I've got …은 맡고 있다는 안심을 주는 현장 표현이에요. protected는 흡인이나 출혈로 막히지 않게 지키는 상태라서 팀이 오기 전 공백을 채워요.", "while we wait for the lab", "수술팀 올 때까지 기도는 제가 보호하고 있을게요.", "영상팀 올 때까지 기도는 제가 보호하고 있을게요.", "protected", "labeled", "weighed", "charted"]
+  - ["현상 유지", lock, "exactly where it is는 건드리지 않고 지금 위치 그대로라는 뜻이에요. until they arrive로 기간을 정해 지시가 올 때까지만 유지한다고 알려요.", "the monitor", "팀이 올 때까지 조명을 지금 그대로 둘게요.", "팀이 올 때까지 산소를 지금 그대로 둘게요.", "catheter", "monitor", "machine", "pillow"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 폐동맥 파열 의심 대응 4문장 순서
+    why: 위험을 알아본 뒤, 풍선을 다시 쓰지 않도록 막고, 체위를 잡고 흉부외과를 부르고, 올 때까지 카테터를 그대로 둬요.
+    lines:
+    - ["Hemoptysis after wedging — I'm worried about pulmonary artery rupture.", siren, "쐐기압 잰 뒤 객혈이라 폐동맥 파열이 걱정돼요", "인지"]
+    - ["Because of that, do not re-wedge the balloon.", shield, "그래서 풍선으로 다시 쐐기압 재지 마세요", "금지"]
+    - ["Instead, position her bleeding-side down and call thoracic surgery stat.", siren, "대신 출혈 쪽을 아래로 눕히고 흉부외과를 즉시 불러주세요", "조치"]
+    - ["I'll keep the catheter exactly where it is until they arrive.", lock, "그분들이 올 때까지 카테터를 지금 그대로 둘게요", "유지"]
+- title: 라인 관련 대량출혈·혈종 위기
+  s:
+  - ["지혈 압박", siren, "firm, sustained처럼 형용사 둘을 나열해 세기와 지속 시간을 함께 말해요. 위치까지 말해 주면 동료가 어디를 누르는지 바로 알아요.", "with a clean towel", "곁에서 차분하고 지속적으로 말을 걸고 있어요.", "그의 손을 단단하고 따뜻하게 계속 잡고 있어요.", "pressure", "weight", "heat", "friction"]
+  - ["신속대응", bell, "상태 악화를 먼저 말하고 대시 뒤에 호출을 붙이면 왜 부르는지가 한 번에 전달돼요. 신속대응팀은 악화되기 전에 부르는 팀이라 기준에 닿으면 바로 발동해요.", "the bed alarm", "맥박이 떨어져서 신속대응팀을 발동하고 있어요.", "산소포화도가 떨어져서 신속대응팀을 발동하고 있어요.", "pressure", "pulse", "oxygen", "temperature"]
+  - ["검사·수혈", lab, "We need …로 필요한 것을 나열하고 on the way로 이미 오는 중이어야 한다고 마무리해요. type and cross는 수혈 전에 혈액형을 맞춰 보는 검사예요.", "a urine sample,", "응고 수치랑 혈액형 교차시험, 그리고 수액도 오는 중이어야 해요.", "전해질 수치랑 혈액형 교차시험, 그리고 수혈도 오는 중이어야 해요.", "coags", "cultures", "lytes", "gases"]
+  - ["압박 유지", siren, "so로 이유 뒤에 결과를 붙이고, letting up으로 힘을 늦추다를 한 구에 담아요. 혈종이 커지는 동안은 압박을 풀지 않고 유지해야 해요.", "still tender,", "혈종이 아직도 단단해서 손을 늦추지 않고 있어요.", "혈종이 아직도 커지고 있어서 자리를 비우지 않고 있어요.", "letting", "giving", "picking", "pulling"]
+  - ["압박 유지", shield, "keep … on it은 한번 시작한 일을 중단하지 않고 계속한다는 표현이에요. until more help arrives로 언제까지인지 말하면 동료가 지원을 서두르게 돼요.", "a folded towel", "혈액 도착할 때까지 양손으로 계속 누르고 있을게요.", "의사가 올 때까지 양손으로 계속 누르고 있을게요.", "help", "blood", "oxygen", "equipment"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 라인 관련 대량출혈 대응 4문장 순서
+    why: 먼저 눌러 출혈을 막고, 그래도 혈압이 떨어지면 신속대응을 부르고, 필요한 검사와 혈액을 요청하며, 도착할 때까지 계속 눌러요.
+    lines:
+    - ["I'm applying firm, sustained pressure above the site.", siren, "부위 위쪽을 단단하고 지속적으로 압박하고 있어요", "압박"]
+    - ["Even so, his pressure is dropping — I'm activating the rapid response.", bell, "그래도 혈압이 떨어져서 신속대응팀을 발동하고 있어요", "호출"]
+    - ["While they come, we need coags, a type and cross, and blood on the way.", lab, "그동안 응고 수치, 교차시험, 수혈이 오는 중이어야 해요", "요청"]
+    - ["Until all of that arrives, I'll keep both hands on it.", shield, "그게 다 올 때까지 양손으로 계속 누르고 있을게요", "유지"]

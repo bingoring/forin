@@ -1,0 +1,1046 @@
+theme: icu-gi-bleed
+changes:
+- kind: word
+  id: w-bleed
+  fields:
+  - ko
+  why: 문장 대부분이 명사·동명사(bleeding, variceal bleed)라 '피가 나다'보다 '출혈'이 맞는다
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: ko '확인하다'가 w-confirm과 같아 듣고 뜻 고르기에서 정답이 둘이 된다 — check는 '점검하다'로 가름
+- kind: word
+  id: w-fast
+  fields:
+  - ko
+  why: 두 문장 모두 부사(run fluids faster, dropped fast)라 형용사 ko를 부사로
+- kind: word
+  id: w-lab
+  fields:
+  - ko
+  why: 문장 대부분이 labs=검사 수치·검사라 '검사실'보다 '검사'가 맞는다 — 'the lab'(검사실) 문장은 태그를 뺌
+- kind: word
+  id: w-bank
+  fields:
+  - ko
+  why: bank는 blood bank로만 쓰인다 — '은행'은 오해를 부른다
+- kind: word
+  id: w-get
+  fields:
+  - ko
+  why: ko '가져오다'가 w-bring과 같아 정답이 둘이 된다 — get은 '마련하다'로 가름
+- kind: word
+  id: w-gather
+  fields:
+  - ko
+  why: ko '챙기다'가 w-grab('급히 챙기다')과 거의 같아 가름
+- kind: word
+  id: w-cell
+  fields:
+  - ko
+  why: packed cells는 '농축 혈구' — '세포'는 부정확
+- kind: word
+  id: w-count
+  fields:
+  - ko
+  why: ko '수치'가 w-number·w-value와 같아 정답이 셋이 된다 — blood count는 '혈구 수'
+- kind: word
+  id: w-value
+  fields:
+  - ko
+  why: ko '수치'가 w-number·w-count와 같아 가름
+- kind: word
+  id: w-lightheaded
+  fields:
+  - ko
+  why: ko '어지러운'이 w-dizzy와 같아 정답이 둘이 된다 — 가름
+- kind: word
+  id: w-frightening
+  fields:
+  - ko
+  why: ko '무서운'이 w-terrifying과 같아 정답이 둘이 된다 — 가름
+- kind: word
+  id: w-terrifying
+  fields:
+  - ko
+  why: ko '무서운'이 w-frightening과 같아 가름
+- kind: word
+  id: w-write
+  fields:
+  - ko
+  why: ko '기록하다'가 w-note·w-track·w-log와 같아 정답이 넷이 된다 — write는 '적다'로 가름
+- kind: word
+  id: w-note
+  fields:
+  - ko
+  why: ko '기록하다'가 w-write·w-track·w-log와 같아 가름
+- kind: word
+  id: w-track
+  fields:
+  - ko
+  why: ko '기록하다'가 w-write·w-note·w-log와 같아 가름 — keep track of은 양을 계속 파악해 둔다는 뜻
+- kind: word
+  id: w-settle
+  fields:
+  - ko
+  - example
+  why: ko '안정되다'가 w-stable·w-stabilize·w-steady와 너무 가까워 가름 / 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-steady
+  fields:
+  - ko
+  why: ko '안정적인'이 w-stable과 너무 가까워 가름 / 혈압·수치의 steady는 '변동 없는'이지 '꾸준한'(끈기)이 아님
+- kind: word
+  id: w-flag
+  fields:
+  - ko
+  why: ko '알리다'가 w-notify와 같아 정답이 둘이 된다 — 가름
+- kind: word
+  id: w-notify
+  fields:
+  - ko
+  why: ko '알리다'가 w-flag와 같아 가름
+- kind: word
+  id: w-stat
+  fields:
+  - ko
+  why: ko '즉시'가 w-immediately와 같아 정답이 둘이 된다 — 가름
+- kind: word
+  id: w-new
+  fields:
+  - ko
+  why: ko '새로운'이 w-fresh와 겹쳐 가름
+- kind: word
+  id: w-clot
+  fields:
+  - ko
+  why: 문장 4개 중 3개가 동사·동명사(clotting, clots)라 '혈전'(명사)보다 '응고'가 맞는다
+- kind: word
+  id: w-warm
+  fields:
+  - ko
+  why: '''데우다''는 ''warm the blood''만 담는다 — ''keep him warm''까지 담게'
+- kind: word
+  id: w-call
+  fields:
+  - ko
+  why: 문장 대부분이 사람·부서에 연락하는 뜻 — '부르다'보다 '연락하다'
+- kind: word
+  id: w-rate
+  fields:
+  - ko
+  why: 주입 속도(infusion rate) 문장에 맞춘다 — heart rate 문장은 태그를 뺌
+- kind: word
+  id: w-further
+  fields:
+  - ko
+  - example
+  why: ko '더'가 w-anymore('더 이상')와 겹치지 않게 가름 / 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-below
+  fields:
+  - ko
+  - example
+  why: ko '아래'가 w-down('아래로')과 너무 가까워 가름 — 7.2는 8보다 낮다는 수 비교 / 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-frequently
+  fields:
+  - ko
+  why: ko '자주'가 w-often과 같아 정답이 둘이 된다 — frequently는 '수시로'로 가름
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-come
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-doctor
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-eat
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-family
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-go
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-good
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-here
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-lot
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-morning
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-most
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-now
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-okay
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-same
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-still
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-talk
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-today
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-want
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-water
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: sentence
+  situation: GI 출혈 징후 사정
+  index: 5
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: GI 출혈 징후 사정
+  index: 6
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 대구경 정맥로 확보 협조
+  index: 1
+  fields:
+  - words
+  why: take의 ko는 '재다'(take vitals) — 이 문장은 맡다·복용하다·데려가다·압력을 낮추다라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 대구경 정맥로 확보 협조
+  index: 2
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 대구경 정맥로 확보 협조
+  index: 4
+  fields:
+  - words
+  why: lab의 ko는 '검사' — the lab은 검사실이라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 대구경 정맥로 확보 협조
+  index: 5
+  fields:
+  - words
+  - ko
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로 / ko '지금 들어갈게요'는 방에 들어간다고 읽힘 — 바늘을 넣는다고 고침
+- kind: sentence
+  situation: 대구경 정맥로 확보 협조
+  index: 6
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 수혈 준비·교차시험
+  index: 2
+  fields:
+  - words
+  - ko
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로 / ko에 en에 없는 '시작'을 덧붙였음 — en 그대로 '지금 동의서랑 팔찌를 확인하죠'
+- kind: sentence
+  situation: 수혈 준비·교차시험
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 수혈 준비·교차시험
+  index: 5
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 혈역학·Hb 추세 감시
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 혈역학·Hb 추세 감시
+  index: 4
+  fields:
+  - words
+  why: rate의 ko를 '속도'로 맞췄다 — heart rate 문장은 '심박수'라 태그를 뺌; 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 혈역학·Hb 추세 감시
+  index: 5
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 혈역학·Hb 추세 감시
+  index: 6
+  fields:
+  - words
+  why: call의 ko는 '연락하다' — call light는 호출 장치(명사)라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: NPO·위관 관리
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: NPO·위관 관리
+  index: 2
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: NPO·위관 관리
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: NPO·위관 관리
+  index: 4
+  fields:
+  - words
+  - en
+  - ko
+  - chunks
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로 / 금식 환자에게 물을 약속하던 문장 — 의사가 괜찮다고 하면으로 고침(안전)
+- kind: sentence
+  situation: NPO·위관 관리
+  index: 5
+  fields:
+  - words
+  - chunks
+  why: turn의 ko는 '돌리다' — 이 문장의 turn은 '바뀌다'라 태그를 뺌; 쉬운 말 태그를 뺌 — 문장은 그대로 / 구 경계에서 다시 자름(복합명사·구를 끊지 않게)
+- kind: sentence
+  situation: NPO·위관 관리
+  index: 6
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 출혈 병력·항응고 검토
+  index: 0
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 출혈 병력·항응고 검토
+  index: 1
+  fields:
+  - words
+  why: take의 ko는 '재다'(take vitals) — 이 문장은 맡다·복용하다·데려가다·압력을 낮추다라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 출혈 병력·항응고 검토
+  index: 2
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로 / w-sure 태그를 뺌 — make sure는 구 헤드워드 w-make가 맡음(문장 en은 그대로)
+- kind: sentence
+  situation: 출혈 병력·항응고 검토
+  index: 3
+  fields:
+  - words
+  - en
+  - ko
+  - chunks
+  why: take의 ko는 '재다'(take vitals) — 이 문장은 맡다·복용하다·데려가다·압력을 낮추다라 태그를 뺌; 쉬운 말 태그를 뺌 — 문장은 그대로 / 어색한 영어를 자연스럽게 고침
+- kind: sentence
+  situation: 출혈 병력·항응고 검토
+  index: 4
+  fields:
+  - words
+  - en
+  - ko
+  - chunks
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로 / 간호사가 항응고제를 조절하는 말로 들리던 문장 — 의사들이 균형을 맞춘다고 고침
+- kind: sentence
+  situation: 출혈 병력·항응고 검토
+  index: 5
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 정맥류 출혈 초기 관리
+  index: 0
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 정맥류 출혈 초기 관리
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 내시경 준비·조율
+  index: 5
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 제한적 수혈 목표 판단
+  index: 0
+  fields:
+  - words
+  why: hold의 ko는 '유지되다' — 이 문장의 hold는 '따르다/미루다'라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 제한적 수혈 목표 판단
+  index: 3
+  fields:
+  - words
+  - en
+  - ko
+  - chunks
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로 / 제한적 수혈 기준을 8로 단정하던 문장 — 기준은 처방대로, 7.2는 기준보다 낮지 않다고 고침(사실)
+- kind: sentence
+  situation: 제한적 수혈 목표 판단
+  index: 6
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: PPI 주입 관리
+  index: 3
+  fields:
+  - words
+  - chunks
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로 / 구 경계에서 다시 자름(복합명사·구를 끊지 않게)
+- kind: sentence
+  situation: PPI 주입 관리
+  index: 4
+  fields:
+  - words
+  why: turn의 ko는 '돌리다' — 이 문장의 turn은 '바뀌다'라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 응고장애 교정
+  index: 5
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 응고장애 교정
+  index: 6
+  fields:
+  - words
+  - en
+  - ko
+  - chunks
+  why: hold의 ko는 '유지되다' — 이 문장의 hold는 '따르다/미루다'라 태그를 뺌 — 문장은 그대로 / 내시경을 간호사가 미루던 문장 — 시점은 GI팀이 정한다고 고침(업무범위·지침)
+- kind: sentence
+  situation: 하부출혈 감별·검사
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 하부출혈 감별·검사
+  index: 4
+  fields:
+  - words
+  - chunks
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로 / 구 경계에서 다시 자름(복합명사·구를 끊지 않게)
+- kind: sentence
+  situation: 하부출혈 감별·검사
+  index: 5
+  fields:
+  - words
+  why: rate의 ko를 '속도'로 맞췄다 — heart rate 문장은 '심박수'라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 하부출혈 감별·검사
+  index: 6
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 재출혈 감시·재평가
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 재출혈 감시·재평가
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로 / w-away 태그를 뺌(은행에서 지움)
+- kind: sentence
+  situation: 재출혈 감시·재평가
+  index: 6
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: IR·내시경 이송 조율
+  index: 6
+  fields:
+  - words
+  - en
+  - ko
+  - chunks
+  why: wheel의 ko는 '이동시키다' — wheels up은 관용 표현이라 태그를 뺌 — 문장은 그대로 / 항공 은어 wheels up과 이동 뒤 보고 — 병동을 나서기 전에 인계 전화로 고침
+- kind: sentence
+  situation: 대량출혈 쇼크 대량수혈
+  index: 6
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 토혈 기도흡인 위기
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 토혈 기도흡인 위기
+  index: 2
+  fields:
+  - words
+  why: right의 ko는 '오른쪽의' — 이 문장의 right here는 부사라 태그를 뺌; 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 토혈 기도흡인 위기
+  index: 3
+  fields:
+  - words
+  why: clear의 ko는 '명확한' — 이 문장의 clear는 동사(기도를 확보하다)라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 토혈 기도흡인 위기
+  index: 5
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌; place의 ko는 '자리' — 이 문장의 place는 동사(삽입하다)라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 토혈 기도흡인 위기
+  index: 6
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 정맥류 불응 출혈 위기
+  index: 0
+  fields:
+  - words
+  why: take의 ko는 '재다'(take vitals) — 이 문장은 맡다·복용하다·데려가다·압력을 낮추다라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 정맥류 불응 출혈 위기
+  index: 3
+  fields:
+  - words
+  why: pressure의 ko는 '혈압' — 이 문장의 pressure off는 정맥류 '압력'이라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 재출혈 급변 소생
+  index: 0
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 재출혈 급변 소생
+  index: 5
+  fields:
+  - words
+  why: repeat의 ko는 동사 '반복하다' — 이 문장의 repeat는 형용사라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 재출혈 급변 소생
+  index: 6
+  fields:
+  - words
+  - ko
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로 / ko '저랑 계속 계세요'는 Stay with me의 뜻이 뒤집힌 번역 — '정신 놓지 마세요'로 / w-stay 태그를 뺌(머무르다와 뜻이 다름)
+- kind: sentence
+  situation: 응고장애 동반 지속출혈
+  index: 6
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 출혈 불응 목표·예후 소통
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 출혈 불응 목표·예후 소통
+  index: 2
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 출혈 불응 목표·예후 소통
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 출혈 불응 목표·예후 소통
+  index: 5
+  fields:
+  - words
+  - en
+  - ko
+  - chunks
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로 / keep fighting은 편안한 돌봄을 포기처럼 들리게 하는 전쟁 비유 — more treatment / comfort care로
+- kind: word-remove
+  id: w-sure
+  why: make sure를 구 헤드워드 w-make가 맡아 5.2 태그를 뺌 — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-away
+  why: ko '바로'는 right away의 뜻이고 태그된 문장은 13.4 하나 — 태그를 빼고 지움
+- kind: word-remove
+  id: w-catch
+  why: 13.5를 고쳐 어느 문장도 태그하지 않게 됨(ko '나타나다'도 catch up과 안 맞았음)
+- kind: word-remove
+  id: w-moment
+  why: 14.6을 고쳐 어느 문장도 태그하지 않게 됨
+- kind: word
+  id: w-mix
+  fields:
+  - ko
+  why: 문장은 mix … up(떼어 쓴 구)이라 ko를 혼동하다로 — 헤드워드는 그대로(검사기 V2가 떨어진 구를 못 찾음)
+- kind: word
+  id: w-birth
+  fields:
+  - ko
+  why: date of birth는 생년월일 — '생일'은 birthday
+- kind: word
+  id: w-light
+  fields:
+  - ko
+  why: 문장 3.6의 light는 call light(호출등)
+- kind: word
+  id: w-try
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-sip
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-make
+  fields:
+  - en
+  - ipa
+  why: ko '확실히 하다'는 make sure의 뜻이라 구 단위 헤드워드로
+- kind: word
+  id: w-reason
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-blame
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-balance
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-ever
+  fields:
+  - ko
+  why: Have you ever had…의 ever는 '한 번이라도'
+- kind: word
+  id: w-variceal
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-liver
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-disease
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-actively
+  fields:
+  - ko
+  - example
+  why: actively bleeding의 actively는 '활발히'(활동성 출혈과 통함)
+- kind: word
+  id: w-transfuse
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-symptomatic
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-number
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-tiredness
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-normal
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-loss
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-ir
+  fields:
+  - ko
+  why: IR은 중재영상의학(인터벤션)
+- kind: word
+  id: w-oxygen
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-bag
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-travel
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-report
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-way
+  fields:
+  - en
+  - ko
+  - ipa
+  why: 문장은 on the way(오는 중) — 구 단위 헤드워드로
+- kind: word
+  id: w-hand
+  fields:
+  - en
+  - ko
+  - ipa
+  why: 구 hand off 안에서만 뜻이 서고(문장 17.6) 쉬운 말 hand의 ko '건네다'가 맞지 않아 구 단위 헤드워드로
+- kind: word
+  id: w-push
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-choose
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-comfort
+  fields:
+  - example
+  why: 문장을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-through
+  fields:
+  - ko
+  why: support you through it의 through는 '그 과정 내내'
+- kind: sentence
+  situation: GI 출혈 징후 사정
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계에서 다시 자름(복합명사·구를 끊지 않게)
+- kind: sentence
+  situation: 정맥류 출혈 초기 관리
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 내시경 전 원인을 단정하던 문장 — 가능성(most likely)으로 고침
+- kind: sentence
+  situation: 제한적 수혈 목표 판단
+  index: 1
+  fields:
+  - ko
+  why: ko가 조건문(if he shows)을 '있는지'로 옮긴 오역 — '보이면'으로
+- kind: sentence
+  situation: 제한적 수혈 목표 판단
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 수혈을 간호사가 only로 못 박던 문장 — 처방에 따라 수혈한다고 고침(안전)
+- kind: sentence
+  situation: PPI 주입 관리
+  index: 2
+  fields:
+  - ko
+  why: ko '주입이 흐르는 동안'을 자연스럽게 — '주입하는 동안'
+- kind: sentence
+  situation: PPI 주입 관리
+  index: 6
+  fields:
+  - chunks
+  why: 구 경계에서 다시 자름(복합명사·구를 끊지 않게)
+- kind: sentence
+  situation: 하부출혈 감별·검사
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계에서 다시 자름(복합명사·구를 끊지 않게)
+- kind: sentence
+  situation: 재출혈 감시·재평가
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 재출혈 감시 중 피로를 '정상'이라고 단정하던 잘못된 안심 — 가능성으로 말하고 더 심해지면 알리게 고침(안전)
+- kind: sentence
+  situation: IR·내시경 이송 조율
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: pump bag은 표준 용어가 아님 — Ambu bag(앰부백)으로
+- kind: sentence
+  situation: IR·내시경 이송 조율
+  index: 5
+  fields:
+  - chunks
+  why: 구 경계에서 다시 자름(복합명사·구를 끊지 않게)
+- kind: sentence
+  situation: 대량출혈 쇼크 대량수혈
+  index: 5
+  fields:
+  - chunks
+  why: 구 경계에서 다시 자름(복합명사·구를 끊지 않게)
+- kind: sentence
+  situation: 재출혈 급변 소생
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 처방 없이 수액을 최대로 미는 말 — 처방된 수액을 혈액이 올 때까지로 고침(안전)
+- kind: sentence
+  situation: 재출혈 급변 소생
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계에서 다시 자름(복합명사·구를 끊지 않게)
+- kind: sentence
+  situation: 응고장애 동반 지속출혈
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계에서 다시 자름(복합명사·구를 끊지 않게)
+- kind: sentence
+  situation: 응고장애 동반 지속출혈
+  index: 5
+  fields:
+  - chunks
+  why: 구 경계에서 다시 자름(복합명사·구를 끊지 않게)
+- kind: sentence
+  situation: 정맥류 출혈 초기 관리
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): let''s start … now → I''ll start … as ordered(간호사가 약 시작을 정하는 어조); +w-order'
+- kind: word
+  id: w-start
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-octreotide
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-drip
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 대량출혈 쇼크 대량수혈
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 명령형 발동 지시 → 발동됐음을 확인하고 쿨러를 맡음(장면 첫마디가 동료의 발동, 발동은 의사·지정자) — words 그대로'
+- kind: word
+  id: w-activate
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-mtp
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-cooler
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word-remove
+  id: w-open
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 18.0 문장을 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: word-remove
+  id: w-wide
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 18.0 문장을 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: sentence
+  situation: 재출혈 급변 소생
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): Open the fluids wide → run the ordered fluids(처방 없이 정질액 최대 개방); −w-open −w-wide(word-remove)'
+- kind: sentence
+  situation: balloon tamponade 보조
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 두 풍선을 다 부풀린 뒤 고정 → 위 풍선 부분 팽창 뒤 엑스레이로 위치 확인하고 고정(검토 A·B: 위치 확인 단계 빠짐, 식도 풍선은 출혈이 계속될 때만); +w-confirm'
+- kind: word
+  id: w-inflate
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-tape
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-place
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: GI 출혈 징후 사정
+  index: 4
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Tell me right away / if you feel dizzy / or want to / vomit again) → Tell me right away / if you feel dizzy / or want to vomit / again — 문장은 그대로'
+- kind: sentence
+  situation: 혈역학·Hb 추세 감시
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Yes / , that can happen / when the blood / count drops) → Yes / , that can happen / when the blood count / drops — 문장은 그대로'
+- kind: sentence
+  situation: 혈역학·Hb 추세 감시
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''m watching / your blood pressure / and your lab / trends) → I''m watching / your blood pressure / and / your lab trends — 문장은 그대로'
+- kind: sentence
+  situation: 내시경 준비·조율
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''ll get consent / and the pre-procedure / checklist done) → I''ll get consent / and the pre-procedure checklist / done — 문장은 그대로'
+- kind: sentence
+  situation: 제한적 수혈 목표 판단
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(For a stable bleed / , we usually hold / to the restrictive / target) → For a stable bleed / , we / usually hold to / the restrictive target — 문장은 그대로'
+- kind: sentence
+  situation: 제한적 수혈 목표 판단
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s reassess / if he shows / signs of ongoing / bleeding) → Let''s reassess / if he shows / signs / of ongoing bleeding — 문장은 그대로'
+- kind: sentence
+  situation: PPI 주입 관리
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(The PPI infusion / is started / at the ordered / rate) → The PPI infusion / is started / at / the ordered rate — 문장은 그대로'
+- kind: sentence
+  situation: 하부출혈 감별·검사
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We''ll do tests / to find exactly / where it''s coming / from) → We''ll do / tests / to find / exactly where it''s coming from — 문장은 그대로'
+- kind: sentence
+  situation: 하부출혈 감별·검사
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''m watching / your vitals / while we sort / this out) → I''m watching / your vitals / while / we sort this out — 문장은 그대로'
+- kind: sentence
+  situation: 재출혈 감시·재평가
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We watch his vitals / , labs, and any new / bleeding / closely) → We watch / his vitals, labs, / and any new bleeding / closely — 문장은 그대로'
+- kind: sentence
+  situation: 재출혈 감시·재평가
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Please tell me / if he vomits blood / or feels / faint) → Please / tell me / if he vomits blood / or feels faint — 문장은 그대로'

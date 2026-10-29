@@ -1,0 +1,84 @@
+18:
+  - kind: slider
+    words: [w-hold]
+    cue: "While we set up, his sats read 97, then 98, then 97."
+    scale: [dropping, holding, rising]
+    answerAt: 1
+    why: "97, 98, 97처럼 거의 변하지 않으면 holding이에요. 준비하는 동안에도 포화도와 호흡을 계속 지켜보고, 떨어지기 시작하면 바로 팀에 알려요."
+    example: "Sats are holding steady."
+    exKo: "산소포화도는 안정적으로 유지되고 있어요."
+  - kind: context
+    words: [w-ready]
+    word: ready
+    ko: 준비된
+    scenes:
+      - {who: 보호자에게, icon: me, en: "The team is ready to secure the airway via rapid sequence intubation.", ok: false, fix: "We're ready to put in a breathing tube to help him breathe safely."}
+      - {who: 동료에게, icon: monitor, en: "Suction is on and I'm ready to assist.", ok: true}
+      - {who: 야간 인계, icon: board, en: "The tray, suction, and bag are ready at the bedside.", ok: true}
+    why: "의료진끼리는 장비가 준비됐다고 짧게 말하면 돼요. 가족에게 같은 ready를 rapid sequence intubation 같은 용어와 쓰면 어렵고 겁나니, 숨쉬는 걸 돕는 관을 넣을 준비가 됐다고 쉽게 말해 주세요."
+  - kind: swap
+    words: [w-assist]
+    who: "동료에게 · 삽관 보조"
+    icon: monitor
+    before: ["Suction is on and I'm ready to ", "render assistance to the operator", "."]
+    options: ["assist", "render assistance to the operator", "facilitate the procedure"]
+    answer: assist
+    notes: {assist: "짧고 분명해서 급한 현장에서 바로 알아들어요.", "render assistance to the operator": "격식 있는 긴 표현이라 급한 현장에서는 느려요.", "facilitate the procedure": "추상적인 말이라 무엇을 도울지 분명하지 않아요."}
+    why: "삽관 준비 중에는 내 역할을 짧고 분명하게 말해야 시술자가 안심하고 진행해요."
+    ko: "흡인 켜져 있고 저는 보조할 준비 됐어요"
+19:
+  - kind: slider
+    words: [w-nonrebreather]
+    cue: "His sats are in the seventies on a simple mask, and he's still breathing on his own."
+    scale: [nasal cannula, non-rebreather mask, bag-valve mask]
+    answerAt: 1
+    why: "스스로 숨은 쉬는데 단순 마스크로도 포화도가 70%대면 더 높은 농도의 비재호흡마스크로 올려요. 그래도 안 오르거나 호흡이 약해지면 백밸브마스크 보조가 필요하니, 호흡치료사와 의사에게 바로 알려요."
+    example: "I'll switch him to the non-rebreather."
+    exKo: "비재호흡마스크로 바꿀게요."
+  - kind: context
+    words: [w-suction]
+    word: suction
+    ko: 흡인
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Suction his airway now, and I'll bag him.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We performed tracheal suction to clear the aspirated material.", ok: false, fix: "We cleared the fluid out of his airway with a small tube, and we're helping him breathe."}
+      - {who: 야간 인계, icon: board, en: "He needs suction every two hours for thick secretions.", ok: true}
+    why: "의료진끼리는 suction만으로 무엇을 하는지 전달돼요. 가족에게 같은 suction을 tracheal, aspirated 같은 용어와 쓰면 어려우니, 기도에서 액체를 빼내고 있다고 쉽게 말해 주세요."
+  - kind: swap
+    words: [w-raise]
+    who: "동료에게 · 응급 지시"
+    icon: monitor
+    before: ["Suction his airway and let's ", "escalate oxygenation parameters", "."]
+    options: ["raise the FiO2", "escalate oxygenation parameters", "titrate the FiO2 upward"]
+    answer: "raise the FiO2"
+    notes: {"raise the FiO2": "짧고 분명해서 급한 현장에서 바로 알아들어요.", "escalate oxygenation parameters": "추상적이고 길어서 무엇을 올릴지 분명하지 않아요.", "titrate the FiO2 upward": "맞는 말이지만 급한 지시로는 늘어지고 격식 있어요."}
+    why: "급변 상황의 지시는 무엇을 올릴지 짧고 구체적으로 말해야 해요. 산소 설정은 처방과 프로토콜 안에서 조절해요."
+    ko: "기도를 흡인하고 FiO2를 올리죠"
+20:
+  - kind: slider
+    words: [w-aware]
+    cue: "He doesn't respond to his name, to our voices, or to touch."
+    scale: [fully aware, partly aware, unaware]
+    answerAt: 2
+    why: "이름, 목소리, 접촉에 반응이 없으면 unaware라고 관찰한 대로 말할 수 있어요. 예후를 판단하는 것은 의료팀의 몫이니, 간호사는 본 반응을 사실대로 설명하고 가족의 질문은 의료팀과 함께 이어 가요."
+    example: "He isn't aware of what's happening."
+    exKo: "그는 지금 상황을 인지하지 못해요."
+  - kind: context
+    words: [w-honest]
+    word: honest
+    ko: 솔직한
+    scenes:
+      - {who: 가족 면담, icon: me, en: "I want to be honest with you about how serious this is.", ok: true}
+      - {who: 보호자에게, icon: me, en: "To be honest, his GCS is three and the CT shows diffuse edema.", ok: false, fix: "I want to be honest with you: he isn't responding to us, and his injury is very serious."}
+      - {who: 야간 인계, icon: board, en: "The family asked us to be honest about prognosis, and the palliative consult is requested.", ok: true}
+    why: "의료진끼리는 GCS와 CT 소견을 짧게 말해요. 가족에게는 같은 honest를 숫자와 영상 용어로 말하면 상황이 와닿지 않으니, 관찰한 것과 심각함을 쉬운 말로 솔직하게 알려 주세요."
+  - kind: swap
+    words: [w-comfort]
+    who: "보호자에게 · 치료 목표 대화"
+    icon: me
+    before: ["We can focus on ", "terminal symptom management", " instead of more machines."]
+    options: ["his comfort", "terminal symptom management", "palliation of his symptoms"]
+    answer: "his comfort"
+    notes: {"his comfort": "가족이 바로 알아듣고, 사람 중심으로 들려요.", "terminal symptom management": "임종이라는 무거운 말이 앞서 가족에게 충격을 줘요.", "palliation of his symptoms": "의학 용어라 가족에게는 차갑고 어렵게 들려요."}
+    why: "치료 목표를 이야기할 때는 가족이 알아듣는 쉬운 말과 따뜻한 어조가 중요해요. 목표 논의는 의료팀과 가족이 함께 정해요."
+    ko: "기계를 더 다는 대신 그분의 편안함에 집중할 수 있어요"

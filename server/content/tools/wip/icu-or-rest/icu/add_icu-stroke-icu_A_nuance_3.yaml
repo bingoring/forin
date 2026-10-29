@@ -1,0 +1,168 @@
+12:
+  - kind: slider
+    words: [w-last]
+    cue: "His arm jerking stops after about one minute, and he slowly starts to wake up."
+    scale: [a few seconds, under two minutes, over five minutes]
+    answerAt: 1
+    why: "약 1분이면 under two minutes예요. 대부분의 발작은 몇 분 안에 멈추지만 5분 넘게 계속되면 응급이라, 시간을 재면서 환자를 보호하고 프로토콜대로 즉시 도움을 요청하고 지시된 약을 준비해요."
+    example: "It usually lasts less than two minutes."
+    exKo: "보통 이 분 미만으로 지속돼요."
+  - kind: context
+    words: [w-notify]
+    word: notify
+    ko: 연락해 알리다
+    scenes:
+      - {who: 보호자에게, icon: me, en: "The attending has been notified, as policy mandates after any ictal event.", ok: false, fix: "I've told the doctor right away, and we're watching him closely."}
+      - {who: 동료에게, icon: monitor, en: "I'm notifying the physician about the seizure now.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Physician notified at 1415; the seizure lasted about one minute.", ok: true}
+    why: "의료진끼리는 notify와 시각을 짧게 적고 말해요. 놀란 보호자에게는 같은 notified를 규정 문구와 ictal 같은 용어로 전하지 말고, 의사에게 바로 알렸고 지켜보고 있다고 쉽게 말해 주세요."
+  - kind: swap
+    words: [w-prevent]
+    who: "보호자에게 · 계획 설명"
+    icon: me
+    before: ["We'll watch him closely and may start a medication to ", "obviate recurrence", "."]
+    options: ["prevent more", "obviate recurrence", "preclude further ictal events"]
+    answer: "prevent more"
+    notes: {"prevent more": "보호자가 바로 알아듣는 쉬운 말이에요.", "obviate recurrence": "격식 차린 말이라 놀란 보호자에게는 딱딱해요.", "preclude further ictal events": "의학 용어를 겹쳐 가족이 알아듣기 어려워요."}
+    why: "약을 시작할 수도 있다는 설명은 목적을 쉬운 말로 말해야 보호자가 이해하고 동의하기 쉬워요. 약을 쓸지는 의사가 정해요."
+    ko: "자세히 지켜보고, 더 생기지 않도록 약을 시작할 수도 있어요"
+13:
+  - kind: slider
+    words: [w-sit]
+    cue: "The therapist helps her sit at the edge of the bed with her feet on the floor."
+    scale: [lying, sitting, standing]
+    answerAt: 1
+    why: "침대 가장자리에 걸터앉은 것은 sitting이에요. 조기 활동은 단계적으로 진행하고 시작 시점과 범위는 처방과 치료사 평가에 따라 정해요. 활동 중에는 혈압과 신경 상태 변화를 지켜봐요."
+    example: "Let's start by sitting up."
+    exKo: "일어나 앉는 것부터 시작해요."
+  - kind: context
+    words: [w-support]
+    word: support
+    ko: 지지하다
+    scenes:
+      - {who: 침상 옆에서, icon: me, en: "We'll go slowly, and I'll support you the whole time.", ok: true}
+      - {who: 치료사, icon: monitor, en: "She needs support at the trunk when she sits up.", ok: true}
+      - {who: 환자에게, icon: me, en: "Ambulation will be unsupported unless you fail the balance screen.", ok: false, fix: "You won't be on your own, and I'll be right here to support you."}
+    why: "의료진끼리는 어느 부위를 받쳐 줄지 짧게 말해요. 처음 움직이는 환자에게 같은 support를 규정 문구로 말하면 겁이 나니, 곁에서 직접 도와주겠다고 쉽게 말해 주세요."
+  - kind: swap
+    words: [w-circulation]
+    who: "환자에게 · 장비 설명"
+    icon: me
+    before: ["These compression sleeves also help ", "peripheral hemodynamics", "."]
+    options: ["your circulation", "peripheral hemodynamics", "venous return"]
+    answer: "your circulation"
+    notes: {"your circulation": "환자가 바로 알아듣고 이유를 이해해요.", "peripheral hemodynamics": "의학 용어라 환자에게는 어렵게 들려요.", "venous return": "생리학 용어라 환자 설명에는 딱딱해요."}
+    why: "왜 다리에 슬리브를 감는지 환자가 이해해야 협조하니, 목적을 쉬운 말로 알려 주세요."
+    ko: "이 압박 슬리브도 혈액순환에 도움이 돼요"
+14:
+  - kind: slider
+    words: [w-ready]
+    cue: "Nothing is packed yet: no portable monitor, no oxygen, no emergency meds."
+    scale: [not ready, almost ready, ready]
+    answerAt: 0
+    why: "필요한 장비를 하나도 챙기지 않았으면 not ready예요. 이송은 라인·모니터·산소·응급 약이 갖춰진 뒤에 출발해야 하고, 빠진 것이 있으면 보완하고 팀에 알려요."
+    example: "Let's confirm everything is ready."
+    exKo: "모든 게 준비됐는지 확인하죠."
+  - kind: context
+    words: [w-transport]
+    word: transport
+    ko: 이송
+    scenes:
+      - {who: 보호자에게, icon: me, en: "Your husband will be subject to intrahospital transport for imaging.", ok: false, fix: "We'll take him down to the CT scanner and bring him right back."}
+      - {who: 동료에게, icon: monitor, en: "We're ready for transport. Can you confirm the scanner is free?", ok: true}
+      - {who: 야간 인계, icon: board, en: "Transport to CT was uneventful, and he's back on the unit with stable vitals.", ok: true}
+    why: "의료진끼리는 transport와 장소를 짧게 말해요. 보호자에게는 같은 transport를 intrahospital 같은 용어와 규정 문구로 말하지 말고, 어디로 데려가고 곧 돌아온다고 쉽게 알려 주세요."
+  - kind: swap
+    words: [w-bring]
+    who: "동료에게 · 이송 준비"
+    icon: monitor
+    before: ["I'll ", "requisition the portable oxygen and emergency meds", "."]
+    options: ["bring the portable oxygen and emergency meds", "requisition the portable oxygen and emergency meds", "procure the portable oxygen and emergency meds"]
+    answer: "bring the portable oxygen and emergency meds"
+    notes: {"bring the portable oxygen and emergency meds": "동료끼리 바로 알아듣고, 챙겨서 같이 가겠다는 뜻이에요.", "requisition the portable oxygen and emergency meds": "공식 청구하다는 말이라 지금 챙기러 간다는 뜻과 맞지 않아요.", "procure the portable oxygen and emergency meds": "구해 오다는 격식 어휘라 현장에서는 어색해요."}
+    why: "이송 준비는 시간이 중요해서, 무엇을 챙겨 올지 짧고 분명한 동사로 말해야 동료가 역할을 나눌 수 있어요."
+    ko: "휴대용 산소와 응급 약을 챙겨 올게요"
+15:
+  - kind: slider
+    words: [w-severe]
+    cue: "The CT shows the swelling is pushing the brain toward the other side."
+    scale: [mild, moderate, severe]
+    answerAt: 2
+    why: "뇌가 한쪽으로 밀릴 만큼 부으면 severe예요. 생명을 위협할 수 있으니 바로 의사에게 알리고, 수술이 필요한지는 신경외과 의료진이 판단해요."
+    example: "The swelling is severe."
+    exKo: "부종이 심각해요."
+  - kind: context
+    words: [w-risk]
+    word: risk
+    ko: 위험
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Decompressive surgery carries risks, and the surgical team will review them with the family.", ok: true}
+      - {who: 보호자에게, icon: me, en: "The risk of mortality is significant with or without hemicraniectomy.", ok: false, fix: "Surgery has real risks, and the surgical team will go over them and answer your questions."}
+      - {who: 야간 인계, icon: board, en: "Family is aware of the risks of surgery, and the consent talk is still pending.", ok: true}
+    why: "의료진끼리는 risk를 용어로 정확하고 짧게 말해요. 놀란 가족에게 같은 risk를 mortality, hemicraniectomy 같은 말로 던지면 와닿지 않고 무서우니, 위험이 있다는 사실과 누가 설명해 줄지를 쉽게 알려 주세요."
+  - kind: swap
+    words: [w-relieve]
+    who: "보호자에게 · 수술 설명"
+    icon: me
+    before: ["They may recommend surgery to ", "decompress the cranial vault", "."]
+    options: ["relieve the pressure", "decompress the cranial vault", "mitigate intracranial hypertension"]
+    answer: "relieve the pressure"
+    notes: {"relieve the pressure": "가족이 바로 알아듣고 수술의 목적을 이해해요.", "decompress the cranial vault": "해부학 용어라 가족에게는 어렵게 들려요.", "mitigate intracranial hypertension": "의학 용어를 겹쳐 가족에게는 와닿지 않아요."}
+    why: "수술 이야기를 들은 가족은 불안해서, 수술이 무엇을 하려는 것인지 쉬운 말로 알려 주세요. 수술을 권할지는 의료팀이 정해요."
+    ko: "압력을 완화하기 위해 수술을 권할 수도 있어요"
+16:
+  - kind: slider
+    words: [w-pupil]
+    cue: "His right pupil is wide and doesn't move at all when the light hits it."
+    scale: [equal, sluggish, blown]
+    answerAt: 2
+    why: "빛에 전혀 움직이지 않고 크게 열려 있으면 blown이에요. 뇌탈출 징후일 수 있어서 기다리지 않고 바로 의사에게 알리고 지시된 응급 처치를 준비해요."
+    example: "His right pupil just blew."
+    exKo: "오른쪽 동공이 커졌어요."
+  - kind: context
+    words: [w-stat]
+    word: stat
+    ko: 긴급히
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Get a stat head CT, and send the coags stat.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Stat imaging and stat labs are being initiated on your husband.", ok: false, fix: "We're getting a scan of his head right now to see what's happening."}
+      - {who: 동료에게, icon: board, en: "CT is ready, so I'm taking him down stat.", ok: true}
+    why: "의료진끼리는 stat이라고 하면 지금 바로라는 뜻이 전달돼요. 보호자에게 같은 stat을 initiated 같은 문구와 쓰면 차갑고 어려우니, 지금 바로 무엇을 하는지 쉽게 말해 주세요."
+  - kind: swap
+    words: [w-start]
+    who: "동료에게 · 응급 지시"
+    icon: monitor
+    before: ["Stop the tPA and ", "commence reversal", " immediately."]
+    options: ["start reversal", "commence reversal", "initiate reversal protocols"]
+    answer: "start reversal"
+    notes: {"start reversal": "짧고 분명해서 응급 상황에서 바로 알아들어요.", "commence reversal": "격식 있는 말이라 급한 현장에서는 느리게 들려요.", "initiate reversal protocols": "길고 문서 같은 표현이라 급한 지시에는 맞지 않아요."}
+    why: "응급 지시는 짧고 분명한 동사가 좋아서, 동료가 한 번에 알아듣고 움직일 수 있게 하세요. 역전 약과 시점은 처방자가 정해요."
+    ko: "tPA를 중단하고 즉시 역전을 시작하세요"
+17:
+  - kind: slider
+    words: [w-weak]
+    cue: "Her left arm twitches, but it cannot move off the bed at all."
+    scale: [a little weak, quite weak, completely weak]
+    answerAt: 2
+    why: "침대에서 전혀 떼지 못하면 completely weak예요. 갑작스러운 큰 악화라 마지막으로 정상이었던 시각과 NIHSS 변화를 함께 바로 알려 응급 재관류 판단을 돕고 팀과 같이 움직여요."
+    example: "Her left side went weak."
+    exKo: "왼쪽이 약해졌어요."
+  - kind: context
+    words: [w-score]
+    word: score
+    ko: 점수
+    scenes:
+      - {who: 신경중재팀, icon: monitor, en: "Give me her NIHSS score and her last known well time.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Her NIHSS score of fourteen indicates a moderate-to-severe stroke.", ok: false, fix: "She's having trouble moving her left side, and we're getting her to the procedure room."}
+      - {who: 야간 인계, icon: board, en: "Her NIHSS score went from four to fourteen in thirty minutes.", ok: true}
+    why: "의료진끼리는 NIHSS score와 숫자가 가장 빠르고 정확한 인계예요. 놀란 가족에게는 같은 score를 숫자와 등급으로 던지지 말고, 지금 몸에서 무슨 일이 일어나고 무엇을 하는지 쉽게 알려 주세요."
+  - kind: swap
+    words: [w-angio]
+    who: "동료에게 · 응급 지시"
+    icon: monitor
+    before: ["Let's ", "prep her for angiographic intervention forthwith", "."]
+    options: ["get her ready for angio immediately", "prep her for angiographic intervention forthwith", "make her angiography-ready imminently"]
+    answer: "get her ready for angio immediately"
+    notes: {"get her ready for angio immediately": "짧고 분명해서 동료가 바로 알아듣고 움직여요.", "prep her for angiographic intervention forthwith": "격식 어휘가 겹쳐 급한 현장에서는 느려요.", "make her angiography-ready imminently": "어색한 조합이고 지금 바로라는 긴박함이 약해요."}
+    why: "응급 재관류 준비는 시간이 뇌를 좌우해서, 지시는 짧고 일상적인 말이 더 빨리 전달돼요."
+    ko: "즉시 혈관조영을 위해 준비시키죠"

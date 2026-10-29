@@ -1,0 +1,134 @@
+- title: 중심정맥관 삽입 보조·준비
+  nuance:
+    - kind: slider
+      words: [w-ready, w-barrier, w-gown]
+      cue: "Doctor: \"Are we good to start?\" You: the gown, gloves, mask and drape are all on the field."
+      scale: [barely set up, partly ready, fully ready]
+      answerAt: 2
+      why: "삽입 전에는 모자·마스크·멸균 가운·장갑·큰 방포가 전부 갖춰져야 해요(최대 멸균 차단 보호구). 하나라도 빠졌으면 fully ready가 아니라 partly ready라고 말하고 채운 뒤 시작해요."
+      example: "Everything is ready, so we can start."
+      exKo: "다 준비됐으니 시작하셔도 돼요."
+    - kind: context
+      words: [w-sterile]
+      word: sterile
+      ko: 무균의
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I've set up the sterile field and the drape is on.", ok: true}
+        - {who: 환자에게, icon: me, en: "Please keep your hands at your sides so everything near the site stays sterile.", ok: true}
+        - {who: 가족에게, icon: home, en: "He's draped and the field is sterile per the bundle protocol.", ok: false, fix: "We've covered him with a clean sheet so no germs can reach the line."}
+      why: "의료진끼리는 sterile field처럼 짧은 임상어가 정확해요. 가족에게는 bundle protocol 같은 말이 낯설고 딱딱하게 들려서, 왜 덮었는지를 쉬운 말로 풀어 줘요."
+- title: 동맥관 삽입 보조·영점
+  nuance:
+    - kind: slider
+      words: [w-notch, w-waveform, w-sharp]
+      cue: "Colleague: \"I can still see the notch, but it's getting soft.\""
+      scale: [crisp waveform, slightly damped, flat waveform]
+      answerAt: 1
+      why: "감쇠가 시작되면 dicrotic notch가 먼저 무뎌져요. 파형이 눌리면 실제 혈압이 다르게 보일 수 있으니 공기·꺾임·연결부를 확인하고 세척한 뒤 영점도 다시 봐요."
+      example: "The waveform is a little damped, so I'll check the line."
+      exKo: "파형이 조금 눌려 있어서 라인을 확인해 볼게요."
+    - kind: context
+      words: [w-zero]
+      word: zero
+      ko: 영점을 맞추다
+      scenes:
+        - {who: 동료 간호사, icon: handshake2, en: "Can you zero the transducer now that he's in bed?", ok: true}
+        - {who: 의사에게 보고, icon: stetho, en: "I zeroed it at the phlebostatic axis, and the numbers look right.", ok: true}
+        - {who: 환자에게, icon: me, en: "I need to zero the transducer to atmosphere at your phlebostatic axis, so lie still.", ok: false, fix: "I'm going to calibrate the sensor on your line, so please lie still for a moment."}
+      why: "동료와 의사에게는 zero가 정확하고 짧아요. 환자에게 atmosphere·phlebostatic axis까지 말하면 알아듣지 못하고 긴장하니, 센서를 맞춘다고만 쉽게 말해요."
+- title: 라인 라벨·개통 관리
+  nuance:
+    - kind: slider
+      words: [w-smudged, w-tag, w-unlabeled]
+      cue: "Colleague: \"I can't make out a single word on this tag.\""
+      scale: [a little worn, smudged, unreadable]
+      answerAt: 2
+      why: "한 글자도 안 읽히는 표지는 표지가 없는 것과 같아요. 라인은 약물·날짜가 읽히는 표지를 단 채로 두고, 읽히지 않으면 바로 다시 붙여요."
+      example: "The tag is unreadable, so I'll relabel it now."
+      exKo: "표지가 안 읽혀서 지금 다시 붙일게요."
+    - kind: context
+      words: [w-lumen]
+      word: lumen
+      ko: 관강
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The distal lumen is reserved for vasopressors.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you label each lumen before I hang this?", ok: true}
+        - {who: 가족에게, icon: home, en: "Each lumen runs a different drug, and the distal one is reserved for vasopressors.", ok: false, fix: "The line has a few small channels, and one is kept just for his blood pressure medicine."}
+      why: "의료진 사이에서는 lumen·distal·vasopressor가 정확한 말이에요. 가족에게는 모두 낯선 단어라서, 통로와 혈압약처럼 일상어로 풀어요."
+    - kind: swap
+      words: [w-vasopressor, w-lumen]
+      who: "환자에게 · 라인 설명"
+      icon: me
+      before: ["This line has a spare channel kept for ", "vasopressors", "."]
+      options: [blood pressure medicine, vasopressors, pressors]
+      answer: blood pressure medicine
+      notes: {blood pressure medicine: "환자가 바로 알아듣는 쉬운 말.", vasopressors: "의료진끼리 쓰는 말이라 환자에게는 낯설다.", pressors: "의료진 사이의 줄임말이라 환자에게는 더 낯설다."}
+      why: "같은 약도 환자에게는 쓰임새로 설명하고, 의료진끼리는 약물군 이름으로 말해요."
+      ko: 이 라인에는 혈압약 전용 통로가 따로 있어요
+- title: 흉관 배액 시스템 이해
+  nuance:
+    - kind: slider
+      words: [w-bubble, w-suction]
+      cue: "Colleague: \"The suction chamber is bubbling, but only softly.\""
+      scale: [no bubbling, gentle bubbling, vigorous bubbling]
+      answerAt: 1
+      why: "흡인 챔버(물 흡인 방식)에서는 부드러운 기포가 정상이에요. 세차게 끓으면 물이 빨리 증발해 흡인 압력이 달라질 수 있어서, 지시된 수치에서 기포가 잔잔한지 확인해요."
+      example: "The suction chamber is gently bubbling at the ordered level."
+      exKo: "흡인 챔버가 지시된 수치에서 잔잔하게 기포가 올라와요."
+    - kind: context
+      words: [w-chamber]
+      word: chamber
+      ko: 챔버
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The collection chamber output is marked and timed every shift.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you check the water seal chamber when you pass by?", ok: true}
+        - {who: 환자에게, icon: me, en: "The water seal chamber shows tidaling and the suction chamber is bubbling.", ok: false, fix: "This box has a few sections, and the one with water lets us see your breathing move the fluid."}
+      why: "의료진끼리는 chamber 이름(collection·water seal·suction)으로 짧게 말해요. 환자에게 여러 챔버 이름을 늘어놓으면 겁만 나서, 상자와 물 칸처럼 눈에 보이는 말로 설명해요."
+- title: 드레싱·삽입부 사정
+  nuance:
+    - kind: slider
+      words: [w-redness, w-site, w-warmth]
+      cue: "Colleague: \"The skin around the site is a little pink, no drainage.\""
+      scale: [mild redness, spreading redness, red and draining]
+      answerAt: 0
+      why: "살짝 분홍빛이고 진물이 없으면 차트에 기록하고 계속 지켜봐요. 번지는 발적·열감·삼출물·열이 보이면 감염 신호일 수 있어서 의사에게 알려요."
+      example: "There's mild redness at the site, so I'll keep watching."
+      exKo: "부위가 약간 붉어서 계속 지켜볼게요."
+    - kind: context
+      words: [w-dressing]
+      word: dressing
+      ko: 드레싱
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The dressing is intact, dated, and dry.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you help me change the dressing? The edges are lifting.", ok: true}
+        - {who: 환자에게, icon: me, en: "The transparent semipermeable dressing is intact, dated, and dry.", ok: false, fix: "The clear cover over your line looks good and dry."}
+      why: "의료진끼리는 intact, dated, dry처럼 점검 항목을 짧게 말해요. 환자에게 semipermeable 같은 재질 이름을 쓰면 낯설어서, 덮개가 잘 붙어 있고 말랐다고만 전해요."
+    - kind: swap
+      words: [w-insertion, w-site, w-clean]
+      who: "환자에게 · 삽입부 설명"
+      icon: me
+      before: ["The ", "insertion site", " looks clean, with no swelling."]
+      options: [spot where the line goes in, insertion site, access point]
+      answer: spot where the line goes in
+      notes: {spot where the line goes in: "환자가 바로 이해하는 풀어 쓴 말.", insertion site: "의료진 사이의 정확한 말이라 환자에게는 딱딱하다.", access point: "의료진 쪽 표현이라 환자에게는 낯설다."}
+      why: "같은 부위도 의료진끼리는 insertion site, 환자에게는 라인이 들어간 자리라고 풀어서 말해요."
+      ko: 라인이 들어간 자리가 깨끗하고 붓지도 않았어요
+- title: 장치 제거 보조 준비
+  nuance:
+    - kind: slider
+      words: [w-firm, w-pressure]
+      cue: "Colleague: \"After it's out, how hard should I press on the site?\""
+      scale: [a light touch, firm pressure, crushing force]
+      answerAt: 1
+      why: "라인을 뺀 뒤에는 출혈이 멎을 때까지 단단하게 압박해요(firm pressure). 스치듯 대면 지혈이 안 되고, 으스러뜨리듯 누르면 환자가 아프고 조직이 다쳐요."
+      example: "I'll hold firm pressure until the bleeding stops."
+      exKo: "출혈이 멎을 때까지 단단히 압박할게요."
+    - kind: context
+      words: [w-supine]
+      word: supine
+      ko: 앙와위의
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "He's supine with gauze and an occlusive dressing ready.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you help me get him supine before the removal?", ok: true}
+        - {who: 환자에게, icon: me, en: "Please stay supine and keep your head still.", ok: false, fix: "Please lie flat on your back and keep your head still."}
+      why: "supine은 의료진끼리 체위를 말할 때 정확하고 짧아요. 환자에게는 알아듣기 어려우니, 등을 대고 편평하게 누우라고 쉬운 말로 요청해요."

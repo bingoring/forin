@@ -1,0 +1,86 @@
+- title: 흉관 우발적 제거 개방기흉 위기
+  nuance:
+    - kind: slider
+      words: [w-tape, w-occlusive, w-side]
+      cue: "Colleague: \"The tube is out and the hole is sucking air — how do I tape the dressing?\""
+      scale: [loosely over it, taped on three sides, sealed on all four sides]
+      answerAt: 1
+      why: "빠진 자리는 밀폐 드레싱을 세 면만 붙여요. 한 면을 열어 두면 공기가 빠져나가 긴장성 기흉이 되는 걸 막아요. 곧바로 의사를 부르고 호흡 상태를 지켜봐요."
+      example: "I taped the dressing on three sides."
+      exKo: "드레싱을 세 면에 붙였어요."
+    - kind: context
+      words: [w-wound]
+      word: wound
+      ko: 상처
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The wound is covered with an occlusive dressing, taped on three sides.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you hold the gauze on the wound while I grab the tape?", ok: true}
+        - {who: 환자에게, icon: me, en: "There's an open wound at the chest tube site with a risk of tension pneumothorax.", ok: false, fix: "The tube came out, so I've covered the spot to keep air from getting in, and I'm right here with you."}
+      why: "의료진끼리는 wound와 tension pneumothorax가 위험을 정확히 알려 줘요. 환자에게는 위험 이름을 늘어놓지 말고 지금 한 조치와 곁에 있음을 말해요."
+- title: 라인 개방 공기색전 위기
+  nuance:
+    - kind: slider
+      words: [w-gasp, w-cap, w-loose]
+      cue: "Colleague: \"He took a sudden, sharp breath in the moment the cap came loose.\""
+      scale: [sighed, gasped, choked]
+      answerAt: 1
+      why: "gasp는 놀라거나 숨이 막혀 갑자기 숨을 들이켜는 거예요. sigh는 한숨, choke는 숨이 막혀 켁켁거리는 것이라 달라요. 캡이 풀린 뒤 gasp가 보이면 라인을 잠그고 바로 알려요."
+      example: "He gasped when the cap came loose."
+      exKo: "캡이 풀리는 순간 헉하고 숨을 들이쉬었어요."
+    - kind: context
+      words: [w-position]
+      word: position
+      ko: 체위
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I've put him in left lateral Trendelenburg position and clamped the line.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you help me get him in position? Left side down, head down.", ok: true}
+        - {who: 가족에게, icon: home, en: "We've put him in the left lateral Trendelenburg position.", ok: false, fix: "We've turned him onto his left side with his head low, and we're staying right with him."}
+      why: "의료진끼리는 체위 이름이 정확하고 짧아요. 가족에게 left lateral Trendelenburg는 낯서니, 왼쪽으로 눕히고 머리를 낮췄다고 모습 그대로 말해요."
+    - kind: swap
+      words: [w-lateral, w-trendelenburg, w-position]
+      who: "가족에게 · 체위 설명"
+      icon: home
+      before: ["We've put him in the ", "left lateral Trendelenburg position", " and we're staying with him."]
+      options: ["left side, head-down position", left lateral Trendelenburg position, LLD Trendelenburg]
+      answer: "left side, head-down position"
+      notes: {"left side, head-down position": "가족이 모습 그대로 알아듣는 말.", left lateral Trendelenburg position: "의료진끼리의 정식 이름이라 가족에게는 낯설다.", LLD Trendelenburg: "줄임말이라 가족은 알아듣지 못한다."}
+      why: "같은 체위도 가족에게는 어떻게 눕혔는지로, 의료진끼리는 정식 이름으로 말해요."
+      ko: 왼쪽으로 눕히고 머리를 낮췄고, 곁에 있을게요
+- title: PA 카테터 폐동맥 파열 위기
+  nuance:
+    - kind: slider
+      words: [w-hemoptysis]
+      cue: "Colleague: \"She's coughing up bright red blood right after the wedge.\""
+      scale: [a few streaks, blood-tinged sputum, frank hemoptysis]
+      answerAt: 2
+      why: "쐐기압 측정 직후 선홍색 피를 상당량 기침으로 뱉으면 frank hemoptysis예요. 폐동맥 파열이 걱정되는 위급 신호라 곁을 지키고 기도를 살피며 바로 의사에게 알려요."
+      example: "She has frank hemoptysis, so I'm calling for help."
+      exKo: "뚜렷한 객혈이라 도움을 요청하고 있어요."
+    - kind: context
+      words: [w-hemoptysis]
+      word: hemoptysis
+      ko: 객혈
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "She has hemoptysis after the wedge reading.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Any more hemoptysis? Get the suction ready, please.", ok: true}
+        - {who: 가족에게, icon: home, en: "She's having hemoptysis from a possible pulmonary artery rupture.", ok: false, fix: "She's coughing up blood, and we're getting the right team here fast."}
+      why: "의료진끼리는 hemoptysis가 짧고 정확해요. 가족에게는 낯선 말에 파열 같은 추측까지 붙으면 겁만 줘요. 보이는 증상과 지금 하는 조치를 쉬운 말로 전해요."
+- title: 라인 관련 대량출혈·혈종 위기
+  nuance:
+    - kind: slider
+      words: [w-help, w-arrive, w-pressure]
+      cue: "Colleague: \"I'm alone, pressing on it, and it won't stop. How soon do I need more hands?\""
+      scale: [when convenient, soon, right now]
+      answerAt: 2
+      why: "압박을 풀 수 없는 대량 출혈에서는 혼자 버티지 않고 바로 도움을 요청해요. 병원 지침에 따라 의사와 지원 인력을 즉시 부르고, 도착할 때까지 압박을 유지해요."
+      example: "I need help right now, so please come."
+      exKo: "지금 바로 도움이 필요해요, 와 주세요."
+    - kind: context
+      words: [w-hematoma]
+      word: hematoma
+      ko: 혈종
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The hematoma is still growing despite direct pressure.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you hold pressure while I check the hematoma and call for help?", ok: true}
+        - {who: 환자에게, icon: me, en: "You have an expanding hematoma at your puncture site.", ok: false, fix: "There's bleeding under your skin at that spot, so I'm pressing on it and getting help."}
+      why: "의료진끼리는 hematoma가 정확하고 짧아요. 환자에게 expanding hematoma와 puncture site는 낯설고 겁나니, 피부 밑 출혈이라 누르고 도움을 부른다고 쉽게 말해요."

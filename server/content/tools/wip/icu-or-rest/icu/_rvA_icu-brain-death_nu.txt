@@ -1,0 +1,597 @@
+=== 0 뇌사 개념·법적 절차 이해
+ [slider] answerAt: 2
+cue: The doctors say the damage will never reverse, even with the ventilator.
+exKo: 뇌사란 뇌가 영구적으로 기능을 멈춘 것을 뜻해요.
+example: Brain death means the brain has permanently stopped working.
+scale: [temporarily, for a while, permanently]
+why: 시간이 지나도 되돌아오지 않으면 permanently예요. 뇌사는 뇌 기능이 영구적으로 멈춘 상태이고, 판정은 의사가 정해진 검사로 해요. 간호사는 검사를 돕고 가족 질문에 쉬운 말로 답해요.
+words: [w-permanently]
+
+   SWAPREAD: Brain death means his brain has permanently stopped working.
+   SWAPREAD: Brain death means he is sleeping deeply.
+   SWAPREAD: Brain death means he is in a very bad coma.
+ [swap] answer: his brain has permanently stopped working
+before: ['Brain death means ', he is sleeping deeply, .]
+icon: me
+ko: 뇌사란 뇌가 영구적으로 기능을 멈춘 것을 뜻해요
+notes: {he is in a very bad coma: 혼수상태와 뇌사는 달라서 가족이 둘을 헷갈리게 돼요., he is sleeping deeply: 깊은 잠이라고 하면 깨어날 것처럼 들려 거짓 희망을 줘요., his brain has permanently stopped working: 있는 그대로 분명해서 가족이 오해하지 않아요.}
+options: [his brain has permanently stopped working, he is sleeping deeply, he is in a very bad coma]
+who: 가족에게 · 뇌사 설명
+why: 뇌사는 법적 사망이라서 잠이나 혼수 같은 말로 돌려 말하면 안 돼요. 가족에게 거짓 희망을 주지 않고 사실을 분명하게 말해요.
+words: [w-brain]
+
+=== 1 뇌간반사 검사 준비 보조
+ [slider] answerAt: 1
+cue: The pupil shrinks only a little, and slowly, when the light hits it.
+exKo: 제가 확인했을 때 동공은 고정되고 반응이 없습니다.
+example: Pupils are fixed and nonreactive on my check.
+scale: [brisk, sluggish, fixed]
+why: 빛에 느리고 약하게라도 줄어들면 sluggish예요. brisk는 빠르게 정상 반응, fixed는 전혀 변하지 않을 때예요. 반응이 달라진 것은 본 그대로 기록해 의사에게 알려요.
+words: [w-pupil]
+
+ [context] ko: 반응
+scenes:
+- {en: No corneal or gag response noted., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: Pupils nonreactive; no motor response to pain., icon: board, ok: true, who: 차트 기록}
+- {en: There was no response to noxious stimuli., fix: 'He didn''t react when we touched his eye or pressed on his nail, and that tells the doctors his brain isn''t working.', icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 response와 noxious stimuli 같은 용어가 정확하고 빨라요. 가족에게는 같은 일을 무슨 검사를 했고 어떻게 보였는지 쉬운 말로 풀어 주세요.
+word: response
+words: [w-response]
+
+   SWAPREAD: The doctor will touch his eye lightly with cotton to check whether his eye blinks.
+   SWAPREAD: The doctor will touch his eye lightly with cotton to check the corneal reflex.
+   SWAPREAD: The doctor will touch his eye lightly with cotton to check the trigeminal-facial arc.
+ [swap] answer: whether his eye blinks
+before: ['The doctor will touch his eye lightly with cotton to check ', the corneal reflex, .]
+icon: me
+ko: 의사가 솜으로 눈을 살짝 건드려서 눈이 깜박이는지 확인할 거예요
+notes: {the corneal reflex: 의료진끼리 쓰는 용어라 가족은 뜻을 모를 수 있어요., the trigeminal-facial arc: 신경 경로를 가리키는 전문 용어라 가족 설명에는 맞지 않아요., whether his eye blinks: '가족이 바로 알아듣고, 무엇을 보는지 분명해요.'}
+options: [whether his eye blinks, the corneal reflex, the trigeminal-facial arc]
+who: 가족에게 · 검사 안내
+why: 뇌간반사 검사는 의사가 하고, 간호사는 무엇을 하는지 가족이 알아듣게 옆에서 풀어 줘요.
+words: [w-corneal]
+
+=== 2 무호흡 검사 준비
+ [slider] answerAt: 0
+cue: His pressure and heart rate are the same as an hour ago, with no change.
+exKo: 시계를 시작하기 전에 활력징후는 안정적이에요.
+example: Vitals are stable before we start the clock.
+scale: [stable, drifting, dropping]
+why: 수치가 한 시간째 그대로면 stable이에요. 무호흡 검사는 혈압·체온·산소 상태 같은 전제 조건이 갖춰진 뒤에 시작하고, 갖춰졌는지는 팀이 함께 확인해요.
+words: [w-stable]
+
+ [context] ko: 기저의
+scenes:
+- {en: Draw a baseline gas before we disconnect him., icon: stetho, ok: true, who: 의사가 간호사에게}
+- {en: Baseline gas sent; SpO2 100% on 100% FiO2., icon: board, ok: true, who: 차트 기록}
+- {en: 'His baseline PaCO2 is normal, so we can begin the apnea test.', fix: 'His breathing numbers look normal before the test, so we can begin.', icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 baseline, PaCO2 같은 용어가 정확하고 빨라요. 가족에게는 같은 baseline을 검사 전 숨쉬기 수치가 정상이라고 쉬운 말로 풀어 주세요.
+word: baseline
+words: [w-baseline]
+
+   SWAPREAD: Before the test, I'll give him extra oxygen so his oxygen level stays safe.
+   SWAPREAD: Before the test, I'll preoxygenate him so his oxygen level stays safe.
+   SWAPREAD: Before the test, I'll oxygenate his alveolar bed so his oxygen level stays safe.
+ [swap] answer: give him extra oxygen
+before: ['Before the test, I''ll ', preoxygenate him, ' so his oxygen level stays safe.']
+icon: me
+ko: 검사 전에 산소를 더 드려서 산소 수치가 안전하게 유지되도록 할게요
+notes: {give him extra oxygen: '가족이 바로 알아듣고, 왜 하는지도 분명해요.', oxygenate his alveolar bed: 폐포를 가리키는 전문 표현이라 가족 설명에는 맞지 않아요., preoxygenate him: 의료진끼리 쓰는 말이라 가족은 뜻을 모를 수 있어요.}
+options: [give him extra oxygen, preoxygenate him, oxygenate his alveolar bed]
+who: 가족에게 · 검사 전 처치 설명
+why: 검사를 앞두고 가족이 불안해하니, 하는 일을 쉬운 말로 알려 주면 안심과 이해에 도움이 돼요.
+words: [w-preoxygenate]
+
+=== 3 가족에게 상태 설명 지원
+ [slider] answerAt: 1
+cue: The wife says, "I follow most of it, but one part is still fuzzy."
+exKo: 아직 명확하지 않은 부분은 의사가 다시 설명하도록 하겠습니다.
+example: I'll make sure the doctor explains anything that's still unclear.
+scale: [clear, partly unclear, totally unclear]
+why: 대부분은 이해했고 일부만 흐리면 partly unclear예요. 이럴 때는 의사가 다시 설명하도록 연결해 주세요. 판정 내용을 풀어 주는 것은 의사의 일이에요.
+words: [w-unclear]
+
+   SWAPREAD: I'm so sorry, but he has died.
+   SWAPREAD: I'm so sorry, but we lost him.
+   SWAPREAD: I'm so sorry, but he passed on.
+ [swap] answer: he has died
+before: ['I''m so sorry, but ', we lost him, .]
+icon: me
+ko: 정말 마음이 아프지만, 그분은 사망했어요
+notes: {he has died: 분명하고 오해가 없어요. 사망 고지에서는 died를 한 번은 분명히 말해요., he passed on: 완곡해서 가족이 사실을 놓칠 수 있어요., we lost him: 아직 어딘가에 있는 것처럼 들려 가족이 살아 있는지 되묻게 돼요.}
+options: [he has died, we lost him, he passed on]
+who: 가족에게 · 사망 고지
+why: 뇌사는 법적 사망이에요. 가족이 사실을 놓치지 않도록 has died를 분명히 말한 뒤에 위로를 건네요.
+words: [w-die]
+
+=== 4 장기기증 기관 연계 인지
+ [slider] answerAt: 2
+cue: A colleague asks, "Did anyone tell the OPO?" You made the formal call per protocol and charted the time.
+exKo: OPO에는 프로토콜에 따라 통보했어요.
+example: The OPO has been notified per protocol.
+scale: [mention, inform, notify]
+why: 정해진 절차에 따라 공식적으로 알리면 notify예요. mention은 말끝에 슬쩍 꺼낼 때, inform은 알려 줄 때예요. 간호사는 병원 정책대로 OPO에 notify하고 시간을 차트에 남겨요. 기증 이야기는 OPO 담당자가 해요.
+words: [w-notify]
+
+ [context] ko: 규정
+scenes:
+- {en: 'Per protocol, we notify the OPO when a patient meets the clinical triggers.', icon: handshake2, ok: true, who: 동료 간호사에게}
+- {en: OPO notified per protocol; call time documented., icon: board, ok: true, who: 차트 기록}
+- {en: 'Per protocol, the OPO has been notified that your son meets its clinical trigger criteria.', fix: 'This is what the hospital does for every patient like him, and someone will talk with you about it separately.', icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 protocol과 clinical trigger 같은 말이 정확하고 빨라요. 가족 앞에서는 같은 protocol을 이 절차가 누구에게나 하는 일이라고 풀어 주세요. 기증 이야기 자체는 OPO 담당자가 해요.
+word: protocol
+words: [w-protocol]
+
+   SWAPREAD: I notified the OPO and charted the time.
+   SWAPREAD: I notified the transplant people and charted the time.
+   SWAPREAD: I notified the donor folks and charted the time.
+ [swap] answer: the OPO
+before: ['I notified ', the transplant people, ' and charted the time.']
+icon: handshake2
+ko: OPO에 알렸고 시간은 차트에 남겼어요
+notes: {the OPO: 정식 기관 이름이라 정확해요. 인계에서는 누구에게 알렸는지 분명해야 해요., the donor folks: 가볍고 비전문적인 말투라 인계에는 맞지 않아요., the transplant people: 이식센터와 OPO를 헷갈리게 하는 두루뭉술한 말이에요.}
+options: [the OPO, the transplant people, the donor folks]
+who: 동료 간호사에게 · 인계
+why: OPO 통보는 병원 정책에 따라 하고 시간을 차트에 남겨요. 인계에서는 기관 이름을 정확히 말해야 다음 사람이 이어 가요.
+words: [w-opo]
+
+=== 5 기증 전 신체 유지 기초
+ [slider] answerAt: 2
+cue: His heart rate is 130 at rest, and he is not moving.
+exKo: 이번 시간 동안 심박수와 혈압이 안정적으로 유지됐어요.
+example: His heart rate and pressure have stayed steady this hour.
+scale: [slow, normal, fast]
+why: 분당 130회는 빠른 맥박이에요. 맥박의 빠르기 변화는 수치 그대로 기록하고 의사에게 알려요. 판단과 지시는 의료진이 해요.
+words: [w-rate]
+
+ [context] ko: 유지되다
+scenes:
+- {en: His pressure is holding on the current dose., icon: handshake2, ok: true, who: 인계 동료에게}
+- {en: 'If his pressure doesn''t hold, I''ll call you right away.', icon: stetho, ok: true, who: 의사에게 보고}
+- {en: His hemodynamics are holding on vasopressor support., fix: His blood pressure is staying steady with the medicine we're giving him., icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 hemodynamics, vasopressor 같은 말이 정확하고 빨라요. 가족에게는 같은 hold를 혈압이 유지되고 있다고 쉬운 말로 풀어 주세요.
+word: hold
+words: [w-hold]
+
+   SWAPREAD: We're keeping close watch on his blood pressure and heart rate.
+   SWAPREAD: We're keeping close watch on his MAP and CVP trends.
+   SWAPREAD: We're keeping close watch on his hemodynamic parameters.
+ [swap] answer: his blood pressure and heart rate
+before: ['We''re keeping close watch on ', his MAP and CVP trends, .]
+icon: me
+ko: 혈압과 심박수를 계속 지켜보고 있어요
+notes: {his MAP and CVP trends: 의료진끼리 쓰는 약어라 가족은 뜻을 모를 수 있어요., his blood pressure and heart rate: '가족이 바로 알아듣고, 무엇을 지켜보는지 분명해요.', his hemodynamic parameters: 격식 있는 전문 표현이라 가족 설명에는 딱딱해요.}
+options: [his blood pressure and heart rate, his MAP and CVP trends, his hemodynamic parameters]
+who: 가족에게 · 감시 설명
+why: 무엇을 지켜보고 있는지 알면 가족이 덜 불안해해요. 약어 대신 쉬운 말로 알려 주세요.
+words: [w-pressure]
+
+=== 6 무호흡 검사 중 안전 감시
+ [slider] answerAt: 1
+cue: His saturation drifts from 99 down to 96 over several minutes.
+exKo: 산소포화도와 활력징후를 계속 지켜보고 있어요.
+example: I'm watching his saturation and vitals continuously.
+scale: [holding, slipping, plunging]
+why: 조금씩 천천히 내려가면 slipping이에요. holding은 그대로일 때, plunging은 빠르게 급락할 때예요. 무호흡 검사를 중단할 기준은 병원 프로토콜과 의사가 정한 대로 따라요.
+words: [w-saturation]
+
+ [context] ko: 호흡기(줄임말)
+scenes:
+- {en: The vent is ready to reconnect the moment we need it., icon: handshake2, ok: true, who: 동료 간호사에게}
+- {en: Vent off for apnea test; rescue equipment at bedside., icon: board, ok: true, who: 차트 기록}
+- {en: 'He''s off the vent for the apnea test, with passive oxygen insufflation.', fix: 'He''s off the breathing machine for a short time for this test, and he''s still getting oxygen.', icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 vent라는 줄임말이 빠르고 정확해요. 가족에게는 같은 vent를 숨쉬기를 돕는 기계(호흡기)라고 쉬운 말로 풀어 주세요.
+word: vent
+words: [w-vent]
+
+   SWAPREAD: Sat is dropping fast — I'm reconnecting him.
+   SWAPREAD: Sat is tanking — I'm reconnecting him.
+   SWAPREAD: Sat is going south — I'm reconnecting him.
+ [swap] answer: dropping fast
+before: ['Sat is ', tanking, ' — I''m reconnecting him.']
+icon: stetho
+ko: 산소포화도가 빠르게 떨어지고 있어요 — 다시 연결할게요
+notes: {dropping fast: 얼마나 빠른지 분명하고 보고에 맞는 중립적인 말이에요., going south: 관용 표현이라 얼마나 나쁜지 모호해요., tanking: 속어라서 수치도 속도도 정확히 전달되지 않아요.}
+options: [dropping fast, tanking, going south]
+who: 의사에게 · 급변 보고
+why: 급변 보고에서는 속어보다 사실 그대로 짧게 말하는 게 정확해요. 의사가 상황을 바로 판단할 수 있어야 해요.
+words: [w-desaturate]
+
+=== 7 뇌사 후 혈역학 유지
+ [slider] answerAt: 0
+cue: His mean pressure falls from 72 to 70 and then comes back up on its own.
+exKo: 몇 분 전 평균 혈압이 육십 아래로 떨어졌어요.
+example: His mean pressure dropped below sixty a few minutes ago.
+scale: [dip, drop, plunge]
+why: 잠깐 조금 내려갔다가 돌아오면 dip이에요. drop은 눈에 띄게 떨어질 때, plunge는 급락할 때예요. 처치는 처방과 프로토콜 범위 안에서 하고, 변화는 의사에게 알려요.
+words: [w-drop]
+
+ [context] ko: 볼루스
+scenes:
+- {en: Give a fluid bolus and reassess his pressure., icon: stetho, ok: true, who: 의사가 간호사에게}
+- {en: 'Fluid bolus infused; pressure improved, recheck in 15 minutes.', icon: board, ok: true, who: 차트 기록}
+- {en: We gave a crystalloid bolus for his hypotension., fix: We gave him extra fluid through his IV to help his blood pressure., icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 bolus, crystalloid 같은 용어가 정확하고 빨라요. 가족에게는 같은 일을 수액을 더 넣어 혈압을 돕고 있다고 쉬운 말로 풀어 주세요.
+word: bolus
+words: [w-bolus]
+
+   SWAPREAD: Doctor, his pressure is low — I'd like to give a fluid bolus and recheck.
+   SWAPREAD: Doctor, his pressure is low — I'd like to dump some fluid in and recheck.
+   SWAPREAD: Doctor, his pressure is low — I'd like to throw fluid at it and recheck.
+ [swap] answer: give a fluid bolus
+before: ['Doctor, his pressure is low — I''d like to ', dump some fluid in, ' and recheck.']
+icon: stetho
+ko: 선생님, 혈압이 낮아요 — 수액 볼루스를 주고 다시 확인하고 싶어요
+notes: {dump some fluid in: 양과 방법이 모호하고 부주의하게 들려요., give a fluid bolus: '투여 내용이 정확하고, 처방을 받아 하겠다는 요청으로 알맞아요.', throw fluid at it: 속어라 처치 내용이 정확히 전달되지 않아요.}
+options: [give a fluid bolus, dump some fluid in, throw fluid at it]
+who: 의사에게 · 처치 요청
+why: 수액 투여는 처방과 프로토콜에 따라 해요. 의사에게는 무엇을 하고 싶은지 정확한 용어로 요청해요.
+words: [w-bolus]
+
+=== 8 요붕증 관리
+ [slider] answerAt: 2
+cue: He has filled the urine bag twice in one hour, and the urine looks like clear water.
+exKo: 지난 한 시간 사이 소변량이 두 배로 늘었어요.
+example: His urine output has doubled in the last hour.
+scale: [minimal, moderate, profuse]
+why: 한 시간에 소변이 이렇게 많고 물처럼 묽으면 profuse예요. 요붕증에서는 많이 나오는 소변이 탈수와 나트륨 상승으로 이어질 수 있어 의사에게 바로 알려요. 약 용량은 처방대로예요.
+words: [w-urine]
+
+ [context] ko: 나트륨
+scenes:
+- {en: 'His sodium is climbing, so we''ll watch it closely.', icon: stetho, ok: true, who: 의사 라운드}
+- {en: 'Sodium was 154 on the last panel, up from 148.', icon: handshake2, ok: true, who: 인계 동료에게}
+- {en: Serum sodium is rising because of central diabetes insipidus., fix: The salt level in his blood is going up because his body is losing too much water., icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 sodium과 diabetes insipidus 같은 용어가 정확하고 빨라요. 가족에게는 같은 sodium을 혈액 속 염분 수치가 오르고 있다고 쉬운 말로 풀어 주세요.
+word: sodium
+words: [w-sodium]
+
+   SWAPREAD: We're checking the salt level in his blood every few hours.
+   SWAPREAD: We're checking his serum Na every few hours.
+   SWAPREAD: We're checking his natremia profile every few hours.
+ [swap] answer: the salt level in his blood
+before: ['We''re checking ', his serum Na, ' every few hours.']
+icon: me
+ko: 몇 시간마다 혈액 속 염분 수치를 확인하고 있어요
+notes: {his natremia profile: 격식 있는 전문 표현이라 가족 설명에는 어색해요., his serum Na: 차트에 쓰는 약어라 가족은 뜻을 모를 수 있어요., the salt level in his blood: '가족이 바로 알아듣고, 무엇을 확인하는지 분명해요.'}
+options: [the salt level in his blood, his serum Na, his natremia profile]
+who: 가족에게 · 검사 안내
+why: 혈액검사를 자주 하는 이유가 궁금한 가족이 많아요. 무엇을 보는 검사인지 쉬운 말로 알려 주세요.
+words: [w-sodium]
+
+=== 9 체온·전해질 유지
+ [slider] answerAt: 0
+cue: His temperature has read the same on the last three checks.
+exKo: 체내 균형을 안정적으로 유지하고 있어요.
+example: We're keeping his internal balance steady.
+scale: [steady, drifting, plunging]
+why: 세 번 연속 같은 값이면 steady예요. drifting은 조금씩 달라질 때, plunging은 급하게 떨어질 때예요. 체온이 달라지면 보온 처치와 함께 의사에게 알려요.
+words: [w-steady]
+
+ [context] ko: 검사 패널
+scenes:
+- {en: Potassium came back low on the last panel., icon: stetho, ok: true, who: 의사 라운드}
+- {en: Panel drawn at 0400; potassium replaced per order., icon: board, ok: true, who: 차트 기록}
+- {en: His last panel shows hypokalemia., fix: His last blood test shows that one of his minerals is low., icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 panel(여러 항목을 묶은 혈액검사)과 hypokalemia 같은 용어가 정확하고 빨라요. 가족에게는 같은 panel을 혈액검사로, 낮은 수치를 쉬운 말로 풀어 주세요.
+word: panel
+words: [w-panel]
+
+   SWAPREAD: I've put a warm blanket on him to keep his temperature from dropping.
+   SWAPREAD: I've put a forced-air warming unit on him to keep his temperature from dropping.
+   SWAPREAD: I've put a warming apparatus on him to keep his temperature from dropping.
+ [swap] answer: warm blanket
+before: ['I''ve put a ', forced-air warming unit, ' on him to keep his temperature from dropping.']
+icon: me
+ko: 체온이 떨어지지 않도록 따뜻한 담요를 덮어 드렸어요
+notes: {forced-air warming unit: 정확한 장비 이름이지만 가족에게는 낯설게 들려요., warm blanket: 가족이 바로 알아듣는 쉬운 말이에요., warming apparatus: 격식 있는 표현이라 가족 대화에는 딱딱해요.}
+options: [warm blanket, forced-air warming unit, warming apparatus]
+who: 가족에게 · 보온 설명
+why: 체온이 떨어지지 않게 하는 일은 가족이 보기에도 돌봄이에요. 장비 이름보다 무엇을 해 주는지 알려 주세요.
+words: [w-blanket]
+
+=== 10 기증 위한 폐 보호 환기
+ [slider] answerAt: 2
+cue: His oxygen saturation has stayed at 98 all hour.
+exKo: 산소포화도가 구십오 이상으로 유지되고 있어요.
+example: His oxygen saturation has stayed above ninety-five.
+scale: [low, borderline, good]
+why: 한 시간 내내 98이면 good이에요. low는 기준보다 낮을 때, borderline은 경계일 때예요. 폐 보호 환기 설정은 호흡치료팀과 의사가 정하고, 간호사는 수치를 지켜보고 알려요.
+words: [w-saturation]
+
+ [context] ko: 흡인하다
+scenes:
+- {en: 'Suction him only as needed, and gently.', icon: handshake2, ok: true, who: 동료 간호사에게}
+- {en: Suctioned for scant white secretions; saturation stable., icon: board, ok: true, who: 차트 기록}
+- {en: We suction his endotracheal tube to clear bronchial secretions and prevent atelectasis., fix: We gently clear the mucus from his breathing tube to keep his lungs healthy., icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 endotracheal tube, atelectasis 같은 용어가 정확하고 빨라요. 가족에게는 같은 suction을 호흡관의 분비물을 닦아 낸다고 쉬운 말로 풀어 주세요.
+word: suction
+words: [w-suction]
+
+   SWAPREAD: Every two hours we turn him so he doesn't get sores.
+   SWAPREAD: Every two hours we lateralize him so he doesn't get sores.
+   SWAPREAD: Every two hours we shift his torso laterally so he doesn't get sores.
+ [swap] answer: turn him
+before: ['Every two hours we ', lateralize him, ' so he doesn''t get sores.']
+icon: me
+ko: 욕창이 생기지 않도록 두 시간마다 몸을 돌려 눕혀 드려요
+notes: {lateralize him: 흔히 쓰지 않는 딱딱한 말이라 가족은 무슨 말인지 모를 수 있어요., shift his torso laterally: 해부학 용어를 늘어놓은 표현이라 가족 대화에는 딱딱해요., turn him: 가족이 바로 알아듣는 쉬운 말이에요.}
+options: [turn him, lateralize him, shift his torso laterally]
+who: 가족에게 · 체위 변경 설명
+why: 체위 변경은 피부와 폐를 지키는 기본 돌봄이에요. 가족이 보기에 이상하지 않게 쉬운 말로 알려 주세요.
+words: [w-turn]
+
+=== 11 가족 사별 지원·소통
+ [slider] answerAt: 1
+cue: '"I can''t leave yet — I have to see him one more time," the son says.'
+exKo: 필요한 만큼 얼마든지 곁에 있어 주셔도 돼요.
+example: Take all the time you need to be with him.
+scale: [want, need, must]
+why: 꼭 해야 한다고 느끼지만 절대적인 명령은 아닐 때 need예요. want는 바람 정도, must는 반드시일 때예요. 가족이 꼭 필요하다고 말하는 시간은 병원 규칙과 안전 안에서 최대한 맞춰 주세요.
+words: [w-need]
+
+   SWAPREAD: I'll step outside so you can have this time together.
+   SWAPREAD: I'll vacate the room so you can have this time together.
+   SWAPREAD: I'll leave the premises so you can have this time together.
+ [swap] answer: step outside
+before: ['I''ll ', vacate the room, ' so you can have this time together.']
+icon: me
+ko: 함께 시간을 보내실 수 있도록 잠시 밖에 나가 있을게요
+notes: {leave the premises: 건물을 떠난다는 뜻이라 맞지 않고 어색해요., step outside: 자연스럽고 배려가 담긴 말이에요. 곧 돌아올 거라는 느낌도 줘요., vacate the room: 격식을 차린 말이라 가족과 함께하는 순간에는 차갑게 들려요.}
+options: [step outside, vacate the room, leave the premises]
+who: 가족에게 · 자리 비켜 주기
+why: 작별의 시간에는 가족이 편하게 있도록 짧고 따뜻한 말로 자리를 비켜 줘요.
+words: [w-together]
+
+=== 12 동의·문화적 고려
+ [slider] answerAt: 1
+cue: The family politely asks whether an elder can pray at the bedside.
+exKo: 물론이죠 — 가족의 뜻과 신념이 가장 우선이에요.
+example: Of course — your family's wishes and beliefs come first.
+scale: [hope, request, demand]
+why: 정중하게 부탁하는 것은 request예요. hope는 속마음일 때, demand는 강하게 요구할 때예요. 가능한 범위에서 병원 규칙과 안전을 확인하고 맞춰 주세요.
+words: [w-wish]
+
+   SWAPREAD: I'll ask the coordinator to speak with all of you together.
+   SWAPREAD: I'll ask the coordinator to speak with all of your kin together.
+   SWAPREAD: I'll ask the coordinator to speak with the entirety of your relatives together.
+ [swap] answer: all of you
+before: ['I''ll ask the coordinator to speak with ', all of your kin, ' together.']
+icon: me
+ko: 코디네이터가 여러분 모두와 함께 이야기하도록 부탁드릴게요
+notes: {all of you: 자연스럽고 가족 모두를 존중하는 말이에요., all of your kin: 예스럽고 어색한 표현이에요., the entirety of your relatives: 지나치게 격식 있고 딱딱해요.}
+options: [all of you, all of your kin, the entirety of your relatives]
+who: 가족에게 · 대화 자리 안내
+why: 문화와 가족 구성이 다양하니, 모두가 함께 들을 수 있다고 쉬운 말로 안내해 주세요.
+words: [w-coordinator]
+
+=== 13 기증 코디네이터 협업
+ [slider] answerAt: 0
+cue: A routine lab result needs no action; the coordinator just wants to know by the end of the shift.
+exKo: 무언가 바뀌면 바로 호출할게요.
+example: I'll page you the moment anything changes.
+scale: [leave a message, call, page]
+why: 급하지 않은 정보는 메시지로 남기면 돼요. 바로 반응이 필요할 때만 call이나 page로 올려요. 호출 수단은 병원 정책과 코디네이터와 정한 방식에 따라요.
+words: [w-page]
+
+ [context] ko: 채취하다
+scenes:
+- {en: 'Can the next labs be drawn at the bedside?', icon: monitor, ok: true, who: 코디네이터가 간호사에게}
+- {en: Labs drawn at 0600 and sent to the lab., icon: board, ok: true, who: 차트 기록}
+- {en: We need to draw a coag panel and a type and screen., fix: We need to take a little more blood for tests., icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 검사 이름을 그대로 말하며 draw를 써도 돼요. 가족에게는 같은 일을 검사를 위해 피를 조금 더 뽑는다고 쉬운 말로 풀어 주세요.
+word: draw
+words: [w-draw]
+
+   SWAPREAD: His last panel shows a change, so I'd like to coordinate repeat labs with you.
+   SWAPREAD: His last panel looks wonky, so I'd like to coordinate repeat labs with you.
+   SWAPREAD: His last panel is whack, so I'd like to coordinate repeat labs with you.
+ [swap] answer: shows a change
+before: ['His last panel ', looks wonky, ', so I''d like to coordinate repeat labs with you.']
+icon: monitor
+ko: 지난 검사에 변화가 있어서 반복 검사를 함께 조율하고 싶어요
+notes: {is whack: 비속어에 가까워 전문가 사이 소통에 맞지 않아요., looks wonky: 속어라서 무엇이 어떻게 이상한지 전달되지 않아요., shows a change: 무엇이 달라졌는지 사실 그대로 말해 의료진 사이 소통에 맞아요.}
+options: [shows a change, looks wonky, is whack]
+who: 코디네이터에게 · 검사 조율
+why: 코디네이터와는 사실 그대로 짧게 말해야 일정을 정확히 맞출 수 있어요. 막연한 속어는 오해를 낳아요.
+words: [w-coordinate]
+
+=== 14 순환정지후 기증 이해
+ [slider] answerAt: 2
+cue: The nurse records the time of every single change during the waiting period.
+exKo: 대기 시간은 정확히 재고 세심하게 기록해요.
+example: The waiting period is timed and documented closely.
+scale: [rarely, regularly, continuously]
+why: 변화가 있을 때마다 시간을 적으면 continuously에 가까워요. DCD의 대기 시간은 정확히 재고 기록해요. 사망 선언은 이식팀과 별개의 의사가 해요.
+words: [w-document]
+
+ [context] ko: 사망
+scenes:
+- {en: 'In DCD, death is declared after circulation stops and the observation period ends.', icon: stetho, ok: true, who: 의사가 간호사에게}
+- {en: Time of death 1412; declared by Dr. Park., icon: board, ok: true, who: 차트 기록}
+- {en: Circulatory death will be declared at the end of the asystole observation interval., fix: 'His heart will stop, and the doctor will tell you the moment he has died.', icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 circulatory death, asystole 같은 용어가 정확하고 빨라요. 가족에게는 같은 death를 심장이 멈추고 의사가 알려 줄 거라고 쉬운 말로 풀어 주세요.
+word: death
+words: [w-death]
+
+   SWAPREAD: After the support is stopped, we wait until his heart stops.
+   SWAPREAD: After the support is stopped, we wait until he goes into asystole.
+   SWAPREAD: After the support is stopped, we wait until his cardiac output ceases.
+ [swap] answer: his heart stops
+before: ['After the support is stopped, we wait until ', he goes into asystole, .]
+icon: me
+ko: 지지 요법을 중단한 뒤 그의 심장이 멈출 때까지 기다려요
+notes: {he goes into asystole: 의료진끼리 쓰는 말(무수축)이라 가족은 뜻을 모를 수 있어요., his cardiac output ceases: 격식 있는 전문 표현이라 가족 설명에는 차갑게 들려요., his heart stops: 가족이 바로 알아듣는 쉬운 말이에요.}
+options: [his heart stops, he goes into asystole, his cardiac output ceases]
+who: 가족에게 · 순서 안내
+why: DCD에서는 지지를 중단한 뒤 심장이 멈추기를 기다려요. 가족이 순서를 이해하도록 쉬운 말로 안내해요.
+words: [w-wait]
+
+=== 15 무호흡 검사 중 급변 위기
+ [slider] answerAt: 1
+cue: His pressure has fallen a little and is still falling slowly.
+exKo: 검사를 시작하자마자 혈압이 급격히 떨어졌어요.
+example: His pressure crashed the moment we started the test.
+scale: [slightly low, dropping, crashing]
+why: 조금씩 계속 내려가면 dropping이에요. slightly low는 살짝 낮을 때, crashing은 걷잡을 수 없이 급락할 때예요. 검사 중단 기준은 프로토콜에 따르고, 변화는 의사에게 바로 알려요.
+words: [w-crash]
+
+ [context] ko: 중단하다
+scenes:
+- {en: 'If his sats keep falling, we abort the test.', icon: handshake2, ok: true, who: 동료 간호사에게}
+- {en: Apnea test aborted for hypotension; ventilator reconnected., icon: board, ok: true, who: 차트 기록}
+- {en: We had to abort the procedure because he became hemodynamically unstable., fix: 'We stopped the test early because his blood pressure dropped, and he''s back on the breathing machine.', icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 abort와 hemodynamically unstable 같은 용어가 정확하고 빨라요. 가족에게는 같은 일을 검사를 일찍 멈췄고 호흡기를 다시 연결했다고 쉬운 말로 풀어 주세요.
+word: abort
+words: [w-abort]
+
+   SWAPREAD: Doctor, his pressure dropped quickly — I stopped the test.
+   SWAPREAD: Doctor, his pressure fell off a cliff — I stopped the test.
+   SWAPREAD: Doctor, his pressure did a nosedive — I stopped the test.
+ [swap] answer: dropped quickly
+before: ['Doctor, his pressure ', fell off a cliff, ' — I stopped the test.']
+icon: stetho
+ko: 선생님, 혈압이 빠르게 떨어졌어요 — 검사를 중단했어요
+notes: {did a nosedive: 과장된 비유라 정확한 보고에 맞지 않아요., dropped quickly: 사실 그대로 짧게 말해 의사가 바로 판단할 수 있어요., fell off a cliff: 비유라서 얼마나 떨어졌는지 전달되지 않아요.}
+options: [dropped quickly, fell off a cliff, did a nosedive]
+who: 의사에게 · 급변 보고
+why: 급변 보고에서는 비유보다 사실 그대로 말해야 해요. 의사가 상황을 바로 파악하고 지시할 수 있어요.
+words: [w-pressure]
+
+=== 16 뇌사 후 순환 붕괴 위기
+ [slider] answerAt: 2
+cue: The infusion is already at the highest dose the order allows, and his pressure is still falling.
+exKo: 현재 용량으로도 혈압이 바닥까지 떨어지고 있어요.
+example: His pressure is bottoming out despite the current dose.
+scale: [low dose, moderate dose, maximum dose]
+why: 처방이 허용하는 가장 높은 용량이면 maximum dose예요. 처방 범위 안에서만 올리고, 최대인데도 혈압이 떨어지면 의사를 바로 불러야 해요.
+words: [w-dose]
+
+ [context] ko: 상황을 격상시키다
+scenes:
+- {en: 'If the pressure keeps falling, we need to escalate now.', icon: handshake2, ok: true, who: 동료 간호사에게}
+- {en: Escalated to the attending for refractory hypotension., icon: board, ok: true, who: 인계 기록}
+- {en: We are escalating because his vasopressor requirement exceeds the protocol ceiling., fix: 'We''re asking the senior doctors to come help right now, and I''ll keep you updated.', icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 escalate와 vasopressor requirement 같은 용어가 정확하고 빨라요. 가족에게는 같은 일을 선임 의사가 도우러 온다고 쉬운 말로 풀어 주세요.
+word: escalate
+words: [w-escalate]
+
+   SWAPREAD: Doctor, his pressure is bottoming out. I need you at the bedside now.
+   SWAPREAD: Doctor, his pressure is bottoming out. Could you maybe look at him when you get a chance?
+   SWAPREAD: Doctor, his pressure is bottoming out. Whenever you're free is fine.
+ [swap] answer: I need you at the bedside now.
+before: ['Doctor, his pressure is bottoming out. ', 'Could you maybe look at him when you get a chance?', '']
+icon: stetho
+ko: 선생님, 혈압이 바닥으로 떨어지고 있어요. 지금 바로 침상으로 와 주세요
+notes: {'Could you maybe look at him when you get a chance?': 돌려 말해서 급하다는 것이 전달되지 않아요., I need you at the bedside now.: 급할 때는 필요한 일을 직접적으로 말해야 해요. 의사가 바로 움직여요., Whenever you're free is fine.: 급하지 않다는 뜻이라 상황과 반대예요.}
+options: [I need you at the bedside now., 'Could you maybe look at him when you get a chance?', Whenever you're free is fine.]
+who: 의사에게 · 긴급 호출
+why: 응급 상황에서는 정중하되 직접적으로 말해요. 돌려 말하면 도움이 늦어져요.
+words: [w-physician]
+
+=== 17 심한 요붕증 급변 관리
+ [slider] answerAt: 1
+cue: Sodium goes up by one or two points at each check, steadily over the shift.
+exKo: 확인할 때마다 나트륨 수치가 오르고 있어요.
+example: Sodium is climbing every time we check it.
+scale: [creep, climb, jump]
+why: 한 번에 한두 점씩 꾸준히 오르면 climb이에요. creep은 거의 눈에 안 띄게 오를 때, jump는 한 번에 크게 오를 때예요. 교정 속도와 약 용량은 처방자가 정해요.
+words: [w-climb]
+
+ [context] ko: 즉시
+scenes:
+- {en: Recheck the sodium immediately after the desmopressin., icon: stetho, ok: true, who: 의사가 간호사에게}
+- {en: 'If his urine output doubles again, call me immediately.', icon: handshake2, ok: true, who: 동료 간호사에게}
+- {en: We immediately need to correct his hypernatremia., fix: 'We''re working on his blood salt level right away, and I''ll tell you how it goes.', icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 immediately와 hypernatremia 같은 말이 정확하고 빨라요. 가족에게는 같은 일을 혈액 속 염분 수치를 바로 다루고 있다고 쉬운 말로 풀어 주세요.
+word: immediately
+words: [w-immediately]
+
+   SWAPREAD: His urine output has doubled in the last hour.
+   SWAPREAD: His urine output has gone through the roof in the last hour.
+   SWAPREAD: His urine output is nuts in the last hour.
+ [swap] answer: has doubled
+before: ['His urine output ', has gone through the roof, ' in the last hour.']
+icon: stetho
+ko: 지난 한 시간 사이 소변량이 두 배로 늘었어요
+notes: {has doubled: 얼마나 늘었는지 분명해서 의사가 바로 판단할 수 있어요., has gone through the roof: 비유라서 정확한 양이 전달되지 않아요., is nuts: 속어라 보고에 맞지 않아요.}
+options: [has doubled, has gone through the roof, is nuts]
+who: 의사에게 · 급변 보고
+why: 요붕증 급변은 수치와 변화 폭이 중요해요. 비유 대신 사실 그대로 보고해요.
+words: [w-urine]
+
+=== 18 가족 갈등·기증 거부 상황
+ [slider] answerAt: 2
+cue: The daughter asks, "Is it okay if we say no?" and you answer, "Yes, absolutely."
+exKo: 거절하실 권리가 충분히 있고, 그것도 완전히 괜찮아요.
+example: You have every right to say no, and that's completely okay.
+scale: [slightly, mostly, completely]
+why: '''전적으로 괜찮다''는 completely예요. 기증을 거절해도 괜찮다는 것은 가족이 압박 없이 정할 수 있게 하는 중요한 말이에요. 설득하거나 이유를 캐묻지 않아요.'
+words: [w-completely]
+
+   SWAPREAD: Whatever you choose, we will respect your decision.
+   SWAPREAD: Whatever you choose, we will respect your non-compliance.
+   SWAPREAD: Whatever you choose, we will respect your noncooperation.
+ [swap] answer: your decision
+before: ['Whatever you choose, we will respect ', your non-compliance, .]
+icon: me
+ko: 무엇을 선택하시든 여러분의 결정을 존중할게요
+notes: {your decision: 가족의 선택을 있는 그대로 존중하는 말이에요., your non-compliance: 따르지 않는다는 뜻이라 가족을 탓하는 말로 들려요., your noncooperation: 협조하지 않는다는 뜻이라 가족에게 상처를 줄 수 있어요.}
+options: [your decision, your non-compliance, your noncooperation]
+who: 가족에게 · 결정 존중
+why: 기증을 거절해도 탓하지 않아요. 가족이 어떤 선택을 해도 존중한다고 분명히 말해요.
+words: [w-respect]
+
+=== 19 판정 시점·연명 갈등
+ [slider] answerAt: 0
+cue: The wife keeps asking you to repeat things and says she can't take it in.
+exKo: 팀이 여러분과 함께 앉아서 천천히 하나씩 설명할 거예요.
+example: The team will sit down with you and go through it slowly.
+scale: [slowly, evenly, quickly]
+why: 충격으로 받아들이기 힘들어하는 가족에게는 slowly 말해요. 속도를 늦추고 한 번에 한 가지씩 말한 뒤 이해했는지 물어봐요.
+words: [w-slowly]
+
+   SWAPREAD: His heart is still beating because of a machine and medicines.
+   SWAPREAD: His heart is still beating because of pressors and a vent.
+   SWAPREAD: His heart is still beating because of exogenous cardiopulmonary support.
+ [swap] answer: a machine and medicines
+before: ['His heart is still beating because of ', pressors and a vent, .]
+icon: me
+ko: 기계와 약물이 도와주고 있기 때문에 심장이 아직 뛰고 있어요
+notes: {a machine and medicines: 가족이 바로 알아듣는 쉬운 말이에요., exogenous cardiopulmonary support: 격식 있는 전문 표현이라 가족 설명에는 차갑게 들려요., pressors and a vent: 의료진끼리 쓰는 말이라 가족은 뜻을 모를 수 있어요.}
+options: [a machine and medicines, pressors and a vent, exogenous cardiopulmonary support]
+who: 가족에게 · 심장이 뛰는 이유
+why: 뇌사 상태에서 심장이 뛰는 것을 이해하지 못하는 가족이 많아요. 기계와 약이 돕고 있다고 쉬운 말로 알려 주세요.
+words: [w-machine]
+
+=== 20 기증 장기 기능 유지 위기
+ [slider] answerAt: 0
+cue: Urine output is only a few drops an hour, and the bag is nearly empty.
+exKo: 지금 관류와 소변량을 최적화해 보죠.
+example: Let's optimize his perfusion and urine output now.
+scale: [scant, adequate, abundant]
+why: 한 시간에 몇 방울뿐이면 scant예요. adequate는 충분할 때, abundant는 아주 많을 때예요. 소변량이 줄면 신장 관류를 걱정해 의사와 코디네이터에게 알려요.
+words: [w-urine]
+
+ [context] ko: 관류
+scenes:
+- {en: Let's optimize his perfusion and urine output now., icon: handshake2, ok: true, who: 동료 간호사에게}
+- {en: Perfusion adequate on current pressor dose; urine output stable., icon: board, ok: true, who: 차트 기록}
+- {en: 'His peripheral perfusion is poor, with a capillary refill over three seconds.', fix: 'His hands and feet aren''t getting enough blood flow, so they feel cool.', icon: me, ok: false, who: 가족에게}
+why: 의료진끼리는 perfusion과 capillary refill 같은 용어가 정확하고 빨라요. 가족에게는 같은 perfusion을 혈류가 충분한지로 쉬운 말로 풀어 주세요.
+word: perfusion
+words: [w-perfusion]
+
+   SWAPREAD: The kidneys aren't tolerating the current numbers.
+   SWAPREAD: The kidneys are conking out on the current numbers.
+   SWAPREAD: The kidneys are giving up on the current numbers.
+ [swap] answer: aren't tolerating
+before: ['The kidneys ', are conking out on, ' the current numbers.']
+icon: monitor
+ko: 신장이 현재 수치를 견디지 못하고 있어요
+notes: {are conking out on: 속어라서 정확한 상태가 전달되지 않아요., are giving up on: 신장을 사람처럼 말하는 비유라 보고에 맞지 않아요., aren't tolerating: 의료진 사이에서 쓰는 정확한 표현이에요. 수치가 장기에 부담이라는 뜻이 분명해요.}
+options: [aren't tolerating, are conking out on, are giving up on]
+who: 코디네이터에게 · 상태 보고
+why: 코디네이터에게는 장기 상태를 정확한 말로 보고해야 일정을 조율할 수 있어요. 구어체 표현은 오해를 낳아요.
+words: [w-kidney]
+

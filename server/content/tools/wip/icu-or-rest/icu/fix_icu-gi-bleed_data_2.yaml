@@ -1,0 +1,143 @@
+# 단어·뉘앙스·order·기타 (A C·D·B 절 + B F·G·H)
+distractors_en:   # id: {옛: 새}
+  w-tell: {tall: yell, tile: dwell}
+  w-sick: {sock: slick, silk: thick}
+  w-sample: {simple: staple, ample: saddle}
+  w-below: {bellow: beyond, elbow: behind}
+  w-stat: {stack: prn, stage: bid}
+  w-chest: {cheat: crest}
+  w-check: {cheek: cheer}
+  w-look: {luck: lurk}
+  w-intubate: {intimate: incubate}
+  w-immediately: {intimately: immensely}
+  w-sign: {sing: sine}
+  w-stomach: {stomp: stoma}
+  w-stool: {stole: stall}
+  w-black: {block: bleak}
+  w-turn: {torn: tune}
+  w-draw: {draft: drain}
+  w-cell: {sell: shell}
+  w-mix: {mist: fix}
+  w-bring: {brim: fling}
+  w-watch: {wage: fetch}
+  w-team: {tame: tram}
+  w-give: {gift: live}
+  w-form: {fork: foam}
+  w-resort: {resolve: retort}
+  w-tape: {tale: tamp}
+  w-track: {truck: trick}
+  w-change: {chance: chafe}
+  w-suction: {section: suture}
+  w-choke: {chore: poke}
+  w-everything: {everywhere: something}
+  w-recent: {regent: remote}
+  w-weight: {eight: freight}
+  w-label: {libel: ladle}
+  w-insert: {insult: invert}
+  w-honest: {hostile: humble}
+  w-disease: {disaster: distance}
+  w-schedule: {scandal: scaffold}
+  w-finish: {punish: polish}
+  w-aware: {alert: afraid}
+decoy_chips:
+  w-sign: {sin: sine}
+  w-variceal: {vice: vat}
+  w-varices: {vice: vat}
+  w-point: {joint: print}
+  w-support: {pot: pat}
+  w-correct: {wreck: rack}
+  w-cross: {gross: gloss}
+  w-factor: {fat: fan}
+  w-hemorrhoid: {raid: road}
+  w-lie: {lye: lid}
+  w-warm: {harm: worm}
+  w-usually: {sue: sum}
+  w-colonoscopy: {spy: pie}
+  w-therapy: {spy: pie}
+chips:   # 중간 한 글자 조각 합치기
+  w-catheter: [[cathe, ter]]
+  w-medication: [[medi, ca, tion]]
+  w-octreotide: [[oc, treo, tide]]
+  w-variceal: [[vari, ce, al]]
+  w-varices: [[vari, ces]]
+  w-usually: [[usu, al, ly]]
+  w-monitor: [[moni, tor]]
+  w-regularly: [[regu, lar, ly]]
+  w-emergency: [[emer, gen, cy]]
+  w-elevator: [[ele, va, tor]]
+  w-esophagus: [[eso, pha, gus]]
+  w-acidotic: [[acid, ot, ic]]
+  w-oxygen: [[oxy, gen]]
+  w-unit: [[un, it]]
+  w-therapy: [[thera, py]]
+word_set:   # id: {필드: 값} (그대로 덮어씀)
+  w-point: {cue: "증상이나 소견이 어느 쪽이 원인인지 짚어 보이는 일"}
+  w-handoff: {cue: "근무 교대나 이송 때 환자 상황을 다음 사람에게 넘겨주는 말"}
+  w-bag: {cue: "숨을 못 쉴 때 손으로 짜서 공기를 불어 넣는 주머니"}
+  w-acidotic: {distractorsKo: ["알칼리증이 있는", "염기성의"]}
+  w-med: {distractorsKo: ["장비", "서류"]}
+  w-ir: {ko: 중재영상의학과, distractorsKo: ["소화기내과", "응급의학과"]}
+  w-light: {ko: 호출등, distractorsKo: ["호출음", "경고문"]}
+  w-ever: {ko: 한 번이라도, distractorsKo: ["요즘 들어", "방금 전에"]}
+  w-actively: {ko: 활발히}
+  w-through: {ko: 내내, distractorsKo: ["~하기 전에", "~한 뒤에"]}
+  w-steady: {ko: 변동 없는}
+  w-birth: {ko: 출생}
+  w-hand: {en: hand off, ipa: "/hænd ɔf/", ko: 인계하다, cue: "다른 팀에게 환자를 넘기며 상황을 알려 주는 동작", chips: [[hand], ["off"]], decoyChips: [hang, "of"], distractorsEn: [hand out, hold off], distractorsKo: ["나눠 주다", "미뤄 두다"]}
+  w-mix: {ko: 혼동하다, cue: "서로 다른 것을 뒤섞어 어느 것이 어느 것인지 헷갈리게 만드는 일", distractorsKo: ["구분하다", "정리하다"]}
+  w-make: {en: make sure, ipa: "/meɪk ʃʊr/", cue: "빠짐없이 챙겨서 틀림없게 해 두겠다고 말할 때 쓰는 말", chips: [[make], [sure]], distractorsEn: [make way, make over]}
+  w-way: {en: on the way, ipa: "/ɑːn ðə weɪ/", ko: 오는 중인, cue: "도움이나 사람이 지금 이쪽으로 오고 있는 중이라고 알릴 때 쓰는 말", chips: [["on"], [the], [way]], distractorsEn: [in the way, by the way], distractorsKo: ["떠나는 중인", "머무는 중인"]}
+word_remove: [w-catch, w-moment, w-sure, w-away]
+sentence_words_remove:   # (i, j, id)
+  - [13, 5, w-catch]
+  - [14, 6, w-moment]
+  - [5, 2, w-sure]
+  - [13, 4, w-away]
+nuance:   # i, kind, set(필드)
+  - {i: 3, kind: slider, set: {why: "같은 어지러움도 수식어로 강도가 갈려요. a little lightheaded는 살짝 핑 도는 정도, very dizzy는 심하게 어지러운 정도, about to faint는 곧 쓰러질 것 같은 단계예요. 눈앞이 어두워지고 쓰러질 것 같다고 하면 눕히고 바로 의사에게 알려요."}}
+  - {i: 8, kind: slider, append_why: " 흔히 Hb 7 g/dL, 심혈관 질환이 있으면 8을 기준으로 쓰지만, 이 환자의 기준은 처방대로 따라요."}
+  - {i: 6, kind: pair, set: {why: "prophylactic antibiotic은 감염을 미리 막는 예방적 항생제로, 간경화 환자의 위장관 출혈에서는 처방대로 바로 시작해요. variceal bleed는 식도·위 정맥류에서 나는 출혈이에요."}}
+  - {i: 6, kind: context, scene3_en: "Her airway is protected for now, but she's at high risk of aspiration."}
+  - {i: 9, kind: context, fix3: "The pump gives your medicine at the exact speed your doctor ordered."}
+  - {i: 10, kind: context, fix3: "Your blood is taking longer than normal to clot, so we're giving you blood products to help."}
+  - {i: 11, kind: context, fix3: "It's a soft tube with balloons that press on the bleeding veins to slow it down."}
+  - {i: 16, kind: context, scene1_en: "He's bleeding from the mouth, so I'm suctioning and have the intubation tray ready.", scene2_en: "Can you suction his mouth while I turn him?"}
+  - {i: 17, kind: pair, set: {pairs: [[balloon, tamponade], [portosystemic, shunt]], words: [w-tamponade, w-shunt], why: "balloon tamponade는 풍선을 부풀려 터진 정맥류를 안에서 눌러 출혈을 막는 처치예요. TIPS는 간 안에 문맥과 간정맥을 잇는 portosystemic shunt를 만들어 문맥압을 낮추는 시술로, 앞선 치료로 조절되지 않을 때 IR팀이 해요."}}
+  - {i: 20, kind: context, scenes: [
+      {who: 의사에게 보고, icon: stetho, en: "I've been honest with his wife that the bleeding is very hard to control.", ok: true},
+      "keep",
+      {who: 가족에게, icon: me, en: "To be honest, refractory variceal hemorrhage with his MELD score carries a poor prognosis.", ok: false, fix: "I want to be honest with you: he is very sick, and the doctor will talk with you about what to expect."}],
+     set: {why: "의료진끼리는 솔직하게 상황을 공유해요. 가족에게 refractory, MELD, prognosis 같은 말은 차갑고 어려워요. 아픈 정도는 솔직하게 말하되 예후 설명은 의사가 이어 간다고 알려 줘요."}}
+  - {i: 13, kind: slider, set: {cue: "Family: \"He says he's a little tired, but otherwise he feels okay.\"", example: "Some tiredness can be normal, but tell me if you feel faint.", exKo: "어느 정도 피곤할 수 있지만, 쓰러질 것 같으면 말씀해 주세요."}}
+  - {i: 15, kind: slider, replace_why: ["대량수혈 프로토콜을 발동할지는 의사가 정하고", "대량수혈 프로토콜을 발동할지는 보통 의사(또는 병원 지침이 정한 사람)가 정하고"]}
+  - {i: 14, kind: slider, replace_why: ["엘리베이터 안에서 불안정해지면 멈추고 먼저 안정시킨 다음에 이동을 이어 가요.", "엘리베이터 안에서 불안정해지면 그 자리에서 처치하고 도움을 부른 뒤 이동을 이어 가요."]}
+order_lines:   # i, k(0부터), en, ko 만 바꿈(icon·note 그대로)
+  - [0, 1, "What you saw, the coffee-ground vomit, means blood sat in your stomach a while.", "방금 보신 커피 찌꺼기 같은 구토물은 피가 한동안 위 속에 있었다는 뜻이에요"]
+  - [3, 2, "To see where that trend goes, we'll recheck your labs in a couple of hours.", "그 추세가 어디로 가는지 보려고 몇 시간 뒤에 다시 검사할게요"]
+  - [4, 2, "While it does that, we keep you from eating until it's safe.", "관이 그 일을 하는 동안 안전해질 때까지 금식해요"]
+  - [4, 3, "When your stomach settles and the doctor agrees, we'll try small sips of water.", "위가 가라앉고 의사 선생님이 동의하면 물을 조금씩 드셔 볼게요"]
+  - [5, 2, "Since it matters that much, I'll chart the dose and time for the doctor.", "그만큼 중요하니 복용량과 시간을 차트에 적어 의사한테 전달할게요"]
+  - [6, 0, "With her liver disease, this is most likely a variceal bleed, not an ulcer.", "간질환이 있어서 궤양보다는 정맥류 출혈일 가능성이 커요"]
+  - [7, 2, "While I do the paperwork, blood stays on standby for the scope.", "서류를 처리하는 동안 시술에 쓸 피를 대기시켜 둬요"]
+  - [8, 0, "Seven point two isn't below his ordered threshold, and he's not actively bleeding right now.", "7.2는 처방된 기준치보다 낮지 않고 지금 활동성 출혈도 없어요"]
+  - [9, 2, "While it works on the acid, let's keep him NPO.", "그게 위산에 작용하는 동안 금식을 유지하죠"]
+  - [9, 3, "If his stool still turns black despite all that, I'll flag the physician.", "그래도 대변이 다시 검게 변하면 의사한테 알릴게요"]
+  - [13, 1, "So far, all of those have held steady since this morning.", "지금까지 그 모두가 오늘 아침부터 안정적이에요"]
+  - [14, 1, "While IR gets ready, let's bring blood and emergency meds for transport.", "IR팀이 준비하는 동안 이송용 피랑 응급약을 챙기죠"]
+  - [14, 2, "With all that ready, I'll call report to IR before we leave the unit.", "그걸 다 갖추면 병동을 나서기 전에 IR팀에 전화로 인계할게요"]
+  - [17, 1, "So we need IR, where TIPS makes a shunt to take pressure off the varices.", "그래서 IR이 필요해요, TIPS는 션트를 만들어 정맥류 압력을 낮춰 줘요"]
+  - [18, 0, "His pressure dropped fast, so we're pushing the ordered fluids until the blood arrives.", "혈압이 빠르게 떨어져서 혈액이 올 때까지 처방된 수액을 밀어 넣고 있어요"]
+  - [18, 3, "With all of this moving, stay with me, we're getting your blood pressure back up.", "이 모든 게 진행되는 동안 정신 놓지 마세요, 혈압을 다시 올리고 있어요"]
+  - [20, 2, "From here, some families choose more treatment, others choose comfort care, both are okay.", "여기서부터는 치료를 더 이어 가는 가족도 편안한 돌봄을 택하는 가족도 있고 둘 다 괜찮아요"]
+order_why:
+  14: "받을 준비를 확인하고, 이송 물품을 챙기고, 출발하기 전에 보고하고, 이동 중 불안정해지면 먼저 안정시켜요."
+sentence_why:   # (i, j) -> why (B G)
+  "1.6": "'Good stick'으로 성공을 먼저 알리고 'flash'로 근거를 대면, 옆 동료가 바로 다음 단계(지혈대 풀기·고정)로 넘어가요."
+  "9.1": "'monitor for' 바로 뒤에 재출혈을 두어, 무엇을 찾는지가 활력징후보다 먼저 들리게 해요."
+  "10.1": "'after correction'으로 재검 시점을 교정에 묶어, 투여만 하고 끝내지 않는다는 걸 동료에게 알려요."
+  "13.2": "'We'll'로 팀이 계속 본다고 말하고 'regularly'로 한 번이 아니라는 점을 알려 가족을 안심시켜요."
+  "16.5": "'on the way'로 도움이 오고 있다는 걸 먼저 말해 가족의 불안을 줄이고, 'to place the breathing tube'로 무엇을 하러 오는지 미리 알려요."
+  "17.1": "인계와 혈액을 'and'로 한 문장에 묶어, 이송 중에도 피가 함께 간다는 걸 빠뜨리지 않게 해요."
+  "19.1": "명령형 'Recheck'로 짧게 시작하고 'frequently'를 끝에 두어, 간격이 핵심이라는 점이 남게 해요."
+sentence_icon:
+  "2.3": board

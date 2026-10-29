@@ -1,0 +1,149 @@
+- situation: "유문후 급식 전환"
+  items:
+    - kind: pair
+      words: [w-place, w-resume, w-suction, w-ready]
+      pairs: [["place", "a post-pyloric tube"], ["resume", "the feeds"], ["keep", "suction ready"]]
+      decoys: ["a clean sock"]
+      why: "place a post-pyloric tube는 유문 아래로 관을 넣는다는 뜻이고, resume the feeds는 위치를 확인한 뒤 급식을 다시 시작한다는 뜻이에요. keep suction ready는 구토나 흡인에 대비해 석션을 바로 쓸 수 있게 준비해 둔다는 말이에요."
+    - kind: context
+      words: [w-suction]
+      word: suction
+      ko: 석션
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "We'll have suction ready at the bedside when the new tube goes in.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you grab the suction and make sure it's working?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "Suction equipment will be at hand for emesis and potential aspiration events.", ok: false, fix: "We'll keep a suction tube by his bed to clear his mouth if he gets sick."}
+      why: "의료진끼리는 suction 한 단어로 장비와 동작을 말해요. 가족에게 emesis, aspiration events 같은 말은 어렵고 겁을 줘요. 속이 안 좋아지면 입안을 닦아 낼 장비를 곁에 둔다고 쉬운 말로 알려 줘요."
+- situation: "장허혈 감별 징후"
+  items:
+    - kind: slider
+      words: [w-tense, w-press]
+      cue: "Nurse: \"Her belly feels firm, and she flinches when I press.\""
+      scale: [soft, tense, rigid]
+      answerAt: 1
+      why: "눌렀을 때 움찔하고 배가 팽팽하면 soft가 아니라 tense예요. rigid는 널빤지처럼 굳은 더 심한 상태예요. 젖산 상승과 함께 보이면 급식을 보류하고 바로 의사에게 알리며, 판단은 의료진이 해요."
+      example: "Her belly is tense and she winced when I pressed."
+      exKo: "배가 팽팽하고, 눌렀을 때 움찔하셨어요."
+    - kind: context
+      words: [w-lactate]
+      word: lactate
+      ko: 젖산
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Her lactate is rising and her belly is tense, so I'm holding feeds and calling you.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Did her repeat lactate come back yet?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "Her serum lactate is elevated, suggesting possible mesenteric hypoperfusion.", ok: false, fix: "A blood test that shows how well her body is getting oxygen is higher than we'd like, so we're checking her belly carefully."}
+      why: "의료진끼리는 lactate 한 단어로 조직 산소 공급을 가늠하는 검사 수치를 말해요. 가족에게 mesenteric hypoperfusion 같은 말은 어렵고 겁을 줘요. 몸이 산소를 잘 받는지 보는 검사 수치가 높아서 배를 자세히 본다고 쉬운 말로 알려 줘요."
+- situation: "복부구획증후군 급변 위기"
+  items:
+    - kind: slider
+      words: [w-critically]
+      cue: "Nurse: \"His bladder pressure is far above the safe range and his kidneys are failing.\""
+      scale: [slightly high, very high, critically high]
+      answerAt: 2
+      why: "압력이 안전 범위를 크게 넘고 신장 기능까지 멎어 간다면 critically high예요. 이때는 바로 의사와 수술팀에 알리고 지시에 따라 대응하며, 감압 여부는 의료진이 결정해요."
+      example: "His pressure is critically high with failing kidneys."
+      exKo: "압력이 위급하게 높고 신장 기능이 멎어가고 있어요."
+    - kind: context
+      words: [w-surgery]
+      word: surgery
+      ko: 수술팀
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His pressure is over twenty-five, so I'm calling surgery for decompression.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you page surgery again and tell them it's urgent?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "He requires emergent surgery for abdominal decompression.", ok: false, fix: "The surgery team is coming to see him, and they may need to relieve the pressure in his belly."}
+      why: "의료진끼리는 calling surgery라고 하면 수술팀에 연락한다는 뜻으로 통해요. 가족에게 emergent, decompression 같은 말은 겁을 줘요. 수술팀이 와서 배의 압력을 낮출지 살펴본다고, 결정되지 않은 것은 단정하지 않고 쉬운 말로 알려 줘요."
+- situation: "장허혈·괴사 응급"
+  items:
+    - kind: slider
+      words: [w-crash]
+      cue: "Nurse: \"Her blood pressure keeps falling, she's gray, and she barely responds.\""
+      scale: [dipping, dropping, crashing]
+      answerAt: 2
+      why: "혈압이 계속 떨어지고 반응도 거의 없다면 crashing이에요. 이때는 혼자 버티지 말고 바로 신속대응팀과 의사를 부르고, 지시에 따라 수액과 처치를 준비해요."
+      example: "Her belly is rigid and she's crashing."
+      exKo: "배가 단단하고 상태가 급격히 나빠지고 있어요."
+    - kind: context
+      words: [w-antibiotic]
+      word: antibiotic
+      ko: 항생제
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Can I get an order for broad-spectrum antibiotics for her?", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you grab the antibiotic from pharmacy? It's a stat order.", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "We're initiating empiric broad-spectrum antibiotic coverage for suspected mesenteric ischemia.", ok: false, fix: "We're starting a strong medicine to fight infection because we're worried about her bowel."}
+      why: "의료진끼리는 antibiotic, stat order처럼 짧게 말해요. 가족에게 empiric, mesenteric ischemia 같은 말은 어렵고 겁을 줘요. 장이 걱정돼서 감염에 맞서는 약을 시작한다고 쉬운 말로 알려 줘요."
+- situation: "대량 흡인 사건 위기"
+  items:
+    - kind: slider
+      words: [w-drop]
+      cue: "Nurse: \"Her sats went from 97 to 92 in a few minutes and are still sliding.\""
+      scale: [dipping, dropping, plummeting]
+      answerAt: 1
+      why: "몇 분 사이에 계속 내려가는 중이면 dropping이에요. 흡인이 의심되면 급식을 멈추고 몸을 돌려 입과 기도를 석션하며 산소를 올리고 바로 도움을 불러요."
+      example: "Her sats are dropping fast."
+      exKo: "산소포화도가 빠르게 떨어지고 있어요."
+    - kind: context
+      words: [w-stable]
+      word: stable
+      ko: 안정된
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Her sats are coming back up and she's stable for now.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you stay until she's stable, and I'll listen to her lungs?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "She is hemodynamically stable with resolving hypoxemia after the aspiration event.", ok: false, fix: "She's breathing easier and her oxygen is coming back up, and we're still watching her closely."}
+      why: "의료진끼리는 stable 한 단어로 지금은 급한 변화가 없다는 뜻을 말해요. 가족에게 hemodynamically, hypoxemia 같은 말은 어렵게 들려요. 숨쉬기가 나아졌고 계속 지켜본다고, 다 끝난 것처럼 말하지 않고 쉬운 말로 알려 줘요."
+- situation: "TPN 관련 대사 위기"
+  items:
+    - kind: slider
+      words: [w-off]
+      cue: "Nurse: \"His potassium is just a hair outside the range.\""
+      scale: [a little off, "off", way off]
+      answerAt: 0
+      why: "범위를 아주 조금 벗어났다면 a little off예요. 그래도 TPN을 맞는 동안은 전해질 이상을 그냥 넘기지 말고 재검하고, 보충이나 속도 조정은 의사 지시에 따라 해요."
+      example: "His potassium and phosphate are both off today."
+      exKo: "오늘 칼륨과 인산염이 둘 다 정상 범위를 벗어났어요."
+    - kind: context
+      words: [w-insulin]
+      word: insulin
+      ko: 인슐린
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His glucose is high on TPN, so can we adjust his insulin?", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you double-check my insulin dose before I give it?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "He's receiving exogenous insulin to counteract TPN-induced hyperglycemia.", ok: false, fix: "His blood sugar is high from the IV nutrition, so we're giving him insulin to bring it down."}
+      why: "의료진끼리는 insulin 용량을 확인하고 조정을 상의하는 말을 짧게 해요. 가족에게 exogenous, hyperglycemia 같은 말은 어렵게 들려요. 정맥 영양 때문에 혈당이 높아 인슐린으로 낮춘다고 쉬운 말로 알려 줘요."
+- situation: "심한 재영양증후군 위기"
+  items:
+    - kind: slider
+      words: [w-severe]
+      cue: "Nurse: \"Phosphate and potassium crashed, and the rhythm is changing on the monitor.\""
+      scale: [mild, moderate, severe]
+      answerAt: 2
+      why: "수치가 급격히 떨어지고 심장 리듬까지 변한다면 severe예요. 이때는 지시에 따라 급식 속도를 줄이고 전해질을 보충하며, 심장 모니터를 지켜보고 바로 의사에게 알려요."
+      example: "This is severe refeeding syndrome."
+      exKo: "이건 심한 재영양증후군이에요."
+    - kind: context
+      words: [w-restart]
+      word: restart
+      ko: 다시 시작하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Once his electrolytes are corrected, can we restart the feeds at a lower rate?", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Don't restart the feed until the repeat labs are back.", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "Restarting enteral nutrition is contingent upon normalization of serum electrolytes.", ok: false, fix: "We'll start his feeding again, slowly, once his blood salts are back to a safe level."}
+      why: "의료진끼리는 restart the feed처럼 조건과 함께 짧게 말해요. 가족에게 contingent upon, normalization 같은 말은 딱딱하게 들려요. 혈액 수치가 안전해지면 천천히 다시 시작한다고 쉬운 말로 알려 줘요."
+- situation: "장기 영양불량 예후 소통"
+  items:
+    - kind: slider
+      words: [w-advanced]
+      cue: "Palliative physician to the family: \"The cancer has spread to many organs and no longer responds to treatment.\""
+      scale: [early, progressing, advanced]
+      answerAt: 2
+      why: "여러 장기로 퍼져 치료에 반응하지 않으면 advanced예요. 예후를 알리는 일은 의료진이 맡고, 간호사는 가족이 들은 내용을 이해했는지 살피고 쉬운 말로 곁에서 도와요."
+      example: "This tells us his illness is very advanced."
+      exKo: "이건 병이 많이 진행됐다는 걸 말해줘요."
+    - kind: context
+      words: [w-comfort]
+      word: comfort
+      ko: 편안함
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His family wants the focus on comfort now, so can we call palliative care?", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you ask palliative care to see him about comfort measures?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "A transition to comfort-focused care with cessation of artificial nutrition is indicated.", ok: false, fix: "We'd like to talk about what would keep him most comfortable now, and what he would want."}
+      why: "의료진끼리는 comfort measures, palliative care처럼 목표를 짧게 말해요. 가족에게 cessation, artificial nutrition 같은 말은 차갑게 들려요. 그분이 무엇을 원하는지와 무엇이 가장 편안한지를 함께 이야기하자고 쉬운 말로 열어요. 영양 중단 같은 결정은 의료진과 가족이 함께 논의해요."
