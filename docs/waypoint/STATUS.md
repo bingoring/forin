@@ -6,6 +6,10 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-10-28
 
+> 🔨 **ICU 한 번에 저작 묶음 7 — 4주제 합침(2026-10-29).** invasive-lines·nutrition·transfusion·transport-procedure: 저작 A‖B → Opus 검토 A‖B → Sonnet 수정 → keyPhrase 63/63 →
+> keyPhrase 결정(사용자 '추천대로': 바꿈 13 — ICU 신속대응팀·코드팀 호출 → 의사 호출, MRI 압박 즉시 등, 유지 13) → 정본 합침, ICU 위반 0(새 경고는 W13 의도된 오답 10).
+> **운영 배포는 묶어서(묶음 4~7 미배포).** PR #29→#30→#31 순서로 쌓임. 남은 ICU 5(mobility-prevention·core 4) · OR 33.
+
 > 🔨 **ICU 한 번에 저작 묶음 6 — 4주제 합침(2026-10-29).** gi-bleed·liver-failure·stroke-icu·brain-death: 저작 A‖B → Opus 검토 A‖B(안전 186건) → Sonnet 수정 →
 > keyPhrase 63/63 대조 → keyPhrase 결정(사용자 '추천대로': 바꿈 13·유지 18, chunks 31문장) → 정본 합침, ICU 위반 0(새 주제 경고 0). B 저작 실패 유형을 TASK.md에 더 적음.
 > **운영 배포는 묶어서(묶음 4·5·6 미배포).** PR #29(묶음 5) 위에 쌓은 브랜치. 묶음 7(invasive-lines·nutrition) 수정 진행 중. 남은 ICU: 미착수 7 · OR 33.
