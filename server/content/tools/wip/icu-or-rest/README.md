@@ -98,3 +98,14 @@ keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't a
   | icu-brain-death | 58(1) | 137(31·13) | 85 |
   keyPhrase 결정(사용자 2026-10-29 '추천대로'): 바꿈 13(octreotide as ordered·MTP is activated·ordered fluids / 예방적 교정·암모니아·hypertonic as ordered / 두부 거상 혈류·reversal orders / Max the pressors(안전)·질문형 2·as ordered 2), 유지 18, chunks 31문장, gi-bleed 11.5에 엑스레이 위치 확인 단계(비KP). 작업 `../kp-2026-10-29/`.
   `pipeline/TASK.md` B 절에 끊긴 조각 decoy·위기 장면 옆 일·같은 상황 정답 재사용·decoy 낱말 몰림 실패를 덧붙임.
+
+- **묶음 7 (ICU 4주제, 2026-10-29)**: invasive-lines·nutrition·transfusion·transport-procedure, 처음부터. 사용량 한도로 저작이 한 번 끊겼다가 이어서 마침.
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | changes(수정 후) |
+  |---|---|---|---|
+  | icu-invasive-lines | 97(2) — PA 카테터 당기기·감쇠 방향 | 117(73·29) | 139 |
+  | icu-nutrition | 57(3) — '소생술' 오역·복부구획 수액 | 195(69·30) | 141 |
+  | icu-transfusion | 65(7) — 붉은기 계속 수혈·IV push 에피 | 267(141·13) — 위기 장면 "처치 대신 준비" | 127 |
+  | icu-transport-procedure | 52(4) — MRI screened·재삽관 약속 | 218(안전 92 포함 130) — 맥박 확인 없는 압박 | 118 |
+  keyPhrase 결정(사용자 '추천대로'): 바꿈 13(ICU 신속대응팀·코드팀 → 의사 호출, 흉관 훑기, 모자, 인슐린 as ordered 2, 진단 단정 looks like 2, 항히스타민 보고, 쉼표, MRI 압박 즉시, 출혈에 혈액 먼저), 유지 13, chunks 약 40문장. transport S19 tagline도 압박 즉시로 맞춤. 작업 `../kp-2026-10-29b/`.
+  남은 경고: W13 의도된 오답(nutrition lay/lie 1, transport poll/pole 등 9). `pipeline/TASK.md`에 호출 대상 바꾸기는 모두 실패로 판정 통일.
+  남은 ICU: mobility-prevention · core-handoff/language/family/safety-icu (5).

@@ -761,3 +761,133 @@ changes:
   fields:
   - words
   why: '수정 반영(A 검토): 단어 태그 정리·문장 변경에 맞춤'
+- kind: word-remove
+  id: w-activate
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 20.1 keyPhrase를 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: word-remove
+  id: w-rapid
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 20.1 keyPhrase를 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: word-remove
+  id: w-response
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 20.1 keyPhrase를 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: sentence
+  situation: 라인 관련 대량출혈·혈종 위기
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): I''m activating the rapid response → I need the physician at the bedside now(ICU 안에서 신속대응팀 발동은 맞지 않음, 검토 A E절); −w-activate −w-rapid −w-response, +w-physician'
+- kind: word-remove
+  id: w-code
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 18.2 keyPhrase를 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: sentence
+  situation: 라인 개방 공기색전 위기
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): I''m calling the code team → I need the physician here now(맥박이 있으면 코드가 아님, 검토 A E절); −w-code −w-call(6.3 등에 남음) −w-team(19.3에 남음), +w-physician'
+- kind: word
+  id: w-embolism
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-team
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 옛 예문 문장을 바꿔 그 단어가 없어짐 — 같은 상황의 다른 문장으로 옮김'
+- kind: word-remove
+  id: w-milk
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 9.2 keyPhrase를 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: word-remove
+  id: w-gently
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 9.2 keyPhrase를 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: sentence
+  situation: 흉관 파동·개통 확인
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): I''ll milk the tubing gently → I''ll check the tubing for clots and kinks(흉관 훑기는 지침·처방으로 제한, 검토 A E절); −w-milk −w-gently, +w-check +w-clot +w-kink'
+- kind: word
+  id: w-reassess
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 중심정맥관 삽입 보조·준비
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 최대 멸균 차단 목록에 모자(cap)가 빠짐 → cap, mask, gown, gloves, drape(검토 A E절, slider 0 why와 맞춤) — words 그대로(w-cap은 뚜껑 뜻이라 태그하지 않음)'
+- kind: word
+  id: w-barrier
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-precaution
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-ready
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-gown
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-glove
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-mask
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-drape
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 장치 제거 후 지혈·관찰
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(I''ll hold / firm pressure / for at least / five minutes) → I''ll hold / firm pressure / for / at least five minutes — 문장은 그대로'
+- kind: sentence
+  situation: 흉관 우발적 제거 개방기흉 위기
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Watch / for a tension pneumothorax / as I seal / it) → Watch / for / a tension pneumothorax / as I seal it — 문장은 그대로'
+- kind: sentence
+  situation: 라인 개방 공기색전 위기
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Place him / in left lateral Trendelenburg / position now) → Place him / in left lateral Trendelenburg position / now — 문장은 그대로'
+- kind: sentence
+  situation: PA 카테터 폐동맥 파열 위기
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Hemoptysis after wedging / — I''m worried / about pulmonary artery / rupture) → Hemoptysis / after wedging / — I''m worried / about pulmonary artery rupture — 문장은 그대로'
