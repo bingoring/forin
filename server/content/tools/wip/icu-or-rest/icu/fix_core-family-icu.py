@@ -128,7 +128,8 @@ for i, s in enumerate(d['situations']):
         if f:
             ow = old_why.get(('s', s['title'], k))
             nw = why_new.get((s['title'], k))
-            why = ' / '.join(x for x in [ow, nw] if x) or '수정'
+            hw = '쉬운 단어 태그 빼기: w-hand(공통 쉬운 단어 목록)' if f == ['words'] and 'w-hand' not in t['words'] and 'w-hand' in bt['words'] else None
+            why = ' / '.join(x for x in [ow, nw, hw] if x) or '수정'
             changes.append({'kind': 'sentence', 'situation': s['title'], 'index': k, 'fields': f, 'why': why})
 
 yaml.safe_dump(d, open('core-family-icu.yaml', 'w'), allow_unicode=True, sort_keys=False, width=200)
