@@ -531,3 +531,77 @@ changes:
   fields:
   - words
   why: '태그 빼기: know'
+- kind: sentence
+  situation: 고위험약 이중확인
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): … pump settings together → Let''s each verify … pump settings, then compare(together가 함께 읽으며 확인하는 것으로 읽혀 독립확인·12장과 어긋남); −w-together 태그(이 문장에서 together가 빠짐, 2.4 등에 남음)'
+- kind: word
+  id: w-verify
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-drug
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-dose
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-rate
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-pump
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-setting
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-together
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 옛 예문 문장을 바꿔 그 단어가 없어짐 — 같은 상황의 다른 문장으로 옮김'
+- kind: word-remove
+  id: w-rapidresponse
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 18.1 문장을 바꿔 어느 문장도 태그하지 않게 됨(ICU 안에서는 신속대응팀이 아니라 담당의를 부름)'
+- kind: sentence
+  situation: 알람 무시 급변 위기
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): Call for the rapid response and start oxygen → Call the ICU physician now and increase his oxygen(ICU 안에서는 RRT가 아니라 담당의 호출, 산소포화도 알람이 난 ICU 환자는 대개 이미 산소 중); −w-rapidresponse(word-remove) −w-start 태그(2.7에 남음) +w-physician 태그'
+- kind: sentence
+  situation: 전원·펌프 고장 위기 대응
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Switch to / battery backup / and the red / emergency outlets) → Switch to / battery backup / and / the red emergency outlets — 문장은 그대로'
+- kind: sentence
+  situation: 섬망 환자 안전 환경
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Secure and camouflage / his lines / out of easy / reach) → Secure / and camouflage / his lines / out of easy reach — 문장은 그대로'
+- kind: sentence
+  situation: 이중확인·독립확인 프로토콜
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(This is required / for all high-alert / medications) → This is required / for all / high-alert medications — 문장은 그대로'

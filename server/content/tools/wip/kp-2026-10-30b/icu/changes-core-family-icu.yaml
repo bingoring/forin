@@ -621,3 +621,148 @@ changes:
   fields:
   - words
   why: '쉬운 단어 태그 빼기: w-day'
+- kind: sentence
+  situation: 대리결정 부재 상황
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): to decide in his best interest → to help decide what''s in his best interest(윤리위원회는 자문 기구 — ''결정한다''고 가르쳤음) — words 그대로'
+- kind: word
+  id: w-involve
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-committee
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-decide
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-interest
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 분노·불신 가족 대응
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): Nothing is being hidden — let me go through everything → I''m not hiding anything from you — let me go through what I know(간호사가 병원 전체를 대신해 장담, 화난 가족에게 방어적으로 들림) — words 그대로, 빈칸 hidden → hiding'
+- kind: word
+  id: w-hide
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 예후 불확실성 소통
+  index: 1
+  fields:
+  - en
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): the next days → the next few days(the next days는 비원어민 말투) — ko·words 그대로'
+- kind: word
+  id: w-serious
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-critical
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문의 the next days를 바꾼 문장처럼 the next few days로'
+- kind: sentence
+  situation: 면회 안내·환경 설명
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let me walk you through / what you''ll see / at her / bedside) → Let me / walk you through / what you''ll see / at her bedside — 문장은 그대로'
+- kind: sentence
+  situation: 일일 상태 업데이트
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Today his oxygen levels / are a little / better) → Today / his oxygen levels / are a little better — 문장은 그대로'
+- kind: sentence
+  situation: 일일 상태 업데이트
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(It''s a small step / , but it''s / in the right / direction) → It''s / a small step / , but it''s / in the right direction — 문장은 그대로'
+- kind: sentence
+  situation: 가족 질문 응대
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let me explain / that in a way / that makes / sense) → Let me / explain that / in a way / that makes sense — 문장은 그대로'
+- kind: sentence
+  situation: 가족 정서 지지 기초
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(There are support services / here / whenever you / need them) → There are / support services / here / whenever you need them — 문장은 그대로'
+- kind: sentence
+  situation: 의사결정 대리인 확인
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Did he name / a healthcare proxy / in any / documents) → Did he / name / a healthcare proxy / in any documents — 문장은 그대로'
+- kind: sentence
+  situation: 가족 참여 돌봄
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Being here for him / is meaningful / care too) → Being here for him / is meaningful care / too — 문장은 그대로'
+- kind: sentence
+  situation: 예후 불확실성 소통
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I wish I could / give you / a certain / answer) → I wish / I could / give you / a certain answer — 문장은 그대로'
+- kind: sentence
+  situation: 가족 급성 비탄·위기 대응
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Take a moment; / there''s no need / to hold / it together) → Take / a moment; / there''s no need / to hold it together — 문장은 그대로'
+- kind: sentence
+  situation: 목표 불일치·갈등 중재
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(You both want / what''s best for him / — that''s your / common ground) → You both want / what''s best for him / — that''s / your common ground — 문장은 그대로'
+- kind: sentence
+  situation: 목표 불일치·갈등 중재
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s center this / on what / he would / have wanted) → Let''s / center this / on what he / would have wanted — 문장은 그대로'
+- kind: sentence
+  situation: 대리결정 부재 상황
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Since there''s no named proxy / , the team follows / a set / process) → Since there''s / no named proxy / , the team follows / a set process — 문장은 그대로'
+- kind: sentence
+  situation: 사별·애도 지원·후속
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''m so deeply sorry / for your / loss) → I''m / so deeply sorry / for your loss — 문장은 그대로'

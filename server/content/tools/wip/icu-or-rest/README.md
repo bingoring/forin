@@ -123,3 +123,7 @@ keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't a
   그 뒤 남은 ICU 3: core-language-icu·core-family-icu·core-safety-icu. 그다음 OR 33.
   **묶음 8 keyPhrase 결정(사용자 2026-10-30 '추천대로', X-ray는 ②):** 바꿈 5 — mobility 18.2 provider to the bedside(w-rapid·w-response 삭제, 상황 18 goals[1]도 "담당의 침상 호출"로), handoff 13.3 "A repeat chest X-ray was ordered to rule out a pneumothorax."(w-placement 삭제), 20.3 crash, 14.0 per the order, 10.2 every two hours / 유지 7 / chunks 26문장. 작업 `../kp-2026-10-30/`. 정본 합침(2026-10-30), ICU 위반 0.
   남은 작은 일: handoff 13.4 "…any new bleeding at the site."(비KP)는 기관지경 장면과 안 맞음 — 다음 손질 때.
+
+- **묶음 9 (ICU 마지막 3주제, 2026-10-30)**: core-language·core-family·core-safety-icu. 사용자 결정(전부 '추천대로'): 바꿈 8 — 통역사 설명 → 의사가 통역을 통해, 깜빡임 "한 번=예" 통일, 통역사 중재, 윤리위원회 "help decide", "I'm not hiding anything", "next few days", 독립 이중 확인 "each … then compare"(상황 2 goals[1]도), ICU 신속대응팀 → ICU 의사 / 유지 약 9 / chunks 24문장. 작업 `../kp-2026-10-30b/`. 정본 합침, ICU 위반 0.
+  남은 작은 일: core-safety 2.4 "Let's stop and check this together before we give it."(비KP) "together" 표현 — 다음 손질 때.
+  **ICU 66주제 한 번에 저작 완료.** 다음은 OR 33(묶음 1: massive-transfusion(Fable 표본)·count 수정 끝, keyPhrase 결정 3건 바꿈 받음; 묶음 2: preop-verification·tourniquet 저작 끝).
