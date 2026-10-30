@@ -1,0 +1,501 @@
+# fix-core-safety-icu-B — 한 번에 저작 B 검토 (v46 1~6·8, distractorsKo ①~⑥·되풀이 상한)
+
+대상: `core-safety-icu.yaml`(A·B 합친 파일), 문장 146 · 상황 21 · order 21장 전수.
+스크립트: `_reviewB_core-safety-icu.py`(ko/blank/decoy/order 덤프 → `_reviewB_core-safety-icu_{ko,blank,decoy,order}.txt`),
+`_reviewB_core-safety-icu_stats.py`(표지·길이·W19·decoy 몰림), 제안값 `_reviewB_core-safety-icu_vals.py` → 사본 `_reviewB_core-safety-icu_new.yaml`
+(대상 파일은 손대지 않음. 사본으로 표지 0·길이·W19 상한을 확인함).
+
+## 판정 기준 (부르는 쪽 지시 그대로)
+- 오답이 정답 행동의 **앞·뒤 단계**면 통과, **그 순간 정답 행동 대신 하는 일**이면 실패.
+- 확인·처치 문장(환자 식별·알레르기·5R·농도·이중/독립 확인·라인 추적·이송 점검·억제대 감시/해제·알람 응답·위기 처치)에서
+  확인 대상만 다른 항목으로 바꾼 오답은 **비임상 항목(서랍·보험·담요·요금·날씨)이어도 실패** — 그 확인을 놓치게 한다.
+- 설명·규정·기록 항목 문장(알람 설정의 원리 [0]s2·[6]s0, 기록 항목 [7]s1·[7]s4, 보관 규정 [9]s0·[9]s5, 보고 문화 [14], 사건 보고서 [16]s2·[16]s6,
+  공개 [20])에서 해 없는 세부를 바꾼 것은 통과 — 그 순간 놓치는 확인이 없다.
+
+## 항목별 점수
+1. `why` — **4**. 146개 모두 말하는 방식(어순·대비·완곡)을 설명하고 ko를 되풀이하지 않음. 사실 오류 없음. 흠: [12]s5 why가 독립확인을 깨는 말하기 방식을
+   설명만 함(문장 교체로 해결), [19]s6 why가 뜻을 흐림.
+2. 빈칸 — **3**. 같은 분야 오답이 대부분이나 정답 둘 12문장(tablet·feeding·syringe·orientation·rehydrate·labeled·twice…), 문장에서 추론할 수 없는 자리(숫자·약 이름·알람 종류) 4문장,
+   위험 처치를 선택지로 보임 2문장([2]s2 AFTER, [15]s0 RECONNECT·FLUSH), 관사로 걸러짐 1([8]s5).
+3. `decoy` — **2**. 넣어 조립하면 확인·처치를 지운 맞는 문장이 되는 것 11개(이중확인 together·복창 용량/경로·환자 식별·위기 서류 먼저·도움 요청 대신 의자),
+   어느 청크 자리에도 안 맞는 모양 13개, 장면 밖 낱말 몰림(**lunch 15회**, his 12, pen·floor 5).
+4. `distractorsKo` — **1**. 146문장 중 **78문장 실패**(안전 65 · 정답 둘 6 · 나머지 뒤집기/동떨어짐/길이). 확인·처치 문장 대부분이 확인 대상을 비임상 명사로
+   바꾸는 한 틀이고, 위기 5상황([15]~[19]) 33문장 중 25문장이 처치를 음악·피자·택시·샌드위치·라디오로 바꿔 안전 실패이자 듣지 않고 걸러짐.
+   되풀이 상한(어간)은 원본 최댓값 5(배터·전화·담요·서류·청소·사진·퇴근이 상한을 정확히 채움) — 위반은 없음. 오답 둘에만 조건·목적 표지 0문장, 오답 둘 다 정답보다 긴 문장 5.
+5. `order` — **3**. 21장 중 순서가 하나로 안 박히는 것 3장([7]·[18]·[20]), 15단어 넘는 줄 7줄, 임상 논리 1장([19]). [12] 독립확인 카드는 ISMP대로 정확(통과).
+6. `tag`·`icon` — **4**. 상황 안에서 일관, 아이콘 뜻 맞음. 영어 약어 태그 2개(`5R 점검`·`ABC 사정`).
+8. 파일럿 갈래 — **2**. 갈래 5(오답 뜻이 정답과 겹침·decoy가 다른 맞는 문장)와 "이어진 검토"의 위험 처치 오답이 되풀이됨. 갈래 2(동떨어진 빈칸)는 대체로 지킴.
+
+## 심각한 문제
+1. **[12]s5 "I'll say the dose out loud first, then you confirm it your own way."** — 값을 먼저 불러 주면 독립 이중 확인이 깨진다(ISMP: 값을 미리 듣지 않고 각자 따로).
+   같은 상황 order 2줄("neither of us hears or sees the other's numbers first")과 정면으로 어긋난다. why를 고쳐 버틸 문장이 아니므로 **문장 교체**(keyPhrase 아님 — `in-*.json` 확인).
+   v44 필드(en·ko·chunks) 변경이라 `changes-core-safety-icu.yaml`에 `{kind: sentence, situation: "이중확인·독립확인 프로토콜", index: 5, fields: [en, ko, chunks]}` 기록 필요.
+   - en: `You confirm the dose your own way first, then we compare out loud.` · ko: `먼저 당신 방식대로 용량을 확인하고, 그다음 소리 내어 맞춰 봐요.`
+   - chunks: `["You confirm the dose", "your own way first,", "then we compare", "out loud", "."]` · words 그대로 `[w-dose, w-confirm]`
+   - tag `순서 안내` · icon `speech` · why: "your own way first로 상대가 값을 듣기 전에 혼자 확인하게 하고, then we compare로 맞춰 보는 건 그 뒤라고 순서를 정해요. 값을 먼저 말해 주면 독립확인이 깨져요."
+   - decoy `then we print` · distractorsKo: "먼저 당신 방식대로 용량을 확인하는 동안 저는 기다릴게요." · "당신만의 방식으로 확인하는 게 처음엔 조금 낯설어요."
+   - blank: answer `compare`, options compare / guess / argue / vote
+2. **확인 문장 오답의 틀 하나가 주제 전체를 덮음** — 5R([5]s0·s1·s2·s4·s5), 농도([2]s1·[11]s2·[11]s6), 이송([13]s0·s1·s2·s4·s5), 알레르기·환자 식별, 억제대 감시([1]s4·[7]s0)에서
+   확인 대상을 서랍·보험·연락처·담요·의자·날씨·요금으로 바꿈. 학습자가 그 뜻으로 알아들으면 그 확인을 놓친다.
+3. **위기 5상황의 오답이 처치 자리를 우스운 명사로 채움** — [15]s0 음악·방송, [16]s0 수도, [16]s1 간식, [16]s5 샌드위치, [17]s0 블라인드, [17]s2 택시·피자, [17]s5 물·방송,
+   [18]s1 라디오·음악, [19]s5 전등·메모. 안전 실패(처치를 다른 일로)이면서 듣지 않고 걸러짐. [16]s3(과량 투여 보고)는 청구·배송 이야기로 바뀌어 우려 제기 자체가 사라짐.
+4. **위험을 보이는 선택지·조립** — 빈칸 [2]s2 `AFTER it runs`(주입 뒤 서명), [15]s0 `RECONNECT`·`FLUSH`(오연결 라인을 다시 잇거나 밀어 넣기),
+   decoy [15]s4 `paperwork first,`(위기에 서류 먼저), [17]s5 `bring a chair`(도움 요청 대신), [2]s4 `and wash up`(확인 대신 손 씻기), [5]s5 `his lunch tray`(손목밴드 대신 식판 대조).
+
+## 저작자가 판정을 부탁한 곳
+- **[12]s5 독립확인 문장 why** — why 자체는 틀린 사실이 없지만 그 문장이 가르치는 방식이 틀림 → 위 심각 1대로 문장 교체.
+- **고위험약 이중확인 "together"를 오답에서 뒤집지 않은 처리** — 옳은 판단(together↔alone 뒤집기는 ⑤ 위반이고 위험). 다만 [2]s0 X1 "두 번"·X2 "천천히", [2]s4 X1 "저걸"·X2 "서서"가
+  together·확인을 지우거나 정답과 같아 실패 → 아래 값. **독립확인 order 카드([12])는 통과**(정의 → 미리 듣지 않기 → 각자 끝난 뒤 대조 → 일치 시 서명). [2] order 2줄의 "together"는
+  불일치 해소 장면이라 문제없음.
+- **확인 대상을 비임상 항목으로 바꾼 오답**(농도·5R·이송 점검·사정) — **실패**. 그 순간 확인을 놓치게 한다. 고칠 값은 한쪽은 정답 행동을 `~려고·~전에` 절에 남긴 바로 앞 단계,
+  다른 쪽은 표지 없는 참인 사실·이유로 썼다(둘 다 `~려고`로 쓰면 모양으로 걸러짐 — 첫 초안에서 30문장이 양쪽 표지, `전에` 15·`열어` 13·`보려` 12회가 나와 고쳤다).
+- **[16]s3 "ten times the ordered dose of heparin"의 비임상 명사 오답** — **실패**(용기·청구, 포장·도착: 과량 투여 보고가 다른 이야기가 되고, 두 군데씩 바꿔 어색).
+  새 값은 "헤파린 10배"를 그대로 두고 근거·다음 단계만 바꿈: "헤파린 10배 투여가 의심돼서 응고 검사를 보냈어요." · "헤파린 10배 투여를 약국에서 먼저 찾아냈어요."
+- **위기 주제 오답이 비임상 세부로만 바꿔 어색한 것** — **실패**(안전 + 듣지 않고 걸러짐). 위기 문장은 장비를 꺼내는 바로 앞 단계(정답 동사는 `~려고` 절)나 참인 이유로만 다시 씀(아래 [15]~[19]).
+
+## 기계 집계 (요청한 것)
+| 항목 | 원본 | 제안 적용 사본 |
+|---|---|---|
+| 오답 둘에만 조건·목적 표지(려고·전에·때·면·도록·동안…)가 붙은 문장 | 0 | 0 |
+| 오답 둘 다 정답보다 긴 문장 | 5 (2.0·2.1·5.4·11.4·19.1) | 0 |
+| distractorsKo 오답 전용 어간 최댓값(W19, 상한 5) | 5 — 배터·전화·담요·서류·청소·사진·퇴근 | 5 — 배터·라벨·전에·처방·먼저·시간·서류·머리·뒤 |
+| V20 길이(공백 뺀 1.25배·3자) 위반 | 0 | 0 |
+| decoy 첫 낱말 | the 39 · his 9 · a 8 · in 5 · with/from/on 4 | the 36 · a 8 · and 8 · his 7 · with 6 |
+| decoy 낱말 몰림 | **lunch 15** · his 12 · pen 5 · floor 5 · phone 4 · tray 4 | lunch 3 · door 5 · new 5 |
+| decoy 모양 실패(어느 청크 자리에도 안 맞음·대소문자) | 13 | 0 |
+| 같은 decoy·같은 빈칸 오답 4회 이상(W18) | 0 | 0 |
+
+되풀이 상위 5(원본, 오답 전용 어간): 배터 5 · 전화 5 · 담요 5 · 서류 5 · 청소 5 (사진·퇴근도 5).
+
+## 고칠 것
+문장 오답 78 · 문장 교체 1 · 빈칸 21 · decoy 36 · tag/why 3 · order 10장 = **149건**. 그중 안전·정답 둘 **99건**
+(문장 오답 69 · 문장 교체 1 · 빈칸 18 · decoy 11). 이유 표기: S1 확인·처치 대상 바꿈 / S2 처치·확인을 다른 일로 / S3 이중·독립 확인의 두 사람·독립성 빠뜨림 /
+S4 시점 바꿈 / Q1 정답과 뜻이 같음 / Q2 뒤집기 / Q3 동떨어져 걸러짐 / Q4 둘 다 김 / Q5 약 이름 바꿈.
+
+### 고칠 것 A — `distractorsKo` (두 값을 그대로 덮어쓰기. 통과한 쪽도 함께 적음)
+
+- **[1]s4** 억제대 적응·대안 확인 — `We'll reassess the need for restraints every few hours.` / 정답 "몇 시간마다 억제대의 필요성을 다시 평가할 거예요."
+  - 지금: "몇 시간마다 억제대의 가격을 다시 평가할 거예요." · "몇 시간마다 휠체어의 필요성을 다시 평가할 거예요."
+  - 판정: X1 가격·X2 휠체어: 억제대 필요성 재평가 대상을 바꿈(S1)
+  - 고칠 값: "억제대를 풀 때마다 손목 피부를 다시 확인할 거예요." · "억제대는 오래 쓸수록 피부와 순환에 해가 돼요."
+- **[1]s5** 억제대 적응·대안 확인 — `Once he's calmer, we'll take the restraints off and reassess again.` / 정답 "이분이 진정되면 억제대를 풀고 다시 평가할게요."
+  - 지금: "이분이 진정되면 시트를 걷고 다시 평가할게요." · "이분이 진정되면 억제대를 풀고 담요를 덮을게요."
+  - 판정: X1 시트를 걷고: 억제대 해제 대신 다른 일(S2), X2 담요: 해제 후 재평가 빠뜨림(S1)
+  - 고칠 값: "이분이 진정되면 억제대를 풀기 전에 진정 점수를 볼게요." · "진정된 분에게 억제대를 계속 쓰면 해로워요."
+- **[2]s0** 고위험약 이중확인 — `Let's verify the drug, dose, rate, and pump settings together.` / 정답 "약물, 용량, 속도, 펌프 설정을 함께 대조 확인해요."
+  - 지금: "약물, 용량, 속도, 펌프 설정을 두 번 대조 확인해요." · "약물, 용량, 속도, 펌프 설정을 천천히 대조 확인해요."
+  - 판정: X1 '두 번': 한 사람이 두 번 해도 되는 말 — 두 사람 확인을 빠뜨림·이중확인과 뜻이 겹침(S3·Q1), X2 '천천히': together를 지워 혼자 확인(S3)
+  - 고칠 값: "약물, 용량, 속도, 펌프 설정을 확인하려고 처방을 함께 띄워요." · "약물, 용량, 속도, 펌프 설정이 처방지에 다 나와요."
+- **[2]s1** 고위험약 이중확인 — `Confirm the concentration matches the order.` / 정답 "농도가 처방과 일치하는지 확인해요."
+  - 지금: "펌프 색이 처방과 일치하는지 확인해요." · "농도가 청구서와 일치하는지 확인해요."
+  - 판정: X1 펌프 색·X2 청구서: 농도 대조 대상·기준을 바꿈(S1)
+  - 고칠 값: "농도를 살피려고 처방을 화면에 띄워요." · "농도는 약 라벨 아래쪽 숫자예요."
+- **[2]s2** 고위험약 이중확인 — `Both of us sign off before it runs.` / 정답 "주입되기 전에 저희 둘 다 서명해요."
+  - 지금: "주입되기 전에 저희 셋 다 서명해요." · "주입되기 전에 저희 둘 다 도착해요."
+  - 판정: X2 '둘 다 도착': 서명(이중확인 완료 표시)을 빠뜨림(S3)
+  - 고칠 값: "주입되기 전에 저희 셋 다 서명해요." · "서명하기 전에 저희 둘 다 펜을 챙겨요."
+- **[2]s3** 고위험약 이중확인 — `Wait — the label says fifty units, but the order says five.` / 정답 "잠깐요, 라벨에는 50단위인데 처방에는 5단위라고 되어 있어요."
+  - 지금: "잠깐요, 포장에는 50단위인데 처방에는 5단위라고 되어 있어요." · "잠깐요, 라벨에는 50단위인데 차트에는 5단위라고 되어 있어요."
+  - 판정: X2 차트≈처방(처방은 차트 안에 있음) — 뜻이 거의 같음(Q1)
+  - 고칠 값: "잠깐요, 포장에는 50단위인데 처방에는 5단위라고 되어 있어요." · "잠깐요, 라벨에는 50단위인데 화이트보드에는 5단위라고 되어 있어요."
+- **[2]s4** 고위험약 이중확인 — `Let's stop and check this together before we give it.` / 정답 "주기 전에 같이 멈추고 이걸 확인해요."
+  - 지금: "주기 전에 같이 멈추고 저걸 확인해요." · "주기 전에 같이 서서 이걸 확인해요."
+  - 판정: X1 '저걸'·X2 '서서': 정답과 뜻이 같음(Q1)
+  - 고칠 값: "주기 전에 같이 확인하려고 약을 내려놔요." · "이 약은 되돌리기 어려운 약이에요."
+- **[2]s7** 고위험약 이중확인 — `Once we both agree on the numbers, we sign our names and start the pump.` / 정답 "숫자에 둘 다 동의하면 이름을 서명하고 펌프를 시작해요."
+  - 지금: "숫자에 둘 다 동의하면 이름을 서명하고 펌프를 닦아요." · "숫자에 둘 다 동의하면 이름을 서명하고 커튼을 쳐요."
+  - 판정: X1 펌프를 닦아요·X2 커튼: 펌프 시작을 다른 일로 바꿈(S2)
+  - 고칠 값: "용량 숫자는 둘이 각자 따로 계산해서 가져와요." · "펌프를 시작하고 나서 둘 다 속도 화면을 다시 봐요."
+- **[3]s1** 라인·튜브 라벨·경로 확인 — `Let's trace the line from the bag to the patient.` / 정답 "수액백에서 환자까지 라인을 따라가 봐요."
+  - 지금: "수액백에서 문까지 라인을 따라가 봐요." · "수액백에서 환자까지 커튼을 따라가 봐요."
+  - 판정: X1 문까지·X2 커튼: 추적 대상을 바꿔 연결부를 안 봄(S1)
+  - 고칠 값: "라인을 따라가기 전에 수액백 이름표부터 봐요." · "라인 여러 개는 서로 엉켜 있기 쉬워요."
+- **[3]s2** 라인·튜브 라벨·경로 확인 — `Every line should be labeled at both ends.` / 정답 "모든 라인은 양쪽 끝에 라벨이 붙어 있어야 해요."
+  - 지금: "모든 카트는 양쪽 끝에 라벨이 붙어 있어야 해요." · "모든 라인은 양쪽 끝에 색이 칠해져 있어야 해요."
+  - 판정: X1 카트·X2 색 칠하기: 라인 라벨링을 다른 대상·방식으로 바꿈(S1)
+  - 고칠 값: "모든 라인은 양쪽 끝의 표시를 근무 시작 때 확인해요." · "라벨 없는 라인은 오연결이 일어나기 쉬워요."
+- **[3]s5** 라인·튜브 라벨·경로 확인 — `Let's follow this tubing all the way from the pump to where it enters him.` / 정답 "이 튜빙을 펌프에서부터 몸에 들어가는 곳까지 끝까지 따라가 봐요."
+  - 지금: "이 튜빙을 펌프에서부터 벽 콘센트까지 끝까지 따라가 봐요." · "이 튜빙을 펌프에서부터 몸에 들어가는 곳까지 천천히 따라가 봐요."
+  - 판정: X1 벽 콘센트까지: 추적 끝점을 바꿈(S1), X2 '천천히': all the way(끝까지)를 지움(S1)
+  - 고칠 값: "이 튜빙을 몸에 들어가는 곳까지 따라가려고 담요를 걷어 봐요." · "이 튜빙은 펌프에서부터 몸에 들어가는 곳까지 꽤 길어요."
+- **[4]s0** 낙상·손상 예방 기초 — `Let's lower the bed and lock the wheels.` / 정답 "침대를 낮추고 바퀴를 잠가요."
+  - 지금: "침대를 닦고 바퀴를 잠가요." · "침대를 낮추고 서랍을 잠가요."
+  - 판정: X1 침대를 닦고·X2 서랍을 잠가요: 침대 낮추기·바퀴 잠금 대신 다른 일(S2, 사용자 예시 '서랍')
+  - 고칠 값: "침대를 낮추려고 리모컨을 집어요." · "높은 침대는 부상을 키워요."
+- **[4]s1** 낙상·손상 예방 기초 — `Keep the call light and his items within reach.` / 정답 "호출 버튼과 물건을 손 닿는 곳에 두세요."
+  - 지금: "호출 버튼과 신발을 손 닿는 곳에 두세요." · "호출 버튼과 물건에 이름표를 붙여 두세요."
+  - 판정: X2 '물건에 이름표를': 호출 버튼을 손 닿는 곳에 두는 일을 빠뜨림(S2)
+  - 고칠 값: "호출 버튼과 신발을 손 닿는 곳에 두세요." · "호출 버튼을 두려고 줄을 난간에 묶어요."
+- **[4]s4** 낙상·손상 예방 기초 — `Let's check his call light works before I step out.` / 정답 "제가 나가기 전에 호출 버튼이 작동하는지 확인해요."
+  - 지금: "제가 앉기 전에 호출 버튼이 작동하는지 확인해요." · "제가 문을 열기 전에 호출 버튼이 작동하는지 확인해요."
+  - 판정: X2 '문을 열기 전에'≈step out — 정답과 뜻이 같음(Q1)
+  - 고칠 값: "제가 앉기 전에 호출 버튼이 작동하는지 확인해요." · "제가 커튼을 치기 전에 호출 버튼이 작동하는지 확인해요."
+- **[4]s5** 낙상·손상 예방 기초 — `If the alarm sounds, someone needs to answer it right away.` / 정답 "알람이 울리면 누군가 바로 응답해야 해요."
+  - 지금: "전화가 울리면 누군가 바로 응답해야 해요." · "초인종이 울리면 누군가 바로 응답해야 해요."
+  - 판정: X1 전화·X2 초인종: 알람 응답 규칙을 다른 소리로 바꿈(알람 확인 빠뜨림, S1)
+  - 고칠 값: "알람에 바로 응답하도록 담당을 정해요." · "알람 소리가 들리게 문 쪽 볼륨을 키워요."
+- **[4]s6** 낙상·손상 예방 기초 — `We assess his risk every shift, not just after he's already fallen.` / 정답 "이미 낙상한 뒤가 아니라 매 근무마다 위험을 사정해요."
+  - 지금: "이미 입원한 뒤가 아니라 매 근무마다 위험을 사정해요." · "이미 낙상한 뒤가 아니라 매 근무마다 서랍을 사정해요."
+  - 판정: X2 서랍을 사정: 낙상 위험 사정 대상을 바꿈(S1)
+  - 고칠 값: "이미 입원한 뒤가 아니라 매 근무마다 위험을 사정해요." · "매 근무마다 위험을 사정하려고 낙상 점수표를 펴요."
+- **[5]s0** 투약 5R 확인 — `Right patient, right drug, right dose, right route, right time.` / 정답 "정확한 환자, 정확한 약물, 정확한 용량, 정확한 경로, 정확한 시간이에요."
+  - 지금: "정확한 환자, 정확한 약물, 정확한 용량, 정확한 경로, 정확한 서명이에요." · "정확한 환자, 정확한 약물, 정확한 용량, 정확한 경로, 정확한 색깔이에요."
+  - 판정: X1 서명·X2 색깔: 5R 항목(시간)을 바꿈(S1)
+  - 고칠 값: "정확한 환자부터 확인하려고 성함과 생년월일을 차례로 여쭤요." · "정확한 약물과 용량은 처방지와 약 라벨에 똑같이 찍혀서 나와요."
+- **[5]s1** 투약 5R 확인 — `Scan the band and confirm the order first.` / 정답 "밴드를 스캔하고 먼저 처방을 확인해요."
+  - 지금: "직원증을 스캔하고 먼저 처방을 확인해요." · "밴드를 스캔하고 먼저 서랍을 확인해요."
+  - 판정: X1 직원증: 환자 식별을 빠뜨림(S1), X2 서랍: 처방 확인을 빠뜨림(S1)
+  - 고칠 값: "밴드를 스캔하기 전에 성함부터 여쭤요." · "구겨진 밴드 바코드는 스캔이 잘 안 돼요."
+- **[5]s2** 투약 5R 확인 — `Let's check for allergies before giving it.` / 정답 "주기 전에 알레르기를 확인해요."
+  - 지금: "주기 전에 보험을 확인해요." · "주기 전에 연락처를 확인해요."
+  - 판정: X1 보험·X2 연락처: 알레르기 확인을 빠뜨림(S1)
+  - 고칠 값: "알레르기를 알아보려고 차트를 펼쳐요." · "알레르기는 차트 맨 위예요."
+- **[5]s4** 투약 5R 확인 — `Let me say that back to you: right patient, right time, right route.` / 정답 "다시 말씀드릴게요, 정확한 환자, 정확한 시간, 정확한 경로예요."
+  - 지금: "다시 말씀드릴게요, 정확한 환자, 정확한 시간, 정확한 서명이에요." · "다시 말씀드릴게요, 정확한 환자, 정확한 시간, 정확한 포장이에요."
+  - 판정: X1 서명·X2 포장: 복창하는 5R 항목(경로)을 바꿈(S1)
+  - 고칠 값: "다시 말씀드리기 전에, 처방 화면을 먼저 띄워 놓을게요." · "다시 말씀드릴게요, 들은 내용을 메모지에 그대로 적어 뒀어요."
+- **[5]s5** 투약 5R 확인 — `Before I push anything, I check his wristband against the order myself.` / 정답 "뭔가 주기 전에 저는 직접 손목밴드를 처방과 대조해서 확인해요."
+  - 지금: "뭔가 주기 전에 저는 직접 약 상자를 처방과 대조해서 확인해요." · "뭔가 주기 전에 저는 직접 손목밴드를 달력과 대조해서 확인해요."
+  - 판정: X1 약 상자: 손목밴드(환자 식별)를 빠뜨림(S1), X2 달력: 처방 대조를 빠뜨림(S1)
+  - 고칠 값: "손목밴드를 처방과 대조하려고 저는 먼저 스캐너를 켜요." · "손목밴드에는 성함과 생년월일, 등록번호가 다 찍혀 나와요."
+- **[5]s6** 투약 5R 확인 — `No known allergies on the chart, but I'll ask him again just in case.` / 정답 "차트에는 알려진 알레르기가 없지만, 혹시 몰라서 다시 물어볼게요."
+  - 지금: "차트에는 알려진 천식이 없지만, 혹시 몰라서 다시 물어볼게요." · "차트에는 알려진 알레르기가 없지만, 혹시 몰라서 가족께 물어볼게요."
+  - 판정: X1 천식: 알레르기 재확인 대상을 바꿈(S1)
+  - 고칠 값: "차트에는 알려진 알레르기가 없지만, 혹시 몰라서 약사께 물어요." · "차트에는 알려진 알레르기가 없지만, 혹시 몰라서 가족께 물어볼게요."
+- **[7]s0** 억제대 사용 모니터·문서 — `We check circulation and skin every two hours.` / 정답 "두 시간마다 순환과 피부를 확인해요."
+  - 지금: "두 시간마다 순환과 체중을 확인해요." · "두 시간마다 호출 버튼과 피부를 확인해요."
+  - 판정: X1 체중·X2 호출 버튼: 억제대 순환·피부 확인 대상을 바꿈(S1)
+  - 고칠 값: "순환과 피부를 살피려고 억제대를 잠깐 풀어요." · "억제대 아래 피부는 쉽게 짓물러요."
+- **[7]s2** 억제대 사용 모니터·문서 — `Release and reposition on schedule.` / 정답 "일정에 따라 풀어주고 자세를 바꿔요."
+  - 지금: "일정에 따라 닦아주고 자세를 바꿔요." · "일정에 따라 풀어주고 침구를 바꿔요."
+  - 판정: X1 닦아주고: 해제 대신 다른 일(S2), X2 침구: 체위 변경 대신 다른 일(S2)
+  - 고칠 값: "일정에 따라 풀어주려고 동료를 불러요." · "오래 누운 피부는 쉽게 상해요."
+- **[7]s6** 억제대 사용 모니터·문서 — `We schedule releases so he's never restrained longer than needed.` / 정답 "필요 이상으로 억제되지 않도록 풀어주는 일정을 정해요."
+  - 지금: "필요 이상으로 억제되지 않도록 청소 일정을 정해요." · "필요 이상으로 졸리지 않도록 풀어주는 일정을 정해요."
+  - 판정: X1 청소 일정: 해제 일정을 다른 일정으로 바꿈(S2)
+  - 고칠 값: "필요 이상으로 억제되면 피부와 순환이 상하기 쉬워요." · "필요 이상으로 졸리지 않도록 풀어주는 일정을 정해요."
+- **[8]s0** 라인 오연결 예방 — `Trace every line back to its source before connecting.` / 정답 "연결하기 전에 모든 라인을 근원까지 따라가 봐요."
+  - 지금: "연결하기 전에 모든 라인을 벽까지 따라가 봐요." · "정리하기 전에 모든 라인을 근원까지 따라가 봐요."
+  - 판정: X1 벽까지: 추적 끝점을 바꿈(S1), X2 '정리하기 전에': 연결 전이라는 시점을 바꿈(S4)
+  - 고칠 값: "모든 라인을 근원까지 따라가려고 이불을 걷어요." · "오연결은 모양이 비슷한 연결부에서 잘 생겨요."
+- **[8]s4** 라인 오연결 예방 — `Wait, that's the feeding line — the IV port is over here.` / 정답 "잠깐요, 그건 급식용 라인이에요, 정맥 포트는 여기고요."
+  - 지금: "잠깐요, 그건 소변 라인이에요, 정맥 포트는 여기고요." · "잠깐요, 그건 급식용 라인이에요, 소변 백은 여기고요."
+  - 판정: X2 '소변 백은 여기': 정맥 포트로 바로잡는 안내를 지움(S2)
+  - 고칠 값: "잠깐요, 그건 소변 라인이에요, 정맥 포트는 여기고요." · "잠깐요, 그건 급식용 라인이에요, 끝에 이름표가 달렸어요."
+- **[8]s5** 라인 오연결 예방 — `It's an easy mix-up, not a careless one — let's just trace it together.` / 정답 "흔히 헷갈리는 거지 부주의한 게 아니에요, 같이 따라가 봐요."
+  - 지금: "쉽게 헷갈리는 거지 비싼 게 아니에요, 같이 따라가 봐요." · "흔히 헷갈리는 거지 부주의한 게 아니에요, 같이 세어 봐요."
+  - 판정: X2 '같이 세어 봐요': 추적을 다른 일로 바꿈(S2)
+  - 고칠 값: "쉽게 헷갈리는 거지 비싼 게 아니에요, 같이 따라가 봐요." · "흔히 헷갈리는 거지 새로운 게 아니에요, 같이 따라가 봐요."
+- **[9]s1** 고농도 전해질·마약 관리 — `Narcotics require two-nurse counts and locked storage.` / 정답 "마약은 두 간호사의 재고 확인과 잠긴 보관을 요구해요."
+  - 지금: "마약은 두 간호사의 재고 확인과 냉장 보관을 요구해요." · "마약은 두 의사의 재고 확인과 잠긴 보관을 요구해요."
+  - 판정: X1 냉장 보관: 잠금 보관을 지움(S1), X2 '두 의사': 확인하는 사람만 바꾼 틀(TASK 실패 2)
+  - 고칠 값: "마약은 남은 양을 버릴 때도 두 간호사가 함께 봐요." · "마약 재고 확인과 잠긴 보관은 법으로 정해진 거예요."
+- **[9]s3** 고농도 전해질·마약 관리 — `Let's count the narcotics together and sign the log before we leave.` / 정답 "나가기 전에 같이 마약을 세고 기록지에 서명해요."
+  - 지금: "나가기 전에 같이 장갑을 세고 기록지에 서명해요." · "나가기 전에 같이 마약을 세고 기록지를 접어요."
+  - 판정: X1 장갑을 세고: 마약 재고 확인 대상을 바꿈(S1), X2 기록지를 접어요: 서명을 빠뜨림(S3)
+  - 고칠 값: "나가기 전에 같이 마약을 세려고 금고를 열어요." · "같이 마약을 세기 전에 기록지부터 펴 놓아요."
+- **[9]s4** 고농도 전해질·마약 관리 — `If the numbers don't match, we stop and count them again before anyone signs.` / 정답 "숫자가 맞지 않으면 멈추고 서명하기 전에 다시 세요."
+  - 지금: "서류가 맞지 않으면 멈추고 서명하기 전에 다시 세요." · "숫자가 맞지 않으면 멈추고 퇴근하기 전에 다시 세요."
+  - 판정: X2 '퇴근하기 전에': 서명 전에 다시 센다는 시점을 지움 — 맞지 않는 채로 서명 가능(S4)
+  - 고칠 값: "서류가 맞지 않으면 멈추고 서명하기 전에 다시 세요." · "숫자가 맞지 않으면 멈추고 서명하기 전에 서랍 바닥까지 봐요."
+- **[9]s6** 고농도 전해질·마약 관리 — `We keep this potassium in the storage room, never within reach at the bedside.` / 정답 "이 칼륨은 보관실에 두고, 절대 침상 옆 손 닿는 곳에 두지 않아요."
+  - 지금: "이 비누는 보관실에 두고, 절대 침상 옆 손 닿는 곳에 두지 않아요." · "이 칼륨은 창고에 두고, 절대 침상 옆 손 닿는 곳에 두지 않아요."
+  - 판정: X2 창고≈보관실 — 뜻이 같음(Q1)
+  - 고칠 값: "이 비누는 보관실에 두고, 절대 침상 옆 손 닿는 곳에 두지 않아요." · "이 칼륨은 약국에 두고, 절대 침상 옆 손 닿는 곳에 두지 않아요."
+- **[10]s0** 섬망 환자 안전 환경 — `Let's reorient him and keep familiar items nearby.` / 정답 "지남력을 되찾도록 돕고 익숙한 물건을 가까이 둬요."
+  - 지금: "지남력을 되찾도록 돕고 낯선 물건을 가까이 둬요." · "지남력을 되찾도록 돕고 익숙한 음식을 가까이 둬요."
+  - 판정: X1 낯선 물건: 반대말 뒤집기(Q2), X2 익숙한 음식: 섬망·흡인 위험 환자 곁에 음식(S2)
+  - 고칠 값: "지남력을 되찾도록 돕고 낮에는 커튼을 걷어 둬요." · "익숙한 물건을 가까이 두려고 가족에게 부탁해요."
+- **[10]s1** 섬망 환자 안전 환경 — `Secure and camouflage his lines out of easy reach.` / 정답 "라인을 고정하고 손 닿기 어렵게 위장해요."
+  - 지금: "가방을 고정하고 손 닿기 어렵게 위장해요." · "식판을 고정하고 손 닿기 어렵게 위장해요."
+  - 판정: X1 가방·X2 식판: 라인 고정·위장 대상을 바꿈(S1)
+  - 고칠 값: "라인을 고정하기 전에 삽입 부위를 확인해요." · "눈에 띄는 라인은 더 잡아당기기 쉬워요."
+- **[11]s2** 투약 오류 예방 시스템 — `Let's confirm the concentration before we proceed.` / 정답 "진행하기 전에 농도를 확인해요."
+  - 지금: "진행하기 전에 날씨를 확인해요." · "진행하기 전에 요금을 확인해요."
+  - 판정: X1 날씨·X2 요금: 농도 확인을 빠뜨림(S1)
+  - 고칠 값: "농도를 재려고 약병을 돌려요." · "같은 약도 농도가 여러 가지예요."
+- **[11]s4** 투약 오류 예방 시스템 — `The pump flagged this dose as unusually high — let's not just click past it.` / 정답 "펌프가 이 용량을 비정상적으로 높다고 표시했어요, 그냥 넘기지 말아요."
+  - 지금: "펌프가 이 배터리를 비정상적으로 낮다고 표시했어요, 그냥 넘기지 말아요." · "모니터가 이 용량을 비정상적으로 높다고 표시했어요, 그냥 넘기지 말아요."
+  - 판정: X1·X2 둘 다 정답보다 김(오답 하나는 정답 길이 이하, Q4) — X2 모니터를 같은 길이로
+  - 고칠 값: "펌프가 이 배터리를 비정상적으로 낮다고 표시했어요, 그냥 넘기지 말아요." · "펌프가 이 속도를 비정상적으로 높다고 표시했어요, 그냥 넘기지 말아요."
+- **[11]s6** 투약 오류 예방 시스템 — `Trust the library, but still confirm the concentration yourself.` / 정답 "라이브러리를 믿되, 그래도 직접 농도를 확인하세요."
+  - 지금: "라이브러리를 닫되, 그래도 직접 농도를 확인하세요." · "라이브러리를 믿되, 그래도 직접 요금을 확인하세요."
+  - 판정: X2 요금: 직접 농도 확인을 빠뜨림(S1)
+  - 고칠 값: "라이브러리를 닫되, 그래도 직접 농도를 확인하세요." · "라이브러리에서 고르되, 그래도 직접 농도를 확인하세요."
+- **[12]s0** 이중확인·독립확인 프로토콜 — `An independent double-check means we verify separately.` / 정답 "독립확인은 우리가 따로따로 확인한다는 뜻이에요."
+  - 지금: "독립확인은 우리가 따로따로 출근한다는 뜻이에요." · "독립확인은 우리가 따로따로 퇴근한다는 뜻이에요."
+  - 판정: X1 출근·X2 퇴근: 장면과 동떨어져 듣지 않고 걸러짐(Q3), '퇴근' 되풀이 상한(5) 채움
+  - 고칠 값: "독립확인은 우리가 따로따로 서명한다는 뜻이에요." · "독립확인은 우리가 따로따로 교육받는다는 뜻이에요."
+- **[12]s1** 이중확인·독립확인 프로토콜 — `We each confirm the drug, dose, and pump without prompting.` / 정답 "유도 신호 없이 각자 약물, 용량, 펌프를 확인해요."
+  - 지금: "마스크 없이 각자 약물, 용량, 펌프를 확인해요." · "장갑 없이 각자 약물, 용량, 펌프를 확인해요."
+  - 판정: X1 마스크 없이·X2 장갑 없이: without prompting(독립성 조건)을 지움 — 보호구 없이 확인하라는 말로도 읽힘(S3)
+  - 고칠 값: "유도 신호 없이 각자 확인하려고 처방을 따로 띄워요." · "유도 신호 없는 확인은 처음엔 조금 느려요."
+- **[12]s3** 이중확인·독립확인 프로토콜 — `This needs an independent check — I mean each of us checks it alone.` / 정답 "이건 독립확인이 필요해요, 그러니까 각자 따로 확인한다는 뜻이에요."
+  - 지금: "이건 허락이 필요해요, 그러니까 각자 따로 확인한다는 뜻이에요." · "이건 독립확인이 필요해요, 그러니까 각자 따로 퇴근한다는 뜻이에요."
+  - 판정: X2 '각자 따로 퇴근': 동떨어짐(Q3)
+  - 고칠 값: "이건 허락이 필요해요, 그러니까 각자 따로 확인한다는 뜻이에요." · "이건 독립확인이 필요해요, 그러니까 각자 따로 기록지를 쓴다는 뜻이에요."
+- **[12]s6** 이중확인·독립확인 프로토콜 — `High-alert drugs like insulin and heparin always get this extra step.` / 정답 "인슐린이나 헤파린 같은 high-alert 약물은 항상 이 추가 단계를 거쳐요."
+  - 지금: "인슐린이나 비타민 같은 high-alert 약물은 항상 이 추가 단계를 거쳐요." · "인슐린이나 헤파린 같은 high-alert 약물은 항상 이 추가 서류를 거쳐요."
+  - 판정: X1 비타민: 약 이름을 바꿈 — 헤파린이 고위험약 예시에서 빠짐(Q5·S1)
+  - 고칠 값: "인슐린이나 헤파린 같은 high-alert 약물은 항상 시간이 조금 더 걸려요." · "인슐린이나 헤파린 같은 high-alert 약물은 항상 이 추가 서류를 거쳐요."
+- **[13]s0** 이송·인계 중 안전 확인 — `Confirm the airway, drips, and monitor before we move.` / 정답 "옮기기 전에 기도, 점적, 모니터를 확인해요."
+  - 지금: "옮기기 전에 기도, 점적, 담요를 확인해요." · "옮기기 전에 기도, 바닥, 모니터를 확인해요."
+  - 판정: X1 담요·X2 바닥: 이송 전 확인 항목을 바꿈(S1)
+  - 고칠 값: "기도, 점적, 모니터를 확인하려고 침대 머리맡에 서요." · "기도, 점적, 모니터를 본 뒤 바퀴를 풀어요."
+- **[13]s1** 이송·인계 중 안전 확인 — `Do we have enough oxygen and battery for transport?` / 정답 "이송할 산소와 배터리가 충분한가요?"
+  - 지금: "이송할 담요와 배터리가 충분한가요?" · "이송할 산소와 의자가 충분한가요?"
+  - 판정: X1 담요·X2 의자: 산소·배터리 확인을 빠뜨림(S1)
+  - 고칠 값: "산소와 배터리를 보려고 카트를 열까요?" · "산소와 배터리는 누가 챙겼나요?"
+- **[13]s2** 이송·인계 중 안전 확인 — `Let's run the transport checklist together.` / 정답 "이송 점검표를 같이 확인해요."
+  - 지금: "이송 일정표를 같이 확인해요." · "이송 점검표를 같이 외워요."
+  - 판정: X1 일정표: 점검표를 바꿈(S1), X2 외워요: 점검표 실행을 다른 일로(S2)
+  - 고칠 값: "점검표를 띄우려고 태블릿을 켜요." · "점검표는 벽에 붙였어요."
+- **[13]s3** 이송·인계 중 안전 확인 — `Let's make sure nothing gets missed before we head to CT.` / 정답 "CT로 가기 전에 놓치는 게 없는지 확인해요."
+  - 지금: "식당으로 가기 전에 놓치는 게 없는지 확인해요." · "CT로 가기 전에 막히는 게 없는지 확인해요."
+  - 판정: X1 식당으로: 확인 시점을 이송과 무관하게(S4), X2 '막히는 게': 누락 확인을 다른 확인으로(S1)
+  - 고칠 값: "MRI로 가기 전에 놓치는 게 없는지 확인해요." · "CT로 가기 전에 놓치는 게 없게 짐을 싸요."
+- **[13]s4** 이송·인계 중 안전 확인 — `I'll double-check the monitor cables reach the portable monitor too.` / 정답 "모니터 케이블이 휴대용 모니터에도 닿는지 다시 확인할게요."
+  - 지금: "모니터 케이블이 휴대용 충전기에도 닿는지 다시 확인할게요." · "전화기 케이블이 휴대용 모니터에도 닿는지 다시 확인할게요."
+  - 판정: X1 충전기·X2 전화기 케이블: 이송 모니터링 연결 확인 대상을 바꿈(S1)
+  - 고칠 값: "휴대용 모니터에 연결하려고 모니터 케이블을 풀어 둘게요." · "휴대용 모니터에 연결한 뒤 파형이 뜨는지 다시 볼게요."
+- **[13]s5** 이송·인계 중 안전 확인 — `We confirm his airway is secure before anyone touches the bed brakes.` / 정답 "누가 침대 브레이크를 건드리기 전에 기도가 안전한지 확인해요."
+  - 지금: "누가 침대 커튼을 건드리기 전에 기도가 안전한지 확인해요." · "누가 침대 브레이크를 건드리기 전에 가운이 깨끗한지 확인해요."
+  - 판정: X2 가운: 기도 확인을 빠뜨림(S1)
+  - 고칠 값: "누가 침대 커튼을 건드리기 전에 기도가 안전한지 확인해요." · "기도가 안전한지 확인하려고 호흡치료사를 기다려요."
+- **[13]s6** 이송·인계 중 안전 확인 — `Let's read the checklist out loud so nothing slips through in handoff.` / 정답 "인계할 때 놓치는 게 없도록 점검표를 소리 내어 읽어요."
+  - 지금: "퇴근할 때 놓치는 게 없도록 점검표를 소리 내어 읽어요." · "인계할 때 놓치는 게 없도록 점검표를 색깔로 칠해요."
+  - 판정: X1 '퇴근할 때'≈인계할 때(Q1), X2 색깔로 칠해요: 소리 내어 읽기를 다른 일로(S2)
+  - 고칠 값: "이송할 때 놓치는 게 없도록 점검표를 소리 내어 읽어요." · "인계할 때 놓치는 게 없도록 점검표를 먼저 출력해요."
+- **[15]s0** 라인·튜브 치명적 오류 대응 — `Stop the infusion and disconnect it immediately.` / 정답 "주입을 멈추고 즉시 분리하세요."
+  - 지금: "음악을 멈추고 즉시 분리하세요." · "주입을 멈추고 즉시 방송을 분리하세요."
+  - 판정: X1 음악·X2 방송: 위기에서 주입 중단·분리를 다른 일로(S2)
+  - 고칠 값: "즉시 분리하려고 클램프부터 잠가요." · "정맥 속 급식액은 위험해요."
+- **[15]s1** 라인·튜브 치명적 오류 대응 — `Assess the patient and notify the physician now.` / 정답 "환자를 사정하고 지금 바로 의사에게 알려요."
+  - 지금: "침대를 사정하고 지금 바로 의사에게 알려요." · "카트를 사정하고 지금 바로 의사에게 알려요."
+  - 판정: X1 침대·X2 카트: 위기에서 환자 사정 대상을 바꿈(S1)
+  - 고칠 값: "환자를 사정하려고 모니터부터 봐요." · "환자 상태는 오연결 바로 다음에 가장 빨리 변해요."
+- **[15]s2** 라인·튜브 치명적 오류 대응 — `We'll trace all lines and document what happened.` / 정답 "모든 라인을 따라가면서 무슨 일이 있었는지 기록할게요."
+  - 지금: "모든 방을 따라가면서 무슨 일이 있었는지 기록할게요." · "모든 라인을 따라가면서 무슨 일이 있었는지 사진 찍을게요."
+  - 판정: X1 '모든 방': 오연결 뒤 전 라인 추적을 빠뜨림(S1)
+  - 고칠 값: "모든 라인을 따라간 뒤 이름표를 새로 붙일게요." · "모든 라인을 따라가면서 무슨 일이 있었는지 사진 찍을게요."
+- **[15]s4** 라인·튜브 치명적 오류 대응 — `Let's act fast: airway first, then we call the physician.` / 정답 "빠르게 행동해요, 기도 먼저, 그다음 의사를 불러요."
+  - 지금: "빠르게 정리해요, 기도 먼저, 그다음 의사를 불러요." · "빠르게 행동해요, 침대 먼저, 그다음 의사를 불러요."
+  - 판정: X1 정리해요: 위기 행동을 정리로(S2), X2 침대 먼저: 기도 우선을 바꿈(S1)
+  - 고칠 값: "기도를 살피려고 머리맡으로 가고, 그다음 의사를 불러요." · "빠르게 행동해요, 흡인기는 머리맡 벽에 있어요."
+- **[16]s0** 고위험약 용량사고 위기 — `Stop the drip and check his labs and status now.` / 정답 "점적을 멈추고 지금 검사와 상태를 확인해요."
+  - 지금: "수도를 멈추고 지금 검사와 상태를 확인해요." · "점적을 멈추고 지금 체중과 상태를 확인해요."
+  - 판정: X1 수도: 점적 중단을 다른 일로(S2), X2 체중: 검사 확인 대상을 바꿈(S1)
+  - 고칠 값: "점적을 멈춘 뒤 응고 검사를 보내려고 채혈해요." · "헤파린 효과는 바로 사라지지 않아요."
+- **[16]s1** 고위험약 용량사고 위기 — `Prepare protamine and notify the physician immediately.` / 정답 "프로타민을 준비하고 즉시 의사에게 알려요."
+  - 지금: "간식을 준비하고 즉시 의사에게 알려요." · "침대를 준비하고 즉시 의사에게 알려요."
+  - 판정: X1 간식·X2 침대: 해독제 준비를 다른 일로(S2)
+  - 고칠 값: "프로타민을 준비하려고 약물 카트를 열어요." · "프로타민은 헤파린 효과를 되돌리는 약이에요."
+- **[16]s3** 고위험약 용량사고 위기 — `I think he was given ten times the ordered dose of heparin.` / 정답 "처방된 헤파린 용량의 10배가 투여된 것 같아요."
+  - 지금: "처방된 헤파린 용기의 10배가 청구된 것 같아요." · "처방된 헤파린 포장의 10배가 도착한 것 같아요."
+  - 판정: X1 용기·청구, X2 포장·도착: 과량 투여 보고를 청구·배송 이야기로 — 우려 제기를 바꿈(S2), 두 군데씩 바꿔 어색(Q3)
+  - 고칠 값: "헤파린 10배 투여가 의심돼서 응고 검사를 보냈어요." · "헤파린 10배 투여를 약국에서 먼저 찾아냈어요."
+- **[16]s5** 고위험약 용량사고 위기 — `We're preparing protamine now and calling the doctor before anything else.` / 정답 "지금 프로타민을 준비하고 다른 무엇보다 먼저 의사를 부르고 있어요."
+  - 지금: "지금 샌드위치를 준비하고 다른 무엇보다 먼저 의사를 부르고 있어요." · "지금 프로타민을 주문하고 다른 무엇보다 먼저 의사를 부르고 있어요."
+  - 판정: X1 샌드위치: 해독제 준비를 다른 일로(S2)
+  - 고칠 값: "지금 헤파린을 되돌리려고 다른 무엇보다 먼저 의사를 부르고 있어요." · "지금 프로타민을 주문하고 다른 무엇보다 먼저 의사를 부르고 있어요."
+- **[17]s0** 억제대 관련 질식·손상 위기 — `Release the restraint and reposition him immediately.` / 정답 "억제대를 풀고 즉시 자세를 바꿔줘요."
+  - 지금: "블라인드를 풀고 즉시 자세를 바꿔줘요." · "억제대를 풀고 즉시 이불을 바꿔줘요."
+  - 판정: X1 블라인드: 억제대 해제 대신(S2), X2 이불: 체위 교정 대신(S2)
+  - 고칠 값: "억제대를 풀려고 가위를 집어요." · "가슴을 조이는 억제대는 숨을 막아요."
+- **[17]s1** 억제대 관련 질식·손상 위기 — `Check his airway and breathing right now.` / 정답 "지금 바로 기도와 호흡을 확인해요."
+  - 지금: "지금 바로 침대와 이불을 확인해요." · "지금 바로 기도와 체중을 확인해요."
+  - 판정: X1 침대와 이불·X2 체중: 기도·호흡 확인 대상을 바꿈(S1)
+  - 고칠 값: "기도와 호흡을 살피려고 머리 쪽으로 가요." · "가슴이 눌린 분은 숨이 얕아져요."
+- **[17]s2** 억제대 관련 질식·손상 위기 — `Call for help and stay with him.` / 정답 "도움을 부르고 곁에 있어줘요."
+  - 지금: "택시를 부르고 곁에 있어줘요." · "피자를 부르고 곁에 있어줘요."
+  - 판정: X1 택시·X2 피자: 부를 대상을 바꿈(호출 대상 바꾸기 실패), 동떨어짐(Q3)
+  - 고칠 값: "도움을 부르고 문을 열어요." · "도움을 부르고 시각을 기억해 둬요."
+- **[17]s3** 억제대 관련 질식·손상 위기 — `He slid down and the restraint is tight across his chest.` / 정답 "이분이 미끄러져 내려가서 억제대가 가슴을 조이고 있어요."
+  - 지금: "이분이 일어나 앉아서 억제대가 가슴을 조이고 있어요." · "이분이 미끄러져 내려가서 시트가 가슴을 조이고 있어요."
+  - 판정: X2 시트가: 조이는 것이 억제대가 아니게 돼 해제 판단을 놓침(S1)
+  - 고칠 값: "이분이 일어나 앉아서 억제대가 가슴을 조이고 있어요." · "이분이 몸을 비틀어서 억제대가 가슴을 조이고 있어요."
+- **[17]s4** 억제대 관련 질식·손상 위기 — `We need to check his breathing before we do anything else.` / 정답 "다른 걸 하기 전에 호흡부터 확인해야 해요."
+  - 지금: "청소하기 전에 호흡부터 확인해야 해요." · "퇴근하기 전에 호흡부터 확인해야 해요."
+  - 판정: X1 '청소하기 전에'·X2 '퇴근하기 전에': '다른 무엇보다 먼저'라는 우선순위를 지움(S4), 동떨어짐(Q3)
+  - 고칠 값: "다른 걸 하기 전에 호흡을 보려고 이불을 걷어요." · "질식은 몇 분 안에 생명을 위협해요."
+- **[17]s5** 억제대 관련 질식·손상 위기 — `I'll stay right here — someone else, please call for help now.` / 정답 "저는 여기 있을게요, 다른 분이 지금 도움을 불러주세요."
+  - 지금: "저는 여기 있을게요, 다른 분이 지금 물을 가져다주세요." · "저는 여기 있을게요, 다른 분이 지금 방송을 켜주세요."
+  - 판정: X1 물·X2 방송: 도움 요청을 다른 부탁으로(S2)
+  - 고칠 값: "저는 여기 있을게요, 도움을 부르려면 저 버튼을 누르세요." · "저는 여기 있을게요, 응급 카트는 복도 끝에 있어요."
+- **[17]s6** 억제대 관련 질식·손상 위기 — `Once it's off, we reposition him and reassess his airway right away.` / 정답 "풀리고 나면 자세를 바꾸고 기도를 다시 사정해요."
+  - 지금: "풀리고 나면 자세를 바꾸고 식단을 다시 사정해요." · "풀리고 나면 이불을 바꾸고 기도를 다시 사정해요."
+  - 판정: X1 식단: 기도 재사정 대신(S1), X2 이불: 체위 변경 대신(S2)
+  - 고칠 값: "기도를 다시 본 뒤 억제대 대안을 팀과 논의해요." · "억제대가 풀리면 자세를 바꾸려고 동료와 양쪽에 서요."
+- **[18]s0** 알람 무시 급변 위기 — `Assess him now — airway, breathing, circulation.` / 정답 "지금 바로 사정해요, 기도, 호흡, 순환이요."
+  - 지금: "지금 바로 사정해요, 기도, 호흡, 식단이요." · "지금 바로 사정해요, 벽, 호흡, 순환이요."
+  - 판정: X1 식단·X2 벽: ABC 사정 대상을 바꿈(S1)
+  - 고칠 값: "지금 바로 사정하려고 머리맡으로 가요." · "지금 바로 사정해요, 모니터가 다시 울려요."
+- **[18]s1** 알람 무시 급변 위기 — `Call for the rapid response and start oxygen.` / 정답 "신속대응팀을 부르고 산소를 시작해요."
+  - 지금: "신속대응팀을 부르고 라디오를 시작해요." · "신속대응팀을 부르고 음악을 시작해요."
+  - 판정: X1 라디오·X2 음악: 산소 시작을 다른 일로(S2)
+  - 고칠 값: "산소를 시작하려고 마스크를 꺼내요." · "신속대응팀은 보통 몇 분 안에 와요."
+- **[18]s2** 알람 무시 급변 위기 — `Afterward we review why the alarm was missed.` / 정답 "나중에 알람을 왜 놓쳤는지 검토해요."
+  - 지금: "나중에 알람을 언제 놓쳤는지 검토해요." · "나중에 기차를 왜 놓쳤는지 검토해요."
+  - 판정: X2 기차: 동떨어짐(Q3)
+  - 고칠 값: "나중에 알람을 언제 놓쳤는지 검토해요." · "나중에 회진을 왜 놓쳤는지 검토해요."
+- **[18]s3** 알람 무시 급변 위기 — `His sat alarm was sounding, but no one caught it in time.` / 정답 "산소포화도 알람이 울리고 있었지만 아무도 제때 알아채지 못했어요."
+  - 지금: "체온 알람이 울리고 있었지만 아무도 제때 알아채지 못했어요." · "산소포화도 전화가 울리고 있었지만 아무도 제때 알아채지 못했어요."
+  - 판정: X2 '산소포화도 전화': 동떨어짐(Q3)
+  - 고칠 값: "체온 알람이 울리고 있었지만 아무도 제때 알아채지 못했어요." · "산소포화도 알람이 울리고 있었지만 아무도 제때 기록하지 못했어요."
+- **[18]s4** 알람 무시 급변 위기 — `He's crashing now — stop what you're doing and look at him.` / 정답 "지금 급변하고 있어요, 하던 일을 멈추고 이분을 봐주세요."
+  - 지금: "지금 도착하고 있어요, 하던 일을 멈추고 이분을 봐주세요." · "지금 급변하고 있어요, 하던 일을 멈추고 이분을 불러주세요."
+  - 판정: X2 '이분을 불러주세요': 급변 순간 보기 대신 말 걸기(묶음 6·7 위기 옆 일, S2)
+  - 고칠 값: "지금 도착하고 있어요, 하던 일을 멈추고 이분을 봐주세요." · "지금 급변하고 있어요, 산소포화도가 계속 떨어지고 있어요."
+- **[18]s5** 알람 무시 급변 위기 — `We'll figure out why the alarm got missed after he's stable.` / 정답 "안정되고 나면 알람을 왜 놓쳤는지 알아낼 거예요."
+  - 지금: "퇴원하고 나면 알람을 왜 놓쳤는지 알아낼 거예요." · "안정되고 나면 알람을 왜 샀는지 알아낼 거예요."
+  - 판정: X2 '왜 샀는지': 동떨어짐(Q3)
+  - 고칠 값: "퇴원하고 나면 알람을 왜 놓쳤는지 알아낼 거예요." · "안정되고 나면 인계가 왜 늦었는지 알아낼 거예요."
+- **[18]s6** 알람 무시 급변 위기 — `This isn't about blame — it's about learning why no one heard the alarm.` / 정답 "이건 비난이 아니라 왜 아무도 알람을 못 들었는지 배우는 거예요."
+  - 지금: "이건 비난이 아니라 왜 아무도 강의를 못 들었는지 배우는 거예요." · "이건 비난이 아니라 언제 아무도 알람을 못 들었는지 배우는 거예요."
+  - 판정: X1 강의: 동떨어짐(Q3)
+  - 고칠 값: "이건 비난이 아니라 왜 아무도 호출을 못 들었는지 배우는 거예요." · "이건 비난이 아니라 언제 아무도 알람을 못 들었는지 배우는 거예요."
+- **[19]s0** 전원·펌프 고장 위기 대응 — `Switch to battery backup and the red emergency outlets.` / 정답 "배터리 백업과 빨간 비상 콘센트로 전환해요."
+  - 지금: "배터리 백업과 빨간 비상 조명으로 전환해요." · "라디오 백업과 빨간 비상 콘센트로 전환해요."
+  - 판정: X1 비상 조명: 펌프를 비상 콘센트에 꽂지 않게 됨(S1), X2 라디오 백업(S1)
+  - 고칠 값: "빨간 비상 콘센트로 옮기려고 플러그를 뽑아요." · "펌프마다 배터리가 따로 내장됐어요."
+- **[19]s1** 전원·펌프 고장 위기 대응 — `Manually control critical drips until pumps restart.` / 정답 "펌프가 재시작될 때까지 위중한 점적은 수동으로 조절해요."
+  - 지금: "펌프가 재시작될 때까지 위중한 환기구는 수동으로 조절해요." · "배터리가 재충전될 때까지 위중한 점적은 수동으로 조절해요."
+  - 판정: X1 환기구: 위중 점적 수동 조절 대상을 바꿈(S1)
+  - 고칠 값: "펌프가 재시작되면 위중한 점적의 속도를 다시 맞춰요." · "배터리가 재충전될 때까지 위중한 점적은 수동으로 조절해요."
+- **[19]s2** 전원·펌프 고장 위기 대응 — `Prioritize the life-sustaining infusions first.` / 정답 "생명 유지 주입을 먼저 우선시해요."
+  - 지금: "생명 유지 주입을 먼저 번호 붙여요." · "생명 유지 주입을 먼저 접수해요."
+  - 판정: X1 번호 붙여요·X2 접수해요: 우선순위 결정을 다른 일로(S2)
+  - 고칠 값: "생명 유지 주입이 뭔지 찾아봐요." · "생명 유지 주입은 끊기면 바로 위험해요."
+- **[19]s3** 전원·펌프 고장 위기 대응 — `The power just dropped, and every pump on this wall is dead.` / 정답 "방금 전원이 나갔고, 이 벽의 펌프가 전부 작동을 멈췄어요."
+  - 지금: "방금 전원이 나갔고, 이 벽의 라디오가 전부 작동을 멈췄어요." · "어제 전원이 나갔고, 이 벽의 펌프가 전부 작동을 멈췄어요."
+  - 판정: X1 라디오가: 펌프 정지 보고를 다른 기기로 — 위기 상황 보고를 바꿈(S1)
+  - 고칠 값: "방금 전원이 나갔고, 이 벽의 펌프가 전부 경보를 울려요." · "어제 전원이 나갔고, 이 벽의 펌프가 전부 작동을 멈췄어요."
+- **[19]s4** 전원·펌프 고장 위기 대응 — `Our backup is battery power and the red outlets on that wall.` / 정답 "우리 백업은 배터리 전원과 저 벽의 빨간 콘센트예요."
+  - 지금: "우리 백업은 배터리 전원과 저 벽의 빨간 조명이에요." · "우리 백업은 배터리 전원과 저 벽의 빨간 소화기예요."
+  - 판정: X1 빨간 조명·X2 소화기: 백업 전원 안내를 틀리게(S1)
+  - 고칠 값: "배터리는 오래 못 가서 빨간 콘센트가 필요해요." · "저 벽의 빨간 콘센트는 비상 발전기 전원이에요."
+- **[19]s5** 전원·펌프 고장 위기 대응 — `Until the pumps restart, I'll control this drip by hand.` / 정답 "펌프가 재시작될 때까지 이 점적은 제가 손으로 조절할게요."
+  - 지금: "펌프가 재시작될 때까지 이 전등은 제가 손으로 조절할게요." · "펌프가 재시작될 때까지 이 점적은 제가 메모로 조절할게요."
+  - 판정: X1 전등·X2 메모로: 점적 수동 조절을 다른 일로(S2)
+  - 고칠 값: "이 점적을 손으로 조절하려고 방울 수를 먼저 세요." · "펌프가 꺼지니까 이 점적은 이제 중력으로만 들어가요."
+- **[20]s3** 심각 안전사건 공개·소통 — `We tell the family first, before anyone else outside this room.` / 정답 "이 방 밖의 다른 누구보다 먼저 가족에게 말해요."
+  - 지금: "이 건물 밖의 다른 누구보다 먼저 가족에게 말해요." · "이 방 안의 다른 누구보다 먼저 가족에게 말해요."
+  - 판정: X2 '방 안의': 반대말 뒤집기(Q2)
+  - 고칠 값: "이 건물 밖의 다른 누구보다 먼저 가족에게 말해요." · "이 방 밖의 다른 누구보다 먼저 환자에게 말해요."
+- **[20]s5** 심각 안전사건 공개·소통 — `We don't guess at causes here; we stick to the facts we know.` / 정답 "여기서는 원인을 추측하지 않고 아는 사실만 말해요."
+  - 지금: "여기서는 요리를 추측하지 않고 아는 사실만 말해요." · "여기서는 원인을 추측하지 않고 아는 사진만 말해요."
+  - 판정: X1 요리·X2 사진: 동떨어져 듣지 않고 걸러짐(Q3)
+  - 고칠 값: "여기서는 책임을 추측하지 않고 아는 사실만 말해요." · "여기서는 원인을 추측하지 않고 아는 결과만 말해요."
+
+### 고칠 것 B — `blank`
+
+- **[1]s2** `Have we tried a sitter before we reach for restraints?` — 지금 answer=sitter [sitter, scanner, tablet, mattress] · TABLET — 태블릿 기분 전환은 실제 억제대 대안이라 정답 둘 → answer=sitter [sitter, scanner, stretcher, mattress]
+- **[2]s2** `Both of us sign off before it runs.` — 지금 answer=before [before, after, while, until] · AFTER(주입 뒤 서명)가 하면 안 되는 시점을 보임 — 빈칸을 runs로 옮김 → answer=runs [runs, arrives, beeps, expires]
+- **[2]s3** `Wait — the label says fifty units, but the order says five.` — 지금 answer=fifty [fifty, fifteen, forty, sixty] · 숫자(fifty) 자리는 문장에서 추론 불가 — 넷 다 성립. label로 옮김 → answer=label [label, invoice, poster, handout]
+- **[2]s5** `So that's insulin, ten units, over one hour — did I get that right?` — 지금 answer=insulin [insulin, heparin, vasopressin, oxytocin] · 약 이름(insulin) 자리는 추론 불가 — heparin·vasopressin·oxytocin 모두 단위 처방 성립. units로 옮김 → answer=units [units, grams, tablets, puffs]
+- **[3]s3** `This is the arterial line, not for medication.` — 지금 answer=arterial [arterial, central, midline, feeding] · FEEDING은 '투약용 아님(정맥)'으로 읽혀 정답 둘, MIDLINE은 'midline line' 중복 → answer=arterial [arterial, central, peripheral, PICC]
+- **[3]s4** `If we trace it together, we won't push the wrong drug into the wrong line.` — 지금 answer=drug [drug, bag, syringe, tray] · SYRINGE — 'push the wrong syringe into the wrong line'도 자연스러움(정답 둘) → answer=drug [drug, bag, gauze, tray]
+- **[7]s0** `We check circulation and skin every two hours.` — 지금 answer=circulation [circulation, orientation, digestion, vaccination] · ORIENTATION — 억제대 감시 항목에 정신 상태가 실제로 들어감(정답 둘) → answer=circulation [circulation, dentition, digestion, vaccination]
+- **[7]s2** `Release and reposition on schedule.` — 지금 answer=reposition [reposition, rehydrate, retrain, rewrite] · REHYDRATE — 해제 때 수분 제공은 실제 해제 간호(정답 둘) → answer=reposition [reposition, recharge, retrain, rewrite]
+- **[8]s5** `It's an easy mix-up, not a careless one — let's just trace it together.` — 지금 answer=careless [careless, expensive, impressive, intensive] · a EXPENSIVE/IMPRESSIVE/INTENSIVE — 관사로 걸러짐 → answer=careless [careless, costly, noisy, recent]
+- **[8]s6** `Let's connect these the same way every single time, so no one has to guess.` — 지금 answer=guess [guess, argue, search, vote] · SEARCH — 'so no one has to search'도 성립(정답 둘) → answer=guess [guess, argue, pay, vote]
+- **[9]s2** `Never keep concentrated potassium at the bedside.` — 지금 answer=potassium [potassium, shampoo, perfume, mouthwash] · SHAMPOO/PERFUME/MOUTHWASH — 장면과 동떨어짐(파일럿 갈래 2). 같은 분야지만 침상 금지 대상 아닌 것으로 → answer=potassium [potassium, glucose, albumin, formula]
+- **[11]s4** `The pump flagged this dose as unusually high — let's not just click past it.` — 지금 answer=flagged [flagged, ordered, labeled, doubled] · LABELED≈flagged(정답 둘) → answer=flagged [flagged, ordered, stored, doubled]
+- **[11]s6** `Trust the library, but still confirm the concentration yourself.` — 지금 answer=yourself [yourself, quickly, twice, silently] · TWICE — 'confirm twice'도 맞는 실천(정답 둘) → answer=yourself [yourself, quickly, monthly, silently]
+- **[14]s5** `Filing this report takes ten minutes and might save someone's life later.` — 지금 answer=save [save, cost, waste, change] · CHANGE — 'might change someone's life'도 긍정으로 성립 → answer=save [save, cost, waste, complicate]
+- **[15]s0** `Stop the infusion and disconnect it immediately.` — 지금 answer=disconnect [disconnect, reconnect, flush, reprogram] · RECONNECT·FLUSH — 오연결 라인을 다시 잇거나 밀어 넣는 위험 처치를 선택지로 보임 → answer=disconnect [disconnect, label, photograph, reprogram]
+- **[16]s3** `I think he was given ten times the ordered dose of heparin.` — 지금 answer=heparin [heparin, insulin, morphine, potassium] · 약 이름(heparin) 자리는 추론 불가 — insulin·morphine·potassium 10배도 성립. ordered로 옮김 → answer=ordered [ordered, billed, stocked, shipped]
+- **[17]s5** `I'll stay right here — someone else, please call for help now.` — 지금 answer=right [right, just, only, still] · JUST/ONLY/STILL — 'stay just here'≈right here(정답 둘) → answer=right [right, late, awake, overnight]
+- **[18]s1** `Call for the rapid response and start oxygen.` — 지금 answer=oxygen [oxygen, nitrogen, helium, hydrogen] · HELIUM — heliox는 실제 치료라 어색한 근접 정답 → answer=oxygen [oxygen, nitrogen, argon, hydrogen]
+- **[18]s3** `His sat alarm was sounding, but no one caught it in time.` — 지금 answer=sat [sat, heart, temp, pump] · sat 자리는 추론 불가 — heart/temp 알람도 성립. sounding으로 옮김 → answer=sounding [sounding, charging, printing, updating]
+- **[19]s3** `The power just dropped, and every pump on this wall is dead.` — 지금 answer=dead [dead, hot, loud, full] · LOUD — 전원이 나가면 펌프가 실제로 경보를 울림(정답 둘) → answer=dead [dead, hot, new, full]
+- **[20]s5** `We don't guess at causes here; we stick to the facts we know.` — 지금 answer=stick [stick, return, lean, switch] · RETURN — 'we return to the facts'도 같은 뜻 → answer=stick [stick, add, lean, switch]
+
+### 고칠 것 C — `decoy`
+
+- **[0]s2** «away from» (We set limits / based on / each patient's baseline / .) · 반대말 decoy(based on↔away from) → «each room's lighting»
+- **[2]s0** «with gloves» (Let's verify / the drug, dose, rate, / and pump settings / together / .) · together 자리에 들어가 '혼자 장갑 끼고 확인'이 됨(이중확인 빠뜨림) → «and bed settings»
+- **[2]s4** «and wash up» (Let's stop / and check this / together before / we give it / .) · 'stop and wash up together before we give it' — 확인을 손 씻기로 바꾼 맞는 문장 → «we print it»
+- **[2]s5** «from a vial» (So that's insulin, / ten units, / over one hour / — / did I get / that right / ?) · 읽어 주기에서 용량을 지운 맞는 문장 → «did I write»
+- **[2]s6** «borrow a pen» (I'm not saying / you're wrong, / I just need to / hear it back / before we sign / .) · 'borrow a pen before we sign' — 되짚어 듣기를 지운 맞는 문장 → «hear the plan»
+- **[3]s0** «we eat lunch» (I might be wrong, / but I want to check / something before / we go ahead / .) · lunch 몰림(15회) 줄이기 → «we change shifts»
+- **[4]s5** «clean the floor» (If the alarm sounds, / someone needs / to answer it / right away / .) · 'someone needs clean the floor' — 어느 청크 자리에도 안 맞음 + 알람 응답 대체 → «by the door»
+- **[4]s6** «his menu» (We assess his risk / every shift, / not just after / he's already fallen / .) · 어느 청크 자리에도 안 맞음 → «he's already eaten»
+- **[5]s3** «from the pharmacy» (So I heard vancomycin, / one gram, / IV, / over one hour / — / is that right / ?) · IV 자리에 들어가 경로 없는 복창이 됨 → «is that new»
+- **[5]s4** «out the window:» (Let me say that back to you: / right patient, / right time, / right route / .) · 조각 모양(out the window:)이 어느 자리에도 안 맞음 → «right color,»
+- **[5]s5** «his lunch tray» (Before I push anything, / I check / his wristband / against the order / myself / .) · 손목밴드 자리에 들어가 '식판을 처방과 대조'(식이 처방)로 성립 — 환자 식별 빠뜨림 → «with gloves»
+- **[7]s3** «his lunch and snacks» (When did we / last check / his circulation / and skin / ?) · lunch 몰림 → «his IV pole»
+- **[7]s6** «we schedule meals» (We schedule releases / so he's never restrained / longer than / needed / .) · 문장 첫 청크 자리인데 소문자 — 모양으로 걸러짐 → «We schedule meals»
+- **[8]s0** «its owner» (Trace / every line / back to its source / before connecting / .) · back to 없이 its owner — 어느 자리에도 안 맞음 → «back to its box»
+- **[9]s4** «wash our hands» (If the numbers don't match, / we stop / and count them again / before anyone signs / .) · and 없는 동사구 — 자리에 안 맞음 → «and open the drawer»
+- **[10]s0** «extra blankets» (Let's reorient him / and keep familiar items / nearby / .) · and keep 없이 — 자리에 안 맞음 → «and keep the fridge full»
+- **[11]s4** «this battery» (The pump flagged this dose / as unusually high / — / let's not just click past it / .) · 어느 청크 자리에도 안 맞음 → «as out of date»
+- **[11]s6** «the menu» (Trust the library, / but still confirm / the concentration / yourself / .) · menu 몰림 → «the pump brand»
+- **[12]s1** «with a pen» (We each confirm / the drug, dose, / and pump / without prompting / .) · without prompting 자리에 들어가 독립성 조건을 지움 → «and the bed rail»
+- **[13]s3** «everyone gets lunch» (Let's make sure / nothing gets missed / before we head / to CT / .) · lunch 몰림 → «nothing gets wet»
+- **[15]s0** «the music» (Stop the infusion / and disconnect it / immediately / .) · 자리에 안 맞음(위기 문장) → «with clean hands»
+- **[15]s1** «the paperwork» (Assess the patient / and notify / the physician now / .) · 자리에 안 맞음(위기 문장) → «and thank»
+- **[15]s2** «all rooms» (We'll trace all lines / and document / what happened / .) · 자리에 안 맞음 → «and photograph»
+- **[15]s4** «paperwork first,» (Let's act fast: / airway first, / then we call / the physician / .) · 'paperwork first' — 위기에서 서류를 먼저 하라는 맞는 문장 → «Let's be clear:»
+- **[16]s1** «the lunch tray» (Prepare protamine / and notify / the physician / immediately / .) · lunch 몰림 → «in Spanish»
+- **[16]s2** «a lunch order» (We'll document / and file / an incident report / right away / .) · lunch 몰림 → «a supply order»
+- **[17]s0** «the blinds» (Release the restraint / and reposition him / immediately / .) · 자리에 안 맞음(위기 문장) → «with two people»
+- **[17]s1** «bed and bedding» (Check his airway / and breathing / right now / .) · 자리에 안 맞음(위기 문장) → «with a light»
+- **[17]s5** «bring a chair» (I'll stay right here / — / someone else, / please call for help now / .) · 'someone else, bring a chair' — 도움 요청을 지운 맞는 문장 → «I'll stay calm»
+- **[18]s2** «the lunch» (Afterward we review / why the alarm / was missed / .) · lunch 몰림 → «the dressing change»
+- **[18]s3** «at lunch» (His sat alarm / was sounding, / but no one caught it / in time / .) · lunch 몰림 → «on the chart»
+- **[18]s5** «after lunch» (We'll figure out / why the alarm / got missed / after he's stable / .) · lunch 몰림 → «after the meeting»
+- **[19]s2** «freshly labeled» (Prioritize / the life-sustaining / infusions first / .) · 'freshly labeled infusions first' — 위기 우선순위 기준을 틀리게 하는 맞는 문장 → «the most colorful»
+- **[20]s1** «the lunch break» (The physician / leads / the disclosure, / and we support it / .) · lunch 몰림 → «The billing office»
+- **[20]s2** «our lunch» (We acknowledge / what happened / and our plan / to make it right / .) · lunch 몰림 → «our budget»
+- **[20]s6** «for lunch» (Our plan / going forward / is as important / as what already happened / .) · lunch 몰림 → «Our holiday plan»
+
+### 고칠 것 D — `tag`·`why`
+
+- **[5]s0** tag "5R 점검" — 영어 약어 태그(파일럿 갈래 5) → "다섯 원칙"
+- **[18]s0** tag "ABC 사정" — 영어 약어 태그(파일럿 갈래 5) → "기도·호흡·순환"
+- **[19]s6** why — "can't stop은 멈추면 안 된다가 아니라 멈출 수 없다"는 설명이 뜻을 거꾸로 흐림 → "대시 뒤에 이유를 붙여 왜 이 둘이 먼저인지 알려 줘요. can't stop은 '멈추면 안 된다'를 '멈출 수 없다'로 말해 선택의 여지가 없다는 강한 필요를 나타내요."
+
+### 고칠 것 E — `order`
+
+- **[4] 낙상·손상 예방 기초** · 3줄 16단어(15 넘음)
+  - 3줄 "To back that up, the call light stays within reach and the bed alarm is on." → en: "To back that up, the call light is in reach and the bed alarm on."
+- **[7] 억제대 사용 모니터·문서** · 3↔4 교환이 자연스러움 — 'That way'가 2줄(해제 일정) 뒤에도 그대로 붙음
+  - 3줄 "After each round, I chart what we found and when we'll reassess." → en: "After each release, I chart what we found and when we'll reassess.", ko: "풀어줄 때마다 발견한 것과 다시 평가할 시점을 기록해요"
+  - 4줄 "That way, he's never restrained longer than needed." → en: "That reassessment time keeps him from being restrained longer than needed.", ko: "그 재평가 시점이 있어야 필요 이상으로 억제되지 않아요"
+  - why → "억제대 중이라는 이유로 정기 확인을 말하고, 같은 일정에 해제와 체위 변경을 잇고, 풀 때마다 기록한 재평가 시점이 필요 이상의 억제를 막아요."
+- **[8] 라인 오연결 예방** · 3줄 17단어
+  - 3줄 "Along the way, anything that won't fit easily is our cue to stop, not to force it." → en: "Along the way, a fit that isn't easy means stop, not force."
+- **[10] 섬망 환자 안전 환경** · 4줄 18단어
+  - 4줄 "On top of all that, we keep the room quiet at night so his sleep cycle can reset." → en: "On top of all that, we keep nights quiet so his sleep resets."
+- **[11] 투약 오류 예방 시스템** · 3줄 20단어
+  - 3줄 "On top of that check, if it flags a dose as unusually high, stop and verify the order and dose." → en: "On top of that check, if it flags a high dose, we stop and verify."
+- **[13] 이송·인계 중 안전 확인** · 4줄 20단어
+  - 4줄 "With all of that checked off, we read the list out loud before we head out so nothing slips through." → en: "With all that checked off, we read the list aloud before heading out."
+- **[15] 라인·튜브 치명적 오류 대응** · 3줄 17단어
+  - 3줄 "Once he's being assessed and the physician knows, we trace all lines to see how it happened." → en: "Once he's assessed and the physician knows, we trace every line."
+- **[18] 알람 무시 급변 위기** · 1↔2 교환이 더 자연스러움 — 급변 순간에 '앞서 알람이 울렸다'는 경위를 먼저 말하는 순서(위기에선 주목·대응이 먼저). 경위 줄을 빼고 원인은 안정 뒤로
+  - 1줄 "Earlier, his sat alarm was sounding, but no one caught it in time." → en: "He's crashing now — stop what you're doing and look at him.", ko: "지금 급변하고 있어요, 하던 일을 멈추고 이분을 봐주세요", note: "주목", icon: "siren"
+  - 2줄 "Now he's crashing — stop what you're doing and look at him." → en: "Assess him with me, and someone call for the rapid response.", ko: "저와 같이 사정하고, 누군가 신속대응팀을 불러주세요", note: "대응", icon: "stetho"
+  - 3줄 "Assess him now and call for the rapid response." → en: "Once he's stable, we pull up the monitor history.", ko: "안정되면 모니터 기록을 열어 봐요", note: "안정", icon: "monitor"
+  - 4줄 "After he's stable, we figure out why the alarm got missed." → en: "That history shows why his sat alarm got missed.", ko: "그 기록이 산소포화도 알람을 왜 놓쳤는지 보여 줘요", note: "원인", icon: "magnify"
+  - why → "급변을 알려 모두를 환자에게 모으는 게 먼저예요. 같이 사정하며 신속대응팀을 부르고, 안정된 뒤에야 모니터 기록으로 알람을 놓친 이유를 봐요."
+- **[19] 전원·펌프 고장 위기 대응** · 3줄 'On that backup … by hand'가 앞뒤가 안 맞음(백업으로 펌프가 돌면 손 조절이 필요 없음)
+  - 3줄 "On that backup, we control the critical drips by hand until the pumps restart." → en: "Any pump that still won't restart, we run that drip by hand.", ko: "그래도 재시작 안 되는 펌프는 그 점적을 손으로 조절해요"
+  - 4줄 "We prioritize the life-sustaining ones, like the pressors and sedation." → en: "Among those, the pressors and sedation come first.", ko: "그중 승압제와 진정제가 먼저예요"
+  - why → "전원이 나갔다는 상황을 먼저 알리고 비상 전원으로 전환해요. 그래도 안 켜지는 펌프만 손으로 조절하고, 그중 승압제와 진정제를 먼저 챙겨요."
+- **[20] 심각 안전사건 공개·소통** · 2↔3 교환이 자연스러움 — 'In that conversation'과 'In it'이 같은 앞말을 가리킴. 4줄 16단어
+  - 3줄 "In it, we acknowledge what happened and our plan to make it right." → en: "While that disclosure unfolds, we acknowledge what happened and our plan to make it right.", ko: "그 공개가 이어지는 동안 일어난 일과 바로잡을 계획을 인정해요"
+  - 4줄 "Through all of that, we stick to the facts we know and don't guess at causes." → en: "Through all of that, we stick to known facts and don't guess at causes."
+
+### 통과로 본 것 (참고)
+- 문장 오답 68문장 통과 — 설명·규정·보고 문화·공개 문장의 해 없는 세부 바꾸기, 위기 문장에서도 처치는 그대로 두고 뒤 절만 바꾼 것([15]s3·[16]s4·[19]s6).
+- [8]s4 X1 "소변 라인"(정맥 포트로 바로잡는 안내는 남음), [13]s5 X1 "커튼을 건드리기 전에"(기도 확인은 이동 전 그대로), [11]s3 X1 "앉아요"(override 안 함은 그대로) — 통과.
+- order 11장 통과(앞 줄을 가리키는 말로 묶임, 임상 순서 맞음). [2] 카드의 1줄 "those two numbers"는 카드 첫 줄 지시어지만 라벨·처방을 가리키는 장면이라 통과.
+
+## 종합
+`why`·tag·order 뼈대는 쓸 만하지만 `distractorsKo`가 확인·처치 문장 절반에서 안전 시험을 통과하지 못하고, [12]s5 문장이 독립확인을 거꾸로 가르친다.
+위 149건(특히 안전·정답 둘 99건)과 [12]s5 교체를 반영하고 `verify_one_theme.py`·W18~W21을 다시 돌린 뒤에 내보낼 수 있다. 제안값은 사본에서 표지 양쪽 0·둘 다 김 0·W19 상한 5·V20 0을 확인했다.
+
+검사 메모: 제안값을 얹은 사본 `_reviewB_core-safety-icu_new.yaml`을 `verify_one_theme.py icu`로 돌린 결과 위반은 [12]s5의 V16(en·ko·chunks 변경) 3건뿐 —
+`changes-core-safety-icu.yaml`에 위 심각 1의 sentence 항목을 더하면 사라진다. W18~W21 경고 없음.
