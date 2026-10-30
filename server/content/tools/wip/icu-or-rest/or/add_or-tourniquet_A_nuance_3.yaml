@@ -1,0 +1,75 @@
+허혈 시간 소통:
+  - kind: slider
+    words: [w-call, w-announce, w-total]
+    cue: "Fifteen minutes have passed since the cuff went up, and the surgeon, anesthesia, and scrub all need the number."
+    scale: [Tell the nearest person, Tell the scrub only, Call it out to the whole room]
+    answerAt: 2
+    why: "허혈 시간은 팀 모두가 알아야 하는 정보라서 방 전체에 들리게 소리 내어 알려요. 가까운 사람이나 스크럽에게만 말하면 나머지는 시간을 몰라요."
+    example: "I call out the time to the whole room."
+    exKo: "방 전체에 시간을 소리 내어 알려요."
+  - kind: context
+    words: [w-call]
+    word: call
+    ko: 소리 내어 알리다
+    scenes:
+      - {who: 수술팀 전체에게, icon: speech, en: "I'll call out the time every fifteen minutes.", ok: true}
+      - {who: 집도의에게, icon: speech, en: "Dr. Lee, I'll call out the cuff time at each fifteen-minute mark.", ok: true}
+      - {who: 깨어 있는 환자에게, icon: me, en: "I'll call out your ischemia time every fifteen minutes.", ok: false, fix: "We keep track of the cuff time, so you don't need to worry about it."}
+    why: "뜻은 셋 다 '시간을 소리 내어 알리다'예요. 팀에는 필요한 정보지만, 깨어 있는 환자에게 허혈 시간을 계속 불러 주면 괜히 불안해져요."
+이중 커프 부위마취:
+  - kind: slider
+    words: [w-establish, w-block]
+    cue: "Anesthesia says the numbness is fully in, and the patient feels nothing at the surgical site."
+    scale: [The block is just starting, The block is established, The block is wearing off]
+    answerAt: 1
+    why: "'established'는 마취가 자리 잡아 효과가 충분히 나는 상태예요. 그제야 원위 커프로 넘어가요. 막 시작했거나 풀리는 중이라고 말하면 순서 판단이 달라져요."
+    example: "Once the block is established, we switch cuffs."
+    exKo: "마취가 자리 잡으면 커프를 바꿔요."
+  - kind: swap
+    words: [w-confirm, w-proximal, w-sequence]
+    who: "순환 간호사 → 마취과 · 커프 순서 확인"
+    icon: speech
+    before: ["Let me confirm: ", "whichever cuff is closest goes up first", "."]
+    options: [the proximal cuff goes up first, whichever cuff is closest goes up first, we'll decide when we get there]
+    answer: the proximal cuff goes up first
+    notes: {the proximal cuff goes up first: "근위 커프가 먼저라는 순서를 소리 내어 맞춘다. 이중 커프 마취의 순서가 어긋나지 않는다.", whichever cuff is closest goes up first: "순서가 정해져 있는데 가까운 것을 먼저 올리면 순서가 뒤바뀐다.", we'll decide when we get there: "올리기 직전에 정하면 팀이 같은 순서로 움직이지 못한다."}
+    why: "이중 커프는 올리는 순서가 중요해서 시작 전에 어느 커프가 먼저인지 소리 내어 확인해요."
+    ko: "근위 커프부터 올리는 걸로 확인할게요"
+말초혈관질환 주의:
+  - kind: slider
+    words: [w-risk, w-carry, w-pvd]
+    cue: "The chart says PVD in the leg where the tourniquet is planned."
+    scale: [An added risk to discuss, A reason to refuse the tourniquet, A reason to cancel the surgery]
+    answerAt: 0
+    why: "말초혈관질환이 있으면 지혈대의 위험이 더 커져요. 간호사는 그 병력을 집도의와 의논해요. 쓸지 말지는 집도의가 정하고, 간호사가 단독으로 거절하거나 수술을 취소할 일은 아니에요."
+    example: "PVD is an added risk we should discuss."
+    exKo: "말초혈관질환은 의논해야 할 추가 위험이에요."
+  - kind: swap
+    words: [w-pvd, w-discuss, w-whether, w-surgeon]
+    who: "순환 간호사 → 집도의 · 병력 알림"
+    icon: speech
+    before: ["Dr. Kim, ", "I'm skipping the tourniquet because of PVD", "."]
+    options: [the leg has PVD — shall we discuss whether it's safe, I'm skipping the tourniquet because of PVD, the leg has some vascular problem]
+    answer: the leg has PVD — shall we discuss whether it's safe
+    notes: {the leg has PVD — shall we discuss whether it's safe: "병력을 정확히 알리고 판단은 집도의와 함께 한다.", I'm skipping the tourniquet because of PVD: "쓸지 말지는 집도의가 정한다. 간호사가 혼자 건너뛰겠다고 하면 업무 범위를 벗어난다.", the leg has some vascular problem: "병명을 말하지 않아 무엇이 문제인지 알 수 없다."}
+    why: "병력은 정확한 이름으로 알리고, 안전한지의 판단은 집도의와 의논해요. 혼자 결정하지 않아요."
+    ko: "다리에 말초혈관질환이 있어요 — 안전한지 의논할까요"
+소아 압력 조정:
+  - kind: slider
+    words: [w-low, w-pediatric, w-child]
+    cue: "You're setting up the tourniquet for a small child's arm."
+    scale: [Lower than an adult's, The same as an adult's, Higher than an adult's]
+    answerAt: 0
+    why: "소아 사지에는 성인보다 낮은 압력이 필요해요. 체구가 작아 같은 압력이면 조직이 너무 눌려요. 실제 값은 집도의가 정해요."
+    example: "A child needs a lower pressure setting."
+    exKo: "아이는 압력 설정이 더 낮아야 해요."
+  - kind: swap
+    words: [w-pediatric, w-child, w-size]
+    who: "순환 간호사 → 스크럽 · 커프 준비"
+    icon: speech
+    before: ["Please bring ", "an adult cuff", " — this child's arm is small."]
+    options: [a pediatric cuff, an adult cuff, the biggest cuff you have]
+    answer: a pediatric cuff
+    notes: {a pediatric cuff: "작은 팔에 맞는 소아용 커프를 가져온다. 크기가 맞아야 압력이 제대로 전달된다.", an adult cuff: "성인용은 아이 팔에 맞지 않는다.", the biggest cuff you have: "큰 커프는 아이 팔에 맞지 않고 감기도 어렵다."}
+    why: "아이 팔에는 소아용 커프를 써요. 크기가 맞지 않으면 압력이 제대로 전달되지 않아요."
+    ko: "소아용 커프를 가져다 주세요"

@@ -1,0 +1,90 @@
+환자 신원 2가지 확인:
+  - kind: slider
+    words: [w-ask, w-again]
+    cue: "A calm patient says, \"You already asked me this at the front desk.\" You still have to ask again. Explain it lightly, without sounding scary or bureaucratic."
+    scale: ["We ask everyone, every time", "It's a required safety check", "Skipping it is a serious risk"]
+    answerAt: 0
+    why: "차분한 환자에게는 '모든 환자에게 매번 한다'고 담담하게 말하는 게 사실이고 부담도 적어요. 위험을 앞세우면 괜히 겁을 주고, '필수 확인'이라는 말은 규정을 들이미는 느낌이 나요."
+    example: "We ask every patient, every time."
+    exKo: "모든 환자분께 매번 여쭤봐요."
+  - kind: swap
+    words: [w-tell, w-dob]
+    who: "간호사 → 환자 · 신원 확인 시작"
+    icon: me
+    before: ["Hi there — ", "are you Mr. Kim, born on March 3rd?", ""]
+    options: ["can you tell me your full name and date of birth?", "are you Mr. Kim, born on March 3rd?", "just nod if you're Mr. Kim, please."]
+    answer: can you tell me your full name and date of birth?
+    notes: {"can you tell me your full name and date of birth?": "환자가 직접 말하게 하는 개방형 질문이라, 이름을 잘못 알고 있어도 걸러진다.", "are you Mr. Kim, born on March 3rd?": "답을 간호사가 먼저 말해 버려서 환자가 '네'만 하면 된다. 다른 사람과 헷갈려도 그냥 지나간다.", "just nod if you're Mr. Kim, please.": "끄덕이기만 해도 되는 질문이라 환자가 정말 본인 이름을 아는지 확인되지 않는다."}
+    why: "신원 확인은 환자가 이름과 생년월일을 직접 말하게 해요. 간호사가 먼저 이름을 말하고 '맞죠?'라고 하면 잘못된 환자도 습관적으로 '네' 하고 넘어갈 수 있어요."
+    ko: "성함과 생년월일을 말씀해 주시겠어요?"
+수술 부위·측 확인:
+  - kind: slider
+    words: [w-right, w-chart, w-match]
+    cue: "The patient says \"right knee,\" and the chart says right knee too. You haven't seen the surgeon's mark yet. What can you honestly say?"
+    scale: ["The chart says right too", "You and the chart agree", "The mark, chart and you all agree"]
+    answerAt: 1
+    why: "환자의 말과 차트가 같다는 것까지만 확인했으니 '당신과 차트가 일치해요'가 정확해요. 아직 집도의의 표시를 보지 못했으므로 셋이 모두 일치한다고 말하면 확인하지 않은 것을 말하는 거예요."
+    example: "That matches your chart."
+    exKo: "차트와 일치하네요."
+  - kind: swap
+    words: [w-side, w-operate]
+    who: "간호사 → 환자 · 수술 쪽 확인"
+    icon: me
+    before: ["", "It's your right knee today, correct?", ""]
+    options: ["Which side are we operating on today?", "It's your right knee today, correct?", "Just tell me if the right knee sounds okay."]
+    answer: Which side are we operating on today?
+    notes: {"Which side are we operating on today?": "환자가 직접 쪽을 말하게 한다. 환자의 답을 차트·표시와 비교할 수 있다.", "It's your right knee today, correct?": "정답을 먼저 말해 버려서 환자가 '네'만 하면 된다. 반대 쪽이어도 지나치기 쉽다.", "Just tell me if the right knee sounds okay.": "정답을 미리 알려 주는 유도 질문이라 환자의 기억을 확인하지 못한다."}
+    why: "부위·측은 환자가 스스로 말하게 해야 해요. 간호사가 '오른쪽 맞죠?' 하고 답을 먼저 주면 환자가 그냥 맞다고 해서 틀린 쪽도 걸러지지 않아요."
+    ko: "오늘 어느 쪽을 수술하나요?"
+수술 동의서 서명 확인:
+  - kind: slider
+    words: [w-signature, w-date, w-match]
+    cue: "The consent form has a signature and a date, and the surgery named on it matches what the patient told you. What do you report?"
+    scale: ["I see a signature", "The form is signed, dated and matches", "The consent is legally valid"]
+    answerAt: 1
+    why: "간호사는 서명·날짜가 있고 수술명이 맞는지까지 확인해서 그대로 말해요. 서명이 있다는 말만으로는 부족하고, '법적으로 유효하다'는 판단은 확인 범위를 넘어요."
+    example: "The form is signed and dated, and it matches."
+    exKo: "서식에 서명과 날짜가 있고 내용이 일치해요."
+  - kind: context
+    words: [w-sign]
+    word: sign
+    ko: 서명하다
+    scenes:
+      - {who: 간호사 → 환자, icon: me, en: "Could you sign right here for me, please?", ok: true}
+      - {who: 수술 기록, icon: board, en: "Consent form signed by patient; date and time verified.", ok: true}
+      - {who: 불안한 환자에게, icon: faceWorried, en: "You are hereby required to sign the instrument below.", ok: false, fix: "If you're comfortable with everything you've read, you can sign right here."}
+    why: "뜻은 셋 다 '서명하다'예요. 기록에서는 짧고 건조하게 쓰지만, 긴장한 환자에게 '요구된다'는 법조문 말투를 쓰면 압박으로 들려요. 서명은 환자가 읽고 편안하게 결정하는 일이에요."
+수술 부위 표시 확인:
+  - kind: slider
+    words: [w-mark, w-correct, w-site]
+    cue: "The surgeon's initials are drawn clearly beside the correct site on the patient's arm, in marker that won't wipe off. What do you tell the patient?"
+    scale: ["I think there's a mark there", "I can see something on your arm", "The correct site is clearly marked"]
+    answerAt: 2
+    why: "표시가 또렷하고 부위가 맞다는 걸 확인했으니 그대로 분명하게 말하면 돼요. '뭔가 있는 것 같다'는 식의 흐릿한 말은 환자에게 확인했다는 믿음을 주지 못해요."
+    example: "The correct site is clearly marked."
+    exKo: "정확한 부위가 또렷하게 표시되어 있어요."
+  - kind: swap
+    words: [w-mark, w-tell, w-spot]
+    who: "간호사 → 환자 · 표시 확인"
+    icon: me
+    before: ["", "That mark looks fine to me.", ""]
+    options: ["Can you look at the mark and tell me if that's the right spot?", "That mark looks fine to me.", "Just trust the surgeon's mark."]
+    answer: Can you look at the mark and tell me if that's the right spot?
+    notes: {"Can you look at the mark and tell me if that's the right spot?": "깨어 있는 환자가 직접 보고 확인하게 한다. 환자의 참여가 안전장치가 된다.", "That mark looks fine to me.": "간호사 혼자 판단한다. 환자는 자기 몸의 표시를 확인할 기회를 잃는다.", "Just trust the surgeon's mark.": "확인을 건너뛰라는 말이다. 환자가 이상을 느껴도 말하기 어려워진다."}
+    why: "수술 부위 표시는 환자가 깨어 있을 때 환자도 함께 확인해요. 환자가 직접 보고 맞는 곳이라고 말하면 혼동을 막는 또 하나의 확인이 돼요."
+    ko: "표시를 보시고 맞는 위치인지 말씀해 주시겠어요?"
+알레르기 밴드 대조:
+  - kind: pair
+    words: [w-allergic, w-band, w-whole, w-team]
+    pairs: [[allergic, to penicillin], [red, allergy band], [notify, the whole team]]
+    decoys: [a purple badge]
+    why: "'allergic to'는 알레르기가 있는 대상을 이어 말하는 틀이에요. 많은 미국 병원은 알레르기 밴드로 빨간색을 쓰고, 팀 전체에 알리는 것은 notify예요. 병원마다 색 규정이 다를 수 있어요."
+  - kind: context
+    words: [w-allergic]
+    word: allergic
+    ko: 알레르기가 있는
+    scenes:
+      - {who: 간호사 → 수술팀, icon: speech, en: "She's allergic to penicillin — the band and the chart both say so.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Allergic to penicillin: rash. Red band applied.", ok: true}
+      - {who: 환자에게, icon: me, en: "Pt demonstrates penicillin hypersensitivity; allergic phenotype noted.", ok: false, fix: "You're allergic to penicillin, so we'll make sure everyone on the team knows."}
+    why: "뜻은 셋 다 '알레르기가 있다'예요. 팀원끼리나 기록에서는 짧은 임상 표현이 편하지만, 환자에게 차트 용어로 말하면 못 알아듣고 낯설게 들려요. 쉬운 말로 풀어서 팀에 알리겠다고 안심시켜요."
