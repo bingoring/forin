@@ -1,0 +1,58 @@
+situations:
+- title: 급변 중 언어장벽 위기 소통
+  s:
+  - ["상황 알림", siren, "having trouble breathing처럼 진행형으로 지금 일어나는 일을 말하고, we're helping her now로 이미 돕고 있다고 함께 알려요. 짧은 두 마디라 번역이 어려워도 전해져요.", "as a team", "걷기 힘들어하셔서 지금 저희가 돕고 있어요.", "먹기 힘들어하셔서 지금 저희가 돕고 있어요.", "breathing", "walking", "eating", "sleeping"]
+  - ["통역 연결 알림", mic, "is coming은 곧 연결된다는 뜻이에요. stay with me는 가족에게 지금 할 일을 하나 줘서 불안을 덜어 줘요.", "from the station", "통역 전화가 곧 연결돼요, 제게 말씀해 주세요.", "통역 전화가 곧 연결돼요, 저를 지켜봐 주세요.", "coming", "leaving", "breaking", "charging"]
+  - ["안전 약속", shield, "doing everything은 가능한 모든 일을 한다는 포괄적인 말이라 구체적으로 설명할 수 없을 때도 쓸 수 있어요. to keep her safe가 목적을 말해요.", "right here", "그녀를 편안하게 하기 위해 할 수 있는 모든 걸 하고 있어요.", "그녀를 안전하게 지키기 위해 할 수 있는 모든 걸 밤새 하고 있어요.", "safe", "calm", "warm", "awake"]
+  - ["곁 약속", home, "Stay right here는 짧은 명령형이고, I'm not leaving은 곁에 있겠다는 약속이에요. 두 마디를 이어 말하면 가족이 안심해요.", "to help her", "여기 앉으세요, 저는 안 떠나요.", "여기 보세요, 저는 안 떠나요.", "Stay", "Sit", "Look", "Wait"]
+  - ["호흡 안내", speech, "I need you to는 부탁보다 분명한 요청이라 위급할 때 쓰기 좋아요. like this가 말 대신 동작을 보여 주겠다는 뜻이에요.", "to calm down", "저와 함께 세어 보세요, 이렇게요.", "저와 함께 손을 들어 보세요, 이렇게요.", "breathe", "count", "blink", "sing"]
+  - ["지원 알림", bell, "More help는 더 많은 사람이 온다는 뜻이고, is coming right now가 곧 도착한다는 시점이에요. 혼자가 아니라는 안심을 줘요.", "to the room", "지금 더 많은 약이 오고 있어요.", "지금 더 많은 소식이 오고 있어요.", "help", "family", "food", "water"]
+  - ["소식 약속", calendar, "as soon as I know는 알게 되는 즉시 말하겠다는 약속이에요. 지금 다 말할 수 없는 상황에서도 가족이 소외되지 않게 해요.", "about her chart", "제가 알게 되는 대로 바로 보여드릴게요.", "제가 알게 되는 대로 바로 조금만 말씀드릴게요.", "know", "hear", "decide", "finish"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 위기 소통 4문장 순서
+    why: 지금 일어나는 일을 먼저 알리고, 그에 대한 노력을 말하고, 그 노력을 위한 지원이 온다고 알린 뒤, 소식을 약속해요.
+    lines:
+    - ["She's having trouble breathing and we're helping her now.", siren, "숨쉬기 힘들어하셔서 지금 돕고 있어요", "상황 알림"]
+    - ["We're doing everything to keep her safe.", shield, "그녀를 지키려고 할 수 있는 모든 걸 하고 있어요", "안전 약속"]
+    - ["For that, more help is coming right now.", bell, "그걸 위해 지금 더 많은 도움이 오고 있어요", "지원 알림"]
+    - ["I'll tell you everything as soon as I know.", calendar, "알게 되는 대로 다 말씀드릴게요", "소식 약속"]
+- title: 나쁜 소식 통역 상황
+  s:
+  - ["통역 약속", mic, "gently and completely처럼 부드러움과 완전함을 함께 약속하면 나쁜 소식을 줄이거나 흐리지 않겠다는 뜻이 돼요.", "in person", "통역사가 이것을 부드럽고 천천히 전달할 거예요.", "통역사가 이것을 간단하고 완전하게 전달할 거예요.", "gently", "coldly", "loudly", "bluntly"]
+  - ["소식 전 사과", faceWorried, "I'm so sorry to로 소식을 전하기 전에 먼저 미안한 마음을 표해요. so는 감정을 더 강하게 해서 가볍게 들리지 않아요.", "today", "늦은 소식을 전하게 되어 정말 죄송해요.", "힘든 소식을 전하게 되어 정말 걱정돼요.", "sorry", "glad", "proud", "happy"]
+  - ["함께 있음", handshake2, "Take all the time you need로 서두르지 않아도 된다고 하고, we're here with you로 혼자가 아니라고 해요. 두 마디가 함께 있어야 위로가 돼요.", "in this room", "필요한 만큼 쉬세요, 저희가 함께 있어요.", "필요한 만큼 시간을 가지세요, 저희가 알려 드릴게요.", "time", "space", "water", "rest"]
+  - ["속도 약속", calendar, "so you have time to take this in은 천천히 말하는 이유예요. take this in이 소식을 받아들인다는 뜻이에요.", "after each sentence", "받아들이실 시간이 있게 조용히 말할게요.", "생각하실 시간이 있게 천천히 말할게요.", "slowly", "softly", "quickly", "briefly"]
+  - ["감정 허용", faceWorried, "It's okay to feel은 어떤 감정도 허락한다는 뜻이에요. however you feel이 울음이든 침묵이든 다 괜찮다는 범위를 줘요.", "in front of us", "지금 화가 나셔도 괜찮아요.", "지금 말이 없어도 괜찮아요.", "feel", "hide", "fix", "judge"]
+  - ["곁 약속", home, "We won't leave you alone with this는 부정문으로 곁에 남겠다는 약속이에요. with this가 소식을 혼자 감당하지 않게 하겠다는 뜻이에요.", "for a moment", "이 일을 혼자 결정하게 두지 않을게요.", "이 일을 혼자 풀게 두지 않을게요.", "alone", "outside", "tonight", "again"]
+  - ["질문 장려", bulb, "no matter how small은 질문이 사소해도 된다고 허락하는 표현이에요. 충격을 받은 가족이 묻는 걸 망설이지 않게 해요.", "at any hour", "아무리 사소해도 뭐든 적어보세요.", "아무리 이상해도 뭐든 물어보세요.", "small", "late", "odd", "silly"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 나쁜 소식 전달 4문장 순서
+    why: 통역 방식을 약속하고, 소식에 앞서 미안함을 말하고, 받아들일 시간을 준 뒤, 받아들인 다음 질문을 열어요.
+    lines:
+    - ["The interpreter will convey this gently and completely.", mic, "통역사가 이것을 부드럽고 완전하게 전달할 거예요", "통역 약속"]
+    - ["I'm so sorry to share difficult news.", faceWorried, "힘든 소식을 전하게 되어 정말 죄송해요", "사과"]
+    - ["I'll speak slowly so you have time to take this in.", calendar, "받아들이실 시간이 있게 천천히 말할게요", "속도 약속"]
+    - ["Once you've taken this in, please ask me anything, no matter how small.", bulb, "받아들이신 뒤 사소해도 뭐든 물어보세요", "질문 장려"]
+- title: 임종 결정 언어장벽
+  s:
+  - ["통역 약속", mic, "make sure는 결과를 책임지겠다는 표현이에요. every word is clear가 임종 결정처럼 중요한 대화에서는 한 마디도 흐려지면 안 된다는 뜻이에요.", "for your family", "통역사가 한 마디 한 마디를 큰 소리로 전달할 거예요.", "통역사가 한 가지 한 가지를 명확히 전달할 거예요.", "clear", "loud", "quick", "short"]
+  - ["환자 의사 기준", compass, "what he would have wanted는 가정법 과거완료로 지금 말할 수 없는 환자의 뜻을 추정하는 틀이에요. 가족의 바람이 아니라 환자의 뜻이 기준이라는 걸 보여 줘요.", "together", "그가 말했을 것을 기준으로 결정해봐요.", "가족이 원하는 것을 기준으로 결정해봐요.", "decide", "wait", "vote", "guess"]
+  - ["함께 지원", handshake2, "We'll support you through는 결정이 끝날 때까지 곁에 있겠다는 약속이에요. together가 혼자가 아님을 한 번 더 말해요.", "every step", "이 시간을 함께 겪어가며 곁에 있을게요.", "이 결정을 함께 겪어가며 안내해 드릴게요.", "support", "rush", "judge", "push"]
+  - ["정답 없음", faceWorried, "no single right answer는 가족이 어느 쪽을 택해도 틀린 게 아니라는 위로예요. single이 정답 하나를 요구하지 않는다는 뜻이에요.", "for him", "이 상황에는 단 하나의 규칙이 없어요.", "이 병실에는 단 하나의 정답이 없어요.", "single", "easy", "quick", "perfect"]
+  - ["삶의 가치 질문", bulb, "What mattered most to him은 과거형으로 환자의 삶을 돌아보는 질문이에요. 의학 정보가 아니라 환자가 어떤 사람이었는지 묻는 열린 질문이에요.", "at home", "그의 삶에서 가장 행복했던 건 무엇이었을까요?", "그의 일에서 가장 중요했던 건 무엇이었을까요?", "mattered", "hurt", "changed", "scared"]
+  - ["혼자 아님", home, "You're not deciding alone — we're here with you는 부정과 긍정을 이어 부담을 덜어 줘요. 결정은 가족 몫이지만 혼자는 아니라는 뜻이에요.", "for him", "혼자 슬퍼하시는 게 아니에요, 저희가 함께 있어요.", "혼자 기다리시는 게 아니에요, 저희가 함께 있어요.", "alone", "today", "soon", "yet"]
+  - ["통역 동석", mic, "for as long as you need는 시간 제한 없이 함께하겠다는 약속이에요. 가족이 말할 때마다 통역을 부탁하지 않아도 돼요.", "by the bed", "아침까지 통역사가 함께 있을 거예요.", "한 시간 동안 통역사가 함께 있을 거예요.", "stay", "return", "change", "hurry"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 임종 결정 4문장 순서
+    why: 통역으로 모든 말을 분명히 하겠다고 약속하고, 환자의 삶을 묻고, 그 답으로 환자의 뜻을 기준 삼아 결정하게 하고, 혼자가 아님을 알려요.
+    lines:
+    - ["The interpreter will make sure every word is clear.", mic, "통역사가 한 마디 한 마디를 명확히 전달할 거예요", "통역 약속"]
+    - ["What mattered most to him in his life?", bulb, "그의 삶에서 가장 중요했던 건 무엇이었을까요", "삶 질문"]
+    - ["Using that, let's decide based on what he would have wanted.", compass, "그걸 바탕으로 그가 원했을 것을 기준으로 결정해봐요", "결정 기준"]
+    - ["You're not deciding alone — we're here with you.", home, "혼자 결정하시는 게 아니에요 저희가 함께 있어요", "혼자 아님"]

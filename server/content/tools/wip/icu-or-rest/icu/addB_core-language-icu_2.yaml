@@ -1,0 +1,39 @@
+situations:
+- title: 진정 환자 의사표현 확인
+  s:
+  - ["손 신호 요청", pushpin, "Can you로 시작하면 명령이 아니라 부탁으로 들려요. if you hear me로 조건을 달아 손 쥐기가 '들렸다'는 신호임을 분명히 해요.", "right now", "제 말이 들리면 제 팔을 꼭 쥐어보실래요?", "제 말이 보이면 제 손을 꼭 쥐어보실래요?", "hear", "smell", "taste", "feel"]
+  - ["편안함 확인", faceWorried, "I'm checking처럼 진행형을 쓰면 지금 이 순간 살피고 있다는 느낌이 전해져요. right now가 그 시점을 못 박아요.", "in this bed", "하루 종일 편안하신지 확인하고 있어요.", "밤새 편안하신지 확인하고 있어요.", "right now", "last night", "next year", "tomorrow morning"]
+  - ["눈 뜨기 요청", magnify, "for me를 붙이면 검사가 아니라 나를 위해 해 달라는 부탁처럼 들려요. if you can은 못 해도 괜찮다는 여지를 줘요.", "wide", "가능하시면 손을 펴 보세요.", "가능하시면 발가락을 움직여 보세요.", "can", "must", "dare", "have to"]
+  - ["기다림 안내", calendar, "wait a moment는 서두르지 않고 응답을 기다린다는 뜻이에요. 진정 중인 환자는 반응이 느려서 이 말이 압박을 덜어 줘요.", "at the door", "반응을 보이실 때까지 오래 기다릴게요.", "반응을 보이실 때까지 잠깐 손잡고 있을게요.", "moment", "week", "month", "year"]
+  - ["안심 전달", shield, "You're safe로 먼저 안전을 말하고 just rest로 해야 할 일을 하나만 줘요. 짧은 문장이라 약에 취한 환자도 따라가기 쉬워요.", "in the morning", "안전하니 지금은 그냥 들으세요.", "여기 있으니 지금은 그냥 쉬세요.", "safe", "alone", "sick", "lost"]
+  - ["통증 알림 요청", bell, "Let me know는 환자에게 알릴 권리를 주는 표현이에요. any를 쓰면 작은 통증도 말해도 된다는 뜻으로 들려요.", "right away", "음악을 원하시면 알려주세요.", "불을 줄이길 원하시면 알려주세요.", "feel", "hear", "smell", "taste"]
+  - ["재방문 약속", calendar, "again이 있어야 한 번 보고 끝이 아니라 다시 온다는 약속이 돼요. in a few minutes가 돌아올 시점을 구체적으로 알려 줘요.", "from the desk", "1분 뒤에 다시 살펴보러 올게요.", "10분 뒤에 다시 살펴보러 올게요.", "minutes", "days", "weeks", "months"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 진정 환자 확인 4문장 순서
+    why: 반응을 묻고, 그 반응을 기다리고, 기다림이 끝난 뒤 안심시키고, 다시 올 것을 약속해요.
+    lines:
+    - ["Can you squeeze my hand if you hear me?", pushpin, "제 말이 들리면 손을 쥐어보실래요", "반응 요청"]
+    - ["I'll wait a moment for you to do that.", calendar, "그렇게 하실 때까지 잠깐 기다릴게요", "기다림"]
+    - ["After that wait, know that you're safe here.", shield, "그렇게 기다린 뒤에도 여기선 안전하다는 걸 알아 두세요", "안심"]
+    - ["After all of this, I'll check on you again in a few minutes.", bell, "이 모든 걸 마치고 몇 분 뒤에 다시 올게요", "재방문"]
+- title: 언어장벽 통증 사정
+  s:
+  - ["얼굴 척도", faceWorried, "that shows는 얼굴 그림이 통증 정도를 '보여 준다'는 관계절이에요. 말이 통하지 않아도 그림으로 정도를 전할 수 있게 해요.", "on this card", "얼마나 아픈지 보여주는 숫자를 가리켜 보세요.", "얼마나 아픈지 보여주는 얼굴을 그려 보세요.", "much", "often", "long", "far"]
+  - ["숫자 척도", chartup, "Zero is no pain, ten is the worst pain은 양 끝을 먼저 정의하는 틀이에요. 끝점이 정해져야 중간 숫자가 같은 기준으로 해석돼요.", "in between", "0은 안 아픈 거고, 5는 가장 심한 통증이에요.", "0은 안 아픈 거고, 10은 가장 오래된 통증이에요.", "Zero", "One", "Five", "Nine"]
+  - ["위치 확인", magnify, "Show me는 말 대신 몸짓으로 답해도 된다는 허락이에요. where it hurts를 쓰면 통증의 위치를 묻는 질문이라는 점이 분명해져요.", "with one finger", "몸이 언제 아픈지 보여주세요.", "몸이 얼마나 아픈지 보여주세요.", "where", "when", "why", "who"]
+  - ["그림 척도", board, "matches는 그림과 내 통증이 서로 같은지 맞춰 보라는 뜻이에요. picture를 쓰면 글을 못 읽는 사람도 따라올 수 있어요.", "on the sheet", "당신의 통증과 맞는 숫자를 가리켜 보세요.", "당신의 통증과 맞는 색을 가리켜 보세요.", "pain", "name", "age", "size"]
+  - ["자료 준비", board, "in your language는 환자가 익숙한 언어로 된 자료라는 뜻이에요. I'll bring은 환자가 직접 찾지 않아도 내가 가져온다는 약속이에요.", "from the desk", "당신 언어로 된 약물 목록을 가져올게요.", "당신 언어로 된 통증 차트를 읽어 드릴게요.", "your", "my", "his", "their"]
+  - ["통증 양상", pill, "Is the pain sharp, or dull?처럼 두 선택지를 주면 말이 서툴러도 한 단어로 답할 수 있어요.", "in your side", "통증이 날카로운가요, 아니면 일정한가요?", "통증이 날카로운가요, 아니면 쓰린가요?", "sharp", "heavy", "tight", "burning"]
+  - ["고개 신호", check, "Nod는 말 없이 답하는 가장 간단한 신호예요. if this is where it hurts로 위치를 짚어 주면 예·아니오 질문이 돼요.", "at this spot", "여기가 아프면 눈을 깜빡이세요.", "여기가 아프면 손을 들어 보세요.", "Nod", "Blink", "Squeeze", "Wave"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 통증 사정 4문장 순서
+    why: 먼저 통증 도구를 가져오고, 그 도구로 정도를 묻고, 위치를 확인한 뒤, 양상을 이어 물어요.
+    lines:
+    - ["I'll bring a pain chart in your language.", board, "당신 언어로 된 통증 차트를 가져올게요", "도구 준비"]
+    - ["Point to the face on it that shows how much it hurts.", faceWorried, "그 위에서 얼마나 아픈지 보여주는 얼굴을 가리켜 보세요", "정도 확인"]
+    - ["Now show me where that pain is on your body.", magnify, "이제 그 통증이 몸 어디인지 보여주세요", "위치 확인"]
+    - ["For that spot, is the pain sharp, or dull?", pill, "그 부위의 통증이 날카로운가요, 아니면 둔한가요", "양상 확인"]

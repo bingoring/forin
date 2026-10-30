@@ -1,0 +1,148 @@
+- title: 통역 서비스 요청·활용
+  nuance:
+    - kind: slider
+      words: [w-professional, w-interpreter]
+      cue: "Daughter: \"My English is good — I can interpret the risks for my mother.\""
+      scale: ["a relative with some English", "a bilingual coworker", "a qualified medical interpreter"]
+      answerAt: 2
+      why: "미국 병원은 위험·동의처럼 중요한 설명에는 자격과 훈련을 갖춘 의료 통역사를 쓰도록 해요. 가족은 아는 만큼만, 또는 듣기 좋게 걸러서 전하기 쉽고, 두 언어를 한다고 해서 의료 통역을 훈련받은 것은 아니에요."
+      example: "We'll use a qualified medical interpreter for the consent talk."
+      exKo: "동의 설명에는 자격을 갖춘 의료 통역사를 쓸 거예요."
+    - kind: context
+      words: [w-interpreter]
+      word: interpreter
+      ko: 통역사
+      scenes:
+        - {who: 병동 동료에게, icon: handshake2, en: "Pt is LEP — can you book a Korean interpreter for rounds?", ok: true}
+        - {who: 환자에게, icon: me, en: "I'll bring in an interpreter so you can talk with the doctor in Korean.", ok: true}
+        - {who: 가족에게, icon: home, en: "Per policy, your LEP status requires a certified interpreter for this encounter.", ok: false, fix: "We'll bring in an interpreter so you can follow everything in your own language."}
+      why: "의료진끼리는 LEP(영어가 서툰 환자)나 certified 같은 말과 규정이 바로 통해요. 하지만 가족에게는 '당신 때문에 하는 절차'처럼 차갑고 어렵게 들려요. 환자를 돕는 일이라고 쉬운 말로 알려 주세요."
+- title: 삽관 환자 비언어 소통
+  nuance:
+    - kind: slider
+      words: [w-frustrating]
+      cue: "Patient (shaking his head after a third failed try to spell a word on the board): clearly upset."
+      scale: [irritating, frustrating, devastating]
+      answerAt: 1
+      why: "irritating은 가볍게 거슬리는 정도, devastating은 삶이 무너진 듯한 정도예요. 말이 안 통해 몇 번을 해 봐도 안 될 때의 속 터지는 마음은 frustrating이고, 'I know this is frustrating.'이라고 해 주면 환자의 감정을 인정하는 말이 돼요."
+      example: "I know this is frustrating, and we'll keep trying together."
+      exKo: "답답하신 거 알아요, 우리 함께 계속 해 봐요."
+    - kind: swap
+      words: [w-tube, w-talk]
+      who: "삽관 환자에게 · 원인 설명"
+      icon: me
+      before: ["You can't talk right now because of the ", "ventilator circuit", "."]
+      options: [breathing tube, ventilator circuit, endotracheal tube]
+      answer: breathing tube
+      notes:
+        breathing tube: "환자도 바로 아는 쉬운 말이고, 목소리가 안 나오는 진짜 원인(성대 사이를 지나는 관)을 가리킨다."
+        ventilator circuit: "인공호흡기에 이어진 관 세트라서 말을 못 하는 원인으로는 사실과 달라요."
+        endotracheal tube: "의료진끼리 쓰는 정확한 이름이라 환자와 가족에게는 낯설다."
+      why: "삽관 환자가 말을 못 하는 것은 기관 속 관이 성대 사이를 지나기 때문이에요. 그 사실을 환자도 아는 쉬운 말로 알려 주면 불안이 줄어요."
+      ko: "숨 쉬는 관 때문에 지금은 말씀을 못 하세요"
+- title: 진정 환자 의사표현 확인
+  nuance:
+    - kind: pair
+      words: [w-comfortable, w-response, w-rest]
+      pairs:
+        - [comfortable, "no pain or distress right now"]
+        - [response, "how you react when I speak or touch you"]
+        - [rest, "stay calm and let your body recover"]
+      decoys: ["a new IV line"]
+      why: "comfortable은 아프거나 불편하지 않은 상태이고, response는 말을 걸거나 만졌을 때 보이는 반응이에요. 진정 중인 환자는 말로 답하지 못하니 눈 뜨기·손 쥐기 같은 몸짓으로 이 둘을 확인하고, rest는 그동안 편히 쉬도록 안심시키는 말이에요."
+    - kind: context
+      words: [w-comfortable]
+      word: comfortable
+      ko: 편안한
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Pt comfortable on current sedation, RASS minus one.", ok: true}
+        - {who: 환자에게, icon: me, en: "Are you comfortable? Squeeze my hand if you're not.", ok: true}
+        - {who: 보호자에게, icon: home, en: "Pt is comfortable per CPOT zero, sedation at goal.", ok: false, fix: "She looks relaxed, and we don't see any signs of pain right now."}
+      why: "차트에는 진정·통증 점수(RASS, CPOT)로 적는 것이 정확해요. 하지만 보호자에게 점수를 읽어 주면 사무적으로 들려요. 지금의 표정과 상태를 쉬운 말로 풀어 주세요."
+- title: 언어장벽 통증 사정
+  nuance:
+    - kind: pair
+      words: [w-sharp, w-dull, w-worst]
+      pairs:
+        - [sharp, "feels like a stab"]
+        - [dull, "a heavy ache that stays"]
+        - [worst, "the most pain you can imagine"]
+      decoys: ["a little tingle"]
+      why: "sharp는 찌르는 듯한 통증, dull은 묵직하게 계속되는 통증이에요. worst는 통증 척도의 맨 위, 상상할 수 있는 가장 심한 통증을 뜻해요. 통증의 성질을 물어야 원인과 처치를 가늠하는 데 도움이 돼요."
+    - kind: swap
+      words: [w-hurt]
+      who: "환자에게 · 통증 확인"
+      icon: me
+      before: ["Does it ", "elicit tenderness", " when I press here?"]
+      options: [hurt, cause you discomfort, elicit tenderness]
+      answer: hurt
+      notes:
+        hurt: "환자도 바로 아는 쉬운 말이다."
+        cause you discomfort: "문법은 맞지만 길고 돌려 말해서 영어가 서툰 환자는 놓치기 쉽다."
+        elicit tenderness: "차트에 쓰는 의료진용 표현이라 환자는 뜻을 모른다."
+      why: "영어가 서툰 환자에게는 짧고 아는 낱말이 가장 잘 통해요. 'hurt'는 몸짓으로 아픈 곳을 가리키게 하기에도 좋아요."
+      ko: "여기를 누르면 아프세요?"
+- title: 간단 지시·설명 명확화
+  nuance:
+    - kind: slider
+      words: [w-slowly, w-simple]
+      cue: "Patient answers each question correctly right away and says, \"OK, I understand.\""
+      scale: ["at your normal pace", "a little more slowly", "slowly, one short idea at a time"]
+      answerAt: 0
+      why: "속도는 상대의 반응에 맞춰요. 척척 알아듣고 맞게 답하면 보통 속도로 충분하고, 자꾸 되묻거나 멍한 표정이면 늦추고 한 번에 한 가지씩 쉬운 낱말로 말해요."
+      example: "Let me say that a little more slowly."
+      exKo: "조금 더 천천히 말씀드릴게요."
+    - kind: swap
+      words: [w-say]
+      who: "환자에게 · 되풀이"
+      icon: me
+      before: ["Let me ", "reiterate", " more slowly."]
+      options: [reiterate, say it again, expound]
+      answer: say it again
+      notes:
+        reiterate: "뜻은 같지만 어려운 낱말이라 영어가 서툰 환자에게는 오히려 장벽이 된다."
+        say it again: "쉬운 낱말로 '다시 한 번'이라는 뜻이 분명하다."
+        expound: "풀어서 길게 설명한다는 뜻이라 같은 말을 되풀이하는 것과 다르다."
+      why: "다시 말할 때는 어려운 낱말을 더하지 말고 같은 내용을 쉬운 낱말로 천천히 되풀이해요."
+      ko: "더 천천히 다시 말씀드릴게요."
+- title: 가족 통한 기본 정보 확인
+  nuance:
+    - kind: pair
+      words: [w-allergy, w-medication]
+      pairs:
+        - [allergy, "a bad reaction to a drug or food"]
+        - [medication, "what he takes or gets every day"]
+      decoys: ["a scheduled lab draw"]
+      why: "allergy는 약이나 음식에 몸이 해롭게 반응하는 것이고, medication은 지금 복용·투여 중인 약이에요. 가족에게는 이 둘을 따로 물어야 빠짐없이 듣고, 자세한 세부 확인은 통역사와 함께 해요."
+    - kind: context
+      words: [w-confirm]
+      word: confirm
+      ko: 확인하다
+      scenes:
+        - {who: 약사에게 전화, icon: pill, en: "I'll confirm his home meds and allergies with the pharmacy tonight.", ok: true}
+        - {who: 가족에게, icon: home, en: "We'll confirm all the details with an interpreter later.", ok: true}
+        - {who: 깨어난 환자에게, icon: me, en: "We'll confirm medication reconciliation with collateral history.", ok: false, fix: "We'll go over your medicines again later with the interpreter to make sure we have them right."}
+      why: "의료진끼리는 medication reconciliation 같은 절차 이름이 통해요. 환자에게는 '약을 다시 맞춰 보는 것'이라고 쉬운 말로 풀어 주세요."
+- title: 삽관 환자 예·아니오 소통
+  nuance:
+    - kind: slider
+      words: [w-pain]
+      cue: "Patient blinks yes when asked \"Is it uncomfortable?\" but blinks no when asked \"Is it painful?\""
+      scale: [discomfort, pain, agony]
+      answerAt: 0
+      why: "discomfort는 거북하고 불편한 정도, pain은 아픈 것, agony는 견디기 힘든 극심한 고통이에요. 불편하냐는 물음에만 '예'라면 discomfort 단계로 보고, 같은 신호로 한 번 더 물어 확인해요."
+      example: "He blinked yes to discomfort but no to pain."
+      exKo: "불편하다는 말에는 예, 아프다는 말에는 아니오라고 깜빡였어요."
+    - kind: swap
+      words: [w-need, w-suction, w-blink]
+      who: "삽관 환자에게 · 신호 안내"
+      icon: me
+      before: ["Blink once if you ", "wish for", " suction."]
+      options: [wish for, need, are curious about]
+      answer: need
+      notes:
+        wish for: "원한다는 뜻이라서, 환자가 원하지 않아도 흡인이 필요한 경우를 놓치고 처치가 늦어질 수 있다."
+        need: "필요하다는 짧고 분명한 말이라 예·아니오 신호와 잘 맞는다."
+        are curious about: "궁금하다는 뜻이라 처치 요청이 아니다."
+      why: "깜빡임 한 번에 담기는 뜻은 짧고 분명해야 해요. '필요하다(need)'는 처치를 하겠다는 약속과 바로 이어져요."
+      ko: "흡인이 필요하면 한 번 깜빡이세요."
