@@ -1,0 +1,103 @@
+# 단어 수정 (A: W1~W7, D1~D7)
+de_swap:   # 단어 en: [[옛 오답, 새 오답], ...]
+  talk: [[tall, balk]]
+  light: [[tight, flight]]
+  rate: [[rare, rite]]
+  pump: [[plump, pulp]]
+  bag: [[bad, rag]]
+  urgent: [[parent, pungent]]
+  better: [[batter, wetter]]
+  slow: [[snow, slack], [slope, low]]
+  soon: [[noon, once], [spoon, seldom]]
+  sense: [[since, tense]]
+  find: [[fine, fend]]
+  small: [[smell, smart], [stall, stale]]
+  write: [[white, wipe], [wrist, writhe]]
+  same: [[some, sane], [game, lame]]
+  gown: [[gone, gauze], [grown, crown]]
+  visit: [[visual, vanish]]
+  angry: [[angel, antsy]]
+  meet: [[meek, mend]]
+  welcome: [[welfare, winsome], [wellness, wholesome]]
+  sick: [[sink, slick], [silk, thick]]
+  healthcare: [[housecare, childcare]]
+  document: [[dominant, monument]]
+  follow: [[fallow, swallow], [hollow, wallow]]
+  order: [[older, odor]]
+  agree: [[agent, argue], [agile, accrue]]
+  bring: [[brink, wring], [brine, cling]]
+  sibling: [[spilling, sapling]]
+  social: [[sooner, vocal]]
+  angle: [[ankle, tangle]]
+  sorry: [[story, soggy], [surely, surly]]
+  near: [[neat, veer], [nerve, rear]]
+  end: [[and, bend]]
+  get: [[jet, set], [gel, bet]]
+  quiet: [[quite, quaint], [quit, quick]]
+  common: [[commit, comely], [combat, cosmic]]
+  ground: [[around, grout]]
+  ethics: [[ethnic, ethos]]
+  move: [[movie, rove], [mode, mope]]
+  thank: [[tank, think], [thick, thaw]]
+  together: [[toward, altogether]]
+  change: [[chance, chafe]]
+  ask: [[ash, bask]]
+  allow: [[alloy, allot]]
+  list: [[lint, lisp]]
+  hear: [[hare, heave]]
+  join: [[joint, jog]]
+  life: [[live, lore]]
+  speak: [[speck, sneak]]
+  guide: [[guilt, glide]]
+  pause: [[pulse, parse]]
+  share: [[shore, spare]]
+  mean: [[meal, wean], [moan, lean]]
+  give: [[gift, drive], [glide, grieve]]
+  name: [[nape, nail]]
+  align: [[alien, malign]]
+  hope: [[hose, cope]]
+  read: [[road, reap]]
+  love: [[lava, lure]]
+  process: [[procure, prowess]]
+  hard: [[harm, hasty]]
+  stay: [[stair, sway]]
+  loss: [[toss, moss]]
+  screen: [[screw, spleen]]
+  organ: [[orphan, origin]]
+  reverse: [[rehearse, revise]]
+words:
+  w-son: {cue: 멀리 있어 화상으로 아버지를 보는 남자 자녀}
+  w-video: {cue: 화상 통화에서 움직이는 모습을 보여 주는 것}
+  w-response: {cue: 큰 충격을 받은 사람에게 저절로 나타나는 몸과 마음의 모습}
+  w-same: {cue: 몇 번이고 되풀이해도 바뀌지 않는 그대로의}
+  w-moment: {cue: 숨 돌릴 아주 짧은 틈}
+  w-healthcare: {cue: 병원과 간호사·의사가 건강을 돌보는 체계 전반}
+  w-child: {cue: 나이와 상관없이 부모에게서 난 아들이나 딸}
+  w-respond: {distractorsKo: [부작용을 보이다, 내성을 보이다]}
+  w-visit: {decoyChips: [ves, ut]}
+  w-thank: {decoyChips: [thenk]}
+  w-member: {decoyChips: [man, bor]}
+  w-scared: {ko: 겁먹은, chips: [[scare, d]]}
+  w-overwhelming: {ko: 감당하기 벅찬}
+  w-level: {ko: 수치, exKo: 산소 수치가 좋아지고 있어요.}
+  w-bring: {ko: 데려오다·가져오다, distractorsKo: [돌려보내다·치우다, 앞세우다·따라가다]}
+  w-aunt: {ko: 이모·고모}
+  w-zone:
+    en: time zone
+    ipa: /ˈtaɪm zoʊn/
+    chips: [[time], [zone]]
+    distractorsEn: [time frame, comfort zone]
+  w-translate: {example: An interpreter can translate if needed., exKo: 필요하면 통역사가 통역해 드려요.}
+  w-stay: {example: You can stay with him., exKo: 곁에 머무르셔도 돼요.}
+  w-reverse: {example: The treatments can't reverse this anymore., exKo: 치료로는 더 이상 이걸 되돌릴 수 없어요.}
+remove: [w-hand]
+why:
+  w-zone: 헤드워드를 문장의 쓰임(time zone)에 맞춤
+  w-scared: ko 무서운(scary)이 아니라 겁먹은
+  w-overwhelming: ko 압도적인 → 감당하기 벅찬
+  w-bring: ko 가져오다 뜻도 포함(11.5)
+  w-aunt: ko 이모·고모(aunt는 둘 다)
+  w-translate: 6.4 문장을 통역사가 통역하는 말로 바꿈
+  w-stay: 20.5 문장 교체에 맞춤
+  w-reverse: 15.5 문장 교체에 맞춤
+  w-hand: 너무 쉬움 — 공통 쉬운 단어 목록, 어느 문장도 태그하지 않게 됐다

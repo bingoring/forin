@@ -1,0 +1,154 @@
+# [tag, icon, why, decoy, ko1, ko2, ans, w1, w2, w3]
+situations:
+- title: 이송·인계 중 안전 확인
+  s:
+  - ["이송 전 확인", check, "Confirm 뒤에 항목 셋을 나열하고 before we move로 출발 전 기한을 정해요. airway가 맨 앞인 것은 막히면 가장 먼저 위험해지기 때문이에요.", "before we eat", "옮기기 전에 기도, 점적, 담요를 확인해요.", "옮기기 전에 기도, 바닥, 모니터를 확인해요.", "drips", "shoes", "towels", "snacks"]
+  - ["자원 확인", monitor, "Do we have enough…?은 지시 대신 질문으로 확인해 팀이 같이 점검하게 해요. enough는 조금 있는 게 아니라 가는 동안 버틸 만큼이라는 뜻이에요.", "enough coffee", "이송할 담요와 배터리가 충분한가요?", "이송할 산소와 의자가 충분한가요?", "battery", "coffee", "water", "paper"]
+  - ["점검표", board, "run은 점검표를 한 줄씩 끝까지 돌린다는 뜻이에요. together가 한 사람이 혼자 훑지 않고 같이 확인한다는 뜻이에요.", "the guest list", "이송 일정표를 같이 확인해요.", "이송 점검표를 같이 외워요.", "run", "post", "fold", "lose"]
+  - ["누락 방지", shield, "make sure + 절은 빠진 게 없다고 확실히 해 두자는 표현이에요. gets missed처럼 수동태로 쓰면 누가 놓쳤나가 아니라 빠진 일 자체에 초점이 가요.", "everyone gets lunch", "식당으로 가기 전에 놓치는 게 없는지 확인해요.", "CT로 가기 전에 막히는 게 없는지 확인해요.", "missed", "moved", "mixed", "mailed"]
+  - ["케이블 확인", monitor, "I'll로 내가 하겠다고 나서고 double-check로 이미 본 것을 한 번 더 본다고 말해요. too가 병실 모니터뿐 아니라 이동용 모니터에도라는 뜻을 더해요.", "the phone chargers", "모니터 케이블이 휴대용 충전기에도 닿는지 다시 확인할게요.", "전화기 케이블이 휴대용 모니터에도 닿는지 다시 확인할게요.", "portable", "wall", "ceiling", "bedside"]
+  - ["기도 먼저", stetho, "before anyone touches로 이동의 첫 동작보다 기도 확인이 앞선다는 순서를 못 박아요. is secure는 튜브가 빠지지 않고 제대로 고정됐다는 상태예요.", "his gown", "누가 침대 커튼을 건드리기 전에 기도가 안전한지 확인해요.", "누가 침대 브레이크를 건드리기 전에 가운이 깨끗한지 확인해요.", "brakes", "curtains", "sheets", "pillows"]
+  - ["소리 내어 읽기", speaker, "out loud는 눈으로만 훑지 않고 소리 내어 읽는다는 뜻이에요. so nothing slips through가 읽는 목적이고, slip through는 틈새로 빠져나간다는 구동사예요.", "the newspaper", "퇴근할 때 놓치는 게 없도록 점검표를 소리 내어 읽어요.", "인계할 때 놓치는 게 없도록 점검표를 색깔로 칠해요.", "read", "fold", "tape", "mail"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 이송 안전 4문장 순서
+    why: 점검표를 같이 돌린다고 시작하고, 그 안에서 기도·점적·모니터를 먼저 확인하고, 산소와 배터리를 더 확인한 뒤, 출발 전 소리 내어 읽어 마무리해요.
+    lines:
+    - ["Let's run the transport checklist together.", board, "이송 점검표를 같이 확인해요", "점검표"]
+    - ["In it, we confirm the airway, drips, and monitor first.", check, "그 안에서 기도, 점적, 모니터를 먼저 확인해요", "상태"]
+    - ["On top of those, we check that oxygen and battery are enough for the trip.", monitor, "그 위에 산소와 배터리가 이동에 충분한지 확인해요", "자원"]
+    - ["With all of that checked off, we read the list out loud before we head out so nothing slips through.", speaker, "다 확인한 뒤 출발 전에 목록을 소리 내어 읽어 놓치는 게 없게 해요", "낭독"]
+- title: 사건 보고·학습 문화
+  s:
+  - ["아차 사고", bulb, "Yes — 로 먼저 질문에 긍정으로 답한 뒤 이유를 대시 뒤에 붙여요. near-miss는 해가 닿기 전에 막은 사고를 뜻해요.", "bad weather", "네, 아차 사고는 진짜 비용을 줄이는 법을 가르쳐줘요.", "네, 환자 만족도는 진짜 위해를 예방하는 법을 가르쳐줘요.", "prevent", "cause", "repeat", "measure"]
+  - ["비난 없는 문화", handshake2, "isn't about A, it's about B 틀은 보고의 목적을 비난에서 배움으로 옮겨 말해요. 두 절을 쉼표로 이어 대비를 한 호흡에 보여요.", "about money,", "보고는 비난이 아니라 점수에 관한 거예요.", "회의는 비난이 아니라 배움에 관한 거예요.", "learning", "money", "ranking", "speed"]
+  - ["보고의 가치", shield, "could protect는 반드시가 아니라 보호할 수도 있다는 가능성의 표현이라 과장하지 않아요. the next patient가 지금이 아니라 앞으로의 환자를 가리켜요.", "the next shift", "당신의 간호가 다음 환자를 보호할 수 있어요.", "당신의 보고가 다음 모임을 보호할 수 있어요.", "protect", "delay", "charge", "confuse"]
+  - ["아차도 보고", pencil, "but으로 아무 일 없었다는 안심과 그래도 쓴다는 결론을 맞세워요. that's exactly why는 앞 사실이 오히려 이유라는 뜻이에요.", "close the door", "이번엔 아무 일도 없었지만, 그래서 더 사진으로 남겨야 해요.", "지난번엔 아무 일도 없었지만, 그래서 더 기록으로 남겨야 해요.", "exactly", "partly", "mostly", "simply"]
+  - ["시스템 관점", magnify, "not looking for A, looking for B로 찾는 대상을 사람에서 문제로 바꿔요. who와 what이 맞물려 소리로도 대비가 들려요.", "what to cook", "누구를 칭찬할지가 아니라 무엇을 고칠지를 찾는 거예요.", "누구를 비난할지가 아니라 무엇을 살지를 찾는 거예요.", "fix", "buy", "cook", "carry"]
+  - ["보고 비용", pencil, "takes ten minutes와 might save를 and로 이어 작은 수고와 큰 가치를 한 문장에 놓아요. might은 확실하다는 뜻이 아니라 가능성이라는 뜻이에요.", "ten dollars", "이 보고서를 내는 데 10달러지만 나중에 누군가의 생명을 구할 수도 있어요.", "이 보고서를 내는 데 10분이지만 나중에 누군가의 시간을 아낄 수도 있어요.", "save", "cost", "waste", "change"]
+  - ["공유 학습", star, "we report가 near-miss를 꾸며 우리가 보고한 것만 교훈이 된다는 뜻이에요. learn from은 거기서 배운다는 구동사로 전치사가 끝에 남아요.", "the whole bakery", "보고하는 모든 청구서는 병동 전체가 배우는 교훈이 돼요.", "보고하는 모든 아차 사고는 신입 한 명이 배우는 교훈이 돼요.", "lesson", "rumor", "secret", "joke"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 사건 보고 문화 4문장 순서
+    why: 아차 사고가 무엇인지 정의하고, 그래서 아무 일 없어도 쓴다고 잇고, 비난이 아니라 고칠 것을 찾는 보고라고 하고, 공유되어 교훈이 된다고 닫아요.
+    lines:
+    - ["A near-miss is an error we caught before it reached the patient.", bulb, "아차 사고는 환자에게 닿기 전에 잡은 오류예요", "정의"]
+    - ["That's why we still write it up, even when nothing happened.", pencil, "그래서 아무 일 없었어도 기록으로 남겨요", "보고"]
+    - ["Reports like that aren't about blame; we look for what to fix.", magnify, "그런 보고는 비난이 아니라 고칠 것을 찾는 거예요", "관점"]
+    - ["Shared that way, each one becomes a lesson the whole unit can learn from.", star, "그렇게 공유하면 하나하나가 병동 전체가 배우는 교훈이 돼요", "공유"]
+- title: 라인·튜브 치명적 오류 대응
+  s:
+  - ["즉시 중단", siren, "명령형 Stop과 disconnect를 and로 이어 두 동작을 연달아 바로 하라는 뜻이에요. immediately가 끝에 와서 기다릴 틈이 없음을 강조해요.", "the music", "음악을 멈추고 즉시 분리하세요.", "주입을 멈추고 즉시 방송을 분리하세요.", "disconnect", "reconnect", "flush", "reprogram"]
+  - ["사정·보고", stetho, "assess와 notify를 and로 이어 환자 상태 확인과 보고를 같은 순간에 하라고 해요. now가 끝에서 지체 없음을 강조해요.", "the paperwork", "침대를 사정하고 지금 바로 의사에게 알려요.", "카트를 사정하고 지금 바로 의사에게 알려요.", "notify", "thank", "greet", "follow"]
+  - ["추적·기록", pencil, "We'll trace와 document를 and로 잇고 what happened가 document의 목적어 절이에요. 위기 대응 뒤의 일이라 중단과 보고보다 순서상 뒤예요.", "all rooms", "모든 방을 따라가면서 무슨 일이 있었는지 기록할게요.", "모든 라인을 따라가면서 무슨 일이 있었는지 사진 찍을게요.", "document", "guess", "imagine", "count"]
+  - ["지금은 중단", siren, "Right now와 later를 맞세워 지금 할 일과 나중에 할 일을 나눠요. 대시 뒤에 we can을 써서 이야기를 막는 게 아니라 미룬다는 부드러운 어조예요.", "the radio", "지금은 주입을 멈추는 중이에요, 가족에게는 나중에 이야기해요.", "지금은 주입을 멈추는 중이에요, 어떻게 된 건지는 나중에 적어요.", "later", "now", "again", "twice"]
+  - ["우선순위", run, "콜론 뒤에 순서를 줄여 말해 위기에도 한눈에 들어와요. first와 then이 행동의 순서를 두 단어로 못 박아요.", "paperwork first,", "빠르게 정리해요, 기도 먼저, 그다음 의사를 불러요.", "빠르게 행동해요, 침대 먼저, 그다음 의사를 불러요.", "airway", "bed", "chart", "floor"]
+  - ["역할 분담", pager, "I'll stay와 you notify로 한 명은 환자 곁, 다른 한 명은 보고라는 역할 분담을 말해요. while은 두 일이 동시에 진행된다는 뜻이에요.", "when it happened", "제가 곁에 있을 테니 팀에게 언제 일이 있었는지 알려주세요.", "제가 곁에 있을 테니 팀에게 어디서 일이 있었는지 알려주세요.", "notify", "thank", "greet", "visit"]
+  - ["전체 기록", pencil, "every를 두 번 되풀이해 라인과 단계를 하나도 빼지 않는다고 강조해요. we traced와 we took이 각각 명사를 꾸며 무엇을 기록하는지 한정해요.", "every cup we drank", "따라간 모든 방과 취한 모든 단계를 기록해요.", "따라간 모든 라인과 취한 모든 휴식을 기록해요.", "document", "count", "copy", "sort"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 치명적 오류 대응 4문장 순서
+    why: 주입을 멈추고 분리하는 것이 가장 먼저이고, 분리하면 곧 환자를 사정하고 의사에게 알리고, 그다음에야 라인을 추적하고, 마지막에 기록해요.
+    lines:
+    - ["Stop the infusion and disconnect it immediately.", siren, "주입을 멈추고 즉시 분리해요", "중단"]
+    - ["With it off, assess the patient and notify the physician now.", stetho, "분리한 뒤 환자를 사정하고 지금 의사에게 알려요", "사정"]
+    - ["Once he's being assessed and the physician knows, we trace all lines to see how it happened.", magnify, "환자를 사정하고 의사가 알게 되면 라인을 따라가 어떻게 된 건지 봐요", "추적"]
+    - ["We document every line we traced and every step we took.", pencil, "따라간 모든 라인과 취한 모든 단계를 기록해요", "기록"]
+- title: 고위험약 용량사고 위기
+  s:
+  - ["즉시 중단", siren, "Stop과 check를 and로 이어 멈춤과 확인을 연달아 하라고 해요. now가 끝에 와서 지금 바로라는 뜻을 더해요.", "the fan", "수도를 멈추고 지금 검사와 상태를 확인해요.", "점적을 멈추고 지금 체중과 상태를 확인해요.", "labs", "meals", "bills", "fees"]
+  - ["해독제·보고", pill, "Prepare와 notify를 and로 이어 약 준비와 보고를 한꺼번에 시작하라고 해요. protamine은 헤파린 효과를 되돌리는 약이라 어떤 약이 필요한지 이름으로 말해요.", "the lunch tray", "간식을 준비하고 즉시 의사에게 알려요.", "침대를 준비하고 즉시 의사에게 알려요.", "protamine", "naloxone", "flumazenil", "glucagon"]
+  - ["사건 보고", pencil, "document와 file 두 동사를 and로 이어 기록하고 제출하는 일을 한 흐름으로 말해요. file a report는 공식 보고서를 낸다는 뜻이에요.", "a lunch order", "바로 기록하고 보험 서류를 제출할게요.", "바로 기록하고 사건 보고서를 인쇄할게요.", "file", "mail", "scan", "sort"]
+  - ["상황 보고", siren, "I think로 확정하지 않은 판단을 먼저 밝히고 was given 수동태로 누가 줬는지 대신 일어난 일을 말해요. ten times the ordered dose가 처방 대비 배수로 크기를 알려요.", "of caffeine", "처방된 헤파린 용기의 10배가 청구된 것 같아요.", "처방된 헤파린 포장의 10배가 도착한 것 같아요.", "heparin", "insulin", "morphine", "potassium"]
+  - ["먼저 멈추기", siren, "first와 after를 맞세워 멈추는 일이 질문보다 앞선다고 못 박아요. Right now는 이 순간의 우선순위를 말해요.", "the movie", "지금은 우선 점적을 멈추고, 청소는 나중에 해요.", "지금은 우선 점적을 멈추고, 회의는 나중에 해요.", "questions", "favors", "prices", "names"]
+  - ["진행 보고", pager, "are preparing과 calling 진행형 둘로 지금 동시에 하고 있는 일을 알려요. before anything else가 의사 호출이 가장 먼저라는 우선순위예요.", "the sandwich", "지금 샌드위치를 준비하고 다른 무엇보다 먼저 의사를 부르고 있어요.", "지금 프로타민을 주문하고 다른 무엇보다 먼저 의사를 부르고 있어요.", "calling", "thanking", "greeting", "hiring"]
+  - ["보고서 내용", board, "explains 뒤에 what happened와 what we did next 두 의문사 절을 and로 이어 보고서에 들어갈 두 내용을 말해요. exactly는 대충이 아니라 사실대로라는 뜻이에요.", "cancels", "이 사건 보고서는 무슨 일이 있었고 다음에 누가 왔는지 설명해요.", "이 안내문은 무슨 일이 있었고 다음에 무엇을 했는지 설명해요.", "explains", "cancels", "predicts", "repeats"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 용량사고 위기 4문장 순서
+    why: 의심되는 상황을 먼저 알리고, 그래서 점적을 멈추고 상태를 확인하고, 동시에 해독제를 준비하고 의사에게 알리고, 안정된 뒤 보고서로 닫아요.
+    lines:
+    - ["I think he was given ten times the ordered dose of heparin.", siren, "처방된 헤파린 용량의 10배가 투여된 것 같아요", "상황"]
+    - ["So we stop the drip first and check his labs and status now.", siren, "그래서 먼저 점적을 멈추고 지금 검사와 상태를 확인해요", "중단"]
+    - ["Right alongside that, we prepare protamine and notify the physician.", pill, "그와 동시에 프로타민을 준비하고 의사에게 알려요", "해독"]
+    - ["Once he's safe, we document and file an incident report.", pencil, "안전해지면 기록하고 사건 보고서를 제출해요", "보고서"]
+- title: 억제대 관련 질식·손상 위기
+  s:
+  - ["즉시 해제", siren, "Release와 reposition을 and로 이어 풀기와 자세 교정을 연달아 하라고 해요. immediately가 끝에서 지체 없음을 강조해요.", "the blinds", "블라인드를 풀고 즉시 자세를 바꿔줘요.", "억제대를 풀고 즉시 이불을 바꿔줘요.", "reposition", "recharge", "refill", "rehearse"]
+  - ["기도·호흡", stetho, "Check로 시작해 확인할 대상을 airway와 breathing 둘로 짚어요. right now가 끝에서 이 순간에 한다는 뜻을 더해요.", "bed and bedding", "지금 바로 침대와 이불을 확인해요.", "지금 바로 기도와 체중을 확인해요.", "airway", "bed", "wrist", "chart"]
+  - ["도움 요청", pager, "Call과 stay를 and로 이어 도움 요청과 곁을 지키기를 같이 하라고 해요. with him이 곁을 지키는 대상을 정해요.", "for coffee", "택시를 부르고 곁에 있어줘요.", "피자를 부르고 곁에 있어줘요.", "stay", "run", "shop", "dance"]
+  - ["상황 설명", faceWorried, "slid down 과거와 is tight 현재를 and로 이어 어떻게 이 상황이 됐고 지금 어떤지를 한 문장에 말해요. across his chest가 위험한 부위를 정확히 짚어요.", "across the bed rail", "이분이 일어나 앉아서 억제대가 가슴을 조이고 있어요.", "이분이 미끄러져 내려가서 시트가 가슴을 조이고 있어요.", "slid", "jumped", "climbed", "stepped"]
+  - ["호흡 먼저", stetho, "before we do anything else가 확인이 다른 모든 처치보다 앞서야 한다는 우선순위예요. need to는 선택이 아니라 해야 하는 일을 말해요.", "the laundry", "청소하기 전에 호흡부터 확인해야 해요.", "퇴근하기 전에 호흡부터 확인해야 해요.", "breathing", "weight", "diet", "mood"]
+  - ["역할 분담", pager, "I'll stay로 내가 맡을 일을 먼저 못 박고 someone else로 나머지 한 사람에게 부탁해요. please call for help now가 부탁이면서도 지금 바로라는 뜻이에요.", "bring a chair", "저는 여기 있을게요, 다른 분이 지금 물을 가져다주세요.", "저는 여기 있을게요, 다른 분이 지금 방송을 켜주세요.", "right", "just", "only", "still"]
+  - ["해제 후 사정", stetho, "Once it's off로 해제를 전제 조건으로 놓고 이어 할 일을 나열해요. reassess his airway right away가 풀렸다고 안심하지 않고 바로 다시 본다는 뜻이에요.", "his schedule", "풀리고 나면 자세를 바꾸고 식단을 다시 사정해요.", "풀리고 나면 이불을 바꾸고 기도를 다시 사정해요.", "reassess", "remember", "rewrite", "reserve"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 억제대 질식 위기 4문장 순서
+    why: 위험한 상황을 먼저 알리고, 한 사람은 풀고 한 사람은 도움을 부르고, 풀린 직후 기도와 호흡을 확인하고, 괜찮아지면 곁을 지키며 재사정해요.
+    lines:
+    - ["He slid down and the restraint is tight across his chest.", faceWorried, "이분이 미끄러져 억제대가 가슴을 조이고 있어요", "상황"]
+    - ["I'll release it and reposition him; someone else, please call for help now.", pager, "제가 풀고 자세를 바꿀게요, 다른 분이 지금 도움을 불러주세요", "해제"]
+    - ["With it released, we check his airway and breathing right now.", stetho, "풀린 뒤 지금 바로 기도와 호흡을 확인해요", "확인"]
+    - ["Once he's breathing comfortably, we stay with him and keep reassessing.", check, "편하게 숨 쉬면 곁에 있으면서 계속 재사정해요", "유지"]
+- title: 알람 무시 급변 위기
+  s:
+  - ["ABC 사정", stetho, "대시 뒤에 airway, breathing, circulation을 순서대로 나열해 사정 순서를 알려 줘요. now가 앞에 있어서 지금 바로 시작한다는 뜻이에요.", "paperwork", "지금 바로 사정해요, 기도, 호흡, 식단이요.", "지금 바로 사정해요, 벽, 호흡, 순환이요.", "circulation", "nutrition", "digestion", "elimination"]
+  - ["신속대응·산소", pager, "Call for와 start를 and로 이어 호출과 처치를 동시에 하라고 해요. the rapid response는 상태가 나빠질 때 부르는 팀의 줄임 이름이에요.", "the lights", "신속대응팀을 부르고 라디오를 시작해요.", "신속대응팀을 부르고 음악을 시작해요.", "oxygen", "nitrogen", "helium", "hydrogen"]
+  - ["사후 검토", magnify, "Afterward가 맨 앞에서 이 일이 응급 처치 이후라는 시점을 먼저 밝혀요. why 절이 사람이 아니라 알람이 놓친 이유를 따져요.", "the lunch", "나중에 알람을 언제 놓쳤는지 검토해요.", "나중에 기차를 왜 놓쳤는지 검토해요.", "review", "repeat", "request", "remove"]
+  - ["상황 보고", bell, "was sounding 과거진행형으로 알람이 한참 울리고 있었다는 흐름을 보여 줘요. but 뒤의 no one caught it in time이 놓친 결과를 사실로만 말해요.", "at lunch", "체온 알람이 울리고 있었지만 아무도 제때 알아채지 못했어요.", "산소포화도 전화가 울리고 있었지만 아무도 제때 알아채지 못했어요.", "sat", "heart", "temp", "pump"]
+  - ["즉시 주목", siren, "He's crashing now로 상황을 한마디로 알리고 대시 뒤 명령 둘을 and로 이어 모두를 환자에게 모으게 해요. stop what you're doing은 하던 일을 놓으라는 숙어예요.", "wash the floor", "지금 도착하고 있어요, 하던 일을 멈추고 이분을 봐주세요.", "지금 급변하고 있어요, 하던 일을 멈추고 이분을 불러주세요.", "crashing", "coughing", "crying", "sneezing"]
+  - ["안정 후 원인", magnify, "after he's stable이 끝에서 원인 규명이 안정된 뒤라는 순서를 정해요. figure out은 알아낸다는 구동사로 why 절을 목적어로 받아요.", "after lunch", "퇴원하고 나면 알람을 왜 놓쳤는지 알아낼 거예요.", "안정되고 나면 알람을 왜 샀는지 알아낼 거예요.", "stable", "hungry", "angry", "bored"]
+  - ["비난 없이", handshake2, "isn't about A — it's about B 틀로 목적을 비난에서 배움으로 바꿔요. learning why …가 배움의 내용을 의문사 절로 구체화해요.", "the lecture", "이건 비난이 아니라 왜 아무도 강의를 못 들었는지 배우는 거예요.", "이건 비난이 아니라 언제 아무도 알람을 못 들었는지 배우는 거예요.", "blame", "money", "speed", "luck"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 알람 무시 급변 4문장 순서
+    why: 앞서 알람을 놓친 사실을 말하고, 지금 급변하니 하던 일을 멈추고 보라고 하고, 사정하며 신속대응팀을 부르고, 안정된 뒤에 원인을 알아봐요.
+    lines:
+    - ["Earlier, his sat alarm was sounding, but no one caught it in time.", bell, "앞서 산소포화도 알람이 울렸지만 아무도 제때 알아채지 못했어요", "경위"]
+    - ["Now he's crashing — stop what you're doing and look at him.", siren, "지금 급변하고 있어요, 하던 일을 멈추고 이분을 봐주세요", "주목"]
+    - ["Assess him now and call for the rapid response.", stetho, "지금 바로 사정하고 신속대응팀을 불러요", "대응"]
+    - ["After he's stable, we figure out why the alarm got missed.", magnify, "안정되면 알람을 왜 놓쳤는지 알아내요", "원인"]
+- title: 전원·펌프 고장 위기 대응
+  s:
+  - ["전원 전환", gear, "Switch to 뒤에 두 가지 전원을 and로 이어 쓸 수 있는 대체 전원을 한꺼번에 말해요. red emergency outlets는 비상 발전기에 연결된 콘센트의 색 표시예요.", "the night light", "배터리 백업과 빨간 비상 조명으로 전환해요.", "라디오 백업과 빨간 비상 콘센트로 전환해요.", "battery", "solar", "wind", "gas"]
+  - ["수동 조절", gear, "Manually가 맨 앞에서 기계 대신 손으로 한다는 방식을 먼저 밝혀요. until pumps restart가 이 임시 조치의 끝나는 시점이에요.", "the ceiling lights", "펌프가 재시작될 때까지 위중한 환기구는 수동으로 조절해요.", "배터리가 재충전될 때까지 위중한 점적은 수동으로 조절해요.", "critical", "minor", "extra", "spare"]
+  - ["우선순위", star, "Prioritize와 first가 함께 쓰여 가장 먼저 지킬 것이 무엇인지 강조해요. life-sustaining은 끊기면 생명이 위험해지는 것을 가리켜요.", "freshly labeled", "생명 유지 주입을 먼저 번호 붙여요.", "생명 유지 주입을 먼저 접수해요.", "infusions", "snacks", "tools", "chores"]
+  - ["상황 알림", siren, "just dropped의 just는 방금 일어난 일이라는 뜻을 더하고 and 뒤에 결과를 이어요. every pump on this wall이 영향받는 범위를 벽 하나로 한정해요.", "on this floor", "방금 전원이 나갔고, 이 벽의 라디오가 전부 작동을 멈췄어요.", "어제 전원이 나갔고, 이 벽의 펌프가 전부 작동을 멈췄어요.", "dead", "hot", "loud", "full"]
+  - ["백업 안내", gear, "Our backup is 뒤에 두 가지를 and로 이어 쓸 수 있는 대체 전원을 알려 줘요. that wall은 먼 곳을 가리키는 that으로 저쪽 벽임을 보여요.", "in that room", "우리 백업은 배터리 전원과 저 벽의 빨간 조명이에요.", "우리 백업은 배터리 전원과 저 벽의 빨간 소화기예요.", "red", "blue", "green", "white"]
+  - ["수동 조절", gear, "Until 절이 맨 앞에서 이 조치가 임시임을 먼저 밝혀요. by hand는 기계가 아니라 사람 손으로라는 뜻의 숙어예요.", "by phone", "펌프가 재시작될 때까지 이 전등은 제가 손으로 조절할게요.", "펌프가 재시작될 때까지 이 점적은 제가 메모로 조절할게요.", "hand", "phone", "mail", "foot"]
+  - ["우선 주입", pill, "대시 뒤에 이유를 붙여 왜 이 둘이 먼저인지 알려 줘요. can't stop은 멈추면 안 된다가 아니라 멈출 수 없다는 강한 필요를 나타내요.", "the snacks and soda", "승압제와 진정제를 우선시해요, 그 모니터는 멈출 수 없어요.", "승압제와 진정제를 우선시해요, 그 주문은 멈출 수 없어요.", "pressors", "vitamins", "gowns", "linens"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 전원 고장 대응 4문장 순서
+    why: 전원이 나갔다는 상황을 먼저 알리고, 비상 전원으로 전환하고, 그 백업에서 위중한 점적을 수동으로 조절하고, 그중 생명 유지 주입을 우선해요.
+    lines:
+    - ["The power just dropped, and every pump on this wall is dead.", siren, "방금 전원이 나갔고 이 벽의 펌프가 전부 멈췄어요", "상황"]
+    - ["Switch to battery backup and the red emergency outlets.", gear, "배터리 백업과 빨간 비상 콘센트로 전환해요", "전환"]
+    - ["On that backup, we control the critical drips by hand until the pumps restart.", gear, "그 백업에서 펌프가 재시작될 때까지 위중한 점적은 손으로 조절해요", "수동"]
+    - ["We prioritize the life-sustaining ones, like the pressors and sedation.", pill, "승압제와 진정제 같은 생명 유지 주입을 우선시해요", "우선"]
+- title: 심각 안전사건 공개·소통
+  s:
+  - ["정직한 공개", speech, "disclose honestly에 with facts and empathy를 붙여 어떻게 말할지를 두 요소로 보여 줘요. facts가 먼저 오는 것은 감정보다 사실이 바탕이라는 뜻이에요.", "and pictures", "사실과 사진을 담아 정직하게 공개해요.", "사실과 공감을 담아 신속하게 공개해요.", "honestly", "quietly", "rarely", "loudly"]
+  - ["역할 분담", handshake2, "leads와 support로 앞에 서는 사람과 뒤에서 받치는 사람의 역할을 나눠요. and 뒤의 we support it은 간호사가 빠지는 게 아니라 다른 역할을 맡는다는 뜻이에요.", "the lunch break", "의사가 회의를 주도하고, 우리는 그걸 지지해요.", "의사가 공개를 주도하고, 우리는 그걸 정리해요.", "leads", "ends", "copies", "orders"]
+  - ["인정·계획", check, "acknowledge 뒤에 what happened와 our plan 두 내용을 and로 이어 사실 인정과 앞으로의 약속을 같이 말해요. make it right는 바로잡는다는 관용 표현이에요.", "our lunch", "무슨 일이 있었는지와 여행 계획을 인정해요.", "무슨 일이 있었는지와 바로잡을 비용을 인정해요.", "acknowledge", "memorize", "photograph", "translate"]
+  - ["가족 먼저", handshake2, "first와 before anyone else로 순서를 두 번 못 박아요. outside this room은 지금 이 자리에 없는 사람들을 가리켜요.", "during the break", "이 건물 밖의 다른 누구보다 먼저 가족에게 말해요.", "이 방 안의 다른 누구보다 먼저 가족에게 말해요.", "outside", "inside", "near", "behind"]
+  - ["지금과 나중", speech, "Right now와 after로 지금 할 수 있는 일과 나중에 나올 일을 나눠요. honestly를 덧붙여 모르는 것은 모른다고 말하겠다는 태도를 보여요.", "your phone calls", "지금은 정직하게 전화에 답하고 있고, 전체 검토는 나중이에요.", "지금은 정직하게 질문에 답하고 있고, 전체 회식은 나중이에요.", "honestly", "angrily", "lazily", "rudely"]
+  - ["사실만 말하기", shield, "세미콜론 앞에서는 하지 않는 일을, 뒤에서는 하는 일을 대비해 말해요. stick to는 벗어나지 않고 붙어 있는다는 구동사예요.", "recipes here", "여기서는 요리를 추측하지 않고 아는 사실만 말해요.", "여기서는 원인을 추측하지 않고 아는 사진만 말해요.", "stick", "return", "lean", "switch"]
+  - ["계획의 중요성", calendar, "as important as로 두 가지가 같은 무게임을 비교해요. going forward는 지금부터 앞으로라는 뜻으로 plan을 꾸며요.", "for lunch", "앞으로의 계획도 이미 일어난 일만큼 비싸요.", "주말 계획도 이미 일어난 일만큼 중요해요.", "important", "expensive", "popular", "famous"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 사건 공개 4문장 순서
+    why: 가족에게 가장 먼저 알린다는 원칙으로 시작하고, 그 대화를 의사가 이끌고, 그 안에서 일어난 일과 계획을 인정하고, 사실만 말한다는 태도로 닫아요.
+    lines:
+    - ["Before anything is shared outside this room, the family hears it first.", handshake2, "이 방 밖에 알리기 전에 가족이 가장 먼저 들어요", "가족"]
+    - ["In that conversation, the physician leads the disclosure, and we support it.", speech, "그 대화에서 의사가 공개를 이끌고 우리는 지지해요", "역할"]
+    - ["In it, we acknowledge what happened and our plan to make it right.", check, "그 안에서 일어난 일과 바로잡을 계획을 인정해요", "인정"]
+    - ["Through all of that, we stick to the facts we know and don't guess at causes.", shield, "그 모든 과정에서 아는 사실만 말하고 원인은 추측하지 않아요", "사실"]
