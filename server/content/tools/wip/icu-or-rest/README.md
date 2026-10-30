@@ -127,3 +127,6 @@ keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't a
 - **묶음 9 (ICU 마지막 3주제, 2026-10-30)**: core-language·core-family·core-safety-icu. 사용자 결정(전부 '추천대로'): 바꿈 8 — 통역사 설명 → 의사가 통역을 통해, 깜빡임 "한 번=예" 통일, 통역사 중재, 윤리위원회 "help decide", "I'm not hiding anything", "next few days", 독립 이중 확인 "each … then compare"(상황 2 goals[1]도), ICU 신속대응팀 → ICU 의사 / 유지 약 9 / chunks 24문장. 작업 `../kp-2026-10-30b/`. 정본 합침, ICU 위반 0.
   남은 작은 일: core-safety 2.4 "Let's stop and check this together before we give it."(비KP) "together" 표현 — 다음 손질 때.
   **ICU 66주제 한 번에 저작 완료.** 다음은 OR 33(묶음 1: massive-transfusion(Fable 표본)·count 수정 끝, keyPhrase 결정 3건 바꿈 받음; 묶음 2: preop-verification·tourniquet 저작 끝).
+
+- **OR 묶음 1 (2주제, 2026-10-30)**: or-massive-transfusion(Fable 표본)·or-count. 사용자 결정('추천대로'): 바꿈 3 — or-count 17 "Nothing leaves the room until we find it."(전원 정지 → 반출 금지, goals[1]도), MT 20 "Stop the transfusion—this looks like TACO."(tagline·goals[0]·skills도 '중단'으로), MT 19 "Should we ask the blood bank to order from the regional supplier?"(w-request 삭제) / 유지 나머지 / chunks or-count 6·MT 9문장(MT 6.1·7.0·11.1·17.0은 3조각 대안이 더 나빠 유지). 작업 `../kp-2026-10-30c/`. 정본 합침, OR 위반 0(경고 21은 이전 주제 MH 등).
+  남은 작은 일: or-count 17.0 "We're one needle / short" chunks(검토 목록 밖).

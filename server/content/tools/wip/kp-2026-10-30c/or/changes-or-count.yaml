@@ -416,3 +416,50 @@ changes:
   fields:
   - words
   why: w-run을 run late로 바꾸며 w-late 삭제 — 태그 뺌(검토 A W9)
+- kind: sentence
+  situation: 소실 바늘 필드 수색
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): Nobody moves until we find it → Nothing leaves the room until we find it(전원 정지로 읽힘 — 실제는 방에서 물건이 나가지 않게 하고 환자 처치는 계속; 검토 A K1). words [w-find] 그대로(room은 공통 쉬운 단어)'
+- kind: sentence
+  situation: 방사선 표지 거즈 확인
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let me confirm / each one / has the radiopaque / marker) → Let me confirm / each one / has / the radiopaque marker — 문장은 그대로'
+- kind: sentence
+  situation: 기구 분해 부품 계수
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(All / the small parts / need to be / accounted for) → All the small parts / need / to be / accounted for — 문장은 그대로'
+- kind: sentence
+  situation: 봉합 직전 거즈 불일치
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We''re one sponge / short / , we need / to search now) → We''re / one sponge short / , we need / to search now — 문장은 그대로'
+- kind: sentence
+  situation: 소실 바늘 필드 수색
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s search / the field, / drapes, and floor / systematically) → Let''s search / the field, drapes, and floor / systematically — 문장은 그대로'
+- kind: sentence
+  situation: 이물 잔류 의심 보고
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(This is / a possible retained object / — I''m documenting / it) → This is / a possible retained object / — I''m / documenting it — 문장은 그대로'
+- kind: sentence
+  situation: 계수 불일치 은폐 압력
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We have to / document and resolve / this properly) → We have to / document and resolve this / properly — 문장은 그대로'

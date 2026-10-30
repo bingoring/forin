@@ -431,3 +431,101 @@ changes:
   fields:
   - ko
   why: 수정 목록 반영(ko·example 정리)
+- kind: word-remove
+  id: w-request
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 19.2 문장을 바꿔 어느 문장도 태그하지 않게 됨(regional blood request → 혈액은행이 지역 공급처에 주문)'
+- kind: sentence
+  situation: 혈액 재고 소진 위기
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): Should we activate a regional blood request → Should we ask the blood bank to order from the regional supplier(미국에서 쓰는 절차 이름이 아님 — 지역 공급처 긴급 주문은 병원 혈액은행이 함; 검토 A K3); −w-activate·−w-request 태그 +w-bank 태그(w-activate는 19.4에 남음, w-request는 word-remove)'
+- kind: word
+  id: w-activate
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 옛 예문 문장을 바꿔 그 단어가 없어짐 — 같은 상황의 다른 문장으로 옮김'
+- kind: word
+  id: w-regional
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 순환 과부하 TACO
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): Slow the transfusion → Stop the transfusion(반응이 의심되면 미국 관행은 일단 멈추고 평가·보고; judge A); −w-slow 태그(3.1·20.4에 남음) +w-stop 태그'
+- kind: word
+  id: w-taco
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 혈액 가온 적용
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s route this / through / the warmer) → Let''s route / this / through the warmer — 문장은 그대로'
+- kind: sentence
+  situation: 수혈 속도 조정
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We can slow it / if the numbers / stabilize) → We can / slow it / if the numbers stabilize — 문장은 그대로'
+- kind: sentence
+  situation: 수혈 저체온 예방
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''ll raise / the room / temperature) → I''ll / raise / the room temperature — 문장은 그대로'
+- kind: sentence
+  situation: 희석성 응고장애
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(There''s diffuse oozing / from / the field) → There''s / diffuse oozing / from the field — 문장은 그대로'
+- kind: sentence
+  situation: 산-염기 대사 감시
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s get / an arterial / blood gas) → Let''s / get / an arterial blood gas — 문장은 그대로'
+- kind: sentence
+  situation: 반복 응고검사
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We''ll dose / product / off the latest results) → We''ll / dose product / off the latest results — 문장은 그대로'
+- kind: sentence
+  situation: 고칼륨혈증 부정맥
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Watch / the rhythm—it could / deteriorate fast) → Watch / the rhythm—it / could deteriorate fast — 문장은 그대로'
+- kind: sentence
+  situation: TRALI 급성 호흡곤란
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Sats are falling / with new / pulmonary edema) → Sats / are falling / with new pulmonary edema — 문장은 그대로'
+- kind: sentence
+  situation: 혈액 재고 소진 위기
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We''re down / to our last / two units) → We''re / down to / our last two units — 문장은 그대로'
