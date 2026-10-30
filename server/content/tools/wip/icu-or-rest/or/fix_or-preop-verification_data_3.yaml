@@ -1,0 +1,56 @@
+# 단어 수정 (A 검토 W1~W14) + 결정 11 삭제
+remove: [w-eye]
+set:
+  w-accept: {distractorsEn: [adapt, access]}
+  w-band: {distractorsEn: [brand, bond]}
+  w-anyone: {distractorsEn: [anything, everyone]}
+  w-count: {distractorsEn: [mount, bounce], ko: 해당되다, distractorsKo: [제외되다, 생략되다]}
+  w-goin: {distractorsEn: [go out, give in]}
+  w-prep: {ko: (수술 부위를) 소독하다, distractorsKo: [(수술 부위를) 봉합하다, (수술 부위를) 표시하다]}
+  w-mark: {distractorsKo: [지우다, 가리다]}
+  w-loud:
+    en: out loud
+    ipa: /ˌaʊt ˈlaʊd/
+    ko: 소리 내어
+    chips: [[out], [loud]]
+    decoyChips: [load]
+    distractorsEn: [out late, all out]
+    distractorsKo: [속으로, 글로 써서]
+    cue: 환자가 머릿속으로만 생각하지 말고 입 밖으로 말해 주길 바랄 때
+  w-id: {distractorsKo: [보험증, 영수증]}
+  w-send: {cue: 잘못 올라온 환자를 원래 병동으로 내려보낼 때}
+  w-consent: {decoyChips: [kon, cent]}
+  w-continue: {decoyChips: [cin, tan]}
+  w-mixup: {decoyChips: [max-, op]}
+  w-exact: {decoyChips: [ix, art]}
+  w-sign: {decoyChips: [sine]}
+  w-voice: {decoyChips: [vote]}
+  w-fast: {decoyChips: [fest]}
+  w-nobody: {decoyChips: [nu, bid]}
+  w-check: {decoyChips: [cheek]}
+  w-verify: {cue: 기록과 기준을 맞대어 틀림없는지 따져 보는 일 — 동의 시각이 투약 전인지 볼 때}
+  w-start: {cue: 응급 수술에서 첫 처치에 들어간 시각을 적을 때의 동사}
+  w-arrive: {cue: 이송된 병원의 기록이 이쪽에 와 닿을 때}
+  w-permission: {cue: 계획 밖의 시술을 하려면 환자에게서 받아야 하는 것}
+  w-must: {cue: 미성년자 동의서에 누가 서명할지는 선택이 아니라고 말할 때}
+  w-separately: {cue: 양쪽 수술에서 두 쪽을 한 번에 묶어 확인하지 않을 때}
+  w-comfortable: {cue: "동의서 없이 유도하려는 마취과에 우려를 꺼낼 때 'not ~'로"}
+  w-already: {cue: 동의서를 받기 전에 진정제가 벌써 들어갔을 때}
+  w-paperwork: {cue: 동의서·차트를 통틀어 말하는 행정 일감}
+  w-glance:
+    en: at a glance
+    ipa: /æt ə ɡlæns/
+    ko: 한눈에
+    chips: [[at], [a], [glance]]
+    distractorsEn: [at a distance, at a time]
+    distractorsKo: [멀리서, 한 번에]
+    cue: 오래 들여다보지 않고 한 번 스치듯 봐도 알아볼 수 있을 때
+  w-sedate: {tag: 수술 단계}
+  w-medicate: {tag: 수술 단계}
+  w-sedation: {tag: 수술 단계}
+  w-freeze: {ko: 그 자리에 멈추다}
+# 예문을 정해 주는 단어 (en 은 문장의 en 과 같아야 함)
+example:
+  w-floor: "8.3"
+  w-follow: "17.0"
+  w-stop: "7.0"
