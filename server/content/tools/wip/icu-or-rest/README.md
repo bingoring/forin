@@ -121,3 +121,5 @@ keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't a
   - 두 주제 모두 keyPhrase chunks 구 경계 다시 자르기(fix-*-A.md 목록).
   결정 뒤 순서: `../kp-<날짜>/`에 Opus KP 교체 → 정본 keyPhrases 줄 교체 → merge_dept_lessons → changes/icu/changes-<주제>.yaml 복사 → gencontent → verify(--changes) → go test·contentIcons → PR(#31 위에 쌓음).
   그 뒤 남은 ICU 3: core-language-icu·core-family-icu·core-safety-icu. 그다음 OR 33.
+  **묶음 8 keyPhrase 결정(사용자 2026-10-30 '추천대로', X-ray는 ②):** 바꿈 5 — mobility 18.2 provider to the bedside(w-rapid·w-response 삭제, 상황 18 goals[1]도 "담당의 침상 호출"로), handoff 13.3 "A repeat chest X-ray was ordered to rule out a pneumothorax."(w-placement 삭제), 20.3 crash, 14.0 per the order, 10.2 every two hours / 유지 7 / chunks 26문장. 작업 `../kp-2026-10-30/`. 정본 합침(2026-10-30), ICU 위반 0.
+  남은 작은 일: handoff 13.4 "…any new bleeding at the site."(비KP)는 기관지경 장면과 안 맞음 — 다음 손질 때.

@@ -531,3 +531,126 @@ changes:
   fields:
   - example
   why: 4.4의 'call this a stage-one injury'는 판정하다라 헤드워드 ko(부르다)와 안 맞아 15.4 문장으로 예문을 바꿈
+- kind: word-remove
+  id: w-rapid
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 18.2 문장을 바꿔 어느 문장도 태그하지 않게 됨(ICU 안에서는 신속대응팀이 아니라 담당의를 부름)'
+- kind: word-remove
+  id: w-response
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 18.2 문장을 바꿔 어느 문장도 태그하지 않게 됨(ICU 안에서는 신속대응팀이 아니라 담당의를 부름)'
+- kind: sentence
+  situation: 급성 폐색전 발생 위기
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): calling the rapid response → calling the provider to the bedside(ICU 안에는 담당의가 상주해 신속대응팀이 아니라 담당의를 침상으로 부름); +w-call +w-provider 태그, −w-rapid −w-response(word-remove)'
+- kind: sentence
+  situation: VTE 위험 평가·예방
+  index: 3
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''ll confirm / the chemical prophylaxis order / and any / contraindications) → I''ll confirm / the chemical prophylaxis order / and / any contraindications — 문장은 그대로'
+- kind: sentence
+  situation: 욕창 위험 사정
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Low mobility and moisture / are her biggest / factors) → Low mobility / and moisture / are her biggest factors — 문장은 그대로'
+- kind: sentence
+  situation: 조기 이동 스크리닝
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Her oxygenation and hemodynamics / meet the mobility / criteria) → Her oxygenation / and hemodynamics / meet the mobility criteria — 문장은 그대로'
+- kind: sentence
+  situation: 피부·압박점 사정
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(This area doesn''t blanch / — it may be / a stage-one / injury) → This area / doesn''t blanch / — it may be / a stage-one injury — 문장은 그대로'
+- kind: sentence
+  situation: 수동 관절운동
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''ll take / each joint gently / through its full / range) → I''ll take / each joint / gently / through its full range — 문장은 그대로'
+- kind: sentence
+  situation: 수동 관절운동
+  index: 3
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(This helps prevent / contractures while / he''s immobile) → This helps prevent / contractures / while he''s immobile — 문장은 그대로'
+- kind: sentence
+  situation: 욕창 단계별 관리
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(This looks like / a stage-two injury / with partial-thickness / loss) → This / looks like / a stage-two injury / with partial-thickness loss — 문장은 그대로'
+- kind: sentence
+  situation: 의료기기 관련 욕창 예방
+  index: 3
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(The collar and mask edges / are common / pressure / points) → The collar / and mask edges / are / common pressure points — 문장은 그대로'
+- kind: sentence
+  situation: ICU 획득 쇠약 예방
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Early mobility helps / prevent ICU-acquired / weakness) → Early mobility / helps prevent / ICU-acquired weakness — 문장은 그대로'
+- kind: sentence
+  situation: ICU 획득 쇠약 예방
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We''ll minimize / deep sedation to keep / her participating) → We''ll minimize / deep sedation / to keep her participating — 문장은 그대로'
+- kind: sentence
+  situation: 점진적 좌위·의자 이동
+  index: 3
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''m watching her vitals / and how she''s feeling / at each / step) → I''m watching / her vitals / and how she''s feeling / at each step — 문장은 그대로'
+- kind: sentence
+  situation: 영양·피부 통합 관리
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Adequate protein and calories / support wound / healing) → Adequate protein / and calories / support wound healing — 문장은 그대로'
+- kind: sentence
+  situation: 심부 욕창·감염 위기
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(The wound is deep / with foul / drainage / — this looks infected) → The wound / is deep / with foul drainage / — this looks infected — 문장은 그대로'
+- kind: sentence
+  situation: 심부 욕창·감염 위기
+  index: 3
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We may need / debridement and / cultures) → We may need / debridement / and cultures — 문장은 그대로'
+- kind: sentence
+  situation: 이동 중 낙상·손상 위기
+  index: 3
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''ll call for help / and assess her / from head / to toe) → I''ll call / for help / and assess her / from head to toe — 문장은 그대로'
+- kind: sentence
+  situation: 다발성 욕창·불응 목표 소통
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I want to talk / honestly about / his overall / condition) → I want to talk / honestly / about / his overall condition — 문장은 그대로'

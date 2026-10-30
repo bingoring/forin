@@ -650,3 +650,101 @@ changes:
   fields:
   - ko
   why: 구어 '오더났습니다' → '처방되었습니다' (검토 S4)
+- kind: word-remove
+  id: w-placement
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 13.3 문장을 바꿔 어느 문장도 태그하지 않게 됨(기관지경 뒤 엑스레이는 위치 확인이 아니라 기흉 확인)'
+- kind: sentence
+  situation: 검사·시술 후 인계
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): Repeat her chest X-ray … for placement → A repeat chest X-ray … to rule out a pneumothorax(Repeat가 동사 자리인 문법 오류, 기관지경 뒤 엑스레이는 위치가 아니라 기흉 확인); −w-placement(word-remove)'
+- kind: sentence
+  situation: 다수 중환자 동시 인계 우선화
+  index: 3
+  fields:
+  - en
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): If two go off → If two of them crash(환자에게 go off는 안 씀 — 경보가 울린다로 들림); +w-crash 태그 — ko 그대로'
+- kind: sentence
+  situation: 불안정 환자 인계 강조점
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): start pressors and call me → start pressors per the order and call me(승압제 시작을 처방 전제 없이 인계로 지시 — 업무 범위) — words 그대로, 빈칸을 처치(pressors)에서 per the order로 옮김'
+- kind: sentence
+  situation: night shift 인계 우선순위
+  index: 2
+  fields:
+  - en
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): a two-hourly neuro check → neuro checks every two hours(two-hourly는 영국·호주식, 미국은 every two hours·q2) — ko·words 그대로'
+- kind: sentence
+  situation: 활력·주입약 인계
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(She''s on norepinephrine / at eight / , titrating to a MAP / of sixty-five) → She''s on norepinephrine / at eight / , titrating / to a MAP of sixty-five — 문장은 그대로'
+- kind: sentence
+  situation: 활력·주입약 인계
+  index: 3
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Her pressure''s / been stable / for the last / two hours) → Her pressure''s / been stable / for / the last two hours — 문장은 그대로'
+- kind: sentence
+  situation: 라인·장치 목록 인계
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(He has / a right IJ central line / and a left / radial art line) → He has / a right IJ central line / and / a left radial art line — 문장은 그대로'
+- kind: sentence
+  situation: 라인·장치 목록 인계
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(The Foley''s draining well / and the NG / is to low / suction) → The Foley''s draining well / and the NG / is / to low suction — 문장은 그대로'
+- kind: sentence
+  situation: 간호 문제·계획 인계
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Top priority is / her respiratory status / — watch her / weaning trial) → Top priority is / her respiratory status / — watch / her weaning trial — 문장은 그대로'
+- kind: sentence
+  situation: 알레르기·주의사항 전달
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(There''s a latex allergy / flag on / her chart / too) → There''s / a latex allergy flag / on her chart / too — 문장은 그대로'
+- kind: sentence
+  situation: OR에서 ICU 수술후 인계
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(What were / the estimated blood loss / and last / pressor doses) → What were / the estimated blood loss / and / last pressor doses — 문장은 그대로'
+- kind: sentence
+  situation: cath lab에서 ICU 인계
+  index: 4
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let me read back / the sheath status / and hold / parameters) → Let me / read back / the sheath status / and hold parameters — 문장은 그대로'
+- kind: sentence
+  situation: 응급실에서 ICU 입실 인계
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Is he on any / pressors coming / up / from the ED) → Is he on / any pressors / coming up / from the ED — 문장은 그대로'
+- kind: sentence
+  situation: 응급실에서 ICU 입실 인계
+  index: 3
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let me confirm / his lines / , antibiotics / , and last / vitals) → Let me confirm / his lines / , antibiotics / , and last vitals — 문장은 그대로'
