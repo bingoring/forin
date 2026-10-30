@@ -1,0 +1,129 @@
+금식 시작 시각 확인:
+- kind: slider
+  words: [w-snack, w-count, w-solid]
+  cue: A patient says, "I only had one small cracker at 6 a.m." How do you describe that back to her?
+  scale: [It counts as solid food, It's a serious violation, Your surgery is canceled]
+  answerAt: 0
+  why: 간호사는 '그것도 고형식으로 쳐요'라고 사실만 담담하게 말해요. 위반이라거나 취소라는 말은 간호사가 정할 일이 아니고, 환자를 겁주기만 해요. 진행 여부는 마취과가 판단해요.
+  example: Even a small snack counts as solid food for this.
+  exKo: 간단한 간식도 이 경우에는 고형식으로 쳐요.
+- kind: swap
+  words: [w-last, w-sip, w-drink]
+  who: 간호사 → 환자 · 물 마신 시각 묻기
+  icon: me
+  before: ['', 'Did you drink anything at all since last night?', '']
+  options: ['Did you drink anything at all since last night?', 'When exactly did you last have a sip of water?', 'You haven''t had any water since midnight, right?']
+  answer: When exactly did you last have a sip of water?
+  notes: {'When exactly did you last have a sip of water?': 마지막 시각을 직접 말하게 하는 질문이라 몇 시에 마셨는지 정확히 알 수 있다., 'Did you drink anything at all since last night?': 예·아니오로만 답할 수 있어 마지막 시각이 나오지 않는다., 'You haven''t had any water since midnight, right?': 답을 먼저 말해 버려서 환자가 '네' 하고 넘어가기 쉽다.}
+  why: 금식 확인은 마지막 시각을 환자가 직접 말하게 해야 해요. 한 모금도 포함해서 묻고, '안 드셨죠?'처럼 답을 정해 주지 않아요.
+  ko: 마지막으로 물 드신 게 언제예요?
+약물 알레르기 문진:
+- kind: slider
+  words: [w-severity, w-swell, w-rash]
+  cue: 'Patient: "My lips puffed up and I broke out in welts, but I could breathe fine." How do you record it?'
+  scale: [Just a mild rash, Swelling and hives, 'Swelling, hives, and trouble breathing']
+  answerAt: 1
+  why: 붓기와 두드러기는 있었지만 호흡곤란은 없었다고 했으니 그만큼만 정확히 적어요. 가볍게 줄이거나 없던 호흡곤란을 보태면 마취팀이 잘못 대비해요.
+  example: I'll note the severity and make sure anesthesia sees it before we start.
+  exKo: 심각도를 기록해서 시작 전에 마취과도 확인하게 할게요.
+- kind: context
+  words: [w-allergy]
+  word: allergy
+  ko: 알레르기
+  scenes:
+  - {who: 간호사 → 마취팀, icon: speech, en: 'Penicillin allergy: hives and swelling, noted in the chart.', ok: true}
+  - {who: 환자에게, icon: me, en: 'You told us you have a penicillin allergy, so we''ve marked it for the whole team.', ok: true}
+  - {who: 차트 기록, icon: board, en: 'Allergy? She says penicillin makes her puff up like crazy.', ok: false, fix: 'Allergy: penicillin (hives, swelling). Flagged in the chart.'}
+  why: 뜻은 셋 다 '알레르기'예요. 팀에는 짧게, 환자에게는 들은 내용을 쉬운 말로 확인해요. 하지만 차트는 구어체 감상이 아니라 증상·약 이름을 정확하고 건조하게 적어야 다른 사람이 보고 그대로 알 수 있어요.
+과거 수술·마취 이력:
+- kind: slider
+  words: [w-wake, w-feel, w-anesthesia]
+  cue: 'Patient: "Honestly, the only thing I remember is feeling dopey for a little while." How do you describe that to the team?'
+  scale: [Mild grogginess only, Significant trouble waking up, A severe reaction to anesthesia]
+  answerAt: 0
+  why: 환자가 말한 만큼, 약간 멍했다는 것만 그대로 전해요. 없던 문제를 키워 말하면 마취팀이 불필요하게 대비하고, 환자가 말한 내용이 왜곡돼요.
+  example: How did you feel waking up from your last anesthesia?
+  exKo: 지난번 마취에서 깨어나실 때 기분이 어떠셨어요?
+- kind: context
+  words: [w-nausea]
+  word: nausea
+  ko: 메스꺼움
+  scenes:
+  - {who: 환자에게, icon: me, en: 'You felt nausea after your last anesthesia, so we''ll let the anesthesia team know.', ok: true}
+  - {who: 차트 기록, icon: board, en: 'Prior anesthesia: nausea postop, resolved by evening.', ok: true}
+  - {who: 간호사 → 마취팀, icon: speech, en: 'She felt a little queasy last time, no big deal, some nausea or whatever.', ok: false, fix: 'She had nausea after her last anesthesia, so I wanted you to know.'}
+  why: 뜻은 셋 다 '메스꺼움'이에요. 환자에게는 쉬운 말로, 차트에는 짧게 적어요. 하지만 마취팀에 알릴 때 '별일 아니고 뭐 그런 거'처럼 가볍게 말하면 위험 정보로 들리지 않아요. 있었던 일과 시점을 분명히 전해요.
+복용 약물 목록 확인:
+- kind: slider
+  words: [w-dose, w-pill, w-list]
+  cue: 'Patient: "It''s a little white pill... the bottle had a 1 and a 0 on it, I think?" How do you report the dose?'
+  scale: [No dose was reported, Patient thinks it's ten milligrams, Dose verified with the pharmacy]
+  answerAt: 1
+  why: 환자가 '아마 10mg'이라고 했을 뿐이니 '환자 말로는 10mg'이라고 출처를 밝혀 전해요. 확인하지 않은 용량을 확인된 것처럼 말하면 투약 오류로 이어질 수 있어요.
+  example: Do you know the names and doses?
+  exKo: 약 이름과 용량도 아세요?
+- kind: context
+  words: [w-thinner]
+  word: thinner
+  ko: 혈액 항응고제
+  scenes:
+  - {who: 간호사 → 집도의, icon: speech, en: 'She''s on a blood thinner, and her last dose was Tuesday night.', ok: true}
+  - {who: 수술 기록, icon: board, en: 'Meds: blood thinner, daily. Last dose Tuesday 9 PM.', ok: true}
+  - {who: 불안한 환자에게, icon: faceWorried, en: You are on a blood thinner of the vitamin K antagonist class with a variable INR., ok: false, fix: 'You take a blood thinner, so I''ll tell the surgeon exactly when you last took it.'}
+  why: 뜻은 셋 다 '혈액 항응고제'예요. 의료진끼리는 마지막 복용 시점을 짧게 전하면 충분하지만, 환자에게 약 계열이나 INR 같은 용어로 말하면 못 알아듣고 불안해해요. 환자에게는 알고 있는 사실을 쉬운 말로 확인해요.
+기저 활력징후 측정:
+- kind: slider
+  words: [w-heart, w-fast, w-nervous]
+  cue: His monitor reads 104 on arrival, and he keeps wringing his hands. What do you tell him?
+  scale: [Your pulse is a bit fast, Your pulse is quite fast and worrying, Your pulse is dangerously fast]
+  answerAt: 0
+  why: 긴장한 환자에게는 '조금 빠르다'고 사실만 담담하게 말해요. 위험하다고 부풀리면 불안이 더 커지고, 그러면 맥박이 더 빨라질 수 있어요. 수치는 그대로 기록해서 필요하면 팀에 알려요.
+  example: Your heart's beating a little fast, which often happens when people feel nervous.
+  exKo: 심장이 조금 빨리 뛰는데, 긴장하면 흔히 그래요.
+- kind: swap
+  words: [w-heart, w-fast, w-nervous]
+  who: 간호사 → 긴장한 환자 · 수치 설명
+  icon: me
+  before: ['', 'Your heart rate is tachycardic, above the usual range.', '']
+  options: ['Your heart rate is tachycardic, above the usual range.', 'Your heart is racing dangerously fast, and that worries me.', 'Your pulse is a bit fast, which is common when nervous.']
+  answer: Your pulse is a bit fast, which is common when nervous.
+  notes: {'Your pulse is a bit fast, which is common when nervous.': '환자가 알아듣는 쉬운 말이고, 긴장 때문일 수 있다는 점까지 알려서 안심시킨다.', 'Your heart rate is tachycardic, above the usual range.': 의료진끼리의 용어라 환자는 뜻을 몰라 오히려 불안해한다., 'Your heart is racing dangerously fast, and that worries me.': 사실보다 무겁게 들려 불안을 키운다.}
+  why: 같은 수치라도 긴장한 환자에게는 쉬운 말로, 의료진끼리는 정확한 용어로 말해요.
+  ko: 맥박이 조금 빠른데, 긴장하면 흔히 그래요
+키·체중·BMI 확인:
+- kind: slider
+  words: [w-estimate, w-rough, w-dose]
+  cue: A patient guesses her weight, but her medication dose depends on it. How firmly do you ask for a measured weight?
+  scale: [A guess is perfectly fine, A guess works for most things, Dosing needs a real weight]
+  answerAt: 2
+  why: 약 용량은 체중으로 계산하니 어림짐작으로는 안 되고 실제로 재야 한다는 점을 분명히 말해요. 다만 '틀리면 큰일'처럼 겁을 주지는 않고 이유를 담담히 설명해요.
+  example: Even a rough estimate helps, but the real number is safer.
+  exKo: 대략의 추정치도 도움이 되지만, 실제 수치가 더 안전해요.
+- kind: context
+  words: [w-estimate]
+  word: estimate
+  ko: 추정치
+  scenes:
+  - {who: 간호사 → 마취팀, icon: speech, en: 'The weight is only an estimate, so I''m weighing her now.', ok: true}
+  - {who: 차트 기록, icon: board, en: 'Estimate only: 70 kg per patient. Measured weight pending.', ok: true}
+  - {who: 불안한 환자에게, icon: faceWorried, en: Your body mass estimate is insufficient for pharmacokinetic dosing., ok: false, fix: 'A guess is okay for now, but we''ll measure your weight so the dose is right.'}
+  why: 뜻은 셋 다 '추정치'예요. 팀과 차트에는 추정치임을 짧게 밝히지만, 환자에게 '약동학적 용량 계산에 부족하다'고 말하면 못 알아듣고 위축돼요. 쉬운 말로 재야 하는 이유를 알려요.
+물 한 모금 금식 위반:
+- kind: slider
+  words: [w-cancel, w-shift, w-surgery]
+  cue: A patient admits he drank half a cup of water an hour ago. What do you tell him about his surgery?
+  scale: [Everything stays exactly as planned, The timing may need to shift, Your surgery is canceled]
+  answerAt: 1
+  why: 진행·연기·취소는 마취과가 정해요. 간호사는 '시간이 조정될 수 있다'까지만 말하고 보고하겠다고 해요. '그대로 진행'이라거나 '취소'라고 단정하면 간호사가 정하지 못하는 일을 약속하게 돼요.
+  example: Your surgery isn't canceled, but the timing might need to shift.
+  exKo: 수술이 취소되는 건 아니지만, 시간이 조정될 수 있어요.
+- kind: swap
+  words: [w-report, w-decide, w-anesthesia]
+  who: 간호사 → 걱정하는 환자 · 위반 보고
+  icon: me
+  before: ['', 'You broke the rules, so I have to report you now.', '']
+  options: [I need to let anesthesia know so they can decide., 'You broke the rules, so I have to report you now.', 'Don''t worry about it, we''ll keep this between us.']
+  answer: I need to let anesthesia know so they can decide.
+  notes: {I need to let anesthesia know so they can decide.: '비난 없이 마취과에 알려야 하는 이유를 말하고, 결정은 마취과가 한다고 알려 준다.', 'You broke the rules, so I have to report you now.': 환자를 탓하는 말투라 다음부터 사실대로 말하기 어려워진다., 'Don''t worry about it, we''ll keep this between us.': 마취과에 알리지 않겠다는 말이라 안전을 해친다.}
+  why: 금식을 어긴 환자에게는 탓하지 않고, 안전을 위해 마취과에 알려야 한다고 말해요. 숨기겠다는 약속은 절대 하지 않아요.
+  ko: 마취과에 알려서 결정하도록 할게요

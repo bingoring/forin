@@ -1,0 +1,130 @@
+최근 상기도 감염:
+- kind: slider
+  words: [w-symptom, w-nose, w-simple]
+  cue: 'Patient: "Just a little clear runny nose, no fever, no cough." How do you describe the symptoms?'
+  scale: [No symptoms, Mild cold symptoms, A severe infection]
+  answerAt: 1
+  why: 맑은 콧물만 있고 열도 기침도 없다고 했으니 '가벼운 감기 증상'이라고 전해요. 증상이 없다고 하면 사실과 다르고, 심한 감염이라고 부풀리면 불필요한 연기로 이어질 수 있어요. 진행 여부는 마취과가 결정해요.
+  example: A simple runny nose is different from a fever with a bad cough.
+  exKo: 단순 콧물과 열을 동반한 심한 기침은 달라요.
+- kind: swap
+  words: [w-cough, w-congestion, w-fever]
+  who: 간호사 → 마취과 · 증상 보고
+  icon: speech
+  before: ['', 'He''s sick, so cancel the surgery for him today, please.', '']
+  options: ['He''s sick, so cancel the surgery for him today, please.', 'Three days of cough and congestion, no fever. Your call?', 'He''s fine, just a little cold, nothing to worry about here.']
+  answer: Three days of cough and congestion, no fever. Your call?
+  notes: {'Three days of cough and congestion, no fever. Your call?': 증상과 기간을 구체적으로 전하고 결정은 마취과에 맡긴다., 'He''s sick, so cancel the surgery for him today, please.': 수술을 취소할지는 마취과나 집도의가 정한다. 간호사가 단정할 일이 아니다., 'He''s fine, just a little cold, nothing to worry about here.': 간호사가 가볍게 판단해 버려서 마취과가 필요한 정보로 판단하지 못한다.}
+  why: 상기도 증상은 증상과 기간을 구체적으로 전하고, 수술을 진행할지는 마취과에 묻는 것이 간호사의 역할이에요.
+  ko: 사흘째 기침과 코막힘이 있고 열은 없어요. 판단 부탁드려요
+응급 환자 금식 위반:
+- kind: slider
+  words: [w-aspiration, w-risk, w-induction]
+  cue: An emergency patient ate a full meal two hours ago. How do you describe the aspiration risk to the team?
+  scale: [Low aspiration risk, Some aspiration risk, High aspiration risk]
+  answerAt: 2
+  why: 방금 식사한 응급 환자는 유도 중 흡인 위험이 높다고 분명히 전해요. 유도 방법을 정하는 것은 마취과지만, 위험을 낮게 말하면 준비가 늦어져요.
+  example: Full stomach means high risk of aspiration during induction.
+  exKo: full stomach는 유도 중 흡인 위험이 크다는 뜻이에요.
+- kind: context
+  words: [w-aspiration]
+  word: aspiration
+  ko: 흡인(폐로)
+  scenes:
+  - {who: 간호사 → 마취과, icon: speech, en: 'Full stomach, so there''s a high aspiration risk at induction.', ok: true}
+  - {who: 환자에게, icon: me, en: 'Because your stomach is full, we''re taking extra care against aspiration, which means stomach contents getting into your lungs.', ok: true}
+  - {who: 차트 기록, icon: board, en: 'Aspiration? He just ate, whatever.', ok: false, fix: 'Aspiration precautions: suction at bedside, RSI planned.'}
+  why: 뜻은 셋 다 '흡인'이에요. 팀에는 위험을 짧게, 환자에게는 풀어서 설명해요. 하지만 차트에 '방금 먹었음, 뭐'처럼 적으면 흡인 대비가 기록으로 남지 않아요. 준비한 것(흡인기·유도 계획)을 정확히 적어요.
+조영제 아나필락시스 병력:
+- kind: slider
+  words: [w-serious, w-reaction, w-throat]
+  cue: 'Patient: "After the dye my throat felt tight and I broke out in hives." How do you flag it?'
+  scale: [A minor reaction, A serious reaction, A critical emergency]
+  answerAt: 1
+  why: 목이 조이고 두드러기가 났다면 가볍게 넘기지 않고 '심각한 반응'으로 표시해서 팀에 알려요. 병명을 단정하는 것은 의사의 일이고, 지금 상황은 비상이 아니므로 '위급'이라고 하지도 않아요.
+  example: That's a serious reaction — I'm marking you as high-risk.
+  exKo: 그건 심각한 반응이네요, 고위험군으로 표시할게요.
+- kind: swap
+  words: [w-serious, w-mark, w-team]
+  who: 간호사 → 환자 · 병력 청취
+  icon: me
+  before: ['', 'That sounds like a side effect, nothing to be alarmed about.', '']
+  options: ['That sounds like a side effect, nothing to be alarmed about.', 'That sounds like nothing to worry about, so let''s move on.', 'That sounds like a serious reaction, so I''m marking it.']
+  answer: That sounds like a serious reaction, so I'm marking it.
+  notes: {'That sounds like a serious reaction, so I''m marking it.': '환자가 말한 증상을 가볍게 보지 않고, 표시해서 팀에 알리겠다고 말한다.', 'That sounds like a side effect, nothing to be alarmed about.': 심각한 반응을 단순 부작용으로 줄여서 고위험 표시를 놓치게 한다., 'That sounds like nothing to worry about, so let''s move on.': 환자에게 괜찮다고 안심시켜서 중요한 병력을 흘리게 한다.}
+  why: 조영제 뒤에 목이 조이고 두드러기가 났다면 부작용으로 줄이지 않고 심각한 반응으로 표시해서 팀에 알려요.
+  ko: 심각한 반응 같아서 팀에 표시해 둘게요
+원인 미상 약물 반응:
+- kind: slider
+  words: [w-watch, w-closely, w-swell]
+  cue: 'Patient: "Right after the injection my face puffed up and I felt dizzy, but it passed." How closely do you watch him?'
+  scale: [Check once before surgery, Check on him now and then, Stay with him and watch closely]
+  answerAt: 2
+  why: 원인을 모르는 반응이 붓기와 어지러움까지 있었으면 곁에서 가까이 지켜보고, 응급약을 손닿는 곳에 둬요. 한 번 지나갔다고 가볍게 보면 다시 나타났을 때 늦어요.
+  example: We'll watch you closely and keep emergency meds within reach.
+  exKo: 가까이서 지켜보면서 응급약을 손닿는 곳에 둘게요.
+- kind: context
+  words: [w-dizziness]
+  word: dizziness
+  ko: 어지러움
+  scenes:
+  - {who: 간호사 → 마취과, icon: speech, en: Dizziness with facial swelling after the drug. I'm flagging a serious reaction., ok: true}
+  - {who: 차트 기록, icon: board, en: C/o dizziness and facial swelling after the injection., ok: true}
+  - {who: 불안한 환자에게, icon: faceWorried, en: 'Your dizziness is vertiginous, likely secondary to hypotension.', ok: false, fix: 'You feel dizzy and your face swelled up, so we''re watching you closely.'}
+  why: 뜻은 셋 다 '어지러움'이에요. 팀과 차트에는 증상을 짧게 적지만, 환자에게 '현훈성'이나 '저혈압 때문'처럼 원인을 단정하는 말을 하면 간호사의 진단이 되고 겁도 줘요. 환자가 말한 증상을 그대로 확인하고 지켜보겠다고 말해요.
+마취 가족력 MH 의심:
+- kind: slider
+  words: [w-history, w-important]
+  cue: 'Patient: "My brother had a very high fever and stiff muscles during surgery, and he nearly died." How do you flag it?'
+  scale: [A minor family detail, Important family history, A confirmed diagnosis for him]
+  answerAt: 1
+  why: 형제에게 생겼던 일은 환자의 중요한 가족력으로 마취과에 바로 전해요. 사소하게 넘기면 위험하고, 진단이 확정된 것처럼 말하면 사실이 아니에요. 진단은 의사의 일이에요.
+  example: That could be malignant hyperthermia — very important to know.
+  exKo: 그건 악성 고열일 수 있어요, 아주 중요한 정보예요.
+- kind: swap
+  words: [w-fever, w-stiff, w-muscle]
+  who: 간호사 → 마취과 · 가족력 전달
+  icon: speech
+  before: ['', His brother had some kind of problem under anesthesia., '']
+  options: [His brother had a high fever and stiff muscles in surgery., His brother had some kind of problem under anesthesia., 'His brother is fine now, so it''s probably nothing at all.']
+  answer: His brother had a high fever and stiff muscles in surgery.
+  notes: {His brother had a high fever and stiff muscles in surgery.: 환자가 말한 증상을 구체적으로 전해서 마취과가 가족력의 의미를 판단할 수 있다., His brother had some kind of problem under anesthesia.: 무슨 문제인지 빠져 있어 마취과가 위험을 가늠하지 못한다., 'His brother is fine now, so it''s probably nothing at all.': 간호사가 가볍게 판단해 버려서 중요한 가족력이 묻힌다.}
+  why: 가족력은 구체적인 증상을 그대로 전해야 마취과가 그 의미를 판단해요. 흐릿한 말이나 '별일 아닐 것'이라는 짐작은 위험한 정보를 묻어요.
+  ko: 형제분이 수술 중에 고열과 근육 경직이 있었어요
+항응고제 복용 미확인 도착:
+- kind: slider
+  words: [w-report, w-bleed, w-risk]
+  cue: A patient took his blood thinner this morning and is scheduled in one hour. How soon do you report it?
+  scale: [At the end of my shift, Before my next patient, Right now]
+  answerAt: 2
+  why: 항응고제를 방금 먹은 환자는 출혈 위험이 달라지니 시간을 끌지 않고 지금 바로 보고해요. 진행·지연은 팀이 정해요.
+  example: This changes your bleeding risk, so I need to report it now.
+  exKo: 출혈 위험이 달라지니 지금 바로 보고해야 해요.
+- kind: context
+  words: [w-reassess]
+  word: reassess
+  ko: 재평가하다
+  scenes:
+  - {who: 간호사 → 집도의, icon: speech, en: I'll reassess his bleeding risk once we confirm the last dose., ok: true}
+  - {who: 수술 기록, icon: board, en: Bleeding risk to be reassessed after last dose verified., ok: true}
+  - {who: 불안한 환자에게, icon: faceWorried, en: We will reassess your coagulopathic risk stratification shortly., ok: false, fix: 'Once we know when you took your last dose, we''ll look at the risk again to keep you safe.'}
+  why: 뜻은 셋 다 '재평가하다'예요. 집도의와 기록에는 짧게 쓰지만, 환자에게 '응고 이상 위험 층화'라고 말하면 못 알아듣고 놀라요. 환자에게는 마지막 복용 시점을 알게 되면 다시 살펴본다고 쉽게 말해요.
+금식 확인 불가 무의식:
+- kind: slider
+  words: [w-assume, w-full, w-stomach]
+  cue: An unconscious patient arrives, and nobody knows when he last ate. How do you describe his stomach to the team?
+  scale: [Probably empty, Unknown fullness, Assumed full]
+  answerAt: 2
+  why: 마지막 식사를 확인할 수 없는 의식 없는 환자는 가득 찬 것으로 간주하고 대비해요. 비어 있을 것이라는 짐작은 흡인 위험을 놓치게 해요. 유도 방법은 마취과가 정해요.
+  example: We can't confirm NPO status, so assume a full stomach.
+  exKo: 금식 여부를 확인할 수 없으니 full stomach로 간주할게요.
+- kind: swap
+  words: [w-confirm, w-npo, w-assume]
+  who: 간호사 → 마취과 · 금식 상태 보고
+  icon: speech
+  before: ['', 'His NPO status is fine, so we can go ahead with surgery.', '']
+  options: ['His NPO status is fine, so we can go ahead with surgery.', 'We can''t confirm his NPO status, so we assume a full stomach.', 'He''s probably empty, so there''s no need to get ready for that.']
+  answer: We can't confirm his NPO status, so we assume a full stomach.
+  notes: {'We can''t confirm his NPO status, so we assume a full stomach.': 확인하지 못했다는 사실과 안전한 가정을 함께 전한다., 'His NPO status is fine, so we can go ahead with surgery.': 확인하지 않은 것을 확인한 것처럼 말해서 위험하다., 'He''s probably empty, so there''s no need to get ready for that.': 짐작으로 준비를 건너뛰게 해서 흡인 위험을 놓친다.}
+  why: 금식 여부를 확인하지 못했다면 확인한 것처럼 말하지 않고, '확인 불가이므로 가득 찬 것으로 간주한다'고 전해요.
+  ko: 금식 여부를 확인할 수 없어서 가득 찬 것으로 간주해요
