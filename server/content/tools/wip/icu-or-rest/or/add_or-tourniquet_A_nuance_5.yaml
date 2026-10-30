@@ -1,0 +1,56 @@
+압력 오류 지속 출혈:
+  - kind: slider
+    words: [w-bleed, w-continue, w-field]
+    cue: "The field shows only a slow ooze — much less than expected with the cuff up."
+    scale: [A little oozing, Steady bleeding, Heavy bleeding]
+    answerAt: 0
+    why: "조금 배어 나오는 정도는 oozing이에요. 지혈대가 올라가 있는데 계속 steady하게 피가 나면 압력이나 장비를 의심하고, 지금은 그 정도가 아니라서 가볍게 말해요."
+    example: "There's a little oozing in the field."
+    exKo: "수술 영역에 조금 배어 나와요."
+  - kind: swap
+    words: [w-check, w-device, w-pressure, w-bleed]
+    who: "순환 간호사 → 집도의 · 출혈 지속"
+    icon: speech
+    before: ["Dr. Lee, ", "I turned the pressure up", " — it's still bleeding."]
+    options: [I'm checking the device and the pressure, I turned the pressure up, I'll just wait and see]
+    answer: I'm checking the device and the pressure
+    notes: {I'm checking the device and the pressure: "장비와 압력을 점검하고 있다고 알린다. 압력을 바꿀지는 집도의와 맞춘다.", I turned the pressure up: "압력은 집도의가 정한다. 허락 없이 올렸다고 하면 업무 범위를 벗어난다.", I'll just wait and see: "출혈이 계속되는데 지켜보기만 하겠다는 말이라 대응이 늦다."}
+    why: "출혈이 계속되면 간호사는 장비와 압력부터 점검해 알려요. 압력을 임의로 올리거나 그냥 지켜보지 않아요."
+    ko: "장비와 압력을 확인하고 있어요 — 아직 출혈이 있어요"
+재관류 대사 급변:
+  - kind: slider
+    words: [w-surge, w-metabolic]
+    cue: "Anesthesia says the numbers after release jumped sharply and suddenly."
+    scale: [a slight shift, a gradual change, a metabolic surge]
+    answerAt: 2
+    why: "'surge'는 갑자기 크게 치솟는 것이에요. 푼 직후 수치가 확 뛰면 metabolic surge예요. 조금 바뀌거나 서서히 변하는 것과는 달라요."
+    example: "We're seeing a metabolic surge after release."
+    exKo: "푼 뒤 대사성 급증이 보여요."
+  - kind: swap
+    words: [w-ready, w-assist, w-whatever]
+    who: "순환 간호사 → 마취과 · 수치가 치솟을 때"
+    icon: speech
+    before: ["Anesthesia, ", "I'm drawing up what I think you need", "."]
+    options: [I'm ready to assist with whatever you need, I'm drawing up what I think you need, I'll start the treatment on my own]
+    answer: I'm ready to assist with whatever you need
+    notes: {I'm ready to assist with whatever you need: "필요한 것을 마취과가 정하게 하고 돕겠다고 한다.", I'm drawing up what I think you need: "지시 없이 약을 준비하면 틀린 약을 준비할 수 있다.", I'll start the treatment on my own: "처치는 마취과가 정하고 한다. 간호사가 단독으로 시작하지 않는다."}
+    why: "처치는 마취과가 정해요. 간호사는 '무엇이든 돕겠다'고 하고 지시를 기다려요."
+    ko: "필요한 건 뭐든 도울 준비가 됐어요"
+장시간 허혈 근손상:
+  - kind: slider
+    words: [w-concern, w-compartment, w-sign]
+    cue: "The tourniquet was up for a long stretch, and the leg feels tense afterward."
+    scale: [Nothing to worry about, A concern worth watching, Compartment syndrome confirmed]
+    answerAt: 1
+    why: "오래 올려 두었으면 구획 징후를 지켜볼 만한 우려예요. 간호사는 진단을 확정하지 않고 징후를 관찰해 보고해요. '걱정 없다'와 '확진' 모두 맞지 않아요."
+    example: "Muscle injury is a concern after a long ischemia time."
+    exKo: "허혈 시간이 길면 근손상이 우려돼요."
+  - kind: context
+    words: [w-document]
+    word: document
+    ko: 문서로 남기다
+    scenes:
+      - {who: 수술 기록, icon: board, en: "Total tourniquet time documented.", ok: true}
+      - {who: 집도의에게, icon: speech, en: "Dr. Kim, I'll document the total tourniquet time.", ok: true}
+      - {who: 마취에서 깬 환자에게, icon: me, en: "I'll document your muscle damage.", ok: false, fix: "We kept the tourniquet on your leg for a while, so we'll keep a close eye on it."}
+    why: "뜻은 셋 다 '기록으로 남기다'예요. document는 서류 용어라 환자에게는 딱딱하고 불안하게 들려요. 환자에게는 지켜보겠다는 쉬운 말로 풀어요."

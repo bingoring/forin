@@ -1,0 +1,113 @@
+압흔 손상 예방:
+  - kind: slider
+    words: [w-fluid, w-pool, w-beneath]
+    cue: "Prep solution has soaked through the padding, and the limb is wet under the whole cuff."
+    scale: [A few drops under the edge, A small pool under the cuff, Soaked padding under the whole cuff]
+    answerAt: 2
+    why: "소독액이 커프 아래에 고이거나 패딩이 젖으면 피부 손상 위험이 커져요. 이 정도면 닦고 패딩을 다시 대야 하고, 집도의에게도 알려요."
+    example: "The padding is soaked under the whole cuff."
+    exKo: "커프 전체 아래 패딩이 젖었어요."
+  - kind: swap
+    words: [w-smooth, w-pad, w-pinch]
+    who: "순환 간호사 → 스크럽 · 패딩 정리"
+    icon: speech
+    before: ["Please ", "leave the padding wrinkled", " so it doesn't pinch."]
+    options: [smooth the padding out, leave the padding wrinkled, add more tape]
+    answer: smooth the padding out
+    notes: {smooth the padding out: "주름 없이 펴야 피부가 끼이지 않는다.", leave the padding wrinkled: "주름이 있으면 한 점에 압력이 몰려 피부가 눌린다.", add more tape: "테이프를 더 붙여도 주름은 없어지지 않는다."}
+    why: "패딩은 주름 없이 매끄럽게 펴야 피부가 끼이거나 눌리지 않아요."
+    ko: "패딩을 매끄럽게 펴 주세요"
+재적용 시간 관리:
+  - kind: slider
+    words: [w-track, w-closely, w-interval]
+    cue: "The cuff came off and is going back up for another step, and the surgeon wants to know how long it's been."
+    scale: [Glance at the clock when asked, Track the interval closely, Stare at the clock every second]
+    answerAt: 1
+    why: "다시 올리는 간격은 면밀히 추적해야 정확한 시간을 답할 수 있어요. 물어볼 때만 보면 놓치고, 계속 시계만 보면 다른 일을 못 해요."
+    example: "I'm tracking the interval closely."
+    exKo: "간격을 면밀히 추적하고 있어요."
+  - kind: swap
+    words: [w-rest, w-period, w-reinflate]
+    who: "순환 간호사 → 집도의 · 다시 올리기 전"
+    icon: speech
+    before: ["Dr. Lee, ", "I'm reinflating the cuff now", "."]
+    options: [the rest period is over; ready to reinflate on your word, I'm reinflating the cuff now, the cuff will reinflate on its own soon]
+    answer: the rest period is over; ready to reinflate on your word
+    notes: {the rest period is over; ready to reinflate on your word: "휴식 기간이 지났음을 알리고 집도의의 말에 맞춰 올리겠다고 한다.", I'm reinflating the cuff now: "다시 올릴지는 집도의가 정한다. 알리지 않고 올리면 안 된다.", the cuff will reinflate on its own soon: "스스로 올라가는 것이 아니다. 누가 언제 올리는지 말해야 한다."}
+    why: "다시 올리는 시점은 집도의가 정해요. 간호사는 휴식 시간이 지났음을 알리고 지시를 기다려요."
+    ko: "휴식 시간이 끝났어요. 말씀하시면 다시 올릴게요"
+하지 정맥울혈 감시:
+  - kind: slider
+    words: [w-congest, w-color, w-leg]
+    cue: "Below the cuff the leg is dark, swollen, and full of blood."
+    scale: [Slightly flushed, Visibly congested, Cold and pale]
+    answerAt: 1
+    why: "검붉게 붓고 피가 찬 모습은 울혈(congested)이에요. 약간 붉은 정도와는 다르고, 차고 창백한 것은 정반대 변화예요. 색 변화는 집도의에게 보고해요."
+    example: "The leg looks congested below the cuff."
+    exKo: "커프 아래 다리가 울혈돼 보여요."
+  - kind: swap
+    words: [w-leg, w-congest, w-below, w-report]
+    who: "순환 간호사 → 집도의 · 색 변화 보고"
+    icon: speech
+    before: ["Dr. Park, ", "the leg looks off", " below the cuff."]
+    options: [the leg looks congested, the leg looks off, the leg looks terrible]
+    answer: the leg looks congested
+    notes: {the leg looks congested: "눈에 보이는 상태를 정확한 말로 보고한다.", the leg looks off: "무엇이 이상한지 알 수 없는 말이다.", the leg looks terrible: "감정적인 말이라 상태가 구체적으로 전해지지 않는다."}
+    why: "보이는 변화는 '울혈'처럼 정확한 말로 보고해야 집도의가 바로 판단해요. '이상해요'나 '끔찍해요'는 정보가 없어요."
+    ko: "커프 아래 다리가 울혈돼 보여요"
+허용 시간 초과 임박:
+  - kind: slider
+    words: [w-escalate, w-maximum, w-surgeon]
+    cue: "The timer alarm sounds at the maximum time, and the surgeon is deep in the repair."
+    scale: [Tell the surgeon out loud, Tell the whole team to stop, Deflate the cuff yourself]
+    answerAt: 0
+    why: "최대 시간이 되면 집도의에게 직접 소리 내어 알려요. 팀 전체를 멈추게 하거나 간호사가 혼자 공기를 빼는 것은 업무 범위를 넘어요. 풀지 말지는 집도의가 정해요."
+    example: "I tell the surgeon out loud when we hit the maximum."
+    exKo: "최대 시간이 되면 집도의에게 소리 내어 알려요."
+  - kind: swap
+    words: [w-maximum, w-safe]
+    who: "순환 간호사 → 집도의 · 최대 시간"
+    icon: speech
+    before: ["Dr. Kim, ", "we're a little over, but it's fine", "."]
+    options: [we're at the maximum safe time, we're a little over but it's fine, take all the time you need]
+    answer: we're at the maximum safe time
+    notes: {we're at the maximum safe time: "최대 안전 시간에 이르렀다는 사실을 분명히 알린다.", we're a little over but it's fine: "한계를 넘었는데 괜찮다고 줄여 말한다. 판단을 흐린다.", take all the time you need: "시간 한계가 있는데 무제한인 것처럼 들린다."}
+    why: "한계 시간에는 '최대 안전 시간이에요'라고 분명히 알려요. 줄여 말하거나 시간이 많다고 하면 집도의가 판단할 수 없어요."
+    ko: "최대 안전 시간이에요"
+재관류 저혈압 발생:
+  - kind: slider
+    words: [w-drop, w-bp, w-hypotension]
+    cue: "Right after release, the BP number is falling steeply and keeps falling."
+    scale: [BP is dipping slightly, BP is dropping gradually, BP is dropping fast]
+    answerAt: 2
+    why: "풀린 직후 혈압이 가파르게 계속 떨어지면 'dropping fast'예요. 마취과가 곧바로 처치할 수 있게 상태를 정확히 소리 내어 알려요."
+    example: "BP is dropping fast after release."
+    exKo: "푼 뒤 혈압이 빠르게 떨어지고 있어요."
+  - kind: swap
+    words: [w-anesthesia, w-grab, w-fluid, w-pressor]
+    who: "순환 간호사 → 마취과 · 저혈압"
+    icon: speech
+    before: ["Anesthesia, ", "I'm starting a pressor now", "."]
+    options: [I can grab fluids or pressors if you need them, I'm starting a pressor now, I'll decide what to give]
+    answer: I can grab fluids or pressors if you need them
+    notes: {I can grab fluids or pressors if you need them: "약과 수액은 마취과가 정한다. 간호사는 필요하다면 가져다주겠다고 한다.", I'm starting a pressor now: "승압제 투여는 마취과가 정하고 한다. 간호사가 마음대로 시작하면 업무 범위를 벗어난다.", I'll decide what to give: "무엇을 줄지는 마취과가 정한다."}
+    why: "혈압을 올리는 약과 수액의 선택은 마취과의 일이에요. 간호사는 필요하면 가져오겠다고 하고 지시를 기다려요."
+    ko: "필요하시면 수액이나 승압제를 가져올게요"
+지혈대 신경마비 손상:
+  - kind: slider
+    words: [w-deficit, w-inform, w-document]
+    cue: "After the tourniquet came off, the patient can't wiggle the toes."
+    scale: [Wait and see if it improves, Mention it in passing, Inform the surgeon and document it]
+    answerAt: 2
+    why: "움직임이 없는 것은 신경 결손일 수 있어요. 기다리거나 지나가듯 말하지 말고 집도의에게 알리고 기록으로 남겨요."
+    example: "I inform the surgeon and document the deficit."
+    exKo: "집도의에게 알리고 결손을 기록해요."
+  - kind: context
+    words: [w-deficit]
+    word: deficit
+    ko: 결손
+    scenes:
+      - {who: 수술 기록, icon: board, en: "Nerve deficit noted postoperatively; surgeon informed.", ok: true}
+      - {who: 집도의에게, icon: speech, en: "Dr. Kim, there's a nerve deficit in the left foot.", ok: true}
+      - {who: 놀란 환자에게, icon: me, en: "You have a nerve deficit in your foot.", ok: false, fix: "You're having trouble moving your foot, and the surgeon will talk with you about it."}
+    why: "뜻은 셋 다 '기능이 떨어진 상태'예요. deficit은 기록과 의료진 보고에 쓰는 말이고, 환자에게는 진단처럼 들려요. 쉬운 말로 풀고 설명은 집도의가 하게 해요."
