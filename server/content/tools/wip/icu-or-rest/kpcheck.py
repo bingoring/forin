@@ -1,8 +1,9 @@
 import json,sys,yaml
 # keyPhrase en(정본 입력)이 주제 yaml 문장 en에 그대로 있는지 대조
+D=('or' if sys.argv[1].startswith('or') or sys.argv[1].endswith('-or') else 'icu')
 for t in sys.argv[1:]:
-    d=json.load(open(f'icu/in-{t}.json'))
-    y=yaml.safe_load(open(f'icu/{t}.yaml'))
+    d=json.load(open(f'{D}/in-{t}.json'))
+    y=yaml.safe_load(open(f'{D}/{t}.yaml'))
     ens=set()
     def walk(o):
         if isinstance(o,dict):

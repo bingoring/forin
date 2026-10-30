@@ -1,0 +1,139 @@
+- title: 통역 통한 동의·설명
+  nuance:
+    - kind: pair
+      words: [w-procedure, w-decide, w-question]
+      pairs:
+        - [procedure, "a treatment done on his body"]
+        - [decide, "choose after hearing the options"]
+        - [question, "what you ask when you aren't sure"]
+      decoys: ["a visit to the cafeteria"]
+      why: "동의를 받기 전에 환자는 procedure가 무엇인지 듣고, 궁금한 것을 question으로 물은 뒤에야 decide할 수 있어요. 이 순서를 환자가 지킬 수 있도록 시간을 주세요."
+    - kind: context
+      words: [w-explain]
+      word: explain
+      ko: 설명하다
+      scenes:
+        - {who: 동료 간호사에게, icon: handshake2, en: "Dr. Kim will explain the procedure, and I've booked the Korean interpreter for three o'clock.", ok: true}
+        - {who: 환자에게, icon: me, en: "The doctor will explain the procedure, and the interpreter will tell you every word.", ok: true}
+        - {who: 가족에게, icon: home, en: "Our attending will explain the risks, benefits, and alternatives per informed consent policy.", ok: false, fix: "The doctor will explain what the procedure is, why it's needed, and what could go wrong."}
+      why: "동의 설명은 의사가 하고 통역사는 그 말을 그대로 옮겨요. 가족에게는 정책 용어 대신 '무엇을, 왜, 어떤 위험이 있는지' 세 가지를 쉬운 말로 풀어 주세요."
+- title: 문화적 표현·금기 고려
+  nuance:
+    - kind: pair
+      words: [w-follow, w-correct]
+      pairs:
+        - [follow, "your lead on this"]
+        - [correct, "me if I say it wrong"]
+      decoys: ["your insurance card"]
+      why: "follow your lead는 당신이 이끄는 대로 맞춰 가겠다는 말이고, correct me는 내가 틀리면 바로잡아 달라는 부탁이에요. 문화나 금기를 잘 모르는 쪽이 낮은 자세로 물을 때 쓰는 표현이에요."
+    - kind: context
+      words: [w-condition]
+      word: condition
+      ko: 상태
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His condition is critical but stable on two pressors.", ok: true}
+        - {who: 가족에게, icon: home, en: "How would you like me to talk about his condition?", ok: true}
+        - {who: 환자에게, icon: me, en: "Your condition meets criteria for multi-organ dysfunction.", ok: false, fix: "Several of your organs are weak right now, and we're helping them."}
+      why: "의료진끼리는 진단 기준 같은 임상어가 정확해요. 하지만 환자에게 기준을 읽어 주면 차갑고 어렵게 들려요. 지금 몸이 어떤지를 쉬운 말로 풀어 주세요."
+- title: 가족 통역 한계·공식 통역 전환
+  nuance:
+    - kind: pair
+      words: [w-accuracy, w-burden]
+      pairs:
+        - [accuracy, "getting every detail right"]
+        - [burden, "a heavy load on you"]
+      decoys: ["a short break"]
+      why: "통역은 한 마디라도 틀리면 안 되니 accuracy가 중요하고, 가족이 통역까지 맡으면 마음의 burden이 커져요. 그래서 병원이 훈련된 통역사를 쓰는 거예요."
+    - kind: swap
+      words: [w-trained]
+      who: "가족에게 · 통역 안내"
+      icon: home
+      before: ["For medical decisions, we use a ", "bilingual", " interpreter for accuracy."]
+      options: [bilingual, trained, friendly]
+      answer: trained
+      notes:
+        bilingual: "두 언어를 한다는 말일 뿐, 의료 통역을 훈련받았다는 뜻은 아니다."
+        trained: "의학 용어와 통역 방법을 훈련받아 뜻을 정확히 옮긴다는 뜻이다."
+        friendly: "친절함은 정확성과 관계가 없다."
+      why: "두 언어를 할 줄 아는 것과 의료 통역을 하는 것은 달라요. 의학 용어와 통역 규칙을 훈련받은 사람이어야 정확히 옮겨요."
+      ko: "의료 결정에는 정확성을 위해 훈련된 통역사를 씁니다."
+- title: 청각·시각 장애 병행 소통
+  nuance:
+    - kind: pair
+      words: [w-aid, w-lip, w-read, w-large, w-print]
+      pairs:
+        - [hearing, aids]
+        - [lip, reading]
+        - [large, print]
+      decoys: ["touch sheets"]
+      why: "hearing aids는 보청기, lip reading은 입 모양 읽기, large print는 큰 글씨예요. 듣기와 보기가 모두 어려운 환자에게는 보조기기와 큰 글씨 도구를 함께 챙겨요."
+    - kind: context
+      words: [w-oriented]
+      word: oriented
+      ko: 지남력 있는
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Alert and oriented times three, hard of hearing.", ok: true}
+        - {who: 가족에게, icon: home, en: "A gentle touch and simple signals help him feel oriented.", ok: true}
+        - {who: 환자에게, icon: me, en: "You are oriented to person, place, and time.", ok: false, fix: "You're in the hospital, and I'm your nurse."}
+      why: "oriented는 사람·장소·시간을 안다는 사정 용어예요. 차트에는 알맞지만 환자 본인에게 말하면 낯설어요. 지금 어디에 있고 누가 곁에 있는지 쉬운 말로 알려 주세요."
+- title: 통역 통한 목표설정 대화
+  nuance:
+    - kind: pair
+      words: [w-rush, w-matter, w-step]
+      pairs:
+        - ["there's no", rush]
+        - ["what matters", "most to him"]
+        - ["one step", "at a time"]
+      decoys: ["by the door"]
+      why: "there's no rush는 서두르지 않아도 된다는 말, what matters most는 가장 중요한 것, one step at a time은 한 번에 한 단계씩이에요. 어려운 대화에서 가족의 속도에 맞춰 주는 표현들이에요."
+    - kind: swap
+      words: [w-important]
+      who: "가족과 목표 대화"
+      icon: home
+      before: ["I want to understand what's ", "paramount", " to your family."]
+      options: [paramount, important, of consequence]
+      answer: important
+      notes:
+        paramount: "격식 높은 낱말이라 통역사가 옮기기 어렵고 가족에게도 낯설다."
+        important: "쉬운 낱말이라 통역을 거쳐도 뜻이 그대로 간다."
+        of consequence: "예스럽고 딱딱한 표현이라 따뜻한 대화에 어울리지 않는다."
+      why: "목표 대화에서는 통역을 거쳐도 뜻이 변하지 않는 쉬운 낱말이 좋아요."
+      ko: "당신 가족에게 무엇이 중요한지 이해하고 싶어요."
+- title: 다국어 약물·안전 교육
+  nuance:
+    - kind: pair
+      words: [w-measure, w-call, w-miss]
+      pairs:
+        - [measure, "the dose with a syringe"]
+        - [call, "this number if he seems worse"]
+        - [miss, "a dose if you forget"]
+      decoys: ["the cafeteria menu"]
+      why: "measure the dose, miss a dose, call this number는 약 교육에서 가장 자주 쓰는 동사 짝이에요. 보호자가 직접 해 보게 하면 이해했는지 확인돼요."
+    - kind: context
+      words: [w-medication]
+      word: medication
+      ko: 약물
+      scenes:
+        - {who: 약사에게, icon: pill, en: "Can you print the medication list in Korean for the family?", ok: true}
+        - {who: 보호자에게, icon: me, en: "Here's the medication list in your language.", ok: true}
+        - {who: 환자에게, icon: home, en: "Here's your medication reconciliation with scheduled and PRN doses.", ok: false, fix: "Here's a list of your medicines, with when and why you take each one."}
+      why: "의료진끼리는 PRN(필요할 때) 같은 약어와 reconciliation이 통해요. 환자에게는 어떤 약을 언제 왜 먹는지로 풀어서 주세요."
+- title: 원격 통역 활용
+  nuance:
+    - kind: pair
+      words: [w-speak, w-wait, w-pause]
+      pairs:
+        - ["speak in", "short pieces"]
+        - ["wait for", "the interpreter to finish"]
+        - ["pause so", "the interpreter can keep up"]
+      decoys: ["to be sunny"]
+      why: "원격 통역에서는 짧게 끊어 말하고(speak in short pieces), 통역이 끝나기를 기다리고(wait), 따라올 수 있게 멈추는(pause) 것이 기본이에요. 그래야 뜻이 빠지지 않아요."
+    - kind: context
+      words: [w-interpreter]
+      word: interpreter
+      ko: 통역사
+      scenes:
+        - {who: 병동 직원에게, icon: monitor, en: "Is the Korean video interpreter available in the next five minutes?", ok: true}
+        - {who: 환자에게, icon: me, en: "The interpreter can see and hear you on this screen, so just speak to me like normal.", ok: true}
+        - {who: 가족에게, icon: home, en: "The VRI interpreter's bandwidth is low, so expect some latency.", ok: false, fix: "The interpreter's picture may freeze a little, so I'll pause now and then to check you can hear."}
+      why: "의료진끼리는 VRI(영상 통역)와 대역폭 같은 말이 통해요. 가족에게는 화면이 끊길 수 있고 그래서 내가 멈춰서 확인하겠다는 쉬운 말로 풀어 주세요."

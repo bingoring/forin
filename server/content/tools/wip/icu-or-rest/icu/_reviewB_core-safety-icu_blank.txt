@@ -1,0 +1,730 @@
+[0]s0 ans=immediate
+  * Red alarms are life-threatening and need immediate action.
+    Red alarms are life-threatening and need ROUTINE action.
+    Red alarms are life-threatening and need SCHEDULED action.
+    Red alarms are life-threatening and need GRADUAL action.
+[0]s1 ans=attention
+  * Yellow alarms need attention, but they can wait a minute.
+    Yellow alarms need REPAIR, but they can wait a minute.
+    Yellow alarms need CALIBRATION, but they can wait a minute.
+    Yellow alarms need CHARGING, but they can wait a minute.
+[0]s2 ans=baseline
+  * We set limits based on each patient's baseline.
+    We set limits based on each patient's SCHEDULE.
+    We set limits based on each patient's COMFORT.
+    We set limits based on each patient's MOOD.
+[0]s3 ans=meaningful
+  * Let's customize these so only meaningful alarms sound.
+    Let's customize these so only LOUD alarms sound.
+    Let's customize these so only CONSTANT alarms sound.
+    Let's customize these so only BRIEF alarms sound.
+[0]s4 ans=red
+  * If it's not going to hurt him in the next minute, it's not a red alarm.
+    If it's not going to hurt him in the next minute, it's not a LOUD alarm.
+    If it's not going to hurt him in the next minute, it's not a BROKEN alarm.
+    If it's not going to hurt him in the next minute, it's not a QUIET alarm.
+[0]s5 ans=trust
+  * Once we personalize the limits, you'll trust every alarm that sounds.
+    Once we personalize the limits, you'll REPLACE every alarm that sounds.
+    Once we personalize the limits, you'll RESET every alarm that sounds.
+    Once we personalize the limits, you'll CHARGE every alarm that sounds.
+[1]s0 ans=restrictive
+  * Let's try less restrictive options first.
+    Let's try less EXPENSIVE options first.
+    Let's try less NOISY options first.
+    Let's try less CROWDED options first.
+[1]s1 ans=pulling
+  * He's pulling at his lines, so we need to keep them safe.
+    He's STARING at his lines, so we need to keep them safe.
+    He's POINTING at his lines, so we need to keep them safe.
+    He's LAUGHING at his lines, so we need to keep them safe.
+[1]s2 ans=sitter
+  * Have we tried a sitter before we reach for restraints?
+    Have we tried a SCANNER before we reach for restraints?
+    Have we tried a TABLET before we reach for restraints?
+    Have we tried a MATTRESS before we reach for restraints?
+[1]s3 ans=step
+  * I said we need to try less restrictive options — let's not skip that step.
+    I said we need to try less restrictive options — let's not skip that PAGE.
+    I said we need to try less restrictive options — let's not skip that FORM.
+    I said we need to try less restrictive options — let's not skip that SHIFT.
+[1]s4 ans=reassess
+  * We'll reassess the need for restraints every few hours.
+    We'll RECOUNT the need for restraints every few hours.
+    We'll RESTOCK the need for restraints every few hours.
+    We'll RENAME the need for restraints every few hours.
+[1]s5 ans=calmer
+  * Once he's calmer, we'll take the restraints off and reassess again.
+    Once he's WARMER, we'll take the restraints off and reassess again.
+    Once he's HUNGRIER, we'll take the restraints off and reassess again.
+    Once he's THIRSTIER, we'll take the restraints off and reassess again.
+[2]s0 ans=pump
+  * Let's verify the drug, dose, rate, and pump settings together.
+    Let's verify the drug, dose, rate, and BED settings together.
+    Let's verify the drug, dose, rate, and TRAY settings together.
+    Let's verify the drug, dose, rate, and LAMP settings together.
+[2]s1 ans=order
+  * Confirm the concentration matches the order.
+    Confirm the concentration matches the INVOICE.
+    Confirm the concentration matches the RECEIPT.
+    Confirm the concentration matches the CALENDAR.
+[2]s2 ans=before
+  * Both of us sign off before it runs.
+    Both of us sign off AFTER it runs.
+    Both of us sign off WHILE it runs.
+    Both of us sign off UNTIL it runs.
+[2]s3 ans=fifty
+  * Wait — the label says fifty units, but the order says five.
+    Wait — the label says FIFTEEN units, but the order says five.
+    Wait — the label says FORTY units, but the order says five.
+    Wait — the label says SIXTY units, but the order says five.
+[2]s4 ans=stop
+  * Let's stop and check this together before we give it.
+    Let's START and check this together before we give it.
+    Let's STAND and check this together before we give it.
+    Let's SIT and check this together before we give it.
+[2]s5 ans=insulin
+  * So that's insulin, ten units, over one hour — did I get that right?
+    So that's HEPARIN, ten units, over one hour — did I get that right?
+    So that's VASOPRESSIN, ten units, over one hour — did I get that right?
+    So that's OXYTOCIN, ten units, over one hour — did I get that right?
+[2]s6 ans=wrong
+  * I'm not saying you're wrong, I just need to hear it back before we sign.
+    I'm not saying you're LATE, I just need to hear it back before we sign.
+    I'm not saying you're RUDE, I just need to hear it back before we sign.
+    I'm not saying you're SLOW, I just need to hear it back before we sign.
+[2]s7 ans=agree
+  * Once we both agree on the numbers, we sign our names and start the pump.
+    Once we both COMMENT on the numbers, we sign our names and start the pump.
+    Once we both REPORT on the numbers, we sign our names and start the pump.
+    Once we both VOTE on the numbers, we sign our names and start the pump.
+[3]s0 ans=wrong
+  * I might be wrong, but I want to check something before we go ahead.
+    I might be LATE, but I want to check something before we go ahead.
+    I might be EARLY, but I want to check something before we go ahead.
+    I might be TIRED, but I want to check something before we go ahead.
+[3]s1 ans=patient
+  * Let's trace the line from the bag to the patient.
+    Let's trace the line from the bag to the PHARMACY.
+    Let's trace the line from the bag to the CART.
+    Let's trace the line from the bag to the DOOR.
+[3]s2 ans=labeled
+  * Every line should be labeled at both ends.
+    Every line should be TESTED at both ends.
+    Every line should be REPLACED at both ends.
+    Every line should be FLUSHED at both ends.
+[3]s3 ans=arterial
+  * This is the arterial line, not for medication.
+    This is the CENTRAL line, not for medication.
+    This is the MIDLINE line, not for medication.
+    This is the FEEDING line, not for medication.
+[3]s4 ans=drug
+  * If we trace it together, we won't push the wrong drug into the wrong line.
+    If we trace it together, we won't push the wrong BAG into the wrong line.
+    If we trace it together, we won't push the wrong SYRINGE into the wrong line.
+    If we trace it together, we won't push the wrong TRAY into the wrong line.
+[3]s5 ans=tubing
+  * Let's follow this tubing all the way from the pump to where it enters him.
+    Let's follow this CABLE all the way from the pump to where it enters him.
+    Let's follow this CORD all the way from the pump to where it enters him.
+    Let's follow this WIRE all the way from the pump to where it enters him.
+[3]s6 ans=labeled
+  * A labeled line at both ends is one less way to mix up a patient.
+    A COILED line at both ends is one less way to mix up a patient.
+    A WRAPPED line at both ends is one less way to mix up a patient.
+    A SHORTENED line at both ends is one less way to mix up a patient.
+[4]s0 ans=lower
+  * Let's lower the bed and lock the wheels.
+    Let's CLEAN the bed and lock the wheels.
+    Let's WEIGH the bed and lock the wheels.
+    Let's CARRY the bed and lock the wheels.
+[4]s1 ans=reach
+  * Keep the call light and his items within reach.
+    Keep the call light and his items within SIGHT.
+    Keep the call light and his items within HEARING.
+    Keep the call light and his items within TOUCH.
+[4]s2 ans=alarm
+  * A bed alarm will let us know if he tries to get up.
+    A bed RAIL will let us know if he tries to get up.
+    A bed SHEET will let us know if he tries to get up.
+    A bed WHEEL will let us know if he tries to get up.
+[4]s3 ans=fall
+  * He's confused and restless, so his fall risk is high tonight.
+    He's confused and restless, so his INFECTION risk is high tonight.
+    He's confused and restless, so his BLEEDING risk is high tonight.
+    He's confused and restless, so his ALLERGY risk is high tonight.
+[4]s4 ans=works
+  * Let's check his call light works before I step out.
+    Let's check his call light BREAKS before I step out.
+    Let's check his call light BENDS before I step out.
+    Let's check his call light FALLS before I step out.
+[4]s5 ans=answer
+  * If the alarm sounds, someone needs to answer it right away.
+    If the alarm sounds, someone needs to REPLACE it right away.
+    If the alarm sounds, someone needs to CHARGE it right away.
+    If the alarm sounds, someone needs to COPY it right away.
+[4]s6 ans=fallen
+  * We assess his risk every shift, not just after he's already fallen.
+    We assess his risk every shift, not just after he's already ADMITTED.
+    We assess his risk every shift, not just after he's already DISCHARGED.
+    We assess his risk every shift, not just after he's already TRANSFERRED.
+[5]s0 ans=route
+  * Right patient, right drug, right dose, right route, right time.
+    Right patient, right drug, right dose, right ROOM, right time.
+    Right patient, right drug, right dose, right BRAND, right time.
+    Right patient, right drug, right dose, right FLOOR, right time.
+[5]s1 ans=confirm
+  * Scan the band and confirm the order first.
+    Scan the band and PRINT the order first.
+    Scan the band and SORT the order first.
+    Scan the band and FILE the order first.
+[5]s2 ans=allergies
+  * Let's check for allergies before giving it.
+    Let's check for INSURANCE before giving it.
+    Let's check for VISITORS before giving it.
+    Let's check for CLUTTER before giving it.
+[5]s3 ans=IV
+  * So I heard vancomycin, one gram, IV, over one hour — is that right?
+    So I heard vancomycin, one gram, TOPICAL, over one hour — is that right?
+    So I heard vancomycin, one gram, NASAL, over one hour — is that right?
+    So I heard vancomycin, one gram, OCULAR, over one hour — is that right?
+[5]s4 ans=back
+  * Let me say that back to you: right patient, right time, right route.
+    Let me say that UP to you: right patient, right time, right route.
+    Let me say that OUT to you: right patient, right time, right route.
+    Let me say that OFF to you: right patient, right time, right route.
+[5]s5 ans=against
+  * Before I push anything, I check his wristband against the order myself.
+    Before I push anything, I check his wristband WITHOUT the order myself.
+    Before I push anything, I check his wristband BESIDE the order myself.
+    Before I push anything, I check his wristband BEHIND the order myself.
+[5]s6 ans=allergies
+  * No known allergies on the chart, but I'll ask him again just in case.
+    No known INJURIES on the chart, but I'll ask him again just in case.
+    No known SURGERIES on the chart, but I'll ask him again just in case.
+    No known INFECTIONS on the chart, but I'll ask him again just in case.
+[6]s0 ans=tailor
+  * Let's tailor alarm limits to each patient's baseline.
+    Let's PRINT alarm limits to each patient's baseline.
+    Let's SHARE alarm limits to each patient's baseline.
+    Let's POST alarm limits to each patient's baseline.
+[6]s1 ans=safety
+  * We can widen non-critical thresholds without losing safety.
+    We can widen non-critical thresholds without losing TIME.
+    We can widen non-critical thresholds without losing SPACE.
+    We can widen non-critical thresholds without losing BATTERY.
+[6]s2 ans=addressing
+  * Silencing without addressing the cause is never okay.
+    Silencing without BLAMING the cause is never okay.
+    Silencing without NAMING the cause is never okay.
+    Silencing without COPYING the cause is never okay.
+[6]s3 ans=hearing
+  * Alarm fatigue is real — after the tenth alert, you stop hearing them.
+    Alarm fatigue is real — after the tenth alert, you stop SEEING them.
+    Alarm fatigue is real — after the tenth alert, you stop FEELING them.
+    Alarm fatigue is real — after the tenth alert, you stop TOUCHING them.
+[6]s4 ans=limits
+  * If we personalize the limits now, the important alarms stand out later.
+    If we personalize the LABELS now, the important alarms stand out later.
+    If we personalize the CHARTS now, the important alarms stand out later.
+    If we personalize the ROOMS now, the important alarms stand out later.
+[6]s5 ans=setting
+  * Never mute an alarm just because it's annoying — fix the setting instead.
+    Never mute an alarm just because it's annoying — fix the BATTERY instead.
+    Never mute an alarm just because it's annoying — fix the CABLE instead.
+    Never mute an alarm just because it's annoying — fix the WIRE instead.
+[6]s6 ans=something
+  * We keep every alarm on, we just make it mean something.
+    We keep every alarm on, we just make it mean NOTHING.
+    We keep every alarm on, we just make it mean ANYTHING.
+    We keep every alarm on, we just make it mean EVERYTHING.
+[7]s0 ans=circulation
+  * We check circulation and skin every two hours.
+    We check ORIENTATION and skin every two hours.
+    We check DIGESTION and skin every two hours.
+    We check VACCINATION and skin every two hours.
+[7]s1 ans=alternatives
+  * Document the reason, alternatives tried, and reassessment.
+    Document the reason, DIAGNOSES tried, and reassessment.
+    Document the reason, VISITORS tried, and reassessment.
+    Document the reason, MEALS tried, and reassessment.
+[7]s2 ans=reposition
+  * Release and reposition on schedule.
+    Release and REHYDRATE on schedule.
+    Release and RETRAIN on schedule.
+    Release and REWRITE on schedule.
+[7]s3 ans=skin
+  * When did we last check his circulation and skin?
+    When did we last check his circulation and HAIR?
+    When did we last check his circulation and WEIGHT?
+    When did we last check his circulation and MOOD?
+[7]s4 ans=reassess
+  * I'll document the reason and when we'll reassess again.
+    I'll document the reason and when we'll REST again.
+    I'll document the reason and when we'll RELAX again.
+    I'll document the reason and when we'll RETURN again.
+[7]s5 ans=chart
+  * Let's reposition him and check his skin again before I chart this.
+    Let's reposition him and check his skin again before I PRINT this.
+    Let's reposition him and check his skin again before I SCAN this.
+    Let's reposition him and check his skin again before I FAX this.
+[7]s6 ans=releases
+  * We schedule releases so he's never restrained longer than needed.
+    We schedule MEALS so he's never restrained longer than needed.
+    We schedule VISITS so he's never restrained longer than needed.
+    We schedule BATHS so he's never restrained longer than needed.
+[8]s0 ans=source
+  * Trace every line back to its source before connecting.
+    Trace every line back to its COLOR before connecting.
+    Trace every line back to its PRICE before connecting.
+    Trace every line back to its BRAND before connecting.
+[8]s1 ans=force
+  * Never force a connection that doesn't fit easily.
+    Never HIDE a connection that doesn't fit easily.
+    Never LABEL a connection that doesn't fit easily.
+    Never SWAP a connection that doesn't fit easily.
+[8]s2 ans=systems
+  * Use the color-coded and labeled systems consistently.
+    Use the color-coded and labeled MENUS consistently.
+    Use the color-coded and labeled UNIFORMS consistently.
+    Use the color-coded and labeled LOCKERS consistently.
+[8]s3 ans=alike
+  * These two connectors look alike, so let's double-check before we plug in.
+    These two connectors look NEW, so let's double-check before we plug in.
+    These two connectors look OLD, so let's double-check before we plug in.
+    These two connectors look DIRTY, so let's double-check before we plug in.
+[8]s4 ans=feeding
+  * Wait, that's the feeding line — the IV port is over here.
+    Wait, that's the URINARY line — the IV port is over here.
+    Wait, that's the OXYGEN line — the IV port is over here.
+    Wait, that's the SUCTION line — the IV port is over here.
+[8]s5 ans=careless
+  * It's an easy mix-up, not a careless one — let's just trace it together.
+    It's an easy mix-up, not a EXPENSIVE one — let's just trace it together.
+    It's an easy mix-up, not a IMPRESSIVE one — let's just trace it together.
+    It's an easy mix-up, not a INTENSIVE one — let's just trace it together.
+[8]s6 ans=guess
+  * Let's connect these the same way every single time, so no one has to guess.
+    Let's connect these the same way every single time, so no one has to ARGUE.
+    Let's connect these the same way every single time, so no one has to SEARCH.
+    Let's connect these the same way every single time, so no one has to VOTE.
+[9]s0 ans=stored
+  * Concentrated electrolytes are stored separately and secured.
+    Concentrated electrolytes are ORDERED separately and secured.
+    Concentrated electrolytes are COUNTED separately and secured.
+    Concentrated electrolytes are PRINTED separately and secured.
+[9]s1 ans=locked
+  * Narcotics require two-nurse counts and locked storage.
+    Narcotics require two-nurse counts and COLD storage.
+    Narcotics require two-nurse counts and DRY storage.
+    Narcotics require two-nurse counts and BULK storage.
+[9]s2 ans=potassium
+  * Never keep concentrated potassium at the bedside.
+    Never keep concentrated SHAMPOO at the bedside.
+    Never keep concentrated PERFUME at the bedside.
+    Never keep concentrated MOUTHWASH at the bedside.
+[9]s3 ans=count
+  * Let's count the narcotics together and sign the log before we leave.
+    Let's WRAP the narcotics together and sign the log before we leave.
+    Let's MOVE the narcotics together and sign the log before we leave.
+    Let's WEIGH the narcotics together and sign the log before we leave.
+[9]s4 ans=match
+  * If the numbers don't match, we stop and count them again before anyone signs.
+    If the numbers don't CHANGE, we stop and count them again before anyone signs.
+    If the numbers don't RISE, we stop and count them again before anyone signs.
+    If the numbers don't DROP, we stop and count them again before anyone signs.
+[9]s5 ans=keys
+  * The narcotics stay locked, and only the two of us hold the keys.
+    The narcotics stay locked, and only the two of us hold the FILES.
+    The narcotics stay locked, and only the two of us hold the FORMS.
+    The narcotics stay locked, and only the two of us hold the NOTES.
+[9]s6 ans=bedside
+  * We keep this potassium in the storage room, never within reach at the bedside.
+    We keep this potassium in the storage room, never within reach at the DOORWAY.
+    We keep this potassium in the storage room, never within reach at the HALLWAY.
+    We keep this potassium in the storage room, never within reach at the ENTRANCE.
+[10]s0 ans=familiar
+  * Let's reorient him and keep familiar items nearby.
+    Let's reorient him and keep STRANGE items nearby.
+    Let's reorient him and keep BRIGHT items nearby.
+    Let's reorient him and keep NOISY items nearby.
+[10]s1 ans=camouflage
+  * Secure and camouflage his lines out of easy reach.
+    Secure and LABEL his lines out of easy reach.
+    Secure and MEASURE his lines out of easy reach.
+    Secure and REPLACE his lines out of easy reach.
+[10]s2 ans=noise
+  * Reduce noise and keep his sleep cycle regular.
+    Reduce DUST and keep his sleep cycle regular.
+    Reduce WASTE and keep his sleep cycle regular.
+    Reduce SMOKE and keep his sleep cycle regular.
+[10]s3 ans=grabbing
+  * He's grabbing at his lines because he doesn't know what they are.
+    He's STARING at his lines because he doesn't know what they are.
+    He's POINTING at his lines because he doesn't know what they are.
+    He's WAVING at his lines because he doesn't know what they are.
+[10]s4 ans=oriented
+  * A clock and calendar can help him stay oriented during the day.
+    A clock and calendar can help him stay HYDRATED during the day.
+    A clock and calendar can help him stay WARM during the day.
+    A clock and calendar can help him stay QUIET during the day.
+[10]s5 ans=pull
+  * If we camouflage the lines under his gown, he's less likely to pull them.
+    If we camouflage the lines under his gown, he's less likely to COUNT them.
+    If we camouflage the lines under his gown, he's less likely to WASH them.
+    If we camouflage the lines under his gown, he's less likely to TAPE them.
+[10]s6 ans=reset
+  * We keep the room quiet at night so his sleep cycle can reset.
+    We keep the room quiet at night so his sleep cycle can EXPIRE.
+    We keep the room quiet at night so his sleep cycle can SHRINK.
+    We keep the room quiet at night so his sleep cycle can FAIL.
+[11]s0 ans=verifying
+  * Don't override without verifying the order and dose.
+    Don't override without PRINTING the order and dose.
+    Don't override without COPYING the order and dose.
+    Don't override without FILING the order and dose.
+[11]s1 ans=catch
+  * The pump's drug library is there to catch errors.
+    The pump's drug library is there to CREATE errors.
+    The pump's drug library is there to REPEAT errors.
+    The pump's drug library is there to SPREAD errors.
+[11]s2 ans=proceed
+  * Let's confirm the concentration before we proceed.
+    Let's confirm the concentration before we EAT.
+    Let's confirm the concentration before we LEAVE.
+    Let's confirm the concentration before we REST.
+[11]s3 ans=hard
+  * Stop — that's a hard limit, not a soft one, so we don't override it.
+    Stop — that's a HIGH limit, not a soft one, so we don't override it.
+    Stop — that's a LOW limit, not a soft one, so we don't override it.
+    Stop — that's a NEW limit, not a soft one, so we don't override it.
+[11]s4 ans=flagged
+  * The pump flagged this dose as unusually high — let's not just click past it.
+    The pump ORDERED this dose as unusually high — let's not just click past it.
+    The pump LABELED this dose as unusually high — let's not just click past it.
+    The pump DOUBLED this dose as unusually high — let's not just click past it.
+[11]s5 ans=miss
+  * Every override we skip verifying is a chance for the system to miss an error.
+    Every override we skip verifying is a chance for the system to FIX an error.
+    Every override we skip verifying is a chance for the system to NAME an error.
+    Every override we skip verifying is a chance for the system to HIDE an error.
+[11]s6 ans=yourself
+  * Trust the library, but still confirm the concentration yourself.
+    Trust the library, but still confirm the concentration QUICKLY.
+    Trust the library, but still confirm the concentration TWICE.
+    Trust the library, but still confirm the concentration SILENTLY.
+[12]s0 ans=separately
+  * An independent double-check means we verify separately.
+    An independent double-check means we verify QUICKLY.
+    An independent double-check means we verify LOUDLY.
+    An independent double-check means we verify SLOWLY.
+[12]s1 ans=drug
+  * We each confirm the drug, dose, and pump without prompting.
+    We each confirm the TRAY, dose, and pump without prompting.
+    We each confirm the FLOOR, dose, and pump without prompting.
+    We each confirm the WALL, dose, and pump without prompting.
+[12]s2 ans=medications
+  * This is required for all high-alert medications.
+    This is required for all high-alert DEPARTMENTS.
+    This is required for all high-alert VOLUNTEERS.
+    This is required for all high-alert APPOINTMENTS.
+[12]s3 ans=alone
+  * This needs an independent check — I mean each of us checks it alone.
+    This needs an independent check — I mean each of us checks it EARLY.
+    This needs an independent check — I mean each of us checks it SLOWLY.
+    This needs an independent check — I mean each of us checks it DAILY.
+[12]s4 ans=numbers
+  * Not a double-check where we peek at each other's numbers — an independent one.
+    Not a double-check where we peek at each other's SHOES — an independent one.
+    Not a double-check where we peek at each other's HANDS — an independent one.
+    Not a double-check where we peek at each other's LUNCHES — an independent one.
+[12]s5 ans=dose
+  * I'll say the dose out loud first, then you confirm it your own way.
+    I'll say the MENU out loud first, then you confirm it your own way.
+    I'll say the NEWS out loud first, then you confirm it your own way.
+    I'll say the JOKE out loud first, then you confirm it your own way.
+[12]s6 ans=insulin
+  * High-alert drugs like insulin and heparin always get this extra step.
+    High-alert drugs like SALINE and heparin always get this extra step.
+    High-alert drugs like ASPIRIN and heparin always get this extra step.
+    High-alert drugs like VITAMIN and heparin always get this extra step.
+[13]s0 ans=drips
+  * Confirm the airway, drips, and monitor before we move.
+    Confirm the airway, SHOES, and monitor before we move.
+    Confirm the airway, TOWELS, and monitor before we move.
+    Confirm the airway, SNACKS, and monitor before we move.
+[13]s1 ans=battery
+  * Do we have enough oxygen and battery for transport?
+    Do we have enough oxygen and COFFEE for transport?
+    Do we have enough oxygen and WATER for transport?
+    Do we have enough oxygen and PAPER for transport?
+[13]s2 ans=run
+  * Let's run the transport checklist together.
+    Let's POST the transport checklist together.
+    Let's FOLD the transport checklist together.
+    Let's LOSE the transport checklist together.
+[13]s3 ans=missed
+  * Let's make sure nothing gets missed before we head to CT.
+    Let's make sure nothing gets MOVED before we head to CT.
+    Let's make sure nothing gets MIXED before we head to CT.
+    Let's make sure nothing gets MAILED before we head to CT.
+[13]s4 ans=portable
+  * I'll double-check the monitor cables reach the portable monitor too.
+    I'll double-check the monitor cables reach the WALL monitor too.
+    I'll double-check the monitor cables reach the CEILING monitor too.
+    I'll double-check the monitor cables reach the BEDSIDE monitor too.
+[13]s5 ans=brakes
+  * We confirm his airway is secure before anyone touches the bed brakes.
+    We confirm his airway is secure before anyone touches the bed CURTAINS.
+    We confirm his airway is secure before anyone touches the bed SHEETS.
+    We confirm his airway is secure before anyone touches the bed PILLOWS.
+[13]s6 ans=read
+  * Let's read the checklist out loud so nothing slips through in handoff.
+    Let's FOLD the checklist out loud so nothing slips through in handoff.
+    Let's TAPE the checklist out loud so nothing slips through in handoff.
+    Let's MAIL the checklist out loud so nothing slips through in handoff.
+[14]s0 ans=prevent
+  * Yes — near-misses teach us how to prevent real harm.
+    Yes — near-misses teach us how to CAUSE real harm.
+    Yes — near-misses teach us how to REPEAT real harm.
+    Yes — near-misses teach us how to MEASURE real harm.
+[14]s1 ans=learning
+  * Reporting isn't about blame, it's about learning.
+    Reporting isn't about blame, it's about MONEY.
+    Reporting isn't about blame, it's about RANKING.
+    Reporting isn't about blame, it's about SPEED.
+[14]s2 ans=protect
+  * Your report could protect the next patient.
+    Your report could DELAY the next patient.
+    Your report could CHARGE the next patient.
+    Your report could CONFUSE the next patient.
+[14]s3 ans=exactly
+  * Nothing happened this time, but that's exactly why we still write it up.
+    Nothing happened this time, but that's PARTLY why we still write it up.
+    Nothing happened this time, but that's MOSTLY why we still write it up.
+    Nothing happened this time, but that's SIMPLY why we still write it up.
+[14]s4 ans=fix
+  * We're not looking for who to blame, we're looking for what to fix.
+    We're not looking for who to blame, we're looking for what to BUY.
+    We're not looking for who to blame, we're looking for what to COOK.
+    We're not looking for who to blame, we're looking for what to CARRY.
+[14]s5 ans=save
+  * Filing this report takes ten minutes and might save someone's life later.
+    Filing this report takes ten minutes and might COST someone's life later.
+    Filing this report takes ten minutes and might WASTE someone's life later.
+    Filing this report takes ten minutes and might CHANGE someone's life later.
+[14]s6 ans=lesson
+  * Every near-miss we report becomes a lesson the whole unit can learn from.
+    Every near-miss we report becomes a RUMOR the whole unit can learn from.
+    Every near-miss we report becomes a SECRET the whole unit can learn from.
+    Every near-miss we report becomes a JOKE the whole unit can learn from.
+[15]s0 ans=disconnect
+  * Stop the infusion and disconnect it immediately.
+    Stop the infusion and RECONNECT it immediately.
+    Stop the infusion and FLUSH it immediately.
+    Stop the infusion and REPROGRAM it immediately.
+[15]s1 ans=notify
+  * Assess the patient and notify the physician now.
+    Assess the patient and THANK the physician now.
+    Assess the patient and GREET the physician now.
+    Assess the patient and FOLLOW the physician now.
+[15]s2 ans=document
+  * We'll trace all lines and document what happened.
+    We'll trace all lines and GUESS what happened.
+    We'll trace all lines and IMAGINE what happened.
+    We'll trace all lines and COUNT what happened.
+[15]s3 ans=later
+  * Right now I'm stopping the infusion — we can talk about how later.
+    Right now I'm stopping the infusion — we can talk about how NOW.
+    Right now I'm stopping the infusion — we can talk about how AGAIN.
+    Right now I'm stopping the infusion — we can talk about how TWICE.
+[15]s4 ans=airway
+  * Let's act fast: airway first, then we call the physician.
+    Let's act fast: BED first, then we call the physician.
+    Let's act fast: CHART first, then we call the physician.
+    Let's act fast: FLOOR first, then we call the physician.
+[15]s5 ans=notify
+  * I'll stay with him while you notify the team what happened.
+    I'll stay with him while you THANK the team what happened.
+    I'll stay with him while you GREET the team what happened.
+    I'll stay with him while you VISIT the team what happened.
+[15]s6 ans=document
+  * We document every line we traced and every step we took.
+    We COUNT every line we traced and every step we took.
+    We COPY every line we traced and every step we took.
+    We SORT every line we traced and every step we took.
+[16]s0 ans=labs
+  * Stop the drip and check his labs and status now.
+    Stop the drip and check his MEALS and status now.
+    Stop the drip and check his BILLS and status now.
+    Stop the drip and check his FEES and status now.
+[16]s1 ans=protamine
+  * Prepare protamine and notify the physician immediately.
+    Prepare NALOXONE and notify the physician immediately.
+    Prepare FLUMAZENIL and notify the physician immediately.
+    Prepare GLUCAGON and notify the physician immediately.
+[16]s2 ans=file
+  * We'll document and file an incident report right away.
+    We'll document and MAIL an incident report right away.
+    We'll document and SCAN an incident report right away.
+    We'll document and SORT an incident report right away.
+[16]s3 ans=heparin
+  * I think he was given ten times the ordered dose of heparin.
+    I think he was given ten times the ordered dose of INSULIN.
+    I think he was given ten times the ordered dose of MORPHINE.
+    I think he was given ten times the ordered dose of POTASSIUM.
+[16]s4 ans=questions
+  * Right now, we stop the drip first and ask questions after.
+    Right now, we stop the drip first and ask FAVORS after.
+    Right now, we stop the drip first and ask PRICES after.
+    Right now, we stop the drip first and ask NAMES after.
+[16]s5 ans=calling
+  * We're preparing protamine now and calling the doctor before anything else.
+    We're preparing protamine now and THANKING the doctor before anything else.
+    We're preparing protamine now and GREETING the doctor before anything else.
+    We're preparing protamine now and HIRING the doctor before anything else.
+[16]s6 ans=explains
+  * This incident report explains exactly what happened and what we did next.
+    This incident report CANCELS exactly what happened and what we did next.
+    This incident report PREDICTS exactly what happened and what we did next.
+    This incident report REPEATS exactly what happened and what we did next.
+[17]s0 ans=reposition
+  * Release the restraint and reposition him immediately.
+    Release the restraint and RECHARGE him immediately.
+    Release the restraint and REFILL him immediately.
+    Release the restraint and REHEARSE him immediately.
+[17]s1 ans=airway
+  * Check his airway and breathing right now.
+    Check his BED and breathing right now.
+    Check his WRIST and breathing right now.
+    Check his CHART and breathing right now.
+[17]s2 ans=stay
+  * Call for help and stay with him.
+    Call for help and RUN with him.
+    Call for help and SHOP with him.
+    Call for help and DANCE with him.
+[17]s3 ans=slid
+  * He slid down and the restraint is tight across his chest.
+    He JUMPED down and the restraint is tight across his chest.
+    He CLIMBED down and the restraint is tight across his chest.
+    He STEPPED down and the restraint is tight across his chest.
+[17]s4 ans=breathing
+  * We need to check his breathing before we do anything else.
+    We need to check his WEIGHT before we do anything else.
+    We need to check his DIET before we do anything else.
+    We need to check his MOOD before we do anything else.
+[17]s5 ans=right
+  * I'll stay right here — someone else, please call for help now.
+    I'll stay JUST here — someone else, please call for help now.
+    I'll stay ONLY here — someone else, please call for help now.
+    I'll stay STILL here — someone else, please call for help now.
+[17]s6 ans=reassess
+  * Once it's off, we reposition him and reassess his airway right away.
+    Once it's off, we reposition him and REMEMBER his airway right away.
+    Once it's off, we reposition him and REWRITE his airway right away.
+    Once it's off, we reposition him and RESERVE his airway right away.
+[18]s0 ans=circulation
+  * Assess him now — airway, breathing, circulation.
+    Assess him now — airway, breathing, NUTRITION.
+    Assess him now — airway, breathing, DIGESTION.
+    Assess him now — airway, breathing, ELIMINATION.
+[18]s1 ans=oxygen
+  * Call for the rapid response and start oxygen.
+    Call for the rapid response and start NITROGEN.
+    Call for the rapid response and start HELIUM.
+    Call for the rapid response and start HYDROGEN.
+[18]s2 ans=review
+  * Afterward we review why the alarm was missed.
+    Afterward we REPEAT why the alarm was missed.
+    Afterward we REQUEST why the alarm was missed.
+    Afterward we REMOVE why the alarm was missed.
+[18]s3 ans=sat
+  * His sat alarm was sounding, but no one caught it in time.
+    His HEART alarm was sounding, but no one caught it in time.
+    His TEMP alarm was sounding, but no one caught it in time.
+    His PUMP alarm was sounding, but no one caught it in time.
+[18]s4 ans=crashing
+  * He's crashing now — stop what you're doing and look at him.
+    He's COUGHING now — stop what you're doing and look at him.
+    He's CRYING now — stop what you're doing and look at him.
+    He's SNEEZING now — stop what you're doing and look at him.
+[18]s5 ans=stable
+  * We'll figure out why the alarm got missed after he's stable.
+    We'll figure out why the alarm got missed after he's HUNGRY.
+    We'll figure out why the alarm got missed after he's ANGRY.
+    We'll figure out why the alarm got missed after he's BORED.
+[18]s6 ans=blame
+  * This isn't about blame — it's about learning why no one heard the alarm.
+    This isn't about MONEY — it's about learning why no one heard the alarm.
+    This isn't about SPEED — it's about learning why no one heard the alarm.
+    This isn't about LUCK — it's about learning why no one heard the alarm.
+[19]s0 ans=battery
+  * Switch to battery backup and the red emergency outlets.
+    Switch to SOLAR backup and the red emergency outlets.
+    Switch to WIND backup and the red emergency outlets.
+    Switch to GAS backup and the red emergency outlets.
+[19]s1 ans=critical
+  * Manually control critical drips until pumps restart.
+    Manually control MINOR drips until pumps restart.
+    Manually control EXTRA drips until pumps restart.
+    Manually control SPARE drips until pumps restart.
+[19]s2 ans=infusions
+  * Prioritize the life-sustaining infusions first.
+    Prioritize the life-sustaining SNACKS first.
+    Prioritize the life-sustaining TOOLS first.
+    Prioritize the life-sustaining CHORES first.
+[19]s3 ans=dead
+  * The power just dropped, and every pump on this wall is dead.
+    The power just dropped, and every pump on this wall is HOT.
+    The power just dropped, and every pump on this wall is LOUD.
+    The power just dropped, and every pump on this wall is FULL.
+[19]s4 ans=red
+  * Our backup is battery power and the red outlets on that wall.
+    Our backup is battery power and the BLUE outlets on that wall.
+    Our backup is battery power and the GREEN outlets on that wall.
+    Our backup is battery power and the WHITE outlets on that wall.
+[19]s5 ans=hand
+  * Until the pumps restart, I'll control this drip by hand.
+    Until the pumps restart, I'll control this drip by PHONE.
+    Until the pumps restart, I'll control this drip by MAIL.
+    Until the pumps restart, I'll control this drip by FOOT.
+[19]s6 ans=pressors
+  * We prioritize the pressors and sedation — those infusions can't stop.
+    We prioritize the VITAMINS and sedation — those infusions can't stop.
+    We prioritize the GOWNS and sedation — those infusions can't stop.
+    We prioritize the LINENS and sedation — those infusions can't stop.
+[20]s0 ans=honestly
+  * We disclose honestly, with facts and empathy.
+    We disclose QUIETLY, with facts and empathy.
+    We disclose RARELY, with facts and empathy.
+    We disclose LOUDLY, with facts and empathy.
+[20]s1 ans=leads
+  * The physician leads the disclosure, and we support it.
+    The physician ENDS the disclosure, and we support it.
+    The physician COPIES the disclosure, and we support it.
+    The physician ORDERS the disclosure, and we support it.
+[20]s2 ans=acknowledge
+  * We acknowledge what happened and our plan to make it right.
+    We MEMORIZE what happened and our plan to make it right.
+    We PHOTOGRAPH what happened and our plan to make it right.
+    We TRANSLATE what happened and our plan to make it right.
+[20]s3 ans=outside
+  * We tell the family first, before anyone else outside this room.
+    We tell the family first, before anyone else INSIDE this room.
+    We tell the family first, before anyone else NEAR this room.
+    We tell the family first, before anyone else BEHIND this room.
+[20]s4 ans=honestly
+  * Right now, I'm answering your questions honestly — the full review comes after.
+    Right now, I'm answering your questions ANGRILY — the full review comes after.
+    Right now, I'm answering your questions LAZILY — the full review comes after.
+    Right now, I'm answering your questions RUDELY — the full review comes after.
+[20]s5 ans=stick
+  * We don't guess at causes here; we stick to the facts we know.
+    We don't guess at causes here; we RETURN to the facts we know.
+    We don't guess at causes here; we LEAN to the facts we know.
+    We don't guess at causes here; we SWITCH to the facts we know.
+[20]s6 ans=important
+  * Our plan going forward is as important as what already happened.
+    Our plan going forward is as EXPENSIVE as what already happened.
+    Our plan going forward is as POPULAR as what already happened.
+    Our plan going forward is as FAMOUS as what already happened.

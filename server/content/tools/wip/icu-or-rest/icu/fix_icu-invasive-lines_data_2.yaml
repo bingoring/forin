@@ -1,0 +1,89 @@
+# 문장 수정 데이터 — A 검토 A절(+ B 값과 겹치는 문장의 새 distractorsKo). 키 "상황.문장"(0부터).
+sentences:
+  "10.4":
+    en: "I'll ask the physician to pull the catheter back, then recheck the trace."
+    ko: "의사에게 카테터를 당겨 달라고 요청하고, 파형을 다시 확인할게요."
+    chunks: ["I'll ask the physician", "to pull the catheter back,", "then recheck", "the trace", "."]
+    words: [w-ask, w-physician, w-pull, w-catheter, w-recheck, w-trace]
+    tag: "의사 요청"
+    icon: speech
+    why: "ask the physician to …로 카테터를 당기는 사람이 의사임을 분명히 말해요. then recheck the trace로 조정한 뒤의 확인 단계를 빠뜨리지 않고 이어요."
+    decoy: "then reprint"
+    distractorsKo:
+      - "의사에게 카테터 길이 표시가 몇 센티인지 먼저 알리고, 파형을 다시 확인할게요."
+      - "의사에게 카테터를 당겨 달라고 요청하려고 파형부터 확인할게요."
+  "7.3":
+    en: "A damped trace can make his systolic read falsely low."
+    ko: "감쇠된 파형은 수축기 혈압을 실제보다 낮게 보이게 할 수 있어요."
+    chunks: ["A damped trace", "can make", "his systolic", "read falsely low", "."]
+    words: [w-damped, w-trace, w-low]
+    why: "can make …는 항상은 아니지만 그렇게 만들 수 있다는 가능성이에요. 감쇠된 파형은 수축기를 낮게 보이게 하니, 파형이 이상하면 숫자만 믿지 말라는 이유를 전해요."
+    distractorsKo:
+      - "감쇠된 파형은 심박수를 실제보다 낮게 보이게 할 수 있어요."
+      - "감쇠된 파형은 이완기 혈압을 실제보다 낮게 보이게 할 수 있어요."
+    blank: {answer: damped, options: [damped, crisp, normal, steady]}
+  "15.4":
+    ko: "감압 키트 가져왔어요, 어디에 둘지 말씀해주세요."
+    distractorsKo:
+      - "감압 키트 가져왔어요, 언제 쓸지 말씀해주세요."
+      - "감압 키트 가져왔어요, 또 뭐가 필요한지 말씀해주세요."
+  "0.0":
+    ko: "동의서 확인했고, 멸균 영역도 준비했어요."
+    distractorsKo:
+      - "동의서는 곧 받고, 멸균 영역도 준비했어요."
+      - "동의서 확인했고, 멸균 영역은 시술 끝나고 치울게요."
+  "5.4":
+    ko: "필요한 건 다 멸균 영역에 늘어놓았어요."
+    distractorsKo:
+      - "거즈는 다 멸균 영역에 늘어놓았어요."
+      - "필요한 건 다 병실 문 옆 카트 위에 늘어놓았어요."
+  "1.0":
+    ko: "트랜스듀서를 영점 기준점에 맞춰 수평 잡고 영점 조정할게요."
+    distractorsKo:
+      - "트랜스듀서를 영점 기준점에 맞출 수 있게 자세부터 잡을게요."
+      - "트랜스듀서를 영점 기준점에 맞춰 영점 잡은 뒤 커프와 비교할게요."
+  "15.1":
+    ko: "지금 바로 바늘 감압과 흉관 삽입을 요청할게요."
+    distractorsKo:
+      - "지금 바로 바늘 감압을 요청하고 흉관 삽입 키트를 꺼낼게요."
+      - "지금 바로 바늘 감압을 요청하며 모니터를 봐요."
+  "20.2":
+    ko: "응고 검사와 혈액형·교차시험이 필요하고, 혈액도 바로 받아야 해요."
+    distractorsKo:
+      - "응고 검사와 혈액형·교차시험이 필요하고, 혈액 받을 정맥로를 먼저 볼게요."
+      - "응고 검사와 혈액형·교차시험 튜브부터 챙기고, 혈액도 받아야 해요."
+  "18.0":
+    ko: "지금 바로 좌측 측와위 트렌델렌버그 체위로 눕혀 주세요."
+    why: "Place him in … position now는 위치와 시점을 짧게 함께 말하는 명령형이에요. 왼쪽 옆으로 머리를 낮추면 공기가 우심실 위쪽에 갇혀 폐동맥으로 나가는 길을 막지 않게 돼요."
+    distractorsKo:
+      - "좌측 측와위 트렌델렌버그 체위로 눕히기 전에 라인부터 잠가 주세요."
+      - "트렌델렌버그로 눕히는 동안 누가 머리 쪽 좀 잡아 주세요."
+  "6.3":
+    ko: "뭐든 바뀌는 순간 바로 말씀드릴게요."
+    distractorsKo:
+      - "뭐든 바뀌는지 화면만 계속 지켜볼게요."
+      - "뭐든 바뀌는 순간 바로 손 들어 알려요."
+  "0.4":
+    chunks: ["I told him", "the drape will cover", "his face,", "but he can still breathe fine", "."]
+  "3.3":
+    chunks: ["I'll walk you through", "each chamber", "before", "we adjust anything", "."]
+  "8.4":
+    chunks: ["This much bubbling", "isn't from", "him breathing", "— it's a leak", "."]
+  "16.3":
+    chunks: ["Someone grab", "a fresh pressure bag", "and", "set it back up", "."]
+  "2.1":
+    distractorsKo:
+      - "포트마다 세척할 주사기부터 챙겼고 혈액 역류는 나중에 살펴요."
+      - "포트마다 세척했고 혈액 역류도 되는 거 보여드렸어요."
+  "5.1":
+    distractorsKo:
+      - "공기 들어가지 않게 숨 참는 법을 미리 한 번 연습하자고 부탁드릴게요."
+      - "제거하고 드레싱을 붙이면 숨 쉬셔도 된다고 말씀드릴게요."
+  "9.4":
+    distractorsKo:
+      - "한 번 기침해달라고 하려고 침대 머리를 천천히 일으켜 드릴게요."
+      - "두 번 기침해달라고 하고 물결치는 움직임이 있는지 지켜볼게요."
+  "17.1":
+    distractorsKo:
+      - "제가 테이프를 자르는 동안 긴장성 기흉 생기는지 지켜봐주세요."
+      - "제가 밀폐하는 동안 외과 선생님께 지금 상황 좀 전해 줘요."

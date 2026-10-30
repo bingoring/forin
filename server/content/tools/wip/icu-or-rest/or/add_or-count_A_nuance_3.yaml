@@ -1,0 +1,91 @@
+소독포 안 잔류 확인:
+  - kind: slider
+    words: [w-search, w-drape, w-shake, w-fold]
+    cue: "The counts match, but a sponge could be wrapped inside a folded drape. A glance won't be enough."
+    scale: [Glance at the drapes, Shake out each drape, Stop the case to search]
+    answerAt: 1
+    why: "접힌 소독포 안에는 작은 거즈가 끼어 있을 수 있어서, 눈으로 훑는 것으로는 부족해요. 천을 하나씩 털어서 확인하는 것이 알맞고, 아직 불일치가 없으므로 수술을 멈출 일은 아니에요."
+    example: "Shake out the drapes before we finalize the count."
+    exKo: "계수를 마무리하기 전에 소독포를 털어요."
+  - kind: swap
+    words: [w-shake, w-drape, w-before, w-finalize, w-count]
+    who: "순환 간호사 → 스크럽 · 계수 마무리 직전"
+    icon: speech
+    before: ["Shake out the drapes ", "after we finalize the count", "."]
+    options: [before we finalize the count, after we finalize the count, once the case is over]
+    answer: before we finalize the count
+    notes: {before we finalize the count: "계수를 확정하기 전에 털어 보아야 숨은 것이 있어도 발견할 수 있다.", after we finalize the count: "이미 계수를 확정한 뒤에 털면 확인이 의미가 없다.", once the case is over: "수술이 끝난 뒤에는 이미 환자가 닫힌 상태라 늦다."}
+    why: "숨은 물건은 계수를 확정하기 전에 찾아야 해요. 확정 뒤나 수술이 끝난 뒤에는 이미 늦어요."
+    ko: "계수를 마무리하기 전에 소독포를 털어요"
+바늘 파손 조각 확인:
+  - kind: slider
+    words: [w-fragment, w-miss]
+    cue: "The needle snapped. You have one half on the field and no sign of the other half yet."
+    scale: [A fragment may be missing, A fragment is missing, A fragment is retained]
+    answerAt: 1
+    why: "찾지 못한 조각이 있다는 사실을 그대로 말해요. 'may be'는 확인된 사실을 흐리고, 'retained'는 아직 확인되지 않은 몸속 잔류를 단정해요."
+    example: "A piece of the needle is still missing."
+    exKo: "바늘 조각 하나가 아직 없어요."
+  - kind: swap
+    words: [w-needle, w-break, w-fragment, w-close, w-before]
+    who: "순환 간호사 → 집도의 · 바늘이 부러졌을 때"
+    icon: speech
+    before: ["Dr. Park, the needle broke — ", "we can probably skip the tip", " before we close."]
+    options: [we need every fragment back, we can probably skip the tip, the rest is likely fine]
+    answer: we need every fragment back
+    notes: {we need every fragment back: "부러진 바늘은 조각까지 모두 회수하고 셈에 넣어야 닫을 수 있다.", we can probably skip the tip: "작은 끝부분이라도 몸 안에 남으면 이물이 된다.", the rest is likely fine: "짐작으로 남은 조각을 넘기는 말이다."}
+    why: "부러진 바늘은 아무리 작아도 조각을 모두 찾아야 해요. 일부를 건너뛰면 몸 안에 남을 수 있어요."
+    ko: "닫기 전에 조각을 전부 회수해야 해요"
+계수 방해 응급 상황:
+  - kind: slider
+    words: [w-recount, w-interrupt, w-count]
+    cue: "Your hospital's policy is clear: after an interruption, the count must be redone before the cavity is closed."
+    scale: [It would help to recount, We should probably recount, We have to recount first]
+    answerAt: 2
+    why: "병원 방침상 필수인 절차는 '해 보면 좋다'가 아니라 '해야 한다'로 말해요. 정중하더라도 선택처럼 들리게 하면 건너뛰기 쉬워요."
+    example: "Let's recount everything to be safe."
+    exKo: "안전하게 전부 다시 세요."
+  - kind: swap
+    words: [w-document, w-count, w-interrupt]
+    who: "순환 간호사 · 계수 중단 기록"
+    icon: pencil
+    before: ["I'll ", "leave out that the count was interrupted", "."]
+    options: [document that the count was interrupted, leave out that the count was interrupted, skip writing about the interruption]
+    answer: document that the count was interrupted
+    notes: {document that the count was interrupted: "중단된 사실을 기록에 남겨야 나중에 계수의 흐름을 이해할 수 있다.", leave out that the count was interrupted: "중단 사실을 빼면 기록이 실제와 달라진다.", skip writing about the interruption: "기록을 생략하면 이후 확인할 근거가 사라진다."}
+    why: "계수가 끊겼다는 사실도 기록에 남겨요. 빼 버리면 기록이 실제와 달라지고 나중에 원인을 추적하기 어려워요."
+    ko: "계수가 중단됐다는 것을 문서화할게요"
+두 명 동시 계수:
+  - kind: pair
+    words: [w-dual, w-count, w-eye, w-mistake]
+    pairs: [[dual, count], [two sets of, eyes], [catch, a mistake]]
+    decoys: [the stretcher]
+    why: "dual count는 두 사람이 함께 하는 이중 계수예요. 'two sets of eyes'는 두 사람이 보면 실수를 더 잘 잡는다는 표현이고, 'catch a mistake'는 실수를 잡아낸다는 뜻이에요."
+  - kind: context
+    words: [w-dual]
+    word: dual
+    ko: 이중의
+    scenes:
+      - {who: 순환 간호사 → 스크럽, icon: speech, en: "A dual count means we both confirm the total.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Dual count done; totals match.", ok: true}
+      - {who: 불안한 환자에게, icon: me, en: "We'll perform a dual count while you're under.", ok: false, fix: "Two of us will double-check all our supplies while you're asleep."}
+    why: "dual count는 계수 절차를 가리키는 업무 용어예요. 환자에게는 낯선 말이라 '둘이서 다시 확인한다'처럼 쉽게 풀어서 말해요."
+전자 계수 병행:
+  - kind: slider
+    words: [w-reconcile, w-scan, w-board]
+    cue: "The scan count says eleven and the board says ten."
+    scale: [Let's glance at both numbers, Let's compare both numbers, Let's reconcile both numbers]
+    answerAt: 2
+    why: "두 숫자가 다를 때는 훑어보거나 비교하는 데서 멈추지 않고, 차이가 풀릴 때까지 맞춰 봐요. reconcile은 어긋남을 해결해서 하나로 맞춘다는 뜻이에요."
+    example: "Let's reconcile the scan count with the board."
+    exKo: "스캔 계수를 게시판과 맞춰 봐요."
+  - kind: swap
+    words: [w-scan, w-manual, w-count, w-sponge]
+    who: "순환 간호사 · 전자 계수와 수기 계수"
+    icon: monitor
+    before: ["Each sponge gets scanned ", "but never counted by hand", "."]
+    options: [and manually counted, but never counted by hand, instead of being counted by hand]
+    answer: and manually counted
+    notes: {and manually counted: "전자 스캔은 보조 수단이라 사람이 손과 눈으로 세는 수기 계수도 함께 한다.", but never counted by hand: "수기 계수를 빼면 전자 기록의 오류를 잡아낼 사람이 없다.", instead of being counted by hand: "스캔이 수기 계수를 대신하지 않는다."}
+    why: "전자 스캔은 수기 계수를 돕는 보조 수단이에요. 스캔만 믿고 손으로 세지 않으면 기계 오류를 놓칠 수 있어요."
+    ko: "거즈마다 스캔하고 수기로도 세요"

@@ -1,0 +1,133 @@
+- situation: "이송 위험-이익 판단 소통"
+  items:
+    - kind: slider
+      words: [w-risk]
+      cue: "His pressor need keeps climbing and he's hard to oxygenate."
+      scale: [low risk, moderate risk, high risk]
+      answerAt: 2
+      why: "승압제 요구량이 계속 늘고 산소화가 어려우면 이송 위험이 높아요. 위험은 간호사 혼자 정하지 않고 담당의와 함께 이익과 저울질해서 결정해요."
+      example: "The transport risk is high right now, so let's call the attending."
+      exKo: "지금은 이송 위험이 높으니 담당의에게 연락해요."
+    - kind: context
+      words: [w-worse]
+      word: worse
+      ko: 더 나쁜
+      scenes:
+        - {who: 동료 간호사, icon: monitor, en: "If she gets worse mid-scan, can we reach her quickly?", ok: true}
+        - {who: 담당의에게 보고, icon: stetho, en: "Her pressor need is going up and she's getting worse.", ok: true}
+        - {who: 환자에게, icon: me, en: "You're worse than yesterday, so the scan is risky for you.", ok: false, fix: "You're not as strong today as we'd like, so we're being careful about whether to take you for the scan."}
+      why: "의료진끼리는 getting worse처럼 짧게 말해도 통해요. 환자에게 You're worse than yesterday처럼 단정하면 겁이 나요. 오늘 상태를 솔직하되 부드럽게 말하고 함께 신중히 정한다고 알려요."
+- situation: "이송 중 심정지 대응"
+  items:
+    - kind: slider
+      words: [w-need]
+      cue: "Compressions are going, but only two of you are here and the code team is still on the way."
+      scale: [spare hand, more hands, all hands]
+      answerAt: 1
+      why: "심정지 대응은 사람이 많이 필요해요. 지금처럼 둘뿐이고 팀이 오는 중이면 more hands가 맞아요. 부르는 일은 미루지 않고 바로 해요."
+      example: "We need more hands here right away."
+      exKo: "지금 당장 여기 손이 더 필요해요."
+    - kind: context
+      words: [w-pulse]
+      word: pulse
+      ko: 맥박
+      scenes:
+        - {who: 소생팀에게, icon: siren, en: "No pulse. Starting compressions now.", ok: true}
+        - {who: 의사에게 보고, icon: stetho, en: "He lost his pulse in the hallway, and compressions started right away.", ok: true}
+        - {who: 복도의 가족에게, icon: me, en: "He's pulseless, and we're coding him right now.", ok: false, fix: "His heart stopped, and we're working hard to get it going again."}
+      why: "의료진끼리는 pulse가 없다는 말만으로 심정지를 바로 알아요. 가족에게 pulseless, coding him은 은어라 차갑고 무섭게 들려요. 심장이 멈췄고 다시 뛰게 하려고 애쓰고 있다고 쉬운 말로 알려요."
+- situation: "이송 중 발관·라인 이탈 위기"
+  items:
+    - kind: slider
+      words: [w-color]
+      cue: "Since the tube came out, his lips and fingertips look blue."
+      scale: [pale, dusky, blue]
+      answerAt: 2
+      why: "산소가 부족해질수록 안색이 pale에서 dusky, blue로 변해요. 튜브가 빠진 환자의 안색이 변하면 마스크로 환기하며 병원 정책에 따라 바로 도움을 불러요."
+      example: "His color is changing, so keep bagging and call for help."
+      exKo: "안색이 변하고 있으니 계속 백으로 환기하고 도움을 불러요."
+    - kind: context
+      words: [w-airway]
+      word: airway
+      ko: 기도
+      scenes:
+        - {who: 호흡치료사에게, icon: monitor, en: "Hold the mask seal while I check his airway.", ok: true}
+        - {who: 의사 콜, icon: stetho, en: "The ETT came out, and I'm supporting his airway with the bag-valve mask.", ok: true}
+        - {who: 보호자에게, icon: me, en: "His airway was lost when the ETT was dislodged during transport.", ok: false, fix: "The breathing tube slipped out, so we're helping him breathe with a mask and getting him back safely."}
+      why: "의료진끼리는 airway, ETT, bag-valve mask처럼 짧게 말해도 통해요. 가족에게 airway was lost, dislodged는 최악처럼 들려요. 튜브가 빠졌고 마스크로 호흡을 돕고 있다고 쉬운 말로 알려요."
+- situation: "시술 진정 중 호흡정지 위기"
+  items:
+    - kind: slider
+      words: [w-apneic]
+      cue: "No chest rise and no airflow at all."
+      scale: [slow, very slow, apneic]
+      answerAt: 2
+      why: "가슴이 전혀 오르지 않고 숨이 없으면 apneic이에요. slow나 very slow와 달리 바로 백-밸브 마스크로 환기하고 도움을 불러야 해요."
+      example: "She's apneic, so I'm bagging her now."
+      exKo: "무호흡이라서 지금 백으로 환기하고 있어요."
+    - kind: context
+      words: [w-sedative]
+      word: sedative
+      ko: 진정제
+      scenes:
+        - {who: 시술 의사에게, icon: stetho, en: "I've stopped the sedative, and she's apneic.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Which sedative did we give, and when?", ok: true}
+        - {who: 보호자에게, icon: me, en: "A sedative-induced respiratory arrest occurred during the procedure.", ok: false, fix: "The medicine made her breathing stop for a moment, so we're helping her breathe and watching her closely."}
+      why: "의료진끼리는 sedative를 멈췄고 무엇을 언제 줬는지 짧게 주고받아요. 가족에게 respiratory arrest는 심정지처럼 들려 크게 놀라요. 숨이 잠깐 멈췄고 지금 돕고 있다고 쉬운 말로 알려요."
+- situation: "시술 중 대량출혈 급변"
+  items:
+    - kind: slider
+      words: [w-brisk]
+      cue: "Gauze is soaked through in under a minute, but she's still talking."
+      scale: [oozing, brisk, massive]
+      answerAt: 1
+      why: "스며 나오는 정도(oozing)가 아니라 빠르게 피가 나면 brisk예요. 혈압이 무너질 만큼 크면 massive라고 해요. 직접 압박을 하고 시술자에게 바로 알려요."
+      example: "The bleeding is brisk, so I'm holding direct pressure."
+      exKo: "출혈이 빨라서 직접 압박을 유지하고 있어요."
+    - kind: context
+      words: [w-bleed]
+      word: bleeding
+      ko: 출혈
+      scenes:
+        - {who: 시술 의사에게, icon: stetho, en: "The bleeding is brisk, and I'm holding direct pressure.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Where's the bleeding coming from? Hand me gauze.", ok: true}
+        - {who: 보호자에게, icon: me, en: "She's bleeding massively with hemodynamic compromise.", ok: false, fix: "She's bleeding more than we expected, so we're pressing on it and getting more help right now."}
+      why: "의료진끼리는 bleeding, brisk, pressure처럼 짧게 말해도 통해요. 가족에게 massively, hemodynamic compromise는 아주 위험하게 들려요. 출혈이 많아서 누르고 있고 도움을 더 부르고 있다고 쉬운 말로 알려요."
+- situation: "MRI 중 응급상황 대응"
+  items:
+    - kind: slider
+      words: [w-zone]
+      cue: "The room that holds the magnet itself."
+      scale: [Zone II, Zone III, Zone IV]
+      answerAt: 2
+      why: "MRI 구역은 Zone I부터 IV까지 있고, 자석이 있는 방이 Zone IV예요. 응급이면 환자를 Zone IV 밖으로 먼저 옮기고 거기서 소생을 이어가요. 코드 카트는 자석 방에 들이지 않아요."
+      example: "The magnet room is Zone IV, so we move her out first."
+      exKo: "자석 방은 Zone IV라서 먼저 환자를 밖으로 옮겨요."
+    - kind: context
+      words: [w-safe]
+      word: safe
+      ko: 안전한
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "She's out of the magnet room, and the area is safe for the code cart.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Is the safe zone past those double doors?", ok: true}
+        - {who: 보호자에게, icon: me, en: "The scanner room is not safe for her due to ferromagnetic hazard.", ok: false, fix: "We're taking her out of the scanner room so we can help her safely."}
+      why: "의료진끼리는 safe zone이 어디인지 짧게 확인해요. 가족에게 ferromagnetic hazard는 어렵고 무섭게 들려요. 소생을 안전하게 하려고 방 밖으로 옮긴다고 쉬운 말로 알려요."
+- situation: "이송 중 산소·전원 소진 위기"
+  items:
+    - kind: slider
+      words: [w-battery, w-percent]
+      cue: "Monitor battery is at 5 percent, and the wall outlet is two minutes away."
+      scale: [plenty left, running low, almost dead]
+      answerAt: 2
+      why: "5퍼센트처럼 거의 바닥이면 almost dead예요. 20퍼센트쯤 줄어든 running low보다 급해서, 가장 가까운 벽 콘센트에 바로 꽂거나 예비 전원으로 바꿔요. 감시가 끊기면 안 돼요."
+      example: "The battery is almost dead, so plug into the nearest outlet now."
+      exKo: "배터리가 거의 다 돼서 가장 가까운 콘센트에 바로 꽂아요."
+    - kind: context
+      words: [w-tank]
+      word: tank
+      ko: 탱크
+      scenes:
+        - {who: 동료 간호사, icon: monitor, en: "How full is the oxygen tank?", ok: true}
+        - {who: 의사에게 보고, icon: stetho, en: "The tank was nearly empty, so we switched to a fresh cylinder.", ok: true}
+        - {who: 환자에게, icon: me, en: "Your oxygen tank is depleted and the gas supply is exhausted.", ok: false, fix: "The oxygen we were carrying was running low, so we switched to a full one. You're getting plenty."}
+      why: "의료진끼리는 tank가 거의 비어서 새 실린더로 바꿨다고 짧게 말해요. 환자에게 depleted, exhausted는 산소가 없는 것처럼 들려요. 새것으로 바꿨고 지금 충분하다고 쉬운 말로 알려요."

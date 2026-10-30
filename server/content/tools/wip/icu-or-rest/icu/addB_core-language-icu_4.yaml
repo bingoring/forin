@@ -1,0 +1,39 @@
+situations:
+- title: 통역 통한 동의·설명
+  s:
+  - ["통역 설명", mic, "The interpreter will은 설명 주체를 통역사로 분명히 해요. fully를 붙이면 일부만이 아니라 시술 전체를 설명한다는 약속이 돼요.", "to you", "통역사가 시술을 천천히 설명해 드릴 거예요.", "통역사가 비용을 완전히 설명해 드릴 거예요.", "fully", "briefly", "quickly", "slowly"]
+  - ["질문 권유", speech, "any questions는 질문의 범위를 막지 않는다는 뜻이에요. before you decide로 결정하기 전에 묻는 것이 맞다는 시점을 알려요.", "out loud", "결정하기 전에 궁금한 것은 뭐든 모아 두세요.", "결정하기 전에 궁금한 것은 하나만 물어보세요.", "before", "after", "since", "unless"]
+  - ["되말하기 요청", check, "in your words는 들은 문장을 따라 하는 게 아니라 자기 말로 바꿔 보라는 뜻이에요. 이해했는지 가장 믿을 수 있게 확인해요.", "step by step", "이해하신 내용을 당신 말로 크게 말해주시겠어요?", "느끼신 내용을 당신 말로 다시 말해주시겠어요?", "understood", "wanted", "needed", "signed"]
+  - ["시간 허락", calendar, "all the time you need는 정해진 시간이 없다는 말이에요. 동의는 서두르면 안 되는 결정이라 이 여유가 중요해요.", "in the hall", "의논하는 데 필요한 만큼 시간을 가지세요.", "쉬는 데 필요한 만큼 시간을 가지세요.", "think", "rest", "talk", "pray"]
+  - ["이해 확인 목표", shield, "make sure는 내가 책임지고 확인하겠다는 뜻이에요. every part로 일부만 이해하고 넘어가지 않게 해요.", "today", "이 내용의 모든 부분을 기억하셨는지 확실히 하고 싶어요.", "이 내용의 모든 부분을 읽으셨는지 확실히 하고 싶어요.", "every", "some", "one", "half"]
+  - ["질문 장려", bulb, "no wrong question은 질문 자체를 평가하지 않는다는 선언이에요. 묻기 부끄러워하는 환자의 부담을 덜어 줘요.", "at this table", "여기서는 틀린 대답이 없어요.", "여기서는 늦은 질문이 없어요.", "wrong", "late", "small", "silly"]
+  - ["재검토 제안", redo, "Let's는 함께 하자는 제안이에요. once more together가 설명을 한 번 더, 같이 하겠다는 뜻이에요.", "with the form", "두 번 더 함께 살펴볼게요.", "다시 한번 천천히 살펴볼게요.", "together", "alone", "quickly", "later"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 동의 설명 4문장 순서
+    why: 설명이 먼저 있고, 그 뒤에 질문을 열고, 질문을 마치면 이해한 내용을 되말하게 하고, 이해를 확인한 뒤에 시간을 줘요.
+    lines:
+    - ["The interpreter will explain the procedure fully.", mic, "통역사가 시술을 완전히 설명해 드릴 거예요", "설명"]
+    - ["Once that's done, please ask any questions you have.", bulb, "그게 끝나면 궁금한 것을 물어보세요", "질문"]
+    - ["Once you've asked, can you tell me in your words what you understood?", check, "물어보신 뒤 이해하신 내용을 당신 말로 말해주시겠어요", "되말하기"]
+    - ["Only after you've told me, take all the time you need to think it over.", calendar, "말씀해 주신 뒤에야 필요한 만큼 시간을 가지세요", "시간 주기"]
+- title: 문화적 표현·금기 고려
+  s:
+  - ["존중 약속", handshake2, "Thank you for telling me는 알려 준 행동을 먼저 인정해요. I'll be respectful of that이 들은 내용을 실제로 지키겠다는 약속이에요.", "in my notes", "도와주셔서 감사해요, 존중해 드릴게요.", "말씀해 주셔서 감사해요, 기억해 둘게요.", "respectful", "careful", "aware", "afraid"]
+  - ["표현 방식 질문", speech, "How would you like me to처럼 상대의 선호를 묻는 틀은 내가 정하지 않고 맡긴다는 느낌을 줘요.", "in the hall", "그분의 상태를 누구에게 말씀드리길 원하세요?", "그분의 상태를 언제 말씀드리길 원하세요?", "talk", "joke", "write", "guess"]
+  - ["안내 요청", compass, "guide me는 가르쳐 달라는 겸손한 부탁이에요. what's appropriate가 정답을 내가 알지 못한다는 점을 드러내요.", "on the visit", "당신 가족에게 필요한 물건을 알려주세요.", "당신 가족에게 편한 시간을 알려주세요.", "appropriate", "popular", "expensive", "available"]
+  - ["소통 맞춤", faceWorried, "in a way that's comfortable for you는 내용이 아니라 말하는 방식을 상대에게 맞추겠다는 뜻이에요.", "with your family", "당신에게 빠른 방식으로 말씀드리고 싶어요.", "당신에게 편안한 방식으로 글로 적고 싶어요.", "comfortable", "quick", "short", "formal"]
+  - ["금기 어휘 질문", bell, "I not use처럼 would rather 뒤에 주어와 동사 원형이 오는 형태는 '~하지 않았으면 해요'라는 완곡한 선호예요.", "in front of him", "제가 쓰지 않았으면 하는 색이 있나요?", "제가 쓰지 않았으면 하는 이름이 있나요?", "words", "gestures", "colors", "gifts"]
+  - ["주도권 존중", check, "follow your lead는 상대가 이끌고 내가 따르겠다는 관용 표현이에요. on this로 범위를 이 문제로 좁혀요.", "from now on", "이 부분은 말씀하시는 대로 적을게요.", "이 부분은 말씀하시는 대로 설명할게요.", "lead", "word", "rule", "path"]
+  - ["정정 요청", redo, "Please correct me는 틀려도 괜찮고 고쳐 달라는 열린 부탁이에요. if I say something wrong이 실수 가능성을 솔직히 인정해요.", "on the spot", "제가 잘못 쓰면 바로잡아 주세요.", "제가 잘못 들으면 바로잡아 주세요.", "wrong", "rude", "loud", "late"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 문화 배려 4문장 순서
+    why: 먼저 선호를 묻고, 알려 준 것에 감사하며, 그에 맞춰 말하겠다고 약속하고, 틀리면 고쳐 달라고 부탁해요.
+    lines:
+    - ["How would you like me to talk about his condition?", speech, "그분의 상태를 어떻게 말씀드리길 원하세요", "선호 질문"]
+    - ["Thank you for telling me.", handshake2, "말씀해 주셔서 감사해요", "감사"]
+    - ["With that, I'll speak in a way that's comfortable for you.", faceWorried, "그에 맞춰 편안한 방식으로 말씀드릴게요", "맞춤 약속"]
+    - ["If I still get it wrong, please correct me.", redo, "그래도 틀리면 바로잡아 주세요", "정정 요청"]

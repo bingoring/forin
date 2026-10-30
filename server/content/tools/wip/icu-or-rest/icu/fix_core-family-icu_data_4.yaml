@@ -1,0 +1,67 @@
+# 뉘앙스·order
+nuance:
+  "9.0":
+    why: power of attorney는 '위임장'(의료 결정에는 의료용 위임장이어야 해요), next of kin은 '가장 가까운 친족', advance directive는 '사전의료지시서'예요. 모두 굳어진 덩어리라 다른 말과 바꿔 붙이지 않아요. 가장 가까운 친족이 곧 대리결정자는 아니고 순서는 주 법이 정해요.
+  "4.0":
+    scale: [allow, encourage, require]
+    answerAt: 0
+    why: allow는 해도 된다는 허락이에요. encourage는 그러라고 권하는 말이고, require는 반드시 해야 한다는 규칙이에요.
+  "18.0":
+    scale: [not easy, hard, heartbreaking]
+    why: not easy는 쉽지 않다는 완곡한 말이에요. hard는 분명히 힘들다는 뜻이고, heartbreaking은 가슴이 무너질 만큼 아프다는 뜻이에요.
+  "19.0":
+    cue: 'Family: "You covered it up so we''d never find out!"'
+  "13.1":
+    before: ["The ", mechanical ventilator, " is helping your brother breathe right now."]
+    ko: 숨쉬기 기계가 지금 오빠가 숨 쉬는 걸 돕고 있어요
+  "16.1":
+    before: ["Let me get you a ", private low-stimulus environment, " and someone to support you."]
+  "2.1":
+    notes_set: {weaning: '의료진이 흔히 쓰는 말이라, 처음 듣는 가족에게는 쉬운 말로 풀어 줘요.'}
+  "12.1":
+    scene_en: {1: "I'm hoping he wakes up tomorrow."}
+  "1.1":
+    scene_en: {1: "The alarm was the pump's infusion-complete alert; I hung a new bag."}
+    scene_fix: {2: "Pump alarm: infusion complete; new bag hung."}
+  "5.1":
+    scenes:
+      - {who: 야간 인계, icon: monitor, en: "Support arranged — the chaplain will see the family at three.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Spiritual support offered; family accepted a chaplain visit.", ok: true}
+      - {who: 보호자에게, icon: me, en: "A spiritual support consult has been placed for your family.", ok: false, fix: "I've asked our chaplain to come see you at three — would that help?"}
+  "14.1":
+    scene_en: {0: "I've angled the camera so you can see his face.", 1: "Can you move the camera toward the bed? His son can't see his face."}
+  "9.1":
+    scene_fix: {2: "In most states the law puts a spouse first, so the team will likely ask you to speak for him."}
+order:
+  "0":
+    perm: [0, 1, 3, 2]
+    why: 처음 온 가족에게는 무엇을 보게 될지부터 안내하고, 그 모습이 정상임을 말한 뒤, 들어가기 전에 시간을 주고, 들어가서 할 수 있는 일을 알려 주며 마무리해요.
+  "2":
+    lines:
+      1: {ko: 그래서 필요한 보조 치료를 천천히 줄이고 있어요}
+  "6":
+    why: 가족의 질문을 목록으로 만드는 것으로 시작하고, 그 질문을 회의 전에 적어 두라고 권한 뒤, 회의에서 의사가 설명하고 통역사가 통역한다고 알리고, 이후 함께 살펴보겠다고 마무리해요.
+    lines:
+      2: {en: "At that meeting, the doctor will explain things, and an interpreter can translate if needed.", ko: '그 회의에서 의사 선생님이 설명하고, 필요하면 통역사가 통역해 드려요'}
+  "7":
+    why: 틀린 답은 없다고 부담을 먼저 덜고, 그가 어떤 사람이었는지 묻고, 그걸 바탕으로 지금 그가 뭐라고 했을지 물은 뒤, 들은 것을 바탕으로 그분이 무엇을 원하셨을지 되짚어 물으며 마무리해요.
+    lines:
+      0: {en: "First, there's no wrong answer — I just want to understand him better.", ko: '먼저 틀린 답은 없어요, 그저 그를 더 잘 이해하고 싶을 뿐이에요'}
+      3: {en: "So, based on what you've told me, what do you think he would want?", ko: '그러니 말씀해 주신 걸 바탕으로 그분이라면 무엇을 원하셨을 것 같으세요', note: 확인}
+  "11":
+    why: 가족이 하는 모든 일이 중요하다고 먼저 말하고, 구체적인 돌봄 예를 들고, 그러는 동안 말 걸기와 책 읽기도 도움이 된다고 덧붙이고, 그가 좋아하던 걸 알려 달라고 마무리해요.
+    lines:
+      2: {en: "While you do that, talking and reading to him really does help.", ko: 그러는 동안 말을 걸고 책을 읽어주는 것도 도움이 돼요}
+  "15":
+    why: 공감을 먼저 말하며 치료에 반응하지 않는다고 알리고(의사 면담 뒤 팀의 판단을 다시 전할 때), 그 뜻을 분명히 전한 뒤, 앞으로 편안하게 돌보고 곁에 있을 수 있다고 알리고, 그 과정 내내 곁에 있겠다고 마무리해요.
+  "18":
+    why: 곁을 지켜 준 데 감사하고 다음 일을 설명하겠다고 말한 뒤, 대리인이 없어 정해진 절차를 따른다고 알리고, 그 절차로 윤리위원회를 참여시킨다고 설명하며, 그래서 직접 결정하지 않아도 된다고 마무리해요.
+    lines:
+      3: {en: "So you won't have to make this decision yourself.", ko: 그러니 이 결정을 직접 내리시지 않아도 돼요}
+  "19":
+    lines:
+      3: {en: "To show you, let me pull up the chart so we can look at it together.", ko: 보여 드리려고 차트를 띄워서 함께 살펴볼게요}
+  "20":
+    why: 깊은 애도를 먼저 표하고, 시간 제한이 없다고 알리고, 곁에 머물러도 되고 무엇이든 하기 전에 미리 알리겠다고 말한 뒤, 준비되면 다음 절차와 지원 정보를 주겠다고 마무리해요.
+    lines:
+      2: {en: "In that time, you can stay with him, and I'll tell you before anything needs to happen.", ko: '그 시간 동안 곁에 머무르셔도 돼요, 무엇이든 해야 할 때가 되면 미리 말씀드릴게요'}

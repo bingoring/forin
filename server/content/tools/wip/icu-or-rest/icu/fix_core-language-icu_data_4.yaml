@@ -1,0 +1,51 @@
+# order 카드 — situation index → {why(선택), lines: {줄 index(0부터): 바꿀 필드}}
+order:
+  0:
+    why: "통역사를 부르고, 연결되면 설명을 시작하고, 설명하는 동안 편하게 끼어들게 한 뒤, 마지막에 되묻기를 열어 둬요."
+    lines:
+      0: {ko: "바로 전문 통역사를 불러드릴게요"}
+      1: {en: "Once that person is on the line, I'll explain everything step by step.", icon: board, ko: "그분이 연결되면 차근차근 설명해 드릴게요", note: 설명}
+      2: {en: "While I explain, please speak naturally and stop me anytime.", icon: speech, ko: "제가 설명하는 동안 편하게 말씀하시고 언제든 멈춰 주세요", note: 방식 안내}
+  2:
+    why: "반응을 묻고 기다리되, 얼마나 걸리든 안전하다고 안심시키고, 쉬는 동안 다시 올 것을 약속해요."
+    lines:
+      2: {en: "However long that takes, you're safe here — just rest.", ko: "얼마나 걸리든 여기선 안전해요, 그냥 쉬세요", note: 안심}
+      3: {en: "While you rest, I'll check on you again in a few minutes.", ko: "쉬시는 동안 몇 분 뒤에 다시 올게요", note: 재방문}
+  7:
+    lines:
+      3: {en: "With that clear, take all the time you need to think it over.", ko: "그게 분명해졌으니 필요한 만큼 시간을 가지고 생각해 보세요", note: 시간 주기}
+  8:
+    why: "피할 말을 묻고, 알려 준 데 감사하고, 그 말을 피해 편하게 말하겠다고 약속한 뒤, 틀리면 고쳐 달라고 부탁해요."
+    lines:
+      0: {en: "Are there words you'd rather I not use?", icon: bell, ko: "제가 쓰지 않았으면 하는 말이 있나요", note: 금기 질문}
+      1: {en: "Thank you for telling me which ones.", ko: "어떤 말인지 알려 주셔서 감사해요", note: 감사}
+      2: {en: "I'll avoid those and speak in a way that's comfortable for you.", ko: "그 말은 피하고 편안한 방식으로 말씀드릴게요", note: 맞춤 약속}
+  9:
+    lines:
+      1: {en: "Still, for medical decisions, we use a trained interpreter for accuracy.", ko: "그래도 의료 결정에는 정확성을 위해 훈련된 통역사를 씁니다", note: 원칙}
+  11:
+    lines:
+      3: {en: "Whatever matters to all of you, we'll take it one step at a time.", ko: "여러분 모두에게 무엇이 중요하든 한 단계씩 해요", note: 단계 약속}
+  14:
+    lines:
+      2: {en: "That confusion is on me — let me explain that part again.", ko: "그 혼란은 제 탓이에요, 그 부분을 다시 설명할게요", note: 다시 설명}
+  15:
+    lines:
+      1: {en: "To ease that, we're doing everything we can.", ko: "그걸 덜어 드리려고 할 수 있는 모든 걸 하고 있어요", note: 안전 약속}
+  16:
+    why: "미안함을 먼저 말하고, 통역사가 그 소식을 온전히 전한다고 알리고, 통역하는 동안 멈춰 시간을 준 뒤 질문을 열어요."
+    lines:
+      0: {en: "I'm so sorry to share difficult news.", icon: faceWorried, ko: "힘든 소식을 전하게 되어 정말 죄송해요", note: 사과}
+      1: {en: "The interpreter will convey it gently and completely.", icon: mic, ko: "통역사가 그 소식을 부드럽고 완전하게 전할 거예요", note: 통역 약속}
+      2: {en: "As they interpret, I'll pause often so you have time to take it in.", icon: calendar, ko: "통역하는 동안 자주 멈춰 받아들이실 시간을 드릴게요", note: 속도 약속}
+      3: {en: "Once you've taken it in, please ask me anything, no matter how small.", icon: bulb, ko: "받아들이신 뒤 사소해도 뭐든 물어보세요", note: 질문 장려}
+  17:
+    lines:
+      1: {en: "Through them, tell me: what mattered most to him in his life?", ko: "통역사를 통해 말씀해 주세요, 그의 삶에서 가장 중요했던 건 무엇이었나요", note: 삶 질문}
+  18:
+    lines:
+      2: {en: "Beyond the choice itself, can he tell us what happens if he agrees?", ko: "선택 자체를 넘어, 동의하면 어떻게 되는지 말할 수 있나요", note: 결과 이해}
+  20:
+    why: "신념을 존중한다는 말로 시작하고, 걱정을 묻고, 들은 걱정을 바탕으로 방법을 제안하고, 무엇을 찾든 신념을 바꾸라는 게 아님을 확인해요."
+    lines:
+      3: {en: "Whatever we find, we're not asking you to change your beliefs.", ko: "무엇을 찾든 신념을 바꾸라는 게 아니에요", note: 신념 존중}

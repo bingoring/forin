@@ -1,0 +1,913 @@
+## 0 절개 전 초기 계수
+ --nuance[0] kind: pair
+     words:
+     - w-baseline
+     - w-incision
+     pairs:
+     - - baseline
+       - count
+     - - skin
+       - incision
+     - - sterile
+       - field
+     decoys:
+     - the stretcher
+     why: baseline count는 수술을 시작할 때 처음 세어 이후 계수의 비교 기준이 되는 숫자예요. skin incision은 피부 절개, sterile field는 멸균 상태를 지키는 수술 영역이고요. 세 표현 모두 수술 시작 전 준비에서 자주 들려요.
+     
+ --nuance[1] kind: context
+     words:
+     - w-incision
+     word: incision
+     ko: 절개
+     scenes:
+     - who: 순환 간호사 → 집도의
+       icon: speech
+       en: Counts are correct, Dr. Lee — we're ready for the incision.
+       ok: true
+     - who: 수술 기록
+       icon: board
+       en: Initial counts correct x2; incision at 0912.
+       ok: true
+     - who: 불안한 환자에게
+       icon: me
+       en: Soon the surgeon will make an incision in your belly.
+       ok: false
+       fix: Soon the surgeon will make a small cut, after you're asleep.
+     why: incision은 의료진끼리, 그리고 기록에서 쓰는 정확한 말이에요. 수술을 앞두고 긴장한 환자에게는 '배에 절개를 낸다'가 차갑게 들려서, 'a small cut'처럼 쉬운 말로 풀어 줘요.
+     
+ --order why: 계수를 시작하자고 말한 뒤 함께 센 결과를 말하고, 그 숫자를 확인한 다음 게시판에 적어 팀이 같은 값을 보게 해요.
+     I'm starting the initial count now. | 지금 초기 계수를 시작할게요 | 개시
+     Let's count sponges, instruments, and needles together. | 거즈, 기구, 바늘을 함께 세요 | 계수
+     Those numbers match the baseline we recorded. | 그 숫자는 기록해 둔 기저치와 맞아요 | 확인
+     Now that they match, I'll write them on the board for the team. | 일치하니 팀이 보게 게시판에 적을게요 | 기록
+## 1 거즈 소리내어 확인
+ --nuance[0] kind: slider
+     words:
+     - w-loud
+     - w-count
+     cue: The room is noisy — suction, monitors, a second nurse across the table. She has to hear your sponge number.
+     scale:
+     - Whisper it
+     - Say it clearly
+     - Shout it out
+     answerAt: 1
+     why: 계수는 상대가 숫자를 분명히 들어야 확인이 돼요. 속삭이면 소음에 묻히고, 소리를 지르면 수술방이 어수선해져요. 또렷하고 충분히 크게 말하는 것이 맞아요.
+     example: Let's count these out loud, one by one.
+     exKo: 소리 내어 하나씩 세어 봐요.
+     
+ --nuance[1] kind: swap
+     words:
+     - w-count
+     - w-sponge
+     - w-check
+     who: 순환 간호사 → 집도의 · 계수 결과 보고
+     icon: speech
+     before:
+     - 'Dr. Lee, '
+     - the sponges look about right
+     - ' — may we proceed?'
+     options:
+     - the sponge count is correct
+     - the sponges look about right
+     - I think the sponges are fine
+     answer: the sponge count is correct
+     notes:
+       the sponge count is correct: 두 사람이 세어 맞춘 결과를 사실대로 보고한다. 집도의가 믿고 진행할 근거가 된다.
+       the sponges look about right: '''대략''이라는 말은 계수에 쓰지 않는다. 숫자가 맞았는지 아닌지를 말해야 한다.'
+       I think the sponges are fine: 추측으로 들린다. 계수는 짐작이 아니라 확인한 결과를 전한다.
+     why: 계수 결과는 '맞다/틀리다'로 분명히 보고해요. '대략 맞다'나 '괜찮은 것 같다'는 확인하지 않은 말로 들려서 집도의가 진행해도 되는지 판단할 수 없어요.
+     ko: 거즈 계수가 맞아요
+     
+ --order why: 소리 내어 세기를 제안하고, 센 개수를 말해 확인을 청하고, 상대가 같은 값을 말해 일치를 확인한 뒤 그 숫자를 적어요.
+     Let's count these out loud, one by one. | 소리내어 하나씩 세요 | 제안
+     I count ten sponges in total — can you confirm? | 거즈 모두 열 개 세었는데 — 확인해 줄래요? | 보고
+     I counted ten as well, so we match. | 저도 열 개 세었으니 일치해요 | 확인
+     Good, then I'll write that number on the board. | 좋아요, 그럼 그 숫자를 게시판에 적을게요 | 기록
+## 2 기구 목록 대조
+ --nuance[0] kind: slider
+     words:
+     - w-total
+     - w-correct
+     - w-confirm
+     cue: You counted the tray once by yourself, and your partner hasn't looked at it yet.
+     scale:
+     - The total seems close
+     - The total looks correct to me
+     - We both confirmed the total
+     answerAt: 1
+     why: 혼자 한 번 센 결과는 '내가 보기엔 맞다'까지만 말할 수 있어요. 'We both confirmed'는 두 사람이 따로 같은 숫자를 확인한 뒤에 쓰는 말이고, 'seems close'는 계수에서는 너무 느슨해요.
+     example: The total looks correct to me.
+     exKo: 총 개수가 맞는 것 같아요.
+     
+ --nuance[1] kind: swap
+     words:
+     - w-tray
+     - w-list
+     - w-count
+     who: 순환 간호사 → 스크럽 · 쟁반과 목록이 다를 때
+     icon: speech
+     before:
+     - 'The tray has twelve, but the list says thirteen — '
+     - it's probably fine
+     - .
+     options:
+     - let's count it again
+     - it's probably fine
+     - just write twelve
+     answer: let's count it again
+     notes:
+       let's count it again: 숫자가 어긋나면 다시 세어 원인을 찾는다. 정석적인 대응이다.
+       it's probably fine: 불일치를 짐작으로 넘긴다. 빠진 기구가 있을 수 있다.
+       just write twelve: 기록을 숫자에 끼워 맞추는 말이다. 기록을 조작하는 셈이 된다.
+     why: 목록과 쟁반의 숫자가 다르면 그대로 넘기거나 기록을 맞추지 않고, 다시 세어 원인을 찾아요. 계수 기록은 실제와 일치해야 의미가 있어요.
+     ko: 다시 세어 봐요
+     
+ --order why: 목록과 대조하겠다고 말한 뒤 쟁반의 개수를 말하고, 목록과 같은지 판단한 다음 총계를 함께 확인해 마무리해요.
+     Let's check each instrument against the count sheet. | 기구를 계수 목록지와 대조해요 | 대조
+     On this tray I see twelve instruments. | 이 쟁반에는 기구 열두 개가 보여요 | 보고
+     The sheet also says twelve, so they match. | 목록지에도 열두 개라 일치해요 | 판단
+     Then I'll confirm that total with you. | 그럼 그 총계를 당신과 함께 확인할게요 | 확인
+## 3 바늘 회수 확인
+ --nuance[0] kind: slider
+     words:
+     - w-account
+     - w-needle
+     cue: Four needles were opened for this case, and the scrub has just returned all four to the magnet.
+     scale:
+     - I believe we have them
+     - We seem to have them all
+     - All four are accounted for
+     answerAt: 2
+     why: 바늘은 '있는 것 같다'가 아니라 숫자로 맞춰 봤다고 말해요. 'accounted for'는 개수를 하나도 빠짐없이 셈에 넣고 확인했다는 뜻이라 계수 보고에 알맞아요.
+     example: Let's account for every needle we've used.
+     exKo: 사용한 바늘을 전부 셈에 넣어요.
+     
+ --nuance[1] kind: swap
+     words:
+     - w-needle
+     - w-done
+     who: 스크럽 간호사 → 집도의 · 바늘 반납 요청
+     icon: speech
+     before:
+     - 'Please '
+     - set it down anywhere
+     - ' as soon as you''re done.'
+     options:
+     - hand me the needle
+     - set it down anywhere
+     - keep it in your hand
+     answer: hand me the needle
+     notes:
+       hand me the needle: 다 쓴 바늘을 스크럽에게 돌려주어야 자석에 올려 개수를 맞출 수 있다.
+       set it down anywhere: 아무 데나 두면 바늘이 어디 있는지 모르게 된다.
+       keep it in your hand: 쥐고 있으면 계수가 맞아떨어지지 않고 다음 동작에도 위험하다.
+     why: 바늘은 쓰고 나면 곧바로 스크럽에게 돌려줘야 계수와 안전이 지켜져요. 아무 데나 두거나 손에 쥐고 있으면 위치를 놓쳐요.
+     ko: 다 쓰시면 바로 바늘을 저한테 건네 주세요
+     
+ --order why: 쓴 바늘을 전부 셈에 넣자고 말하고, 자석 위로 모은 뒤 하나씩 세고, 그 숫자가 맞으면 게시판에 적어요.
+     Let's account for every needle we've used. | 사용한 바늘을 전부 셈에 넣어요 | 개시
+     All of them go back on the magnet for counting. | 전부 계수를 위해 자석 위로 돌아가요 | 회수
+     I count each one before we move on. | 넘어가기 전에 하나씩 세요 | 계수
+     If that number is exact, I'll write it on the board. | 그 숫자가 정확하면 게시판에 적을게요 | 기록
+## 4 계수 기록 작성
+ --nuance[0] kind: slider
+     words:
+     - w-board
+     - w-write
+     - w-document
+     cue: Mid-case, a team member just wants a quick look at the running numbers — nothing needs to be filed yet.
+     scale:
+     - I wrote it on the board
+     - I told the team the count
+     - I documented it in the record
+     answerAt: 0
+     why: 수술 중 모두가 볼 수 있게 현재 숫자를 보드에 적어 두는 것은 가장 가벼운 공유 방법이에요. 환자 기록에 남기는 'document'는 정식 서류 작업이라 지금 필요한 것과 달라요.
+     example: I'm writing the counts on the board now.
+     exKo: 지금 보드에 계수를 적고 있어요.
+     
+ --nuance[1] kind: swap
+     words:
+     - w-note
+     - w-exact
+     - w-count
+     who: 순환 간호사 · 계수 기록 습관
+     icon: pencil
+     before:
+     - 'I always note '
+     - about the time
+     - ' of each count.'
+     options:
+     - the exact time
+     - about the time
+     - a rough time
+     answer: the exact time
+     notes:
+       the exact time: 계수를 한 시각을 정확히 남겨 두면 나중에 어느 계수 사이에 일이 있었는지 가릴 수 있다.
+       about the time: 어림으로 적으면 기록이 흐려진다.
+       a rough time: 대략의 시각은 기록으로서 가치가 떨어진다.
+     why: 기록은 나중에 되짚어 볼 수 있도록 정확하게 남겨요. 시각을 어림으로 적으면 어느 시점의 계수였는지 확인하기 어려워요.
+     ko: 매번 계수의 정확한 시각을 적어 둬요
+     
+ --order why: 계수를 적는 중이라고 알리고, 각각에 시각을 붙이고, 그 기록으로 총계가 맞는지 보고, 모두가 볼 수 있다는 점으로 마무리해요.
+     I'm writing the counts on the board now. | 지금 게시판에 계수를 적고 있어요 | 작성
+     Each one is documented with the time. | 하나하나 시각과 함께 문서화해요 | 시각
+     With the times written, I can see all totals match. | 시각이 적혀 있어서 총계가 전부 맞는 게 보여요 | 일치
+     Everyone can see that from the board. | 누구나 게시판에서 그걸 볼 수 있어요 | 공유
+## 5 봉합 전 계수 개시
+ --nuance[0] kind: slider
+     words:
+     - w-before
+     - w-close
+     - w-start
+     - w-count
+     cue: The surgeon asks, "Are we about ready to close?" The closing count hasn't started yet.
+     scale:
+     - Not yet, starting the count
+     - Not yet, the count is off
+     - Stop, nobody closes yet
+     answerAt: 0
+     why: 아직 이상이 없을 때는 '곧 계수를 시작하겠다'고 담담하게 알려요. 계수가 틀렸다거나 모두 멈추라는 말은 실제로 불일치가 있을 때 아껴 두는 말이에요.
+     example: Before we close, I'm starting the closing count.
+     exKo: 닫기 전에 봉합 계수를 시작할게요.
+     
+ --nuance[1] kind: context
+     words:
+     - w-cavity
+     word: cavity
+     ko: 체강
+     scenes:
+     - who: 순환 간호사 → 스크럽
+       icon: speech
+       en: Let's verify everything before the cavity is closed.
+       ok: true
+     - who: 수술 기록
+       icon: board
+       en: Closing counts correct x2 prior to cavity closure.
+       ok: true
+     - who: 대기실 보호자에게
+       icon: me
+       en: The surgeon is about to close the cavity, so it won't be long.
+       ok: false
+       fix: The surgeon is finishing up now, so it won't be long.
+     why: cavity는 몸속 빈 공간을 가리키는 의료진의 말이에요. 기다리는 가족에게 'cavity를 닫는다'고 하면 어렵고 낯설게 들리니, 'finishing up'처럼 쉬운 말로 소식을 전해요.
+     
+ --order why: 닫기 전에 계수를 시작한다고 알리고, 그것을 함께 하자고 말하고, 일치해야 한다는 조건을 짚은 뒤 일치하면 닫을 수 있다고 마무리해요.
+     Before we close, I'm starting the closing count. | 닫기 전에 봉합 계수를 시작할게요 | 개시
+     Let's do it together so nothing is missed. | 빠지는 게 없게 함께 해요 | 제안
+     All counts need to match before closure. | 봉합 전에 모든 계수가 일치해야 해요 | 조건
+     With all of them matching, we can close the cavity. | 전부 일치하면 체강을 닫을 수 있어요 | 승인
+## 6 추가 거즈 투입 기록
+ --nuance[0] kind: slider
+     words:
+     - w-add
+     - w-log
+     - w-additional
+     cue: The scrub is about to place ten more sponges on the field. You want them logged first, without stopping the surgeon's work.
+     scale:
+     - Ten more are coming
+     - Let me log these first
+     - Nobody touches anything
+     answerAt: 1
+     why: 새 거즈는 수술 영역에 들어가기 전에 기록하는 것이 원칙이에요. 알려만 주고 끝내면 계수가 안 맞고, 모두 멈추게 하면 수술이 불필요하게 끊겨요.
+     example: Let me log these before they go into the field.
+     exKo: 필드에 들어가기 전에 이걸 기록할게요.
+     
+ --nuance[1] kind: swap
+     words:
+     - w-open
+     - w-pack
+     who: 순환 간호사 → 스크럽 · 새 포장을 열 때
+     icon: speech
+     before:
+     - 'Please tell me '
+     - the first time
+     - ' you open a new pack.'
+     options:
+     - every time
+     - the first time
+     - the last time
+     answer: every time
+     notes:
+       every time: 열 때마다 알려야 총계가 항상 최신으로 유지된다.
+       the first time: 처음 한 번만 알리면 이후 포장은 계수에서 빠진다.
+       the last time: 마지막에 알리면 그전 포장들이 모두 빠진다.
+     why: 새 포장은 열 때마다 알려야 총계가 틀어지지 않아요. 한 번만 알리면 그다음 포장의 거즈가 계수에서 빠져요.
+     ko: 새 포장을 열 때마다 말해 줘요
+     
+ --order why: 추가된 거즈를 알린 뒤 필드에 들어가기 전에 기록하고, 기록을 반영한 새 총계를 말하고, 그 총계로 게시판을 고쳐요.
+     Ten additional sponges added — updating the count. | 거즈 열 개 추가됐어요 — 계수를 갱신할게요 | 알림
+     Let me log those now, before they go into the field. | 필드에 들어가기 전에 지금 그걸 기록할게요 | 기록
+     With them logged, our new total includes the extra sponges. | 기록해서 새 총계에 추가된 거즈가 포함돼요 | 총계
+     I'll update the board with that new total. | 그 새 총계로 게시판을 갱신할게요 | 갱신
+## 7 계수 중 교대 인계
+ --nuance[0] kind: slider
+     words:
+     - w-current
+     - w-total
+     cue: You are relieving the circulator mid-case, and you will take over only after you have verified the numbers yourself.
+     scale:
+     - Tell me what you have
+     - Show me the current totals
+     - Count everything with me
+     answerAt: 2
+     why: 교대할 때는 말로 전달받는 데서 그치지 않고, 둘이 함께 직접 세어 확인한 뒤에 넘겨받아요. 숫자만 보여 달라는 것도 도움은 되지만, 직접 센 확인에는 미치지 못해요.
+     example: Show me the current totals so nothing is lost.
+     exKo: 아무것도 놓치지 않게 현재 총계를 보여줘요.
+     
+ --nuance[1] kind: context
+     words:
+     - w-recount
+     word: recount
+     ko: 다시 세다
+     scenes:
+     - who: 교대 간호사 → 순환 간호사
+       icon: speech
+       en: Let's do a full recount together before I take over.
+       ok: true
+     - who: 수술 기록
+       icon: board
+       en: Full recount done at relief; counts correct x2.
+       ok: true
+     - who: 대기 중인 집도의에게
+       icon: monitor
+       en: Dr. Chen, I'll need you to recount the sponges.
+       ok: false
+       fix: Dr. Chen, we're recounting at the relief — one moment, please.
+     why: recount는 계수하는 두 간호사 사이의 말이에요. 집도의에게 '다시 세라'고 시키듯 말하면 역할이 맞지 않아요. 집도의에게는 지금 다시 세는 중이니 잠시 기다려 달라고 알려요.
+     
+ --order why: 넘겨받기 전에 함께 세자고 하고, 아직 열린 것을 말하게 하고, 그 정리 뒤 다시 세어 확인한 다음에야 넘겨받겠다고 선언해요.
+     Let's do a full count together before I take over. | 제가 넘겨받기 전에 전체 계수를 함께 해요 | 제안
+     Tell me exactly what's still open on the field. | 필드에 아직 열려 있는 게 뭔지 정확히 말해줘요 | 요청
+     With that settled, we recount to confirm before the handover. | 그게 정리되면 인계 전에 다시 세서 확인해요 | 재확인
+     Good, I'm taking over your count now. | 좋아요, 지금부터 당신 계수를 넘겨받을게요 | 인수
+## 8 방사선 표지 거즈 확인
+ --nuance[0] kind: slider
+     words:
+     - w-marker
+     - w-sponge
+     cue: The scrub is reaching for a sponge from a new pack. Nothing is wrong — you just want to remind her of the rule.
+     scale:
+     - 'Reminder: marked ones only'
+     - Stop, that has no marker
+     - Stop all, recount the room
+     answerAt: 0
+     why: 아무 문제가 없을 때는 가볍게 규칙만 상기시켜요. 표지가 없는 거즈를 실제로 발견했을 때에야 '멈추라'는 단호한 말이 필요하고, 방 전체를 다시 세는 건 더 큰 문제일 때예요.
+     example: Every sponge we use must have this marker.
+     exKo: 사용하는 거즈는 전부 이 표지가 있어야 해요.
+     
+ --nuance[1] kind: context
+     words:
+     - w-radiopaque
+     word: radiopaque
+     ko: 방사선 불투과성의
+     scenes:
+     - who: 순환 간호사 → 스크럽
+       icon: speech
+       en: Let me confirm each one has the radiopaque marker.
+       ok: true
+     - who: 수술 기록
+       icon: board
+       en: All sponges radiopaque; counts correct x2.
+       ok: true
+     - who: 불안한 환자에게
+       icon: me
+       en: Our sponges are radiopaque, so an X-ray can see them.
+       ok: false
+       fix: Our sponges show up on X-ray, which helps us keep track of them.
+     why: radiopaque는 영상의학 용어라 의료진끼리, 그리고 기록에서 정확해요. 환자에게는 처음 듣는 말이라 '엑스선에 보인다'처럼 풀어서 설명해요.
+     
+ --order why: 탐지되는 거즈만 쓴다는 규칙을 말하고, 표지를 하나씩 확인한 뒤, 표지 없는 것은 바로 빼고, 쓰는 거즈 전부에 표지가 있다고 마무리해요.
+     Only X-ray detectable sponges go on this field. | X선으로 탐지 가능한 거즈만 필드에 올려요 | 규칙
+     Let me confirm each one has the radiopaque marker. | 하나하나 방사선 불투과 표지가 있는지 확인할게요 | 확인
+     If one doesn't, we remove it right away. | 없는 게 있으면 바로 빼요 | 제거
+     Now every sponge we use has that marker. | 이제 사용하는 거즈는 전부 그 표지가 있어요 | 완료
+## 9 기구 분해 부품 계수
+ --nuance[0] kind: slider
+     words:
+     - w-count
+     - w-part
+     - w-component
+     cue: The scrub mentions the retractor comes apart. You just want her to remember it will be counted as separate pieces.
+     scale:
+     - Count the parts too
+     - Count each piece twice
+     - Hold closing for each piece
+     answerAt: 0
+     why: 분해되는 기구는 부품도 각각 셈에 넣는다는 점만 가볍게 상기시키면 돼요. 아직 부품이 사라진 것이 아니라서 '닫기를 멈추라'고 할 일은 아니에요.
+     example: Let's count each component of this instrument.
+     exKo: 이 기구의 부품을 하나씩 세요.
+     
+ --nuance[1] kind: swap
+     words:
+     - w-piece
+     - w-confirm
+     who: 스크럽 → 순환 간호사 · 분해 기구 보고
+     icon: speech
+     before:
+     - 'The set has three pieces — I '
+     - assume all three are there
+     - .
+     options:
+     - confirm all three
+     - guess it's three
+     - assume all three are there
+     answer: confirm all three
+     notes:
+       confirm all three: 세 조각을 눈으로 하나씩 확인했다는 뜻이다. 계수 보고로 알맞다.
+       guess it's three: 짐작이므로 확인되지 않았다.
+       assume all three are there: 있다고 가정하는 말이다. 가정은 계수가 아니다.
+     why: 분해되는 기구는 조각마다 직접 확인한 뒤 보고해요. 짐작하거나 가정한 말은 빠진 조각을 놓치게 해요.
+     ko: 세 조각 다 확인했어요
+     
+ --order why: 기구가 분해된다고 설명하고, 부품마다 세자고 하고, 세트 개수를 확인한 뒤, 닫기 전에 전부 돌아왔는지 마무리 확인을 해요.
+     This retractor comes apart into separate pieces. | 이 견인기는 분리된 조각으로 나뉘어요 | 설명
+     So let's count each component of it. | 그러니 그 부품을 하나씩 세요 | 제안
+     It has three pieces — I confirm all three. | 세 조각이에요 — 셋 다 확인할게요 | 보고
+     Make sure every piece is back before we close. | 닫기 전에 조각이 전부 돌아왔는지 확인해요 | 마무리
+## 10 소독포 안 잔류 확인
+ --nuance[0] kind: slider
+     words:
+     - w-search
+     - w-drape
+     - w-shake
+     - w-fold
+     cue: The counts match, but a sponge could be wrapped inside a folded drape. A glance won't be enough.
+     scale:
+     - Glance at the drapes
+     - Shake out each drape
+     - Stop the case to search
+     answerAt: 1
+     why: 접힌 소독포 안에는 작은 거즈가 끼어 있을 수 있어서, 눈으로 훑는 것으로는 부족해요. 천을 하나씩 털어서 확인하는 것이 알맞고, 아직 불일치가 없으므로 수술을 멈출 일은 아니에요.
+     example: Shake out the drapes before we finalize the count.
+     exKo: 계수를 마무리하기 전에 소독포를 털어요.
+     
+ --nuance[1] kind: swap
+     words:
+     - w-shake
+     - w-drape
+     - w-before
+     - w-finalize
+     - w-count
+     who: 순환 간호사 → 스크럽 · 계수 마무리 직전
+     icon: speech
+     before:
+     - 'Shake out the drapes '
+     - after we finalize the count
+     - .
+     options:
+     - before we finalize the count
+     - after we finalize the count
+     - once the case is over
+     answer: before we finalize the count
+     notes:
+       before we finalize the count: 계수를 확정하기 전에 털어 보아야 숨은 것이 있어도 발견할 수 있다.
+       after we finalize the count: 이미 계수를 확정한 뒤에 털면 확인이 의미가 없다.
+       once the case is over: 수술이 끝난 뒤에는 이미 환자가 닫힌 상태라 늦다.
+     why: 숨은 물건은 계수를 확정하기 전에 찾아야 해요. 확정 뒤나 수술이 끝난 뒤에는 이미 늦어요.
+     ko: 계수를 마무리하기 전에 소독포를 털어요
+     
+ --order why: 계수를 마치기 전에 소독포를 털고, 펼친 채로 접힌 곳을 수색하고, 아무것도 안 나왔다고 보고한 뒤 계수를 마무리해요.
+     Shake out the drapes before we finalize the count. | 계수를 마무리하기 전에 소독포를 털어요 | 털기
+     While they're open, let's search the folds for anything hidden. | 펼친 동안 접힌 부분에 숨은 게 없는지 수색해요 | 수색
+     Nothing was left behind this time. | 이번에는 아무것도 남지 않았어요 | 보고
+     So the drapes are clear, and I can finalize the count. | 그러니 소독포는 깨끗하고 계수를 마무리할 수 있어요 | 마무리
+## 11 바늘 파손 조각 확인
+ --nuance[0] kind: slider
+     words:
+     - w-fragment
+     - w-miss
+     cue: The needle snapped. You have one half on the field and no sign of the other half yet.
+     scale:
+     - A fragment may be missing
+     - A fragment is missing
+     - A fragment is retained
+     answerAt: 1
+     why: 찾지 못한 조각이 있다는 사실을 그대로 말해요. 'may be'는 확인된 사실을 흐리고, 'retained'는 아직 확인되지 않은 몸속 잔류를 단정해요.
+     example: A piece of the needle is still missing.
+     exKo: 바늘 조각 하나가 아직 없어요.
+     
+ --nuance[1] kind: swap
+     words:
+     - w-needle
+     - w-break
+     - w-fragment
+     - w-close
+     - w-before
+     who: 순환 간호사 → 집도의 · 바늘이 부러졌을 때
+     icon: speech
+     before:
+     - 'Dr. Park, the needle broke — '
+     - we can probably skip the tip
+     - ' before we close.'
+     options:
+     - we need every fragment back
+     - we can probably skip the tip
+     - the rest is likely fine
+     answer: we need every fragment back
+     notes:
+       we need every fragment back: 부러진 바늘은 조각까지 모두 회수하고 셈에 넣어야 닫을 수 있다.
+       we can probably skip the tip: 작은 끝부분이라도 몸 안에 남으면 이물이 된다.
+       the rest is likely fine: 짐작으로 남은 조각을 넘기는 말이다.
+     why: 부러진 바늘은 아무리 작아도 조각을 모두 찾아야 해요. 일부를 건너뛰면 몸 안에 남을 수 있어요.
+     ko: 닫기 전에 조각을 전부 회수해야 해요
+     
+ --order why: 바늘이 부러졌다고 알리고, 조각 하나가 아직 없다고 보고하고, 찾을 때까지 수색하겠다고 한 뒤, 전부 찾으면 확인하고 닫는다고 말해요.
+     The needle broke — we need every fragment back. | 바늘이 부러졌어요 — 조각을 전부 회수해야 해요 | 알림
+     A piece of it is still missing. | 그 조각 하나가 아직 없어요 | 보고
+     So I'll search the field until all pieces are found. | 그러니 조각을 전부 찾을 때까지 필드를 수색할게요 | 수색
+     Once they're all found, we confirm every one before we close. | 다 찾으면 닫기 전에 하나하나 확인해요 | 확인
+## 12 계수 방해 응급 상황
+ --nuance[0] kind: slider
+     words:
+     - w-recount
+     - w-interrupt
+     - w-count
+     cue: 'Your hospital''s policy is clear: after an interruption, the count must be redone before the cavity is closed.'
+     scale:
+     - It would help to recount
+     - We should probably recount
+     - We have to recount first
+     answerAt: 2
+     why: 병원 방침상 필수인 절차는 '해 보면 좋다'가 아니라 '해야 한다'로 말해요. 정중하더라도 선택처럼 들리게 하면 건너뛰기 쉬워요.
+     example: Let's recount everything to be safe.
+     exKo: 안전하게 전부 다시 세요.
+     
+ --nuance[1] kind: swap
+     words:
+     - w-document
+     - w-count
+     - w-interrupt
+     who: 순환 간호사 · 계수 중단 기록
+     icon: pencil
+     before:
+     - 'I''ll '
+     - leave out that the count was interrupted
+     - .
+     options:
+     - document that the count was interrupted
+     - leave out that the count was interrupted
+     - skip writing about the interruption
+     answer: document that the count was interrupted
+     notes:
+       document that the count was interrupted: 중단된 사실을 기록에 남겨야 나중에 계수의 흐름을 이해할 수 있다.
+       leave out that the count was interrupted: 중단 사실을 빼면 기록이 실제와 달라진다.
+       skip writing about the interruption: 기록을 생략하면 이후 확인할 근거가 사라진다.
+     why: 계수가 끊겼다는 사실도 기록에 남겨요. 빼 버리면 기록이 실제와 달라지고 나중에 원인을 추적하기 어려워요.
+     ko: 계수가 중단됐다는 것을 문서화할게요
+     
+ --order why: 응급 상황이 계수를 멈췄다고 알리고, 중단을 기록하고, 안정되면 확실한 지점부터 재개하고, 멈춘 바로 그 지점부터 이어 가요.
+     The emergency stopped our count halfway through. | 응급 상황 때문에 계수가 중간에 멈췄어요 | 중단
+     I'll document that, so the record shows the interruption. | 그걸 문서화해서 기록에 중단이 남게 할게요 | 기록
+     Once things settle, we restart the count from a known point. | 상황이 진정되면 확실한 지점부터 계수를 다시 시작해요 | 재개
+     From there, we pick up exactly where we left off. | 거기서 멈췄던 지점부터 정확히 이어 가요 | 이어서
+## 13 두 명 동시 계수
+ --nuance[0] kind: pair
+     words:
+     - w-dual
+     - w-count
+     - w-eye
+     - w-mistake
+     pairs:
+     - - dual
+       - count
+     - - two sets of
+       - eyes
+     - - catch
+       - a mistake
+     decoys:
+     - the stretcher
+     why: dual count는 두 사람이 함께 하는 이중 계수예요. 'two sets of eyes'는 두 사람이 보면 실수를 더 잘 잡는다는 표현이고, 'catch a mistake'는 실수를 잡아낸다는 뜻이에요.
+     
+ --nuance[1] kind: context
+     words:
+     - w-dual
+     word: dual
+     ko: 이중의
+     scenes:
+     - who: 순환 간호사 → 스크럽
+       icon: speech
+       en: A dual count means we both confirm the total.
+       ok: true
+     - who: 수술 기록
+       icon: board
+       en: Dual count done; totals match.
+       ok: true
+     - who: 불안한 환자에게
+       icon: me
+       en: We'll perform a dual count while you're under.
+       ok: false
+       fix: Two of us will double-check all our supplies while you're asleep.
+     why: dual count는 계수 절차를 가리키는 업무 용어예요. 환자에게는 낯선 말이라 '둘이서 다시 확인한다'처럼 쉽게 풀어서 말해요.
+     
+ --order why: 이중 계수가 무엇인지 정의하고, 한 사람이 소리 내어 세고 다른 사람이 확인하게 역할을 나눈 뒤, 둘이 보며 세고, 총계가 맞으면 마무리해요.
+     A dual count means we both confirm the total. | 이중 계수는 둘 다 총계를 확인한다는 뜻이에요 | 정의
+     So you count aloud and I'll verify. | 그러니 당신이 소리 내어 세면 제가 확인할게요 | 역할
+     We both see each item as you count. | 당신이 셀 때 둘 다 각 물품을 봐요 | 시선
+     Our totals match, so that's one clean dual count. | 총계가 맞으니 이중 계수가 깔끔하게 끝났어요 | 마무리
+## 14 전자 계수 병행
+ --nuance[0] kind: slider
+     words:
+     - w-reconcile
+     - w-scan
+     - w-board
+     cue: The scan count says eleven and the board says ten.
+     scale:
+     - Let's glance at both numbers
+     - Let's compare both numbers
+     - Let's reconcile both numbers
+     answerAt: 2
+     why: 두 숫자가 다를 때는 훑어보거나 비교하는 데서 멈추지 않고, 차이가 풀릴 때까지 맞춰 봐요. reconcile은 어긋남을 해결해서 하나로 맞춘다는 뜻이에요.
+     example: Let's reconcile the scan count with the board.
+     exKo: 스캔 계수를 게시판과 맞춰 봐요.
+     
+ --nuance[1] kind: swap
+     words:
+     - w-scan
+     - w-manual
+     - w-count
+     - w-sponge
+     who: 순환 간호사 · 전자 계수와 수기 계수
+     icon: monitor
+     before:
+     - 'Each sponge gets scanned '
+     - but never counted by hand
+     - .
+     options:
+     - and manually counted
+     - but never counted by hand
+     - instead of being counted by hand
+     answer: and manually counted
+     notes:
+       and manually counted: 전자 스캔은 보조 수단이라 사람이 손과 눈으로 세는 수기 계수도 함께 한다.
+       but never counted by hand: 수기 계수를 빼면 전자 기록의 오류를 잡아낼 사람이 없다.
+       instead of being counted by hand: 스캔이 수기 계수를 대신하지 않는다.
+     why: 전자 스캔은 수기 계수를 돕는 보조 수단이에요. 스캔만 믿고 손으로 세지 않으면 기계 오류를 놓칠 수 있어요.
+     ko: 거즈마다 스캔하고 수기로도 세요
+     
+ --order why: 거즈를 스캔과 수기로 함께 센다고 말하고, 두 방식이 일치해야 한다고 한 뒤, 두 숫자를 게시판에서 맞춰 보고, 정확히 같아야 넘어간다고 마무리해요.
+     Each sponge gets scanned and manually counted. | 거즈마다 스캔되고 수기로도 계수돼요 | 병행
+     So the electronic system should match our manual total. | 그러니 전자 시스템이 수기 총계와 일치해야 해요 | 기준
+     Let's reconcile those two numbers on the board. | 그 두 숫자를 게시판에서 맞춰 봐요 | 대조
+     Both of them need to match exactly before we go on. | 넘어가기 전에 둘이 정확히 일치해야 해요 | 확정
+## 15 봉합 직전 거즈 불일치
+ --nuance[0] kind: slider
+     words:
+     - w-hold
+     - w-closure
+     - w-count
+     - w-discrepancy
+     cue: The closing count is one sponge short, and the surgeon is reaching for suture.
+     scale:
+     - Let's double-check the count
+     - Please hold the closure
+     - Everyone stop everything now
+     answerAt: 1
+     why: 불일치가 확인되면 닫기를 잠시 멈춰 달라고 분명히 요청해야 해요. 'double-check'만으로는 약해서 봉합이 이어질 수 있고, 모두 전부 멈추라는 말은 지나쳐요.
+     example: Please hold — we can't close until this is resolved.
+     exKo: 잠깐요 — 해결될 때까지 닫을 수 없어요.
+     
+ --nuance[1] kind: context
+     words:
+     - w-discrepancy
+     word: discrepancy
+     ko: 불일치
+     scenes:
+     - who: 순환 간호사 → 집도의
+       icon: speech
+       en: Dr. Lee, there's a count discrepancy — please hold closure.
+       ok: true
+     - who: 수술 기록
+       icon: board
+       en: Count discrepancy noted at closure; one sponge short; surgeon notified.
+       ok: true
+     - who: 기다리는 가족에게
+       icon: me
+       en: There's a discrepancy in our count, so the surgery is taking longer.
+       ok: false
+       fix: We're double-checking our supplies, so the surgery is taking a little longer.
+     why: discrepancy는 수술팀 안에서 계수 문제를 정확히 알리는 말이에요. 가족에게는 어렵고 차갑게 들리니 쉬운 말로 풀어서 설명해요.
+     
+ --order why: 개수가 모자란다고 보고하고, 그 이유로 불일치를 선언하며 닫기를 멈추고, 해결될 때까지 닫지 않겠다고 한 뒤, 맞으면 닫을 수 있다고 해요.
+     We're one sponge short, we need to search now. | 거즈가 하나 부족해요, 지금 수색해야 해요 | 보고
+     Because of that, I'm declaring a count discrepancy — hold closure. | 그래서 계수 불일치를 선언할게요 — 봉합을 멈춰요 | 선언
+     Please hold — we can't close until this is resolved. | 잠깐요 — 해결될 때까지 닫을 수 없어요 | 정지
+     Once the count reconciles, we can close. | 계수가 맞으면 닫을 수 있어요 | 재개
+## 16 X선 잔류 거즈 확인
+ --nuance[0] kind: pair
+     words:
+     - w-xray
+     - w-rule
+     - w-retain
+     - w-radiology
+     - w-sponge
+     pairs:
+     - - take
+       - an X-ray
+     - - rule out
+       - a retained sponge
+     - - call
+       - radiology
+     decoys:
+     - the stretcher
+     why: 엑스선은 take, 가능성을 배제할 때는 rule out, 영상의학과에는 call을 써요. 이 세 표현은 잔류 이물이 의심될 때 자주 연달아 나와요.
+     
+ --nuance[1] kind: context
+     words:
+     - w-retain
+     word: retained
+     ko: 잔류한
+     scenes:
+     - who: 순환 간호사 → 집도의
+       icon: speech
+       en: We'll image the field to rule out a retained sponge.
+       ok: true
+     - who: 영상 판독 기록
+       icon: board
+       en: Post-closure X-ray negative for retained sponge.
+       ok: true
+     - who: 회복실의 환자에게
+       icon: me
+       en: We took an X-ray to rule out a retained sponge in your abdomen.
+       ok: false
+       fix: We took a picture to make sure nothing was left behind.
+     why: retained는 몸 안에 남은 물건을 가리키는 의료진의 정확한 말이에요. 환자에게 '복부에 잔류한 거즈'라고 하면 불안만 키우니, 쉬운 말로 확인했다고 전해요.
+     
+ --order why: 닫기 전에 엑스선을 요청하고, 찍는 목적을 말하고, 영상의학과 판독이 필요하다고 한 뒤, 그 답이 올 때까지 기다린다고 마무리해요.
+     Let's get an X-ray before we close. | 닫기 전에 엑스선을 찍어요 | 요청
+     That way we image the field to rule out a retained sponge. | 그러면 잔류 거즈를 배제하려고 필드를 영상으로 찍어요 | 목적
+     Radiology needs to confirm nothing's left inside. | 영상의학과에서 안에 아무것도 안 남았는지 확인해야 해요 | 판독
+     We wait for that answer before we proceed. | 그 답이 나올 때까지 기다린 뒤 진행해요 | 대기
+## 17 소실 바늘 필드 수색
+ --nuance[0] kind: slider
+     words:
+     - w-needle
+     - w-short
+     cue: The final needle count is one short, and you haven't found it yet.
+     scale:
+     - We're one needle short
+     - One needle is gone
+     - A needle is in the patient
+     answerAt: 0
+     why: 아직 찾지 못했다는 사실만 그대로 말해요. 'gone'은 사라졌다고 단정하고, 'in the patient'는 확인되지 않은 몸속 잔류를 단정해요.
+     example: We're one needle short — hold everything.
+     exKo: 바늘이 하나 부족해요 — 전부 멈춰요.
+     
+ --nuance[1] kind: swap
+     words:
+     - w-hold
+     - w-search
+     - w-needle
+     - w-short
+     who: 순환 간호사 → 수술실 전원 · 바늘이 부족할 때
+     icon: speech
+     before:
+     - 'We''re one needle short — '
+     - carry on as usual
+     - ' and let''s search.'
+     options:
+     - hold everything
+     - carry on as usual
+     - speed things up
+     answer: hold everything
+     notes:
+       hold everything: 하던 동작을 멈추고 바늘을 찾는 데 집중한다. 찾는 동안 상황이 더 복잡해지지 않는다.
+       carry on as usual: 평소처럼 계속하면 바늘이 더 멀리 가거나 찾기 어려워진다.
+       speed things up: 서두르면 수색이 허술해지고 닫기가 앞당겨질 수 있다.
+     why: 바늘이 맞지 않으면 먼저 멈추고 찾는 데 집중해요. 평소처럼 계속하거나 서두르면 바늘을 놓칠 위험이 커져요.
+     ko: 전부 멈추고 찾아봐요
+     
+ --order why: 바늘이 모자라 전부 멈추게 하고, 가만히 있게 한 채 구역을 나눠 수색하고, 거기에 없으면 방 구석까지 확인해요.
+     We're one needle short — hold everything. | 바늘이 하나 부족해요 — 전부 멈춰요 | 정지
+     Nobody moves until we find it. | 찾을 때까지 아무도 움직이지 않아요 | 고정
+     While everyone stays still, let's search the field, drapes, and floor systematically. | 모두 가만히 있는 동안 필드와 소독포, 바닥을 체계적으로 수색해요 | 수색
+     If it's not there, check every corner of the room carefully. | 거기 없으면 방 구석구석을 조심스럽게 확인해요 | 확대
+## 18 봉합 후 계수 오류
+ --nuance[0] kind: slider
+     words:
+     - w-final
+     - w-count
+     - w-wrong
+     - w-reopen
+     cue: After closure, the final sponge count is off by one, and a recount confirms it.
+     scale:
+     - Something may be off
+     - The final count is off
+     - Reopen the wound right now
+     answerAt: 1
+     why: 간호사는 확인된 사실, 즉 최종 계수가 맞지 않는다는 것을 집도의에게 분명히 알려요. 다시 열지 말지는 영상 확인과 집도의의 판단으로 정해요.
+     example: The final count is wrong — we may need to reopen.
+     exKo: 최종 계수가 틀렸어요 — 다시 열어야 할 수도 있어요.
+     
+ --nuance[1] kind: context
+     words:
+     - w-escalate
+     word: escalate
+     ko: 상급 보고하다
+     scenes:
+     - who: 순환 간호사 → 스크럽
+       icon: speech
+       en: I'm escalating this to the surgeon right now.
+       ok: true
+     - who: 수술 기록
+       icon: board
+       en: Count discrepancy escalated to surgeon at 1042.
+       ok: true
+     - who: 걱정하는 가족에게
+       icon: me
+       en: We escalated the count problem to the surgeon.
+       ok: false
+       fix: We told the surgeon right away, and the surgeon is checking.
+     why: escalate는 문제를 윗선에 올린다는 업무 용어예요. 가족에게는 관료적으로 들리므로 'told the surgeon right away'처럼 쉽게 풀어 말해요.
+     
+ --order why: 최종 계수가 틀렸다고 알리고, 바로 집도의에게 올린 뒤, 기다리는 동안 영상부터 찍고, 집도의가 돌아오면 함께 결정해요.
+     The final count is wrong — we may need to reopen. | 최종 계수가 틀렸어요 — 다시 열어야 할 수도 있어요 | 오류
+     I'm escalating this to the surgeon immediately. | 지금 바로 집도의에게 상급 보고할게요 | 보고
+     While we wait for him, let's image before deciding on re-exploration. | 기다리는 동안 재개방 탐색을 결정하기 전에 영상부터 찍어요 | 영상
+     Once he's back in the room, we decide together. | 그가 방으로 돌아오면 함께 결정해요 | 결정
+## 19 이물 잔류 의심 보고
+ --nuance[0] kind: slider
+     words:
+     - w-possible
+     - w-retain
+     - w-item
+     - w-document
+     cue: The count is off and the X-ray hasn't been read yet — you document it accurately.
+     scale:
+     - A possible retained item
+     - A probable retained item
+     - A confirmed retained item
+     answerAt: 0
+     why: 영상을 판독하기 전에는 '가능성이 있는' 단계로 기록해요. probable이나 confirmed는 확인되지 않은 것을 더 단정하는 말이라 기록이 실제와 어긋나요.
+     example: This is a possible retained object — I'm documenting it.
+     exKo: 잔류 이물일 가능성이 있어요 — 문서화할게요.
+     
+ --nuance[1] kind: context
+     words:
+     - w-incident
+     word: incident
+     ko: 사건
+     scenes:
+     - who: 순환 간호사 → 수간호사
+       icon: speech
+       en: We need to file an incident report immediately.
+       ok: true
+     - who: 보고 기록
+       icon: board
+       en: Incident report filed; surgeon and charge nurse notified.
+       ok: true
+     - who: 회복실의 환자에게
+       icon: me
+       en: There was an incident during your surgery.
+       ok: false
+       fix: The surgeon will talk with you about what we found.
+     why: incident report는 병원 안전 보고 체계의 용어예요. 환자에게 'incident'라고만 하면 막연히 겁을 주니, 집도의가 직접 자세히 설명할 것이라고 전해요.
+     
+ --order why: 잔류 가능성을 기록하겠다고 하고, 안전이 우선이라 보고하고, 그에 따라 사건 보고서를 내고, 서류가 들어가면 후속 스캔을 요청해요.
+     This is a possible retained object — I'm documenting it. | 잔류 이물일 가능성이 있어요 — 문서화할게요 | 의심
+     Patient safety comes first — I'm reporting this. | 환자 안전이 우선이에요 — 이걸 보고할게요 | 보고
+     As part of that, we need to file an incident report immediately. | 그 일환으로 즉시 사건 보고서를 제출해야 해요 | 서류
+     Please request a follow-up scan for the patient once it's filed. | 그게 제출되면 환자를 위한 후속 스캔을 요청해줘요 | 후속
+## 20 계수 불일치 은폐 압력
+ --nuance[0] kind: slider
+     words:
+     - w-skip
+     - w-run
+     - w-late
+     cue: The surgeon says, "We're late — just sign it off." The discrepancy hasn't been resolved.
+     scale:
+     - I'd rather not skip this
+     - I shouldn't skip this
+     - I won't skip this
+     answerAt: 2
+     why: 해결되지 않은 불일치 앞에서는 완곡하게 돌려 말하기보다 분명하게 거절해야 해요. 일정 압박이 있어도 환자 안전이 우선이에요.
+     example: I understand we're running late, but I won't skip this.
+     exKo: 늦어지는 건 알지만 이건 건너뛰지 않을게요.
+     
+ --nuance[1] kind: swap
+     words:
+     - w-fix
+     - w-close
+     - w-safe
+     who: 순환 간호사 → 집도의 · 서두르라는 압박에
+     icon: speech
+     before:
+     - 'Let''s '
+     - let it go
+     - ' so we can close safely.'
+     options:
+     - fix it now
+     - hurry it along
+     - let it go
+     answer: fix it now
+     notes:
+       fix it now: 닫기 전에 불일치를 바로잡아야 환자에게 이물이 남지 않는다.
+       hurry it along: 서두르면 불일치가 해결되지 않은 채 닫힐 수 있다.
+       let it go: 불일치를 방치하는 말이다.
+     why: 불일치는 닫기 전에 바로잡아야 해요. 서두르거나 그냥 두면 환자 안전을 해칠 수 있어요.
+     ko: 안전하게 닫을 수 있게 지금 바로잡아요
+     
+ --order why: 계수가 안 맞는데 시간이 촉박하다고 말하고, 정중히 인정하되 맞을 때까지 서명하지 않겠다고 거절한 뒤, 제대로 처리하자고 하고 지금 바로잡아요.
+     The count is off, but we're already running late. | 계수가 안 맞는데 이미 늦어지고 있어요 | 상황
+     I understand, but I won't sign off until the count is correct. | 알지만 계수가 맞을 때까지 서명하지 않을게요 | 거절
+     We have to document and resolve this properly. | 이걸 제대로 문서화하고 해결해야 해요 | 원칙
+     Let's fix it now so we can close safely. | 안전하게 닫을 수 있게 지금 바로잡아요 | 수정

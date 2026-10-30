@@ -1,0 +1,103 @@
+situations:
+- title: OR에서 ICU 수술후 인계
+  s:
+  - ["SBAR 요청", board, "Give me the SBAR는 인계 형식을 먼저 정해 달라는 요청이에요. 대시 뒤에 네 칸을 순서대로 읊으면 받는 사람이 무엇이 올지 알고 들어요.", ", history", "SBAR로 적어 주세요, 상황, 배경, 평가, 권고 순서로요.", "SBAR로 보내 주세요, 상황, 배경, 평가, 권고 순서로요.", "background", "medication", "allergy", "diagnosis"]
+  - ["주입약 보고", pill, "He's on A and a small B처럼 이어 말하면 걸린 약을 한 번에 훑어요. small은 용량이 크지 않다는 뜻이고 right now가 지금 상태임을 못 박아요.", "fentanyl drip", "지금은 노르에피네프린과 다량의 프로포폴을 투여 중입니다.", "지금은 노르에피네프린과 중간 용량의 프로포폴을 투여 중입니다.", "propofol", "insulin", "heparin", "amiodarone"]
+  - ["수술 정보 질문", speech, "What were로 이미 끝난 수술 중의 값을 묻는 과거형 질문이에요. last를 붙이면 지금 달려 있는 값의 기준이 되는 마지막 용량을 짚어요.", "the total urine output", "추정 출혈량과 처음 승압제 용량이 어떻게 되나요?", "추정 출혈량과 평균 승압제 용량이 어떻게 되나요?", "estimated", "hourly", "daily", "final"]
+  - ["되읽기 확인", redo, "Let me read back은 들은 내용을 그대로 되읽어 상대에게 확인받겠다는 선언이에요. lines and drips처럼 항목을 묶으면 되읽을 범위가 분명해져요.", "and doses", "라인과 지속 정맥주사를 되읽어 설명할게요.", "라인과 지속 정맥주사를 되읽어 정리할게요.", "drips", "pumps", "bags", "alarms"]
+  - ["확인 약속", handshake2, "I'll confirm … with는 누구와 확인할지까지 정하는 약속 표현이에요. 수술 중 값은 마취 기록을 쥔 사람에게 물어야 정확해요.", "I'll record", "마취과 의사와 처음 승압제 용량과 출혈량을 확인할게요.", "마취과 의사와 평균 승압제 용량과 출혈량을 확인할게요.", "last", "first", "average", "highest"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수술 후 인계 받기 4문장 순서
+    why: SBAR로 인계를 요청하고, 들은 내용에서 빠진 수치를 묻고, 받은 정보를 되읽어 확인한 뒤, 마취과와 값을 최종 대조해요.
+    lines:
+    - ["Give me the SBAR — situation, background, assessment, recommendation.", board, "SBAR로 주세요, 상황, 배경, 평가, 권고 순서로요", "요청"]
+    - ["Since you've given the SBAR, what were the estimated blood loss and last pressor doses?", speech, "SBAR를 들었으니 추정 출혈량과 마지막 승압제 용량은 어땠나요?", "질문"]
+    - ["With those answers, let me read back the lines and drips to confirm.", redo, "그 답을 바탕으로 라인과 점적을 되읽어 확인할게요", "되읽기"]
+    - ["After that read-back, I'll confirm his last pressor dose and blood loss with the anesthesiologist.", handshake2, "되읽은 뒤 마취과와 마지막 승압제 용량과 출혈량을 확인할게요", "대조"]
+- title: cath lab에서 ICU 인계
+  s:
+  - ["시술 질문", speech, "What was done은 누가 했는지가 아니라 무슨 시술이 끝났는지를 묻는 수동태예요. and로 다음 질문(접근부위)을 이어 한 번에 필요한 정보를 받아요.", "the IV site", "수술실에서 무엇을 했고 접근부위는 어떤가요?", "영상실에서 무엇을 했고 접근부위는 어떤가요?", "access", "incision", "drain", "tube"]
+  - ["부위 보고", bandage, "clean, dry, and intact처럼 형용사를 나열하면 부위 상태를 한 줄로 보고해요. with no + 문제로 없는 것을 구체적으로 짚어야 안심이 근거를 가져요.", "with a clear dressing", "접근부위는 깨끗하고 따뜻하고 온전하며 혈종은 없습니다.", "접근부위는 깨끗하고 건조하고 단단하며 혈종은 없습니다.", "intact", "swollen", "oozing", "bruised"]
+  - ["침상 안정", shield, "stay flat처럼 자세를 동사구로 말하면 움직이지 말라는 지시가 분명해요. to protect로 이유를 붙이면 시간을 지키는 이유가 환자에게도 설명돼요.", "stay NPO", "시스를 보호하기 위해 여덟 시간 동안 평평하게 누워 있어야 합니다.", "시스를 보호하기 위해 열두 시간 동안 평평하게 누워 있어야 합니다.", "hours", "minutes", "days", "weeks"]
+  - ["응고 확인", lab, "Is he on …?로 약 투여 여부부터 예 아니오로 묻고 and로 수치 질문을 이어요. ACT는 헤파린 효과를 현장에서 보는 응고 수치예요.", "an insulin drip", "헤파린을 투여 중인가요, 마지막 ACT는 어떻게 되나요?", "헤파린을 투여 중인가요, 처음 ACT는 어떻게 되나요?", "ACT", "INR", "sodium", "lactate"]
+  - ["되읽기 확인", redo, "Let me read back으로 받은 정보를 소리 내어 확인받겠다고 먼저 말해요. hold parameters는 어떤 수치면 약을 보류하는지 기준을 뜻해요.", "the pulse checks", "시스 크기와 보류 기준치를 되읽어 볼게요.", "시스 위치와 보류 기준치를 되읽어 볼게요.", "status", "size", "brand", "color"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 카테터실 인계 4문장 순서
+    why: 시술과 접근부위를 묻고, 부위 상태를 답하고, 그 상태에서 필요한 침상 안정을 말한 뒤, 계획을 되읽어 확인해요.
+    lines:
+    - ["What was done in the cath lab and how's the access site?", speech, "카테터실에서 무엇을 했고 접근부위는 어떤가요?", "질문"]
+    - ["The access site is clean, dry, and intact with no hematoma.", bandage, "접근부위는 깨끗하고 건조하고 온전하며 혈종은 없어요", "부위"]
+    - ["Given that, he needs to stay flat for six hours to protect the sheath.", shield, "그러니 시스를 보호하려고 여섯 시간 평평하게 누워 있어야 해요", "안정"]
+    - ["With that plan, let me read back the sheath status and hold parameters.", redo, "그 계획으로 시스 상태와 보류 기준치를 되읽어 볼게요", "되읽기"]
+- title: ICU에서 병동 전동 인계
+  s:
+  - ["이탈 보고", check, "off + 약은 지금 끊긴 상태를, weaned to + 장치는 단계를 낮춰 내려온 결과를 말해요. 전동 인계에서 안정의 근거로 가장 먼저 쓰는 표현이에요.", "to room air", "승압제는 끊었고 안면 마스크로 이탈했습니다.", "승압제는 끊었고 고유량 캐뉼라로 이탈했습니다.", "pressors", "sedation", "antibiotics", "diuretics"]
+  - ["라인 제거", calendar, "comes out은 라인이 빠진다는 일상 동사구예요. if 절로 조건(검사 안정)을 붙이면 제거가 무조건이 아니라 조건부 계획임을 병동 간호사가 알아요.", "gets flushed", "검사 수치가 안정적이면 내일 중심정맥라인을 제거합니다.", "검사 수치가 안정적이면 이번 주 중심정맥라인을 제거합니다.", "central", "arterial", "midline", "dialysis"]
+  - ["상태 요약", stetho, "oriented and moving well, but … 에서 but 뒤가 병동이 꼭 알아야 할 제한이에요. needs assistance to stand는 낙상 예방을 위해 도움이 필요하다는 뜻이에요.", "eating well", "지남력이 있고 움직임도 좋지만, 걸을 때는 아직 도움이 필요합니다.", "지남력이 있고 움직임도 좋지만, 앉을 때는 아직 도움이 필요합니다.", "oriented", "confused", "drowsy", "anxious"]
+  - ["병동 주의", magnify, "Watch for 뒤에 두 항목을 and로 이으면 주의 목록이 한 번에 전해져요. on the floor로 장소를 못 박아 병동에서 할 일임을 분명히 해요.", "her skin", "중환자실에서는 혈당과 낙상 위험을 지켜봐 주세요.", "퇴원 후에는 혈당과 낙상 위험을 지켜봐 주세요.", "fall", "clot", "skin", "lung"]
+  - ["병동 일정", calendar, "She'll need는 앞으로 필요해질 일을 알리는 미래형이에요. every four hours로 간격을 못 박아야 병동 간호사가 시간표에 넣을 수 있어요.", "blood pressure checks", "수술 후에는 네 시간마다 혈당 체크가 필요할 것입니다.", "집에서는 네 시간마다 혈당 체크가 필요할 것입니다.", "blood sugar", "blood pressure", "temperature", "oxygen"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 병동 전동 인계 4문장 순서
+    why: 승압제와 산소가 내려온 현재 상태부터 말하고, 그 상태로 가능한 라인 제거를 말하고, 제거 뒤 남는 도움 필요를 짚은 뒤, 병동에서 지킬 점으로 끝내요.
+    lines:
+    - ["She's off pressors and weaned to nasal cannula.", check, "승압제는 끊었고 비강 캐뉼라로 내려왔어요", "상태"]
+    - ["Given that, her central line comes out today if labs are stable.", calendar, "그러니 검사가 안정적이면 오늘 중심정맥라인을 빼요", "라인"]
+    - ["After the line is out, she still needs assistance to stand.", stetho, "라인을 뺀 뒤에도 일어서려면 아직 도움이 필요해요", "도움"]
+    - ["Because of that, watch for her blood sugars and her fall risk on the floor.", magnify, "그래서 병동에서는 혈당과 낙상 위험을 지켜봐 주세요", "주의"]
+- title: night shift 인계 우선순위
+  s:
+  - ["우선순위", siren, "your sickest처럼 최상급과 your를 쓰면 받는 사람이 맡을 환자 중 가장 위중한 한 명을 콕 집어요. may need는 가능성을 말해 미리 준비하게 해요.", "fluids given overnight", "3번 병상이 가장 위중하고, 밤새 승압제를 조절해야 할 수 있습니다.", "8번 병상이 가장 위중하고, 밤새 승압제를 조절해야 할 수 있습니다.", "sickest", "quietest", "youngest", "newest"]
+  - ["집중 지시", pushpin, "so로 앞 문장의 이유(나머지는 안정)를 결론(5번 집중)으로 이어요. tonight이 이 집중이 이번 근무 한정임을 알려요.", "on the charts", "나머지 환자들은 안정적이니 오늘 밤은 3번 병상에 집중해 주세요.", "나머지 환자들은 안정적이니 오늘 밤은 8번 병상에 집중해 주세요.", "stable", "unstable", "crowded", "empty"]
+  - ["일정 인계", calendar, "be due at + 시각으로 검사 시간을 못 박고 on a two-hourly neuro check로 반복 확인을 한 문장에 담아요. two-hourly는 두 시간 간격이라는 뜻의 형용사예요.", "a four-hourly sugar check", "검사는 6시 예정이고, 두 시간마다 신경학적 확인 중입니다.", "검사는 8시 예정이고, 두 시간마다 신경학적 확인 중입니다.", "due", "drawn", "read", "held"]
+  - ["조기 호출", pager, "If … drops로 호출 기준을 먼저 말하고 page the resident early로 행동을 붙이면 조건과 행동이 한 문장에 묶여요. early는 늦기 전에 부르라는 뜻이에요.", "If his urine", "혈압이 흔들리면 일찍 레지던트를 호출해 주세요.", "맥박이 떨어지면 일찍 레지던트를 호출해 주세요.", "drops", "rises", "swings", "doubles"]
+  - ["호출 요청", pager, "Watch … closely에 call me if를 이어 감시와 호출 기준을 한 문장에 묶어요. anything changes는 미리 정하지 못한 변화까지 포함해 부르게 해요.", "Round on bed five", "2번 병상을 자세히 지켜보시고, 밤새 변화가 있으면 저를 불러 주세요.", "7번 병상을 자세히 지켜보시고, 밤새 변화가 있으면 저를 불러 주세요.", "changes", "improves", "ends", "arrives"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 야간 인계 우선순위 4문장 순서
+    why: 가장 위중한 환자를 먼저 지목하고, 그에게 집중하라고 이어 말하고, 그 환자의 일정을 알려 준 뒤, 일정 중 혈압이 떨어질 때의 호출로 끝내요.
+    lines:
+    - ["Bed 5 is your sickest — he may need pressors titrated overnight.", siren, "5번 병상이 가장 위중해서 밤새 승압제를 조절할 수 있어요", "지목"]
+    - ["Given that, the rest of the unit is stable, so focus on him tonight.", pushpin, "그러니 나머지는 안정적이라 오늘 밤은 그에게 집중하세요", "집중"]
+    - ["With that focus, labs are due at four, and he's on a two-hourly neuro check.", calendar, "그 집중 속에서 검사는 4시고 두 시간마다 신경학적 확인 중이에요", "일정"]
+    - ["If his pressure drops during any of those checks, page the resident early.", pager, "그 확인 중 혈압이 떨어지면 일찍 레지던트를 호출하세요", "호출"]
+- title: 다학제 라운드 발표
+  s:
+  - ["신경계", stetho, "라운드 발표는 계통 이름과 콜론으로 시작해 청중이 어느 칸인지 알게 해요. sedated but …처럼 but으로 이어 진정 중이어도 반응이 있다는 점을 한 번에 전해요.", "opening eyes", "신경계: 진정 중이지만 진정 중단 시 눈을 뜹니다.", "신경계: 진정 중이지만 진정 중단 시 말을 합니다.", "sedated", "paralyzed", "comatose", "agitated"]
+  - ["호흡기", monitor, "on + 모드는 환자가 지금 쓰는 환기 방식을, tolerating + 동명사는 이탈을 어떻게 견디는지를 짧게 보여 줘요.", "suctioning", "호흡기: T-피스 중이고 이탈을 잘 견디고 있습니다.", "호흡기: 압력보조 중이고 이탈을 시작하고 있습니다.", "pressure", "volume", "flow", "oxygen"]
+  - ["심장", stetho, "off pressors는 승압제가 지금 달려 있지 않다는 뜻이에요. both stable로 두 수치를 한 번에 묶어 말하면 라운드에서 시간을 아껴요.", ", on a pacer", "심장: 승압제는 줄였고, 심박수와 혈압 모두 안정적입니다.", "심장: 승압제는 끊었고, 심박수와 혈압 모두 좋아지고 있습니다.", "stable", "elevated", "low", "labile"]
+  - ["계획", calendar, "Plan: 뒤에 동사원형을 and로 이으면 오늘과 내일의 할 일이 한 줄 목록이 돼요. reassess는 지금 다시 보고 결정하겠다는 뜻이에요.", "continue dialysis", "계획: 이뇨를 계속하고 오늘 오후 발관을 다시 평가합니다.", "계획: 이뇨를 계속하고 다음 주 발관을 다시 평가합니다.", "extubation", "intubation", "transfusion", "dialysis"]
+  - ["위장관", gear, "tolerating + 명사는 몸이 그것을 잘 받아들인다는 뜻이에요. 뒤의 we'll advance the rate today가 그 근거로 계획을 올린다는 흐름을 만들어요.", "tube changes", "위장관: 튜브 급식을 잘 견디고 있고, 내일 속도를 올리겠습니다.", "위장관: 튜브 급식을 잘 견디고 있고, 오늘 속도를 유지하겠습니다.", "tolerating", "refusing", "vomiting", "leaking"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 다학제 라운드 발표 4문장 순서
+    why: 신경계로 시작해 호흡을 이어 말하고, 호흡 지지를 전제로 순환을 말한 뒤, 모든 것을 근거로 오늘의 계획으로 닫아요.
+    lines:
+    - ["Neuro: sedated but following commands off sedation.", stetho, "신경계: 진정 중이지만 중단하면 지시를 따라요", "신경"]
+    - ["Given that, respiratory is on pressure support and tolerating weaning.", monitor, "그러니 호흡기는 압력보조 중이고 이탈을 견뎌요", "호흡"]
+    - ["Cardiac: with that breathing support, he's off pressors and both vitals are stable.", stetho, "심장: 그 호흡 지지에서 승압제는 끊었고 두 수치 모두 안정적이에요", "심장"]
+    - ["Based on all of that, the plan is to continue diuresis and reassess extubation tomorrow.", calendar, "그 모든 걸 바탕으로 이뇨를 계속하고 내일 발관을 다시 평가해요", "계획"]
+- title: 응급실에서 ICU 입실 인계
+  s:
+  - ["수액 질문", speech, "How much … has he had는 지금까지 들어간 총량을 묻는 완료 시제 질문이에요. and로 젖산 추세를 이어 묻고 두 정보를 한 번에 받아요.", "How much blood", "수액은 얼마나 들어갔고 젖산 수치는 어떤가요?", "수액은 언제 들어갔고 젖산 추세는 어떤가요?", "lactate", "glucose", "potassium", "hemoglobin"]
+  - ["수액 보고", chartup, "has had + 양 + so far는 지금까지 누적된 양을 보고하는 틀이에요. trending down은 지금 방향을 말해 단발 수치보다 흐름을 전해요.", "last night", "지금까지 수액 2리터를 받았고, 젖산은 내려가는 추세입니다.", "지금까지 수액 5리터를 받았고, 젖산은 내려가는 추세입니다.", "down", "up", "flat", "high"]
+  - ["응급실 질문", speech, "Is he on any …?는 약물이 걸려 있는지 예 아니오로 묻는 질문이에요. coming up from the ED로 이동 경로를 붙여 어느 시점의 상태인지 분명히 해요.", "any sedation", "수술실에서 올라오면서 승압제를 투여 중인가요?", "병동에서 올라오면서 승압제를 투여 중인가요?", "pressors", "steroids", "insulin", "heparin"]
+  - ["확인 약속", check, "Let me confirm은 내가 확인하겠다는 약속이에요. 세 항목을 쉼표로 나열해 무엇을 확인할지 범위를 미리 정해요.", ", allergies", "라인, 항생제, 첫 활력징후를 확인할게요.", "라인, 항생제, 평균 활력징후를 확인할게요.", "confirm", "change", "stop", "order"]
+  - ["투여 시점", pill, "first dose처럼 서수로 어느 회차인지 짚고 within the hour로 얼마나 빨랐는지 말해요. 패혈증은 항생제 시점이 중요해서 인계에 꼭 넣어요.", "of fluids", "첫 항생제는 응급실에서 세 시간 안에 투여되었습니다.", "첫 항생제는 병동에서 한 시간 안에 투여되었습니다.", "first", "last", "second", "only"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 응급실 입실 인계 4문장 순서
+    why: 항생제 시점부터 알리고, 그 뒤 수액과 젖산 경과를 말하고, 수액이 들어간 상태에서 승압제 여부를 짚은 뒤, 라인과 활력을 확인하며 닫아요.
+    lines:
+    - ["His first dose of antibiotics was given within the hour in the ED.", pill, "첫 항생제는 응급실에서 한 시간 안에 투여됐어요", "항생제"]
+    - ["Since then, he's had three liters of fluid so far, and his lactate is trending down.", chartup, "그 뒤 지금까지 수액 3리터를 받았고 젖산은 내려가고 있어요", "수액"]
+    - ["With that fluid in, he's not on any pressors coming up from the ED.", pill, "그 수액이 들어간 상태에서 응급실에서 올라오며 승압제는 없어요", "승압제"]
+    - ["To close this out, let me confirm his lines, antibiotics, and last vitals.", check, "마무리로 라인, 항생제, 마지막 활력징후를 확인할게요", "확인"]

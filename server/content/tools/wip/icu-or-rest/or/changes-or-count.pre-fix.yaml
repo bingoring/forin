@@ -1,0 +1,246 @@
+theme: or-count
+changes:
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(time); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(see); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-room
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(room); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(patient); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(hand); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(know); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-make
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(make); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-get
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(get); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-say
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(say); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-look
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(look); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-move
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(move); 어느 문장도 태그하지 않게 됐다
+- kind: word-add
+  id: w-done
+  why: 바늘 회수 확인 상황이 hand 태그를 빼면 단어 6개(V3 8개 미만) — 그 상황 문장 'as soon as you're done'에 이미 있는 말
+- kind: word
+  id: w-begin
+  fields:
+  - ko
+  why: w-start와 ko(시작하다)가 같아 듣고 뜻 고르기에서 정답이 둘 — begin은 본격적으로 개시하는 쪽
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: w-confirm·w-verify와 ko(확인하다)가 같아 정답이 셋 — check는 눈으로 살펴 점검하는 쪽
+- kind: word
+  id: w-verify
+  fields:
+  - ko
+  why: w-confirm·w-check와 ko(확인하다)가 같아 정답이 셋 — verify는 기준과 대조해 검증하는 쪽
+- kind: word
+  id: w-note
+  fields:
+  - ko
+  why: w-record·w-log와 ko(기록하다)가 같아 정답이 셋 — note는 짧게 메모해 두는 쪽
+- kind: word
+  id: w-log
+  fields:
+  - ko
+  why: w-record·w-note와 ko(기록하다)가 같아 정답이 셋 — log는 대장에 올려 기입하는 쪽
+- kind: word
+  id: w-extra
+  fields:
+  - ko
+  why: w-additional과 ko(추가의)가 같아 정답이 둘 — extra는 계획보다 더 나온 여분
+- kind: word
+  id: w-call
+  fields:
+  - ko
+  why: w-declare와 ko(선언하다)가 같아 정답이 둘 — call은 소리 내어 부르는 쪽(declare는 선언)
+- kind: word
+  id: w-match
+  fields:
+  - ko
+  why: 태그 문장이 모두 '목록·총계와 일치한다'는 뜻이라 대조하다보다 일치하다가 맞다
+- kind: word
+  id: w-retain
+  fields:
+  - ko
+  why: 잔류시키다는 타동사 형태라 'retained sponge(잔류한 거즈)' 문장과 맞지 않는다
+- kind: word
+  id: w-fragment
+  fields:
+  - ko
+  why: w-piece와 ko(조각)가 같아 정답이 둘 — fragment는 깨지거나 부러져 나온 파편
+- kind: word
+  id: w-component
+  fields:
+  - ko
+  why: w-part와 ko(부품)가 같아 정답이 둘 — component는 기구를 이루는 구성품
+- kind: word
+  id: w-pick
+  fields:
+  - ko
+  why: w-restart와 ko(다시 시작하다)가 같아 정답이 둘 — 'pick up'은 중단한 자리에서 이어 가는 것
+- kind: word
+  id: w-systematic
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 태그된 문장이 모두 부사(systematically)로 쓰여 헤드워드를 부사로
+- kind: word
+  id: w-careful
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 태그된 문장이 모두 부사(carefully)로 쓰여 헤드워드를 부사로
+- kind: word
+  id: w-immediate
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 태그된 문장이 모두 부사(immediately)로 쓰여 헤드워드를 부사로
+- kind: word
+  id: w-proper
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 태그된 문장이 모두 부사(properly)로 쓰여 헤드워드를 부사로
+- kind: sentence
+  situation: 절개 전 초기 계수
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 거즈 소리내어 확인
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 바늘 회수 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 계수 기록 작성
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 계수 기록 작성
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 계수 기록 작성
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 봉합 전 계수 개시
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 추가 거즈 투입 기록
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 기구 분해 부품 계수
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 소독포 안 잔류 확인
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 계수 방해 응급 상황
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 두 명 동시 계수
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 두 명 동시 계수
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: X선 잔류 거즈 확인
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 소실 바늘 필드 수색
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 소실 바늘 필드 수색
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 봉합 후 계수 오류
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 이물 잔류 의심 보고
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 이물 잔류 의심 보고
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 계수 불일치 은폐 압력
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리

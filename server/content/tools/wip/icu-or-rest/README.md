@@ -98,3 +98,32 @@ keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't a
   | icu-brain-death | 58(1) | 137(31·13) | 85 |
   keyPhrase 결정(사용자 2026-10-29 '추천대로'): 바꿈 13(octreotide as ordered·MTP is activated·ordered fluids / 예방적 교정·암모니아·hypertonic as ordered / 두부 거상 혈류·reversal orders / Max the pressors(안전)·질문형 2·as ordered 2), 유지 18, chunks 31문장, gi-bleed 11.5에 엑스레이 위치 확인 단계(비KP). 작업 `../kp-2026-10-29/`.
   `pipeline/TASK.md` B 절에 끊긴 조각 decoy·위기 장면 옆 일·같은 상황 정답 재사용·decoy 낱말 몰림 실패를 덧붙임.
+
+- **묶음 7 (ICU 4주제, 2026-10-29)**: invasive-lines·nutrition·transfusion·transport-procedure, 처음부터. 사용량 한도로 저작이 한 번 끊겼다가 이어서 마침.
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | changes(수정 후) |
+  |---|---|---|---|
+  | icu-invasive-lines | 97(2) — PA 카테터 당기기·감쇠 방향 | 117(73·29) | 139 |
+  | icu-nutrition | 57(3) — '소생술' 오역·복부구획 수액 | 195(69·30) | 141 |
+  | icu-transfusion | 65(7) — 붉은기 계속 수혈·IV push 에피 | 267(141·13) — 위기 장면 "처치 대신 준비" | 127 |
+  | icu-transport-procedure | 52(4) — MRI screened·재삽관 약속 | 218(안전 92 포함 130) — 맥박 확인 없는 압박 | 118 |
+  keyPhrase 결정(사용자 '추천대로'): 바꿈 13(ICU 신속대응팀·코드팀 → 의사 호출, 흉관 훑기, 모자, 인슐린 as ordered 2, 진단 단정 looks like 2, 항히스타민 보고, 쉼표, MRI 압박 즉시, 출혈에 혈액 먼저), 유지 13, chunks 약 40문장. transport S19 tagline도 압박 즉시로 맞춤. 작업 `../kp-2026-10-29b/`.
+  남은 경고: W13 의도된 오답(nutrition lay/lie 1, transport poll/pole 등 9). `pipeline/TASK.md`에 호출 대상 바꾸기는 모두 실패로 판정 통일.
+  남은 ICU: mobility-prevention · core-handoff/language/family/safety-icu (5).
+
+- **묶음 8 (ICU 2주제, 2026-10-29 — 사용자 지시로 이 두 주제까지 하고 멈춤)**: mobility-prevention·core-handoff-icu, 처음부터. 저작 → 검토 → 수정까지 끝남(둘 다 검사 통과·keyPhrase 63/63). **keyPhrase 결정과 정본 합치기는 다음 세션.**
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | changes(수정 후) |
+  |---|---|---|---|
+  | icu-mobility-prevention | 24(6) — 알람 '응급 아님' 단정·밀폐 드레싱 누락 | 147(56·18) — 중단 기준 뒤집기·낙상 위기 | 93 |
+  | core-handoff-icu | 35(1) — swab 1회 격리 해제 | 132(80·18) — MAP 기준·역할·호출 동사 | 132 |
+  **다음 세션에 사용자에게 물을 keyPhrase 후보(검토 A 권고):**
+  - mobility-prevention: 바꿈 — 18.2 "I'm giving high-flow oxygen and calling the rapid response." → "…calling the provider to the bedside."(w-rapid·w-response 삭제) / 유지 — 20.3 comfort and dignity, 8.2 dressing, 16.2 increase her oxygen, 10.1·10.2 prophylaxis(why 보강은 수정 때 함)
+  - core-handoff-icu: 바꿈 — 13.3 "Repeat her chest X-ray was ordered for placement." → "A repeat chest X-ray was ordered for placement."(또는 "…to rule out a pneumothorax"; 13.3 why·order 13의 placement·site도 함께), 20.3 "If two go off at once…" → "If two of them crash at once…" / 약하게 바꿈 — 14.0 "…start pressors and call me." → "…start pressors per the order and call me.", 10.2 "two-hourly neuro check" → "neuro checks every two hours"(w-hourly는 이미 삭제됨) / 유지 — 15.3 push fluids, 1.0 norepinephrine at eight, 20.0 closest eye
+  - 두 주제 모두 keyPhrase chunks 구 경계 다시 자르기(fix-*-A.md 목록).
+  결정 뒤 순서: `../kp-<날짜>/`에 Opus KP 교체 → 정본 keyPhrases 줄 교체 → merge_dept_lessons → changes/icu/changes-<주제>.yaml 복사 → gencontent → verify(--changes) → go test·contentIcons → PR(#31 위에 쌓음).
+  그 뒤 남은 ICU 3: core-language-icu·core-family-icu·core-safety-icu. 그다음 OR 33.
+  **묶음 8 keyPhrase 결정(사용자 2026-10-30 '추천대로', X-ray는 ②):** 바꿈 5 — mobility 18.2 provider to the bedside(w-rapid·w-response 삭제, 상황 18 goals[1]도 "담당의 침상 호출"로), handoff 13.3 "A repeat chest X-ray was ordered to rule out a pneumothorax."(w-placement 삭제), 20.3 crash, 14.0 per the order, 10.2 every two hours / 유지 7 / chunks 26문장. 작업 `../kp-2026-10-30/`. 정본 합침(2026-10-30), ICU 위반 0.
+  남은 작은 일: handoff 13.4 "…any new bleeding at the site."(비KP)는 기관지경 장면과 안 맞음 — 다음 손질 때.
+
+- **묶음 9 (ICU 마지막 3주제, 2026-10-30)**: core-language·core-family·core-safety-icu. 사용자 결정(전부 '추천대로'): 바꿈 8 — 통역사 설명 → 의사가 통역을 통해, 깜빡임 "한 번=예" 통일, 통역사 중재, 윤리위원회 "help decide", "I'm not hiding anything", "next few days", 독립 이중 확인 "each … then compare"(상황 2 goals[1]도), ICU 신속대응팀 → ICU 의사 / 유지 약 9 / chunks 24문장. 작업 `../kp-2026-10-30b/`. 정본 합침, ICU 위반 0.
+  남은 작은 일: core-safety 2.4 "Let's stop and check this together before we give it."(비KP) "together" 표현 — 다음 손질 때.
+  **ICU 66주제 한 번에 저작 완료.** 다음은 OR 33(묶음 1: massive-transfusion(Fable 표본)·count 수정 끝, keyPhrase 결정 3건 바꿈 받음; 묶음 2: preop-verification·tourniquet 저작 끝).

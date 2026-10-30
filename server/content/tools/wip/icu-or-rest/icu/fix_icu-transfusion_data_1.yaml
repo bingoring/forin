@@ -1,0 +1,161 @@
+# 문장 단위 수정 (A 검토 S1~S15·K·KO + B 필드 다시 쓰기). 키 = "상황.문장"(0부터). 적힌 필드만 덮어쓴다.
+# 값 안의 distractorsKo는 [X1, X2]. blank는 {answer, options}.
+sentences:
+  "13.3":   # S1 안전 — 수혈 중 새 증상은 멈추고 평가
+    en: "Even a little redness means we pause the unit and check her."
+    chunks: ["Even a little redness", "means", "we pause the unit", "and check her", "."]
+    ko: "약간의 발적이라도 제제를 잠시 멈추고 환자를 살펴봐요."
+    words: [w-redness, w-pause, w-unit, w-check]
+    tag: "새 증상"
+    icon: check
+    why: "수혈 중 새로 생긴 증상은 가벼워 보여도 일단 멈추고 활력징후를 재고 보고해요. 재개는 처방에 따라요."
+    decoy: "Even a normal pulse"
+    distractorsKo: ["약간의 발적은 가려움이나 두드러기보다 먼저 생겨요", "약간의 발적도 알레르기 병력이 있으면 잘 생겨요"]
+    blank: {answer: check, options: [check, weigh, bathe, feed]}
+  "16.5":   # S2 안전 — IM 에피네프린, 프로토콜
+    en: "Per protocol, I'll give a second IM dose if she doesn't improve."
+    chunks: ["Per protocol", ", I'll give", "a second IM dose", "if she doesn't improve", "."]
+    ko: "호전되지 않으면 프로토콜에 따라 근육주사로 두 번째 용량을 줄게요."
+    words: [w-protocol, w-give, w-second, w-im, w-dose, w-improve]
+    tag: "2차 투여"
+    icon: pill
+    why: "에피네프린은 반응이 없으면 프로토콜에 따라 근육주사로 반복할 수 있어요. 문장 맨 앞의 'Per protocol'이 간호사의 임의 판단이 아니라는 근거예요."
+    decoy: "a second pillow"
+    distractorsKo: ["호전됐는지는 혈압과 협착음이 좋아졌는지 보고 판단해요", "호전되는지 보려고 먼저 혈압과 협착음을 차례로 확인할게요"]
+    blank: {answer: second, options: [second, final, test, half]}
+  "16.1":   # S3 범위 — 진단 단정 완화
+    en: "This looks like anaphylaxis — get the epi now."
+    chunks: ["This looks like", "anaphylaxis", "— get the epi", "now", "."]
+    ko: "아나필락시스 같아요 — 지금 에피네프린 가져와 주세요."
+    tag: "추정·지시"
+    icon: siren
+    why: "'looks like'로 의심을 말하고 곧바로 지시를 내려요. 진단 확정은 의료진 몫이고, 'get'은 가져오라는 짧은 명령이에요."
+    decoy: "This looks like a migraine"
+    distractorsKo: ["아나필락시스 같아요 — 시작하자마자 생겼어요", "아나필락시스 같아요 — 곧 기도가 좁아질 수 있어요"]
+    blank: {answer: anaphylaxis, options: [anaphylaxis, hypothermia, sepsis, asthma]}
+  "10.6":   # S4 범위 — 처방·프로토콜
+    en: "I'll give calcium per protocol before it drops any further."
+    chunks: ["I'll give calcium", "per protocol", "before it drops", "any further", "."]
+    ko: "더 떨어지기 전에 프로토콜에 따라 칼슘을 줄게요."
+    words: [w-calcium, w-protocol, w-drop, w-further]
+    tag: "프로토콜 보충"
+    icon: siren
+    why: "칼슘은 처방·프로토콜에 따라 줘요. 'per protocol'이 그 근거이고, 'any further'는 이미 떨어졌음을 전제해요."
+    decoy: "before it clots"
+    distractorsKo: ["더 떨어지면 심장 리듬이 불안정해지곤 해요", "칼슘이 들어가야 늘어난 QT가 짧아져요"]
+    blank: {answer: give, options: [give, draw, count, store]}
+  "19.6":   # S5 범위·사실
+    en: "I'll keep giving calcium per protocol as we hang more units."
+    chunks: ["I'll keep giving calcium", "per protocol", "as we hang", "more units", "."]
+    ko: "제제를 더 거는 동안 프로토콜에 따라 칼슘을 계속 줄게요."
+    words: [w-keep, w-calcium, w-protocol, w-hang, w-unit]
+    tag: "칼슘 유지"
+    icon: pill
+    why: "제제를 더 걸어도 프로토콜에 따라 칼슘을 이어서 줘서 칼슘 하락을 앞질러 막아요. 'keep'은 한 번으로 끝나지 않고 계속한다는 뜻이에요."
+    decoy: "as we label"
+    distractorsKo: ["제제를 더 거는 동안 칼슘이 조금씩 계속 내려가요", "프로토콜에 따라 칼슘을 주면 하락을 앞질러 막아요"]
+    blank: {answer: giving, options: [giving, drawing, mixing, storing]}
+  "12.2":   # S6 범위 — 보류도 처방
+    en: "So the team may hold off and just recheck his count later."
+    chunks: ["So the team", "may hold off", "and just recheck", "his count later", "."]
+    ko: "그래서 팀에서 보류하고 나중에 수치만 다시 확인할 수도 있어요."
+    words: [w-team, w-hold, w-recheck, w-count, w-later]
+    tag: "보류"
+    icon: calendar
+    why: "보류도 의료진 계획(처방)에 따라요. 'may hold off'는 확정이 아니라 가능성이고, 'just recheck'는 수치만 다시 본다는 뜻이에요."
+    decoy: "and just chart"
+    distractorsKo: ["그래서 팀이 보류할지는 처방에 따라 달라질 수 있어요", "그래서 나중에 수치가 크게 떨어지면 팀에 바로 알려야 해요"]
+    blank: {answer: hold off, options: [hold off, go ahead, speed up, double up]}
+  "12.5":   # S7 사실 — 출혈 시작하면 바로 의료진 호출
+    en: "If he starts bleeding, I'll call the provider right away."
+    chunks: ["If he starts bleeding", ", I'll call", "the provider", "right away", "."]
+    ko: "출혈이 시작되면 바로 의료진에게 연락할게요."
+    words: [w-bleed, w-call, w-provider, w-away]
+    tag: "출혈 보고"
+    icon: pager
+    why: "출혈이 시작되면 더 높은 치료 기준이 적용되니 바로 알려 처방을 받아요."
+    decoy: "If he starts yawning"
+    distractorsKo: ["출혈이 시작되면 혈소판 수치가 빨리 떨어져요", "출혈이 시작되면 치료 기준이 훨씬 높아져요"]
+    blank: {answer: bleeding, options: [bleeding, clotting, healing, scarring]}
+  "14.6":   # S8 약속 — 세포회수는 알아보기
+    en: "We can ask about cell salvage, and we'll use smaller lab tubes."
+    chunks: ["We can ask", "about cell salvage", ", and we'll use", "smaller lab tubes", "."]
+    ko: "세포회수를 쓸 수 있는지 알아보고, 검사 튜브는 더 작은 것을 쓸게요."
+    words: [w-ask, w-salvage, w-small, w-tube]
+    why: "세포회수는 수술 중 쓰는 방법이고 받아들일지는 환자마다 달라 미리 물어봐요."
+    distractorsKo: ["세포회수를 쓸 수 있는지 알아보고, 검사 라벨은 더 작은 것을 쓸게요.", "세포회수를 쓸 수 있는지 알아보고, 검사 트레이는 더 작은 것을 쓸게요."]
+  "20.6":   # S9 권장 — 팀과 함께
+    en: "We'll work with the team so his care matches his wishes."
+    chunks: ["We'll work", "with the team", "so his care", "matches his wishes", "."]
+    ko: "그분의 돌봄이 그분 뜻에 맞도록 팀과 함께 애쓸게요."
+    words: [w-team, w-care, w-match, w-wish]
+    why: "'We'll work with the team'은 간호사 혼자 약속하지 않고 팀과 함께한다는 말이에요. 'so ~'가 그 목적을 이어요."
+    distractorsKo: ["그분의 돌봄이 그분 뜻에 맞는지 팀과 함께 볼게요", "그분의 뜻은 기록에 남겨 팀이 모두 알게 할게요"]
+  "7.3":    # S10 부자연 — distended
+    en: "Crackles and a distended jugular vein point us toward TACO."
+    chunks: ["Crackles", "and a distended jugular vein", "point us", "toward TACO", "."]
+  "8.2":    # S11 부자연
+    en: "Keep the ratio steady no matter how many units come up."
+    chunks: ["Keep the ratio", "steady", "no matter how many units", "come up", "."]
+    ko: "제제가 몇 개 올라와도 비율은 일정하게 유지하세요."
+    words: [w-ratio, w-steady, w-unit]
+    decoy: "come back"
+    distractorsKo: ["제제가 몇 개 올라와도 비율이 깨지면 피가 안 굳어요", "제제가 많아질수록 비율이 흐트러지기 쉬워요"]
+  "19.0":   # S12 부자연
+    en: "His QT is getting longer and he's about to arrest."
+    chunks: ["His QT", "is getting longer", "and he's", "about to arrest", "."]
+    words: [w-qt, w-arrest]
+    blank: {answer: longer, options: [longer, shorter, flatter, normal]}
+  # S13 chunks만
+  "0.2": {chunks: ["I'll say", "the blood type", "and you check it", "against the bag", "."]}
+  "3.3": {chunks: ["Platelets help", "when his count is low", "or he's", "actively bleeding", "."]}
+  "4.3": {chunks: ["This one's", "been out", "for almost an hour", "already", "."]}
+  "5.6": {chunks: ["So far", "every reading", "looks", "within normal range", "."]}
+  "6.2": {chunks: ["This", "looks like", "an acute hemolytic reaction", "."]}
+  "8.5": {chunks: ["I'll", "call out", "each product", "as it goes up", "."]}
+  "8.6": {chunks: ["Someone", "needs to log", "every unit number", "for the chart", "."]}
+  "10.2": {chunks: ["I'm checking", "his ionized calcium", "after", "every few units", "."]}
+  "15.6": {chunks: ["Someone", "call out", "the running totals", "every ten minutes", "."]}
+  "16.6": {chunks: ["Get", "the crash cart", "to the bedside", "right now", "."]}
+  "17.6": {chunks: ["I'll coordinate", "with the team", "on", "the sepsis workup", "."]}
+  "18.0": {chunks: ["She's in", "acute respiratory failure", "right after", "the plasma", "."]}
+  "18.5": {chunks: ["I'll help the team", "adjust", "her ventilator settings", "."]}
+  "18.6":
+    chunks: ["I'll keep", "close watch", "on her oxygen levels", "tonight", "."]
+    ko: "오늘 밤은 산소 수치를 면밀히 지켜볼게요."
+  "20.0": {chunks: ["We keep transfusing", ", but", "he keeps bleeding", "."]}
+  # S14 ko 대명사
+  "3.6":
+    ko: "이 환자 검사 결과에 맞춰 이 성분을 고른 이유를 설명할게요."
+    distractorsKo: ["이 환자 검사 결과에 맞춰 이 성분을 고른 이유를 적어 둘게요", "이 환자 검사 결과에 맞춰 이 성분을 데우는 이유를 설명할게요"]
+  "13.6":
+    ko: "과거력을 감안하면 이번엔 전처치해야 할까요?"
+    distractorsKo: ["과거력을 감안하면 이번엔 속도를 늦출까요?", "과거력을 감안하면 이번엔 더 자주 봐야 할까요?"]
+  "20.5":
+    ko: "그분께 가장 중요했던 게 뭔지 말씀하신 적이 있나요?"
+    distractorsKo: ["그분께 가장 어려웠던 게 뭔지 말씀하신 적이 있나요?", "그분께 가장 중요했던 게 뭔지 쓰신 적이 있나요?"]
+  # S15 대명사 — 0.1 his, 7.5 her
+  "0.1":
+    en: "Let's read his name and date of birth out loud together."
+    chunks: ["Let's read", "his name", "and date of birth", "out loud", "together", "."]
+    decoy: "and his diagnosis"
+  "7.5":
+    en: "I'll sit her upright and apply extra oxygen."
+    chunks: ["I'll sit her upright", "and apply", "extra oxygen", "."]
+  # keyPhrase ko (en 그대로)
+  "12.1": {ko: "예방적 역치는 보통 1만이에요."}
+  "15.2": {ko: "한 분은 성분을 추적하고, 다른 한 분은 혈액을 밀어 넣고, 저는 급속주입기를 맡을게요."}
+  "20.4":
+    ko: "그분이 원하셨을 것에 대해 이야기해 봐요."
+    distractorsKo: ["그분이 지금 느낄 것에 대해 이야기해 봐요", "그분이 두려워했을 것에 대해 이야기해 봐요"]
+  "3.1":
+    ko: "FFP는 응고인자를 보충하고, 혈소판은 혈소판감소증을 치료해요."
+    distractorsKo: ["FFP는 알부민을 보충하고, 혈소판은 혈소판감소증을 치료해요.", "FFP는 응고인자를 보충하고, 혈소판은 실온에서 보관해요."]
+  "10.1":
+    ko: "시트르산염이 칼슘과 결합하니까 이온화 칼슘을 감시할게요."
+    distractorsKo: ["시트르산염이 칼슘과 결합하면 입술과 손끝이 저려요", "시트르산염이 칼륨과 결합하니까 이온화 칼슘을 감시할게요."]
+  # B 빈칸 W17(정답 길이와 다른 선택지만 남음) 보정
+  "12.6":
+    blank: {answer: threshold, options: [threshold, medication, procedure, dosage]}
+  "18.5":
+    blank: {answer: ventilator, options: [ventilator, humidifier, warmer, pump]}

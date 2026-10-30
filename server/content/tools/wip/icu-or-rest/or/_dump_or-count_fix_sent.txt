@@ -1,0 +1,441 @@
+## 0 절개 전 초기 계수
+[0.0] I'm starting the initial count now. | 지금 초기 계수를 시작할게요. | w=w-start,w-initial,w-count
+   d: 지금 첫 소독을 시작할게요. | 지금 체위 조정을 시작할게요. | decoy: the sterile gown | bl: initial ['initial', 'closing', 'partial', 'extra']
+   chunks: ["I'm starting", 'the initial count', 'now', '.'] | tag 계수 개시 check
+   why: 'initial'을 붙이면 절개 전에 하는 첫 계수라는 뜻이 분명해져요. 'now'로 지금 시작한다고 팀에 알려요.
+[0.1] Let's count sponges, instruments, and needles together. | 거즈, 기구, 바늘을 함께 세요. | w=w-count,w-sponge,w-instrument,w-needle,w-together
+   d: 거즈, 기구, 바늘을 함께 펴요. | 거즈, 기구, 바늘을 함께 펼쳐요. | decoy: and gloves | bl: count ['count', 'open', 'unwrap', 'wrap']
+   chunks: ["Let's count", 'sponges, instruments,', 'and needles', 'together', '.'] | tag 함께 계수 handshake2
+   why: 'Let's'로 시작하면 지시가 아니라 같이 하자는 제안이 돼요. 거즈·기구·바늘을 한 번에 나열해 셀 대상을 빠짐없이 짚어요.
+[0.2] The baseline count is recorded before we begin. | 시작 전에 기저 계수를 기록해요. | w=w-baseline,w-count,w-record,w-before,w-begin
+   d: 시작 전에 기저 체온을 기록해요. | 시작 전에 기저 계수를 출력해요. | decoy: for later review | bl: baseline ['baseline', 'final', 'partial', 'second']
+   chunks: ['The baseline count', 'is recorded', 'before we begin', '.'] | tag 기록 pencil
+   why: 'is recorded'는 수동태라 누가 쓰는지보다 기록이 남는다는 사실을 말해요. 'baseline'은 이후 계수와 견줄 기준이에요.
+[0.3] We always count before the incision is made. | 절개하기 전에 항상 계수해요. | w=w-always,w-count,w-before,w-incision
+   d: 절개하기 전에 항상 소독해요. | 절개하기 전에 항상 체위를 잡아요. | decoy: is painful | bl: always ['always', 'usually', 'often', 'sometimes']
+   chunks: ['We always count', 'before the incision', 'is made', '.'] | tag 계수 시점 calendar
+   why: 'always'와 'before the incision'을 함께 써서 계수가 예외 없이 절개 앞에 온다는 규칙으로 들려요. 'is made'는 절개가 만들어지는 순간을 가리켜요.
+[0.4] I'll write the numbers on the board. | 숫자를 게시판에 적을게요. | w=w-write,w-number,w-board
+   d: 이름을 게시판에 적을게요. | 시각을 게시판에 적을게요. | decoy: on the floor | bl: board ['board', 'basket', 'drape', 'cart']
+   chunks: ["I'll write", 'the numbers', 'on the board', '.'] | tag 기록 pencil
+   why: 'the numbers'로 계수 결과를 숫자로 적는다고 분명히 해요. 게시판은 팀 전체가 보는 곳이라 한눈에 확인돼요.
+## 1 거즈 소리내어 확인
+[1.0] Let's count these out loud, one by one. | 소리내어 하나씩 세요. | w=w-count,w-loud
+   d: 소리내어 하나씩 펼쳐요. | 소리내어 하나씩 펴요. | decoy: , two by two | bl: one by one ['one by one', 'all at once', 'side by side', 'two by two']
+   chunks: ["Let's count", 'these out loud', ', one by one', '.'] | tag 소리 내어 speaker
+   why: 'out loud'는 눈으로만 세지 않고 입으로 말해 둘이 같은 숫자를 듣게 해요. 'one by one'은 건너뛰지 않는다는 뜻이에요.
+[1.1] I count ten sponges — can you confirm? | 거즈 열 개 세었는데 — 확인해 줄래요? | w=w-count,w-sponge,w-confirm
+   d: 거즈 셋 세었는데 — 확인해 줄래요? | 거즈 여덟 개 세었는데 — 확인해 줄래요? | decoy: I wash | bl: ten ['ten', 'twenty', 'five', 'nine']
+   chunks: ['I count', 'ten sponges', '— can you', 'confirm', '?'] | tag 개수 보고 check
+   why: 개수를 말한 뒤 바로 'can you confirm?'으로 확인을 청해요. 센 값을 다른 사람이 따로 확인해야 실수를 잡아요.
+[1.2] We say each number together as we go. | 숫자를 하나씩 함께 말해요. | w=w-number,w-together
+   d: 이름을 하나씩 함께 말해요. | 크기를 하나씩 함께 말해요. | decoy: as we leave | bl: together ['together', 'alone', 'silently', 'separately']
+   chunks: ['We say', 'each number', 'together', 'as we go', '.'] | tag 함께 말하기 speaker
+   why: 'each number'와 'together'로 모든 숫자를 두 사람이 같이 말한다는 규칙이 돼요. 'as we go'는 세는 동안 바로바로라는 뜻이에요.
+[1.3] Please confirm each sponge as I call it out. | 제가 부를 때마다 거즈를 확인해 줘요. | w=w-confirm,w-sponge
+   d: 제가 놓을 때마다 거즈를 확인해 줘요. | 제가 쓸 때마다 거즈를 확인해 줘요. | decoy: each sterile pack | bl: sponge ['sponge', 'blade', 'towel', 'glove']
+   chunks: ['Please confirm', 'each sponge', 'as I call', 'it out', '.'] | tag 호명 확인 check
+   why: 'as I call it out'으로 한 사람이 부르는 즉시 다른 사람이 확인하는 리듬이 돼요. 'each'는 하나도 건너뛰지 않는다는 뜻이에요.
+[1.4] We check the count twice before we move on. | 다음으로 넘어가기 전에 두 번 확인해요. | w=w-check,w-count,w-twice,w-before
+   d: 다음 방으로 넘어가기 전에 두 번 확인해요. | 다음으로 넘어가기 전에 세 번 확인해요. | decoy: at the door | bl: twice ['twice', 'once', 'often', 'slowly']
+   chunks: ['We check', 'the count', 'twice', 'before we move on', '.'] | tag 이중 확인 magnify
+   why: 'twice'로 횟수를 말해 두 번 확인한다는 규칙이 분명해요. 'before we move on'은 넘어가기 전에 끝내야 한다는 신호예요.
+## 2 기구 목록 대조
+[2.0] Let's check each instrument against the count sheet. | 기구를 계수 목록지와 대조해요. | w=w-check,w-instrument,w-count,w-sheet
+   d: 기구를 계수 목록지 옆에 놓아요. | 기구를 계수 목록지대로 닦아요. | decoy: the wall clock | bl: instrument ['instrument', 'syringe', 'gown', 'bandage']
+   chunks: ["Let's check", 'each instrument', 'against the count sheet', '.'] | tag 목록 대조 board
+   why: 'each'로 하나도 빼지 않고 보고, 'against'로 기준이 되는 목록에 맞대어 본다는 뜻이 돼요. 기구마다 목록지에 한 줄이 있어요.
+[2.1] Every item on the tray needs to match the list. | 쟁반 위 물품은 전부 목록과 일치해야 해요. | w=w-item,w-tray,w-match,w-list
+   d: 카트 위 물품은 전부 목록과 일치해야 해요. | 쟁반 위 물품은 전부 라벨과 일치해야 해요. | decoy: in the drawer | bl: tray ['tray', 'table', 'stand', 'shelf']
+   chunks: ['Every item', 'on the tray', 'needs to match', 'the list', '.'] | tag 일치 조건 check
+   why: 'needs to match'는 권고가 아니라 반드시 지킬 조건으로 들려요. 'Every'로 예외가 없다는 점이 강조돼요.
+[2.2] I'll confirm the totals with you. | 총 개수를 당신과 함께 확인할게요. | w=w-confirm,w-total
+   d: 총 시간을 당신과 함께 확인할게요. | 총 비용을 당신과 함께 확인할게요. | decoy: on paper | bl: totals ['totals', 'prices', 'times', 'sizes']
+   chunks: ["I'll confirm", 'the totals', 'with you', '.'] | tag 총계 확인 handshake2
+   why: 'with you'로 혼자가 아니라 둘이 같이 본다는 뜻이 돼요. 'I'll'은 지금 하겠다는 즉석 약속이에요.
+[2.3] This tray has twelve instruments on it. | 이 쟁반에는 기구 열두 개가 있어요. | w=w-tray,w-instrument
+   d: 이 쟁반에는 기구 열네 개가 있어요. | 이 쟁반에는 기구 여덟 개가 있어요. | decoy: in a bag | bl: twelve ['twelve', 'twenty', 'fifteen', 'two']
+   chunks: ['This tray has', 'twelve instruments', 'on it', '.'] | tag 개수 보고 scalpel
+   why: 'has … on it'는 지금 눈앞의 개수를 말하는 현재형이에요. 숫자를 또렷이 말해야 서로 같은 값을 확인해요.
+[2.4] The total looks correct to me. | 총 개수가 맞는 것 같아요. | w=w-total,w-correct
+   d: 총 시간이 맞는 것 같아요. | 총 가격이 맞는 것 같아요. | decoy: by my watch | bl: correct ['correct', 'wrong', 'short', 'high']
+   chunks: ['The total looks', 'correct', 'to me', '.'] | tag 일치 판단 check
+   why: 'looks correct to me'는 단정 대신 내 눈에는 그렇다는 완곡한 말이라 상대가 다른 의견을 말하기 쉬워요. 맞춰 본 뒤에 하는 말이에요.
+## 3 바늘 회수 확인
+[3.0] Let's account for every needle we've used. | 사용한 바늘을 전부 셈에 넣어요. | w=w-account,w-needle,w-use
+   d: 사용한 바늘을 전부 통에 넣어요. | 사용한 바늘을 전부 쟁반에 올려요. | decoy: we've ordered | bl: needle ['needle', 'sponge', 'towel', 'gown']
+   chunks: ["Let's account", 'for every needle', "we've used", '.'] | tag 바늘 계수 pushpin
+   why: 'account for'는 단순히 세는 것을 넘어 어디 있는지 다 안다는 뜻이에요. 'every'로 하나라도 빠지면 안 된다는 점을 짚어요.
+[3.1] All needles go back on the magnet for counting. | 바늘은 전부 계수를 위해 자석 위로 돌아가요. | w=w-needle,w-magnet,w-count
+   d: 바늘은 전부 보관을 위해 자석 위로 돌아가요. | 바늘은 전부 정리를 위해 자석 위로 돌아가요. | decoy: on the monitor | bl: magnet ['magnet', 'bench', 'mat', 'stand']
+   chunks: ['All needles', 'go back', 'on the magnet', 'for counting', '.'] | tag 바늘 회수 pushpin
+   why: 'go back on'은 쓴 바늘이 정해진 자리로 돌아온다는 뜻이에요. 자석 위에 모아 두면 개수를 한눈에 세기 쉬워요.
+[3.2] I count each one before we move on. | 넘어가기 전에 하나씩 세요. | w=w-count,w-before
+   d: 넘어가기 전에 하나씩 꺼내요. | 넘어가기 전에 하나씩 펴요. | decoy: each tray | bl: one ['one', 'pair', 'set', 'kit']
+   chunks: ['I count', 'each one', 'before we move on', '.'] | tag 하나씩 계수 check
+   why: 'each one'은 묶어서 어림하지 않고 하나하나 센다는 뜻이에요. 'before we move on'은 다음 단계 전에 끝내야 한다는 신호예요.
+[3.3] Please hand me the needle as soon as you're done. | 다 쓰면 바로 바늘을 건네줘요. | w=w-needle,w-done
+   d: 다 쓰면 바로 가위를 건네줘요. | 다 쓰면 바로 실을 건네줘요. | decoy: the scissors | bl: needle ['needle', 'scissors', 'clamp', 'stapler']
+   chunks: ['Please hand me', 'the needle', 'as soon as', "you're done", '.'] | tag 바늘 반납 handshake2
+   why: 'as soon as'는 다 쓴 즉시라는 뜻이라 바늘이 손에 남지 않아요. 'Please hand me'는 직접 건네 달라는 정중한 요청이에요.
+[3.4] The needle count has to be exact. | 바늘 계수는 정확해야 해요. | w=w-needle,w-count,w-exact
+   d: 바늘 계수는 간단해야 해요. | 바늘 계수는 깔끔해야 해요. | decoy: ready | bl: exact ['exact', 'quick', 'simple', 'cheap']
+   chunks: ['The needle count', 'has to be', 'exact', '.'] | tag 정확성 check
+   why: 'has to be'는 선택이 아닌 의무를 말해요. 'exact'는 대략이 아니라 하나도 틀리지 않는 값이라, 작은 바늘은 한 개 차이도 안전과 이어져요.
+## 4 계수 기록 작성
+[4.0] I'm writing the counts on the board now. | 지금 게시판에 계수를 적고 있어요. | w=w-write,w-count,w-board
+   d: 지금 서류에 계수를 적고 있어요. | 지금 게시판에 날짜를 적고 있어요. | decoy: on the door | bl: counts ['counts', 'doses', 'orders', 'labels']
+   chunks: ["I'm writing", 'the counts', 'on the board', 'now', '.'] | tag 진행 보고 pencil
+   why: 'I'm writing'은 지금 진행 중이라는 현재진행형이라 팀이 지금 보게 해요. 'the counts'로 거즈·기구·바늘 계수 모두를 가리켜요.
+[4.1] Each count is documented with the time. | 계수마다 시각과 함께 문서화해요. | w=w-count,w-document
+   d: 계수마다 날짜와 함께 문서화해요. | 계수마다 방 번호와 함께 문서화해요. | decoy: with a pen | bl: time ['time', 'date', 'name', 'room']
+   chunks: ['Each count', 'is documented', 'with the time', '.'] | tag 시각 기록 calendar
+   why: 'is documented with the time'은 값뿐 아니라 언제였는지까지 남긴다는 뜻이에요. 시각이 있어야 나중에 어느 계수인지 가려요.
+[4.2] The record shows all totals match. | 기록을 보면 총계가 전부 일치해요. | w=w-record,w-total,w-match
+   d: 기록을 보면 시각이 전부 일치해요. | 기록을 보면 순서가 전부 일치해요. | decoy: all dates | bl: totals ['totals', 'dates', 'names', 'signatures']
+   chunks: ['The record shows', 'all totals', 'match', '.'] | tag 일치 확인 check
+   why: 'shows'는 기록이 근거라는 뜻이라 기억이 아니라 적힌 값으로 말해요. 'all'로 총계가 하나도 어긋나지 않았다는 보고예요.
+[4.3] I always note the exact time of each count. | 매번 계수의 정확한 시각을 적어요. | w=w-always,w-note,w-exact,w-count
+   d: 매번 계수의 정확한 장소를 적어요. | 매번 계수의 정확한 방법을 적어요. | decoy: of each visit | bl: exact ['exact', 'rough', 'usual', 'odd']
+   chunks: ['I always', 'note', 'the exact time', 'of each count', '.'] | tag 시각 기록 calendar
+   why: 'exact'로 대략이 아니라 분 단위까지 적는다는 뜻이 돼요. 'always'는 계수마다 예외 없이 하는 습관을 말해요.
+[4.4] Everyone can see the numbers on the board. | 누구나 게시판의 숫자를 볼 수 있어요. | w=w-number,w-board
+   d: 누구나 게시판의 이름을 볼 수 있어요. | 누구나 모니터의 숫자를 볼 수 있어요. | decoy: The nurse can see | bl: numbers ['numbers', 'names', 'orders', 'dates']
+   chunks: ['Everyone can see', 'the numbers', 'on the board', '.'] | tag 공유 확인 board
+   why: 'Everyone can see'는 값이 한 사람만 아는 것이 아니라 팀 모두에게 열려 있다는 뜻이에요. 같은 숫자를 보니 어긋나면 바로 눈에 띄어요.
+## 5 봉합 전 계수 개시
+[5.0] Before we close, I'm starting the closing count. | 닫기 전에 봉합 계수를 시작할게요. | w=w-before,w-close,w-start,w-count
+   d: 닫기 전에 흡인을 시작할게요. | 닫기 전에 봉합사를 꺼낼게요. | decoy: the overhead lights | bl: closing ['closing', 'initial', 'opening', 'partial']
+   chunks: ['Before we close', ", I'm starting", 'the closing count', '.'] | tag 봉합 계수 check
+   why: 'Before we close'를 문장 맨 앞에 두면 닫기 전에 해야 할 일이라는 점이 먼저 들려요. 'closing count'는 닫는 단계에서 하는 계수를 가리켜요.
+[5.1] Let's verify everything before the cavity is closed. | 체강을 닫기 전에 모두 확인해요. | w=w-verify,w-before,w-cavity,w-close
+   d: 체강을 닫기 전에 모두 세척해요. | 체강을 닫기 전에 모두 말려요. | decoy: the room | bl: verify ['verify', 'tidy', 'stack', 'dry']
+   chunks: ["Let's verify", 'everything', 'before the cavity', 'is closed', '.'] | tag 닫기 전 확인 magnify
+   why: 'Let's'로 같이 확인하자고 제안하고, 'everything'으로 거즈·기구·바늘 전부를 한꺼번에 가리켜요. 'cavity'는 수술로 열어 둔 몸 안의 빈 공간이에요.
+[5.2] All counts need to match before closure. | 봉합 전에 모든 계수가 일치해야 해요. | w=w-count,w-match,w-before,w-closure
+   d: 봉합 전에 모든 날짜가 일치해야 해요. | 봉합 전에 모든 라벨이 일치해야 해요. | decoy: All sizes | bl: closure ['closure', 'incision', 'transfer', 'discharge']
+   chunks: ['All counts', 'need to match', 'before closure', '.'] | tag 일치 조건 check
+   why: 'All'과 'need to'가 합쳐져 예외 없는 필수 조건으로 들려요. 'closure'는 'close'의 명사형이라 닫는 단계 전체를 가리켜요.
+[5.3] We do this every time before the cavity closes. | 체강을 닫기 전에는 매번 이렇게 해요. | w=w-before,w-cavity,w-close
+   d: 체강을 닫기 전에는 매번 이걸 씻어요. | 체강을 닫기 전에는 매번 이걸 켜요. | decoy: every visit | bl: every time ['every time', 'every hour', 'every week', 'every year']
+   chunks: ['We do this', 'every time', 'before the cavity', 'closes', '.'] | tag 매번 시행 calendar
+   why: 'every time'을 문장 가운데 넣어 예외 없는 반복을 강조해요. 'this'는 앞서 말한 계수를 가리켜서 이름을 되풀이하지 않아요.
+[5.4] Everything needs to be accounted for now. | 이제 모두 셈에 넣어야 해요. | w=w-account
+   d: 이제 모두 쟁반에 올려야 해요. | 이제 모두 접어야 해요. | decoy: to be shipped | bl: accounted ['accounted', 'wrapped', 'moved', 'washed']
+   chunks: ['Everything needs', 'to be accounted', 'for now', '.'] | tag 전부 확인 check
+   why: 'be accounted for'는 수동태라 누가 세느냐보다 하나도 빠짐없이 소재가 확인된다는 점을 말해요. 'now'는 닫기 직전의 시점을 짚어요.
+## 6 추가 거즈 투입 기록
+[6.0] Ten additional sponges added — updating the count. | 거즈 열 개 추가됐어요 — 계수를 갱신할게요. | w=w-sponge,w-additional,w-add,w-update,w-count
+   d: 거즈 열다섯 개 추가됐어요 — 계수를 갱신할게요. | 거즈 셋 추가됐어요 — 계수를 갱신할게요. | decoy: the schedule | bl: sponges ['sponges', 'needles', 'gowns', 'drapes']
+   chunks: ['Ten additional sponges', 'added', '— updating', 'the count', '.'] | tag 추가 보고 bandage
+   why: 숫자와 'additional'로 늘어난 개수를 먼저 말한 뒤 'updating the count'로 기록을 고친다고 알려요. 개수가 바뀐 즉시 갱신해야 총계가 맞아요.
+[6.1] Let me log these before they go into the field. | 필드에 들어가기 전에 이걸 기록할게요. | w=w-log,w-before,w-field
+   d: 필드에 들어가기 전에 이걸 소독할게요. | 필드에 들어가기 전에 이걸 펼칠게요. | decoy: to the lab | bl: log ['log', 'fold', 'sort', 'tag']
+   chunks: ['Let me log', 'these', 'before they go', 'into the field', '.'] | tag 기록 pencil
+   why: 'Let me'로 시작하면 허락을 구하듯 부드럽게 내 행동을 알려요. 'before they go into the field'는 수술 부위에 들어가기 전에 기록한다는 시점이에요.
+[6.2] Our new total includes the extra sponges. | 새 총계에는 추가된 거즈가 포함돼요. | w=w-total,w-include,w-extra,w-sponge
+   d: 새 비용에는 추가된 거즈가 포함돼요. | 새 무게에는 추가된 거즈가 포함돼요. | decoy: Our old total | bl: total ['total', 'price', 'weight', 'budget']
+   chunks: ['Our new total', 'includes', 'the extra sponges', '.'] | tag 총계 갱신 chartup
+   why: 'includes'는 새로 늘어난 거즈까지 합쳐서 센다는 뜻이에요. 'new total'은 갱신된 총계를 가리켜요.
+[6.3] Please tell me every time you open a new pack. | 새 포장을 열 때마다 매번 말해줘요. | w=w-open,w-pack
+   d: 새 포장을 버릴 때마다 매번 말해줘요. | 새 장갑을 열 때마다 매번 말해줘요. | decoy: a new glove | bl: open ['open', 'close', 'drop', 'carry']
+   chunks: ['Please tell me', 'every time', 'you open', 'a new pack', '.'] | tag 개봉 알림 speech
+   why: 'every time you'로 조건을 걸어 새 포장이 열릴 때마다 알려 달라는 규칙이 돼요. 새 포장을 열면 거즈가 더 늘어서 총계가 바뀌어요.
+[6.4] I'll update the board with the new total. | 게시판을 새 총계로 갱신할게요. | w=w-update,w-board,w-total
+   d: 게시판을 새 담당자로 갱신할게요. | 게시판을 새 팀으로 갱신할게요. | decoy: the new shift | bl: update ['update', 'clean', 'cover', 'move']
+   chunks: ["I'll update", 'the board', 'with the new total', '.'] | tag 갱신 pencil
+   why: 'update … with'는 무엇으로 고치는지를 뒤에 붙여 바뀐 값을 분명히 해요. 늘어난 거즈를 반영한 숫자를 팀 모두가 보게 하려는 거예요.
+## 7 계수 중 교대 인계
+[7.0] Let's do a full count together before I take over. | 제가 넘겨받기 전에 전체 계수를 함께 해요. | w=w-count,w-together,w-before
+   d: 제가 넘겨받기 전에 전체 소개를 함께 해요. | 제가 넘겨받기 전에 전체 정리를 함께 해요. | decoy: a full circle | bl: count ['count', 'drill', 'tour', 'scrub']
+   chunks: ["Let's do", 'a full count', 'together', 'before I take over', '.'] | tag 인계 전 계수 handshake2
+   why: 'before I take over'로 교대 전에 해야 할 일이라는 시점이 분명해요. 'together'라 넘기는 사람과 받는 사람이 같은 숫자를 봐요.
+[7.1] Show me the current totals so nothing is lost. | 아무것도 놓치지 않게 현재 총계를 보여줘요. | w=w-total,w-current,w-lose
+   d: 아무것도 놓치지 않게 현재 시각을 보여줘요. | 아무것도 놓치지 않게 현재 담당자를 보여줘요. | decoy: the clean gowns | bl: current ['current', 'old', 'future', 'rough']
+   chunks: ['Show me', 'the current totals', 'so nothing', 'is lost', '.'] | tag 현황 요청 magnify
+   why: 'Show me'는 말로 듣는 대신 눈으로 직접 보겠다는 요청이에요. 'so nothing is lost'는 요청하는 목적을 붙여 이유를 밝혀요.
+[7.2] We recount to confirm before the handover. | 인계 전에 다시 세서 확인해요. | w=w-recount,w-confirm,w-before
+   d: 인계 전에 다시 세서 정리해요. | 인계 전에 다시 세서 적어 둬요. | decoy: to relax | bl: handover ['handover', 'break', 'transport', 'rounds']
+   chunks: ['We recount', 'to confirm', 'before the handover', '.'] | tag 재계수 redo
+   why: 'recount'는 re-가 붙어 한 번 센 것을 다시 센다는 뜻이에요. 'to confirm'은 목적을 밝혀 다시 세는 이유를 보여 줘요.
+[7.3] I'm taking over your count now. | 지금부터 당신 계수를 넘겨받을게요. | w=w-count
+   d: 지금부터 당신 카트를 넘겨받을게요. | 지금부터 당신 차트를 넘겨받을게요. | decoy: your coffee | bl: your ['your', 'my', 'his', 'their']
+   chunks: ["I'm taking over", 'your count', 'now', '.'] | tag 인수 선언 handshake2
+   why: 'I'm taking over'는 지금 이 순간부터 내가 맡는다는 선언이라 책임이 넘어가는 시점이 분명해요. 'your count'로 무엇을 넘겨받는지도 함께 말해요.
+[7.4] Tell me exactly what's still open on the field. | 필드에 아직 열려 있는 게 뭔지 정확히 말해줘요. | w=w-open,w-field
+   d: 카트에 아직 열려 있는 게 뭔지 정확히 말해줘요. | 탁자에 아직 열려 있는 게 뭔지 정확히 말해줘요. | decoy: in the hallway | bl: exactly ['exactly', 'roughly', 'maybe', 'slowly']
+   chunks: ['Tell me', 'exactly', "what's still open", 'on the field', '.'] | tag 현황 보고 speech
+   why: 'exactly'를 넣어 대략이 아니라 구체적으로 말하라는 요구가 돼요. 'still open'은 아직 정리되지 않고 남아 있는 것을 가리켜요.
+## 8 방사선 표지 거즈 확인
+[8.0] Only X-ray detectable sponges go on this field. | X선으로 탐지 가능한 거즈만 필드에 올려요. | w=w-detectable,w-sponge,w-field
+   d: X선으로 탐지 가능한 거즈만 카트에 올려요. | X선으로 탐지 가능한 거즈만 탁자에 올려요. | decoy: this window | bl: sponges ['sponges', 'towels', 'gloves', 'blades']
+   chunks: ['Only X-ray detectable', 'sponges', 'go on', 'this field', '.'] | tag 거즈 규칙 shield
+   why: 'Only'를 맨 앞에 두면 허용되는 것이 하나뿐이라는 규칙이 먼저 들려요. 'X-ray detectable'은 영상에 보이는 표지가 있다는 뜻이에요.
+[8.1] Let me confirm each one has the radiopaque marker. | 하나하나 방사선 불투과 표지가 있는지 확인할게요. | w=w-confirm,w-radiopaque,w-marker
+   d: 상자마다 방사선 불투과 표지가 있는지 확인할게요. | 포장마다 방사선 불투과 표지가 있는지 확인할게요. | decoy: each pair | bl: radiopaque ['radiopaque', 'reusable', 'fragile', 'sterile']
+   chunks: ['Let me confirm', 'each one', 'has the radiopaque', 'marker', '.'] | tag 표지 확인 magnify
+   why: 'Let me confirm'은 내가 직접 확인하겠다고 알리는 부드러운 선언이에요. 'radiopaque'는 X선에서 하얗게 보여 영상에서 찾을 수 있다는 뜻이에요.
+[8.2] No non-detectable sponges near the wound. | 탐지 안 되는 거즈는 상처 근처에 두지 않아요. | w=w-detectable,w-sponge,w-wound
+   d: 젖은 거즈는 상처 근처에 두지 않아요. | 찢어진 거즈는 상처 근처에 두지 않아요. | decoy: near the doorway | bl: wound ['wound', 'tray', 'door', 'chart']
+   chunks: ['No non-detectable sponges', 'near', 'the wound', '.'] | tag 금지 규칙 shield
+   why: 'No'로 시작해 금지 규칙을 짧게 못 박아요. 'non-detectable'은 탐지되지 않는다는 뜻이라 몸 안에 남으면 영상으로 찾을 수 없어요.
+[8.3] Every sponge we use must have this marker. | 사용하는 거즈는 전부 이 표지가 있어야 해요. | w=w-sponge,w-use,w-marker
+   d: 사용하는 거즈는 전부 이 날짜가 있어야 해요. | 사용하는 거즈는 전부 이 서명이 있어야 해요. | decoy: this lid | bl: marker ['marker', 'lid', 'strap', 'hook']
+   chunks: ['Every sponge', 'we use', 'must have', 'this marker', '.'] | tag 필수 조건 shield
+   why: 'must'는 'need to'보다 강한 필수 조건이에요. 'we use'는 사용하는 거즈 전체를 가리키는 관계절이에요.
+[8.4] We remove any sponge without the marker right away. | 표지 없는 거즈는 바로 빼요. | w=w-remove,w-sponge,w-marker
+   d: 표지 없는 포장은 바로 빼요. | 표지 없는 상자는 바로 빼요. | decoy: from the pack | bl: remove ['remove', 'stow', 'sort', 'label']
+   chunks: ['We remove', 'any sponge', 'without the marker', 'right away', '.'] | tag 즉시 제거 shield
+   why: 'right away'는 곧바로라는 뜻이라 미루지 않는다는 규칙이 돼요. 'without'은 '없이'라서 표지가 없는 거즈만 골라낸다는 뜻이에요.
+## 9 기구 분해 부품 계수
+[9.0] Let's count each component of this instrument. | 이 기구의 부품을 하나씩 세요. | w=w-count,w-component,w-instrument
+   d: 이 기구의 부품을 하나씩 펴요. | 이 기구의 부품을 하나씩 조여요. | decoy: of this schedule | bl: count ['count', 'wipe', 'tighten', 'label']
+   chunks: ["Let's count", 'each component', 'of this instrument', '.'] | tag 부품 계수 scalpel
+   why: 'each component'로 기구 하나가 아니라 부품마다 센다는 뜻이에요. 분해되는 기구는 작은 부품이 빠져도 모르고 지나가기 쉬워요.
+[9.1] All the small parts need to be accounted for. | 작은 부품들도 전부 셈에 넣어야 해요. | w=w-part,w-account
+   d: 작은 부품들도 전부 통에 넣어야 해요. | 작은 부품들도 전부 세척에 넣어야 해요. | decoy: the spare keys | bl: accounted ['accounted', 'oiled', 'stored', 'sharpened']
+   chunks: ['All', 'the small parts', 'need to be', 'accounted for', '.'] | tag 작은 부품 magnify
+   why: 'All'과 'small'을 함께 써서 작아서 놓치기 쉬운 부품까지 포함한다는 뜻이에요. 'need to be accounted for'는 반드시 소재를 확인하라는 필수 표현이에요.
+[9.2] The set has three pieces — I confirm all three. | 세트는 세 조각이에요 — 셋 다 확인할게요. | w=w-piece,w-confirm
+   d: 세트는 네 조각이에요 — 넷 다 확인할게요. | 세트는 두 조각이에요 — 둘 다 확인할게요. | decoy: I weigh | bl: pieces ['pieces', 'boxes', 'clips', 'bags']
+   chunks: ['The set has', 'three pieces', '— I confirm', 'all three', '.'] | tag 개수 보고 check
+   why: 'has three pieces'로 기준이 되는 개수를 먼저 말한 뒤 'all three'로 그 모두를 확인한다고 이어요. 세트 개수를 알아야 빠진 조각을 알아차려요.
+[9.3] This retractor comes apart into separate pieces. | 이 견인기는 분리된 조각으로 나뉘어요. | w=w-retractor,w-separate,w-piece
+   d: 이 견인기는 분리된 조각으로 분류돼요. | 이 견인기는 분리된 조각으로 보관돼요. | decoy: This blanket | bl: separate ['separate', 'broken', 'spare', 'tiny']
+   chunks: ['This retractor', 'comes apart', 'into separate pieces', '.'] | tag 분해 설명 scalpel
+   why: 'comes apart'는 부품으로 풀린다는 구동사라 분해되는 기구를 설명할 때 써요. 'into separate pieces'는 따로 떨어진다는 점을 말해요.
+[9.4] Make sure every piece is back before we close. | 닫기 전에 조각이 전부 돌아왔는지 확인해요. | w=w-piece,w-before,w-close
+   d: 닫기 전에 손잡이가 전부 돌아왔는지 확인해요. | 닫기 전에 나사가 전부 돌아왔는지 확인해요. | decoy: every pillow | bl: back ['back', 'clean', 'ready', 'open']
+   chunks: ['Make sure', 'every piece', 'is back', 'before we close', '.'] | tag 닫기 전 확인 check
+   why: 'Make sure'는 확실히 하라는 지시로 'check'보다 결과를 책임진다는 느낌이에요. 'is back'은 쓰던 자리로 돌아왔다는 뜻이에요.
+## 10 소독포 안 잔류 확인
+[10.0] Let's search the drape folds for anything hidden. | 소독포 접힌 부분에 숨은 게 없는지 수색해요. | w=w-search,w-drape,w-fold,w-hidden
+   d: 소독포 가장자리에 숨은 게 없는지 수색해요. | 소독포 안쪽 주머니에 숨은 게 없는지 수색해요. | decoy: for dust | bl: search ['search', 'count', 'polish', 'tidy']
+   chunks: ["Let's search", 'the drape folds', 'for anything', 'hidden', '.'] | tag 숨은 것 수색 magnify
+   why: 'search … for'는 무엇을 찾는지를 for 뒤에 붙여요. 'hidden'은 눈에 안 띄게 접힌 곳에 들어간 것을 가리켜요.
+[10.1] Shake out the drapes before we finalize the count. | 계수를 마무리하기 전에 소독포를 털어요. | w=w-shake,w-drape,w-before,w-finalize,w-count
+   d: 계수를 마무리하기 전에 소독포를 걷어요. | 계수를 마무리하기 전에 소독포를 모아요. | decoy: the curtains | bl: finalize ['finalize', 'print', 'post', 'send']
+   chunks: ['Shake out', 'the drapes', 'before we finalize', 'the count', '.'] | tag 털어서 확인 magnify
+   why: 'Shake out'은 구동사라 안에 들어 있는 것을 흔들어 떨어낸다는 뜻이에요. 'before we finalize'는 계수를 마무리하기 전에 끝내야 한다는 시점이에요.
+[10.2] Nothing should be left in the folds. | 접힌 부분에 아무것도 남으면 안 돼요. | w=w-leave,w-fold
+   d: 주머니에 아무것도 남으면 안 돼요. | 서랍에 아무것도 남으면 안 돼요. | decoy: in the freezer | bl: folds ['folds', 'pockets', 'drawers', 'boxes']
+   chunks: ['Nothing should be', 'left', 'in the folds', '.'] | tag 잔류 금지 shield
+   why: 'should'는 'must'보다 부드럽지만 안전 규칙에서는 반드시 지킬 일로 들려요. 'left'는 'leave'의 과거분사로 남겨진 상태를 말해요.
+[10.3] I always check the folds of every drape. | 소독포마다 접힌 부분을 항상 확인해요. | w=w-always,w-check,w-fold,w-drape
+   d: 가운마다 접힌 부분을 항상 확인해요. | 소독포마다 가장자리를 항상 확인해요. | decoy: every glove | bl: drape ['drape', 'gown', 'towel', 'pad']
+   chunks: ['I always check', 'the folds', 'of every drape', '.'] | tag 습관 magnify
+   why: 'always'를 동사 앞에 두면 예외 없는 습관이라는 뜻이에요. 'of every drape'로 소독포마다 빠짐없이 본다는 범위를 말해요.
+[10.4] Nothing was left behind this time. | 이번에는 아무것도 남지 않았어요. | w=w-leave
+   d: 지난번에는 아무것도 남지 않았어요. | 어제는 아무것도 남지 않았어요. | decoy: this week | bl: left ['left', 'found', 'moved', 'kept']
+   chunks: ['Nothing was left', 'behind', 'this time', '.'] | tag 확인 보고 check
+   why: 'this time'으로 지금 이 수술에 한정해 말해서 지난번과 구분해요. 'left behind'는 뒤에 남겨졌다는 뜻이에요.
+## 11 바늘 파손 조각 확인
+[11.0] The needle broke — we need every fragment back. | 바늘이 부러졌어요 — 조각을 전부 회수해야 해요. | w=w-needle,w-break,w-fragment
+   d: 가위 날이 부러졌어요 — 조각을 전부 회수해야 해요. | 클립이 부러졌어요 — 조각을 전부 회수해야 해요. | decoy: The needle bent | bl: broke ['broke', 'bent', 'dulled', 'jammed']
+   chunks: ['The needle broke', '— we need', 'every fragment', 'back', '.'] | tag 파손 대응 siren
+   why: 'every fragment'로 부러진 조각 하나도 남기지 않는다는 뜻이에요. 'back'은 몸 밖으로, 본래 자리로 돌려받는다는 뜻이에요.
+[11.1] Let's account for both halves before closing. | 닫기 전에 양쪽 반쪽을 전부 셈에 넣어요. | w=w-account,w-half,w-before,w-close
+   d: 닫기 전에 세 조각을 전부 셈에 넣어요. | 닫기 전에 네 조각을 전부 셈에 넣어요. | decoy: both gowns | bl: halves ['halves', 'hands', 'wings', 'gloves']
+   chunks: ["Let's account", 'for both halves', 'before closing', '.'] | tag 양쪽 확인 check
+   why: 'both halves'는 부러진 바늘이 두 조각이라는 것을 전제로 둘 다 확인하라는 말이에요. 'before closing'으로 닫기 전 시점을 못 박아요.
+[11.2] I'll search the field until all pieces are found. | 조각을 전부 찾을 때까지 필드를 수색할게요. | w=w-search,w-field,w-piece,w-find
+   d: 조각을 전부 찾을 때까지 바닥을 수색할게요. | 조각을 전부 찾을 때까지 쟁반을 수색할게요. | decoy: the lobby | bl: until ['until', 'after', 'before', 'while']
+   chunks: ["I'll search", 'the field', 'until all pieces', 'are found', '.'] | tag 수색 약속 magnify
+   why: 'until'은 끝나는 조건을 붙여 조각을 다 찾기 전에는 멈추지 않는다는 약속이 돼요. 'are found'는 찾아지는 쪽에 초점을 둔 수동태예요.
+[11.3] A piece of the needle is still missing. | 바늘 조각 하나가 아직 없어요. | w=w-piece,w-needle,w-miss
+   d: 바늘 조각 두 개가 아직 없어요. | 바늘 조각 세 개가 아직 없어요. | decoy: is still warm | bl: missing ['missing', 'bent', 'dull', 'wet']
+   chunks: ['A piece', 'of the needle', 'is still missing', '.'] | tag 미회수 보고 siren
+   why: 'still missing'은 아직도 찾지 못했다는 뜻이에요. 'A piece of'는 전체가 아니라 일부 하나라는 걸 말해요.
+[11.4] We can't close until every fragment is confirmed. | 조각을 전부 확인할 때까지 닫을 수 없어요. | w=w-close,w-fragment,w-confirm
+   d: 조각 두 개를 확인할 때까지 닫을 수 없어요. | 조각 세 개를 확인할 때까지 닫을 수 없어요. | decoy: until every bolt | bl: close ['close', 'start', 'transfer', 'dress']
+   chunks: ["We can't close", 'until every fragment', 'is confirmed', '.'] | tag 닫기 보류 siren
+   why: 'can't close'는 금지가 아니라 불가능이라 팀이 반박하기 어렵게 말해요. 'until'은 조건이 충족될 때까지 보류한다는 뜻이에요.
+## 12 계수 방해 응급 상황
+[12.0] Once things settle, we restart the count from a known point. | 상황이 진정되면 확실한 지점부터 계수를 다시 시작해요. | w=w-settle,w-restart,w-count
+   d: 상황이 진정되면 확실한 지점부터 청소를 다시 시작해요. | 상황이 진정되면 확실한 지점부터 수술을 다시 시작해요. | decoy: a quiet room | bl: known ['known', 'random', 'rough', 'old']
+   chunks: ['Once things settle', ', we restart', 'the count', 'from a known point', '.'] | tag 계수 재개 redo
+   why: 'Once'는 조건이 끝나는 순간을 가리켜 안정된 뒤에 재개한다는 뜻이에요. 'a known point'는 확실히 맞는 지점을 뜻해요.
+[12.1] Let's recount everything to be safe. | 안전하게 전부 다시 세요. | w=w-recount,w-safe
+   d: 안전하게 전부 다시 놔요. | 안전하게 전부 다시 포장해요. | decoy: to be polite | bl: safe ['safe', 'quick', 'kind', 'fair']
+   chunks: ["Let's recount", 'everything', 'to be safe', '.'] | tag 재계수 redo
+   why: 'Let's'로 같이 다시 하자고 제안하고, 'recount'의 're-'로 이미 센 것을 다시 센다는 뜻이 돼요. 'to be safe'는 이유를 짧게 붙인 표현이에요.
+[12.2] I'll document that the count was interrupted. | 계수가 중단됐다는 것을 문서화할게요. | w=w-document,w-count,w-interrupt
+   d: 회의가 중단됐다는 것을 문서화할게요. | 통화가 중단됐다는 것을 문서화할게요. | decoy: the power | bl: interrupted ['interrupted', 'repeated', 'approved', 'ordered']
+   chunks: ["I'll document", 'that the count', 'was interrupted', '.'] | tag 중단 기록 pencil
+   why: 'document that …'은 that 절로 기록할 사실을 말해요. 'was interrupted'는 중단된 사실을 수동태로 남겨 누구 탓인지는 말하지 않아요.
+[12.3] The emergency stopped our count halfway through. | 응급 상황 때문에 계수가 중간에 멈췄어요. | w=w-emergency,w-stop,w-count
+   d: 응급 상황 때문에 계수가 처음에 멈췄어요. | 응급 상황 때문에 계수가 두 번 멈췄어요. | decoy: all night long | bl: stopped ['stopped', 'started', 'finished', 'ordered']
+   chunks: ['The emergency', 'stopped our count', 'halfway through', '.'] | tag 중단 설명 siren
+   why: 'stopped our count'에서 응급 상황이 주어라 누구 탓도 아닌 사건이 원인임을 말해요. 'halfway through'는 절반쯤 진행된 지점을 가리켜요.
+[12.4] We pick up exactly where we left off. | 멈췄던 지점부터 정확히 다시 시작해요. | w=w-pick,w-leave
+   d: 멈췄던 지점부터 빠르게 다시 시작해요. | 멈췄던 지점부터 차분히 다시 시작해요. | decoy: slowly | bl: exactly ['exactly', 'loosely', 'vaguely', 'partly']
+   chunks: ['We pick up', 'exactly', 'where we left', 'off', '.'] | tag 이어서 계수 redo
+   why: 'pick up'은 구동사로 하던 일을 다시 이어 간다는 뜻이에요. 'exactly where we left off'는 멈춘 바로 그 지점을 가리켜요.
+## 13 두 명 동시 계수
+[13.0] We count together — both of us see each item. | 함께 세요 — 둘 다 각 물품을 봐요. | w=w-count,w-together,w-item
+   d: 함께 세요 — 둘 다 각 칸을 봐요. | 함께 세요 — 둘 다 각 서류를 봐요. | decoy: each room | bl: together ['together', 'alone', 'apart', 'slowly']
+   chunks: ['We count', 'together', '— both of us', 'see each item', '.'] | tag 이중 시선 handshake2
+   why: 'both of us'로 두 사람이 모두 같은 물품을 본다는 점을 분명히 해요. 한 사람이 세고 다른 사람이 듣기만 하면 실수를 못 잡아요.
+[13.1] You count aloud and I'll verify. | 당신이 소리 내어 세면 제가 확인할게요. | w=w-count,w-aloud,w-verify
+   d: 당신이 소리 내어 세면 제가 건네줄게요. | 당신이 소리 내어 세면 제가 펼쳐줄게요. | decoy: and I'll fold | bl: verify ['verify', 'stack', 'fold', 'wrap']
+   chunks: ['You count', 'aloud', "and I'll verify", '.'] | tag 역할 분담 speaker
+   why: 'aloud'는 소리를 내어서라는 뜻이라 확인하는 사람이 숫자를 귀로 들어요. 'I'll verify'는 한 사람이 세고 다른 사람이 따로 맞춰 본다는 역할 분담이에요.
+[13.2] A dual count means we both confirm the total. | 이중 계수는 둘 다 총계를 확인한다는 뜻이에요. | w=w-dual,w-count,w-confirm,w-total
+   d: 이중 계수는 둘 다 총계를 기억한다는 뜻이에요. | 이중 계수는 둘 다 총계를 발표한다는 뜻이에요. | decoy: the weekend | bl: dual ['dual', 'single', 'blind', 'late']
+   chunks: ['A dual count', 'means', 'we both confirm', 'the total', '.'] | tag 이중 계수 handshake2
+   why: 'A dual count means …'는 용어를 정의하는 틀이라 처음 듣는 사람도 뜻을 알아요. 'dual'은 둘이 함께라는 뜻이에요.
+[13.3] Two sets of eyes catch more mistakes. | 두 사람의 눈이 실수를 더 잘 잡아요. | w=w-eye,w-mistake
+   d: 두 사람의 귀가 실수를 더 잘 잡아요. | 두 사람의 손이 실수를 더 잘 잡아요. | decoy: more shadows | bl: eyes ['eyes', 'ears', 'hands', 'arms']
+   chunks: ['Two sets', 'of eyes', 'catch more mistakes', '.'] | tag 이중 확인 magnify
+   why: 'sets of eyes'는 사람을 눈으로 세는 비유예요. 둘이 보면 한 사람이 놓친 것을 다른 사람이 잡을 수 있어요.
+[13.4] Let's both look at the tray at the same time. | 같은 시간에 둘 다 쟁반을 봐요. | w=w-tray
+   d: 같은 시간에 둘 다 카트를 봐요. | 같은 시간에 둘 다 서류를 봐요. | decoy: at the monitor | bl: tray ['tray', 'cart', 'bag', 'bin']
+   chunks: ["Let's both look", 'at the tray', 'at the same', 'time', '.'] | tag 동시 확인 magnify
+   why: 'at the same time'은 둘이 한꺼번에 본다는 뜻이라 한 사람이 먼저 보고 전하는 것과 달라요. 'Let's both'는 둘이 같이 하자는 제안이에요.
+## 14 전자 계수 병행
+[14.0] Each sponge gets scanned and manually counted. | 거즈마다 스캔되고 수기로도 계수돼요. | w=w-sponge,w-scan,w-manual,w-count
+   d: 묶음마다 스캔되고 수기로도 계수돼요. | 거즈마다 스캔되고 사진으로도 계수돼요. | decoy: painted | bl: manually ['manually', 'randomly', 'rarely', 'lightly']
+   chunks: ['Each sponge gets', 'scanned', 'and manually counted', '.'] | tag 이중 계수 gear
+   why: 'scanned and manually counted'는 기계와 사람이 모두 센다는 뜻이라 한쪽이 틀려도 잡아요. 'Each sponge gets …'는 거즈마다 빠짐없이 한다는 수동 표현이에요.
+[14.1] The electronic system should match our manual total. | 전자 시스템이 수기 총계와 일치해야 해요. | w=w-electronic,w-system,w-match,w-manual,w-total
+   d: 전자 시스템이 수기 총계와 연결돼야 해요. | 전자 시스템이 수기 총계보다 빨라야 해요. | decoy: our lunch order | bl: match ['match', 'replace', 'beat', 'shorten']
+   chunks: ['The electronic system', 'should match', 'our manual total', '.'] | tag 일치 기준 monitor
+   why: 'should match'는 'must'보다 약한 기대지만 계수에서는 어긋나면 바로 확인하라는 신호로 들려요. 'electronic'과 'manual'을 맞세워 두 방식을 대비해요.
+[14.2] Let's reconcile the scan count with the board. | 스캔 계수를 게시판과 맞춰 봐요. | w=w-reconcile,w-scan,w-count,w-board
+   d: 스캔 계수를 게시판에 옮겨 봐요. | 스캔 계수를 사진과 맞춰 봐요. | decoy: the scan room | bl: board ['board', 'cabinet', 'wall', 'door']
+   chunks: ["Let's reconcile", 'the scan count', 'with the board', '.'] | tag 맞춰 보기 board
+   why: 'reconcile'은 서로 다른 두 기록의 차이를 맞춰 일치시킨다는 뜻이에요. 'with the board'로 무엇과 맞대어 보는지를 말해요.
+[14.3] I scan every sponge before it goes in the bin. | 쓰레기통에 들어가기 전에 거즈마다 스캔해요. | w=w-scan,w-sponge,w-before,w-bin
+   d: 서랍에 들어가기 전에 거즈마다 스캔해요. | 세탁기에 들어가기 전에 거즈마다 스캔해요. | decoy: in the sink | bl: scan ['scan', 'tag', 'rinse', 'stack']
+   chunks: ['I scan', 'every sponge', 'before it goes', 'in the bin', '.'] | tag 폐기 전 스캔 gear
+   why: 'before it goes in'은 버려지기 전이라는 시점이라 일단 버려지면 확인이 안 돼요. 'every'는 하나도 건너뛰지 않는다는 뜻이에요.
+[14.4] Both numbers need to match exactly. | 두 숫자가 정확히 일치해야 해요. | w=w-number,w-match
+   d: 두 이름이 정확히 일치해야 해요. | 두 날짜가 정확히 일치해야 해요. | decoy: Both doors | bl: exactly ['exactly', 'nearly', 'barely', 'almost']
+   chunks: ['Both numbers', 'need to match', 'exactly', '.'] | tag 완전 일치 check
+   why: 'exactly'를 문장 끝에 붙여 한 개 차이도 허용하지 않는다는 뜻이에요. 'Both'는 스캔 숫자와 수기 숫자 둘을 가리켜요.
+## 15 봉합 직전 거즈 불일치
+[15.0] I'm declaring a count discrepancy — hold closure. | 계수 불일치를 선언할게요 — 봉합을 멈춰요. | w=w-declare,w-count,w-discrepancy,w-closure
+   d: 서명 불일치를 선언할게요 — 봉합을 멈춰요. | 시간 불일치를 선언할게요 — 봉합을 멈춰요. | decoy: a fresh start | bl: count ['count', 'time', 'date', 'name']
+   chunks: ["I'm declaring", 'a count discrepancy', '— hold closure', '.'] | tag 불일치 선언 siren
+   why: 'declare'는 공식적으로 알린다는 뜻이라 조용히 넘기지 않고 팀 전체에 알려요. 'hold closure'는 닫는 일을 멈추라는 짧은 명령이에요.
+[15.1] We're one sponge short, we need to search now. | 거즈가 하나 부족해요, 지금 수색해야 해요. | w=w-sponge,w-short,w-search
+   d: 거즈가 둘 부족해요, 지금 수색해야 해요. | 거즈가 셋 부족해요, 지금 수색해야 해요. | decoy: one window | bl: short ['short', 'over', 'late', 'low']
+   chunks: ["We're one sponge", 'short', ', we need', 'to search now', '.'] | tag 부족 보고 siren
+   why: 'one sponge short'는 하나 모자란다는 짧은 보고로 정확한 개수를 바로 알려요. 'now'를 끝에 붙여 즉시 하라는 신호예요.
+[15.2] No closing until the count reconciles. | 계수가 맞을 때까지 봉합하지 않아요. | w=w-close,w-count,w-reconcile
+   d: 마취가 안정될 때까지 봉합하지 않아요. | 지혈이 끝날 때까지 봉합하지 않아요. | decoy: the weather | bl: reconciles ['reconciles', 'expires', 'shrinks', 'arrives']
+   chunks: ['No closing', 'until the count', 'reconciles', '.'] | tag 봉합 보류 siren
+   why: 'No closing'은 동명사로 시작해 금지를 짧고 단호하게 말해요. 'reconciles'는 두 기록이 맞아떨어진다는 뜻이에요.
+[15.3] Please hold — we can't close until this is resolved. | 잠깐요 — 해결될 때까지 닫을 수 없어요. | w=w-hold,w-close,w-resolve
+   d: 잠깐요 — 서명될 때까지 닫을 수 없어요. | 잠깐요 — 교대할 때까지 닫을 수 없어요. | decoy: this is quiet | bl: resolved ['resolved', 'signed', 'scheduled', 'printed']
+   chunks: ['Please hold', "— we can't close", 'until this', 'is resolved', '.'] | tag 정지 요청 siren
+   why: 'Please hold'는 일단 멈추라는 정중한 명령이에요. 'resolved'는 문제가 풀려 끝났다는 뜻이에요.
+[15.4] I'm calling a discrepancy — we're one short. | 불일치를 선언할게요 — 하나 부족해요. | w=w-call,w-discrepancy,w-short
+   d: 불일치를 선언할게요 — 둘 부족해요. | 불일치를 선언할게요 — 셋 부족해요. | decoy: tall | bl: calling ['calling', 'fixing', 'making', 'solving']
+   chunks: ["I'm calling", 'a discrepancy', "— we're one", 'short', '.'] | tag 불일치 선언 siren
+   why: 'I'm calling'은 'declare'처럼 공식적으로 알린다는 뜻으로 쓰는 말이에요. 'one short'로 모자란 개수를 짧게 덧붙여요.
+## 16 X선 잔류 거즈 확인
+[16.0] Let's get an X-ray before we close. | 닫기 전에 엑스선을 찍어요. | w=w-xray,w-before,w-close
+   d: 닫기 전에 조명을 맞춰요. | 닫기 전에 흡인기를 닦아요. | decoy: for the record | bl: X-ray ['X-ray', 'ECG', 'MRI', 'EEG']
+   chunks: ["Let's get", 'an X-ray', 'before we close', '.'] | tag 영상 요청 monitor
+   why: 'Let's get'은 함께 요청하는 말이고, 'get an X-ray'는 영상을 찍는다는 일상 표현이에요. 'before we close'는 닫기 전에 해야 한다는 시점이에요.
+[16.1] We image the field to rule out a retained sponge. | 잔류 거즈를 배제하려고 필드를 영상으로 찍어요. | w=w-image,w-field,w-rule,w-retain,w-sponge
+   d: 출혈 원인을 찾으려고 필드를 영상으로 찍어요. | 감염 여부를 보려고 필드를 영상으로 찍어요. | decoy: a loose tooth | bl: retained ['retained', 'extra', 'wet', 'damaged']
+   chunks: ['We image', 'the field', 'to rule out', 'a retained sponge', '.'] | tag 영상 목적 magnify
+   why: 'to rule out'은 가능성을 하나씩 지워 나간다는 뜻이라 없다는 것을 확인하려는 목적을 말해요. 'retained'는 몸 안에 남아 있다는 뜻이에요.
+[16.2] Radiology needs to confirm nothing's left inside. | 영상의학과에서 안에 아무것도 안 남았는지 확인해야 해요. | w=w-radiology,w-confirm,w-leave
+   d: 영상의학과에서 방 안에 아무것도 안 남았는지 확인해야 해요. | 영상의학과에서 통에 아무것도 안 남았는지 확인해야 해요. | decoy: to eat | bl: inside ['inside', 'outside', 'upstairs', 'nearby']
+   chunks: ['Radiology needs', 'to confirm', "nothing's left inside", '.'] | tag 영상 판독 monitor
+   why: 'needs to confirm'은 그 부서의 판독이 있어야 끝난다는 뜻이에요. 'nothing's left inside'는 몸 안에 아무것도 남지 않았다는 부정 표현이에요.
+[16.3] The X-ray will show if anything was left behind. | 엑스선을 보면 뭔가 남았는지 알 수 있어요. | w=w-xray,w-show,w-leave
+   d: 엑스선을 보면 뭔가 부러졌는지 알 수 있어요. | 엑스선을 보면 뭔가 막혔는지 알 수 있어요. | decoy: overnight | bl: X-ray ['X-ray', 'alarm', 'chart', 'camera']
+   chunks: ['The X-ray', 'will show', 'if anything', 'was left behind', '.'] | tag 영상 판독 monitor
+   why: 'will show'는 영상이 근거가 된다는 미래형 확신이에요. 'if anything was left behind'의 if는 '~인지 아닌지'라는 뜻이에요.
+[16.4] We wait for the image before we proceed. | 영상 결과가 나올 때까지 기다린 뒤 진행해요. | w=w-wait,w-image,w-before,w-proceed
+   d: 영상 촬영이 끝날 때까지 기다린 뒤 진행해요. | 영상 장비가 도착할 때까지 기다린 뒤 진행해요. | decoy: the coffee | bl: proceed ['proceed', 'leave', 'finish', 'relax']
+   chunks: ['We wait', 'for the image', 'before we proceed', '.'] | tag 결과 대기 monitor
+   why: 'wait for'는 결과가 올 때까지 움직이지 않는다는 뜻이에요. 'before we proceed'는 다음 단계로 넘어가기 전이라는 시점이에요.
+## 17 소실 바늘 필드 수색
+[17.0] We're one needle short — hold everything. | 바늘이 하나 부족해요 — 전부 멈춰요. | w=w-needle,w-short,w-hold
+   d: 바늘이 두 개 부족해요 — 전부 멈춰요. | 바늘이 세 개 부족해요 — 전부 멈춰요. | decoy: one bucket | bl: hold ['hold', 'move', 'carry', 'pack']
+   chunks: ["We're one needle", 'short', '— hold everything', '.'] | tag 정지 선언 siren
+   why: 'hold everything'은 모든 작업을 멈추라는 강한 명령이에요. 'one needle short'는 바늘이 하나 모자란다는 정확한 보고예요.
+[17.1] Let's search the field, drapes, and floor systematically. | 필드와 소독포, 바닥을 체계적으로 수색해요. | w=w-search,w-field,w-drape,w-floor,w-systematic
+   d: 필드와 소독포, 바닥을 빠르게 수색해요. | 필드와 소독포, 바닥을 각자 수색해요. | decoy: randomly | bl: floor ['floor', 'ceiling', 'window', 'shelf']
+   chunks: ["Let's search", 'the field,', 'drapes, and floor', 'systematically', '.'] | tag 체계적 수색 magnify
+   why: 'systematically'는 구역을 정해 빠짐없이 차례로 본다는 뜻이에요. 쉼표로 필드·소독포·바닥을 나열해 수색 범위를 정해 줘요.
+[17.2] Nobody moves until we find it. | 찾을 때까지 아무도 움직이지 않아요. | w=w-find
+   d: 마칠 때까지 아무도 움직이지 않아요. | 부를 때까지 아무도 움직이지 않아요. | decoy: until we leave | bl: until ['until', 'after', 'unless', 'since']
+   chunks: ['Nobody moves', 'until we find', 'it', '.'] | tag 이동 금지 siren
+   why: 'Nobody'는 주어 자체가 부정이라 예외가 없다는 뜻이에요. 'until we find it'는 찾는 것을 풀리는 조건으로 걸어요.
+[17.3] Check every corner of the room carefully. | 방 구석구석을 조심스럽게 확인해요. | w=w-check,w-corner,w-careful
+   d: 홀 구석구석을 조심스럽게 확인해요. | 창고 구석구석을 조심스럽게 확인해요. | decoy: of the ceiling | bl: corner ['corner', 'shelf', 'drawer', 'wall']
+   chunks: ['Check every corner', 'of the room', 'carefully', '.'] | tag 구석 확인 magnify
+   why: 'every corner'는 구석까지 하나도 빼지 않는다는 비유적 범위 표현이에요. 'carefully'는 서두르지 않고 주의해서 본다는 뜻이에요.
+[17.4] We stop all movement until the needle turns up. | 바늘이 나타날 때까지 모든 움직임을 멈춰요. | w=w-stop,w-movement,w-needle,w-turn
+   d: 교대가 올 때까지 모든 움직임을 멈춰요. | 의사가 올 때까지 모든 움직임을 멈춰요. | decoy: until the rain | bl: needle ['needle', 'doctor', 'nurse', 'pager']
+   chunks: ['We stop', 'all movement', 'until the needle', 'turns up', '.'] | tag 동작 정지 siren
+   why: 'turns up'은 찾던 것이 불쑥 나타난다는 구동사예요. 'all movement'는 사람과 물건의 이동까지 모두 가리켜요.
+## 18 봉합 후 계수 오류
+[18.0] The final count is wrong — we may need to reopen. | 최종 계수가 틀렸어요 — 다시 열어야 할 수도 있어요. | w=w-final,w-count,w-wrong,w-reopen
+   d: 최종 계수가 틀렸어요 — 다시 닦아야 할 수도 있어요. | 최종 계수가 틀렸어요 — 다시 서명해야 할 수도 있어요. | decoy: is heavy | bl: wrong ['wrong', 'light', 'loud', 'empty']
+   chunks: ['The final count', 'is wrong', '— we may need', 'to reopen', '.'] | tag 최종 오류 siren
+   why: 'may need to'는 아직 확정이 아니라 가능성으로 말해 상대가 놀라지 않게 해요. 'reopen'은 're-'가 붙어 이미 닫은 것을 다시 연다는 뜻이에요.
+[18.1] Let's image before deciding on re-exploration. | 재개방 탐색을 결정하기 전에 영상부터 찍어요. | w=w-image,w-before,w-decide,w-reexploration
+   d: 재개방 탐색을 설명하기 전에 영상부터 찍어요. | 재개방 탐색을 기록하기 전에 영상부터 찍어요. | decoy: the budget | bl: image ['image', 'vote', 'argue', 'rest']
+   chunks: ["Let's image", 'before deciding', 'on re-exploration', '.'] | tag 영상 우선 monitor
+   why: 'Let's image'는 'image'를 동사로 써서 영상으로 찍는다는 뜻이에요. 'before deciding'은 결정 전에 근거부터 확인한다는 순서예요.
+[18.2] I'm escalating this to the surgeon immediately. | 지금 바로 집도의에게 상급 보고할게요. | w=w-escalate,w-surgeon,w-immediate
+   d: 지금 바로 집도의의 지시를 적을게요. | 지금 바로 집도의의 답을 기다릴게요. | decoy: to the window | bl: immediately ['immediately', 'eventually', 'gradually', 'occasionally']
+   chunks: ["I'm escalating", 'this', 'to the surgeon', 'immediately', '.'] | tag 즉시 보고 pager
+   why: 'escalate'는 문제를 윗사람에게 올린다는 뜻이라 혼자 해결하지 않고 책임자에게 넘겨요. 'immediately'는 미루지 않는다는 뜻이에요.
+[18.3] The numbers don't add up after closure. | 봉합 후 숫자가 맞지 않아요. | w=w-number,w-add,w-closure
+   d: 봉합 후 시간이 맞지 않아요. | 봉합 후 서류가 맞지 않아요. | decoy: in the report | bl: numbers ['numbers', 'doors', 'colors', 'walls']
+   chunks: ['The numbers', "don't add up", 'after closure', '.'] | tag 숫자 불일치 siren
+   why: 'don't add up'은 합이 맞지 않는다는 관용구예요. 'after closure'는 이미 닫은 뒤라는 점이 문제를 무겁게 만들어요.
+[18.4] I'm calling the surgeon back into the room. | 집도의를 다시 방으로 불러올게요. | w=w-call,w-surgeon
+   d: 집도의를 다시 복도로 불러올게요. | 집도의를 다시 대기실로 불러올게요. | decoy: the elevator | bl: room ['room', 'lobby', 'office', 'garage']
+   chunks: ["I'm calling", 'the surgeon', 'back into', 'the room', '.'] | tag 호출 pager
+   why: 'calling … back'은 이미 나간 사람을 다시 부른다는 뜻이에요. 'into the room'은 목적지를 말해 수술 방으로 돌아오라는 뜻이에요.
+## 19 이물 잔류 의심 보고
+[19.0] This is a possible retained object — I'm documenting it. | 잔류 이물일 가능성이 있어요 — 문서화할게요. | w=w-possible,w-retain,w-object,w-document
+   d: 오염 가능성이 있어요 — 문서화할게요. | 누출 가능성이 있어요 — 문서화할게요. | decoy: a possible heavy object | bl: retained ['retained', 'sharp', 'spare', 'sterile']
+   chunks: ['This is', 'a possible retained object', "— I'm documenting", 'it', '.'] | tag 잔류 의심 siren
+   why: 'possible'은 아직 확정은 아니라는 단서라 확인되기 전까지 단정하지 않아요. 'I'm documenting it'은 지금 기록하고 있다는 진행 표현이에요.
+[19.1] We need to file an incident report immediately. | 즉시 사건 보고서를 제출해야 해요. | w=w-file,w-incident,w-report,w-immediate
+   d: 즉시 사건 보고서를 인쇄해야 해요. | 즉시 사건 보고서를 복사해야 해요. | decoy: yesterday | bl: file ['file', 'print', 'copy', 'mail']
+   chunks: ['We need', 'to file', 'an incident report', 'immediately', '.'] | tag 사건 보고 pencil
+   why: 'file'은 공식 서류로 제출한다는 뜻이에요. 'incident report'는 환자 안전 사건을 병원 시스템에 남기는 보고서예요.
+[19.2] Patient safety comes first — I'm reporting this. | 환자 안전이 우선이에요 — 이걸 보고할게요. | w=w-safety,w-report
+   d: 환자 편안함이 우선이에요 — 이걸 보고할게요. | 환자 비밀이 우선이에요 — 이걸 보고할게요. | decoy: Patient lunch | bl: reporting ['reporting', 'moving', 'weighing', 'sorting']
+   chunks: ['Patient safety', 'comes first', "— I'm reporting", 'this', '.'] | tag 안전 우선 shield
+   why: 'comes first'는 순서상 가장 앞에 둔다는 뜻이라 다른 사정보다 환자 안전이 먼저라고 말해요. 대시 뒤 'I'm reporting this'로 그 원칙을 행동으로 이어요.
+[19.3] I'm following the protocol for a retained item. | 잔류 물품에 대한 절차를 따르고 있어요. | w=w-follow,w-protocol,w-retain,w-item
+   d: 오염 물품에 대한 절차를 따르고 있어요. | 파손 물품에 대한 절차를 따르고 있어요. | decoy: the recipe | bl: retained ['retained', 'damaged', 'expired', 'borrowed']
+   chunks: ["I'm following", 'the protocol', 'for a retained item', '.'] | tag 절차 준수 shield
+   why: 'follow the protocol'은 정해진 절차를 그대로 따른다는 뜻이라 임의로 판단하지 않는다는 걸 보여 줘요. 'retained item'은 몸에 남은 물품이에요.
+[19.4] Please request a follow-up scan for the patient. | 환자를 위한 후속 스캔을 요청해줘요. | w=w-request,w-scan
+   d: 후속 스캔 안내문을 요청해줘요. | 환자를 위한 후속 스캔 동의서를 요청해줘요. | decoy: a follow-up lunch | bl: follow-up ['follow-up', 'initial', 'routine', 'private']
+   chunks: ['Please request', 'a follow-up scan', 'for the patient', '.'] | tag 후속 검사 monitor
+   why: 'request'는 직접 하지 않고 담당 부서에 요청한다는 뜻이에요. 'follow-up'은 처음 검사 뒤에 이어지는 추가 검사를 가리켜요.
+## 20 계수 불일치 은폐 압력
+[20.0] I can't ignore a discrepancy — patient safety is first. | 불일치를 무시할 수 없어요 — 환자 안전이 우선이에요. | w=w-ignore,w-discrepancy,w-safety
+   d: 불일치를 무시할 수 없어요 — 환자 가족이 우선이에요. | 불일치를 무시할 수 없어요 — 환자 안내가 우선이에요. | decoy: a joke | bl: ignore ['ignore', 'explain', 'measure', 'predict']
+   chunks: ["I can't ignore", 'a discrepancy', '— patient safety', 'is first', '.'] | tag 은폐 거부 shield
+   why: 'can't ignore'는 하고 싶지 않다가 아니라 할 수 없다는 단호한 거절이에요. 대시 뒤에 'patient safety is first'로 이유를 한마디로 대요.
+[20.1] We have to document and resolve this properly. | 이걸 제대로 문서화하고 해결해야 해요. | w=w-document,w-resolve,w-proper
+   d: 이걸 차분히 문서화하고 해결해야 해요. | 이걸 천천히 문서화하고 해결해야 해요. | decoy: this politely | bl: properly ['properly', 'quickly', 'lightly', 'briefly']
+   chunks: ['We have to', 'document and resolve', 'this properly', '.'] | tag 제대로 처리 pencil
+   why: 'have to'는 선택이 아니라 의무를 말해요. 'document and resolve'는 기록과 해결을 한 짝으로 묶어 둘 다 필요하다고 말해요.
+[20.2] I won't sign off until the count is correct. | 계수가 맞을 때까지 서명하지 않을게요. | w=w-sign,w-count,w-correct
+   d: 서류가 맞을 때까지 서명하지 않을게요. | 시간이 맞을 때까지 서명하지 않을게요. | decoy: until the coffee | bl: correct ['correct', 'empty', 'loud', 'slow']
+   chunks: ["I won't", 'sign off', 'until the count', 'is correct', '.'] | tag 서명 거부 pencil
+   why: 'won't'는 'can't'보다 의지를 담은 거절이에요. 'sign off'는 서명으로 공식 확인하는 일이라 맞을 때까지 미루겠다는 뜻이에요.
+[20.3] I understand we're running late, but I won't skip this. | 늦어지는 건 알지만 이건 건너뛰지 않을게요. | w=w-understand,w-run,w-late,w-skip
+   d: 늦어지는 건 알지만 이건 반복하지 않을게요. | 늦어지는 건 알지만 이건 취소하지 않을게요. | decoy: we're running low | bl: skip ['skip', 'cancel', 'rename', 'print']
+   chunks: ['I understand', "we're running late", ", but I won't", 'skip this', '.'] | tag 압박 거절 shield
+   why: 'I understand'로 상대 사정을 먼저 인정한 뒤 'but'으로 거절하면 공격적으로 들리지 않아요. 'won't skip'은 의지를 담아 단호하게 거절해요.
+[20.4] Let's fix it now so we can close safely. | 안전하게 닫을 수 있게 지금 바로잡아요. | w=w-fix,w-close,w-safe
+   d: 편하게 닫을 수 있게 지금 바로잡아요. | 깔끔하게 닫을 수 있게 지금 바로잡아요. | decoy: lift safely | bl: safely ['safely', 'quickly', 'gently', 'neatly']
+   chunks: ["Let's fix it", 'now', 'so we can', 'close safely', '.'] | tag 즉시 수정 check
+   why: 'Let's fix it now'는 같이 지금 바로잡자는 제안이에요. 'so we can close safely'는 목적을 붙여 왜 지금 해야 하는지를 보여 줘요.

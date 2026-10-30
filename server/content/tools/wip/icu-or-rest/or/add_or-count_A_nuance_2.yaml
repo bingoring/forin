@@ -1,0 +1,92 @@
+봉합 전 계수 개시:
+  - kind: slider
+    words: [w-before, w-close, w-start, w-count]
+    cue: "The surgeon asks, \"Are we about ready to close?\" The closing count hasn't started yet."
+    scale: ["Not yet, starting the count", "Not yet, the count is off", "Stop, nobody closes yet"]
+    answerAt: 0
+    why: "아직 이상이 없을 때는 '곧 계수를 시작하겠다'고 담담하게 알려요. 계수가 틀렸다거나 모두 멈추라는 말은 실제로 불일치가 있을 때 아껴 두는 말이에요."
+    example: "Before we close, I'm starting the closing count."
+    exKo: "닫기 전에 봉합 계수를 시작할게요."
+  - kind: context
+    words: [w-cavity]
+    word: cavity
+    ko: 체강
+    scenes:
+      - {who: 순환 간호사 → 스크럽, icon: speech, en: "Let's verify everything before the cavity is closed.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Closing counts correct x2 prior to cavity closure.", ok: true}
+      - {who: 대기실 보호자에게, icon: me, en: "The surgeon is about to close the cavity, so it won't be long.", ok: false, fix: "The surgeon is finishing up now, so it won't be long."}
+    why: "cavity는 몸속 빈 공간을 가리키는 의료진의 말이에요. 기다리는 가족에게 'cavity를 닫는다'고 하면 어렵고 낯설게 들리니, 'finishing up'처럼 쉬운 말로 소식을 전해요."
+추가 거즈 투입 기록:
+  - kind: slider
+    words: [w-add, w-log, w-additional]
+    cue: "The scrub is about to place ten more sponges on the field. You want them logged first, without stopping the surgeon's work."
+    scale: [Ten more are coming, Let me log these first, Nobody touches anything]
+    answerAt: 1
+    why: "새 거즈는 수술 영역에 들어가기 전에 기록하는 것이 원칙이에요. 알려만 주고 끝내면 계수가 안 맞고, 모두 멈추게 하면 수술이 불필요하게 끊겨요."
+    example: "Let me log these before they go into the field."
+    exKo: "필드에 들어가기 전에 이걸 기록할게요."
+  - kind: swap
+    words: [w-open, w-pack]
+    who: "순환 간호사 → 스크럽 · 새 포장을 열 때"
+    icon: speech
+    before: ["Please tell me ", "the first time", " you open a new pack."]
+    options: [every time, the first time, the last time]
+    answer: every time
+    notes: {every time: "열 때마다 알려야 총계가 항상 최신으로 유지된다.", the first time: "처음 한 번만 알리면 이후 포장은 계수에서 빠진다.", the last time: "마지막에 알리면 그전 포장들이 모두 빠진다."}
+    why: "새 포장은 열 때마다 알려야 총계가 틀어지지 않아요. 한 번만 알리면 그다음 포장의 거즈가 계수에서 빠져요."
+    ko: "새 포장을 열 때마다 말해 줘요"
+계수 중 교대 인계:
+  - kind: slider
+    words: [w-current, w-total]
+    cue: "You are relieving the circulator mid-case, and you will take over only after you have verified the numbers yourself."
+    scale: [Tell me what you have, Show me the current totals, Count everything with me]
+    answerAt: 2
+    why: "교대할 때는 말로 전달받는 데서 그치지 않고, 둘이 함께 직접 세어 확인한 뒤에 넘겨받아요. 숫자만 보여 달라는 것도 도움은 되지만, 직접 센 확인에는 미치지 못해요."
+    example: "Show me the current totals so nothing is lost."
+    exKo: "아무것도 놓치지 않게 현재 총계를 보여줘요."
+  - kind: context
+    words: [w-recount]
+    word: recount
+    ko: 다시 세다
+    scenes:
+      - {who: 교대 간호사 → 순환 간호사, icon: speech, en: "Let's do a full recount together before I take over.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Full recount done at relief; counts correct x2.", ok: true}
+      - {who: 대기 중인 집도의에게, icon: monitor, en: "Dr. Chen, I'll need you to recount the sponges.", ok: false, fix: "Dr. Chen, we're recounting at the relief — one moment, please."}
+    why: "recount는 계수하는 두 간호사 사이의 말이에요. 집도의에게 '다시 세라'고 시키듯 말하면 역할이 맞지 않아요. 집도의에게는 지금 다시 세는 중이니 잠시 기다려 달라고 알려요."
+방사선 표지 거즈 확인:
+  - kind: slider
+    words: [w-marker, w-sponge]
+    cue: "The scrub is reaching for a sponge from a new pack. Nothing is wrong — you just want to remind her of the rule."
+    scale: ["Reminder: marked ones only", "Stop, that has no marker", "Stop all, recount the room"]
+    answerAt: 0
+    why: "아무 문제가 없을 때는 가볍게 규칙만 상기시켜요. 표지가 없는 거즈를 실제로 발견했을 때에야 '멈추라'는 단호한 말이 필요하고, 방 전체를 다시 세는 건 더 큰 문제일 때예요."
+    example: "Every sponge we use must have this marker."
+    exKo: "사용하는 거즈는 전부 이 표지가 있어야 해요."
+  - kind: context
+    words: [w-radiopaque]
+    word: radiopaque
+    ko: 방사선 불투과성의
+    scenes:
+      - {who: 순환 간호사 → 스크럽, icon: speech, en: "Let me confirm each one has the radiopaque marker.", ok: true}
+      - {who: 수술 기록, icon: board, en: "All sponges radiopaque; counts correct x2.", ok: true}
+      - {who: 불안한 환자에게, icon: me, en: "Our sponges are radiopaque, so an X-ray can see them.", ok: false, fix: "Our sponges show up on X-ray, which helps us keep track of them."}
+    why: "radiopaque는 영상의학 용어라 의료진끼리, 그리고 기록에서 정확해요. 환자에게는 처음 듣는 말이라 '엑스선에 보인다'처럼 풀어서 설명해요."
+기구 분해 부품 계수:
+  - kind: slider
+    words: [w-count, w-part, w-component]
+    cue: "The scrub mentions the retractor comes apart. You just want her to remember it will be counted as separate pieces."
+    scale: [Count the parts too, Count each piece twice, Hold closing for each piece]
+    answerAt: 0
+    why: "분해되는 기구는 부품도 각각 셈에 넣는다는 점만 가볍게 상기시키면 돼요. 아직 부품이 사라진 것이 아니라서 '닫기를 멈추라'고 할 일은 아니에요."
+    example: "Let's count each component of this instrument."
+    exKo: "이 기구의 부품을 하나씩 세요."
+  - kind: swap
+    words: [w-piece, w-confirm]
+    who: "스크럽 → 순환 간호사 · 분해 기구 보고"
+    icon: speech
+    before: ["The set has three pieces — I ", "assume all three are there", "."]
+    options: [confirm all three, guess it's three, assume all three are there]
+    answer: confirm all three
+    notes: {confirm all three: "세 조각을 눈으로 하나씩 확인했다는 뜻이다. 계수 보고로 알맞다.", guess it's three: "짐작이므로 확인되지 않았다.", assume all three are there: "있다고 가정하는 말이다. 가정은 계수가 아니다."}
+    why: "분해되는 기구는 조각마다 직접 확인한 뒤 보고해요. 짐작하거나 가정한 말은 빠진 조각을 놓치게 해요."
+    ko: "세 조각 다 확인했어요"
