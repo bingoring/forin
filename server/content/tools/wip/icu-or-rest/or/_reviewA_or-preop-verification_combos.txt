@@ -1,0 +1,61 @@
+== slider
+0 [23, 24, 24] ['We ask everyone, every time', "It's a required safety check", 'Skipping it is a serious risk']
+1 [20, 19, 27] ['The chart says right too', 'You and the chart agree', 'The mark, chart and you all agree']
+1 [14, 31, 24] ['I see a signature', 'The form is signed, dated and matches', 'The consent is legally valid']
+2 [23, 25, 29] ["I think there's a mark there", 'I can see something on your arm', 'The correct site is clearly marked']
+2 [21, 13, 29] ["That's fine, don't worry", "I'll jot it down", "I'll tell anesthesia exactly when"]
+1 [23, 29, 28] ["Let's sort it out afterward", "Let's pause and clarify this first", "I'm cancelling the case right now"]
+1 [42, 37, 24] ['Could you maybe mark the site when you get a chance?', 'I need you to mark the site before we continue', "Mark it now or I'll report you"]
+2 [19, 26, 34] ['Sure, go ahead and help', 'Maybe you could help us a little', "Thank you, but we'll use our interpreter"]
+0 [22, 24, 17] ["I can't tell the timing yet", 'The consent is probably fine', 'The consent is valid']
+2 [38, 21, 34] ["I'll try to remember the time and who was there", "I'll note it on the record", "I'll document the time and witnesses now"]
+1 [19, 36, 29] ['Sure, go ahead and sign', "I need to confirm you're his legal guardian", 'Only a parent can sign — nobody else']
+2 [20, 28, 26] ["We'll check it all later", 'Go ahead, we checked both earlier', "I'll verify the left side first"]
+0 [34, 25, 30] ["The surgeon will explain what's covered", "I think it's probably covered", 'Yes, they can fix anything they find']
+2 [25, 27, 23] ['Say nothing and trust the team', 'Mention it to someone afterward', 'Speak up right now, out loud']
+2 [25, 27, 26] ['Should we maybe wait a little?', "I'm not comfortable going ahead", 'Stop — no consent, no induction']
+0 [25, 15, 14] ['Unidentified until verified', 'He may be Mr. Brown', 'This is Mr. Brown']
+2 [15, 21, 28] ['Sounds right to me', 'Let me glance at the chart', 'Both name and DOB must match first']
+2 [17, 27, 28] ["Okay, I'll trust you", 'Could we double-check, please?', 'No — nobody incises until we agree']
+== pair combos
+   allergic to penicillin  <OK> | allergic allergy band | allergic the whole team | allergic a purple badge
+   red to penicillin | red allergy band  <OK> | red the whole team | red a purple badge
+   notify to penicillin | notify allergy band | notify the whole team  <OK> | notify a purple badge
+   bring in your surgeon  <OK> | bring in the correct side | bring in the stretcher
+   clarify your surgeon | clarify the correct side  <OK> | clarify the stretcher
+   change your mind  <OK> | change your surgeon know | change the stretcher
+   let your mind | let your surgeon know  <OK> | let the stretcher
+== swap
+* Hi there — can you tell me your full name and date of birth?
+  Hi there — are you Mr. Kim, born on March 3rd?
+  Hi there — just nod if you're Mr. Kim, please.
+* Which side are we operating on today?
+  It's your right knee today, correct?
+  Just tell me if the right knee sounds okay.
+* Can you look at the mark and tell me if that's the right spot?
+  That mark looks fine to me.
+  Just trust the surgeon's mark.
+* When did you last have anything to eat or drink?
+  You didn't eat or drink anything, right?
+  Just say you followed the rules.
+* Dr. Park, the consent doesn't match the surgery the patient described — can we clarify before we proceed?
+  Dr. Park, the paperwork has a small typo — can we clarify before we proceed?
+  Dr. Park, the patient seems a little confused — can we clarify before we proceed?
+* No site mark yet — let's hold until the surgeon marks it.
+  No site mark yet — let's go ahead and prep.
+  No site mark yet — let's mark it ourselves, it's obvious.
+* Please tell me your name and date of birth through the interpreter.
+  Tell me your name and birthday in English.
+  Just nod if the paper has your name right.
+* Dr. Reyes, I'll document the time and witnesses now.
+  Dr. Reyes, I'll write it up later.
+  Dr. Reyes, I'll skip it since it's an emergency.
+* Stop, everyone: the consent says left, the mark says right.
+  I think there might be a small problem: the consent says left, the mark says right.
+  Let's keep moving: the consent says left, the mark says right.
+* Please hold induction until the consent is confirmed.
+  Go ahead and push the medication.
+  Start with a small dose while I check.
+* Stop — this isn't the patient on my list
+  Hmm, maybe it's the wrong patient?
+  Let's keep going and fix the chart later

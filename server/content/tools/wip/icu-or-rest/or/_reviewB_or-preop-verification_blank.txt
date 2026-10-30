@@ -1,0 +1,672 @@
+
+## S0 환자 신원 2가지 확인
+0.0 ans=full name
+   * Can you tell me your [full name] and date of birth?
+     Can you tell me your [room number] and date of birth?
+     Can you tell me your [bed number] and date of birth?
+     Can you tell me your [insurance plan] and date of birth?
+0.1 ans=confirm
+   * I just want to [confirm] who you are before we go in.
+     I just want to [explain] who you are before we go in.
+     I just want to [decide] who you are before we go in.
+     I just want to [announce] who you are before we go in.
+0.2 ans=matches
+   * Thank you — that [matches] your chart.
+     Thank you — that [updates] your chart.
+     Thank you — that [opens] your chart.
+     Thank you — that [prints] your chart.
+0.3 ans=again
+   * I know you've already answered this once, but I need to ask [again].
+     I know you've already answered this once, but I need to ask [tomorrow].
+     I know you've already answered this once, but I need to ask [downstairs].
+     I know you've already answered this once, but I need to ask [outside].
+0.4 ans=right
+   * This helps us make sure we have the [right] patient before surgery.
+     This helps us make sure we have the [last] patient before surgery.
+     This helps us make sure we have the [new] patient before surgery.
+     This helps us make sure we have the [only] patient before surgery.
+0.5 ans=name
+   * Can you say your [name] out loud for me, please?
+     Can you say your [diet] out loud for me, please?
+     Can you say your [insurance] out loud for me, please?
+     Can you say your [hobby] out loud for me, please?
+
+## S1 수술 부위·측 확인
+1.0 ans=operating
+   * Which side are we [operating] on today?
+     Which side are we [waiting] on today?
+     Which side are we [talking] on today?
+     Which side are we [drawing] on today?
+1.1 ans=exact
+   * Can you point to the [exact] spot for me?
+     Can you point to the [nearest] spot for me?
+     Can you point to the [only] spot for me?
+     Can you point to the [upper] spot for me?
+1.2 ans=knee
+   * So that's your right [knee] — let me confirm with your chart.
+     So that's your right [elbow] — let me confirm with your chart.
+     So that's your right [ankle] — let me confirm with your chart.
+     So that's your right [shoulder] — let me confirm with your chart.
+1.3 ans=tell
+   * I need you to [tell] me which side, not just show me.
+     I need you to [write] me which side, not just show me.
+     I need you to [draw] me which side, not just show me.
+     I need you to [ask] me which side, not just show me.
+1.4 ans=twice
+   * We ask [twice] because a mix-up here would be serious.
+     We ask [rarely] because a mix-up here would be serious.
+     We ask [daily] because a mix-up here would be serious.
+     We ask [monthly] because a mix-up here would be serious.
+1.5 ans=marked
+   * Your surgeon [marked] the right knee, and that matches what you told me.
+     Your surgeon [washed] the right knee, and that matches what you told me.
+     Your surgeon [wrapped] the right knee, and that matches what you told me.
+     Your surgeon [scanned] the right knee, and that matches what you told me.
+
+## S2 수술 동의서 서명 확인
+2.0 ans=signed
+   * Can you confirm you [signed] this consent form?
+     Can you confirm you [copied] this consent form?
+     Can you confirm you [folded] this consent form?
+     Can you confirm you [sealed] this consent form?
+2.1 ans=match
+   * Does this [match] the surgery you're expecting today?
+     Does this [replace] the surgery you're expecting today?
+     Does this [delay] the surgery you're expecting today?
+     Does this [order] the surgery you're expecting today?
+2.2 ans=signature
+   * I see your [signature] and the date here.
+     I see your [weight] and the date here.
+     I see your [diagnosis] and the date here.
+     I see your [allergy] and the date here.
+2.3 ans=read
+   * Please [read] this line so I know you understand what you're signing.
+     Please [count] this line so I know you understand what you're signing.
+     Please [fold] this line so I know you understand what you're signing.
+     Please [trace] this line so I know you understand what you're signing.
+2.4 ans=desk
+   * Everything on the form matches what you told me at the [desk].
+     Everything on the form matches what you told me at the [pharmacy].
+     Everything on the form matches what you told me at the [elevator].
+     Everything on the form matches what you told me at the [gate].
+2.5 ans=yesterday
+   * This is your signature, and it's dated [yesterday].
+     This is your signature, and it's dated [tomorrow].
+     This is your signature, and it's dated [next week].
+     This is your signature, and it's dated [next month].
+
+## S3 수술 부위 표시 확인
+3.0 ans=marking
+   * Let me check the [marking] the surgeon made.
+     Let me check the [invoice] the surgeon made.
+     Let me check the [menu] the surgeon made.
+     Let me check the [receipt] the surgeon made.
+3.1 ans=initials
+   * I can see the [initials] here on your arm.
+     I can see the [stickers] here on your arm.
+     I can see the [bruises] here on your arm.
+     I can see the [freckles] here on your arm.
+3.2 ans=correct
+   * That confirms we have the [correct] site marked.
+     That confirms we have the [spare] site marked.
+     That confirms we have the [final] site marked.
+     That confirms we have the [extra] site marked.
+3.3 ans=awake
+   * Your surgeon signs his initials while you're still [awake].
+     Your surgeon signs his initials while you're still [asleep].
+     Your surgeon signs his initials while you're still [sedated].
+     Your surgeon signs his initials while you're still [unconscious].
+3.4 ans=right
+   * Can you look at the mark and tell me if that's the [right] spot?
+     Can you look at the mark and tell me if that's the [nearest] spot?
+     Can you look at the mark and tell me if that's the [other] spot?
+     Can you look at the mark and tell me if that's the [upper] spot?
+3.5 ans=pen
+   * We only accept a mark made in permanent ink, not [pen] from the floor.
+     We only accept a mark made in permanent ink, not [tape] from the floor.
+     We only accept a mark made in permanent ink, not [paint] from the floor.
+     We only accept a mark made in permanent ink, not [gauze] from the floor.
+
+## S4 알레르기 밴드 대조
+4.0 ans=allergies
+   * Can you tell me about any [allergies] you have?
+     Can you tell me about any [symptoms] you have?
+     Can you tell me about any [surgeries] you have?
+     Can you tell me about any [hobbies] you have?
+4.1 ans=against
+   * Let me check your allergy band [against] your chart.
+     Let me check your allergy band [behind] your chart.
+     Let me check your allergy band [beside] your chart.
+     Let me check your allergy band [beneath] your chart.
+4.2 ans=team
+   * I'll make sure the whole [team] knows about this.
+     I'll make sure the whole [family] knows about this.
+     I'll make sure the whole [building] knows about this.
+     I'll make sure the whole [school] knows about this.
+4.3 ans=band
+   * I'm allergic to penicillin, and it's written right here on my [band].
+     I'm allergic to penicillin, and it's written right here on my [belt].
+     I'm allergic to penicillin, and it's written right here on my [phone].
+     I'm allergic to penicillin, and it's written right here on my [bag].
+4.4 ans=same
+   * Does your chart list the [same] allergy you just told me?
+     Does your chart list the [new] allergy you just told me?
+     Does your chart list the [extra] allergy you just told me?
+     Does your chart list the [next] allergy you just told me?
+4.5 ans=red
+   * I'm putting a [red] band on you so everyone can see it at a glance.
+     I'm putting a [green] band on you so everyone can see it at a glance.
+     I'm putting a [white] band on you so everyone can see it at a glance.
+     I'm putting a [blue] band on you so everyone can see it at a glance.
+
+## S5 금식 여부 구두 확인
+5.0 ans=drink
+   * When did you last have anything to eat or [drink]?
+     When did you last have anything to eat or [cook]?
+     When did you last have anything to eat or [share]?
+     When did you last have anything to eat or [carry]?
+5.1 ans=morning
+   * Did you have any water or medications this [morning]?
+     Did you have any water or medications this [evening]?
+     Did you have any water or medications this [weekend]?
+     Did you have any water or medications this [month]?
+5.2 ans=fasting
+   * Good — that means you've been [fasting] long enough.
+     Good — that means you've been [waiting] long enough.
+     Good — that means you've been [walking] long enough.
+     Good — that means you've been [sleeping] long enough.
+5.3 ans=exactly
+   * Even a small candy or a sip of water counts, so please tell me [exactly].
+     Even a small candy or a sip of water counts, so please tell me [briefly].
+     Even a small candy or a sip of water counts, so please tell me [loudly].
+     Even a small candy or a sip of water counts, so please tell me [softly].
+5.4 ans=stomach
+   * I ask about food and drink because a full [stomach] makes anesthesia risky.
+     I ask about food and drink because a full [bladder] makes anesthesia risky.
+     I ask about food and drink because a full [bowel] makes anesthesia risky.
+     I ask about food and drink because a full [pocket] makes anesthesia risky.
+5.5 ans=midnight
+   * You followed instructions and stopped eating after [midnight], correct?
+     You followed instructions and stopped eating after [sunrise], correct?
+     You followed instructions and stopped eating after [noon], correct?
+     You followed instructions and stopped eating after [breakfast], correct?
+
+## S6 동의서 수술명 불일치
+6.0 ans=described
+   * I want to pause here — the consent doesn't match what you [described].
+     I want to pause here — the consent doesn't match what you [ordered].
+     I want to pause here — the consent doesn't match what you [packed].
+     I want to pause here — the consent doesn't match what you [paid].
+6.1 ans=clarify
+   * Let me hold everything until we [clarify] this with your surgeon.
+     Let me hold everything until we [translate] this with your surgeon.
+     Let me hold everything until we [rewrite] this with your surgeon.
+     Let me hold everything until we [fax] this with your surgeon.
+6.2 ans=corrected
+   * I won't proceed until this is [corrected].
+     I won't proceed until this is [filed].
+     I won't proceed until this is [stamped].
+     I won't proceed until this is [faxed].
+6.3 ans=form
+   * Wait — this [form] says laparoscopic, but I was told it'd be open surgery.
+     Wait — this [bill] says laparoscopic, but I was told it'd be open surgery.
+     Wait — this [label] says laparoscopic, but I was told it'd be open surgery.
+     Wait — this [receipt] says laparoscopic, but I was told it'd be open surgery.
+6.4 ans=mismatch
+   * A [mismatch] like this means we stop and check with your surgeon first.
+     A [delay] like this means we stop and check with your surgeon first.
+     A [shortage] like this means we stop and check with your surgeon first.
+     A [accident] like this means we stop and check with your surgeon first.
+6.5 ans=correct
+   * We [correct] the paperwork now, before anyone signs anything else.
+     We [stack] the paperwork now, before anyone signs anything else.
+     We [fold] the paperwork now, before anyone signs anything else.
+     We [staple] the paperwork now, before anyone signs anything else.
+
+## S7 환자가 부위를 다르게 진술
+7.0 ans=marking
+   * You said left, but the [marking] is on the right — let's stop.
+     You said left, but the [drape] is on the right — let's stop.
+     You said left, but the [monitor] is on the right — let's stop.
+     You said left, but the [pillow] is on the right — let's stop.
+7.1 ans=clarify
+   * I need to [clarify] this before we move forward.
+     I need to [rewrite] this before we move forward.
+     I need to [photocopy] this before we move forward.
+     I need to [announce] this before we move forward.
+7.2 ans=side
+   * I'll bring in your surgeon to confirm the correct [side].
+     I'll bring in your surgeon to confirm the correct [form].
+     I'll bring in your surgeon to confirm the correct [time].
+     I'll bring in your surgeon to confirm the correct [date].
+7.3 ans=marked
+   * What you just told me doesn't match what's [marked] on your body.
+     What you just told me doesn't match what's [washed] on your body.
+     What you just told me doesn't match what's [wrapped] on your body.
+     What you just told me doesn't match what's [taped] on your body.
+7.4 ans=disagree
+   * We stop the moment your words and the marking [disagree].
+     We stop the moment your words and the marking [overlap].
+     We stop the moment your words and the marking [repeat].
+     We stop the moment your words and the marking [expire].
+7.5 ans=forward
+   * Nobody moves [forward] until your surgeon settles this in person.
+     Nobody moves [backward] until your surgeon settles this in person.
+     Nobody moves [upstairs] until your surgeon settles this in person.
+     Nobody moves [outside] until your surgeon settles this in person.
+
+## S8 부위 표시 없이 입실
+8.0 ans=marked
+   * The site isn't [marked] — we can't proceed yet.
+     The site isn't [clipped] — we can't proceed yet.
+     The site isn't [draped] — we can't proceed yet.
+     The site isn't [scrubbed] — we can't proceed yet.
+8.1 ans=surgeon
+   * Can we get the [surgeon] to mark before we continue?
+     Can we get the [porter] to mark before we continue?
+     Can we get the [clerk] to mark before we continue?
+     Can we get the [driver] to mark before we continue?
+8.2 ans=missing
+   * I'm reporting this as a [missing] site marking.
+     I'm reporting this as a [second] site marking.
+     I'm reporting this as a [spare] site marking.
+     I'm reporting this as a [fresh] site marking.
+8.3 ans=straight
+   * This patient came [straight] from the floor without a mark.
+     This patient came [slowly] from the floor without a mark.
+     This patient came [quietly] from the floor without a mark.
+     This patient came [late] from the floor without a mark.
+8.4 ans=confirmed
+   * We hold every case until the site is marked and [confirmed].
+     We hold every case until the site is marked and [cleaned].
+     We hold every case until the site is marked and [weighed].
+     We hold every case until the site is marked and [booked].
+8.5 ans=site
+   * I paged the surgeon to come mark the [site] right now.
+     I paged the surgeon to come mark the [form] right now.
+     I paged the surgeon to come mark the [wall] right now.
+     I paged the surgeon to come mark the [door] right now.
+
+## S9 언어 장벽 신원 확인 지연
+9.0 ans=interpreter
+   * Let me get an [interpreter] so we can confirm your details.
+     Let me get an [administrator] so we can confirm your details.
+     Let me get an [auditor] so we can confirm your details.
+     Let me get an [electrician] so we can confirm your details.
+9.1 ans=through
+   * Please tell me your name and date of birth [through] the interpreter.
+     Please tell me your name and date of birth [behind] the interpreter.
+     Please tell me your name and date of birth [beside] the interpreter.
+     Please tell me your name and date of birth [beyond] the interpreter.
+9.2 ans=step
+   * I want to make sure you understand every [step].
+     I want to make sure you understand every [form].
+     I want to make sure you understand every [pill].
+     I want to make sure you understand every [rule].
+9.3 ans=interpreter
+   * We wait for the [interpreter] before we ask anything else.
+     We wait for the [elevator] before we ask anything else.
+     We wait for the [pharmacy] before we ask anything else.
+     We wait for the [courier] before we ask anything else.
+9.4 ans=slower
+   * It's [slower] this way, but I need you to understand every question.
+     It's [louder] this way, but I need you to understand every question.
+     It's [cheaper] this way, but I need you to understand every question.
+     It's [shorter] this way, but I need you to understand every question.
+9.5 ans=full
+   * Through the interpreter, can you tell me your [full] name?
+     Through the interpreter, can you tell me your [short] name?
+     Through the interpreter, can you tell me your [new] name?
+     Through the interpreter, can you tell me your [old] name?
+
+## S10 진정 상태 동의 유효성
+10.0 ans=sedated
+   * Was this consent signed before she was [sedated]?
+     Was this consent signed before she was [weighed]?
+     Was this consent signed before she was [bathed]?
+     Was this consent signed before she was [fed]?
+10.1 ans=validity
+   * If she was already medicated, we need to verify its [validity].
+     If she was already medicated, we need to verify its [color].
+     If she was already medicated, we need to verify its [weight].
+     If she was already medicated, we need to verify its [brand].
+10.2 ans=check
+   * Let's [check] the timing before we proceed.
+     Let's [change] the timing before we proceed.
+     Let's [shorten] the timing before we proceed.
+     Let's [trim] the timing before we proceed.
+10.3 ans=happen
+   * Consent has to [happen] before any sedation, not after.
+     Consent has to [expire] before any sedation, not after.
+     Consent has to [vanish] before any sedation, not after.
+     Consent has to [travel] before any sedation, not after.
+10.4 ans=exactly
+   * I'll pull the record to see [exactly] when she signed and when she was medicated.
+     I'll pull the record to see [roughly] when she signed and when she was medicated.
+     I'll pull the record to see [softly] when she signed and when she was medicated.
+     I'll pull the record to see [briefly] when she signed and when she was medicated.
+10.5 ans=wrong
+   * If the timing is [wrong], we get a new consent before we proceed.
+     If the timing is [early], we get a new consent before we proceed.
+     If the timing is [short], we get a new consent before we proceed.
+     If the timing is [tight], we get a new consent before we proceed.
+
+## S11 응급 수술 동의 시간 부족
+11.0 ans=document
+   * Let's get verbal consent and [document] it immediately.
+     Let's get verbal consent and [scan] it immediately.
+     Let's get verbal consent and [fax] it immediately.
+     Let's get verbal consent and [staple] it immediately.
+11.1 ans=record
+   * I'll note the time and witnesses on the [record].
+     I'll note the time and witnesses on the [bill].
+     I'll note the time and witnesses on the [map].
+     I'll note the time and witnesses on the [wall].
+11.2 ans=emergency
+   * We proceed under [emergency] consent — I'm charting it now.
+     We proceed under [routine] consent — I'm charting it now.
+     We proceed under [annual] consent — I'm charting it now.
+     We proceed under [standard] consent — I'm charting it now.
+11.3 ans=now
+   * There's no time for a full consent — we need to move [now].
+     There's no time for a full consent — we need to move [later].
+     There's no time for a full consent — we need to move [tomorrow].
+     There's no time for a full consent — we need to move [slowly].
+11.4 ans=Two
+   * [Two] clinicians will witness and sign off on the verbal consent.
+     [Three] clinicians will witness and sign off on the verbal consent.
+     [Four] clinicians will witness and sign off on the verbal consent.
+     [Six] clinicians will witness and sign off on the verbal consent.
+11.5 ans=exact
+   * I'm documenting the [exact] time we started, right now.
+     I'm documenting the [usual] time we started, right now.
+     I'm documenting the [local] time we started, right now.
+     I'm documenting the [early] time we started, right now.
+
+## S12 소아 법적 대리 동의
+12.0 ans=legal
+   * Are you his [legal] guardian?
+     Are you his [primary] guardian?
+     Are you his [casual] guardian?
+     Are you his [visiting] guardian?
+12.1 ans=sign
+   * I'll need you to [sign] the consent on his behalf.
+     I'll need you to [read] the consent on his behalf.
+     I'll need you to [keep] the consent on his behalf.
+     I'll need you to [fold] the consent on his behalf.
+12.2 ans=confirm
+   * Can I [confirm] your relationship to the patient?
+     Can I [print] your relationship to the patient?
+     Can I [shorten] your relationship to the patient?
+     Can I [borrow] your relationship to the patient?
+12.3 ans=eighteen
+   * A parent or legal guardian must sign for a child under [eighteen].
+     A parent or legal guardian must sign for a child under [twelve].
+     A parent or legal guardian must sign for a child under [fifteen].
+     A parent or legal guardian must sign for a child under [sixteen].
+12.4 ans=document
+   * I need your ID to [document] who signed on his behalf.
+     I need your ID to [decide] who signed on his behalf.
+     I need your ID to [teach] who signed on his behalf.
+     I need your ID to [guess] who signed on his behalf.
+12.5 ans=only
+   * Once you sign, that consent covers this one procedure [only].
+     Once you sign, that consent covers this one procedure [daily].
+     Once you sign, that consent covers this one procedure [weekly].
+     Once you sign, that consent covers this one procedure [yearly].
+
+## S13 양측 수술 측 혼동 방지
+13.0 ans=separately
+   * We'll confirm each side [separately], one at a time.
+     We'll confirm each side [quietly], one at a time.
+     We'll confirm each side [loudly], one at a time.
+     We'll confirm each side [politely], one at a time.
+13.1 ans=verify
+   * Let me [verify] the right eye and then the left.
+     Let me [photograph] the right eye and then the left.
+     Let me [count] the right eye and then the left.
+     Let me [weigh] the right eye and then the left.
+13.2 ans=individually
+   * Both procedures are documented [individually].
+     Both procedures are documented [occasionally].
+     Both procedures are documented [randomly].
+     Both procedures are documented [weekly].
+13.3 ans=never
+   * We [never] mark or prep both eyes at the same moment.
+     We [rarely] mark or prep both eyes at the same moment.
+     We [often] mark or prep both eyes at the same moment.
+     We [sometimes] mark or prep both eyes at the same moment.
+13.4 ans=consent
+   * Each eye gets its own [consent], its own site check, its own time-out.
+     Each eye gets its own [gown], its own site check, its own time-out.
+     Each eye gets its own [badge], its own site check, its own time-out.
+     Each eye gets its own [tray], its own site check, its own time-out.
+13.5 ans=completely
+   * We finish the right eye [completely] before we ever start the left.
+     We finish the right eye [slowly] before we ever start the left.
+     We finish the right eye [roughly] before we ever start the left.
+     We finish the right eye [briefly] before we ever start the left.
+
+## S14 추가 시술 동의 범위
+14.0 ans=planned
+   * The consent only covers the [planned] procedure.
+     The consent only covers the [usual] procedure.
+     The consent only covers the [extra] procedure.
+     The consent only covers the [possible] procedure.
+14.1 ans=permission
+   * Anything beyond that would need your [permission].
+     Anything beyond that would need your [insurance].
+     Anything beyond that would need your [luggage].
+     Anything beyond that would need your [address].
+14.2 ans=clarify
+   * Let me [clarify] exactly what you've agreed to.
+     Let me [photograph] exactly what you've agreed to.
+     Let me [announce] exactly what you've agreed to.
+     Let me [invoice] exactly what you've agreed to.
+14.3 ans=find
+   * If they [find] something else in there, they'll still ask you first.
+     If they [break] something else in there, they'll still ask you first.
+     If they [drop] something else in there, they'll still ask you first.
+     If they [leave] something else in there, they'll still ask you first.
+14.4 ans=scope
+   * Anything outside this [scope] needs a separate consent from you.
+     Anything outside this [floor] needs a separate consent from you.
+     Anything outside this [door] needs a separate consent from you.
+     Anything outside this [wall] needs a separate consent from you.
+14.5 ans=exactly
+   * I want to make sure you know [exactly] what you did and didn't agree to.
+     I want to make sure you know [roughly] what you did and didn't agree to.
+     I want to make sure you know [vaguely] what you did and didn't agree to.
+     I want to make sure you know [partly] what you did and didn't agree to.
+
+## S15 타임아웃 중 표시 불일치
+15.0 ans=marking
+   * I need us to pause — the consent and [marking] don't match.
+     I need us to pause — the consent and [badge] don't match.
+     I need us to pause — the consent and [schedule] don't match.
+     I need us to pause — the consent and [poster] don't match.
+15.1 ans=verify
+   * Let's [verify] the correct side before we proceed.
+     Let's [circle] the correct side before we proceed.
+     Let's [draw] the correct side before we proceed.
+     Let's [tape] the correct side before we proceed.
+15.2 ans=resolved
+   * Nobody starts until this is [resolved].
+     Nobody starts until this is [copied].
+     Nobody starts until this is [filed].
+     Nobody starts until this is [faxed].
+15.3 ans=catching
+   * This is our time-out, and time-outs are exactly for [catching] this.
+     This is our time-out, and time-outs are exactly for [causing] this.
+     This is our time-out, and time-outs are exactly for [hiding] this.
+     This is our time-out, and time-outs are exactly for [adding] this.
+15.4 ans=talking
+   * Everyone stops [talking] until the site and the consent agree.
+     Everyone stops [walking] until the site and the consent agree.
+     Everyone stops [singing] until the site and the consent agree.
+     Everyone stops [writing] until the site and the consent agree.
+15.5 ans=voice
+   * We don't move an inch until every [voice] in this room confirms the side.
+     We don't move an inch until every [hand] in this room confirms the side.
+     We don't move an inch until every [ear] in this room confirms the side.
+     We don't move an inch until every [badge] in this room confirms the side.
+
+## S16 동의 없이 유도 직전
+16.0 ans=confirmed
+   * Stop — we don't have a [confirmed] consent yet.
+     Stop — we don't have a [filed] consent yet.
+     Stop — we don't have a [stamped] consent yet.
+     Stop — we don't have a [framed] consent yet.
+16.1 ans=signed
+   * Please hold induction until this is [signed].
+     Please hold induction until this is [stamped].
+     Please hold induction until this is [scanned].
+     Please hold induction until this is [faxed].
+16.2 ans=valid
+   * I can't let us proceed without [valid] consent.
+     I can't let us proceed without [local] consent.
+     I can't let us proceed without [public] consent.
+     I can't let us proceed without [framed] consent.
+16.3 ans=push
+   * We don't [push] medication until the consent is confirmed.
+     We don't [borrow] medication until the consent is confirmed.
+     We don't [wrap] medication until the consent is confirmed.
+     We don't [weigh] medication until the consent is confirmed.
+16.4 ans=signed
+   * I'm not comfortable inducing this patient without a [signed] form.
+     I'm not comfortable inducing this patient without a [blank] form.
+     I'm not comfortable inducing this patient without a [torn] form.
+     I'm not comfortable inducing this patient without a [wet] form.
+16.5 ans=consent
+   * Get me the [consent] now, or we hold everything right here.
+     Get me the [schedule] now, or we hold everything right here.
+     Get me the [menu] now, or we hold everything right here.
+     Get me the [map] now, or we hold everything right here.
+
+## S17 신원 밴드 없는 무의식 환자
+17.0 ans=follow
+   * We [follow] the unidentified patient protocol.
+     We [print] the unidentified patient protocol.
+     We [sell] the unidentified patient protocol.
+     We [borrow] the unidentified patient protocol.
+17.1 ans=temporary
+   * Let's assign a [temporary] ID and document everything.
+     Let's assign a [permanent] ID and document everything.
+     Let's assign a [private] ID and document everything.
+     Let's assign a [public] ID and document everything.
+17.2 ans=transferring
+   * We confirm identity through the [transferring] team.
+     We confirm identity through the [catering] team.
+     We confirm identity through the [cleaning] team.
+     We confirm identity through the [maintenance] team.
+17.3 ans=unconscious
+   * This patient came in [unconscious], so we can't ask for a name.
+     This patient came in [unharmed], so we can't ask for a name.
+     This patient came in [unhappy], so we can't ask for a name.
+     This patient came in [uncovered], so we can't ask for a name.
+17.4 ans=band
+   * Every unidentified patient gets the same temporary [band] and number.
+     Every unidentified patient gets the same temporary [gown] and number.
+     Every unidentified patient gets the same temporary [sheet] and number.
+     Every unidentified patient gets the same temporary [pillow] and number.
+17.5 ans=arrive
+   * The transferring team will confirm identity as soon as records [arrive].
+     The transferring team will confirm identity as soon as records [expire].
+     The transferring team will confirm identity as soon as records [vanish].
+     The transferring team will confirm identity as soon as records [burn].
+
+## S18 잘못된 환자 입실
+18.0 ans=patient
+   * This is the wrong [patient] — everyone stop.
+     This is the wrong [tray] — everyone stop.
+     This is the wrong [chart] — everyone stop.
+     This is the wrong [gown] — everyone stop.
+18.1 ans=DOB
+   * The name and [DOB] don't match our case.
+     The name and [room] don't match our case.
+     The name and [floor] don't match our case.
+     The name and [unit] don't match our case.
+18.2 ans=halting
+   * I'm [halting] everything until we correct this.
+     I'm [counting] everything until we correct this.
+     I'm [moving] everything until we correct this.
+     I'm [opening] everything until we correct this.
+18.3 ans=person
+   * This isn't the patient on my list — stop, we have the wrong [person].
+     This isn't the patient on my list — stop, we have the wrong [room].
+     This isn't the patient on my list — stop, we have the wrong [bed].
+     This isn't the patient on my list — stop, we have the wrong [floor].
+18.4 ans=touches
+   * Nobody [touches] this patient until the name and chart match.
+     Nobody [feeds] this patient until the name and chart match.
+     Nobody [dresses] this patient until the name and chart match.
+     Nobody [weighs] this patient until the name and chart match.
+18.5 ans=correct
+   * We send this patient back and bring up the [correct] one.
+     We send this patient back and bring up the [last] one.
+     We send this patient back and bring up the [spare] one.
+     We send this patient back and bring up the [same] one.
+
+## S19 동의 철회 의사 표현
+19.0 ans=mind
+   * You have every right to change your [mind].
+     You have every right to change your [plan].
+     You have every right to change your [seat].
+     You have every right to change your [shirt].
+19.1 ans=know
+   * I'll stop everything and let your surgeon [know].
+     I'll stop everything and let your surgeon [go].
+     I'll stop everything and let your surgeon [rest].
+     I'll stop everything and let your surgeon [sleep].
+19.2 ans=happen
+   * Nothing will [happen] without your agreement.
+     Nothing will [vanish] without your agreement.
+     Nothing will [freeze] without your agreement.
+     Nothing will [fall] without your agreement.
+19.3 ans=even
+   * You can change your mind at any point, [even] right now.
+     You can change your mind at any point, [only] right now.
+     You can change your mind at any point, [just] right now.
+     You can change your mind at any point, [still] right now.
+19.4 ans=continue
+   * We stop the moment you say you don't want to [continue].
+     We stop the moment you say you don't want to [celebrate].
+     We stop the moment you say you don't want to [compete].
+     We stop the moment you say you don't want to [wake].
+19.5 ans=directly
+   * Your surgeon needs to hear this decision [directly] from you.
+     Your surgeon needs to hear this decision [twice] from you.
+     Your surgeon needs to hear this decision [privately] from you.
+     Your surgeon needs to hear this decision [partly] from you.
+
+## S20 반대 측 수술 직전 인지
+20.0 ans=prepping
+   * Stop — you're [prepping] the wrong side.
+     Stop — you're [painting] the wrong side.
+     Stop — you're [carrying] the wrong side.
+     Stop — you're [reading] the wrong side.
+20.1 ans=right
+   * The case is the [right] side, not the left.
+     The case is the [first] side, not the left.
+     The case is the [second] side, not the left.
+     The case is the [upper] side, not the left.
+20.2 ans=incise
+   * We do not [incise] until this is confirmed.
+     We do not [inhale] until this is confirmed.
+     We do not [ignite] until this is confirmed.
+     We do not [invite] until this is confirmed.
+20.3 ans=freezes
+   * Everyone [freezes] the moment a side looks wrong.
+     Everyone [waves] the moment a side looks wrong.
+     Everyone [cheers] the moment a side looks wrong.
+     Everyone [sings] the moment a side looks wrong.
+20.4 ans=blade
+   * No [blade] touches skin until the side matches the consent.
+     No [tray] touches skin until the side matches the consent.
+     No [cart] touches skin until the side matches the consent.
+     No [stool] touches skin until the side matches the consent.
+20.5 ans=chart
+   * We re-check the [chart], the mark, and the consent before we incise.
+     We re-check the [clock], the mark, and the consent before we incise.
+     We re-check the [phone], the mark, and the consent before we incise.
+     We re-check the [radio], the mark, and the consent before we incise.

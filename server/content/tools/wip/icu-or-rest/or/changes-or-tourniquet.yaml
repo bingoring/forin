@@ -67,7 +67,7 @@ changes:
   id: w-damage
   fields:
   - ko
-  why: w-injury와 ko(손상)가 같아 정답이 둘 — damage는 조직이 훼손된 것
+  why: w-injury와 ko(손상)가 같아 정답이 둘 — damage는 조직이 훼손된 것; 조직에는 훼손이라 하지 않음 — 손상(망가짐)으로(검토 A D2); w-injury와 서로의 오답이 아니라 정답 둘은 아님
 - kind: word
   id: w-underneath
   fields:
@@ -152,7 +152,8 @@ changes:
   id: w-field
   fields:
   - ko
-  why: '''필드''는 외래어 그대로라 뜻이 흐리다 — 수술 영역'
+  - example
+  why: '''필드''는 외래어 그대로라 뜻이 흐리다 — 수술 영역; 18.3 문장을 바꿔 예문도 맞춤(검토 A S6)'
 - kind: word
   id: w-block
   fields:
@@ -351,7 +352,10 @@ changes:
   index: 3
   fields:
   - words
-  why: 쉬운 단어 태그 정리
+  - en
+  - ko
+  - chunks
+  why: 쉬운 단어 태그 정리; 재팽창 시간이 반드시 짧아진다는 일반 규칙은 없음 — 집도의에게 묻는 문장으로(검토 A S2)
 - kind: sentence
   situation: 하지 정맥울혈 감시
   index: 4
@@ -375,13 +379,19 @@ changes:
   index: 3
   fields:
   - words
-  why: 쉬운 단어 태그 정리
+  - en
+  - ko
+  - chunks
+  why: 쉬운 단어 태그 정리; 감압은 집도의가 정함 — 단정하던 명령을 결정을 묻는 문장으로(검토 A S3)
 - kind: sentence
   situation: 허용 시간 초과 임박
   index: 4
   fields:
   - words
-  why: 쉬운 단어 태그 정리
+  - en
+  - ko
+  - chunks
+  why: 쉬운 단어 태그 정리; 감압·진행 판단은 집도의 몫 — 단정을 묻는 문장으로(검토 A S4)
 - kind: sentence
   situation: 재관류 저혈압 발생
   index: 0
@@ -466,3 +476,59 @@ changes:
   fields:
   - words
   why: 쉬운 단어 태그 정리
+- kind: word
+  id: w-small
+  fields:
+  - example
+  why: 4.3이 넓은 커프로 바뀌어 예문을 남은 11.2로(검토 A S1)
+- kind: word-add
+  id: w-wide
+  why: 4.3을 가장 넓은 커프로 고치며 새 단어(검토 A S1) — 4.3에 태그, 예문 4.3
+- kind: word
+  id: w-exsanguination
+  fields:
+  - ko
+  why: 한국 수술실 표준어는 구혈(Esmarch 구혈대) — 거혈에서 고침(검토 A D1)
+- kind: word
+  id: w-act
+  fields:
+  - example
+  why: 예문의 문장을 바꿔 예문도 맞춤(검토 A 문장 수정)
+- kind: word
+  id: w-monitor
+  fields:
+  - ko
+  why: 문장 16.2·16.4와 cue·오답이 모두 명사 — 모니터(감시 화면)로(검토 A D3)
+- kind: sentence
+  situation: 커프 크기 선택
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 가장 작은 커프는 사실과 반대 — AORN은 사지에 맞는 범위에서 가장 넓은 커프(낮은 압력으로 혈류 차단); w-small→w-wide(검토 A S1)
+- kind: sentence
+  situation: 이중 커프 부위마취
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 이중 커프 순서(원위 커프를 올린 뒤에 근위 커프를 내림 — 반대면 국소마취제가 전신으로)를 가르치도록(검토 A S5)
+- kind: sentence
+  situation: 하지 정맥울혈 감시
+  index: 1
+  fields:
+  - ko
+  why: 표준어는 구혈(Esmarch 구혈대) — ko만(검토 A S7·D1)
+- kind: sentence
+  situation: 압력 오류 지속 출혈
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 수술 영역은 커프보다 원위라 커프 아래 출혈은 장면이 맞지 않음 — 커프를 올렸는데도 영역 출혈로(검토 A S6)
