@@ -1,0 +1,1365 @@
+
+######## S0 지혈대 압력 설정
+
+[0-0] EN: I'm setting the cuff pressure based on the limb occlusion pressure.
+  KO: 사지압을 기준으로 커프 압력을 설정하고 있어요.
+  D1: 사지압을 기준으로 커프 경보를 설정하고 있어요.
+  D2: 사지압을 기준으로 커프 크기를 설정하고 있어요.
+  tag=압력 설정 icon=gear | why: based on 뒤에 기준을 말해 압력이 임의로 정해지는 게 아니라 측정값에서 나온다는 점을 알려요. 진행형 I'm setting은 지금 하는 중이라는 뜻이에요.
+  chunks=["I'm setting", 'the cuff pressure', 'based on', 'the limb occlusion pressure', '.'] decoy='the cuff alarm'
+   * I'm setting the cuff pressure based on the limb [occlusion] pressure.
+     I'm setting the cuff pressure based on the limb [venous] pressure.
+     I'm setting the cuff pressure based on the limb [atmospheric] pressure.
+     I'm setting the cuff pressure based on the limb [hydrostatic] pressure.
+
+[0-1] EN: For an arm, we typically use a lower setting.
+  KO: 팔이면 보통 더 낮게 설정해요.
+  D1: 팔이면 매번 더 낮게 설정해요.
+  D2: 팔이면 보통 더 낮게 저장해요.
+  tag=조건부 설정 icon=chartup | why: For an arm으로 조건을 먼저 깔고 we typically로 항상은 아니라는 여지를 남겨요. 상황에 따라 값이 달라지는 설정이라 조건부터 말하는 순서예요.
+  chunks=['For an arm', ', we typically', 'use', 'a lower setting', '.'] decoy='a louder setting'
+   * For an arm, we typically use a lower [setting].
+     For an arm, we typically use a lower [volume].
+     For an arm, we typically use a lower [brightness].
+     For an arm, we typically use a lower [speed].
+
+[0-2] EN: Let me confirm the pressure with you before inflation.
+  KO: 올리기 전에 압력을 당신과 확인할게요.
+  D1: 올리기 전에 압력을 간호사와 확인할게요.
+  D2: 올리기 전에 압력을 큰 소리로 확인할게요.
+  tag=압력 확인 icon=check | why: Let me …는 곧 하겠다고 미리 알리는 정중한 틀이에요. with you가 혼자가 아니라 같이 맞춰 본다는 점을 분명히 해요.
+  chunks=['Let me confirm', 'the pressure', 'with you', 'before inflation', '.'] decoy='with the label'
+   * Let me confirm the pressure with you before [inflation].
+     Let me confirm the pressure with you before [discharge].
+     Let me confirm the pressure with you before [transfer].
+     Let me confirm the pressure with you before [extubation].
+
+[0-3] EN: We always calculate this before we inflate.
+  KO: 올리기 전에 항상 이걸 계산해요.
+  D1: 올리기 전에 항상 이걸 소독해요.
+  D2: 올리기 전에 항상 이걸 주문해요.
+  tag=사전 계산 icon=chartup | why: always를 동사 앞에 두면 예외 없는 습관으로 들려요. before we inflate로 계산이 올리기 앞에 온다는 순서를 못 박아요.
+  chunks=['We always calculate', 'this', 'before we inflate', '.'] decoy='the dose'
+   * We always [calculate] this before we inflate.
+     We always [sterilize] this before we inflate.
+     We always [restock] this before we inflate.
+     We always [relabel] this before we inflate.
+
+[0-4] EN: This setting matches what we agreed on.
+  KO: 이 설정값은 우리가 합의한 것과 일치해요.
+  D1: 이 설정값은 우리가 주문한 것과 일치해요.
+  D2: 이 알람값은 우리가 합의한 것과 일치해요.
+  tag=설정 일치 icon=check | why: matches 한 낱말로 대조 결과를 짧게 보고해요. what we agreed on은 '합의한 것'을 한 덩어리 명사처럼 만드는 관계절이에요.
+  chunks=['This setting', 'matches', 'what we agreed on', '.'] decoy='when we agreed'
+   * This setting [matches] what we agreed on.
+     This setting [exceeds] what we agreed on.
+     This setting [contradicts] what we agreed on.
+     This setting [replaces] what we agreed on.
+  ORDER ko=지혈대 압력 설정 4문장 순서 tag=대화 흐름 icon=compass why=먼저 사지를 기준으로 압력을 정하고, 그 값이 팔에서는 보통 낮다는 점을 말한 뒤, 올리기 전에 그 설정을 같이 확인하고, 합의가 되면 올립니다.
+    - I'm setting the cuff pressure based on the limb. | 사지를 기준으로 커프 압력을 설정해요 | 설정 | gear
+    - For an arm, that usually means a lower setting. | 팔이면 보통 더 낮은 설정이에요 | 조건 | chartup
+    - Let me confirm that setting with you before inflation. | 올리기 전에 그 설정을 같이 확인할게요 | 확인 | check
+    - Now that we agree, we can inflate. | 합의했으니 올릴 수 있어요 | 합의 | handshake2
+    swap12: For an arm, that usually means a lower setting. / I'm setting the cuff pressure based on the limb. / Let me confirm that setting with you before inflation. / Now that we agree, we can inflate.
+    swap23: I'm setting the cuff pressure based on the limb. / Let me confirm that setting with you before inflation. / For an arm, that usually means a lower setting. / Now that we agree, we can inflate.
+    swap34: I'm setting the cuff pressure based on the limb. / For an arm, that usually means a lower setting. / Now that we agree, we can inflate. / Let me confirm that setting with you before inflation.
+
+######## S1 적용 시각 기록
+
+[1-0] EN: Tourniquet up at this time — I'm recording it.
+  KO: 이 시각에 지혈대를 올렸어요 — 기록할게요.
+  D1: 이 시각에 지혈대를 가져왔어요 — 기록할게요.
+  D2: 이 시각에 지혈대를 풀었어요 — 기록할게요.
+  tag=시각 기록 icon=pencil | why: Tourniquet up처럼 동사를 줄이면 현장에서 한눈에 알아듣게 짧아요. 대시 뒤에 I'm recording it을 붙여 올린 시각을 바로 적는다고 알려요.
+  chunks=['Tourniquet up', 'at this time', "— I'm recording", 'it', '.'] decoy='at this table'
+   * Tourniquet up at this [time] — I'm recording it.
+     Tourniquet up at this [height] — I'm recording it.
+     Tourniquet up at this [angle] — I'm recording it.
+     Tourniquet up at this [weight] — I'm recording it.
+
+[1-1] EN: Let's mark the inflation time on the board.
+  KO: 올린 시각을 게시판에 표시합시다.
+  D1: 올린 시각을 달력에 표시합시다.
+  D2: 올린 시각을 모니터에 표시합시다.
+  tag=게시판 표시 icon=board | why: Let's로 시작하면 지시가 아니라 같이 하자는 제안이에요. on the board는 팀 모두가 볼 수 있는 곳이라는 점을 짚어요.
+  chunks=["Let's mark", 'the inflation time', 'on the board', '.'] decoy='on the wall'
+   * Let's mark the inflation time on the [board].
+     Let's mark the inflation time on the [floor].
+     Let's mark the inflation time on the [ceiling].
+     Let's mark the inflation time on the [bed].
+
+[1-2] EN: I'll track ischemia time from now.
+  KO: 지금부터 허혈 시간을 추적할게요.
+  D1: 지금부터 허혈 징후를 추적할게요.
+  D2: 지금부터 출혈 시간을 추적할게요.
+  tag=허혈 추적 icon=calendar | why: I'll로 내가 맡겠다는 뜻을 밝혀요. from now가 추적을 시작하는 기준점을 지금으로 못 박아요.
+  chunks=["I'll track", 'ischemia time', 'from now', '.'] decoy='the case number'
+   * I'll [track] ischemia time from now.
+     I'll [erase] ischemia time from now.
+     I'll [reset] ischemia time from now.
+     I'll [cancel] ischemia time from now.
+
+[1-3] EN: I always note the time we go up.
+  KO: 올린 시각은 항상 기록해요.
+  D1: 푼 시각은 항상 기록해요.
+  D2: 올린 사람은 항상 기록해요.
+  tag=항상 기록 icon=pencil | why: always를 동사 앞에 두면 예외 없는 습관으로 들려요. we go up은 지혈대를 올리는 순간을 팀 말투로 줄인 말이에요.
+  chunks=['I always note', 'the time', 'we go up', '.'] decoy='we go home'
+   * I always note the [time] we go up.
+     I always note the [size] we go up.
+     I always note the [color] we go up.
+     I always note the [name] we go up.
+
+[1-4] EN: Ischemia time starts counting from this point.
+  KO: 허혈 시간은 이 시점부터 세기 시작해요.
+  D1: 허혈 시간은 이 시점부터 표시되기 시작해요.
+  D2: 허혈 시간은 이 시점부터 울리기 시작해요.
+  tag=허혈 시작점 icon=magnify | why: Ischemia time을 주어로 세워 시간이 어디서 시작하는지에 초점을 둬요. from this point가 시작점을 한 점으로 가리켜요.
+  chunks=['Ischemia time', 'starts counting', 'from this point', '.'] decoy='from this angle'
+   * Ischemia time [starts] counting from this point.
+     Ischemia time [stops] counting from this point.
+     Ischemia time [ends] counting from this point.
+     Ischemia time [pauses] counting from this point.
+  ORDER ko=적용 시각 기록 4문장 순서 tag=대화 흐름 icon=compass why=지혈대가 올라갔다고 알린 뒤 그 시각을 적고, 적은 것을 게시판에 올려 팀이 보게 하고, 허혈 시간은 그 시각부터 센다고 마무리해요.
+    - The tourniquet is up now. | 지혈대가 지금 올라갔어요 | 알림 | bell
+    - I'm writing that time down. | 그 시각을 적고 있어요 | 기록 | pencil
+    - Now let's post what I wrote on the board. | 제가 적은 걸 게시판에 올립시다 | 게시 | board
+    - Ischemia time counts from the time on the board. | 허혈 시간은 게시판의 그 시각부터 세요 | 시작 | calendar
+    swap12: I'm writing that time down. / The tourniquet is up now. / Now let's post what I wrote on the board. / Ischemia time counts from the time on the board.
+    swap23: The tourniquet is up now. / Now let's post what I wrote on the board. / I'm writing that time down. / Ischemia time counts from the time on the board.
+    swap34: The tourniquet is up now. / I'm writing that time down. / Ischemia time counts from the time on the board. / Now let's post what I wrote on the board.
+
+######## S2 하부 패딩 적용
+
+[2-0] EN: We pad the limb before applying the cuff.
+  KO: 커프를 감기 전에 사지에 패딩을 대요.
+  D1: 커프를 감기 전에 사지에 소독포를 대요.
+  D2: 커프를 감기 전에 눈에 패딩을 대요.
+  tag=패딩 먼저 icon=bandage | why: before applying으로 순서를 못 박아요. 패딩이 먼저고 커프가 나중이에요. We pad는 습관적인 절차를 현재형으로 말해요.
+  chunks=['We pad', 'the limb', 'before applying', 'the cuff', '.'] decoy='the sheet'
+   * We pad the limb before [applying] the cuff.
+     We pad the limb before [removing] the cuff.
+     We pad the limb before [cutting] the cuff.
+     We pad the limb before [folding] the cuff.
+
+[2-1] EN: Smooth padding prevents skin injury.
+  KO: 매끄러운 패딩이 피부 손상을 막아요.
+  D1: 매끄러운 패딩이 피부 건조를 막아요.
+  D2: 매끄러운 패딩이 커프 미끄러짐을 막아요.
+  tag=손상 예방 icon=shield | why: Smooth를 주어 앞에 붙여 매끄러운 상태가 보호의 조건임을 알려요. prevents는 일어나지 않게 막는다는 뜻이에요.
+  chunks=['Smooth padding', 'prevents', 'skin injury', '.'] decoy='cuff noise'
+   * [Smooth] padding prevents skin injury.
+     [Rough] padding prevents skin injury.
+     [Wet] padding prevents skin injury.
+     [Folded] padding prevents skin injury.
+
+[2-2] EN: Let me check there are no wrinkles underneath.
+  KO: 밑에 주름이 없는지 확인할게요.
+  D1: 밑에 이물이 없는지 확인할게요.
+  D2: 밑에 물기가 없는지 확인할게요.
+  tag=주름 확인 icon=magnify | why: Let me …는 곧 하겠다고 미리 알리는 정중한 틀이에요. there are no wrinkles는 문제가 없는지 확인할 때 쓰는 부정 확인 틀이에요.
+  chunks=['Let me check', 'there are', 'no wrinkles underneath', '.'] decoy='no pen nearby'
+   * Let me check there are no wrinkles [underneath].
+     Let me check there are no wrinkles [overhead].
+     Let me check there are no wrinkles [outside].
+     Let me check there are no wrinkles [nearby].
+
+[2-3] EN: I'm padding this area before we apply anything.
+  KO: 뭘 대기 전에 이 부위에 먼저 패딩을 대고 있어요.
+  D1: 뭘 대기 전에 이 부위에 먼저 거즈를 대고 있어요.
+  D2: 뭘 대기 전에 이 부위에 먼저 끈을 대고 있어요.
+  tag=부위 패딩 icon=bandage | why: this area로 어느 부위인지 가리키며 지금 하는 일을 진행형으로 말해요. before we apply anything이 패딩이 모든 것의 앞 단계임을 알려요.
+  chunks=["I'm padding", 'this area', 'before we apply', 'anything', '.'] decoy='this pillow'
+   * I'm padding this [area] before we apply anything.
+     I'm padding this [table] before we apply anything.
+     I'm padding this [room] before we apply anything.
+     I'm padding this [chart] before we apply anything.
+
+[2-4] EN: Good padding keeps the skin safe underneath the cuff.
+  KO: 패딩이 좋으면 커프 아래 피부가 안전해요.
+  D1: 패딩이 좋으면 커프 아래 피부가 따뜻해요.
+  D2: 패딩이 좋으면 커프 아래 피부가 촉촉해요.
+  tag=피부 안전 icon=shield | why: Good padding을 조건처럼 앞에 두어 패딩의 질이 결과를 정한다고 말해요. keeps A safe는 A를 안전한 상태로 지킨다는 틀이에요.
+  chunks=['Good padding', 'keeps the skin', 'safe', 'underneath the cuff', '.'] decoy='inside the glove'
+   * Good padding keeps the skin [safe] underneath the cuff.
+     Good padding keeps the skin [warm] underneath the cuff.
+     Good padding keeps the skin [pale] underneath the cuff.
+     Good padding keeps the skin [wet] underneath the cuff.
+  ORDER ko=하부 패딩 적용 4문장 순서 tag=대화 흐름 icon=compass why=패딩을 먼저 대고, 그 안에 주름이 없는지 확인하고, 매끄러워졌으면 커프를 감고, 그런 패딩이 피부를 지킨다는 설명으로 마무리해요.
+    - First, I'm padding the limb. | 먼저 사지에 패딩을 대고 있어요 | 패딩 | bandage
+    - Let me check there are no wrinkles in it. | 그 안에 주름이 없는지 확인할게요 | 확인 | magnify
+    - With the padding smooth, we can apply the cuff. | 패딩이 매끄러우니 커프를 감을 수 있어요 | 감기 | check
+    - Smooth padding like that keeps the skin safe underneath. | 그렇게 매끄러운 패딩이 아래 피부를 지켜요 | 효과 | shield
+    swap12: Let me check there are no wrinkles in it. / First, I'm padding the limb. / With the padding smooth, we can apply the cuff. / Smooth padding like that keeps the skin safe underneath.
+    swap23: First, I'm padding the limb. / With the padding smooth, we can apply the cuff. / Let me check there are no wrinkles in it. / Smooth padding like that keeps the skin safe underneath.
+    swap34: First, I'm padding the limb. / Let me check there are no wrinkles in it. / Smooth padding like that keeps the skin safe underneath. / With the padding smooth, we can apply the cuff.
+
+######## S3 부착부 상태 확인
+
+[3-0] EN: Let me inspect the skin before we apply the cuff.
+  KO: 커프를 감기 전에 피부를 살필게요.
+  D1: 패드를 감기 전에 피부를 살필게요.
+  D2: 드레이프를 덮기 전에 피부를 살필게요.
+  tag=피부 살핌 icon=magnify | why: Let me inspect는 곧 눈으로 살피겠다고 미리 알리는 말이에요. before we apply the cuff가 살피는 일이 감기 앞에 온다고 정해요.
+  chunks=['Let me inspect', 'the skin', 'before we apply', 'the cuff', '.'] decoy='the gown'
+   * Let me inspect the [skin] before we apply the cuff.
+     Let me inspect the [tubing] before we apply the cuff.
+     Let me inspect the [screen] before we apply the cuff.
+     Let me inspect the [label] before we apply the cuff.
+
+[3-1] EN: The limb looks intact with no breakdown.
+  KO: 사지는 손상 없이 온전해 보여요.
+  D1: 사지는 부종 없이 온전해 보여요.
+  D2: 사지는 손상 없이 따뜻해 보여요.
+  tag=온전한 상태 icon=check | why: looks로 눈에 보이는 상태를 보고해요. with no breakdown이 피부가 무너진 곳이 없다는 소견을 뒤에 붙여요.
+  chunks=['The limb looks', 'intact', 'with no breakdown', '.'] decoy='with no wires'
+   * The limb looks [intact] with no breakdown.
+     The limb looks [swollen] with no breakdown.
+     The limb looks [bruised] with no breakdown.
+     The limb looks [pale] with no breakdown.
+
+[3-2] EN: I'm noting the baseline skin condition.
+  KO: 기저 피부 상태를 기록하고 있어요.
+  D1: 기저 체온 상태를 기록하고 있어요.
+  D2: 기저 신경 상태를 기록하고 있어요.
+  tag=기저 기록 icon=pencil | why: I'm noting은 지금 적고 있다는 진행형이에요. baseline은 나중 상태와 견줄 처음 기준이라는 뜻이에요.
+  chunks=["I'm noting", 'the baseline', 'skin condition', '.'] decoy='the average'
+   * I'm noting the [baseline] skin condition.
+     I'm noting the [final] skin condition.
+     I'm noting the [ideal] skin condition.
+     I'm noting the [average] skin condition.
+
+[3-3] EN: The skin looks fine where the cuff will sit.
+  KO: 커프가 위치할 자리의 피부는 괜찮아 보여요.
+  D1: 커프가 위치할 자리의 피부는 건조해 보여요.
+  D2: 커프가 위치할 자리의 피부는 차가워 보여요.
+  tag=위치 피부 icon=check | why: where the cuff will sit이 아직 감기 전이라 미래형(will)으로 자리를 가리켜요. looks fine은 이상이 안 보인다는 가벼운 소견이에요.
+  chunks=['The skin', 'looks fine', 'where the cuff', 'will sit', '.'] decoy='where the wires'
+   * The skin looks [fine] where the cuff will sit.
+     The skin looks [cold] where the cuff will sit.
+     The skin looks [rough] where the cuff will sit.
+     The skin looks [dry] where the cuff will sit.
+
+[3-4] EN: I always record the baseline condition first.
+  KO: 기저 상태를 항상 먼저 기록해요.
+  D1: 최종 상태를 항상 먼저 기록해요.
+  D2: 기저 호흡을 항상 먼저 기록해요.
+  tag=항상 먼저 기록 icon=pencil | why: always와 first가 겹쳐 순서가 늘 같다는 규칙으로 들려요. 상태를 먼저 적어 두어야 나중에 변화를 알아볼 수 있어요.
+  chunks=['I always record', 'the baseline condition', 'first', '.'] decoy='by phone'
+   * I always record the [baseline] condition first.
+     I always record the [final] condition first.
+     I always record the [rough] condition first.
+     I always record the [random] condition first.
+  ORDER ko=부착부 상태 확인 4문장 순서 tag=대화 흐름 icon=compass why=감기 전에 피부를 살피고, 이상이 없다고 말한 뒤, 그 상태를 기저로 적고, 기록이 끝났으니 커프를 감아요.
+    - Let me inspect the skin before the cuff goes on. | 커프가 감기 전에 피부를 살필게요 | 살핌 | magnify
+    - The skin looks fine, with no breakdown. | 피부는 손상 없이 괜찮아 보여요 | 소견 | check
+    - I'll record that condition as the baseline. | 그 상태를 기저로 기록할게요 | 기록 | pencil
+    - With the baseline recorded, we can apply the cuff. | 기저를 기록했으니 커프를 감을 수 있어요 | 감기 | bandage
+    swap12: The skin looks fine, with no breakdown. / Let me inspect the skin before the cuff goes on. / I'll record that condition as the baseline. / With the baseline recorded, we can apply the cuff.
+    swap23: Let me inspect the skin before the cuff goes on. / I'll record that condition as the baseline. / The skin looks fine, with no breakdown. / With the baseline recorded, we can apply the cuff.
+    swap34: Let me inspect the skin before the cuff goes on. / The skin looks fine, with no breakdown. / With the baseline recorded, we can apply the cuff. / I'll record that condition as the baseline.
+
+######## S4 커프 크기 선택
+
+[4-0] EN: Let me choose the right cuff size for this limb.
+  KO: 이 사지에 맞는 커프 크기를 고를게요.
+  D1: 이 사지에 맞는 커프 색깔을 고를게요.
+  D2: 이 사지에 맞는 커프 소재를 고를게요.
+  tag=크기 선택 icon=bandage | why: right로 아무 것이나가 아니라 맞는 것이라는 기준을 세워요. for this limb이 이 환자의 이 사지에 맞춘다는 점을 붙여요.
+  chunks=['Let me', 'choose', 'the right cuff size', 'for this limb', '.'] decoy='for this bed'
+   * Let me choose the right cuff size for this [limb].
+     Let me choose the right cuff size for this [room].
+     Let me choose the right cuff size for this [shift].
+     Let me choose the right cuff size for this [chart].
+
+[4-1] EN: The cuff should overlap properly without being too tight.
+  KO: 커프는 너무 조이지 않게 제대로 겹쳐야 해요.
+  D1: 커프는 너무 길지 않게 제대로 겹쳐야 해요.
+  D2: 커프는 너무 두껍지 않게 제대로 겹쳐야 해요.
+  tag=겹침과 조임 icon=check | why: should로 지켜야 할 기준을 말해요. without being too tight가 겹치되 너무 조이지 않는다는 한계선을 그어요.
+  chunks=['The cuff', 'should overlap properly', 'without being', 'too tight', '.'] decoy='too heavy'
+   * The cuff should [overlap] properly without being too tight.
+     The cuff should [slip] properly without being too tight.
+     The cuff should [tear] properly without being too tight.
+     The cuff should [rotate] properly without being too tight.
+
+[4-2] EN: This size fits the circumference well.
+  KO: 이 크기가 둘레에 잘 맞아요.
+  D1: 이 크기가 길이에 잘 맞아요.
+  D2: 이 크기가 무게에 잘 맞아요.
+  tag=둘레 맞춤 icon=magnify | why: fits … well이 맞는 정도를 부사 하나로 평가해요. circumference는 사지 둘레라는 정확한 용어예요.
+  chunks=['This size', 'fits', 'the circumference well', '.'] decoy='the pad weight'
+   * This size fits the [circumference] well.
+     This size fits the [weight] well.
+     This size fits the [texture] well.
+     This size fits the [temperature] well.
+
+[4-3] EN: We choose the smallest cuff that still fits.
+  KO: 그래도 맞는 것 중 가장 작은 커프를 골라요.
+  D1: 그래도 맞는 것 중 가장 깨끗한 커프를 골라요.
+  D2: 그래도 맞는 것 중 가장 싼 커프를 골라요.
+  tag=가장 작은 것 icon=bandage | why: the smallest … that still fits는 맞는 것들 가운데 가장 작은 것을 고르는 틀이에요. 최상급 뒤 관계절이 조건을 한정해요.
+  chunks=['We choose', 'the smallest cuff', 'that still fits', '.'] decoy='that still beeps'
+   * We choose the [smallest] cuff that still fits.
+     We choose the [cheapest] cuff that still fits.
+     We choose the [newest] cuff that still fits.
+     We choose the [oldest] cuff that still fits.
+
+[4-4] EN: Let's confirm the cuff isn't too tight or too loose.
+  KO: 커프가 너무 조이거나 너무 느슨하지 않은지 확인합시다.
+  D1: 커프가 너무 조이거나 너무 길지 않은지 확인합시다.
+  D2: 커프가 너무 조이거나 너무 더럽지 않은지 확인합시다.
+  tag=조임 확인 icon=check | why: isn't too tight or too loose가 양쪽 한계를 한 문장에 묶어요. Let's로 둘이 같이 확인하자는 제안이에요.
+  chunks=["Let's confirm", 'the cuff', "isn't too tight", 'or too loose', '.'] decoy='or too warm'
+   * Let's confirm the cuff isn't too tight or too [loose].
+     Let's confirm the cuff isn't too tight or too [noisy].
+     Let's confirm the cuff isn't too tight or too [shiny].
+     Let's confirm the cuff isn't too tight or too [dirty].
+  ORDER ko=커프 크기 선택 4문장 순서 tag=대화 흐름 icon=compass why=사지에 맞는 크기를 고르겠다고 하고, 맞으면서 가장 작은 커프를 꺼내고, 그 커프가 겹침과 조임이 알맞은지 보고, 느슨한지도 확인해요.
+    - Let me choose the right cuff size for this limb. | 이 사지에 맞는 커프 크기를 고를게요 | 선택 | bandage
+    - Here is the smallest cuff that still fits. | 그래도 맞는 가장 작은 커프예요 | 후보 | check
+    - That one should overlap properly without being too tight. | 그건 너무 조이지 않게 겹쳐야 해요 | 조건 | magnify
+    - Let's confirm it isn't too loose either. | 너무 느슨하지도 않은지 확인합시다 | 확인 | handshake2
+    swap12: Here is the smallest cuff that still fits. / Let me choose the right cuff size for this limb. / That one should overlap properly without being too tight. / Let's confirm it isn't too loose either.
+    swap23: Let me choose the right cuff size for this limb. / That one should overlap properly without being too tight. / Here is the smallest cuff that still fits. / Let's confirm it isn't too loose either.
+    swap34: Let me choose the right cuff size for this limb. / Here is the smallest cuff that still fits. / Let's confirm it isn't too loose either. / That one should overlap properly without being too tight.
+
+######## S5 시간 알람 확인
+
+[5-0] EN: The timer alarm is set to warn us at the limit.
+  KO: 타이머 알람은 한계에서 경고하도록 설정돼 있어요.
+  D1: 멸균기 알람은 한계에서 경고하도록 설정돼 있어요.
+  D2: 혈압 알람은 한계에서 경고하도록 설정돼 있어요.
+  tag=경고 설정 icon=bell | why: is set to + 동사는 장비에 미리 맞춰 둔 동작이라는 뜻이에요. warn us at the limit은 한계에 닿을 때 소리로 알린다는 그림이에요.
+  chunks=['The timer alarm', 'is set', 'to warn us', 'at the limit', '.'] decoy='to call them'
+   * The timer alarm is set to [warn] us at the limit.
+     The timer alarm is set to [greet] us at the limit.
+     The timer alarm is set to [train] us at the limit.
+     The timer alarm is set to [charge] us at the limit.
+
+[5-1] EN: Let me confirm the alert is active.
+  KO: 알람이 작동 중인지 확인할게요.
+  D1: 알람 소리가 큰지 확인할게요.
+  D2: 알람 배터리가 충분한지 확인할게요.
+  tag=알람 작동 icon=check | why: Let me confirm이 곧 확인하겠다는 예고예요. is active는 켜져서 지금 작동 중인 상태를 가리켜요.
+  chunks=['Let me confirm', 'the alert', 'is active', '.'] decoy='is expired'
+   * Let me confirm the alert is [active].
+     Let me confirm the alert is [expired].
+     Let me confirm the alert is [yellow].
+     Let me confirm the alert is [silent].
+
+[5-2] EN: We'll get an audible reminder before max time.
+  KO: 최대 시간 전에 들리는 알림을 받을 거예요.
+  D1: 최대 시간 전에 깜빡이는 알림을 받을 거예요.
+  D2: 최대 시간 전에 인쇄된 알림을 받을 거예요.
+  tag=들리는 알림 icon=bell | why: audible은 눈이 아니라 귀로 알아차리는 알림이라는 말이에요. before max time이 알림이 최대 시간보다 앞선다고 정해요.
+  chunks=["We'll get", 'an audible reminder', 'before max time', '.'] decoy='a printed receipt'
+   * We'll get an [audible] reminder before max time.
+     We'll get an [invisible] reminder before max time.
+     We'll get an [expensive] reminder before max time.
+     We'll get an [private] reminder before max time.
+
+[5-3] EN: I'm setting the alarm for sixty minutes.
+  KO: 알람을 육십 분으로 설정하고 있어요.
+  D1: 소독 타이머를 육십 분으로 설정하고 있어요.
+  D2: 마취 타이머를 육십 분으로 설정하고 있어요.
+  tag=알람 설정 icon=bell | why: I'm setting이 지금 맞추는 중이라는 진행형이에요. for sixty minutes는 알람이 울리기까지의 길이를 한 구로 말해요.
+  chunks=["I'm setting", 'the alarm', 'for sixty minutes', '.'] decoy='the curtain'
+   * I'm setting the [alarm] for sixty minutes.
+     I'm setting the [curtain] for sixty minutes.
+     I'm setting the [bed] for sixty minutes.
+     I'm setting the [door] for sixty minutes.
+
+[5-4] EN: Check that the timer is running before we start.
+  KO: 시작하기 전에 타이머가 작동 중인지 확인하세요.
+  D1: 시작하기 전에 타이머가 충전 중인지 확인하세요.
+  D2: 시작하기 전에 타이머가 연결됐는지 확인하세요.
+  tag=타이머 점검 icon=check | why: Check that …은 확인을 명령형으로 시키는 틀이에요. before we start로 확인이 시작 앞에 온다고 정해요.
+  chunks=['Check that', 'the timer', 'is running', 'before we start', '.'] decoy='before we eat'
+   * Check that the timer is [running] before we start.
+     Check that the timer is [charging] before we start.
+     Check that the timer is [expired] before we start.
+     Check that the timer is [frozen] before we start.
+  ORDER ko=시간 알람 확인 4문장 순서 tag=대화 흐름 icon=compass why=시작 전에 타이머가 돌고 있는지 확인하고, 그 알림이 켜져 있는지 보고, 켜져 있으면 최대 시간 전에 들리는 알림이 오고, 그 알림이 한계에서 경고해요.
+    - Check that the timer is running before we start. | 시작하기 전에 타이머가 작동 중인지 확인하세요 | 타이머 | check
+    - Now let me confirm its alert is active. | 이제 그 알람이 작동 중인지 확인할게요 | 알람 | bell
+    - With it active, we'll get an audible reminder before max time. | 켜져 있으면 최대 시간 전에 들리는 알림이 와요 | 알림 | speaker
+    - That reminder will warn us at the limit. | 그 알림이 한계에서 경고해 줄 거예요 | 경고 | siren
+    swap12: Now let me confirm its alert is active. / Check that the timer is running before we start. / With it active, we'll get an audible reminder before max time. / That reminder will warn us at the limit.
+    swap23: Check that the timer is running before we start. / With it active, we'll get an audible reminder before max time. / Now let me confirm its alert is active. / That reminder will warn us at the limit.
+    swap34: Check that the timer is running before we start. / Now let me confirm its alert is active. / That reminder will warn us at the limit. / With it active, we'll get an audible reminder before max time.
+
+######## S6 최대 허용 시간 관리
+
+[6-0] EN: We're at the safe time limit — I'm alerting the team.
+  KO: 안전 시간 한계에 왔어요 — 팀에 알리고 있어요.
+  D1: 교대 시간 한계에 왔어요 — 팀에 알리고 있어요.
+  D2: 안전 시간 한계를 넘었어요 — 팀에 알리고 있어요.
+  tag=한계 도달 icon=siren | why: We're at …은 한계에 지금 와 있다는 현재 상태를 말해요. 대시 뒤 I'm alerting the team이 바로 알리는 중이라는 행동을 붙여요.
+  chunks=["We're at", 'the safe time limit', "— I'm alerting", 'the team', '.'] decoy='the door'
+   * We're at the [safe] time limit — I'm alerting the team.
+     We're at the [lunch] time limit — I'm alerting the team.
+     We're at the [visiting] time limit — I'm alerting the team.
+     We're at the [shift] time limit — I'm alerting the team.
+
+[6-1] EN: Ischemia time is getting close to the maximum.
+  KO: 허혈 시간이 최대치에 가까워지고 있어요.
+  D1: 허혈 시간이 평균에 가까워지고 있어요.
+  D2: 마취 시간이 최대치에 가까워지고 있어요.
+  tag=최대 근접 icon=chartup | why: is getting close to는 서서히 다가가는 중이라는 진행형이에요. the maximum이 한계점을 가리켜요.
+  chunks=['Ischemia time', 'is getting close', 'to the maximum', '.'] decoy='to the entrance'
+   * Ischemia time is getting close to the [maximum].
+     Ischemia time is getting close to the [minimum].
+     Ischemia time is getting close to the [entrance].
+     Ischemia time is getting close to the [window].
+
+[6-2] EN: Do we need to deflate soon?
+  KO: 곧 공기를 빼야 할까요?
+  D1: 다시 공기를 빼야 할까요?
+  D2: 천천히 공기를 빼야 할까요?
+  tag=감압 질문 icon=pager | why: Do we need to …?는 하자고 단정하지 않고 필요한지 묻는 질문이에요. soon으로 시점이 가깝다는 것을 덧붙여요.
+  chunks=['Do we need', 'to deflate', 'soon', '?'] decoy='upstairs'
+   * Do we need to [deflate] soon?
+     Do we need to [inflate] soon?
+     Do we need to [reposition] soon?
+     Do we need to [replace] soon?
+
+[6-3] EN: We're approaching the safe limit now.
+  KO: 지금 안전 한계에 다가가고 있어요.
+  D1: 지금 안전 구역에 다가가고 있어요.
+  D2: 지금 최대 속도에 다가가고 있어요.
+  tag=한계 접근 icon=chartup | why: approaching은 아직 닿지 않았지만 가까워지는 중이라는 진행형 말이에요. now가 지금 상태라는 점을 붙여요.
+  chunks=["We're approaching", 'the safe limit', 'now', '.'] decoy='the red door'
+   * We're [approaching] the safe limit now.
+     We're [leaving] the safe limit now.
+     We're [painting] the safe limit now.
+     We're [ordering] the safe limit now.
+
+[6-4] EN: I'll let the surgeon know we're close to the limit.
+  KO: 한계에 가까워졌다고 집도의에게 알릴게요.
+  D1: 한계에 도달했다고 집도의에게 알릴게요.
+  D2: 봉합에 가까워졌다고 집도의에게 알릴게요.
+  tag=집도의 알림 icon=pager | why: I'll let A know는 A에게 알리겠다는 가벼운 약속 틀이에요. we're close to the limit이 알리는 내용이에요.
+  chunks=["I'll let", 'the surgeon know', "we're close", 'to the limit', '.'] decoy='to the closet'
+   * I'll let the surgeon know we're close to the [limit].
+     I'll let the surgeon know we're close to the [exit].
+     I'll let the surgeon know we're close to the [corner].
+     I'll let the surgeon know we're close to the [elevator].
+  ORDER ko=최대 허용 시간 관리 4문장 순서 tag=대화 흐름 icon=compass why=최대에 가까워진다고 말하고, 집도의에게 알려 주고, 한계에 닿았으면 팀에 알리고, 닿았으니 곧 공기를 빼야 하는지 물어요.
+    - Ischemia time is getting close to the maximum. | 허혈 시간이 최대치에 가까워지고 있어요 | 접근 | chartup
+    - I'll let the surgeon know how close we are. | 얼마나 가까운지 집도의에게 알릴게요 | 알림 | pager
+    - Now we've reached the limit, so I'm alerting the team. | 이제 한계에 닿아서 팀에 알리고 있어요 | 도달 | siren
+    - Since we're there, do we need to deflate soon? | 거기까지 왔으니 곧 공기를 빼야 할까요 | 질문 | speech
+    swap12: I'll let the surgeon know how close we are. / Ischemia time is getting close to the maximum. / Now we've reached the limit, so I'm alerting the team. / Since we're there, do we need to deflate soon?
+    swap23: Ischemia time is getting close to the maximum. / Now we've reached the limit, so I'm alerting the team. / I'll let the surgeon know how close we are. / Since we're there, do we need to deflate soon?
+    swap34: Ischemia time is getting close to the maximum. / I'll let the surgeon know how close we are. / Since we're there, do we need to deflate soon? / Now we've reached the limit, so I'm alerting the team.
+
+######## S7 재관류 전 팀 고지
+
+[7-0] EN: I'm about to release the tourniquet — everyone ready?
+  KO: 지혈대를 곧 풀 거예요 — 다들 준비됐나요?
+  D1: 붕대를 곧 풀 거예요 — 다들 준비됐나요?
+  D2: 브레이크를 곧 풀 거예요 — 다들 준비됐나요?
+  tag=풀기 예고 icon=pager | why: I'm about to로 곧 할 일을 예고하고, 대시 뒤 everyone ready?로 팀의 준비를 바로 물어요. 푸는 순간 혈역학이 변하니 미리 알리는 거예요.
+  chunks=["I'm about to", 'release the tourniquet', '— everyone', 'ready', '?'] decoy='— everyone seated'
+   * I'm about to [release] the tourniquet — everyone ready?
+     I'm about to [tighten] the tourniquet — everyone ready?
+     I'm about to [label] the tourniquet — everyone ready?
+     I'm about to [order] the tourniquet — everyone ready?
+
+[7-1] EN: Anesthesia, be prepared for reperfusion changes.
+  KO: 마취과는 재관류 변화에 대비해 주세요.
+  D1: 마취과는 체위 변화에 대비해 주세요.
+  D2: 마취과는 온도 변화에 대비해 주세요.
+  tag=마취과 대비 icon=stetho | why: 이름을 먼저 부르고 쉼표 뒤에 요청을 말하면 누구에게 하는 말인지 분명해요. be prepared for는 일어날 일에 미리 대비하라는 틀이에요.
+  chunks=['Anesthesia', ', be prepared', 'for reperfusion changes', '.'] decoy='for color changes'
+   * Anesthesia, be prepared for [reperfusion] changes.
+     Anesthesia, be prepared for [staffing] changes.
+     Anesthesia, be prepared for [billing] changes.
+     Anesthesia, be prepared for [menu] changes.
+
+[7-2] EN: Deflating now — watch the blood pressure.
+  KO: 지금 공기를 빼요 — 혈압을 지켜보세요.
+  D1: 곧 공기를 빼요 — 혈압을 지켜보세요.
+  D2: 천천히 공기를 빼요 — 혈압을 지켜보세요.
+  tag=감압 알림 icon=siren | why: Deflating now처럼 -ing 한 낱말로 지금 하는 일을 짧게 알려요. watch가 대시 뒤에서 지켜볼 대상을 명령으로 건네요.
+  chunks=['Deflating now', '— watch', 'the blood pressure', '.'] decoy='the corridor'
+   * Deflating now — watch the [blood] pressure.
+     Deflating now — watch the [tire] pressure.
+     Deflating now — watch the [water] pressure.
+     Deflating now — watch the [air] pressure.
+
+[7-3] EN: I'm letting the team know before we deflate.
+  KO: 공기를 빼기 전에 팀에 알리고 있어요.
+  D1: 수술을 시작하기 전에 팀에 알리고 있어요.
+  D2: 교대하기 전에 팀에 알리고 있어요.
+  tag=빼기 전 고지 icon=pager | why: I'm letting A know는 A에게 지금 알리는 중이라는 진행형이에요. before we deflate로 알림이 빼기 앞에 온다고 정해요.
+  chunks=["I'm letting", 'the team know', 'before we deflate', '.'] decoy='the printer'
+   * I'm letting the team know before we [deflate].
+     I'm letting the team know before we [inflate].
+     I'm letting the team know before we [leave].
+     I'm letting the team know before we [eat].
+
+[7-4] EN: Everyone needs to be ready before I release it.
+  KO: 제가 풀기 전에 모두 준비돼야 해요.
+  D1: 제가 풀기 전에 모두 서명해야 해요.
+  D2: 제가 풀기 전에 모두 모여야 해요.
+  tag=모두 준비 icon=check | why: Everyone needs to …가 예외 없이 모두의 몫이라는 뜻이에요. before I release it이 푸는 일이 준비 뒤에 온다고 정해요.
+  chunks=['Everyone needs', 'to be ready', 'before I release', 'it', '.'] decoy='to be paid'
+   * Everyone needs to be [ready] before I release it.
+     Everyone needs to be [tired] before I release it.
+     Everyone needs to be [paid] before I release it.
+     Everyone needs to be [seated] before I release it.
+  ORDER ko=재관류 전 팀 고지 4문장 순서 tag=대화 흐름 icon=compass why=곧 풀겠다고 알려 준비를 묻고, 마취과에 뒤따를 변화를 대비시키고, 공기를 빼면서 혈압을 지켜보게 하고, 내려간 뒤 변화가 있으면 말하게 해요.
+    - I'm about to release the tourniquet — everyone ready? | 지혈대를 곧 풀 거예요 — 다들 준비됐나요 | 예고 | pager
+    - Anesthesia, be prepared for the changes that will bring. | 마취과는 그로 인한 변화에 대비해 주세요 | 대비 | stetho
+    - Deflating now — watch the blood pressure. | 지금 공기를 빼요 — 혈압을 지켜보세요 | 감압 | siren
+    - Tell me if anything changes after it's down. | 내려간 뒤 변화가 있으면 말해 주세요 | 보고 | speech
+    swap12: Anesthesia, be prepared for the changes that will bring. / I'm about to release the tourniquet — everyone ready? / Deflating now — watch the blood pressure. / Tell me if anything changes after it's down.
+    swap23: I'm about to release the tourniquet — everyone ready? / Deflating now — watch the blood pressure. / Anesthesia, be prepared for the changes that will bring. / Tell me if anything changes after it's down.
+    swap34: I'm about to release the tourniquet — everyone ready? / Anesthesia, be prepared for the changes that will bring. / Tell me if anything changes after it's down. / Deflating now — watch the blood pressure.
+
+######## S8 허혈 시간 소통
+
+[8-0] EN: Total ischemia time is now recorded and shared.
+  KO: 총 허혈 시간이 이제 기록되고 공유됐어요.
+  D1: 평균 허혈 시간이 이제 기록되고 공유됐어요.
+  D2: 남은 허혈 시간이 이제 기록되고 공유됐어요.
+  tag=기록과 공유 icon=board | why: is now recorded and shared는 두 동사를 and로 묶어 기록과 공유가 모두 끝났다는 완료 상태를 알려요. Total이 합계라는 점을 앞에 세워요.
+  chunks=['Total ischemia time', 'is now recorded', 'and shared', '.'] decoy='and priced'
+   * Total ischemia time is now recorded and [shared].
+     Total ischemia time is now recorded and [hidden].
+     Total ischemia time is now recorded and [sealed].
+     Total ischemia time is now recorded and [locked].
+
+[8-1] EN: I'll call out the time every fifteen minutes.
+  KO: 십오 분마다 시간을 소리 내어 알릴게요.
+  D1: 십오 분마다 시간을 문자로 알릴게요.
+  D2: 십오 분마다 시간을 방송으로 알릴게요.
+  tag=정기 호명 icon=speaker | why: I'll call out은 곧 하겠다는 약속이고 call out은 소리 내어 알린다는 구동사예요. every fifteen minutes가 반복 간격을 알려요.
+  chunks=["I'll call out", 'the time', 'every fifteen minutes', '.'] decoy='the date'
+   * I'll call out the [time] every fifteen minutes.
+     I'll call out the [date] every fifteen minutes.
+     I'll call out the [name] every fifteen minutes.
+     I'll call out the [weather] every fifteen minutes.
+
+[8-2] EN: Everyone should know how long the cuff's been up.
+  KO: 커프가 얼마나 오래 올라가 있었는지 모두 알아야 해요.
+  D1: 커프가 얼마나 높이 올라가 있었는지 모두 알아야 해요.
+  D2: 커프가 얼마나 단단히 올라가 있었는지 모두 알아야 해요.
+  tag=모두 알기 icon=speech | why: Everyone should know로 시작하면 누구 한 사람의 일이 아니라 팀 전체가 알아야 할 일이라는 느낌이 나요. how long이 길이를 묻는 의문사예요.
+  chunks=['Everyone should know', 'how long', "the cuff's been", 'up', '.'] decoy='how loud'
+   * Everyone should know how [long] the cuff's been up.
+     Everyone should know how [high] the cuff's been up.
+     Everyone should know how [tight] the cuff's been up.
+     Everyone should know how [loud] the cuff's been up.
+
+[8-3] EN: I announce the total time every fifteen minutes.
+  KO: 십오 분마다 총 시간을 알려요.
+  D1: 십오 분마다 총 인원을 알려요.
+  D2: 십오 분마다 남은 시간을 알려요.
+  tag=정기 안내 icon=speaker | why: announce는 여러 사람이 듣게 알린다는 뜻이에요. the total time이 알리는 내용이고 every fifteen minutes가 반복 간격이에요.
+  chunks=['I announce', 'the total time', 'every fifteen minutes', '.'] decoy='the total cost'
+   * I [announce] the total time every fifteen minutes.
+     I [hide] the total time every fifteen minutes.
+     I [erase] the total time every fifteen minutes.
+     I [mute] the total time every fifteen minutes.
+
+[8-4] EN: I'm sharing the ischemia time with the whole team.
+  KO: 허혈 시간을 팀 전체와 공유하고 있어요.
+  D1: 점심 시간을 팀 전체와 공유하고 있어요.
+  D2: 마취 시간을 팀 전체와 공유하고 있어요.
+  tag=팀과 공유 icon=handshake2 | why: I'm sharing은 지금 나누는 중이라는 진행형이에요. with the whole team의 whole이 범위가 모두라는 점을 힘줘요.
+  chunks=["I'm sharing", 'the ischemia time', 'with the whole', 'team', '.'] decoy='building'
+   * I'm [sharing] the ischemia time with the whole team.
+     I'm [hiding] the ischemia time with the whole team.
+     I'm [selling] the ischemia time with the whole team.
+     I'm [storing] the ischemia time with the whole team.
+  ORDER ko=허혈 시간 소통 4문장 순서 tag=대화 흐름 icon=compass why=모두가 커프가 얼마나 올라가 있었는지 알아야 한다고 말하고, 십오 분마다 시간을 부르고, 부른 뒤 그 합계를 게시판에 적고, 그 숫자를 팀이 보게 해요.
+    - Let's make sure everyone knows how long the cuff has been up. | 커프가 얼마나 올라가 있었는지 모두 알게 합시다 | 목표 | speech
+    - I'll call out the time every fifteen minutes, starting now. | 지금부터 십오 분마다 시간을 부를게요 | 호명 | speaker
+    - After each call-out, I'll write that total on the board. | 부를 때마다 그 합계를 게시판에 적을게요 | 기록 | board
+    - That way the whole team can see the number. | 그러면 팀 전체가 그 숫자를 볼 수 있어요 | 공유 | handshake2
+    swap12: I'll call out the time every fifteen minutes, starting now. / Let's make sure everyone knows how long the cuff has been up. / After each call-out, I'll write that total on the board. / That way the whole team can see the number.
+    swap23: Let's make sure everyone knows how long the cuff has been up. / After each call-out, I'll write that total on the board. / I'll call out the time every fifteen minutes, starting now. / That way the whole team can see the number.
+    swap34: Let's make sure everyone knows how long the cuff has been up. / I'll call out the time every fifteen minutes, starting now. / That way the whole team can see the number. / After each call-out, I'll write that total on the board.
+
+######## S9 이중 커프 부위마취
+
+[9-0] EN: We inflate the proximal cuff first for the block.
+  KO: 블록을 위해 근위 커프부터 먼저 올려요.
+  D1: 검사를 위해 근위 커프부터 먼저 올려요.
+  D2: 촬영을 위해 근위 커프부터 먼저 올려요.
+  tag=근위 먼저 icon=bandage | why: first가 순서를 못 박아 근위 커프가 먼저라는 점이 분명해요. for the block은 왜 이 순서인지 목적을 덧붙여요.
+  chunks=['We inflate', 'the proximal cuff', 'first', 'for the block', '.'] decoy='for the photo'
+   * We [inflate] the proximal cuff first for the block.
+     We [remove] the proximal cuff first for the block.
+     We [label] the proximal cuff first for the block.
+     We [cancel] the proximal cuff first for the block.
+
+[9-1] EN: Once it's established, we switch to the distal cuff.
+  KO: 블록이 확립되면 원위 커프로 전환해요.
+  D1: 블록이 확립되면 원위 커프를 점검해요.
+  D2: 블록이 확립되면 원위 커프도 올려요.
+  tag=원위 전환 icon=gear | why: Once it's established는 앞 일이 자리 잡은 뒤라는 조건절이에요. we switch to가 다음 단계로 옮겨 간다는 뜻이에요.
+  chunks=["Once it's established", ', we switch', 'to the distal', 'cuff', '.'] decoy='monitor'
+   * Once it's [established], we switch to the distal cuff.
+     Once it's [abandoned], we switch to the distal cuff.
+     Once it's [cancelled], we switch to the distal cuff.
+     Once it's [reversed], we switch to the distal cuff.
+
+[9-2] EN: Let me confirm the sequence with anesthesia.
+  KO: 순서를 마취과와 확인할게요.
+  D1: 일정을 마취과와 확인할게요.
+  D2: 장비를 마취과와 확인할게요.
+  tag=순서 확인 icon=check | why: Let me confirm이 곧 확인하겠다는 예고예요. with anesthesia가 순서를 같이 맞출 상대를 밝혀요.
+  chunks=['Let me confirm', 'the sequence', 'with anesthesia', '.'] decoy='with the cart'
+   * Let me confirm the [sequence] with anesthesia.
+     Let me confirm the [invoice] with anesthesia.
+     Let me confirm the [menu] with anesthesia.
+     Let me confirm the [ticket] with anesthesia.
+
+[9-3] EN: We always confirm which cuff goes up first.
+  KO: 어느 커프가 먼저 올라가는지 항상 확인해요.
+  D1: 어느 커프가 먼저 내려가는지 항상 확인해요.
+  D2: 어느 침대가 먼저 올라가는지 항상 확인해요.
+  tag=항상 확인 icon=check | why: We always confirm이 예외 없는 습관으로 들려요. which cuff goes up first는 의문사절이 확인할 내용을 한 덩어리로 담아요.
+  chunks=['We always confirm', 'which cuff', 'goes up', 'first', '.'] decoy='gets cleaned'
+   * We always [confirm] which cuff goes up first.
+     We always [clean] which cuff goes up first.
+     We always [buy] which cuff goes up first.
+     We always [wash] which cuff goes up first.
+
+[9-4] EN: The proximal cuff is for the Bier block sequence.
+  KO: 근위 커프는 비어 블록 순서를 위한 거예요.
+  D1: 근위 커프는 비어 블록 검사를 위한 거예요.
+  D2: 근위 커프는 비어 블록 교육을 위한 거예요.
+  tag=비어 블록 icon=bandage | why: The proximal cuff is for …는 장비의 용도를 알려 주는 틀이에요. Bier block이 그 용도가 되는 마취 방법의 이름이에요.
+  chunks=['The proximal cuff', 'is for', 'the Bier block', 'sequence', '.'] decoy='the nerve map'
+   * The proximal cuff is for the Bier block [sequence].
+     The proximal cuff is for the Bier block [recipe].
+     The proximal cuff is for the Bier block [ledger].
+     The proximal cuff is for the Bier block [diet].
+  ORDER ko=이중 커프 부위마취 4문장 순서 tag=대화 흐름 icon=compass why=마취과와 순서를 확인하고, 그 순서대로 근위 커프를 먼저 올리고, 블록이 듣기 시작하면 원위 커프가 이어받고, 매번 같은 순서를 따라요.
+    - Let me confirm the sequence with anesthesia. | 순서를 마취과와 확인할게요 | 확인 | check
+    - Per that sequence, the proximal cuff goes up first. | 그 순서대로 근위 커프가 먼저 올라가요 | 근위 | bandage
+    - After the block is working, the distal cuff takes over. | 블록이 듣기 시작하면 원위 커프가 이어받아요 | 원위 | gear
+    - We follow that same order every time. | 매번 그 같은 순서를 따라요 | 반복 | calendar
+    swap12: Per that sequence, the proximal cuff goes up first. / Let me confirm the sequence with anesthesia. / After the block is working, the distal cuff takes over. / We follow that same order every time.
+    swap23: Let me confirm the sequence with anesthesia. / After the block is working, the distal cuff takes over. / Per that sequence, the proximal cuff goes up first. / We follow that same order every time.
+    swap34: Let me confirm the sequence with anesthesia. / Per that sequence, the proximal cuff goes up first. / We follow that same order every time. / After the block is working, the distal cuff takes over.
+
+######## S10 말초혈관질환 주의
+
+[10-0] EN: With PVD, the tourniquet carries added risk.
+  KO: 말초혈관질환이 있으면 지혈대는 위험을 더해요.
+  D1: 말초혈관질환이 있으면 지혈대는 비용을 더해요.
+  D2: 말초혈관질환이 있으면 지혈대는 시간을 더해요.
+  tag=PVD 위험 icon=siren | why: With PVD,로 조건을 먼저 내세우고 쉼표 뒤에 결과를 말하는 틀이에요. carries added risk는 위험을 더 짊어진다는 정형 표현이에요.
+  chunks=['With PVD', ', the tourniquet', 'carries added risk', '.'] decoy='added weight'
+   * With PVD, the tourniquet carries added [risk].
+     With PVD, the tourniquet carries added [cost].
+     With PVD, the tourniquet carries added [noise].
+     With PVD, the tourniquet carries added [speed].
+
+[10-1] EN: Let's discuss whether it's safe for this limb.
+  KO: 이 사지에 안전한지 논의합시다.
+  D1: 이 사지에 편한지 논의합시다.
+  D2: 이 사지에 통증이 있는지 논의합시다.
+  tag=안전 논의 icon=speech | why: Let's discuss는 결정을 내리자가 아니라 같이 이야기해 보자는 제안이에요. whether는 예와 아니오 중 어느 쪽인지를 묻는 접속사예요.
+  chunks=["Let's discuss", "whether it's safe", 'for this limb', '.'] decoy="whether it's tight"
+   * Let's discuss whether it's [safe] for this limb.
+     Let's discuss whether it's [heavy] for this limb.
+     Let's discuss whether it's [warm] for this limb.
+     Let's discuss whether it's [early] for this limb.
+
+[10-2] EN: I'll flag the vascular history to the surgeon.
+  KO: 혈관 병력을 집도의에게 알릴게요.
+  D1: 가족 병력을 집도의에게 알릴게요.
+  D2: 수술 병력을 집도의에게 알릴게요.
+  tag=병력 알림 icon=pager | why: flag는 눈에 띄게 알려 둔다는 뜻이에요. to the surgeon으로 알릴 대상을 밝혀요.
+  chunks=["I'll flag", 'the vascular history', 'to the surgeon', '.'] decoy='the visitor list'
+   * I'll flag the [vascular] history to the surgeon.
+     I'll flag the [dental] history to the surgeon.
+     I'll flag the [visitor] history to the surgeon.
+     I'll flag the [billing] history to the surgeon.
+
+[10-3] EN: PVD patients carry a higher risk with tourniquets.
+  KO: 말초혈관질환 환자는 지혈대에서 위험이 더 높아요.
+  D1: 말초혈관질환 환자는 지혈대에서 비용이 더 높아요.
+  D2: 말초혈관질환 환자는 지혈대에서 시간이 더 걸려요.
+  tag=높은 위험 icon=siren | why: PVD patients를 주어로 세워 어떤 환자들 이야기인지부터 밝혀요. a higher risk의 비교급이 일반 환자보다 높다는 뜻이에요.
+  chunks=['PVD patients', 'carry', 'a higher risk', 'with tourniquets', '.'] decoy='with elevators'
+   * PVD patients [carry] a higher risk with tourniquets.
+     PVD patients [avoid] a higher risk with tourniquets.
+     PVD patients [hide] a higher risk with tourniquets.
+     PVD patients [lack] a higher risk with tourniquets.
+
+[10-4] EN: Let's ask the surgeon if this is still safe.
+  KO: 이게 여전히 안전한지 집도의에게 물어봅시다.
+  D1: 이게 여전히 필요한지 집도의에게 물어봅시다.
+  D2: 이게 여전히 편한지 집도의에게 물어봅시다.
+  tag=집도의에게 질문 icon=speech | why: Let's ask는 같이 물어보자는 제안이에요. if this is still safe가 물을 내용을 절로 담아요.
+  chunks=["Let's ask", 'the surgeon', 'if this is', 'still safe', '.'] decoy='still loud'
+   * Let's ask the surgeon if this is still [safe].
+     Let's ask the surgeon if this is still [loud].
+     Let's ask the surgeon if this is still [warm].
+     Let's ask the surgeon if this is still [early].
+  ORDER ko=말초혈관질환 주의 4문장 순서 tag=대화 흐름 icon=compass why=위험이 더해진다고 알리고, 이 사지에 안전한지 논의하자고 하고, 혈관 병력을 집도의에게 알리고, 그 병력을 바탕으로 집도의의 생각을 물어요.
+    - With PVD, the tourniquet carries added risk. | 말초혈관질환이 있으면 지혈대는 위험을 더해요 | 위험 | siren
+    - So let's discuss whether it's safe for this limb. | 그러니 이 사지에 안전한지 논의합시다 | 논의 | speech
+    - I'll flag the vascular history to the surgeon. | 혈관 병력을 집도의에게 알릴게요 | 알림 | pager
+    - Let's ask the surgeon what they think about that. | 그것에 대해 집도의 생각을 물어봅시다 | 질문 | speech
+    swap12: So let's discuss whether it's safe for this limb. / With PVD, the tourniquet carries added risk. / I'll flag the vascular history to the surgeon. / Let's ask the surgeon what they think about that.
+    swap23: With PVD, the tourniquet carries added risk. / I'll flag the vascular history to the surgeon. / So let's discuss whether it's safe for this limb. / Let's ask the surgeon what they think about that.
+    swap34: With PVD, the tourniquet carries added risk. / So let's discuss whether it's safe for this limb. / Let's ask the surgeon what they think about that. / I'll flag the vascular history to the surgeon.
+
+######## S11 소아 압력 조정
+
+[11-0] EN: Pediatric limbs need a lower occlusion pressure.
+  KO: 소아 사지는 더 낮은 폐색 압력이 필요해요.
+  D1: 소아 사지는 더 낮은 흡입 압력이 필요해요.
+  D2: 소아 사지는 더 낮은 관류 압력이 필요해요.
+  tag=소아 압력 icon=baby | why: need로 필요를 말하고 lower가 일반 성인보다 낮은 값이라는 비교를 담아요. Pediatric limbs를 주어로 세워 대상부터 밝혀요.
+  chunks=['Pediatric limbs', 'need', 'a lower occlusion pressure', '.'] decoy='avoid'
+   * Pediatric limbs need a lower [occlusion] pressure.
+     Pediatric limbs need a lower [osmotic] pressure.
+     Pediatric limbs need a lower [ambient] pressure.
+     Pediatric limbs need a lower [barometric] pressure.
+
+[11-1] EN: Let me recalculate based on the child's size.
+  KO: 아이의 체구를 기준으로 다시 계산할게요.
+  D1: 아이의 나이를 기준으로 다시 계산할게요.
+  D2: 아이의 키를 기준으로 다시 계산할게요.
+  tag=다시 계산 icon=chartup | why: Let me recalculate가 다시 계산하겠다는 예고예요. based on 뒤에 기준이 와서 계산이 체구에서 나온다고 알려요.
+  chunks=['Let me recalculate', 'based on', "the child's size", '.'] decoy="the child's shirt"
+   * Let me recalculate based on the child's [size].
+     Let me recalculate based on the child's [mood].
+     Let me recalculate based on the child's [toy].
+     Let me recalculate based on the child's [shirt].
+
+[11-2] EN: We use the smallest appropriate cuff.
+  KO: 적절한 것 중 가장 작은 커프를 써요.
+  D1: 적절한 것 중 가장 싼 커프를 써요.
+  D2: 적절한 것 중 가장 가벼운 커프를 써요.
+  tag=작은 커프 icon=bandage | why: the smallest appropriate cuff가 알맞은 것 가운데 가장 작은 것이라는 최상급이에요. We use는 늘 그렇게 쓰는 방침을 말해요.
+  chunks=['We use', 'the smallest', 'appropriate cuff', '.'] decoy='the brightest'
+   * We use the [smallest] appropriate cuff.
+     We use the [brightest] appropriate cuff.
+     We use the [loudest] appropriate cuff.
+     We use the [cheapest] appropriate cuff.
+
+[11-3] EN: This child needs a lower pressure setting.
+  KO: 이 아이는 더 낮은 압력 설정이 필요해요.
+  D1: 이 아이는 더 낮은 조명 설정이 필요해요.
+  D2: 이 아이는 더 낮은 속도 설정이 필요해요.
+  tag=낮은 설정 icon=baby | why: This child needs …는 이 아이에게 필요한 것을 말하는 틀이에요. a lower pressure setting에서 lower가 성인보다 낮다는 비교를 담아요.
+  chunks=['This child needs', 'a lower', 'pressure setting', '.'] decoy='pressure sticker'
+   * This child needs a lower [pressure] setting.
+     This child needs a lower [volume] setting.
+     This child needs a lower [temperature] setting.
+     This child needs a lower [brightness] setting.
+
+[11-4] EN: Let's choose the most appropriate pediatric cuff size.
+  KO: 가장 적절한 소아 커프 크기를 고릅시다.
+  D1: 가장 적절한 소아 커프 색깔을 고릅시다.
+  D2: 가장 적절한 소아 커프 브랜드를 고릅시다.
+  tag=소아 커프 크기 icon=bandage | why: Let's choose가 같이 고르자는 제안이에요. the most appropriate는 가장 알맞은 것이라는 최상급이에요.
+  chunks=["Let's choose", 'the most appropriate', 'pediatric cuff size', '.'] decoy='the most famous'
+   * Let's choose the most [appropriate] pediatric cuff size.
+     Let's choose the most [colorful] pediatric cuff size.
+     Let's choose the most [expensive] pediatric cuff size.
+     Let's choose the most [popular] pediatric cuff size.
+  ORDER ko=소아 압력 조정 4문장 순서 tag=대화 흐름 icon=compass why=소아 사지는 더 낮은 압력이 필요하다고 말하고, 아이 체구로 다시 계산하고, 새 값에 맞춰 가장 작은 알맞은 커프를 고르고, 그 선택을 올리기 전에 함께 확인해요.
+    - Pediatric limbs need a lower occlusion pressure. | 소아 사지는 더 낮은 폐색 압력이 필요해요 | 원칙 | baby
+    - So let me recalculate based on the child's size. | 그러니 아이 체구로 다시 계산할게요 | 계산 | chartup
+    - With the new number in hand, I'll choose the smallest appropriate cuff. | 새 값이 있으니 가장 작은 알맞은 커프를 고를게요 | 선택 | bandage
+    - We'll confirm that choice together before inflation. | 올리기 전에 그 선택을 함께 확인할게요 | 확인 | check
+    swap12: So let me recalculate based on the child's size. / Pediatric limbs need a lower occlusion pressure. / With the new number in hand, I'll choose the smallest appropriate cuff. / We'll confirm that choice together before inflation.
+    swap23: Pediatric limbs need a lower occlusion pressure. / With the new number in hand, I'll choose the smallest appropriate cuff. / So let me recalculate based on the child's size. / We'll confirm that choice together before inflation.
+    swap34: Pediatric limbs need a lower occlusion pressure. / So let me recalculate based on the child's size. / We'll confirm that choice together before inflation. / With the new number in hand, I'll choose the smallest appropriate cuff.
+
+######## S12 압흔 손상 예방
+
+[12-0] EN: Make sure the skin isn't pinched under the cuff.
+  KO: 커프 아래에서 피부가 조이지 않는지 확인하세요.
+  D1: 커프 아래에서 튜브가 조이지 않는지 확인하세요.
+  D2: 커프 아래에서 피부가 미끄러지지 않는지 확인하세요.
+  tag=끼임 확인 icon=magnify | why: Make sure …는 꼭 확인하라고 시키는 명령형 틀이에요. isn't pinched는 피부가 끼어 눌려 있지 않은 상태를 부정으로 말해요.
+  chunks=['Make sure', 'the skin', "isn't pinched", 'under the cuff', '.'] decoy="isn't painted"
+   * Make sure the skin isn't [pinched] under the cuff.
+     Make sure the skin isn't [painted] under the cuff.
+     Make sure the skin isn't [dyed] under the cuff.
+     Make sure the skin isn't [framed] under the cuff.
+
+[12-1] EN: No fluid should pool beneath the tourniquet.
+  KO: 지혈대 밑에 액체가 고이면 안 돼요.
+  D1: 지혈대 밑에 먼지가 쌓이면 안 돼요.
+  D2: 지혈대 밑에 액체가 새면 안 돼요.
+  tag=액체 고임 icon=magnify | why: No fluid가 주어에 부정을 바로 붙여 아무 액체도 안 된다는 강한 금지로 들려요. should pool은 고이면 안 된다는 뜻의 규칙이에요.
+  chunks=['No fluid', 'should pool', 'beneath the tourniquet', '.'] decoy='behind the curtain'
+   * No [fluid] should pool beneath the tourniquet.
+     No [dust] should pool beneath the tourniquet.
+     No [light] should pool beneath the tourniquet.
+     No [noise] should pool beneath the tourniquet.
+
+[12-2] EN: Smooth padding prevents pressure injury.
+  KO: 매끄러운 패딩이 압박 손상을 막아요.
+  D1: 매끄러운 패딩이 압박 통증을 막아요.
+  D2: 매끄러운 패딩이 압박 감염을 막아요.
+  tag=압박 손상 icon=shield | why: Smooth padding이 주어이고 prevents가 막아 준다는 효과 동사예요. pressure injury는 눌려서 생기는 피부 손상이라는 용어예요.
+  chunks=['Smooth padding', 'prevents', 'pressure injury', '.'] decoy='pressure sound'
+   * Smooth padding prevents pressure [injury].
+     Smooth padding prevents pressure [sound].
+     Smooth padding prevents pressure [taste].
+     Smooth padding prevents pressure [smell].
+
+[12-3] EN: Check that no skin is pinched anywhere under the cuff.
+  KO: 커프 아래 어디서도 피부가 조이지 않는지 확인하세요.
+  D1: 커프 아래 어디서도 튜브가 꼬이지 않는지 확인하세요.
+  D2: 커프 아래 어디서도 피부가 마르지 않는지 확인하세요.
+  tag=조임 확인 icon=magnify | why: Check that …은 확인을 명령형으로 시키는 틀이에요. anywhere가 어디에서도라는 범위를 모두로 넓혀요.
+  chunks=['Check that', 'no skin is pinched', 'anywhere', 'under the cuff', '.'] decoy='inside the gown'
+   * Check that no [skin] is pinched anywhere under the cuff.
+     Check that no [sticker] is pinched anywhere under the cuff.
+     Check that no [badge] is pinched anywhere under the cuff.
+     Check that no [marker] is pinched anywhere under the cuff.
+
+[12-4] EN: Let's make sure no fluid pooled under the cuff before we start.
+  KO: 시작 전에 커프 아래 액체가 고이지 않았는지 확인합시다.
+  D1: 시작 전에 커프 아래 먼지가 쌓이지 않았는지 확인합시다.
+  D2: 시작 전에 커프 아래 접착제가 묻지 않았는지 확인합시다.
+  tag=시작 전 확인 icon=check | why: Let's make sure …는 같이 확인하자는 제안이에요. before we start가 확인이 시작 앞에 온다고 정해요.
+  chunks=["Let's make sure", 'no fluid pooled', 'under the cuff', 'before we start', '.'] decoy='inside the cooler'
+   * Let's make sure no [fluid] pooled under the cuff before we start.
+     Let's make sure no [glue] pooled under the cuff before we start.
+     Let's make sure no [ink] pooled under the cuff before we start.
+     Let's make sure no [dust] pooled under the cuff before we start.
+  ORDER ko=압흔 손상 예방 4문장 순서 tag=대화 흐름 icon=compass why=패딩을 먼저 매끄럽게 대고, 커프 밑에서 피부가 끼지 않는지 확인하고, 거기에 액체가 고이지 않았는지도 확인한 뒤, 모두 확인되면 시작해요.
+    - Padding goes on first, and it has to be smooth. | 패딩을 먼저 대고 그건 매끄러워야 해요 | 패딩 | bandage
+    - Make sure the skin isn't pinched under the cuff once it's on. | 커프가 감긴 뒤 피부가 끼지 않았는지 확인하세요 | 끼임 | magnify
+    - Check that no fluid has pooled beneath it either. | 그 밑에 액체가 고이지 않았는지도 확인하세요 | 액체 | magnify
+    - With all of that confirmed, we can start. | 그걸 다 확인했으니 시작할 수 있어요 | 시작 | check
+    swap12: Make sure the skin isn't pinched under the cuff once it's on. / Padding goes on first, and it has to be smooth. / Check that no fluid has pooled beneath it either. / With all of that confirmed, we can start.
+    swap23: Padding goes on first, and it has to be smooth. / Check that no fluid has pooled beneath it either. / Make sure the skin isn't pinched under the cuff once it's on. / With all of that confirmed, we can start.
+    swap34: Padding goes on first, and it has to be smooth. / Make sure the skin isn't pinched under the cuff once it's on. / With all of that confirmed, we can start. / Check that no fluid has pooled beneath it either.
+
+######## S13 재적용 시간 관리
+
+[13-0] EN: After reperfusion, the safe reinflation time resets shorter.
+  KO: 재관류 후에는 안전한 재적용 시간이 더 짧게 재설정돼요.
+  D1: 재관류 후에는 안전한 재적용 시간이 더 짧게 표시돼요.
+  D2: 재관류 후에는 안전한 재적용 시간이 더 짧게 기록돼요.
+  tag=재적용 시간 icon=calendar | why: After reperfusion,이 기준 시점을 먼저 깔아요. resets shorter에서 shorter가 이전보다 짧다는 비교를 담아요.
+  chunks=['After reperfusion', ', the safe reinflation time', 'resets shorter', '.'] decoy='resets alone'
+   * After reperfusion, the safe reinflation time [resets] shorter.
+     After reperfusion, the safe reinflation time [expires] shorter.
+     After reperfusion, the safe reinflation time [freezes] shorter.
+     After reperfusion, the safe reinflation time [vanishes] shorter.
+
+[13-1] EN: Let me track the new interval carefully.
+  KO: 새 간격을 조심스럽게 추적할게요.
+  D1: 새 간격을 빠르게 추적할게요.
+  D2: 새 간격을 조용히 추적할게요.
+  tag=새 간격 icon=magnify | why: Let me track이 곧 추적하겠다는 예고예요. carefully가 방식을 부사로 덧붙여요.
+  chunks=['Let me track', 'the new interval', 'carefully', '.'] decoy='a loud'
+   * Let me track the new [interval] carefully.
+     Let me track the new [diet] carefully.
+     Let me track the new [menu] carefully.
+     Let me track the new [route] carefully.
+
+[13-2] EN: We allow a rest period before reinflating.
+  KO: 다시 올리기 전에 휴식 기간을 둬요.
+  D1: 다시 올리기 전에 점검 기간을 둬요.
+  D2: 다시 올리기 전에 소독 기간을 둬요.
+  tag=휴식 기간 icon=calendar | why: We allow는 기간을 두도록 허용한다는 방침이에요. before reinflating이 다시 올리기 앞에 온다고 정해요.
+  chunks=['We allow', 'a rest period', 'before reinflating', '.'] decoy='a long story'
+   * We allow a [rest] period before reinflating.
+     We allow a [lunch] period before reinflating.
+     We allow a [speech] period before reinflating.
+     We allow a [vote] period before reinflating.
+
+[13-3] EN: This time, we can't go as long as before.
+  KO: 이번에는 전만큼 오래 갈 수 없어요.
+  D1: 이번에는 전만큼 멀리 갈 수 없어요.
+  D2: 이번에는 전만큼 빨리 갈 수 없어요.
+  tag=전보다 짧음 icon=calendar | why: This time,이 지난번과 대비하는 시점을 알려요. as long as before가 이전과 같은 길이라는 비교예요.
+  chunks=['This time', ", we can't go", 'as long', 'as before', '.'] decoy='as loud'
+   * This time, we can't go as [long] as before.
+     This time, we can't go as [far] as before.
+     This time, we can't go as [fast] as before.
+     This time, we can't go as [high] as before.
+
+[13-4] EN: I'm tracking the reinflation interval closely.
+  KO: 재적용 간격을 면밀히 추적하고 있어요.
+  D1: 재적용 간격을 혼자 추적하고 있어요.
+  D2: 재적용 간격을 따로 추적하고 있어요.
+  tag=간격 추적 icon=magnify | why: I'm tracking은 지금 하고 있다는 진행형이에요. closely가 방식을 부사로 덧붙여요.
+  chunks=["I'm tracking", 'the reinflation interval', 'closely', '.'] decoy='briefly'
+   * I'm tracking the reinflation interval [closely].
+     I'm tracking the reinflation interval [rarely].
+     I'm tracking the reinflation interval [gently].
+     I'm tracking the reinflation interval [loudly].
+  ORDER ko=재적용 시간 관리 4문장 순서 tag=대화 흐름 icon=compass why=재관류 뒤 안전한 시간이 짧아진다고 말하고, 그래서 전만큼 오래 못 간다고 하고, 다시 올리기 전에 휴식을 두고, 그 시점부터 새 간격을 추적해요.
+    - After reperfusion, the safe reinflation time resets shorter. | 재관류 후 안전한 재적용 시간은 더 짧게 재설정돼요 | 원칙 | calendar
+    - That means we can't go as long as before. | 그건 전만큼 오래 갈 수 없다는 뜻이에요 | 결과 | calendar
+    - We allow a rest period before reinflating. | 다시 올리기 전에 휴식 기간을 둬요 | 휴식 | calendar
+    - I'll track the new interval from that point on. | 그 시점부터 새 간격을 추적할게요 | 추적 | magnify
+    swap12: That means we can't go as long as before. / After reperfusion, the safe reinflation time resets shorter. / We allow a rest period before reinflating. / I'll track the new interval from that point on.
+    swap23: After reperfusion, the safe reinflation time resets shorter. / We allow a rest period before reinflating. / That means we can't go as long as before. / I'll track the new interval from that point on.
+    swap34: After reperfusion, the safe reinflation time resets shorter. / That means we can't go as long as before. / I'll track the new interval from that point on. / We allow a rest period before reinflating.
+
+######## S14 하지 정맥울혈 감시
+
+[14-0] EN: The limb looks congested — I'm watching for venous pooling.
+  KO: 사지가 울혈돼 보여요 — 정맥 고임을 지켜보고 있어요.
+  D1: 사지가 창백해 보여요 — 정맥 고임을 지켜보고 있어요.
+  D2: 사지가 차가워 보여요 — 정맥 고임을 지켜보고 있어요.
+  tag=울혈 감시 icon=magnify | why: looks congested가 눈으로 본 소견이고 대시 뒤 I'm watching for가 그래서 지켜보는 중이라는 행동이에요. venous pooling은 정맥에 피가 고이는 현상이에요.
+  chunks=['The limb looks', 'congested', "— I'm watching", 'for venous pooling', '.'] decoy='relaxed'
+   * The limb looks [congested] — I'm watching for venous pooling.
+     The limb looks [pale] — I'm watching for venous pooling.
+     The limb looks [clean] — I'm watching for venous pooling.
+     The limb looks [relaxed] — I'm watching for venous pooling.
+
+[14-1] EN: Let me check if exsanguination was adequate.
+  KO: 거혈이 충분했는지 확인할게요.
+  D1: 거혈이 빨랐는지 확인할게요.
+  D2: 거혈이 깨끗했는지 확인할게요.
+  tag=거혈 확인 icon=check | why: Let me check if …는 확인하겠다는 예고에 if절로 확인할 내용을 담아요. adequate는 충분하다는 평가어예요.
+  chunks=['Let me check', 'if exsanguination', 'was adequate', '.'] decoy='was audible'
+   * Let me check if exsanguination was [adequate].
+     Let me check if exsanguination was [loud].
+     Let me check if exsanguination was [famous].
+     Let me check if exsanguination was [annual].
+
+[14-2] EN: I'll report the color changes to the surgeon.
+  KO: 색 변화를 집도의에게 보고할게요.
+  D1: 온도 변화를 집도의에게 보고할게요.
+  D2: 맥박 변화를 집도의에게 보고할게요.
+  tag=색 변화 보고 icon=pager | why: I'll report A to B는 A를 B에게 보고하겠다는 틀이에요. color changes는 피부색 변화라는 눈에 보이는 소견이에요.
+  chunks=["I'll report", 'the color changes', 'to the surgeon', '.'] decoy='the staff changes'
+   * I'll report the [color] changes to the surgeon.
+     I'll report the [weather] changes to the surgeon.
+     I'll report the [rumor] changes to the surgeon.
+     I'll report the [noise] changes to the surgeon.
+
+[14-3] EN: The leg looks a bit congested below the cuff.
+  KO: 커프 아래 다리가 좀 울혈돼 보여요.
+  D1: 커프 아래 다리가 아주 울혈돼 보여요.
+  D2: 커프 아래 다리가 좀 창백해 보여요.
+  tag=다리 울혈 icon=magnify | why: a bit이 정도를 약하게 낮춰 말하는 완화어예요. below the cuff가 소견이 보이는 위치를 정해요.
+  chunks=['The leg looks', 'a bit', 'congested', 'below the cuff', '.'] decoy='beside the bed'
+   * The [leg] looks a bit congested below the cuff.
+     The [room] looks a bit congested below the cuff.
+     The [wall] looks a bit congested below the cuff.
+     The [screen] looks a bit congested below the cuff.
+
+[14-4] EN: I'm documenting what I see and reporting it now.
+  KO: 지금 보이는 것을 기록하고 보고하고 있어요.
+  D1: 지금 들리는 것을 기록하고 보고하고 있어요.
+  D2: 지금 느끼는 것을 기록하고 보고하고 있어요.
+  tag=기록과 보고 icon=pencil | why: documenting과 reporting을 and로 묶어 기록과 보고를 함께 한다는 뜻이에요. now가 지금 바로라는 점을 붙여요.
+  chunks=["I'm documenting", 'what I see', 'and reporting it', 'now', '.'] decoy='and rating it'
+   * I'm [documenting] what I see and reporting it now.
+     I'm [concealing] what I see and reporting it now.
+     I'm [rehearsing] what I see and reporting it now.
+     I'm [decorating] what I see and reporting it now.
+  ORDER ko=하지 정맥울혈 감시 4문장 순서 tag=대화 흐름 icon=compass why=커프 아래 다리가 울혈돼 보인다고 말하고, 거혈이 충분했는지 확인하고, 보이는 것을 기록하고, 그 색 변화를 집도의에게 보고해요.
+    - The leg looks a bit congested below the cuff. | 커프 아래 다리가 좀 울혈돼 보여요 | 소견 | magnify
+    - Let me check if exsanguination was adequate. | 거혈이 충분했는지 확인할게요 | 확인 | check
+    - I'm documenting what I see. | 보이는 것을 기록하고 있어요 | 기록 | pencil
+    - I'll report those color changes to the surgeon. | 그 색 변화를 집도의에게 보고할게요 | 보고 | pager
+    swap12: Let me check if exsanguination was adequate. / The leg looks a bit congested below the cuff. / I'm documenting what I see. / I'll report those color changes to the surgeon.
+    swap23: The leg looks a bit congested below the cuff. / I'm documenting what I see. / Let me check if exsanguination was adequate. / I'll report those color changes to the surgeon.
+    swap34: The leg looks a bit congested below the cuff. / Let me check if exsanguination was adequate. / I'll report those color changes to the surgeon. / I'm documenting what I see.
+
+######## S15 허용 시간 초과 임박
+
+[15-0] EN: We're at the maximum safe time — we need to deflate now.
+  KO: 최대 안전 시간에 왔어요 — 지금 공기를 빼야 해요.
+  D1: 점심 시간에 왔어요 — 지금 공기를 빼야 해요.
+  D2: 최대 안전 거리에 왔어요 — 지금 공기를 빼야 해요.
+  tag=지금 감압 icon=siren | why: We're at …은 한계에 지금 와 있다는 현재 상태를 말해요. we need to … now는 선택이 아니라 지금 해야 하는 일이라는 뜻이에요.
+  chunks=["We're at", 'the maximum safe time', '— we need', 'to deflate now', '.'] decoy='the maximum tray size'
+   * We're at the [maximum] safe time — we need to deflate now.
+     We're at the [minimum] safe time — we need to deflate now.
+     We're at the [average] safe time — we need to deflate now.
+     We're at the [usual] safe time — we need to deflate now.
+
+[15-1] EN: I'm escalating this, the limb is at risk.
+  KO: 이걸 상급 보고할게요, 사지가 위험해요.
+  D1: 이걸 상급 보고할게요, 사지가 차가워요.
+  D2: 이걸 상급 보고할게요, 사지가 부었어요.
+  tag=상급 보고 icon=pager | why: escalate는 더 높은 책임자에게 올려 알린다는 뜻이에요. 쉼표 뒤 the limb is at risk가 그렇게 올리는 이유를 짧게 붙여요.
+  chunks=["I'm escalating this", ', the limb', 'is at risk', '.'] decoy='is on sale'
+   * I'm [escalating] this, the limb is at risk.
+     I'm [cleaning] this, the limb is at risk.
+     I'm [sorting] this, the limb is at risk.
+     I'm [filing] this, the limb is at risk.
+
+[15-2] EN: Surgeon, we cannot exceed this time.
+  KO: 집도의, 이 시간을 초과할 수 없어요.
+  D1: 집도의, 이 일정을 초과할 수 없어요.
+  D2: 집도의, 이 예산을 초과할 수 없어요.
+  tag=초과 불가 icon=siren | why: Surgeon,으로 이름을 먼저 불러 누구에게 하는 말인지 분명히 해요. cannot exceed는 넘으면 안 된다는 강한 한계예요.
+  chunks=['Surgeon', ', we cannot', 'exceed this time', '.'] decoy='enter this room'
+   * Surgeon, we cannot [exceed] this time.
+     Surgeon, we cannot [enter] this time.
+     Surgeon, we cannot [move] this time.
+     Surgeon, we cannot [buy] this time.
+
+[15-3] EN: We have to act right now — deflate it.
+  KO: 지금 당장 조치해야 해요 — 공기를 빼세요.
+  D1: 지금 당장 교대해야 해요 — 공기를 빼세요.
+  D2: 지금 당장 이동해야 해요 — 공기를 빼세요.
+  tag=즉시 조치 icon=siren | why: have to가 해야만 한다는 의무예요. right now와 짧은 명령 deflate it이 겹쳐 지금 바로라는 긴박감을 줘요.
+  chunks=['We have to act', 'right now', '— deflate', 'it', '.'] decoy='We have to chart'
+   * We have to [act] right now — deflate it.
+     We have to [sign] right now — deflate it.
+     We have to [pay] right now — deflate it.
+     We have to [vote] right now — deflate it.
+
+[15-4] EN: This is the maximum — we cannot go any longer.
+  KO: 이게 최대치예요 — 더는 갈 수 없어요.
+  D1: 이게 평균이에요 — 더는 갈 수 없어요.
+  D2: 이게 첫 번째예요 — 더는 갈 수 없어요.
+  tag=더는 불가 icon=siren | why: This is the maximum이 한계점을 한 문장으로 못 박아요. cannot go any longer가 더 이상은 안 된다는 뜻이에요.
+  chunks=['This is', 'the maximum', '— we cannot', 'go any longer', '.'] decoy='go any louder'
+   * This is the [maximum] — we cannot go any longer.
+     This is the [typical] — we cannot go any longer.
+     This is the [first] — we cannot go any longer.
+     This is the [usual] — we cannot go any longer.
+  ORDER ko=허용 시간 초과 임박 4문장 순서 tag=대화 흐름 icon=compass why=최대 안전 시간에 왔다고 말하고, 집도의에게 올려 알리고, 그 한계를 넘을 수 없으니 지금 공기를 빼야 하고, 내려가면 그 시각을 적어요.
+    - We're at the maximum safe time. | 최대 안전 시간에 왔어요 | 도달 | siren
+    - I'm escalating this to the surgeon right away. | 이걸 바로 집도의에게 올려 알릴게요 | 보고 | pager
+    - We cannot go past that limit, so we need to deflate now. | 그 한계를 넘을 수 없으니 지금 빼야 해요 | 감압 | siren
+    - Once it's down, I'll note that time. | 내려가면 그 시각을 적을게요 | 기록 | pencil
+    swap12: I'm escalating this to the surgeon right away. / We're at the maximum safe time. / We cannot go past that limit, so we need to deflate now. / Once it's down, I'll note that time.
+    swap23: We're at the maximum safe time. / We cannot go past that limit, so we need to deflate now. / I'm escalating this to the surgeon right away. / Once it's down, I'll note that time.
+    swap34: We're at the maximum safe time. / I'm escalating this to the surgeon right away. / Once it's down, I'll note that time. / We cannot go past that limit, so we need to deflate now.
+
+######## S16 재관류 저혈압 발생
+
+[16-0] EN: BP is dropping after release — this is reperfusion hypotension.
+  KO: 혈압이 풀린 후 떨어지고 있어요 — 재관류 저혈압이에요.
+  D1: 혈압이 풀린 후 떨어지고 있어요 — 재관류 부정맥이에요.
+  D2: 혈압이 풀린 후 떨어지고 있어요 — 재관류 탈수예요.
+  tag=재관류 저혈압 icon=siren | why: after release가 원인이 되는 시점을 붙여 푼 직후라는 걸 알려요. 대시 뒤 이름 reperfusion hypotension이 팀이 같은 현상으로 이해하게 해요.
+  chunks=['BP is dropping', 'after release', '— this is', 'reperfusion hypotension', '.'] decoy='reperfusion fever'
+   * BP is [dropping] after release — this is reperfusion hypotension.
+     BP is [rising] after release — this is reperfusion hypotension.
+     BP is [steady] after release — this is reperfusion hypotension.
+     BP is [flashing] after release — this is reperfusion hypotension.
+
+[16-1] EN: Anesthesia, do you need me to grab fluids or pressors?
+  KO: 마취과, 제가 수액이나 승압제를 가져올까요?
+  D1: 마취과, 제가 수액이나 담요를 가져올까요?
+  D2: 마취과, 제가 거즈나 승압제를 가져올까요?
+  tag=가져올까요 icon=stetho | why: 이름을 먼저 부르고 do you need me to …로 상대 뜻을 묻는 공손한 제안이에요. grab은 급히 집어 온다는 느낌의 동사예요.
+  chunks=['Anesthesia', ', do you need', 'me to grab', 'fluids or pressors', '?'] decoy='me to bill'
+   * Anesthesia, do you need me to [grab] fluids or pressors?
+     Anesthesia, do you need me to [sign] fluids or pressors?
+     Anesthesia, do you need me to [spell] fluids or pressors?
+     Anesthesia, do you need me to [rename] fluids or pressors?
+
+[16-2] EN: I'm watching the monitor closely with you.
+  KO: 당신과 함께 모니터를 면밀히 지켜보고 있어요.
+  D1: 수술 기사와 함께 모니터를 면밀히 지켜보고 있어요.
+  D2: 혼자 모니터를 면밀히 지켜보고 있어요.
+  tag=함께 감시 icon=monitor | why: closely가 면밀히라는 부사로 감시의 강도를 알려요. with you가 혼자가 아니라 함께 본다는 점을 붙여요.
+  chunks=["I'm watching", 'the monitor', 'closely with you', '.'] decoy='the window'
+   * I'm watching the [monitor] closely with you.
+     I'm watching the [window] closely with you.
+     I'm watching the [ceiling] closely with you.
+     I'm watching the [curtain] closely with you.
+
+[16-3] EN: Pressure's dropping fast right after deflation.
+  KO: 공기를 뺀 직후 압력이 빠르게 떨어지고 있어요.
+  D1: 공기를 뺀 직후 온도가 빠르게 떨어지고 있어요.
+  D2: 공기를 뺀 직후 속도가 빠르게 떨어지고 있어요.
+  tag=빠른 하강 icon=siren | why: Pressure's는 Pressure is의 줄임이고 dropping fast가 하강 속도를 부사로 알려요. right after deflation이 시점을 정해요.
+  chunks=["Pressure's dropping", 'fast', 'right after deflation', '.'] decoy='inside the pump'
+   * Pressure's [dropping] fast right after deflation.
+     Pressure's [rising] fast right after deflation.
+     Pressure's [holding] fast right after deflation.
+     Pressure's [freezing] fast right after deflation.
+
+[16-4] EN: Let's grab fluids and watch the monitor together.
+  KO: 함께 수액을 가져오고 모니터를 지켜봅시다.
+  D1: 함께 담요를 가져오고 모니터를 지켜봅시다.
+  D2: 함께 거즈를 가져오고 모니터를 지켜봅시다.
+  tag=함께 대응 icon=handshake2 | why: Let's가 같이 하자는 제안이에요. and로 가져오기와 지켜보기 두 가지를 한 문장에 이어요.
+  chunks=["Let's grab", 'fluids', 'and watch', 'the monitor together', '.'] decoy='snacks'
+   * Let's grab [fluids] and watch the monitor together.
+     Let's grab [tape] and watch the monitor together.
+     Let's grab [pens] and watch the monitor together.
+     Let's grab [forms] and watch the monitor together.
+  ORDER ko=재관류 저혈압 발생 4문장 순서 tag=대화 흐름 icon=compass why=푼 직후 압력이 빠르게 떨어진다고 말하고, 그것이 재관류 저혈압이라고 짚고, 마취과에 수액이나 승압제가 필요한지 묻고, 처치하는 동안 모니터를 함께 봐요.
+    - Pressure's dropping fast right after deflation. | 공기를 뺀 직후 압력이 빠르게 떨어져요 | 하강 | siren
+    - That's reperfusion hypotension. | 그건 재관류 저혈압이에요 | 판단 | stetho
+    - Anesthesia, do you need me to grab fluids or pressors for that? | 마취과, 그것에 수액이나 승압제를 가져올까요 | 제안 | pager
+    - While you treat it, I'm watching the monitor closely with you. | 처치하는 동안 함께 모니터를 지켜보고 있어요 | 감시 | monitor
+    swap12: That's reperfusion hypotension. / Pressure's dropping fast right after deflation. / Anesthesia, do you need me to grab fluids or pressors for that? / While you treat it, I'm watching the monitor closely with you.
+    swap23: Pressure's dropping fast right after deflation. / Anesthesia, do you need me to grab fluids or pressors for that? / That's reperfusion hypotension. / While you treat it, I'm watching the monitor closely with you.
+    swap34: Pressure's dropping fast right after deflation. / That's reperfusion hypotension. / While you treat it, I'm watching the monitor closely with you. / Anesthesia, do you need me to grab fluids or pressors for that?
+
+######## S17 지혈대 신경마비 손상
+
+[17-0] EN: Prolonged pressure may have caused nerve injury.
+  KO: 장시간 압박이 신경 손상을 일으켰을 수 있어요.
+  D1: 갑작스러운 압박이 신경 손상을 일으켰을 수 있어요.
+  D2: 장시간 압박이 피부 손상을 일으켰을 수 있어요.
+  tag=신경 손상 icon=siren | why: may have caused는 원인을 단정하지 않고 가능성으로만 말해요. 확인되기 전에 환자와 팀에게 쓰는 조심스러운 틀이에요.
+  chunks=['Prolonged pressure', 'may have caused', 'nerve injury', '.'] decoy='bone density'
+   * [Prolonged] pressure may have caused nerve injury.
+     [Gentle] pressure may have caused nerve injury.
+     [Brief] pressure may have caused nerve injury.
+     [Occasional] pressure may have caused nerve injury.
+
+[17-1] EN: Let's document the deficit and inform the surgeon.
+  KO: 결손을 기록하고 집도의에게 알립시다.
+  D1: 비용을 기록하고 집도의에게 알립시다.
+  D2: 일정을 기록하고 집도의에게 알립시다.
+  tag=기록과 알림 icon=pencil | why: document와 inform을 and로 묶어 기록과 알림을 함께 한다는 뜻이에요. Let's로 같이 하자는 제안이 돼요.
+  chunks=["Let's document", 'the deficit', 'and inform', 'the surgeon', '.'] decoy='the receipt'
+   * Let's document the [deficit] and inform the surgeon.
+     Let's document the [receipt] and inform the surgeon.
+     Let's document the [invoice] and inform the surgeon.
+     Let's document the [payroll] and inform the surgeon.
+
+[17-2] EN: We need a neuro assessment postoperatively.
+  KO: 수술 후에 신경학적 평가가 필요해요.
+  D1: 수술 후에 신경학적 교육이 필요해요.
+  D2: 수술 후에 신경학적 서류가 필요해요.
+  tag=수술 후 평가 icon=stetho | why: We need a …는 필요한 것을 말하는 틀이에요. postoperatively가 수술 뒤라는 시점을 한 낱말 부사로 말해요.
+  chunks=['We need', 'a neuro assessment', 'postoperatively', '.'] decoy='a new schedule'
+   * We need a neuro [assessment] postoperatively.
+     We need a neuro [schedule] postoperatively.
+     We need a neuro [textbook] postoperatively.
+     We need a neuro [invoice] postoperatively.
+
+[17-3] EN: The limb was compressed too long this time.
+  KO: 이번에는 사지가 너무 오래 압박됐어요.
+  D1: 이번에는 사지가 너무 세게 압박됐어요.
+  D2: 이번에는 사지가 너무 자주 압박됐어요.
+  tag=과도한 압박 icon=bandage | why: was compressed too long은 수동태로 사지가 눌렸고 그 시간이 길었다는 사실을 말해요. this time이 이번 경우라는 점을 붙여요.
+  chunks=['The limb was', 'compressed too long', 'this time', '.'] decoy='painted too bright'
+   * The limb was compressed too [long] this time.
+     The limb was compressed too [hard] this time.
+     The limb was compressed too [often] this time.
+     The limb was compressed too [early] this time.
+
+[17-4] EN: I'll inform the surgeon and document the nerve deficit.
+  KO: 집도의에게 알리고 신경 결손을 기록할게요.
+  D1: 집도의에게 알리고 신경 점수를 기록할게요.
+  D2: 집도의에게 알리고 신경 위치를 기록할게요.
+  tag=알림과 기록 icon=pager | why: I'll inform A and document B는 알림과 기록을 한 문장에 맡는 틀이에요. the nerve deficit이 기록할 대상이에요.
+  chunks=["I'll inform", 'the surgeon', 'and document', 'the nerve deficit', '.'] decoy='the night shift'
+   * I'll inform the surgeon and document the [nerve] deficit.
+     I'll inform the surgeon and document the [night] deficit.
+     I'll inform the surgeon and document the [bank] deficit.
+     I'll inform the surgeon and document the [cart] deficit.
+  ORDER ko=지혈대 신경마비 손상 4문장 순서 tag=대화 흐름 icon=compass why=장시간 압박이 신경 손상을 일으켰을 수 있다고 말하고, 집도의에게 알리며 결손을 기록하고, 수술 후 신경 평가가 필요하다고 하고, 그 평가가 회복 여부를 보여 준다고 마무리해요.
+    - Prolonged pressure may have caused nerve injury. | 장시간 압박이 신경 손상을 일으켰을 수 있어요 | 원인 | siren
+    - I'll inform the surgeon and document the nerve deficit. | 집도의에게 알리고 신경 결손을 기록할게요 | 알림 | pager
+    - We'll need a neuro assessment postoperatively. | 수술 후에 신경학적 평가가 필요할 거예요 | 평가 | stetho
+    - That assessment will show whether the nerve recovers. | 그 평가가 신경이 회복되는지 보여 줄 거예요 | 결과 | magnify
+    swap12: I'll inform the surgeon and document the nerve deficit. / Prolonged pressure may have caused nerve injury. / We'll need a neuro assessment postoperatively. / That assessment will show whether the nerve recovers.
+    swap23: Prolonged pressure may have caused nerve injury. / We'll need a neuro assessment postoperatively. / I'll inform the surgeon and document the nerve deficit. / That assessment will show whether the nerve recovers.
+    swap34: Prolonged pressure may have caused nerve injury. / I'll inform the surgeon and document the nerve deficit. / That assessment will show whether the nerve recovers. / We'll need a neuro assessment postoperatively.
+
+######## S18 압력 오류 지속 출혈
+
+[18-0] EN: There's continued bleeding — let me check the cuff pressure.
+  KO: 출혈이 계속되고 있어요 — 커프 압력을 확인할게요.
+  D1: 출혈이 계속되고 있어요 — 커프 크기를 확인할게요.
+  D2: 출혈이 계속되고 있어요 — 장비 배터리를 확인할게요.
+  tag=출혈과 압력 icon=siren | why: 대시 앞은 관찰이고 뒤는 그래서 하겠다는 행동이에요. let me check는 곧 확인하겠다고 알리는 말이에요.
+  chunks=["There's continued bleeding", '— let me check', 'the cuff', 'pressure', '.'] decoy='the cuff smell'
+   * There's continued bleeding — let me check the cuff [pressure].
+     There's continued bleeding — let me check the cuff [smell].
+     There's continued bleeding — let me check the cuff [weight].
+     There's continued bleeding — let me check the cuff [brand].
+
+[18-1] EN: The tourniquet may not be occluding fully.
+  KO: 지혈대가 완전히 폐색시키지 못하고 있는 것 같아요.
+  D1: 지혈대가 완전히 미끄러지고 있는 것 같아요.
+  D2: 지혈대가 완전히 물에 젖고 있는 것 같아요.
+  tag=폐색 불충분 icon=siren | why: may not be가 그럴 수도 있다는 추측을 담아 단정을 피해요. occluding fully가 완전히 막지 못한다는 뜻이에요.
+  chunks=['The tourniquet', 'may not be', 'occluding fully', '.'] decoy='occupying space'
+   * The tourniquet may not be [occluding] fully.
+     The tourniquet may not be [heating] fully.
+     The tourniquet may not be [leaking] fully.
+     The tourniquet may not be [ringing] fully.
+
+[18-2] EN: I'm troubleshooting the device now.
+  KO: 지금 장비 문제를 해결하고 있어요.
+  D1: 지금 전화 문제를 해결하고 있어요.
+  D2: 지금 조명 문제를 해결하고 있어요.
+  tag=장비 점검 icon=gear | why: troubleshoot는 고장 원인을 찾아 고친다는 뜻의 동사예요. now로 지금 하고 있다는 점을 알려요.
+  chunks=["I'm troubleshooting", 'the device', 'now', '.'] decoy='the elevator'
+   * I'm troubleshooting the [device] now.
+     I'm troubleshooting the [elevator] now.
+     I'm troubleshooting the [printer] now.
+     I'm troubleshooting the [phone] now.
+
+[18-3] EN: The field is still bleeding under the cuff.
+  KO: 커프 아래 필드에서 여전히 출혈이 있어요.
+  D1: 커프 아래 필드에서 처음으로 출혈이 있어요.
+  D2: 커프 아래 필드에서 여전히 통증이 있어요.
+  tag=필드 출혈 icon=siren | why: still이 아직도라는 뜻이라 이미 계속된 상태를 알려요. under the cuff가 어디서 나는지 위치를 정해요.
+  chunks=['The field is', 'still bleeding', 'under the cuff', '.'] decoy='still glowing'
+   * The field is still [bleeding] under the cuff.
+     The field is still [swelling] under the cuff.
+     The field is still [clotting] under the cuff.
+     The field is still [healing] under the cuff.
+
+[18-4] EN: Let's check the device and confirm the pressure is correct.
+  KO: 장비를 확인하고 압력이 맞는지 확인합시다.
+  D1: 장비를 확인하고 번호가 맞는지 확인합시다.
+  D2: 장비를 확인하고 날짜가 맞는지 확인합시다.
+  tag=장비와 압력 icon=check | why: Let's check와 and confirm으로 점검을 두 단계로 나눠요. the pressure is correct가 맞는지 확인할 내용이에요.
+  chunks=["Let's check", 'the device', 'and confirm', 'the pressure is correct', '.'] decoy='the printout is crooked'
+   * Let's [check] the device and confirm the pressure is correct.
+     Let's [paint] the device and confirm the pressure is correct.
+     Let's [move] the device and confirm the pressure is correct.
+     Let's [pour] the device and confirm the pressure is correct.
+  ORDER ko=압력 오류 지속 출혈 4문장 순서 tag=대화 흐름 icon=compass why=커프 아래에서 출혈이 계속된다고 말하고, 지혈대가 완전히 막지 못하는 것 같다고 추정하고, 장비와 압력이 맞는지 확인하고, 원인이 나올 때까지 계속 해결해요.
+    - There's continued bleeding under the cuff. | 커프 아래에서 출혈이 계속돼요 | 관찰 | siren
+    - That might mean it isn't occluding fully. | 그건 완전히 막지 못한다는 뜻일 수 있어요 | 추정 | magnify
+    - Let's check the device and confirm the pressure is correct. | 장비를 확인하고 압력이 맞는지 확인합시다 | 점검 | gear
+    - Whatever we find, I'll keep troubleshooting until the bleeding stops. | 뭘 찾든 출혈이 멎을 때까지 계속 해결할게요 | 해결 | check
+    swap12: That might mean it isn't occluding fully. / There's continued bleeding under the cuff. / Let's check the device and confirm the pressure is correct. / Whatever we find, I'll keep troubleshooting until the bleeding stops.
+    swap23: There's continued bleeding under the cuff. / Let's check the device and confirm the pressure is correct. / That might mean it isn't occluding fully. / Whatever we find, I'll keep troubleshooting until the bleeding stops.
+    swap34: There's continued bleeding under the cuff. / That might mean it isn't occluding fully. / Whatever we find, I'll keep troubleshooting until the bleeding stops. / Let's check the device and confirm the pressure is correct.
+
+######## S19 재관류 대사 급변
+
+[19-0] EN: We're seeing a metabolic surge after reperfusion.
+  KO: 재관류 후 대사성 급증이 보여요.
+  D1: 소독 후 대사성 급증이 보여요.
+  D2: 마취 후 대사성 급증이 보여요.
+  tag=대사 급증 icon=lab | why: We're seeing …은 눈앞에서 지금 보이는 변화를 말하는 현재진행 틀이에요. after reperfusion이 변화가 일어난 시점을 붙여요.
+  chunks=["We're seeing", 'a metabolic surge', 'after reperfusion', '.'] decoy='a sudden storm'
+   * We're seeing a [metabolic] surge after reperfusion.
+     We're seeing a [dermal] surge after reperfusion.
+     We're seeing a [dental] surge after reperfusion.
+     We're seeing a [ocular] surge after reperfusion.
+
+[19-1] EN: Anesthesia, do you need labs or treatment drawn up?
+  KO: 마취과, 검사나 치료제를 준비해 드릴까요?
+  D1: 마취과, 서류나 치료제를 준비해 드릴까요?
+  D2: 마취과, 검사나 서류를 준비해 드릴까요?
+  tag=검사와 치료제 icon=stetho | why: 이름을 먼저 부르고 do you need …?로 상대 필요를 묻는 공손한 제안이에요. drawn up은 주사기에 약을 뽑아 준비해 둔다는 뜻이에요.
+  chunks=['Anesthesia', ', do you need', 'labs or treatment', 'drawn up', '?'] decoy='drawn on'
+   * Anesthesia, do you need [labs] or treatment drawn up?
+     Anesthesia, do you need [forms] or treatment drawn up?
+     Anesthesia, do you need [badges] or treatment drawn up?
+     Anesthesia, do you need [stamps] or treatment drawn up?
+
+[19-2] EN: I'm ready to assist with whatever you need.
+  KO: 필요한 건 뭐든 도울 준비가 됐어요.
+  D1: 필요한 건 뭐든 설명할 준비가 됐어요.
+  D2: 필요한 건 뭐든 기록할 준비가 됐어요.
+  tag=도울 준비 icon=handshake2 | why: I'm ready to …는 바로 움직일 준비가 됐다는 뜻이에요. whatever you need가 범위를 상대가 필요한 모든 것으로 열어 둬요.
+  chunks=["I'm ready", 'to assist', 'with whatever you need', '.'] decoy='to arrive'
+   * I'm ready to [assist] with whatever you need.
+     I'm ready to [argue] with whatever you need.
+     I'm ready to [arrive] with whatever you need.
+     I'm ready to [apologize] with whatever you need.
+
+[19-3] EN: This is a metabolic surge — let's act quickly.
+  KO: 이건 대사성 급증이에요 — 신속히 조치합시다.
+  D1: 이건 대사성 급증이에요 — 함께 조치합시다.
+  D2: 이건 대사성 급증이에요 — 조용히 조치합시다.
+  tag=신속 조치 icon=siren | why: This is …로 먼저 상황을 이름 붙이고 대시 뒤에 let's act quickly로 행동을 제안해요. quickly가 속도를 부사로 알려요.
+  chunks=['This is', 'a metabolic surge', "— let's act", 'quickly', '.'] decoy='politely'
+   * This is a metabolic [surge] — let's act quickly.
+     This is a metabolic [drop] — let's act quickly.
+     This is a metabolic [loss] — let's act quickly.
+     This is a metabolic [delay] — let's act quickly.
+
+[19-4] EN: Let me know if you need labs drawn right now.
+  KO: 지금 검사가 필요하면 알려 주세요.
+  D1: 지금 번역이 필요하면 알려 주세요.
+  D2: 지금 휴식이 필요하면 알려 주세요.
+  tag=검사 필요 시 icon=speech | why: Let me know if …는 필요하면 알려 달라는 열린 요청이에요. right now가 지금 바로라는 점을 붙여요.
+  chunks=['Let me know', 'if you need', 'labs drawn', 'right now', '.'] decoy='forms printed'
+   * Let me know if you need [labs] drawn right now.
+     Let me know if you need [forms] drawn right now.
+     Let me know if you need [badges] drawn right now.
+     Let me know if you need [stamps] drawn right now.
+  ORDER ko=재관류 대사 급변 4문장 순서 tag=대화 흐름 icon=compass why=재관류 뒤 대사성 급증이 보인다고 알리고, 마취과에 검사나 치료제가 필요한지 묻고, 필요하면 바로 말해 달라고 하고, 어느 쪽이든 돕겠다고 해요.
+    - We're seeing a metabolic surge after reperfusion. | 재관류 후 대사성 급증이 보여요 | 관찰 | lab
+    - Anesthesia, do you need labs or treatment drawn up for it? | 마취과, 그것에 검사나 치료제를 준비해 드릴까요 | 질문 | stetho
+    - If you do, let me know right now. | 필요하시면 지금 바로 알려 주세요 | 요청 | speech
+    - Either way, I'm ready to assist with whatever you need. | 어느 쪽이든 필요한 건 뭐든 도울 준비가 됐어요 | 준비 | handshake2
+    swap12: Anesthesia, do you need labs or treatment drawn up for it? / We're seeing a metabolic surge after reperfusion. / If you do, let me know right now. / Either way, I'm ready to assist with whatever you need.
+    swap23: We're seeing a metabolic surge after reperfusion. / If you do, let me know right now. / Anesthesia, do you need labs or treatment drawn up for it? / Either way, I'm ready to assist with whatever you need.
+    swap34: We're seeing a metabolic surge after reperfusion. / Anesthesia, do you need labs or treatment drawn up for it? / Either way, I'm ready to assist with whatever you need. / If you do, let me know right now.
+
+######## S20 장시간 허혈 근손상
+
+[20-0] EN: With that ischemia time, muscle injury is a concern.
+  KO: 그 정도 허혈 시간이면 근손상이 우려돼요.
+  D1: 그 정도 허혈 시간이면 신장 손상이 우려돼요.
+  D2: 그 정도 허혈 시간이면 비용이 우려돼요.
+  tag=근손상 우려 icon=siren | why: With that ischemia time,으로 조건을 먼저 깔면 뒤의 우려가 왜 나오는지 바로 이어져요. is a concern은 확정이 아니라 걱정하는 단계라는 뜻이에요.
+  chunks=['With that', 'ischemia time', ', muscle injury', 'is a concern', '.'] decoy='muscle tone'
+   * With that ischemia time, [muscle] injury is a concern.
+     With that ischemia time, [liver] injury is a concern.
+     With that ischemia time, [spleen] injury is a concern.
+     With that ischemia time, [thyroid] injury is a concern.
+
+[20-1] EN: Let's watch for compartment signs postoperatively.
+  KO: 수술 후에 구획 징후를 지켜봅시다.
+  D1: 수술 후에 구획 위치를 지켜봅시다.
+  D2: 수술 후에 구획 크기를 지켜봅시다.
+  tag=구획 징후 icon=magnify | why: Let's watch for …는 앞으로 지켜볼 것을 같이 정하는 제안이에요. postoperatively가 수술 뒤라는 시점을 한 낱말로 말해요.
+  chunks=["Let's watch", 'for compartment signs', 'postoperatively', '.'] decoy='for compartment keys'
+   * Let's watch for [compartment] signs postoperatively.
+     Let's watch for [dental] signs postoperatively.
+     Let's watch for [visual] signs postoperatively.
+     Let's watch for [financial] signs postoperatively.
+
+[20-2] EN: I'll document the total tourniquet time carefully.
+  KO: 총 지혈대 시간을 조심스럽게 기록할게요.
+  D1: 총 지혈대 시간을 빠르게 기록할게요.
+  D2: 총 지혈대 개수를 조심스럽게 기록할게요.
+  tag=총 시간 기록 icon=pencil | why: I'll document가 곧 기록하겠다는 약속이에요. carefully가 방식을 부사로 덧붙여요.
+  chunks=["I'll document", 'the total tourniquet time', 'carefully', '.'] decoy='cheerfully'
+   * I'll document the [total] tourniquet time carefully.
+     I'll document the [average] tourniquet time carefully.
+     I'll document the [weekly] tourniquet time carefully.
+     I'll document the [daily] tourniquet time carefully.
+
+[20-3] EN: We need to assess for muscle damage now.
+  KO: 지금 근손상을 평가해야 해요.
+  D1: 지금 신장 손상을 평가해야 해요.
+  D2: 지금 연골 손상을 평가해야 해요.
+  tag=근손상 평가 icon=stetho | why: We need to …는 해야 할 일을 말하는 틀이에요. for muscle damage가 평가할 대상을 정해요.
+  chunks=['We need', 'to assess', 'for muscle damage', 'now', '.'] decoy='for muscle gain'
+   * We need to [assess] for muscle damage now.
+     We need to [reorder] for muscle damage now.
+     We need to [resell] for muscle damage now.
+     We need to [repaint] for muscle damage now.
+
+[20-4] EN: I'll record the total ischemia time and report it.
+  KO: 총 허혈 시간을 기록하고 보고할게요.
+  D1: 예상 허혈 시간을 기록하고 보고할게요.
+  D2: 남은 허혈 시간을 기록하고 보고할게요.
+  tag=기록과 보고 icon=pencil | why: record와 report를 and로 묶어 기록과 보고를 함께 한다는 뜻이에요. 대상 it은 앞에 말한 허혈 시간을 받아요.
+  chunks=["I'll record", 'the total ischemia time', 'and report', 'it', '.'] decoy='and recite it'
+   * I'll record the total ischemia time and [report] it.
+     I'll record the total ischemia time and [recite] it.
+     I'll record the total ischemia time and [rename] it.
+     I'll record the total ischemia time and [resell] it.
+  ORDER ko=장시간 허혈 근손상 4문장 순서 tag=대화 흐름 icon=compass why=허혈 시간이 길어 근손상이 걱정된다고 말하고, 그래서 지금 근손상을 평가하고, 평가에 쓰도록 총 시간을 기록하고, 그 시간을 근거로 수술 후 구획 징후를 지켜봐요.
+    - With that ischemia time, muscle injury is a concern. | 그 허혈 시간이면 근손상이 우려돼요 | 우려 | siren
+    - That's why we need to assess for muscle damage now. | 그래서 지금 근손상을 평가해야 해요 | 평가 | stetho
+    - I'll record the total tourniquet time for that assessment. | 그 평가를 위해 총 지혈대 시간을 기록할게요 | 기록 | pencil
+    - With those times on record, let's watch for compartment signs postoperatively. | 그 시간을 기록했으니 수술 후 구획 징후를 지켜봅시다 | 관찰 | magnify
+    swap12: That's why we need to assess for muscle damage now. / With that ischemia time, muscle injury is a concern. / I'll record the total tourniquet time for that assessment. / With those times on record, let's watch for compartment signs postoperatively.
+    swap23: With that ischemia time, muscle injury is a concern. / I'll record the total tourniquet time for that assessment. / That's why we need to assess for muscle damage now. / With those times on record, let's watch for compartment signs postoperatively.
+    swap34: With that ischemia time, muscle injury is a concern. / That's why we need to assess for muscle damage now. / With those times on record, let's watch for compartment signs postoperatively. / I'll record the total tourniquet time for that assessment.

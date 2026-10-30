@@ -1,0 +1,152 @@
+어려운 기도 예측 사정:
+  - kind: slider
+    words: [w-anesthesia, w-history, w-away]
+    cue: "A past difficult intubation shows up in the chart, and the anesthesiologist hasn't seen it yet."
+    scale: [I'll mention it at some point, I'll mention it if it comes up, I'll tell anesthesia right away]
+    answerAt: 2
+    why: "예전의 어려운 삽관 기록은 유도 전 기도 계획에 영향을 주는 정보라서, 마취과가 알도록 곧바로 전해요. 기도를 어떻게 관리할지는 마취과가 정하고, 간호사는 알리는 쪽이에요. 언젠가 말하겠다거나 화제가 나오면 말하겠다는 건 놓칠 수 있어요."
+    example: "I'll tell anesthesia right away."
+    exKo: "마취과에 바로 알릴게요."
+  - kind: swap
+    words: [w-intubation, w-difficult, w-history]
+    who: "환자에게 · 병력 묻기"
+    icon: me
+    before: ["Has anyone ever told you that ", "your airway was difficult to intubate", "?"]
+    options: [it was hard to get a breathing tube in, your airway was difficult to intubate, you had a difficult intubation history]
+    answer: it was hard to get a breathing tube in
+    notes: {it was hard to get a breathing tube in: "환자가 바로 알아듣는 쉬운 말이다. 겁주지 않으면서 같은 사실을 묻는다.", your airway was difficult to intubate: "의료진끼리 쓰는 말이다. 환자에게는 딱딱하고 무겁게 들린다.", you had a difficult intubation history: "차트에 쓰는 표현이라 환자에게는 낯설다."}
+    why: "같은 병력이라도 환자에게는 'breathing tube'처럼 쉬운 말로 묻고, 의료진끼리는 'difficult intubation'으로 말해요."
+    ko: "호흡관을 넣기 어려웠다는 말을 들은 적이 있나요"
+Mallampati 평가:
+  - kind: slider
+    words: [w-open, w-wide, w-mouth]
+    cue: "Anesthesia needs a good look at the back of the throat for the Mallampati exam."
+    scale: [Open your mouth for me, Open your mouth wide, Open your mouth as wide as you can]
+    answerAt: 2
+    why: "Mallampati 평가는 입을 최대한 벌리고 혀를 내민 상태에서 구개와 편도가 얼마나 보이는지 봐요. 그래서 'as wide as you can'이라고 부탁해요. 조금만 벌리면 인두가 가려져 점수가 달라질 수 있어요."
+    example: "Open your mouth as wide as you can, please."
+    exKo: "입을 최대한 크게 벌려 주세요."
+  - kind: swap
+    words: [w-palate, w-tonsil, w-plan]
+    who: "환자에게 · 평가 이유 설명"
+    icon: me
+    before: ["I'm checking ", "your oropharyngeal view", " so we can plan your breathing tube."]
+    options: [how much of your throat I can see, your oropharyngeal view, your Mallampati class]
+    answer: how much of your throat I can see
+    notes: {how much of your throat I can see: "환자가 상상할 수 있는 쉬운 말이다. 무엇을 보는지 알려 준다.", your oropharyngeal view: "해부학 용어라 환자는 알아듣기 어렵다.", your Mallampati class: "의료진끼리 쓰는 분류 이름이라 환자에게는 뜻이 전해지지 않는다."}
+    why: "환자에게는 무엇을 보는지 쉬운 말로 설명하고, 분류 이름은 의료진끼리 써요."
+    ko: "호흡관 계획을 세우려고 목구멍이 얼마나 보이는지 확인하고 있어요"
+어려운 기도 카트 준비:
+  - kind: slider
+    words: [w-check, w-date, w-seal]
+    cue: "You open a drawer on the airway cart and find the cricothyrotomy kit."
+    scale: [I assume the last shift checked it, I glance at the kit and move on, I check the seal and the date]
+    answerAt: 2
+    why: "비상 키트는 쓸 일이 드물어 포장이 뜯겼거나 유효기한이 지난 채 방치되기 쉬워요. 필요한 순간에 쓰려면 밀봉이 온전한지, 유효기한이 지나지 않았는지 직접 눈으로 확인해요. 앞 근무자가 했겠거니 하는 건 확인이 아니에요."
+    example: "I check the seal and the date."
+    exKo: "밀봉과 유효기한을 확인해요."
+  - kind: swap
+    words: [w-confirm, w-stock, w-cart]
+    who: "순환 간호사 → 마취과 · 카트 준비 보고"
+    icon: speech
+    before: ["Dr. Lee, ", "I think the cart is fine", " — it's at the bedside."]
+    options: [I confirmed the cart is stocked, I think the cart is fine, the cart should be fine]
+    answer: I confirmed the cart is stocked
+    notes: {I confirmed the cart is stocked: "서랍을 직접 확인했다는 보고라서 마취과가 안심하고 쓸 수 있다.", I think the cart is fine: "'아마'는 확인하지 않았다는 말로 들린다. 비상 장비 보고로는 불안하다.", the cart should be fine: "'~일 거예요'는 추측이다. 필요한 순간에 없으면 안 되는 장비는 확인한 결과로 전한다."}
+    why: "비상 장비는 짐작이 아니라 확인한 결과로 보고해요. 'confirmed'는 직접 봤다는 말이에요."
+    ko: "카트가 채워져 있는 걸 확인했어요"
+비디오후두경 준비:
+  - kind: slider
+    words: [w-view, w-bloody, w-screen]
+    cue: "The picture is mostly good, but a streak of blood runs along the edge of the screen."
+    scale: [The view is clear, The view is a little bloody, The view is bloody]
+    answerAt: 1
+    why: "본 그대로 정도를 맞춰 말해요. 가장자리에 조금 묻은 것을 'bloody'라고 하면 시야가 막힌 것처럼 들리고, 'clear'라고 하면 흡인이 필요할지 모른다는 정보를 놓쳐요."
+    example: "The view is a little bloody."
+    exKo: "시야에 피가 조금 묻었어요."
+  - kind: swap
+    words: [w-blade, w-size, w-ready, w-got]
+    who: "순환 간호사 → 마취과 · 블레이드 준비"
+    icon: speech
+    before: ["I've got ", "a blade", " ready for you."]
+    options: [the blade size you asked for, a blade, the usual blade]
+    answer: the blade size you asked for
+    notes: {the blade size you asked for: "마취과가 요청한 크기라고 분명히 말해서 맞는지 바로 알 수 있다.", a blade: "크기를 말하지 않아 마취과가 원하는 것인지 알 수 없다.", the usual blade: "'평소 것'은 마취과나 환자마다 다르다. 짐작으로 준비했다는 말로 들린다."}
+    why: "블레이드 크기는 마취과가 정해요. 간호사는 요청받은 크기로 준비했다고 말해서 확인을 쉽게 해 줘요."
+    ko: "요청하신 크기의 블레이드를 준비해 뒀어요"
+보조자 대기:
+  - kind: slider
+    words: [w-extra, w-standby, w-close]
+    cue: "Anesthesia says he may need more hands, but nothing is happening yet."
+    scale: [Extra hands are down the hall, Extra hands are standing by, Extra hands are at your side]
+    answerAt: 1
+    why: "stand by는 당장 하는 일은 없지만 부르면 곧바로 움직일 준비를 하고 가까이 있다는 뜻이에요. 복도 끝에 있으면 늦고, 이미 곁에서 돕고 있다면 대기가 아니에요."
+    example: "Extra hands are standing by."
+    exKo: "추가 인력이 대기 중이에요."
+  - kind: swap
+    words: [w-second, w-person, w-assist, w-ready]
+    who: "순환 간호사 → 마취과 · 보조 인력 보고"
+    icon: speech
+    before: ["Dr. Kim, ", "I could maybe get a second person", " — just say the word."]
+    options: [a second person is ready to assist, I could maybe get a second person, somebody's around somewhere]
+    answer: a second person is ready to assist
+    notes: {a second person is ready to assist: "이미 준비된 사람이 있다고 알려서 마취과가 바로 요청할 수 있다.", I could maybe get a second person: "'어쩌면 구할 수 있다'는 지금 준비가 안 됐다는 말이다. 위기 때는 늦다.", somebody's around somewhere: "누가 어디 있는지 모른다는 말이라 믿고 부를 수 없다."}
+    why: "보조 인력은 '준비돼 있다'고 확실하게 말해야 마취과가 계획에 넣을 수 있어요."
+    ko: "보조할 사람이 한 명 더 준비돼 있어요"
+산소화 유지 보조:
+  - kind: slider
+    words: [w-saturation, w-preoxygenation, w-oxygen]
+    cue: "Anesthesia asks whether the patient is pre-oxygenated before induction."
+    scale: [I think he's been on oxygen, He's been on oxygen a few minutes, His saturation is good and holding]
+    answerAt: 2
+    why: "전산소화는 시간만 채웠다고 끝이 아니라, 산소포화도가 충분히 올라 유지되는지까지 보고 알려요. '아마 산소를 줬다'는 확인이 아니고, 몇 분 줬다는 말도 효과를 알려 주지는 않아요."
+    example: "His saturation is good and holding."
+    exKo: "산소포화도가 좋고 유지되고 있어요."
+  - kind: swap
+    words: [w-preoxygenation, w-mask, w-oxygen]
+    who: "환자에게 · 마스크 설명"
+    icon: me
+    before: ["This mask gives you ", "pre-oxygenation", " before we put you to sleep."]
+    options: [extra oxygen to breathe, pre-oxygenation, a high FiO2]
+    answer: extra oxygen to breathe
+    notes: {extra oxygen to breathe: "환자가 바로 알아듣는 쉬운 말이다. 마스크가 왜 필요한지 겁주지 않고 알려 준다.", pre-oxygenation: "의료진끼리 쓰는 용어다. 환자에게는 낯설다.", a high FiO2: "수치를 가리키는 전문 약어라 환자는 알아듣지 못한다."}
+    why: "환자에게는 마스크가 하는 일을 쉬운 말로, 의료진끼리는 'pre-oxygenation'이라고 말해요."
+    ko: "재우기 전에 이 마스크로 산소를 더 마시게 해 드려요"
+예측 어려운 기도 계획:
+  - kind: slider
+    words: [w-plan, w-backup, w-induction]
+    cue: "The exam shows a short neck and a high Mallampati class, and anesthesia expects trouble."
+    scale: [Let's see how induction goes, Let's make sure we have a backup, "Let's go over plan A, B, and C before induction"]
+    answerAt: 2
+    why: "어려운 기도가 예상되면 유도 전에 A·B·C안을 팀이 함께 듣고 준비해요. 안은 마취과가 정하고, 간호사는 각 안에 필요한 장비와 역할을 맞춰요. 해 보고 보자는 말은 준비가 아니고, 백업이 있는지만 확인하는 것도 순서를 같이 듣는 것보다 약해요."
+    example: "Let's go over plan A, B, and C before induction."
+    exKo: "유도 전에 계획 A, B, C를 같이 짚어 봐요."
+  - kind: swap
+    words: [w-lma, w-video, w-scope, w-fail, w-backup]
+    who: "순환 간호사 → 마취과 · 백업 보고"
+    icon: speech
+    before: ["Dr. Shah, ", "we have the backup stuff", " if direct fails."]
+    options: [the LMA and video scope are ready, we have the backup stuff, I think there's a backup]
+    answer: the LMA and video scope are ready
+    notes: {the LMA and video scope are ready: "어떤 장비가 준비됐는지 구체적으로 말해서 마취과가 계획에 쓸 수 있다.", we have the backup stuff: "'stuff'는 무엇인지 알 수 없고 업무 보고로는 성의 없게 들린다.", I think there's a backup: "있는지 확인하지 않았다는 말이다. 백업 장비는 있다고 확인한 것만 알린다."}
+    why: "백업은 이름을 대서 구체적으로 보고해야 마취과가 계획에 넣어요."
+    ko: "직접 후두경이 안 되면 쓸 후두마스크와 비디오 스코프가 준비돼 있어요"
+각성 삽관 보조:
+  - kind: slider
+    words: [w-reassure, w-step, w-slowly]
+    cue: "An awake patient is nervous while anesthesia works on his airway, and you stand at his head."
+    scale: [I stay quiet so he can focus, I tell him each step as it happens, I tell him everything will be fine]
+    answerAt: 1
+    why: "깨어 있는 환자에게는 지금 무슨 일이 일어나는지 단계마다 알려 주면 불안이 줄어요. 아무 말 없이 두거나 '다 괜찮을 거예요'라고 결과를 장담하는 것보다 낫고, 지킬 수 없는 약속은 하지 않아요."
+    example: "I tell him each step as it happens."
+    exKo: "단계마다 지금 하는 일을 말해 줘요."
+  - kind: swap
+    words: [w-topicalize, w-numb, w-spray, w-throat]
+    who: "환자에게 · 마취 스프레이 설명"
+    icon: me
+    before: ["Anesthesia will ", "topicalize your airway", " first."]
+    options: [numb your throat with a spray, topicalize your airway, apply local anesthetic topically]
+    answer: numb your throat with a spray
+    notes: {numb your throat with a spray: "환자가 그림을 떠올릴 수 있는 쉬운 말이다. 무엇을 할지 겁주지 않고 알려 준다.", topicalize your airway: "의료진끼리 쓰는 동사다. 환자에게는 뜻이 전해지지 않는다.", apply local anesthetic topically: "정확하지만 딱딱하고 길어서 긴장한 환자에게는 어렵다."}
+    why: "환자에게는 무엇을 하는지 쉬운 말로, 의료진끼리는 'topicalize'처럼 줄여 말해요."
+    ko: "먼저 마취과가 스프레이로 목구멍을 마취할 거예요"

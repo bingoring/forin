@@ -1,0 +1,392 @@
+theme: or-preop-verification
+changes:
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(name); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-today
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(today); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-morning
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(morning); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(know); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(see); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-come
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(come); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(patient); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(body); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-room
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(room); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(time); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-make
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(make); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-say
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(say); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-look
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(look); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-here
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(here); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-put
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(put); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-water
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(water); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-red
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(red); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-yesterday
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(yesterday); 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-right
+  fields:
+  - ko
+  - example
+  why: 태그 문장 대부분이 right knee·right eye·right side(오른쪽)라 '맞는'보다 오른쪽의가 맞다 — 예문도 knee 문장으로
+- kind: word
+  id: w-correct
+  fields:
+  - ko
+  why: w-exact와 ko(정확한)가 같아 정답이 둘 — correct는 쪽·부위가 맞다는 올바른
+- kind: word
+  id: w-mark
+  fields:
+  - ko
+  why: 문장이 명사(mark·marking)와 동사(marked·mark)로 함께 쓰여 표시(하다)로
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: w-confirm·w-verify와 ko(확인하다)가 같아 정답이 셋 — check는 눈으로 살펴 점검하는 쪽
+- kind: word
+  id: w-verify
+  fields:
+  - ko
+  why: w-confirm·w-check와 ko(확인하다)가 같아 정답이 셋 — verify는 기준과 대조해 검증하는 쪽
+- kind: word
+  id: w-count
+  fields:
+  - ko
+  why: w-cover와 ko(포함하다/포함되다)가 거의 같아 정답이 둘 — count는 '그것도 한 것으로 친다'
+- kind: word
+  id: w-note
+  fields:
+  - ko
+  why: w-record(기록)·w-document와 ko가 겹쳐 — note는 짧게 적어 두는 쪽
+- kind: sentence
+  situation: 환자 신원 2가지 확인
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 환자 신원 2가지 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 환자 신원 2가지 확인
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 환자 신원 2가지 확인
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수술 부위·측 확인
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수술 동의서 서명 확인
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수술 동의서 서명 확인
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수술 동의서 서명 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수술 동의서 서명 확인
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수술 부위 표시 확인
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수술 부위 표시 확인
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수술 부위 표시 확인
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수술 부위 표시 확인
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 알레르기 밴드 대조
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 알레르기 밴드 대조
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 금식 여부 구두 확인
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 금식 여부 구두 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 금식 여부 구두 확인
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 동의서 수술명 불일치
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 동의서 수술명 불일치
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 환자가 부위를 다르게 진술
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 환자가 부위를 다르게 진술
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 부위 표시 없이 입실
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 부위 표시 없이 입실
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 언어 장벽 신원 확인 지연
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 언어 장벽 신원 확인 지연
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 진정 상태 동의 유효성
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 수술 동의 시간 부족
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 수술 동의 시간 부족
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 수술 동의 시간 부족
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 수술 동의 시간 부족
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 소아 법적 대리 동의
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 추가 시술 동의 범위
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 타임아웃 중 표시 불일치
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 동의 없이 유도 직전
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 동의 없이 유도 직전
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 신원 밴드 없는 무의식 환자
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 신원 밴드 없는 무의식 환자
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 신원 밴드 없는 무의식 환자
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 잘못된 환자 입실
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 잘못된 환자 입실
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 잘못된 환자 입실
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 잘못된 환자 입실
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 잘못된 환자 입실
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 잘못된 환자 입실
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 동의 철회 의사 표현
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 동의 철회 의사 표현
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 동의 철회 의사 표현
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 동의 철회 의사 표현
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 반대 측 수술 직전 인지
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기

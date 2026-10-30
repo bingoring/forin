@@ -1,0 +1,511 @@
+theme: or-preop-assessment
+changes:
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(time); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-now
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(now); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-today
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(today); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-morning
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(morning); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-night
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(night); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-home
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(home); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(name); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-room
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(room); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-family
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(family); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(body); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-head
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(head); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(know); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(see); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-bad
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(bad); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-good
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(good); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-day
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(day); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-get
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(get); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-make
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(make); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-look
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(look); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-bed
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(bed); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-back
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(back); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-face
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(face); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-which
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(which); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-kind
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(kind); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-sure
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(sure); 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-count
+  fields:
+  - ko
+  why: w-assume(간주하다)과 ko가 겹쳐 — count는 '그것도 한 것으로 친다'
+- kind: word
+  id: w-flag
+  fields:
+  - ko
+  why: w-mark와 ko(표시하다)가 같아 정답이 둘 — flag는 눈에 띄는 표식을 다는 쪽
+- kind: word
+  id: w-mark
+  fields:
+  - ko
+  why: w-flag와 ko(표시하다)가 같아 정답이 둘 — mark는 표시해 두는 쪽
+- kind: word
+  id: w-whole
+  fields:
+  - ko
+  why: w-full과 ko가 같아 정답이 둘 — whole은 빠짐없는 전체(그대로)
+- kind: word
+  id: w-full
+  fields:
+  - ko
+  - example
+  why: w-whole과 ko(전체의)가 같아 정답이 둘 — 문장 대부분이 full stomach(가득 찬)라 예문도 그 문장으로
+- kind: word
+  id: w-right
+  fields:
+  - ko
+  why: w-exact·w-accurate와 ko(정확한)가 같아 정답이 셋 — right는 'the right dose·precautions'(알맞은)
+- kind: word
+  id: w-accurate
+  fields:
+  - ko
+  why: w-exact와 ko(정확한)가 같아 정답이 둘 — accurate는 오차 없이 정밀한
+- kind: word
+  id: w-note
+  fields:
+  - ko
+  why: w-write·w-record·w-document와 ko(기록하다)가 겹쳐 — note는 짧게 메모
+- kind: word
+  id: w-write
+  fields:
+  - ko
+  why: w-note·w-record·w-document와 ko(기록하다)가 겹쳐 — write down은 받아 적다
+- kind: word
+  id: w-record
+  fields:
+  - ko
+  why: w-note·w-write·w-document와 ko(기록하다)가 겹쳐 — record는 기록으로 남기다
+- kind: word
+  id: w-document
+  fields:
+  - ko
+  why: w-note·w-write·w-record와 ko(기록하다)가 겹쳐 — document는 문서에 남기다
+- kind: word
+  id: w-hard
+  fields:
+  - ko
+  why: w-difficult와 ko(어려운)가 같아 정답이 둘 — hard는 애가 쓰이는 힘든
+- kind: word
+  id: w-difficult
+  fields:
+  - ko
+  why: w-hard와 ko(어려운)가 같아 정답이 둘 — difficult airway는 까다로운 기도
+- kind: word
+  id: w-injection
+  fields:
+  - ko
+  why: w-shot과 ko(주사)가 같아 정답이 둘 — injection은 주사제(약)
+- kind: word
+  id: w-shot
+  fields:
+  - ko
+  why: w-injection과 ko(주사)가 같아 정답이 둘 — shot은 맞는 주사 한 대
+- kind: word
+  id: w-number
+  fields:
+  - ko
+  why: w-level과 ko(수치)가 같아 정답이 둘 — number는 숫자·측정값
+- kind: word
+  id: w-level
+  fields:
+  - ko
+  why: w-number와 ko(수치)가 같아 정답이 둘 — level은 산소 수준
+- kind: word
+  id: w-drug
+  fields:
+  - ko
+  why: w-medication과 ko(약물)가 같아 정답이 둘 — drug은 마취약 같은 약제
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: w-confirm(확정하다)과 가까워 — check는 눈으로 살펴 점검하는 쪽
+- kind: word
+  id: w-shift
+  fields:
+  - ko
+  why: '''timing might need to shift''(시간이 밀리다)에 맞춰 — 옮기다는 물건 옮기기로 읽힘'
+- kind: word
+  id: w-away
+  fields:
+  - ko
+  why: '''right away'' 한 구에서만 쓰이는데 ko에 영어를 섞어 길어서 즉시로'
+- kind: word
+  id: w-cpap
+  fields:
+  - ko
+  why: CPAP은 수면무호흡기가 아니라 지속적 기도양압기
+- kind: word
+  id: w-picture
+  fields:
+  - ko
+  why: '''honest picture''의 그림은 비유라 전체 모습으로'
+- kind: sentence
+  situation: 금식 시작 시각 확인
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 금식 시작 시각 확인
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 약물 알레르기 문진
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 약물 알레르기 문진
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 약물 알레르기 문진
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 과거 수술·마취 이력
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 과거 수술·마취 이력
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 복용 약물 목록 확인
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 복용 약물 목록 확인
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 복용 약물 목록 확인
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 복용 약물 목록 확인
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 기저 활력징후 측정
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 기저 활력징후 측정
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 기저 활력징후 측정
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 키·체중·BMI 확인
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 물 한 모금 금식 위반
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 물 한 모금 금식 위반
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 물 한 모금 금식 위반
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 물 한 모금 금식 위반
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 이전 마취 오심 병력
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 이전 마취 오심 병력
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수면무호흡 병력
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수면무호흡 병력
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수면무호흡 병력
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수면무호흡 병력
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 심·호흡 기저질환
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 심·호흡 기저질환
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 심·호흡 기저질환
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 심·호흡 기저질환
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 한약·건강보조제 복용
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 한약·건강보조제 복용
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 흡연·음주력 문진
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 흡연·음주력 문진
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 가임기 임신 가능성
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 가임기 임신 가능성
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 최근 상기도 감염
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 최근 상기도 감염
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 환자 금식 위반
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 환자 금식 위반
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 조영제 아나필락시스 병력
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 조영제 아나필락시스 병력
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 원인 미상 약물 반응
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 원인 미상 약물 반응
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 원인 미상 약물 반응
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 마취 가족력 MH 의심
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 마취 가족력 MH 의심
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 마취 가족력 MH 의심
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 마취 가족력 MH 의심
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 마취 가족력 MH 의심
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 항응고제 복용 미확인 도착
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 항응고제 복용 미확인 도착
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 금식 확인 불가 무의식
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 금식 확인 불가 무의식
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기

@@ -1,0 +1,672 @@
+
+## S0 환자 신원 2가지 확인
+0.0 [신원 확인/me] Can you tell me your full name and date of birth?
+   ko: 성함과 생년월일을 말씀해 주시겠어요? (20)
+   O1: 성함과 생년월일을 써 주시겠어요? (18)
+   O2: 성함과 생년월일을 읽어 주시겠어요? (19)
+   why: Can you…?는 부탁을 질문으로 건네 환자가 부담 없이 답하게 해요. 이름과 생년월일을 함께 물어 식별 정보를 두 가지 받아요.
+0.1 [이유 설명/shield] I just want to confirm who you are before we go in.
+   ko: 들어가기 전에 신원을 확인하고 싶어서요. (22)
+   O1: 올라가기 전에 신원을 확인하고 싶어서요. (22)
+   O2: 내려가기 전에 신원을 확인하고 싶어서요. (22)
+   why: just가 형식적인 절차라는 느낌을 주고, before we go in이 확인을 입실보다 앞에 두는 순서를 밝혀요.
+0.2 [일치 보고/check] Thank you — that matches your chart.
+   ko: 감사합니다 — 차트와 일치하네요. (18)
+   O1: 감사합니다 — 팔찌와 일치하네요. (18)
+   O2: 감사합니다 — 명단과 일치하네요. (18)
+   why: Thank you로 협조에 먼저 감사하고, matches로 대조 결과를 짧게 알려 환자가 안심하게 해요.
+0.3 [공감/faceWorried] I know you've already answered this once, but I need to ask again.
+   ko: 이미 한 번 대답하신 걸 알지만, 다시 여쭤봐야 해요. (30)
+   O1: 이미 두 번 대답하신 걸 알지만, 다시 여쭤봐야 해요. (30)
+   O2: 이미 한 번 서명하신 걸 알지만, 다시 여쭤봐야 해요. (30)
+   why: I know … but …으로 이미 답했다는 사실을 먼저 인정해, 반복 질문이 불신처럼 들리지 않게 해요.
+0.4 [이유 설명/shield] This helps us make sure we have the right patient before surgery.
+   ko: 이건 수술 전에 정확한 환자인지 확인하는 데 도움이 돼요. (32)
+   O1: 이건 수술 전에 정확한 보호자인지 확인하는 데 도움이 돼요. (33)
+   O2: 이건 수술 전에 정확한 서류인지 확인하는 데 도움이 돼요. (32)
+   why: helps us로 내 일이 아니라 팀 모두의 안전 절차임을 밝혀, 반복 질문의 이유를 납득시켜요.
+0.5 [구두 확인/speaker] Can you say your name out loud for me, please?
+   ko: 성함을 소리 내어 말씀해 주시겠어요? (20)
+   O1: 성함을 한 번 더 말씀해 주시겠어요? (20)
+   O2: 이름표를 소리 내어 읽어 주시겠어요? (20)
+   why: out loud를 붙여 고개 끄덕임이 아니라 환자가 직접 말하게 해요. 환자가 말해야 확인이 독립적인 확인이 돼요.
+
+## S1 수술 부위·측 확인
+1.0 [부위 확인/pushpin] Which side are we operating on today?
+   ko: 오늘 어느 쪽을 수술하나요? (15)
+   O1: 오늘 어느 방에서 수술하나요? (16)
+   O2: 내일 어느 쪽을 수술하나요? (15)
+   why: Which side로 예·아니오가 아니라 환자가 직접 쪽을 말하게 해요. we를 써서 환자와 팀이 같은 수술을 한다는 점을 보여요.
+1.1 [위치 확인/magnify] Can you point to the exact spot for me?
+   ko: 정확한 위치를 저에게 가리켜 주시겠어요? (22)
+   O1: 정확한 위치를 저에게 그려 주시겠어요? (21)
+   O2: 정확한 시각을 저에게 말씀해 주시겠어요? (22)
+   why: 말로만이 아니라 손으로 가리키게 해 쪽과 위치를 이중으로 확인해요. exact가 대략이 아닌 정확한 지점을 요구해요.
+1.2 [복창 확인/check] So that's your right knee — let me confirm with your chart.
+   ko: 그러면 오른쪽 무릎이시네요 — 차트로 확인해 볼게요. (29)
+   O1: 그러면 오른쪽 무릎이시네요 — 명단으로 확인해 볼게요. (30)
+   O2: 그러면 오른쪽 무릎이시네요 — 밴드로 확인해 볼게요. (29)
+   why: So that's로 환자가 한 말을 되짚어 맞는지 확인한 뒤, 차트와 대조해 구두와 서류 두 출처를 맞춰요.
+1.3 [말로 확인/speech] I need you to tell me which side, not just show me.
+   ko: 어느 쪽인지 저에게 말씀해 주셔야 해요, 그냥 보여주시는 게 아니라요. (39)
+   O1: 어느 쪽인지 저에게 말씀해 주셔야 해요, 그냥 적으시는 게 아니라요. (38)
+   O2: 어느 쪽인지 저에게 말씀해 주셔야 해요, 그냥 끄덕이시는 게 아니라요. (39)
+   why: not just로 가리키기만으로는 부족하다는 점을 못 박아요. 환자가 말로 답해야 쪽을 스스로 알고 있는지 확인돼요.
+1.4 [이유 설명/shield] We ask twice because a mix-up here would be serious.
+   ko: 여기서 혼동이 생기면 심각해질 수 있어서 두 번 여쭤봐요. (32)
+   O1: 여기서 혼동이 생기면 심각해질 수 있어서 세 번 여쭤봐요. (32)
+   O2: 여기서 지연이 생기면 심각해질 수 있어서 두 번 여쭤봐요. (32)
+   why: because로 반복 질문의 이유를 바로 붙여 형식적인 절차로 보이지 않게 하고, serious로 위험의 크기를 알려요.
+1.5 [일치 보고/check] Your surgeon marked the right knee, and that matches what you told me.
+   ko: 집도의가 오른쪽 무릎에 표시했고, 그건 말씀하신 것과 일치해요. (35)
+   O1: 집도의가 오른쪽 무릎에 그렸고, 그건 말씀하신 것과 일치해요. (34)
+   O2: 집도의가 오른쪽 무릎에 표시했고, 그건 예약 기록과 일치해요. (34)
+   why: marked와 matches로 서로 다른 두 출처(표시와 환자 진술)가 같다는 결과를 그대로 알려, 근거 있는 안심을 줘요.
+
+## S2 수술 동의서 서명 확인
+2.0 [서명 확인/pencil] Can you confirm you signed this consent form?
+   ko: 이 동의서에 서명하신 걸 확인해 주시겠어요? (24)
+   O1: 이 동의서를 받으신 걸 확인해 주시겠어요? (23)
+   O2: 이 동의서를 읽으신 걸 확인해 주시겠어요? (23)
+   why: confirm you signed로 서명했다는 사실을 환자 본인 입으로 확인받아요. 서류만 보지 않고 환자에게 직접 묻는 이중 확인이에요.
+2.1 [수술명 대조/check] Does this match the surgery you're expecting today?
+   ko: 이게 오늘 예상하신 수술과 일치하나요? (21)
+   O1: 이게 오늘 예상하신 방과 일치하나요? (20)
+   O2: 이게 오늘 예상하신 시간과 일치하나요? (21)
+   why: you're expecting으로 환자가 알고 있는 수술을 기준 삼아, 서류가 환자의 이해와 같은지 묻는 확인이에요.
+2.2 [서명 확인/pencil] I see your signature and the date here.
+   ko: 여기 서명과 날짜가 보이네요. (16)
+   O1: 여기 서명과 도장이 보이네요. (16)
+   O2: 여기 서명과 번호가 보이네요. (16)
+   why: I see로 지금 눈앞에 보이는 것만 말해, 실제로 본 것과 짐작이 섞이지 않게 해요.
+2.3 [이해 확인/bulb] Please read this line so I know you understand what you're signing.
+   ko: 서명하시는 내용을 이해하신다는 걸 알 수 있게 이 줄을 읽어 주세요. (38)
+   O1: 서명하시는 내용을 기억하신다는 걸 알 수 있게 이 줄을 읽어 주세요. (38)
+   O2: 서명하시는 내용을 이해하신다는 걸 알 수 있게 이 줄을 써 주세요. (37)
+   why: so I know…로 읽어 달라는 부탁의 목적을 밝혀, 서명이 이해에 기반한다는 점을 환자가 납득하게 해요.
+2.4 [일치 보고/check] Everything on the form matches what you told me at the desk.
+   ko: 서식에 적힌 모든 내용이 접수처에서 말씀하신 것과 일치해요. (33)
+   O1: 서식에 적힌 모든 내용이 대기실에서 말씀하신 것과 일치해요. (33)
+   O2: 서식에 적힌 모든 내용이 어제 말씀하신 것과 일치해요. (30)
+   why: Everything으로 일부가 아니라 전체가 맞는다는 범위를 밝히고, at the desk로 어디서 한 말과 대조했는지 말해요.
+2.5 [날짜 확인/calendar] This is your signature, and it's dated yesterday.
+   ko: 이건 당신의 서명이고, 어제 날짜로 되어 있네요. (27)
+   O1: 이건 당신의 서명이고, 지난주 날짜로 되어 있네요. (28)
+   O2: 이건 당신의 서명이고, 이틀 전 날짜로 되어 있네요. (29)
+   why: dated로 서명 날짜를 사실대로 읽어 줘, 동의가 수술 전에 이뤄졌는지 시점을 확인할 근거를 남겨요.
+
+## S3 수술 부위 표시 확인
+3.0 [표시 확인/magnify] Let me check the marking the surgeon made.
+   ko: 집도의가 한 표시를 확인해 볼게요. (19)
+   O1: 집도의가 한 계획을 확인해 볼게요. (19)
+   O2: 집도의가 쓴 처방을 확인해 볼게요. (19)
+   why: Let me로 내가 직접 보겠다고 알려 환자가 놀라지 않게 하고, the surgeon made로 표시를 한 사람이 집도의임을 분명히 해요.
+3.1 [표시 확인/magnify] I can see the initials here on your arm.
+   ko: 여기 팔에 이니셜이 보이네요. (16)
+   O1: 여기 팔에 스티커가 보이네요. (16)
+   O2: 여기 팔에 날짜가 보이네요. (15)
+   why: see로 눈에 보이는 것만 말하는 완곡한 보고예요. 이니셜은 집도의가 부위를 표시했다는 흔한 증거예요.
+3.2 [일치 보고/check] That confirms we have the correct site marked.
+   ko: 그건 정확한 부위가 표시되어 있다는 걸 확인해 줘요. (29)
+   O1: 그건 정확한 부위가 기록되어 있다는 걸 확인해 줘요. (29)
+   O2: 그건 정확한 부위가 예약되어 있다는 걸 확인해 줘요. (29)
+   why: That confirms로 방금 본 근거가 결론으로 이어진다는 논리를 밝히고, correct site가 쪽과 부위가 모두 맞음을 뜻해요.
+3.3 [표시 시점/calendar] Your surgeon signs his initials while you're still awake.
+   ko: 집도의는 당신이 아직 깨어 있는 동안 이니셜에 서명해요. (31)
+   O1: 집도의는 당신이 아직 대기하는 동안 이니셜에 서명해요. (30)
+   O2: 집도의는 당신이 아직 깨어 있는 동안 메모에 서명해요. (30)
+   why: while you're still awake로 표시가 마취 전, 환자가 직접 볼 수 있을 때 이뤄진다는 시점을 알려요.
+3.4 [환자 확인/me] Can you look at the mark and tell me if that's the right spot?
+   ko: 표시를 보시고 맞는 위치인지 말씀해 주시겠어요? (26)
+   O1: 팔찌를 보시고 맞는 위치인지 말씀해 주시겠어요? (26)
+   O2: 밴드를 보시고 맞는 위치인지 말씀해 주시겠어요? (26)
+   why: 환자에게 표시를 직접 보고 판단하게 해, 의료진 확인과 별개로 환자 본인의 확인을 한 번 더 받아요.
+3.5 [표시 기준/shield] We only accept a mark made in permanent ink, not pen from the floor.
+   ko: 지워지지 않는 잉크로 한 표시만 받고, 병동에서 쓴 펜 표시는 받지 않아요. (42)
+   O1: 지워지지 않는 잉크로 한 표시만 받고, 대기실에서 쓴 펜 표시는 받지 않아요. (43)
+   O2: 지워지지 않는 잉크로 한 표시만 받고, 수술방에서 쓴 펜 표시는 받지 않아요. (43)
+   why: only와 not으로 받아들이는 표시의 범위를 한 번에 정해요. 영구 잉크는 소독해도 표시가 남아야 한다는 기준에 맞아요.
+
+## S4 알레르기 밴드 대조
+4.0 [알레르기 질문/pill] Can you tell me about any allergies you have?
+   ko: 어떤 알레르기가 있으신지 말씀해 주시겠어요? (24)
+   O1: 어떤 알레르기가 있으신지 써 주시겠어요? (22)
+   O2: 어떤 알레르기가 있으신지 보여 주시겠어요? (23)
+   why: any로 목록을 정해 두지 않고 환자가 아는 것을 모두 말하게 해요. 약·음식·라텍스를 놓치지 않으려는 열린 질문이에요.
+4.1 [밴드 대조/check] Let me check your allergy band against your chart.
+   ko: 알레르기 밴드를 차트와 대조해 볼게요. (21)
+   O1: 알레르기 밴드를 병동 기록과 대조해 볼게요. (24)
+   O2: 알레르기 밴드를 처방과 대조해 볼게요. (21)
+   why: against로 밴드와 차트를 서로 맞대 보는 대조 확인이에요. 한쪽 기록만 믿지 않고 두 출처를 비교해요.
+4.2 [팀 공유/shield] I'll make sure the whole team knows about this.
+   ko: 팀 전체가 이걸 알도록 확실히 할게요. (21)
+   O1: 팀 전체가 이걸 보도록 확실히 할게요. (21)
+   O2: 팀 전체가 이걸 읽도록 확실히 할게요. (21)
+   why: the whole team으로 한 사람이 아니라 팀 전체가 안다는 약속을 해, 알레르기 정보가 중간에 끊기지 않게 해요.
+4.3 [환자 답변/me] I'm allergic to penicillin, and it's written right here on my band.
+   ko: 저는 페니실린에 알레르기가 있고, 밴드 바로 여기에 적혀 있어요. (36)
+   O1: 저는 페니실린에 알레르기가 있고, 안내문 바로 여기에 적혀 있어요. (37)
+   O2: 저는 페니실린에 알레르기가 있고, 손등 바로 여기에 적혀 있어요. (36)
+   why: 환자 입장의 문장이라 I'm allergic to로 시작해요. written right here로 말뿐 아니라 기록으로도 확인된다고 알려요.
+4.4 [기록 대조/check] Does your chart list the same allergy you just told me?
+   ko: 차트에도 방금 말씀하신 것과 같은 알레르기가 적혀 있나요? (32)
+   O1: 밴드에도 방금 말씀하신 것과 같은 알레르기가 적혀 있나요? (32)
+   O2: 차트에도 지난번에 말씀하신 것과 같은 알레르기가 적혀 있나요? (34)
+   why: the same … you just told me로 환자가 말한 것과 차트가 같은지 묻는 대조 질문이에요. 말, 기록 순으로 확인해요.
+4.5 [경고 밴드/bandage] I'm putting a red band on you so everyone can see it at a glance.
+   ko: 한눈에 보이도록 빨간 밴드를 채워 드릴게요. (24)
+   O1: 한눈에 보이도록 빨간 스티커를 붙여 드릴게요. (25)
+   O2: 한눈에 보이도록 빨간 밴드를 침대에 걸어 드릴게요. (28)
+   why: so everyone can see it으로 밴드를 붙이는 이유를 밝혀요. 색 밴드는 말하지 않아도 모두가 알레르기를 알아보게 하는 시각 표시예요.
+
+## S5 금식 여부 구두 확인
+5.0 [금식 질문/calendar] When did you last have anything to eat or drink?
+   ko: 마지막으로 드시거나 마신 게 언제였나요? (22)
+   O1: 마지막으로 드시거나 마신 게 무엇이었나요? (23)
+   O2: 마지막으로 드시거나 마신 게 얼마만큼이었나요? (25)
+   why: When did you last…?로 마지막 시각을 짚어 묻고, eat or drink를 함께 넣어 물도 음식과 같이 확인해요.
+5.1 [물·약 확인/pill] Did you have any water or medications this morning?
+   ko: 오늘 아침에 물이나 약을 드셨나요? (19)
+   O1: 오늘 아침에 물이나 주스를 드셨나요? (20)
+   O2: 어제 아침에 물이나 약을 드셨나요? (19)
+   why: water도 함께 물어 음식만 금지라고 오해해 놓칠 수 있는 것을 짚고, this morning으로 가장 최근 시점을 한정해요.
+5.2 [금식 판단/check] Good — that means you've been fasting long enough.
+   ko: 좋아요 — 충분히 오래 금식하신 거네요. (22)
+   O1: 좋아요 — 충분히 오래 기다리신 거네요. (22)
+   O2: 좋아요 — 충분히 오래 주무신 거네요. (21)
+   why: that means로 환자의 답에서 결론을 끌어내 알려요. long enough로 기준 시간을 채웠다는 판단을 분명히 밝혀요.
+5.3 [정확한 보고/speech] Even a small candy or a sip of water counts, so please tell me exactly.
+   ko: 작은 사탕이나 물 한 모금도 포함되니, 정확하게 말씀해 주세요. (35)
+   O1: 작은 사탕이나 물 한 모금도 포함되니, 정확하게 적어 주세요. (34)
+   O2: 작은 사탕이나 물 한 모금도 포함되니, 천천히 말씀해 주세요. (34)
+   why: Even으로 아주 작은 양도 해당된다는 점을 앞세우고, so로 정확히 말해 달라는 요청의 이유를 이어요.
+5.4 [이유 설명/shield] I ask about food and drink because a full stomach makes anesthesia risky.
+   ko: 위가 가득 차 있으면 마취가 위험해질 수 있어서 음식과 물을 여쭤봐요. (39)
+   O1: 위가 가득 차 있으면 마취가 위험해질 수 있어서 음식과 약을 여쭤봐요. (39)
+   O2: 위가 가득 차 있으면 속이 메스꺼울 수 있어서 음식과 물을 여쭤봐요. (38)
+   why: because로 질문의 이유를 붙이고, full stomach에서 risky로 원인과 결과를 이어 환자가 금식을 지킬 이유를 알게 해요.
+5.5 [복창 확인/check] You followed instructions and stopped eating after midnight, correct?
+   ko: 지시대로 자정 이후로 금식하셨죠, 맞나요? (23)
+   O1: 지시대로 자정 이후로 푹 주무셨죠, 맞나요? (24)
+   O2: 지시대로 자정 이후로 샤워하셨죠, 맞나요? (23)
+   why: correct?를 끝에 붙여 단정하지 않고 환자가 직접 맞다고 말할 기회를 줘요. 환자의 답이 있어야 기록이 돼요.
+
+## S6 동의서 수술명 불일치
+6.0 [일단 멈춤/siren] I want to pause here — the consent doesn't match what you described.
+   ko: 여기서 잠시 멈추고 싶어요 — 동의서가 말씀하신 것과 일치하지 않네요. (39)
+   O1: 여기서 잠시 멈추고 싶어요 — 동의서가 예약 기록과 일치하지 않네요. (38)
+   O2: 여기서 잠시 멈추고 싶어요 — 동의서가 방금 읽은 것과 일치하지 않네요. (40)
+   why: I want to로 부드럽게 시작하지만 pause here로 멈춤을 분명히 말하고, 이유를 바로 붙여요. 불일치는 진행 전에 멈출 사유예요.
+6.1 [진행 보류/siren] Let me hold everything until we clarify this with your surgeon.
+   ko: 집도의와 이걸 명확히 할 때까지 모든 걸 보류할게요. (29)
+   O1: 집도의와 이걸 비교할 때까지 모든 걸 보류할게요. (27)
+   O2: 집도의와 이걸 다시 적을 때까지 모든 걸 보류할게요. (29)
+   why: Let me hold everything으로 모든 진행을 멈추겠다고 선언하고, until로 풀리는 조건(집도의와 명확히 함)을 함께 밝혀요.
+6.2 [진행 거부/shield] I won't proceed until this is corrected.
+   ko: 이게 정정될 때까지 진행하지 않을게요. (21)
+   O1: 이게 정정될 때까지 서명하지 않을게요. (21)
+   O2: 이게 정정될 때까지 이동하지 않을게요. (21)
+   why: I won't로 내 행동을 분명히 선언하고, until this is corrected로 풀리는 조건을 밝혀요. 간호사가 직접 멈출 수 있다는 점을 보여 줘요.
+6.3 [불일치 지적/siren] Wait — this form says laparoscopic, but I was told it'd be open surgery.
+   ko: 잠깐만요 — 서식에는 복강경이라고 되어 있는데, 저는 개복 수술이라고 들었어요. (44)
+   O1: 잠깐만요 — 안내문에는 복강경이라고 되어 있는데, 저는 개복 수술이라고 들었어요. (45)
+   O2: 잠깐만요 — 서식에는 복강경이라고 되어 있는데, 저는 개복 수술이라고 읽었어요. (44)
+   why: Wait로 먼저 멈추게 하고, form says와 I was told를 대비시켜 서류와 들은 말이 어디서 어긋나는지 구체적으로 말해요.
+6.4 [원칙 설명/shield] A mismatch like this means we stop and check with your surgeon first.
+   ko: 이런 불일치가 있으면 멈추고 먼저 집도의에게 확인해요. (30)
+   O1: 이런 누락이 있으면 멈추고 먼저 집도의에게 확인해요. (29)
+   O2: 이런 오타가 있으면 멈추고 먼저 집도의에게 확인해요. (29)
+   why: means we stop으로 개인 판단이 아니라 팀 규칙임을 밝히고, 확인 상대로 집도의를 정해 책임선을 분명히 해요.
+6.5 [서류 정정/pencil] We correct the paperwork now, before anyone signs anything else.
+   ko: 누군가 서명하기 전에 지금 서류를 정정해요. (24)
+   O1: 누군가 퇴근하기 전에 지금 서류를 정정해요. (24)
+   O2: 누군가 입실하기 전에 지금 서류를 정정해요. (24)
+   why: now와 before anyone signs로 정정이 서명보다 앞에, 그것도 바로 이뤄져야 한다는 순서를 못 박아요.
+
+## S7 환자가 부위를 다르게 진술
+7.0 [즉시 멈춤/siren] You said left, but the marking is on the right — let's stop.
+   ko: 왼쪽이라고 하셨는데 표시는 오른쪽에 있네요 — 멈춥시다. (31)
+   O1: 왼쪽이라고 적으셨는데 표시는 오른쪽에 있네요 — 멈춥시다. (32)
+   O2: 왼쪽이라고 들었는데 표시는 오른쪽에 있네요 — 멈춥시다. (31)
+   why: You said와 the marking is를 대비시켜 어긋남을 사실만 말하고, let's stop으로 탓하지 않고 함께 멈추자고 해요.
+7.1 [확인 우선/compass] I need to clarify this before we move forward.
+   ko: 앞으로 나아가기 전에 이걸 명확히 해야 해요. (25)
+   O1: 소독하기 전에 이걸 명확히 해야 해요. (21)
+   O2: 이동하기 전에 이걸 명확히 해야 해요. (21)
+   why: I need to로 내 책임으로 말하고, before we move forward로 확인이 다음 단계보다 앞선다는 순서를 밝혀요.
+7.2 [집도의 호출/pager] I'll bring in your surgeon to confirm the correct side.
+   ko: 정확한 쪽을 확인하도록 집도의를 모셔올게요. (24)
+   O1: 정확한 쪽을 그리도록 집도의를 모셔올게요. (23)
+   O2: 정확한 쪽을 표시하도록 집도의를 모셔올게요. (24)
+   why: I'll bring in으로 내가 직접 집도의를 부르겠다고 약속하고, to confirm으로 부르는 목적을 밝혀요. 쪽을 확정하는 것은 집도의예요.
+7.3 [불일치 지적/siren] What you just told me doesn't match what's marked on your body.
+   ko: 방금 말씀하신 것이 몸에 표시된 것과 일치하지 않아요. (30)
+   O1: 방금 말씀하신 것이 보드에 표시된 것과 일치하지 않아요. (31)
+   O2: 아까 말씀하신 것이 몸에 표시된 것과 일치하지 않아요. (30)
+   why: doesn't match로 비난 없이 사실만 말해요. 말과 몸 표시라는 두 출처가 어긋났음을 있는 그대로 알려요.
+7.4 [원칙 설명/shield] We stop the moment your words and the marking disagree.
+   ko: 말씀과 표시가 어긋나는 순간 저희는 멈춰요. (24)
+   O1: 일정과 표시가 어긋나는 순간 저희는 멈춰요. (24)
+   O2: 말씀과 표시가 흐려지는 순간 저희는 멈춰요. (24)
+   why: the moment로 어긋남을 발견한 즉시 멈춘다는 규칙을 말해요. 환자 탓이 아니라 절차라는 점이 전해져요.
+7.5 [진행 금지/siren] Nobody moves forward until your surgeon settles this in person.
+   ko: 집도의가 직접 매듭짓기 전까지는 아무도 앞으로 나아가지 않아요. (35)
+   O1: 집도의가 직접 매듭짓기 전까지는 아무도 자리를 뜨지 않아요. (33)
+   O2: 집도의가 직접 매듭짓기 전까지는 아무도 문을 열지 않아요. (32)
+   why: Nobody로 예외가 없다는 점을 못 박고, in person으로 집도의가 직접 와서 정리해야 풀린다는 조건을 밝혀요.
+
+## S8 부위 표시 없이 입실
+8.0 [진행 불가/siren] The site isn't marked — we can't proceed yet.
+   ko: 부위가 표시되지 않았어요 — 아직 진행할 수 없어요. (29)
+   O1: 부위가 소독되지 않았어요 — 아직 진행할 수 없어요. (29)
+   O2: 부위가 표시되지 않았어요 — 오늘은 진행할 수 없어요. (30)
+   why: isn't marked로 이유를 사실로 먼저 말하고, yet으로 표시가 되면 풀리는 일시적 멈춤임을 알려요.
+8.1 [표시 요청/pager] Can we get the surgeon to mark before we continue?
+   ko: 집도의에게 표시를 부탁하고 나서 계속할 수 있을까요? (29)
+   O1: 집도의에게 표시를 부탁하고 나서 출발할 수 있을까요? (29)
+   O2: 집도의에게 표시를 부탁하고 나서 마취할 수 있을까요? (29)
+   why: Can we get … to로 표시는 집도의가 한다는 역할을 지키며 부탁해요. before we continue로 표시가 계속 진행보다 앞선다고 밝혀요.
+8.2 [보고/pencil] I'm reporting this as a missing site marking.
+   ko: 이걸 부위 표시 누락으로 보고할게요. (20)
+   O1: 이걸 부위 표시 지연으로 보고할게요. (20)
+   O2: 이걸 부위 표시 오류로 보고할게요. (19)
+   why: reporting this as로 어떤 사건인지 이름을 붙여 보고해요. missing site marking이 정확한 사건 유형이에요.
+8.3 [상황 보고/board] This patient came straight from the floor without a mark.
+   ko: 이 환자는 병동에서 곧장 올라왔고 표시가 없어요. (27)
+   O1: 이 환자는 응급실에서 곧장 올라왔고 표시가 없어요. (28)
+   O2: 이 환자는 대기실에서 곧장 올라왔고 표시가 없어요. (28)
+   why: without a mark로 무엇이 빠졌는지 사실로만 말해요. 판단은 붙이지 않고 상황을 정확히 알려요.
+8.4 [원칙 설명/shield] We hold every case until the site is marked and confirmed.
+   ko: 부위가 표시되고 확인될 때까지 모든 수술을 보류해요. (29)
+   O1: 부위가 표시되고 확인될 때까지 모든 촬영을 보류해요. (29)
+   O2: 부위가 표시되고 확인될 때까지 모든 회진을 보류해요. (29)
+   why: every case로 예외 없이 적용되는 규칙임을 알리고, marked and confirmed로 표시와 확인 두 조건을 모두 요구해요.
+8.5 [호출 보고/pager] I paged the surgeon to come mark the site right now.
+   ko: 지금 바로 표시하러 오시라고 집도의를 호출했어요. (27)
+   O1: 지금 바로 사인하러 오시라고 집도의를 호출했어요. (27)
+   O2: 지금 바로 회진하러 오시라고 집도의를 호출했어요. (27)
+   why: paged로 이미 호출했다고 완료형으로 말해 상대가 기다리면 된다는 걸 알려요. to come mark로 부른 목적이 표시임을 밝혀요.
+
+## S9 언어 장벽 신원 확인 지연
+9.0 [통역 요청/speech] Let me get an interpreter so we can confirm your details.
+   ko: 통역사를 모셔서 신원을 확인할게요. (19)
+   O1: 통역사를 모셔서 보험을 확인할게요. (19)
+   O2: 통역사를 모셔서 일정을 확인할게요. (19)
+   why: Let me get으로 내가 직접 챙기겠다고 말하고, so we can으로 통역이 필요한 목적이 확인임을 밝혀요.
+9.1 [통역 경유/speech] Please tell me your name and date of birth through the interpreter.
+   ko: 통역사를 통해 성함과 생년월일을 말씀해 주세요. (26)
+   O1: 통역사를 통해 성함과 생년월일을 써 주세요. (24)
+   O2: 통역사를 통해 성함과 생년월일을 전해 주세요. (25)
+   why: through the interpreter로 환자의 언어로 질문이 전달된다는 점을 밝혀요. 이름과 생년월일은 환자가 직접 말해야 확인돼요.
+9.2 [이해 확인/bulb] I want to make sure you understand every step.
+   ko: 매 단계를 이해하고 계신지 확실히 하고 싶어요. (26)
+   O1: 매 단계를 기억하고 계신지 확실히 하고 싶어요. (26)
+   O2: 매 단계를 준비하고 계신지 확실히 하고 싶어요. (26)
+   why: make sure you understand로 설명이 전달됐는지 내가 확인하겠다는 책임을 말해요. 이해 못 하는 쪽을 탓하지 않아요.
+9.3 [대기 원칙/shield] We wait for the interpreter before we ask anything else.
+   ko: 통역사가 올 때까지 기다렸다가 다른 걸 여쭤볼게요. (28)
+   O1: 통역사가 올 때까지 기다렸다가 다른 걸 정리할게요. (28)
+   O2: 통역사가 올 때까지 기다렸다가 다른 걸 적어 드릴게요. (30)
+   why: before로 다른 질문은 통역사가 오기 전에는 하지 않는다는 순서를 못 박아요. 이해 못 한 채 대답하는 것을 막아요.
+9.4 [양해 구하기/faceWorried] It's slower this way, but I need you to understand every question.
+   ko: 이 방식이 더 느리지만, 모든 질문을 이해하셔야 해요. (30)
+   O1: 이 방식이 더 느리지만, 모든 답변을 이해하셔야 해요. (30)
+   O2: 이 방식이 더 번거롭지만, 모든 질문을 이해하셔야 해요. (31)
+   why: It's slower … but …으로 불편을 먼저 인정하고 이유를 잇는 구조예요. 천천히 하는 것이 환자를 위한 것임을 전해요.
+9.5 [신원 확인/me] Through the interpreter, can you tell me your full name?
+   ko: 통역사를 통해, 성함을 말씀해 주시겠어요? (23)
+   O1: 통역사를 통해, 성함을 써 주시겠어요? (21)
+   O2: 통역사를 통해, 성함을 보여 주시겠어요? (22)
+   why: Through the interpreter를 앞에 두어 질문이 누구를 통해 가는지 먼저 알려요. full name으로 약칭이 아닌 전체 이름을 물어요.
+
+## S10 진정 상태 동의 유효성
+10.0 [시점 확인/calendar] Was this consent signed before she was sedated?
+   ko: 이 동의서는 진정되기 전에 서명됐나요? (21)
+   O1: 이 동의서는 입실하기 전에 서명됐나요? (21)
+   O2: 이 동의서는 검사하기 전에 서명됐나요? (21)
+   why: before she was sedated로 서명이 진정보다 앞섰는지 시점 하나만 묻는 닫힌 질문이에요. 동의의 유효성은 시점에 달려 있어요.
+10.1 [효력 확인/check] If she was already medicated, we need to verify its validity.
+   ko: 이미 투약됐다면 그 효력을 확인해야 해요. (23)
+   O1: 이미 투약됐다면 그 시각을 확인해야 해요. (23)
+   O2: 이미 투약됐다면 그 용량을 확인해야 해요. (23)
+   why: If로 조건을 앞에 두고 we need to verify로 해야 할 일을 분명히 해요. validity는 동의가 법적으로 유효한지를 뜻해요.
+10.2 [시점 확인/calendar] Let's check the timing before we proceed.
+   ko: 진행하기 전에 시점을 확인합시다. (18)
+   O1: 회진하기 전에 시점을 확인합시다. (18)
+   O2: 퇴근하기 전에 시점을 확인합시다. (18)
+   why: Let's로 같이 확인하자는 제안이라 지시처럼 들리지 않아요. timing 하나에 초점을 맞춰 무엇을 볼지 분명히 해요.
+10.3 [원칙 설명/shield] Consent has to happen before any sedation, not after.
+   ko: 동의는 진정 전에 이루어져야지, 그 후여선 안 돼요. (29)
+   O1: 동의는 면회 전에 이루어져야지, 그 후여선 안 돼요. (29)
+   O2: 동의는 퇴원 전에 이루어져야지, 그 후여선 안 돼요. (29)
+   why: before와 not after를 짝지어 시점의 규칙을 한 번에 대비시켜요. 진정되면 판단 능력이 떨어져 동의가 유효하지 않을 수 있어요.
+10.4 [기록 확인/board] I'll pull the record to see exactly when she signed and when she was medicated.
+   ko: 정확히 언제 서명했고 언제 투약됐는지 기록을 꺼내서 볼게요. (33)
+   O1: 정확히 언제 입실했고 언제 투약됐는지 기록을 꺼내서 볼게요. (33)
+   O2: 정확히 언제 서명했고 언제 도착했는지 기록을 꺼내서 볼게요. (33)
+   why: I'll로 내가 직접 하겠다고 하고, 두 시각(서명·투약)을 모두 대조해 순서를 객관적으로 확인해요. 기억이 아니라 기록으로 확인해요.
+10.5 [대응 조치/pencil] If the timing is wrong, we get a new consent before we proceed.
+   ko: 시점이 잘못됐다면 진행하기 전에 새 동의서를 받아요. (29)
+   O1: 서명이 빠졌다면 진행하기 전에 새 동의서를 받아요. (28)
+   O2: 서식이 틀렸다면 진행하기 전에 새 동의서를 받아요. (28)
+   why: If … , we get로 조건과 대응을 한 쌍으로 말해요. new consent는 진정이 풀려 판단할 수 있을 때 다시 받는다는 뜻이에요.
+
+## S11 응급 수술 동의 시간 부족
+11.0 [구두 동의/speech] Let's get verbal consent and document it immediately.
+   ko: 구두 동의를 받고 즉시 문서화합시다. (20)
+   O1: 서면 동의를 받고 즉시 문서화합시다. (20)
+   O2: 전화 동의를 받고 즉시 문서화합시다. (20)
+   why: Let's로 함께 하자는 제안이라 응급에서도 팀이 같이 움직여요. verbal consent는 말로 받은 동의라 즉시 기록해야 남아요.
+11.1 [기록/pencil] I'll note the time and witnesses on the record.
+   ko: 시각과 증인을 기록에 남길게요. (17)
+   O1: 시각과 증상을 기록에 남길게요. (17)
+   O2: 시각과 용량을 기록에 남길게요. (17)
+   why: the time and witnesses로 언제 누가 들었는지 두 가지를 함께 적는다고 말해요. 구두 동의는 이 기록이 근거가 돼요.
+11.2 [응급 동의/siren] We proceed under emergency consent — I'm charting it now.
+   ko: 응급 동의 하에 진행하고, 지금 바로 기록하고 있어요. (30)
+   O1: 응급 동의 하에 입원하고, 지금 바로 기록하고 있어요. (30)
+   O2: 응급 동의 하에 퇴원하고, 지금 바로 기록하고 있어요. (30)
+   why: under emergency consent로 어떤 근거로 진행하는지 밝히고, I'm charting it now로 기록을 지금 진행형으로 알려요.
+11.3 [상황 설명/siren] There's no time for a full consent — we need to move now.
+   ko: 완전한 동의를 받을 시간이 없어요 — 지금 움직여야 해요. (32)
+   O1: 완전한 설명을 드릴 시간이 없어요 — 지금 움직여야 해요. (32)
+   O2: 완전한 보고를 할 시간이 없어요 — 지금 움직여야 해요. (31)
+   why: no time으로 이유를 먼저 말하고 we need to move now로 지금 해야 할 일을 이어요. 위급할 때는 짧고 단정하게 말해요.
+11.4 [증인 확보/shield] Two clinicians will witness and sign off on the verbal consent.
+   ko: 두 명의 임상의가 구두 동의에 서명하고 증인이 되어 줄 거예요. (35)
+   O1: 세 명의 임상의가 구두 동의에 서명하고 증인이 되어 줄 거예요. (35)
+   O2: 두 명의 간호사가 구두 동의에 서명하고 증인이 되어 줄 거예요. (35)
+   why: Two로 증인 수를 못 박아, 구두 동의를 두 사람이 증언한다는 점을 알려요. sign off는 기록에 서명으로 확인한다는 뜻이에요.
+11.5 [시각 기록/pencil] I'm documenting the exact time we started, right now.
+   ko: 우리가 시작한 정확한 시각을 지금 바로 기록하고 있어요. (31)
+   O1: 우리가 시작한 정확한 날짜를 지금 바로 기록하고 있어요. (31)
+   O2: 우리가 도착한 정확한 시각을 지금 바로 기록하고 있어요. (31)
+   why: exact time으로 분 단위까지 정확히 남긴다는 뜻이에요. 지금 진행형으로 말해 기록이 미뤄지지 않음을 보여요.
+
+## S12 소아 법적 대리 동의
+12.0 [자격 확인/me] Are you his legal guardian?
+   ko: 당신이 법적 보호자이신가요? (15)
+   O1: 당신이 그의 이웃이신가요? (14)
+   O2: 당신이 그의 친구이신가요? (14)
+   why: legal을 붙여 혈연 여부와 별개로 법적 권한이 있는지를 묻는 질문이에요. 서명 권한은 법적 보호자에게 있어요.
+12.1 [대리 서명/pencil] I'll need you to sign the consent on his behalf.
+   ko: 그를 대신해서 동의서에 서명해 주셔야 해요. (24)
+   O1: 그를 대신해서 입원서에 서명해 주셔야 해요. (24)
+   O2: 그와 함께 동의서에 서명해 주셔야 해요. (22)
+   why: on his behalf로 서명하는 사람이 환자가 아니라 대리인임을 분명히 해요. I'll need you to로 부탁처럼 들리면서도 필요하다는 점을 전해요.
+12.2 [관계 확인/check] Can I confirm your relationship to the patient?
+   ko: 환자와의 관계를 확인해도 될까요? (18)
+   O1: 환자와의 약속을 확인해도 될까요? (18)
+   O2: 환자와의 연락처를 확인해도 될까요? (19)
+   why: Can I로 허락을 구하는 완곡한 질문이에요. 관계를 확인해야 서명 권한이 있는 사람인지 알 수 있어요.
+12.3 [서명 자격/shield] A parent or legal guardian must sign for a child under eighteen.
+   ko: 부모나 법적 보호자가 열여덟 살 미만 아이를 대신해 서명해야 해요. (37)
+   O1: 부모나 법적 보호자가 열여덟 살 미만 아이를 대신해 안내를 받아야 해요. (40)
+   O2: 부모나 법적 보호자가 열여덟 살 미만 아이와 함께 대기해야 해요. (36)
+   why: must로 선택이 아니라 요건임을 밝히고, parent or legal guardian으로 서명할 수 있는 사람의 범위를 정해요. 미성년자는 스스로 동의할 수 없는 것이 원칙이에요.
+12.4 [신분증 요청/board] I need your ID to document who signed on his behalf.
+   ko: 누가 대신 서명했는지 문서화하기 위해 신분증이 필요해요. (31)
+   O1: 누가 대신 서명했는지 문서화하기 위해 보험증이 필요해요. (31)
+   O2: 누가 대신 서명했는지 문서화하기 위해 사진이 필요해요. (30)
+   why: to document로 신분증이 필요한 이유를 밝혀요. 대신 서명한 사람의 신원이 기록에 남아야 나중에 확인할 수 있어요.
+12.5 [동의 범위/shield] Once you sign, that consent covers this one procedure only.
+   ko: 서명하시면 그 동의서는 이 시술 하나만 포함해요. (27)
+   O1: 서명하시면 그 동의서는 이 병원 하나만 포함해요. (27)
+   O2: 서명하시면 그 동의서는 이 병동 하나만 포함해요. (27)
+   why: Once로 서명한 순간부터 효력이 생긴다는 시점을 밝히고, only로 범위가 이 시술 하나로 한정됨을 분명히 해요.
+
+## S13 양측 수술 측 혼동 방지
+13.0 [따로 확인/check] We'll confirm each side separately, one at a time.
+   ko: 각 쪽을 따로, 한 번에 하나씩 확인할게요. (24)
+   O1: 각 구역을 따로, 한 번에 하나씩 확인할게요. (25)
+   O2: 각 방을 따로, 한 번에 하나씩 확인할게요. (24)
+   why: separately와 one at a time으로 양쪽을 한꺼번에 묶지 않는다고 못 박아요. 양측 수술은 쪽 혼동이 쉬워서예요.
+13.1 [순서 확인/check] Let me verify the right eye and then the left.
+   ko: 오른쪽 눈을 확인하고 그다음 왼쪽을 확인할게요. (26)
+   O1: 오른쪽 눈을 확인하고 그다음 장비를 확인할게요. (26)
+   O2: 오른쪽 눈을 확인하고 그다음 일정표를 확인할게요. (27)
+   why: and then으로 오른쪽을 끝낸 뒤 왼쪽으로 가는 순서를 말해요. 한쪽씩 차례로 가야 두 쪽이 섞이지 않아요.
+13.2 [개별 기록/pencil] Both procedures are documented individually.
+   ko: 두 시술 모두 개별적으로 문서화돼요. (20)
+   O1: 두 시술 모두 개별적으로 청구돼요. (19)
+   O2: 두 시술 모두 개별적으로 예약돼요. (19)
+   why: individually로 두 시술이 한 기록으로 합쳐지지 않는다는 점을 밝혀요. 각각 따로 남겨야 쪽이 뒤섞이지 않아요.
+13.3 [동시 금지/shield] We never mark or prep both eyes at the same moment.
+   ko: 두 눈을 동시에 표시하거나 준비하지 않아요. (24)
+   O1: 두 눈을 동시에 표시하거나 촬영하지 않아요. (24)
+   O2: 두 눈을 동시에 측정하거나 준비하지 않아요. (24)
+   why: never로 예외 없는 규칙임을 알리고, at the same moment로 금지되는 것이 동시에 하는 것임을 분명히 해요.
+13.4 [눈별 절차/shield] Each eye gets its own consent, its own site check, its own time-out.
+   ko: 각 눈마다 각자의 동의서와 부위 확인, 타임아웃이 따로 있어요. (35)
+   O1: 각 눈마다 각자의 동의서와 부위 확인, 소독이 따로 있어요. (33)
+   O2: 각 눈마다 각자의 동의서와 부위 확인, 휴식이 따로 있어요. (33)
+   why: its own을 세 번 되풀이해 동의·부위 확인·타임아웃 모두가 눈마다 따로임을 리듬으로 강조해요.
+13.5 [순차 진행/compass] We finish the right eye completely before we ever start the left.
+   ko: 오른쪽 눈을 완전히 끝내고 나서야 왼쪽을 시작해요. (28)
+   O1: 오른쪽 눈을 완전히 끝내고 나서야 회복을 시작해요. (28)
+   O2: 오른쪽 눈을 완전히 끝내고 나서야 정리를 시작해요. (28)
+   why: completely와 ever로 한쪽을 끝낸 뒤에만 다음 쪽을 시작한다는 규칙을 강조해요. 두 쪽을 번갈아 하면 쪽이 섞여요.
+
+## S14 추가 시술 동의 범위
+14.0 [동의 범위/shield] The consent only covers the planned procedure.
+   ko: 동의서는 계획된 시술만 포함해요. (18)
+   O1: 동의서는 계획된 검사만 포함해요. (18)
+   O2: 동의서는 계획된 방문만 포함해요. (18)
+   why: only와 planned로 동의가 미리 정한 시술에만 해당함을 못 박아요. 환자가 무엇에 동의했는지의 경계를 알려요.
+14.1 [허락 필요/shield] Anything beyond that would need your permission.
+   ko: 그 이상은 당신의 허락이 필요해요. (19)
+   O1: 그 이상은 당신의 시간이 필요해요. (19)
+   O2: 그 이상은 당신의 설명이 필요해요. (19)
+   why: would need로 가정적인 표현을 써 압박 없이 규칙을 알리고, your permission으로 결정권이 환자에게 있음을 밝혀요.
+14.2 [범위 확인/bulb] Let me clarify exactly what you've agreed to.
+   ko: 정확히 무엇에 동의하셨는지 명확히 할게요. (23)
+   O1: 정확히 무엇을 드셨는지 명확히 할게요. (21)
+   O2: 정확히 무엇을 받으셨는지 명확히 할게요. (22)
+   why: Let me로 내가 정리해 드린다는 태도를 보이고, exactly로 막연한 동의가 아니라 정확한 범위를 짚어요.
+14.3 [확인 약속/shield] If they find something else in there, they'll still ask you first.
+   ko: 안에서 다른 걸 발견하더라도, 여전히 먼저 물어볼 거예요. (32)
+   O1: 검사에서 다른 걸 발견하더라도, 여전히 먼저 물어볼 거예요. (33)
+   O2: 안에서 다른 걸 발견하더라도, 여전히 먼저 설명해 드릴 거예요. (35)
+   why: still로 예상 밖의 상황에서도 규칙이 유지된다고 약속해요. ask you first는 환자의 결정권을 지켜요.
+14.4 [별도 동의/shield] Anything outside this scope needs a separate consent from you.
+   ko: 이 범위 밖의 것은 당신의 별도 동의가 필요해요. (27)
+   O1: 이 범위 밖의 것은 당신의 별도 비용이 필요해요. (27)
+   O2: 이 범위 밖의 것은 당신의 별도 일정이 필요해요. (27)
+   why: separate로 기존 동의를 늘려 쓰지 않고 따로 받는다고 밝혀요. outside this scope가 앞 문장의 beyond that과 같은 범위를 가리켜요.
+14.5 [이해 확인/bulb] I want to make sure you know exactly what you did and didn't agree to.
+   ko: 무엇에 동의했고 무엇에 동의하지 않았는지 확실히 아셨으면 해요. (35)
+   O1: 무엇을 먹었고 무엇을 먹지 않았는지 확실히 아셨으면 해요. (32)
+   O2: 무엇을 받았고 무엇을 받지 않았는지 확실히 아셨으면 해요. (32)
+   why: did and didn't로 동의한 것과 하지 않은 것을 한 문장에 짝지어 경계를 양쪽에서 알려요.
+
+## S15 타임아웃 중 표시 불일치
+15.0 [일단 멈춤/siren] I need us to pause — the consent and marking don't match.
+   ko: 잠시 멈춰야 해요 — 동의서와 표시가 일치하지 않아요. (30)
+   O1: 잠시 멈춰야 해요 — 동의서와 차트가 일치하지 않아요. (30)
+   O2: 잠시 멈춰야 해요 — 동의서와 밴드가 일치하지 않아요. (30)
+   why: I need us to로 나 혼자가 아니라 우리가 함께 멈춘다고 말하고, 이유를 사실로 바로 붙여요.
+15.1 [쪽 확인/check] Let's verify the correct side before we proceed.
+   ko: 진행하기 전에 정확한 쪽을 확인합시다. (21)
+   O1: 진행하기 전에 정확한 시각을 확인합시다. (22)
+   O2: 진행하기 전에 정확한 환자를 확인합시다. (22)
+   why: Let's로 함께 하자는 제안이라 팀이 같이 확인해요. correct side가 모두가 합의할 기준이에요.
+15.2 [시작 금지/siren] Nobody starts until this is resolved.
+   ko: 이게 해결될 때까지 아무도 시작하지 않아요. (24)
+   O1: 이게 해결될 때까지 아무도 퇴근하지 않아요. (24)
+   O2: 이게 해결될 때까지 아무도 대답하지 않아요. (24)
+   why: Nobody로 예외 없이 모두에게 적용되고, until로 풀리는 조건을 밝혀요. 간호사도 시작을 멈출 권한이 있어요.
+15.3 [타임아웃 취지/shield] This is our time-out, and time-outs are exactly for catching this.
+   ko: 이게 우리 타임아웃이고, 타임아웃은 정확히 이걸 잡기 위한 거예요. (37)
+   O1: 이게 우리 브리핑이고, 브리핑은 정확히 이걸 잡기 위한 거예요. (35)
+   O2: 이게 우리 타임아웃이고, 타임아웃은 정확히 이걸 알리기 위한 거예요. (38)
+   why: exactly for catching this로 멈춤이 방해가 아니라 타임아웃이 존재하는 이유임을 알려요. 불일치를 발견한 것은 절차가 제 역할을 한 것이에요.
+15.4 [전원 멈춤/siren] Everyone stops talking until the site and the consent agree.
+   ko: 부위와 동의서가 일치할 때까지 모두 말을 멈춰요. (27)
+   O1: 부위와 동의서가 일치할 때까지 모두 일을 멈춰요. (27)
+   O2: 부위와 동의서가 일치할 때까지 모두 음악을 꺼요. (27)
+   why: Everyone으로 한 명도 빠지지 않는다는 점과 stops talking으로 잡담까지 멈추고 집중한다는 점을 보여요. agree가 풀리는 조건이에요.
+15.5 [전원 확인/shield] We don't move an inch until every voice in this room confirms the side.
+   ko: 이 방의 모든 목소리가 쪽을 확인할 때까지 저희는 한 치도 움직이지 않아요. (42)
+   O1: 이 방의 모든 목소리가 시각을 확인할 때까지 저희는 한 치도 움직이지 않아요. (43)
+   O2: 이 방의 모든 목소리가 이름을 확인할 때까지 저희는 한 치도 움직이지 않아요. (43)
+   why: every voice로 한 사람의 확인으로 끝내지 않고 방 안 모두가 소리 내어 확인해야 한다고 밝혀요. an inch는 조금도라는 강조예요.
+
+## S16 동의 없이 유도 직전
+16.0 [즉시 멈춤/siren] Stop — we don't have a confirmed consent yet.
+   ko: 멈추세요 — 아직 확인된 동의서가 없어요. (23)
+   O1: 멈추세요 — 아직 확인된 병상이 없어요. (22)
+   O2: 멈추세요 — 아직 확인된 처방이 없어요. (22)
+   why: Stop으로 한 단어로 즉시 멈추게 하고, 이유를 바로 붙여요. yet은 동의가 확인되면 풀리는 일시적 멈춤임을 알려요.
+16.1 [유도 보류/siren] Please hold induction until this is signed.
+   ko: 이게 서명될 때까지 유도를 보류해 주세요. (23)
+   O1: 이게 서명될 때까지 촬영을 보류해 주세요. (23)
+   O2: 이게 서명될 때까지 청소를 보류해 주세요. (23)
+   why: hold induction으로 멈출 일을 구체적으로 지정하고, until this is signed로 풀리는 조건을 밝혀요. Please로 요청 형태지만 의미는 분명해요.
+16.2 [진행 거부/shield] I can't let us proceed without valid consent.
+   ko: 유효한 동의 없이는 진행할 수 없어요. (21)
+   O1: 유효한 처방 없이는 진행할 수 없어요. (21)
+   O2: 유효한 신분증 없이는 진행할 수 없어요. (22)
+   why: I can't let us로 내가 책임지고 막는다는 말이에요. valid는 서명뿐 아니라 이해하고 한 동의여야 한다는 뜻이에요.
+16.3 [투약 보류/shield] We don't push medication until the consent is confirmed.
+   ko: 동의서가 확인될 때까지 약물을 주입하지 않아요. (26)
+   O1: 동의서가 확인될 때까지 마취가스를 틀지 않아요. (26)
+   O2: 동의서가 확인될 때까지 약물을 꺼내지 않아요. (25)
+   why: don't push로 하지 않을 일을 분명히 하고, until로 풀리는 조건을 붙여요. push는 정맥으로 약을 주입한다는 뜻이에요.
+16.4 [우려 표현/faceWorried] I'm not comfortable inducing this patient without a signed form.
+   ko: 서명된 서식 없이 이 환자를 마취 유도하는 게 마음이 편하지 않아요. (38)
+   O1: 서명된 서식 없이 이 환자를 이송하는 게 마음이 편하지 않아요. (35)
+   O2: 서명된 서식 없이 이 환자를 촬영하는 게 마음이 편하지 않아요. (35)
+   why: I'm not comfortable은 거절을 직접 하지 않고 우려로 표현하는 완곡한 방식이에요. 위계가 있어도 말을 꺼내기 쉬워요.
+16.5 [최후 요청/siren] Get me the consent now, or we hold everything right here.
+   ko: 지금 동의서를 가져오세요, 아니면 여기서 모든 걸 보류할게요. (34)
+   O1: 지금 처방전을 가져오세요, 아니면 여기서 모든 걸 보류할게요. (34)
+   O2: 지금 동의서를 보여 주세요, 아니면 여기서 모든 걸 보류할게요. (35)
+   why: now로 시급함을 앞세우고 or we hold로 따르지 않으면 내가 멈추겠다는 결과를 분명히 해요. 요청과 결과를 함께 말하면 힘이 실려요.
+
+## S17 신원 밴드 없는 무의식 환자
+17.0 [프로토콜/shield] We follow the unidentified patient protocol.
+   ko: 저희는 미확인 환자 프로토콜을 따라요. (21)
+   O1: 저희는 감염 관리 프로토콜을 따라요. (20)
+   O2: 저희는 낙상 예방 프로토콜을 따라요. (20)
+   why: follow로 즉흥이 아니라 정해진 절차를 따른다고 알려요. unidentified patient는 이름을 알 수 없는 환자를 부르는 정식 용어예요.
+17.1 [임시 ID/pencil] Let's assign a temporary ID and document everything.
+   ko: 임시 신분증을 부여하고 모든 걸 문서화합시다. (25)
+   O1: 임시 병상을 부여하고 모든 걸 문서화합시다. (24)
+   O2: 임시 신분증을 부여하고 모든 걸 보고합시다. (24)
+   why: temporary로 이름을 알게 되면 바뀔 임시 번호임을 밝히고, document everything으로 알게 된 것을 빠짐없이 적으라고 해요.
+17.2 [신원 확인/check] We confirm identity through the transferring team.
+   ko: 이송팀을 통해 신원을 확인해요. (17)
+   O1: 이송팀을 통해 보험을 확인해요. (17)
+   O2: 이송팀을 통해 알레르기를 확인해요. (19)
+   why: through로 신원을 우리가 짐작하지 않고 이송팀을 거쳐 확인한다고 밝혀요.
+17.3 [상황 설명/board] This patient came in unconscious, so we can't ask for a name.
+   ko: 이 환자는 의식이 없는 상태로 왔고, 그래서 이름을 물을 수 없어요. (38)
+   O1: 이 환자는 의식이 없는 상태로 왔고, 그래서 주소를 물을 수 없어요. (38)
+   O2: 이 환자는 의식이 없는 상태로 왔고, 그래서 병력을 물을 수 없어요. (38)
+   why: so로 의식이 없다는 사실에서 이름을 물을 수 없다는 결과를 이어요. 판단이 아니라 이유를 밝혀 동료가 이해하게 해요.
+17.4 [일관 원칙/shield] Every unidentified patient gets the same temporary band and number.
+   ko: 미확인 환자마다 같은 임시 밴드와 번호를 받아요. (27)
+   O1: 미확인 환자마다 같은 임시 병실과 번호를 받아요. (27)
+   O2: 미확인 환자마다 같은 임시 가운과 번호를 받아요. (27)
+   why: Every와 the same으로 환자마다 다른 방식이 아니라 같은 틀로 부여한다는 점을 알려요. 일관된 방식이어야 혼동이 줄어요.
+17.5 [신원 확정/check] The transferring team will confirm identity as soon as records arrive.
+   ko: 이송팀이 기록이 도착하는 대로 신원을 확인할 거예요. (29)
+   O1: 이송팀이 가족이 도착하는 대로 신원을 확인할 거예요. (29)
+   O2: 이송팀이 기록이 도착하는 대로 보험을 확인할 거예요. (29)
+   why: as soon as로 기록이 오는 즉시 확인이 이뤄진다는 시점을 알려요. 그때까지는 임시 번호로 환자를 구분해요.
+
+## S18 잘못된 환자 입실
+18.0 [즉시 멈춤/siren] This is the wrong patient — everyone stop.
+   ko: 이건 잘못된 환자예요 — 모두 멈추세요. (22)
+   O1: 이건 잘못된 침대예요 — 모두 멈추세요. (22)
+   O2: 이건 잘못된 약이에요 — 모두 멈추세요. (22)
+   why: wrong patient를 사실로 먼저 말하고 everyone stop으로 모두에게 같은 순간 멈추라고 해요. 위기에서는 짧은 문장이 가장 잘 들려요.
+18.1 [불일치 지적/check] The name and DOB don't match our case.
+   ko: 이름과 생년월일이 저희 수술 건과 일치하지 않아요. (28)
+   O1: 이름과 생년월일이 저희 명단과 일치하지 않아요. (26)
+   O2: 이름과 생년월일이 저희 예약표와 일치하지 않아요. (27)
+   why: don't match로 판단 없이 사실만 말하고, name and DOB로 어떤 두 식별자가 어긋났는지 밝혀요.
+18.2 [전면 중단/siren] I'm halting everything until we correct this.
+   ko: 이걸 정정할 때까지 모든 걸 중단시킬게요. (23)
+   O1: 이걸 정정할 때까지 모든 투약을 중단시킬게요. (25)
+   O2: 이걸 정정할 때까지 모든 이송을 중단시킬게요. (25)
+   why: halting everything으로 일부가 아니라 전부를 멈춘다고 말하고, until we correct this로 풀리는 조건을 붙여요.
+18.3 [불일치 지적/siren] This isn't the patient on my list — stop, we have the wrong person.
+   ko: 이 사람은 제 명단에 있는 환자가 아니에요 — 멈추세요, 잘못된 사람이에요. (42)
+   O1: 이 사람은 제 명단에 있는 환자가 아니에요 — 멈추세요, 잘못된 침대예요. (41)
+   O2: 이 사람은 제 명단에 있는 보호자가 아니에요 — 멈추세요, 잘못된 사람이에요. (43)
+   why: isn't the patient on my list로 근거(명단)를 밝히고 stop으로 멈추게 한 뒤, wrong person으로 결론을 이어요.
+18.4 [접촉 금지/shield] Nobody touches this patient until the name and chart match.
+   ko: 이름과 차트가 일치할 때까지 아무도 이 환자를 만지지 않아요. (34)
+   O1: 이름과 밴드가 일치할 때까지 아무도 이 환자를 만지지 않아요. (34)
+   O2: 이름과 차트가 일치할 때까지 아무도 이 환자를 촬영하지 않아요. (35)
+   why: Nobody touches로 예외 없는 금지를 말하고, until the name and chart match로 풀리는 조건을 밝혀요. 일치 확인 전에는 처치를 시작하지 않아요.
+18.5 [환자 교체/pager] We send this patient back and bring up the correct one.
+   ko: 이 환자를 돌려보내고 정확한 환자를 데려올게요. (26)
+   O1: 이 환자를 돌려보내고 정확한 보호자를 데려올게요. (27)
+   O2: 이 환자를 돌려보내고 정확한 침대를 가져올게요. (26)
+   why: send back과 bring up을 한 쌍으로 말해 잘못된 환자를 보내고 맞는 환자를 올리는 두 단계를 알려요.
+
+## S19 동의 철회 의사 표현
+19.0 [권리 인정/shield] You have every right to change your mind.
+   ko: 마음을 바꿀 모든 권리가 있으세요. (19)
+   O1: 질문할 모든 권리가 있으세요. (16)
+   O2: 통역을 요청할 모든 권리가 있으세요. (20)
+   why: every right로 철회가 예외가 아니라 환자의 당연한 권리임을 분명히 하고, 부담 없이 말하게 해요.
+19.1 [중단·보고/siren] I'll stop everything and let your surgeon know.
+   ko: 모든 걸 멈추고 집도의에게 알릴게요. (20)
+   O1: 모든 걸 멈추려고 집도의에게 알릴게요. (21)
+   O2: 청소를 멈추고 집도의에게 알릴게요. (19)
+   why: stop everything으로 즉시 멈추고, let your surgeon know로 집도의에게 알리는 것을 한 문장에 묶어 두 가지를 모두 약속해요.
+19.2 [안심/faceWorried] Nothing will happen without your agreement.
+   ko: 당신의 동의 없이는 아무것도 일어나지 않을 거예요. (28)
+   O1: 당신의 동의 없이는 아무도 들어오지 않을 거예요. (27)
+   O2: 당신의 동의 없이는 아무것도 기록되지 않을 거예요. (28)
+   why: Nothing으로 어떤 것도 동의 없이는 진행되지 않는다는 포괄적 약속을 해요. 환자가 말하기 쉽게 안심시키는 문장이에요.
+19.3 [철회 가능/shield] You can change your mind at any point, even right now.
+   ko: 언제든, 지금 이 순간에도 마음을 바꾸실 수 있어요. (29)
+   O1: 언제든, 지금 이 순간에도 질문하실 수 있어요. (26)
+   O2: 언제든, 지금 이 순간에도 통역을 요청하실 수 있어요. (30)
+   why: at any point로 시점 제한이 없다고 말하고, even right now로 마취 직전인 지금도 해당한다는 점을 강조해요.
+19.4 [즉시 멈춤/siren] We stop the moment you say you don't want to continue.
+   ko: 계속하고 싶지 않다고 말씀하시는 순간 저희는 멈춰요. (29)
+   O1: 계속하고 싶지 않다고 적으시는 순간 저희는 멈춰요. (28)
+   O2: 계속하기 어렵다고 말씀하시는 순간 저희는 멈춰요. (27)
+   why: the moment로 말씀하시는 즉시 멈춘다는 시점을 못 박아요. 이유를 묻거나 설득하기 전에 먼저 멈춰요.
+19.5 [직접 전달/pager] Your surgeon needs to hear this decision directly from you.
+   ko: 집도의가 이 결정을 당신에게서 직접 들어야 해요. (27)
+   O1: 집도의가 이 질문을 당신에게서 직접 들어야 해요. (27)
+   O2: 집도의가 이 걱정을 당신에게서 직접 들어야 해요. (27)
+   why: directly로 간호사의 전언이 아니라 환자 본인의 말로 전달돼야 한다고 밝혀요. 결정이 왜곡되지 않게 하려는 거예요.
+
+## S20 반대 측 수술 직전 인지
+20.0 [즉시 멈춤/siren] Stop — you're prepping the wrong side.
+   ko: 멈추세요 — 반대 쪽을 준비하고 있어요. (22)
+   O1: 멈추세요 — 반대 쪽을 표시하고 있어요. (22)
+   O2: 멈추세요 — 반대 쪽을 측정하고 있어요. (22)
+   why: Stop으로 한 단어로 먼저 멈추게 하고, you're prepping으로 지금 진행 중인 행동을 짚어 무엇이 틀렸는지 바로 알려요.
+20.1 [쪽 정정/pushpin] The case is the right side, not the left.
+   ko: 이 수술 건은 오른쪽이지, 왼쪽이 아니에요. (24)
+   O1: 이 수술 건은 오전이지, 오후가 아니에요. (23)
+   O2: 이 수술 건은 첫 번째지, 두 번째가 아니에요. (26)
+   why: not으로 맞는 쪽과 틀린 쪽을 한 문장에서 짝지어 알려요. 정정은 비난 없이 사실만 말해요.
+20.2 [절개 금지/shield] We do not incise until this is confirmed.
+   ko: 이게 확인될 때까지 절개하지 않아요. (20)
+   O1: 이게 확인될 때까지 투약하지 않아요. (20)
+   O2: 이게 확인될 때까지 소독하지 않아요. (20)
+   why: do not으로 줄이지 않고 또박또박 말해 규칙의 무게를 보여요. incise는 절개한다는 뜻의 임상 동사예요.
+20.3 [전원 멈춤/siren] Everyone freezes the moment a side looks wrong.
+   ko: 쪽이 잘못돼 보이는 순간 모두 멈춰요. (21)
+   O1: 표시가 잘못돼 보이는 순간 모두 멈춰요. (22)
+   O2: 장비가 잘못돼 보이는 순간 모두 멈춰요. (22)
+   why: freezes로 하던 동작을 그대로 멈춘다는 강한 동사를 쓰고, the moment로 즉시 멈추는 시점을 밝혀요.
+20.4 [절개 금지/shield] No blade touches skin until the side matches the consent.
+   ko: 쪽이 동의서와 일치할 때까지 메스가 피부에 닿지 않아요. (31)
+   O1: 쪽이 표시와 일치할 때까지 메스가 피부에 닿지 않아요. (30)
+   O2: 쪽이 동의서와 일치할 때까지 거즈가 피부에 닿지 않아요. (31)
+   why: No blade로 가장 구체적인 이미지를 써 무엇이 금지인지 분명히 하고, until the side matches the consent로 풀리는 조건을 밝혀요.
+20.5 [최종 재확인/check] We re-check the chart, the mark, and the consent before we incise.
+   ko: 절개하기 전에 차트와 표시, 동의서를 다시 확인해요. (29)
+   O1: 소독하기 전에 차트와 표시, 동의서를 다시 확인해요. (29)
+   O2: 입실하기 전에 차트와 표시, 동의서를 다시 확인해요. (29)
+   why: re-check로 이미 한 확인을 다시 한다는 점을 밝히고, 세 가지를 나열해 어느 것도 빠지지 않게 해요. before we incise로 마지막 시점을 정해요.

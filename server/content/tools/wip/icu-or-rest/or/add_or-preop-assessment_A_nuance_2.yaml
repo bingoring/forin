@@ -1,0 +1,129 @@
+조영제·해산물 교차 알레르기:
+- kind: slider
+  words: [w-shellfish, w-contrast, w-confirm]
+  cue: 'Patient: "I get hives from shrimp. Does that mean I''m allergic to the contrast?" How do you reply?'
+  scale: ['It''s irrelevant, so we''ll skip it', We'll note it and confirm with radiology, We'll cancel your scan right now]
+  answerAt: 1
+  why: 해산물 알레르기가 곧 조영제 알레르기를 뜻하지는 않지만, 환자가 말한 반응은 기록해서 영상의학과와 확인해요. 무시하겠다거나 간호사가 검사를 취소하겠다는 말은 모두 맞지 않아요.
+  example: I'll confirm this with radiology so they can plan the right precautions.
+  exKo: 영상의학과에 확인해서 적절한 예방 조치를 계획하게 할게요.
+- kind: swap
+  words: [w-shellfish, w-predict, w-contrast]
+  who: 간호사 → 환자 · 조영제 설명
+  icon: me
+  before: ['', A shellfish allergy means you will definitely react to contrast., '']
+  options: [A shellfish allergy means you will definitely react to contrast., A shellfish allergy doesn't actually predict a contrast reaction., A shellfish allergy has no link to anything we ever give you.]
+  answer: A shellfish allergy doesn't actually predict a contrast reaction.
+  notes: {A shellfish allergy doesn't actually predict a contrast reaction.: 해산물 알레르기가 조영제 반응을 예측하지는 않는다는 사실을 정확히 말한다., A shellfish allergy means you will definitely react to contrast.: 연관이 있다고 단정해서 환자를 불필요하게 겁준다., A shellfish allergy has no link to anything we ever give you.: '모든 약과 무관하다는 말이라 과장이고, 환자가 다른 알레르기를 말하지 않게 만든다.'}
+  why: 해산물 알레르기가 조영제 반응을 예측하지는 않는다는 점은 정확히 안내하되, 환자가 말한 반응은 빠짐없이 기록하고 확인해요.
+  ko: 해산물 알레르기가 있다고 조영제 반응이 예측되는 건 아니에요
+이전 마취 오심 병력:
+- kind: slider
+  words: [w-risk, w-nausea, w-flag]
+  cue: 'Patient: "After my last surgery I threw up twice and felt sick all night." How do you flag the risk?'
+  scale: [Low risk for nausea, Some risk for nausea, High risk of PONV]
+  answerAt: 2
+  why: 지난 수술 뒤에 반복해서 토했다면 수술 후 오심구토 위험이 높다고 표시해서 마취팀에 전해요. 예방 약을 쓸지는 마취과가 정해요.
+  example: I'll flag you as high-risk for post-op nausea.
+  exKo: 고위험군으로 표시해서 수술 후 메스꺼움에 대비할게요.
+- kind: context
+  words: [w-ponv]
+  word: PONV
+  ko: 수술 후 오심구토
+  scenes:
+  - {who: 간호사 → 마취팀, icon: speech, en: 'History of PONV: she threw up twice after her last surgery.', ok: true}
+  - {who: 차트 기록, icon: board, en: 'Hx PONV, last surgery: emesis x2.', ok: true}
+  - {who: 불안한 환자에게, icon: faceWorried, en: Your PONV history puts you in the highest tier of the risk score., ok: false, fix: 'You got sick after your last surgery, so we''ll tell the anesthesia team to plan for it.'}
+  why: 뜻은 셋 다 '수술 후 오심구토'예요. 약어는 마취팀과 차트에서 편하게 쓰이지만, 환자에게 약어와 위험 점수 이야기를 하면 못 알아듣고 겁을 먹어요. 환자에게는 겪은 일을 쉬운 말로 확인하고, 팀에 전해 대비하겠다고 말해요.
+수면무호흡 병력:
+- kind: slider
+  words: [w-cpap, w-use]
+  cue: A patient says, "I put the mask on when I remember — five or six nights out of seven." How do you tell anesthesia?
+  scale: [Never uses CPAP, Uses CPAP most nights, Uses CPAP every night]
+  answerAt: 1
+  why: 환자가 말한 빈도를 그대로 전해요. '매일 쓴다'로 올리면 마취과가 기도 위험을 낮게 볼 수 있고, '안 쓴다'로 줄이면 사실과 달라요.
+  example: Do you use your CPAP every night, and what pressure setting?
+  exKo: 매일 밤 CPAP을 쓰시고, 압력 설정은 어떻게 되세요?
+- kind: context
+  words: [w-airway]
+  word: airway
+  ko: 기도
+  scenes:
+  - {who: 간호사 → 마취팀, icon: speech, en: 'Sleep apnea history, so please plan the airway with that in mind.', ok: true}
+  - {who: 환자에게, icon: me, en: 'Because of your sleep apnea, we''ll make sure anesthesia plans carefully for your airway.', ok: true}
+  - {who: 차트 기록, icon: board, en: 'Airway: snores like crazy, probably fine.', ok: false, fix: 'OSA, uses CPAP nightly. Airway plan per anesthesia.'}
+  why: 뜻은 셋 다 '기도'예요. 팀에는 계획을 부탁하고, 환자에게는 마취과가 신경 쓴다고 안심시켜요. 하지만 차트에 '코를 심하게 골지만 아마 괜찮다'는 추측을 적으면 기도 위험이 가려져요. 병력과 사용 중인 장비를 그대로 적어요.
+심·호흡 기저질환:
+- kind: slider
+  words: [w-short, w-breathe, w-stair]
+  cue: 'Patient: "Stairs are hard, and even on the couch I sometimes feel I can''t get enough air." How do you describe it?'
+  scale: [Breathing is fine, Winded on one flight, Winded even when sitting still]
+  answerAt: 2
+  why: 앉아 있을 때도 숨이 찬다는 말까지 빠뜨리지 않고 가장 심한 단계로 전해요. 계단에서만 숨이 찬다고 줄여 말하면 마취과가 위험을 낮게 봐요.
+  example: Do you get short of breath walking up a flight of stairs?
+  exKo: 계단을 오를 때 숨이 차시나요?
+- kind: swap
+  words: [w-copd, w-short, w-stair]
+  who: 간호사 → 마취과 · 인계
+  icon: speech
+  before: ['', 'He has COPD, and he''s doing fine, no problems.', '']
+  options: ['He has COPD, and he''s doing fine, no problems.', 'He has some kind of lung thing, I think so.', He has COPD and gets short of breath on stairs.]
+  answer: He has COPD and gets short of breath on stairs.
+  notes: {He has COPD and gets short of breath on stairs.: 진단명과 환자가 말한 증상을 구체적으로 전한다. 마취과가 위험을 가늠할 수 있다., 'He has COPD, and he''s doing fine, no problems.': 환자의 증상을 말하지 않고 괜찮다고 평가해서 중요한 정보가 빠진다., 'He has some kind of lung thing, I think so.': 모호하게 말해서 마취과가 필요한 정보를 얻지 못한다.}
+  why: 인계는 진단명과 증상을 구체적으로 전해야 해요. '괜찮다'거나 '폐 쪽 뭔가'처럼 흐릿하면 마취과가 위험을 가늠하지 못해요.
+  ko: COPD가 있고 계단을 오르면 숨이 차요
+한약·건강보조제 복용:
+- kind: slider
+  words: [w-supplement, w-bleed, w-risk]
+  cue: A patient says she takes "a little ginkgo and fish oil, nothing serious." How do you describe the bleeding risk to the team?
+  scale: [No bleeding concern, Possible bleeding concern, Confirmed bleeding problem]
+  answerAt: 1
+  why: 일부 보조제는 출혈에 영향을 줄 수 있어서 '가능성이 있다'고 전하고, 마지막 복용 시점과 함께 목록에 올려요. '문제없다'고 하면 놓치게 되고, '확인된 문제'라고 하면 사실이 아니에요.
+  example: I'll list these so surgery knows about the bleeding risk.
+  exKo: 이걸 목록으로 정리해서 수술팀도 출혈 위험을 알게 할게요.
+- kind: context
+  words: [w-supplement]
+  word: supplement
+  ko: 보조제
+  scenes:
+  - {who: 간호사 → 집도의, icon: speech, en: 'She takes a fish oil supplement, and her last dose was Sunday.', ok: true}
+  - {who: 수술 기록, icon: board, en: 'Supplement: fish oil, daily. Last dose Sunday.', ok: true}
+  - {who: 불안한 환자에게, icon: faceWorried, en: Your nutraceutical supplement regimen confers coagulopathic risk., ok: false, fix: 'Supplements like fish oil can affect bleeding, so I''m adding it to your list.'}
+  why: 뜻은 셋 다 '보조제'예요. 팀에는 이름과 마지막 복용 시점만 짧게 전하면 되지만, 환자에게 '기능성 식품 복용 요법이 응고 이상 위험을 준다'고 말하면 못 알아듣고 위축돼요. 환자에게는 목록에 올린다고 쉽게 말해요.
+흡연·음주력 문진:
+- kind: slider
+  words: [w-smoke, w-year, w-cigarette]
+  cue: He says, "I put down my last cigarette about a month ago — I'd been at it since my twenties." How do you record it?
+  scale: [Quit smoking a month ago, Occasional smoker, Heavy daily smoker]
+  answerAt: 0
+  why: 환자가 말한 대로 '한 달 전에 끊은 사람'이라고 기록해요. 아직 피우는 사람으로 적으면 사실과 달라지고, 마취과가 기도 위험을 잘못 가늠해요.
+  example: About how many cigarettes a day, and for how many years?
+  exKo: 하루에 몇 개비 정도, 몇 년째 피우셨어요?
+- kind: swap
+  words: [w-judge, w-honest, w-drink]
+  who: 간호사 → 환자 · 음주 묻기
+  icon: me
+  before: ['', 'You drink too much, don''t you? Be honest.', '']
+  options: ['About how many drinks do you have in a week?', 'You drink too much, don''t you? Be honest.', 'Be honest, how bad is your drinking these days?']
+  answer: About how many drinks do you have in a week?
+  notes: {'About how many drinks do you have in a week?': 판단 없이 양을 묻는 질문이라 환자가 솔직하게 답하기 쉽다., 'You drink too much, don''t you? Be honest.': 단정하고 탓하는 말투라 환자가 줄여서 말하게 된다., 'Be honest, how bad is your drinking these days?': '''솔직히''와 ''나쁜''이 비난처럼 들려 방어하게 만든다.'}
+  why: 음주력은 판단 없이 구체적인 양을 물어야 환자가 솔직하게 말해요. 탓하는 질문은 오히려 거짓말을 부르고, 마취 계획에 필요한 정보를 잃게 해요.
+  ko: 일주일에 대략 몇 잔 드세요?
+가임기 임신 가능성:
+- kind: slider
+  words: [w-pregnant, w-pregnancy, w-confirm]
+  cue: 'Patient: "No chance — my period was last week, and we use protection." What do you report?'
+  scale: [Patient denies any chance of pregnancy, Pregnancy is likely, Pregnancy is confirmed]
+  answerAt: 0
+  why: 환자가 말한 내용을 출처와 함께 그대로 전해요. 병원 정책에 따라 임신 검사를 하는 경우가 많은데, 그것은 정책의 문제이지 간호사가 환자 말을 의심해서 '가능성 있음'으로 바꿔 적을 일이 아니에요.
+  example: Anesthesia can affect a pregnancy, so we always confirm.
+  exKo: 마취가 임신에 영향을 줄 수 있어서 항상 확인해요.
+- kind: context
+  words: [w-confidential]
+  word: confidential
+  ko: 비밀의
+  scenes:
+  - {who: 간호사 → 환자, icon: me, en: 'The result is confidential, and only the care team sees it.', ok: true}
+  - {who: 수술 기록, icon: board, en: Pregnancy status confidential; shared with the care team only., ok: true}
+  - {who: 대기실 가족에게, icon: speech, en: 'The result is confidential, but she is two weeks pregnant.', ok: false, fix: 'I can''t share her results, but she can tell you herself if she wants to.'}
+  why: 뜻은 셋 다 '비밀의'예요. 환자와 진료팀에는 비밀이 지켜진다고 말하지만, 가족에게는 결과 자체를 말하면 안 돼요. 비밀이라고 하면서 내용을 말하면 환자의 개인정보를 가족에게 알리는 일이에요.

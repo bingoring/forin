@@ -1,0 +1,146 @@
+금식 여부 구두 확인:
+  - kind: slider
+    words: [w-sip, w-exactly]
+    cue: "The patient says, \"I only had a sip of water with my pill, so that's nothing, right?\" Whether it matters is the anesthesia team's call, not yours."
+    scale: ["That's fine, don't worry", "I'll jot it down", "I'll tell anesthesia exactly when"]
+    answerAt: 2
+    why: "금식이 문제가 되는지는 마취과가 판단해요. 간호사가 '괜찮다'고 안심시키면 판단을 대신하는 셈이고, 적어 두기만 하면 전달이 안 될 수 있어요. 시각과 양을 정확히 마취과에 전하는 게 맞아요."
+    example: "I'll tell anesthesia exactly what you had and when."
+    exKo: "무엇을 언제 드셨는지 마취과에 정확히 전할게요."
+  - kind: swap
+    words: [w-eat, w-drink]
+    who: "간호사 → 환자 · 금식 확인"
+    icon: me
+    before: ["", "You didn't eat or drink anything, right?", ""]
+    options: ["When did you last have anything to eat or drink?", "You didn't eat or drink anything, right?", "Just say you followed the rules."]
+    answer: When did you last have anything to eat or drink?
+    notes: {"When did you last have anything to eat or drink?": "시각을 물어서 실제로 언제 먹었는지 알 수 있다. 마취과가 판단할 정확한 정보가 된다.", "You didn't eat or drink anything, right?": "'네'를 유도하는 질문이라 작은 간식이나 물도 말하지 않고 넘어갈 수 있다.", "Just say you followed the rules.": "환자가 사실 대신 규칙을 지켰다는 말만 하게 만든다. 확인이 아니라 서약처럼 들린다."}
+    why: "금식 확인은 '언제 마지막으로 먹고 마셨는지'를 열어 놓고 물어요. '안 드셨죠?' 하고 닫힌 질문을 하면 환자가 맞다고만 해서 작은 것도 놓쳐요."
+    ko: "마지막으로 드시거나 마신 게 언제였나요?"
+동의서 수술명 불일치:
+  - kind: slider
+    words: [w-pause, w-clarify, w-first]
+    cue: "The consent says one operation, but the patient describes a different one. The surgeon is in the next room. What do you say to the team?"
+    scale: ["Let's sort it out afterward", "Let's pause and clarify this first", "I'm cancelling the case right now"]
+    answerAt: 1
+    why: "간호사는 멈추고 집도의에게 확인하는 데까지가 역할이에요. 나중에 정리하자는 말은 확인 없이 진행하게 만들고, 수술 취소는 간호사가 단독으로 정할 일이 아니에요."
+    example: "Let's pause and clarify this first."
+    exKo: "일단 멈추고 이것부터 명확히 해요."
+  - kind: swap
+    words: [w-consent, w-match, w-clarify, w-surgery]
+    who: "간호사 → 집도의 · 불일치 보고"
+    icon: speech
+    before: ["Dr. Park, ", "the paperwork has a small typo", " — can we clarify before we proceed?"]
+    options: ["the consent doesn't match the surgery the patient described", "the paperwork has a small typo", "the patient seems a little confused"]
+    answer: the consent doesn't match the surgery the patient described
+    notes: {"the consent doesn't match the surgery the patient described": "무엇이 어떻게 다른지 사실 그대로 말한다. 집도의가 바로 판단할 수 있다.", "the paperwork has a small typo": "문제를 가볍게 줄여 말한다. 수술명이 틀렸다면 오타가 아니라 안전 문제다.", "the patient seems a little confused": "불일치의 원인을 환자 탓으로 돌린다. 동의서가 틀렸을 가능성이 가려진다."}
+    why: "불일치는 추측이나 평가 없이 '동의서와 환자가 설명한 수술이 다르다'고 사실만 말해요. 오타라고 줄이거나 환자가 헷갈렸다고 하면 정작 확인해야 할 것이 가려져요."
+    ko: "동의서가 환자분이 설명하신 수술과 달라요"
+환자가 부위를 다르게 진술:
+  - kind: pair
+    words: [w-bring, w-surgeon, w-clarify, w-correct, w-side]
+    pairs: [[bring in, your surgeon], [clarify, the correct side]]
+    decoys: [the stretcher]
+    why: "'bring in'은 다른 사람을 불러 합류시킬 때, 'clarify'는 흐릿한 점을 분명히 할 때 써요. 환자 진술과 표시가 다르면 간호사는 직접 정하지 않고 집도의를 불러 정확한 쪽을 확인해요."
+  - kind: context
+    words: [w-stop]
+    word: stop
+    ko: 멈추다
+    scenes:
+      - {who: 간호사 → 수술팀, icon: speech, en: "Stop — the patient said left, but the mark is on the right.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Prep stopped: pt stated left, mark right; surgeon notified.", ok: true}
+      - {who: 불안한 환자에게, icon: faceWorried, en: "We have stopped all pre-op procedures due to a laterality discrepancy.", ok: false, fix: "We've stopped for a moment because what you said and the mark don't match — we just want to be sure."}
+    why: "뜻은 셋 다 '멈추다'예요. 팀이나 기록에서는 짧고 분명하게 쓰지만, 환자에게 'laterality discrepancy' 같은 말로 멈췄다고 하면 겁이 나요. 왜 멈췄는지 쉬운 말로 풀어 줘요."
+부위 표시 없이 입실:
+  - kind: slider
+    words: [w-surgeon, w-mark, w-continue]
+    cue: "The patient came up from the floor with no site mark. The surgeon is in the building. What do you say to the surgeon?"
+    scale: ["Could you maybe mark the site when you get a chance?", "I need you to mark the site before we continue", "Mark it now or I'll report you"]
+    answerAt: 1
+    why: "부위 표시는 집도의가 해야 하고 표시 전에는 진행하지 않는다는 점을 분명히 말해요. 부탁조로 흐리면 넘어가기 쉽고, 위협하면 협력이 깨져요."
+    example: "I need you to mark the site before we continue."
+    exKo: "계속하기 전에 부위를 표시해 주셔야 해요."
+  - kind: swap
+    words: [w-hold, w-mark, w-site]
+    who: "순환 간호사 → 마취과 · 표시 없는 환자"
+    icon: speech
+    before: ["No site mark yet — ", "let's go ahead and prep", "."]
+    options: ["let's hold until the surgeon marks it", "let's go ahead and prep", "let's mark it ourselves, it's obvious"]
+    answer: let's hold until the surgeon marks it
+    notes: {"let's hold until the surgeon marks it": "표시는 집도의 몫이므로 표시될 때까지 보류한다.", "let's go ahead and prep": "표시 없이 준비를 진행하면 부위 확인의 한 단계를 건너뛴다.", "let's mark it ourselves, it's obvious": "표시는 시술을 맡은 의사가 하는 것이다. 간호사가 눈짐작으로 표시하면 오류의 위험이 커진다."}
+    why: "부위 표시가 없으면 집도의가 표시할 때까지 진행을 보류해요. 준비를 먼저 하거나 팀이 대신 표시하면 부위 확인 절차가 무너져요."
+    ko: "집도의가 표시할 때까지 보류해요"
+언어 장벽 신원 확인 지연:
+  - kind: slider
+    words: [w-interpreter, w-understand]
+    cue: "The patient's son says, \"I can translate for her.\" You need the details of the consent explained accurately."
+    scale: ["Sure, go ahead and help", "Maybe you could help us a little", "Thank you, but we'll use our interpreter"]
+    answerAt: 2
+    why: "동의와 신원 확인은 자격을 갖춘 통역사를 통해야 해요. 가족이 옮기면 말이 빠지거나 바뀔 수 있어서, 고마움을 표하면서도 병원 통역사를 쓰겠다고 분명히 말해요."
+    example: "Thank you, but we'll use our interpreter."
+    exKo: "감사하지만 병원 통역사를 쓸게요."
+  - kind: swap
+    words: [w-tell, w-dob, w-through, w-interpreter]
+    who: "간호사 → 환자 · 통역 연결 후"
+    icon: me
+    before: ["", "Tell me your name and birthday in English.", ""]
+    options: ["Please tell me your name and date of birth through the interpreter.", "Tell me your name and birthday in English.", "Just nod if the paper has your name right."]
+    answer: Please tell me your name and date of birth through the interpreter.
+    notes: {"Please tell me your name and date of birth through the interpreter.": "통역사를 거쳐 환자가 직접 말하게 한다. 환자가 이해한 채로 답하고 확인도 정확하다.", "Tell me your name and birthday in English.": "영어가 어려운 환자에게 영어를 강요한다. 이해하지 못한 채 답하거나 답을 못 한다.", "Just nod if the paper has your name right.": "끄덕이기만 하면 되는 질문이라 환자가 이해했는지 알 수 없다."}
+    why: "언어 장벽이 있으면 통역사를 통해 환자가 직접 이름과 생년월일을 말하게 해요. 영어를 강요하거나 끄덕임으로 대신하면 신원 확인이 되지 않아요."
+    ko: "통역사를 통해 성함과 생년월일을 말씀해 주세요"
+진정 상태 동의 유효성:
+  - kind: slider
+    words: [w-timing, w-validity]
+    cue: "The record shows the pre-med was given at 0745, but the consent has no time written on it."
+    scale: ["I can't tell the timing yet", "The consent is probably fine", "The consent is valid"]
+    answerAt: 0
+    why: "서명 시각이 없으니 약 투여 전인지 후인지 아직 알 수 없어요. 간호사는 모르는 것을 모른다고 말하고 기록을 확인해요. 유효성 판단은 집도의와 마취과의 몫이에요."
+    example: "I can't tell the timing yet."
+    exKo: "아직 시점을 알 수 없어요."
+  - kind: context
+    words: [w-consent]
+    word: consent
+    ko: 동의서
+    scenes:
+      - {who: 간호사 → 마취과, icon: speech, en: "The consent was signed before the pre-med, and I've checked the times.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Consent signed 0700; pre-med 0745; timing verified.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your consent may be legally compromised because you were sedated.", ok: false, fix: "We're double-checking the times so we know the consent was signed before any sleepy medicine."}
+    why: "뜻은 셋 다 '동의서'예요. 의료진끼리는 시각과 사실로 말하면 되지만, 환자에게 '법적으로 문제될 수 있다'고 하면 겁만 주고 사실도 확정되지 않았어요. 무엇을 확인 중인지만 쉽게 말해요."
+응급 수술 동의 시간 부족:
+  - kind: slider
+    words: [w-note, w-document, w-witness]
+    cue: "A patient who can speak needs surgery right away. The surgeon has obtained verbal consent. What do you add?"
+    scale: ["I'll try to remember the time and who was there", "I'll note it on the record", "I'll document the time and witnesses now"]
+    answerAt: 2
+    why: "구두 동의는 시각과 증인까지 바로 기록으로 남겨야 근거가 돼요. 기억해 두기나 대충 적기만 하면 나중에 동의가 있었다는 것을 보여 줄 수 없어요."
+    example: "I'll document the time and witnesses right now."
+    exKo: "시각과 증인을 지금 바로 기록할게요."
+  - kind: swap
+    words: [w-document, w-witness, w-note]
+    who: "간호사 → 집도의 · 응급 구두 동의"
+    icon: speech
+    before: ["Dr. Reyes, ", "I'll write it up later", "."]
+    options: ["I'll document the time and witnesses now", "I'll write it up later", "I'll skip it since it's an emergency"]
+    answer: I'll document the time and witnesses now
+    notes: {"I'll document the time and witnesses now": "응급이어도 구두 동의의 시각과 증인은 바로 남긴다.", "I'll write it up later": "나중에 적으면 시각과 증인이 불확실해지고 기억에 의존하게 된다.", "I'll skip it since it's an emergency": "응급일수록 근거가 필요하다. 기록을 건너뛰면 동의가 있었는지 증명할 수 없다."}
+    why: "응급이라서 서면을 받지 못해도 구두 동의의 시각과 증인은 바로 기록해요. 나중에 적거나 건너뛰면 동의가 있었다는 근거가 사라져요."
+    ko: "시각과 증인을 지금 바로 기록할게요"
+소아 법적 대리 동의:
+  - kind: slider
+    words: [w-guardian, w-legal, w-relationship]
+    cue: "An aunt says she brought the child in and can sign. You don't know whether she is his legal guardian."
+    scale: ["Sure, go ahead and sign", "I need to confirm you're his legal guardian", "Only a parent can sign — nobody else"]
+    answerAt: 1
+    why: "미성년자의 동의는 부모나 법적 보호자가 해요. 관계와 법적 권한을 확인한 뒤에 서명받아야 해요. 곧바로 서명시키면 권한 없는 사람의 동의가 되고, '부모만 가능하다'는 말은 사실과 달라요."
+    example: "I need to confirm your relationship to him first."
+    exKo: "먼저 아이와의 관계를 확인해야 해요."
+  - kind: context
+    words: [w-guardian]
+    word: guardian
+    ko: 법적 보호자
+    scenes:
+      - {who: 간호사 → 보호자, icon: speech, en: "Are you his parent or legal guardian?", ok: true}
+      - {who: 수술 기록, icon: board, en: "Consent signed by legal guardian; ID verified.", ok: true}
+      - {who: 8살 환자에게, icon: baby, en: "Your legal guardian must provide consent on your behalf.", ok: false, fix: "Your mom or dad will sign a paper to say it's okay."}
+    why: "뜻은 셋 다 '법적 보호자'예요. 보호자나 기록에서는 정확한 법률 용어가 필요하지만, 어린 환자에게는 어려운 말이에요. 아이에게는 엄마나 아빠가 종이에 서명한다고 쉽게 말해요."

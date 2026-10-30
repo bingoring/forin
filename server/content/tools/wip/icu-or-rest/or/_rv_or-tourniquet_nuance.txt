@@ -1,0 +1,294 @@
+=== 0 지혈대 압력 설정
+ -- n0 slider words=['w-confirm', 'w-set', 'w-pressure']
+   cue: The surgeon told you the pressure to set, you entered it, and he says "Go ahead and inflate."
+      0 I assume the setting is right
+      1 I glance at the setting
+    * 2 I confirm the setting with you
+   why: 압력은 집도의가 정하고, 간호사는 올리기 전에 입력한 값을 소리 내어 맞춰 봐요. 'confirm … with you'는 상대와 말로 확인한다는 뜻이라 가장 알맞아요. 혼자 훑어보거나 맞겠거니 하는 것은 확인이 아니에요.
+   ex: I confirm the setting with you before I inflate. / 올리기 전에 설정을 당신과 확인해요.
+ -- n1 swap words=['w-set', 'w-match', 'w-before']
+   who: 순환 간호사 → 집도의 · 올리기 직전 | ko: 설정이 지시하신 것과 일치해요
+    * 'Dr. Kim, the setting matches your order — shall I inflate?' :: 집도의가 정한 값과 기계 값이 같다고 보고한다. 집도의가 안심하고 올리라고 말할 수 있다.
+      'Dr. Kim, I changed the setting a little — shall I inflate?' :: 압력은 집도의가 정하는 값이다. 간호사가 마음대로 바꿨다고 말하면 업무 범위를 벗어난다.
+      'Dr. Kim, the setting is probably fine — shall I inflate?' :: '아마'는 확인하지 않았다는 말로 들린다. 값은 짐작이 아니라 맞춰 본 결과로 전한다.
+   why: 압력 숫자는 집도의가 정해요. 간호사는 기계에 들어간 값이 그 지시와 같은지 확인해 알리고, 임의로 바꾸거나 '아마 맞다'고 넘기지 않아요.
+=== 1 적용 시각 기록
+ -- n0 slider words=['w-mark', 'w-board', 'w-record']
+   cue: The cuff just went up, and everyone in the room needs to see the inflation time at a glance.
+      0 Keep it in my head
+    * 1 Mark it on the board
+      2 Chart it after the case
+   why: 올린 시각은 모두가 바로 볼 수 있게 보드에 표시하고, 정식 기록도 남겨요. 머릿속에만 두면 팀이 볼 수 없고, 수술 뒤에 적으면 그사이 경과 시간을 말해 줄 수 없어요.
+   ex: I mark the inflation time on the board right away. / 올린 시각은 바로 보드에 표시해요.
+ -- n1 swap words=['w-mark', 'w-board', 'w-record']
+   who: 순환 간호사 → 스크럽 · 지혈대를 올린 직후 | ko: 지혈대가 올라갔으니 시각을 보드에 표시하고 있어요
+    * "Tourniquet is up, so I'm marking the time on the board." :: 시각을 바로 보드에 표시해 팀이 함께 본다. 허혈 시간 추적이 올린 순간부터 시작된다.
+      "Tourniquet is up, so I'll remember the time." :: 기억에만 맡기면 바쁜 수술 중 틀리기 쉽고, 다른 사람은 알 수 없다.
+      "Tourniquet is up, so I'll write it down later." :: 나중에 적으면 정확한 시각을 놓칠 수 있다. 올린 시각은 그때 바로 남긴다.
+   why: 지혈대 시간은 올린 순간부터 세기 시작해요. 시각을 바로 보드에 적어 두면 모두가 경과 시간을 같은 숫자로 알 수 있어요.
+=== 2 하부 패딩 적용
+ -- n0 slider words=['w-wrinkle', 'w-smooth', 'w-pad']
+   cue: While padding the limb, your fingers catch a fold in the padding.
+      0 Leave it — the cuff will flatten it
+    * 1 Smooth the padding flat first
+      2 Ask the surgeon to smooth it
+   why: 패딩이 접힌 곳은 커프 압력이 한 점에 몰려 피부 손상으로 이어질 수 있어요. 커프를 감기 전에 직접 매끄럽게 펴는 것이 맞고, 커프가 눌러 펴 주기를 기대하거나 집도의에게 맡길 일이 아니에요.
+   ex: Smooth the padding flat before the cuff goes on. / 커프를 감기 전에 패딩을 평평하게 펴요.
+ -- n1 swap words=['w-prevent', 'w-skin', 'w-pad']
+   who: 환자에게 · 패딩을 대는 이유 설명 | ko: 커프가 피부를 아프게 하지 않도록요
+    * "We put a soft pad under the cuff so it won't hurt your skin." :: 환자가 바로 알아듣는 쉬운 말이다. 겁주지 않고 이유를 알려 준다.
+      'We put a soft pad under the cuff to prevent skin breakdown.' :: 의료진끼리 쓰는 말이다. 환자에게는 딱딱하고 무겁게 들린다.
+      'We put a soft pad under the cuff to avoid dermal compromise.' :: 더 어려운 전문어라 환자가 알아듣기 어렵다.
+   why: 같은 이유라도 환자에게는 쉬운 말로, 의료진끼리는 'skin breakdown' 같은 임상어로 말해요.
+=== 3 부착부 상태 확인
+ -- n0 slider words=['w-look', 'w-fine', 'w-breakdown']
+   cue: The skin where the cuff will sit has a small open area.
+      0 The skin looks fine
+      1 The skin looks a bit pink
+    * 2 The skin shows breakdown
+   why: 'breakdown'은 피부가 헐거나 열려 무너진 상태예요. 이미 열린 곳이 있는데 fine이나 a bit pink로 줄여 말하면 안 돼요. 감기 전 상태로 기록하고 집도의에게 알려요.
+   ex: The skin shows breakdown at the cuff site. / 커프 자리 피부에 손상이 있어요.
+ -- n1 context words=['w-baseline']
+   word: baseline | ko: 기저 상태
+    OK 수술 기록 | Baseline skin condition documented before cuff application. | fix: 
+    OK 집도의에게 | Dr. Lee, the baseline skin is intact — no breakdown at the cuff site. | fix: 
+    XX 걱정하는 환자에게 | Your baseline skin condition is intact, ma'am. | fix: Your skin looks healthy where the cuff will go.
+   why: 뜻은 셋 다 '처음 상태'예요. baseline은 기록하고 의료진끼리 보고할 때 쓰는 말이고, 환자에게는 딱딱해서 '피부가 건강해 보인다'처럼 풀어 말해요.
+=== 4 커프 크기 선택
+ -- n0 slider words=['w-loose', 'w-fit', 'w-tight']
+   cue: After the cuff is wrapped, it keeps sliding down the limb.
+    * 0 It's too loose
+      1 It fits well
+      2 It's too tight
+   why: 자꾸 흘러내리면 너무 느슨한 거예요. 커프는 흘러내리지 않으면서도 피부를 조이지 않는 상태로 맞춰야 해요. 'too tight'는 반대로 너무 꽉 조인 경우예요.
+   ex: The cuff is too loose and keeps sliding down. / 커프가 너무 느슨해서 계속 흘러내려요.
+ -- n1 swap words=['w-overlap', 'w-properly', 'w-tight']
+   who: 순환 간호사 → 스크럽 · 커프 감기 | ko: 겹치도록 제대로 감아 주세요
+    * 'Please wrap it so it overlaps properly around the padded limb.' :: 커프 끝이 제대로 겹치도록 감아 달라는 말이다. 겹침이 맞아야 압력이 고르게 전달된다.
+      'Please just wrap it however it lands around the padded limb.' :: 겹침이 제각각이면 압력이 고르지 않고 흘러내릴 수 있다.
+      'Please tighten it as much as you can around the padded limb.' :: 최대한 조이면 피부와 조직이 눌려 손상될 수 있다.
+   why: 커프는 겹침이 제대로 맞게 감아요. 아무렇게나 감거나 있는 힘껏 조이는 것은 둘 다 안전하지 않아요.
+=== 5 시간 알람 확인
+ -- n0 slider words=['w-audible', 'w-reminder', 'w-alert']
+   cue: The OR is loud with suction and monitors, and the surgeon wants to be reminded before the time limit.
+      0 A faint beep
+    * 1 A clearly audible reminder
+      2 A distracting siren
+   why: 시끄러운 수술방에서도 들릴 만큼 분명한 소리 알림이 필요해요. 너무 약하면 묻히고, 너무 시끄러우면 수술에 방해가 돼요.
+   ex: We'll get an audible reminder before the limit. / 한계 전에 들리는 알림이 와요.
+ -- n1 swap words=['w-timer', 'w-run', 'w-alert', 'w-active']
+   who: 순환 간호사 → 집도의 · 시작 전 타이머 확인 | ko: 타이머가 작동 중이고 알림이 켜져 있어요
+    * 'Dr. Lee, the timer is running and the alert is active — shall we begin?' :: 타이머가 돌고 알림이 켜졌다는 것을 확인한 대로 보고한다. 집도의가 믿고 시작할 근거가 된다.
+      'Dr. Lee, the timer might be on — shall we begin?' :: '아마 켜졌다'는 확인하지 않았다는 말이다.
+      'Dr. Lee, the timer should be fine — shall we begin?' :: '괜찮을 것'은 짐작이다. 시작 전에는 확인한 결과를 전한다.
+   why: 시작 전에는 '켜져 있을 것 같다'가 아니라 타이머가 돌고 알림이 켜져 있다는 확인된 사실을 말해요.
+=== 6 최대 허용 시간 관리
+ -- n0 slider words=['w-approach', 'w-limit', 'w-close']
+   cue: The timer shows the limit is still a few minutes away — not here yet.
+    * 0 We're approaching the limit
+      1 We're at the limit
+      2 We've passed the limit
+   why: 한계가 아직 오지 않았으니 approaching이 맞아요. 그래도 이때 미리 알려야 집도의가 마무리 계획을 세울 수 있어요. at은 딱 도달했을 때, passed는 넘었을 때예요.
+   ex: We're approaching the safe limit. / 안전 한계에 다가가고 있어요.
+ -- n1 swap words=['w-safe', 'w-limit', 'w-surgeon']
+   who: 순환 간호사 → 집도의 · 시간 한계 | ko: 안전 시간 한계에 가까워지고 있어요
+    * "Dr. Kim, we're approaching the safe time limit." :: 남은 시간을 분명히 알려 준다. 풀지 말지는 집도의가 판단한다.
+      'Dr. Kim, FYI the cuff has been up a while.' :: '꽤 오래됐다'는 시간이 얼마나 남았는지 알 수 없는 말이다.
+      "Dr. Kim, I'm deflating it now." :: 공기를 빼는 결정은 집도의 몫이다. 간호사가 알리지 않고 혼자 풀면 수술이 위험해진다.
+   why: 간호사는 시간 한계가 다가온다는 사실을 분명히 알리고, 풀지 말지는 집도의가 정해요.
+=== 7 재관류 전 팀 고지
+ -- n0 slider words=['w-team', 'w-ready', 'w-release']
+   cue: The surgeon says, "Let the team know I'll release the tourniquet in a moment."
+      0 Whisper it to anesthesia
+      1 Tell the person next to you
+    * 2 Announce it so everyone hears
+   why: 풀기 전에는 방 안 모두가 듣도록 알려야 마취과와 스크럽이 대비해요. 옆 사람에게만 말하면 나머지 팀은 모르고 있어요.
+   ex: Everyone ready? I'm about to release it. / 다들 준비됐나요? 곧 풀 거예요.
+ -- n1 swap words=['w-anesthesia', 'w-prepare', 'w-reperfusion', 'w-change']
+   who: 순환 간호사 → 마취과 · 풀기 직전 | ko: 마취과, 재관류 변화에 대비해 주세요
+    * 'Anesthesia, be prepared for reperfusion changes — the tourniquet is about to come off.' :: 풀리면 혈압 등이 변할 수 있으니 미리 대비하라고 알린다.
+      'Anesthesia, carry on — the tourniquet is about to come off.' :: 알림 없이 하던 일을 계속하라는 말이라 대비할 틈이 없다.
+      "Anesthesia, don't worry about it — the tourniquet is about to come off." :: 대비가 필요한 순간에 안심시키는 말이라 위험하다.
+   why: 지혈대를 풀면 몸에 변화가 생길 수 있어서 마취과가 미리 대비해야 해요. '대비하세요'라고 분명히 알려요.
+=== 8 허혈 시간 소통
+ -- n0 slider words=['w-call', 'w-announce', 'w-total']
+   cue: Fifteen minutes have passed since the cuff went up, and the surgeon, anesthesia, and scrub all need the number.
+      0 Tell the nearest person
+      1 Tell the scrub only
+    * 2 Call it out to the whole room
+   why: 허혈 시간은 팀 모두가 알아야 하는 정보라서 방 전체에 들리게 소리 내어 알려요. 가까운 사람이나 스크럽에게만 말하면 나머지는 시간을 몰라요.
+   ex: I call out the time to the whole room. / 방 전체에 시간을 소리 내어 알려요.
+ -- n1 context words=['w-call']
+   word: call | ko: 소리 내어 알리다
+    OK 수술팀 전체에게 | I'll call out the time every fifteen minutes. | fix: 
+    OK 집도의에게 | Dr. Lee, I'll call out the cuff time at each fifteen-minute mark. | fix: 
+    XX 깨어 있는 환자에게 | I'll call out your ischemia time every fifteen minutes. | fix: We keep track of the cuff time, so you don't need to worry about it.
+   why: 뜻은 셋 다 '시간을 소리 내어 알리다'예요. 팀에는 필요한 정보지만, 깨어 있는 환자에게 허혈 시간을 계속 불러 주면 괜히 불안해져요.
+=== 9 이중 커프 부위마취
+ -- n0 slider words=['w-establish', 'w-block']
+   cue: Anesthesia says the numbness is fully in, and the patient feels nothing at the surgical site.
+      0 The block is just starting
+    * 1 The block is established
+      2 The block is wearing off
+   why: 'established'는 마취가 자리 잡아 효과가 충분히 나는 상태예요. 그제야 원위 커프로 넘어가요. 막 시작했거나 풀리는 중이라고 말하면 순서 판단이 달라져요.
+   ex: Once the block is established, we switch cuffs. / 마취가 자리 잡으면 커프를 바꿔요.
+ -- n1 swap words=['w-confirm', 'w-proximal', 'w-sequence']
+   who: 순환 간호사 → 마취과 · 커프 순서 확인 | ko: 근위 커프부터 올리는 걸로 확인할게요
+    * 'Let me confirm: the proximal cuff goes up first.' :: 근위 커프가 먼저라는 순서를 소리 내어 맞춘다. 이중 커프 마취의 순서가 어긋나지 않는다.
+      'Let me confirm: whichever cuff is closest goes up first.' :: 순서가 정해져 있는데 가까운 것을 먼저 올리면 순서가 뒤바뀐다.
+      "Let me confirm: we'll decide when we get there." :: 올리기 직전에 정하면 팀이 같은 순서로 움직이지 못한다.
+   why: 이중 커프는 올리는 순서가 중요해서 시작 전에 어느 커프가 먼저인지 소리 내어 확인해요.
+=== 10 말초혈관질환 주의
+ -- n0 slider words=['w-risk', 'w-carry', 'w-pvd']
+   cue: The chart says PVD in the leg where the tourniquet is planned.
+    * 0 An added risk to discuss
+      1 A reason to refuse the tourniquet
+      2 A reason to cancel the surgery
+   why: 말초혈관질환이 있으면 지혈대의 위험이 더 커져요. 간호사는 그 병력을 집도의와 의논해요. 쓸지 말지는 집도의가 정하고, 간호사가 단독으로 거절하거나 수술을 취소할 일은 아니에요.
+   ex: PVD is an added risk we should discuss. / 말초혈관질환은 의논해야 할 추가 위험이에요.
+ -- n1 swap words=['w-pvd', 'w-discuss', 'w-whether', 'w-surgeon']
+   who: 순환 간호사 → 집도의 · 병력 알림 | ko: 다리에 말초혈관질환이 있어요 — 안전한지 의논할까요
+    * "Dr. Kim, the leg has PVD — shall we discuss whether it's safe." :: 병력을 정확히 알리고 판단은 집도의와 함께 한다.
+      "Dr. Kim, I'm skipping the tourniquet because of PVD." :: 쓸지 말지는 집도의가 정한다. 간호사가 혼자 건너뛰겠다고 하면 업무 범위를 벗어난다.
+      'Dr. Kim, the leg has some vascular problem.' :: 병명을 말하지 않아 무엇이 문제인지 알 수 없다.
+   why: 병력은 정확한 이름으로 알리고, 안전한지의 판단은 집도의와 의논해요. 혼자 결정하지 않아요.
+=== 11 소아 압력 조정
+ -- n0 slider words=['w-low', 'w-pediatric', 'w-child']
+   cue: You're setting up the tourniquet for a small child's arm.
+    * 0 Lower than an adult's
+      1 The same as an adult's
+      2 Higher than an adult's
+   why: 소아 사지에는 성인보다 낮은 압력이 필요해요. 체구가 작아 같은 압력이면 조직이 너무 눌려요. 실제 값은 집도의가 정해요.
+   ex: A child needs a lower pressure setting. / 아이는 압력 설정이 더 낮아야 해요.
+ -- n1 swap words=['w-pediatric', 'w-child', 'w-size']
+   who: 순환 간호사 → 스크럽 · 커프 준비 | ko: 소아용 커프를 가져다 주세요
+    * "Please bring a pediatric cuff — this child's arm is small." :: 작은 팔에 맞는 소아용 커프를 가져온다. 크기가 맞아야 압력이 제대로 전달된다.
+      "Please bring an adult cuff — this child's arm is small." :: 성인용은 아이 팔에 맞지 않는다.
+      "Please bring the biggest cuff you have — this child's arm is small." :: 큰 커프는 아이 팔에 맞지 않고 감기도 어렵다.
+   why: 아이 팔에는 소아용 커프를 써요. 크기가 맞지 않으면 압력이 제대로 전달되지 않아요.
+=== 12 압흔 손상 예방
+ -- n0 slider words=['w-fluid', 'w-pool', 'w-beneath']
+   cue: Prep solution has soaked through the padding, and the limb is wet under the whole cuff.
+      0 A few drops under the edge
+      1 A small pool under the cuff
+    * 2 Soaked padding under the whole cuff
+   why: 소독액이 커프 아래에 고이거나 패딩이 젖으면 피부 손상 위험이 커져요. 이 정도면 닦고 패딩을 다시 대야 하고, 집도의에게도 알려요.
+   ex: The padding is soaked under the whole cuff. / 커프 전체 아래 패딩이 젖었어요.
+ -- n1 swap words=['w-smooth', 'w-pad', 'w-pinch']
+   who: 순환 간호사 → 스크럽 · 패딩 정리 | ko: 패딩을 매끄럽게 펴 주세요
+    * "Please smooth the padding out so it doesn't pinch." :: 주름 없이 펴야 피부가 끼이지 않는다.
+      "Please leave the padding wrinkled so it doesn't pinch." :: 주름이 있으면 한 점에 압력이 몰려 피부가 눌린다.
+      "Please add more tape so it doesn't pinch." :: 테이프를 더 붙여도 주름은 없어지지 않는다.
+   why: 패딩은 주름 없이 매끄럽게 펴야 피부가 끼이거나 눌리지 않아요.
+=== 13 재적용 시간 관리
+ -- n0 slider words=['w-track', 'w-closely', 'w-interval']
+   cue: The cuff came off and is going back up for another step, and the surgeon wants to know how long it's been.
+      0 Glance at the clock when asked
+    * 1 Track the interval closely
+      2 Stare at the clock every second
+   why: 다시 올리는 간격은 면밀히 추적해야 정확한 시간을 답할 수 있어요. 물어볼 때만 보면 놓치고, 계속 시계만 보면 다른 일을 못 해요.
+   ex: I'm tracking the interval closely. / 간격을 면밀히 추적하고 있어요.
+ -- n1 swap words=['w-rest', 'w-period', 'w-reinflate']
+   who: 순환 간호사 → 집도의 · 다시 올리기 전 | ko: 휴식 시간이 끝났어요. 말씀하시면 다시 올릴게요
+    * 'Dr. Lee, the rest period is over; ready to reinflate on your word.' :: 휴식 기간이 지났음을 알리고 집도의의 말에 맞춰 올리겠다고 한다.
+      "Dr. Lee, I'm reinflating the cuff now." :: 다시 올릴지는 집도의가 정한다. 알리지 않고 올리면 안 된다.
+      'Dr. Lee, the cuff will reinflate on its own soon.' :: 스스로 올라가는 것이 아니다. 누가 언제 올리는지 말해야 한다.
+   why: 다시 올리는 시점은 집도의가 정해요. 간호사는 휴식 시간이 지났음을 알리고 지시를 기다려요.
+=== 14 하지 정맥울혈 감시
+ -- n0 slider words=['w-congest', 'w-color', 'w-leg']
+   cue: Below the cuff the leg is dark, swollen, and full of blood.
+      0 Slightly flushed
+    * 1 Visibly congested
+      2 Cold and pale
+   why: 검붉게 붓고 피가 찬 모습은 울혈(congested)이에요. 약간 붉은 정도와는 다르고, 차고 창백한 것은 정반대 변화예요. 색 변화는 집도의에게 보고해요.
+   ex: The leg looks congested below the cuff. / 커프 아래 다리가 울혈돼 보여요.
+ -- n1 swap words=['w-leg', 'w-congest', 'w-below', 'w-report']
+   who: 순환 간호사 → 집도의 · 색 변화 보고 | ko: 커프 아래 다리가 울혈돼 보여요
+    * 'Dr. Park, the leg looks congested below the cuff.' :: 눈에 보이는 상태를 정확한 말로 보고한다.
+      'Dr. Park, the leg looks off below the cuff.' :: 무엇이 이상한지 알 수 없는 말이다.
+      'Dr. Park, the leg looks terrible below the cuff.' :: 감정적인 말이라 상태가 구체적으로 전해지지 않는다.
+   why: 보이는 변화는 '울혈'처럼 정확한 말로 보고해야 집도의가 바로 판단해요. '이상해요'나 '끔찍해요'는 정보가 없어요.
+=== 15 허용 시간 초과 임박
+ -- n0 slider words=['w-escalate', 'w-maximum', 'w-surgeon']
+   cue: The timer alarm sounds at the maximum time, and the surgeon is deep in the repair.
+    * 0 Tell the surgeon out loud
+      1 Tell the whole team to stop
+      2 Deflate the cuff yourself
+   why: 최대 시간이 되면 집도의에게 직접 소리 내어 알려요. 팀 전체를 멈추게 하거나 간호사가 혼자 공기를 빼는 것은 업무 범위를 넘어요. 풀지 말지는 집도의가 정해요.
+   ex: I tell the surgeon out loud when we hit the maximum. / 최대 시간이 되면 집도의에게 소리 내어 알려요.
+ -- n1 swap words=['w-maximum', 'w-safe']
+   who: 순환 간호사 → 집도의 · 최대 시간 | ko: 최대 안전 시간이에요
+    * "Dr. Kim, we're at the maximum safe time." :: 최대 안전 시간에 이르렀다는 사실을 분명히 알린다.
+      "Dr. Kim, we're a little over but it's fine." :: 한계를 넘었는데 괜찮다고 줄여 말한다. 판단을 흐린다.
+      'Dr. Kim, take all the time you need.' :: 시간 한계가 있는데 무제한인 것처럼 들린다.
+   why: 한계 시간에는 '최대 안전 시간이에요'라고 분명히 알려요. 줄여 말하거나 시간이 많다고 하면 집도의가 판단할 수 없어요.
+=== 16 재관류 저혈압 발생
+ -- n0 slider words=['w-drop', 'w-bp', 'w-hypotension']
+   cue: Right after release, the BP number is falling steeply and keeps falling.
+      0 BP is dipping slightly
+      1 BP is dropping gradually
+    * 2 BP is dropping fast
+   why: 풀린 직후 혈압이 가파르게 계속 떨어지면 'dropping fast'예요. 마취과가 곧바로 처치할 수 있게 상태를 정확히 소리 내어 알려요.
+   ex: BP is dropping fast after release. / 푼 뒤 혈압이 빠르게 떨어지고 있어요.
+ -- n1 swap words=['w-anesthesia', 'w-grab', 'w-fluid', 'w-pressor']
+   who: 순환 간호사 → 마취과 · 저혈압 | ko: 필요하시면 수액이나 승압제를 가져올게요
+    * 'Anesthesia, I can grab fluids or pressors if you need them.' :: 약과 수액은 마취과가 정한다. 간호사는 필요하다면 가져다주겠다고 한다.
+      "Anesthesia, I'm starting a pressor now." :: 승압제 투여는 마취과가 정하고 한다. 간호사가 마음대로 시작하면 업무 범위를 벗어난다.
+      "Anesthesia, I'll decide what to give." :: 무엇을 줄지는 마취과가 정한다.
+   why: 혈압을 올리는 약과 수액의 선택은 마취과의 일이에요. 간호사는 필요하면 가져오겠다고 하고 지시를 기다려요.
+=== 17 지혈대 신경마비 손상
+ -- n0 slider words=['w-deficit', 'w-inform', 'w-document']
+   cue: After the tourniquet came off, the patient can't wiggle the toes.
+      0 Wait and see if it improves
+      1 Mention it in passing
+    * 2 Inform the surgeon and document it
+   why: 움직임이 없는 것은 신경 결손일 수 있어요. 기다리거나 지나가듯 말하지 말고 집도의에게 알리고 기록으로 남겨요.
+   ex: I inform the surgeon and document the deficit. / 집도의에게 알리고 결손을 기록해요.
+ -- n1 context words=['w-deficit']
+   word: deficit | ko: 결손
+    OK 수술 기록 | Nerve deficit noted postoperatively; surgeon informed. | fix: 
+    OK 집도의에게 | Dr. Kim, there's a nerve deficit in the left foot. | fix: 
+    XX 놀란 환자에게 | You have a nerve deficit in your foot. | fix: You're having trouble moving your foot, and the surgeon will talk with you about it.
+   why: 뜻은 셋 다 '기능이 떨어진 상태'예요. deficit은 기록과 의료진 보고에 쓰는 말이고, 환자에게는 진단처럼 들려요. 쉬운 말로 풀고 설명은 집도의가 하게 해요.
+=== 18 압력 오류 지속 출혈
+ -- n0 slider words=['w-bleed', 'w-continue', 'w-field']
+   cue: The field shows only a slow ooze — much less than expected with the cuff up.
+    * 0 A little oozing
+      1 Steady bleeding
+      2 Heavy bleeding
+   why: 조금 배어 나오는 정도는 oozing이에요. 지혈대가 올라가 있는데 계속 steady하게 피가 나면 압력이나 장비를 의심하고, 지금은 그 정도가 아니라서 가볍게 말해요.
+   ex: There's a little oozing in the field. / 수술 영역에 조금 배어 나와요.
+ -- n1 swap words=['w-check', 'w-device', 'w-pressure', 'w-bleed']
+   who: 순환 간호사 → 집도의 · 출혈 지속 | ko: 장비와 압력을 확인하고 있어요 — 아직 출혈이 있어요
+    * "Dr. Lee, I'm checking the device and the pressure — it's still bleeding." :: 장비와 압력을 점검하고 있다고 알린다. 압력을 바꿀지는 집도의와 맞춘다.
+      "Dr. Lee, I turned the pressure up — it's still bleeding." :: 압력은 집도의가 정한다. 허락 없이 올렸다고 하면 업무 범위를 벗어난다.
+      "Dr. Lee, I'll just wait and see — it's still bleeding." :: 출혈이 계속되는데 지켜보기만 하겠다는 말이라 대응이 늦다.
+   why: 출혈이 계속되면 간호사는 장비와 압력부터 점검해 알려요. 압력을 임의로 올리거나 그냥 지켜보지 않아요.
+=== 19 재관류 대사 급변
+ -- n0 slider words=['w-surge', 'w-metabolic']
+   cue: Anesthesia says the numbers after release jumped sharply and suddenly.
+      0 a slight shift
+      1 a gradual change
+    * 2 a metabolic surge
+   why: 'surge'는 갑자기 크게 치솟는 것이에요. 푼 직후 수치가 확 뛰면 metabolic surge예요. 조금 바뀌거나 서서히 변하는 것과는 달라요.
+   ex: We're seeing a metabolic surge after release. / 푼 뒤 대사성 급증이 보여요.
+ -- n1 swap words=['w-ready', 'w-assist', 'w-whatever']
+   who: 순환 간호사 → 마취과 · 수치가 치솟을 때 | ko: 필요한 건 뭐든 도울 준비가 됐어요
+    * "Anesthesia, I'm ready to assist with whatever you need." :: 필요한 것을 마취과가 정하게 하고 돕겠다고 한다.
+      "Anesthesia, I'm drawing up what I think you need." :: 지시 없이 약을 준비하면 틀린 약을 준비할 수 있다.
+      "Anesthesia, I'll start the treatment on my own." :: 처치는 마취과가 정하고 한다. 간호사가 단독으로 시작하지 않는다.
+   why: 처치는 마취과가 정해요. 간호사는 '무엇이든 돕겠다'고 하고 지시를 기다려요.
+=== 20 장시간 허혈 근손상
+ -- n0 slider words=['w-concern', 'w-compartment', 'w-sign']
+   cue: The tourniquet was up for a long stretch, and the leg feels tense afterward.
+      0 Nothing to worry about
+    * 1 A concern worth watching
+      2 Compartment syndrome confirmed
+   why: 오래 올려 두었으면 구획 징후를 지켜볼 만한 우려예요. 간호사는 진단을 확정하지 않고 징후를 관찰해 보고해요. '걱정 없다'와 '확진' 모두 맞지 않아요.
+   ex: Muscle injury is a concern after a long ischemia time. / 허혈 시간이 길면 근손상이 우려돼요.
+ -- n1 context words=['w-document']
+   word: document | ko: 문서로 남기다
+    OK 수술 기록 | Total tourniquet time documented. | fix: 
+    OK 집도의에게 | Dr. Kim, I'll document the total tourniquet time. | fix: 
+    XX 마취에서 깬 환자에게 | I'll document your muscle damage. | fix: We kept the tourniquet on your leg for a while, so we'll keep a close eye on it.
+   why: 뜻은 셋 다 '기록으로 남기다'예요. document는 서류 용어라 환자에게는 딱딱하고 불안하게 들려요. 환자에게는 지켜보겠다는 쉬운 말로 풀어요.
