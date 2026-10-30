@@ -1,0 +1,87 @@
+# [tag, icon, why, decoy, ko1, ko2, ans, w1, w2, w3]
+situations:
+- title: X선 잔류 거즈 확인
+  s:
+  - ["영상 요청", monitor, "'Let's get'은 함께 요청하는 말이고, 'get an X-ray'는 영상을 찍는다는 일상 표현이에요. 'before we close'는 닫기 전에 해야 한다는 시점이에요.", "for the record", "닫기 전에 조명을 맞춰요.", "닫기 전에 흡인기를 닦아요.", "X-ray", "ECG", "MRI", "EEG"]
+  - ["영상 목적", magnify, "'to rule out'은 가능성을 하나씩 지워 나간다는 뜻이라 없다는 것을 확인하려는 목적을 말해요. 'retained'는 몸 안에 남아 있다는 뜻이에요.", "a loose tooth", "출혈 원인을 찾으려고 필드를 영상으로 찍어요.", "감염 여부를 보려고 필드를 영상으로 찍어요.", "retained", "extra", "wet", "damaged"]
+  - ["영상 판독", monitor, "'needs to confirm'은 그 부서의 판독이 있어야 끝난다는 뜻이에요. 'nothing's left inside'는 몸 안에 아무것도 남지 않았다는 부정 표현이에요.", "to eat", "영상의학과에서 방 안에 아무것도 안 남았는지 확인해야 해요.", "영상의학과에서 통에 아무것도 안 남았는지 확인해야 해요.", "inside", "outside", "upstairs", "nearby"]
+  - ["영상 판독", monitor, "'will show'는 영상이 근거가 된다는 미래형 확신이에요. 'if anything was left behind'의 if는 '~인지 아닌지'라는 뜻이에요.", "overnight", "엑스선을 보면 뭔가 부러졌는지 알 수 있어요.", "엑스선을 보면 뭔가 막혔는지 알 수 있어요.", "X-ray", "alarm", "chart", "camera"]
+  - ["결과 대기", monitor, "'wait for'는 결과가 올 때까지 움직이지 않는다는 뜻이에요. 'before we proceed'는 다음 단계로 넘어가기 전이라는 시점이에요.", "the coffee", "영상 촬영이 끝날 때까지 기다린 뒤 진행해요.", "영상 장비가 도착할 때까지 기다린 뒤 진행해요.", "proceed", "leave", "finish", "relax"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: X선 잔류 거즈 4문장 순서
+    why: 닫기 전에 엑스선을 요청하고, 찍는 목적을 말하고, 영상의학과 판독이 필요하다고 한 뒤, 그 답이 올 때까지 기다린다고 마무리해요.
+    lines:
+    - ["Let's get an X-ray before we close.", monitor, "닫기 전에 엑스선을 찍어요", "요청"]
+    - ["That way we image the field to rule out a retained sponge.", magnify, "그러면 잔류 거즈를 배제하려고 필드를 영상으로 찍어요", "목적"]
+    - ["Radiology needs to confirm nothing's left inside.", monitor, "영상의학과에서 안에 아무것도 안 남았는지 확인해야 해요", "판독"]
+    - ["We wait for that answer before we proceed.", check, "그 답이 나올 때까지 기다린 뒤 진행해요", "대기"]
+- title: 소실 바늘 필드 수색
+  s:
+  - ["정지 선언", siren, "'hold everything'은 모든 작업을 멈추라는 강한 명령이에요. 'one needle short'는 바늘이 하나 모자란다는 정확한 보고예요.", "one bucket", "바늘이 두 개 부족해요 — 전부 멈춰요.", "바늘이 세 개 부족해요 — 전부 멈춰요.", "hold", "move", "carry", "pack"]
+  - ["체계적 수색", magnify, "'systematically'는 구역을 정해 빠짐없이 차례로 본다는 뜻이에요. 쉼표로 필드·소독포·바닥을 나열해 수색 범위를 정해 줘요.", "randomly", "필드와 소독포, 바닥을 빠르게 수색해요.", "필드와 소독포, 바닥을 각자 수색해요.", "floor", "ceiling", "window", "shelf"]
+  - ["이동 금지", siren, "'Nobody'는 주어 자체가 부정이라 예외가 없다는 뜻이에요. 'until we find it'는 찾는 것을 풀리는 조건으로 걸어요.", "until we leave", "마칠 때까지 아무도 움직이지 않아요.", "부를 때까지 아무도 움직이지 않아요.", "until", "after", "unless", "since"]
+  - ["구석 확인", magnify, "'every corner'는 구석까지 하나도 빼지 않는다는 비유적 범위 표현이에요. 'carefully'는 서두르지 않고 주의해서 본다는 뜻이에요.", "of the ceiling", "홀 구석구석을 조심스럽게 확인해요.", "창고 구석구석을 조심스럽게 확인해요.", "corner", "shelf", "drawer", "wall"]
+  - ["동작 정지", siren, "'turns up'은 찾던 것이 불쑥 나타난다는 구동사예요. 'all movement'는 사람과 물건의 이동까지 모두 가리켜요.", "until the rain", "교대가 올 때까지 모든 움직임을 멈춰요.", "의사가 올 때까지 모든 움직임을 멈춰요.", "needle", "doctor", "nurse", "pager"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 소실 바늘 필드 수색 4문장 순서
+    why: 바늘이 모자라 전부 멈추게 하고, 가만히 있게 한 채 구역을 나눠 수색하고, 거기에 없으면 방 구석까지 확인해요.
+    lines:
+    - ["We're one needle short — hold everything.", siren, "바늘이 하나 부족해요 — 전부 멈춰요", "정지"]
+    - ["Nobody moves until we find it.", siren, "찾을 때까지 아무도 움직이지 않아요", "고정"]
+    - ["While everyone stays still, let's search the field, drapes, and floor systematically.", magnify, "모두 가만히 있는 동안 필드와 소독포, 바닥을 체계적으로 수색해요", "수색"]
+    - ["If it's not there, check every corner of the room carefully.", magnify, "거기 없으면 방 구석구석을 조심스럽게 확인해요", "확대"]
+- title: 봉합 후 계수 오류
+  s:
+  - ["최종 오류", siren, "'may need to'는 아직 확정이 아니라 가능성으로 말해 상대가 놀라지 않게 해요. 'reopen'은 're-'가 붙어 이미 닫은 것을 다시 연다는 뜻이에요.", "is heavy", "최종 계수가 틀렸어요 — 다시 닦아야 할 수도 있어요.", "최종 계수가 틀렸어요 — 다시 서명해야 할 수도 있어요.", "wrong", "light", "loud", "empty"]
+  - ["영상 우선", monitor, "'Let's image'는 'image'를 동사로 써서 영상으로 찍는다는 뜻이에요. 'before deciding'은 결정 전에 근거부터 확인한다는 순서예요.", "the budget", "재개방 탐색을 설명하기 전에 영상부터 찍어요.", "재개방 탐색을 기록하기 전에 영상부터 찍어요.", "image", "vote", "argue", "rest"]
+  - ["즉시 보고", pager, "'escalate'는 문제를 윗사람에게 올린다는 뜻이라 혼자 해결하지 않고 책임자에게 넘겨요. 'immediately'는 미루지 않는다는 뜻이에요.", "to the window", "지금 바로 집도의의 지시를 적을게요.", "지금 바로 집도의의 답을 기다릴게요.", "immediately", "eventually", "gradually", "occasionally"]
+  - ["숫자 불일치", siren, "'don't add up'은 합이 맞지 않는다는 관용구예요. 'after closure'는 이미 닫은 뒤라는 점이 문제를 무겁게 만들어요.", "in the report", "봉합 후 시간이 맞지 않아요.", "봉합 후 서류가 맞지 않아요.", "numbers", "doors", "colors", "walls"]
+  - ["호출", pager, "'calling … back'은 이미 나간 사람을 다시 부른다는 뜻이에요. 'into the room'은 목적지를 말해 수술 방으로 돌아오라는 뜻이에요.", "the elevator", "집도의를 다시 복도로 불러올게요.", "집도의를 다시 대기실로 불러올게요.", "room", "lobby", "office", "garage"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 봉합 후 계수 오류 4문장 순서
+    why: 최종 계수가 틀렸다고 알리고, 바로 집도의에게 올린 뒤, 기다리는 동안 영상부터 찍고, 집도의가 돌아오면 함께 결정해요.
+    lines:
+    - ["The final count is wrong — we may need to reopen.", siren, "최종 계수가 틀렸어요 — 다시 열어야 할 수도 있어요", "오류"]
+    - ["I'm escalating this to the surgeon immediately.", pager, "지금 바로 집도의에게 상급 보고할게요", "보고"]
+    - ["While we wait for him, let's image before deciding on re-exploration.", monitor, "기다리는 동안 재개방 탐색을 결정하기 전에 영상부터 찍어요", "영상"]
+    - ["Once he's back in the room, we decide together.", check, "그가 방으로 돌아오면 함께 결정해요", "결정"]
+- title: 이물 잔류 의심 보고
+  s:
+  - ["잔류 의심", siren, "'possible'은 아직 확정은 아니라는 단서라 확인되기 전까지 단정하지 않아요. 'I'm documenting it'은 지금 기록하고 있다는 진행 표현이에요.", "a possible heavy object", "오염 가능성이 있어요 — 문서화할게요.", "누출 가능성이 있어요 — 문서화할게요.", "retained", "sharp", "spare", "sterile"]
+  - ["사건 보고", pencil, "'file'은 공식 서류로 제출한다는 뜻이에요. 'incident report'는 환자 안전 사건을 병원 시스템에 남기는 보고서예요.", "yesterday", "즉시 사건 보고서를 인쇄해야 해요.", "즉시 사건 보고서를 복사해야 해요.", "file", "print", "copy", "mail"]
+  - ["안전 우선", shield, "'comes first'는 순서상 가장 앞에 둔다는 뜻이라 다른 사정보다 환자 안전이 먼저라고 말해요. 대시 뒤 'I'm reporting this'로 그 원칙을 행동으로 이어요.", "Patient lunch", "환자 편안함이 우선이에요 — 이걸 보고할게요.", "환자 비밀이 우선이에요 — 이걸 보고할게요.", "reporting", "moving", "weighing", "sorting"]
+  - ["절차 준수", shield, "'follow the protocol'은 정해진 절차를 그대로 따른다는 뜻이라 임의로 판단하지 않는다는 걸 보여 줘요. 'retained item'은 몸에 남은 물품이에요.", "the recipe", "오염 물품에 대한 절차를 따르고 있어요.", "파손 물품에 대한 절차를 따르고 있어요.", "retained", "damaged", "expired", "borrowed"]
+  - ["후속 검사", monitor, "'request'는 직접 하지 않고 담당 부서에 요청한다는 뜻이에요. 'follow-up'은 처음 검사 뒤에 이어지는 추가 검사를 가리켜요.", "a follow-up lunch", "후속 스캔 안내문을 요청해줘요.", "환자를 위한 후속 스캔 동의서를 요청해줘요.", "follow-up", "initial", "routine", "private"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 이물 잔류 의심 보고 4문장 순서
+    why: 잔류 가능성을 기록하겠다고 하고, 안전이 우선이라 보고하고, 그에 따라 사건 보고서를 내고, 서류가 들어가면 후속 스캔을 요청해요.
+    lines:
+    - ["This is a possible retained object — I'm documenting it.", siren, "잔류 이물일 가능성이 있어요 — 문서화할게요", "의심"]
+    - ["Patient safety comes first — I'm reporting this.", shield, "환자 안전이 우선이에요 — 이걸 보고할게요", "보고"]
+    - ["As part of that, we need to file an incident report immediately.", pencil, "그 일환으로 즉시 사건 보고서를 제출해야 해요", "서류"]
+    - ["Please request a follow-up scan for the patient once it's filed.", monitor, "그게 제출되면 환자를 위한 후속 스캔을 요청해줘요", "후속"]
+- title: 계수 불일치 은폐 압력
+  s:
+  - ["은폐 거부", shield, "'can't ignore'는 하고 싶지 않다가 아니라 할 수 없다는 단호한 거절이에요. 대시 뒤에 'patient safety is first'로 이유를 한마디로 대요.", "a joke", "불일치를 무시할 수 없어요 — 환자 가족이 우선이에요.", "불일치를 무시할 수 없어요 — 환자 안내가 우선이에요.", "ignore", "explain", "measure", "predict"]
+  - ["제대로 처리", pencil, "'have to'는 선택이 아니라 의무를 말해요. 'document and resolve'는 기록과 해결을 한 짝으로 묶어 둘 다 필요하다고 말해요.", "this politely", "이걸 차분히 문서화하고 해결해야 해요.", "이걸 천천히 문서화하고 해결해야 해요.", "properly", "quickly", "lightly", "briefly"]
+  - ["서명 거부", pencil, "'won't'는 'can't'보다 의지를 담은 거절이에요. 'sign off'는 서명으로 공식 확인하는 일이라 맞을 때까지 미루겠다는 뜻이에요.", "until the coffee", "서류가 맞을 때까지 서명하지 않을게요.", "시간이 맞을 때까지 서명하지 않을게요.", "correct", "empty", "loud", "slow"]
+  - ["압박 거절", shield, "'I understand'로 상대 사정을 먼저 인정한 뒤 'but'으로 거절하면 공격적으로 들리지 않아요. 'won't skip'은 의지를 담아 단호하게 거절해요.", "we're running low", "늦어지는 건 알지만 이건 반복하지 않을게요.", "늦어지는 건 알지만 이건 취소하지 않을게요.", "skip", "cancel", "rename", "print"]
+  - ["즉시 수정", check, "'Let's fix it now'는 같이 지금 바로잡자는 제안이에요. 'so we can close safely'는 목적을 붙여 왜 지금 해야 하는지를 보여 줘요.", "lift safely", "편하게 닫을 수 있게 지금 바로잡아요.", "깔끔하게 닫을 수 있게 지금 바로잡아요.", "safely", "quickly", "gently", "neatly"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 계수 불일치 은폐 압력 4문장 순서
+    why: 계수가 안 맞는데 시간이 촉박하다고 말하고, 정중히 인정하되 맞을 때까지 서명하지 않겠다고 거절한 뒤, 제대로 처리하자고 하고 지금 바로잡아요.
+    lines:
+    - ["The count is off, but we're already running late.", siren, "계수가 안 맞는데 이미 늦어지고 있어요", "상황"]
+    - ["I understand, but I won't sign off until the count is correct.", pencil, "알지만 계수가 맞을 때까지 서명하지 않을게요", "거절"]
+    - ["We have to document and resolve this properly.", pencil, "이걸 제대로 문서화하고 해결해야 해요", "원칙"]
+    - ["Let's fix it now so we can close safely.", check, "안전하게 닫을 수 있게 지금 바로잡아요", "수정"]
