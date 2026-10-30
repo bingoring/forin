@@ -6,6 +6,9 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-10-28
 
+> ✅ **ICU 한 번에 저작 묶음 9 — 마지막 3주제 합침, ICU 66주제 완료(2026-10-30).** core-language·core-family·core-safety-icu: keyPhrase 8문장 교체(통역사·깜빡임·윤리위원회·독립 이중 확인·ICU 의사 호출 등), ICU 위반 0.
+> **운영 배포는 묶어서(묶음 4~9 미배포, 사용자 "머지 및 배포는 나중에").** PR #29→…→#33. 진행 중: OR 33주제(묶음 1 keyPhrase 반영, 묶음 2 검토). `pipeline/TASK.md`에 종속절 틀은 오답 하나에만 규칙 추가.
+
 > 🔨 **ICU 한 번에 저작 묶음 8 — 2주제 합침(2026-10-30).** mobility-prevention·core-handoff-icu: 저작 A‖B → Opus 검토 A‖B → Sonnet 수정 → keyPhrase 결정(사용자 '추천대로': 바꿈 5 — ICU 신속대응팀 → 담당의, X-ray는 기흉 배제 등, 유지 7) → 정본 합침, ICU 위반 0.
 > **운영 배포는 묶어서(묶음 4~8 미배포, 사용자 "머지 및 배포는 나중에").** PR #29→#30→#31→#32 순서로 쌓임. 진행 중: core-language·core-family 검토, core-safety 저작(ICU 마지막 3). 그다음 OR 33.
 
