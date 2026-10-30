@@ -10,7 +10,7 @@ sentences:
     why: "on your own first로 상대가 내 값을 듣기 전에 혼자 확인하게 하고, then we compare로 맞춰 보는 건 그 뒤라고 순서를 정해요. 값을 먼저 말해 주면 독립확인이 깨져요."
     decoy: "with the order open"
     dk:
-      - "먼저 선생님이 혼자 용량을 확인하려고, 처방 화면을 먼저 열어 둬요."
+      - "먼저 선생님이 혼자 용량을 확인하려고, 화면을 먼저 열어 둬요."
       - "혼자 용량을 확인하는 건 서로에게 영향을 주지 않으려는 거예요."
     blank: {answer: compare, options: [compare, guess, argue, vote]}
   "2.5":
@@ -24,7 +24,7 @@ sentences:
     decoy: "once you've scanned it"
     dk:
       - "인슐린이 몇 단위로 나왔는지 말해 달라고 하려고 제 계산을 먼저 끝내요."
-      - "인슐린은 한 단위만 틀려도 환자에게 큰 차이를 만드는 고위험 약이에요."
+      - "인슐린은 한 단위만 틀려도 큰 차이가 나는 고위험 약이에요."
     blank: {answer: units, options: [units, grams, tablets, puffs]}
   "15.4":
     en: "Let's act fast: you check his airway while I call the physician."
@@ -36,13 +36,13 @@ sentences:
     why: "콜론 뒤에 두 사람의 일을 while로 묶어 한꺼번에 시작해요. 위기에는 사정과 호출을 차례로 하지 않고 한 사람은 사정, 다른 사람은 호출로 나눠 맡아요."
     decoy: "Let's be clear:"
     dk:
-      - "빠르게 움직여요, 선생님은 기도를 확인하고 제가 의사를 부르기 전에 침대 번호를 말할게요."
+      - "빠르게 움직여요, 선생님은 기도를 확인하고 제가 의사를 부르려고 침대 번호를 말할게요."
       - "빠르게 움직여요, 오연결 직후에는 환자 상태가 금방 바뀔 수 있어요."
     blank: {answer: airway, options: [airway, bed, chart, floor]}
   "16.5":
     en: "I'm calling the doctor now, and we'll prepare protamine if it's ordered."
     ko: "지금 의사를 부르고 있고, 처방이 나오면 프로타민을 준비할게요."
-    chunks: ["I'm calling the doctor now", ", and we'll prepare protamine", "if it's ordered", "."]
+    chunks: ["I'm calling", "the doctor now", ", and we'll prepare protamine", "if it's ordered", "."]
     words: [w-call, w-prepare, w-protamine, w-order]
     tag: "진행 보고"
     icon: pager
@@ -50,12 +50,12 @@ sentences:
     decoy: "at the bedside"
     dk:
       - "지금 의사를 부르고 있고, 프로타민을 준비하려고 약물 카트를 열어요."
-      - "지금 의사를 부르고 있고, 프로타민은 헤파린 효과를 되돌리는 약이에요."
+      - "지금 의사를 부르고 있고, 프로타민은 헤파린 해독제예요."
     blank: {answer: ordered, options: [ordered, expired, famous, painted]}
   "9.5":
     en: "The narcotics stay locked, and we never share our cabinet login."
     ko: "마약은 늘 잠겨 있고, 보관함 로그인은 절대 같이 쓰지 않아요."
-    chunks: ["The narcotics stay locked", ", and we never share", "our cabinet login", "."]
+    chunks: ["The narcotics", "stay locked", ", and we never share", "our cabinet login", "."]
     words: [w-narcotic, w-locked]
     tag: "로그인 관리"
     icon: lock
@@ -77,7 +77,7 @@ sentences:
     dk:
       - "의사 선생님이 가족과 이야기하고, 저는 곁에서 기록을 정리할게요."
       - "의사 선생님이 환자와 이야기하고, 저는 곁에서 가족을 도울게요."
-    blank: {answer: support, options: [support, interrupt, correct, replace]}
+    blank: {answer: support, options: [support, interrupt, correct, question]}
   "3.6":
     en: "A line labeled at both ends is one less chance of a mix-up."
     ko: "양쪽 끝에 라벨이 붙은 라인은 헷갈릴 위험을 하나 줄여 줘요."
@@ -95,10 +95,10 @@ sentences:
     en: "I'll stay with him while you notify the team of what happened."
     chunks: ["I'll stay with him", "while you notify", "the team", "of what happened", "."]
   "2.4":
-    chunks: ["Let's stop", "and check this together", "before we give it", "."]
-    decoy: "before we print it"
+    chunks: ["Let's stop", "and check this together", "before", "we give it", "."]
+    decoy: "we print it"
   "4.4":
-    chunks: ["Let's check", "his call light works", "before I step out", "."]
+    chunks: ["Let's check", "his call light works", "before", "I step out", "."]
     decoy: "his TV remote works"
   "3.0":
     chunks: ["I might be wrong,", "but I want to check something", "before", "we go ahead", "."]
@@ -111,7 +111,7 @@ sentences:
     ko: "이건 모든 고위험 약물에 꼭 해야 하는 절차예요."
     words: [w-required, w-medication]
     dk:
-      - "이건 모든 신입 간호사 교육에 꼭 해야 하는 절차예요."
+      - "이건 모든 신입 교육에 꼭 해야 하는 절차예요."
       - "이건 모든 고위험 환자에게 꼭 해야 하는 절차예요."
   "12.6":
     ko: "인슐린이나 헤파린 같은 고위험 약물은 항상 이 추가 단계를 거쳐요."
