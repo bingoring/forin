@@ -1,0 +1,1817 @@
+
+## 0 면회 안내·환경 설명
+0.0 [면회 안내|hospital] Let me walk you through what you'll see at her bedside.
+   KO(28) 그녀의 침상에서 무엇을 보게 될지 안내해 드릴게요.
+   x(28) 그녀의 침상에서 무엇을 듣게 될지 안내해 드릴게요.
+   x(32) 그녀의 병실 문 앞에서 무엇을 보게 될지 안내해 드릴게요.
+   why: Let me walk you through로 시작하면 처음 온 가족에게 모든 것을 하나씩 같이 걷듯 설명하겠다는 뜻이 돼요. what you'll see로 앞으로 눈에 들어올 것을 미리 알려 줘요.
+   *B Let me walk you through what you'll see at her [bedside].
+    B Let me walk you through what you'll see at her [bedroom].
+    B Let me walk you through what you'll see at her [bedrail].
+    B Let me walk you through what you'll see at her [bedframe].
+   chunks: Let me walk you through / what you'll see / at her / bedside / .   DECOY: what you'll need
+     ~0: what you'll need what you'll see at her bedside .
+     ~1: Let me walk you through what you'll need at her bedside .
+     ~2: Let me walk you through what you'll see what you'll need bedside .
+     ~3: Let me walk you through what you'll see at her what you'll need .
+0.1 [환경 설명|monitor] There will be monitors and tubes, and that's normal here.
+   KO(31) 모니터와 튜브들이 있을 텐데, 여기서는 정상적인 거예요.
+   x(31) 모니터와 펌프들이 있을 텐데, 여기서는 정상적인 거예요.
+   x(31) 카메라와 튜브들이 있을 텐데, 여기서는 정상적인 거예요.
+   why: There will be 뒤에 장비를 나열하고 and that's normal here를 붙이면 낯선 장비가 이상 신호가 아니라 이곳의 평범한 모습이라는 안내가 돼요.
+   *B There will be monitors and tubes, and that's [normal] here.
+    B There will be monitors and tubes, and that's [unusual] here.
+    B There will be monitors and tubes, and that's [harmful] here.
+    B There will be monitors and tubes, and that's [painful] here.
+   chunks: There will be / monitors and tubes / , and that's normal / here / .   DECOY: in the waiting room
+     ~0: in the waiting room monitors and tubes , and that's normal here .
+     ~1: There will be in the waiting room , and that's normal here .
+     ~2: There will be monitors and tubes in the waiting room here .
+     ~3: There will be monitors and tubes , and that's normal in the waiting room .
+0.2 [참여 안내|handshake2] You can talk to her and hold her hand.
+   KO(20) 말을 걸어도 되고 손을 잡아도 돼요.
+   x(20) 말을 걸어도 되고 발을 만져도 돼요.
+   x(21) 노래를 불러도 되고 손을 잡아도 돼요.
+   why: You can …은 허락과 권유를 함께 담는 틀이에요. 가족이 할 수 있는 일을 구체적인 행동으로 말하면 무엇을 해도 되는지 망설이지 않아요.
+   *B You can [talk] to her and hold her hand.
+    B You can [shout] to her and hold her hand.
+    B You can [whistle] to her and hold her hand.
+    B You can [complain] to her and hold her hand.
+   chunks: You can / talk to her / and hold / her hand / .   DECOY: her blanket
+     ~0: her blanket talk to her and hold her hand .
+     ~1: You can her blanket and hold her hand .
+     ~2: You can talk to her her blanket her hand .
+     ~3: You can talk to her and hold her blanket .
+0.3 [안심|faceWorried] It can feel overwhelming at first, but you'll get used to it.
+   KO(33) 처음엔 압도적으로 느껴질 수 있지만, 곧 익숙해지실 거예요.
+   x(33) 밤에는 압도적으로 느껴질 수 있지만, 곧 익숙해지실 거예요.
+   x(32) 처음엔 조용하게 느껴질 수 있지만, 곧 익숙해지실 거예요.
+   why: overwhelming을 먼저 말해 주면 가족의 느낌을 인정하는 것이 되고, but 뒤에 익숙해질 거라는 말을 붙이면 부담이 줄어요.
+   *B It can feel overwhelming at [first], but you'll get used to it.
+    B It can feel overwhelming at [last], but you'll get used to it.
+    B It can feel overwhelming at [dawn], but you'll get used to it.
+    B It can feel overwhelming at [noon], but you'll get used to it.
+   chunks: It can feel overwhelming / at first / , but / you'll get used to it / .   DECOY: in the evening
+     ~0: in the evening at first , but you'll get used to it .
+     ~1: It can feel overwhelming in the evening , but you'll get used to it .
+     ~2: It can feel overwhelming at first in the evening you'll get used to it .
+     ~3: It can feel overwhelming at first , but in the evening .
+0.4 [환경 설명|speaker] The sounds and lights are just part of how we watch over her.
+   KO(30) 소리와 불빛은 저희가 그녀를 지켜보는 방식의 일부예요.
+   x(30) 소리와 냄새는 저희가 그녀를 지켜보는 방식의 일부예요.
+   x(30) 소리와 불빛은 저희가 그녀를 지켜보는 방식의 전부예요.
+   why: just part of …는 소리와 불빛이 위험 신호가 아니라 돌봄의 일부라는 뜻을 가볍게 전해요. how we watch over her로 누가 무엇을 하는지 분명히 해요.
+   *B The [sounds] and lights are just part of how we watch over her.
+    B The [smells] and lights are just part of how we watch over her.
+    B The [tastes] and lights are just part of how we watch over her.
+    B The [textures] and lights are just part of how we watch over her.
+   chunks: The sounds and lights / are just part / of how we watch / over her / .   DECOY: for her family
+     ~0: for her family are just part of how we watch over her .
+     ~1: The sounds and lights for her family of how we watch over her .
+     ~2: The sounds and lights are just part for her family over her .
+     ~3: The sounds and lights are just part of how we watch for her family .
+0.5 [배려|coffee] Take your time before you go in.
+   KO(22) 들어가시기 전에 천천히 시간을 가지세요.
+   x(21) 들어가시기 전에 천천히 물을 마시세요.
+   x(21) 나오시기 전에 천천히 시간을 가지세요.
+   why: Take your time은 서두르지 않아도 된다는 배려의 표현이에요. before you go in으로 그 시간이 입실 전이라는 것을 정해 줘요.
+   *B Take your [time] before you go in.
+    B Take your [medicine] before you go in.
+    B Take your [pulse] before you go in.
+    B Take your [vitamins] before you go in.
+   chunks: Take your time / before you / go in / .   DECOY: go home
+     ~0: go home before you go in .
+     ~1: Take your time go home go in .
+     ~2: Take your time before you go home .
+
+## 1 장비·알람 설명
+1.0 [알람 설명|bell] Most alarms are just reminders, not emergencies.
+   KO(28) 대부분의 알람은 응급상황이 아니라 그냥 알림이에요.
+   x(28) 대부분의 불빛은 응급상황이 아니라 그냥 알림이에요.
+   x(28) 대부분의 알람은 응급상황이 아니라 그냥 점검이에요.
+   why: Most … just는 대부분이 가벼운 경우라는 뜻이고, not emergencies로 가족이 가장 걱정하는 것을 바로 짚어 줘요.
+   *B Most alarms are just [reminders], not emergencies.
+    B Most alarms are just [mistakes], not emergencies.
+    B Most alarms are just [lights], not emergencies.
+    B Most alarms are just [tests], not emergencies.
+   chunks: Most alarms are / just reminders / , not emergencies / .   DECOY: , not mistakes
+     ~0: , not mistakes just reminders , not emergencies .
+     ~1: Most alarms are , not mistakes , not emergencies .
+     ~2: Most alarms are just reminders , not mistakes .
+1.1 [장비 설명|monitor] This monitor shows her heart rate and oxygen.
+   KO(24) 이 모니터는 심박수와 산소 수치를 보여줘요.
+   x(23) 이 펌프는 심박수와 산소 수치를 보여줘요.
+   x(23) 이 알람은 심박수와 산소 수치를 보여줘요.
+   why: This monitor shows …는 장비가 하는 일을 한 문장으로 알려 주는 틀이에요. 가족이 화면의 숫자를 볼 때 무엇을 보는지 알게 돼요.
+   *B This [monitor] shows her heart rate and oxygen.
+    B This [pump] shows her heart rate and oxygen.
+    B This [scale] shows her heart rate and oxygen.
+    B This [bed] shows her heart rate and oxygen.
+   chunks: This monitor shows / her heart rate / and oxygen / .   DECOY: and her room
+     ~0: and her room her heart rate and oxygen .
+     ~1: This monitor shows and her room and oxygen .
+     ~2: This monitor shows her heart rate and her room .
+1.2 [안심|shield] I'm watching all of these closely for her.
+   KO(30) 제가 이 모든 걸 그녀를 위해 꼼꼼히 지켜보고 있어요.
+   x(29) 제가 이 모든 걸 그를 위해 꼼꼼히 지켜보고 있어요.
+   x(33) 제가 이 중 몇 가지를 그녀를 위해 꼼꼼히 지켜보고 있어요.
+   why: I'm watching … for her는 지켜보는 주체가 나라는 것을 분명히 해서 가족이 대신 신경 쓰지 않아도 된다는 느낌을 줘요.
+   *B I'm watching all of these [closely] for her.
+    B I'm watching all of these [rarely] for her.
+    B I'm watching all of these [loosely] for her.
+    B I'm watching all of these [slowly] for her.
+   chunks: I'm watching all of these / closely / for her / .   DECOY: for him
+     ~0: for him closely for her .
+     ~1: I'm watching all of these for him for her .
+     ~2: I'm watching all of these closely for him .
+1.3 [알람 뜻|bell] The pump alarm means her IV bag needs changing.
+   KO(25) 펌프 알람은 수액백을 갈아야 한다는 뜻이에요.
+   x(22) 펌프 알람은 수액백이 넘친다는 뜻이에요.
+   x(25) 펌프 알람은 수액줄을 갈아야 한다는 뜻이에요.
+   why: The pump alarm means …는 알람 이름에 뜻을 바로 이어 붙이는 틀이에요. needs changing으로 무엇을 해야 하는 알람인지 알려 줘요.
+   *B The pump alarm means her IV bag needs [changing].
+    B The pump alarm means her IV bag needs [cleaning].
+    B The pump alarm means her IV bag needs [drying].
+    B The pump alarm means her IV bag needs [folding].
+   chunks: The pump alarm / means / her IV bag / needs changing / .   DECOY: her bed sheet
+     ~0: her bed sheet means her IV bag needs changing .
+     ~1: The pump alarm her bed sheet her IV bag needs changing .
+     ~2: The pump alarm means her bed sheet needs changing .
+     ~3: The pump alarm means her IV bag her bed sheet .
+1.4 [응급 대응|siren] If something is truly urgent, I'll come to her right away.
+   KO(25) 정말로 긴급한 일이면, 바로 그녀에게 갈게요.
+   x(25) 정말로 새로운 일이면, 바로 그녀에게 갈게요.
+   x(25) 정말로 이상한 일이면, 바로 그녀에게 갈게요.
+   why: If … truly urgent라고 조건을 좁히면 평소 알람과 진짜 위급을 구분해 줘요. right away로 그때 즉시 대응한다는 약속을 해요.
+   *B If something is truly [urgent], I'll come to her right away.
+    B If something is truly [minor], I'll come to her right away.
+    B If something is truly [trivial], I'll come to her right away.
+    B If something is truly [pleasant], I'll come to her right away.
+   chunks: If something is / truly urgent / , I'll come / to her right away / .   DECOY: truly new
+     ~0: truly new truly urgent , I'll come to her right away .
+     ~1: If something is truly new , I'll come to her right away .
+     ~2: If something is truly urgent truly new to her right away .
+     ~3: If something is truly urgent , I'll come truly new .
+1.5 [장비 설명|speaker] Each color and sound on the monitor means something different.
+   KO(25) 모니터의 각 색과 소리는 서로 다른 뜻이에요.
+   x(25) 모니터의 각 색과 숫자는 서로 다른 뜻이에요.
+   x(24) 펌프의 각 색과 소리는 서로 다른 뜻이에요.
+   why: Each …와 something different는 색과 소리마다 뜻이 따로 있다는 것을 말해요. 한꺼번에 불안해하지 않아도 된다는 근거가 돼요.
+   *B Each color and sound on the monitor means something [different].
+    B Each color and sound on the monitor means something [identical].
+    B Each color and sound on the monitor means something [similar].
+    B Each color and sound on the monitor means something [simple].
+   chunks: Each color and sound / on the monitor / means something / different / .   DECOY: on the ceiling
+     ~0: on the ceiling on the monitor means something different .
+     ~1: Each color and sound on the ceiling means something different .
+     ~2: Each color and sound on the monitor on the ceiling different .
+     ~3: Each color and sound on the monitor means something on the ceiling .
+
+## 2 일일 상태 업데이트
+2.0 [오늘 상태|chartup] Today his oxygen levels are a little better.
+   KO(24) 오늘 그의 산소 수치가 조금 더 나아졌어요.
+   x(24) 어제 그의 산소 수치가 조금 더 나아졌어요.
+   x(25) 오늘 그녀의 산소 수치가 조금 더 나아졌어요.
+   why: Today를 문장 맨 앞에 두면 어제가 아니라 지금 상태를 말한다는 것이 먼저 들려요. a little better처럼 정도를 낮춰 말하면 과장 없이 사실만 전해요.
+   *B Today his oxygen levels are a little [better].
+    B Today his oxygen levels are a little [worse].
+    B Today his oxygen levels are a little [lower].
+    B Today his oxygen levels are a little [weaker].
+   chunks: Today his oxygen levels / are a little / better / .   DECOY: from the lab
+     ~0: from the lab are a little better .
+     ~1: Today his oxygen levels from the lab better .
+     ~2: Today his oxygen levels are a little from the lab .
+2.1 [치료 경과|chartup] We're slowly reducing the support he needs.
+   KO(25) 그에게 필요한 지지를 천천히 줄여가고 있어요.
+   x(25) 그에게 필요한 면회를 천천히 줄여가고 있어요.
+   x(29) 그의 가족에게 필요한 지지를 천천히 줄여가고 있어요.
+   why: slowly reducing은 한꺼번에가 아니라 단계적으로 줄이고 있다는 뜻이에요. the support he needs로 무엇을 줄이는지 가족이 이해할 수 있게 일반적인 말로 써요.
+   *B We're slowly [reducing] the support he needs.
+    B We're slowly [increasing] the support he needs.
+    B We're slowly [adding] the support he needs.
+    B We're slowly [doubling] the support he needs.
+   chunks: We're slowly reducing / the support / he needs / .   DECOY: the lights
+     ~0: the lights the support he needs .
+     ~1: We're slowly reducing the lights he needs .
+     ~2: We're slowly reducing the support the lights .
+2.2 [의미 부여|compass] It's a small step, but it's in the right direction.
+   KO(25) 작은 걸음이지만, 옳은 방향으로 가고 있어요.
+   x(26) 작은 걸음이지만, 오른쪽 방향으로 가고 있어요.
+   x(25) 작은 걸음이지만, 같은 방향으로 가고 있어요.
+   why: small step but …처럼 크기를 낮춰 말하면 과장 없이 방향만 전해요. in the right direction이 이 변화가 가리키는 쪽을 알려 줘요.
+   *B It's a [small] step, but it's in the right direction.
+    B It's a [big] step, but it's in the right direction.
+    B It's a [giant] step, but it's in the right direction.
+    B It's a [fast] step, but it's in the right direction.
+   chunks: It's a small step / , but it's / in the right / direction / .   DECOY: on the left
+     ~0: on the left , but it's in the right direction .
+     ~1: It's a small step on the left in the right direction .
+     ~2: It's a small step , but it's on the left direction .
+     ~3: It's a small step , but it's in the right on the left .
+2.3 [변화 비교|stetho] Compared to yesterday, his breathing looks calmer.
+   KO(27) 어제와 비교하면, 그의 호흡이 더 차분해 보여요.
+   x(28) 지난주와 비교하면, 그의 호흡이 더 차분해 보여요.
+   x(27) 어제와 비교하면, 그의 표정이 더 차분해 보여요.
+   why: Compared to로 시작하면 어제와 오늘이라는 비교 기준을 먼저 세워 줘요. looks calmer는 측정값이 아니라 보이는 모습을 말하는 표현이에요.
+   *B Compared to yesterday, his breathing looks [calmer].
+    B Compared to yesterday, his breathing looks [louder].
+    B Compared to yesterday, his breathing looks [faster].
+    B Compared to yesterday, his breathing looks [heavier].
+   chunks: Compared to yesterday / , his breathing / looks calmer / .   DECOY: Compared to the scan
+     ~0: Compared to the scan , his breathing looks calmer .
+     ~1: Compared to yesterday Compared to the scan looks calmer .
+     ~2: Compared to yesterday , his breathing Compared to the scan .
+2.4 [의미 부여|star] Every small improvement matters, even if it's slow.
+   KO(23) 느리더라도 작은 호전 하나하나가 중요해요.
+   x(23) 느리더라도 작은 소식 하나하나가 중요해요.
+   x(23) 느리더라도 작은 호전 하나하나를 기록해요.
+   why: even if it's slow는 느린 속도에 실망하지 않게 하는 말이에요. matters로 작은 호전도 가치가 있다는 것을 전해요.
+   *B Every small improvement [matters], even if it's slow.
+    B Every small improvement [hurts], even if it's slow.
+    B Every small improvement [waits], even if it's slow.
+    B Every small improvement [fails], even if it's slow.
+   chunks: Every small improvement / matters / , even if it's slow / .   DECOY: takes time
+     ~0: takes time matters , even if it's slow .
+     ~1: Every small improvement takes time , even if it's slow .
+     ~2: Every small improvement matters takes time .
+2.5 [약속|bell] I'll let you know as soon as anything changes.
+   KO(18) 뭐라도 바뀌면 바로 알려드릴게요.
+   x(20) 뭐라도 바뀌면 회진 때 알려드릴게요.
+   x(18) 뭐라도 바뀌면 내일 알려드릴게요.
+   why: as soon as를 쓰면 때를 기다리지 않고 바로 전한다는 약속이 돼요. anything changes로 어떤 변화든 포함한다고 말해 가족이 안심해요.
+   *B I'll let you know as [soon] as anything changes.
+    B I'll let you know as [long] as anything changes.
+    B I'll let you know as [far] as anything changes.
+    B I'll let you know as [much] as anything changes.
+   chunks: I'll let you / know / as soon as / anything changes / .   DECOY: ever since
+     ~0: ever since know as soon as anything changes .
+     ~1: I'll let you ever since as soon as anything changes .
+     ~2: I'll let you know ever since anything changes .
+     ~3: I'll let you know as soon as ever since .
+
+## 3 가족 질문 응대
+3.0 [질문 환영|speech] Please ask me anything — that's what I'm here for.
+   KO(29) 뭐든 물어보세요 — 그러려고 제가 여기 있는 거예요.
+   x(30) 뭐든 알려 주세요 — 그러려고 제가 여기 있는 거예요.
+   x(31) 뭐든 보여 드릴게요 — 그러려고 제가 여기 있는 거예요.
+   why: Please ask me anything은 질문해도 된다는 허락을 넘어 환영한다는 표현이에요. that's what I'm here for로 질문이 부담이 아니라 내 일이라고 말해 줘요.
+   *B Please ask me [anything] — that's what I'm here for.
+    B Please ask me [nothing] — that's what I'm here for.
+    B Please ask me [later] — that's what I'm here for.
+    B Please ask me [tomorrow] — that's what I'm here for.
+   chunks: Please ask me / anything / — that's what / I'm here for / .   DECOY: I'm paid for
+     ~0: I'm paid for anything — that's what I'm here for .
+     ~1: Please ask me I'm paid for — that's what I'm here for .
+     ~2: Please ask me anything I'm paid for I'm here for .
+     ~3: Please ask me anything — that's what I'm paid for .
+3.1 [쉬운 설명|speech] Let me explain that in a way that makes sense.
+   KO(22) 이해되실 만한 방식으로 설명해 드릴게요.
+   x(22) 이해되실 만한 방식으로 연습해 드릴게요.
+   x(21) 이해되실 만한 방식으로 보여 드릴게요.
+   why: Let me …는 허락을 구하듯 설명을 시작하는 부드러운 말이에요. in a way that makes sense는 설명의 기준이 의학 용어가 아니라 듣는 사람의 이해라는 뜻이에요.
+   *B Let me [explain] that in a way that makes sense.
+    B Let me [record] that in a way that makes sense.
+    B Let me [show] that in a way that makes sense.
+    B Let me [repeat] that in a way that makes sense.
+   chunks: Let me explain / that in a way / that makes / sense / .   DECOY: in a hurry
+     ~0: in a hurry that in a way that makes sense .
+     ~1: Let me explain in a hurry that makes sense .
+     ~2: Let me explain that in a way in a hurry sense .
+     ~3: Let me explain that in a way that makes in a hurry .
+3.2 [정직한 응대|speech] If I don't know, I'll find out and get back to you.
+   KO(23) 제가 모르면, 알아봐서 다시 알려드릴게요.
+   x(23) 제가 모르면, 알아봐서 내일 알려드릴게요.
+   x(22) 제가 모르면, 알아봐서 다시 물어볼게요.
+   why: If I don't know로 모르는 것을 숨기지 않고 말한 다음 find out으로 찾아서 돌아오겠다고 약속해요. 모르는 것을 아는 척하지 않는 것이 신뢰의 바탕이에요.
+   *B If I don't know, I'll [find] out and get back to you.
+    B If I don't know, I'll [ask] out and get back to you.
+    B If I don't know, I'll [guess] out and get back to you.
+    B If I don't know, I'll [read] out and get back to you.
+   chunks: If I don't know / , I'll find out / and get back / to you / .   DECOY: and sign off
+     ~0: and sign off , I'll find out and get back to you .
+     ~1: If I don't know and sign off and get back to you .
+     ~2: If I don't know , I'll find out and sign off to you .
+     ~3: If I don't know , I'll find out and get back and sign off .
+3.3 [질문 환영|check] No question is too small to ask.
+   KO(22) 너무 사소해서 못 물어볼 질문은 없어요.
+   x(22) 너무 어려워서 못 물어볼 질문은 없어요.
+   x(22) 너무 사소해서 못 들어볼 질문은 없어요.
+   why: No question is too …는 어떤 질문도 환영이라고 강조하는 틀이에요. 사소해 보여서 묻지 못하는 가족의 망설임을 덜어요.
+   *B No question is too [small] to ask.
+    B No question is too [hard] to ask.
+    B No question is too [foolish] to ask.
+    B No question is too [silly] to ask.
+   chunks: No question / is too small / to ask / .   DECOY: too late
+     ~0: too late is too small to ask .
+     ~1: No question too late to ask .
+     ~2: No question is too small too late .
+3.4 [배려|pencil] I'll write down your question so I don't forget.
+   KO(17) 잊지 않도록 질문을 적어둘게요.
+   x(18) 잊지 않도록 질문을 읽어 둘게요.
+   x(17) 잊지 않도록 이름을 적어둘게요.
+   why: so I don't forget은 적어 두는 이유를 밝히는 말이에요. 가족의 질문이 소홀히 다뤄지지 않는다는 느낌을 줘요.
+   *B I'll write down your question so I don't [forget].
+    B I'll write down your question so I don't [panic].
+    B I'll write down your question so I don't [rush].
+    B I'll write down your question so I don't [stumble].
+   chunks: I'll write down / your question / so I don't / forget / .   DECOY: so I can sign
+     ~0: so I can sign your question so I don't forget .
+     ~1: I'll write down so I can sign so I don't forget .
+     ~2: I'll write down your question so I can sign forget .
+     ~3: I'll write down your question so I don't so I can sign .
+3.5 [질문 환영|speech] You can ask the same question as many times as you need.
+   KO(29) 같은 질문을 필요한 만큼 몇 번이든 물어보셔도 돼요.
+   x(28) 같은 질문을 필요한 만큼 몇 번이든 외우셔도 돼요.
+   x(28) 같은 질문을 필요한 만큼 한 번만 물어보셔도 돼요.
+   why: You can ask the same question as many times as you need는 같은 질문을 반복해도 된다고 허락해요. as many times as …는 횟수를 가족이 정한다는 뜻이에요.
+   *B You can ask the [same] question as many times as you need.
+    B You can ask the [first] question as many times as you need.
+    B You can ask the [new] question as many times as you need.
+    B You can ask the [last] question as many times as you need.
+   chunks: You can ask / the same question / as many times / as you need / .   DECOY: as many questions
+     ~0: as many questions the same question as many times as you need .
+     ~1: You can ask as many questions as many times as you need .
+     ~2: You can ask the same question as many questions as you need .
+     ~3: You can ask the same question as many times as many questions .
+
+## 4 면회 규칙·감염관리 안내
+4.0 [감염 예방|shield] The gown and gloves protect her from infection.
+   KO(24) 가운과 장갑은 감염으로부터 그녀를 보호해요.
+   x(24) 가운과 장갑은 소음으로부터 그녀를 보호해요.
+   x(24) 가운과 담요는 감염으로부터 그녀를 보호해요.
+   why: The gown and gloves protect her …는 보호 장비와 그 목적을 한 문장에 묶어요. from infection으로 왜 입는지를 알려 주면 규칙이 번거로운 절차가 아니라 이유 있는 일이 돼요.
+   *B The gown and gloves protect her from [infection].
+    B The gown and gloves protect her from [noise].
+    B The gown and gloves protect her from [hunger].
+    B The gown and gloves protect her from [sunlight].
+   chunks: The gown and gloves / protect her / from infection / .   DECOY: from the cold
+     ~0: from the cold protect her from infection .
+     ~1: The gown and gloves from the cold from infection .
+     ~2: The gown and gloves protect her from the cold .
+4.1 [손 위생|shield] Please wash your hands before and after visiting.
+   KO(17) 방문 전후로 손을 씻어 주세요.
+   x(17) 식사 전후로 손을 씻어 주세요.
+   x(18) 잠자기 전후로 손을 씻어 주세요.
+   why: Please로 시작하면 지시가 부탁으로 들려요. before and after를 함께 말하면 들어갈 때와 나올 때 모두 씻는다는 것이 분명해요.
+   *B Please [wash] your hands before and after visiting.
+    B Please [dry] your hands before and after visiting.
+    B Please [wave] your hands before and after visiting.
+    B Please [clap] your hands before and after visiting.
+   chunks: Please wash your hands / before and after / visiting / .   DECOY: going home
+     ~0: going home before and after visiting .
+     ~1: Please wash your hands going home visiting .
+     ~2: Please wash your hands before and after going home .
+4.2 [안심|shield] These steps keep both of you safe.
+   KO(25) 이 절차들이 두 분 모두를 안전하게 지켜줘요.
+   x(25) 이 절차들이 세 분 모두를 안전하게 지켜줘요.
+   x(25) 이 절차들이 두 분 모두를 따뜻하게 지켜줘요.
+   why: keep both of you safe의 both of you는 환자뿐 아니라 가족도 보호받는다는 뜻이에요. 절차가 가족을 막는 것이 아니라 함께 지키는 것이라는 느낌을 줘요.
+   *B These steps keep both of you [safe].
+    B These steps keep both of you [tired].
+    B These steps keep both of you [sleepy].
+    B These steps keep both of you [bored].
+   chunks: These steps / keep both of you / safe / .   DECOY: keep the hallway
+     ~0: keep the hallway keep both of you safe .
+     ~1: These steps keep the hallway safe .
+     ~2: These steps keep both of you keep the hallway .
+4.3 [비난 아님|handshake2] It's not about you — it's about keeping her safe from germs.
+   KO(38) 당신 때문이 아니라 — 그녀를 세균으로부터 안전하게 지키려는 거예요.
+   x(37) 당신 때문이 아니라 — 그녀를 먼지로부터 안전하게 지키려는 거예요.
+   x(38) 당신 때문이 아니라 — 그녀를 세균으로부터 조용하게 지키려는 거예요.
+   why: It's not about you로 먼저 가족의 잘못이 아니라고 말하면 방어적인 반응을 막을 수 있어요. 대시 뒤에 실제 이유를 붙여 그 말이 변명처럼 들리지 않게 해요.
+   *B It's not about you — it's about keeping her safe from [germs].
+    B It's not about you — it's about keeping her safe from [dust].
+    B It's not about you — it's about keeping her safe from [smoke].
+    B It's not about you — it's about keeping her safe from [noise].
+   chunks: It's not about you / — it's about / keeping her safe / from germs / .   DECOY: from the sun
+     ~0: from the sun — it's about keeping her safe from germs .
+     ~1: It's not about you from the sun keeping her safe from germs .
+     ~2: It's not about you — it's about from the sun from germs .
+     ~3: It's not about you — it's about keeping her safe from the sun .
+4.4 [면회 규칙|lock] Only two visitors are allowed at the bedside at a time.
+   KO(26) 한 번에 침상 곁에는 방문객 두 명만 허용돼요.
+   x(26) 한 번에 침상 곁에는 방문객 세 명만 허용돼요.
+   x(24) 한 번에 로비에는 방문객 두 명만 허용돼요.
+   why: Only two … at a time은 규칙을 숫자와 단위로 정확히 알려 줘요. are allowed를 쓰면 병원 규칙이라는 느낌이 나서 개인적인 거절로 들리지 않아요.
+   *B Only [two] visitors are allowed at the bedside at a time.
+    B Only [four] visitors are allowed at the bedside at a time.
+    B Only [six] visitors are allowed at the bedside at a time.
+    B Only [ten] visitors are allowed at the bedside at a time.
+   chunks: Only two visitors / are allowed / at the bedside / at a time / .   DECOY: in a row
+     ~0: in a row are allowed at the bedside at a time .
+     ~1: Only two visitors in a row at the bedside at a time .
+     ~2: Only two visitors are allowed in a row at a time .
+     ~3: Only two visitors are allowed at the bedside in a row .
+4.5 [공감|faceWorried] I know it's a lot of steps, but they're for her protection.
+   KO(33) 절차가 많다는 거 알지만, 다 그녀를 보호하기 위한 거예요.
+   x(33) 절차가 많다는 거 알지만, 다 그녀를 위로하기 위한 거예요.
+   x(33) 서류가 많다는 거 알지만, 다 그녀를 보호하기 위한 거예요.
+   why: I know it's …로 불편을 먼저 인정하면 뒤의 설명이 훈계로 들리지 않아요. but they're for her protection으로 절차가 많은 이유를 보호 하나로 모아 줘요.
+   *B I know it's a lot of steps, but they're for her [protection].
+    B I know it's a lot of steps, but they're for her [payment].
+    B I know it's a lot of steps, but they're for her [permission].
+    B I know it's a lot of steps, but they're for her [decoration].
+   chunks: I know it's / a lot of steps / , but / they're for her protection / .   DECOY: a lot of forms
+     ~0: a lot of forms a lot of steps , but they're for her protection .
+     ~1: I know it's a lot of forms , but they're for her protection .
+     ~2: I know it's a lot of steps a lot of forms they're for her protection .
+     ~3: I know it's a lot of steps , but a lot of forms .
+
+## 5 가족 정서 지지 기초
+5.0 [공감|faceWorried] It's completely understandable to feel this way.
+   KO(22) 이렇게 느끼시는 건 정말 이해할 만해요.
+   x(23) 이렇게 말씀하시는 건 조금 이해할 만해요.
+   x(22) 이렇게 웃으시는 건 정말 이해할 만해요.
+   why: completely understandable의 completely는 느낌을 일부만 인정하는 것이 아니라 전부 인정한다는 뜻이에요. 가족이 자기 감정을 의심하지 않게 해 줘요.
+   *B It's completely [understandable] to feel this way.
+    B It's completely [unbelievable] to feel this way.
+    B It's completely [unthinkable] to feel this way.
+    B It's completely [unusual] to feel this way.
+   chunks: It's completely understandable / to feel / this way / .   DECOY: to ask
+     ~0: to ask to feel this way .
+     ~1: It's completely understandable to ask this way .
+     ~2: It's completely understandable to feel to ask .
+5.1 [정서 지지|handshake2] You don't have to go through this alone.
+   KO(17) 이걸 혼자 겪지 않으셔도 돼요.
+   x(16) 이걸 서두르지 않으셔도 돼요.
+   x(16) 이걸 설명하지 않으셔도 돼요.
+   why: You don't have to …는 부담을 내려놓게 하는 틀이에요. alone을 끝에 두어 가장 하고 싶은 말인 혼자가 아니라는 점이 마지막에 남아요.
+   *B You don't have to go through this [alone].
+    B You don't have to go through this [twice].
+    B You don't have to go through this [quickly].
+    B You don't have to go through this [blindly].
+   chunks: You don't have to / go through this / alone / .   DECOY: in silence
+     ~0: in silence go through this alone .
+     ~1: You don't have to in silence alone .
+     ~2: You don't have to go through this in silence .
+5.2 [지원 안내|hospital] There are support services here whenever you need them.
+   KO(33) 필요하실 때면 언제든 이용할 수 있는 지지 서비스가 있어요.
+   x(33) 필요하실 때면 언제든 이용할 수 있는 주차 서비스가 있어요.
+   x(33) 필요하실 때면 낮에만 이용할 수 있는 지지 서비스가 있어요.
+   why: There are …로 지지 서비스가 실제로 있다는 것을 사실로 알려 줘요. whenever you need them은 시간 제한 없이 가족이 필요할 때 쓸 수 있다는 뜻이에요.
+   *B There are support [services] here whenever you need them.
+    B There are support [fees] here whenever you need them.
+    B There are support [forms] here whenever you need them.
+    B There are support [rules] here whenever you need them.
+   chunks: There are support services / here / whenever you / need them / .   DECOY: at home
+     ~0: at home here whenever you need them .
+     ~1: There are support services at home whenever you need them .
+     ~2: There are support services here at home need them .
+     ~3: There are support services here whenever you at home .
+5.3 [감정 허용|faceAngry] It's okay to cry, to be angry, or to feel numb.
+   KO(22) 울어도, 화가 나도, 멍해져도 괜찮아요.
+   x(22) 웃어도, 화가 나도, 멍해져도 괜찮아요.
+   x(21) 울어도, 화가 나도, 졸려도 괜찮아요.
+   why: It's okay to …를 세 번 이어 나열하면 우는 것, 화내는 것, 멍한 것을 모두 같은 무게로 허락해요. 어느 반응도 틀린 것이 아니라는 뜻이 전해져요.
+   *B It's okay to cry, to be [angry], or to feel numb.
+    B It's okay to cry, to be [hungry], or to feel numb.
+    B It's okay to cry, to be [proud], or to feel numb.
+    B It's okay to cry, to be [bored], or to feel numb.
+   chunks: It's okay to cry / , to be angry / , or to feel / numb / .   DECOY: silent
+     ~0: silent , to be angry , or to feel numb .
+     ~1: It's okay to cry silent , or to feel numb .
+     ~2: It's okay to cry , to be angry silent numb .
+     ~3: It's okay to cry , to be angry , or to feel silent .
+5.4 [지원 안내|handshake2] A chaplain or counselor can meet with you if you'd like.
+   KO(26) 원하시면 원목이나 상담사가 만나드릴 수 있어요.
+   x(26) 원하시면 원목이나 상담사가 전화드릴 수 있어요.
+   x(28) 원하시면 원목이나 상담사가 편지를 드릴 수 있어요.
+   why: if you'd like는 선택을 가족에게 맡기는 말이에요. 도움을 권하되 받을지 말지는 가족이 정한다는 느낌을 줘요.
+   *B A chaplain or counselor can [meet] with you if you'd like.
+    B A chaplain or counselor can [compete] with you if you'd like.
+    B A chaplain or counselor can [negotiate] with you if you'd like.
+    B A chaplain or counselor can [trade] with you if you'd like.
+   chunks: A chaplain or counselor / can meet / with you / if you'd like / .   DECOY: can wait
+     ~0: can wait can meet with you if you'd like .
+     ~1: A chaplain or counselor can wait with you if you'd like .
+     ~2: A chaplain or counselor can meet can wait if you'd like .
+     ~3: A chaplain or counselor can meet with you can wait .
+5.5 [공감|faceWorried] Whatever you're feeling right now makes complete sense.
+   KO(25) 지금 느끼시는 어떤 감정이든 다 그럴 만해요.
+   x(25) 어제 느끼셨던 어떤 감정이든 다 그럴 만해요.
+   x(25) 지금 느끼시는 어떤 감정이든 다 말해도 돼요.
+   why: Whatever you're feeling이라고 하면 어떤 감정이든 포함해서 인정해 줘요. makes complete sense로 감정이 이상하지 않다는 것을 분명히 말해요.
+   *B Whatever you're [feeling] right now makes complete sense.
+    B Whatever you're [eating] right now makes complete sense.
+    B Whatever you're [wearing] right now makes complete sense.
+    B Whatever you're [cooking] right now makes complete sense.
+   chunks: Whatever you're feeling / right now / makes complete sense / .   DECOY: later today
+     ~0: later today right now makes complete sense .
+     ~1: Whatever you're feeling later today makes complete sense .
+     ~2: Whatever you're feeling right now later today .
+
+## 6 가족 회의 준비·진행 지원
+6.0 [회의 준비|pencil] Let's list the questions your family wants answered.
+   KO(32) 가족분들이 답을 듣고 싶은 질문들을 목록으로 만들어 봐요.
+   x(32) 가족분들이 답을 듣고 싶은 걱정들을 목록으로 만들어 봐요.
+   x(32) 가족분들이 답을 듣고 싶은 질문들을 소리 내어 읽어 봐요.
+   why: Let's …로 함께 하자고 권하면 가족이 준비를 혼자 하는 느낌이 들지 않아요. your family wants answered는 질문의 주인이 가족이라는 뜻이에요.
+   *B Let's [list] the questions your family wants answered.
+    B Let's [erase] the questions your family wants answered.
+    B Let's [hide] the questions your family wants answered.
+    B Let's [cancel] the questions your family wants answered.
+   chunks: Let's list / the questions / your family wants answered / .   DECOY: the times
+     ~0: the times the questions your family wants answered .
+     ~1: Let's list the times your family wants answered .
+     ~2: Let's list the questions the times .
+6.1 [회의 지원|speech] I'll make sure everyone can hear and be heard.
+   KO(26) 모두가 듣고 또 말할 수 있도록 제가 챙길게요.
+   x(26) 모두가 앉고 또 말할 수 있도록 제가 챙길게요.
+   x(25) 모두가 듣고 또 쉴 수 있도록 제가 챙길게요.
+   why: I'll make sure로 간호사가 책임지고 챙기겠다고 약속해요. hear and be heard는 듣는 것과 말하는 것을 모두 묶어 말해요.
+   *B I'll make sure everyone can hear and be [heard].
+    B I'll make sure everyone can hear and be [seen].
+    B I'll make sure everyone can hear and be [paid].
+    B I'll make sure everyone can hear and be [fed].
+   chunks: I'll make sure / everyone / can hear / and be heard / .   DECOY: the doctor
+     ~0: the doctor everyone can hear and be heard .
+     ~1: I'll make sure the doctor can hear and be heard .
+     ~2: I'll make sure everyone the doctor and be heard .
+     ~3: I'll make sure everyone can hear the doctor .
+6.2 [회의 지원|handshake2] We'll go over his condition together, step by step.
+   KO(20) 그의 상태를 하나씩 함께 살펴볼게요.
+   x(20) 그의 일정을 하나씩 함께 살펴볼게요.
+   x(20) 그의 상태를 하나씩 미리 살펴볼게요.
+   why: go over는 천천히 훑어본다는 뜻이고 step by step이 그 속도를 정해 줘요. together가 들어가면 가족이 지켜보기만 하는 것이 아니라 같이 한다는 느낌이 나요.
+   *B We'll go over his condition [together], step by step.
+    B We'll go over his condition [separately], step by step.
+    B We'll go over his condition [alone], step by step.
+    B We'll go over his condition [privately], step by step.
+   chunks: We'll go over / his condition / together / , step by step / .   DECOY: his room
+     ~0: his room his condition together , step by step .
+     ~1: We'll go over his room together , step by step .
+     ~2: We'll go over his condition his room , step by step .
+     ~3: We'll go over his condition together his room .
+6.3 [준비 팁|pencil] It helps to write your questions down before the meeting.
+   KO(22) 회의 전에 질문을 적어두면 도움이 돼요.
+   x(22) 회의 후에 질문을 적어두면 도움이 돼요.
+   x(22) 회의 전에 서류를 적어두면 도움이 돼요.
+   why: It helps to …는 조언을 명령이 아니라 도움이 되는 방법으로 말하는 틀이에요. before the meeting이 적어 둘 시점을 정해 줘요.
+   *B It [helps] to write your questions down before the meeting.
+    B It [hurts] to write your questions down before the meeting.
+    B It [waits] to write your questions down before the meeting.
+    B It [fails] to write your questions down before the meeting.
+   chunks: It helps to write / your questions down / before / the meeting / .   DECOY: the weekend
+     ~0: the weekend your questions down before the meeting .
+     ~1: It helps to write the weekend before the meeting .
+     ~2: It helps to write your questions down the weekend the meeting .
+     ~3: It helps to write your questions down before the weekend .
+6.4 [통역 안내|speech] The doctor will explain things, and I'll help translate if needed.
+   KO(38) 의사 선생님이 설명해 주실 거고, 필요하면 제가 통역을 도와드릴게요.
+   x(38) 의사 선생님이 서명해 주실 거고, 필요하면 제가 통역을 도와드릴게요.
+   x(38) 의사 선생님이 설명해 주실 거고, 필요하면 제가 예약을 도와드릴게요.
+   why: The doctor will explain으로 설명하는 사람을, I'll help translate로 내가 돕는 일을 나눠 말해요. if needed가 있어서 필요할 때만 돕겠다는 뜻이 돼요.
+   *B The doctor will explain things, and I'll help [translate] if needed.
+    B The doctor will explain things, and I'll help [whisper] if needed.
+    B The doctor will explain things, and I'll help [rehearse] if needed.
+    B The doctor will explain things, and I'll help [refuse] if needed.
+   chunks: The doctor will explain things / , and I'll help / translate / if needed / .   DECOY: type
+     ~0: type , and I'll help translate if needed .
+     ~1: The doctor will explain things type translate if needed .
+     ~2: The doctor will explain things , and I'll help type if needed .
+     ~3: The doctor will explain things , and I'll help translate type .
+6.5 [참석 환영|handshake2] Everyone who wants to be there is welcome to join.
+   KO(26) 참석을 원하는 분은 누구나 함께하실 수 있어요.
+   x(26) 발언을 원하는 분은 누구나 함께하실 수 있어요.
+   x(29) 참석을 원하는 분은 누구나 함께 기도하실 수 있어요.
+   why: Everyone who wants …는 참석 여부를 가족 각자가 정한다는 뜻이에요. is welcome to join이 부담 없이 오라는 환영의 말이에요.
+   *B Everyone who [wants] to be there is welcome to join.
+    B Everyone who [hates] to be there is welcome to join.
+    B Everyone who [fears] to be there is welcome to join.
+    B Everyone who [dreads] to be there is welcome to join.
+   chunks: Everyone who wants / to be there / is welcome / to join / .   DECOY: has a seat
+     ~0: has a seat to be there is welcome to join .
+     ~1: Everyone who wants has a seat is welcome to join .
+     ~2: Everyone who wants to be there has a seat to join .
+     ~3: Everyone who wants to be there is welcome has a seat .
+
+## 7 목표설정 대화 참여
+7.0 [가치 탐색|speech] Tell me about what mattered most to him in life.
+   KO(28) 그의 삶에서 가장 중요했던 게 뭔지 말씀해 주세요.
+   x(28) 그의 삶에서 가장 힘들었던 게 뭔지 말씀해 주세요.
+   x(29) 그의 직장에서 가장 중요했던 게 뭔지 말씀해 주세요.
+   why: Tell me about …은 질문이 아니라 이야기를 청하는 열린 요청이에요. what mattered most가 가족이 기억하는 가장 중요한 것을 말하게 이끌어요.
+   *B Tell me about what [mattered] most to him in life.
+    B Tell me about what [hurt] most to him in life.
+    B Tell me about what [annoyed] most to him in life.
+    B Tell me about what [bored] most to him in life.
+   chunks: Tell me about / what mattered most / to him / in life / .   DECOY: what he ate
+     ~0: what he ate what mattered most to him in life .
+     ~1: Tell me about what he ate to him in life .
+     ~2: Tell me about what mattered most what he ate in life .
+     ~3: Tell me about what mattered most to him what he ate .
+7.1 [환자 입장|speech] What would he say if he could speak right now?
+   KO(24) 지금 말할 수 있다면 그가 뭐라고 했을까요?
+   x(24) 지금 말할 수 있다면 그가 뭐라 물었을까요?
+   x(25) 어제 말할 수 있었다면 그가 뭐라고 했을까요?
+   why: What would he say if he could …는 환자가 지금 말할 수 없을 때 그의 뜻을 가족에게 묻는 틀이에요. would와 could가 가정이라는 것을 보여 줘요.
+   *B What would he say if he could [speak] right now?
+    B What would he say if he could [write] right now?
+    B What would he say if he could [stand] right now?
+    B What would he say if he could [read] right now?
+   chunks: What would he say / if he could / speak / right now / ?   DECOY: to his doctor
+     ~0: to his doctor if he could speak right now ?
+     ~1: What would he say to his doctor speak right now ?
+     ~2: What would he say if he could to his doctor right now ?
+     ~3: What would he say if he could speak to his doctor ?
+7.2 [결정 지침|compass] Let's use his values to guide our decisions.
+   KO(22) 그의 가치를 바탕으로 결정을 내려 봐요.
+   x(22) 그의 가치를 바탕으로 설명을 드려 봐요.
+   x(22) 그의 사진을 바탕으로 결정을 내려 봐요.
+   why: use his values to guide로 결정의 기준이 그의 가치라는 것을 분명히 해요. our decisions의 our는 함께 정한다는 뜻이에요.
+   *B Let's use his [values] to guide our decisions.
+    B Let's use his [photos] to guide our decisions.
+    B Let's use his [clothes] to guide our decisions.
+    B Let's use his [keys] to guide our decisions.
+   chunks: Let's use his values / to guide / our decisions / .   DECOY: to list
+     ~0: to list to guide our decisions .
+     ~1: Let's use his values to list our decisions .
+     ~2: Let's use his values to guide to list .
+7.3 [가치 탐색|me] What kind of person was he before he got sick?
+   KO(20) 아프기 전에 그는 어떤 사람이었나요?
+   x(20) 아프기 전에 그는 어떤 일을 했나요?
+   x(21) 일어나기 전에 그는 어떤 사람이었나요?
+   why: What kind of person으로 시작하면 병명이 아니라 그 사람 자체를 묻는 질문이 돼요. before he got sick이 아프기 전의 모습을 묻는다는 시점을 정해 줘요.
+   *B What kind of person was he before he got [sick]?
+    B What kind of person was he before he got [tall]?
+    B What kind of person was he before he got [rich]?
+    B What kind of person was he before he got [lost]?
+   chunks: What kind of person / was he / before / he got sick / ?   DECOY: he moved
+     ~0: he moved was he before he got sick ?
+     ~1: What kind of person he moved before he got sick ?
+     ~2: What kind of person was he he moved he got sick ?
+     ~3: What kind of person was he before he moved ?
+7.4 [사전 의사|pencil] Did he ever talk about what mattered to him if he got very ill?
+   KO(31) 많이 아프게 되면 무엇이 중요한지 그가 말한 적 있나요?
+   x(30) 많이 아프게 되면 무엇이 중요한지 그가 쓴 적 있나요?
+   x(28) 많이 늙으면 무엇이 중요한지 그가 말한 적 있나요?
+   why: Did he ever talk about …은 환자가 미리 남긴 뜻이 있었는지 묻는 질문이에요. if he got very ill이 그가 말한 상황이 심하게 아플 때라고 짚어 줘요.
+   *B Did he ever talk about what mattered to him if he got very [ill]?
+    B Did he ever talk about what mattered to him if he got very [rich]?
+    B Did he ever talk about what mattered to him if he got very [tall]?
+    B Did he ever talk about what mattered to him if he got very [famous]?
+   chunks: Did he ever talk / about what mattered to him / if he got / very ill / ?   DECOY: if he moved
+     ~0: if he moved about what mattered to him if he got very ill ?
+     ~1: Did he ever talk if he moved if he got very ill ?
+     ~2: Did he ever talk about what mattered to him if he moved very ill ?
+     ~3: Did he ever talk about what mattered to him if he got if he moved ?
+7.5 [확인 제안|check] Based on what you've told me, here's what I think he'd want.
+   KO(34) 말씀해 주신 걸 바탕으로, 그가 원했을 법한 걸 말씀드릴게요.
+   x(34) 차트에 적힌 걸 바탕으로, 그가 원했을 법한 걸 말씀드릴게요.
+   x(35) 말씀해 주신 걸 바탕으로, 그가 걱정했을 법한 걸 말씀드릴게요.
+   why: Based on what you've told me로 시작하면 내 생각이 가족이 준 정보에서 나왔다는 것이 분명해요. here's what I think는 단정이 아니라 제안으로 들려요.
+   *B Based on what you've told me, here's what I think he'd [want].
+    B Based on what you've told me, here's what I think he'd [fear].
+    B Based on what you've told me, here's what I think he'd [regret].
+    B Based on what you've told me, here's what I think he'd [miss].
+   chunks: Based on what / you've told me / , here's what I think / he'd want / .   DECOY: he'd fear
+     ~0: he'd fear you've told me , here's what I think he'd want .
+     ~1: Based on what he'd fear , here's what I think he'd want .
+     ~2: Based on what you've told me he'd fear he'd want .
+     ~3: Based on what you've told me , here's what I think he'd fear .
+7.6 [안심|handshake2] There's no wrong answer — I just want to understand him better.
+   KO(35) 틀린 답은 없어요 — 그저 그를 더 잘 이해하고 싶을 뿐이에요.
+   x(36) 틀린 질문은 없어요 — 그저 그를 더 잘 이해하고 싶을 뿐이에요.
+   x(33) 틀린 답은 없어요 — 그저 그를 더 잘 돕고 싶을 뿐이에요.
+   why: There's no wrong answer로 가족이 틀릴까 봐 걱정하지 않게 해요. I just want to …로 묻는 목적이 평가가 아니라 이해라는 것을 밝혀요.
+   *B There's no [wrong] answer — I just want to understand him better.
+    B There's no [short] answer — I just want to understand him better.
+    B There's no [cold] answer — I just want to understand him better.
+    B There's no [loud] answer — I just want to understand him better.
+   chunks: There's no wrong answer / — I just want / to understand / him better / .   DECOY: to visit
+     ~0: to visit — I just want to understand him better .
+     ~1: There's no wrong answer to visit to understand him better .
+     ~2: There's no wrong answer — I just want to visit him better .
+     ~3: There's no wrong answer — I just want to understand to visit .
+
+## 8 나쁜 소식 전달 지원
+8.0 [대화 준비|handshake2] Let's sit down together before the doctor speaks.
+   KO(24) 의사 선생님이 말씀하시기 전에 함께 앉아요.
+   x(24) 의사 선생님이 말씀하시기 전에 함께 걸어요.
+   x(23) 의사 선생님이 말씀하신 뒤에 함께 앉아요.
+   why: Let's sit down은 함께 하자는 권유라서 가족이 혼자 소식을 기다리는 느낌이 없어요. before the doctor speaks로 앉는 때를 의사가 말하기 전으로 정해 줘요.
+   *B Let's [sit] down together before the doctor speaks.
+    B Let's [lie] down together before the doctor speaks.
+    B Let's [kneel] down together before the doctor speaks.
+    B Let's [bend] down together before the doctor speaks.
+   chunks: Let's sit down / together / before the doctor speaks / .   DECOY: alone
+     ~0: alone together before the doctor speaks .
+     ~1: Let's sit down alone before the doctor speaks .
+     ~2: Let's sit down together alone .
+8.1 [곁에 있음|handshake2] I'll be right here with you during the conversation.
+   KO(22) 대화하는 동안 제가 바로 곁에 있을게요.
+   x(22) 식사하는 동안 제가 바로 곁에 있을게요.
+   x(21) 대화한 뒤에 제가 바로 곁에 있을게요.
+   why: I'll be right here는 자리를 지키겠다는 말이에요. during the conversation으로 그 약속이 대화 내내라는 것을 분명히 해요.
+   *B I'll be right here with you [during] the conversation.
+    B I'll be right here with you [before] the conversation.
+    B I'll be right here with you [after] the conversation.
+    B I'll be right here with you [until] the conversation.
+   chunks: I'll be right here / with you / during / the conversation / .   DECOY: with the doctor
+     ~0: with the doctor with you during the conversation .
+     ~1: I'll be right here with the doctor during the conversation .
+     ~2: I'll be right here with you with the doctor the conversation .
+     ~3: I'll be right here with you during with the doctor .
+8.2 [속도 조절|play] Take your time — we can pause whenever you need.
+   KO(28) 천천히 하세요 — 필요하면 언제든 멈출 수 있어요.
+   x(32) 천천히 하세요 — 필요하면 언제든 다시 시작할 수 있어요.
+   x(29) 천천히 하세요 — 필요하면 한 번만 멈출 수 있어요.
+   why: Take your time은 서두르지 않아도 된다는 말이고, we can pause가 그 약속을 구체적인 행동으로 보여 줘요. whenever you need로 멈출 때를 가족이 정해요.
+   *B Take your time — we can [pause] whenever you need.
+    B Take your time — we can [rewind] whenever you need.
+    B Take your time — we can [rehearse] whenever you need.
+    B Take your time — we can [restart] whenever you need.
+   chunks: Take your time / — we can pause / whenever / you need / .   DECOY: after
+     ~0: after — we can pause whenever you need .
+     ~1: Take your time after whenever you need .
+     ~2: Take your time — we can pause after you need .
+     ~3: Take your time — we can pause whenever after .
+8.3 [소식 전달|stetho] The doctor will share the results and what they mean.
+   KO(27) 의사 선생님이 결과와 그 의미를 알려주실 거예요.
+   x(27) 의사 선생님이 결과와 그 일정을 알려주실 거예요.
+   x(27) 의사 선생님이 서류와 그 의미를 알려주실 거예요.
+   why: The doctor will share로 소식을 전하는 사람이 의사라는 것을 미리 알려 줘요. and what they mean을 붙이면 숫자만 듣는 것이 아니라 뜻까지 설명한다는 약속이 돼요.
+   *B The doctor will [share] the results and what they mean.
+    B The doctor will [print] the results and what they mean.
+    B The doctor will [sort] the results and what they mean.
+    B The doctor will [file] the results and what they mean.
+   chunks: The doctor will share / the results / and what / they mean / .   DECOY: the costs
+     ~0: the costs the results and what they mean .
+     ~1: The doctor will share the costs and what they mean .
+     ~2: The doctor will share the results the costs they mean .
+     ~3: The doctor will share the results and what the costs .
+8.4 [요청 허용|speech] It's okay to ask the doctor to slow down or repeat something.
+   KO(36) 의사 선생님께 천천히 말해달라거나 다시 말해달라고 해도 괜찮아요.
+   x(35) 의사 선생님께 크게 말해달라거나 다시 말해달라고 해도 괜찮아요.
+   x(35) 의사 선생님께 천천히 말해달라거나 글로 써달라고 해도 괜찮아요.
+   why: It's okay to ask는 가족이 요청해도 된다는 허락이에요. slow down이나 repeat something처럼 구체적인 요청을 알려 주면 실제로 말하기 쉬워져요.
+   *B It's okay to ask the doctor to slow down or [repeat] something.
+    B It's okay to ask the doctor to slow down or [sign] something.
+    B It's okay to ask the doctor to slow down or [rename] something.
+    B It's okay to ask the doctor to slow down or [borrow] something.
+   chunks: It's okay to ask / the doctor / to slow down / or repeat something / .   DECOY: to speak up
+     ~0: to speak up the doctor to slow down or repeat something .
+     ~1: It's okay to ask to speak up to slow down or repeat something .
+     ~2: It's okay to ask the doctor to speak up or repeat something .
+     ~3: It's okay to ask the doctor to slow down to speak up .
+8.5 [배려|coffee] We'll give you a moment before we go further.
+   KO(23) 더 이야기하기 전에 잠시 시간을 드릴게요.
+   x(22) 더 이야기하기 전에 잠시 물을 드릴게요.
+   x(22) 더 이야기한 뒤에 잠시 시간을 드릴게요.
+   why: We'll give you a moment는 시간을 주겠다는 약속이에요. before we go further로 그 시간이 다음 이야기를 하기 전이라는 것을 분명히 해요.
+   *B We'll give you a [moment] before we go further.
+    B We'll give you a [pen] before we go further.
+    B We'll give you a [form] before we go further.
+    B We'll give you a [badge] before we go further.
+   chunks: We'll give you / a moment / before we / go further / .   DECOY: a pen
+     ~0: a pen a moment before we go further .
+     ~1: We'll give you a pen before we go further .
+     ~2: We'll give you a moment a pen go further .
+     ~3: We'll give you a moment before we a pen .
+8.6 [감정 허용|faceWorried] Whatever you feel right now is completely okay.
+   KO(18) 지금 어떤 감정이든 다 괜찮아요.
+   x(18) 지금 어떤 질문이든 다 괜찮아요.
+   x(20) 지금 어떤 감정이든 조금만 괜찮아요.
+   why: Whatever you feel은 어떤 감정이든 포함하는 말이에요. completely okay로 감정에 정답이 없다는 것을 강조해요.
+   *B Whatever you feel right now is completely [okay].
+    B Whatever you feel right now is completely [strange].
+    B Whatever you feel right now is completely [unusual].
+    B Whatever you feel right now is completely [unclear].
+   chunks: Whatever you feel / right now / is completely okay / .   DECOY: in the room
+     ~0: in the room right now is completely okay .
+     ~1: Whatever you feel in the room is completely okay .
+     ~2: Whatever you feel right now in the room .
+
+## 9 의사결정 대리인 확인
+9.0 [대리인 확인|board] Did he name a healthcare proxy in any documents?
+   KO(21) 서류에 의료 대리인을 지정해 두셨나요?
+   x(21) 서류에 보험 대리인을 지정해 두셨나요?
+   x(22) 휴대폰에 의료 대리인을 지정해 두셨나요?
+   why: Did he name …은 서류에 이름을 올려 두었는지 묻는 질문이에요. in any documents로 어디를 찾아봐야 하는지 범위를 알려 줘요.
+   *B Did he [name] a healthcare proxy in any documents?
+    B Did he [lose] a healthcare proxy in any documents?
+    B Did he [sell] a healthcare proxy in any documents?
+    B Did he [break] a healthcare proxy in any documents?
+   chunks: Did he name / a healthcare proxy / in any / documents / ?   DECOY: a favorite doctor
+     ~0: a favorite doctor a healthcare proxy in any documents ?
+     ~1: Did he name a favorite doctor in any documents ?
+     ~2: Did he name a healthcare proxy a favorite doctor documents ?
+     ~3: Did he name a healthcare proxy in any a favorite doctor ?
+9.1 [법적 순서|board] If not, we follow the legal order for surrogates.
+   KO(34) 그렇지 않다면, 저희는 대리결정자에 관한 법적 순서를 따라요.
+   x(35) 그렇지 않다면, 저희는 대리결정자에 관한 법적 순서를 확인해요.
+   x(32) 그렇지 않다면, 저희는 보험금에 관한 법적 순서를 따라요.
+   why: If not은 앞 질문의 답이 아니오일 때를 이어 받아요. the legal order로 병원이 마음대로 정하지 않고 법이 정한 순서를 따른다는 것을 알려 줘요.
+   *B If not, we follow the [legal] order for surrogates.
+    B If not, we follow the [alphabetical] order for surrogates.
+    B If not, we follow the [seating] order for surrogates.
+    B If not, we follow the [random] order for surrogates.
+   chunks: If not / , we follow / the legal order / for surrogates / .   DECOY: the seating order
+     ~0: the seating order , we follow the legal order for surrogates .
+     ~1: If not the seating order the legal order for surrogates .
+     ~2: If not , we follow the seating order for surrogates .
+     ~3: If not , we follow the legal order the seating order .
+9.2 [대변자 확인|handshake2] Let's clarify who speaks for him so we're aligned.
+   KO(27) 누가 그를 대변할지 명확히 해서 뜻을 맞춰 봐요.
+   x(27) 누가 그를 방문할지 명확히 해서 뜻을 맞춰 봐요.
+   x(28) 누가 그를 대변할지 명확히 해서 일정을 맞춰 봐요.
+   why: Let's clarify로 함께 확인하자고 하면 일방적으로 정하는 느낌이 없어요. so we're aligned가 확인하는 목적이 모두의 뜻을 맞추는 것이라고 밝혀요.
+   *B Let's [clarify] who speaks for him so we're aligned.
+    B Let's [guess] who speaks for him so we're aligned.
+    B Let's [assume] who speaks for him so we're aligned.
+    B Let's [invent] who speaks for him so we're aligned.
+   chunks: Let's clarify / who speaks for him / so we're / aligned / .   DECOY: who sits with him
+     ~0: who sits with him who speaks for him so we're aligned .
+     ~1: Let's clarify who sits with him so we're aligned .
+     ~2: Let's clarify who speaks for him who sits with him aligned .
+     ~3: Let's clarify who speaks for him so we're who sits with him .
+9.3 [대리인 역할|handshake2] This person will help us make decisions if he can't.
+   KO(31) 그가 결정할 수 없을 때 이분이 결정을 도와주실 거예요.
+   x(31) 그가 결정할 수 없을 때 이분이 비용을 도와주실 거예요.
+   x(31) 그가 결정할 수 없을 때 이분이 회의를 도와주실 거예요.
+   why: help us make decisions는 대리인이 혼자 정하는 것이 아니라 함께 결정을 돕는다는 뜻이에요. if he can't로 환자가 결정할 수 없을 때만이라는 조건을 달아요.
+   *B This person will help us make [decisions] if he can't.
+    B This person will help us make [beds] if he can't.
+    B This person will help us make [meals] if he can't.
+    B This person will help us make [coffee] if he can't.
+   chunks: This person will help us / make decisions / if he / can't / .   DECOY: if she
+     ~0: if she make decisions if he can't .
+     ~1: This person will help us if she if he can't .
+     ~2: This person will help us make decisions if she can't .
+     ~3: This person will help us make decisions if he if she .
+9.4 [법적 순서|board] A spouse usually comes first, then adult children.
+   KO(26) 보통 배우자가 먼저고, 그다음이 성인 자녀예요.
+   x(23) 보통 배우자가 먼저고, 그다음이 서류예요.
+   x(26) 가끔 배우자가 먼저고, 그다음이 성인 자녀예요.
+   why: usually를 쓰면 보통 그렇다는 말이라 모든 경우에 해당한다는 단정이 아니에요. first와 then으로 순서를 짚어 가족이 어디쯤인지 알 수 있어요.
+   *B A spouse usually [comes] first, then adult children.
+    B A spouse usually [pays] first, then adult children.
+    B A spouse usually [sleeps] first, then adult children.
+    B A spouse usually [drives] first, then adult children.
+   chunks: A spouse usually comes first / , then / adult children / .   DECOY: , while
+     ~0: , while , then adult children .
+     ~1: A spouse usually comes first , while adult children .
+     ~2: A spouse usually comes first , then , while .
+9.5 [연락 창구|pager] It helps if the family agrees on one point of contact.
+   KO(28) 가족이 연락 창구를 한 명으로 정하면 도움이 돼요.
+   x(28) 가족이 연락 시간을 한 번으로 정하면 도움이 돼요.
+   x(28) 가족이 연락 창구를 두 곳으로 정하면 도움이 돼요.
+   why: It helps if …는 제안을 도움이 되는 방법으로 말하는 틀이에요. one point of contact으로 연락을 한 사람에게 모으면 소식이 엇갈리지 않아요.
+   *B It helps if the family [agrees] on one point of contact.
+    B It helps if the family [pays] on one point of contact.
+    B It helps if the family [votes] on one point of contact.
+    B It helps if the family [sleeps] on one point of contact.
+   chunks: It helps if / the family agrees / on one point / of contact / .   DECOY: on one schedule
+     ~0: on one schedule the family agrees on one point of contact .
+     ~1: It helps if on one schedule on one point of contact .
+     ~2: It helps if the family agrees on one schedule of contact .
+     ~3: It helps if the family agrees on one point on one schedule .
+
+## 10 상충하는 가족 기대 조율
+10.0 [공감|handshake2] It's normal for family members to see things differently.
+   KO(29) 가족 구성원마다 다르게 보는 건 자연스러운 일이에요.
+   x(25) 친구마다 다르게 보는 건 자연스러운 일이에요.
+   x(29) 가족 구성원마다 이름이 다른 건 자연스러운 일이에요.
+   why: It's normal은 가족이 서로 다르게 보는 것을 이상하게 여기지 않게 해요. see things differently로 어느 쪽이 틀렸다는 판단 없이 차이만 말해요.
+   *B It's normal for family members to see things [differently].
+    B It's normal for family members to see things [separately].
+    B It's normal for family members to see things [privately].
+    B It's normal for family members to see things [silently].
+   chunks: It's normal / for family members / to see / things differently / .   DECOY: to eat
+     ~0: to eat for family members to see things differently .
+     ~1: It's normal to eat to see things differently .
+     ~2: It's normal for family members to eat things differently .
+     ~3: It's normal for family members to see to eat .
+10.1 [정보 일치|speech] Let's make sure everyone hears the same information.
+   KO(20) 모두가 같은 정보를 듣도록 챙길게요.
+   x(20) 모두가 같은 질문을 듣도록 챙길게요.
+   x(20) 모두가 같은 정보를 읽도록 챙길게요.
+   why: Let's make sure로 모두가 같은 정보를 받도록 챙기겠다고 말해요. everyone hears the same information이 가족 사이의 오해를 줄이는 방법이에요.
+   *B Let's make sure everyone hears the [same] information.
+    B Let's make sure everyone hears the [old] information.
+    B Let's make sure everyone hears the [extra] information.
+    B Let's make sure everyone hears the [rare] information.
+   chunks: Let's make sure / everyone hears / the same information / .   DECOY: the same song
+     ~0: the same song everyone hears the same information .
+     ~1: Let's make sure the same song the same information .
+     ~2: Let's make sure everyone hears the same song .
+10.2 [팀 조율|handshake2] I'll help the team clarify what's realistic.
+   KO(26) 무엇이 현실적인지 팀이 명확히 하도록 도울게요.
+   x(25) 무엇이 필요한지 팀이 명확히 하도록 도울게요.
+   x(24) 무엇이 현실적인지 팀이 기록하도록 도울게요.
+   why: I'll help the team은 내가 팀 안에서 돕는 역할이라는 것을 분명히 해요. clarify what's realistic은 기대를 억지로 꺾는 것이 아니라 함께 정리한다는 뜻이에요.
+   *B I'll help the team clarify what's [realistic].
+    B I'll help the team clarify what's [cheap].
+    B I'll help the team clarify what's [secret].
+    B I'll help the team clarify what's [popular].
+   chunks: I'll help the team / clarify / what's realistic / .   DECOY: what's for lunch
+     ~0: what's for lunch clarify what's realistic .
+     ~1: I'll help the team what's for lunch what's realistic .
+     ~2: I'll help the team clarify what's for lunch .
+10.3 [기대 인정|faceWorried] I hear that your aunt is hoping for a full recovery.
+   KO(26) 이모님이 완전한 회복을 바라신다는 거 들었어요.
+   x(25) 삼촌이 완전한 회복을 바라신다는 거 들었어요.
+   x(26) 이모님이 완전한 휴식을 바라신다는 거 들었어요.
+   why: I hear that으로 시작하면 상대의 말을 먼저 받아 주는 말이 돼요. 가족의 바람을 맞다 틀리다로 판단하지 않고 있는 그대로 전달해요.
+   *B I hear that your aunt is hoping for a full [recovery].
+    B I hear that your aunt is hoping for a full [vacation].
+    B I hear that your aunt is hoping for a full [promotion].
+    B I hear that your aunt is hoping for a full [refund].
+   chunks: I hear that / your aunt is hoping / for a full / recovery / .   DECOY: your cousin is hoping
+     ~0: your cousin is hoping your aunt is hoping for a full recovery .
+     ~1: I hear that your cousin is hoping for a full recovery .
+     ~2: I hear that your aunt is hoping your cousin is hoping recovery .
+     ~3: I hear that your aunt is hoping for a full your cousin is hoping .
+10.4 [정보 일치|speech] Let's bring everyone together to hear the same update.
+   KO(21) 같은 소식을 듣도록 모두 함께 모여요.
+   x(22) 같은 소식을 전하도록 모두 함께 모여요.
+   x(21) 같은 노래를 듣도록 모두 함께 모여요.
+   why: Let's bring everyone together는 흩어진 이야기를 한 자리로 모으는 말이에요. to hear the same update로 모으는 목적이 같은 소식을 듣는 것임을 밝혀요.
+   *B Let's bring everyone together to hear the same [update].
+    B Let's bring everyone together to hear the same [song].
+    B Let's bring everyone together to hear the same [joke].
+    B Let's bring everyone together to hear the same [lesson].
+   chunks: Let's bring everyone / together / to hear / the same update / .   DECOY: downstairs
+     ~0: downstairs together to hear the same update .
+     ~1: Let's bring everyone downstairs to hear the same update .
+     ~2: Let's bring everyone together downstairs the same update .
+     ~3: Let's bring everyone together to hear downstairs .
+10.5 [비난 아님|handshake2] Different hopes don't mean anyone is wrong.
+   KO(24) 바라는 게 다르다고 누가 틀린 건 아니에요.
+   x(24) 다른 계획이 있다고 누가 틀린 건 아니에요.
+   x(24) 바라는 게 다르다고 누가 아픈 건 아니에요.
+   why: Different hopes don't mean …은 차이를 잘잘못으로 보지 않게 하는 틀이에요. anyone is wrong으로 누구도 틀리지 않았다는 것을 분명히 말해요.
+   *B Different hopes don't mean anyone is [wrong].
+    B Different hopes don't mean anyone is [tall].
+    B Different hopes don't mean anyone is [famous].
+    B Different hopes don't mean anyone is [early].
+   chunks: Different hopes / don't mean / anyone is wrong / .   DECOY: anyone is angry
+     ~0: anyone is angry don't mean anyone is wrong .
+     ~1: Different hopes anyone is angry anyone is wrong .
+     ~2: Different hopes don't mean anyone is angry .
+
+## 11 가족 참여 돌봄
+11.0 [돌봄 참여|bandage] You can help with mouth care and moisturizing his lips.
+   KO(33) 구강 관리와 입술 촉촉하게 해드리는 걸 도와주실 수 있어요.
+   x(32) 손 관리와 입술 촉촉하게 해드리는 걸 도와주실 수 있어요.
+   x(32) 구강 관리와 발 촉촉하게 해드리는 걸 도와주실 수 있어요.
+   why: You can help with …는 가족이 할 수 있는 일을 허락하는 틀이에요. mouth care와 moisturizing his lips처럼 구체적인 일을 말해야 가족이 무엇을 해도 되는지 알아요.
+   *B You can help with mouth care and [moisturizing] his lips.
+    B You can help with mouth care and [cutting] his lips.
+    B You can help with mouth care and [measuring] his lips.
+    B You can help with mouth care and [weighing] his lips.
+   chunks: You can help / with mouth care / and moisturizing / his lips / .   DECOY: with room service
+     ~0: with room service with mouth care and moisturizing his lips .
+     ~1: You can help with room service and moisturizing his lips .
+     ~2: You can help with mouth care with room service his lips .
+     ~3: You can help with mouth care and moisturizing with room service .
+11.1 [참여 격려|speech] Talking and reading to him really does help.
+   KO(26) 말을 걸고 책을 읽어주는 게 정말 도움이 돼요.
+   x(25) 말을 걸고 책을 읽어주는 게 정말 재미있어요.
+   x(27) 말을 걸고 노래를 불러주는 게 정말 도움이 돼요.
+   why: really does help의 does는 도움이 된다는 말을 강조해요. 말을 걸고 책을 읽어 주는 것이 가족이 할 수 있는 실제 돌봄이라는 것을 알려 줘요.
+   *B Talking and [reading] to him really does help.
+    B Talking and [shouting] to him really does help.
+    B Talking and [whistling] to him really does help.
+    B Talking and [texting] to him really does help.
+   chunks: Talking and reading / to him / really does help / .   DECOY: to the nurse
+     ~0: to the nurse to him really does help .
+     ~1: Talking and reading to the nurse really does help .
+     ~2: Talking and reading to him to the nurse .
+11.2 [의미 부여|star] Being here for him is meaningful care too.
+   KO(27) 그의 곁에 있어 주는 것도 의미 있는 돌봄이에요.
+   x(27) 그의 곁에 있어 주는 것도 의미 있는 선물이에요.
+   x(27) 그의 곁에 있어 주는 것도 의미 있는 휴식이에요.
+   why: care too는 곁에 있는 것도 돌봄에 포함시키는 말이에요. 아무것도 하지 못한다고 느끼는 가족이 지금 하는 일도 의미 있다고 알려 줘요.
+   *B Being here for him is [meaningful] care too.
+    B Being here for him is [expensive] care too.
+    B Being here for him is [noisy] care too.
+    B Being here for him is [funny] care too.
+   chunks: Being here for him / is meaningful / care too / .   DECOY: is expensive
+     ~0: is expensive is meaningful care too .
+     ~1: Being here for him is expensive care too .
+     ~2: Being here for him is meaningful is expensive .
+11.3 [참여 제안|speaker] You could also play some music he used to enjoy.
+   KO(25) 그가 즐겨 듣던 음악을 틀어드릴 수도 있어요.
+   x(25) 그가 즐겨 듣던 영화를 틀어드릴 수도 있어요.
+   x(28) 그가 즐겨 듣던 음악을 따라 불러드릴 수도 있어요.
+   why: You could also는 가능한 일을 하나 더 제안할 때 쓰는 부드러운 말이에요. he used to enjoy로 환자가 즐기던 것이라는 점을 짚어 줘요.
+   *B You could also play some music he used to [enjoy].
+    B You could also play some music he used to [hate].
+    B You could also play some music he used to [fear].
+    B You could also play some music he used to [dread].
+   chunks: You could also play / some music / he used to / enjoy / .   DECOY: some games
+     ~0: some games some music he used to enjoy .
+     ~1: You could also play some games he used to enjoy .
+     ~2: You could also play some music some games enjoy .
+     ~3: You could also play some music he used to some games .
+11.4 [의미 부여|star] There's no small task here — everything you do matters.
+   KO(34) 여기서는 사소한 일이 없어요 — 하시는 모든 게 다 중요해요.
+   x(33) 여기서는 쉬운 일이 없어요 — 하시는 모든 게 다 중요해요.
+   x(35) 여기서는 사소한 일이 없어요 — 하시는 모든 게 다 칭찬받아요.
+   why: There's no small task는 작은 일은 없다는 뜻이에요. everything you do matters로 가족이 하는 모든 일에 가치가 있다고 말해요.
+   *B There's no small task here — everything you do [matters].
+    B There's no small task here — everything you do [stalls].
+    B There's no small task here — everything you do [breaks].
+    B There's no small task here — everything you do [ends].
+   chunks: There's no small task / here / — everything you do / matters / .   DECOY: today
+     ~0: today here — everything you do matters .
+     ~1: There's no small task today — everything you do matters .
+     ~2: There's no small task here today matters .
+     ~3: There's no small task here — everything you do today .
+11.5 [개인화|star] Tell me what he liked, so we can bring some of that here.
+   KO(36) 그가 좋아하던 걸 말씀해 주시면, 여기로 조금 가져올 수 있어요.
+   x(36) 그가 좋아하던 걸 말씀해 주시면, 여기서 조금 찾아볼 수 있어요.
+   x(35) 그가 좋아하던 걸 적어 주시면, 여기로 조금 가져올 수 있어요.
+   why: Tell me what he liked는 가족에게서 환자의 취향을 듣겠다는 요청이에요. so we can bring some of that here로 그 이야기가 병실에 반영된다는 이유를 밝혀요.
+   *B Tell me what he [liked], so we can bring some of that here.
+    B Tell me what he [feared], so we can bring some of that here.
+    B Tell me what he [hated], so we can bring some of that here.
+    B Tell me what he [lost], so we can bring some of that here.
+   chunks: Tell me what / he liked / , so we can bring / some of that here / .   DECOY: he wore
+     ~0: he wore he liked , so we can bring some of that here .
+     ~1: Tell me what he wore , so we can bring some of that here .
+     ~2: Tell me what he liked he wore some of that here .
+     ~3: Tell me what he liked , so we can bring he wore .
+
+## 12 예후 불확실성 소통
+12.0 [정직한 응대|faceWorried] I wish I could give you a certain answer.
+   KO(22) 확실한 답을 드릴 수 있으면 좋겠지만요.
+   x(23) 확실한 시간을 드릴 수 있으면 좋겠지만요.
+   x(22) 확실한 답을 받을 수 있으면 좋겠지만요.
+   why: I wish I could …는 지금은 할 수 없는 일을 아쉬움과 함께 말하는 틀이에요. a certain answer를 쓰면 일부러 숨기는 것이 아니라 실제로 확실한 답이 없다는 뜻이 돼요.
+   *B I wish I could give you a [certain] answer.
+    B I wish I could give you a [written] answer.
+    B I wish I could give you a [private] answer.
+    B I wish I could give you a [public] answer.
+   chunks: I wish I could / give you / a certain / answer / .   DECOY: a written
+     ~0: a written give you a certain answer .
+     ~1: I wish I could a written a certain answer .
+     ~2: I wish I could give you a written answer .
+     ~3: I wish I could give you a certain a written .
+12.1 [상태 설명|siren] His condition is serious, and the next days are critical.
+   KO(23) 상태가 심각하고, 앞으로 며칠이 고비예요.
+   x(23) 상태가 복잡하고, 앞으로 며칠이 고비예요.
+   x(23) 상태가 심각하고, 앞으로 며칠이 걱정돼요.
+   why: serious와 critical처럼 쉬운 말로 상태의 무게를 사실대로 말해요. the next days로 시점을 짚어 가족이 지금 어떤 때인지 알 수 있게 해요.
+   *B His [condition] is serious, and the next days are critical.
+    B His [schedule] is serious, and the next days are critical.
+    B His [paperwork] is serious, and the next days are critical.
+    B His [insurance] is serious, and the next days are critical.
+   chunks: His condition is serious / , and / the next days / are critical / .   DECOY: are scheduled
+     ~0: are scheduled , and the next days are critical .
+     ~1: His condition is serious are scheduled the next days are critical .
+     ~2: His condition is serious , and are scheduled are critical .
+     ~3: His condition is serious , and the next days are scheduled .
+12.2 [정직한 응대|compass] We're hoping for the best while preparing for all outcomes.
+   KO(26) 최선을 바라면서도 모든 결과에 대비하고 있어요.
+   x(26) 최선을 바라면서도 모든 질문에 대비하고 있어요.
+   x(26) 최선을 바라면서도 모든 비용에 대비하고 있어요.
+   why: hoping for the best와 preparing for all outcomes를 while로 묶으면 희망과 대비가 서로 모순되지 않는다는 뜻이 돼요.
+   *B We're hoping for the best while [preparing] for all outcomes.
+    B We're hoping for the best while [hiding] for all outcomes.
+    B We're hoping for the best while [guessing] for all outcomes.
+    B We're hoping for the best while [cooking] for all outcomes.
+   chunks: We're hoping / for the best / while preparing / for all outcomes / .   DECOY: for quiet nights
+     ~0: for quiet nights for the best while preparing for all outcomes .
+     ~1: We're hoping for quiet nights while preparing for all outcomes .
+     ~2: We're hoping for the best for quiet nights for all outcomes .
+     ~3: We're hoping for the best while preparing for quiet nights .
+12.3 [정직한 응대|compass] No one can predict exactly how this will go.
+   KO(29) 이게 정확히 어떻게 될지는 아무도 예측할 수 없어요.
+   x(28) 이게 정확히 언제 될지는 아무도 예측할 수 없어요.
+   x(29) 이게 정확히 어떻게 될지는 아무도 설명할 수 없어요.
+   why: No one can predict는 지금 모르는 이유가 팀의 부족이 아니라 예측 자체가 어렵다는 점이라는 것을 보여 줘요. exactly가 정확한 예측이 어렵다는 정도를 알려 줘요.
+   *B No one can [predict] exactly how this will go.
+    B No one can [measure] exactly how this will go.
+    B No one can [weigh] exactly how this will go.
+    B No one can [print] exactly how this will go.
+   chunks: No one can predict / exactly / how this will / go / .   DECOY: easily
+     ~0: easily exactly how this will go .
+     ~1: No one can predict easily how this will go .
+     ~2: No one can predict exactly easily go .
+     ~3: No one can predict exactly how this will easily .
+12.4 [감정 허용|faceWorried] It's okay to hope and to be scared at the same time.
+   KO(20) 바라면서 동시에 무서워해도 괜찮아요.
+   x(20) 바라면서 동시에 화가 나도 괜찮아요.
+   x(21) 바라면서 따로따로 무서워해도 괜찮아요.
+   why: It's okay to hope and to be scared를 한 문장에 놓으면 두 감정이 함께 있어도 된다는 허락이 돼요. at the same time이 그 점을 분명히 해요.
+   *B It's okay to hope and to be [scared] at the same time.
+    B It's okay to hope and to be [angry] at the same time.
+    B It's okay to hope and to be [sleepy] at the same time.
+    B It's okay to hope and to be [thirsty] at the same time.
+   chunks: It's okay / to hope / and to be scared / at the same time / .   DECOY: to pray
+     ~0: to pray to hope and to be scared at the same time .
+     ~1: It's okay to pray and to be scared at the same time .
+     ~2: It's okay to hope to pray at the same time .
+     ~3: It's okay to hope and to be scared to pray .
+12.5 [약속|bell] I'll always tell you what we know and what we don't.
+   KO(27) 저희가 아는 것과 모르는 것을 항상 말씀드릴게요.
+   x(27) 저희가 아는 것과 모르는 것을 가끔 말씀드릴게요.
+   x(28) 저희가 아는 것과 모르는 것을 항상 읽어 드릴게요.
+   why: I'll always tell you은 앞으로도 소식을 숨기지 않겠다는 약속이에요. what we know and what we don't로 아는 것과 모르는 것을 구분해서 말하겠다고 밝혀요.
+   *B I'll [always] tell you what we know and what we don't.
+    B I'll [rarely] tell you what we know and what we don't.
+    B I'll [never] tell you what we know and what we don't.
+    B I'll [seldom] tell you what we know and what we don't.
+   chunks: I'll always tell you / what we know / and what / we don't / .   DECOY: what we ate
+     ~0: what we ate what we know and what we don't .
+     ~1: I'll always tell you what we ate and what we don't .
+     ~2: I'll always tell you what we know what we ate we don't .
+     ~3: I'll always tell you what we know and what what we ate .
+
+## 13 소아 방문·형제 지원
+13.0 [소아 지원|baby] Child life specialists can prepare her for the visit.
+   KO(33) 아동생활전문가가 방문을 위해 아이를 준비시켜 줄 수 있어요.
+   x(31) 아동생활전문가가 방문을 위해 아이를 재워 줄 수 있어요.
+   x(29) 아동생활전문가가 방문 후에 아이를 도와줄 수 있어요.
+   why: Child life specialists can …은 누가 무엇을 해 줄 수 있는지 한 문장으로 알려 줘요. for the visit으로 준비의 목적을 방문으로 정해요.
+   *B Child life specialists can [prepare] her for the visit.
+    B Child life specialists can [transfer] her for the visit.
+    B Child life specialists can [discharge] her for the visit.
+    B Child life specialists can [examine] her for the visit.
+   chunks: Child life specialists / can prepare her / for / the visit / .   DECOY: after
+     ~0: after can prepare her for the visit .
+     ~1: Child life specialists after for the visit .
+     ~2: Child life specialists can prepare her after the visit .
+     ~3: Child life specialists can prepare her for after .
+13.1 [쉬운 설명|speech] We'll explain things in words she can understand.
+   KO(25) 아이가 이해할 수 있는 말로 설명해 드릴게요.
+   x(27) 아이가 이해할 수 있는 그림으로 설명해 드릴게요.
+   x(25) 아이가 기억할 수 있는 말로 설명해 드릴게요.
+   why: in words she can understand는 설명의 기준이 아이의 이해라는 뜻이에요. 문장 끝에 she can understand를 붙여 어른의 말이 아니라 아이의 말로 설명한다는 것을 분명히 해요.
+   *B We'll explain things in [words] she can understand.
+    B We'll explain things in [numbers] she can understand.
+    B We'll explain things in [codes] she can understand.
+    B We'll explain things in [formulas] she can understand.
+   chunks: We'll explain things / in words / she can understand / .   DECOY: in numbers
+     ~0: in numbers in words she can understand .
+     ~1: We'll explain things in numbers she can understand .
+     ~2: We'll explain things in words in numbers .
+13.2 [가족 선택|handshake2] It's okay to include her if that feels right for your family.
+   KO(29) 가족에게 맞다고 느껴지면 아이를 포함시켜도 괜찮아요.
+   x(29) 가족에게 맞다고 느껴지면 사진을 보여 줘도 괜찮아요.
+   x(30) 가족에게 맞다고 느껴지면 아이를 먼저 보내도 괜찮아요.
+   why: It's okay to …와 if that feels right for your family를 함께 쓰면 결정이 가족에게 있다는 것이 분명해요. 하라고 권하는 것이 아니라 허락하는 말이에요.
+   *B It's okay to [include] her if that feels right for your family.
+    B It's okay to [lift] her if that feels right for your family.
+    B It's okay to [carry] her if that feels right for your family.
+    B It's okay to [pay] her if that feels right for your family.
+   chunks: It's okay / to include her / if that feels right / for your family / .   DECOY: for the day
+     ~0: for the day to include her if that feels right for your family .
+     ~1: It's okay for the day if that feels right for your family .
+     ~2: It's okay to include her for the day for your family .
+     ~3: It's okay to include her if that feels right for the day .
+13.3 [형제 지원|baby] Siblings can feel scared or confused too — that's normal.
+   KO(35) 형제자매도 무섭거나 혼란스러울 수 있어요 — 자연스러운 거예요.
+   x(32) 형제자매도 무섭거나 졸릴 수 있어요 — 자연스러운 거예요.
+   x(34) 부모님도 무섭거나 혼란스러울 수 있어요 — 자연스러운 거예요.
+   why: too는 환자만이 아니라 형제도 같은 감정을 느낄 수 있다는 뜻을 더해요. that's normal로 아이의 감정을 걱정거리가 아니라 자연스러운 일로 알려 줘요.
+   *B Siblings can feel [scared] or confused too — that's normal.
+    B Siblings can feel [proud] or confused too — that's normal.
+    B Siblings can feel [hungry] or confused too — that's normal.
+    B Siblings can feel [thirsty] or confused too — that's normal.
+   chunks: Siblings can feel scared / or confused too / — that's / normal / .   DECOY: a surprise
+     ~0: a surprise or confused too — that's normal .
+     ~1: Siblings can feel scared a surprise — that's normal .
+     ~2: Siblings can feel scared or confused too a surprise normal .
+     ~3: Siblings can feel scared or confused too — that's a surprise .
+13.4 [사전 안내|magnify] We can go over what she'll see before she comes in.
+   KO(31) 들어오기 전에 무엇을 보게 될지 함께 살펴볼 수 있어요.
+   x(31) 들어오기 전에 무엇을 듣게 될지 함께 살펴볼 수 있어요.
+   x(30) 나가기 전에 무엇을 보게 될지 함께 살펴볼 수 있어요.
+   why: go over는 하나씩 짚어 본다는 뜻이에요. what she'll see before she comes in으로 보기 전에 미리 알려 줘서 놀라지 않게 해요.
+   *B We can go over what she'll [see] before she comes in.
+    B We can go over what she'll [eat] before she comes in.
+    B We can go over what she'll [sign] before she comes in.
+    B We can go over what she'll [touch] before she comes in.
+   chunks: We can go over / what she'll see / before / she comes in / .   DECOY: what she'll wear
+     ~0: what she'll wear what she'll see before she comes in .
+     ~1: We can go over what she'll wear before she comes in .
+     ~2: We can go over what she'll see what she'll wear she comes in .
+     ~3: We can go over what she'll see before what she'll wear .
+13.5 [형제 지원|home] A social worker can also support the siblings at home.
+   KO(29) 사회복지사가 집에 있는 형제자매도 도와줄 수 있어요.
+   x(30) 사회복지사가 학교에 있는 형제자매도 도와줄 수 있어요.
+   x(28) 사회복지사가 집에 있는 할머니도 도와줄 수 있어요.
+   why: can also support …에서 also는 방문 준비 외에 집에서의 도움도 있다고 덧붙여요. at home으로 도움이 병원 밖에도 이어진다는 것을 알려 줘요.
+   *B A [social] worker can also support the siblings at home.
+    B A [factory] worker can also support the siblings at home.
+    B A [farm] worker can also support the siblings at home.
+    B A [office] worker can also support the siblings at home.
+   chunks: A social worker / can also support / the siblings / at home / .   DECOY: the neighbors
+     ~0: the neighbors can also support the siblings at home .
+     ~1: A social worker the neighbors the siblings at home .
+     ~2: A social worker can also support the neighbors at home .
+     ~3: A social worker can also support the siblings the neighbors .
+
+## 14 원격 가족 소통
+14.0 [원격 연결|monitor] We can set up a video call at the bedside.
+   KO(27) 침상 곁에서 화상 통화를 준비해 드릴 수 있어요.
+   x(25) 로비에서 화상 통화를 준비해 드릴 수 있어요.
+   x(27) 침상 곁에서 음성 통화를 준비해 드릴 수 있어요.
+   why: We can set up은 할 수 있는 일을 제안하는 틀이에요. a video call at the bedside로 무엇을 어디에 준비하는지 한 번에 알려 줘요.
+   *B We can set up a video [call] at the bedside.
+    B We can set up a video [game] at the bedside.
+    B We can set up a video [lesson] at the bedside.
+    B We can set up a video [rental] at the bedside.
+   chunks: We can set up / a video call / at / the bedside / .   DECOY: a family photo
+     ~0: a family photo a video call at the bedside .
+     ~1: We can set up a family photo at the bedside .
+     ~2: We can set up a video call a family photo the bedside .
+     ~3: We can set up a video call at a family photo .
+14.1 [원격 연결|monitor] I'll hold the tablet so his son can see and talk to him.
+   KO(34) 아드님이 보고 이야기할 수 있게 제가 태블릿을 들고 있을게요.
+   x(33) 아드님이 보고 이야기할 수 있게 제가 담요를 들고 있을게요.
+   x(34) 아드님이 보고 이야기할 수 있게 제가 태블릿을 충전해 둘게요.
+   why: so his son can see and talk는 내가 태블릿을 드는 이유를 밝혀요. 환자가 직접 화면을 들 수 없다는 사정이 말 속에 담겨 있어요.
+   *B I'll hold the [tablet] so his son can see and talk to him.
+    B I'll hold the [pillow] so his son can see and talk to him.
+    B I'll hold the [tray] so his son can see and talk to him.
+    B I'll hold the [towel] so his son can see and talk to him.
+   chunks: I'll hold the tablet / so his son can / see and talk / to him / .   DECOY: his boss
+     ~0: his boss so his son can see and talk to him .
+     ~1: I'll hold the tablet his boss see and talk to him .
+     ~2: I'll hold the tablet so his son can his boss to him .
+     ~3: I'll hold the tablet so his son can see and talk his boss .
+14.2 [일정 조율|calendar] Let's find a time that works across the time zones.
+   KO(24) 시차를 감안해서 서로 맞는 시간을 찾아봐요.
+   x(24) 시차를 감안해서 서로 맞는 장소를 찾아봐요.
+   x(26) 시차를 감안해서 서로 맞는 시간을 확인해 둬요.
+   why: Let's find …로 함께 찾자고 하면 시간을 일방적으로 정하는 느낌이 없어요. across the time zones가 시간을 맞추기 어려운 이유를 알려 줘요.
+   *B Let's find a time that [works] across the time zones.
+    B Let's find a time that [falls] across the time zones.
+    B Let's find a time that [stops] across the time zones.
+    B Let's find a time that [ends] across the time zones.
+   chunks: Let's find a time / that works / across / the time zones / .   DECOY: inside
+     ~0: inside that works across the time zones .
+     ~1: Let's find a time inside across the time zones .
+     ~2: Let's find a time that works inside the time zones .
+     ~3: Let's find a time that works across inside .
+14.3 [준비 완료|check] The screen and camera are already set up in her room.
+   KO(25) 화면과 카메라는 병실에 이미 준비되어 있어요.
+   x(25) 화면과 스피커는 병실에 이미 준비되어 있어요.
+   x(25) 화면과 카메라는 로비에 이미 준비되어 있어요.
+   why: already는 이미 끝난 일이라고 알려 줘서 가족이 걱정 없이 기다리게 해요. set up은 장비를 쓸 수 있게 놓았다는 뜻이에요.
+   *B The screen and [camera] are already set up in her room.
+    B The screen and [printer] are already set up in her room.
+    B The screen and [cabinet] are already set up in her room.
+    B The screen and [heater] are already set up in her room.
+   chunks: The screen and camera / are already / set up / in her room / .   DECOY: in the basement
+     ~0: in the basement are already set up in her room .
+     ~1: The screen and camera in the basement set up in her room .
+     ~2: The screen and camera are already in the basement in her room .
+     ~3: The screen and camera are already set up in the basement .
+14.4 [카메라 각도|magnify] I can angle the camera so he can see her face clearly.
+   KO(31) 그가 얼굴을 잘 볼 수 있게 카메라 각도를 맞춰드릴게요.
+   x(30) 그가 방을 잘 볼 수 있게 카메라 각도를 맞춰드릴게요.
+   x(31) 그가 얼굴을 잘 볼 수 있게 카메라 소리를 맞춰드릴게요.
+   why: I can angle the camera so …는 하는 일 다음에 그 이유를 붙이는 틀이에요. her face clearly로 보이는 대상을 얼굴로 정해 줘요.
+   *B I can [angle] the camera so he can see her face clearly.
+    B I can [cover] the camera so he can see her face clearly.
+    B I can [unplug] the camera so he can see her face clearly.
+    B I can [break] the camera so he can see her face clearly.
+   chunks: I can angle / the camera / so he can see / her face clearly / .   DECOY: the ceiling clearly
+     ~0: the ceiling clearly the camera so he can see her face clearly .
+     ~1: I can angle the ceiling clearly so he can see her face clearly .
+     ~2: I can angle the camera the ceiling clearly her face clearly .
+     ~3: I can angle the camera so he can see the ceiling clearly .
+14.5 [안내 약속|bell] We'll let you know as soon as the call is ready.
+   KO(20) 통화 준비가 되면 바로 알려드릴게요.
+   x(20) 통화 시간이 되면 바로 알려드릴게요.
+   x(22) 통화 준비가 되면 점심 때 알려드릴게요.
+   why: as soon as를 쓰면 준비되는 즉시 알린다는 뜻이 돼요. the call is ready로 알리는 때가 통화 준비가 끝난 순간이라고 정해요.
+   *B We'll let you know as soon as the call is [ready].
+    B We'll let you know as soon as the call is [early].
+    B We'll let you know as soon as the call is [dropped].
+    B We'll let you know as soon as the call is [cancelled].
+   chunks: We'll let you know / as soon as / the call / is ready / .   DECOY: in case
+     ~0: in case as soon as the call is ready .
+     ~1: We'll let you know in case the call is ready .
+     ~2: We'll let you know as soon as in case is ready .
+     ~3: We'll let you know as soon as the call in case .
+
+## 15 임종 임박 나쁜 소식 전달
+15.0 [나쁜 소식|faceWorried] I'm so sorry — his body is no longer responding to treatment.
+   KO(36) 정말 안타깝지만 — 그의 몸이 더는 치료에 반응하지 않고 있어요.
+   x(37) 정말 안타깝지만 — 그녀의 몸이 더는 치료에 반응하지 않고 있어요.
+   x(36) 정말 안타깝지만 — 그의 몸이 더는 방문에 반응하지 않고 있어요.
+   why: I'm so sorry를 먼저 말하면 나쁜 소식을 전하기 전에 공감을 보이는 것이 돼요. no longer responding to treatment는 의학 용어 없이 상태를 사실대로 전해요.
+   *B I'm so [sorry] — his body is no longer responding to treatment.
+    B I'm so [sure] — his body is no longer responding to treatment.
+    B I'm so [tired] — his body is no longer responding to treatment.
+    B I'm so [ready] — his body is no longer responding to treatment.
+   chunks: I'm so sorry / — his body / is no longer responding / to treatment / .   DECOY: to visitors
+     ~0: to visitors — his body is no longer responding to treatment .
+     ~1: I'm so sorry to visitors is no longer responding to treatment .
+     ~2: I'm so sorry — his body to visitors to treatment .
+     ~3: I'm so sorry — his body is no longer responding to visitors .
+15.1 [상태 설명|faceWorried] We believe he is nearing the end of his life.
+   KO(32) 그가 삶의 마지막에 가까워지고 있다고 저희는 보고 있어요.
+   x(32) 그가 밤의 마지막에 가까워지고 있다고 저희는 보고 있어요.
+   x(33) 그가 삶의 마지막에 가까워지고 있다고 의사들은 보고 있어요.
+   why: We believe를 쓰면 확신이 아니라 의료진의 판단을 전한다는 뜻이에요. nearing the end of his life는 완곡하지만 분명하게 말하는 표현이에요.
+   *B We believe he is nearing the end of his [life].
+    B We believe he is nearing the end of his [day].
+    B We believe he is nearing the end of his [week].
+    B We believe he is nearing the end of his [house].
+   chunks: We believe / he is nearing / the end / of his life / .   DECOY: the door
+     ~0: the door he is nearing the end of his life .
+     ~1: We believe the door the end of his life .
+     ~2: We believe he is nearing the door of his life .
+     ~3: We believe he is nearing the end the door .
+15.2 [편안함|bandage] We'll keep him comfortable, and you can be with him.
+   KO(28) 그를 편안하게 해드릴 거고, 곁에 계실 수 있어요.
+   x(28) 그를 따뜻하게 해드릴 거고, 곁에 계실 수 있어요.
+   x(27) 그를 편안하게 해드릴 거고, 말을 걸 수 있어요.
+   why: keep him comfortable은 치료가 끝나도 돌봄은 계속된다는 약속이에요. you can be with him으로 가족이 곁에 있을 수 있다고 알려 줘요.
+   *B We'll keep him [comfortable], and you can be with him.
+    B We'll keep him [entertained], and you can be with him.
+    B We'll keep him [occupied], and you can be with him.
+    B We'll keep him [awake], and you can be with him.
+   chunks: We'll keep him comfortable / , and you can / be with / him / .   DECOY: her
+     ~0: her , and you can be with him .
+     ~1: We'll keep him comfortable her be with him .
+     ~2: We'll keep him comfortable , and you can her him .
+     ~3: We'll keep him comfortable , and you can be with her .
+15.3 [상태 설명|stetho] His organs are having a harder time keeping up.
+   KO(27) 그의 장기들이 점점 더 버티기 힘들어하고 있어요.
+   x(26) 그의 다리가 점점 더 버티기 힘들어하고 있어요.
+   x(28) 그의 장기들이 점점 더 움직이기 힘들어하고 있어요.
+   why: a harder time keeping up은 기관이 점점 힘들어한다는 것을 비유로 쉽게 말해요. 전문 용어 없이도 상태가 나빠지고 있음을 전달해요.
+   *B His organs are having a [harder] time keeping up.
+    B His organs are having a [longer] time keeping up.
+    B His organs are having a [shorter] time keeping up.
+    B His organs are having a [busier] time keeping up.
+   chunks: His organs / are having / a harder time / keeping up / .   DECOY: keeping quiet
+     ~0: keeping quiet are having a harder time keeping up .
+     ~1: His organs keeping quiet a harder time keeping up .
+     ~2: His organs are having keeping quiet keeping up .
+     ~3: His organs are having a harder time keeping quiet .
+15.4 [공감|handshake2] This isn't easy to hear, and I'm right here with you.
+   KO(28) 듣기 쉽지 않으시겠지만, 제가 바로 곁에 있을게요.
+   x(28) 보기 쉽지 않으시겠지만, 제가 바로 곁에 있을게요.
+   x(30) 듣기 쉽지 않으시겠지만, 제가 바로 문 앞에 있을게요.
+   why: This isn't easy to hear로 상대가 듣기 힘든 소식이라는 것을 인정해요. right here with you로 소식을 듣는 동안 곁에 있겠다고 약속해요.
+   *B This isn't [easy] to hear, and I'm right here with you.
+    B This isn't [quick] to hear, and I'm right here with you.
+    B This isn't [cheap] to hear, and I'm right here with you.
+    B This isn't [loud] to hear, and I'm right here with you.
+   chunks: This isn't easy / to hear / , and I'm / right here with you / .   DECOY: to see
+     ~0: to see to hear , and I'm right here with you .
+     ~1: This isn't easy to see , and I'm right here with you .
+     ~2: This isn't easy to hear to see right here with you .
+     ~3: This isn't easy to hear , and I'm to see .
+15.5 [사실 전달|siren] There's nothing more the treatments can do to reverse this.
+   KO(24) 치료로 이걸 되돌릴 방법은 더 이상 없어요.
+   x(25) 방문으로 이걸 되돌릴 방법은 더 이상 없어요.
+   x(24) 수술로 이걸 되돌릴 방법은 더 이상 없어요.
+   why: There's nothing more …은 가능성이 남아 있지 않다고 분명히 말하는 틀이에요. to reverse this로 더는 할 수 없는 일이 무엇인지 정확히 짚어 줘요.
+   *B There's nothing more the treatments can do to [reverse] this.
+    B There's nothing more the treatments can do to [repeat] this.
+    B There's nothing more the treatments can do to [record] this.
+    B There's nothing more the treatments can do to [review] this.
+   chunks: There's nothing more / the treatments / can do / to reverse this / .   DECOY: the tests
+     ~0: the tests the treatments can do to reverse this .
+     ~1: There's nothing more the tests can do to reverse this .
+     ~2: There's nothing more the treatments the tests to reverse this .
+     ~3: There's nothing more the treatments can do the tests .
+
+## 16 가족 급성 비탄·위기 대응
+16.0 [곁에 있음|handshake2] I'm here with you — you're not alone in this.
+   KO(30) 제가 곁에 있어요 — 이 일을 혼자 겪는 게 아니에요.
+   x(32) 제가 문 앞에 있어요 — 이 일을 혼자 겪는 게 아니에요.
+   x(29) 제가 돌아왔어요 — 이 일을 혼자 겪는 게 아니에요.
+   why: I'm here with you를 먼저 말하면 가족이 혼자가 아니라는 사실이 가장 먼저 들려요. you're not alone in this가 같은 뜻을 한 번 더 확인해 줘요.
+   *B I'm here with you — you're not [alone] in this.
+    B I'm here with you — you're not [ready] in this.
+    B I'm here with you — you're not [angry] in this.
+    B I'm here with you — you're not [silent] in this.
+   chunks: I'm here / with you / — you're not / alone in this / .   DECOY: for him
+     ~0: for him with you — you're not alone in this .
+     ~1: I'm here for him — you're not alone in this .
+     ~2: I'm here with you for him alone in this .
+     ~3: I'm here with you — you're not for him .
+16.1 [숨 고르기|coffee] Take a moment; there's no need to hold it together.
+   KO(27) 잠시 시간을 가지세요; 억지로 견딜 필요 없어요.
+   x(25) 잠시 물을 드세요; 억지로 견딜 필요 없어요.
+   x(24) 잠시 시간을 가지세요; 서두를 필요 없어요.
+   why: there's no need to …는 하지 않아도 된다는 허락이에요. hold it together는 참고 버티는 것을 뜻해서 감정을 억누르지 않아도 된다고 알려 줘요.
+   *B Take a [moment]; there's no need to hold it together.
+    B Take a [meal]; there's no need to hold it together.
+    B Take a [form]; there's no need to hold it together.
+    B Take a [picture]; there's no need to hold it together.
+   chunks: Take a moment; / there's no need / to hold / it together / .   DECOY: to hide
+     ~0: to hide there's no need to hold it together .
+     ~1: Take a moment; to hide to hold it together .
+     ~2: Take a moment; there's no need to hide it together .
+     ~3: Take a moment; there's no need to hold to hide .
+16.2 [공간 마련|home] Let me get you a quiet space and someone to support you.
+   KO(27) 조용한 공간과 곁을 지켜줄 분을 마련해 드릴게요.
+   x(26) 밝은 공간과 곁을 지켜줄 분을 마련해 드릴게요.
+   x(21) 조용한 공간과 담요를 마련해 드릴게요.
+   why: Let me get you는 내가 가져다주겠다는 부드러운 제안이에요. a quiet space와 someone to support you로 가족이 지금 필요한 것 두 가지를 짚어 줘요.
+   *B Let me get you a [quiet] space and someone to support you.
+    B Let me get you a [bright] space and someone to support you.
+    B Let me get you a [crowded] space and someone to support you.
+    B Let me get you a [noisy] space and someone to support you.
+   chunks: Let me get you / a quiet space / and someone / to support you / .   DECOY: a cup of tea
+     ~0: a cup of tea a quiet space and someone to support you .
+     ~1: Let me get you a cup of tea and someone to support you .
+     ~2: Let me get you a quiet space a cup of tea to support you .
+     ~3: Let me get you a quiet space and someone a cup of tea .
+16.3 [감정 허용|faceWorried] It's okay to react however your body needs to right now.
+   KO(26) 지금 몸이 필요로 하는 대로 반응해도 괜찮아요.
+   x(25) 지금 몸이 필요로 하는 대로 쉬어도 괜찮아요.
+   x(26) 지금 몸이 필요로 하는 대로 소리쳐도 괜찮아요.
+   why: however your body needs to는 어떤 반응이든 몸이 하는 대로 두어도 된다는 뜻이에요. right now가 지금 이 순간에 한정된 허락임을 알려 줘요.
+   *B It's okay to [react] however your body needs to right now.
+    B It's okay to [answer] however your body needs to right now.
+    B It's okay to [vote] however your body needs to right now.
+    B It's okay to [apply] however your body needs to right now.
+   chunks: It's okay to react / however your body / needs to / right now / .   DECOY: next week
+     ~0: next week however your body needs to right now .
+     ~1: It's okay to react next week needs to right now .
+     ~2: It's okay to react however your body next week right now .
+     ~3: It's okay to react however your body needs to next week .
+16.4 [도움 연결|pager] I can call someone from your family or a chaplain right now.
+   KO(25) 지금 가족분이나 원목님을 불러드릴 수 있어요.
+   x(28) 지금 가족분이나 원목님께 연락처를 드릴 수 있어요.
+   x(26) 지금 가족분이나 원목님께 편지를 쓸 수 있어요.
+   why: I can call …은 내가 대신 연락하겠다는 제안이에요. right now로 지금 바로 할 수 있다는 점을 알려 줘요.
+   *B I can [call] someone from your family or a chaplain right now.
+    B I can [thank] someone from your family or a chaplain right now.
+    B I can [greet] someone from your family or a chaplain right now.
+    B I can [follow] someone from your family or a chaplain right now.
+   chunks: I can call someone / from your family / or a chaplain / right now / .   DECOY: by letter
+     ~0: by letter from your family or a chaplain right now .
+     ~1: I can call someone by letter or a chaplain right now .
+     ~2: I can call someone from your family by letter right now .
+     ~3: I can call someone from your family or a chaplain by letter .
+16.5 [공감|faceWorried] Whatever you're feeling right now is a normal response to shock.
+   KO(29) 지금 느끼시는 건 충격에 대한 자연스러운 반응이에요.
+   x(29) 지금 느끼시는 건 소음에 대한 자연스러운 반응이에요.
+   x(25) 지금 느끼시는 건 충격에 대한 첫 반응이에요.
+   why: a normal response to shock는 지금의 반응이 이상하지 않고 충격에 대한 흔한 반응이라는 설명이에요. Whatever you're feeling으로 어떤 반응이든 포함해요.
+   *B Whatever you're feeling right now is a normal response to [shock].
+    B Whatever you're feeling right now is a normal response to [noise].
+    B Whatever you're feeling right now is a normal response to [weather].
+    B Whatever you're feeling right now is a normal response to [food].
+   chunks: Whatever you're feeling / right now / is a normal response / to shock / .   DECOY: to cold weather
+     ~0: to cold weather right now is a normal response to shock .
+     ~1: Whatever you're feeling to cold weather is a normal response to shock .
+     ~2: Whatever you're feeling right now to cold weather to shock .
+     ~3: Whatever you're feeling right now is a normal response to cold weather .
+
+## 17 목표 불일치·갈등 중재
+17.0 [공통점|handshake2] You both want what's best for him — that's your common ground.
+   KO(42) 두 분 다 그에게 최선을 바라시는 거예요 — 그게 두 분의 공통 기반이에요.
+   x(42) 두 분 다 그에게 최선을 바라시는 거예요 — 그게 두 분의 공통 약속이에요.
+   x(42) 세 분 다 그에게 최선을 바라시는 거예요 — 그게 세 분의 공통 기반이에요.
+   why: You both want는 두 사람이 같은 것을 바란다는 사실을 먼저 짚어요. common ground는 다툼이 있어도 만날 수 있는 지점이라는 뜻이에요.
+   *B You both want what's best for him — that's your [common] ground.
+    B You both want what's best for him — that's your [private] ground.
+    B You both want what's best for him — that's your [secret] ground.
+    B You both want what's best for him — that's your [hidden] ground.
+   chunks: You both want / what's best for him / — that's your / common ground / .   DECOY: next step
+     ~0: next step what's best for him — that's your common ground .
+     ~1: You both want next step — that's your common ground .
+     ~2: You both want what's best for him next step common ground .
+     ~3: You both want what's best for him — that's your next step .
+17.1 [환자 중심|compass] Let's center this on what he would have wanted.
+   KO(24) 그가 원했을 것을 중심에 두고 생각해 봐요.
+   x(24) 그가 원했을 것을 중심에 두고 정리해 봐요.
+   x(24) 그가 알았을 것을 중심에 두고 생각해 봐요.
+   why: Let's center this on은 논의의 중심을 정하자는 말이에요. what he would have wanted로 그 중심이 가족의 바람이 아니라 환자의 뜻이라고 밝혀요.
+   *B Let's center this on what he would have [wanted].
+    B Let's center this on what he would have [eaten].
+    B Let's center this on what he would have [worn].
+    B Let's center this on what he would have [sold].
+   chunks: Let's center this / on what / he would / have wanted / .   DECOY: she would
+     ~0: she would on what he would have wanted .
+     ~1: Let's center this she would he would have wanted .
+     ~2: Let's center this on what she would have wanted .
+     ~3: Let's center this on what he would she would .
+17.2 [팀 지원|handshake2] The ethics and palliative teams can help us move forward.
+   KO(32) 윤리팀과 완화의료팀이 앞으로 나아가도록 도와줄 수 있어요.
+   x(32) 윤리팀과 완화의료팀이 자료를 정리하도록 도와줄 수 있어요.
+   x(30) 윤리팀과 완화의료팀이 방을 옮기도록 도와줄 수 있어요.
+   why: help us는 팀이 대신 정하는 것이 아니라 함께 돕는다는 뜻이에요. move forward는 막힌 상태에서 한 걸음 나아간다는 뜻이에요.
+   *B The ethics and palliative teams can help us move [forward].
+    B The ethics and palliative teams can help us move [upstairs].
+    B The ethics and palliative teams can help us move [outside].
+    B The ethics and palliative teams can help us move [downstairs].
+   chunks: The ethics and palliative teams / can help us / move / forward / .   DECOY: talk
+     ~0: talk can help us move forward .
+     ~1: The ethics and palliative teams talk move forward .
+     ~2: The ethics and palliative teams can help us talk forward .
+     ~3: The ethics and palliative teams can help us move talk .
+17.3 [공감|faceWorried] I hear two people who both love him very much.
+   KO(29) 두 분 다 그를 정말 많이 사랑하신다는 게 느껴져요.
+   x(29) 두 분 다 그를 정말 많이 존경하신다는 게 느껴져요.
+   x(29) 두 분 다 그를 정말 오래 사랑하신다는 게 느껴져요.
+   why: I hear는 상대의 마음을 들었다는 표현이에요. who both love him very much로 두 사람의 의견 차이가 사랑에서 나온다는 점을 짚어요.
+   *B I hear two people who both [love] him very much.
+    B I hear two people who both [thank] him very much.
+    B I hear two people who both [visit] him very much.
+    B I hear two people who both [follow] him very much.
+   chunks: I hear two people / who both / love him / very much / .   DECOY: know him
+     ~0: know him who both love him very much .
+     ~1: I hear two people know him love him very much .
+     ~2: I hear two people who both know him very much .
+     ~3: I hear two people who both love him know him .
+17.4 [비난 아님|handshake2] Disagreeing doesn't mean either of you is wrong.
+   KO(26) 의견이 다르다고 둘 중 누가 틀린 건 아니에요.
+   x(26) 의견이 다르다고 둘 중 누가 아픈 건 아니에요.
+   x(26) 의견이 다르다고 둘 중 누가 늦은 건 아니에요.
+   why: Disagreeing doesn't mean은 의견이 다른 것을 잘못으로 보지 않는다는 틀이에요. either of you is wrong으로 누구도 틀리지 않았다고 말해요.
+   *B Disagreeing doesn't mean either of you is [wrong].
+    B Disagreeing doesn't mean either of you is [busy].
+    B Disagreeing doesn't mean either of you is [cold].
+    B Disagreeing doesn't mean either of you is [slow].
+   chunks: Disagreeing doesn't mean / either of you / is wrong / .   DECOY: everyone
+     ~0: everyone either of you is wrong .
+     ~1: Disagreeing doesn't mean everyone is wrong .
+     ~2: Disagreeing doesn't mean either of you everyone .
+17.5 [속도 조절|play] Let's slow down and hear both sides fully.
+   KO(20) 천천히 두 분 이야기를 다 들어봐요.
+   x(21) 천천히 두 분 이야기를 다 정리해봐요.
+   x(20) 천천히 두 분 이야기를 다 말해봐요.
+   why: Let's slow down은 결론을 서두르지 말자는 권유예요. hear both sides fully로 한쪽만이 아니라 양쪽 이야기를 끝까지 듣겠다고 밝혀요.
+   *B Let's slow down and hear both sides [fully].
+    B Let's slow down and hear both sides [barely].
+    B Let's slow down and hear both sides [partly].
+    B Let's slow down and hear both sides [briefly].
+   chunks: Let's slow down / and hear / both sides fully / .   DECOY: and ask
+     ~0: and ask and hear both sides fully .
+     ~1: Let's slow down and ask both sides fully .
+     ~2: Let's slow down and hear and ask .
+
+## 18 대리결정 부재 상황
+18.0 [감사|star] Thank you for being here for him.
+   KO(17) 그의 곁을 지켜주셔서 감사해요.
+   x(17) 저희 곁을 지켜주셔서 감사해요.
+   x(17) 그의 집을 지켜주셔서 감사해요.
+   why: Thank you for being here는 상대가 한 일을 먼저 인정하는 말이에요. for him으로 감사의 이유가 환자 곁을 지킨 것임을 분명히 해요.
+   *B [Thank] you for being here for him.
+    B [Pay] you for being here for him.
+    B [Call] you for being here for him.
+    B [Phone] you for being here for him.
+   chunks: Thank you / for being here / for him / .   DECOY: for the flowers
+     ~0: for the flowers for being here for him .
+     ~1: Thank you for the flowers for him .
+     ~2: Thank you for being here for the flowers .
+18.1 [절차 안내|board] Since there's no named proxy, the team follows a set process.
+   KO(32) 지정된 대리인이 없어서, 저희 팀은 정해진 절차를 따라요.
+   x(31) 지정된 보험이 없어서, 저희 팀은 정해진 절차를 따라요.
+   x(32) 지정된 대리인이 없어서, 저희 팀은 정해진 시간을 따라요.
+   why: Since there's no named proxy로 이유를 먼저 말하면 절차가 임의로 정해진 것이 아니라는 뜻이 돼요. a set process는 이미 정해진 절차를 따른다는 뜻이에요.
+   *B Since there's no named proxy, the team follows a set [process].
+    B Since there's no named proxy, the team follows a set [rumor].
+    B Since there's no named proxy, the team follows a set [song].
+    B Since there's no named proxy, the team follows a set [habit].
+   chunks: Since there's no named proxy / , the team follows / a set / process / .   DECOY: a quick
+     ~0: a quick , the team follows a set process .
+     ~1: Since there's no named proxy a quick a set process .
+     ~2: Since there's no named proxy , the team follows a quick process .
+     ~3: Since there's no named proxy , the team follows a set a quick .
+18.2 [윤리위원회|board] We'll involve the ethics committee to decide in his best interest.
+   KO(36) 그에게 가장 이로운 방향으로 결정하도록 윤리위원회를 참여시킬게요.
+   x(37) 당신에게 가장 이로운 방향으로 결정하도록 윤리위원회를 참여시킬게요.
+   x(36) 그에게 가장 이로운 방향으로 설명하도록 윤리위원회를 참여시킬게요.
+   why: involve는 어떤 기관을 과정에 참여시킨다는 뜻이에요. in his best interest로 결정의 기준이 그에게 가장 이로운 것이라고 밝혀요.
+   *B We'll [involve] the ethics committee to decide in his best interest.
+    B We'll [thank] the ethics committee to decide in his best interest.
+    B We'll [pay] the ethics committee to decide in his best interest.
+    B We'll [train] the ethics committee to decide in his best interest.
+   chunks: We'll involve / the ethics committee / to decide / in his best interest / .   DECOY: the visiting committee
+     ~0: the visiting committee the ethics committee to decide in his best interest .
+     ~1: We'll involve the visiting committee to decide in his best interest .
+     ~2: We'll involve the ethics committee the visiting committee in his best interest .
+     ~3: We'll involve the ethics committee to decide the visiting committee .
+18.3 [감사|star] It's kind of you to step up even though this is hard.
+   KO(18) 힘드시겠지만 나서주셔서 감사해요.
+   x(18) 바쁘시겠지만 나서주셔서 감사해요.
+   x(18) 힘드시겠지만 앉아주셔서 감사해요.
+   why: It's kind of you은 상대의 행동을 칭찬하는 틀이에요. even though this is hard로 어려운 상황임을 알아주는 마음을 함께 담아요.
+   *B It's kind of you to step up even though this is [hard].
+    B It's kind of you to step up even though this is [easy].
+    B It's kind of you to step up even though this is [quick].
+    B It's kind of you to step up even though this is [cheap].
+   chunks: It's kind of you / to step up / even though / this is hard / .   DECOY: this is new
+     ~0: this is new to step up even though this is hard .
+     ~1: It's kind of you this is new even though this is hard .
+     ~2: It's kind of you to step up this is new this is hard .
+     ~3: It's kind of you to step up even though this is new .
+18.4 [환자 중심|compass] The committee looks at what he would have valued most.
+   KO(27) 위원회는 그가 가장 소중히 여겼을 것을 살펴봐요.
+   x(27) 위원회는 그가 가장 소중히 여겼을 것을 기록해요.
+   x(27) 위원회는 그가 가장 오래 좋아했을 것을 살펴봐요.
+   why: looks at은 위원회가 살펴보는 대상을 말하는 표현이에요. what he would have valued most로 기준이 그의 가치임을 분명히 해요.
+   *B The committee looks at what he would have [valued] most.
+    B The committee looks at what he would have [owed] most.
+    B The committee looks at what he would have [feared] most.
+    B The committee looks at what he would have [sold] most.
+   chunks: The committee looks / at what / he would have / valued most / .   DECOY: owned most
+     ~0: owned most at what he would have valued most .
+     ~1: The committee looks owned most he would have valued most .
+     ~2: The committee looks at what owned most valued most .
+     ~3: The committee looks at what he would have owned most .
+18.5 [안심|handshake2] You won't be making this decision alone.
+   KO(21) 이 결정을 혼자 내리지 않으실 거예요.
+   x(21) 이 결정을 오늘 내리지 않으실 거예요.
+   x(22) 이 결정을 혼자 기다리지 않으실 거예요.
+   why: You won't be …alone으로 가족이 혼자 부담을 지지 않는다고 분명히 말해요. 결정의 무게를 나눠 질 사람이 있다는 뜻이에요.
+   *B You won't be making this decision [alone].
+    B You won't be making this decision [twice].
+    B You won't be making this decision [again].
+    B You won't be making this decision [soon].
+   chunks: You won't be / making this decision / alone / .   DECOY: again
+     ~0: again making this decision alone .
+     ~1: You won't be again alone .
+     ~2: You won't be making this decision again .
+
+## 19 분노·불신 가족 대응
+19.0 [감정 인정|faceAngry] I hear that you're angry, and you deserve straight answers.
+   KO(32) 화가 나신 거 알아요, 정확한 답을 들으실 자격이 있어요.
+   x(31) 무서우신 거 알아요, 정확한 답을 들으실 자격이 있어요.
+   x(32) 화가 나신 거 알아요, 정확한 답을 들으실 시간이 있어요.
+   why: I hear that으로 상대가 화났다는 것을 먼저 받아 주면 방어가 아니라 경청으로 시작해요. you deserve straight answers가 솔직하게 말하겠다는 약속이에요.
+   *B I hear that you're [angry], and you deserve straight answers.
+    B I hear that you're [thirsty], and you deserve straight answers.
+    B I hear that you're [hungry], and you deserve straight answers.
+    B I hear that you're [sleepy], and you deserve straight answers.
+   chunks: I hear that / you're angry / , and you deserve / straight answers / .   DECOY: you're tired
+     ~0: you're tired you're angry , and you deserve straight answers .
+     ~1: I hear that you're tired , and you deserve straight answers .
+     ~2: I hear that you're angry you're tired straight answers .
+     ~3: I hear that you're angry , and you deserve you're tired .
+19.1 [투명성|magnify] Nothing is being hidden — let me go through everything with you.
+   KO(32) 숨기는 건 아무것도 없어요 — 전부 함께 살펴봐 드릴게요.
+   x(32) 숨기는 건 아무것도 없어요 — 전부 함께 복사해 드릴게요.
+   x(36) 숨기는 건 아무것도 없어요 — 전부 간호사실에서 살펴봐 드릴게요.
+   why: Nothing is being hidden은 의심에 정면으로 답하는 말이에요. let me go through everything with you가 말에 그치지 않고 행동으로 보여 주겠다는 뜻이에요.
+   *B Nothing is being [hidden] — let me go through everything with you.
+    B Nothing is being [broken] — let me go through everything with you.
+    B Nothing is being [wasted] — let me go through everything with you.
+    B Nothing is being [lost] — let me go through everything with you.
+   chunks: Nothing is being hidden / — let me go / through everything / with you / .   DECOY: by phone
+     ~0: by phone — let me go through everything with you .
+     ~1: Nothing is being hidden by phone through everything with you .
+     ~2: Nothing is being hidden — let me go by phone with you .
+     ~3: Nothing is being hidden — let me go through everything by phone .
+19.2 [질문 환영|speech] Let's sit down and I'll answer every question you have.
+   KO(24) 함께 앉아서 궁금하신 것 전부 답해드릴게요.
+   x(24) 함께 앉아서 궁금하신 것 전부 모아드릴게요.
+   x(23) 함께 서서 궁금하신 것 전부 답해드릴게요.
+   why: Let's sit down은 서서 급히 말하지 않고 자리를 잡겠다는 신호예요. every question you have로 질문에 제한이 없다고 알려 줘요.
+   *B Let's sit down and I'll [answer] every question you have.
+    B Let's sit down and I'll [print] every question you have.
+    B Let's sit down and I'll [count] every question you have.
+    B Let's sit down and I'll [copy] every question you have.
+   chunks: Let's sit down / and I'll answer / every question / you have / .   DECOY: every form
+     ~0: every form and I'll answer every question you have .
+     ~1: Let's sit down every form every question you have .
+     ~2: Let's sit down and I'll answer every form you have .
+     ~3: Let's sit down and I'll answer every question every form .
+19.3 [공감|faceWorried] I understand why this feels like something's being kept from you.
+   KO(26) 뭔가 숨기는 것처럼 느껴지시는 이유를 이해해요.
+   x(25) 뭔가 바쁜 것처럼 느껴지시는 이유를 이해해요.
+   x(26) 뭔가 숨기는 것처럼 느껴지시는 이유를 물어봐요.
+   why: I understand why로 상대의 감정을 이유까지 이해한다고 말하면 설득이 아니라 인정이 돼요. something's being kept from you는 가족이 느끼는 의심을 그대로 말해요.
+   *B I understand why this feels like something's being [kept] from you.
+    B I understand why this feels like something's being [sent] from you.
+    B I understand why this feels like something's being [given] from you.
+    B I understand why this feels like something's being [shown] from you.
+   chunks: I understand why / this feels / like something's / being kept from you / .   DECOY: being sent to you
+     ~0: being sent to you this feels like something's being kept from you .
+     ~1: I understand why being sent to you like something's being kept from you .
+     ~2: I understand why this feels being sent to you being kept from you .
+     ~3: I understand why this feels like something's being sent to you .
+19.4 [공감|faceAngry] Your anger makes sense — I'd feel it too in your place.
+   KO(30) 화나시는 거 당연해요 — 저라도 똑같이 느꼈을 거예요.
+   x(30) 슬프시는 거 당연해요 — 저라도 똑같이 느꼈을 거예요.
+   x(30) 화나시는 거 당연해요 — 저라도 똑같이 말했을 거예요.
+   why: Your anger makes sense는 화를 이상한 것으로 보지 않는 말이에요. I'd feel it too in your place로 같은 입장이면 같은 감정일 거라는 공감을 더해요.
+   *B Your [anger] makes sense — I'd feel it too in your place.
+    B Your [hunger] makes sense — I'd feel it too in your place.
+    B Your [luck] makes sense — I'd feel it too in your place.
+    B Your [humor] makes sense — I'd feel it too in your place.
+   chunks: Your anger makes sense / — I'd feel it / too / in your place / .   DECOY: in my place
+     ~0: in my place — I'd feel it too in your place .
+     ~1: Your anger makes sense in my place too in your place .
+     ~2: Your anger makes sense — I'd feel it in my place in your place .
+     ~3: Your anger makes sense — I'd feel it too in my place .
+19.5 [투명성|board] Let me pull up the chart so we can look at it together.
+   KO(17) 차트를 띄워서 함께 살펴볼게요.
+   x(17) 지도를 띄워서 함께 살펴볼게요.
+   x(18) 차트를 인쇄해서 함께 살펴볼게요.
+   why: Let me pull up은 눈앞에서 보여 주겠다는 행동이에요. look at it together가 일방적인 설명이 아니라 함께 확인한다는 뜻이에요.
+   *B Let me pull up the [chart] so we can look at it together.
+    B Let me pull up the [menu] so we can look at it together.
+    B Let me pull up the [map] so we can look at it together.
+    B Let me pull up the [game] so we can look at it together.
+   chunks: Let me pull up / the chart / so we can look / at it together / .   DECOY: the menu
+     ~0: the menu the chart so we can look at it together .
+     ~1: Let me pull up the menu so we can look at it together .
+     ~2: Let me pull up the chart the menu at it together .
+     ~3: Let me pull up the chart so we can look the menu .
+
+## 20 사별·애도 지원·후속
+20.0 [애도 표현|handshake2] I'm so deeply sorry for your loss.
+   KO(12) 깊은 애도를 표합니다.
+   x(12) 깊은 감사를 표합니다.
+   x(12) 깊은 존경을 표합니다.
+   why: I'm so deeply sorry for your loss는 상실을 겪은 사람에게 건네는 가장 기본적인 애도 표현이에요. deeply가 위로의 무게를 더해요.
+   *B I'm so deeply sorry for your [loss].
+    B I'm so deeply sorry for your [wait].
+    B I'm so deeply sorry for your [delay].
+    B I'm so deeply sorry for your [trouble].
+   chunks: I'm so deeply sorry / for your / loss / .   DECOY: wait
+     ~0: wait for your loss .
+     ~1: I'm so deeply sorry wait loss .
+     ~2: I'm so deeply sorry for your wait .
+20.1 [시간 허용|coffee] Take all the time you need — there's no rush at all.
+   KO(38) 필요한 만큼 충분히 시간을 가지세요 — 전혀 서두르지 않으셔도 돼요.
+   x(36) 필요한 만큼 충분히 물을 드세요 — 전혀 서두르지 않으셔도 돼요.
+   x(38) 필요한 만큼 충분히 시간을 가지세요 — 전혀 대답하지 않으셔도 돼요.
+   why: Take all the time you need는 시간에 제한이 없다고 알려 주는 말이에요. no rush at all이 같은 뜻을 한 번 더 강조해서 서두르지 않아도 됨을 분명히 해요.
+   *B Take all the time you need — there's no [rush] at all.
+    B Take all the time you need — there's no [rest] at all.
+    B Take all the time you need — there's no [rule] at all.
+    B Take all the time you need — there's no [risk] at all.
+   chunks: Take all the time / you need / — there's no rush / at all / .   DECOY: they need
+     ~0: they need you need — there's no rush at all .
+     ~1: Take all the time they need — there's no rush at all .
+     ~2: Take all the time you need they need at all .
+     ~3: Take all the time you need — there's no rush they need .
+20.2 [후속 안내|pencil] I'll give you information on next steps and grief support.
+   KO(26) 다음 절차와 애도 지원에 관한 정보를 드릴게요.
+   x(26) 다음 절차와 보험 지원에 관한 정보를 드릴게요.
+   x(26) 다음 약속과 애도 지원에 관한 정보를 드릴게요.
+   why: I'll give you …는 가족에게 필요한 정보를 건네겠다는 약속이에요. next steps and grief support로 앞으로의 절차와 마음의 지원을 한 문장에 묶어요.
+   *B I'll give you information on next steps and [grief] support.
+    B I'll give you information on next steps and [parking] support.
+    B I'll give you information on next steps and [tour] support.
+    B I'll give you information on next steps and [rental] support.
+   chunks: I'll give you / information / on next steps / and grief support / .   DECOY: on parking
+     ~0: on parking information on next steps and grief support .
+     ~1: I'll give you on parking on next steps and grief support .
+     ~2: I'll give you information on parking and grief support .
+     ~3: I'll give you information on next steps on parking .
+20.3 [시간 허용|coffee] Please take a moment — you don't need to say anything.
+   KO(30) 잠시 시간을 가지세요 — 아무 말 안 하셔도 괜찮아요.
+   x(28) 잠시 물을 드세요 — 아무 말 안 하셔도 괜찮아요.
+   x(31) 잠시 시간을 가지세요 — 아무것도 안 적으셔도 괜찮아요.
+   why: you don't need to say anything은 말해야 한다는 부담을 덜어 줘요. Please take a moment가 대신 가만히 있어도 된다는 허락이에요.
+   *B Please take a [moment] — you don't need to say anything.
+    B Please take a [form] — you don't need to say anything.
+    B Please take a [bath] — you don't need to say anything.
+    B Please take a [photo] — you don't need to say anything.
+   chunks: Please take a moment / — you don't / need to / say anything / .   DECOY: read anything
+     ~0: read anything — you don't need to say anything .
+     ~1: Please take a moment read anything need to say anything .
+     ~2: Please take a moment — you don't read anything say anything .
+     ~3: Please take a moment — you don't need to read anything .
+20.4 [후속 안내|handshake2] A chaplain can help you think through arrangements when you're ready.
+   KO(34) 준비되시면 원목님이 절차를 생각하시는 걸 도와드릴 수 있어요.
+   x(34) 준비되시면 원목님이 마음을 정리하시는 걸 도와드릴 수 있어요.
+   x(34) 준비되시면 원목님이 일정을 생각하시는 걸 도와드릴 수 있어요.
+   why: when you're ready는 가족이 준비될 때를 기다리겠다는 뜻이에요. think through는 혼자 생각하기 어려운 일을 같이 정리한다는 뜻이에요.
+   *B A chaplain can help you think through arrangements when you're [ready].
+    B A chaplain can help you think through arrangements when you're [busy].
+    B A chaplain can help you think through arrangements when you're [early].
+    B A chaplain can help you think through arrangements when you're [angry].
+   chunks: A chaplain can help / you think through / arrangements / when you're ready / .   DECOY: your answers
+     ~0: your answers you think through arrangements when you're ready .
+     ~1: A chaplain can help your answers arrangements when you're ready .
+     ~2: A chaplain can help you think through your answers when you're ready .
+     ~3: A chaplain can help you think through arrangements your answers .
+20.5 [시간 허용|home] You can stay with him for as long as you'd like.
+   KO(25) 원하시는 만큼 오래 곁에 머무르실 수 있어요.
+   x(27) 원하시는 만큼 오래 가족실에 머무르실 수 있어요.
+   x(25) 원하시는 만큼 오래 곁에서 주무실 수 있어요.
+   why: for as long as you'd like는 머무는 시간을 가족이 정한다는 뜻이에요. You can stay로 허락하는 말을 먼저 하면 제한이 없다는 느낌이 들어요.
+   *B You can [stay] with him for as long as you'd like.
+    B You can [run] with him for as long as you'd like.
+    B You can [sing] with him for as long as you'd like.
+    B You can [swim] with him for as long as you'd like.
+   chunks: You can stay / with him / for as long / as you'd like / .   DECOY: at home
+     ~0: at home with him for as long as you'd like .
+     ~1: You can stay at home for as long as you'd like .
+     ~2: You can stay with him at home as you'd like .
+     ~3: You can stay with him for as long at home .
+20.6 [후속 지원|handshake2] We're here for you in the days ahead, too.
+   KO(22) 앞으로의 날들에도 저희가 곁에 있을게요.
+   x(22) 앞으로의 밤들에도 저희가 곁에 있을게요.
+   x(21) 앞으로의 날들에는 저희가 전화드릴게요.
+   why: in the days ahead는 지금 이 순간만이 아니라 앞으로도 곁에 있겠다는 뜻이에요. too가 지금의 지지가 계속된다는 것을 덧붙여요.
+   *B We're here for you in the days [ahead], too.
+    B We're here for you in the days [behind], too.
+    B We're here for you in the days [away], too.
+    B We're here for you in the days [apart], too.
+   chunks: We're here / for you / in the days ahead / , too / .   DECOY: in the room
+     ~0: in the room for you in the days ahead , too .
+     ~1: We're here in the room in the days ahead , too .
+     ~2: We're here for you in the room , too .
+     ~3: We're here for you in the days ahead in the room .
