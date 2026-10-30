@@ -1,0 +1,135 @@
+- situation: "VTE 위험 평가·예방"
+  items:
+    - kind: slider
+      words: [w-high, w-prophylaxis, w-risk]
+      cue: "Colleague: \"His VTE risk score is high, and the chart shows no contraindications.\""
+      scale: [no prophylaxis, devices only, devices and meds]
+      answerAt: 2
+      why: "VTE 고위험이고 금기가 없으면 압박기기 같은 기계적 예방과 약물 예방을 함께 쓰는 게 일반적이에요. 약물은 의사 처방대로 주고, 시작 전에 금기를 먼저 확인해요."
+      example: "He's high risk, so we'll combine mechanical and chemical prophylaxis."
+      exKo: "고위험군이라 기계적 예방과 약물 예방을 함께 적용할게요."
+    - kind: context
+      words: [w-vte]
+      word: VTE
+      ko: 정맥혈전색전증
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His VTE risk is high, and I don't see any contraindications.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you double-check the VTE prophylaxis order with me?", ok: true}
+        - {who: 가족에게, icon: me, en: "His VTE risk score is high, so he's on SCDs plus prophylactic dosing.", ok: false, fix: "He could get blood clots in his legs while he can't move much, so we're using leg wraps and the medicine his doctor ordered to prevent them."}
+      why: "의료진끼리는 VTE, SCD 같은 약어로 짧고 정확하게 말해요. 가족에게는 약어와 용량 같은 말이 낯설어서 무슨 뜻인지 알 수 없어요. 왜 하는지를 쉬운 말로 풀어 줘요."
+- situation: "욕창 위험 사정"
+  items:
+    - kind: slider
+      words: [w-braden, w-score, w-risk]
+      cue: "Colleague: \"Her Braden score came back as 11.\""
+      scale: [at mild risk, at moderate risk, at high risk]
+      answerAt: 2
+      why: "Braden 점수는 낮을수록 위험이 높아요. 보통 15~18은 경도, 13~14는 중등도, 10~12는 고위험, 9 이하는 매우 고위험으로 나눠요. 11점이면 고위험이에요."
+      example: "Her Braden score puts her at high risk."
+      exKo: "브레이든 점수를 보면 고위험군이에요."
+    - kind: context
+      words: [w-braden]
+      word: Braden
+      ko: 브레이든(척도)
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Her Braden is 11, so I've started the prevention bundle.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "I'll reassess her Braden at the start of each shift.", ok: true}
+        - {who: 가족에게, icon: me, en: "Her Braden of 11 puts her in the high-risk category for tissue breakdown.", ok: false, fix: "She can't move much and her skin stays damp, so her skin could break down easily. We're protecting it."}
+      why: "의료진끼리는 Braden 점수만 말해도 위험 수준이 바로 전해져요. 가족에게는 척도 이름과 숫자가 뜻이 없어요. 왜 위험한지와 무엇을 하는지를 쉬운 말로 알려 줘요."
+- situation: "체위변경·압력 재분산"
+  items:
+    - kind: slider
+      words: [w-turn, w-offload]
+      cue: "Colleague: \"She's at high risk for a sacral injury. How far should I tilt her when she's on her side?\""
+      scale: [flat on her back, about 30 degrees, a full 90 degrees]
+      answerAt: 1
+      why: "옆으로 눕힐 때는 대략 30도로 기울이면 천골과 큰 돌기(엉덩이 옆 뼈)의 압력이 같이 줄어요. 완전히 90도로 옆으로 누이면 엉덩이 옆 뼈에 압력이 몰려요."
+      example: "Let's turn him and offload the pressure points."
+      exKo: "체위를 바꾸고 압박점의 압력을 분산시켜요."
+    - kind: context
+      words: [w-offload]
+      word: offload
+      ko: 압력을 분산시키다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'm offloading his heels with pillows, and the sacrum looks intact.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you help me offload his sacrum when we turn him?", ok: true}
+        - {who: 가족에게, icon: me, en: "We offload your son's sacral pressure point every two hours to redistribute shear.", ok: false, fix: "We move him onto his side every couple of hours so there's less pressure on his lower back."}
+      why: "의료진끼리는 offload가 짧고 정확해요. 가족에게는 sacral, shear 같은 말이 낯설어 무슨 일을 하는지 알기 어려워요. 몸을 옮겨 눌림을 줄인다고 풀어 줘요."
+- situation: "조기 이동 스크리닝"
+  items:
+    - kind: slider
+      words: [w-sit, w-edge, w-mobilize]
+      cue: "Colleague: \"She's awake and following commands, but she hasn't been out of bed yet.\""
+      scale: [exercise in bed, sit at the bed edge, walk down the hall]
+      answerAt: 1
+      why: "처음 일어나는 환자는 침대 끝에 앉아 보는 것부터 시작해요. 앉았을 때 활력징후와 어지러움을 보고 괜찮으면 서기, 의자, 걷기 순으로 올려요. 안전 기준은 병원 프로토콜을 따라요."
+      example: "Let's start with sitting at the edge of the bed."
+      exKo: "침대 끝에 걸터앉는 것부터 시작해요."
+    - kind: swap
+      words: [w-oxygenation]
+      who: "환자에게 · 안내"
+      icon: me
+      before: ["Your ", "oxygenation", " and blood pressure look steady enough to sit up."]
+      options: [oxygen level, oxygenation, SpO2 saturation index]
+      answer: oxygen level
+      ko: 산소 수치와 혈압이 앉아도 될 만큼 안정적이에요
+      notes: {oxygen level: "환자가 바로 알아듣는 쉬운 말이에요. 무엇을 보았는지 분명히 전해요.", oxygenation: "의료진끼리 쓰는 말이에요. 환자에게는 낯설어요.", SpO2 saturation index: "지표 이름을 길게 늘어놓아 환자에게는 뜻이 안 와닿아요."}
+      why: "같은 수치라도 환자에게는 산소 수치처럼 쉬운 말로, 의료진끼리는 oxygenation 같은 임상어로 말해요."
+- situation: "피부·압박점 사정"
+  items:
+    - kind: slider
+      words: [w-blanch, w-redness]
+      cue: "Colleague: \"I pressed the red spot on her sacrum, and it turned pale, then pink again.\""
+      scale: [redness that fades, redness that stays, skin that is open]
+      answerAt: 0
+      why: "누르면 하얗게 됐다가 돌아오는 붉은기는 blanchable이에요. 눌러도 붉게 남으면 non-blanchable로 1단계 손상을 의심해요. 피부가 열려 있으면 더 진행된 단계예요."
+      example: "This area doesn't blanch — it may be a stage-one injury."
+      exKo: "이 부위는 눌러도 하얗게 안 변해요 — 1단계 손상일 수 있어요."
+    - kind: context
+      words: [w-blanch]
+      word: blanch
+      ko: 창백해지다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "It doesn't blanch, so I'm calling it a stage-one injury.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Press on it. Does it blanch?", ok: true}
+        - {who: 환자에게, icon: me, en: "The erythema is non-blanching, so it's a stage-one pressure injury.", ok: false, fix: "The red spot doesn't fade when I press on it, so I want to protect that skin."}
+      why: "의료진끼리는 blanch 한 단어로 눌러 보는 검사와 결과를 전해요. 환자에게는 erythema, non-blanching 같은 말이 낯설어요. 눌러도 붉은기가 안 빠진다고 쉬운 말로 알려 줘요."
+- situation: "수동 관절운동"
+  items:
+    - kind: slider
+      words: [w-range, w-motion, w-resistance, w-pain]
+      cue: "Colleague: \"His shoulder stops moving at a certain point, and he winces.\""
+      scale: [stay still, move to his limit, push past his limit]
+      answerAt: 1
+      why: "수동 관절운동은 저항이나 통증이 느껴지는 지점까지만 움직이고 억지로 넘기지 않아요. 통증이나 저항이 보이면 멈추고 보고해요."
+      example: "I'll stop if he shows pain or resistance."
+      exKo: "통증이나 저항이 보이면 멈출게요."
+    - kind: context
+      words: [w-contracture]
+      word: contracture
+      ko: 구축
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "No contractures yet, but his left elbow is getting tight.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Let's keep up his ROM so he doesn't develop contractures.", ok: true}
+        - {who: 가족에게, icon: me, en: "Without ROM, the joint capsule shortens and contractures form.", ok: false, fix: "Moving his arms and legs for him keeps them from getting stiff and stuck in one position."}
+      why: "의료진끼리는 contracture, ROM으로 짧게 말해요. 가족에게는 관절 주머니가 짧아진다는 설명이 어렵고 겁만 줘요. 팔다리가 굳지 않게 도와준다고 쉬운 말로 풀어 줘요."
+- situation: "인공호흡 환자 조기 이동"
+  items:
+    - kind: slider
+      words: [w-assign, w-manage, w-guard]
+      cue: "Colleague: \"He's intubated with three IV lines and a Foley, and we want him sitting at the edge of the bed.\""
+      scale: [one person alone, just two people, a team with RT]
+      answerAt: 2
+      why: "삽관 환자를 일으킬 때는 한 명이 기관튜브를 지키고, 호흡기 치료사가 인공호흡기를 맡고, 나머지가 라인을 챙겨요. 혼자서나 둘이서는 이 모두를 안전하게 맡기 어려워요."
+      example: "I'll assign one person to guard the airway."
+      exKo: "기도를 지킬 사람을 한 명 배정할게요."
+    - kind: swap
+      words: [w-mobilize, w-recover]
+      who: "가족에게 · 이동 설명"
+      icon: me
+      before: ["It may look scary, but we're helping him ", "mobilize", " so he can recover."]
+      options: [move around, mobilize, ambulate]
+      answer: move around
+      ko: 무서워 보여도 회복하도록 움직이시게 돕는 거예요
+      notes: {move around: "가족이 바로 알아듣는 쉬운 말이에요. 무슨 일을 하는지 분명해요.", mobilize: "의료진끼리의 말이에요. 가족에게는 뜻이 선명하지 않아요.", ambulate: "걷는다는 뜻이라 지금 하는 일과 달라요."}
+      why: "같은 일이라도 가족에게는 움직이도록 돕는다고 쉬운 말로, 의료진끼리는 mobilize라고 말해요."

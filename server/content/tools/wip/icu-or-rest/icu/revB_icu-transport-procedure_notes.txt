@@ -1,0 +1,133 @@
+RULE: value/status report swap=pass; check/ready/document completion + check action + rescue equipment readiness swap=fail(빠뜨린 확인); logistics(CT ready, elevator, team) pass.
+0.1 FAIL both (airway/lines dropped) -> X1 기도와 라인이 고정되면 바로 출발할게요 / X2 기도와 라인은 이동 중에 빠지기 쉬워요
+0.2 FAIL both (trigger fever/sleepy narrower) -> X1 악화되면 멈추고 병동으로 돌아가요 / X2 악화되면 복도보다 병동이 안전해요
+0.4 FAIL both (pumps dropped) -> X1 진정제와 승압제 펌프를 확인하면 바로 출발해요 / X2 진정제와 승압제는 잠깐만 끊겨도 위험해요
+0.5 PASS (logistics). decoy 'CT is closed' antonym==blank option -> 'MRI is ready'
+0.6 FAIL both (trigger narrowed to logistics) -> X1 뭔가 바뀌면 영상실에 연기를 알려요 / X2 뭔가 바뀌면 병동이 처치하기 더 안전해요
+0.2 decoy ', we sign' (and-sign type: replaces hold) -> 'If he wakes up'
+0.6 decoy ', we text' -> 'If the family agrees'
+1.0 X2 충전 시간(reserve dropped, nonsense for O2) -> 전체 이동 시간에 검사 시간까지 더해 산소 공급량을 계산했어요; blank delay=정답둘 waste/noise distant -> reserve/sedation/suction/saline
+1.1 blank signed/rented distant -> cleaned/covered
+1.2 decoy 'are on the chart' no slot -> 'the drawer'
+1.5 FAIL both (transport bag recheck dropped) -> X1 이송 가방을 한 번 더 확인하면 바로 출발해요? (repetition 출발) / X2 이송 가방은 이동 중에 열어 볼 틈이 없어요
+1.6 blank blamed/paid/excused distant -> accounted/asked/signed/cared
+2.0 FAIL both (monitor watch) -> X1 이송하는 동안 모니터가 바뀌면 바로 멈춰요 / X2 이송 중에는 상태가 갑자기 바뀔 수 있어요
+2.1 blank bubbles=정답둘, dust distant -> tension/tape/slack/fluid
+2.2 blank walls/floors/doors all fit scene(정답 여럿), floors 수 -> wheels/mask/tank/flowmeter
+2.5 FAIL both (kinks watch target) -> X1 튜빙에 꼬임이 보이면 바로 펴 주세요 / X2 튜빙이 꼬이면 산소가 끊길 수 있어요; blank splashes/labels -> kinks/flow/markings/stains
+3.0 FAIL both (NPO/ASA item swap) -> X1 ASA 등급과 마지막 경구 섭취를 마취과에 알렸어요 / X2 ASA 등급과 마지막 경구 섭취는 진정 전 필수예요
+3.1 FAIL both (consent->설명, airway->skin) -> X1 기도 사정과 동의가 끝나면 시작해요 / X2 기도 사정과 동의는 시술 전 필수예요
+3.2 FAIL both (suction->stetho/BP cuff) -> X1 역전제와 흡인 장비를 지금 꺼내 둘게요 / X2 역전제와 흡인은 급할 때 바로 써야 해요
+3.3 blank drunk=정답둘(NPO), tasted~ -> eaten/vomited/needed/asked for; decoy 'until noon' tense -> 'since breakfast'
+3.4 FAIL both (Mallampati dropped) -> X1 시작하기 전에 말람파티 점수를 마취과에 알렸어요 / X2 말람파티 점수로 기도가 어려운지 가늠해요; blank Glasgow 정답둘 -> Morse
+3.5 X1 FAIL (복사됐고: unsigned consent) -> 동의서는 서명됐고 보호자도 봤어요
+3.6 X2 마칠 nonsense -> 당신만 준비되면 바로 타임아웃을 할 수 있어요
+4.0 FAIL both (monitor items) -> X1 카프노그래피와 산소포화도가 바뀌면 바로 알려요 / X2 카프노그래피는 산소포화도보다 먼저 바뀌어요; blank telemetry 정답둘 -> temperature
+4.1 decoy 'and label' nonsense -> 'Her heart rate'
+4.2 FAIL both (reversal dropped) -> X1 흡인 장비와 역전제를 지금 꺼낼게요 / X2 흡인과 역전제는 호흡이 나빠지면 바로 써요
+4.3 blank doubled 문법 -> rose
+4.4 FAIL both (call criterion changed) -> X1 자극에 반응하지 않으면 진정이 너무 깊은 거예요 / X2 자극에 반응하지 않으면 역전제가 필요할 수 있어요
+S4 order L2 'On those' / L3 'At that drop' awkward English -> 'On that monitor, ...' / 'With that drop, ...'
+5.0 X2 걸어 다니고 absurd -> 이제 각성 가능하고 스스로 이름을 말하고 있어요; decoy 'and sitting' no slot(ungrammatical) -> "She's oriented"
+5.1 decoy 'to admission' dup blank opt -> 'to normal'
+5.2 blank hourly 정답둘 -> intensive
+5.4 blank wall(medical air≈21%) 정답둘, nasal nonsense -> warm/humid
+5.5 FAIL both (recheck->reposition/rails) -> X1 재확인하고 나서 호출벨을 곁에 둘게요 / X2 진정 뒤에는 다시 졸릴 수 있어서 재확인해요; blank re- soundalike -> recheck/weigh/bathe/dress; decoy 'until I' grammar -> 'go on break'?? (slot step out) 
+6.0 FAIL both (prior/yesterday vent settings) -> X1 이송용 인공호흡기 설정을 호흡치료사와 같이 봤어요 / X2 이송용 인공호흡기가 다르면 환기가 달라져요; blank changed 정답둘, stored grammar -> move answer to 'transport': transport/home/anesthesia/ward; decoy 'default ones' assembled unsafe -> 'the bed alarm settings'
+6.0 user note: in US RT sets/accompanies transport vent
+6.1 FAIL both (ETT depth->size/date) -> X1 호기말 이산화탄소와 기관튜브 깊이가 확인되면 옮겨요 / X2 호기말 이산화탄소는 튜브가 기도에 있다는 증거예요; blank color/price distant -> depth/size/brand/expiration
+6.2 FAIL both (BVM->laryngoscope/O2) -> X1 호흡기가 멈추면 백-밸브 마스크로 짤게요 / X2 기계가 멈추면 손으로 짜야 해서 곁에 둬요; blank broken/missing antonym -> ready/sealed/folded/cleaned
+6.3 X1 조용하게 ≈ smoothly 정답둘 -> 이송용 인공호흡기가 배터리로 작동하고 있어요
+6.5 decoy 'so we'd swap' no slot -> 'at the chin'
+7.0 blank -tion soundalike -> interruption/batteries/tubing/labels
+7.1 FAIL both (MAP goal->perfusion/urine 판단기준) -> X1 MAP을 목표치로 유지해야 장기 관류가 지켜져요 / X2 MAP 목표치는 의사가 처방한 값이에요
+7.2 blank pumps(drawn) filtered -> cultures
+7.3 X1 초록색≈plenty 정답둘 -> 배터리 표시기는 아직 절반이 남아 있어요; blank noise/dust/heat distant -> life/errors/alerts/signal; decoy 'plenty of dust' -> 'The pump screen'
+S7 order L3 'for a second' -> titrating pressor for 1-second dip; drop 'for a second'
+8.0 X1 통증에 반응 (moderate def wrong, 판단기준) FAIL, X2 체위 -> X1 중등도 진정에서는 목소리에 반응하고 심혈관 기능도 유지돼요 / X2 최소 진정에서는 목소리에 반응하고 스스로 기도를 유지해요; blank minimal 정답둘(true) -> dissociative
+8.1 FAIL both (depth->pain/vitals) -> X1 천천히 적정하면서 깊어지면 바로 멈출게요 / X2 천천히 적정해야 너무 깊어지지 않아요; blank pain 정답둘 -> weight; decoy 'and rewrite' nonsense -> 'her dose'
+8.2 FAIL both (trigger) -> X1 너무 깊어지면 혀가 기도를 막을 수 있어요 / X2 너무 깊어지면 숨이 얕아지고 산소가 떨어져요; decoy 'and hold the door' (assembled drops hold drug) -> 'too pale'
+8.4 X1 호흡≈response 정답둘, X2 표정 narrow fail1 -> X1 소량을 투여했고 반응을 보며 더 줄지 정해요 / X2 소량씩 줘야 너무 깊어지지 않아요(dup w/8.1 X2!) 
+8.6 blank places distant -> answer depth: depth/height/weight/color
+S8 order 2<->3 readable ('With that reassessed' after L1) -> L3 'On that reassessment, ...'
+9.0 length both > ko -> X2 오피오이드 역전을 위해 날록손을 꺼내 뒀어요
+9.1 X1 냉장 (false: room temp; readiness dropped) -> 플루마제닐도 약국에 요청했어요; blank antibiotic etc nonsense -> benzodiazepine/opioid/propofol/ketamine; decoy 'for antibiotic' -> 'The cart is ready'
+9.2 FAIL both (resedation->pain/vomit) -> X1 효과가 날 때까지 역전제를 적정하고 재진정되면 다시 줄게요 / X2 역전제는 진정제보다 먼저 끝나서 재진정이 와요; blank seizure 정답둘(flumazenil) -> rebleeding; decoy 'and sign' -> 'for the next case'
+9.3 FAIL both (reach/label dropped rescue drug) -> X1 세 용량 모두 라벨이 붙어 있고 손 닿는 곳에 있어요 / X2 라벨을 붙여야 두 약을 헷갈리지 않아요
+9.4 FAIL both (concentration->expiry/label) -> X1 뽑기 전에 농도를 확인해야 용량이 맞아요 / X2 농도를 확인한 뒤에 천천히 뽑았어요; blank thickness/fragrance distant -> pump rate/room number
+9.5 blank emotion distant -> ready/charting/leaving/moving; decoy ', we're done' -> 'for the scan'
+9.6 X1 호흡≈ 정답둘, X2 피부색 fail1 -> X1 천천히 주면 갑자기 깨지 않아요 / X2 천천히 주고 반응이 없으면 다시 줄게요; blank pain/color 정답둘 -> response/skin/weight/mood; decoy 'and mark' -> "I'll mix it"
+S9 order L3 'both doses' no antecedent + 2<->3 readable -> L3 'With the naloxone drawn up, the syringe is labeled and within reach.'
+10.0 FAIL both DANGEROUS (vomit/alarm -> start compressions) -> X1 심정지가 오면 이송보다 압박이 먼저예요 / X2 심정지 때 망설이지 않게 이송 전에 정해 둬요; blank faints (syncope->compressions) -> sneezes
+10.1 decoy 'where the newest' dup blank -> 'where the closest'? (≈nearest 정답둘!) -> 'where the spare'
+10.2 FAIL both (my role meds->bed/door 잡무, role omission) -> X1 당신이 기도를 맡고, 저는 약물을 준비해 둘게요 / X2 기도와 약물을 나눠 맡아야 동시에 할 수 있어요; why tautology; blank fluids/calls 정답둘 -> move answer 'airway': airway/family/billing/schedule; decoy ', I'll run the labs' (role drop) -> ', I'll run the scan'
+10.3 FAIL both (roles->route/speed) -> X1 역할을 합의하면 병동을 나서요 / X2 역할을 미리 정해야 위기 때 안 헷갈려요; blank r-soundalike, routes 정답둘 -> roles/shifts/breaks/charts
+10.4 blank arrives/opens nonsense -> stalls/slows/beeps/descends; decoy ', we cover' (antonym) -> ', we read'
+10.5 FAIL both (hand on bag -> pole/pillow) -> X1 출발 전에 백을 산소에 연결해 둘게요 / X2 백에서 손을 떼면 바로 짤 수 없어요; blank pole 정답둘 -> bag/chart/phone/clipboard; decoy 'on the door' dup -> 'on the pillow'
+S10 order 2<->3 readable -> L3 'With the airway and meds covered, I know where the nearest code cart is.'
+11.0 FAIL both (time-out->hand hygiene; site->consent) -> X1 타임아웃을 해요 — 환자, 시술, 부위가 맞으면 시작해요 / X2 타임아웃은 잘못된 부위 시술을 막아 줘요; blank address/insurance distant -> site/room/weight/schedule
+11.1 FAIL both (suction->light/gloves) -> X1 무균 트레이와 흡인 장비가 준비되면 시작해요 / X2 흡인 장비는 시술 중 분비물에 바로 써요; blank gloves/lamp 정답둘 -> suction/chair/printer/phone; decoy 'and a chair' dup -> 'and the TV'
+11.2 decoy 'and tell you' ungrammatical -> 'and show you'
+11.4 FAIL both (needles->gloves/syringes count) -> X1 거즈와 바늘 개수가 다르면 바로 알려 드릴게요 / X2 거즈와 바늘은 몸 안에 남으면 위험해요
+11.5 decoy 'bandages' no slot -> 'more topical'
+S11 order clinical: time-out is last before start (after setup) -> reorder L1 tray ready, L2 'With that set, let's do the time-out — patient, procedure, and site confirmed.' ...
+12.0 blank 'an SOAP' article -> SBAR/MAR/ECG/MRI
+12.1 X1 FAIL (med list dropped) -> 차트와 영상자료, 약물 목록을 이송팀에 넘겼어요; blank labs 정답둘, notes/orders -> imaging/billing/staffing/schedules
+12.5 X1 FAIL (call criterion narrowed to blocked) -> 이동 중 변화는 도착 전에 알아야 해요; decoy 'if anything spills' dup -> 'if the family asks'
+13.0 FAIL both (equipment screen->visitors/disinfection) -> X1 모든 장비가 MRI에 호환되면 들어갈게요 / X2 MRI 자석은 철로 된 장비를 끌어당겨요
+13.1 FAIL both (rule changed plastic/wet) -> X1 자성이 있는 물품은 스캔 영상도 흐려요 / X2 자성이 있는 물품은 휴대용 자석으로 가려요; decoy 'No visitors' (visitor count)
+13.2 PASS; decoy 'and a clipboard' (metal clip into MRI) -> 'and a foam pad'
+13.3 FAIL both (metal removal->shoes/gown) -> X1 금속을 다 빼면 검사실에 같이 들어가요 / X2 금속은 자석에 끌려 날아갈 수 있어요
+13.4 FAIL both (implants->allergy/ID) -> X1 선별 목록과 이식물이 맞으면 스캔을 시작해요 / X2 이식물은 몸 안에 있어서 눈으로 안 보여요; blank allergies/medications 정답둘 -> implants/wounds/vitals/diet
+13.5 FAIL both (non-ferrous->full/new; MRI projectile) -> X1 산소 탱크가 자성이 없으면 안으로 들여요 / X2 자성이 없는 탱크는 보통 알루미늄이에요; blank all items fit -> answer 'non-ferrous': non-ferrous/non-latex/non-sterile/non-slip; decoy 'is non-slip' -> 'is half full'
+13.6 X1 FAIL (bag only), X2 nonsense -> X1 그에게 있는 모든 건 스캐너용으로 확인되면 스캔해요 / X2 몸에 붙은 작은 금속도 다 봐야 해요
+S13 order 2<->3 readable; L3 tense -> 'With the monitor and pump chosen, I checked his implants against the screening list.'
+14.0 blank insurance/schedule/menu distant+article -> management/staffing/billing/visiting; decoy 'change insurance' -> 'change shifts'
+14.1 FAIL both (risk->cost/time) -> X1 이송 위험이 이익보다 크면 미뤄요 / X2 이송 위험에는 이동 중 악화도 들어가요
+14.2 FAIL both (optimize->paperwork; prepare->pack) -> X1 가기 전에 상태가 최적화되면 바로 출발해요 / X2 가기로 하면 이동 중 문제가 생길 수 있어요; decoy 'and pack for travel' -> 'If we wait'
+14.3 X1 수액⊂support 정답둘 -> 지금은 지지가 더 필요해질 경계를 넘었어요; blank side/top/line grammar -> move answer 'support': support/sleep/privacy/exercise; decoy -> 'of needing a bath'
+14.5 X2 내일까지 시점 FAIL -> 차라리 한 시간 기다렸다가 다시 상의하고 싶어요; decoy 'a week' time-delay -> 'if she wakes up'
+14.6 blank quickly 정답둘 -> privately
+S14 order L2 'That's why let's' ungrammatical -> 'So let's weigh the benefit against the transport risk.'
+15.0 FAIL both DANGEROUS (alarm/pale -> compressions) -> X1 침대를 멈춰요 — 지금 10초 동안 맥박을 확인해요 / X2 침대를 멈춰요 — 움직이는 침대에선 압박이 안 돼요; decoy ', labeling' -> 'Stop the scan'
+15.1 FAIL both (nearest->biggest/newest delay) -> X1 코드를 부르려고 가장 가까운 전화기를 들어요 / X2 가장 가까운 응급 카트에는 제세동기가 있어요; blank laundry/lunch/linen distant -> crash/supply/isolation/procedure; decoy 'linen cart' -> 'dressing cart'
+15.2 X1/X2 both prep same meaning -> X2 백과 약물을 나눠야 둘 다 멈추지 않아요; blank rolling/turning 정답둘(code) -> bagging/weighing/bathing/dressing
+15.3 FAIL both (crisis location misdirect) -> X1 누가 매트리스 한쪽을 들어 주세요 / X2 백보드를 깔아야 압박이 깊게 들어가요
+15.4 FAIL both (hallway/gloves) -> X1 코드팀이 오기 전까지 우리가 압박해요 / X2 코드 카트가 오면 패드부터 붙여요; decoy 'up the hall' -> 'more light'
+15.5 FAIL both (3/1 min = 시점) -> X1 2분마다 압박하는 사람을 바꿔야 깊이가 유지돼요 / X2 첫 2분이 끝나면 리듬을 확인해요; blank rest/pause/break DANGEROUS (2-min pause) -> round/lecture/video/survey; decoy 'of laundry' -> 'of bagging'
+15.6 FAIL both (rhythm->line/time check) -> X1 물러나야 — 충격 때 안 다쳐요 / X2 리듬 확인 뒤 — 바로 압박해요; blank still 정답둘 -> seated; decoy 'Rhythm break' no slot -> 'Pulse'
+S15 order: L3 compressions unassigned; 3<->4 readable -> L3 'With the cart here, you push the code meds while I keep compressing.'? 
+16.0 FAIL both (blocked/pushed-in + mask bagging = wrong action) -> X1 기관튜브가 빠졌어요 — 지금 마스크를 꺼내고 있어요 / X2 기관튜브가 빠졌어요 — 그래서 튜브로는 숨이 안 들어가요; blank bent/loose wrong action -> out/labeled/sterile/new; decoy 'with the tube' DANGEROUS -> 'in the hallway'
+16.1 FAIL both (airway kit->suction/emergency) -> X1 기도 키트가 와야 다시 삽관할 수 있어요 / X2 병동으로 돌아가면 기도 키트를 열어요; blank 'up' 정답둘 particles -> move answer 'airway': airway/dressing/suture/isolation; decoy 'to the lab' -> 'the IV kit'
+16.2 FAIL both (dislodged->blocked/kinked) -> X1 빠진 라인 자리에 거즈를 대요 / X2 빠진 라인 자리는 피가 날 수 있어요; decoy 'on the tangled' dup -> 'on the feeding'
+16.4 FAIL both (author Q: prep verbs every 5s replace ventilation) -> X1 5초마다 넣으면 분당 12번이에요 / X2 숨을 너무 빨리 넣으면 위로 공기가 들어가요; blank sips/drinks DANGEROUS oral -> breaths/updates/reports/signals
+16.5 X2 FAIL (소독 잡무) -> 병동에는 재삽관 장비와 인력이 다 있어요; blank garage/cafeteria -> unit/lobby/hallway/elevator
+16.6 FAIL both (chest rise->mask seal) -> X1 제가 숨을 줄 때마다 가슴이 오르면 잘 들어가는 거예요 / X2 가슴이 오르는지 보려면 옷을 젖혀 주세요
+S16 order clinical: L3 delays airway kit call until chest rises -> L2 'While I bag, call for the airway kit and get us back.' L3 'As we roll, watch his chest rise with each breath I give.' L4 'Once we're back, we'll re-intubate in the unit.'
+17.0 X1 FAIL (unconscious->bagging trigger) -> 무호흡 상태예요 — 백을 짜려고 마스크를 대고 있어요; blank masking 정답둘 -> weighing; decoy 'with a good pillow' no slot -> 'grip'
+17.1 PASS (뽑고/확인 = 앞 단계, crisis 허용); blank vaccine/laxative distant -> reversal/contrast/numbing/cleaning; decoy 'and sort' (sedatives continue) -> 'all paperwork'
+17.2 X1 FAIL (transfer instead of intubation prep) -> 회복하지 않으면 백만으로는 오래 버티기 어려워요; blank transfer/reposition 정답둘 -> intubate/discharge/bathe/isolate; decoy 'if she doesn't sleep' no slot -> 'eat'
+17.4 FAIL both (chest rise->seal/bag refill; false reassurance) -> X1 가슴이 오르면 숨이 들어간 거예요 / X2 짤 때마다 포화도가 조금씩 오르고 있어요
+17.5 length both longer -> X1 숨이 약해 기도 카트를 불러 주세요; blank linen/laundry/dietary distant+repeat -> airway/supply/feeding/dressing
+17.6 blank slowly/deeply/quietly 정답둘 -> move answer 'breathe': breathe/bleed/shiver/cry
+S17 order 2<->3 readable -> L3 'With chest rise confirmed, give the reversal agent and stop all sedatives.'
+18.0 FAIL both (won't stop≈brisk 정답둘; deep wound trigger) -> X1 출혈이 급격해요 — 압박할 거즈를 한 뭉치 꺼내 주세요 / X2 출혈이 급격하면 — 혈압이 곧 떨어질 수 있어요; blank drains (danger)/valves -> fluids/curtains/windows/doors; decoy '— apply ointment' DANGEROUS -> 'Her pulse is fast'; USER: crystalloid wide open vs ATLS
+18.1 FAIL both (emergency release≠MTP; cardiac arrest protocol) -> X1 대량수혈 프로토콜은 혈액을 묶음으로 계속 보내 줘요 / X2 외과가 와야 출혈 부위를 막을 수 있어요; blank tiny/small synonyms -> massive/routine/pediatric/minor
+18.2 blank 'an pediatric' article -> optional
+18.3 X2 FAIL (gown 잡무) -> 직접 압박은 출혈 부위를 손으로 눌러 막아요; blank gentle/light/slow inadequate pressure shown -> direct/blood/peer? -> keep? (flag)
+18.4 FAIL both (blood to OR/nurse station misdirect) -> X1 혈액 2유닛이 오면 침상에서 둘이 확인해요 / X2 대량 출혈엔 혈액이 수액보다 먼저예요; blank pints≈units 정답둘 -> vials
+18.5 blank chair/gown/pillow distant -> line/chart/form/sheet; decoy 'another gown' -> 'another pen'
+18.6 blank up 정답둘 -> down/home/out/away?; decoy 'on their way home' -> 'Pharmacy is'
+19.1 X2 FAIL (resus dest nearest door) -> 코드 카트는 MRI실에 들어갈 수 없어요 — 자석에 끌려가요
+19.2 FAIL both (brakes/flat replace compressions at the moment) -> X1 자석 구역에서는 금속 장비를 쓸 수 없어요 / X2 자석 구역을 벗어나면 패드를 붙여요; blank garage/parking/gate -> magnet/lobby/elevator/pharmacy; decoy 'Start breathing' -> 'Start the timer'; why fact (ACR) + USER
+19.3 FAIL both (rule narrowed) -> X1 검사받지 않는 사람은 들어가기 전에 선별해요 / X2 검사받지 않은 사람은 금속을 지녔는지 몰라요
+19.4 FAIL both (crisis location) -> X1 안전 구역에서는 제세동기를 쓸 수 있어요 / X2 안전 구역에는 코드 카트가 기다리고 있어요; blank behind≈past 정답둘 -> above/beside
+19.5 FAIL both (bag->suction/defib) -> X1 벗어나기 전에 백을 마스크에 끼워 둘게요 / X2 숨이 없으니 백이 가장 먼저 필요해요; ko tense vs en (A)
+19.6 blank keys/phone/wallet (TASK example) -> pulse/IV/voice/color
+S19 order: ACR CPR immediately while removing -> USER + proposal
+20.0 X2 덜컹 trivial -> 탱크가 거의 비었어요 — 예비 실린더를 꺼내 주세요
+20.1 X2 FAIL (vent battery -> room air while O2 avail) -> 실내 공기라도 숨을 넣는 게 안 넣는 것보다 나아요; blank fresh≈room -> room/cold/dry/hot
+20.2 FAIL both (power->stairs/exit) -> X1 벽면 산소와 전원을 쓰면 탱크와 배터리를 아껴요 / X2 가장 가까운 벽면 산소는 복도 끝 방에 있어요
+20.4 FAIL both (elevator nonsense; wall O2 = 20.2 정답둘) -> X1 방에 들어가기 전에 전원선을 꺼내 둬요 / X2 벽면 전원에 꽂아야 모니터가 안 꺼져요; blank panel 정답둘 -> outlet/switch/mirror/hook
+20.6 X1/X2 silly -> X1 다 떨어지기 전에 검사실에 왔어요 / X2 다 떨어지기 전에 엘리베이터를 탔어요; blank down 정답둘 -> back/clear/worse/up
+S20 order 2<->3 readable -> L3 'Until we reach that, I'll bag him on room air if we run out.'

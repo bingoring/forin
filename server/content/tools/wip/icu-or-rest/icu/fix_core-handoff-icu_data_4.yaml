@@ -1,0 +1,108 @@
+# 뉘앙스·order 수정. nuance 키 "상황.뉘앙스번호"(0부터); order 키 상황 번호.
+nuance:
+  "0.1":   # N5
+    pairs: [[situation, what is happening right now], [background, how he got here], [assessment, what I think the problem is], [recommendation, what I would like done]]
+  "7.1":   # N1
+    words: [w-propofol, w-norepinephrine, w-estimate, w-loss]
+    pairs: [[propofol, keeps him sedated], [norepinephrine, holds his pressure up], [estimated blood loss, how much he bled in surgery]]
+    decoys: [how long he was asleep]
+    why: "propofol은 재우는 진정제, norepinephrine은 혈압을 받쳐 주는 승압제예요. EBL은 수술 중 잃은 피를 어림한 값이라 '얼마나 흘렸나'와 짝이에요."
+  "7.2":   # N8
+    words: [w-estimate, w-loss]
+    word: estimated blood loss
+    ko: 추정 출혈량
+    scenes:
+      - {who: 마취과 의사에게, icon: stetho, en: "Estimated blood loss was about three hundred, right?", ok: true}
+      - {who: 동료 간호사, icon: handshake2, en: "Estimated blood loss was minimal, and he got no blood.", ok: true}
+      - {who: 가족에게, icon: home, en: "His estimated blood loss was three hundred milliliters.", ok: false, fix: "He lost some blood during the surgery, and the team is watching him closely."}
+    why: "의료진끼리는 estimated blood loss와 수치로 바로 통해요. 가족에게는 '추정'과 밀리리터 같은 수치 말보다 수술 중 피를 조금 잃었고 계속 지켜본다고 쉽게 풀어 줘요."
+  "8.1":   # N4
+    pairs: [[heparin, thins the blood], [the sheath, pulled when ordered], [a hematoma, swelling under the skin]]
+    why: "heparin은 피를 묽게 하는 약이고 ACT로 응고 정도를 확인하며 조절해요. 시스는 처방과 병원 지침에 따라 제거하고, hematoma는 피부 밑에 피가 고여 부은 것이에요."
+  "8.2":   # N9
+    words: [w-access, w-site]
+    word: access site
+    ko: 접근부위
+    scenes:
+      - {who: 동료 간호사, icon: handshake2, en: "The access site looks clean and dry.", ok: true}
+      - {who: 의사에게 보고, icon: stetho, en: "No hematoma at the access site, and distal pulses are intact.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your access site is intact.", ok: false, fix: "The spot where we went in looks good."}
+    why: "동료와 의사에게는 access site가 정확한 말이에요. 환자에게 access site라고 하면 어디를 말하는지 몰라서, 들어간 자리라고 쉽게 말해요."
+  "11.2":  # N7
+    words: [w-extubation]
+    word: extubation
+    ko: 발관
+    scenes:
+      - {who: 회진 발표, icon: board, en: "Plan: reassess extubation tomorrow.", ok: true}
+      - {who: 인계받는 간호사, icon: handshake2, en: "Extubation is planned for tomorrow if she passes her trial.", ok: true}
+      - {who: 가족에게, icon: home, en: "We'll reassess extubation tomorrow.", ok: false, fix: "Tomorrow we'll see if she's ready to have the breathing tube taken out."}
+    why: "의료진끼리는 extubation이 정확하지만 가족에게는 낯선 말이라 '호흡관을 빼다'로 풀어요."
+  "12.1":  # N2
+    decoys: [a type of white blood cell]
+  "13.1":  # N3
+    pairs: [[bronchoscopy, a camera in the airway], [the X-ray, rules out a pneumothorax], [the sample, goes to the lab]]
+    why: "bronchoscopy는 기도에 카메라를 넣어 보는 검사, X-ray는 시술 뒤 기흉이 없는지 확인하려고 찍고, sample은 검사실로 보내요. 시술 후 인계에서는 무엇을 했고 무엇을 보냈는지 함께 말해요."
+  "15.1":  # N6
+    decoys: [the lab results]
+  "3.2":   # N10
+    scene3: {who: 환자에게, icon: me, en: "Your respiratory status is still weak, so we'll go slowly today.", ok: false, fix: "Your breathing still tires you out, so we'll go slowly with the breathing machine today."}
+    why: "의료진끼리는 respiratory가 정확하고 짧은 말이에요. 환자에게 respiratory status라고 하면 어떤 상태인지 와닿지 않아서, 숨쉬기가 아직 힘들어 천천히 간다고 쉽게 말해요."
+  "4.2":
+    scene3: {who: 환자에게, icon: me, en: "You had anaphylaxis to penicillin, so we won't give it to you.", ok: false, fix: "Your body had a severe allergic reaction to penicillin, so we won't give it to you."}
+    why: "의료진끼리는 anaphylaxis가 가장 심한 알레르기 반응을 가리키는 정확한 말이에요. 환자에게 anaphylaxis라고 하면 무슨 반응인지 몰라서, 몸이 심하게 알레르기 반응을 했다고 쉽게 풀어 줘요."
+  "13.2":
+    scene3: {who: 환자에게, icon: me, en: "Your bronchoscopy is done, and the samples are sent.", ok: false, fix: "The camera test of your airways is done, and we sent a few small samples to the lab."}
+    why: "의료진끼리는 bronchoscopy가 검사 이름으로 바로 통해요. 환자에게 bronchoscopy라고 하면 무슨 검사인지 몰라서, 기도를 카메라로 보는 검사라고 쉽게 풀어 줘요."
+  "14.2":
+    scene3: {who: 가족에게, icon: home, en: "I'm escalating his case to the doctor right away.", ok: false, fix: "I've asked the doctor to come and look at him right away."}
+    why: "동료와 책임간호사 사이에서는 escalate가 위로 올려 보고한다는 정확한 말이에요. 가족에게 escalate라고 하면 상황이 얼마나 나쁜지 가늠이 안 되어 겁이 나서, 의사를 바로 불렀다고 쉽게 말해요."
+  "18.1":  # N11
+    ko: "제 인계 정정이에요. 칼륨 수치는 실제로 6.2예요"
+    why: "정정은 correction이라고 먼저 분명히 말하고, 어떤 수치가 어떻게 바뀌었는지 바로 이어서 말해요. 말투를 가볍게 하면 받는 사람이 중요한 정정이라는 것을 놓쳐요."
+order:
+  "0":
+    lines:
+      "1": {en: "For background, he has no prior ICU admissions.", icon: board, ko: "배경으로는 이전 중환자실 입원이 없어요", note: 배경}
+      "2": {en: "Given that background, my assessment is that he's stable on the norepi.", icon: magnify, ko: "그 배경으로 보면 평가는 노르에피로 안정적이에요", note: 평가}
+      "3": {en: "Based on all of that, my recommendation is to keep the norepi running and recheck a lactate.", icon: check, ko: "그 모든 걸 바탕으로 권고는 노르에피를 유지하고 젖산을 재검하는 거예요", note: 권고}
+  "10":
+    why: "가장 위중한 환자를 먼저 지목하고, 그에 비해 나머지는 안정적이라 그에게 집중하라고 이어 말하고, 그 환자의 일정을 알려 준 뒤, 확인 사이에라도 혈압이 떨어지면 호출하라고 닫아요."
+    lines:
+      "1": {en: "Compared with him, the rest of the unit is stable, so focus on him tonight.", icon: pushpin, ko: "그에 비해 나머지는 안정적이니 오늘 밤은 그에게 집중하세요", note: 집중}
+      "3": {en: "If his pressure drops at any point, even between those checks, page the resident early.", icon: pager, ko: "혈압이 언제든, 확인 사이에라도 떨어지면 일찍 레지던트를 호출하세요", note: 호출}
+  "11":
+    why: "신경계로 시작해 호흡기, 심장 순서로 계통을 넘어가고, 모든 것을 근거로 오늘의 계획으로 닫아요."
+    lines:
+      "1": {en: "Moving on to respiratory: on pressure support, tolerating weaning.", icon: monitor, ko: "호흡기로 넘어가면 압력보조 중이고 이탈을 견뎌요", note: 호흡}
+      "2": {en: "After respiratory, cardiac: off pressors, and both vitals are stable.", icon: stetho, ko: "호흡기 다음 심장: 승압제는 끊었고 두 수치 모두 안정적이에요", note: 심장}
+  "13":
+    lines:
+      "1": {en: "As a follow-up, a repeat chest X-ray was ordered for placement.", icon: lab, ko: "후속으로 위치 확인용 흉부 엑스레이 재촬영이 처방됐어요", note: 후속}
+  "14":
+    why: "리듬이 불안정하다는 경고로 시작하고, 이어 상급 보고를 미루지 말라고 하고, 혈압 기준의 호출을 말한 뒤, 그 둘을 근거로 이 환자는 일찍 올리라고 닫아요."
+    lines:
+      "2": {en: "The same goes for his MAP — if it drops below sixty-five, start pressors per the order and call me.", icon: pager, ko: "MAP도 마찬가지예요 — 65 아래로 떨어지면 처방대로 승압제를 시작하고 저를 불러 주세요", note: 기준}
+      "3": {en: "With both of those, escalate early rather than waiting on this one.", icon: pager, ko: "그 둘이 있으니 이 환자는 기다리기보다 일찍 상급 보고하세요", note: 지속}
+    line_edits:
+      "1": {en: "Because of that, don't wait for sustained VT before you escalate.", ko: "그러니 지속성 심실빈맥이 될 때까지 기다리지 말고 먼저 상급 보고하세요"}
+  "15":
+    why: "쇼크 상황부터 짧게 알리고, 기도와 가스를 보고하고, 혈압이 무너지니 도움을 요청한 뒤, 도착한 사람에게 수액과 호출 역할을 나눠요."
+    lines:
+      "1": {en: "On top of that, airway's secure but the last gas showed acidosis.", icon: stetho, ko: "그 위에 기도는 확보됐지만 마지막 가스는 산증이에요", note: 보고}
+      "2": {en: "With all of that, I need a second pair of hands now.", icon: pager, ko: "그 모든 상황에서 지금 도와줄 사람이 한 명 더 필요해요", note: 도움}
+      "3": {en: "Now that you're here, push fluids while I call the doctor.", icon: handshake2, ko: "와 주셨으니 제가 의사를 부르는 동안 수액을 급속 주입해 주세요", note: 역할}
+  "17":
+    why: "SBAR과 기록 전달을 먼저 알리고, 그 SBAR에서 이송 안정성을 말하고, 그걸 들었으면 자료를 갖고 있는지 확인해 달라고 한 뒤, 빠진 것이 있으면 수용팀이 연락한다고 닫아요."
+    lines:
+      "1": {en: "In that SBAR, he's stable for transport on these drips at these rates.", icon: plane, ko: "그 SBAR에서 이 약물과 속도 그대로 이송에 안정적이에요", note: 판단}
+      "2": {en: "Once you've heard that, please confirm you have the imaging and blood results.", icon: check, ko: "그걸 들으셨으면 영상과 혈액검사 결과를 갖고 계신지 확인해 주세요", note: 확인}
+      "3": {en: "If anything's missing from those, the receiving team will call.", icon: pager, ko: "그중 빠진 게 있으면 수용팀이 연락할 거예요", note: 연락}
+  "18":
+    why: "정정한다고 밝히고, 틀린 값과 바른 값을 말하고, 위험한 수치라 담당의를 호출했다고 알린 뒤, 의사가 안 다음 정정을 기록하자고 닫아요."
+    lines:
+      "1": {en: "Specifically, his potassium was wrong in the report; it's actually 6.2.", icon: cross, ko: "구체적으로 보고서의 칼륨이 틀렸어요, 실제로는 6.2예요", note: 값}
+      "2": {en: "I've already paged the resident about the 6.2.", icon: pager, ko: "6.2 건으로 이미 담당의를 호출했어요", note: 보고}
+      "3": {en: "Once the resident knows, let's document the correction so it doesn't get missed.", icon: pencil, ko: "담당의가 알았으니 놓치지 않도록 정정 내용을 기록해요", note: 기록}
+  "20":
+    lines:
+      "3": {en: "If two of them get worse at once, call for help early.", icon: pager, ko: "그중 둘이 동시에 나빠지면 일찍 도움을 요청하세요", note: 도움}

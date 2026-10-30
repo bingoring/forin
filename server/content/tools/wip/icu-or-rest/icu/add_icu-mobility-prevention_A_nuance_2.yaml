@@ -1,0 +1,127 @@
+- situation: "낙상 위험 관리"
+  items:
+    - kind: pair
+      words: [w-gait, w-belt, w-fall, w-risk, w-lock, w-wheel]
+      pairs: [["gait", "belt"], ["fall", "risk"], ["lock", "the wheels"]]
+      decoys: ["the pulse"]
+      why: "gait belt는 걷는 환자의 허리에 둘러 직원이 잡아 주는 띠예요. fall risk는 낙상 위험 등급이고, 일으키기 전에 침대나 휠체어 바퀴를 lock해 굴러가지 않게 해요."
+    - kind: context
+      words: [w-gait]
+      word: gait
+      ko: 보행
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Her gait is unsteady, so we'll keep two staff with her.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Watch her gait. She's dragging her left foot.", ok: true}
+        - {who: 환자에게, icon: me, en: "Your gait is ataxic, so we'll assist you with a gait belt.", ok: false, fix: "You're a little unsteady on your feet, so we'll walk beside you and hold the belt."}
+      why: "의료진끼리는 gait, ataxic처럼 걸음걸이를 짧고 정확하게 말해요. 환자에게는 그런 말이 낯설고 걱정만 키워요. 지금 어떻게 돕는지를 쉬운 말로 알려 줘요."
+- situation: "욕창 단계별 관리"
+  items:
+    - kind: slider
+      words: [w-stage, w-injury, w-loss, w-thickness]
+      cue: "Colleague: \"Full-thickness skin loss with fat visible, but no muscle or bone showing.\""
+      scale: [stage 1, stage 2, stage 3]
+      answerAt: 2
+      why: "1단계는 피부가 온전하고 눌러도 붉은 상태, 2단계는 부분층 손실, 3단계는 지방이 보이는 전층 손실이에요. 근육이나 뼈가 보이면 4단계예요. 상처 바닥이 가려져 단계를 못 정하면 미분류예요."
+      example: "This looks like a stage-two injury with partial-thickness loss."
+      exKo: "부분층 손실이 있는 2단계 손상으로 보여요."
+    - kind: context
+      words: [w-thickness]
+      word: thickness
+      ko: 두께
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "It's partial-thickness loss, and the base is pink.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Is the wound partial thickness or full thickness?", ok: true}
+        - {who: 환자에게, icon: me, en: "You have a stage-two pressure injury, partial-thickness with a viable wound bed.", ok: false, fix: "The top layer of your skin has worn away, but it's shallow and looks healthy."}
+      why: "의료진끼리는 thickness로 상처가 얼마나 깊은지 한마디로 말해요. 환자에게는 partial-thickness, viable 같은 말이 낯설어요. 어디까지 벗겨졌는지를 쉬운 말로 풀어 줘요."
+- situation: "의료기기 관련 욕창 예방"
+  items:
+    - kind: slider
+      words: [w-cushion, w-tubing, w-position]
+      cue: "Colleague: \"The oxygen tubing has been resting on her ear for hours, and the skin there is pink.\""
+      scale: [leave it alone, pad and move it, stop her oxygen]
+      answerAt: 1
+      why: "튜빙이 귀를 누르면 쿠션을 대고 위치를 옮겨 눌림을 줄여요. 그냥 두면 손상으로 진행할 수 있고, 산소를 끊는 건 환자에게 위험해요."
+      example: "I'll cushion the tubing and rotate its position."
+      exKo: "튜빙에 쿠션을 대고 위치를 돌려줄게요."
+    - kind: context
+      words: [w-device]
+      word: device
+      ko: 기기
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I check the skin under every device each shift.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Which device is that tube attached to? I want to cushion it.", ok: true}
+        - {who: 환자에게, icon: me, en: "A medical device-related pressure injury can develop under this device.", ok: false, fix: "This can press on your skin, so we'll check under it often and move it."}
+      why: "의료진끼리는 device-related pressure injury 같은 말로 원인을 정확히 짚어요. 환자에게는 병명 같은 말이 낯설고 걱정만 줘요. 어떻게 보호하는지를 쉬운 말로 알려 줘요."
+- situation: "VTE 예방 금기·조정"
+  items:
+    - kind: slider
+      words: [w-prophylaxis, w-chemical, w-mechanical, w-bleed]
+      cue: "Provider: \"He has an active GI bleed. What's the plan for VTE prevention while we hold the heparin?\""
+      scale: [devices only, low-dose heparin, full-dose heparin]
+      answerAt: 0
+      why: "활동성 출혈이 있으면 보통 약물 예방은 보류하고 압박기기 같은 기계적 예방을 써요. 약물을 다시 쓸지는 의사가 출혈이 나아졌는지 보고 정해요."
+      example: "We'll rely on mechanical prophylaxis instead."
+      exKo: "대신 기계적 예방에 의존할게요."
+    - kind: context
+      words: [w-contraindicate]
+      word: contraindicate
+      ko: 금기인
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Chemical prophylaxis is contraindicated with his active bleeding.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Heparin is contraindicated right now, so he's on SCDs only.", ok: true}
+        - {who: 환자에게, icon: me, en: "Blood thinners are contraindicated for you at this time.", ok: false, fix: "The medicine that thins the blood isn't safe for you right now, so we're using leg wraps instead."}
+      why: "의료진끼리는 contraindicated 한 단어로 쓰면 안 되는 이유를 정확히 전해요. 환자에게는 그 말이 낯설고 무서워요. 왜 안 쓰는지와 대신 무엇을 하는지를 쉬운 말로 알려 줘요."
+- situation: "재활팀 협업 계획"
+  items:
+    - kind: slider
+      words: [w-progress, w-tolerance, w-session]
+      cue: "PT: \"His sats fell and he was exhausted by the end of the last session.\""
+      scale: [a lighter session, the same session, a longer session]
+      answerAt: 0
+      why: "지난 세션을 견디지 못했다면 같은 강도나 더 긴 시간으로 올리지 않고 강도와 시간을 줄여 다시 해요. 어떻게 조정할지는 PT, OT와 의논해요."
+      example: "We're coordinating sessions so he doesn't get too tired."
+      exKo: "너무 지치지 않게 세션을 조율하고 있어요."
+    - kind: context
+      words: [w-tolerance]
+      word: tolerance
+      ko: 견디는 정도
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His activity tolerance is improving. He sat up fifteen minutes.", ok: true}
+        - {who: 물리치료사에게, icon: monitor, en: "How was his tolerance during the session?", ok: true}
+        - {who: 가족에게, icon: me, en: "He had poor activity tolerance, with a drop in sats and a rise in heart rate.", ok: false, fix: "He got tired quickly today, so we kept the session short."}
+      why: "의료진끼리는 tolerance로 활동을 얼마나 견디는지 한마디로 말해요. 가족에게는 수치 변화를 나열하면 겁만 줘요. 오늘 어땠고 무엇을 했는지를 쉬운 말로 알려 줘요."
+- situation: "ICU 획득 쇠약 예방"
+  items:
+    - kind: slider
+      words: [w-sedation, w-participate, w-activity]
+      cue: "Colleague: \"She's deeply sedated, not following commands, and can't move on her own.\""
+      scale: [passive motion only, active bed exercises, walking down the hall]
+      answerAt: 0
+      why: "스스로 움직이지 못하고 지시를 따르지 못하면 수동 관절운동처럼 남이 움직여 주는 것부터 해요. 깨어나 참여할 수 있게 되면 능동 운동, 앉기, 걷기로 올려요."
+      example: "Daily activity and range of motion are key."
+      exKo: "매일의 활동과 관절가동범위가 핵심이에요."
+    - kind: context
+      words: [w-sedation]
+      word: sedation
+      ko: 진정
+      scenes:
+        - {who: 의사에게 문의, icon: stetho, en: "Can we lighten her sedation so she can join PT?", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Her sedation is light enough to start mobilizing today.", ok: true}
+        - {who: 가족에게, icon: me, en: "She's on a propofol infusion at a sedation level of minus four.", ok: false, fix: "She's resting on medicine to keep her comfortable, and the team will reduce it whenever it's safe."}
+      why: "의료진끼리는 sedation 수준을 약 이름과 점수로 정확히 말해요. 가족에게는 약 이름과 점수가 뜻이 없어요. 왜 재우는지를 쉬운 말로 알려 줘요."
+- situation: "점진적 좌위·의자 이동"
+  items:
+    - kind: pair
+      words: [w-transfer, w-sit, w-edge, w-vitals, w-chair, w-check]
+      pairs: [["transfer", "to the chair"], ["sit", "at the edge"], ["check", "her vitals"]]
+      decoys: ["a long nap"]
+      why: "의자로 옮길 때는 transfer to the chair, 침대 끝에는 sit at the edge라고 해요. 각 단계에서 활력징후를 check하며 진행해요."
+    - kind: context
+      words: [w-vitals]
+      word: vitals
+      ko: 활력징후
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Vitals stayed stable through the whole transfer.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you grab her vitals before we stand her?", ok: true}
+        - {who: 환자에게, icon: me, en: "Your vitals are stable, with heart rate and MAP within parameters.", ok: false, fix: "Your heart rate and blood pressure look steady, so you're doing well."}
+      why: "의료진끼리는 vitals와 MAP 같은 말로 상태를 짧게 전해요. 환자에게는 MAP, parameters가 낯설어요. 심박수와 혈압처럼 아는 말로 풀어 줘요."
