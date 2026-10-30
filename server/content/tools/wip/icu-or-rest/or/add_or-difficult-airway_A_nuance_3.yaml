@@ -1,0 +1,113 @@
+CICO 상황:
+  - kind: slider
+    words: [w-intubate, w-oxygenate, w-situation]
+    cue: "Mask ventilation, the LMA, and two intubation attempts have all failed, and his saturation keeps falling."
+    scale: [We're having a hard time, We can't intubate, We can't intubate and we can't oxygenate]
+    answerAt: 2
+    why: "CICO는 삽관도 산소화도 안 되는 상황이에요. 한쪽만 말하면 아직 산소화는 되는 줄 알 수 있으니, 둘 다 안 된다고 분명히 말해야 응급 목 시술로 넘어갈 신호가 돼요. 선언과 결정은 마취과가 해요."
+    example: "We can't intubate and we can't oxygenate."
+    exKo: "삽관도 산소화도 안 돼요."
+  - kind: swap
+    words: [w-help, w-emergency, w-call]
+    who: "순환 간호사 → 수술실 밖 · 도움 요청"
+    icon: speech
+    before: ["Charge nurse, ", "we have a bit of an airway issue", "."]
+    options: [I need help in here right now — airway emergency, we have a bit of an airway issue, could someone maybe come when free]
+    answer: I need help in here right now — airway emergency
+    notes: {"I need help in here right now — airway emergency": "무엇이 필요한지, 얼마나 급한지 한 번에 전한다. 듣는 사람이 바로 움직인다.", we have a bit of an airway issue: "'a bit of'는 상황을 줄여 말한다. 응급인데 급하지 않은 줄 알 수 있다.", could someone maybe come when free: "시간이 날 때 오라는 말이다. 기도 응급에서는 곧바로 와야 한다."}
+    why: "위기에서는 도움 요청을 줄이지 않고 필요한 것과 급함을 분명히 말해요."
+    ko: "지금 바로 도움이 필요해요 — 기도 응급이에요"
+응급 윤상갑상막절개:
+  - kind: slider
+    words: [w-scalpel, w-ready, w-kit]
+    cue: "Anesthesia hasn't called for it yet and has only said the plan may move to the front of the neck."
+    scale: [I'll have the scalpel ready, I'll hand you the scalpel, I'll make the cut for you]
+    answerAt: 0
+    why: "아직 시술이 정해지지 않았을 때 간호사는 키트와 메스를 준비해 두는 데까지 해요. 건네는 것은 집도하는 사람이 달라고 할 때이고, 절개는 간호사의 일이 아니에요."
+    example: "I'll have the scalpel ready."
+    exKo: "메스를 준비해 둘게요."
+  - kind: swap
+    words: [w-scalpel, w-kit, w-open, w-cric]
+    who: "스크럽 간호사 → 시술자 · 메스 전달"
+    icon: speech
+    before: ["Cric kit is open — ", "here's the knife", "."]
+    options: [I'm handing you the scalpel, here's the knife, here's the cutter]
+    answer: I'm handing you the scalpel
+    notes: {I'm handing you the scalpel: "기구의 정확한 이름과 건네는 행동을 함께 말한다. 받는 사람이 무엇을 받는지 안다.", here's the knife: "'knife'는 일상어다. 수술 기구는 정확한 이름으로 말해야 오해가 없다.", here's the cutter: "수술 기구를 가리키는 업무 용어가 아니다. 어떤 기구인지 알 수 없다."}
+    why: "응급일수록 기구는 정확한 이름으로, 무엇을 하는지 함께 말해요."
+    ko: "윤상절개 키트가 열렸어요 — 메스를 건네드릴게요"
+저산소 서맥 진행:
+  - kind: slider
+    words: [w-critically, w-low, w-sats]
+    cue: "The monitor shows his oxygen level falling fast, and his heart rate is dropping with it."
+    scale: [Sats are a little low, Sats are low, Sats are critically low]
+    answerAt: 2
+    why: "산소포화도가 빠르게 떨어지고 심박까지 느려지면 위급한 상황이에요. 'critically low'처럼 강하게 말해야 팀이 곧바로 움직여요. 'a little low'로 줄이면 대응이 늦어져요."
+    example: "Sats are critically low."
+    exKo: "산소포화도가 위험할 정도로 낮아요."
+  - kind: context
+    words: [w-bradycardic]
+    word: bradycardic
+    ko: 서맥의
+    scenes:
+      - {who: 마취과에게, icon: monitor, en: "He's bradycardic — heart rate down to 40.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Pt became bradycardic and desaturated during induction.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He went bradycardic and desaturated on induction.", ok: false, fix: "His heart rate got very slow when his oxygen dropped, and we're treating it right now."}
+    why: "의료진끼리는 정확한 임상어가 좋지만, 가족에게는 뜻이 전해지지 않고 겁만 줘요."
+예상외 어려운 기도:
+  - kind: slider
+    words: [w-view, w-worse, w-expect]
+    cue: "The first look at the cords is partly blocked, but anesthesia can still work with it."
+    scale: [The view is a bit worse than we expected, The view is much worse than we expected, We can't get any view at all]
+    answerAt: 0
+    why: "본 정도에 맞춰 말해요. 조금 나쁜 것을 'much worse'나 '전혀 안 보인다'고 하면 팀이 필요 이상으로 위기로 받아들이고, 심각한 것을 줄여 말하면 대응이 늦어져요."
+    example: "The view is a bit worse than we expected."
+    exKo: "시야가 예상보다 조금 나빠요."
+  - kind: swap
+    words: [w-cart, w-difficult, w-immediately, w-airway]
+    who: "순환 간호사 → 팀 · 카트 요청"
+    icon: speech
+    before: ["Can someone ", "grab some airway stuff", "?"]
+    options: [bring the difficult airway cart in now, grab some airway stuff, check if there's a cart around]
+    answer: bring the difficult airway cart in now
+    notes: {bring the difficult airway cart in now: "무엇을 어디로 언제까지 하라는 말이라 듣는 사람이 바로 움직인다.", grab some airway stuff: "무슨 장비인지 알 수 없다. 급한 때 헤매게 된다.", check if there's a cart around: "카트가 있는지 확인만 하라는 말이라 급함이 없다."}
+    why: "급한 요청은 무엇을, 언제까지 할지 정확히 말해야 해요."
+    ko: "누가 어려운 기도 카트를 지금 들여와 주실래요"
+기도 완전 폐쇄:
+  - kind: slider
+    words: [w-obstruction, w-total, w-air]
+    cue: "He is straining to breathe and you can hear a crowing sound with every breath."
+    scale: [He's moving good air, He has a partial obstruction, He has a total obstruction]
+    answerAt: 1
+    why: "숨소리가 들리면 공기가 일부 지나가는 부분 폐쇄이고, 완전 폐쇄는 공기가 전혀 지나가지 않아 소리도 거의 없어요. 둘을 구분해 말해야 팀이 얼마나 급한지 알아요."
+    example: "He has a partial obstruction."
+    exKo: "부분적으로 막혀 있어요."
+  - kind: swap
+    words: [w-surgeon, w-call, w-emergency]
+    who: "순환 간호사 → 마취과 · 외과의 호출"
+    icon: speech
+    before: ["Understood — ", "I might try to reach a surgeon", "."]
+    options: [calling the surgeon now, I might try to reach a surgeon, I'll see if one is free]
+    answer: calling the surgeon now
+    notes: {calling the surgeon now: "지금 하고 있다고 분명히 말해 마취과가 기다릴 수 있다.", I might try to reach a surgeon: "'~해 볼지도'는 하겠다는 약속이 아니다. 응급에서는 지금 하는 일을 말한다.", I'll see if one is free: "시간이 날지 보겠다는 말이라 지금 호출하는 것으로 들리지 않는다."}
+    why: "응급 호출은 '지금 하고 있다'고 확실히 말해야 팀이 계획을 세울 수 있어요."
+    ko: "알겠습니다 — 지금 외과의를 호출하고 있어요"
+위기 후 기도 계획 문서화:
+  - kind: slider
+    words: [w-note, w-record, w-tool, w-work]
+    cue: "Anesthesia says the video scope worked well for this patient and wants it passed on."
+    scale: [I'll note it in the record, I'll flag it as a difficult airway alert, I'll call the charge nurse about it]
+    answerAt: 0
+    why: "어떤 도구가 잘 통했는지는 기록에 남기는 정보예요. '어려운 기도 경고'로 올릴지는 마취과가 판단하고, 이 일로 호출할 필요는 없어요."
+    example: "I'll note it in the record."
+    exKo: "기록에 남길게요."
+  - kind: swap
+    words: [w-alert, w-difficult, w-record]
+    who: "순환 간호사 → 다음 팀 · 인계"
+    icon: speech
+    before: ["Heads up: ", "he's a bit of a tough intubation", " — please read the record."]
+    options: [he has a difficult airway alert in the chart, he's a bit of a tough intubation, the last people had trouble]
+    answer: he has a difficult airway alert in the chart
+    notes: {he has a difficult airway alert in the chart: "차트의 공식 경고가 있다고 알려서 다음 팀이 어디를 볼지 안다.", he's a bit of a tough intubation: "사람을 '삽관'으로 부르고 정도를 흐린다. 인계 말로는 부정확하다.", the last people had trouble: "누가 언제 겪었는지 알 수 없다. 기록에 근거가 없는 전언이다."}
+    why: "인계는 차트에 있는 공식 표현으로 전해야 다음 팀이 근거를 찾을 수 있어요."
+    ko: "참고하세요, 차트에 어려운 기도 경고가 있어요 — 기록을 읽어 보세요"
