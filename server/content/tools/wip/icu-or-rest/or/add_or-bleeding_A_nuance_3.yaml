@@ -1,0 +1,127 @@
+응고검사 결과 반영:
+  - kind: slider
+    words: [w-inr, w-elevate]
+    cue: "The latest INR is just barely outside the normal range."
+    scale: [slightly elevated, markedly elevated, critically elevated]
+    answerAt: 0
+    why: "검사 수치가 정상보다 높을 때도 정도를 나눠 말해요. 정상 범위를 간신히 벗어났다면 slightly, 크게 벗어났다면 markedly, 위험한 수준이면 critically를 붙여요."
+    example: "His INR is slightly elevated."
+    exKo: "INR이 약간 높아요."
+  - kind: context
+    words: [w-coags]
+    word: coags
+    ko: 응고검사
+    scenes:
+      - {who: 마취과 → 순환 간호사, icon: speech, en: "Coags are back — INR is elevated.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Coags drawn at 10:15 and sent to the lab.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His coags are back, and his INR is elevated.", ok: false, fix: "His blood test shows his blood isn't clotting as well as it should, so we're helping it along."}
+    why: "coags는 의료진끼리 빠르게 말하고 차트에 적는 줄임말이에요. 보호자에게는 coags와 INR을 그대로 말해도 뜻이 전해지지 않으니, 검사가 무엇을 보여 주는지 쉬운 말로 풀어 줘요."
+저혈량 초기 징후:
+  - kind: slider
+    words: [w-pressure, w-drop]
+    cue: "His blood pressure is just a little below where it started."
+    scale: [dipping, dropping, crashing]
+    answerAt: 0
+    why: "dipping은 조금 내려가는 것, dropping은 뚜렷하게 내려가는 것, crashing은 급격히 무너지는 것이에요. 시작 때보다 살짝 낮은 정도라면 dipping이에요."
+    example: "His pressure is dipping a little."
+    exKo: "혈압이 조금 내려가고 있어요."
+  - kind: swap
+    words: [w-line, w-call, w-open]
+    who: "순환 간호사 → 마취과 · 혈압 하강 보고"
+    icon: speech
+    before: ["His heart rate keeps climbing while his pressure drops, so ", "let's just keep watching", "."]
+    options: [let's open another line and call for blood, let's just keep watching, let's check back in an hour]
+    answer: let's open another line and call for blood
+    notes: {let's open another line and call for blood: "심박수가 오르고 혈압이 떨어지는 조합은 출혈에 따른 저혈량의 흔한 초기 모습이다. 라인을 더 확보하고 혈액을 미리 준비하자는 제안이다. 혈액 투여 여부는 마취과·집도의가 결정한다.", let's just keep watching: "지켜보기만 하면 대응이 늦어진다.", let's check back in an hour: "한 시간 뒤에 보자는 것은 급변 상황에 맞지 않게 느긋하다."}
+    why: "심박수 상승과 혈압 하락이 함께 오면 출혈 쪽을 의심하고 바로 준비해요. 그냥 지켜보자거나 한 시간 뒤에 보자는 말은 대응이 너무 늦어요."
+    ko: "라인을 하나 더 열고 혈액을 요청합시다"
+대구경 라인 추가:
+  - kind: slider
+    words: [w-largebore, w-catheter]
+    cue: "He has a small 22-gauge IV, and anesthesia wants to run blood fast, so you need a much bigger one."
+    scale: [small-bore, mid-size, large-bore]
+    answerAt: 2
+    why: "카테터는 굵기를 bore로 말해요. 혈액이나 수액을 빨리 넣어야 할 때는 굵은 large-bore 카테터가 필요하고, 가는 small-bore는 속도를 따라가지 못해요."
+    example: "I need a large-bore catheter."
+    exKo: "대구경 카테터가 필요해요."
+  - kind: swap
+    words: [w-rapid, w-infuser, w-hook]
+    who: "순환 간호사 → 마취과 · 장비 제안"
+    icon: speech
+    before: ["Do you want a ", "slow", " infuser hooked up?"]
+    options: [rapid, slow, spare]
+    answer: rapid
+    notes: {rapid: "많은 양을 빠르게 넣어야 할 때 쓰는 신속 주입기를 가리킨다. 출혈 상황에 맞는 제안이다.", slow: "천천히 주입하는 장비는 급한 출혈 상황과 맞지 않는다.", spare: "예비 주입기라는 뜻이라 그 순간 필요한 기능을 설명하지 않는다."}
+    why: "출혈로 많은 양을 빨리 넣어야 할 때는 rapid infuser를 연결하자고 제안해요. 사용 여부는 마취과가 정해요."
+    ko: "신속 수액 주입기를 연결할까요?"
+가온 수액 준비:
+  - kind: slider
+    words: [w-warmer, w-temperature]
+    cue: "A fluid warmer should bring cold storage-room fluid up to about the patient's own body temperature."
+    scale: [cold, warm, scalding]
+    answerAt: 1
+    why: "가온기의 목적은 차가운 수액을 체온 가까이로 데우는 거예요. cold면 몸을 식히고, scalding은 화상을 입힐 수 있어요. 그래서 warm이 목표예요."
+    example: "The fluid should be warm, not hot."
+    exKo: "수액은 따뜻해야 하고 뜨거우면 안 돼요."
+  - kind: swap
+    words: [w-warmer, w-fluid, w-temperature]
+    who: "순환 간호사 → 환자 · 수술 전 설명"
+    icon: me
+    before: ["We use a warmer so the fluids won't make you ", "hypothermic", "."]
+    options: [too cold, hypothermic, chilled to the bone]
+    answer: too cold
+    notes: {too cold: "환자에게 쉬운 말로 가온기를 쓰는 이유를 알려 준다. 겁을 주지 않는다.", hypothermic: "의료진끼리 쓰는 임상어라 환자는 뜻을 모를 수 있다.", chilled to the bone: "과장된 표현이라 불안을 키운다."}
+    why: "환자에게는 hypothermic 같은 임상어보다 too cold처럼 쉬운 말로 이유를 알려 줘요. 겁주는 과장 표현도 피해요."
+    ko: "수액 때문에 몸이 너무 차가워지지 않도록 가온기를 써요"
+세포회수기 사용:
+  - kind: slider
+    words: [w-reservoir, w-collect]
+    cue: "The reservoir has just started to collect — only a thin layer at the bottom."
+    scale: [a little, half full, nearly full]
+    answerAt: 0
+    why: "저장고에 모인 양은 a little → half full → nearly full 순으로 늘어나요. 바닥에 얇게 깔린 정도라면 아직 a little이에요."
+    example: "The reservoir has only a little so far."
+    exKo: "저장고에는 아직 조금밖에 없어요."
+  - kind: context
+    words: [w-salvage]
+    word: salvage
+    ko: 회수하다
+    scenes:
+      - {who: 순환 간호사 → 마취과, icon: speech, en: "The cell saver can salvage his red cells from the field.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Red cells salvaged and returned via cell saver.", ok: true}
+      - {who: 불안한 보호자에게, icon: me, en: "We'll salvage your husband's blood from the field.", ok: false, fix: "We can collect the blood he loses and give it back to him."}
+    why: "salvage는 의료진 사이에서 장비로 피를 거둬 쓰는 과정을 간단히 가리켜요. 보호자에게 '건져 낸다'고 하면 물건을 회수하는 것처럼 차갑게 들려서, collect와 give it back처럼 풀어 줘요."
+출혈 원인 팀 논의:
+  - kind: slider
+    words: [w-surgical, w-bleeder]
+    cue: "The surgeon points to a spurting vessel: 'That's a cut vessel — no question.'"
+    scale: [possibly surgical, likely surgical, surely surgical]
+    answerAt: 2
+    why: "원인을 말하는 확신의 정도는 possibly → likely → surely 순으로 강해져요. 집도의가 잘린 혈관을 보며 의심 없다고 했다면 surely예요."
+    example: "This is surely a surgical bleeder."
+    exKo: "이건 분명히 외과적 출혈이에요."
+  - kind: swap
+    words: [w-address, w-investigate]
+    who: "순환 간호사 → 팀 · 원인 불명 출혈"
+    icon: speech
+    before: ["Let's ", "wait on", " both while we investigate."]
+    options: [address, wait on, leave]
+    answer: address
+    notes: {address: "'다루다, 대응하다'라는 뜻으로 두 가능성을 동시에 챙기자는 말이다.", wait on: "기다린다는 뜻이라 원인을 조사하는 동안 손을 놓게 된다.", leave: "그대로 둔다는 뜻이라 출혈에 대응하지 않는다."}
+    why: "원인을 찾는 동안에도 출혈은 계속되니 두 가능성을 모두 다루자는 뜻으로 address를 써요. 실제 치료 결정은 집도의와 마취과가 해요."
+    ko: "조사하는 동안 둘 다 다룹시다"
+소변·관류 감시:
+  - kind: pair
+    words: [w-urine, w-output, w-capillary, w-refill, w-lactate]
+    pairs: [[urine, output], [capillary, refill], [lactate, level]]
+    decoys: [the clock]
+    why: "urine output은 소변량, capillary refill은 눌렀다 뗀 손톱 밑 색이 돌아오는 시간, lactate level은 혈중 젖산 수치예요. 관류를 볼 때 자주 같이 나오는 표현이에요."
+  - kind: context
+    words: [w-perfusion]
+    word: perfusion
+    ko: 관류
+    scenes:
+      - {who: 마취과 → 외과, icon: speech, en: "Perfusion looks compromised — urine output is low.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Perfusion decreased; UOP low.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His perfusion is compromised right now.", ok: false, fix: "Not enough blood is reaching his organs right now, and we're working on it."}
+    why: "perfusion은 의료진 사이에서 장기로 가는 혈류를 말하는 정확한 임상어예요. 보호자에게는 뜻이 전해지지 않고 차갑게 들려서, 무슨 일이 일어나는지 쉬운 말로 풀어 줘요."

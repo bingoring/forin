@@ -1,0 +1,136 @@
+import yaml,collections,re,json
+d=yaml.safe_load(open('_reviewB_core-language-or_after.yaml'))
+B={ # (sit,sent): (answer, options, reason, kind)
+(0,0):("professional",["professional","court","conference","temporary"],"family·volunteer — 가족·무자격 통역(이 주제가 하지 말라고 가르치는 관행)을 오답으로 보임","S"),
+(1,2):("through",["through","about","for","beside"],"behind·beyond·beneath — 장면과 동떨어진 위치 전치사(읽기만 해도 걸러짐)","F"),
+(2,0):("fasting",["fasting","visiting","parking","discharge"],"billing — bill·billing이 빈칸·decoy에 8번(돈 낱말 몰림)","F"),
+(3,2):("concerns",["concerns","memories","stories","news"],"symptoms·allergies·infections — 'any allergies about it' 비문이라 'about it'만 보고 걸러짐","F"),
+(3,3):("remember",["remember","approve","translate","choose"],"regret·repeat·resist — re- 소리만 닮음(TASK 6), repeat 3회 되풀이","F"),
+(4,0):("ten",["ten","twenty","fifty","thirty"],"hundred — 'from zero to hundred' 비문(a/one 없음)","F"),
+(5,0):("consent",["consent","transport","supplies","insurance"],"research — 연구 동의도 전문 통역이 필요해 정답 둘; billing 5회 몰림","T"),
+(6,1):("remote",["remote","local","broken","noisy"],"spare — 예비 통역 회선을 설정하는 것도 성립(정답 둘)","T"),
+(6,4):("mask",["mask","shoes","gown","gloves"],"coat·badge — badge(s) 4회 몰림(빈칸·decoy)","F"),
+(7,0):("understood",["understood","paid","brought","packed"],"signed — 동의 재확인 장면에서 '서명한 것을 자기 말로'도 성립(정답 둘); ordered·drew는 17.3과 같은 묶음","T"),
+(7,1):("unclear",["unclear","torn","stapled","easiest"],"unsigned — 동의서의 서명 안 된 부분을 다시 보는 것도 성립(정답 둘) + un- 소리 묶음","T"),
+(7,3):("understand",["understand","remember","copy","finish"],"sign — '서명 안 한 부분을 가리키세요'도 동의 장면에서 성립(정답 둘)","T"),
+(8,2):("respect",["respect","judge","question","change"],"record — 문화적 선호를 기록하는 것도 사실(정답 둘) + record·repeat·rewrite re- 소리 묶음","T"),
+(9,1):("nodding",["nodding","waiting","resting","sitting"],"singing·laughing — 장면 밖 우스운 말; sleeping 되풀이","F"),
+(9,3):("twice",["twice","once","never","later"],"thrice — 세 번도 똑같이 성립하는 약속(정답 둘); slowly는 품사·자리가 다름","T"),
+(9,4):("yet",["yet","again","either","first"],"today — '오늘은 말 못 하셔도'도 성립(정답 둘)","T"),
+(10,1):("normal",["normal","lucky","strange","unfair"],"rare 3회 되풀이(8.0·10.1·19.3)","F"),
+(10,2):("feel",["feel","look","sound","seem"],"stay — 'so you stay more in control'도 성립(정답 둘)","T"),
+(10,4):("together",["together","anyway","outside","tonight"],"alone·separately — 4.2와 같은 오답 묶음 되풀이","F"),
+(11,1):("just",["just","never","rarely","hardly"],"breathe — 용어가 무엇인지 문장·장면에 없어 swallow·speak도 성립, 영어로 추론 불가 → 빈칸을 just로(why가 짚는 말)","T"),
+(14,0):("interpreter",["interpreter","orderly","auditor","educator"],"porter·chaplain·physiotherapist — 'an porter' 관사로 걸러짐","F"),
+(14,3):("wait",["wait","stay","sleep","rest"],"talk — 'We can't talk — get me an interpreter'(말이 안 통해요)도 성립(정답 둘)","T"),
+(14,4):("Connect",["Connect","Mute","Label","Close"],"Clean·Count·Carry — C- 소리만 닮음, 'Count/Carry the line' 장면 밖","F"),
+(15,0):("communicate",["communicate","investigate","negotiate","persuade"],"celebrate — 장면 밖; apologize·celebrate가 17.1과 같은 묶음","F"),
+(15,1):("document",["document","announce","rehearse","film"],"discuss — 응급과 동의 절차를 논의하자도 성립(정답 둘)","T"),
+(15,3):("document",["document","guess","dispute","debate"],"when·how — 시각·방법도 실제 기록 항목이라 정답 둘 → 빈칸을 document로","T"),
+(16,0):("confirm",["confirm","treat","cause","cure"],"symptoms — 이 장면에서 증상도 확인 못 함(정답 둘), 'confirm address' 관사 없어 비문 → 빈칸을 confirm으로","T"),
+(16,1):("interpreter",["interpreter","escort","attendant","officer"],"witness·porter·chaplain — 'an witness' 관사로 걸러짐; chaplain 3회","F"),
+(16,3):("medication",["medication","paperwork","directions","pillows"],"bracelets — 알레르기 팔찌는 실제로 확인 뒤에 채움(정답 둘에 가까움)","T"),
+(16,4):("barrier",["barrier","class","test","app"],"help·benefit·gain — 셋이 같은 쪽(긍정) 말이라 반대쪽 하나(risk)가 정답임이 보이고, risk 자리엔 threat 같은 말이 다 성립 → 빈칸을 barrier로","F"),
+(17,0):("match",["match","interrupt","finish","change"],"rhyme — 'didn't rhyme what I said' 비문(rhyme with)","F"),
+(17,1):("clarify",["clarify","apologize","relax","argue"],"celebrate — 장면 밖; 15.0과 같은 묶음","F"),
+(18,1):("condition",["condition","diet","room","wristband"],"schedule — 빈칸 3·decoy 3 몰림","F"),
+(18,2):("simple",["simple","quiet","secret","formal"],"slow — 천천히 하면 오해가 줄어 성립(정답 둘)","T"),
+(19,1):("consent",["consent","lighting","exits","shelters"],"orders — 'proceed under emergency orders'도 성립(정답 둘); badges·forms 몰림","T"),
+(20,0):("news",["news","menu","plan","video"],"bill — bill·billing 몰림","F"),
+}
+C={ # decoy
+(2,1):("before the scan","'or visitors' — 조립하면 'No food or visitors after midnight' — 음료 금지가 빠진 금식 지시(새 decoy는 'or drink' 자리에 들어가면 비문)","S"),
+(2,2):("the discharge papers","'the parking rules' — parking 4회 몰림(decoy 3·빈칸 1)","F"),
+(5,4):("records every word","'every sigh' — 동사 없는 조각이라 어느 청크 자리에도 안 맞음","F"),
+(6,0):("a text or email","'a printed or poster' — 비문 + print 6회 몰림","F"),
+(10,4):("one meal","'one bite' — 'one bite at a time'은 같은 뜻 관용구(정답 둘)","T"),
+(12,1):("the spelling","'the schedule' — schedule 6회 몰림","F"),
+(12,4):("that the address","'with the clipboard' — 조립하면 동의 정확성을 환자 대신 서류와 확인","S"),
+(13,0):("a private room","'a hearing aid' — 조립하면 수어 통역 대신 보청기(수어 사용자에게 맞지 않는 대체)","S"),
+(13,2):("to calm","'sit down' — 'to slow / down' 어느 자리에도 안 맞음","F"),
+(13,4):("Watch my feet","'my shoes' — 'Watch my face' 청크 모양이 아님","F"),
+(14,4):("Charge the tablet","'the printer' — 청크 모양이 아님(동사 없음), print 몰림","F"),
+(15,0):("a calm voice","'a printed schedule' — print·schedule 몰림","F"),
+(15,1):("the lunch order","'the billing' — billing 5회 몰림","F"),
+(15,4):("This is a drill","'a routine visit' — 'This is an emergency' 청크 모양이 아님","F"),
+(16,0):("in spite of","'thanks to' — '~때문에'라는 같은 뜻으로 조립됨(정답 둘)","T"),
+(16,4):("is a real puzzle","'a real help' — 'is'가 빠진 조각 + 반대말 + 같은 문장 빈칸 오답 help와 겹침","F"),
+(18,2):("Keep it moving","'it secret' — 'Keep it simple' 청크 모양이 아님","F"),
+(18,3):("word by word","'a longer' — 관사에서 끊긴 조각","F"),
+(18,4):("Explain this twice","'in riddles' — 청크 모양이 아님 + 장면 밖","F"),
+(19,3):("under a court order","'under a signed form' — form 6회 몰림","F"),
+(20,1):("to sign this","'fill this form' — 'to process this' 청크 모양이 아님, form 몰림","F"),
+}
+O={ # sit -> ({line_idx:(en,ko,note,icon)}, new why or None, reason)
+1:({2:("A nod isn't enough — I need to hear it from you.","끄덕임만으로는 부족해요, 직접 들어야 해요","요청","check"),
+    3:("So please tell me what that means in your own words.","그러니 그게 무슨 뜻인지 환자분 말로 말씀해 주세요","복창","redo")},
+   "통역사가 동의서를 설명해 준다고 알린 뒤 이해했는지 묻고, 끄덕임만으로는 부족하다고 짚은 다음, 그러니 자기 말로 다시 말하게 해요.",
+   "swap34 자연스러움 — 끄덕임 줄이 2줄(예/아니오 질문) 바로 뒤에 더 자연스럽게 붙음"),
+4:({1:("If a number is hard to say, point to it on this chart instead.","숫자를 말하기 어려우면 대신 이 차트에서 가리켜 주세요",None,None)},
+   "숫자로 통증을 묻고, 말하기 어려우면 차트에서 숫자를 가리키게 한 다음, 그 답을 차트에 적고 정기적으로 다시 확인하겠다고 알려요.",
+   "임상 — 숫자(강도) 대신 '아픈 곳'(위치)을 가리키게 해 강도 평가가 빠짐"),
+5:({0:("I know your daughter wants to help.","따님이 돕고 싶어 하시는 거 알아요","공감","faceWorried"),
+    1:("But for medical consent, we need a professional interpreter.","하지만 의료 동의에는 전문 통역사가 필요해요","규칙","shield"),
+    2:("That's for accuracy and her safety, not about trust.","정확성과 환자분 안전 때문이지, 신뢰 문제가 아니에요","이유","magnify"),
+    3:("Your daughter is still welcome to stay and support her.","그래도 따님은 곁에서 지지해 주셔도 좋아요","환영","handshake2")},
+   "따님의 마음을 먼저 인정하고, 하지만 동의에는 전문 통역사가 필요하다고 말한 뒤, 그게 신뢰가 아니라 정확성과 환자 안전 때문이라고 밝히고, 그래도 곁에 있어도 된다고 환영해요.",
+   "swap34 자연스러움 — 'Still, … welcome'이 공감 줄(4줄) 뒤에 더 자연스럽게 붙고, 이유·공감 줄은 규칙 뒤 어느 순서로도 붙음 → 공감을 맨 앞에 두고 'But'·'That's'·'still'로 묶음(듣는 사람은 가족, her=환자)"),
+6:({2:("Now that it's connected, you'll hear them clearly on this device.","이제 연결됐으니 이 기기로 또렷하게 들리실 거예요",None,None)},None,
+   "swap23 자연스러움 — '또렷하게 들려요'가 1줄 뒤, 'Let me set that up'이 그 뒤에 와도 말이 됨"),
+7:({1:("Thank you — I'll go over any part you missed.","고마워요, 놓치신 부분이 있으면 다시 짚어 드릴게요",None,None)},
+   "이해한 내용을 자기 말로 하게 하고, 놓친 부분을 다시 짚은 뒤, 끝나면 모호한 부분을 가리키게 하고, 모두 명확해지면 넘어가요.",
+   "답 전제 — 2줄 'explain it again, more slowly'가 환자 답이 틀렸다고 전제"),
+9:({3:("If pointing is too hard, I'll watch your face for pain too.","가리키기 어려우시면 얼굴로도 통증을 살필게요",None,None)},
+   "들린다는 걸 알고 있다고 안심시키고, 손으로 예·아니오를 약속하고, 통증은 가리키거나 끄덕이게 하며, 가리키기 어려우면 얼굴로도 살핀다고 말해요.",
+   "swap34 자연스러움 — 'In case you can't'가 2줄(손 쥐기) 뒤에도 그대로 붙음"),
+11:({3:("Once you have no more questions, we'll do the other terms the same way.","더 질문이 없으시면 다른 용어도 같은 방식으로 볼게요",None,None)},None,
+   "swap34 자연스러움 — 'Once that's clear'가 2줄(뜻 풀이) 뒤, 'Ask me anything'이 맨 끝에 와도 자연스러움"),
+12:({0:("Please ask the patient to explain it back in their own words.","환자분께 자기 말로 다시 설명해 달라고 해 주세요","요청","speech"),
+     1:("Then tell me exactly what they said, word for word.","그다음 환자분이 한 말을 그대로 전해 주세요","복창","redo"),
+     2:("Let me compare that with what I explained.","그걸 제가 설명한 내용과 비교해 볼게요","대조","magnify"),
+     3:("If anything is missing, we'll go over that part again.","빠진 게 있으면 그 부분을 다시 짚을게요","재설명","check")},
+   "통역사에게 환자가 자기 말로 설명하게 하고, 그 말을 그대로 전해 받은 뒤, 내 설명과 비교해 빠진 부분을 다시 짚어요. 비교는 통역사가 아니라 간호사가 해요.",
+   "임상·흐름 — 맞는지 판단을 통역사에게 맡기고(2줄), 복창이 맞으면 통역사가 '모든 말을' 잡았다고 단정하며(3줄), 동의 확인을 통역사에게 맡김(4줄) — 대조·확인은 간호사 몫"),
+13:({3:("At a slower pace, you won't miss anything.","속도를 늦추면 아무것도 놓치지 않으실 거예요",None,None)},None,
+   "swap34 자연스러움 — 'That way'가 2줄(지침마다 보기) 뒤에도 그대로 붙음"),
+15:({2:("Because we're using those provisions, we must document why.","그 규정을 쓰는 만큼 이유를 기록해야 해요",None,None),
+     3:("That note should go in the chart as soon as we can.","그 기록은 가능한 한 빨리 차트에 남겨야 해요",None,None)},
+   "응급이고 통역사가 없다고 상황을 말하고, 환자 안전이 근거라고 정당화한 뒤, 그 규정을 쓰니 이유를 기록해야 한다고 하고, 차트에 적도록 요청해요.",
+   "swap23 자연스러움 — 'That's why we need to document'가 1줄(통역사 없음) 뒤에도 붙음; 4줄 'write that'도 2줄(정당화) 뒤에 붙어 swap34 경계 → 'That note'로 3줄에 묶음"),
+17:({0:("Stop for a moment — that didn't match what I said.","잠깐 멈춰 주세요, 그건 제가 한 말과 안 맞았어요","멈춤","siren"),
+     1:("Let's clarify that part before we go on.","계속하기 전에 그 부분을 명확히 해요","명확화","magnify"),
+     2:("To do that, please interpret it again, exactly as I said it.","그러려면 제가 한 말 그대로 다시 통역해 주세요","재요청","redo"),
+     3:("After you do, I'll check that no key information was lost.","다시 통역하시면 핵심 정보가 빠지지 않았는지 확인할게요","확인","shield")},
+   "어긋났다고 멈춰 세우고, 그 부분을 명확히 하자고 한 뒤, 그러려면 다시 통역해 달라고 하고, 끝나면 핵심 정보가 빠지지 않았는지 확인해요.",
+   "swap12·swap23 자연스러움 — 지적·멈춤·이유 줄이 서로 기대지 않음"),
+18:({2:("While you do, keep it simple so nothing is misunderstood.","통역하실 때 잘못 이해되지 않게 간단하게 해 주세요",None,None)},None,
+   "swap23 자연스러움 — 'Keep it simple'이 1줄 바로 뒤에도 붙음"),
+20:({2:("While you take that time, we're here to support your family.","그 시간 동안 저희가 가족분들 곁에서 지지할게요",None,None)},
+   "사과하며 통역사와 함께 전한다고 알리고, 소식이 힘들다는 걸 인정하며 시간을 주고, 그 시간 동안 가족을 지지하겠다고 말한 뒤 앞으로도 함께한다고 약속해요.",
+   "흐름 — 3줄 'That's why'가 2줄(시간을 가지세요)에서 이어지지 않음"),
+}
+W={
+(2,4):("Tell me back은 들은 내용을 환자 입으로 다시 말하게 하는 표현이에요. 시각은 자정·새벽처럼 헷갈리기 쉬워서 환자 입으로 들어야 어긋나지 않아요.","'외우기 쉬운 값이라 말로 확인해야' — 앞뒤가 안 맞음"),
+(3,3):("Once는 '일단 ~하고 나면'이라는 시점을 열어서 그 뒤에 일어날 일을 안내해요. any of this는 잠든 뒤 수술실에서 일어나는 일 전체를 가리켜요.","'이 대화와 준비 전체' — 잠들기 전 대화는 기억하는 경우가 많음(과장)"),
+(15,0):("every available means는 쓸 수 있는 수단을 하나도 빼지 않겠다는 약속이에요. means는 단수·복수 모양이 같은 명사라 every 뒤에서도 means 그대로 써요.","'every 뒤에서도 -s가 붙지 않아요' — means는 늘 -s로 끝남(설명이 거꾸로 읽힘)"),
+(17,4):("Let's clarify this now로 바로 하자고 제안하고, before we risk ~ing로 미루면 생길 위험을 붙여요. risk losing은 '잃을 위험을 무릅쓰다'라는 뜻이에요.","'risk losing은 잃을 위험을 안다는 뜻' — 사실 오류(risk + -ing = 무릅쓰다)"),
+}
+S=d['situations']
+def once(a,en): return len(re.findall(r'(?<![A-Za-z])'+re.escape(a)+r'(?![A-Za-z])',en))==1
+for (i,j),(a,o,r,k) in B.items():
+  x=S[i]['sentences'][j]; assert once(a,x['en']),(i,j); assert a in o and len(set(o))==4
+  x['blank']={'answer':a,'options':[{'en':t} for t in o]}
+for (i,j),(v,r,k) in C.items():
+  x=S[i]['sentences'][j]; assert v not in x['en'] and v not in x['chunks'],(i,j); x['decoy']=v
+for i,(lines,why,r) in O.items():
+  L=S[i]['order']['lines']
+  for k,(en,ko,note,icon) in lines.items():
+    L[k]['en']=en; L[k]['ko']=ko
+    if note: L[k]['note']=note
+    if icon: L[k]['icon']=icon
+    assert len(en.split())<=15,(i,k,len(en.split()))
+  if why: S[i]['order']['why']=why
+for (i,j),(v,r) in W.items(): S[i]['sentences'][j]['why']=v
+yaml.safe_dump(d,open('_reviewB_core-language-or_after.yaml','w'),allow_unicode=True,sort_keys=False)
+json.dump({'blank':{f'{i}.{j}':v for (i,j),v in B.items()},'decoy':{f'{i}.{j}':v for (i,j),v in C.items()},'order':{str(i):v for i,v in O.items()},'why':{f'{i}.{j}':v for (i,j),v in W.items()}},open('_reviewB_core-language-or_rest.json','w'),ensure_ascii=False,indent=0)
+print('blank',len(B),collections.Counter(v[3] for v in B.values()),'decoy',len(C),collections.Counter(v[2] for v in C.values()),'order',len(O),'why',len(W))

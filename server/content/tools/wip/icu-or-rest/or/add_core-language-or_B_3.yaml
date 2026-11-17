@@ -1,0 +1,86 @@
+situations:
+- title: 의료 용어 평이한 설명
+  s:
+  - ["쉬운 설명", bulb, "in simpler words는 내용은 같고 표현만 쉽게 바꾼다는 뜻이에요. Let me로 환자가 못 알아들은 탓이 아니라 내 몫으로 가져와요.", "on this form", "더 쉬운 말로 질문해 드릴게요.", "더 쉬운 말로 보여 드릴게요.", "simpler", "longer", "louder", "slower"]
+  - ["용어 풀이", stetho, "just means를 붙이면 어려워 보이던 말이 별것 아니라는 느낌을 줘요. 관계절 that helps you breathe로 관의 역할을 쉬운 말로 풀어요.", "helps you eat", "그 용어는 그냥 소변을 빼 주는 관을 뜻해요.", "그 용어는 그냥 약을 넣는 관을 뜻해요.", "breathe", "swallow", "sleep", "speak"]
+  - ["질문 권유", speech, "Ask me anything은 질문해도 된다는 가장 열린 초대예요. that's still unclear의 still이 설명 후에도 남은 의문을 겨냥해요.", "still on the way", "여전히 헷갈리는 게 있으면 뭐든 표시해 보세요.", "여전히 헷갈리는 게 있으면 뭐든 보여 주세요.", "unclear", "private", "painful", "expensive"]
+  - ["쉬운 말", speech, "so you understand every step으로 쉬운 말을 쓰는 이유를 밝혀요. simpler words는 수준을 낮추는 게 아니라 환자에게 맞춘다는 뜻이에요.", "bigger fonts", "매 단계를 이해하시도록 더 쉬운 그림을 쓸게요.", "매 단계를 이해하시도록 더 또박또박 말할게요.", "understand", "memorize", "repeat", "count"]
+  - ["용어 설명", speech, "Let's는 환자와 같이 해 보자는 어조예요. each term으로 어려운 말을 하나씩 짚고, through the interpreter로 그 설명이 통역을 거친다고 알려요.", "each drawing", "통역사를 통해 용어 하나하나를 읽어 볼게요.", "통역사를 통해 용어 하나하나를 물어 볼게요.", "term", "price", "schedule", "signature"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 용어 풀이 4문장 순서
+    why: 어려운 용어를 쉬운 말로 풀겠다고 하고, 뜻을 설명한 뒤, 남은 의문을 묻고, 이해되면 나머지 용어도 같은 방식으로 이어가요.
+    lines:
+    - ["That term may sound hard, so let me explain it in simpler words.", bulb, "그 용어가 어렵게 들릴 수 있으니 쉬운 말로 설명할게요", "제안"]
+    - ["It just means the tube that helps you breathe.", stetho, "그건 그냥 숨 쉬는 걸 돕는 관을 뜻해요", "풀이"]
+    - ["Ask me anything that's still unclear.", speech, "아직 헷갈리는 게 있으면 뭐든 물어보세요", "질문"]
+    - ["Once that's clear, we'll go through the other terms the same way.", check, "그게 명확해지면 다른 용어도 같은 방식으로 볼게요", "이어가기"]
+- title: 통역 정확성 확인
+  s:
+  - ["이해 확인", check, "Can you confirm?으로 정중하게 확인을 청하고, 확인 대상을 the patient understood that correctly라는 절로 구체화해요. correctly가 정확성을 짚어요.", "the patient pronounced", "그걸 확인하려고 환자분 이름을 불러 줄 수 있어요?", "환자분이 그걸 정확하게 이해해야 해서 부탁드려요.", "correctly", "quickly", "loudly", "politely"]
+  - ["정확성 점검", magnify, "verify는 확인보다 증거로 따져 본다는 느낌의 단어예요. Let's로 통역사를 의심하기보다 함께 점검하자는 어조가 돼요.", "the schedule", "통역 내용을 검증하려고 메모해 봅시다.", "통역 내용이 정확한지 궁금하네요.", "accurate", "brief", "fast", "polite"]
+  - ["복창 요청", redo, "repeat back은 들은 그대로 되돌려 말하라는 뜻이라 오해를 잡아내요. just said로 방금 한 말이라는 범위를 좁혀 줘요.", "what the monitor", "방금 한 말을 다시 말하려고 숨을 고르세요.", "방금 환자분이 쓴 글을 다시 가져다 주세요.", "repeat", "rewrite", "answer", "sign"]
+  - ["정확성 확인", magnify, "I need to know는 부탁이 아니라 꼭 필요한 정보라는 어조예요. caught every word는 하나도 빠뜨리지 않았는지를 짚어요.", "every page", "통역사가 모든 말을 잡아낼 수 있도록 또박또박 말할게요.", "통역사에게 모든 말을 정확하게 전하고 싶어요.", "caught", "wrote", "counted", "printed"]
+  - ["동의 확인", check, "Confirm with ~는 누구와 확인하는지를 with로 정해 줘요. that절로 확인할 내용, 즉 동의가 정확했는지를 따로 밝혀요.", "with the clipboard", "동의 서류를 확인하려고 정리해 주세요.", "동의 내용을 확인하는 이유는 환자분 안전이에요.", "consent", "schedule", "bill", "badge"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 통역 정확성 확인 4문장 순서
+    why: 방금 말을 되풀이하게 하고, 내 말과 맞는지 묻고, 맞으면 통역이 정확했다고 판단한 뒤, 그 확인을 바탕으로 환자와 동의를 확인해요.
+    lines:
+    - ["First, please repeat back what the patient just said.", redo, "먼저 방금 환자분이 한 말을 다시 말해 주세요", "복창"]
+    - ["Can you tell me if that matches what I said?", magnify, "그게 제 말과 맞는지 알려 주실래요?", "대조"]
+    - ["If it does, I know the interpreter caught every word.", check, "맞으면 통역사가 모든 말을 잡았다는 걸 알아요", "판단"]
+    - ["Once I know that, confirm with the patient that the consent was accurate.", pencil, "그걸 알면 환자분과 동의가 정확했는지 확인해 주세요", "확인"]
+- title: 청각장애 수어 통역
+  s:
+  - ["수어 통역", speech, "arrange는 일정과 자원을 맞춰 준비한다는 뜻이라 챙기고 있다는 약속이에요. sign language interpreter로 수어를 쓰는 전문 통역사임을 분명히 해요.", "a hearing aid", "환자분을 위해 수어 책자를 준비해 드릴게요.", "환자분을 위해 휠체어를 준비해 드릴게요.", "sign", "spoken", "written", "foreign"]
+  - ["시선 안내", magnify, "Please watch로 시선을 어디에 둘지 알려 줘요. for each instruction은 지침이 나올 때마다 통역사를 보라는 범위를 정해요.", "the ceiling", "각 지침마다 통역사에게 물어봐 주세요.", "각 지침마다 통역사를 따라 해 주세요.", "watch", "thank", "call", "greet"]
+  - ["속도 조절", bell, "Let me know if ~는 요청 문턱을 낮추는 흔한 틀이에요. need me to slow down으로 환자가 아니라 내 속도를 조절하겠다는 제안이에요.", "sit down", "크게 말해야 하면 알려 주세요.", "다시 해야 하면 알려 주세요.", "slow", "settle", "step", "back"]
+  - ["신속 연결", bell, "right away가 arrange보다 급하게 움직이겠다는 신호예요. find는 쓸 수 있는 사람을 찾아낸다는 뜻이에요.", "a spare pillow", "수어 통역사를 찾으려고 전화기를 들게요.", "지금 바로 수어 통역사 자리를 찾아 드릴게요.", "find", "train", "teach", "pay"]
+  - ["시선 안내", magnify, "so you don't miss anything으로 보라고 하는 이유를 밝혀요. face and hands는 표정과 손짓이 함께 소통에 쓰인다는 점을 겨냥해요.", "my shoes", "아무것도 놓치지 않도록 제 얼굴과 손을 따라 해 주세요.", "아무것도 놓치지 않도록 제 이름과 손을 봐 주세요.", "miss", "touch", "drop", "break"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수어 통역 4문장 순서
+    why: 수어 통역사를 준비한다고 알리고, 도착하면 지침마다 통역사를 보게 하고, 너무 빠르면 알리게 한 뒤, 놓치지 않게 된다고 마무리해요.
+    lines:
+    - ["We'll arrange a sign language interpreter for you.", speech, "수어 통역사를 준비해 드릴게요", "준비"]
+    - ["Once they're here, please watch them for each instruction.", magnify, "오시면 지침마다 통역사를 봐 주세요", "시선"]
+    - ["If that's too fast, let me know and I'll slow down.", bell, "너무 빠르면 알려 주세요, 천천히 할게요", "속도"]
+    - ["That way, you won't miss anything.", check, "그러면 아무것도 놓치지 않으실 거예요", "마무리"]
+- title: 응급 신속 통역 확보
+  s:
+  - ["긴급 요청", siren, "'on the line'은 전화나 원격 통역이 연결된 상태를 가리키는 말이에요. immediately를 문장 끝에 두어 한시도 지체할 수 없다는 긴급함을 눌러 말해요.", "with a clipboard", "통역사가 필요해서 번호를 찾아요.", "환자분이 영어를 못 해서 통역사가 필요해요.", "interpreter", "porter", "chaplain", "physiotherapist"]
+  - ["긴급 연결", siren, "'This is urgent'로 이유를 먼저 던지고 대시 뒤에 요청을 붙여 핵심을 빠르게 전해요. as fast as possible은 속도를 최대로 올리라는 정해진 구예요.", "as neatly as", "빨리 연결하려고 번호부터 불러 주세요.", "긴급 상황이에요 — 가족분이 영어를 못 하세요.", "urgent", "routine", "optional", "minor"]
+  - ["핵심 전달", bell, "get ~ across는 뜻을 상대에게 전달한다는 구예요. essentials로 범위를 줄여 급한 순간에 꼭 필요한 말만 하자는 합의를 만들어요.", "the paperwork", "필수 내용만 전달하려고 순서를 정해요.", "지금 바로 필수적인 것만 정리합시다.", "essentials", "details", "extras", "options"]
+  - ["긴급 요청", siren, "We can't wait로 이유를 앞세우고 get me ~ right now로 곧바로 요구해요. 명령형 get me는 급박할 때만 쓰는 직접적인 부탁이에요.", "a new badge", "통역사를 데려오려고 번호부터 눌러 주세요.", "기다릴 수 없어요 — 지금 바로 통역 기기를 가져다주세요.", "wait", "stay", "sleep", "talk"]
+  - ["즉시 연결", siren, "so we don't lose time으로 서두르는 이유를 밝혀요. Connect the line은 곧바로 할 일을 명령형으로 말해요.", "the printer", "전화선을 연결하려고 책상을 정리해 주세요.", "시간이 없어서 지금 바로 통역사를 찾고 있어요.", "Connect", "Clean", "Count", "Carry"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 응급 통역 확보 4문장 순서
+    why: 긴급하다고 알려 연결을 요청하고, 연결되면 핵심부터 전하자고 하며, 말 그대로 통역하게 한 뒤 불명확하면 바로 알리게 해요.
+    lines:
+    - ["This is urgent — connect us as fast as possible.", siren, "긴급해요, 최대한 빨리 연결해 주세요", "요청"]
+    - ["Thank you — let's get the essentials across right now.", bell, "고마워요, 지금 바로 필수적인 것부터 전달해요", "전달"]
+    - ["Interpret exactly what I say, word for word.", speech, "제가 말하는 그대로 통역해 주세요", "지시"]
+    - ["If any of that is unclear, tell me right away.", magnify, "그중 불명확한 게 있으면 바로 말해 주세요", "확인"]
+- title: 통역 없는 응급 동의
+  s:
+  - ["소통 수단", speech, "every available means는 쓸 수 있는 수단을 하나도 빼지 않겠다는 약속이에요. means는 단수와 복수가 같은 명사라 every 뒤에서도 -s가 붙지 않아요.", "a printed schedule", "지금 쓸 수 있는 모든 방법으로 기록할게요.", "지금 쓸 수 있는 모든 방법으로 준비할게요.", "communicate", "apologize", "celebrate", "investigate"]
+  - ["기록 합의", pencil, "document는 명사만이 아니라 기록으로 남기다라는 동사로도 써요. the emergency and the consent process로 기록할 두 대상을 짚어요.", "the billing", "응급 상황을 기록하려고 시각을 봅시다.", "응급 상황과 동의 절차를 확인해 둡시다.", "document", "discuss", "announce", "rehearse"]
+  - ["정당화", shield, "justifies는 정당화한다는 격식 있는 동사로 보고와 기록 문장에 어울려요. proceeding under ~로 어떤 근거 아래 진행하는지 밝혀요.", "visiting hours", "환자의 안전을 위해 응급 규정에 따라 보고하는 게 정당해요.", "환자의 안전을 위해 병원 규정에 따라 진행하는 게 정당해요.", "justifies", "delays", "limits", "replaces"]
+  - ["기록 필요", pencil, "document why …처럼 why절을 목적어로 두면 이유를 기록한다는 뜻이 돼요. without an interpreter로 통역사가 없는 상태라는 사실을 정확히 짚어요.", "without a chart", "통역사 없이 진행하는 이유를 점검해야 해요.", "통역사 없이 진행하는 순서를 기록해야 해요.", "why", "when", "how", "where"]
+  - ["응급 판단", siren, "'This is an emergency, so …'로 이유를 먼저 대고 결과를 이어요. every means available처럼 형용사를 뒤에 두는 어순도 가능해요.", "a routine visit", "응급 상황이라 쓸 수 있는 모든 방법을 다 점검할게요.", "응급 상황이라 쓸 수 있는 모든 물건을 다 쓸게요.", "so", "but", "because", "although"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 통역 없는 응급 동의 4문장 순서
+    why: 응급이고 통역사가 없다고 상황을 말하고, 환자 안전이 근거라고 정당화한 뒤, 그 이유를 기록하자고 하며, 차트에 적도록 요청해요.
+    lines:
+    - ["This is an emergency, and no interpreter is available yet.", siren, "응급이고 아직 통역사가 없어요", "상황"]
+    - ["Patient safety justifies proceeding under emergency provisions.", shield, "환자 안전이 응급 규정에 따라 진행하는 걸 정당화해요", "정당화"]
+    - ["That's why we need to document why we're proceeding without an interpreter.", pencil, "그래서 통역사 없이 진행하는 이유를 기록해야 해요", "기록"]
+    - ["Please write that in the chart as soon as we can.", board, "가능한 한 빨리 그걸 차트에 적어 주세요", "차트"]
