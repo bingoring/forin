@@ -1,0 +1,672 @@
+
+## S0 금식 시작 시각 확인
+0.0 ans=last
+   * When did you [last] eat any solid food?
+     When did you [first] eat any solid food?
+     When did you [next] eat any solid food?
+     When did you [only] eat any solid food?
+0.1 ans=sip
+   * Water is a bit different — when did you have your last [sip]?
+     Water is a bit different — when did you have your last [bite]?
+     Water is a bit different — when did you have your last [meal]?
+     Water is a bit different — when did you have your last [dose]?
+0.2 ans=fine
+   * That timing looks [fine], so we can go ahead as planned.
+     That timing looks [late], so we can go ahead as planned.
+     That timing looks [tight], so we can go ahead as planned.
+     That timing looks [short], so we can go ahead as planned.
+0.3 ans=stomach
+   * Let's start with solid food, since that clears your [stomach] the slowest.
+     Let's start with solid food, since that clears your [throat] the slowest.
+     Let's start with solid food, since that clears your [kidney] the slowest.
+     Let's start with solid food, since that clears your [lungs] the slowest.
+0.4 ans=snack
+   * Even a small [snack] counts as solid food for this.
+     Even a small [drink] counts as solid food for this.
+     Even a small [sip] counts as solid food for this.
+     Even a small [glass] counts as solid food for this.
+0.5 ans=exact
+   * I also need the [exact] time you stopped drinking water.
+     I also need the [usual] time you stopped drinking water.
+     I also need the [average] time you stopped drinking water.
+     I also need the [previous] time you stopped drinking water.
+
+## S1 약물 알레르기 문진
+1.0 ans=penicillin
+   * Can you tell me what happens when you take [penicillin]?
+     Can you tell me what happens when you take [ibuprofen]?
+     Can you tell me what happens when you take [insulin]?
+     Can you tell me what happens when you take [aspirin]?
+1.1 ans=rash
+   * Was it just a [rash], or any trouble breathing or swelling?
+     Was it just a [cough], or any trouble breathing or swelling?
+     Was it just a [fever], or any trouble breathing or swelling?
+     Was it just a [bruise], or any trouble breathing or swelling?
+1.2 ans=flag
+   * I'll [flag] this in your chart so the whole team knows.
+     I'll [copy] this in your chart so the whole team knows.
+     I'll [print] this in your chart so the whole team knows.
+     I'll [send] this in your chart so the whole team knows.
+1.3 ans=treatment
+   * How bad was the reaction — did you need any [treatment]?
+     How bad was the reaction — did you need any [payment]?
+     How bad was the reaction — did you need any [transport]?
+     How bad was the reaction — did you need any [insurance]?
+1.4 ans=allergy
+   * This sounds like a real [allergy], not just a side effect.
+     This sounds like a real [infection], not just a side effect.
+     This sounds like a real [injury], not just a side effect.
+     This sounds like a real [disease], not just a side effect.
+1.5 ans=severity
+   * I'll note the [severity] and make sure anesthesia sees it before we start.
+     I'll note the [frequency] and make sure anesthesia sees it before we start.
+     I'll note the [location] and make sure anesthesia sees it before we start.
+     I'll note the [duration] and make sure anesthesia sees it before we start.
+
+## S2 과거 수술·마취 이력
+2.0 ans=anesthesia
+   * How did you feel waking up from your last [anesthesia]?
+     How did you feel waking up from your last [surgery]?
+     How did you feel waking up from your last [dentist]?
+     How did you feel waking up from your last [recovery]?
+2.1 ans=nausea
+   * Did you have any [nausea], breathing issues, or a bad reaction?
+     Did you have any [dizziness], breathing issues, or a bad reaction?
+     Did you have any [itching], breathing issues, or a bad reaction?
+     Did you have any [fatigue], breathing issues, or a bad reaction?
+2.2 ans=nausea
+   * I'll let the anesthesia team know about the [nausea].
+     I'll let the anesthesia team know about the [headache].
+     I'll let the anesthesia team know about the [fever].
+     I'll let the anesthesia team know about the [cough].
+2.3 ans=breathing
+   * Did you have any [breathing] problems during or after that surgery?
+     Did you have any [bleeding] problems during or after that surgery?
+     Did you have any [swallowing] problems during or after that surgery?
+     Did you have any [sleeping] problems during or after that surgery?
+2.4 ans=place
+   * Was it hard for the anesthesia team to [place] your breathing tube?
+     Was it hard for the anesthesia team to [remove] your breathing tube?
+     Was it hard for the anesthesia team to [label] your breathing tube?
+     Was it hard for the anesthesia team to [carry] your breathing tube?
+2.5 ans=today's
+   * I'll pass this along so [today's] team can plan ahead.
+     I'll pass this along so [yesterday's] team can plan ahead.
+     I'll pass this along so [tomorrow's] team can plan ahead.
+     I'll pass this along so [Monday's] team can plan ahead.
+
+## S3 복용 약물 목록 확인
+3.0 ans=daily
+   * Can you list all the medications you take [daily]?
+     Can you list all the medications you take [weekly]?
+     Can you list all the medications you take [monthly]?
+     Can you list all the medications you take [yearly]?
+3.1 ans=doses
+   * Do you know the names and [doses]?
+     Do you know the names and [colors]?
+     Do you know the names and [brands]?
+     Do you know the names and [sizes]?
+3.2 ans=morning
+   * Did you take your blood pressure pill this [morning]?
+     Did you take your blood pressure pill this [evening]?
+     Did you take your blood pressure pill this [afternoon]?
+     Did you take your blood pressure pill this [month]?
+3.3 ans=insulin
+   * Are you on a blood thinner, [insulin], or an inhaler?
+     Are you on a blood thinner, [morphine], or an inhaler?
+     Are you on a blood thinner, [oxygen], or an inhaler?
+     Are you on a blood thinner, [iron], or an inhaler?
+3.4 ans=injections
+   * Do you take any [injections], like insulin shots, at home?
+     Do you take any [vaccines], like insulin shots, at home?
+     Do you take any [tablets], like insulin shots, at home?
+     Do you take any [patches], like insulin shots, at home?
+3.5 ans=exactly
+   * I need to know [exactly] when you took your last dose of each one.
+     I need to know [roughly] when you took your last dose of each one.
+     I need to know [partly] when you took your last dose of each one.
+     I need to know [vaguely] when you took your last dose of each one.
+
+## S4 기저 활력징후 측정
+4.0 ans=baseline
+   * I'm going to check your vitals to get a [baseline].
+     I'm going to check your vitals to get a [diagnosis].
+     I'm going to check your vitals to get a [signature].
+     I'm going to check your vitals to get a [prescription].
+4.1 ans=numbers
+   * Your [numbers] look good for right now.
+     Your [labs] look good for right now.
+     Your [scans] look good for right now.
+     Your [charts] look good for right now.
+4.2 ans=normal
+   * A little nervousness is completely [normal] before surgery.
+     A little nervousness is completely [unusual] before surgery.
+     A little nervousness is completely [unfair] before surgery.
+     A little nervousness is completely [unwise] before surgery.
+4.3 ans=nervous
+   * Your heart's beating a little fast, which often happens when people feel [nervous].
+     Your heart's beating a little fast, which often happens when people feel [thirsty].
+     Your heart's beating a little fast, which often happens when people feel [sleepy].
+     Your heart's beating a little fast, which often happens when people feel [bored].
+4.4 ans=pulse
+   * I'll write down your blood pressure, [pulse], and oxygen level.
+     I'll write down your blood pressure, [weight], and oxygen level.
+     I'll write down your blood pressure, [height], and oxygen level.
+     I'll write down your blood pressure, [age], and oxygen level.
+4.5 ans=stress
+   * It's completely normal for your body to react to [stress] like this.
+     It's completely normal for your body to react to [noise] like this.
+     It's completely normal for your body to react to [cold] like this.
+     It's completely normal for your body to react to [light] like this.
+
+## S5 키·체중·BMI 확인
+5.0 ans=accurate
+   * Let's get an [accurate] weight for your medication dosing.
+     Let's get an [rough] weight for your medication dosing.
+     Let's get an [approximate] weight for your medication dosing.
+     Let's get an [average] weight for your medication dosing.
+5.1 ans=step
+   * Can you [step] on the scale for me?
+     Can you [sit] on the scale for me?
+     Can you [lie] on the scale for me?
+     Can you [kneel] on the scale for me?
+5.2 ans=dose
+   * This helps us give you the exact right [dose].
+     This helps us give you the exact right [size].
+     This helps us give you the exact right [brand].
+     This helps us give you the exact right [price].
+5.3 ans=height
+   * Let's also measure your [height] so we can record your BMI.
+     Let's also measure your [foot] so we can record your BMI.
+     Let's also measure your [arm] so we can record your BMI.
+     Let's also measure your [chest] so we can record your BMI.
+5.4 ans=estimate
+   * Even a rough [estimate] helps, but the real number is safer.
+     Even a rough [photo] helps, but the real number is safer.
+     Even a rough [report] helps, but the real number is safer.
+     Even a rough [label] helps, but the real number is safer.
+5.5 ans=effective
+   * Dosing by weight keeps your medication safe and [effective].
+     Dosing by weight keeps your medication safe and [expensive].
+     Dosing by weight keeps your medication safe and [private].
+     Dosing by weight keeps your medication safe and [cheap].
+
+## S6 물 한 모금 금식 위반
+6.0 ans=water
+   * Exactly how much [water] did you have, and at what time?
+     Exactly how much [coffee] did you have, and at what time?
+     Exactly how much [juice] did you have, and at what time?
+     Exactly how much [milk] did you have, and at what time?
+6.1 ans=need
+   * I [need] to report this to the anesthesia team.
+     I [hope] to report this to the anesthesia team.
+     I [wish] to report this to the anesthesia team.
+     I [like] to report this to the anesthesia team.
+6.2 ans=adjust
+   * They'll decide if we [adjust] the timing to keep you safe.
+     They'll decide if we [cancel] the timing to keep you safe.
+     They'll decide if we [repeat] the timing to keep you safe.
+     They'll decide if we [measure] the timing to keep you safe.
+6.3 ans=canceled
+   * Your surgery isn't [canceled], but the timing might need to shift.
+     Your surgery isn't [finished], but the timing might need to shift.
+     Your surgery isn't [scheduled], but the timing might need to shift.
+     Your surgery isn't [approved], but the timing might need to shift.
+6.4 ans=fast
+   * It's easy to forget that even a sip of water counts as breaking your [fast].
+     It's easy to forget that even a sip of water counts as breaking your [diet].
+     It's easy to forget that even a sip of water counts as breaking your [promise].
+     It's easy to forget that even a sip of water counts as breaking your [record].
+6.5 ans=upset
+   * I'm not [upset] — I just need the exact details to keep you safe.
+     I'm not [tired] — I just need the exact details to keep you safe.
+     I'm not [busy] — I just need the exact details to keep you safe.
+     I'm not [lost] — I just need the exact details to keep you safe.
+
+## S7 조영제·해산물 교차 알레르기
+7.0 ans=predict
+   * Shellfish allergy doesn't actually [predict] a contrast reaction.
+     Shellfish allergy doesn't actually [treat] a contrast reaction.
+     Shellfish allergy doesn't actually [reduce] a contrast reaction.
+     Shellfish allergy doesn't actually [remove] a contrast reaction.
+7.1 ans=shellfish
+   * But tell me exactly what happens with [shellfish].
+     But tell me exactly what happens with [pollen].
+     But tell me exactly what happens with [latex].
+     But tell me exactly what happens with [dust].
+7.2 ans=document
+   * I'll [document] this and confirm the plan with the team.
+     I'll [memorize] this and confirm the plan with the team.
+     I'll [copy] this and confirm the plan with the team.
+     I'll [borrow] this and confirm the plan with the team.
+7.3 ans=causes
+   * A shellfish reaction and a contrast reaction come from different [causes].
+     A shellfish reaction and a contrast reaction come from different [symptoms].
+     A shellfish reaction and a contrast reaction come from different [pharmacies].
+     A shellfish reaction and a contrast reaction come from different [labels].
+7.4 ans=hives
+   * What exactly happened — [hives], swelling, or trouble breathing?
+     What exactly happened — [burns], swelling, or trouble breathing?
+     What exactly happened — [cramps], swelling, or trouble breathing?
+     What exactly happened — [chills], swelling, or trouble breathing?
+7.5 ans=precautions
+   * I'll confirm this with radiology so they can plan the right [precautions].
+     I'll confirm this with radiology so they can plan the right [schedules].
+     I'll confirm this with radiology so they can plan the right [tables].
+     I'll confirm this with radiology so they can plan the right [fees].
+
+## S8 이전 마취 오심 병력
+8.0 ans=PONV
+   * That sounds like [PONV], and we can plan ahead for it.
+     That sounds like [MRSA], and we can plan ahead for it.
+     That sounds like [COPD], and we can plan ahead for it.
+     That sounds like [DVT], and we can plan ahead for it.
+8.1 ans=high-risk
+   * I'll flag you as [high-risk] for post-op nausea.
+     I'll flag you as [high-cost] for post-op nausea.
+     I'll flag you as [high-speed] for post-op nausea.
+     I'll flag you as [high-volume] for post-op nausea.
+8.2 ans=medication
+   * The team can add [medication] to prevent it this time.
+     The team can add [paperwork] to prevent it this time.
+     The team can add [coverage] to prevent it this time.
+     The team can add [training] to prevent it this time.
+8.3 ans=throw up
+   * Did you [throw up] a lot last time, or just feel sick?
+     Did you [wake up] a lot last time, or just feel sick?
+     Did you [give up] a lot last time, or just feel sick?
+     Did you [speak up] a lot last time, or just feel sick?
+8.4 ans=risk
+   * A history of motion sickness also raises your [risk] for nausea.
+     A history of motion sickness also raises your [price] for nausea.
+     A history of motion sickness also raises your [speed] for nausea.
+     A history of motion sickness also raises your [temperature] for nausea.
+8.5 ans=anti-nausea
+   * I'll pass this along so anesthesia can add [anti-nausea] medication early.
+     I'll pass this along so anesthesia can add [anti-itch] medication early.
+     I'll pass this along so anesthesia can add [anti-fever] medication early.
+     I'll pass this along so anesthesia can add [anti-pain] medication early.
+
+## S9 수면무호흡 병력
+9.0 ans=CPAP
+   * Do you use your [CPAP] every night, and what pressure setting?
+     Do you use your [oxygen] every night, and what pressure setting?
+     Do you use your [nebulizer] every night, and what pressure setting?
+     Do you use your [humidifier] every night, and what pressure setting?
+9.1 ans=airway
+   * This matters a lot for your [airway] during anesthesia.
+     This matters a lot for your [stomach] during anesthesia.
+     This matters a lot for your [vision] during anesthesia.
+     This matters a lot for your [skin] during anesthesia.
+9.2 ans=today
+   * Did you bring your CPAP machine with you [today]?
+     Did you bring your CPAP machine with you [tonight]?
+     Did you bring your CPAP machine with you [tomorrow]?
+     Did you bring your CPAP machine with you [yesterday]?
+9.3 ans=wife
+   * Does your [wife] or partner ever notice you stop breathing at night?
+     Does your [sister] or partner ever notice you stop breathing at night?
+     Does your [boss] or partner ever notice you stop breathing at night?
+     Does your [coach] or partner ever notice you stop breathing at night?
+9.4 ans=induction
+   * A difficult airway history changes how anesthesia plans your [induction].
+     A difficult airway history changes how anesthesia plans your [discharge].
+     A difficult airway history changes how anesthesia plans your [billing].
+     A difficult airway history changes how anesthesia plans your [admission].
+9.5 ans=straight
+   * I'll bring this [straight] to anesthesia before we go back.
+     I'll bring this [carefully] to anesthesia before we go back.
+     I'll bring this [quietly] to anesthesia before we go back.
+     I'll bring this [politely] to anesthesia before we go back.
+
+## S10 심·호흡 기저질환
+10.0 ans=COPD
+   * Tell me more about your [COPD] and how your breathing is day to day.
+     Tell me more about your [gout] and how your breathing is day to day.
+     Tell me more about your [lupus] and how your breathing is day to day.
+     Tell me more about your [acne] and how your breathing is day to day.
+10.1 ans=stent
+   * Are you on any blood thinners since your [stent]?
+     Are you on any blood thinners since your [fall]?
+     Are you on any blood thinners since your [move]?
+     Are you on any blood thinners since your [wedding]?
+10.2 ans=cardiac
+   * I'll make sure anesthesia has your full [cardiac] history.
+     I'll make sure anesthesia has your full [dental] history.
+     I'll make sure anesthesia has your full [skin] history.
+     I'll make sure anesthesia has your full [hearing] history.
+10.3 ans=breath
+   * Do you get short of [breath] walking up a flight of stairs?
+     Do you get short of [patience] walking up a flight of stairs?
+     Do you get short of [money] walking up a flight of stairs?
+     Do you get short of [time] walking up a flight of stairs?
+10.4 ans=flag
+   * Being short of breath during daily activity is a big red [flag] for us.
+     Being short of breath during daily activity is a big red [book] for us.
+     Being short of breath during daily activity is a big red [card] for us.
+     Being short of breath during daily activity is a big red [pen] for us.
+10.5 ans=page
+   * I'll get anesthesia and the surgeon on the same [page] before we start.
+     I'll get anesthesia and the surgeon on the same [floor] before we start.
+     I'll get anesthesia and the surgeon on the same [shift] before we start.
+     I'll get anesthesia and the surgeon on the same [bed] before we start.
+
+## S11 한약·건강보조제 복용
+11.0 ans=bleeding
+   * Supplements actually do matter — some affect [bleeding].
+     Supplements actually do matter — some affect [hearing].
+     Supplements actually do matter — some affect [height].
+     Supplements actually do matter — some affect [vision].
+11.1 ans=herbs
+   * When did you last take the fish oil and [herbs]?
+     When did you last take the fish oil and [spices]?
+     When did you last take the fish oil and [soups]?
+     When did you last take the fish oil and [salads]?
+11.2 ans=risk
+   * I'll list these so surgery knows about the bleeding [risk].
+     I'll list these so surgery knows about the bleeding [color].
+     I'll list these so surgery knows about the bleeding [smell].
+     I'll list these so surgery knows about the bleeding [sound].
+11.3 ans=thin
+   * Herbs and other supplements can [thin] the blood just like prescription medication.
+     Herbs and other supplements can [warm] the blood just like prescription medication.
+     Herbs and other supplements can [clean] the blood just like prescription medication.
+     Herbs and other supplements can [cool] the blood just like prescription medication.
+11.4 ans=name
+   * I need the exact [name] and the last dose of every supplement.
+     I need the exact [weight] and the last dose of every supplement.
+     I need the exact [size] and the last dose of every supplement.
+     I need the exact [number] and the last dose of every supplement.
+11.5 ans=extra
+   * I'll report this so surgery can plan for [extra] bleeding risk.
+     I'll report this so surgery can plan for [future] bleeding risk.
+     I'll report this so surgery can plan for [private] bleeding risk.
+     I'll report this so surgery can plan for [distant] bleeding risk.
+
+## S12 흡연·음주력 문진
+12.0 ans=drink
+   * When did you have your last cigarette and last [drink]?
+     When did you have your last cigarette and last [snack]?
+     When did you have your last cigarette and last [nap]?
+     When did you have your last cigarette and last [visit]?
+12.1 ans=plan
+   * This helps us [plan] for your airway and recovery.
+     This helps us [pay] for your airway and recovery.
+     This helps us [vote] for your airway and recovery.
+     This helps us [wait] for your airway and recovery.
+12.2 ans=judging
+   * I'm not [judging] — I just need an honest picture.
+     I'm not [joking] — I just need an honest picture.
+     I'm not [rushing] — I just need an honest picture.
+     I'm not [guessing] — I just need an honest picture.
+12.3 ans=years
+   * About how many cigarettes a day, and for how many [years]?
+     About how many cigarettes a day, and for how many [weeks]?
+     About how many cigarettes a day, and for how many [hours]?
+     About how many cigarettes a day, and for how many [minutes]?
+12.4 ans=harder
+   * Smoking and drinking both make your airway a little [harder] to manage.
+     Smoking and drinking both make your airway a little [cheaper] to manage.
+     Smoking and drinking both make your airway a little [faster] to manage.
+     Smoking and drinking both make your airway a little [lighter] to manage.
+12.5 ans=honestly
+   * I'll record this [honestly] so recovery can plan around it.
+     I'll record this [quickly] so recovery can plan around it.
+     I'll record this [briefly] so recovery can plan around it.
+     I'll record this [neatly] so recovery can plan around it.
+
+## S13 가임기 임신 가능성
+13.0 ans=routine
+   * It's a [routine] safety test for everyone who could be pregnant.
+     It's a [rare] safety test for everyone who could be pregnant.
+     It's a [special] safety test for everyone who could be pregnant.
+     It's a [private] safety test for everyone who could be pregnant.
+13.1 ans=pregnancy
+   * Anesthesia can affect a [pregnancy], so we always confirm.
+     Anesthesia can affect a [seizure], so we always confirm.
+     Anesthesia can affect a [migraine], so we always confirm.
+     Anesthesia can affect a [concussion], so we always confirm.
+13.2 ans=confidential
+   * This stays [confidential] between you and the care team.
+     This stays [permanent] between you and the care team.
+     This stays [unlimited] between you and the care team.
+     This stays [uncertain] between you and the care team.
+13.3 ans=chance
+   * When was your last period, and is there any [chance] you're pregnant?
+     When was your last period, and is there any [reason] you're pregnant?
+     When was your last period, and is there any [need] you're pregnant?
+     When was your last period, and is there any [fear] you're pregnant?
+13.4 ans=personal
+   * I know this feels [personal], but it keeps you safe under anesthesia.
+     I know this feels [rushed], but it keeps you safe under anesthesia.
+     I know this feels [lonely], but it keeps you safe under anesthesia.
+     I know this feels [random], but it keeps you safe under anesthesia.
+13.5 ans=result
+   * No one outside this room needs to know the [result].
+     No one outside this room needs to know the [price].
+     No one outside this room needs to know the [address].
+     No one outside this room needs to know the [date].
+
+## S14 최근 상기도 감염
+14.0 ans=congestion
+   * When did the cough and [congestion] start?
+     When did the cough and [dizziness] start?
+     When did the cough and [swelling] start?
+     When did the cough and [soreness] start?
+14.1 ans=colored
+   * Any fever, or coughing up any [colored] mucus?
+     Any fever, or coughing up any [thick] mucus?
+     Any fever, or coughing up any [sticky] mucus?
+     Any fever, or coughing up any [dry] mucus?
+14.2 ans=proceed
+   * I need anesthesia to weigh in before we [proceed].
+     I need anesthesia to weigh in before we [leave].
+     I need anesthesia to weigh in before we [arrive].
+     I need anesthesia to weigh in before we [finish].
+14.3 ans=days
+   * How many [days] have you had the cough and congestion?
+     How many [weeks] have you had the cough and congestion?
+     How many [months] have you had the cough and congestion?
+     How many [times] have you had the cough and congestion?
+14.4 ans=cough
+   * A simple runny nose is different from a fever with a bad [cough].
+     A simple runny nose is different from a fever with a bad [headache].
+     A simple runny nose is different from a fever with a bad [sneeze].
+     A simple runny nose is different from a fever with a bad [stomachache].
+14.5 ans=symptoms
+   * I'll report your [symptoms] so anesthesia can decide about today's surgery.
+     I'll report your [forms] so anesthesia can decide about today's surgery.
+     I'll report your [bills] so anesthesia can decide about today's surgery.
+     I'll report your [photos] so anesthesia can decide about today's surgery.
+
+## S15 응급 환자 금식 위반
+15.0 ans=stomach
+   * We should treat this as a full [stomach] — RSI it is.
+     We should treat this as a full [bladder] — RSI it is.
+     We should treat this as a full [schedule] — RSI it is.
+     We should treat this as a full [dose] — RSI it is.
+15.1 ans=head
+   * I have suction on and ready at the [head] of the bed.
+     I have suction on and ready at the [foot] of the bed.
+     I have suction on and ready at the [corner] of the bed.
+     I have suction on and ready at the [edge] of the bed.
+15.2 ans=ready
+   * Cricoid pressure is [ready] whenever you call for it.
+     Cricoid pressure is [painful] whenever you call for it.
+     Cricoid pressure is [legal] whenever you call for it.
+     Cricoid pressure is [quiet] whenever you call for it.
+15.3 ans=aspiration
+   * Full stomach means high risk of [aspiration] during induction.
+     Full stomach means high risk of [infection] during induction.
+     Full stomach means high risk of [bleeding] during induction.
+     Full stomach means high risk of [rejection] during induction.
+15.4 ans=fast
+   * I'll keep the airway cart close in case we need it [fast].
+     I'll keep the airway cart close in case we need it [later].
+     I'll keep the airway cart close in case we need it [twice].
+     I'll keep the airway cart close in case we need it [alone].
+15.5 ans=plan
+   * Everyone knows the [plan], so we can move fast once you're ready.
+     Everyone knows the [patient], so we can move fast once you're ready.
+     Everyone knows the [drug], so we can move fast once you're ready.
+     Everyone knows the [room], so we can move fast once you're ready.
+
+## S16 조영제 아나필락시스 병력
+16.0 ans=serious
+   * That's a [serious] reaction — I'm marking you as high-risk.
+     That's a [rare] reaction — I'm marking you as high-risk.
+     That's a [strange] reaction — I'm marking you as high-risk.
+     That's a [quiet] reaction — I'm marking you as high-risk.
+16.1 ans=epinephrine
+   * We'll have [epinephrine] and emergency meds ready.
+     We'll have [morphine] and emergency meds ready.
+     We'll have [insulin] and emergency meds ready.
+     We'll have [heparin] and emergency meds ready.
+16.2 ans=given
+   * The whole team will know before anything is [given].
+     The whole team will know before anything is [sold].
+     The whole team will know before anything is [shipped].
+     The whole team will know before anything is [stored].
+16.3 ans=tight
+   * Exactly how did your throat feel — [tight], swollen, or hard to breathe?
+     Exactly how did your throat feel — [cold], swollen, or hard to breathe?
+     Exactly how did your throat feel — [sweet], swollen, or hard to breathe?
+     Exactly how did your throat feel — [loud], swollen, or hard to breathe?
+16.4 ans=contrast
+   * I need to know exactly what medication or [contrast] caused it.
+     I need to know exactly what medication or [food] caused it.
+     I need to know exactly what medication or [latex] caused it.
+     I need to know exactly what medication or [tape] caused it.
+16.5 ans=alert
+   * I'll [alert] the whole team so everyone's ready before we give anything.
+     I'll [thank] the whole team so everyone's ready before we give anything.
+     I'll [bill] the whole team so everyone's ready before we give anything.
+     I'll [hire] the whole team so everyone's ready before we give anything.
+
+## S17 원인 미상 약물 반응
+17.0 ans=given
+   * Let's figure out everything you were [given] around that time.
+     Let's figure out everything you were [told] around that time.
+     Let's figure out everything you were [asked] around that time.
+     Let's figure out everything you were [shown] around that time.
+17.1 ans=culprits
+   * Until we know, we'll avoid the likely [culprits].
+     Until we know, we'll avoid the likely [visitors].
+     Until we know, we'll avoid the likely [routines].
+     Until we know, we'll avoid the likely [rumors].
+17.2 ans=standby
+   * I'll have emergency meds on [standby] just in case.
+     I'll have emergency meds on [loan] just in case.
+     I'll have emergency meds on [sale] just in case.
+     I'll have emergency meds on [trial] just in case.
+17.3 ans=face
+   * Can you describe exactly how your [face] and body swelled up?
+     Can you describe exactly how your [hands] and body swelled up?
+     Can you describe exactly how your [feet] and body swelled up?
+     Can you describe exactly how your [legs] and body swelled up?
+17.4 ans=Dizziness
+   * [Dizziness] along with swelling can point to a serious reaction.
+     [Thirst] along with swelling can point to a serious reaction.
+     [Hunger] along with swelling can point to a serious reaction.
+     [Yawning] along with swelling can point to a serious reaction.
+17.5 ans=emergency
+   * We'll watch you closely and keep [emergency] meds within reach.
+     We'll watch you closely and keep [additional] meds within reach.
+     We'll watch you closely and keep [expired] meds within reach.
+     We'll watch you closely and keep [personal] meds within reach.
+
+## S18 마취 가족력 MH 의심
+18.0 ans=important
+   * That could be malignant hyperthermia — very [important] to know.
+     That could be malignant hyperthermia — very [easy] to know.
+     That could be malignant hyperthermia — very [funny] to know.
+     That could be malignant hyperthermia — very [tiring] to know.
+18.1 ans=family
+   * Do you know if anyone else in the [family] had this?
+     Do you know if anyone else in the [hospital] had this?
+     Do you know if anyone else in the [office] had this?
+     Do you know if anyone else in the [kitchen] had this?
+18.2 ans=alert
+   * I'll [alert] anesthesia so they can plan a safe technique.
+     I'll [thank] anesthesia so they can plan a safe technique.
+     I'll [bill] anesthesia so they can plan a safe technique.
+     I'll [hire] anesthesia so they can plan a safe technique.
+18.3 ans=stiff
+   * What exactly happened to your brother — high fever, [stiff] muscles, or worse?
+     What exactly happened to your brother — high fever, [weak] muscles, or worse?
+     What exactly happened to your brother — high fever, [sore] muscles, or worse?
+     What exactly happened to your brother — high fever, [thin] muscles, or worse?
+18.4 ans=safe
+   * This kind of family history changes which anesthesia drugs are [safe] for you.
+     This kind of family history changes which anesthesia drugs are [cheap] for you.
+     This kind of family history changes which anesthesia drugs are [famous] for you.
+     This kind of family history changes which anesthesia drugs are [bitter] for you.
+18.5 ans=start
+   * I need to send this to anesthesia right now, not after we [start].
+     I need to send this to anesthesia right now, not after we [arrive].
+     I need to send this to anesthesia right now, not after we [finish].
+     I need to send this to anesthesia right now, not after we [wake].
+
+## S19 항응고제 복용 미확인 도착
+19.0 ans=dose
+   * Which blood thinner is it, and when was your last [dose]?
+     Which blood thinner is it, and when was your last [visit]?
+     Which blood thinner is it, and when was your last [meal]?
+     Which blood thinner is it, and when was your last [test]?
+19.1 ans=bleeding
+   * This changes your [bleeding] risk, so I need to report it now.
+     This changes your [falling] risk, so I need to report it now.
+     This changes your [sleeping] risk, so I need to report it now.
+     This changes your [fainting] risk, so I need to report it now.
+19.2 ans=decide
+   * The team will [decide] whether to delay or proceed safely.
+     The team will [argue] whether to delay or proceed safely.
+     The team will [guess] whether to delay or proceed safely.
+     The team will [wonder] whether to delay or proceed safely.
+19.3 ans=take
+   * When exactly did you [take] it, and how much?
+     When exactly did you [buy] it, and how much?
+     When exactly did you [keep] it, and how much?
+     When exactly did you [lose] it, and how much?
+19.4 ans=fault
+   * Nobody told you to stop it, so this isn't your [fault].
+     Nobody told you to stop it, so this isn't your [plan].
+     Nobody told you to stop it, so this isn't your [job].
+     Nobody told you to stop it, so this isn't your [turn].
+19.5 ans=reassess
+   * I'm reporting this right away so the team can [reassess] safely.
+     I'm reporting this right away so the team can [rename] safely.
+     I'm reporting this right away so the team can [rebuild] safely.
+     I'm reporting this right away so the team can [reprint] safely.
+
+## S20 금식 확인 불가 무의식
+20.0 ans=confirm
+   * We can't [confirm] NPO status, so assume a full stomach.
+     We can't [change] NPO status, so assume a full stomach.
+     We can't [weigh] NPO status, so assume a full stomach.
+     We can't [repeat] NPO status, so assume a full stomach.
+20.1 ans=RSI
+   * Suction is set up and I'm ready for [RSI].
+     Suction is set up and I'm ready for [MRI].
+     Suction is set up and I'm ready for [EKG].
+     Suction is set up and I'm ready for [CBC].
+20.2 ans=bedside
+   * Let's have the airway cart right here at the [bedside].
+     Let's have the airway cart right here at the [doorway].
+     Let's have the airway cart right here at the [hallway].
+     Let's have the airway cart right here at the [entrance].
+20.3 ans=Unconscious
+   * [Unconscious] patients get treated as a full stomach every time.
+     [Unmarried] patients get treated as a full stomach every time.
+     [Unpaid] patients get treated as a full stomach every time.
+     [Uninsured] patients get treated as a full stomach every time.
+20.4 ans=meal
+   * Nobody can confirm his last [meal], so we assume the worst case.
+     Nobody can confirm his last [visit], so we assume the worst case.
+     Nobody can confirm his last [call], so we assume the worst case.
+     Nobody can confirm his last [note], so we assume the worst case.
+20.5 ans=ready
+   * Everything is [ready], so we can move fast the moment he needs it.
+     Everything is [late], so we can move fast the moment he needs it.
+     Everything is [empty], so we can move fast the moment he needs it.
+     Everything is [closed], so we can move fast the moment he needs it.
