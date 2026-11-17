@@ -1,0 +1,129 @@
+응급 검체·계수 관리:
+  - kind: slider
+    words: [w-label, w-specimen, w-each, w-off]
+    cue: "A fast bleeding case: you can't stop to write neatly, and specimens keep coming off the field. When do you label them?"
+    scale: ["Specimens are labeled when things slow down", "Specimens are labeled together in batches", "Each specimen is labeled as it comes off"]
+    answerAt: 2
+    why: "검체는 나오는 즉시 표시해야 섞이거나 잃어버리지 않아요. 나중이나 몰아서 하면 어느 부위에서 나온 것인지 헷갈릴 수 있어요. 바빠도 한 개씩 바로 표시한다고 말해요."
+    example: "I'm labeling each specimen as it comes off."
+    exKo: "검체가 나올 때마다 표시하고 있어요."
+  - kind: swap
+    words: [w-label, w-specimen, w-each]
+    who: "순환간호사 → 스크럽 요원 · 검체 받기"
+    icon: speech
+    before: ["", "Just hand it over and I'll sort it out later.", ""]
+    options: ["I'm labeling each specimen as it comes off.", "Just hand it over and I'll sort it out later.", "I'll label them if I remember."]
+    answer: "I'm labeling each specimen as it comes off."
+    notes: {"I'm labeling each specimen as it comes off.": "나오는 즉시 표시한다고 알려서, 스크럽 요원이 안심하고 건네며 검체가 섞이지 않는다.", "Just hand it over and I'll sort it out later.": "나중에 정리하면 어느 부위에서 나온 검체인지 헷갈릴 수 있다.", "I'll label them if I remember.": "기억에 맡기는 말이라 안전한 절차가 아니다."}
+    why: "검체는 건네받는 즉시 이름과 부위를 표시해요. 나중에 정리하겠다는 말은 혼동의 원인이 되고, 기억에 맡기는 것은 절차가 아니에요."
+    ko: "검체가 나올 때마다 표시하고 있어요."
+개복 중 심정지:
+  - kind: slider
+    words: [w-pulse, w-compression, w-start]
+    cue: "On the table the patient's pulse is gone. You are the circulator and the anesthesia team is at the head. What do you say as you act?"
+    scale: ["Her pulse feels a little weaker than before", "Her pulse is gone — we should keep watching", "No pulse — I'm starting compressions now"]
+    answerAt: 2
+    why: "맥박이 없으면 지체 없이 흉부압박을 시작하고 그렇게 말해요. '약해요'나 '지켜봐요'는 필요한 행동이 늦어지게 해요. 말과 행동이 함께 가야 팀이 따라와요."
+    example: "No pulse — I'm starting compressions now."
+    exKo: "맥박이 없어요 — 지금 흉부압박을 시작할게요."
+  - kind: swap
+    words: [w-code, w-timing]
+    who: "순환간호사 → 코드 팀 · 시간 기록"
+    icon: speech
+    before: ["", "I'll keep the time in my head.", ""]
+    options: ["I'll run the code timing and call it out.", "I'll keep the time in my head.", "I'll check the clock when someone asks."]
+    answer: "I'll run the code timing and call it out."
+    notes: {"I'll run the code timing and call it out.": "시간을 재면서 소리 내어 알려서, 팀이 약물과 압박 교대를 정해진 간격에 맞춘다.", "I'll keep the time in my head.": "혼자 기억하는 시간은 팀에 전달되지 않고 기록으로도 남지 않는다.", "I'll check the clock when someone asks.": "누가 물을 때까지 기다리면 정해진 간격이 늦어진다."}
+    why: "심정지에서는 처치 시각과 간격을 팀 모두가 알아야 해요. 시간을 재고 소리 내어 알려 주면 약 투여나 압박 교대가 제때 이뤄지고 기록도 정확해요."
+    ko: "코드 타이밍을 재면서 소리 내어 말할게요."
+산모 대량 출혈 위기:
+  - kind: slider
+    words: [w-track, w-ebl, w-unit]
+    cue: "The mother is bleeding heavily, and units are going in. You are the one keeping the numbers. How do you commit to them?"
+    scale: ["I'll estimate blood loss at the end", "I'll jot EBL when I can", "I'll track EBL and units as we go"]
+    answerAt: 2
+    why: "대량 출혈에서는 추정 실혈량과 들어간 팩 수가 다음 판단의 근거예요. 끝에 한꺼번에 추정하거나 틈날 때 적는 것은 늦어요. 진행하면서 계속 추적한다고 말해요."
+    example: "I'll track EBL and units as we go."
+    exKo: "진행하면서 추정 실혈량과 팩을 추적할게요."
+  - kind: swap
+    words: [w-activate, w-ob, w-massive, w-transfusion, w-protocol]
+    who: "순환간호사 → 혈액은행 · 호출"
+    icon: speech
+    before: ["", "We might need a few more bags.", ""]
+    options: ["Activating the OB massive transfusion protocol.", "We might need a few more bags.", "We're just asking about blood, no rush."]
+    answer: "Activating the OB massive transfusion protocol."
+    notes: {"Activating the OB massive transfusion protocol.": "정해진 이름으로 발동을 알려서 혈액은행이 일반 요청이 아닌 긴급 절차로 받아들인다.", "We might need a few more bags.": "에둘러 말해서 혈액은행이 긴급 절차인지 알 수 없다.", "We're just asking about blood, no rush.": "서두르지 않는다는 말이라 대량 출혈의 긴급함이 전해지지 않는다."}
+    why: "대량수혈 프로토콜은 정해진 이름으로 말해야 혈액은행이 긴급 절차로 움직여요. '몇 팩 더'처럼 에둘러 말하면 일반 요청으로 들려요. 발동 결정은 집도의와 마취과와 함께 이루어지고, 순환간호사는 그 결정을 은행에 분명히 전해요."
+    ko: "산과 대량수혈 프로토콜을 개시하고 있어요."
+신생아 소생 지원:
+  - kind: slider
+    words: [w-bagmask, w-ready, w-suction, w-set]
+    cue: "The neonatal team arrives and asks what is at the warmer. You have the bag-mask ready and the suction set."
+    scale: ["Bag-mask is out, suction not yet", "Bag-mask ready and suction is set", "Everything for the baby is perfect"]
+    answerAt: 1
+    why: "준비된 것을 정확히 말해요. 덜 말하면 이미 갖춘 것이 전달되지 않고, '완벽하다'는 과장이라 빠진 것이 있어도 숨겨져요. 백밸브마스크와 흡인이 준비됐다고 구체적으로 알려요."
+    example: "Bag-mask ready and suction is set."
+    exKo: "백밸브마스크는 준비됐고 흡인도 세팅됐어요."
+  - kind: swap
+    words: [w-neonatal, w-take]
+    who: "순환간호사 → 신생아팀 · 인계 확인"
+    icon: speech
+    before: ["", "Are you guys going to do something?", ""]
+    options: ["Is the neonatal team taking over now?", "Are you guys going to do something?", "I'll handle the baby myself."]
+    answer: "Is the neonatal team taking over now?"
+    notes: {"Is the neonatal team taking over now?": "누가 아기를 맡는지 분명하게 묻는다. 인계가 확인되면 순환간호사는 지원으로 돌아간다.", "Are you guys going to do something?": "재촉하는 말투라 팀의 협력 분위기를 해친다.", "I'll handle the baby myself.": "신생아 소생은 신생아팀의 몫이라 순환간호사가 혼자 맡겠다고 하면 역할이 어긋난다."}
+    why: "아기를 누가 맡는지 분명해야 해요. '지금 인계받으시나요?'라고 물으면 책임이 정리되고, 순환간호사는 흡인·물품 같은 지원 역할에 집중할 수 있어요."
+    ko: "신생아팀이 지금 인계받고 있나요?"
+파종성 응고장애:
+  - kind: pair
+    words: [w-ffp, w-platelet, w-cryo]
+    pairs: [[FFP, fresh frozen plasma], [platelets, tiny cell fragments], [cryo, cryoprecipitate]]
+    decoys: [packed red cells]
+    why: "FFP는 fresh frozen plasma(신선동결혈장), 혈소판은 피를 엉기게 하는 작은 세포 조각, cryo는 cryoprecipitate(동결침전제제)의 줄임말이에요. 붉은 적혈구 제제는 산소 운반이 목적이라 이 짝에 들어가지 않아요."
+  - kind: swap
+    words: [w-need, w-ffp, w-platelet, w-cryo]
+    who: "순환간호사 → 혈액은행 · 제제 요청"
+    icon: speech
+    before: ["", "She might want some clotting stuff.", ""]
+    options: ["I need FFP, platelets, and cryo now.", "She might want some clotting stuff.", "Send whatever you have."]
+    answer: "I need FFP, platelets, and cryo now."
+    notes: {"I need FFP, platelets, and cryo now.": "필요한 제제를 이름으로 분명히 요청해서 은행이 바로 준비할 수 있다.", "She might want some clotting stuff.": "'응고 관련 뭔가'처럼 막연해서 어떤 제제인지 알 수 없다.", "Send whatever you have.": "종류를 정하지 않으면 필요한 제제가 오지 않고 낭비도 생긴다."}
+    why: "혈액은행에는 제제 이름을 정확히 말해야 해요. 막연한 요청은 잘못된 제제를 부르거나 지체시켜요. 어떤 제제를 쓸지는 의사의 처방이고, 간호사는 그 요청을 정확히 전해요."
+    ko: "지금 FFP와 혈소판, 크라이오가 필요해요."
+손상통제 수술 전환:
+  - kind: slider
+    words: [w-closure, w-supply, w-temporary]
+    cue: "The surgeon announces damage control: pack the abdomen, close it temporarily, then go to the ICU. What do you tell the room?"
+    scale: ["Temp closure supplies are ready", "Let's pack and do a temporary closure", "We're done operating on her"]
+    answerAt: 0
+    why: "수술 방법의 전환은 집도의가 정해요. 순환간호사는 임시 봉합 물품이 준비됐다고 알려서 결정을 지원해요. 방법을 되풀이하며 정하거나 수술이 끝났다고 말하는 것은 간호사의 몫이 아니에요."
+    example: "I have the temp closure supplies ready."
+    exKo: "임시 봉합 물품을 준비해 뒀어요."
+  - kind: context
+    words: [w-closure]
+    word: closure
+    ko: 봉합(폐쇄)
+    scenes:
+      - {who: 순환간호사 → 수술팀, icon: speech, en: "I have the temporary closure supplies ready.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Temporary closure applied; packs left in place and counted.", ok: true}
+      - {who: 가족 대기실, icon: faceWorried, en: "We did a temporary closure with packs in situ before the ICU.", ok: false, fix: "He's still very sick, so the surgeon closed his belly for now and will go back in."}
+    why: "뜻은 셋 다 '임시 봉합'이에요. 팀과 기록에서는 짧은 임상어가 정확하지만, 가족에게 '패킹 상태로 임시 봉합'이라고 하면 무슨 말인지 모르고 불안해요. 지금 상태와 앞으로 계획을 쉬운 말로 풀어 줘요."
+다중 위기 동시 대응:
+  - kind: slider
+    words: [w-airway, w-manage, w-transfusion]
+    cue: "Three things are happening at once: the airway, the bleeding and the blood. You speak up to organize the team. How do you phrase it?"
+    scale: ["Somebody needs to do something about the airway right now", "Maybe someone could possibly take over the airway?", "You take the airway, I'll manage the transfusion"]
+    answerAt: 2
+    why: "위기에는 누가 무엇을 맡는지 이름과 일을 함께 말해야 해요. '누군가'나 '혹시'로 시작하면 아무도 안 맡을 수 있어요. 마취과는 기도, 순환간호사는 혈액 상황 조율처럼 나누어 말해요."
+    example: "You take the airway, I'll manage the transfusion."
+    exKo: "선생님이 기도를 맡으시면 저는 수혈을 관리할게요."
+  - kind: swap
+    words: [w-assign, w-role, w-pair, w-each]
+    who: "순환간호사 → 팀 전체 · 역할 배정"
+    icon: speech
+    before: ["", "Somebody should probably handle things.", ""]
+    options: ["Let's assign a role to each pair of hands.", "Somebody should probably handle things.", "Everybody just do your best."]
+    answer: "Let's assign a role to each pair of hands."
+    notes: {"Let's assign a role to each pair of hands.": "손마다 역할을 정해서 겹치거나 비는 일이 없게 한다.", "Somebody should probably handle things.": "누구에게도 일을 정해 주지 않아 아무도 나서지 않을 수 있다.", "Everybody just do your best.": "역할이 없어 같은 일을 여럿이 하고 놓치는 일이 생긴다."}
+    why: "위기에서는 사람마다 역할을 정해 주면 같은 일을 겹쳐 하거나 아무도 안 하는 일이 줄어요. 막연한 부탁이나 '각자 알아서'는 혼란을 키워요."
+    ko: "손 하나하나에 역할을 배정합시다."

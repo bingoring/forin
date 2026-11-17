@@ -1,0 +1,240 @@
+대기실 안내:
+- kind: slider
+  words: [w-restroom, w-hall]
+  cue: "A visitor asks where the restroom is. It's a short walk from the waiting area — one corridor, no stairs."
+  scale:
+  - It's way out past the main lobby.
+  - It's just down the hall.
+  - It's right beside your chair.
+  answerAt: 1
+  why: "거리를 있는 그대로 말해요. '로비 밖'이라고 하면 멀게 들려 자리를 뜨기 부담스럽고, '바로 옆'이라고 하면 사실과 달라 헤매게 돼요. 'just down the hall'은 한 복도 거리라는 뜻이에요."
+  example: "There's coffee and restrooms just down the hall."
+  exKo: "복도 바로 저쪽에 커피와 화장실이 있어요."
+- kind: context
+  words: [w-update]
+  word: update
+  ko: 알려주다
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "Mr. Lee's wife is asking for an update — can you check with the OR desk?", ok: true}
+  - {who: 차트 기록, icon: board, en: "Update given to wife at 10:15; she verbalized understanding.", ok: true}
+  - {who: 간호사 → 대기 가족, icon: faceWorried, en: "Update: the anesthesia record shows the case is in progress, ASA 2, blood loss minimal.", ok: false, fix: "We'll come find you here with any updates."}
+  why: "뜻은 셋 다 '새 소식을 알리다'예요. 동료에게는 짧게, 차트에는 건조하게 적어요. 하지만 대기 가족에게 마취 기록 용어와 수치를 늘어놓으면 알아듣지 못하고 겁만 나요. 가족에게는 소식이 있으면 찾아와 알려 주겠다고 쉽게 말해요."
+예상 소요 시간 안내:
+- kind: slider
+  words: [w-usually, w-vary, w-posted]
+  cue: "The first case in this room was added late, so the OR desk hasn't given you an estimate yet. A husband asks how long it will take."
+  scale:
+  - I don't have a time yet, but I'll ask.
+  - It usually takes two hours, nothing more.
+  - It will take exactly two hours, to the minute.
+  answerAt: 0
+  why: "아는 만큼만 말해요. 근거 없이 '보통 두 시간'이라고 하거나 '정확히'라고 못 박으면, 늘어났을 때 가족이 더 불안해해요. 모를 때는 모른다고 하고 알아보겠다고 해요."
+  example: "Times can vary, and we'll keep you posted."
+  exKo: "시간은 달라질 수 있고, 계속 알려드릴게요."
+- kind: context
+  words: [w-recovery]
+  word: recovery
+  ko: 회복
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "Take her to recovery once the dressing is on.", ok: true}
+  - {who: 차트 기록, icon: board, en: "Transferred to recovery at 11:40; report given to PACU RN.", ok: true}
+  - {who: 간호사 → 대기 가족, icon: faceWorried, en: "She'll go to PACU for phase one recovery with neuro and vital checks every fifteen minutes.", ok: false, fix: "Afterward she'll go to recovery, where a nurse will watch her closely."}
+  why: "뜻은 셋 다 '회복(실)'이에요. 동료에게는 짧은 지시로, 차트에는 이송 시각과 인계로 적어요. 하지만 가족에게 PACU 1단계·검사 주기를 늘어놓으면 무슨 말인지 몰라요. 가족에게는 '간호사가 곁에서 지켜본다'처럼 쉽게 말해요."
+- kind: swap
+  words: [w-usually, w-vary, w-surgery]
+  who: "간호사 → 대기 가족 · 소요 시간 안내"
+  icon: me
+  before: ["", "It'll take exactly three hours, so be back then.", ""]
+  options:
+  - "It'll take exactly three hours, so be back then."
+  - "It usually takes about two to three hours, but times can vary."
+  - "It takes as long as it takes, so don't keep asking."
+  answer: "It usually takes about two to three hours, but times can vary."
+  notes:
+    "It'll take exactly three hours, so be back then.": "수술 시간은 상황에 따라 달라지는데 시각을 못 박으면 그 시간이 지났을 때 가족이 더 불안해해요."
+    "It usually takes about two to three hours, but times can vary.": "보통의 범위를 알려 주고, 달라질 수 있음도 함께 말해 기대를 맞춰 줘요."
+    "It takes as long as it takes, so don't keep asking.": "묻는 가족을 나무라는 말이라 차갑고 무례하게 들려요."
+  why: "시간은 범위로 알려 주고 달라질 수 있다고 덧붙여요. 정확한 시각을 약속하지도, 묻는 것을 나무라지도 않아요."
+  ko: 보통 두세 시간 정도 걸리는데, 시간은 달라질 수 있어요
+진행 상황 업데이트:
+- kind: pair
+  words: [w-track, w-far, w-check]
+  pairs:
+  - ["on", track]
+  - [so, far]
+  - [check, in]
+  decoys: [along]
+  why: "on track(계획대로), so far(지금까지), check in(들러서 확인하다)은 굳어진 표현이라 짝이 정해져 있어요."
+- kind: context
+  words: [w-stable]
+  word: stable
+  ko: 안정된
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "Is she stable? — Yes, stable, pressure in the seventies and sats fine.", ok: true}
+  - {who: 차트 기록, icon: board, en: "Pt remained stable throughout; VSS, no events noted.", ok: true}
+  - {who: 간호사 → 대기 가족, icon: faceWorried, en: "Her hemodynamics are stable on a norepinephrine drip, MAP 65.", ok: false, fix: "She's stable, and the surgery is progressing."}
+  why: "뜻은 셋 다 '안정된'이에요. 동료에게는 수치를, 차트에는 짧은 약어로 적어요. 하지만 가족에게 혈역학·승압제·MAP 같은 말을 쓰면 오히려 걱정만 커져요. 가족에게는 '안정적이고 수술이 진행 중'이라고만 쉽게 말해요."
+- kind: swap
+  words: [w-well, w-next, w-update]
+  who: "간호사 → 대기 가족 · 진행 보고"
+  icon: me
+  before: ["", "Don't worry, everything will go perfectly.", ""]
+  options:
+  - "Don't worry, everything will go perfectly."
+  - "It's going well so far, and I'll come back with the next update."
+  - "No news is good news, so just wait."
+  answer: "It's going well so far, and I'll come back with the next update."
+  notes:
+    "Don't worry, everything will go perfectly.": "수술 결과를 장담하는 말이에요. 간호사가 지킬 수 없는 약속이라 하지 않아요."
+    "It's going well so far, and I'll come back with the next update.": "지금까지의 상황만 사실대로 전하고, 다음 소식을 언제 줄지 알려 줘 안심시켜요."
+    "No news is good news, so just wait.": "소식이 없는 이유를 가족이 마음대로 짐작하게 두는 말이라 오히려 불안해요."
+  why: "지금까지의 경과만 사실대로 말하고 다음 소식을 약속해요. 결과를 장담하는 말은 하지 않아요."
+  ko: 지금까지는 잘 진행되고 있고, 다음 소식을 들고 다시 올게요
+가족 질문 응대:
+- kind: slider
+  words: [w-pain, w-manage, w-closely]
+  cue: "A son asks if his mother will hurt when she wakes up. A pain plan is in place, but nobody can promise she'll feel nothing."
+  scale:
+  - I can't say anything about her pain.
+  - We'll manage her pain closely in recovery.
+  - She won't feel any pain at all, I promise.
+  answerAt: 1
+  why: "통증 관리 계획이 있다는 사실만 말해요. 아무 말도 못 한다고 하면 불안하고, 통증이 전혀 없을 거라고 장담하면 지킬 수 없는 약속이 돼요."
+  example: "We'll manage his pain closely in recovery."
+  exKo: "회복실에서 통증을 세심하게 관리해드릴게요."
+- kind: context
+  words: [w-pain, w-medication]
+  word: pain
+  ko: 통증
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "His pain is a six out of ten — can you get the next dose ready?", ok: true}
+  - {who: 차트 기록, icon: board, en: "Pain 6/10; PRN given at 14:05, reassess in 30 min.", ok: true}
+  - {who: 간호사 → 보호자, icon: faceWorried, en: "Pain will be scored on the numeric scale every fifteen minutes, with PRN opioids titrated to effect.", ok: false, fix: "We'll check on his pain closely, and he'll have medication ready when he needs it."}
+  why: "뜻은 셋 다 '통증'이에요. 동료에게는 점수와 다음 투약 준비를, 차트에는 점수와 시각을 적어요. 하지만 가족에게 척도·PRN·오피오이드 용량 조절을 말하면 겁만 나요. 가족에게는 '자주 살피고 약을 준비해 둔다'고 쉽게 말해요."
+- kind: swap
+  words: [w-pain, w-manage, w-closely]
+  who: "간호사 → 가족 · 통증 질문"
+  icon: me
+  before: ["", "Yes, there will be a lot of pain, but that's normal.", ""]
+  options:
+  - "Yes, there will be a lot of pain, but that's normal."
+  - "He may have some pain, and we'll manage it closely in recovery."
+  - "He won't feel anything, I promise."
+  answer: "He may have some pain, and we'll manage it closely in recovery."
+  notes:
+    "Yes, there will be a lot of pain, but that's normal.": "정도를 단정해 겁을 주고, 관리하겠다는 계획이 빠져 있어요."
+    "He may have some pain, and we'll manage it closely in recovery.": "통증이 있을 수 있음을 인정하면서 관리하겠다고 알려 현실적으로 안심시켜요."
+    "He won't feel anything, I promise.": "통증이 전혀 없다고 약속하는 말이라 지킬 수 없어요."
+  why: "있을 수 있는 일은 인정하고, 관리하겠다는 계획을 말해요. 과장해서 겁을 주지도, 없다고 장담하지도 않아요."
+  ko: 통증이 조금 있을 수 있는데, 회복실에서 세심하게 관리해드릴게요
+회복실 면회 안내:
+- kind: slider
+  words: [w-recovery, w-settle, w-soon]
+  cue: "A daughter asks when she can see her mother. Her mother is still waking up in recovery."
+  scale:
+  - You can come in sometime today.
+  - You can see her once she's settled in recovery.
+  - You can come in exactly thirty minutes from now.
+  answerAt: 1
+  why: "면회는 환자가 회복실에서 자리를 잡은 뒤에 가능해요. '오늘 중'은 너무 막연하고, '정확히 삼십 분 뒤'는 지킬 수 없는 시각 약속이에요."
+  example: "You can see her once she's settled in recovery."
+  exKo: "회복실에서 안정을 찾으시면 뵈러 들어가실 수 있어요."
+- kind: context
+  words: [w-sleepy]
+  word: sleepy
+  ko: 졸린
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "She's sleepy but wakes to her name — keep her on the monitor.", ok: true}
+  - {who: 차트 기록, icon: board, en: "Pt sleepy, arousable to voice, oriented to self.", ok: true}
+  - {who: 간호사 → 면회 가족, icon: faceWorried, en: "Patient is sleepy, arousable to voice only, GCS 14, respirations even.", ok: false, fix: "She may seem sleepy and a little confused at first."}
+  why: "뜻은 셋 다 '졸린'이에요. 동료와 차트에서는 이름에 반응하는지, 음성에 깨는지를 짧게 말해요. 하지만 면회 온 가족에게 GCS·호흡 수치를 읽어 주면 무슨 상태인지 몰라 놀라요. 가족에게는 처음엔 졸리고 혼란스러울 수 있다고 미리 알려 줘요."
+- kind: swap
+  words: [w-seem, w-sleepy, w-confused, w-first]
+  who: "간호사 → 면회 가족 · 마취 후 상태"
+  icon: me
+  before: ["", "She'll be out of it, so don't expect her to know you.", ""]
+  options:
+  - "She'll be out of it, so don't expect her to know you."
+  - "She may still seem sleepy and a little confused at first."
+  - "She'll be wide awake and chatting right away."
+  answer: "She may still seem sleepy and a little confused at first."
+  notes:
+    "She'll be out of it, so don't expect her to know you.": "가족을 알아보지 못할 거라고 단정해 겁을 줘요."
+    "She may still seem sleepy and a little confused at first.": "처음에만 그럴 수 있다고 미리 알려, 보고 놀라지 않게 해요."
+    "She'll be wide awake and chatting right away.": "마취에서 깨는 속도는 사람마다 달라요. 곧바로 말짱하다고 하면 가족이 졸린 모습을 보고 놀라요."
+  why: "마취 직후 졸리고 혼란스러운 것은 흔한 일이에요. 처음에만 그럴 수 있다고 미리 알려 줘요."
+  ko: 처음엔 아직 조금 졸리고 혼란스러워 보이실 수 있어요
+연락 방법 안내:
+- kind: slider
+  words: [w-page, w-change, w-moment]
+  cue: "A husband says, 'If anything changes, I need to know right then.' The team's process is to page the family when the surgeon asks for them."
+  scale:
+  - We'll find you when it's all over, one way or another.
+  - We'll try to reach you if there happens to be time.
+  - We'll page you the moment anything changes.
+  answerAt: 2
+  why: "수술실에서 보호자를 찾으면 바로 호출한다는 절차를 있는 그대로 약속해요. '끝나면'이나 '시간이 되면'은 기다리는 가족에게 너무 막연해요."
+  example: "We'll page you the moment anything changes."
+  exKo: "변화가 생기는 순간 바로 호출해드릴게요."
+- kind: context
+  words: [w-reachable]
+  word: reachable
+  ko: 연락 가능한
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "The family says they'll stay reachable on their cell — the number's on the board.", ok: true}
+  - {who: 차트 기록, icon: board, en: "Family reachable by cell; number on chart.", ok: true}
+  - {who: 간호사 → 대기 가족, icon: faceWorried, en: "Please remain reachable at all times per our notification protocol.", ok: false, fix: "Please keep your phone with you so we can reach you right away."}
+  why: "뜻은 셋 다 '연락이 닿는'이에요. 동료와 차트에서는 번호가 어디 있는지만 짧게 말해요. 하지만 가족에게 '통지 규정에 따라 항상'이라고 하면 딱딱하고 압박처럼 들려요. 가족에게는 휴대폰을 곁에 두면 바로 연락하겠다고 쉽게 말해요."
+- kind: swap
+  words: [w-step, w-desk]
+  who: "간호사 → 가족 · 자리를 비울 때"
+  icon: me
+  before: ["", "Don't go anywhere; we have no way to contact you.", ""]
+  options:
+  - "Don't go anywhere; we have no way to contact you."
+  - "If you step out, just let the desk know where you'll be."
+  - "You're on your own if you leave."
+  answer: "If you step out, just let the desk know where you'll be."
+  notes:
+    "Don't go anywhere; we have no way to contact you.": "가족을 꼼짝 못 하게 붙잡는 말이에요. 연락 방법이 있으니 사실과도 달라요."
+    "If you step out, just let the desk know where you'll be.": "자리를 비워도 된다고 하면서, 어디 계신지만 알려 달라고 요청해 연락이 닿게 해요."
+    "You're on your own if you leave.": "나가면 알아서 하라는 말이라 차갑고, 소식이 있어도 못 전할 수 있어요."
+  why: "가족이 자리를 비우는 것은 자연스러운 일이에요. 막지 않고, 연락이 닿게 어디 있을지만 알려 달라고 해요."
+  ko: 자리를 비우시면 데스크에 어디 계실지만 알려주세요
+수술 지연 사유 설명:
+- kind: slider
+  words: [w-delay, w-earlier, w-update]
+  cue: "The start time slipped, and the desk hasn't told you why yet. A wife asks what is going on."
+  scale:
+  - I don't know the reason yet, but I'll ask.
+  - The earlier case ran long, and everything has to be ready and safe.
+  - There is nothing at all to worry about, I promise.
+  answerAt: 0
+  why: "이유를 아직 모르면 모른다고 하고 알아보겠다고 해요. 모르면서 앞 수술 때문이라고 말하거나 걱정할 일이 없다고 장담하면 틀린 정보나 지킬 수 없는 약속이 돼요."
+  example: "I'll update you the moment we have a start time."
+  exKo: "시작 시간이 정해지는 대로 바로 알려드릴게요."
+- kind: context
+  words: [w-delay]
+  word: delay
+  ko: 지연
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "Room 3's start has a delay of thirty minutes — the earlier case ran over.", ok: true}
+  - {who: 차트 기록, icon: board, en: "Delay: previous case ran long; start time pending.", ok: true}
+  - {who: 간호사 → 대기 가족, icon: faceWorried, en: "The delay is attributable to turnover inefficiency in the preceding case.", ok: false, fix: "There's a delay because the earlier case ran long. I'll update you the moment we have a start time."}
+  why: "뜻은 셋 다 '지연'이에요. 동료에게는 짧게, 차트에는 사유와 시작 시각 미정을 적어요. 하지만 가족에게 '회전 비효율 탓'처럼 딱딱한 말을 쓰면 무슨 말인지 모르고 오히려 병원이 허둥대는 것으로 들려요. 가족에게는 사유를 쉽게 말하고 소식을 약속해요."
+- kind: swap
+  words: [w-delay, w-mean, w-wrong]
+  who: "간호사 → 대기 가족 · 지연 설명"
+  icon: me
+  before: ["", "Something must be wrong in there.", ""]
+  options:
+  - "Something must be wrong in there."
+  - "A delay like this doesn't mean anything is wrong."
+  - "It's just a delay, so stop worrying."
+  answer: "A delay like this doesn't mean anything is wrong."
+  notes:
+    "Something must be wrong in there.": "근거 없이 잘못됐다고 짐작하게 하는 말이라 가족의 불안만 키워요."
+    "A delay like this doesn't mean anything is wrong.": "지연이 곧 문제는 아니라는 사실을 전해 불안한 짐작을 덜어 줘요."
+    "It's just a delay, so stop worrying.": "걱정하지 말라고 다그치는 말이라 마음을 인정받지 못한 기분이 들어요."
+  why: "지연 때문에 가족이 최악을 짐작하기 쉬워요. 지연이 곧 문제는 아니라고 사실만 알려 줘요."
+  ko: 이렇게 지연된다고 해서 뭔가 잘못됐다는 뜻은 아니에요
