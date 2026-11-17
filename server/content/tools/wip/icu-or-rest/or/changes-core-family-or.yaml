@@ -124,7 +124,7 @@ changes:
   id: w-completely
   fields:
   - ko
-  why: w-fully와 ko(완전히)가 같아 정답이 둘 — 두 문장 모두 '충분히 이해할 만한·충분히 정당한'
+  why: w-fully와 ko(완전히)가 같아 정답이 둘 — 두 문장 모두 '충분히 이해할 만한·충분히 정당한' / 충분히는 sufficiently — "전적으로"(A D21)
 - kind: word
   id: w-fully
   fields:
@@ -174,12 +174,14 @@ changes:
   id: w-right
   fields:
   - ko
-  why: tag된 문장 대부분이 right here·right now·right beside처럼 '바로'(강조) — '제대로(된)'는 두 문장뿐이라 그 둘은 태그를 뺌
+  - example
+  why: tag된 문장 대부분이 right here·right now·right beside처럼 '바로'(강조) — '제대로(된)'는 두 문장뿐이라 그 둘은 태그를 뺌 / ko 바로에 맞게 example을 right here 문장으로(A D12)
 - kind: word
   id: w-case
   fields:
   - ko
-  why: earlier case는 앞 수술(건)을 뜻함 — in case(경우) 문장은 태그를 뺌
+  - example
+  why: earlier case는 앞 수술(건)을 뜻함 — in case(경우) 문장은 태그를 뺌 / ko 수술 건에 맞게 example을 earlier case 문장으로(A D11)
 - kind: sentence
   situation: 대기실 안내
   index: 2
@@ -202,8 +204,10 @@ changes:
   situation: 예상 소요 시간 안내
   index: 3
   fields:
+  - ko
+  - chunks
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 마취가 자세보다 먼저(A D9)
 - kind: sentence
   situation: 진행 상황 업데이트
   index: 0
@@ -226,8 +230,9 @@ changes:
   situation: 가족 질문 응대
   index: 4
   fields:
+  - chunks
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / chunks 구 경계 정리(A D10)
 - kind: sentence
   situation: 회복실 면회 안내
   index: 0
@@ -256,8 +261,9 @@ changes:
   situation: 연락 방법 안내
   index: 3
   fields:
+  - chunks
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / chunks 구 경계 정리(A D10)
 - kind: sentence
   situation: 수술 지연 사유 설명
   index: 1
@@ -275,7 +281,7 @@ changes:
   index: 3
   fields:
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 삭제한 단어(w-other·w-coffee)·w-care 6.3 태그 빼기
 - kind: sentence
   situation: 장시간 수술 안심
   index: 2
@@ -292,8 +298,9 @@ changes:
   situation: 장시간 수술 안심
   index: 4
   fields:
+  - chunks
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / chunks 구 경계 정리(A D10)
 - kind: sentence
   situation: 불안 가족 정서 지지
   index: 0
@@ -341,7 +348,7 @@ changes:
   index: 1
   fields:
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 삭제한 단어(w-other·w-coffee)·w-care 6.3 태그 빼기
 - kind: sentence
   situation: 다국어 가족 소통
   index: 2
@@ -352,20 +359,25 @@ changes:
   situation: 소아 보호자 소통
   index: 0
   fields:
+  - ko
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / ko가 en에 없는 안심하세요를 더함(A D24)
 - kind: sentence
   situation: 소아 보호자 소통
   index: 3
   fields:
+  - chunks
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / chunks 구 경계 정리(A D10)
 - kind: sentence
   situation: 소아 보호자 소통
   index: 4
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 시점 약속(very soon) 빼기(A D3)
 - kind: sentence
   situation: 면회 규정 설명
   index: 0
@@ -388,8 +400,9 @@ changes:
   situation: 추가 시술 결정 소통
   index: 0
   fields:
+  - ko
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / ko가 간호사가 발견한 것처럼 읽힘(A D25)
 - kind: sentence
   situation: 추가 시술 결정 소통
   index: 2
@@ -400,8 +413,9 @@ changes:
   situation: 추가 시술 결정 소통
   index: 4
   fields:
+  - chunks
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / chunks 구 경계 정리(A D10)
 - kind: sentence
   situation: 종교적 요구 조율
   index: 1
@@ -424,8 +438,9 @@ changes:
   situation: 술중 합병증 소식 전달
   index: 3
   fields:
+  - chunks
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / chunks 구 경계 정리(A D10)
 - kind: sentence
   situation: 술중 합병증 소식 전달
   index: 4
@@ -454,8 +469,9 @@ changes:
   situation: 나쁜 소식 준비·전달
   index: 4
   fields:
+  - chunks
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / chunks 구 경계 정리(A D10)
 - kind: sentence
   situation: 사망 소식 지원
   index: 1
@@ -472,8 +488,9 @@ changes:
   situation: 사망 소식 지원
   index: 4
   fields:
+  - chunks
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / chunks 구 경계 정리(A D10)
 - kind: sentence
   situation: 분노·항의 가족 대응
   index: 0
@@ -520,11 +537,186 @@ changes:
   situation: 위기 중 가족 결정 지원
   index: 3
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 틀린 선택이 없다는 단정 빼기(A D5)
 - kind: sentence
   situation: 위기 중 가족 결정 지원
   index: 4
   fields:
   - words
   why: 쉬운 단어·구에 묶은 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: word
+  id: w-closely
+  fields:
+  - ko
+  why: 세 문장 모두 "면밀히"(A D16)
+- kind: word
+  id: w-bring
+  fields:
+  - ko
+  why: 두 문장 모두 가족을 환자에게 모시고 가는 것(A D18)
+- kind: word
+  id: w-page
+  fields:
+  - example
+  why: 단어 example을 바뀐 문장에 맞춤(A 수정)
+- kind: word
+  id: w-change
+  fields:
+  - example
+  why: 단어 example을 바뀐 문장에 맞춤(A 수정)
+- kind: word
+  id: w-earlier
+  fields:
+  - ko
+  why: 문장은 형용사 the earlier case(앞선)(A D17)
+- kind: word
+  id: w-mean
+  fields:
+  - example
+  why: 단어 example을 바뀐 문장에 맞춤(A 수정)
+- kind: word
+  id: w-wrong
+  fields:
+  - example
+  why: 단어 example을 바뀐 문장에 맞춤(A 수정)
+- kind: word
+  id: w-scared
+  fields:
+  - ko
+  why: scared는 "겁먹은", "무서운"은 scary(A D15)
+- kind: word
+  id: w-each
+  fields:
+  - en
+  - ipa
+  - ko
+  why: each other 한 구를 두 카드로 쪼갠 것을 합침 — 헤드워드 each other, ko 서로(A D13)
+- kind: word
+  id: w-language
+  fields:
+  - example
+  why: 단어 example을 바뀐 문장에 맞춤(A 수정)
+- kind: word
+  id: w-monitor
+  fields:
+  - ko
+  why: 임상은 감시가 아니라 관찰(A D22)
+- kind: word
+  id: w-rule
+  fields:
+  - example
+  why: 단어 example을 바뀐 문장에 맞춤(A 수정)
+- kind: word
+  id: w-rest
+  fields:
+  - example
+  why: 단어 example을 바뀐 문장에 맞춤(A 수정)
+- kind: word
+  id: w-heal
+  fields:
+  - example
+  why: 단어 example을 바뀐 문장에 맞춤(A 수정)
+- kind: word
+  id: w-fast
+  fields:
+  - ko
+  - example
+  why: 두 문장 모두 부사(acting fast) — "빨리"; example을 19.0 문장으로(A D20, D6)
+- kind: word
+  id: w-still
+  fields:
+  - example
+  why: 단어 example을 바뀐 문장에 맞춤(A 수정)
+- kind: word
+  id: w-choice
+  fields:
+  - example
+  why: 단어 example을 바뀐 문장에 맞춤(A 수정)
+- kind: word
+  id: w-stand
+  fields:
+  - en
+  - ipa
+  - example
+  why: stand 단독에 ko "곁을 지키다"(stand by의 뜻) — 헤드워드를 stand by로(A D14)
+- kind: word
+  id: w-either
+  fields:
+  - example
+  why: 단어 example을 바뀐 문장에 맞춤(A 수정)
+- kind: word-remove
+  id: w-coffee
+  why: 결정 11 — 간호사에게 가르칠 말이 아님(쉬운 단어); 어느 문장도 태그하지 않게 됐다(A D23)
+- kind: word-remove
+  id: w-little
+  why: 결정 11 — 13.3 문장에서 "a little" 판정을 빼면서 이 문장에만 쓰이던 단어를 지운다(A D4)
+- kind: word-remove
+  id: w-other
+  why: '결정 11 — each other를 한 구(w-each)로 합침: other 단독의 ko "서로"는 틀림(A D13)'
+- kind: sentence
+  situation: 대기실 안내
+  index: 1
+  fields:
+  - words
+  why: 삭제한 단어(w-other·w-coffee)·w-care 6.3 태그 빼기
+- kind: sentence
+  situation: 회복실 면회 안내
+  index: 4
+  fields:
+  - ko
+  - chunks
+  why: bring you back은 안으로 모시고 가다 — ko 방향 바로잡기(A D8)
+- kind: sentence
+  situation: 연락 방법 안내
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 즉시 호출 약속을 절차 그대로로(A D1)
+- kind: sentence
+  situation: 수술 지연 사유 설명
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 단정 완화(usually)(A D7)
+- kind: sentence
+  situation: 다국어 가족 소통
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 통역사는 설명이 아니라 옮기기(A D2)
+- kind: sentence
+  situation: 면회 규정 설명
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 더 빨리 회복 인과 단정 빼기(A D6)
+- kind: sentence
+  situation: 추가 시술 결정 소통
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 변경 정도를 간호사가 판정하지 않기(A D4)
+- kind: sentence
+  situation: 분노·항의 가족 대응
+  index: 3
+  fields:
+  - ko
+  why: 항의 장면에서 잘못을 인정하는 말로 읽힘(A/B 참고)

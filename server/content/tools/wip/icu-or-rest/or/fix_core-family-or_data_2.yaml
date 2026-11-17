@@ -1,0 +1,97 @@
+# A 수정으로 문장 en·ko·chunks가 바뀐 곳(+D10 chunks, 쉬운 단어 태그)의 v44·v46 필드. 키는 "상황.문장"(0부터).
+sentences:
+  "0.1": {remove_words: [w-coffee]}
+  "1.3":
+    ko: "마취와 자세 잡기에도 수술 자체가 시작되기 전에 시간이 좀 걸려요."
+    chunks: ["Positioning and anesthesia", "take some time", "before", "the surgery itself starts", "."]
+    distractorsKo: ["소독과 자세 잡기에도 수술 자체가 시작되기 전에 시간이 좀 걸려요.", "마취와 자세 잡기에도 회복 자체가 시작되기 전에 시간이 좀 걸려요."]
+  "3.4":
+    chunks: ["Please", "let us know", "if you have", "more questions", "."]
+  "4.4":
+    ko: "저희가 가능한 한 빨리 안으로 모시고 갈게요."
+    chunks: ["We'll", "bring you back", "as soon as", "we can", "."]
+    tag: "안내 약속"
+    icon: compass
+    why: "bring you back은 환자 곁(안쪽)으로 모시고 간다는 미국 병원의 말이고, as soon as we can로 시각을 못 박지 않고 가능한 한 빨리라고만 약속해요."
+    distractorsKo: ["저희가 가능한 한 빨리 안으로 짐을 가져다 드릴게요.", "저희가 내일 아침에 안으로 모시고 갈게요."]
+  "5.3":
+    chunks: ["If you step out", ", just", "let the desk know", "where you'll be", "."]
+  "5.4":
+    en: "We'll page you when we have an update."
+    ko: "소식이 있으면 호출해드릴게요."
+    chunks: ["We'll page you", "when we have", "an update", "."]
+    words: [w-page, w-update]
+    tag: "호출 약속"
+    icon: pager
+    why: "when we have an update로 호출 시점을 '소식이 생겼을 때'로 잡아 지킬 수 있는 약속을 해요. 가족이 소식 없이 기다리지 않게 해 줘요."
+    decoy: "a form"
+    distractorsKo: ["점심이 도착하면 호출해드릴게요.", "교대 시간이 되면 호출해드릴게요."]
+    blank: {answer: page, options: [page, bill, fax, seat]}
+  "6.3":
+    remove_words: [w-care]
+  "6.4":
+    en: "A delay like this doesn't usually mean anything is wrong."
+    ko: "이렇게 지연된다고 해서 보통 뭔가 잘못됐다는 뜻은 아니에요."
+    chunks: ["A delay like this", "doesn't usually mean", "anything", "is wrong", "."]
+    why: "doesn't usually mean anything is wrong은 흔한 오해(지연=문제)를 먼저 말하고, usually로 단정하지 않아 불안을 덜면서도 거짓 안심은 피해요."
+    distractorsKo: ["이렇게 지연된다고 해서 보통 누가 잘못했다는 뜻은 아니에요.", "이렇게 지연된다고 해서 보통 뭔가 달라졌다는 뜻은 아니에요."]
+  "7.4":
+    chunks: ["I'll keep", "checking in", "and let you know", "right away", "."]
+  "10.1":
+    remove_words: [w-other]
+  "10.3":
+    en: "The interpreter can put everything I say into your language."
+    ko: "제가 하는 말은 통역사가 전부 어머님 언어로 옮겨 드릴 거예요."
+    chunks: ["The interpreter", "can put", "everything I say", "into your language", "."]
+    words: [w-interpreter, w-everything, w-language]
+    why: "통역사가 하는 일은 설명이 아니라 옮기기예요. everything I say라고 해서 말하는 쪽은 간호사이고, 그 말이 그대로 가족의 언어로 전달된다는 점을 분명히 해요."
+    distractorsKo: ["제가 하는 말은 통역사가 전부 영어로 옮겨 드릴 거예요.", "제가 하는 말은 통역사가 몇 가지만 어머님 언어로 옮겨 드릴 거예요."]
+  "11.0":
+    ko: "따님은 아주 믿을 만한 분들이 돌보고 있어요."
+    distractorsKo: ["아드님은 아주 믿을 만한 분들이 돌보고 있어요.", "따님은 아주 좋은 병실에서 돌봄을 받고 있어요."]
+  "11.3":
+    chunks: ["She'll have", "a nurse", "watching her closely", "the whole time", "."]
+  "11.4":
+    en: "You'll be able to see her as soon as she's settled."
+    ko: "따님이 자리를 잡는 대로 바로 보실 수 있을 거예요."
+    chunks: ["You'll be able", "to see her", "as soon as", "she's settled", "."]
+    words: [w-able, w-soon, w-settle]
+    why: "as soon as she's settled는 시각이 아니라 따님의 상태를 기준으로 삼아, 정해지지 않은 때를 약속하지 않으면서 곧 만날 수 있다는 기대를 줘요."
+    distractorsKo: ["따님이 자리를 잡는 대로 바로 전화하실 수 있을 거예요.", "따님이 자리를 잡는 대로 사진을 보실 수 있을 거예요."]
+  "12.3":
+    en: "This rule helps her rest and heal."
+    ko: "이 규칙은 환자분이 쉬고 회복하시는 데 도움이 돼요."
+    chunks: ["This rule", "helps her rest", "and heal", "."]
+    words: [w-rule, w-help, w-rest, w-heal]
+    why: "helps her rest and heal은 규칙의 최종 이유를 환자 회복으로 돌려, 가족의 이해를 구해요. 얼마나 빨라지는지는 말하지 않아 장담을 피해요."
+    distractorsKo: ["이 규칙은 환자분이 쉬고 깨어나시는 데 도움이 돼요.", "이 규칙은 환자분이 먹고 회복하시는 데 도움이 돼요."]
+  "13.0":
+    ko: "수술팀이 지금 바로 처리해야 할 것을 발견했어요."
+    distractorsKo: ["수술팀이 지금 바로 설명드려야 할 것을 발견했어요.", "수술팀이 지금 바로 처리해야 할 것을 찾고 있어요."]
+  "13.3":
+    en: "The plan has changed, but she's still stable."
+    ko: "계획이 바뀌었지만, 여전히 안정적이세요."
+    chunks: ["The plan has changed", ", but she's", "still stable", "."]
+    words: [w-change, w-plan, w-still, w-stable]
+    why: "The plan has changed는 계획 변경을 숨기지 않고 알리되 그 정도를 판단하지 않고, still stable로 현재 상태를 함께 전해요."
+    distractorsKo: ["계획이 바뀌었지만, 여전히 마취 중이세요.", "계획이 길어졌지만, 여전히 안정적이세요."]
+  "13.4":
+    chunks: ["The surgeon", "will come speak", "with you", "as soon as possible", "."]
+  "15.3":
+    chunks: ["I know", "this is", "hard news", "to hear", "."]
+  "16.4":
+    chunks: ["I'm not going", "anywhere", "— I'll stay", "right beside you", "."]
+  "17.4":
+    chunks: ["Whenever you're ready", ", we can talk", "about", "what comes next", "."]
+  "18.3":
+    ko: "듣고 있어요, 뭐가 속상하신지 이해하고 싶어요."
+    distractorsKo: ["듣고 있어요, 뭐가 궁금하신지 이해하고 싶어요.", "듣고 있어요, 뭐가 필요하신지 이해하고 싶어요."]
+  "20.3":
+    en: "There's no perfect choice here — we'll stand by you either way."
+    ko: "여기엔 완벽한 선택은 없어요, 어느 쪽이든 저희가 곁을 지킬게요."
+    chunks: ["There's no perfect choice", "here", "— we'll stand by you", "either way", "."]
+    words: [w-choice, w-stand, w-either]
+    why: "no perfect choice로 어느 쪽을 골라도 아쉬움이 남을 수 있음을 인정해 결정의 부담을 덜고, stand by you either way로 어느 선택에도 곁에 있겠다고 약속해요."
+    decoy: "There's one more choice"
+    distractorsKo: ["여기엔 완벽한 질문은 없어요, 어느 쪽이든 저희가 곁을 지킬게요.", "여기엔 완벽한 약은 없어요, 어느 쪽이든 저희가 곁을 지킬게요."]
+    blank: {answer: perfect, options: [perfect, free, legal, medical]}
