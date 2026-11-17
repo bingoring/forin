@@ -1,0 +1,323 @@
+# A 검토(v45·결정 11·업무 범위)와 B 검토 값 중 문장이 바뀐 곳·"~려고" 줄이기 — 수정 담당이 쓴 값
+sentences:
+  # --- S1~S6 문장 새로 (en·ko·chunks·words + v46 필드 전부) ---
+  "4.4":
+    en: "I'll have a clamp ready for that vessel."
+    ko: "그 혈관에 쓸 클램프를 준비해 둘게요."
+    chunks: ["I'll have", "a clamp", "ready", "for that vessel", "."]
+    words: [w-clamp, w-vessel, w-ready]
+    tag: "기구 준비"
+    icon: scalpel
+    why: "I'll have A ready는 요청받기 전에 미리 챙겨 두겠다는 말이에요. for that vessel로 어느 출혈 부위에 쓸 클램프인지 분명히 해요. 클램프를 거는 일은 집도의가 해요."
+    decoy: "for that sponge"
+    distractorsKo: ["클램프는 혈관을 물어서 피가 못 흐르게 해요.", "클램프로 잡은 혈관은 묶거나 지져요."]
+    blank: {answer: vessel, options: [{en: vessel}, {en: nerve}, {en: valve}, {en: muscle}]}
+  "8.4":
+    en: "Once FFP is ordered, I'll call the blood bank."
+    ko: "FFP 주문이 들어가면 혈액은행에 전화할게요."
+    chunks: ["Once FFP", "is ordered", ", I'll call", "the blood bank", "."]
+    words: [w-order, w-ffp, w-call, w-bloodbank]
+    tag: "후속 연락"
+    icon: pager
+    why: "Once …로 주문이 먼저 들어간다는 조건을 밝히고, 그다음 내 몫인 혈액은행 연락을 I'll로 말해요. 주문할지는 의료진이 정해요."
+    decoy: "the monitor"
+    distractorsKo: ["FFP 주문이 들어가면 혈액은행이 해동을 시작해요.", "FFP 주문이 들어가면 전화하려고 번호부터 찾을게요."]
+    blank: {answer: "blood bank", options: [{en: "blood bank"}, {en: pharmacy}, {en: radiology}, {en: dietary}]}
+  "10.3":
+    en: "Do you want the large-bore catheter placed in his other arm?"
+    ko: "대구경 카테터를 다른 쪽 팔에 놓으시겠어요?"
+    chunks: ["Do you want", "the large-bore catheter", "placed", "in his other arm", "?"]
+    words: [w-place, w-largebore, w-catheter]
+    tag: "제안 질문"
+    icon: stetho
+    why: "Do you want A placed …?는 A를 …에 놓을지 정중하게 묻는 말이에요. 라인을 어디에 놓을지는 놓는 사람이 정하니 먼저 묻고, in his other arm으로 이미 라인이 있는 팔과 구분해요."
+    decoy: "in the other room"
+    distractorsKo: ["대구경 카테터는 팔꿈치 정맥에 자주 놓아요.", "카테터를 놓으려고 지혈대를 맬까요?"]
+    blank: {answer: placed, options: [{en: placed}, {en: removed}, {en: drawn}, {en: cleaned}]}
+  "16.3":
+    en: "Pressors are going in, and volume is running at the same time."
+    ko: "승압제가 들어가고 있고, 동시에 수액도 들어가고 있어요."
+    chunks: ["Pressors", "are going in", ", and volume is running", "at the same time", "."]
+    words: [w-pressor, w-volume, w-run]
+    tag: "상태 보고"
+    icon: siren
+    why: "Pressors are going in은 누가 투여하는지 말하지 않고 지금 상태만 알리는 보고체예요. and … at the same time으로 두 처치가 동시에 진행 중임을 밝혀요."
+    decoy: "one at a time"
+    distractorsKo: ["승압제는 수액이 모자라면 효과가 약해지기도 해요.", "승압제는 혈관을 좁혀서 혈압을 올려 주는 약이에요."]
+    blank: {answer: running, options: [{en: running}, {en: pausing}, {en: resting}, {en: waiting}]}
+  "19.3":
+    en: "We may need to shift to damage control if we can't get control here."
+    ko: "여기서 지혈이 안 되면 손상통제로 전환해야 할 수도 있어요."
+    chunks: ["We may need", "to shift", "to damage control", "if we can't get control here", "."]
+    words: [w-shift, w-damagecontrol, w-control]
+    tag: "조건부 계획"
+    icon: scalpel
+    why: "We may need to …는 결정이 아니라 대비를 위한 예상이에요. if we can't …로 전환할 조건을 밝혀, 팀이 미리 알고 준비하게 해요. 전환은 집도의가 정해요."
+    decoy: "if we can't get a stool here"
+    distractorsKo: ["손상통제 전환은 집도의가 팀과 함께 결정해요.", "여기서 지혈이 안 되면 손상통제로 전환하려고 패킹 물품을 챙길게요."]
+    blank: {answer: shift, options: [{en: shift}, {en: return}, {en: retreat}, {en: hurry}]}
+  "12.3":
+    en: "Once the red cells are washed, we'll return them to him."
+    ko: "세척이 끝나면 적혈구를 환자에게 돌려줄게요."
+    chunks: ["Once the red cells", "are washed", ", we'll return them", "to him", "."]
+    words: [w-return, w-redcell]
+    tag: "순서 설명"
+    icon: cross
+    why: "once …로 세척이 먼저라는 순서를 알려요. 세포회수기는 모은 피를 씻어 처리한 뒤에야 돌려줘요."
+    decoy: "to the cooler"
+    distractorsKo: ["적혈구를 돌려주려고 환자 라인을 걸게요.", "세척은 식염수로 피를 헹궈 내는 일이에요."]
+    blank: {answer: washed, options: [{en: washed}, {en: cooled}, {en: tilted}, {en: frozen}]}
+  # --- S7 ko만 바뀐 문장 (KP 포함) ---
+  "8.1":
+    ko: "지금 FFP와 혈소판을 주문할까요?"
+    tag: "주문 제안"
+    why: "ordered는 주문이 나가는 결과를 말해, 직접 정하지 않고 의사에게 주문할지 묻는 정중한 제안이 돼요. FFP와 혈소판을 함께 묻는 것이 포인트예요."
+    distractorsKo: ["FFP와 혈소판을 주문하려고 차트를 열까요?", "FFP와 혈소판은 온도가 달라요."]
+  "10.0":
+    ko: "대구경 카테터를 가져다 드릴게요."
+    distractorsKo: ["카테터를 가져오려고 카트로 가요.", "대구경 카테터는 수액을 빠르게 줄 때 써요."]
+  "3.4":
+    ko: "여분의 클립과 결찰사를 손 닿는 곳에 놓아 드릴게요."
+    distractorsKo: ["여분의 클립과 결찰사를 미리 세어 드릴게요.", "여분의 클립을 크기별로 정리해 드릴게요."]
+  "11.0":
+    ko: "지금 수액 가온기를 설치하고 있어요."
+    distractorsKo: ["수액 가온기를 설치하려고 전원부터 찾아요.", "가온기는 수액 줄 중간에 끼워 써요."]
+  "12.1":
+    ko: "환자 본인의 적혈구를 회수해서 돌려줄 수 있어요."
+    distractorsKo: ["환자 본인의 적혈구를 회수하려고 회수기를 켜요.", "적혈구를 회수해 돌려주면 수혈이 줄어요."]
+  "19.2":
+    ko: "환자를 중환자실로 보내 소생시킨 뒤 다시 데려올 계획이에요."
+    distractorsKo: ["환자를 중환자실로 보내려고 자리를 확인할 계획이에요.", "중환자실에서는 체온과 응고를 먼저 바로잡아요."]
+  "14.1":
+    ko: "관류가 저하되고 있다는 신호일 수 있어요."
+  "14.0":
+    ko: "소변량이 시간당 30 미만으로 떨어졌어요."
+    distractorsKo: ["소변량 저하를 전하려고 시간당 값을 계산해요.", "콩팥 혈류가 줄면 소변량도 같이 줄어요."]
+  "19.1":
+    ko: "패킹과 임시 폐쇄 물품을 준비해 뒀어요."
+    distractorsKo: ["임시 폐쇄 물품을 쓰려고 크기를 물어요.", "임시 폐쇄는 배를 임시로 덮어요."]
+  "19.4":
+    ko: "패킹하기 전에 임시 폐쇄 물품을 준비해 둘게요."
+    distractorsKo: ["임시 폐쇄 물품을 준비하려고 도구를 열어요.", "패킹을 하고 나면 임시 폐쇄가 필요해져요."]
+  "2.2":
+    ko: "이걸 누적 EBL에 더할게요."
+    distractorsKo: ["이걸 누적 EBL과 비교할게요.", "이 값은 마취과에도 같이 알려요."]
+  "11.3":
+    ko: "가온기가 모든 수액을 체온 가까이로 유지해 줘요."
+    chunks: ["The warmer", "keeps", "all his fluids", "at body temperature", "."]
+    decoy: "at room temperature"
+    distractorsKo: ["가온기는 모든 수액을 데우려고 미리 예열해요.", "가온기는 혈액 제제를 데우는 데 쓰이기도 해요."]
+  # --- S8 구 경계 chunks (en 그대로) ---
+  "5.4":
+    chunks: ["I can place", "a second line", "if", "anesthesia wants one", "."]
+    distractorsKo: ["마취과에서 원하면 두 번째 라인을 놓으려고 팔을 살펴요.", "두 번째 라인은 굵은 바늘로 놓는 게 좋아요."]
+  "10.4":
+    chunks: ["Let's hook up", "the rapid infuser", "once", "the line's in", "."]
+    distractorsKo: ["라인이 들어가면 연결하려고 주입기 회로를 미리 채워요.", "신속 주입기는 분당 수백 밀리리터를 넣을 수 있어요."]
+  "13.3":
+    chunks: ["This looks", "like surgical bleeding", ", not a coagulopathy", "."]
+  "13.4":
+    chunks: ["Let's treat", "both possibilities", "until the coags", "come back", "."]
+  "14.3":
+    chunks: ["His urine output", "has been", "low", "for the last hour", "."]
+    decoy: "for the last case"
+  # --- 새로 쓴 B 값 중 "~려고"를 "~기 전에"·사실로 바꾼 것(정답 동사는 종속절에 남김) ---
+  "2.0":
+    distractorsKo: ["거즈 개수를 세서 출혈량을 추정할게요.", "거즈 무게를 재도록 마른 무게부터 확인해요."]
+  "3.3":
+    distractorsKo: ["소작기를 준비할 때 출력값부터 맞춰요.", "소작기 펜은 안 쓸 때 홀스터에 꽂아 둬요."]
+  "4.0":
+    distractorsKo: ["출혈 위치를 알릴 때 조명부터 옮겨요.", "출혈이 나면 거즈부터 대요."]
+  "7.0":
+    distractorsKo: ["지혈 매트릭스를 적용하도록 주사기에 채워요.", "매트릭스는 출혈면에 직접 닿게 써요."]
+  "7.1":
+    distractorsKo: ["출혈면에 닿도록 흡인으로 시야를 열게요.", "매트릭스는 젖은 면에 닿으면 부풀어요."]
+  "12.2":
+    distractorsKo: ["저장고에 모이도록 줄을 이어요.", "저장고에는 눈금이 있어요."]
+  "12.4":
+    distractorsKo: ["필드에서 피를 모을 때 음압부터 낮춰요.", "모은 피는 씻어서 환자에게 돌려줘요."]
+  "14.4":
+    distractorsKo: ["젖산을 지켜보도록 채혈 시각을 적을게요.", "젖산이 올라가면 산증이 따라와요."]
+  "15.2":
+    distractorsKo: ["EBL을 계속 추적하도록 계산기를 꺼낼게요.", "EBL은 마취과와 수시로 비교해요."]
+  "17.1":
+    distractorsKo: ["크라이오를 요청하도록 요청서를 써요.", "크라이오는 피브리노겐을 보충해 줘요."]
+  "17.2":
+    distractorsKo: ["응고 수치를 교정하려고 주문부터 봅시다.", "지혈하는 동안에도 응고 수치는 변해요."]
+  "17.3":
+    distractorsKo: ["이 응고병증을 교정하려고 주문을 열어요.", "이 응고병증은 FFP로 교정해요."]
+  # --- KP 문장: en·chunks는 그대로, why에 업무 범위를 밝힘 ---
+  "18.0":
+    why: "진행형 I'm activating으로 지금 발동하는 중임을 알리고, 이름 그대로 protocol을 말해 팀 모두가 같은 절차로 움직이게 해요. 발동할지는 집도의·마취과가 정하고, 순환 간호사는 정해진 뒤 혈액은행에 알려요."
+  "16.0":
+    why: "현재완료 has crashed로 이미 벌어진 결과를 먼저 알리고, 대시 뒤에 지금 하는 조치(pushing pressors)를 덧붙여요. 승압제는 마취과가 쓰니, 간호사는 이 보고를 듣는 쪽이에요."
+  "17.0":
+    why: "상태(coagulopathic)를 먼저 말하고 대시 뒤 I need로 필요한 것을 곧바로 요청해 이유와 요청이 한 호흡이에요. 마취과가 하는 말이라, 간호사는 이 요청을 듣고 혈액은행에 연결해요."
+  "9.2":
+    why: "진행형 두 동사(opening up, calling)를 and로 이어 지금 동시에 하고 있다고 알려요. for blood의 for가 요청 대상을 가리켜요. 마취과 지시에 따라 하는 일이에요."
+  "16.1":
+    why: "동사 없이 명사 + 상태(wide open)로 말하는 보고체예요. through로 어떤 경로로 들어가는지 알려요. 마취과 지시에 따라 보조하는 말이에요."
+  "20.2":
+    why: "Keep + 목적어 + -ing는 이미 하던 것을 이어 가라는 명령이에요. wide open으로 속도를, through the warmer로 경로를 정해요. 마취과 지시에 따라 보조하는 말이에요."
+
+remove_words: [w-fast, w-second]
+
+words:
+  w-keep: {distractorsEn: [seep, kneel]}
+  w-cryo: {distractorsEn: [crit, crown]}
+  w-lactate: {distractorsEn: [lactose, lactase]}
+  w-order: {ko: "주문하다", distractorsKo: ["취소하다", "반납하다"]}
+  w-ebl:
+    ko: "추정실혈량"
+    distractorsKo: ["추정수액량", "추정소변량"]
+    cue: "흡인통 눈금과 거즈 무게를 더해 수술 중 계속 부르는 출혈량 — 세 글자 약어"
+  w-ffp: {ko: "신선동결혈장", distractorsKo: ["농축적혈구", "알부민용액"]}
+  w-inr: {ko: "국제표준화비율", distractorsKo: ["활성응고시간", "산소포화도"]}
+  w-arrest:
+    ko: "심정지가 오다"
+    distractorsEn: [seize, assess]
+    distractorsKo: ["경련이 오다", "열이 오르다"]
+    cue: "출혈이 계속돼 혈압이 바닥나면 곧 닥치는 일 — 크래시카트를 침상 곁에 부르는 이유"
+  w-ratio: {cue: "대량수혈 쿨러에 적혈구·혈장·혈소판을 몇 대 몇으로 맞춰 담는지 — 흔히 1대 1대 1"}
+  w-drop: {cue: "출혈이 이어지면서 모니터의 혈압 숫자가 아래로 — 심박수는 반대로 오른다"}
+  w-total: {cue: "흡인통과 거즈에서 나온 양을 모두 더해 마취과에 부르는 숫자"}
+  w-ready: {cue: "소작기를 켜 두고 클립을 열어 두어, 달라고 하면 바로 건넬 수 있는"}
+  w-steady: {cue: "출혈이 뿜지도 멎지도 않고 같은 속도로 계속 흐르는 모양"}
+  w-temporary: {cue: "손상통제 때 배를 완전히 닫지 않고, 며칠 안에 다시 열 것을 전제로 하는"}
+  w-collect: {cue: "세포회수기 저장고에 흡인한 피가 차오르게 하는 일"}
+  w-return: {cue: "세포회수기로 씻은 적혈구를 환자 몸에 다시 넣어 주는 일"}
+  w-shift: {cue: "지혈이 안 돼 집도의가 수술 방식을 손상통제로 바꾸는 일"}
+  w-bedside: {cue: "크래시카트를 끌고 와 세워 두는, 수술대 바로 옆 자리"}
+  w-early: {cue: "저혈량에서 혈압이 떨어지기 전, 심박수부터 오르는 첫 단계의"}
+  w-count: {cue: "대량수혈 중 들어온 혈액 단위를 하나하나 세어 맞춘 숫자"}
+  w-reach: {cue: "스크럽이 몸을 돌리지 않고 팔만 뻗어 클립을 집을 수 있는 거리"}
+  w-unit: {distractorsKo: ["용량(투여량)", "속도(주입 속도)"]}
+  w-margin: {chips: [[marg, in]], decoyChips: [merg, en]}
+  w-catheter: {distractorsKo: ["스텐트", "배액관"]}
+  w-anesthesia: {tag: "출혈 보고"}
+  w-free: {ko: "막힘없이"}
+  w-coags: {ko: "응고검사", distractorsKo: ["혈당검사", "소변검사"]}
+
+nuance:
+  "0.0":
+    why: "수술 전에 예상 출혈량을 말할 때는 minimal·moderate·major처럼 정도를 붙여 말해요. 피부 병변을 간단히 떼어 내는 정도라면 minimal이고, 큰 수술일수록 뒤쪽으로 올라가요."
+  "0.1":
+    scenes.2.fix: "She's lost about as much blood as we expected, and we're keeping a close eye on it."
+  "2.1":
+    notes.look at: "눈대중은 실제보다 적거나 많게 잡기 쉬워서 출혈량을 믿고 추정하기 어렵다."
+  "3.0":
+    cue: "The surgeon will ask for a clip any second, so it's already between your fingers."
+  "4.1":
+    scenes.2.en: "The surgeon is clamping a bleeder, so hold still."
+    scenes.2.fix: "You may feel some pressure or tugging. The surgeon is taking care of some bleeding, so please stay still."
+    why: "clamp·bleeder는 수술팀끼리 기구와 출혈 부위를 부르는 말이라, 깨어 있는 환자에게는 무엇을 하는지 알 수 없고 무섭게 들려요. 환자에게는 느낄 감각과 지금 다루고 있다는 것만 쉽게 말해요."
+  "5.0":
+    cue: "Anesthesia rolls the clamp all the way up, and the bag empties as fast as the tubing allows."
+    why: "수액 속도는 dripping slowly(천천히 떨어짐) → running steadily(일정하게) → wide open(조절기를 끝까지 열어 최대 속도) 순으로 빨라져요. 조절기가 끝까지 열려 있다면 wide open이에요."
+  "6.1":
+    word: trend
+    ko: "추세를 보이다"
+    words: [w-trend]
+    scenes:
+      - {who: "순환 간호사 → 마취과", icon: speech, en: "EBL is trending up — 500 in the last ten minutes.", ok: true}
+      - {who: "수술 기록", icon: board, en: "EBL trending up; blood bank notified at 10:42.", ok: true}
+      - who: "대기실 보호자에게"
+        icon: me
+        en: "His blood loss is trending up faster than expected."
+        ok: false
+        fix: "He's bleeding a bit more than we expected, so we're getting blood ready, just in case."
+    why: "trending up은 수치 흐름을 읽어 주는 의료진의 보고 말투예요. 보호자에게는 그래프를 읽듯 들리고 무엇을 하고 있는지가 빠져요. 쉬운 말로 상태와 대비를 함께 말해 줘요."
+  "7.1":
+    who: "스크럽 간호사 → 수술 보조 · 지혈제 적용 중"
+    words: [w-hold, w-pressure]
+  "9.1":
+    ko: "심박수는 계속 오르고 혈압은 떨어지니, 라인을 하나 더 열고 혈액을 요청합시다"
+  "10.0":
+    why: "IV 카테터 굵기는 게이지(gauge)로 말하고 숫자가 작을수록 굵어요. 16~18게이지처럼 굵은 것을 통틀어 large-bore라고 해요. 22게이지 같은 가는 관은 혈액을 빨리 넣기에 부족해요."
+  "11.0":
+    cue: "Refrigerated blood should reach about the patient's own body temperature before it goes in — no hotter."
+    why: "가온기의 목적은 냉장 혈액·수액을 체온 가까이로 데우는 거예요. cold면 저체온을 부르고, scalding처럼 지나치게 뜨거우면 적혈구가 깨지고(용혈) 혈관을 다칠 수 있어요. 그래서 warm이 목표예요."
+  "13.0":
+    scale: ["possibly surgical", "likely surgical", "definitely surgical"]
+    example: "This is definitely a surgical bleeder."
+    why: "원인을 말하는 확신의 정도는 possibly → likely → definitely 순으로 강해져요. 집도의가 잘린 혈관을 보며 의심 없다고 했다면 definitely예요."
+  "14.0":
+    pairs: [[urine, output], [capillary, refill], [lactate, is climbing]]
+    why: "urine output은 소변량, capillary refill은 눌렀다 뗀 손톱 밑 색이 돌아오는 시간, lactate is climbing은 젖산 수치가 오르고 있다는 말이에요."
+  "17.0":
+    pairs: [[correct, the coagulopathy], [thaw, the plasma], [achieve, hemostasis]]
+    decoys: [the stretcher]
+    words: [w-correct, w-coagulopathy, w-hemostasis]
+    why: "correct the coagulopathy는 응고 이상을 바로잡는다, thaw the plasma는 얼려 보관한 혈장(FFP)을 혈액은행이 녹인다, achieve hemostasis는 출혈을 멎게 한다는 뜻이에요."
+  "17.1":
+    scenes.2.fix: "His blood isn't clotting well, so we're giving him blood products that help him clot."
+  "18.0":
+    cue: "Blood loss is above plan, but he is stable and no one has ordered blood products yet."
+  "19.0":
+    pairs: [[damage, control], [abdominal, closure], [packing, removal]]
+    decoys: [transfusion]
+    words: [w-damagecontrol, w-closure, w-pack]
+    why: "damage control은 목숨에 필요한 지혈만 먼저 하는 방식, abdominal closure는 배를 닫는 단계, packing removal은 중환자실에서 안정시킨 뒤 수술방으로 돌아와 넣어 둔 패킹을 빼는 단계예요."
+  "19.1":
+    scenes.2.fix: "The surgeon controlled the bleeding as much as is safe for now and will finish the surgery later, once he's more stable."
+  "20.1":
+    notes.writing it down: "기록은 따로 맡은 사람이 그 자리에서 한다. 맥박이 없으면 먼저 압박부터 시작해야 한다."
+
+order:
+  "11":
+    lines.0.ko: "지금 수액 가온기를 설치하고 있어요"
+  "4":
+    lines.3: {en: "Whichever you choose, I'll have it ready right away.", icon: check, ko: "어느 쪽이든 바로 준비해 둘게요", note: "준비"}
+    why: "출혈을 알리고, 시야를 위해 흡인을 요청하고, 보이면 도구를 묻고, 어느 쪽이 정해지든 바로 준비해 둔다는 순서예요. 대명사 it이 앞 줄을 가리켜 순서를 잡아 줘요."
+  "8":
+    lines.2.ko: "지금 FFP와 혈소판을 주문할까요"
+    lines.3.ko: "주문되면 제제 준비를 위해 혈액은행에 전화할게요"
+    why: "검사 결과가 나왔음을 알리고, 그 내용을 말하고, 주문을 제안한 뒤, 주문이 나가면 혈액은행에 부르는 순서예요. 대명사 They·those가 앞 줄을 가리켜요."
+  "10":
+    lines.1: {en: "Here it is — ready for his other arm.", icon: stetho, ko: "여기 있어요, 다른 팔에 쓸 준비가 됐어요", note: "전달"}
+    why: "카테터를 가져오고, 가져왔다고 건네며 다른 팔에 쓸 준비를 알리고, 라인이 들어갔다고 알린 뒤, 그 라인에 주입기를 연결하는 순서예요."
+  "12":
+    lines.3: {en: "Once the blood is washed, we can return his own red cells.", icon: handshake2, ko: "씻고 나면 환자 본인의 적혈구를 돌려줄 수 있어요", note: "반환"}
+    why: "회수기를 준비하고, 준비되면 필드의 피를 모으고, 저장고가 모으는 중임을 알린 뒤, 모은 피를 씻고 나서 적혈구를 돌려주는 순서예요."
+  "16":
+    lines.3: {en: "Once you do, I'll start easing off the pressors.", icon: check, ko: "그러면 승압제를 줄이기 시작할게요", note: "조정"}
+    why: "혈압 저하와 승압제 투여를 알리고, 동시에 수액을 열었다고 말하고, 그 모든 것이 돌아가는 중에 출혈이 잡히면 알려 달라고 한 뒤, 잡히면 승압제를 줄여 가는 순서예요."
+  "19":
+    lines.0: {en: "If we can't get control here, we may need to shift to damage control.", icon: scalpel, ko: "여기서 지혈이 안 되면 손상통제로 전환해야 할 수도 있어요", note: "기준"}
+    lines.1.ko: "그렇다면 패킹 전에 임시 폐쇄 물품을 준비해 둘게요"
+    why: "지혈이 안 되면 전환할 수도 있다는 기준을 말하고, 그 경우를 대비해 임시 폐쇄 물품을 준비하고, 패킹하며 전환한 뒤, 그다음 계획으로 중환자실 소생을 말하는 순서예요."
+
+change_why:
+  "s:4.4": "간호사가 혈관을 클램프로 잡는 말이 되지 않게 — 기구를 준비해 두는 말로(w-clamp는 명사)"
+  "s:8.4": "혈액제제 주문은 의료진이 정함 — 간호사는 주문이 들어간 뒤 혈액은행에 전화"
+  "s:10.3": "10.0(가져다 드릴게요)과 모순 — 라인은 마취과가 놓으므로 놓을지 묻는 말로"
+  "s:16.3": "승압제 투여는 마취과 — 투여자를 말하지 않는 상태 보고로"
+  "s:19.3": "손상통제 전환은 집도의 결정 — 결정이 아니라 대비를 위한 예상으로"
+  "s:12.3": "프라이밍은 수집 전 준비 — 반환은 수집·세척이 끝난 뒤"
+  "s:8.1": "처방 → 주문(혈액제제는 주문)"
+  "s:10.0": "번역투 '당신을 위해' 제거"
+  "s:3.4": "번역투 '당신을 위해' 제거"
+  "s:11.0": "가온 수액기 → 수액 가온기"
+  "s:12.1": "'그의' → 환자 본인의"
+  "s:19.2": "'그를' → 환자를"
+  "s:14.1": "en(suggests)보다 단정적이던 ko를 완곡하게"
+  "s:14.0": "under 30은 30 미만"
+  "s:19.1": "temporary closure는 봉합이 아니라 임시 폐쇄(w-closure ko와 맞춤)"
+  "s:19.4": "temporary closure는 봉합이 아니라 임시 폐쇄(w-closure ko와 맞춤)"
+  "s:2.2": "'우리의' 번역투 제거"
+  "s:11.3": "체온 가까이로 유지 — 체온과 같게 유지한다는 오해 방지"
+  "s:5.4": "구 경계를 끊은 조각(동사·목적어)을 구 단위로"
+  "s:10.4": "구 경계를 끊은 조각을 구 단위로"
+  "s:13.3": "구 경계를 끊은 조각(명사구)을 구 단위로"
+  "s:13.4": "구 경계를 끊은 조각(명사구)을 구 단위로"
+  "s:14.3": "구 경계를 끊은 조각(명사구)을 구 단위로"
+  "w:w-order": "처방이 아니라 혈액제제 주문"
+  "w:w-arrest": "문장 쓰임(about to arrest·he arrests)이 동사"
+  "w:w-ebl": "영어 고르기에서 ko의 약어가 답을 보여 줌"
+  "w:w-ffp": "영어 고르기에서 ko의 약어가 답을 보여 줌"
+  "w:w-inr": "영어 고르기에서 ko의 약어가 답을 보여 줌"
+  "w:w-free": "직역 '자유롭게' → 막힘없이"
+  "w:w-coags": "음역 괄호 제거"
+  "w:w-vessel": "예문이 바뀐 4.4 문장을 따라감"
+  "r:w-fast": "너무 쉬움 — 간호사가 아는 말(형제 주제 massive-transfusion도 뺌)"
+  "r:w-second": "너무 쉬움 — 서수"
