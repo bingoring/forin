@@ -141,3 +141,14 @@ keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't a
   keyPhrase 결정(사용자 2026-11-17 전부 '추천대로'): tourniquet 바꿈 5(widest cuff, 타이머 재설정, deflate를 묻기, about to exceed, labs drawn or meds drawn up; 상황 13 brief·goals·skills도), preop-verification 유지 + chunks 2, difficult-airway 바꿈 8(go over plan, can we bag, should we switch, FONA 복창 2, head and neck, prepping for a code, Here's the LMA; 상황 brief·goals·skills 4곳), preop-assessment 바꿈 1(I'll set up for RSI) / chunks difficult-airway 5·preop-assessment 13 다시 자름(구를 지키면 V8 못 맞추는 7문장은 유지). 작업 `../kp-2026-11-17/`. 정본 합침, OR 위반 0.
   남은 작은 일: difficult-airway S11 KP "Repeated tries only cause…"(→ can cause, 사용자 결정 필요), w-set ko `설치하다`(set up for RSI에는 '준비하다'), preop-assessment 3.3 ko 항응고제/w-thinner ko 불일치, w-confirm exKo, preop-verification '적-' 오답 6회(W19 활용형 미검출).
   남은 OR: 27주제.
+
+- **OR 묶음 4 (2주제, 2026-11-17)**: core-language-or·or-bleeding.
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | changes(KP 반영 후) |
+  |---|---|---|---|
+  | core-language-or | 61(8) — 통역사가 설명·간호사가 통역·응급 선언, 마스크 벗기, 지킬 수 없는 약속 | 162(64·25) — 통역 확보를 책자 등으로, teach-back을 예/아니오로, "물조차"를 껌으로 | 178 |
+  | or-bleeding | 64(2) — 간호사가 클램프 결정, 수액 조절기 열기, pair 3 정답 둘 | 127(26·31) — 보고 대신 다시 재기, 맥박 없이 압박 빈칸 | 104 |
+  keyPhrase 결정(사용자 2026-11-17 전부 '추천대로'): core-language-or 바꿈 6(동의·금식·마취 설명 주체를 집도의·간호사·마취팀이 통역을 통해, 응급 예외는 "The surgeon says", "I'll keep it simple", teach-back), or-bleeding 바꿈 5(MTP는 혈액은행에 전화, 승압제는 마취과, 수액은 열 준비, FFP를 묻기, 손상통제를 묻기) / chunks 29문장(core 19·bleeding 10) 전부 다시 자름. seed brief·goals·skills·tagline 9곳도 맞춤. 작업 `../kp-2026-11-17b/`. 정본 합침, OR 위반 0.
+  주의: "I'm activating the massive transfusion protocol." keyPhrase가 or-preop-checklist에도 있음 — 그 주제 저작 때 같은 결정을 적용할 것.
+  `pipeline/TASK.md` B 절에 "~려고" 쏠림(or-bleeding 105문장 중 73문장)·보고 대신 다시 재기 실패를 덧붙임.
+  남은 작은 일: core-language-or 15.2 "The surgeon says…"·or-bleeding 16.0 "anesthesia is…"는 상황 persona가 그 당사자라 대화 상대에게 3인칭으로 말하게 됨(다음 손질 때 persona 또는 문장 조정), core 18.2·18.4 거의 같은 문장, or-bleeding order 17 셋째 줄 상대 바뀜, 검사기 V21 금칙어 목록 보강(cun·kus·kill·crypt·gin 등이 안 잡힘).
+  남은 OR: 25주제.

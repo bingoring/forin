@@ -1,0 +1,132 @@
+응급 제왕 신생아 준비:
+  - kind: slider
+    words: [w-warmer, w-supply, w-set]
+    cue: "The pediatric team asks about the baby's corner. The warmer is on, and the neonatal resuscitation supplies are also set up. What do you report?"
+    scale: ["Warmer's on, supplies not yet set", "Warmer is on and ready", "Warmer on and supplies set up"]
+    answerAt: 2
+    why: "아기 쪽은 워머와 소생 물품이 둘 다 돼야 준비된 거예요. 둘 다 끝났으면 둘 다 말해야 신생아팀이 안심하고, 워머만 말하면 이미 갖춘 물품이 전달되지 않아요."
+    example: "The warmer is on and the supplies are set up."
+    exKo: "워머가 켜져 있고 물품도 세팅됐어요."
+  - kind: swap
+    words: [w-nicu]
+    who: "순환간호사 → 산과 의사 · NICU 도착 확인"
+    icon: speech
+    before: ["", "The NICU team is probably on the way.", ""]
+    options: ["Is the NICU team in the room yet?", "The NICU team is probably on the way.", "Someone should check on the NICU."]
+    answer: "Is the NICU team in the room yet?"
+    notes: {"Is the NICU team in the room yet?": "도착했는지 직접 묻는 분명한 질문이라, 아직이면 바로 다시 부를 수 있다.", "The NICU team is probably on the way.": "확인 없이 짐작으로 안심시키는 말이다. 오지 않았어도 아무도 모른다.", "Someone should check on the NICU.": "누가 할지 정하지 않은 말이라 아무도 확인하지 않을 수 있다."}
+    why: "신생아 소생은 팀이 와 있어야 시작돼요. '아마 오고 있겠죠'라는 짐작보다 도착했는지 직접 묻는 편이 안전하고, 아직이면 바로 다시 호출할 수 있어요."
+    ko: "NICU팀이 방에 왔나요?"
+제왕 산모 출혈 감시:
+  - kind: slider
+    words: [w-tone, w-soft, w-oxytocin]
+    cue: "After delivery, the surgeon says the uterus feels soft and the bleeding is picking up. Whether to give a drug is not your decision. What do you say?"
+    scale: ["Her tone is soft — do you want oxytocin now?", "Her tone is soft — I'll go ahead and give oxytocin now", "Her tone is soft — oxytocin now, please, quickly"]
+    answerAt: 0
+    why: "약을 쓸지는 집도의와 마취과가 정해요. 순환간호사는 알아차린 것을 알리고 '지금 쓸까요?'라고 물어서 결정을 넘기고 바로 준비해 둬요. 간호사가 먼저 투여한다거나 지시하듯 말하면 역할을 벗어나요."
+    example: "Her tone is soft — do you want oxytocin now?"
+    exKo: "자궁 긴장도가 부드러운데 — 지금 옥시토신을 원하세요?"
+  - kind: context
+    words: [w-hemorrhage]
+    word: hemorrhage
+    ko: 출혈
+    scenes:
+      - {who: 순환간호사 → 수술팀, icon: speech, en: "I'm watching closely for postpartum hemorrhage.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Monitoring for postpartum hemorrhage; blood loss recorded.", ok: true}
+      - {who: 깨어 있는 산모에게, icon: faceWorried, en: "You're at risk of postpartum hemorrhage, so I'm watching you closely.", ok: false, fix: "I'm keeping a close eye on your bleeding, and we're ready if it picks up."}
+    why: "뜻은 셋 다 '출혈'이에요. 팀과 기록에서는 정확한 임상어가 좋지만, 깨어 있는 산모에게 '위험하다'며 임상어를 쓰면 겁을 줘요. 쉬운 말로 지켜보고 준비돼 있다고 알려 주세요."
+신속 마취 유도 협조:
+  - kind: slider
+    words: [w-cricoid, w-apply, w-release]
+    cue: "Anesthesia is about to induce, and you are asked to stand ready to hold cricoid pressure. You have not been told when to start yet."
+    scale: ["I'll press whenever I think it's the right time", "Tell me when to apply and when to release", "I'll hold the pressure until the whole thing is done"]
+    answerAt: 1
+    why: "윤상연골 압박은 마취과가 시작과 해제를 말하는 대로 해요. 마음대로 시작하거나 끝까지 누르면 삽관 시야가 나빠질 수 있어요. 말해 주는 대로 하겠다고 먼저 말하면 서로 타이밍이 맞아요."
+    example: "Tell me when to apply and when to release."
+    exKo: "언제 가하고 언제 풀지 말씀해 주세요."
+  - kind: swap
+    words: [w-tube, w-blade, w-set, w-right]
+    who: "순환간호사 → 마취과 · 기구 위치"
+    icon: speech
+    before: ["", "The tube and blade are around here somewhere.", ""]
+    options: ["Tube and blade are set on your right.", "The tube and blade are around here somewhere.", "Just ask me if you can't find them."]
+    answer: "Tube and blade are set on your right."
+    notes: {"Tube and blade are set on your right.": "어디에 놓았는지 정확히 말해서, 마취과가 시선을 떼지 않고 손만 뻗으면 된다.", "The tube and blade are around here somewhere.": "위치가 불분명해서 급한 순간에 찾느라 시간이 샌다.", "Just ask me if you can't find them.": "찾지 못하면 묻으라는 말이라, 정작 기도 확보를 하는 순간에 마취과의 손이 멈춘다."}
+    why: "기도 확보는 한 번에 끝나야 하는 순간이라 기구 위치를 미리 정확히 말해 둬요. '오른쪽에 있어요'처럼 구체적이면 마취과가 찾느라 시선을 옮기지 않아요."
+    ko: "튜브와 블레이드는 오른쪽에 세팅돼 있어요."
+시간 압박 무균 유지:
+  - kind: slider
+    words: [w-protect, w-sterile, w-field, w-rush]
+    cue: "The surgeon is in a hurry and reaches across the open back table. You must stop the reach without blaming anyone, and give the reason."
+    scale: ["Fine, go ahead and reach across, it's quicker", "Please be careful when you reach across the table", "Even in a rush, we protect the sterile field"]
+    answerAt: 2
+    why: "무균 영역은 급할수록 지켜야 해요. '계속하세요'는 오염을 못 막고, '조심하세요'만으로는 이유가 없어요. 이유를 함께 말하면 탓하지 않으면서도 단호하게 멈출 수 있어요."
+    example: "Even in a rush, we protect the sterile field."
+    exKo: "급해도 무균 영역은 지켜요."
+  - kind: swap
+    words: [w-gown, w-glove, w-quickly]
+    who: "순환간호사 → 스크럽 요원 · 가운 입히기"
+    icon: speech
+    before: ["", "Hold still while I throw this on you.", ""]
+    options: ["Let me gown and glove you quickly.", "Hold still while I throw this on you.", "I'll skip the gloves to save time."]
+    answer: "Let me gown and glove you quickly."
+    notes: {"Let me gown and glove you quickly.": "가운과 장갑을 둘 다 입힌다고 말하고, 서두르되 순서를 지킨다.", "Hold still while I throw this on you.": "'던져 입힌다'는 말이라 거칠게 들리고 무균 가운이 오염되기 쉽다.", "I'll skip the gloves to save time.": "장갑을 건너뛰면 손이 무균이 아니라서 시간을 아끼려다 오염이 생긴다."}
+    why: "서두르는 때에도 가운과 장갑은 순서대로 입혀요. 빠르게 하겠다고 말하되 순서는 건너뛰지 않아야 무균이 유지돼요."
+    ko: "제가 빨리 가운과 장갑을 입혀 드릴게요."
+다발성 외상 우선순위:
+  - kind: slider
+    words: [w-priority, w-injury, w-set]
+    cue: "Two injuries need supplies: a bleeding abdomen and a broken leg. The surgeon has not yet said which comes first. What do you say?"
+    scale: ["I'll set up for the leg first and then the abdomen", "Tell me your priority and I'll set up for it", "I'll set up for both of them at the same time"]
+    answerAt: 1
+    why: "무엇을 먼저 할지는 집도의가 정해요. 순환간호사는 우선순위를 물어서 그에 맞춰 세팅하고, 임의로 한쪽을 먼저 하거나 한꺼번에 하겠다고 하면 정작 필요한 쪽이 늦어져요."
+    example: "Tell me your priority and I'll set up for it."
+    exKo: "우선순위를 말씀해 주시면 그에 맞춰 세팅할게요."
+  - kind: swap
+    words: [w-priority, w-set]
+    who: "순환간호사 → 집도의 · 우선순위 확인"
+    icon: speech
+    before: ["", "I'll just set up for whichever looks worse.", ""]
+    options: ["Tell me your priority and I'll set up for it.", "I'll just set up for whichever looks worse.", "I'll wait until you finish the first one."]
+    answer: "Tell me your priority and I'll set up for it."
+    notes: {"Tell me your priority and I'll set up for it.": "집도의가 순서를 정하게 하고 그에 맞춘다. 서로 같은 순서를 본다.", "I'll just set up for whichever looks worse.": "순환간호사가 혼자 판단해서, 집도의의 순서와 어긋나면 물품이 늦는다.", "I'll wait until you finish the first one.": "첫 번째가 끝날 때까지 기다리면 두 번째 준비가 시작도 못 한다."}
+    why: "다발성 외상에서 우선순위는 집도의의 판단이에요. 순환간호사는 그 순서를 물어서 먼저 할 물품부터 갖추면 시간이 줄어요."
+    ko: "우선순위를 말씀해 주시면 그에 맞춰 세팅할게요."
+신속 수혈 조율:
+  - kind: slider
+    words: [w-track, w-record, w-unit]
+    cue: "Anesthesia is giving units quickly, and you are keeping the tally. How firmly do you commit to the record?"
+    scale: ["I'll try to jot down a few of the units", "I'll note most of the units as they go in", "I'll record every unit and its time"]
+    answerAt: 2
+    why: "수혈은 한 팩이라도 빠지면 총량이 틀어져요. 모든 팩과 들어간 시각을 적겠다고 확실히 말해야 마취과와 혈액은행이 같은 숫자를 봐요."
+    example: "I'll record every unit and the time it went in."
+    exKo: "팩 하나하나와 들어간 시각을 기록할게요."
+  - kind: swap
+    words: [w-total, w-transfuse]
+    who: "순환간호사 → 마취과 · 수혈 총계"
+    icon: speech
+    before: ["", "A few units have gone in, I think.", ""]
+    options: ["I'll call out totals as we transfuse.", "A few units have gone in, I think.", "I'll give you the total at the end."]
+    answer: "I'll call out totals as we transfuse."
+    notes: {"I'll call out totals as we transfuse.": "수혈하는 동안 소리 내어 총계를 알려서, 팀이 같은 숫자를 계속 듣는다.", "A few units have gone in, I think.": "'아마 몇 개'라는 짐작이라 판단에 쓸 수 없다.", "I'll give you the total at the end.": "끝에만 알려 주면 수혈 도중에 필요한 판단을 못 한다."}
+    why: "대량 수혈에서는 지금까지 몇 팩인지가 판단의 기준이에요. 짐작이 아니라 소리 내어 정확한 숫자를 알리면 팀이 계속 같은 정보를 가져요."
+    ko: "수혈하는 동안 총계를 소리 내어 말할게요."
+태아 곤란 신속 분만:
+  - kind: slider
+    words: [w-fetal, w-heart, w-rate, w-drop]
+    cue: "The fetal heart rate is dropping. You are ready, but when and how to deliver is the surgeon's call. What do you say?"
+    scale: ["I'm ready to go", "I'll start the delivery", "We must deliver now"]
+    answerAt: 0
+    why: "분만 시점과 방법은 집도의가 정해요. 순환간호사는 준비가 됐음을 알려서 결정을 지원해요. 시작하겠다거나 꼭 분만해야 한다는 말은 결정을 대신하는 것이라 역할을 벗어나요."
+    example: "Fetal heart rate is dropping — I'm ready to go."
+    exKo: "태아 심박수가 떨어지고 있어요 — 저는 준비됐어요."
+  - kind: swap
+    words: [w-everything, w-need, w-deliver]
+    who: "순환간호사 → 집도의 · 준비 보고"
+    icon: speech
+    before: ["", "I think we are fairly prepared.", ""]
+    options: ["Everything you need to deliver is right here.", "I think we are fairly prepared.", "Do you need anything? I'll check later."]
+    answer: "Everything you need to deliver is right here."
+    notes: {"Everything you need to deliver is right here.": "필요한 모든 것이 바로 여기 있다고 분명히 말해서 집도의가 바로 시작할 수 있다.", "I think we are fairly prepared.": "'아마 어느 정도'라는 말이라 집도의가 안심하고 시작하기 어렵다.", "Do you need anything? I'll check later.": "나중에 확인하겠다는 말이라 급한 때에는 늦다."}
+    why: "급박한 때에는 준비 상태를 짐작이 아니라 확실하게 말해야 해요. '필요한 것이 다 여기 있다'는 한마디가 집도의의 망설임을 없애요."
+    ko: "분만에 필요한 모든 것이 바로 여기 있어요."

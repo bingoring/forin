@@ -1,0 +1,133 @@
+응급 세팅 신속 준비:
+  - kind: slider
+    words: [w-ready, w-setup, w-open]
+    cue: "The surgeon asks if the room is ready. The basic emergency setup is open, but extra basins and drapes are still on their way. What do you report?"
+    scale: ["Basic setup open, more coming", "Almost everything is ready now", "Everything is ready to go right now"]
+    answerAt: 0
+    why: "집도의에게는 지금 열린 것과 아직 오는 것을 그대로 말해야 해요. '다 됐다'고 하면 모자란 물품이 수술 중에 드러나서 더 늦어져요. 기본 세팅이 열렸다는 사실도 함께 알려 주세요."
+    example: "The basic setup is open, and the extras are coming."
+    exKo: "기본 세팅은 열었고 여분은 오는 중이에요."
+  - kind: swap
+    words: [w-need, w-grab]
+    who: "순환간호사 → 집도의 · 필요한 것 묻기"
+    icon: speech
+    before: ["", "Could you maybe let me know when you get a chance what you'll need?", ""]
+    options: ["Tell me what you need first and I'll grab it.", "Could you maybe let me know when you get a chance what you'll need?", "I'll just open everything we have."]
+    answer: "Tell me what you need first and I'll grab it."
+    notes: {"Tell me what you need first and I'll grab it.": "짧고 분명하게 먼저 필요한 것부터 말해 달라고 하고, 곧바로 가져오겠다고 한다. 응급에서 서로 시간을 아낀다.", "Could you maybe let me know when you get a chance what you'll need?": "너무 돌려 말해서 급한 때 집도의가 뭘 말해야 할지 알기 어렵고, 답이 늦어진다.", "I'll just open everything we have.": "묻지 않고 전부 열면 쓰지 않은 멸균 물품도 낭비되고, 정작 필요한 것을 찾기도 어려워진다."}
+    why: "응급일수록 에둘러 묻지 말고 짧게 요청해요. 먼저 필요한 것을 말해 달라고 하고, 바로 가져오겠다고 말하면 집도의의 한마디가 곧 행동으로 이어져요."
+    ko: "먼저 필요한 것부터 말씀해 주세요, 제가 가져올게요."
+응급 기구 세트 개방:
+  - kind: slider
+    words: [w-major, w-instrument, w-up, w-count]
+    cue: "You and the scrub have laid out the major instruments and counted each one aloud together. What do you tell the surgeon?"
+    scale: ["Major instruments are being opened up", "Major instruments are open, not counted yet", "Major instruments are up and counted"]
+    answerAt: 2
+    why: "펼쳐진 것과 계수까지 끝난 것은 달라요. 둘이 소리 내어 센 뒤라면 '준비됐고 계수도 됐다'고 정확히 알려야 집도의가 안심하고 시작해요. 덜 말하면 이미 한 계수가 전달되지 않아요."
+    example: "The major instruments are up and counted."
+    exKo: "주요 기구는 세팅됐고 계수도 끝났어요."
+  - kind: swap
+    words: [w-else, w-open, w-backup]
+    who: "순환간호사 → 집도의 · 백업 세트"
+    icon: speech
+    before: ["", "Should I open every set we own?", ""]
+    options: ["What else do you want opened for backup?", "Should I open every set we own?", "Do you want to wait on a backup set?"]
+    answer: "What else do you want opened for backup?"
+    notes: {"What else do you want opened for backup?": "필요한 백업이 무엇인지 집도의에게 고르게 한다. 꼭 필요한 것만 열어 낭비를 줄인다.", "Should I open every set we own?": "전부 열자는 제안이라, 열어 놓고 쓰지 않은 멸균 세트가 그대로 낭비된다.", "Do you want to wait on a backup set?": "백업을 미루자는 말이라, 필요할 때 늦어질 수 있다."}
+    why: "열어 둔 멸균 세트는 쓰지 않아도 다시 쓰기 어려워요. 그래서 '무엇을 더 열까요?'처럼 집도의가 직접 고르게 물어요. 모든 걸 열자거나 미루자는 말은 모두 응급에서 좋지 않아요."
+    ko: "백업용으로 또 뭘 열어 둘까요?"
+대량 흡인 준비:
+  - kind: slider
+    words: [w-suction, w-extra, w-stand]
+    cue: "The surgeon asks if suction can keep up with the bleeding. Two suctions are on and working, and spare canisters and tubing are at the wall but not yet connected."
+    scale: ["Spares have not been put out yet", "Two on, spares standing by", "Suction can't possibly fail now"]
+    answerAt: 1
+    why: "켜진 것과 대기 중인 것을 있는 그대로 말해요. 여분이 아직 없다고 하면 이미 준비한 것을 숨기는 말이고, '절대 실패 안 한다'는 지킬 수 없는 보장이에요."
+    example: "Two suctions are on, and spares are standing by."
+    exKo: "흡인기 두 대가 켜져 있고 여분이 대기 중이에요."
+  - kind: swap
+    words: [w-word, w-swap]
+    who: "순환간호사 → 집도의 · 흡인통 교체"
+    icon: speech
+    before: ["", "I'll replace the canister whenever it becomes necessary.", ""]
+    options: ["Say the word and I'll swap them out fast.", "I'll replace the canister whenever it becomes necessary.", "They should last through the case."]
+    answer: "Say the word and I'll swap them out fast."
+    notes: {"Say the word and I'll swap them out fast.": "집도의가 한마디만 하면 바로 바꾸겠다는 짧은 약속이다. 집도의의 시선을 뺏지 않는다.", "I'll replace the canister whenever it becomes necessary.": "길고 막연해서 언제 교체되는지 집도의가 알 수 없다. 급한 때는 말이 짧아야 한다.", "They should last through the case.": "출혈이 많으면 통이 빨리 찰 수 있는데 끝까지 버틴다고 가정하는 말이다."}
+    why: "대량 출혈에서는 흡인통이 빨리 찰 수 있어요. 말씀만 하시면 바로 교체한다고 짧게 말하면 집도의가 손과 눈을 떼지 않고도 타이밍을 맞출 수 있어요."
+    ko: "말씀만 하세요, 바로 교체할게요."
+혈액 확보 확인:
+  - kind: slider
+    words: [w-unit, w-cooler, w-bloodbank, w-send]
+    cue: "The surgeon asks how we are on blood. There are units in the room's cooler, and the blood bank says it can send more within minutes but has not yet. What do you tell the surgeon?"
+    scale: ["We have what's in the cooler right here", "Units here, more within minutes", "We have all the blood we could ever need"]
+    answerAt: 1
+    why: "집도의가 계획을 세우려면 방 안의 양과 더 올 수 있다는 것을 함께 알아야 해요. 쿨러만 말하면 정보가 모자라고, '필요한 만큼 다 있다'는 근거 없는 보장이에요."
+    example: "We have units here, and more can come in minutes."
+    exKo: "여기 팩이 있고, 몇 분 안에 더 올 수 있어요."
+  - kind: swap
+    words: [w-unit, w-cooler]
+    who: "순환간호사 → 집도의 · 혈액 상황"
+    icon: speech
+    before: ["", "Blood is not a problem right now.", ""]
+    options: ["We have units in the cooler right here.", "Blood is not a problem right now.", "There might be some blood somewhere."]
+    answer: "We have units in the cooler right here."
+    notes: {"We have units in the cooler right here.": "어디에 무엇이 있는지 구체적이라 집도의가 바로 판단할 수 있다.", "Blood is not a problem right now.": "근거가 없는 안심 말이다. 실제 양을 모르면 계획을 세울 수 없다.", "There might be some blood somewhere.": "어디에 있는지 모르는 흐린 말이라 집도의가 의지할 수 없다."}
+    why: "혈액은 위치와 양을 구체적으로 말해야 해요. '문제없다'는 말은 확인 없이 안심시키는 말이고, '어딘가 있을 것'은 행동으로 이어지지 않아요."
+    ko: "바로 여기 쿨러에 팩이 있어요."
+신속 초기 계수:
+  - kind: slider
+    words: [w-count, w-baseline, w-quick]
+    cue: "The surgeon wants to cut right away. Policy says a baseline count is still started, and you want to hold that line politely. What do you say?"
+    scale: ["We'll do the count after the case is over", "We'll count if there's any time at all", "We start a quick baseline count now"]
+    answerAt: 2
+    why: "응급이어도 시작 계수는 해요. '끝나고' 세거나 '시간 나면' 세자는 말은 수술 중 누락을 막지 못해요. 빠르게 시작한다고 말하면 속도도 존중하면서 안전을 지켜요. 병원 정책에 따라 응급 때 절차가 다를 수 있어요."
+    example: "Quick baseline count before we open."
+    exKo: "개복 전에 신속히 초기 계수를 합시다."
+  - kind: swap
+    words: [w-count, w-start, w-emergency]
+    who: "순환간호사 → 집도의 · 계수 시작"
+    icon: speech
+    before: ["", "I'll skip the count since this is an emergency.", ""]
+    options: ["I'll get the count started even though this is an emergency.", "I'll skip the count since this is an emergency.", "I'll count once you're done operating."]
+    answer: "I'll get the count started even though this is an emergency."
+    notes: {"I'll get the count started even though this is an emergency.": "응급이어도 계수는 시작하겠다고 알린다. 집도의에게 방해가 되지 않는다.", "I'll skip the count since this is an emergency.": "계수를 건너뛰면 기구나 거즈가 몸 안에 남았는지 알 길이 없다.", "I'll count once you're done operating.": "끝난 뒤에만 세면 수술 중 빠진 것을 놓칠 수 있다."}
+    why: "응급일수록 계수가 더 중요해요. 시간이 없다고 건너뛰지 않고, 가능한 만큼 먼저 시작한다고 알리면 집도의도 이해해요."
+    ko: "응급 상황이지만 계수를 시작할게요."
+긴급 팀 소집:
+  - kind: slider
+    words: [w-page, w-additional, w-staff, w-circulator]
+    cue: "The bleeding is worse than expected, and you need one more scrub and one more circulator. How do you describe the help you are paging for?"
+    scale: ["Two more people: a scrub and a circulator", "Several more people from the other open rooms", "Everyone in the whole department right now"]
+    answerAt: 0
+    why: "필요한 역할과 수를 정확히 말해야 알맞은 사람이 와요. 막연하게 여러 명이나 전원을 부르면 다른 방이 비고 정작 필요한 역할이 안 올 수 있어요."
+    example: "I need a second scrub and another circulator."
+    exKo: "스크럽 한 명과 순환 간호사 한 명이 더 필요해요."
+  - kind: swap
+    words: [w-second, w-scrub, w-another, w-circulator]
+    who: "순환간호사 → 지원 요청 전화"
+    icon: speech
+    before: ["", "Please send anyone who's free whenever possible.", ""]
+    options: ["We need a second scrub and another circulator.", "Please send anyone who's free whenever possible.", "Send the whole department now."]
+    answer: "We need a second scrub and another circulator."
+    notes: {"We need a second scrub and another circulator.": "필요한 역할과 수를 구체적으로 말해서 알맞은 사람이 온다.", "Please send anyone who's free whenever possible.": "막연하고 급하지 않게 들려서 도움이 늦어지고, 필요한 역할이 오지 않을 수 있다.", "Send the whole department now.": "전원을 부르면 다른 방의 환자 돌봄이 비게 된다."}
+    why: "지원 요청은 몇 명, 어떤 역할인지 구체적일수록 빨리 와요. 막연한 부탁은 늦어지고, 전원을 부르는 것은 다른 방을 비워요."
+    ko: "스크럽 한 명과 순환 간호사 한 명이 더 필요해요."
+복강 대량 출혈:
+  - kind: slider
+    words: [w-abdomen, w-blood, w-call]
+    cue: "The surgeon says the abdomen is filling faster than suction can clear. What do you say about blood?"
+    scale: ["More blood may be needed", "I'll call for more blood to the room", "I'll send for every unit the bank has"]
+    answerAt: 1
+    why: "집도의의 말이 있으면 '요청하겠다'고 분명히 말하고 바로 해요. '필요할지도'는 행동이 없고, 은행의 모든 팩을 부르는 것은 다른 환자의 혈액까지 묶을 수 있어요."
+    example: "I'll call for more blood to the room."
+    exKo: "방으로 혈액을 더 요청할게요."
+  - kind: swap
+    words: [w-lappad, w-pack, w-quadrant]
+    who: "순환간호사 → 집도의 · 랩패드 전달"
+    icon: speech
+    before: ["", "Here, take these.", ""]
+    options: ["Handing you lap pads to pack the quadrants.", "Here, take these.", "I'll hand over pads whenever you notice me."]
+    answer: "Handing you lap pads to pack the quadrants."
+    notes: {"Handing you lap pads to pack the quadrants.": "무엇을 건네는지 말로 알려 주어, 집도의가 눈을 떼지 않고 받고 계수도 맞는다.", "Here, take these.": "무엇인지, 몇 개인지 말하지 않아 받은 수를 놓치기 쉽다.", "I'll hand over pads whenever you notice me.": "집도의가 알아차릴 때까지 기다리자는 말이라 피 나는 동안 시간이 샌다."}
+    why: "손에 든 물건을 소리 내어 알려 주면 집도의가 시선을 옮기지 않고 받을 수 있어요. 말없이 건네면 몇 개가 들어갔는지 놓쳐서 계수도 어긋나요."
+    ko: "각 구역을 패킹하시게 랩패드를 건네드릴게요."
