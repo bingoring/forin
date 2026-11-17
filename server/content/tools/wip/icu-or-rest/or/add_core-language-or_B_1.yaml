@@ -1,0 +1,104 @@
+# [tag, icon, why, decoy, ko1, ko2, ans, w1, w2, w3]
+situations:
+- title: 통역 서비스 요청
+  s:
+  - ["통역 제안", speech, "'Let me'로 시작하면 지시가 아니라 도와 드리겠다는 제안으로 들려요. professional은 가족이 아니라 훈련받은 통역사라는 점을 짚어요.", "from you", "제가 통역사를 부르기 전에 차트를 볼게요.", "제가 전문 통역사 이름을 알려드릴게요.", "professional", "family", "volunteer", "temporary"]
+  - ["서비스 안내", hospital, "available은 지금 쓸 수 있다는 뜻이고 right away가 기다릴 필요 없다는 안심을 줘요. We have로 병원이 갖춘 서비스라고 말해요.", "for children", "지금 바로 이용할 수 있는 통역 책자가 있어요.", "지금 바로 이용할 수 있는 휴게 공간이 있어요.", "services", "forms", "chairs", "badges"]
+  - ["이해 확인", check, "'make sure'는 빈틈없이 확인하겠다는 말이고, 'I want to'로 시작하면 시험이 아니라 내 바람으로 부드럽게 들려요.", "I used to", "이해하셨는지 확실히 하려고 앉으세요.", "다 이해하시도록 천천히 말하고 싶어요.", "understand", "memorize", "recite", "practice"]
+  - ["언어 질문", speech, "What language로 묻고 at home을 붙이면 병원이 아니라 가장 편한 일상 언어를 끌어내요. 의문문이라 do you speak 순서로 써요.", "Which country", "집에서는 어떤 음식을 드세요?", "집에서는 어떤 약을 쓰세요?", "speak", "read", "write", "study"]
+  - ["도착 안내", bell, "will be here는 곧 온다는 약속이고 just가 오래 걸리지 않는다는 안심을 더해요. a few는 정확한 수가 아니라 짧다는 느낌을 줘요.", "The consent form", "통역사가 몇 분 안에 서류를 가져올 거예요.", "통역사가 몇 분 안에 전화할 거예요.", "interpreter", "surgeon", "pharmacist", "transporter"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 통역사 요청 4문장 순서
+    why: 통역사를 부르겠다고 제안한 뒤 쓰는 언어를 묻고, 대답에 감사하며 맞는 통역사를 요청했다고 알린 다음 곧 온다고 안심시켜요.
+    lines:
+    - ["I'd like to bring in a professional interpreter for you.", hospital, "전문 통역사를 불러드리고 싶어요", "제안"]
+    - ["First, what language do you speak at home?", speech, "먼저, 집에서는 어떤 언어를 쓰세요?", "질문"]
+    - ["Thanks — that helps me request the right interpreter.", check, "고마워요, 맞는 통역사를 요청하는 데 도움이 돼요", "확인"]
+    - ["They will be here in just a few minutes.", bell, "통역사가 몇 분 안에 도착할 거예요", "도착"]
+- title: 동의 통역 확인
+  s:
+  - ["동의 설명", speech, "in your language로 설명이 환자의 언어로 이루어진다는 점을 분명히 해요. will은 곧 일어날 일을 안내하는 미래형이에요.", "the billing form", "통역사가 수술 일정을 환자분 언어로 설명해 드릴 거예요.", "통역사가 마취 순서를 환자분 언어로 설명해 드릴 거예요.", "interpreter", "technician", "dietitian", "chaplain"]
+  - ["이해 질문", magnify, "'what you're agreeing to'로 서명 자체가 아니라 동의하는 내용을 이해했는지 물어요. 끝의 전치사 to를 빼먹지 않는 게 포인트예요.", "Do you recommend", "지금 동의하시는 게 뭔지 설명해 드릴까요?", "지금 동의하시기 전에 질문이 있으세요?", "agreeing", "listening", "objecting", "pointing"]
+  - ["질문 안내", speech, "Please ask로 정중하게 질문을 권하고, through the interpreter로 어떤 경로로 물어야 하는지 정해 줘요. any는 '아무 질문이든'이라는 폭을 줘요.", "with this pamphlet", "궁금한 건 물어보려고 손을 들어 보세요.", "답변은 통역사를 통해 들으실 수 있어요.", "through", "behind", "beyond", "beneath"]
+  - ["다시 말하기", speech, "'what this means'는 방금 들은 내용의 뜻을 묻는 절이에요. 'in your own words'를 붙이면 따라 읽기가 아니라 자기 말로 풀어 보게 돼요.", "where this hurts", "이게 무슨 뜻인지 말씀해 주시려고 먼저 숨을 쉬세요.", "이게 무슨 뜻인지 아시는지 알고 싶어서 물어요.", "words", "hands", "eyes", "notes"]
+  - ["복창 요청", redo, "A nod isn't enough로 끄덕임이 이해의 증거가 아니라고 먼저 말하고, I need you to로 해야 할 일을 직접 요청해요. 비난 없이 이유와 요청을 한 문장에 묶어요.", "to rewrite it", "고개만 끄덕이시는 걸로는 부족해요 — 직접 다시 설명하려고 잠깐 쉬어 주세요.", "고개만 끄덕이시는 걸로는 부족해요 — 이해하셨는지 확인하려는 거예요.", "explain", "draw", "copy", "shout"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 동의 이해 확인 4문장 순서
+    why: 통역사가 동의서를 설명해 준다고 알린 뒤 이해했는지 묻고, 자기 말로 다시 말하게 한 다음 끄덕임만으로는 부족하다고 마무리해요.
+    lines:
+    - ["The interpreter will explain the consent in your language.", speech, "통역사가 동의서를 환자분 언어로 설명해 드릴 거예요", "설명"]
+    - ["Do you understand what you're agreeing to?", magnify, "동의하시는 게 뭔지 이해되세요?", "질문"]
+    - ["Please tell me what that means in your own words.", redo, "그게 무슨 뜻인지 환자분 말로 말씀해 주세요", "복창"]
+    - ["Just a nod isn't enough, so I need you to say it.", pencil, "끄덕임만으로는 부족하니 말씀해 주셔야 해요", "마무리"]
+- title: 금식·준비 통역 안내
+  s:
+  - ["금식 안내", board, "go over는 한 항목씩 훑으며 설명한다는 구동사예요. your fasting instructions로 환자 자신이 지킬 지침임을 분명히 해요.", "your parking", "통역사가 퇴원 지침을 하나하나 짚어 드릴 거예요.", "통역사가 금식 지침을 하나하나 보내 드릴 거예요.", "fasting", "visiting", "parking", "billing"]
+  - ["금식 규칙", shield, "'No food or drink'처럼 동사 없이 명사만 말하면 규칙이 짧고 단호하게 들려요. 끝의 okay?로 확인을 구하는 어조를 붙여요.", "or visitors", "자정 이후로는 면회도 전화도 안 돼요, 아시겠죠?", "자정 이후로는 화장도 매니큐어도 안 돼요, 아시겠죠?", "midnight", "lunch", "dinner", "noon"]
+  - ["이해 확인", check, "Let me로 확인을 내 몫으로 가져오면 환자가 시험받는 느낌이 줄어요. understood는 지금까지 들은 것을 되짚는 과거형이에요.", "the parking rules", "이해하셨는지 확인하려고 안경을 쓰세요.", "준비 단계가 많아서 하나씩 천천히 볼게요.", "understood", "memorized", "repeated", "witnessed"]
+  - ["금식 설명", shield, "'nothing at all'로 범위를 최대로 넓히고, ', even water'로 사람들이 예외로 여기기 쉬운 물까지 짚어요. 'means'로 앞 표현의 뜻을 풀어 줘요.", ", even talking", "먹지도 마시지도 말라는 건 껌도 사탕도 안 된다는 뜻이에요.", "먹지도 마시지도 말라는 건 자정부터 그렇다는 뜻이에요.", "eat", "cook", "buy", "order"]
+  - ["복창 요청", redo, "Tell me back은 들은 내용을 환자 입으로 다시 말하게 하는 표현이에요. 시각은 외우기 쉬운 값이라 말로 확인해야 어긋나지 않아요.", "what food", "다시 말씀하시려고 메모지부터 챙기세요.", "몇 시부터 금식해야 하는지 궁금해서 여쭤보는 거예요.", "eating", "walking", "working", "sleeping"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 금식 안내 4문장 순서
+    why: 통역사가 지침을 짚어 준다고 알린 뒤 금식 범위를 말하고, 시작 시각을 다시 말하게 한 다음 그 시각을 차트에 적어요.
+    lines:
+    - ["The interpreter will go over your fasting instructions with you.", board, "통역사가 금식 지침을 함께 짚어 드릴 거예요", "안내"]
+    - ["Nothing to eat or drink after midnight, even water.", shield, "자정 이후로는 물조차 안 돼요", "규칙"]
+    - ["Can you tell me back what time that starts?", redo, "그게 몇 시부터인지 다시 말씀해 주시겠어요?", "복창"]
+    - ["Thank you — I'll write that time on your chart.", pencil, "고마워요, 그 시각을 차트에 적을게요", "기록"]
+- title: 마취 설명 통역
+  s:
+  - ["마취 설명", speech, "how 절을 목적어로 두면 작용 원리를 풀어 설명한다는 뜻이 돼요. works는 기계뿐 아니라 약의 작용에도 써요.", "how the monitor", "통역사가 마취가 언제 시작하는지 설명해 드릴 거예요.", "통역사가 마취가 어떻게 끝나는지 설명해 드릴 거예요.", "anesthesia", "ventilator", "scanner", "tourniquet"]
+  - ["안심 설명", shield, "'and won't feel anything'을 이어 붙여 잠든 결과를 안심 포인트로 말해요. You'll be …는 환자 입장에서 앞으로 일어날 일을 그려 줘요.", "You'll be warm", "잠들어 계셔서 아무것도 못 보실 거예요.", "잠들어 계셔서 아무것도 못 들으실 거예요.", "asleep", "hungry", "dizzy", "cold"]
+  - ["걱정 묻기", faceWorried, "Tell me if…는 질문이 아니라 편하게 말하라는 열린 초대예요. any concerns로 사소한 걱정도 말해도 된다는 신호를 줘요.", "any pets", "걱정되는 게 있으면 메모해 두세요.", "걱정되는 게 있으면 마음이 불편해요.", "concerns", "symptoms", "allergies", "infections"]
+  - ["기억 안내", bulb, "Once는 '일단 ~하고 나면'이라는 시점을 열어서 그 뒤에 일어날 일을 안내해요. any of this는 이 대화와 준비 전체를 가리켜요.", "the lights", "잠드시고 나면 이 순간을 전혀 느끼지 못하실 거예요.", "잠드시고 나면 이 방을 전혀 기억 못 하실 거예요.", "remember", "regret", "repeat", "resist"]
+  - ["안심 설명", shield, "watch over you는 눈을 떼지 않고 돌본다는 뜻이고, the entire time이 한순간도 비지 않는다는 보증을 줘요. 팀이 주어라 한 사람에게 달리지 않아요.", "will talk to you", "마취팀이 내내 곁에서 이야기해 드릴 거예요.", "마취팀이 내내 문 앞에서 지켜봐 드릴 거예요.", "entire", "first", "last", "next"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 마취 설명 4문장 순서
+    why: 마취의 원리를 설명하고, 잠든 동안 느끼지 못한다고 말한 뒤, 깨어난 후 기억을 안내하고 걱정을 물으며 마무리해요.
+    lines:
+    - ["I'll have the interpreter explain how the anesthesia works.", speech, "통역사가 마취 원리를 설명해 드릴 거예요", "설명"]
+    - ["Once it takes effect, you'll be asleep and won't feel anything.", shield, "효과가 나타나면 잠들어 아무것도 못 느끼실 거예요", "효과"]
+    - ["Afterward, you won't remember any of it.", calendar, "그 뒤에는 아무것도 기억 못 하실 거예요", "기억"]
+    - ["That's everything — please tell me if anything worries you.", faceWorried, "이게 전부예요, 걱정되는 게 있으면 말씀해 주세요", "걱정"]
+- title: 통증 소통 통역
+  s:
+  - ["통증 척도", chartup, "Through the interpreter를 문장 앞에 두어 소통 경로를 먼저 알려요. from zero to ten은 숫자 하나로 답하게 하는 척도예요.", "from head to toe", "통역사를 통해 통증이 어디서 시작됐는지 말씀해 주세요.", "통역사를 통해 통증이 언제부터 시작됐는지 말씀해 주세요.", "ten", "twenty", "fifty", "hundred"]
+  - ["손짓 안내", pushpin, "Point to로 말 대신 손으로 답하는 길을 열어요. if that's easier로 선택권을 줘서 말하기 어려운 환자의 부담을 덜어요.", "the exit is", "아픈 곳을 가리키려고 먼저 앉으세요.", "아픈 곳이 어딘지 궁금해서 여쭤봐요.", "hurts", "itches", "swells", "bleeds"]
+  - ["통증 조절", handshake2, "'We'll'로 팀이 함께한다는 약속을 해요. manage는 '없애다'가 아니라 '관리해 줄이다'라서 현실적인 약속이 돼요.", "your schedule", "수면은 저희가 함께 조절해 드릴게요.", "불안은 저희가 함께 조절해 드릴게요.", "together", "alone", "separately", "silently"]
+  - ["차트 사용", board, "Show me on this chart로 도구와 행동을 한 번에 알려요. which number는 여러 숫자 중 하나를 고르게 하는 의문사 구문이에요.", "which doctor", "이 차트에서 어제 느끼셨던 것과 맞는 숫자를 보여주세요.", "이 차트에서 가장 아팠던 때와 맞는 숫자를 보여주세요.", "matches", "changes", "controls", "hides"]
+  - ["재확인 약속", bell, "I'll bring ~ back에서 back이 다시 오겠다는 재방문을, every hour가 정해진 주기를 말해요. to check on you가 오는 목적을 밝혀요.", "the clipboard back", "통역사와 함께 다시 오려고 차트를 볼게요.", "한 시간마다 통역사와 함께 다시 와서 설명할게요.", "interpreter", "pharmacist", "technician", "cleaner"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 통증 소통 4문장 순서
+    why: 숫자로 통증을 묻고, 말하기 어려우면 가리키게 한 다음, 그 답을 차트에 적고 정기적으로 다시 확인하겠다고 알려요.
+    lines:
+    - ["Through the interpreter, please tell me your pain from zero to ten.", chartup, "통역사를 통해 통증을 0부터 10까지로 말씀해 주세요", "질문"]
+    - ["If a number is hard to say, point to where it hurts instead.", pushpin, "숫자가 어려우면 대신 아픈 곳을 가리켜 주세요", "대안"]
+    - ["Thank you — I'll mark that on the pain chart.", pencil, "고마워요, 그걸 통증 차트에 표시할게요", "기록"]
+    - ["Next, I'll bring the interpreter back every hour to check on you.", bell, "다음으로 한 시간마다 통역사와 다시 와서 확인할게요", "재방문"]
+- title: 가족 통역 한계 인지
+  s:
+  - ["규칙 안내", shield, "'For medical consent'로 목적을 먼저 밝히면 규칙이 개인 취향이 아니라 이유 있는 절차로 들려요. need는 선택이 아닌 요건이에요.", "a parking permit", "일반 문의를 위해서는 전문 통역사가 필요해요.", "의료 기록을 위해서는 전문 통역사가 필요해요.", "consent", "billing", "research", "insurance"]
+  - ["이유 설명", shield, "'It's for ~'는 규칙 뒤의 이유를 짧게 붙이는 틀이에요. 정확성과 안전을 함께 말해 가족을 탓하지 않고 환자 보호를 내세워요.", "comfort", "정확성과 가족분의 휴식을 위한 거예요.", "속도와 가족분의 안전을 위한 거예요.", "accuracy", "speed", "price", "style"]
+  - ["가족 배려", handshake2, "is welcome to ~는 허락을 넘어 환영한다는 따뜻한 어감이에요. 통역은 못 맡기지만 곁에 있는 건 환영한다는 뜻을 분명히 해요.", "to knit", "아드님은 계속 곁에서 지지해 주셔도 좋아요.", "따님은 지지해 주려고 손을 씻어 주세요.", "welcome", "ready", "likely", "afraid"]
+  - ["공감 설명", faceWorried, "'I know'로 먼저 상대의 마음을 인정하고 and로 이어 오해를 풀어요. 'this isn't about trust'로 규칙이 가족을 못 믿어서가 아님을 분명히 해요.", "about politics", "따님이 걱정하시는 거 알아요, 신뢰의 문제가 아니에요.", "아드님이 돕고 싶어 하시는 거 알아요, 신뢰의 문제가 아니에요.", "help", "cry", "rest", "hide"]
+  - ["이유 설명", magnify, "'A trained interpreter'로 일반화하면 한 사람이 아니라 전문 훈련의 장점을 말하는 거라 가족이 비난받지 않아요. so nothing gets missed는 결과를 이유로 이어요.", "every sigh", "훈련된 통역사는 한 마디도 놓치지 않고 다 녹음해 내요.", "훈련된 통역사는 한 마디도 놓치지 않고 다 외워 내요.", "trained", "tired", "hurried", "nervous"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 가족 통역 한계 설명 4문장 순서
+    why: 전문 통역사가 필요하다는 규칙을 말하고 이유를 밝힌 뒤, 그래도 가족은 곁에 있어도 된다고 환영하며 신뢰의 문제가 아님을 덧붙여요.
+    lines:
+    - ["For medical consent, we need a professional interpreter.", shield, "의료 동의에는 전문 통역사가 필요해요", "규칙"]
+    - ["It's for accuracy and for your family member's safety.", magnify, "정확성과 가족분의 안전을 위한 거예요", "이유"]
+    - ["Still, your daughter is welcome to stay and support her.", handshake2, "그래도 따님은 곁에서 지지해 주셔도 좋아요", "환영"]
+    - ["I know she wants to help, and this isn't about trust.", faceWorried, "돕고 싶어 하시는 거 알아요, 신뢰의 문제가 아니에요", "공감"]

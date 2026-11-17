@@ -1,0 +1,105 @@
+급성 대량 출혈:
+  - kind: slider
+    words: [w-hemorrhage, w-massive]
+    cue: "Blood fills the canister faster than the second suction can clear it, and the surgeon can't see the field."
+    scale: [bleeding, heavy bleeding, massive hemorrhage]
+    answerAt: 2
+    why: "출혈의 정도는 bleeding → heavy bleeding → massive hemorrhage 순으로 심해져요. 흡인기 두 대로도 못 따라가고 시야까지 가려졌다면 massive hemorrhage예요."
+    example: "This is a massive hemorrhage."
+    exKo: "대량출혈이에요."
+  - kind: swap
+    words: [w-track, w-ebl, w-update]
+    who: "순환 간호사 → 집도의 · 출혈량 보고"
+    icon: speech
+    before: ["I'll keep tracking EBL and ", "stay quiet", "."]
+    options: [update you, stay quiet, write it down later]
+    answer: update you
+    notes: {update you: "출혈량을 계속 알려 주겠다는 말이다. 집도의가 판단하려면 실시간 숫자가 필요하다.", stay quiet: "보고하지 않겠다는 말이라 팀이 상황을 모르게 된다.", write it down later: "나중에 적겠다는 말이다. 급한 출혈에서는 숫자를 바로 전해야 한다."}
+    why: "대량 출혈 중에는 집도의와 마취과가 숫자를 보고 결정하니, 추적한 EBL을 계속 말로 전해요."
+    ko: "EBL을 계속 추적하면서 알려드릴게요"
+혈압 급강하 순환 허탈:
+  - kind: slider
+    words: [w-crash, w-pressure]
+    cue: "A minute ago he was stable. Now the alarm is sounding and the pressure has fallen through the floor."
+    scale: [dipped, dropped, crashed]
+    answerAt: 2
+    why: "dipped는 살짝 내려간 것, dropped는 눈에 띄게 내려간 것, crashed는 갑자기 무너진 것이에요. 알람이 울릴 정도로 한꺼번에 떨어졌다면 crashed예요."
+    example: "His pressure crashed."
+    exKo: "혈압이 급강하했어요."
+  - kind: context
+    words: [w-pressor]
+    word: pressor
+    ko: 승압제
+    scenes:
+      - {who: 마취과 → 순환 간호사, icon: speech, en: "Pushing pressors now — keep the volume coming.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Pressors started for hypotension.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We're giving him pressors to support his pressure.", ok: false, fix: "We're giving him a medicine to bring his blood pressure back up."}
+    why: "pressor는 의료진끼리 승압제를 부르는 말이에요. 보호자에게는 pressors라고 말해도 뜻이 전해지지 않으니, 혈압을 올리는 약이라고 쉽게 풀어 줘요."
+응고병증 발생:
+  - kind: pair
+    words: [w-correct, w-coagulopathy, w-call, w-bloodbank, w-hemostasis]
+    pairs: [[correct, the coagulopathy], [call, the blood bank], [achieve, hemostasis]]
+    decoys: [the stretcher]
+    why: "correct the coagulopathy는 응고 이상을 바로잡는다, call the blood bank는 혈액은행에 연락한다, achieve hemostasis는 출혈을 멎게 한다는 뜻이에요. 수술 중 응고 문제에서 자주 나와요."
+  - kind: context
+    words: [w-coagulopathic]
+    word: coagulopathic
+    ko: 응고병증이 있는
+    scenes:
+      - {who: 마취과 → 순환 간호사, icon: speech, en: "He's coagulopathic — I need FFP and platelets now.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Pt coagulopathic; FFP and platelets ordered.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He's coagulopathic, so he's bleeding more.", ok: false, fix: "His blood isn't clotting well, so we're giving him clotting products."}
+    why: "coagulopathic은 응고에 문제가 있는 환자를 가리키는 정확한 임상어예요. 보호자에게는 뜻이 전해지지 않고 차갑게 들려서, 피가 잘 안 굳는다는 쉬운 말로 풀어 줘요."
+대량수혈 프로토콜 발동:
+  - kind: slider
+    words: [w-activate, w-protocol]
+    cue: "Blood loss is above plan but he is stable, and nobody has asked for products yet. You offer the lightest step first."
+    scale: [alert the blood bank, send for two units, activate the protocol]
+    answerAt: 0
+    why: "대응은 alert the blood bank(미리 알림) → send for two units(일부 요청) → activate the protocol(전체 가동) 순으로 무거워져요. 환자가 안정적이고 아직 요청이 없다면 가장 가벼운 첫 단계가 알맞아요. 실제 발동은 집도의와 마취과가 정해요."
+    example: "Let's alert the blood bank first."
+    exKo: "먼저 혈액은행에 알립시다."
+  - kind: swap
+    words: [w-track, w-unit, w-count, w-straight]
+    who: "순환 간호사 → 팀 · 수혈 단위 관리"
+    icon: speech
+    before: ["I'll track units in and keep the counts ", "loose", "."]
+    options: [straight, loose, rough]
+    answer: straight
+    notes: {straight: "'keep the counts straight'는 들어온 단위 수를 어긋남 없이 맞춰 둔다는 뜻이다. 대량수혈에서 필요한 일이다.", loose: "느슨하게 센다는 뜻이라 단위 관리가 흐려진다.", rough: "대충 센다는 뜻이라 어느 제제가 몇 단위 들어왔는지 확인할 수 없다."}
+    why: "대량수혈 중에는 어떤 제제가 몇 단위 들어왔는지 어긋남 없이 맞춰 둬야 해요. 그래서 straight가 알맞아요."
+    ko: "들어온 단위를 추적하며 수량을 정확히 맞출게요"
+지혈 불가 손상통제:
+  - kind: pair
+    words: [w-damagecontrol, w-closure, w-return]
+    pairs: [[damage, control], [abdominal, closure], [return, to the OR]]
+    decoys: [the cooler]
+    why: "damage control은 목숨을 지키는 데 필요한 처치만 먼저 하는 방식이에요. abdominal closure는 배를 닫는 단계이고, return to the OR은 중환자실에서 안정시킨 뒤 수술방으로 다시 오는 것이에요."
+  - kind: context
+    words: [w-damagecontrol]
+    word: damage control
+    ko: 손상통제
+    scenes:
+      - {who: 집도의 → 수술팀, icon: speech, en: "We're shifting to damage control.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Damage control surgery performed; temporary closure; to ICU.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We went to damage control surgery because his bleeding wouldn't stop.", ok: false, fix: "The surgeon did only what was needed to stop the bleeding and save his life, and will finish the surgery later."}
+    why: "damage control은 의료진끼리 방식을 가리키는 정확한 임상어예요. 보호자에게는 뜻이 전해지지 않으니, 지금은 생명을 지키는 처치만 했고 나머지는 나중에 한다고 풀어 줘요."
+심정지 임박 출혈:
+  - kind: slider
+    words: [w-pulse]
+    cue: "You check the groin and can't feel a pulse at all."
+    scale: [absent, faint, strong]
+    answerAt: 0
+    why: "맥박의 세기는 absent(없음) → faint(희미함) → strong(강함)으로 말해요. 전혀 느껴지지 않는다면 absent예요."
+    example: "The pulse is absent."
+    exKo: "맥박이 없어요."
+  - kind: swap
+    words: [w-lose, w-pulse, w-compression]
+    who: "순환 간호사 → 팀 · 심정지 대비"
+    icon: speech
+    before: ["If we lose the pulse, I'm ", "checking the monitor again", "."]
+    options: [starting compressions, checking the monitor again, writing it down]
+    answer: starting compressions
+    notes: {starting compressions: "맥박이 사라지면 지체 없이 흉부압박을 시작한다. 간호사가 직접 할 수 있는 기본 응급 처치다.", checking the monitor again: "모니터를 다시 보는 것은 확인일 뿐이라 압박이 시작되지 않는다.", writing it down: "기록은 나중에 한다. 그 순간 필요한 행동이 아니다."}
+    why: "맥박이 사라지면 확인이나 기록보다 흉부압박을 바로 시작해요."
+    ko: "맥박이 사라지면 바로 흉부압박을 시작할게요"

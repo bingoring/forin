@@ -1,0 +1,90 @@
+지혈 기구 준비:
+  - kind: slider
+    words: [w-clip, w-reach]
+    cue: "You're holding a clip, ready to pass it the instant the surgeon asks."
+    scale: [in the room, within reach, in your hand]
+    answerAt: 2
+    why: "물건이 어디까지 준비됐는지는 in the room(방 안 어딘가) → within reach(손 닿는 곳) → in your hand(이미 손에 쥠) 순으로 가까워져요. 곧바로 건네려고 쥐고 있다면 마지막이 알맞아요."
+    example: "I have extra clips in my hand."
+    exKo: "여분의 클립을 손에 들고 있어요."
+  - kind: swap
+    words: [w-hemostatic, w-agent, w-field]
+    who: "순환 간호사 → 스크럽 · 지혈제 준비"
+    icon: speech
+    before: ["I have hemostatic agents ", "in the storeroom", ", ready when you need them."]
+    options: [open on the field, in the storeroom, back at my desk]
+    answer: open on the field
+    notes: {open on the field: "바로 쓸 수 있게 필드에 펼쳐 둔 상태를 말한다. 'ready when you need them'과 맞는다.", in the storeroom: "창고에 있다면 지금 바로 쓸 수 없다. 'ready'와 맞지 않는다.", back at my desk: "책상에 있다면 수술 필드에서 쓸 수 없다."}
+    why: "필요할 때 바로 쓸 수 있다는 말이 되려면 지혈제가 필드에 열려 있어야 해요. 멀리 있는 물건은 ready가 아니에요."
+    ko: "지혈제를 필드에 열어 뒀으니 필요하시면 바로 쓰세요"
+출혈 부위 보고:
+  - kind: slider
+    words: [w-bleed, w-vessel]
+    cue: "Bright red blood pulses out of a cut vessel in time with his heartbeat."
+    scale: [oozing, steady, spurting]
+    answerAt: 2
+    why: "oozing은 느리게 스며 나오는 것, steady는 일정하게 이어지는 것, spurting은 박동에 맞춰 뿜어 나오는 것이에요. 혈관이 끊겨 맥박에 맞춰 뿜는다면 spurting이에요."
+    example: "That vessel is spurting."
+    exKo: "저 혈관에서 피가 뿜어 나와요."
+  - kind: context
+    words: [w-clamp]
+    word: clamp
+    ko: 클램프
+    scenes:
+      - {who: 집도의 → 스크럽, icon: speech, en: "Clamp, please. I've got a bleeder right here.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Vessel clamped and tied; bleeding controlled.", ok: true}
+      - {who: 깨어 있는 환자에게(척추마취), icon: me, en: "Clamp on the bleeder — it's pumping, so hold still.", ok: false, fix: "You may feel some pressure; I'm just stopping a small bleed."}
+    why: "clamp는 의료진끼리 기구를 주고받을 때와 기록에서 자연스러운 말이에요. 깨어 있는 환자에게 출혈이 뿜는다고 말하면 겁을 줘요. 무슨 일이 일어나는지만 쉽게 알려 줘요."
+수액로 개통 확인:
+  - kind: slider
+    words: [w-fluid, w-wide, w-run]
+    cue: "Anesthesia asks how the fluids are running. You open the clamp fully and the bag drains as fast as the tubing allows."
+    scale: [dripping slowly, running steadily, wide open]
+    answerAt: 2
+    why: "수액 속도는 dripping slowly(천천히 떨어짐) → running steadily(일정하게) → wide open(조절기를 끝까지 열어 최대 속도) 순으로 빨라져요. 조절기를 끝까지 열었다면 wide open이에요."
+    example: "The fluids are running wide open."
+    exKo: "수액이 완전히 열려 흐르고 있어요."
+  - kind: swap
+    words: [w-iv, w-patent, w-free]
+    who: "순환 간호사 → 마취과 · 정맥로 확인"
+    icon: speech
+    before: ["Both IVs are ", "blocked", " and flowing freely."]
+    options: [patent, blocked, kinked]
+    answer: patent
+    notes: {patent: "'개통된, 막힘 없는'이라는 뜻으로 정맥로가 잘 통한다고 보고할 때 쓰는 임상어다. flowing freely와도 어울린다.", blocked: "막혔다는 뜻이라 '잘 흐르고 있다'와 모순된다.", kinked: "관이 꺾였다는 뜻이라 잘 흐른다는 말과 모순된다."}
+    why: "정맥로가 잘 통한다고 보고할 때는 patent를 써요. blocked나 kinked는 흐름이 막혔다는 뜻이라 뒤의 flowing freely와 맞지 않아요."
+    ko: "양쪽 정맥로 모두 개통돼 있고 잘 흐르고 있어요"
+출혈량 증가 추세 보고:
+  - kind: slider
+    words: [w-ebl, w-trend]
+    cue: "Over the last hour, EBL has risen by just 50 milliliters."
+    scale: [creeping up, climbing, surging]
+    answerAt: 0
+    why: "creeping up은 아주 천천히 늘어나는 것, climbing은 꾸준히 오르는 것, surging은 갑자기 크게 치솟는 것이에요. 한 시간에 50밀리리터라면 천천히 늘어나는 쪽이에요."
+    example: "The EBL is creeping up slowly."
+    exKo: "EBL이 천천히 늘고 있어요."
+  - kind: context
+    words: [w-alert]
+    word: alert
+    ko: 알리다
+    scenes:
+      - {who: 순환 간호사 → 마취과, icon: speech, en: "I'm alerting the blood bank that we may need blood.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Blood bank alerted at 10:42; products on standby.", ok: true}
+      - {who: 대기실 보호자에게, icon: me, en: "We've alerted the blood bank because his EBL is rising.", ok: false, fix: "He's bleeding a bit more than we expected, so we're getting blood ready, just in case."}
+    why: "alert는 의료진 사이에서 '미리 알려 대비시키다'는 뜻으로 간결하게 쓰여요. 보호자에게 blood bank가 alert됐다고만 하면 갑자기 큰일이 난 것처럼 들려서, 쉽게 풀어 설명해 줘요."
+국소 지혈제 적용:
+  - kind: pair
+    words: [w-hold, w-pressure, w-hemostatic, w-matrix, w-bleed, w-surface]
+    pairs: [[hold, pressure], [hemostatic, matrix], [bleeding, surface]]
+    decoys: [the clock]
+    why: "hold pressure는 출혈 부위를 눌러 지혈하는 표현이에요. hemostatic matrix는 출혈면에 올려 지혈을 돕는 제품이고, bleeding surface는 피가 나는 조직의 겉면이에요."
+  - kind: swap
+    words: [w-hold, w-pressure, w-set]
+    who: "순환 간호사 → 수술 보조 · 지혈제 적용 중"
+    icon: speech
+    before: ["Hold pressure while it ", "falls apart", "."]
+    options: [sets up, falls apart, dries out]
+    answer: sets up
+    notes: {sets up: "'sets up'은 지혈제가 굳어 자리 잡는다는 뜻이다. 그동안 압박을 유지하라는 지시가 자연스럽다.", falls apart: "지혈제가 부서진다는 뜻이다. 그 상황에서 압박을 유지하라는 말과 이어지지 않는다.", dries out: "마른다는 뜻이다. 지혈제가 굳는 과정을 가리키는 말이 아니다."}
+    why: "지혈제가 굳어 자리 잡는 동안에는 그 위를 눌러 유지해요. sets up은 굳어서 제 기능을 하게 된다는 뜻이에요."
+    ko: "지혈제가 자리 잡는 동안 눌러 주세요"
