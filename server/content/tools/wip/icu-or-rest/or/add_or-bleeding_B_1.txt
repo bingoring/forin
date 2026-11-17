@@ -1,0 +1,55 @@
+## 0
+S|출혈량 질문|chartup|What's로 시작해 예상 수치를 묻고, for this procedure로 어느 수술인지 한정해요. 수술 전 브리핑에서 팀이 출혈 대비 수준을 맞추는 표준 질문이에요.|the expected case length|이 수술의 예상 출혈량을 누가 말해 줄까요?|이 수술의 예상 출혈량은 어디에 적혀 있나요?|expected|total|actual|previous
+S|대비 준비|bandage|have X ready는 쓰기 전에 미리 갖춰 둔다는 틀이에요. extra를 붙여 평소 분량 이상으로 대비한다는 점을 알려요.|and spare gowns|여분의 흡인기와 랩패드를 챙기려고 카트를 끌어 둘게요.|여분의 흡인기와 랩패드는 큰 수술에서 금방 동나요.|ready|empty|broken|dirty
+S|기록 약속|pencil|as we go는 수술이 진행되는 내내 이어서 한다는 뜻이라, 한 번이 아니라 계속 기록한다는 약속이 돼요.|the irrigation|진행하면서 EBL을 계속 기록하려고 시계를 볼게요.|진행하면서 EBL은 계속 달라질 수 있어요.|as we go|as we scrub|as we wait|as we leave
+S|위험 공유|faceWorried|could는 확정이 아닌 가능성을 말해 팀이 미리 대비하게 하되 불안을 키우지 않아요. 위험을 수술 이름에 붙여 한정해요.|of heat|이 수술에서는 흉터가 많이 남을 수 있어요.|이 수술에서는 체온이 많이 떨어질 수 있어요.|lose|gain|save|give
+S|대비 준비|bandage|within reach는 손만 뻗으면 닿는다는 뜻이고, in case…로 지금 필요해서가 아니라 대비임을 밝혀요.|extra sterile gowns|필요할 경우를 대비해 여분의 장갑을 손 닿는 곳에 둘게요.|필요할 경우를 대비해 여분의 흡인관을 손 닿는 곳에 둘게요.|reach|sight|order|sleep
+O|출혈 대비 4문장 순서|예상 출혈량을 묻고, 그에 맞춰 물품을 갖춘 뒤, 갖춘 물품을 기준으로 기록을 이어 가고 변화를 알리는 순서예요. 앞 줄을 가리키는 말이 순서를 잡아 줘요.
+L|What's the expected blood loss for this procedure?|chartup|이 수술의 예상 출혈량이 얼마나 될까요?|질문
+L|Based on that, I'll have extra suction ready.|bandage|그에 맞춰 여분의 흡인기를 준비할게요|준비
+L|Once those are set, I'll track EBL against that estimate.|pencil|준비되면 그 추정치 대비 EBL을 기록할게요|기록
+L|I'll update you whenever the total changes much.|speech|합계가 많이 변하면 그때마다 알릴게요|보고
+## 1
+S|수치 보고|chartup|shows 뒤에 읽은 값을 그대로 이어 말해 해석 없이 중립적으로 전달해요. so far로 아직 진행 중인 누적값임을 알려요.|a few bubbles|흡인통의 눈금은 밀리리터 단위로 읽어요.|흡인통은 가득 차기 전에 비워야 해요.|milliliters|liters|ounces|grams
+S|세척액 제외|lab|subtract A from B 틀에서 빼는 것이 앞, 기준 값이 뒤에 와요. 겉보기 수치에서 혈액이 아닌 것을 덜어 낸다는 의도가 어순에 드러나요.|the tubing|저 숫자에서 세척액을 빼려고 양을 적어요.|세척액이 섞이면 출혈이 많아 보여요.|irrigation|blood|tubing|suction
+S|누적 기록|pencil|a running total은 더해 갈 때마다 바뀌는 합계라서, 수술 내내 갱신하고 있음을 한 구로 전해요.|a spare copy|EBL의 누적 합계를 계속 기록하려고 펜을 쥐고 있어요.|EBL의 누적 합계는 중간에 다시 맞춰 봐야 해요.|running|final|daily|monthly
+S|재확인|magnify|Let me …는 허락을 묻는 질문 없이 곧바로 내가 하겠다는 말이라 빠르고 부드러워요. again으로 앞서 본 것을 다시 본다는 점이 분명해요.|the pump display|흡인통을 먼저 확인해 볼게요.|흡인통은 눈높이에서 읽어야 정확해요.|again|twice|slowly|silently
+S|실혈량 설명|lab|Once …는 앞 동작이 끝난 시점에 뒤의 결과가 성립한다는 순서를 알려요. the real blood loss로 겉보기 수치와 실제 출혈을 구분해요.|the drape count|세척액을 빼도 흡인통의 숫자는 그대로예요.|세척액을 빼고 나면 실제 출혈량을 기록합니다.|lower|higher|unknown|steady
+O|흡인 출혈량 보고 4문장 순서|읽은 값을 보고하고, 세척액을 덜어 낸 뒤, 남은 값을 합계에 넣고, 다시 읽어 그 합계와 비교하는 순서예요. 마지막 줄의 that total이 앞 줄을 가리켜 순서를 잡아 줘요.
+L|The canister shows about 300 milliliters so far.|chartup|흡인통에 지금까지 약 300밀리리터가 보입니다|보고
+L|I'll subtract the irrigation from that number.|lab|저 숫자에서 세척액을 빼겠습니다|보정
+L|What's left goes into the running EBL.|pencil|남은 값은 누적 EBL에 들어갑니다|합산
+L|I'll read the canister again and compare it with that total.|magnify|흡인통을 다시 읽고 그 합계와 비교할게요|재확인
+## 2
+S|무게 측정|gear|to estimate가 무게를 다는 목적을 밝혀요. 눈으로 보는 대신 무게로 추정한다는 방식이 드러나요.|the trays|거즈 무게를 재려고 저울을 꺼내 둘게요.|젖은 거즈는 마른 거즈보다 무거워요.|weigh|wash|fold|stack
+S|수치 보고|chartup|분사구 Dry weight subtracted로 계산 방법을 앞에 짧게 밝힌 뒤 결과를 말하는 보고 방식이에요.|Gown weight added|건조 무게를 잰 값은 약 150그램입니다.|건조 무게는 거즈마다 다르게 적혀 있습니다.|Dry|Wet|Gross|Sterile
+S|합계 반영|pencil|add A to B로 새 값을 기존 합계에 더한다는 방향이 어순에 있어요. our로 팀이 함께 쓰는 한 기록임을 보여요.|to the supply list|이걸 우리의 누적 EBL에 더하려고 합계를 열어 둘게요.|누적 EBL은 팀이 같이 보는 숫자예요.|running|final|rough|single
+S|눈대중 관찰|magnify|look + 비교급은 재 보기 전의 눈대중 판단이에요. the dry ones로 비교 기준 거즈를 짚어요.|than the old ones|이 거즈들이 마른 것보다 더 커 보이네요.|이 거즈들이 새 것보다 더 무거워 보이네요.|heavier|lighter|cleaner|smaller
+S|바로 측정|gear|Let's는 같이 하자는 제안이고, now는 모아 두지 않고 바로 하자는 뜻이에요.|to the next bag|지금 무게를 재고 합계에 더하려고 저울을 맞춥시다.|거즈는 젖은 채로 바로 재야 정확합니다.|weigh|fold|rinse|sort
+O|거즈 무게 추정 4문장 순서|거즈 무게를 재고, 건조 무게를 뺀 값을 말하고, 그 값을 합계에 더한 뒤, 다음 거즈도 같은 방식으로 합계에 이어 가는 순서예요.
+L|I'll weigh the sponges to estimate the loss.|gear|거즈 무게를 재서 출혈량을 추정할게요|측정
+L|Dry weight subtracted, that's about 150 milliliters.|chartup|건조 무게를 뺀 값은 약 150밀리리터입니다|값
+L|I'll add that to our running EBL.|pencil|그걸 우리의 누적 EBL에 더할게요|합산
+L|Let's weigh the next ones and keep adding to that total.|redo|다음 것도 재서 그 합계에 계속 더합시다|반복
+## 3
+S|장비 상태|gear|켜짐·설정·준비를 차례로 이어 말해 바로 쓸 수 있다는 점을 확인시켜요. when you need it은 쓰는 시점을 상대가 정한다는 뜻이에요.|and grounded|소작기는 켜져 있고 세팅됐고, 쓰기 전에 접지 패드를 봐 둘게요.|소작기는 켜 두고 세팅해 두면 필요할 때 바로 쓸 수 있어요.|ready|idle|empty|noisy
+S|지혈제 준비|pill|open on the field로 포장을 열어 필드에 둔 상태를 말해 바로 쓸 수 있음이 전해져요. have + 상태 틀이에요.|sterile saline|지혈제는 포장을 열어야 바로 쓸 수 있어요.|지혈제는 수술 필드에서만 열어요.|open|sealed|labeled|empty
+S|여분 준비|scalpel|within reach는 손만 뻗으면 닿는다는 뜻이라 필요한 순간 바로 쓸 수 있다는 뜻이 전해져요.|and tubing|여분의 클립과 장갑이 손 닿는 곳에 있어요.|여분의 클립과 결찰사는 멸균 포장되어 있어요.|Extra|Broken|Used|Bent
+S|대기 상태|gear|in case…는 지금 쓰지 않아도 갑자기 필요할 때를 위한 대비라는 이유를 붙이는 틀이에요. fast가 끝에서 속도 요구를 강조해요.|again|필요할 때 빨리 쓸 수 있게 소작기를 준비하려고 설정을 봐 둘게요.|필요할 때 빨리 쓰려면 소작기가 켜져 있어야 해요.|fast|twice|alone|often
+S|집도의 배려|handshake2|for you가 끝에 붙어 누구를 위한 준비인지 분명히 하고, 요청받기 전에 먼저 챙기는 배려의 말이에요.|for the tech|당신을 위해 여분의 클립과 가위를 손 닿는 곳에 둘게요.|당신을 위해 여분의 클립과 결찰사를 손 닿는 곳에 두려고 포장을 열게요.|set|keep|put|hand
+O|지혈 기구 준비 4문장 순서|소작기부터 준비 상태를 알리고, 그것을 가리키며 지혈제를 열고, 그것을 가리키며 여분의 클립을 두고, 마지막으로 필요한 것을 묻는 순서예요. 대명사가 줄을 꿰어 순서가 하나로 정해져요.
+L|Cautery is on and set.|gear|소작기는 켜져 있고 세팅됐어요|장비
+L|With it ready, I'll open the hemostatic agents on the field.|pill|준비됐으니 지혈제를 필드에 열게요|지혈제
+L|Once those are open, I'll set extra clips and ties within reach for you.|scalpel|그게 열리면 여분의 클립과 결찰사를 곁에 둘게요|여분
+L|With all of that ready, let me know what else you need.|speech|다 준비됐으니 필요한 걸 더 알려 주세요|확인
+## 4
+S|출혈 보고|siren|bleeding을 먼저 말하고 위치를 at the…로 덧붙여, 무엇이 어디서 일어나는지 순서대로 알려요. 보이는 것을 바로 보고하는 I'm seeing 틀이에요.|a small tear|아래쪽 경계에서 출혈을 보려고 조명을 맞춰요.|출혈이 보이면 위치부터 말해야 해요.|bleeding|swelling|redness|drainage
+S|흡인 요청|speech|so you can …으로 흡인을 더 하는 이유(시야 확보)를 바로 붙이면 요청이 이유와 함께 전달돼요. 명사구로 시작한 짧은 요청이에요.|mark the margin|혈액이 고이면 출혈점이 잘 안 보여요.|흡인을 더 하려고 팁을 갈아요.|visualize|label|weigh|hear
+S|도구 선택|scalpel|a clamp or cautery처럼 or로 두 선택지를 이으면 집도의가 한마디로 고를 수 있어요. for that으로 대상을 가리켜요.|a stapler|클램프는 잡고 소작기는 지져요.|클램프나 소작기 전에 흡인부터 할까요?|clamp|scalpel|retractor|speculum
+S|상태 보고|monitor|steady but not fast처럼 but으로 이어 현재 양상을 균형 있게 전달하고, right now로 지금 상태라는 한계를 밝혀요.|from the lower margin|꾸준한 출혈은 시간이 지나면 양이 많아져요.|출혈이 꾸준하지만 지금은 색이 짙지 않아요.|steady|heavy|pulsing|dark
+S|즉시 지혈|scalpel|Let's로 같이 하자는 제안이고, before it gets worse로 지금 바로 해야 하는 이유를 붙여 행동을 정당화해요.|that tray|그 혈관을 클램프로 잡을 수 있게 흡인을 더 합시다.|클램프로 잡은 혈관은 묶거나 지져서 마무리해요.|clamp|photograph|measure|draw
+O|출혈 부위 대응 4문장 순서|출혈을 알리고, 시야를 위해 흡인을 요청하고, 보이면 도구를 묻고, 정해지면 바로 잡는 순서예요. 대명사 it이 앞 줄을 가리켜 순서를 잡아 줘요.
+L|I'm seeing bleeding at the lower margin.|siren|아래쪽 경계에서 출혈이 보여요|보고
+L|More suction here so you can visualize it.|speech|여기 잘 보이게 흡인을 더 해주세요|요청
+L|Once you can see it, do you want a clamp or cautery?|scalpel|보이면 클램프와 소작기 중 어느 걸 원하세요|질문
+L|Let's clamp that vessel before it gets worse.|check|더 나빠지기 전에 그 혈관을 잡읍시다|지혈

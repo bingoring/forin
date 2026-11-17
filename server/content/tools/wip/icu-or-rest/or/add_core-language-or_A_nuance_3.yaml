@@ -1,0 +1,520 @@
+통역 통한 불안 완화:
+- kind: slider
+  words:
+  - w-step
+  - w-explain
+  - w-control
+  cue: Through the interpreter, the patient asks, "Will everything go fine? Will it hurt?" You can't promise how it will turn out.
+  scale:
+  - We'll tell you each step as we go
+  - We'll take good care; nothing will go wrong
+  - I promise it won't hurt you at all, ever
+  answerAt: 0
+  why: 간호사가 지킬 수 있는 약속은 '단계마다 알려 드릴게요'까지예요. 아무 일도 없을 거라거나 하나도 안 아플 거라는 약속은 결과를 장담하는 말이라 하지 않아요.
+  example: Let me explain each step so you feel more in control.
+  exKo: 더 안심하실 수 있게 각 단계를 설명해 드릴게요.
+- kind: context
+  words:
+  - w-normal
+  word: normal
+  ko: 정상적인
+  scenes:
+  - who: 간호사 → 통역사
+    icon: speech
+    en: Please tell him it's normal to feel scared before surgery, and that we're here with him.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Patient anxious, which is normal preop; reassured via interpreter.
+    ok: true
+  - who: 간호사 → 겁먹은 환자
+    icon: faceWorried
+    en: Your tachycardia and fear are within normal limits.
+    ok: false
+    fix: It's normal to feel this way, and we'll go step by step.
+  why: 뜻은 셋 다 '정상적인'이에요. 통역사에게는 환자에게 전할 말을, 차트에는 짧게 적어요. 하지만 겁먹은 환자에게 'tachycardia'나 'normal limits'라고 하면 위로가 아니라 검사 결과를 읽어 주는 것처럼 들려요.
+의료 용어 평이한 설명:
+- kind: pair
+  words:
+  - w-term
+  - w-tube
+  - w-simple
+  pairs:
+  - - NPO
+    - nothing to eat or drink
+  - - sedation
+    - medicine that makes you relaxed and sleepy
+  - - IV
+    - a thin tube placed in a vein
+  decoys:
+  - a short walk in the hall
+  why: NPO는 '입으로 아무것도 안 됨', sedation은 긴장을 풀고 졸리게 하는 약, IV는 정맥에 꽂는 가는 관이에요. 용어를 이렇게 쉬운 말로 풀어서 통역사에게 건네요.
+- kind: context
+  words:
+  - w-simple
+  word: simple
+  ko: 간단한
+  scenes:
+  - who: 간호사 → 통역사
+    icon: speech
+    en: Please keep it simple and interpret exactly what I say, without adding anything.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Explained in simple terms via interpreter; patient asked two questions.
+    ok: true
+  - who: 간호사 → 환자
+    icon: faceWorried
+    en: Okay sweetie, it's super simple, nothing to worry your pretty head about.
+    ok: false
+    fix: I'll keep it simple and explain each step, and you can ask me anything.
+  why: 뜻은 셋 다 '간단한'이에요. 통역사에게는 덧붙이지 말고 그대로 옮기라고, 차트에는 짧게 적어요. 하지만 환자에게 '귀염둥이'라며 걱정할 것 없다고 하면 어른을 아이처럼 대하는 말이라 무시로 들려요.
+- kind: swap
+  words:
+  - w-tube
+  - w-breathe
+  - w-term
+  who: 간호사 → 환자 · 마취 후 호흡관
+  icon: me
+  before:
+  - ''
+  - You'll be intubated.
+  - ''
+  options:
+  - You'll be intubated.
+  - A soft breathing tube may be placed after you're asleep, to help you breathe.
+  - They'll stick a tube down your throat.
+  answer: A soft breathing tube may be placed after you're asleep, to help you breathe.
+  notes:
+    You'll be intubated.: 의료 용어라서 환자와 통역사 모두 뜻을 알기 어려워요.
+    A soft breathing tube may be placed after you're asleep, to help you breathe.: 무엇을, 언제, 왜 하는지 쉬운 말로 알려요. 하게 될지는 마취팀이 정하니 'may'로 말해요.
+    They'll stick a tube down your throat.: 사실이지만 거칠고 무섭게 들려서 불안을 키워요.
+  why: 어려운 용어는 쉬운 말로 풀되 겁주지 않아요. 호흡관을 넣을지는 마취팀이 정하니 간호사는 'may(할 수도 있어요)'로 말해요.
+  ko: 잠드신 뒤에 숨 쉬는 걸 돕는 부드러운 관을 넣을 수도 있어요.
+통역 정확성 확인:
+- kind: slider
+  words:
+  - w-interpretation
+  - w-accurate
+  - w-catch
+  cue: The patient's answer is much longer than what the interpreter relayed to you. The interpreter says, "It was nothing important."
+  scale:
+  - Let it go and keep the process moving along
+  - Ask the interpreter to share everything said
+  - Take over the interpreting yourself right now
+  answerAt: 1
+  why: 빠진 말이 있는 것 같으면 통역사에게 환자가 한 말을 전부 옮겨 달라고 해요. 그냥 넘기면 중요한 정보가 사라질 수 있고, 간호사가 직접 통역하는 것은 자격 있는 통역사가 할 일을 대신하는 거예요.
+  example: I need to know the interpreter caught every word correctly.
+  exKo: 통역사가 모든 말을 정확하게 잡아냈는지 알아야 해요.
+- kind: context
+  words:
+  - w-repeat
+  word: repeat
+  ko: 반복하다
+  scenes:
+  - who: 간호사 → 통역사
+    icon: speech
+    en: Please repeat exactly what the patient said, without adding or removing anything.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Patient repeated the instructions in her own words via interpreter; accurate.
+    ok: true
+  - who: 간호사 → 겁먹은 환자
+    icon: faceWorried
+    en: Repeat what the doctor said right now, word for word!
+    ok: false
+    fix: Could you repeat it in your own words? Take your time.
+  why: 뜻은 셋 다 '반복하다'예요. 통역사에게는 환자 말을 보태거나 빼지 말고 다시 말해 달라고, 차트에는 짧게 적어요. 하지만 겁먹은 환자에게 '지금 당장 한 글자도 틀리지 말고'처럼 다그치면 시험 같아서 위축돼요.
+- kind: swap
+  words:
+  - w-interpretation
+  - w-accurate
+  - w-repeat
+  who: 간호사 → 통역사 · 내용이 안 맞는 것 같을 때
+  icon: speech
+  before:
+  - ''
+  - Is the interpretation accurate?
+  - ''
+  options:
+  - Is the interpretation accurate?
+  - Please repeat exactly what the patient said, including anything you left out.
+  - You must have gotten it wrong.
+  answer: Please repeat exactly what the patient said, including anything you left out.
+  notes:
+    Is the interpretation accurate?: 통역사가 스스로 '네'라고 하면 끝나서 빠진 말이 드러나지 않아요.
+    Please repeat exactly what the patient said, including anything you left out.: 환자가 한 말을 그대로 다시 달라고 해서 빠진 부분이 드러나요.
+    You must have gotten it wrong.: 단정해서 비난하는 말이라 통역사가 방어적으로 변해요.
+  why: 간호사는 통역이 정확한지 직접 판단할 수 없어요. 통역사가 원래 말을 그대로 다시 하게 하고, 계속 맞지 않으면 통역 서비스에 다른 통역사를 요청해요.
+  ko: 환자분이 한 말을 빠뜨린 것까지 포함해서 그대로 다시 말해 주세요.
+청각장애 수어 통역:
+- kind: slider
+  words:
+  - w-sign
+  - w-arrange
+  - w-language
+  cue: A Deaf patient signs that sign language is her first language and she wants to use it for the consent talk.
+  scale:
+  - Gesture and point to things around the room
+  - Write notes back and forth on a clipboard
+  - Arrange a qualified sign interpreter
+  answerAt: 2
+  why: 수어는 독립된 언어라서 몸짓이나 필담으로는 동의 같은 중요한 내용을 정확히 나누기 어려워요. 병원은 의사소통이 제대로 되도록 자격 있는 수어 통역사를 마련해야 해요(영상 통역도 방법이에요).
+  example: We'll arrange a sign language interpreter for you.
+  exKo: 환자분을 위해 수어 통역사를 준비해 드릴게요.
+- kind: context
+  words:
+  - w-miss
+  word: miss
+  ko: 놓치다
+  scenes:
+  - who: 차트 기록
+    icon: board
+    en: Sign interpreter present; patient did not miss any instruction (teach-back correct).
+    ok: true
+  - who: 간호사 → 동료
+    icon: speech
+    en: Don't miss it when she signs her pain level, because she may do it any time.
+    ok: true
+  - who: 간호사 → 청각장애 환자
+    icon: faceWorried
+    en: Don't miss the PACU instructions, because I won't repeat them.
+    ok: false
+    fix: If you miss anything, tell me and I'll go over it again.
+  why: 뜻은 셋 다 '놓치다'예요. 차트에는 놓친 것이 없었다고, 동료에게는 신호를 놓치지 말라고 말해요. 하지만 환자에게 '다시 안 알려 준다'고 하면 협박처럼 들려요. 놓치면 언제든 다시 알려 주겠다고 해야 해요.
+응급 신속 통역 확보:
+- kind: slider
+  words:
+  - w-urgent
+  - w-immediately
+  - w-connect
+  cue: A patient is crashing and speaks only Vietnamese. You pick up the phone to reach the interpreter line.
+  scale:
+  - Whenever someone is free
+  - As soon as you possibly can
+  - Right now, immediately
+  answerAt: 2
+  why: 환자가 급격히 나빠지는 상황이라 가장 급한 표현이 맞아요. 통역 서비스에 '지금 바로' 연결해 달라고 분명히 말해야 대기열에서 우선 처리돼요.
+  example: We need an interpreter on the line immediately.
+  exKo: 지금 바로 전화선으로 통역사가 필요해요.
+- kind: context
+  words:
+  - w-urgent
+  word: urgent
+  ko: 긴급한
+  scenes:
+  - who: 간호사 → 통역 서비스
+    icon: speech
+    en: This is urgent, so please connect us to a Vietnamese interpreter now.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Urgent interpreter request placed at 08:40; connected at 08:42.
+    ok: true
+  - who: 간호사 → 환자
+    icon: faceWorried
+    en: This is urgent, and I'm panicking because nobody here understands you.
+    ok: false
+    fix: This is urgent, so we're connecting an interpreter now to explain.
+  why: 뜻은 셋 다 '긴급한'이에요. 통역 서비스에는 필요한 언어와 함께 급하다고 짧게, 차트에는 시각과 함께 적어요. 하지만 환자에게 '나도 당황했다'고 하면 불안만 커져요. 지금 하고 있는 일을 말해요.
+통역 없는 응급 동의:
+- kind: slider
+  words:
+  - w-document
+  - w-consent
+  - w-process
+  cue: The surgeon decides to proceed under the emergency exception because no interpreter can be reached. What do you chart?
+  scale:
+  - Chart what you saw, what you did, who decided
+  - Chart that the patient agreed by nodding to the plan
+  - Chart that full informed consent was obtained
+  answerAt: 0
+  why: 간호사는 자기가 한 일과 본 것, 누가 결정했는지만 있는 그대로 적어요. 끄덕임을 동의라고 적거나 동의를 받았다고 적으면 사실과 달라요. 응급 예외를 적용할지는 시술자가 판단하고 기록해요.
+  example: We need to document why we're proceeding without an interpreter.
+  exKo: 통역사 없이 진행하는 이유를 기록해야 해요.
+- kind: context
+  words:
+  - w-provision
+  word: provision
+  ko: 규정
+  scenes:
+  - who: 차트 기록
+    icon: board
+    en: Proceeding under the emergency provision; surgeon documented the reason.
+    ok: true
+  - who: 간호사 → 수술팀
+    icon: speech
+    en: The surgeon will proceed under the emergency provision, so please note the time.
+    ok: true
+  - who: 간호사 → 보호자
+    icon: me
+    en: Under provision 4.2(b), the hospital waives your family's consent.
+    ok: false
+    fix: We're going ahead under an emergency provision so we don't lose time, and we'll explain everything afterward.
+  why: 뜻은 셋 다 '규정'이에요. 차트와 수술팀에는 짧게, 보호자에게는 쉽게 말해요. 하지만 보호자에게 조항 번호를 읽어 주며 '동의를 면제한다'고 하면 차갑고, 간호사가 정할 수 없는 일을 선언하는 말이에요.
+- kind: swap
+  words:
+  - w-consent
+  - w-emergency
+  - w-provision
+  - w-proceed
+  who: 간호사 → 차트 · 응급 동의 기록
+  icon: board
+  before:
+  - ''
+  - Patient consented.
+  - ''
+  options:
+  - Patient consented.
+  - Consent not obtained; no interpreter reached; surgeon proceeded under the emergency provision.
+  - Consent obtained by nodding.
+  answer: Consent not obtained; no interpreter reached; surgeon proceeded under the emergency provision.
+  notes:
+    Patient consented.: 동의를 받지 못했는데 받은 것처럼 적은 거짓 기록이에요.
+    Consent not obtained; no interpreter reached; surgeon proceeded under the emergency provision.: 사실과 이유, 누가 결정했는지가 모두 들어 있어요.
+    Consent obtained by nodding.: 끄덕임은 이해를 확인한 동의가 아니에요.
+  why: 응급에서 동의를 못 받았다면 못 받았다고 사실대로 적고, 통역을 시도한 것과 누가 어떤 근거로 진행했는지를 함께 남겨요.
+  ko: 동의 못 받음, 통역사 연결 안 됨, 집도의가 응급 규정에 따라 진행.
+언어장벽 알레르기 미확인:
+- kind: slider
+  words:
+  - w-allergy
+  - w-confirm
+  - w-barrier
+  cue: The patient answered some of your allergy questions, but you can't be sure he understood. How do you chart his allergy status?
+  scale:
+  - Allergies unconfirmed, language barrier
+  - Patient reports no known allergies at all
+  - Allergies confirmed with the patient
+  answerAt: 0
+  why: 확인이 안 됐으면 '미확인'이라고 적어요. '알레르기 없음'이나 '확인됨'은 사실이 아니어서, 다음 사람이 믿고 약을 줄 수 있어 위험해요. 통역사를 통해 확인한 뒤에 바꿔요.
+  example: We can't confirm allergies due to the language barrier.
+  exKo: 언어 장벽 때문에 알레르기를 확인할 수가 없어요.
+- kind: context
+  words:
+  - w-flag
+  word: flag
+  ko: 표시하다
+  scenes:
+  - who: 차트 기록
+    icon: board
+    en: Allergies unconfirmed; flag in chart until an interpreter is available.
+    ok: true
+  - who: 간호사 → 약사
+    icon: speech
+    en: I'm going to flag the order, because we can't confirm allergies yet.
+    ok: true
+  - who: 간호사 → 환자
+    icon: faceWorried
+    en: You've been flagged as a problem patient.
+    ok: false
+    fix: I'm flagging your chart so everyone knows we need an interpreter before giving medicine.
+  why: 뜻은 셋 다 '표시하다'예요. 차트와 약사에게는 짧게, 환자에게는 이유를 쉽게 말해요. 하지만 환자에게 '문제 환자로 표시됐다'고 하면 비난으로 들려서 환자가 마음을 닫아요.
+- kind: swap
+  words:
+  - w-before
+  - w-medication
+  - w-interpreter
+  - w-risk
+  who: 간호사 → 동료 · 약을 주기 전
+  icon: speech
+  before:
+  - ''
+  - We can't ask about allergies.
+  - ''
+  options:
+  - We can't ask about allergies.
+  - I want an interpreter before any medication, so we can ask about allergies safely.
+  - No interpreter yet, so let's assume he has none.
+  answer: I want an interpreter before any medication, so we can ask about allergies safely.
+  notes:
+    We can't ask about allergies.: 문제만 말하고 어떻게 풀지 빠져 있어요.
+    I want an interpreter before any medication, so we can ask about allergies safely.: 통역사를 먼저 부르고 그 뒤에 알레르기를 묻겠다는 안전한 순서가 분명해요.
+    No interpreter yet, so let's assume he has none.: 알레르기가 없다고 가정하는 것은 위험한 추측이에요.
+  why: 알레르기를 모르면 없다고 가정하지 않고, 통역사를 먼저 불러 확인한 뒤에 약을 줘요.
+  ko: 약을 주기 전에 통역사부터 불러서 알레르기를 안전하게 확인하고 싶어요.
+오역 위험 정보 누락:
+- kind: slider
+  words:
+  - w-error
+  - w-critical
+  - w-information
+  cue: The surgeon said "every twelve hours," but the interpreter told the patient "every two hours" for a medication.
+  scale:
+  - A small wording difference
+  - A significant mismatch
+  - A critical dosing error
+  answerAt: 2
+  why: 약 간격이 바뀌면 환자가 약을 잘못 먹을 수 있어서 가장 심각한 쪽이에요. 곧바로 멈추고 바로잡아야 해요. 작은 표현 차이로 보고 넘기면 안 돼요.
+  example: Let's stop and clarify to avoid a critical error.
+  exKo: 치명적인 실수를 막기 위해 멈추고 명확히 합시다.
+- kind: context
+  words:
+  - w-clarify
+  word: clarify
+  ko: 명확히 하다
+  scenes:
+  - who: 간호사 → 통역사
+    icon: speech
+    en: Please clarify what you told the patient about the medication.
+    ok: true
+  - who: 간호사 → 집도의
+    icon: monitor
+    en: I'd like to clarify the plan before we continue, because the interpretation didn't match.
+    ok: true
+  - who: 간호사 → 환자
+    icon: faceWorried
+    en: Your answer was unclear, so you must clarify or we can't go on.
+    ok: false
+    fix: I want to clarify one thing, since I may not have said it clearly.
+  why: 뜻은 셋 다 '명확히 하다'예요. 통역사나 시술자에게는 어긋난 부분을 바로 짚어 달라고 해요. 하지만 환자에게 '네가 명확히 하라'고 하면 책임을 환자에게 떠넘기는 말이에요. 헷갈린 쪽이 나일 수 있다고 말해요.
+- kind: swap
+  words:
+  - w-stop
+  - w-moment
+  - w-match
+  who: 간호사 → 통역사 · 내용이 어긋날 때
+  icon: speech
+  before:
+  - ''
+  - You mistranslated that.
+  - ''
+  options:
+  - You mistranslated that.
+  - Let's stop for a moment, because that doesn't match what I said.
+  - Hmm, whatever, just keep going.
+  answer: Let's stop for a moment, because that doesn't match what I said.
+  notes:
+    You mistranslated that.: 단정해서 비난하는 말이라 통역사가 방어적으로 변해요.
+    Let's stop for a moment, because that doesn't match what I said.: 잠깐 멈추자고 하고 어긋난 점을 말해서 비난 없이 바로잡을 기회를 줘요.
+    Hmm, whatever, just keep going.: 어긋난 것을 알고도 넘어가서 환자 안전을 위험하게 해요.
+  why: 오역이 의심되면 즉시 멈추고, 누구 탓인지 따지기보다 무엇이 어긋났는지를 말해요. 계속 어긋나면 통역 서비스에 다른 통역사를 요청해요.
+  ko: 잠깐 멈춰 주세요, 제가 한 말과 안 맞아요.
+위기 설명 신속 통역:
+- kind: slider
+  words:
+  - w-condition
+  - w-change
+  - w-explain
+  cue: A patient's oxygen level dropped and the team is treating it. Through the interpreter, what do you tell him?
+  scale:
+  - Everything is going to be fine, so relax now
+  - Your condition changed, and we're treating it
+  - You are in the worst possible danger right now
+  answerAt: 1
+  why: 사실대로, 지금 하고 있는 일과 함께 전해요. '괜찮다'는 거짓이고, '가장 위험하다'는 간호사가 단정할 수 없는 말이라 공포만 키워요.
+  example: The patient's condition has changed — they need to know now.
+  exKo: 환자분 상태가 변했어요 — 지금 바로 알려야 해요.
+- kind: context
+  words:
+  - w-urgently
+  word: urgently
+  ko: 긴급하게
+  scenes:
+  - who: 간호사 → 통역사
+    icon: speech
+    en: Please interpret this urgently, and tell me if any word is unclear.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Interpreter requested urgently for change in condition.
+    ok: true
+  - who: 간호사 → 환자
+    icon: faceWorried
+    en: You must urgently comprehend the following deterioration.
+    ok: false
+    fix: We're explaining this urgently because your condition has changed, and we'll stay with you.
+  why: 뜻은 셋 다 '긴급하게'예요. 통역사에게는 서둘러 달라고, 차트에는 짧게 적어요. 하지만 환자에게 '다음 악화를 이해하라'는 식으로 말하면 통역도 어렵고 겁만 줘요. 왜 서두르는지와 곁에 있겠다는 말을 해요.
+- kind: swap
+  words:
+  - w-condition
+  - w-change
+  - w-clearly
+  who: 간호사 → 보호자 · 급변 설명
+  icon: me
+  before:
+  - ''
+  - He's decompensating.
+  - ''
+  options:
+  - He's decompensating.
+  - His condition has changed, and the team is treating it now.
+  - He's fine, nothing to worry about.
+  answer: His condition has changed, and the team is treating it now.
+  notes:
+    He's decompensating.: 의료 용어라서 보호자와 통역사 모두 알아듣기 어려워요.
+    His condition has changed, and the team is treating it now.: 상태가 변했다는 사실과 지금 하고 있는 일을 쉬운 말로 전해요.
+    He's fine, nothing to worry about.: 사실과 다른 말이라 곧 신뢰를 잃어요.
+  why: 급변은 쉬운 말로 사실과 지금 하는 일을 함께 전해요. 통역을 쓸 때는 문장을 짧게 끊어 말해 주세요.
+  ko: 상태가 변했고, 팀이 지금 조치하고 있어요.
+이해 불가 응급 진행:
+- kind: slider
+  words:
+  - w-fully
+  - w-understand
+  - w-consent
+  cue: A confused patient nods but cannot say anything back, and the surgeon calls it a true emergency. What do you chart about his understanding?
+  scale:
+  - Did not show understanding
+  - Understood most of the explanation
+  - Understood fully, no questions at all
+  answerAt: 0
+  why: 되짚어 말하지 못했으니 이해했다고 적을 수 없어요. 본 것(끄덕임, 되풀이 못 함)을 있는 그대로 적고, 응급 예외 적용은 시술자가 판단하고 기록해요.
+  example: The patient can't fully understand, but this is a true emergency.
+  exKo: 환자분이 완전히 이해하지 못해도 이건 진짜 응급 상황이에요.
+- kind: context
+  words:
+  - w-communicate
+  word: communicate
+  ko: 소통하다
+  scenes:
+  - who: 간호사 → 환자
+    icon: me
+    en: We'll keep trying to communicate with you, even with gestures and pictures.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Unable to communicate verbally; gestures and pictures used throughout.
+    ok: true
+  - who: 간호사 → 보호자
+    icon: faceWorried
+    en: We couldn't communicate with the patient because he was uncooperative.
+    ok: false
+    fix: We tried to communicate with him using gestures and pictures, and we'll keep trying.
+  why: 뜻은 셋 다 '소통하다'예요. 환자에게는 계속 시도하겠다고, 차트에는 쓴 방법을 적어요. 하지만 보호자에게 '비협조적이라 소통이 안 됐다'고 하면 환자 탓으로 들려요. 어떤 방법을 시도했는지 말해요.
+나쁜 소식 통역 전달:
+- kind: slider
+  words:
+  - w-news
+  - w-share
+  - w-step
+  cue: The surgeon is about to tell the family that the surgery did not go as hoped. You are beside them with the interpreter. How should the surgeon begin?
+  scale:
+  - I have a quick update for you now
+  - I'm afraid I have some difficult news
+  - I have the very worst news you could hear
+  answerAt: 1
+  why: 가볍게 시작하면 충격이 크고, 과장하면 불필요하게 공포를 줘요. '어려운 소식이 있다'고 먼저 알리면 가족이 마음의 준비를 해요. 소식은 시술자가 전하고 간호사는 곁에서 지지해요.
+  example: I'm so sorry — the interpreter will help me share this news.
+  exKo: 정말 죄송해요 — 통역사가 이 소식을 전하는 걸 도와드릴 거예요.
+- kind: context
+  words:
+  - w-support
+  word: support
+  ko: 지지하다
+  scenes:
+  - who: 간호사 → 통역사
+    icon: speech
+    en: Please support the family by pausing after each sentence, so they can take it in.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Family supported by nurse; interpreter present for the conversation.
+    ok: true
+  - who: 간호사 → 가족
+    icon: faceWorried
+    en: We offer emotional support services per policy, so please call that number.
+    ok: false
+    fix: We're here to support you, and you can ask the interpreter anything.
+  why: 뜻은 셋 다 '지지하다'예요. 통역사에게는 천천히 전해 달라고, 차트에는 짧게 적어요. 하지만 슬퍼하는 가족에게 규정과 전화번호를 안내하며 떠넘기면 곁에 없다는 느낌을 줘요. 지금 곁에 있겠다고 말해요.
