@@ -1,0 +1,85 @@
+- title: 긴급 팀 소집
+  s:
+    - {tag: "인력 호출", icon: pager, why: "I'm paging은 지금 호출 중임을 알려요. additional을 붙여 현재 인력으로는 모자라 더 부른다는 뜻을 분명히 해요.", decoy: "to the lobby", dk: ["방으로 숙련된 인력을 호출하고 있어요.", "방으로 추가 인력을 문자로 호출하고 있어요."], bl: [paging, training, thanking, paying]}
+    - {tag: "인원 요청", icon: me, why: "second와 another로 이미 있는 역할을 한 명씩 더 달라고 말해요. 필요한 역할 이름을 정확히 말해야 호출이 빨라요.", decoy: "a second lamp", dk: ["스크럽 요원 두 명과 순환 간호사 한 명이 더 필요해요.", "스크럽 요원 한 명과 순환 간호사 두 명이 더 필요해요."], bl: [circulator, janitor, volunteer, visitor]}
+    - {tag: "지원 안내", icon: run, why: "on the way는 이미 출발해 오는 중이라는 뜻이에요. 아직 도착한 것은 아니라는 사실까지 정확히 알려 줘요.", decoy: "in the hall", dk: ["마취과 백업이 대기 중이에요.", "마취과 백업이 호출되고 있어요."], bl: [backup, cart, record, form]}
+    - {tag: "호출 제안", icon: pager, why: "Let's로 함께 하자고 제안하며 page와 get을 이어 두 가지 일을 한 문장에 묶어요.", decoy: "by the door", dk: ["순환 간호사를 두 명 더 호출하고 마취과 백업도 부릅시다.", "순환 간호사를 한 명 더 호출하고 마취과 백업도 두 명 부릅시다."], bl: [page, evaluate, interview, hire]}
+    - {tag: "합류 약속", icon: handshake2, why: "bring in은 밖에서 안으로 데려온다는 구동사예요. we need for this room이 어디에 쓸 인력인지 범위를 정해 줘요.", decoy: "for the lounge", dk: ["이 방에 필요한 숙련된 인력을 데려올게요.", "이 방에 필요한 인력을 모두 데려올게요."], bl: [extra, retired, former, visiting]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 긴급 팀 소집 4문장 순서
+    why: 필요한 역할을 말하고, 그들과 마취과 백업을 호출한다고 알리고, 이미 오고 있다고 확인한 뒤, 도착하는 대로 방으로 안내해요. them·already·they가 앞 줄을 가리켜요.
+    lines:
+      - {en: "We need a second scrub and another circulator.", icon: me, ko: "스크럽 한 명과 순환 간호사 한 명이 더 필요해요", note: 요청}
+      - {en: "I'm paging them and anesthesia backup to the room now.", icon: pager, ko: "그들과 마취과 백업을 방으로 호출 중이에요", note: 호출}
+      - {en: "Anesthesia backup is already on the way.", icon: run, ko: "마취과 백업은 이미 오고 있어요", note: 확인}
+      - {en: "As they arrive, I'll bring them in for this room.", icon: handshake2, ko: "도착하는 대로 이 방으로 데려올게요", note: 안내}
+- title: 복강 대량 출혈
+  s:
+    - {tag: "흡인 보고", icon: siren, why: "상태를 먼저 말하고 대시(—)로 지금 하는 행동을 이어, 무슨 일이 벌어졌고 내가 무엇을 하는지를 한 호흡에 알려요.", decoy: "— lights on now", dk: ["복강이 피로 가득 찼어요 — 흡인하기 전에 통을 봐요.", "복강이 담즙으로 가득 찼어요 — 지금 흡인하고 있어요."], bl: [full, empty, clear, free]}
+    - {tag: "패킹 준비", icon: pushpin, why: "Handing you …은 I를 줄여 손을 내밀며 하는 말이에요. to pack the quadrants가 패드를 건네는 목적을 밝혀요.", decoy: "to drape the quadrants", dk: ["각 구역을 닦으시게 랩패드를 건네드릴게요.", "각 구역을 패킹하시게 소독솜을 건네드릴게요."], bl: [pack, mark, trim, tag]}
+    - {tag: "혈액 요청", icon: pager, why: "call for는 요청해서 가져오게 한다는 뜻이에요. more blood to the room으로 이미 있는 팩이 모자라 보충을 요청한다는 점을 밝혀요.", decoy: "to the lab", dk: ["방 앞으로 혈액을 더 요청할게요.", "방으로 혈액을 먼저 요청할게요."], bl: [blood, tape, towels, saline]}
+    - {tag: "흡인 유지", icon: monitor, why: "Keep … going은 멈추지 말고 계속하라는 명령형이에요. while I …로 패킹하는 동안 흡인이 끊기면 안 되는 이유를 시간으로 묶어요.", decoy: "count the sponges", dk: ["제가 각 구역을 닦는 동안 흡인을 계속하세요.", "제가 각 구역을 세는 동안 흡인을 계속하세요."], bl: [suction, light, music, fan]}
+    - {tag: "혈액 필요", icon: siren, why: "and가 상태와 요구를 이어 이유와 요청을 한 번에 말해요. more blood now가 긴급도를 나타내요.", decoy: "more stools now", dk: ["절개창이 가득 찼으니 지금 혈액이 더 필요해요.", "골반이 가득 찼으니 지금 혈액이 더 필요해요."], bl: [blood, paper, soap, ink]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 복강 대량 출혈 4문장 순서
+    why: 상황과 흡인을 알리고, 그에 대한 혈액을 요청하고, 혈액이 오는 동안 패드를 건네고, 패킹하는 동안 내가 흡인을 유지하겠다고 해요. for that·while that's coming·pack them이 앞 줄을 가리켜요.
+    lines:
+      - {en: "The abdomen is full of blood — suctioning now.", icon: siren, ko: "복강이 피로 가득 찼어요 — 지금 흡인해요", note: 보고}
+      - {en: "I'm calling for more blood to the room for that.", icon: pager, ko: "그래서 방으로 혈액을 더 요청해요", note: 요청}
+      - {en: "While that's coming, handing you lap pads to pack the quadrants.", icon: pushpin, ko: "혈액이 오는 동안 패킹하시게 랩패드를 건네요", note: 준비}
+      - {en: "I'll keep the suction going while you pack them.", icon: monitor, ko: "패킹하시는 동안 제가 흡인을 계속할게요", note: 약속}
+- title: 응급 제왕 신생아 준비
+  s:
+    - {tag: "워머 준비", icon: baby, why: "on and ready처럼 상태 낱말 둘을 and로 이어 켜짐과 쓸 수 있음을 구분해 보고해요. infant는 영아를 가리키는 병원 표현이에요.", decoy: "is by the door", dk: ["영아 워머는 꽂혀 있고 준비됐어요.", "영아 모니터는 켜져 있고 준비됐어요."], bl: [warmer, scale, monitor, crib]}
+    - {tag: "물품 세팅", icon: baby, why: "물품은 사람이 해 둔 결과라 수동 are set up을 써요. 누가 했는지보다 준비가 끝난 상태를 알려요.", decoy: "cleaning supplies", dk: ["신생아 소생술 물품이 정리됐어요.", "신생아 흡인 물품이 세팅됐어요."], bl: [Neonatal, Adult, Dental, Bariatric]}
+    - {tag: "팀 확인", icon: speech, why: "Is …yet?은 이미 와 있어야 할 사람이 왔는지 묻는 전형적인 질문이에요. 부르기 전에 도착 여부를 확인하는 말이에요.", decoy: "on the unit", dk: ["NICU팀이 아직 복도에 있나요?", "NICU팀이 방에 어떻게 왔나요?"], bl: [room, hall, lobby, elevator]}
+    - {tag: "팀 호출", icon: pager, why: "page … to come down은 호출해서 내려오게 한다는 뜻이에요. now가 지금 바로 부르는 것임을 밝혀요.", decoy: "to bring the cart", dk: ["지금 NICU팀을 올라오라고 호출할게요.", "지금 NICU팀을 호출하기 전에 번호를 찾아요."], bl: [page, warn, train, teach]}
+    - {tag: "여분 준비", icon: check, why: "just in case는 쓸 일이 없을 수도 있지만 대비한다는 표현이라 과한 요청처럼 들리지 않게 해요.", decoy: "just in time", dk: ["혹시 몰라서 여분의 저울을 하나 더 가져옵시다.", "혹시 몰라서 여분의 워머를 세 개 더 가져옵시다."], bl: [extra, old, open, ancient]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 신생아 준비 4문장 순서
+    why: 워머를 켜고, 그 곁에 소생술 물품을 세팅하고, 그 준비가 끝난 상태에서 팀이 아직 안 왔다고 말한 뒤 바로 호출해요. beside it·that·them이 앞 줄을 가리켜요.
+    lines:
+      - {en: "The infant warmer is on and ready.", icon: baby, ko: "영아 워머가 켜져 있고 준비됐어요", note: 워머}
+      - {en: "Neonatal resuscitation supplies are set up beside it.", icon: baby, ko: "그 옆에 신생아 소생술 물품이 세팅됐어요", note: 물품}
+      - {en: "With that set, the NICU team isn't in the room yet.", icon: speech, ko: "그 준비가 됐는데 NICU팀은 아직 방에 없어요", note: 확인}
+      - {en: "I'm paging them to come down now.", icon: pager, ko: "그들을 지금 내려오라고 호출해요", note: 호출}
+- title: 제왕 산모 출혈 감시
+  s:
+    - {tag: "출혈 감시", icon: monitor, why: "watching for ~는 ~이 생기는지 살피는 중이라는 감시 표현이에요. closely로 눈을 떼지 않고 본다는 뜻을 더해요.", decoy: "for the next contraction", dk: ["산후 출혈을 조용히 지켜보고 있어요.", "산후 출혈을 지켜보려고 모니터를 봐요."], bl: [closely, rarely, briefly, loosely]}
+    - {tag: "약 준비 보고", icon: pill, why: "drawn up and ready는 주사기에 뽑아 둔 상태와 바로 쓸 수 있음을 이어 보고해요. if we need them이 쓸 시점을 정하지 않은 대비임을 알려요.", decoy: "on the cart", dk: ["필요하면 쓸 수 있게 자궁수축제를 꺼내 준비해 뒀어요.", "필요하면 쓸 수 있게 자궁수축제를 뽑아 라벨을 붙여 뒀어요."], bl: [ready, expired, loose, cold]}
+    - {tag: "지시 문의", icon: speech, why: "상태를 먼저 말하고 대시 뒤에 do you want …?를 이어, 약을 쓸지는 의사의 판단에 맡기는 질문으로 제안해요.", decoy: "an update", dk: ["자궁 긴장도가 부드러운데 — 지금 옥시토신을 준비할까요?", "자궁 긴장도가 부드러운데 — 지금 용량을 원하세요?"], bl: [soft, firm, pale, dry]}
+    - {tag: "용량 준비", icon: pill, why: "just in case는 필요 없을 수도 있지만 미리 한다는 대비 표현이에요. 지금 쓰는 것이 아니라는 뉘앙스를 줘요.", decoy: "a blood sample", dk: ["곧 쓸 것 같아서 여분의 용량을 뽑고 있어요.", "혹시 몰라서 여분의 용량을 뽑기 전에 라벨을 봐요."], bl: [dose, vial, bag, tube]}
+    - {tag: "감시 계속", icon: monitor, why: "keep watching은 한 번 보고 끝내지 않고 계속 본다는 뜻이에요. after delivery로 분만이 끝나도 감시가 이어지는 시점을 짚어요.", decoy: "on the monitor", dk: ["분만 후에도 자궁 긴장도를 번갈아 지켜봅시다.", "분만 후에도 자궁 긴장도를 함께 지켜봅시다."], bl: [tone, weight, height, age]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 산모 출혈 감시 4문장 순서
+    why: 출혈을 지켜보고, 그에 대비한 약을 준비해 두고, 그 약이 준비된 상태에서 긴장도를 보고 쓸지 묻고, 어떤 결정이든 분만 후에도 계속 지켜봐요. for that·those·whatever you decide가 앞 줄을 가리켜요.
+    lines:
+      - {en: "I'm watching closely for postpartum hemorrhage.", icon: monitor, ko: "산후 출혈을 면밀히 지켜보고 있어요", note: 감시}
+      - {en: "Uterotonics are drawn up for that and ready.", icon: pill, ko: "그에 대비해 자궁수축제를 뽑아 준비해 뒀어요", note: 준비}
+      - {en: "Her tone is soft, so with those ready, do you want oxytocin now?", icon: speech, ko: "긴장도가 부드러우니 준비된 걸로 옥시토신을 원하세요?", note: 질문}
+      - {en: "Whatever you decide, I'll keep watching her tone after delivery.", icon: monitor, ko: "결정하시는 대로 분만 후에도 계속 지켜볼게요", note: 지속}
+- title: 신속 마취 유도 협조
+  s:
+    - {tag: "준비 보고", icon: check, why: "두 준비를 and로 묶어 한 번에 보고해요. 흡인과 윤상연골 압박은 둘 다 구토·역류에 대비하는 준비예요.", decoy: "the stylet", dk: ["흡인이 설치됐고 윤상연골 압박도 준비됐어요.", "흡인이 켜졌고 후두경 날도 준비됐어요."], bl: [ready, loose, empty, late]}
+    - {tag: "신호 요청", icon: speech, why: "Tell me when to …로 시점 판단을 상대에게 넘기는 정중한 요청이에요. apply와 release를 짝으로 말해 가하는 때와 푸는 때를 모두 물어요.", decoy: "where to stand", dk: ["어디에 가하고 어디서 풀지 말씀해 주세요.", "얼마나 가하고 언제 풀지 말씀해 주세요."], bl: [release, record, rotate, repeat]}
+    - {tag: "세팅 보고", icon: stetho, why: "set on your right처럼 상대 기준 방향으로 위치를 알려 주면 헷갈리지 않아요. 기도 확보 전에 손 닿는 곳에 있어야 하는 기구예요.", decoy: "on the sterile wrap", dk: ["튜브와 블레이드는 오른쪽에 펼쳐져 있어요.", "튜브와 블레이드는 오른쪽 카트에 있어요."], bl: [set, stuck, hung, tied]}
+    - {tag: "도움 준비", icon: handshake2, why: "I'm ready to …는 준비 상태를 알려 도움을 청하기 쉽게 해요. with the induction now가 도울 일의 범위와 시점을 정해요.", decoy: "with the transport now", dk: ["지금 각성을 도울 준비가 됐어요.", "지금 이송을 도울 준비가 됐어요."], bl: [induction, recovery, discharge, handoff]}
+    - {tag: "압박 약속", icon: speech, why: "Say the word and …는 신호만 주면 바로 한다는 표현으로 시작 결정을 마취과에 맡겨요. 압박은 요청이 있을 때 가해요.", decoy: "a cold pack", dk: ["말씀만 하시면 윤상연골 압박을 계속 가할게요.", "말씀하시면 윤상연골 압박하려고 손을 올려요."], bl: [cricoid, carotid, ocular, sacral]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 신속 마취 유도 협조 4문장 순서
+    why: 도울 준비를 알리고, 그 유도를 위해 기구가 세팅됐다고 말하고, 흡인과 압박도 준비됐다고 더한 뒤, 압박을 언제 가하고 풀지 신호를 청해요. for it·on top of that·it이 앞 줄을 가리켜요.
+    lines:
+      - {en: "I'm ready to help with the induction now.", icon: handshake2, ko: "지금 유도를 도울 준비가 됐어요", note: 준비}
+      - {en: "Tube and blade are set on your right for it.", icon: stetho, ko: "그걸 위해 튜브와 블레이드가 오른쪽에 있어요", note: 기구}
+      - {en: "Suction is on and cricoid pressure is ready on top of that.", icon: check, ko: "그에 더해 흡인이 켜졌고 윤상연골 압박도 준비됐어요", note: 보고}
+      - {en: "Tell me when to apply it and when to release.", icon: speech, ko: "언제 가하고 언제 풀지 말씀해 주세요", note: 신호}

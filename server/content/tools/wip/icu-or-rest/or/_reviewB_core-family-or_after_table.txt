@@ -1,0 +1,1239 @@
+===== 0 대기실 안내
+--0.0 EN: You can wait right here in the surgical waiting area.
+   KO: 여기 이 수술 대기 구역에서 기다리시면 돼요. (25)
+   DK: 여기 이 수술 대기 구역에서 주무시면 돼요. (24)
+   DK: 여기 이 수술 대기 구역에서 대기표를 받으시면 돼요. (29)
+   tag=대기 안내 icon=hospital | why: You can ~은 지시가 아니라 허락의 틀이라 가족이 편하게 들어요. right here가 앉을 자리를 콕 집어 알려요.
+   chunks: You can wait / right here / in the surgical / waiting area / .  || decoy: in the recovery
+   =B: You can wait right here in the surgical [waiting] area.
+    B: You can wait right here in the surgical [recovery] area.
+    B: You can wait right here in the surgical [scrub] area.
+    B: You can wait right here in the surgical [operating] area.
+--0.1 EN: There's coffee and restrooms just down the hall.
+   KO: 복도 바로 저쪽에 커피와 화장실이 있어요. (23)
+   DK: 복도 바로 저쪽에 커피와 자판기가 있어요. (23)
+   DK: 복도 바로 저쪽에 물과 화장실이 있어요. (22)
+   tag=편의 안내 icon=coffee | why: There's A and B는 있는 것을 나열해 알리는 틀이고, just down the hall로 가깝다는 느낌을 줘요.
+   chunks: There's coffee / and restrooms / just down the hall / .  || decoy: and vending machines
+   =B: There's coffee and [restrooms] just down the hall.
+    B: There's coffee and [elevators] just down the hall.
+    B: There's coffee and [exits] just down the hall.
+    B: There's coffee and [stairs] just down the hall.
+--0.2 EN: We'll come find you here with any updates.
+   KO: 소식이 있으면 저희가 여기로 와서 알려드릴게요. (26)
+   DK: 서류가 있으면 저희가 여기로 와서 알려드릴게요. (26)
+   DK: 소식이 있으면 저희가 여기로 와서 설문지를 돌릴게요. (29)
+   tag=소식 약속 icon=speech | why: come find you는 가족이 직원을 찾아다니지 않아도 직원이 먼저 온다는 약속이에요.
+   chunks: We'll come find you / here / with any updates / .  || decoy: with the paperwork
+   =B: We'll come find you [here] with any updates.
+    B: We'll come find you [there] with any updates.
+    B: We'll come find you [outside] with any updates.
+    B: We'll come find you [upstairs] with any updates.
+--0.3 EN: Please make yourself comfortable while you wait.
+   KO: 기다리시는 동안 편하게 계세요. (17)
+   DK: 이동하시는 동안 편하게 계세요. (17)
+   DK: 기다리시는 동안 조용히 계세요. (17)
+   tag=편의 배려 icon=home | why: make yourself comfortable은 손님을 맞는 관용 표현이라 지시가 아니라 환대로 들려요. while you wait로 기간을 붙여요.
+   chunks: Please make yourself / comfortable / while you wait / .  || decoy: with your family
+   =B: Please make yourself [comfortable] while you wait.
+    B: Please make yourself [useful] while you wait.
+    B: Please make yourself [scarce] while you wait.
+    B: Please make yourself [available] while you wait.
+--0.4 EN: The restrooms are just around the corner if you need them.
+   KO: 화장실이 필요하시면 바로 모퉁이 돌면 있어요. (25)
+   DK: 음료수가 필요하시면 바로 모퉁이 돌면 있어요. (25)
+   DK: 화장실이 필요하시면 바로 엘리베이터 옆에 있어요. (27)
+   tag=편의 안내 icon=compass | why: just around the corner는 길을 길게 설명하지 않고 가깝다는 것만 전해요. if you need them으로 강요 없이 알려요.
+   chunks: The restrooms are / just around the corner / if you / need them / .  || decoy: past the elevators
+   =B: The restrooms are just around the [corner] if you need them.
+    B: The restrooms are just around the [elevator] if you need them.
+    B: The restrooms are just around the [desk] if you need them.
+    B: The restrooms are just around the [lobby] if you need them.
+  ORDER ko=대기실 안내 4문장 순서 tag=대화 흐름 | why: 대기할 자리를 먼저 알리고, 편의 시설을 알린 뒤, 그것을 쓰라고 권하고, 소식이 생기면 직접 찾아간다고 약속하는 순서예요. 앞 줄을 가리키는 말이 순서를 잡아 줘요.
+   1. You can wait right here in the surgical waiting area.  (여기 수술 대기 구역에서 기다리시면 돼요/위치/hospital)
+   2. Coffee and restrooms are just down the hall from here.  (커피와 화장실은 여기서 복도 바로 저쪽이에요/편의/coffee)
+   3. Please use them and make yourself comfortable.  (그것들을 이용하시고 편하게 계세요/권유/home)
+   4. We'll come find you here with any updates.  (소식이 있으면 여기로 와서 알려드릴게요/약속/speech)
+   swap12: Coffee and restrooms are just down the hall from here. | You can wait right here in the surgical waiting area. | Please use them and make yourself comfortable. | We'll come find you here with any updates.
+   swap23: You can wait right here in the surgical waiting area. | Please use them and make yourself comfortable. | Coffee and restrooms are just down the hall from here. | We'll come find you here with any updates.
+   swap34: You can wait right here in the surgical waiting area. | Coffee and restrooms are just down the hall from here. | We'll come find you here with any updates. | Please use them and make yourself comfortable.
+===== 1 예상 소요 시간 안내
+--1.0 EN: The surgery usually takes about two to three hours.
+   KO: 수술은 보통 두세 시간 정도 걸려요. (20)
+   DK: 검사는 보통 두세 시간 정도 걸려요. (20)
+   DK: 회복은 보통 두세 시간 정도 걸려요. (20)
+   tag=소요 시간 icon=calendar | why: usually와 about에 이어 two to three로 범위를 말해, 정확한 시각을 약속하지 않으면서 기준은 줘요.
+   chunks: The surgery usually / takes about / two to three / hours / .  || decoy: four to five
+   =B: The surgery usually takes about two to three [hours].
+    B: The surgery usually takes about two to three [minutes].
+    B: The surgery usually takes about two to three [days].
+    B: The surgery usually takes about two to three [weeks].
+--1.1 EN: That includes prep and recovery afterward.
+   KO: 그건 준비 시간과 회복 시간까지 포함한 거예요. (26)
+   DK: 그건 준비 시간과 대기 시간까지 포함한 거예요. (26)
+   DK: 그건 이동 시간과 회복 시간까지 포함한 거예요. (26)
+   tag=범위 설명 icon=board | why: That includes로 앞서 말한 시간이 어디까지인지 범위를 정해, 수술 자체 시간만 기다리는 오해를 막아요.
+   chunks: That includes / prep and recovery / afterward / .  || decoy: paperwork and billing
+   =B: That includes prep and [recovery] afterward.
+    B: That includes prep and [discharge] afterward.
+    B: That includes prep and [billing] afterward.
+    B: That includes prep and [rounds] afterward.
+--1.2 EN: Times can vary, and we'll keep you posted.
+   KO: 시간은 달라질 수 있고, 계속 알려드릴게요. (24)
+   DK: 순서는 달라질 수 있고, 계속 알려드릴게요. (24)
+   DK: 비용은 달라질 수 있고, 계속 알려드릴게요. (24)
+   tag=변동 안내 icon=bell | why: 달라질 수 있다고 먼저 알리면 늦어져도 덜 불안하고, keep you posted로 소통을 이어 갈 약속을 해요.
+   chunks: Times can vary / , and we'll keep / you posted / .  || decoy: you waiting
+   =B: Times can vary, and we'll keep you [posted].
+    B: Times can vary, and we'll keep you [guessing].
+    B: Times can vary, and we'll keep you [busy].
+    B: Times can vary, and we'll keep you [seated].
+--1.3 EN: Positioning and anesthesia take some time before the surgery itself starts.
+   KO: 자세를 잡고 마취를 하는 데도 수술 자체가 시작되기 전에 시간이 좀 걸려요. (42)
+   DK: 자세를 잡고 소독을 하는 데도 수술 자체가 시작되기 전에 시간이 좀 걸려요. (42)
+   DK: 자세를 잡고 마취를 하는 데도 회복 자체가 시작되기 전에 시간이 좀 걸려요. (42)
+   tag=이유 설명 icon=scalpel | why: before the surgery itself starts로 시작 전 단계가 있다는 점을 짚어, 시작이 늦어 보이는 불안을 설명해요.
+   chunks: Positioning and anesthesia / take some time / before the surgery / itself starts / .  || decoy: during the visit
+   =B: Positioning and [anesthesia] take some time before the surgery itself starts.
+    B: Positioning and [recovery] take some time before the surgery itself starts.
+    B: Positioning and [discharge] take some time before the surgery itself starts.
+    B: Positioning and [visiting] take some time before the surgery itself starts.
+--1.4 EN: It's normal for things to run a little longer than expected.
+   KO: 예상보다 조금 더 오래 걸리는 건 흔한 일이에요. (27)
+   DK: 예상보다 조금 더 오래 쉬시는 건 흔한 일이에요. (27)
+   DK: 예상보다 조금 더 오래 걸리는 건 병원마다 달라요. (28)
+   tag=흔한 일 icon=calendar | why: normal로 지연이 이상 신호가 아니라 흔한 일이라고 틀을 잡아요. a little longer는 크게 늦어지는 것이 아니라는 어감이에요.
+   chunks: It's normal / for things to run / a little longer / than expected / .  || decoy: for visits to run
+   =B: It's [normal] for things to run a little longer than expected.
+    B: It's [rare] for things to run a little longer than expected.
+    B: It's [unusual] for things to run a little longer than expected.
+    B: It's [unlikely] for things to run a little longer than expected.
+  ORDER ko=예상 시간 안내 4문장 순서 tag=대화 흐름 | why: 평균 시간을 말하고, 그 시간의 범위를 밝힌 뒤, 달라질 수 있음을 알리고, 어떤 경우든 계속 알린다고 마무리하는 순서예요.
+   1. The surgery usually takes about two to three hours.  (수술은 보통 두세 시간 정도 걸려요/시간/calendar)
+   2. That includes prep and recovery afterward.  (그건 준비와 회복까지 포함한 거예요/범위/board)
+   3. Times can vary, though, and that's normal.  (시간은 달라질 수 있지만 흔한 일이에요/변동/bell)
+   4. Whatever the timing turns out to be, we'll keep you posted.  (시간이 어떻게 되든 계속 알려드릴게요/약속/speech)
+   swap12: That includes prep and recovery afterward. | The surgery usually takes about two to three hours. | Times can vary, though, and that's normal. | Whatever the timing turns out to be, we'll keep you posted.
+   swap23: The surgery usually takes about two to three hours. | Times can vary, though, and that's normal. | That includes prep and recovery afterward. | Whatever the timing turns out to be, we'll keep you posted.
+   swap34: The surgery usually takes about two to three hours. | That includes prep and recovery afterward. | Whatever the timing turns out to be, we'll keep you posted. | Times can vary, though, and that's normal.
+===== 2 진행 상황 업데이트
+--2.0 EN: The team just let me know things are going well.
+   KO: 팀에서 방금 잘 진행되고 있다고 알려줬어요. (24)
+   DK: 팀에서 방금 마취가 끝났다고 알려줬어요. (22)
+   DK: 팀에서 방금 수술실이 준비됐다고 알려줬어요. (24)
+   tag=상황 전달 icon=speech | why: The team just let me know로 정보의 출처와 최신성을 밝혀, 내 추측이 아니라 수술실에서 받은 소식임을 전해요.
+   chunks: The team just / let me know / things are going / well / .  || decoy: a little late
+   =B: The [team] just let me know things are going well.
+    B: The [lab] just let me know things are going well.
+    B: The [pharmacy] just let me know things are going well.
+    B: The [ICU] just let me know things are going well.
+--2.1 EN: She's stable and the surgery is progressing.
+   KO: 환자분은 안정적이고 수술도 잘 진행되고 있어요. (26)
+   DK: 환자분은 안정적이고 이송도 잘 진행되고 있어요. (26)
+   DK: 환자분은 안정적이고 검사도 잘 진행되고 있어요. (26)
+   tag=상태 전달 icon=monitor | why: 환자 상태(stable)를 먼저, 수술 진행을 뒤에 둬 가족이 가장 궁금한 것부터 말해요.
+   chunks: She's stable / and the surgery / is progressing / .  || decoy: and the paperwork
+   =B: She's [stable] and the surgery is progressing.
+    B: She's [dizzy] and the surgery is progressing.
+    B: She's [thirsty] and the surgery is progressing.
+    B: She's [cold] and the surgery is progressing.
+--2.2 EN: I'll come back with the next update.
+   KO: 다음 소식이 있으면 다시 와서 알려드릴게요. (24)
+   DK: 다음 서류가 있으면 다시 와서 알려드릴게요. (24)
+   DK: 다음 교대 시간이 되면 다시 와서 알려드릴게요. (26)
+   tag=재방문 약속 icon=redo | why: come back으로 가족이 찾아다니지 않아도 직원이 다시 온다는 약속을 해요. next는 정해진 시각이 아니라 다음 소식을 뜻해요.
+   chunks: I'll come back / with the next / update / .  || decoy: I'll stay here
+   =B: I'll come back with the [next] update.
+    B: I'll come back with the [last] update.
+    B: I'll come back with the [old] update.
+    B: I'll come back with the [same] update.
+--2.3 EN: Everything is on track so far.
+   KO: 지금까지는 다 계획대로 잘 되고 있어요. (22)
+   DK: 지금까지는 이동이 계획대로 잘 되고 있어요. (24)
+   DK: 지금까지는 준비가 계획대로 잘 되고 있어요. (24)
+   tag=현황 전달 icon=check | why: so far를 붙여 지금까지의 상황이라고 한정해, 결과를 미리 장담하는 말이 되지 않게 해요.
+   chunks: Everything is / on track / so far / .  || decoy: on hold
+   =B: Everything is on [track] so far.
+    B: Everything is on [hold] so far.
+    B: Everything is on [call] so far.
+    B: Everything is on [duty] so far.
+--2.4 EN: I'll check in again in about an hour.
+   KO: 한 시간쯤 뒤에 다시 와서 확인할게요. (21)
+   DK: 두 시간쯤 뒤에 다시 와서 확인할게요. (21)
+   DK: 한 시간쯤 뒤에 다시 와서 서명받을게요. (22)
+   tag=재확인 약속 icon=calendar | why: in about an hour처럼 대략의 시각을 주면 가족이 기다릴 기준이 생겨요. about은 정확한 약속은 아니라는 여지를 남겨요.
+   chunks: I'll check in / again / in about an hour / .  || decoy: with the nurse
+   =B: I'll [check] in again in about an hour.
+    B: I'll [sign] in again in about an hour.
+    B: I'll [log] in again in about an hour.
+    B: I'll [clock] in again in about an hour.
+  ORDER ko=진행 상황 4문장 순서 tag=대화 흐름 | why: 수술실에 확인하고, 그 내용을 전한 뒤, 아는 것이 그게 전부라고 한정하고, 새 소식이 오면 다시 오겠다고 약속하는 순서예요. 'They said'·'Those'가 앞 줄을 가리켜요.
+   1. I just checked in with the surgical team.  (방금 수술팀에 확인했어요/확인/speech)
+   2. They said she's stable and the surgery is progressing.  (환자분은 안정적이고 수술도 진행 중이라고 하네요/전달/monitor)
+   3. Those are the only details I have so far.  (지금까지 제가 아는 건 그게 전부예요/한정/check)
+   4. I'll come back with anything new as soon as I hear it.  (새 소식은 들으면 바로 와서 알려드릴게요/약속/redo)
+   swap12: They said she's stable and the surgery is progressing. | I just checked in with the surgical team. | Those are the only details I have so far. | I'll come back with anything new as soon as I hear it.
+   swap23: I just checked in with the surgical team. | Those are the only details I have so far. | They said she's stable and the surgery is progressing. | I'll come back with anything new as soon as I hear it.
+   swap34: I just checked in with the surgical team. | They said she's stable and the surgery is progressing. | I'll come back with anything new as soon as I hear it. | Those are the only details I have so far.
+===== 3 가족 질문 응대
+--3.0 EN: We'll manage his pain closely in recovery.
+   KO: 회복실에서 통증을 세심하게 관리해드릴게요. (23)
+   DK: 병실에서 통증을 세심하게 관리해드릴게요. (22)
+   DK: 퇴원 후에도 통증을 세심하게 관리해드릴게요. (24)
+   tag=통증 관리 icon=stetho | why: manage ~ closely는 통증을 놓치지 않고 계속 살핀다는 뜻이고, in recovery로 어디서 하는지 밝혀요.
+   chunks: We'll manage / his pain closely / in recovery / .  || decoy: in the OR
+   =B: We'll manage his pain [closely] in recovery.
+    B: We'll manage his pain [casually] in recovery.
+    B: We'll manage his pain [rarely] in recovery.
+    B: We'll manage his pain [briefly] in recovery.
+--3.1 EN: He'll have medication ready the moment he needs it.
+   KO: 필요한 순간에 바로 약을 드릴 수 있게 준비해둘게요. (29)
+   DK: 필요한 순간에 바로 담요를 드릴 수 있게 준비해둘게요. (30)
+   DK: 필요한 순간에 바로 옷을 드릴 수 있게 준비해둘게요. (29)
+   tag=약 준비 icon=pill | why: the moment he needs it은 필요한 순간에 맞춰 준비해 둔다는 약속이에요. ready는 쓸 수 있는 상태라는 뜻이에요.
+   chunks: He'll have medication / ready / the moment / he needs it / .  || decoy: He'll have a blanket
+   =B: He'll have medication [ready] the moment he needs it.
+    B: He'll have medication [empty] the moment he needs it.
+    B: He'll have medication [locked] the moment he needs it.
+    B: He'll have medication [expired] the moment he needs it.
+--3.2 EN: That's a common concern, and we plan for it.
+   KO: 흔히 하시는 걱정이고, 저희도 그에 대한 계획이 있어요. (31)
+   DK: 흔히 하시는 걱정이고, 저희도 그에 대한 경험이 있어요. (31)
+   DK: 흔히 하시는 걱정이고, 저희도 그에 대한 교육이 있어요. (31)
+   tag=공감 응대 icon=faceWorried | why: common concern이라고 하면 걱정이 이상한 게 아니라 누구나 하는 것이라고 인정하는 말이 돼요. we plan for it이 대비가 있다고 이어 줘요.
+   chunks: That's a common / concern / , and we plan / for it / .  || decoy: about the billing
+   =B: That's a common [concern], and we plan for it.
+    B: That's a common [rumor], and we plan for it.
+    B: That's a common [request], and we plan for it.
+    B: That's a common [mistake], and we plan for it.
+--3.3 EN: It's normal to worry about pain after surgery.
+   KO: 수술 후 통증을 걱정하는 건 자연스러운 일이에요. (27)
+   DK: 수술 후 통증을 질문하는 건 자연스러운 일이에요. (27)
+   DK: 수술 후 식사를 걱정하는 건 자연스러운 일이에요. (27)
+   tag=감정 인정 icon=handshake2 | why: It's normal to worry는 걱정을 평가하지 않고 정상으로 받아들이는 틀이에요. after surgery로 걱정의 때를 짚어요.
+   chunks: It's normal / to worry about pain / after surgery / .  || decoy: before the visit
+   =B: It's normal to [worry] about pain after surgery.
+    B: It's normal to [laugh] about pain after surgery.
+    B: It's normal to [argue] about pain after surgery.
+    B: It's normal to [joke] about pain after surgery.
+--3.4 EN: Please let us know if you have more questions.
+   KO: 더 궁금하신 게 있으면 언제든 말씀해 주세요. (25)
+   DK: 더 불편하신 게 있으면 언제든 말씀해 주세요. (25)
+   DK: 더 필요하신 게 있으면 언제든 말씀해 주세요. (25)
+   tag=질문 환영 icon=speech | why: Please let us know if로 질문을 부탁하는 형태라 가족이 부담 없이 말 걸게 해요. more questions는 이미 한 설명 위에 더 물어도 된다는 뜻이에요.
+   chunks: Please let us know / if you / have more / questions / .  || decoy: if you're hungry
+   =B: Please let us know if you have more [questions].
+    B: Please let us know if you have more [forms].
+    B: Please let us know if you have more [visits].
+    B: Please let us know if you have more [rules].
+  ORDER ko=통증 걱정 응대 4문장 순서 tag=대화 흐름 | why: 걱정을 인정하고, 그 걱정이 흔해 대비가 있음을 알리고, 그 계획을 구체적으로 말한 뒤, 더 물어도 된다고 여는 순서예요. 'That worry'·'That plan'이 앞 줄을 가리켜요.
+   1. It's normal to worry about pain after surgery.  (수술 후 통증을 걱정하는 건 자연스러운 일이에요/공감/handshake2)
+   2. That worry is very common, and we plan for it.  (그런 걱정은 아주 흔하고, 저희도 대비하고 있어요/인정/faceWorried)
+   3. That plan includes closely managing his pain in recovery.  (그 계획에는 회복실에서 통증을 세심하게 관리하는 것도 있어요/계획/stetho)
+   4. Please let us know if you have more questions.  (더 궁금하신 게 있으면 말씀해 주세요/질문/speech)
+   swap12: That worry is very common, and we plan for it. | It's normal to worry about pain after surgery. | That plan includes closely managing his pain in recovery. | Please let us know if you have more questions.
+   swap23: It's normal to worry about pain after surgery. | That plan includes closely managing his pain in recovery. | That worry is very common, and we plan for it. | Please let us know if you have more questions.
+   swap34: It's normal to worry about pain after surgery. | That worry is very common, and we plan for it. | Please let us know if you have more questions. | That plan includes closely managing his pain in recovery.
+===== 4 회복실 면회 안내
+--4.0 EN: You can see her once she's settled in recovery.
+   KO: 회복실에서 안정을 찾으시면 뵈러 들어가실 수 있어요. (29)
+   DK: 회복실에서 잠이 깨시면 뵈러 들어가실 수 있어요. (27)
+   DK: 회복실에서 안정을 찾으시면 전화로 통화하실 수 있어요. (30)
+   tag=면회 조건 icon=home | why: once she's settled는 환자가 안정을 찾은 뒤라는 조건이라, 가족이 기다리는 이유를 같이 설명해요.
+   chunks: You can see her / once / she's settled / in recovery / .  || decoy: in her room
+   =B: You can see her once she's [settled] in recovery.
+    B: You can see her once she's [dressed] in recovery.
+    B: You can see her once she's [discharged] in recovery.
+    B: You can see her once she's [transferred] in recovery.
+--4.1 EN: A nurse will come get you when she's ready.
+   KO: 준비되면 간호사가 모시러 올 거예요. (20)
+   DK: 준비되면 의사가 모시러 올 거예요. (19)
+   DK: 준비되면 간호사가 확인하러 올 거예요. (21)
+   tag=안내 방식 icon=pager | why: A nurse will come get you로 가족이 알아서 오는 게 아니라 간호사가 데리러 온다고 알려요. when she's ready가 때를 정해요.
+   chunks: A nurse will come / get you / when she's / ready / .  || decoy: to the desk
+   =B: A nurse will come get you when she's [ready].
+    B: A nurse will come get you when she's [discharged].
+    B: A nurse will come get you when she's [dressed].
+    B: A nurse will come get you when she's [hungry].
+--4.2 EN: Usually that's about thirty minutes after surgery.
+   KO: 보통 수술 후 삼십 분 정도 걸려요. (20)
+   DK: 보통 수술 후 한 시간 정도 걸려요. (20)
+   DK: 보통 퇴원 후 삼십 분 정도 걸려요. (20)
+   tag=예상 시간 icon=calendar | why: Usually that's about으로 평균과 대략의 값을 함께 말해, 정확히 그 시각이라는 약속은 하지 않아요.
+   chunks: Usually that's about / thirty minutes / after surgery / .  || decoy: from the clinic
+   =B: Usually that's about [thirty minutes] after surgery.
+    B: Usually that's about [three hours] after surgery.
+    B: Usually that's about [two days] after surgery.
+    B: Usually that's about [a week] after surgery.
+--4.3 EN: She may still seem sleepy and a little confused at first.
+   KO: 처음엔 조금 졸리고 혼란스러워 보이실 수 있어요. (27)
+   DK: 처음엔 조금 춥고 혼란스러워 보이실 수 있어요. (26)
+   DK: 처음엔 조금 졸리고 불편해 보이실 수 있어요. (25)
+   tag=상태 예고 icon=faceWorried | why: may still seem으로 가능성을 말해 놀라지 않게 미리 준비시키고, at first로 처음 한때의 모습임을 밝혀요.
+   chunks: She may still seem / sleepy / and a little confused / at first / .  || decoy: and very pale
+   =B: She may still seem [sleepy] and a little confused at first.
+    B: She may still seem [cheerful] and a little confused at first.
+    B: She may still seem [hungry] and a little confused at first.
+    B: She may still seem [energetic] and a little confused at first.
+--4.4 EN: We'll bring you back as soon as we can.
+   KO: 저희가 가능한 한 빨리 다시 모시고 올게요. (24)
+   DK: 저희가 가능한 한 빨리 다시 짐을 가져올게요. (25)
+   DK: 저희가 내일 아침에 다시 모시고 올게요. (22)
+   tag=재안내 약속 icon=redo | why: bring you back as soon as we can는 데려다 주는 것과 가능한 빠른 시점을 함께 약속해요.
+   chunks: We'll bring you back / as soon / as we / can / .  || decoy: upstairs
+   =B: We'll [bring] you back as soon as we can.
+    B: We'll [leave] you back as soon as we can.
+    B: We'll [keep] you back as soon as we can.
+    B: We'll [hold] you back as soon as we can.
+  ORDER ko=회복실 면회 4문장 순서 tag=대화 흐름 | why: 면회 조건을 말하고, 데리러 가는 방식을 알리고, 처음 모습을 미리 알려 준 뒤, 다시 데려오겠다고 맺는 순서예요.
+   1. You can see her once she's settled in recovery.  (회복실에서 안정을 찾으면 뵐 수 있어요/조건/home)
+   2. When that happens, a nurse will come get you.  (그렇게 되면 간호사가 모시러 올 거예요/안내/pager)
+   3. She may seem sleepy and a little confused at first.  (처음엔 졸리고 조금 혼란스러워 보일 수 있어요/예고/faceWorried)
+   4. After you've seen her, we'll bring you back here.  (뵙고 나면 저희가 다시 여기로 모시고 올게요/복귀/redo)
+   swap12: When that happens, a nurse will come get you. | You can see her once she's settled in recovery. | She may seem sleepy and a little confused at first. | After you've seen her, we'll bring you back here.
+   swap23: You can see her once she's settled in recovery. | She may seem sleepy and a little confused at first. | When that happens, a nurse will come get you. | After you've seen her, we'll bring you back here.
+   swap34: You can see her once she's settled in recovery. | When that happens, a nurse will come get you. | After you've seen her, we'll bring you back here. | She may seem sleepy and a little confused at first.
+===== 5 연락 방법 안내
+--5.0 EN: Leave me your cell number and I'll call you.
+   KO: 휴대폰 번호 남겨주시면 제가 전화드릴게요. (23)
+   DK: 휴대폰 번호 남겨주시면 제가 문자드릴게요. (23)
+   DK: 휴대폰 번호 남겨주시면 제가 안내문 보내드릴게요. (27)
+   tag=연락 방법 icon=pager | why: Leave me ~ and I'll는 가족이 할 일과 내가 할 일을 한 문장에 나눠 말해요. cell number처럼 구체적인 수단을 짚어요.
+   chunks: Leave me / your cell number / and I'll / call you / .  || decoy: and your name
+   =B: Leave me your [cell number] and I'll call you.
+    B: Leave me your [home address] and I'll call you.
+    B: Leave me your [room number] and I'll call you.
+    B: Leave me your [license number] and I'll call you.
+--5.1 EN: There's a pager system if you prefer.
+   KO: 원하시면 호출기 방식도 있어요. (17)
+   DK: 원하시면 안내 책자도 있어요. (16)
+   DK: 원하시면 대기 번호표도 있어요. (17)
+   tag=선택지 안내 icon=pager | why: There's A if you prefer는 다른 방법도 있다고 알리고 고르게 하는 틀이에요. 선택권을 가족에게 줘요.
+   chunks: There's a pager / system / if you prefer / .  || decoy: for the desk
+   =B: There's a [pager] system if you prefer.
+    B: There's a [brochure] system if you prefer.
+    B: There's a [locker] system if you prefer.
+    B: There's a [printout] system if you prefer.
+--5.2 EN: Please stay reachable in case we have news.
+   KO: 소식이 있을 경우를 대비해 연락 가능하게 계셔주세요. (29)
+   DK: 질문이 있을 경우를 대비해 연락 가능하게 계셔주세요. (29)
+   DK: 회진 시간을 대비해 연락 가능하게 계셔주세요. (25)
+   tag=연락 가능 icon=bell | why: stay reachable은 어디 있든 연락이 닿게 해 달라는 부탁이에요. in case we have news로 이유를 붙여요.
+   chunks: Please stay reachable / in case / we have news / .  || decoy: to stay close
+   =B: Please stay [reachable] in case we have news.
+    B: Please stay [silent] in case we have news.
+    B: Please stay [offline] in case we have news.
+    B: Please stay [busy] in case we have news.
+--5.3 EN: If you step out, just let the desk know where you'll be.
+   KO: 자리를 비우시면 데스크에 어디 계실지 알려만 주세요. (29)
+   DK: 식사하러 가시면 데스크에 어디 계실지 알려만 주세요. (29)
+   DK: 주차하러 나가시면 데스크에 어디 계실지 알려만 주세요. (30)
+   tag=이탈 알림 icon=compass | why: just let the desk know는 데스크에 알리기만 하면 된다는 부탁이에요. where you'll be가 알릴 내용을 정해요.
+   chunks: If you step out / , just let / the desk know / where you'll be / .  || decoy: if you wait
+   =B: If you step out, just let the [desk] know where you'll be.
+    B: If you step out, just let the [pharmacy] know where you'll be.
+    B: If you step out, just let the [lab] know where you'll be.
+    B: If you step out, just let the [gift shop] know where you'll be.
+--5.4 EN: We'll page you the moment anything changes.
+   KO: 변화가 생기는 순간 바로 호출해드릴게요. (22)
+   DK: 점심이 도착하는 순간 바로 호출해드릴게요. (23)
+   DK: 교대하는 순간 바로 호출해드릴게요. (19)
+   tag=호출 약속 icon=pager | why: the moment anything changes는 무엇이든 달라지는 즉시라는 뜻이라, 가족이 소식을 놓치지 않게 해 줘요.
+   chunks: We'll page you / the moment / anything changes / .  || decoy: anything arrives
+   =B: We'll [page] you the moment anything changes.
+    B: We'll [bill] you the moment anything changes.
+    B: We'll [fax] you the moment anything changes.
+    B: We'll [seat] you the moment anything changes.
+  ORDER ko=연락 방법 4문장 순서 tag=대화 흐름 | why: 연락 수단을 받고, 다른 수단도 있음을 알리고, 자리를 비울 때 할 일을 말한 뒤, 변화가 생기면 호출한다는 약속으로 마무리하는 순서예요.
+   1. Leave me your cell number and I'll call you.  (휴대폰 번호를 남겨주시면 제가 전화드릴게요/번호/pager)
+   2. There's a pager system too, if you'd rather have that.  (그게 낫다면 호출기 방식도 있어요/대안/pager)
+   3. With either one, just let the desk know where you'll be.  (어느 쪽이든 데스크에 어디 계실지만 알려주세요/위치/compass)
+   4. We'll reach you the moment anything changes.  (변화가 생기는 순간 연락드릴게요/약속/bell)
+   swap12: There's a pager system too, if you'd rather have that. | Leave me your cell number and I'll call you. | With either one, just let the desk know where you'll be. | We'll reach you the moment anything changes.
+   swap23: Leave me your cell number and I'll call you. | With either one, just let the desk know where you'll be. | There's a pager system too, if you'd rather have that. | We'll reach you the moment anything changes.
+   swap34: Leave me your cell number and I'll call you. | There's a pager system too, if you'd rather have that. | We'll reach you the moment anything changes. | With either one, just let the desk know where you'll be.
+===== 6 수술 지연 사유 설명
+--6.0 EN: The earlier case ran longer than expected.
+   KO: 앞 수술이 예상보다 길어졌어요. (17)
+   DK: 앞 수술이 예상보다 일찍 시작됐어요. (20)
+   DK: 앞 수술이 예상보다 복잡했어요. (17)
+   tag=지연 이유 icon=calendar | why: The earlier case로 지연의 원인이 환자 개인의 일이 아니라 앞 수술이라는 점을 밝혀요.
+   chunks: The earlier case / ran longer / than expected / .  || decoy: than yesterday
+   =B: The earlier case ran [longer] than expected.
+    B: The earlier case ran [shorter] than expected.
+    B: The earlier case ran [smoother] than expected.
+    B: The earlier case ran [quicker] than expected.
+--6.1 EN: The delay is to make sure everything's ready and safe.
+   KO: 지연되는 건 모든 게 준비되고 안전한지 확실히 하기 위해서예요. (35)
+   DK: 지연되는 건 모든 게 준비되고 깨끗한지 확실히 하기 위해서예요. (35)
+   DK: 지연되는 건 모든 게 정돈되고 안전한지 확실히 하기 위해서예요. (35)
+   tag=안전 이유 icon=shield | why: to make sure로 지연의 목적을 말하고, ready and safe로 준비와 안전이라는 두 기준을 함께 짚어요.
+   chunks: The delay is / to make sure / everything's ready / and safe / .  || decoy: to make room
+   =B: The delay is to make sure everything's [ready] and safe.
+    B: The delay is to make sure everything's [billed] and safe.
+    B: The delay is to make sure everything's [quiet] and safe.
+    B: The delay is to make sure everything's [empty] and safe.
+--6.2 EN: I'll update you the moment we have a start time.
+   KO: 시작 시간이 정해지는 대로 바로 알려드릴게요. (25)
+   DK: 수술 순서가 정해지는 대로 바로 알려드릴게요. (25)
+   DK: 담당 의사가 정해지는 대로 바로 알려드릴게요. (25)
+   tag=시작 약속 icon=speech | why: the moment we have로 시작 시각이 정해지는 즉시 전한다는 약속이에요. 시각이 아직 없음을 정직하게 암시해요.
+   chunks: I'll update you / the moment / we have / a start time / .  || decoy: from the desk
+   =B: I'll [update] you the moment we have a start time.
+    B: I'll [bill] you the moment we have a start time.
+    B: I'll [order] you the moment we have a start time.
+    B: I'll [cancel] you the moment we have a start time.
+--6.3 EN: The team is taking extra care to do this safely.
+   KO: 팀에서 이걸 안전하게 하려고 더 신경 쓰고 있어요. (28)
+   DK: 팀에서 이걸 안전하게 하려고 더 상의하고 있어요. (27)
+   DK: 팀에서 이걸 빠르게 하려고 더 신경 쓰고 있어요. (27)
+   tag=안전 설명 icon=shield | why: taking extra care는 추가로 신경 쓴다는 표현이라, 지연이 소홀해서가 아니라 조심해서임을 보여요.
+   chunks: The team is taking / extra care / to do this / safely / .  || decoy: extra cases
+   =B: The team is taking extra [care] to do this safely.
+    B: The team is taking extra [risks] to do this safely.
+    B: The team is taking extra [breaks] to do this safely.
+    B: The team is taking extra [shortcuts] to do this safely.
+--6.4 EN: A delay like this doesn't mean anything is wrong.
+   KO: 이렇게 지연된다고 해서 뭔가 잘못됐다는 뜻은 아니에요. (30)
+   DK: 이렇게 지연된다고 해서 누가 잘못했다는 뜻은 아니에요. (30)
+   DK: 이렇게 지연된다고 해서 뭔가 달라졌다는 뜻은 아니에요. (30)
+   tag=불안 완화 icon=faceWorried | why: doesn't mean anything is wrong은 흔한 오해(지연=문제)를 먼저 말해 불안을 덜어요.
+   chunks: A delay like this / doesn't mean / anything is / wrong / .  || decoy: about the case
+   =B: A delay like this doesn't mean anything is [wrong].
+    B: A delay like this doesn't mean anything is [done].
+    B: A delay like this doesn't mean anything is [ready].
+    B: A delay like this doesn't mean anything is [new].
+  ORDER ko=수술 지연 설명 4문장 순서 tag=대화 흐름 | why: 지연 사실과 원인을 말하고, 그 안전 이유를 밝힌 뒤, 흔한 오해를 풀고, 시작 시간을 알려 주겠다고 약속하는 순서예요.
+   1. The earlier case ran longer than expected.  (앞 수술이 예상보다 길어졌어요/원인/calendar)
+   2. The team is taking extra care to do this safely.  (팀에서 안전하게 하려고 더 신경 쓰고 있어요/이유/shield)
+   3. That's why a delay like this doesn't mean anything is wrong.  (그래서 이런 지연이 문제가 있다는 뜻은 아니에요/안심/faceWorried)
+   4. I'll update you the moment we have a start time.  (시작 시간이 정해지는 대로 알려드릴게요/약속/speech)
+   swap12: The team is taking extra care to do this safely. | The earlier case ran longer than expected. | That's why a delay like this doesn't mean anything is wrong. | I'll update you the moment we have a start time.
+   swap23: The earlier case ran longer than expected. | That's why a delay like this doesn't mean anything is wrong. | The team is taking extra care to do this safely. | I'll update you the moment we have a start time.
+   swap34: The earlier case ran longer than expected. | The team is taking extra care to do this safely. | I'll update you the moment we have a start time. | That's why a delay like this doesn't mean anything is wrong.
+===== 7 장시간 수술 안심
+--7.0 EN: A longer surgery doesn't always mean a problem.
+   KO: 수술이 길어진다고 항상 문제가 생긴 건 아니에요. (27)
+   DK: 검사가 길어진다고 항상 문제가 생긴 건 아니에요. (27)
+   DK: 대기가 길어진다고 항상 문제가 생긴 건 아니에요. (27)
+   tag=안심 icon=shield | why: doesn't always로 항상은 아니라고 말해, 근거 없는 장담 없이 흔한 오해(길다=문제)만 풀어 줘요.
+   chunks: A longer surgery / doesn't always / mean a problem / .  || decoy: A shorter surgery
+   =B: A [longer] surgery doesn't always mean a problem.
+    B: A [shorter] surgery doesn't always mean a problem.
+    B: A [smaller] surgery doesn't always mean a problem.
+    B: A [simpler] surgery doesn't always mean a problem.
+--7.1 EN: The team is being thorough and careful.
+   KO: 팀이 꼼꼼하고 신중하게 하고 있는 거예요. (23)
+   DK: 팀이 꼼꼼하고 침착하게 하고 있는 거예요. (23)
+   DK: 팀이 빠르고 신중하게 하고 있는 거예요. (22)
+   tag=팀 상태 icon=stetho | why: being 뒤 형용사는 지금 하고 있는 방식을 말해, 팀이 서두르지 않고 제대로 하고 있음을 강조해요.
+   chunks: The team is being / thorough / and careful / .  || decoy: and quick
+   =B: The team is being [thorough] and careful.
+    B: The team is being [hasty] and careful.
+    B: The team is being [careless] and careful.
+    B: The team is being [rushed] and careful.
+--7.2 EN: I checked in, and things are progressing steadily.
+   KO: 제가 확인해봤는데, 꾸준히 잘 진행되고 있어요. (26)
+   DK: 제가 확인해봤는데, 천천히 잘 진행되고 있어요. (26)
+   DK: 제가 확인해봤는데, 꾸준히 잘 준비되고 있어요. (26)
+   tag=확인 전달 icon=check | why: I checked in으로 직접 알아본 사실임을 말하고, steadily로 갑작스러운 변화 없이 이어지는 진행임을 전해요.
+   chunks: I checked in / , and things are / progressing steadily / .  || decoy: with the lab
+   =B: I checked in, and things are [progressing] steadily.
+    B: I checked in, and things are [falling] steadily.
+    B: I checked in, and things are [fading] steadily.
+    B: I checked in, and things are [shrinking] steadily.
+--7.3 EN: Sometimes it just takes extra time to do things right.
+   KO: 때로는 제대로 하려면 시간이 좀 더 걸리기도 해요. (28)
+   DK: 때로는 차분히 하려면 시간이 좀 더 걸리기도 해요. (28)
+   DK: 때로는 제대로 하려면 사람이 좀 더 필요하기도 해요. (29)
+   tag=이유 설명 icon=scalpel | why: to do things right로 길어지는 이유를 설명해, 지연을 소홀함이 아니라 신중함으로 읽게 해요.
+   chunks: Sometimes it just takes / extra time / to do things / right / .  || decoy: again
+   =B: Sometimes it just takes extra time to do things [right].
+    B: Sometimes it just takes extra time to do things [fast].
+    B: Sometimes it just takes extra time to do things [twice].
+    B: Sometimes it just takes extra time to do things [early].
+--7.4 EN: I'll keep checking in and let you know right away.
+   KO: 계속 확인해서 바로바로 알려드릴게요. (20)
+   DK: 한 번 더 확인해서 바로바로 알려드릴게요. (23)
+   DK: 계속 확인해서 조용히 알려드릴게요. (19)
+   tag=소통 약속 icon=speech | why: keep checking in으로 한 번이 아니라 계속 확인하겠다는 의지를, right away로 소식을 쌓아 두지 않는다는 속도를 약속해요.
+   chunks: I'll keep checking in / and let you / know / right away / .  || decoy: go
+   =B: I'll [keep] checking in and let you know right away.
+    B: I'll [stop] checking in and let you know right away.
+    B: I'll [quit] checking in and let you know right away.
+    B: I'll [finish] checking in and let you know right away.
+  ORDER ko=장시간 수술 안심 4문장 순서 tag=대화 흐름 | why: 길어진 시간을 인정하고, 길다고 문제는 아니라고 푼 뒤, 팀에 확인한 결과를 전하고, 계속 알리겠다는 약속으로 맺는 순서예요.
+   1. I know the surgery is running longer than you expected.  (수술이 예상보다 길어지고 있다는 거 알아요/인정/calendar)
+   2. A longer surgery doesn't always mean a problem.  (길어진다고 항상 문제가 있는 건 아니에요/안심/shield)
+   3. In this case, I checked in with the team, and they're being thorough and careful.  (이번엔 팀에 확인했는데 꼼꼼하고 신중하게 하고 있어요/확인/check)
+   4. I'll keep checking in and let you know right away.  (계속 확인해서 바로바로 알려드릴게요/약속/speech)
+   swap12: A longer surgery doesn't always mean a problem. | I know the surgery is running longer than you expected. | In this case, I checked in with the team, and they're being thorough and careful. | I'll keep checking in and let you know right away.
+   swap23: I know the surgery is running longer than you expected. | In this case, I checked in with the team, and they're being thorough and careful. | A longer surgery doesn't always mean a problem. | I'll keep checking in and let you know right away.
+   swap34: I know the surgery is running longer than you expected. | A longer surgery doesn't always mean a problem. | I'll keep checking in and let you know right away. | In this case, I checked in with the team, and they're being thorough and careful.
+===== 8 불안 가족 정서 지지
+--8.0 EN: It's completely understandable to feel this way.
+   KO: 이렇게 느끼시는 건 충분히 이해할 만한 일이에요. (27)
+   DK: 이렇게 느끼시는 건 충분히 힘든 일이에요. (23)
+   DK: 이렇게 말씀하시는 건 충분히 이해할 만한 일이에요. (28)
+   tag=이해 표현 icon=handshake2 | why: completely understandable로 감정을 평가하지 않고 정당한 것으로 인정해요. this way가 앞서 한 느낌을 가리켜요.
+   chunks: It's completely understandable / to feel / this way / .  || decoy: to feel better
+   =B: It's completely [understandable] to feel this way.
+    B: It's completely [unacceptable] to feel this way.
+    B: It's completely [unreasonable] to feel this way.
+    B: It's completely [uncomfortable] to feel this way.
+--8.1 EN: Would it help to sit down and talk for a moment?
+   KO: 잠깐 앉아서 이야기 나누는 게 도움이 될까요? (25)
+   DK: 잠깐 앉아서 숨 돌리는 게 도움이 될까요? (23)
+   DK: 잠깐 앉아서 물 마시는 게 도움이 될까요? (23)
+   tag=제안 질문 icon=handshake2 | why: Would it help to ~?는 강요하지 않고 선택권을 주는 제안이에요. for a moment로 부담 없는 짧은 시간임을 알려요.
+   chunks: Would it help / to sit down / and talk / for a moment / ?  || decoy: and have a snack
+   =B: Would it help to sit down and [talk] for a moment?
+    B: Would it help to sit down and [argue] for a moment?
+    B: Would it help to sit down and [shout] for a moment?
+    B: Would it help to sit down and [whisper] for a moment?
+--8.2 EN: You're not alone — I'm here with you.
+   KO: 혼자가 아니에요, 제가 여기 함께 있을게요. (24)
+   DK: 혼자가 아니에요, 제가 여기 자주 들를게요. (24)
+   DK: 많이 힘드시죠, 제가 여기 함께 있을게요. (23)
+   tag=곁에 있음 icon=handshake2 | why: You're not alone으로 외로움을 먼저 덜어 주고, I'm here with you로 곁에 있음을 직접 말해요.
+   chunks: You're not alone / — I'm here / with you / .  || decoy: with the team
+   =B: You're not [alone] — I'm here with you.
+    B: You're not [worried] — I'm here with you.
+    B: You're not [sorry] — I'm here with you.
+    B: You're not [tired] — I'm here with you.
+--8.3 EN: It's okay to feel scared while you wait.
+   KO: 기다리는 동안 무서운 마음이 드는 것도 괜찮아요. (27)
+   DK: 기다리는 동안 외로운 마음이 드는 것도 괜찮아요. (27)
+   DK: 기다리는 동안 무서운 마음을 말하는 것도 괜찮아요. (28)
+   tag=감정 허용 icon=faceWorried | why: It's okay to feel ~은 느끼는 것을 허락해, 참아야 한다는 압박을 덜어요. while you wait로 기다리는 상황을 인정해요.
+   chunks: It's okay / to feel scared / while you wait / .  || decoy: to feel tired
+   =B: It's okay to feel [scared] while you wait.
+    B: It's okay to feel [relieved] while you wait.
+    B: It's okay to feel [proud] while you wait.
+    B: It's okay to feel [excited] while you wait.
+--8.4 EN: Take a breath with me — I'm right here.
+   KO: 저와 함께 숨을 한 번 쉬어봐요, 제가 바로 여기 있어요. (32)
+   DK: 저와 함께 기지개를 한 번 켜봐요, 제가 바로 여기 있어요. (33)
+   DK: 저와 함께 숨을 한 번 쉬어봐요, 제가 천천히 셀게요. (30)
+   tag=호흡 제안 icon=faceWorried | why: Take a breath with me는 같이 하자는 말투라 지시가 아니라 동행으로 들려요. I'm right here가 곁에 있음을 다시 알려요.
+   chunks: Take a breath / with me / — I'm right here / .  || decoy: and sit down
+   =B: Take a [breath] with me — I'm right here.
+    B: Take a [sip] with me — I'm right here.
+    B: Take a [stretch] with me — I'm right here.
+    B: Take a [yawn] with me — I'm right here.
+  ORDER ko=불안 가족 지지 4문장 순서 tag=대화 흐름 | why: 느낌을 인정하고, 그 느낌을 혼자 견디지 않아도 된다며 곁에 있음을 알린 뒤, 곁에 있으니 함께 숨을 쉬자고 하고, 그다음 이야기 나눌지 묻는 순서예요. 'feel it'·'Since I'm right here'·'After that'이 앞 줄을 가리켜요.
+   1. It's completely understandable to feel this way.  (이렇게 느끼시는 건 충분히 이해돼요/인정/handshake2)
+   2. You don't have to feel it alone — I'm here with you.  (그 마음을 혼자 견디지 않으셔도 돼요, 제가 함께 있어요/지지/handshake2)
+   3. Since I'm right here, let's take a breath together.  (제가 바로 여기 있으니 같이 숨을 쉬어봐요/제안/faceWorried)
+   4. After that, would it help to sit down and talk?  (그다음에 앉아서 이야기하면 도움이 될까요?/질문/handshake2)
+   swap12: You don't have to feel it alone — I'm here with you. | It's completely understandable to feel this way. | Since I'm right here, let's take a breath together. | After that, would it help to sit down and talk?
+   swap23: It's completely understandable to feel this way. | Since I'm right here, let's take a breath together. | You don't have to feel it alone — I'm here with you. | After that, would it help to sit down and talk?
+   swap34: It's completely understandable to feel this way. | You don't have to feel it alone — I'm here with you. | After that, would it help to sit down and talk? | Since I'm right here, let's take a breath together.
+===== 9 제한된 정보 범위 소통
+--9.0 EN: I can share that he's stable and doing well.
+   KO: 안정적이고 잘 지내고 계신다는 건 말씀드릴 수 있어요. (30)
+   DK: 지금 수술실에 계신다는 건 말씀드릴 수 있어요. (26)
+   DK: 수술이 오래 걸릴 수 있다는 건 말씀드릴 수 있어요. (29)
+   tag=공유 범위 icon=speech | why: I can share that은 말할 수 있는 범위를 먼저 밝히고, 그 안의 내용(stable)만 전해요.
+   chunks: I can share / that he's stable / and doing / well / .  || decoy: that he's awake
+   =B: I can share that he's [stable] and doing well.
+    B: I can share that he's [walking] and doing well.
+    B: I can share that he's [eating] and doing well.
+    B: I can share that he's [dressed] and doing well.
+--9.1 EN: The surgeon will explain the details afterward.
+   KO: 자세한 내용은 나중에 집도의 선생님이 설명해드릴 거예요. (31)
+   DK: 퇴원 일정은 나중에 집도의 선생님이 설명해드릴 거예요. (30)
+   DK: 수술 비용은 나중에 집도의 선생님이 설명해드릴 거예요. (30)
+   tag=면담 연결 icon=stetho | why: The surgeon은 상세 설명의 주체를 정하고, afterward로 때를 말해 기다리면 설명을 듣는다는 것을 알려요.
+   chunks: The surgeon will / explain the details / afterward / .  || decoy: about the schedule
+   =B: The surgeon will explain the [details] afterward.
+    B: The surgeon will explain the [rumors] afterward.
+    B: The surgeon will explain the [prices] afterward.
+    B: The surgeon will explain the [rules] afterward.
+--9.2 EN: I want to give you accurate information, not guesses.
+   KO: 추측이 아니라 정확한 정보를 드리고 싶어요. (24)
+   DK: 추측이 아니라 정확한 날짜를 드리고 싶어요. (24)
+   DK: 추측이 아니라 정확한 숫자를 드리고 싶어요. (24)
+   tag=정확성 icon=shield | why: accurate information, not guesses로 추측이 아니라 확인된 정보만 전한다는 원칙을 밝혀 신뢰를 지켜요.
+   chunks: I want / to give you / accurate information / , not guesses / .  || decoy: and some opinions
+   =B: I want to give you [accurate] information, not guesses.
+    B: I want to give you [hidden] information, not guesses.
+    B: I want to give you [outdated] information, not guesses.
+    B: I want to give you [casual] information, not guesses.
+--9.3 EN: I'm not able to speak to the specifics right now.
+   KO: 지금은 구체적인 내용을 말씀드릴 수는 없어요. (25)
+   DK: 지금은 구체적인 날짜를 말씀드릴 수는 없어요. (25)
+   DK: 지금은 구체적인 이름을 말씀드릴 수는 없어요. (25)
+   tag=한계 인정 icon=lock | why: not able to speak to the specifics는 내가 말할 수 있는 범위의 한계를 정직하게 밝히는 완곡한 틀이에요. right now가 지금 한정임을 알려요.
+   chunks: I'm not able / to speak / to the specifics / right now / .  || decoy: to the family
+   =B: I'm not able to speak to the [specifics] right now.
+    B: I'm not able to speak to the [visitors] right now.
+    B: I'm not able to speak to the [press] right now.
+    B: I'm not able to speak to the [chaplain] right now.
+--9.4 EN: The surgeon is the right person to answer that question.
+   KO: 그 질문에는 집도의 선생님이 답해드리는 게 맞아요. (28)
+   DK: 그 질문에는 집도의 선생님이 답해드리는 게 빨라요. (28)
+   DK: 그 일정에는 집도의 선생님이 답해드리는 게 맞아요. (28)
+   tag=답변 연결 icon=stetho | why: the right person to answer는 질문을 피하는 게 아니라 정확히 답할 사람에게 잇는 말이에요.
+   chunks: The surgeon is / the right person / to answer / that question / .  || decoy: to repeat
+   =B: The surgeon is the [right] person to answer that question.
+    B: The surgeon is the [wrong] person to answer that question.
+    B: The surgeon is the [last] person to answer that question.
+    B: The surgeon is the [newest] person to answer that question.
+  ORDER ko=정보 범위 소통 4문장 순서 tag=대화 흐름 | why: 말할 수 있는 것을 알리고, 말할 수 없는 부분의 한계를 밝힌 뒤, 그 질문은 집도의가 답한다고 잇고, 그분께 들으면 추측이 아닌 정확한 정보라고 맺는 순서예요. 'But'·'that question'·'From him'이 앞 줄을 가리켜요.
+   1. I can share that he's stable and doing well.  (안정적이고 잘 지내고 계신다는 건 말씀드릴 수 있어요/공유/speech)
+   2. But I'm not able to speak to the specifics right now.  (하지만 지금은 구체적인 내용을 말씀드릴 수는 없어요/한계/lock)
+   3. The surgeon is the right person to answer that question.  (그 질문은 집도의 선생님이 답하시는 게 맞아요/연결/stetho)
+   4. From him, you'll get accurate information, not guesses.  (집도의 선생님께 들으시면 추측이 아닌 정확한 정보예요/이유/shield)
+   swap12: But I'm not able to speak to the specifics right now. | I can share that he's stable and doing well. | The surgeon is the right person to answer that question. | From him, you'll get accurate information, not guesses.
+   swap23: I can share that he's stable and doing well. | The surgeon is the right person to answer that question. | But I'm not able to speak to the specifics right now. | From him, you'll get accurate information, not guesses.
+   swap34: I can share that he's stable and doing well. | But I'm not able to speak to the specifics right now. | From him, you'll get accurate information, not guesses. | The surgeon is the right person to answer that question.
+===== 10 다국어 가족 소통
+--10.0 EN: Your son is doing well — he's stable.
+   KO: 아드님은 잘 지내고 있고, 안정적이에요. (22)
+   DK: 아드님은 잘 지내고 있고, 지금 회복실에 있어요. (27)
+   DK: 따님은 잘 지내고 있고, 안정적이에요. (21)
+   tag=상태 전달 icon=monitor | why: Your son으로 가족에게 환자를 가족 관계로 부르고, he's stable로 가장 궁금한 상태부터 알려요.
+   chunks: Your son is doing / well / — he's stable / .  || decoy: and tired
+   =B: Your son is doing well — he's [stable].
+    B: Your son is doing well — he's [critical].
+    B: Your son is doing well — he's [unstable].
+    B: Your son is doing well — he's [transferred].
+--10.1 EN: Let me get an interpreter so we understand each other.
+   KO: 서로 잘 이해할 수 있게 통역사를 불러올게요. (25)
+   DK: 서로 잘 이해할 수 있게 쓰시는 언어부터 여쭤볼게요. (29)
+   DK: 제 말을 잘 이해하시게 통역사를 불러올게요. (24)
+   tag=통역 제안 icon=speech | why: Let me get ~으로 상대가 요청하기 전에 내가 먼저 하겠다고 말해요. so we understand each other는 이유를 상호 이해로 둬 상대를 탓하지 않아요.
+   chunks: Let me get / an interpreter / so we understand / each other / .  || decoy: to help us
+   =B: Let me get an [interpreter] so we understand each other.
+    B: Let me get an [orderly] so we understand each other.
+    B: Let me get an [attendant] so we understand each other.
+    B: Let me get an [escort] so we understand each other.
+--10.2 EN: I'll speak slowly and make sure you follow.
+   KO: 천천히 말할게요, 이해되시는지 확인하면서요. (24)
+   DK: 천천히 말할게요, 이해되시는지 반복하면서요. (24)
+   DK: 크게 말할게요, 이해되시는지 확인하면서요. (23)
+   tag=천천히 말하기 icon=speech | why: I'll speak slowly로 내가 맞춰 말하겠다고 해 이해가 느린 것이 상대 탓이 되지 않게 해요.
+   chunks: I'll speak slowly / and make sure / you follow / .  || decoy: and loudly
+   =B: I'll speak [slowly] and make sure you follow.
+    B: I'll speak [loudly] and make sure you follow.
+    B: I'll speak [quickly] and make sure you follow.
+    B: I'll speak [harshly] and make sure you follow.
+--10.3 EN: The interpreter can explain everything in your language.
+   KO: 통역사가 모든 걸 어머님 언어로 설명해드릴 수 있어요. (30)
+   DK: 통역사가 모든 걸 영어로 설명해드릴 수 있어요. (26)
+   DK: 통역사가 모든 걸 천천히 설명해드릴 수 있어요. (26)
+   tag=통역 안내 icon=speech | why: can explain everything in your language로 가족이 모국어로 모든 것을 들을 수 있음을 알려요.
+   chunks: The interpreter can / explain everything / in your language / .  || decoy: on the phone
+   =B: The interpreter can explain everything in your [language].
+    B: The interpreter can explain everything in your [room].
+    B: The interpreter can explain everything in your [file].
+    B: The interpreter can explain everything in your [car].
+--10.4 EN: Please tell me if anything isn't clear.
+   KO: 혹시 명확하지 않은 게 있으면 말씀해 주세요. (25)
+   DK: 혹시 불편한 게 있으면 말씀해 주세요. (21)
+   DK: 혹시 명확하지 않은 게 있으면 적어 주세요. (24)
+   tag=이해 확인 icon=bell | why: Please tell me if anything isn't clear는 이해 못 한 것을 말해도 된다는 허락이라, 모르는 채 넘어가지 않게 해요.
+   chunks: Please tell me / if anything / isn't clear / .  || decoy: about the surgery
+   =B: Please tell me if anything isn't [clear].
+    B: Please tell me if anything isn't [safe].
+    B: Please tell me if anything isn't [true].
+    B: Please tell me if anything isn't [late].
+  ORDER ko=다국어 가족 소통 4문장 순서 tag=대화 흐름 | why: 상태를 먼저 전하고, 그 이상은 통역사를 통해 전하겠다고 한 뒤, 통역사가 할 일을 알리고, 그래도 모르면 말해 달라고 청하는 순서예요. 'more than that'·'They'·'any of it still'이 앞 줄을 가리켜요.
+   1. Your son is doing well and he's stable.  (아드님은 잘 지내고 안정적이에요/상태/monitor)
+   2. To tell you more than that, let me get an interpreter.  (그 이상 말씀드리려면 통역사를 불러올게요/제안/speech)
+   3. They can explain everything in your language.  (통역사가 모든 걸 어머님 언어로 설명해요/안내/speech)
+   4. If any of it still isn't clear, please tell me.  (그래도 명확하지 않은 게 있으면 말씀해 주세요/확인/bell)
+   swap12: To tell you more than that, let me get an interpreter. | Your son is doing well and he's stable. | They can explain everything in your language. | If any of it still isn't clear, please tell me.
+   swap23: Your son is doing well and he's stable. | They can explain everything in your language. | To tell you more than that, let me get an interpreter. | If any of it still isn't clear, please tell me.
+   swap34: Your son is doing well and he's stable. | To tell you more than that, let me get an interpreter. | If any of it still isn't clear, please tell me. | They can explain everything in your language.
+===== 11 소아 보호자 소통
+--11.0 EN: Your daughter is in very good hands.
+   KO: 따님은 아주 잘 돌봐드리고 있으니 안심하세요. (25)
+   DK: 아드님은 아주 잘 돌봐드리고 있으니 안심하세요. (26)
+   DK: 따님은 아주 좋은 병실에 계시니 안심하세요. (24)
+   tag=안심 icon=shield | why: in very good hands는 맡겨진 사람이 믿을 만하다는 관용 표현이에요. 결과를 장담하지 않고 지금의 돌봄 수준만 말해요.
+   chunks: Your daughter is / in very good / hands / .  || decoy: in very busy
+   =B: Your daughter is in very good [hands].
+    B: Your daughter is in very good [company].
+    B: Your daughter is in very good [spirits].
+    B: Your daughter is in very good [time].
+--11.1 EN: The pediatric team specializes in caring for children.
+   KO: 소아과 팀은 아이들을 돌보는 데 전문이에요. (24)
+   DK: 소아과 팀은 아이들을 이송하는 데 전문이에요. (25)
+   DK: 소아과 팀은 아이들을 씻기는 데 전문이에요. (24)
+   tag=전문성 icon=baby | why: specializes in은 그 분야를 전문으로 한다는 뜻이라, 아이를 돌보는 능력을 근거로 안심시켜요.
+   chunks: The pediatric team / specializes in caring / for children / .  || decoy: for adults
+   =B: The [pediatric] team specializes in caring for children.
+    B: The [geriatric] team specializes in caring for children.
+    B: The [cardiac] team specializes in caring for children.
+    B: The [orthopedic] team specializes in caring for children.
+--11.2 EN: I'll bring you to her as soon as she's in recovery.
+   KO: 회복실로 옮기시면 바로 따님께 모셔갈게요. (23)
+   DK: 회복실로 옮기시면 바로 알려드릴게요. (20)
+   DK: 회복실로 옮기시면 바로 따님께 먼저 가볼게요. (25)
+   tag=재회 약속 icon=baby | why: as soon as she's in recovery로 가족을 데려갈 때를 명확히 정해요. bring you to her은 직원이 안내한다는 뜻이에요.
+   chunks: I'll bring you / to her / as soon as / she's in recovery / .  || decoy: and see her
+   =B: I'll bring you to her as soon as she's in [recovery].
+    B: I'll bring you to her as soon as she's in [surgery].
+    B: I'll bring you to her as soon as she's in [triage].
+    B: I'll bring you to her as soon as she's in [radiology].
+--11.3 EN: She'll have a nurse watching her closely the whole time.
+   KO: 간호사가 계속 곁에서 세심하게 지켜볼 거예요. (25)
+   DK: 간호사가 계속 곁에서 따뜻하게 말을 걸 거예요. (26)
+   DK: 의사가 계속 곁에서 세심하게 지켜볼 거예요. (24)
+   tag=지속 관찰 icon=stetho | why: the whole time은 처음부터 끝까지 이어진다는 말이라, 한시도 방치되지 않는다는 느낌을 줘요.
+   chunks: She'll have a nurse / watching her closely / the whole / time / .  || decoy: and her doctor
+   =B: She'll have a nurse watching her closely the [whole] time.
+    B: She'll have a nurse watching her closely the [first] time.
+    B: She'll have a nurse watching her closely the [last] time.
+    B: She'll have a nurse watching her closely the [same] time.
+--11.4 EN: You'll be able to see her very soon.
+   KO: 곧 따님을 보실 수 있을 거예요. (18)
+   DK: 곧 따님께 전화하실 수 있을 거예요. (20)
+   DK: 곧 사진을 보실 수 있을 거예요. (18)
+   tag=면회 예고 icon=baby | why: very soon은 대략 가까운 때를 알리는 말이라 시각을 약속하지 않으면서 곧 만날 수 있다는 기대를 줘요.
+   chunks: You'll be able / to see her / very soon / .  || decoy: and say hello
+   =B: You'll be able to [see] her very soon.
+    B: You'll be able to [feed] her very soon.
+    B: You'll be able to [bathe] her very soon.
+    B: You'll be able to [dress] her very soon.
+  ORDER ko=소아 보호자 소통 4문장 순서 tag=대화 흐름 | why: 아이를 잘 맡았다고 안심시키고, 그 근거로 소아 전문 팀을 들고, 그 팀 간호사가 곁에서 지켜본다고 알린 뒤, 회복실에서 직접 보게 해 주겠다고 맺는 순서예요. 'That's because'·'their'가 앞 줄을 가리켜요.
+   1. Your daughter is in very good hands.  (따님은 아주 잘 돌봐드리고 있어요/안심/shield)
+   2. That's because the pediatric team specializes in caring for children.  (소아과 팀이 아이들을 돌보는 데 전문이라서 그래요/근거/baby)
+   3. One of their nurses will watch her closely the whole time.  (그 팀 간호사가 내내 세심하게 지켜볼 거예요/관찰/stetho)
+   4. As soon as she's in recovery, I'll bring you to her to see for yourself.  (회복실에 오면 바로 모셔가서 직접 보실 수 있게 할게요/약속/baby)
+   swap12: That's because the pediatric team specializes in caring for children. | Your daughter is in very good hands. | One of their nurses will watch her closely the whole time. | As soon as she's in recovery, I'll bring you to her to see for yourself.
+   swap23: Your daughter is in very good hands. | One of their nurses will watch her closely the whole time. | That's because the pediatric team specializes in caring for children. | As soon as she's in recovery, I'll bring you to her to see for yourself.
+   swap34: Your daughter is in very good hands. | That's because the pediatric team specializes in caring for children. | As soon as she's in recovery, I'll bring you to her to see for yourself. | One of their nurses will watch her closely the whole time.
+===== 12 면회 규정 설명
+--12.0 EN: We keep recovery calm, so one visitor at a time.
+   KO: 회복실을 차분하게 유지하려고 한 번에 한 분만 면회하실 수 있어요. (37)
+   DK: 회복실을 깨끗하게 유지하려고 한 번에 한 분만 면회하실 수 있어요. (37)
+   DK: 병실을 차분하게 유지하려고 한 번에 한 분만 면회하실 수 있어요. (36)
+   tag=규정 이유 icon=lock | why: so one visitor at a time은 앞의 이유(조용한 회복실)의 결과로 규칙을 말해, 규칙이 아니라 이유부터 전해요.
+   chunks: We keep / recovery calm / , so one visitor / at a time / .  || decoy: the halls calm
+   =B: We keep recovery [calm], so one visitor at a time.
+    B: We keep recovery [loud], so one visitor at a time.
+    B: We keep recovery [dark], so one visitor at a time.
+    B: We keep recovery [crowded], so one visitor at a time.
+--12.1 EN: It helps us monitor her closely and safely.
+   KO: 이렇게 하면 저희가 더 안전하고 세심하게 지켜볼 수 있어요. (33)
+   DK: 이렇게 하면 저희가 더 안전하고 세심하게 안내할 수 있어요. (33)
+   DK: 이렇게 하면 저희가 더 빠르고 세심하게 지켜볼 수 있어요. (32)
+   tag=효과 설명 icon=monitor | why: It helps us monitor her closely and safely로 규칙이 환자 감시에 도움이 된다는 이유를 말해요.
+   chunks: It helps us / monitor her closely / and safely / .  || decoy: and quietly
+   =B: It helps us [monitor] her closely and safely.
+    B: It helps us [visit] her closely and safely.
+    B: It helps us [meet] her closely and safely.
+    B: It helps us [bathe] her closely and safely.
+--12.2 EN: You can switch out so everyone gets to see her.
+   KO: 교대로 들어가시면 다들 뵐 수 있어요. (21)
+   DK: 교대로 들어가시면 오래 뵐 수 있어요. (21)
+   DK: 교대로 들어가시면 두 분만 뵐 수 있어요. (23)
+   tag=교대 안내 icon=handshake2 | why: You can switch out으로 규칙 안에서 가능한 방법을 알려, 불만을 덜어요. so everyone gets to see her가 그 목적이에요.
+   chunks: You can switch out / so everyone / gets to see / her / .  || decoy: and sign in
+   =B: You can [switch] out so everyone gets to see her.
+    B: You can [sign] out so everyone gets to see her.
+    B: You can [check] out so everyone gets to see her.
+    B: You can [log] out so everyone gets to see her.
+--12.3 EN: This rule helps her rest and heal faster.
+   KO: 이 규칙 덕분에 환자분이 더 잘 쉬고 더 빨리 회복하실 수 있어요. (37)
+   DK: 이 규칙 덕분에 환자분이 더 잘 쉬고 더 빨리 깨어나실 수 있어요. (37)
+   DK: 이 규칙 덕분에 환자분이 더 잘 먹고 더 빨리 회복하실 수 있어요. (37)
+   tag=회복 이유 icon=home | why: helps her rest and heal faster는 규칙의 최종 이유를 환자 회복으로 돌려, 가족의 이해를 구해요.
+   chunks: This rule helps her / rest / and heal faster / .  || decoy: and leave
+   =B: This rule helps her rest and [heal] faster.
+    B: This rule helps her rest and [eat] faster.
+    B: This rule helps her rest and [drink] faster.
+    B: This rule helps her rest and [wake] faster.
+--12.4 EN: Please decide together who goes in first.
+   KO: 누가 먼저 들어가실지 함께 정해주세요. (21)
+   DK: 누가 먼저 들어가실지 저와 정해주세요. (21)
+   DK: 누가 먼저 이름을 적으실지 함께 정해주세요. (24)
+   tag=가족 결정 icon=handshake2 | why: Please decide together로 순서를 간호사가 정하지 않고 가족에게 맡겨 존중해요. who goes in first가 정할 것이에요.
+   chunks: Please decide together / who goes in / first / .  || decoy: who comes back
+   =B: Please decide together who goes in [first].
+    B: Please decide together who goes in [alone].
+    B: Please decide together who goes in [again].
+    B: Please decide together who goes in [twice].
+  ORDER ko=면회 규정 4문장 순서 tag=대화 흐름 | why: 규정을 이유와 함께 알리고, 그 규정의 효과를 설명한 뒤, 교대 방법을 안내하고, 교대를 위해 누가 먼저 들어갈지 가족이 정하게 맡기는 순서예요. 'That rule'·'For that'이 앞 줄을 가리켜요.
+   1. We keep recovery calm, so it's one visitor at a time.  (회복실을 차분하게 유지하려고 한 번에 한 분이에요/규정/lock)
+   2. That rule helps us monitor her closely and safely.  (그 규정 덕분에 더 세심하고 안전하게 지켜볼 수 있어요/이유/monitor)
+   3. You can switch out so everyone gets to see her.  (교대로 들어가시면 다들 뵐 수 있어요/방법/handshake2)
+   4. For that, please decide together who goes in first.  (그러려면 누가 먼저 들어가실지 함께 정해주세요/맡김/handshake2)
+   swap12: That rule helps us monitor her closely and safely. | We keep recovery calm, so it's one visitor at a time. | You can switch out so everyone gets to see her. | For that, please decide together who goes in first.
+   swap23: We keep recovery calm, so it's one visitor at a time. | You can switch out so everyone gets to see her. | That rule helps us monitor her closely and safely. | For that, please decide together who goes in first.
+   swap34: We keep recovery calm, so it's one visitor at a time. | That rule helps us monitor her closely and safely. | For that, please decide together who goes in first. | You can switch out so everyone gets to see her.
+===== 13 추가 시술 결정 소통
+--13.0 EN: They found something that needs to be addressed now.
+   KO: 지금 바로 처리해야 할 걸 발견했어요. (21)
+   DK: 지금 바로 설명드려야 할 걸 발견했어요. (22)
+   DK: 지금 바로 처리해야 할 걸 찾고 있어요. (22)
+   tag=상황 설명 icon=speech | why: found something that needs to be addressed로 문제가 있었음을 구체적 병명 없이 말해, 성급한 결론을 피해요.
+   chunks: They found something / that needs / to be addressed / now / .  || decoy: that's wrong
+   =B: They found something that needs to be [addressed] now.
+    B: They found something that needs to be [ordered] now.
+    B: They found something that needs to be [signed] now.
+    B: They found something that needs to be [delayed] now.
+--13.1 EN: The surgeon will explain the details and options.
+   KO: 집도의 선생님이 자세한 내용과 선택지를 설명해주실 거예요. (32)
+   DK: 집도의 선생님이 자세한 내용과 비용을 설명해주실 거예요. (31)
+   DK: 집도의 선생님이 자세한 내용과 일정을 설명해주실 거예요. (31)
+   tag=면담 연결 icon=stetho | why: The surgeon will explain으로 자세한 설명을 해 줄 사람이 집도의임을 밝혀, 간호사가 추측하지 않게 해요.
+   chunks: The surgeon will explain / the details / and options / .  || decoy: and the schedule
+   =B: The surgeon will explain the details and [options].
+    B: The surgeon will explain the details and [rumors].
+    B: The surgeon will explain the details and [fees].
+    B: The surgeon will explain the details and [forms].
+--13.2 EN: I'll make sure your questions get answered.
+   KO: 궁금하신 것들이 다 답변되도록 챙길게요. (22)
+   DK: 궁금하신 것들이 다 기록되도록 챙길게요. (22)
+   DK: 궁금하신 것들이 다 전달되도록 챙길게요. (22)
+   tag=질문 챙김 icon=bell | why: I'll make sure로 직접 책임지고 챙기겠다는 약속이에요. get answered는 질문이 방치되지 않는다는 뜻이에요.
+   chunks: I'll make sure / your questions / get answered / .  || decoy: and heard
+   =B: I'll make sure your questions get [answered].
+    B: I'll make sure your questions get [recorded].
+    B: I'll make sure your questions get [printed].
+    B: I'll make sure your questions get [filed].
+--13.3 EN: This changes the plan a little, but she's still stable.
+   KO: 계획이 조금 바뀌긴 했지만, 여전히 안정적이세요. (27)
+   DK: 계획이 조금 바뀌긴 했지만, 여전히 마취 중이세요. (28)
+   DK: 계획이 조금 길어지긴 했지만, 여전히 안정적이세요. (28)
+   tag=상태 유지 icon=shield | why: This changes the plan a little은 계획 변경을 숨기지 않고 알리고, still stable로 현재 상태를 함께 전해요.
+   chunks: This changes the plan / a little / , but she's / still stable / .  || decoy: but she's resting
+   =B: This changes the plan a little, but she's still [stable].
+    B: This changes the plan a little, but she's still [numb].
+    B: This changes the plan a little, but she's still [dizzy].
+    B: This changes the plan a little, but she's still [thirsty].
+--13.4 EN: The surgeon will come speak with you as soon as possible.
+   KO: 집도의 선생님이 가능한 한 빨리 와서 말씀 나눌 거예요. (31)
+   DK: 집도의 선생님이 가능한 한 빨리 전화로 말씀 나눌 거예요. (32)
+   DK: 집도의 선생님이 이야기를 마치면 다시 들어가실 거예요. (30)
+   tag=면담 약속 icon=stetho | why: as soon as possible로 집도의가 가능한 한 빨리 온다는 것을 알려, 가족이 기다리는 시간이 의미 있게 돼요.
+   chunks: The surgeon will come / speak with you / as soon / as possible / .  || decoy: alone
+   =B: The surgeon will come speak with you as [soon] as possible.
+    B: The surgeon will come speak with you as [late] as possible.
+    B: The surgeon will come speak with you as [long] as possible.
+    B: The surgeon will come speak with you as [far] as possible.
+  ORDER ko=추가 시술 결정 4문장 순서 tag=대화 흐름 | why: 무엇을 발견했는지 알리고, 계획이 바뀌어도 안정적이라고 전한 뒤, 집도의가 직접 와서 이야기한다고 잇고, 그때 질문이 다 답변되도록 챙기겠다고 맺는 순서예요. 'This'·'then'이 앞 줄을 가리켜요.
+   1. They found something that needs to be addressed now.  (지금 바로 처리해야 할 걸 발견했어요/알림/speech)
+   2. This changes the plan a little, but she's still stable.  (계획이 조금 바뀌었지만 여전히 안정적이세요/상태/shield)
+   3. The surgeon will come speak with you as soon as possible.  (집도의 선생님이 가능한 한 빨리 와서 말씀 나눌 거예요/면담/stetho)
+   4. I'll make sure all of your questions get answered then.  (그때 궁금하신 것들이 다 답변되도록 챙길게요/약속/bell)
+   swap12: This changes the plan a little, but she's still stable. | They found something that needs to be addressed now. | The surgeon will come speak with you as soon as possible. | I'll make sure all of your questions get answered then.
+   swap23: They found something that needs to be addressed now. | The surgeon will come speak with you as soon as possible. | This changes the plan a little, but she's still stable. | I'll make sure all of your questions get answered then.
+   swap34: They found something that needs to be addressed now. | This changes the plan a little, but she's still stable. | I'll make sure all of your questions get answered then. | The surgeon will come speak with you as soon as possible.
+===== 14 종교적 요구 조율
+--14.0 EN: We'll do our best to honor your request.
+   KO: 요청하신 걸 존중해드리도록 최선을 다할게요. (24)
+   DK: 요청하신 걸 기록해드리도록 최선을 다할게요. (24)
+   DK: 요청하신 걸 존중해드리도록 서둘러 볼게요. (23)
+   tag=요청 존중 icon=handshake2 | why: do our best는 결과를 장담하지 않으면서 노력을 약속해, 지킬 수 없는 약속을 피해요. honor는 요청의 가치를 존중한다는 뜻이에요.
+   chunks: We'll do our best / to honor / your request / .  || decoy: to review
+   =B: We'll do our best to honor your [request].
+    B: We'll do our best to honor your [order].
+    B: We'll do our best to honor your [bill].
+    B: We'll do our best to honor your [chart].
+--14.1 EN: I can arrange a moment before we take him back.
+   KO: 모시고 들어가기 전에 잠깐 시간을 마련해드릴 수 있어요. (31)
+   DK: 모시고 들어가기 전에 잠깐 자리를 마련해드릴 수 있어요. (31)
+   DK: 모시고 들어가기 전에 잠깐 통화를 연결해드릴 수 있어요. (31)
+   tag=시간 마련 icon=calendar | why: I can arrange는 직접 마련할 수 있다는 능력 표현이고, before we take him back으로 수술실에 들어가기 전이라는 때를 정해요.
+   chunks: I can arrange / a moment / before we take him / back / .  || decoy: an update
+   =B: I can arrange a moment [before] we take him back.
+    B: I can arrange a moment [after] we take him back.
+    B: I can arrange a moment [until] we take him back.
+    B: I can arrange a moment [once] we take him back.
+--14.2 EN: Our chaplain is also available if you'd like.
+   KO: 원하시면 저희 원목님도 도와드릴 수 있어요. (24)
+   DK: 원하시면 저희 원목님만 도와드릴 수 있어요. (24)
+   DK: 원하시면 저희 예배실도 안내해드릴 수 있어요. (25)
+   tag=자원 안내 icon=handshake2 | why: if you'd like로 제안만 하고 강요하지 않아, 신앙 지원을 받을지는 가족이 정하게 해요.
+   chunks: Our chaplain is / also available / if you'd like / .  || decoy: on the third floor
+   =B: Our chaplain is also [available] if you'd like.
+    B: Our chaplain is also [busy] if you'd like.
+    B: Our chaplain is also [absent] if you'd like.
+    B: Our chaplain is also [away] if you'd like.
+--14.3 EN: Please tell us if there's a practice that matters to you.
+   KO: 중요하게 여기시는 관습이 있으면 저희에게 말씀해 주세요. (31)
+   DK: 중요하게 여기시는 음식이 있으면 저희에게 말씀해 주세요. (31)
+   DK: 불편하게 여기시는 관습이 있으면 저희에게 말씀해 주세요. (31)
+   tag=존중 확인 icon=speech | why: Please tell us로 부탁하는 형태라 가족이 요구를 말하기 쉬워요. a practice that matters to you가 가족의 가치를 중심에 둬요.
+   chunks: Please tell us / if there's a practice / that matters / to you / .  || decoy: a concern
+   =B: Please tell us if there's a [practice] that matters to you.
+    B: Please tell us if there's a [charge] that matters to you.
+    B: Please tell us if there's a [chart] that matters to you.
+    B: Please tell us if there's a [menu] that matters to you.
+--14.4 EN: We want to respect what's important to your family.
+   KO: 가족분들께 중요한 걸 존중하고 싶어요. (21)
+   DK: 가족분들께 중요한 걸 확인하고 싶어요. (21)
+   DK: 가족분들께 부담되는 걸 줄이고 싶어요. (21)
+   tag=존중 icon=handshake2 | why: We want to는 의무가 아니라 바람으로 말해 진심으로 들려요. what's important to your family로 가족의 기준을 존중의 중심에 둬요.
+   chunks: We want / to respect / what's important / to your family / .  || decoy: to ask
+   =B: We want to [respect] what's important to your family.
+    B: We want to [question] what's important to your family.
+    B: We want to [replace] what's important to your family.
+    B: We want to [correct] what's important to your family.
+  ORDER ko=종교적 요구 조율 4문장 순서 tag=대화 흐름 | why: 존중하고 싶다는 마음을 먼저 말하고, 중요한 관습을 말해 달라고 청한 뒤, 최선을 다하겠다고 약속하고, 원목 지원을 제안하는 순서예요. 앞 줄을 가리키는 말이 순서를 잡아 줘요.
+   1. We want to respect what's important to your family.  (가족분들께 중요한 걸 존중하고 싶어요/존중/handshake2)
+   2. So please tell us if there's a practice that matters to you.  (그러니 중요한 관습이 있으면 말씀해 주세요/요청/speech)
+   3. We'll do our best to honor it.  (그걸 존중하도록 최선을 다할게요/약속/handshake2)
+   4. Our chaplain is also available if you'd like.  (원하시면 원목님도 도와드릴 수 있어요/제안/handshake2)
+   swap12: So please tell us if there's a practice that matters to you. | We want to respect what's important to your family. | We'll do our best to honor it. | Our chaplain is also available if you'd like.
+   swap23: We want to respect what's important to your family. | We'll do our best to honor it. | So please tell us if there's a practice that matters to you. | Our chaplain is also available if you'd like.
+   swap34: We want to respect what's important to your family. | So please tell us if there's a practice that matters to you. | Our chaplain is also available if you'd like. | We'll do our best to honor it.
+===== 15 술중 합병증 소식 전달
+--15.0 EN: There was a complication during the surgery.
+   KO: 수술 중에 합병증이 하나 있었어요. (19)
+   DK: 회복 중에 합병증이 하나 있었어요. (19)
+   DK: 마취 중에 합병증이 하나 있었어요. (19)
+   tag=사실 고지 icon=bell | why: There was로 지나간 사실을 직설로 알리고, complication이라는 정확한 말을 써서 얼버무리지 않아요.
+   chunks: There was / a complication / during the surgery / .  || decoy: during the transfer
+   =B: There was a complication [during] the surgery.
+    B: There was a complication [before] the surgery.
+    B: There was a complication [after] the surgery.
+    B: There was a complication [despite] the surgery.
+--15.1 EN: The team is managing it and she's stable right now.
+   KO: 팀에서 대응하고 있고, 지금은 안정적이세요. (24)
+   DK: 팀에서 상의하고 있고, 지금은 안정적이세요. (24)
+   DK: 팀에서 대응하고 있고, 지금은 회복실에 계세요. (26)
+   tag=현황 전달 icon=monitor | why: 문제를 말한 바로 뒤에 팀이 대응 중이고 환자가 안정적이라는 현재 상태를 붙여, 나쁜 소식이 혼자 남지 않게 해요.
+   chunks: The team is / managing it / and she's stable / right now / .  || decoy: and she's asleep
+   =B: The team is [managing] it and she's stable right now.
+    B: The team is [recording] it and she's stable right now.
+    B: The team is [repeating] it and she's stable right now.
+    B: The team is [canceling] it and she's stable right now.
+--15.2 EN: The surgeon will explain everything in detail.
+   KO: 집도의 선생님이 자세히 다 설명해드릴 거예요. (25)
+   DK: 집도의 선생님이 자세히 선택지를 설명해드릴 거예요. (28)
+   DK: 집도의 선생님이 자세히 다 들어드릴 거예요. (24)
+   tag=면담 연결 icon=stetho | why: will explain으로 설명할 사람을 집도의로 못 박고, everything in detail로 일부가 아니라 전체를 자세히 듣게 된다고 알려요.
+   chunks: The surgeon will explain / everything / in detail / .  || decoy: in writing
+   =B: The surgeon will explain [everything] in detail.
+    B: The surgeon will explain [something] in detail.
+    B: The surgeon will explain [nothing] in detail.
+    B: The surgeon will explain [little] in detail.
+--15.3 EN: I know this is hard news to hear.
+   KO: 받아들이기 힘든 소식이라는 거 알아요. (21)
+   DK: 받아들이기 힘든 결정이라는 거 알아요. (21)
+   DK: 기다리기 힘든 하루라는 거 알아요. (19)
+   tag=공감 icon=faceWorried | why: I know로 시작하면 판단이 아니라 공감으로 들려요. hard news to hear가 소식이 어렵다는 점을 대신 인정해요.
+   chunks: I know / this is hard / news to hear / .  || decoy: to share
+   =B: I know this is [hard] news to hear.
+    B: I know this is [good] news to hear.
+    B: I know this is [old] news to hear.
+    B: I know this is [quick] news to hear.
+--15.4 EN: I'll stay with you until the surgeon comes to talk.
+   KO: 집도의 선생님이 이야기하러 오실 때까지 함께 있을게요. (30)
+   DK: 집도의 선생님이 이야기를 마치실 때까지 함께 있을게요. (30)
+   DK: 집도의 선생님이 이야기하러 오실 때까지 저쪽에 있을게요. (31)
+   tag=곁 지킴 icon=handshake2 | why: I'll stay with you는 해결책 대신 곁에 있겠다는 약속이라 기다림의 불안을 함께 견뎌요. until이 약속의 끝을 정해요.
+   chunks: I'll stay with you / until the surgeon / comes / to talk / .  || decoy: after the surgeon
+   =B: I'll stay with you [until] the surgeon comes to talk.
+    B: I'll stay with you [before] the surgeon comes to talk.
+    B: I'll stay with you [after] the surgeon comes to talk.
+    B: I'll stay with you [since] the surgeon comes to talk.
+  ORDER ko=술중 합병증 4문장 순서 tag=대화 흐름 | why: 합병증이 있었다는 사실을 먼저 알리고, 팀이 대응 중이고 안정적이라는 현재를 전한 뒤, 그 두 가지를 설명할 사람을 알리고, 곁에 있겠다고 약속하는 순서예요. 'it'·'both of those'·'until then'이 앞 줄을 가리켜요.
+   1. There was a complication during the surgery.  (수술 중에 합병증이 하나 있었어요/사실/bell)
+   2. The team is managing it, and she's stable right now.  (팀이 대응하고 있고 지금은 안정적이세요/현황/monitor)
+   3. The surgeon will explain both of those in detail.  (집도의 선생님이 그 두 가지를 자세히 설명해드릴 거예요/연결/stetho)
+   4. I know that's hard news, and I'll stay with you until then.  (힘든 소식이라는 거 알아요, 그때까지 함께 있을게요/지지/handshake2)
+   swap12: The team is managing it, and she's stable right now. | There was a complication during the surgery. | The surgeon will explain both of those in detail. | I know that's hard news, and I'll stay with you until then.
+   swap23: There was a complication during the surgery. | The surgeon will explain both of those in detail. | The team is managing it, and she's stable right now. | I know that's hard news, and I'll stay with you until then.
+   swap34: There was a complication during the surgery. | The team is managing it, and she's stable right now. | I know that's hard news, and I'll stay with you until then. | The surgeon will explain both of those in detail.
+===== 16 나쁜 소식 준비·전달
+--16.0 EN: Let's sit down together — I have some difficult news.
+   KO: 함께 앉아요, 힘든 소식을 전해드려야 해서요. (25)
+   DK: 함께 걸어요, 힘든 소식을 전해드려야 해서요. (25)
+   DK: 함께 앉아요, 힘든 질문을 드려야 해서요. (23)
+   tag=소식 예고 icon=faceWorried | why: 앉자고 먼저 청하고 difficult news로 예고하면, 충격을 받기 전에 마음의 준비를 할 시간을 줘요.
+   chunks: Let's sit down / together / — I have / some difficult news / .  || decoy: by the window
+   =B: Let's sit down [together] — I have some difficult news.
+    B: Let's sit down [alone] — I have some difficult news.
+    B: Let's sit down [apart] — I have some difficult news.
+    B: Let's sit down [separately] — I have some difficult news.
+--16.1 EN: I want to be honest with you about what happened.
+   KO: 무슨 일이 있었는지 솔직하게 말씀드리고 싶어요. (26)
+   DK: 무슨 일이 있었는지 천천히 말씀드리고 싶어요. (25)
+   DK: 어떻게 하면 좋을지 솔직하게 말씀드리고 싶어요. (26)
+   tag=솔직한 전달 icon=speech | why: honest를 앞에 말해 얼버무리지 않겠다고 약속하고, what happened로 사실을 말하겠다는 범위를 정해요.
+   chunks: I want to be honest / with you / about what / happened / .  || decoy: about the plan
+   =B: I want to be [honest] with you about what happened.
+    B: I want to be [formal] with you about what happened.
+    B: I want to be [cheerful] with you about what happened.
+    B: I want to be [casual] with you about what happened.
+--16.2 EN: Take whatever time you need, and I'm right here.
+   KO: 필요하신 만큼 시간을 가지세요, 제가 바로 여기 있어요. (31)
+   DK: 필요하신 만큼 물을 드세요, 제가 바로 여기 있어요. (29)
+   DK: 필요하신 만큼 휴지를 쓰세요, 제가 바로 여기 있어요. (30)
+   tag=곁에 있기 icon=handshake2 | why: Take whatever time you need로 서두르지 않겠다고 허락하고, I'm right here로 곁에 머문다는 점을 분명히 해요.
+   chunks: Take whatever time / you need / , and I'm / right here / .  || decoy: Take whatever seat
+   =B: Take whatever [time] you need, and I'm right here.
+    B: Take whatever [notes] you need, and I'm right here.
+    B: Take whatever [photos] you need, and I'm right here.
+    B: Take whatever [snacks] you need, and I'm right here.
+--16.3 EN: There's no easy way to say this.
+   KO: 쉽게 말씀드릴 방법은 없네요. (16)
+   DK: 빨리 말씀드릴 방법은 없네요. (16)
+   DK: 쉽게 말씀드릴 이유는 없네요. (16)
+   tag=완곡 예고 icon=faceWorried | why: no easy way to say this는 충격적인 말을 꺼내기 전에 어렵다는 걸 인정해, 상대가 마음을 다잡을 틈을 줘요.
+   chunks: There's no easy way / to say / this / .  || decoy: to fix
+   =B: There's no [easy] way to say this.
+    B: There's no [quick] way to say this.
+    B: There's no [polite] way to say this.
+    B: There's no [short] way to say this.
+--16.4 EN: I'm not going anywhere — I'll stay right beside you.
+   KO: 저는 어디 안 가요, 계속 바로 곁에 있을게요. (26)
+   DK: 저는 어디 안 가요, 계속 바로 뒤에 있을게요. (26)
+   DK: 저는 어디 안 가요, 계속 바로 문 앞에 있을게요. (28)
+   tag=곁 지킴 icon=handshake2 | why: not going anywhere로 떠나지 않겠다고 부정으로 못 박고, right beside you로 거리까지 구체적으로 말해 안정감을 줘요.
+   chunks: I'm not going / anywhere / — I'll stay right / beside you / .  || decoy: behind you
+   =B: I'm not going [anywhere] — I'll stay right beside you.
+    B: I'm not going [somewhere] — I'll stay right beside you.
+    B: I'm not going [everywhere] — I'll stay right beside you.
+    B: I'm not going [nowhere] — I'll stay right beside you.
+  ORDER ko=나쁜 소식 전달 4문장 순서 tag=대화 흐름 | why: 앉자고 청하며 예고하고, 그 소식을 쉽게 말할 방법이 없으니 바로 말하겠다고 한 뒤, 무슨 일이 있었는지 솔직히 말하고, 그 뒤에 시간을 가지라며 곁에 있겠다고 맺는 순서예요. 'it'·'Being direct'·'Afterward'가 앞 줄을 가리켜요.
+   1. Let's sit down together — I have some difficult news.  (함께 앉아요, 힘든 소식이 있어요/예고/faceWorried)
+   2. There's no easy way to say it, so I'll be direct.  (쉽게 말씀드릴 방법이 없어서 바로 말씀드릴게요/인정/faceWorried)
+   3. Being direct means telling you honestly what happened.  (바로 말씀드린다는 건 무슨 일이 있었는지 솔직히 말씀드린다는 거예요/솔직/speech)
+   4. Afterward, take whatever time you need — I'm right here.  (그 뒤에 필요한 만큼 시간을 가지세요, 제가 여기 있어요/곁/handshake2)
+   swap12: There's no easy way to say it, so I'll be direct. | Let's sit down together — I have some difficult news. | Being direct means telling you honestly what happened. | Afterward, take whatever time you need — I'm right here.
+   swap23: Let's sit down together — I have some difficult news. | Being direct means telling you honestly what happened. | There's no easy way to say it, so I'll be direct. | Afterward, take whatever time you need — I'm right here.
+   swap34: Let's sit down together — I have some difficult news. | There's no easy way to say it, so I'll be direct. | Afterward, take whatever time you need — I'm right here. | Being direct means telling you honestly what happened.
+===== 17 사망 소식 지원
+--17.0 EN: I'm so deeply sorry for your loss.
+   KO: 깊은 애도의 마음을 전합니다. (16)
+   DK: 깊은 존경의 마음을 전합니다. (16)
+   DK: 깊은 배려의 마음을 전합니다. (16)
+   tag=애도 icon=handshake2 | why: deeply sorry for your loss는 사망 소식 뒤에 쓰는 표준 애도 표현이에요. loss가 죽음을 직접 말하지 않으면서 상실을 인정해요.
+   chunks: I'm so deeply sorry / for your / loss / .  || decoy: for my
+   =B: I'm so deeply sorry for your [loss].
+    B: I'm so deeply sorry for your [wait].
+    B: I'm so deeply sorry for your [delay].
+    B: I'm so deeply sorry for your [cost].
+--17.1 EN: Take all the time you need — I'm here with you.
+   KO: 필요한 만큼 시간을 가지세요, 제가 곁에 있을게요. (28)
+   DK: 필요한 만큼 앉아 계세요, 제가 곁에 있을게요. (26)
+   DK: 필요한 만큼 시간을 가지세요, 제가 문 밖에 있을게요. (30)
+   tag=곁에 있기 icon=handshake2 | why: all the time you need로 서두르지 않아도 된다고 허락해요. 슬픔에는 정해진 속도가 없다는 점을 존중하는 말이에요.
+   chunks: Take all the time / you need / — I'm here / with you / .  || decoy: Take all the forms
+   =B: Take all the time you [need] — I'm here with you.
+    B: Take all the time you [spend] — I'm here with you.
+    B: Take all the time you [waste] — I'm here with you.
+    B: Take all the time you [borrow] — I'm here with you.
+--17.2 EN: When you're ready, I can help with the next steps.
+   KO: 준비되시면 다음 절차를 도와드릴게요. (20)
+   DK: 준비되시면 다음 설명을 도와드릴게요. (20)
+   DK: 준비되시면 다음 주에 도와드릴게요. (19)
+   tag=다음 절차 icon=compass | why: When you're ready로 가족이 감당할 수 있는 때를 정하게 맡겨 서두르지 않는다는 신호를 줘요. next steps는 행정 절차를 부드럽게 가리켜요.
+   chunks: When you're ready / , I can help / with the next / steps / .  || decoy: by phone
+   =B: When you're [ready], I can help with the next steps.
+    B: When you're [alone], I can help with the next steps.
+    B: When you're [outside], I can help with the next steps.
+    B: When you're [upstairs], I can help with the next steps.
+--17.3 EN: There are no words for a loss like this.
+   KO: 이런 상실에는 어떤 말도 부족하네요. (20)
+   DK: 이런 상실에는 어떤 시간도 부족하네요. (21)
+   DK: 이런 결정에는 어떤 말도 부족하네요. (20)
+   tag=애도 icon=faceWorried | why: no words for로 말이 부족하다고 인정하면 위로를 꾸며 내지 않고 슬픔을 있는 그대로 받아들이는 말이 돼요.
+   chunks: There are / no words / for a loss / like this / .  || decoy: for a day
+   =B: There are no [words] for a loss like this.
+    B: There are no [tests] for a loss like this.
+    B: There are no [forms] for a loss like this.
+    B: There are no [signs] for a loss like this.
+--17.4 EN: Whenever you're ready, we can talk about what comes next.
+   KO: 준비되실 때, 다음에 무엇을 할지 함께 이야기해요. (28)
+   DK: 준비되실 때, 다음에 누가 올지 함께 이야기해요. (27)
+   DK: 준비되실 때, 지난 일에 대해 함께 이야기해요. (26)
+   tag=다음 대화 icon=compass | why: Whenever you're ready는 가족이 정하는 속도에 맞추겠다는 뜻이에요. comes next는 다음 단계를 부드럽게 가리켜요.
+   chunks: Whenever you're ready / , we can talk / about what / comes next / .  || decoy: happened
+   =B: Whenever you're ready, we can talk [about] what comes next.
+    B: Whenever you're ready, we can talk [against] what comes next.
+    B: Whenever you're ready, we can talk [around] what comes next.
+    B: Whenever you're ready, we can talk [within] what comes next.
+  ORDER ko=사망 소식 지원 4문장 순서 tag=대화 흐름 | why: 애도를 먼저 전하고, 그 말로는 부족하다고 인정한 뒤, 시간을 가지라고 하고, 때가 되면 다음 일을 이야기하자고 맺는 순서예요. 'Those words'·'Whenever that is'가 앞 줄을 가리켜요.
+   1. I'm so deeply sorry for your loss.  (깊은 애도의 마음을 전합니다/애도/handshake2)
+   2. Those words feel too small for a loss like this.  (그 말로는 이런 상실에 턱없이 부족하네요/인정/faceWorried)
+   3. Take all the time you need — I'm here with you.  (필요한 만큼 시간을 가지세요, 제가 곁에 있을게요/곁/handshake2)
+   4. Whenever that is, we can talk about what comes next.  (그때가 언제든 다음에 무엇을 할지 이야기해요/다음/compass)
+   swap12: Those words feel too small for a loss like this. | I'm so deeply sorry for your loss. | Take all the time you need — I'm here with you. | Whenever that is, we can talk about what comes next.
+   swap23: I'm so deeply sorry for your loss. | Take all the time you need — I'm here with you. | Those words feel too small for a loss like this. | Whenever that is, we can talk about what comes next.
+   swap34: I'm so deeply sorry for your loss. | Those words feel too small for a loss like this. | Whenever that is, we can talk about what comes next. | Take all the time you need — I'm here with you.
+===== 18 분노·항의 가족 대응
+--18.0 EN: I can see how upset and angry you are.
+   KO: 많이 속상하고 화나신 게 보여요. (18)
+   DK: 많이 속상하고 걱정되시는 게 보여요. (20)
+   DK: 많이 피곤하고 화나신 게 보여요. (18)
+   tag=감정 인정 icon=faceAngry | why: I can see로 상대의 감정을 내가 알아봤다고 말해, 반박이 아니라 인정으로 시작해요. upset과 angry를 둘 다 이름 붙여요.
+   chunks: I can see / how upset / and angry / you are / .  || decoy: and worried
+   =B: I can see how upset and [angry] you are.
+    B: I can see how upset and [hopeful] you are.
+    B: I can see how upset and [thankful] you are.
+    B: I can see how upset and [relaxed] you are.
+--18.1 EN: Your feelings are completely valid right now.
+   KO: 지금 느끼시는 감정은 충분히 정당해요. (21)
+   DK: 지금 느끼시는 감정은 충분히 말씀하셔도 돼요. (25)
+   DK: 지금 느끼시는 슬픔은 충분히 정당해요. (21)
+   tag=감정 정당화 icon=handshake2 | why: valid는 감정이 맞고 틀린 것이 아니라 존중받을 만하다는 뜻이에요. completely로 조건 없이 인정해요.
+   chunks: Your feelings are / completely valid / right now / .  || decoy: about the delay
+   =B: Your feelings are completely [valid] right now.
+    B: Your feelings are completely [public] right now.
+    B: Your feelings are completely [mutual] right now.
+    B: Your feelings are completely [private] right now.
+--18.2 EN: Let's sit down and I'll answer everything I can.
+   KO: 앉으세요, 제가 답할 수 있는 건 다 답해드릴게요. (28)
+   DK: 앉으세요, 제가 답할 수 있는 건 다 적어드릴게요. (28)
+   DK: 앉으세요, 제가 답할 수 있는 건 세 가지만 답해드릴게요. (32)
+   tag=응대 약속 icon=handshake2 | why: Let's sit down은 대화를 위한 자세를 함께 만들자는 제안이고, everything I can로 답의 범위를 정직하게 말해요.
+   chunks: Let's sit down / and I'll answer / everything / I can / .  || decoy: and I'll write
+   =B: Let's sit down and I'll [answer] everything I can.
+    B: Let's sit down and I'll [record] everything I can.
+    B: Let's sit down and I'll [print] everything I can.
+    B: Let's sit down and I'll [forward] everything I can.
+--18.3 EN: I hear you, and I want to understand what's wrong.
+   KO: 듣고 있어요, 뭐가 잘못됐는지 이해하고 싶어요. (26)
+   DK: 듣고 있어요, 뭐가 궁금한지 이해하고 싶어요. (25)
+   DK: 듣고 있어요, 뭐가 필요한지 이해하고 싶어요. (25)
+   tag=경청 icon=speech | why: I hear you는 동의가 아니라 들었다는 신호라 방어 없이 대화를 엽니다. what's wrong로 상대의 관점을 알고 싶다고 말해요.
+   chunks: I hear you / , and I want / to understand / what's wrong / .  || decoy: to explain
+   =B: I hear you, and I want to [understand] what's wrong.
+    B: I hear you, and I want to [defend] what's wrong.
+    B: I hear you, and I want to [argue] what's wrong.
+    B: I hear you, and I want to [dispute] what's wrong.
+--18.4 EN: Let's find a quiet place where we can talk this through.
+   KO: 조용한 곳을 찾아서 차근차근 이야기해봐요. (23)
+   DK: 조용한 곳을 찾아서 차근차근 정리해봐요. (22)
+   DK: 넓은 곳을 찾아서 차근차근 이야기해봐요. (22)
+   tag=장소 제안 icon=compass | why: quiet place로 조용한 장소를 먼저 찾자고 해 감정이 격해진 대화를 가라앉힐 환경을 만들어요. talk this through는 끝까지 이야기한다는 뜻이에요.
+   chunks: Let's find / a quiet place / where we can / talk this through / .  || decoy: a waiting room
+   =B: Let's find a [quiet] place where we can talk this through.
+    B: Let's find a [crowded] place where we can talk this through.
+    B: Let's find a [public] place where we can talk this through.
+    B: Let's find a [noisy] place where we can talk this through.
+  ORDER ko=분노 가족 대응 4문장 순서 tag=대화 흐름 | why: 감정을 알아봤다고 하고, 그 감정이 정당하다고 인정한 뒤, 조용한 곳을 찾자고 제안하고, 거기서 답할 수 있는 건 다 답하겠다고 맺는 순서예요. 앞 줄을 가리키는 말이 순서를 잡아 줘요.
+   1. I can see how upset and angry you are.  (많이 속상하고 화나신 게 보여요/인정/faceAngry)
+   2. Those feelings are completely valid.  (그 감정은 충분히 정당해요/정당화/handshake2)
+   3. Let's find a quiet place where we can talk this through.  (조용한 곳을 찾아 차근차근 이야기해봐요/제안/compass)
+   4. Once we sit down, I'll answer everything I can.  (앉으면 제가 답할 수 있는 건 다 답해드릴게요/약속/speech)
+   swap12: Those feelings are completely valid. | I can see how upset and angry you are. | Let's find a quiet place where we can talk this through. | Once we sit down, I'll answer everything I can.
+   swap23: I can see how upset and angry you are. | Let's find a quiet place where we can talk this through. | Those feelings are completely valid. | Once we sit down, I'll answer everything I can.
+   swap34: I can see how upset and angry you are. | Those feelings are completely valid. | Once we sit down, I'll answer everything I can. | Let's find a quiet place where we can talk this through.
+===== 19 응급 상황 급한 소통
+--19.0 EN: Her condition changed and the team is acting fast.
+   KO: 환자분 상태가 바뀌어서 팀이 빠르게 움직이고 있어요. (29)
+   DK: 환자분 위치가 바뀌어서 팀이 빠르게 움직이고 있어요. (29)
+   DK: 환자분 상태가 바뀌어서 팀이 빠르게 모이고 있어요. (28)
+   tag=급변 전달 icon=siren | why: Her condition changed로 숨기지 않고 변화를 먼저 말하고, acting fast로 팀이 이미 움직이고 있다는 사실을 함께 전해요.
+   chunks: Her condition changed / and the team / is acting / fast / .  || decoy: carefully
+   =B: Her [condition] changed and the team is acting fast.
+    B: Her [schedule] changed and the team is acting fast.
+    B: Her [location] changed and the team is acting fast.
+    B: Her [weight] changed and the team is acting fast.
+--19.1 EN: They're doing everything they can right now.
+   KO: 지금 할 수 있는 모든 걸 다 하고 있어요. (24)
+   DK: 지금 할 수 있는 일을 하나씩 하고 있어요. (24)
+   DK: 지금 할 수 있는 몇 가지를 하고 있어요. (23)
+   tag=노력 전달 icon=siren | why: doing everything they can는 결과를 장담하지 않으면서 가능한 모든 조치를 하고 있다는 사실을 말해요. 위기 때 결과를 약속하면 안 돼요.
+   chunks: They're doing / everything they can / right now / .  || decoy: step by step
+   =B: They're doing everything they [can] right now.
+    B: They're doing everything they [want] right now.
+    B: They're doing everything they [like] right now.
+    B: They're doing everything they [choose] right now.
+--19.2 EN: I'll come back the moment I have more to tell you.
+   KO: 더 알려드릴 게 생기면 바로 다시 올게요. (23)
+   DK: 더 필요한 게 생기면 바로 다시 올게요. (22)
+   DK: 더 알려드릴 게 생기면 바로 메모를 남길게요. (25)
+   tag=재방문 약속 icon=redo | why: the moment로 소식이 생기는 즉시 오겠다고 약속하되, 소식이 있을 때라고 한정해 거짓 기대를 만들지 않아요.
+   chunks: I'll come back / the moment / I have more / to tell you / .  || decoy: to show you
+   =B: I'll come back the moment I have [more] to tell you.
+    B: I'll come back the moment I have [less] to tell you.
+    B: I'll come back the moment I have [nothing] to tell you.
+    B: I'll come back the moment I have [little] to tell you.
+--19.3 EN: I need to go back in, but I'll return soon.
+   KO: 다시 들어가야 하지만, 곧 돌아올게요. (21)
+   DK: 보고하러 가야 하지만, 곧 돌아올게요. (21)
+   DK: 다시 들어가야 하지만, 곧 소식 전할게요. (23)
+   tag=이탈 안내 icon=redo | why: I need to go back in으로 떠나야 하는 이유를 먼저 말하고, but I'll return soon으로 방치가 아니라는 약속을 붙여요.
+   chunks: I need to go / back in / , but I'll return / soon / .  || decoy: to the lab
+   =B: I need to go [back in], but I'll return soon.
+    B: I need to go [home], but I'll return soon.
+    B: I need to go [on break], but I'll return soon.
+    B: I need to go [to lunch], but I'll return soon.
+--19.4 EN: Please stay right here — someone will update you.
+   KO: 바로 여기 계세요, 누군가 와서 알려드릴 거예요. (27)
+   DK: 바로 여기 계세요, 누군가 와서 물을 드릴 거예요. (28)
+   DK: 바로 여기 계세요, 누군가 와서 서명을 받을 거예요. (29)
+   tag=대기 안내 icon=pushpin | why: Please stay right here로 연락이 닿을 자리를 정확히 정해, 소식을 전하러 온 사람이 찾아다니지 않게 해요.
+   chunks: Please stay right here / — someone will / update you / .  || decoy: bring you water
+   =B: Please stay [right here] — someone will update you.
+    B: Please stay [at home] — someone will update you.
+    B: Please stay [downstairs] — someone will update you.
+    B: Please stay [in the car] — someone will update you.
+  ORDER ko=응급 상황 소통 4문장 순서 tag=대화 흐름 | why: 상태가 바뀌었음을 알리고, 팀을 도우러 들어가야 한다고 말한 뒤, 그동안 이 자리에 있어 달라고 청하고, 그래야 소식을 들고 찾아올 수 있다고 맺는 순서예요. 'them'·'While I'm gone'·'That way'가 앞 줄을 가리켜요.
+   1. Her condition changed, and the team is acting fast.  (환자분 상태가 바뀌어서 팀이 빠르게 움직이고 있어요/알림/siren)
+   2. I need to go back in to help them.  (들어가서 팀을 도와야 해요/이유/redo)
+   3. While I'm gone, please stay right here.  (제가 없는 동안 바로 여기 계세요/안내/pushpin)
+   4. That way, someone can find you with any update.  (그래야 누군가 소식을 들고 찾아올 수 있어요/약속/bell)
+   swap12: I need to go back in to help them. | Her condition changed, and the team is acting fast. | While I'm gone, please stay right here. | That way, someone can find you with any update.
+   swap23: Her condition changed, and the team is acting fast. | While I'm gone, please stay right here. | I need to go back in to help them. | That way, someone can find you with any update.
+   swap34: Her condition changed, and the team is acting fast. | I need to go back in to help them. | That way, someone can find you with any update. | While I'm gone, please stay right here.
+===== 20 위기 중 가족 결정 지원
+--20.0 EN: Let me explain the options as clearly as I can.
+   KO: 선택지를 최대한 명확하게 설명해드릴게요. (22)
+   DK: 비용을 최대한 명확하게 설명해드릴게요. (21)
+   DK: 선택지를 최대한 빠르게 설명해드릴게요. (21)
+   tag=선택지 설명 icon=board | why: as ~ as I can는 할 수 있는 만큼 최선을 다한다는 틀이라 완벽을 약속하지 않으면서 성의를 보여요. clearly가 이해를 중심에 둬요.
+   chunks: Let me explain / the options / as clearly / as I can / .  || decoy: the schedule
+   =B: Let me explain the options as [clearly] as I can.
+    B: Let me explain the options as [loudly] as I can.
+    B: Let me explain the options as [harshly] as I can.
+    B: Let me explain the options as [secretly] as I can.
+--20.1 EN: Think about what he would have wanted.
+   KO: 환자분이 원하셨을 걸 생각해보세요. (19)
+   DK: 환자분이 원하셨을 걸 적어 보세요. (19)
+   DK: 환자분이 걱정하셨을 걸 생각해보세요. (20)
+   tag=가치 안내 icon=compass | why: what he would have wanted는 가족의 바람이 아니라 환자 본인의 뜻을 기준으로 삼게 하는 틀이에요. 결정을 대신 내리지 않고 기준만 건네요.
+   chunks: Think about / what he would / have wanted / .  || decoy: Write down
+   =B: Think about what he would have [wanted].
+    B: Think about what he would have [missed].
+    B: Think about what he would have [forgotten].
+    B: Think about what he would have [ordered].
+--20.2 EN: Whatever you decide, we'll support you fully.
+   KO: 무엇을 결정하시든, 저희가 온전히 지지할게요. (25)
+   DK: 무엇을 걱정하시든, 저희가 온전히 지지할게요. (25)
+   DK: 무엇을 결정하시든, 저희가 곧바로 지지할게요. (25)
+   tag=지지 약속 icon=handshake2 | why: Whatever로 어떤 결정이든 조건을 달지 않고, fully로 일부가 아닌 전적인 지지를 약속해 결정의 부담을 덜어요.
+   chunks: Whatever you decide / , we'll support you / fully / .  || decoy: Before you decide
+   =B: Whatever you decide, we'll support you [fully].
+    B: Whatever you decide, we'll support you [partly].
+    B: Whatever you decide, we'll support you [rarely].
+    B: Whatever you decide, we'll support you [barely].
+--20.3 EN: There's no wrong choice here — we'll stand by you either way.
+   KO: 여기서는 틀린 선택이 없어요, 어느 쪽이든 저희가 곁을 지킬게요. (36)
+   DK: 여기서는 쉬운 선택이 없어요, 어느 쪽이든 저희가 곁을 지킬게요. (36)
+   DK: 여기서는 틀린 질문이 없어요, 어느 쪽이든 저희가 곁을 지킬게요. (36)
+   tag=지지 약속 icon=handshake2 | why: no wrong choice로 결정 뒤의 죄책감을 미리 덜어 주고, stand by you either way로 어느 선택에도 곁에 있겠다고 약속해요.
+   chunks: There's no wrong choice / here / — we'll stand by you / either way / .  || decoy: There's no easy choice
+   =B: There's no [wrong] choice here — we'll stand by you either way.
+    B: There's no [free] choice here — we'll stand by you either way.
+    B: There's no [legal] choice here — we'll stand by you either way.
+    B: There's no [medical] choice here — we'll stand by you either way.
+--20.4 EN: Take your time, and ask me anything you need.
+   KO: 천천히 생각하시고, 필요한 건 뭐든 물어보세요. (26)
+   DK: 천천히 생각하시고, 필요한 건 뭐든 적어 두세요. (27)
+   DK: 천천히 생각하시고, 필요한 건 뭐든 가져가세요. (26)
+   tag=질문 환영 icon=speech | why: Take your time으로 서두르지 않아도 된다고 허락하고, ask me anything으로 질문의 문을 활짝 열어요.
+   chunks: Take your time / , and ask me / anything / you need / .  || decoy: Take a seat
+   =B: Take your [time], and ask me anything you need.
+    B: Take your [turn], and ask me anything you need.
+    B: Take your [pick], and ask me anything you need.
+    B: Take your [coat], and ask me anything you need.
+  ORDER ko=위기 중 가족 결정 4문장 순서 tag=대화 흐름 | why: 선택지를 설명하고, 그것을 염두에 두고 환자의 뜻을 떠올리게 하고, 어떤 결정이든 지지하겠다고 약속한 뒤, 결정하실 때까지 질문을 환영하며 맺는 순서예요. 'those'·'Until then'이 앞 줄을 가리켜요.
+   1. Let me explain the options as clearly as I can.  (선택지를 최대한 명확하게 설명해드릴게요/설명/board)
+   2. With those in mind, think about what he would have wanted.  (그걸 염두에 두고 환자분이 원하셨을 걸 생각해보세요/기준/compass)
+   3. Whatever you decide, we'll support you fully.  (무엇을 결정하시든 저희가 온전히 지지할게요/지지/handshake2)
+   4. Until then, take your time, and ask me anything you need.  (그때까지 천천히 생각하시고, 필요한 건 뭐든 물어보세요/질문/speech)
+   swap12: With those in mind, think about what he would have wanted. | Let me explain the options as clearly as I can. | Whatever you decide, we'll support you fully. | Until then, take your time, and ask me anything you need.
+   swap23: Let me explain the options as clearly as I can. | Whatever you decide, we'll support you fully. | With those in mind, think about what he would have wanted. | Until then, take your time, and ask me anything you need.
+   swap34: Let me explain the options as clearly as I can. | With those in mind, think about what he would have wanted. | Until then, take your time, and ask me anything you need. | Whatever you decide, we'll support you fully.
