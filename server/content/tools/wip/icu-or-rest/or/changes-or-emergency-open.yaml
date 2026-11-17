@@ -1,0 +1,483 @@
+theme: or-emergency-open
+changes:
+- kind: word-remove
+  id: w-room
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(room); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(minute); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-go
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(go); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-now
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(now); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-come
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(come); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(hand); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-baby
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(baby); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-two
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(two); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-here
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(here); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-when
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(when); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-big
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(big); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-both
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(both); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-want
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(want); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-done
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(done); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-yet
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(yet); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-first
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(first); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-out
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(out); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-over
+  why: take over를 한 구(w-take)로 합침 — over는 따로 가르칠 값이 없다
+- kind: word
+  id: w-sharp
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 수술실에서는 늘 복수 sharps — 문장도 sharps
+- kind: word
+  id: w-way
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 문장은 on the way(곧 도착) — way(길)보다 구로
+- kind: word
+  id: w-take
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 문장이 take over — w-over를 합쳐 한 구로
+- kind: word
+  id: w-back
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 문장이 come back — w-come 삭제에 맞춰 구로
+- kind: word
+  id: w-stand
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 문장이 standing by — 구로
+- kind: word
+  id: w-word
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 문장이 Say the word — word(말)가 아니라 구로
+- kind: word
+  id: w-bring
+  fields:
+  - ko
+  why: w-grab과 ko(가져오다)가 같아 정답이 둘 — bring은 가져다주다
+- kind: word
+  id: w-grab
+  fields:
+  - ko
+  why: w-bring과 ko(가져오다)가 같아 정답이 둘 — grab은 급히 집어 오다
+- kind: word
+  id: w-up
+  fields:
+  - ko
+  why: w-ready와 ko(준비된)가 같아 정답이 둘 — up은 펼쳐 세팅이 끝난
+- kind: word
+  id: w-count
+  fields:
+  - ko
+  why: 문장이 명사(count)와 동사(counted)로 함께 쓰여 계수(하다)로
+- kind: word
+  id: w-unit
+  fields:
+  - ko
+  why: 문장 ko가 '팩' — 혈액 한 팩이라는 뜻을 분명히
+- kind: word
+  id: w-bleed
+  fields:
+  - ko
+  why: w-hemorrhage(출혈)와 ko가 겹쳐 — bleed는 피가 나다
+- kind: word
+  id: w-source
+  fields:
+  - ko
+  why: bleeding source는 출혈이 나는 원인 부위
+- kind: word
+  id: w-stage
+  fields:
+  - ko
+  why: w-prepare(준비하다)·w-set(세팅하다)과 ko가 겹쳐 — stage는 쓸 순서대로 미리 놓아 두다
+- kind: word
+  id: w-label
+  fields:
+  - ko
+  why: ko가 너무 길어 보기 길이를 맞추기 어려워 — 뜻은 그대로 라벨을 붙이다
+- kind: word
+  id: w-run
+  fields:
+  - ko
+  why: run은 '누적되며 진행 중인(running count)' — 괄호 설명 줄임
+- kind: word
+  id: w-document
+  fields:
+  - ko
+  why: w-record(기록하다)와 ko가 같아 정답이 둘 — document는 문서화하다
+- kind: word
+  id: w-cryo
+  fields:
+  - ko
+  why: 크라이오는 cryoprecipitate의 줄임말 — 뜻은 동결침전제제
+- kind: word
+  id: w-pace
+  fields:
+  - ko
+  why: w-rate와 ko(속도)가 겹쳐 — pace는 진행 속도
+- kind: word
+  id: w-rate
+  fields:
+  - ko
+  why: w-pace와 ko(속도)가 겹쳐 — heart rate의 rate는 수치(율)
+- kind: word
+  id: w-emergency
+  fields:
+  - ko
+  why: 문장이 emergency setup처럼 형용사 자리에도 쓰여 응급(상황)으로
+- kind: word
+  id: w-right
+  fields:
+  - ko
+  why: 오른쪽(바로)는 길이를 맞추기 어려워 — 문장은 on your right(오른쪽)
+- kind: word
+  id: w-off
+  fields:
+  - ko
+  why: off는 comes off(분리되어 나오다) — 뜻을 분명히
+- kind: sentence
+  situation: 응급 세팅 신속 준비
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 세팅 신속 준비
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 세팅 신속 준비
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 기구 세트 개방
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 기구 세트 개방
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 대량 흡인 준비
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 대량 흡인 준비
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 대량 흡인 준비
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 혈액 확보 확인
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 혈액 확보 확인
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 긴급 팀 소집
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 긴급 팀 소집
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 복강 대량 출혈
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 복강 대량 출혈
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 제왕 신생아 준비
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 제왕 신생아 준비
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 제왕 산모 출혈 감시
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 신속 마취 유도 협조
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 신속 마취 유도 협조
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 신속 마취 유도 협조
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 시간 압박 무균 유지
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 다발성 외상 우선순위
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 다발성 외상 우선순위
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 다발성 외상 우선순위
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 다발성 외상 우선순위
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 신속 수혈 조율
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 신속 수혈 조율
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 신속 수혈 조율
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 신속 수혈 조율
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 태아 곤란 신속 분만
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 태아 곤란 신속 분만
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 태아 곤란 신속 분만
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 태아 곤란 신속 분만
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 검체·계수 관리
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 검체·계수 관리
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 검체·계수 관리
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 개복 중 심정지
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 개복 중 심정지
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 개복 중 심정지
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 개복 중 심정지
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 산모 대량 출혈 위기
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 신생아 소생 지원
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 신생아 소생 지원
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 신생아 소생 지원
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 파종성 응고장애
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 파종성 응고장애
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 손상통제 수술 전환
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 손상통제 수술 전환
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 다중 위기 동시 대응
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 다중 위기 동시 대응
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기

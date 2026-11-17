@@ -1,0 +1,248 @@
+장시간 수술 안심:
+- kind: slider
+  words: [w-long, w-mean, w-problem]
+  cue: "Five hours in, a husband asks if the long surgery means something went wrong. The OR team hasn't reported any problem."
+  scale:
+  - A long surgery always means there's trouble.
+  - A long surgery doesn't always mean a problem.
+  - Nothing could ever go wrong in the OR.
+  answerAt: 1
+  why: "수술이 길어지는 데는 여러 이유가 있어서 곧 문제라고 단정할 수 없어요. 반대로 아무 일도 없을 거라고 장담하는 것도 간호사가 할 수 있는 말이 아니에요."
+  example: "A longer surgery doesn't always mean a problem."
+  exKo: "수술이 길어진다고 항상 문제가 생긴 건 아니에요."
+- kind: context
+  words: [w-careful]
+  word: careful
+  ko: 신중한
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "The surgeon is being careful, so plan for a longer case.", ok: true}
+  - {who: 차트 기록, icon: board, en: "Case ongoing; team careful, no concerns relayed to desk.", ok: true}
+  - {who: 간호사 → 대기 가족, icon: faceWorried, en: "The surgeon is careful around the vessels, so the dissection is taking longer.", ok: false, fix: "The team is being thorough and careful."}
+  why: "뜻은 셋 다 '신중한'이에요. 동료에게는 일정을 짐작하게 하는 말로, 차트에는 짧게 적어요. 하지만 가족에게 혈관·박리 같은 부위를 말하면 어디가 잘못된 건 아닌지 상상하며 겁이 나요. 가족에게는 '꼼꼼하고 신중하다'고만 말해요."
+- kind: swap
+  words: [w-long, w-mean, w-problem]
+  who: "간호사 → 대기 가족 · 장시간 수술"
+  icon: me
+  before: ["", "It's taking forever, so something is probably wrong.", ""]
+  options:
+  - "It's taking forever, so something is probably wrong."
+  - "A longer surgery doesn't always mean a problem."
+  - "Long surgeries are normal, so please stop asking."
+  answer: "A longer surgery doesn't always mean a problem."
+  notes:
+    "It's taking forever, so something is probably wrong.": "근거 없이 문제라고 짐작하게 해 불안만 키워요."
+    "A longer surgery doesn't always mean a problem.": "길어지는 것이 곧 문제는 아니라는 사실을 전해 불안한 짐작을 덜어 줘요."
+    "Long surgeries are normal, so please stop asking.": "묻는 가족을 막는 말이라 차갑게 들려요."
+  why: "시간이 길어지면 가족은 최악을 상상해요. 길어짐이 곧 문제는 아니라는 사실을 쉬운 말로 알려 줘요."
+  ko: 수술이 길어진다고 항상 문제가 생긴 건 아니에요
+불안 가족 정서 지지:
+- kind: pair
+  words: [w-breath, w-sit]
+  pairs:
+  - [take a, breath]
+  - [sit, down]
+  decoys: [mood]
+  why: "take a breath(숨을 한 번 쉬다)와 sit down(앉다)은 굳어진 짝이에요. 불안한 가족에게 권하는 가장 쉬운 두 가지 행동이에요."
+- kind: context
+  words: [w-scared]
+  word: scared
+  ko: 무서운
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "His wife is scared and pacing — can someone sit with her?", ok: true}
+  - {who: 차트 기록, icon: board, en: "Spouse scared and tearful; support offered, chaplain available.", ok: true}
+  - {who: 간호사 → 불안한 가족, icon: faceWorried, en: "Spouse scared per intake screening; anxiety score eight out of ten.", ok: false, fix: "It's okay to feel scared while you wait."}
+  why: "뜻은 셋 다 '무서운'이에요. 동료에게는 도움을 청하는 말로, 차트에는 짧게 적어요. 하지만 가족 앞에서 불안 점수를 읽으면 환자 취급을 받는 기분이 들어요. 가족에게는 무서워도 괜찮다고 감정을 인정해 줘요."
+- kind: swap
+  words: [w-scared, w-feel, w-wait]
+  who: "간호사 → 불안한 가족 · 감정 지지"
+  icon: me
+  before: ["", "Calm down, there's no reason to be scared.", ""]
+  options:
+  - "Calm down, there's no reason to be scared."
+  - "It's okay to feel scared while you wait."
+  - "Everyone in here is scared, so you're no different."
+  answer: "It's okay to feel scared while you wait."
+  notes:
+    "Calm down, there's no reason to be scared.": "느끼는 감정을 부정하는 말이에요. 가족은 이해받지 못한 기분이 들어요."
+    "It's okay to feel scared while you wait.": "두려운 마음을 있는 그대로 인정해 줘요."
+    "Everyone in here is scared, so you're no different.": "다른 사람과 같다며 가족의 감정을 가볍게 만들어요."
+  why: "불안한 가족에게는 감정을 없애라고 하지 않고 인정해 줘요. 두려움이 자연스럽다고 알려 주는 것이 곁에 있는 사람의 말이에요."
+  ko: 기다리는 동안 무서운 마음이 드는 것도 괜찮아요
+제한된 정보 범위 소통:
+- kind: slider
+  words: [w-share, w-stable, w-surgeon]
+  cue: "A visitor on the patient's approved contact list asks what happened in surgery. You only know he's stable; the surgeon hasn't spoken with anyone yet."
+  scale:
+  - I'm sorry, I can't tell you anything about him at all.
+  - I can share that he's stable; the surgeon will explain.
+  - I can tell you exactly what the surgeon found in there.
+  answerAt: 1
+  why: "간호사는 아는 범위만, 그리고 환자가 허락한 사람에게만 알려요. 안정적이라는 정도는 나눌 수 있고, 수술에서 무엇을 발견했는지는 집도의가 설명해요."
+  example: "I can share that he's stable and doing well."
+  exKo: "안정적이고 잘 지내고 계신다는 건 말씀드릴 수 있어요."
+- kind: context
+  words: [w-surgeon]
+  word: surgeon
+  ko: 외과의
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "Please page the surgeon — the family has questions about the findings.", ok: true}
+  - {who: 차트 기록, icon: board, en: "Surgeon to update family post-op; family aware.", ok: true}
+  - {who: 간호사 → 대기 가족, icon: faceWorried, en: "The surgeon of record will disclose the intraoperative findings to authorized family members only.", ok: false, fix: "The surgeon will come explain what happened and answer your questions."}
+  why: "뜻은 셋 다 '집도의'예요. 동료에게는 호출을 부탁하고, 차트에는 누가 가족에게 알릴지 적어요. 하지만 가족에게 '수술 중 소견·허가된 가족만'이라고 하면 법 조문처럼 들려 차갑고 불안해요. 가족에게는 집도의가 직접 설명할 거라고 쉽게 말해요."
+- kind: swap
+  words: [w-surgeon, w-answer, w-guess]
+  who: "간호사 → 방문객 · 범위 밖 질문"
+  icon: me
+  before: ["", "I don't know anything, so I can't help you.", ""]
+  options:
+  - "I don't know anything, so I can't help you."
+  - "The surgeon is the right person to answer that, and I'll let them know you're asking."
+  - "My guess is that it went fine."
+  answer: "The surgeon is the right person to answer that, and I'll let them know you're asking."
+  notes:
+    "I don't know anything, so I can't help you.": "도울 수 없다고 끊는 말이라 차갑고, 어디서 답을 얻는지도 알려 주지 않아요."
+    "The surgeon is the right person to answer that, and I'll let them know you're asking.": "범위 밖 질문은 집도의에게 이어 주겠다고 해 가족이 답을 얻을 길을 열어 줘요."
+    "My guess is that it went fine.": "추측으로 결과를 말하는 것이라 틀리면 가족에게 큰 상처가 돼요."
+  why: "간호사가 답할 수 없는 질문은 추측하지 않고 집도의에게 연결해 줘요. 거절하더라도 가족이 답을 얻을 길은 열어 줘요."
+  ko: 그 질문은 집도의 선생님이 답해드리는 게 맞아요. 질문하셨다고 전해둘게요
+다국어 가족 소통:
+- kind: pair
+  words: [w-speak, w-slowly, w-interpreter, w-make]
+  pairs:
+  - [speak, slowly]
+  - [get an, interpreter]
+  - [make, sure]
+  decoys: [other]
+  why: "speak slowly(천천히 말하다), get an interpreter(통역사를 부르다), make sure(확실히 하다)는 서로 바꿔 끼울 수 없는 짝이에요."
+- kind: context
+  words: [w-understand]
+  word: understand
+  ko: 이해하다
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "Does the mother understand? Ask her through the interpreter.", ok: true}
+  - {who: 차트 기록, icon: board, en: "Mother verbalized understanding via interpreter.", ok: true}
+  - {who: 간호사 → 보호자, icon: faceWorried, en: "Do you understand? Understand? Yes or no?", ok: false, fix: "Let me get an interpreter so we understand each other."}
+  why: "뜻은 셋 다 '이해하다'예요. 동료에게는 통역사를 통해 확인하라고, 차트에는 통역을 통해 이해를 말로 확인했다고 적어요. 하지만 영어가 서툰 보호자에게 '알겠어요? 예·아니오?'라고 몰아붙이면 무섭고 무례해요. 통역사를 부르겠다고 해요."
+- kind: swap
+  words: [w-interpreter, w-understand, w-each, w-other]
+  who: "간호사 → 보호자 · 통역 제안"
+  icon: me
+  before: ["", "Your teenage son can translate for us.", ""]
+  options:
+  - "Your teenage son can translate for us."
+  - "Let me get an interpreter so we understand each other."
+  - "I'll just speak louder so you can follow."
+  answer: "Let me get an interpreter so we understand each other."
+  notes:
+    "Your teenage son can translate for us.": "가족, 특히 아이에게 통역을 맡기면 정확하지 않을 수 있고 아이에게 짐이 돼요. 병원은 자격 있는 통역사를 불러요."
+    "Let me get an interpreter so we understand each other.": "자격 있는 통역사를 불러 서로 정확히 이해하도록 해요."
+    "I'll just speak louder so you can follow.": "큰 소리로 말해도 언어가 통하지 않아요. 무시당하는 기분이 들 수 있어요."
+  why: "보호자와 말이 통하지 않을 때는 가족에게 맡기지 않고 병원의 통역사를 불러요. 목소리를 키우는 것은 도움이 되지 않아요."
+  ko: 서로 잘 이해할 수 있게 통역사를 불러올게요
+소아 보호자 소통:
+- kind: slider
+  words: [w-pediatric, w-specialize, w-team]
+  cue: "A father asks if the people caring for his daughter are used to children. The recovery unit has nurses trained in pediatrics."
+  scale:
+  - We care for children the same way as adults.
+  - The pediatric team specializes in caring for children.
+  - No child has ever had a problem in our care.
+  answerAt: 1
+  why: "소아를 전문으로 하는 팀이라는 사실을 알려 줘 안심시켜요. 어른과 똑같이 본다고 하면 불안하고, 문제가 한 번도 없었다고 하면 지킬 수 없는 장담이에요."
+  example: "The pediatric team specializes in caring for children."
+  exKo: "소아과 팀은 아이들을 돌보는 데 전문이에요."
+- kind: context
+  words: [w-pediatric]
+  word: pediatric
+  ko: 소아과의
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "Pediatric anesthesia is joining us for the case.", ok: true}
+  - {who: 차트 기록, icon: board, en: "Pediatric PACU phase one; parent at bedside at 11:20.", ok: true}
+  - {who: 간호사 → 보호자, icon: faceWorried, en: "Pediatric patients are dosed by the kilogram, so her weight drives every drug calculation.", ok: false, fix: "A team that specializes in children is caring for her."}
+  why: "뜻은 셋 다 '소아과의'예요. 동료에게는 소아 마취 합류를, 차트에는 소아 회복실 단계를 적어요. 하지만 보호자에게 약 용량 계산을 말하면 약을 잘못 줄까 봐 무서워져요. 보호자에게는 아이를 전문으로 돌보는 팀이라고 쉽게 말해요."
+- kind: swap
+  words: [w-pediatric, w-specialize, w-child]
+  who: "간호사 → 소아 보호자 · 안심"
+  icon: me
+  before: ["", "Don't worry, kids always wake up fine.", ""]
+  options:
+  - "Don't worry, kids always wake up fine."
+  - "The pediatric team specializes in caring for children."
+  - "She's just another patient to us."
+  answer: "The pediatric team specializes in caring for children."
+  notes:
+    "Don't worry, kids always wake up fine.": "항상 괜찮다고 장담하는 말이라 지킬 수 없어요."
+    "The pediatric team specializes in caring for children.": "팀이 아이를 전문으로 한다는 사실로 안심시켜요."
+    "She's just another patient to us.": "아이가 특별히 소중한 보호자의 마음을 무시하는 말이에요."
+  why: "보호자는 아이가 안전한지가 가장 걱정이에요. 결과를 장담하지 않고, 팀이 아이를 전문으로 돌본다는 사실을 알려 줘요."
+  ko: 소아과 팀은 아이들을 돌보는 데 전문이에요
+면회 규정 설명:
+- kind: pair
+  words: [w-rest, w-heal, w-switch]
+  pairs:
+  - [rest and, heal]
+  - [switch, out]
+  decoys: [alone]
+  why: "rest and heal(쉬고 회복하다)과 switch out(교대하다)은 굳어진 짝이에요. 한 번에 한 사람만 들어갈 때 쓰는 말이에요."
+- kind: context
+  words: [w-rule]
+  word: rule
+  ko: 규칙
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "Remind them of the one-visitor rule before they go in.", ok: true}
+  - {who: 차트 기록, icon: board, en: "Visitor rule reviewed with family; one at a time.", ok: true}
+  - {who: 간호사 → 보호자, icon: faceWorried, en: "Rule: one at a time. Non-negotiable. Next family, please.", ok: false, fix: "We keep it to one visitor at a time so she can rest and heal."}
+  why: "뜻은 셋 다 '규칙'이에요. 동료에게는 들어가기 전에 알려 주라고, 차트에는 안내했다고 적어요. 하지만 가족에게 '예외 없음, 다음 분'이라고 하면 사람이 아니라 줄 세우는 말처럼 차가워요. 가족에게는 규칙의 이유를 말해 줘요."
+- kind: swap
+  words: [w-rule, w-visitor, w-rest, w-heal]
+  who: "간호사 → 가족 · 면회 인원 안내"
+  icon: me
+  before: ["", "Rules are rules; I don't make them.", ""]
+  options:
+  - "Rules are rules; I don't make them."
+  - "We keep it to one visitor at a time so she can rest and heal."
+  - "Everyone can come in whenever they like."
+  answer: "We keep it to one visitor at a time so she can rest and heal."
+  notes:
+    "Rules are rules; I don't make them.": "이유를 말하지 않고 책임을 떠넘기는 말이라 차갑게 들려요."
+    "We keep it to one visitor at a time so she can rest and heal.": "규칙의 이유를 말해 가족이 납득하고 협조하게 해요."
+    "Everyone can come in whenever they like.": "규칙과 다른 말이에요. 회복실에서 환자가 쉬지 못하게 돼요."
+  why: "규칙을 말할 때는 이유를 같이 말해요. 이유를 알면 가족이 서운해하지 않고 따라 줘요."
+  ko: 그분이 쉬고 회복하실 수 있게 한 번에 한 분만 면회하실 수 있어요
+추가 시술 결정 소통:
+- kind: slider
+  words: [w-surgeon, w-soon, w-speak]
+  cue: "The surgeon has asked to talk with the wife about a change in plan. You don't know the details."
+  scale:
+  - Please wait here until someone comes.
+  - The surgeon will come speak with you as soon as possible.
+  - I can tell you the details myself right now.
+  answerAt: 1
+  why: "계획이 바뀐 이유는 집도의가 직접 설명해요. 간호사는 집도의가 곧 와서 말씀드릴 거라고 알려 주고, 자기가 대신 설명하지 않아요."
+  example: "The surgeon will come speak with you as soon as possible."
+  exKo: "집도의 선생님이 가능한 한 빨리 와서 말씀 나눌 거예요."
+- kind: context
+  words: [w-plan]
+  word: plan
+  ko: 계획
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "The surgeon says the plan changed — please call the family.", ok: true}
+  - {who: 차트 기록, icon: board, en: "Plan changed intraop per surgeon; surgeon to update family.", ok: true}
+  - {who: 간호사 → 대기 가족, icon: faceWorried, en: "The operative plan was modified to a more extensive resection.", ok: false, fix: "This changes the plan a little, and the surgeon will explain."}
+  why: "뜻은 셋 다 '계획'이에요. 동료에게는 가족에게 전화하라는 지시로, 차트에는 누가 알릴지 적어요. 하지만 간호사가 가족에게 '더 광범위한 절제'라고 말하는 것은 집도의가 할 설명이고, 갑자기 들으면 너무 무서워요. 간호사는 계획이 바뀌었다는 사실과 집도의가 설명한다는 것만 말해요."
+- kind: swap
+  words: [w-surgeon, w-explain, w-detail, w-option]
+  who: "간호사 → 가족 · 계획 변경"
+  icon: me
+  before: ["", "They found something bad and they're cutting more.", ""]
+  options:
+  - "They found something bad and they're cutting more."
+  - "The surgeon will explain the details and options."
+  - "I can't tell you anything; ask someone else."
+  answer: "The surgeon will explain the details and options."
+  notes:
+    "They found something bad and they're cutting more.": "발견한 것과 처치를 간호사가 단정해 말하는 것이에요. 틀리면 큰 상처가 되고, 집도의의 설명이 아니에요."
+    "The surgeon will explain the details and options.": "자세한 내용과 선택지는 집도의가 설명한다고 알려 줘요."
+    "I can't tell you anything; ask someone else.": "가족을 다른 사람에게 떠넘기는 말이라 차갑게 들려요."
+  why: "계획이 바뀐 이유와 선택지는 집도의가 설명해요. 간호사는 발견한 것을 추측하지 않고 집도의에게 이어 줘요."
+  ko: 집도의 선생님이 자세한 내용과 선택지를 설명해주실 거예요
