@@ -1,0 +1,787 @@
+
+## S0 금식 시작 시각 확인
+0.0 decoy='How did you' | ko: 고형식은 마지막으로 언제 드셨어요?
+   chunks: When did you / last eat / any solid food / ?
+   r0: [How did you] last eat any solid food ?
+   r1: When did you [How did you] any solid food ?
+   r2: When did you last eat [How did you] ?
+0.1 decoy='your first sip' | ko: 물은 좀 다른데, 마지막으로 언제 한 모금 드셨어요?
+   chunks: Water is / a bit different / — when did you have / your last sip / ?
+   r0: [your first sip] a bit different — when did you have your last sip ?
+   r1: Water is [your first sip] — when did you have your last sip ?
+   r2: Water is a bit different [your first sip] your last sip ?
+   r3: Water is a bit different — when did you have [your first sip] ?
+0.2 decoy='as requested' | ko: 시간이 적절하니 예정대로 진행할 수 있어요.
+   chunks: That timing looks fine / , so we can / go ahead / as planned / .
+   r0: [as requested] , so we can go ahead as planned .
+   r1: That timing looks fine [as requested] go ahead as planned .
+   r2: That timing looks fine , so we can [as requested] as planned .
+   r3: That timing looks fine , so we can go ahead [as requested] .
+0.3 decoy='your mouth' | ko: 고형식부터 시작할게요, 위를 가장 늦게 비우거든요.
+   chunks: Let's start / with solid food / , since that clears / your stomach / the slowest / .
+   r0: [your mouth] with solid food , since that clears your stomach the slowest .
+   r1: Let's start [your mouth] , since that clears your stomach the slowest .
+   r2: Let's start with solid food [your mouth] your stomach the slowest .
+   r3: Let's start with solid food , since that clears [your mouth] the slowest .
+   r4: Let's start with solid food , since that clears your stomach [your mouth] .
+0.4 decoy='tastes like' | ko: 간단한 간식도 이 경우에는 고형식으로 쳐요.
+   chunks: Even a small snack / counts as / solid food / for this / .
+   r0: [tastes like] counts as solid food for this .
+   r1: Even a small snack [tastes like] solid food for this .
+   r2: Even a small snack counts as [tastes like] for this .
+   r3: Even a small snack counts as solid food [tastes like] .
+0.5 decoy='the full amount' | ko: 물을 끊은 정확한 시각도 필요해요.
+   chunks: I also need / the exact time / you stopped / drinking water / .
+   r0: [the full amount] the exact time you stopped drinking water .
+   r1: I also need [the full amount] you stopped drinking water .
+   r2: I also need the exact time [the full amount] drinking water .
+   r3: I also need the exact time you stopped [the full amount] .
+
+## S1 약물 알레르기 문진
+1.0 decoy='Can you show me' | ko: 페니실린을 드시면 어떻게 되시는지 말씀해 주시겠어요?
+   chunks: Can you tell me / what happens / when you take / penicillin / ?
+   r0: [Can you show me] what happens when you take penicillin ?
+   r1: Can you tell me [Can you show me] when you take penicillin ?
+   r2: Can you tell me what happens [Can you show me] penicillin ?
+   r3: Can you tell me what happens when you take [Can you show me] ?
+1.1 decoy='itching' | ko: 그냥 발진만 있었나요, 아니면 숨쉬기 힘들거나 붓기도 있었나요?
+   chunks: Was it just a rash / , or any trouble / breathing or / swelling / ?
+   r0: [itching] , or any trouble breathing or swelling ?
+   r1: Was it just a rash [itching] breathing or swelling ?
+   r2: Was it just a rash , or any trouble [itching] swelling ?
+   r3: Was it just a rash , or any trouble breathing or [itching] ?
+1.2 decoy="I'll read this" | ko: 이 내용을 차트에 표시해서 팀 전체가 알도록 할게요.
+   chunks: I'll flag this / in your chart / so the whole team / knows / .
+   r0: [I'll read this] in your chart so the whole team knows .
+   r1: I'll flag this [I'll read this] so the whole team knows .
+   r2: I'll flag this in your chart [I'll read this] knows .
+   r3: I'll flag this in your chart so the whole team [I'll read this] .
+1.3 decoy='any paperwork' | ko: 반응이 얼마나 심했나요? 치료가 필요했나요?
+   chunks: How bad was / the reaction / — did you need / any treatment / ?
+   r0: [any paperwork] the reaction — did you need any treatment ?
+   r1: How bad was [any paperwork] — did you need any treatment ?
+   r2: How bad was the reaction [any paperwork] any treatment ?
+   r3: How bad was the reaction — did you need [any paperwork] ?
+1.4 decoy='a real infection' | ko: 이건 단순 부작용이 아니라 진짜 알레르기 같아요.
+   chunks: This sounds like / a real allergy / , not just / a side effect / .
+   r0: [a real infection] a real allergy , not just a side effect .
+   r1: This sounds like [a real infection] , not just a side effect .
+   r2: This sounds like a real allergy [a real infection] a side effect .
+   r3: This sounds like a real allergy , not just [a real infection] .
+1.5 decoy='and look into' | ko: 심각도를 기록해서 시작 전에 마취과도 확인하게 할게요.
+   chunks: I'll note the severity / and make sure / anesthesia sees it / before we start / .
+   r0: [and look into] and make sure anesthesia sees it before we start .
+   r1: I'll note the severity [and look into] anesthesia sees it before we start .
+   r2: I'll note the severity and make sure [and look into] before we start .
+   r3: I'll note the severity and make sure anesthesia sees it [and look into] .
+
+## S2 과거 수술·마취 이력
+2.0 decoy='Why did you feel' | ko: 지난번 마취에서 깨어나실 때 기분이 어떠셨어요?
+   chunks: How did you feel / waking up / from your last / anesthesia / ?
+   r0: [Why did you feel] waking up from your last anesthesia ?
+   r1: How did you feel [Why did you feel] from your last anesthesia ?
+   r2: How did you feel waking up [Why did you feel] anesthesia ?
+   r3: How did you feel waking up from your last [Why did you feel] ?
+2.1 decoy='any bleeding' | ko: 메스꺼움이나 호흡 문제, 혹은 나쁜 반응이 있었나요?
+   chunks: Did you have / any nausea / , breathing issues / , or a bad reaction / ?
+   r0: [any bleeding] any nausea , breathing issues , or a bad reaction ?
+   r1: Did you have [any bleeding] , breathing issues , or a bad reaction ?
+   r2: Did you have any nausea [any bleeding] , or a bad reaction ?
+   r3: Did you have any nausea , breathing issues [any bleeding] ?
+2.2 decoy='talk about' | ko: 마취팀에 메스꺼움 있었던 거 전달할게요.
+   chunks: I'll let / the anesthesia team / know about / the nausea / .
+   r0: [talk about] the anesthesia team know about the nausea .
+   r1: I'll let [talk about] know about the nausea .
+   r2: I'll let the anesthesia team [talk about] the nausea .
+   r3: I'll let the anesthesia team know about [talk about] .
+2.3 decoy='that visit' | ko: 그 수술 중이나 후에 호흡 문제가 있었나요?
+   chunks: Did you have / any breathing problems / during or after / that surgery / ?
+   r0: [that visit] any breathing problems during or after that surgery ?
+   r1: Did you have [that visit] during or after that surgery ?
+   r2: Did you have any breathing problems [that visit] that surgery ?
+   r3: Did you have any breathing problems during or after [that visit] ?
+2.4 decoy='to explain' | ko: 마취팀이 기관삽관 튜브를 넣기 어려웠나요?
+   chunks: Was it hard / for the anesthesia team / to place / your breathing tube / ?
+   r0: [to explain] for the anesthesia team to place your breathing tube ?
+   r1: Was it hard [to explain] to place your breathing tube ?
+   r2: Was it hard for the anesthesia team [to explain] your breathing tube ?
+   r3: Was it hard for the anesthesia team to place [to explain] ?
+2.5 decoy='so the front desk' | ko: 오늘 팀이 미리 계획할 수 있도록 이 내용을 전달할게요.
+   chunks: I'll pass this along / so today's team / can plan / ahead / .
+   r0: [so the front desk] so today's team can plan ahead .
+   r1: I'll pass this along [so the front desk] can plan ahead .
+   r2: I'll pass this along so today's team [so the front desk] ahead .
+   r3: I'll pass this along so today's team can plan [so the front desk] .
+
+## S3 복용 약물 목록 확인
+3.0 decoy='you bought' | ko: 매일 드시는 약을 전부 말씀해 주시겠어요?
+   chunks: Can you list / all the medications / you take / daily / ?
+   r0: [you bought] all the medications you take daily ?
+   r1: Can you list [you bought] you take daily ?
+   r2: Can you list all the medications [you bought] daily ?
+   r3: Can you list all the medications you take [you bought] ?
+3.1 decoy='the prices' | ko: 약 이름과 용량도 아세요?
+   chunks: Do you know / the names / and doses / ?
+   r0: [the prices] the names and doses ?
+   r1: Do you know [the prices] and doses ?
+   r2: Do you know the names [the prices] ?
+3.2 decoy='this weekend' | ko: 오늘 아침에 혈압약 드셨어요?
+   chunks: Did you take / your blood pressure / pill / this morning / ?
+   r0: [this weekend] your blood pressure pill this morning ?
+   r1: Did you take [this weekend] pill this morning ?
+   r2: Did you take your blood pressure [this weekend] this morning ?
+   r3: Did you take your blood pressure pill [this weekend] ?
+3.3 decoy='a heart pill' | ko: 혈액 항응고제나 인슐린, 흡입기를 쓰시나요?
+   chunks: Are you on / a blood thinner / , insulin / , or an inhaler / ?
+   r0: [a heart pill] a blood thinner , insulin , or an inhaler ?
+   r1: Are you on [a heart pill] , insulin , or an inhaler ?
+   r2: Are you on a blood thinner [a heart pill] , or an inhaler ?
+   r3: Are you on a blood thinner , insulin [a heart pill] ?
+3.4 decoy='any infusions' | ko: 집에서 인슐린 주사 같은 걸 맞으세요?
+   chunks: Do you take / any injections / , like insulin shots / , at home / ?
+   r0: [any infusions] any injections , like insulin shots , at home ?
+   r1: Do you take [any infusions] , like insulin shots , at home ?
+   r2: Do you take any injections [any infusions] , at home ?
+   r3: Do you take any injections , like insulin shots [any infusions] ?
+3.5 decoy='of that bottle' | ko: 각 약을 마지막으로 언제 드셨는지 정확히 알아야 해요.
+   chunks: I need to know exactly / when you took / your last dose / of each one / .
+   r0: [of that bottle] when you took your last dose of each one .
+   r1: I need to know exactly [of that bottle] your last dose of each one .
+   r2: I need to know exactly when you took [of that bottle] of each one .
+   r3: I need to know exactly when you took your last dose [of that bottle] .
+
+## S4 기저 활력징후 측정
+4.0 decoy='your chart' | ko: 기준치를 확인하려고 활력징후를 잴게요.
+   chunks: I'm going to check / your vitals / to get / a baseline / .
+   r0: [your chart] your vitals to get a baseline .
+   r1: I'm going to check [your chart] to get a baseline .
+   r2: I'm going to check your vitals [your chart] a baseline .
+   r3: I'm going to check your vitals to get [your chart] .
+4.1 decoy='for your age' | ko: 지금 수치는 좋아 보여요.
+   chunks: Your numbers / look good / for right now / .
+   r0: [for your age] look good for right now .
+   r1: Your numbers [for your age] for right now .
+   r2: Your numbers look good [for your age] .
+4.2 decoy='for anyone' | ko: 약간의 긴장감은 수술 전에 아주 정상이에요.
+   chunks: A little nervousness / is completely normal / before surgery / .
+   r0: [for anyone] is completely normal before surgery .
+   r1: A little nervousness [for anyone] before surgery .
+   r2: A little nervousness is completely normal [for anyone] .
+4.3 decoy='which usually passes' | ko: 심장이 조금 빨리 뛰는데, 긴장하면 흔히 그래요.
+   chunks: Your heart's beating / a little fast / , which often happens / when people feel / nervous / .
+   r0: [which usually passes] a little fast , which often happens when people feel nervous .
+   r1: Your heart's beating [which usually passes] , which often happens when people feel nervous .
+   r2: Your heart's beating a little fast [which usually passes] when people feel nervous .
+   r3: Your heart's beating a little fast , which often happens [which usually passes] nervous .
+   r4: Your heart's beating a little fast , which often happens when people feel [which usually passes] .
+4.4 decoy='your temperature' | ko: 혈압과 맥박, 산소포화도를 기록할게요.
+   chunks: I'll write down / your blood pressure / , pulse / , and oxygen level / .
+   r0: [your temperature] your blood pressure , pulse , and oxygen level .
+   r1: I'll write down [your temperature] , pulse , and oxygen level .
+   r2: I'll write down your blood pressure [your temperature] , and oxygen level .
+   r3: I'll write down your blood pressure , pulse [your temperature] .
+4.5 decoy='to rest' | ko: 몸이 이런 스트레스에 반응하는 건 아주 정상이에요.
+   chunks: It's completely normal / for your body / to react / to stress like this / .
+   r0: [to rest] for your body to react to stress like this .
+   r1: It's completely normal [to rest] to react to stress like this .
+   r2: It's completely normal for your body [to rest] to stress like this .
+   r3: It's completely normal for your body to react [to rest] .
+
+## S5 키·체중·BMI 확인
+5.0 decoy='for your diet' | ko: 약 용량 계산을 위해 정확한 체중을 잴게요.
+   chunks: Let's get / an accurate weight / for your medication / dosing / .
+   r0: [for your diet] an accurate weight for your medication dosing .
+   r1: Let's get [for your diet] for your medication dosing .
+   r2: Let's get an accurate weight [for your diet] dosing .
+   r3: Let's get an accurate weight for your medication [for your diet] .
+5.1 decoy='on the mat' | ko: 체중계에 올라가 주시겠어요?
+   chunks: Can you step / on the scale / for me / ?
+   r0: [on the mat] on the scale for me ?
+   r1: Can you step [on the mat] for me ?
+   r2: Can you step on the scale [on the mat] ?
+5.2 decoy='us show you' | ko: 정확한 용량을 드리는 데 도움이 돼요.
+   chunks: This helps / us give you / the exact / right dose / .
+   r0: [us show you] us give you the exact right dose .
+   r1: This helps [us show you] the exact right dose .
+   r2: This helps us give you [us show you] right dose .
+   r3: This helps us give you the exact [us show you] .
+5.3 decoy='your signature' | ko: 키도 재서 체질량지수를 기록할게요.
+   chunks: Let's also measure / your height / so we can record / your BMI / .
+   r0: [your signature] your height so we can record your BMI .
+   r1: Let's also measure [your signature] so we can record your BMI .
+   r2: Let's also measure your height [your signature] your BMI .
+   r3: Let's also measure your height so we can record [your signature] .
+5.4 decoy='the old number' | ko: 대략의 추정치도 도움이 되지만, 실제 수치가 더 안전해요.
+   chunks: Even a rough estimate / helps / , but the real number / is safer / .
+   r0: [the old number] helps , but the real number is safer .
+   r1: Even a rough estimate [the old number] , but the real number is safer .
+   r2: Even a rough estimate helps [the old number] is safer .
+   r3: Even a rough estimate helps , but the real number [the old number] .
+5.5 decoy='by hand' | ko: 체중에 맞춰 용량을 정하면 약이 안전하고 효과적이에요.
+   chunks: Dosing / by weight / keeps your medication / safe and effective / .
+   r0: [by hand] by weight keeps your medication safe and effective .
+   r1: Dosing [by hand] keeps your medication safe and effective .
+   r2: Dosing by weight [by hand] safe and effective .
+   r3: Dosing by weight keeps your medication [by hand] .
+
+## S6 물 한 모금 금식 위반
+6.0 decoy='did you pour' | ko: 물을 정확히 얼마나, 몇 시에 드셨어요?
+   chunks: Exactly how much water / did you have / , and at / what time / ?
+   r0: [did you pour] did you have , and at what time ?
+   r1: Exactly how much water [did you pour] , and at what time ?
+   r2: Exactly how much water did you have [did you pour] what time ?
+   r3: Exactly how much water did you have , and at [did you pour] ?
+6.1 decoy='I need to hand' | ko: 이 내용을 마취팀에 보고해야 해요.
+   chunks: I need to report / this / to the anesthesia / team / .
+   r0: [I need to hand] this to the anesthesia team .
+   r1: I need to report [I need to hand] to the anesthesia team .
+   r2: I need to report this [I need to hand] team .
+   r3: I need to report this to the anesthesia [I need to hand] .
+6.2 decoy='the lighting' | ko: 시간 조정이 필요한지는 그쪽에서 결정할 거예요, 안전하게요.
+   chunks: They'll decide / if we adjust / the timing / to keep you safe / .
+   r0: [the lighting] if we adjust the timing to keep you safe .
+   r1: They'll decide [the lighting] the timing to keep you safe .
+   r2: They'll decide if we adjust [the lighting] to keep you safe .
+   r3: They'll decide if we adjust the timing [the lighting] .
+6.3 decoy="Your insurance isn't canceled" | ko: 수술이 취소되는 건 아니지만, 시간이 조정될 수 있어요.
+   chunks: Your surgery isn't canceled / , but the timing / might need / to shift / .
+   r0: [Your insurance isn't canceled] , but the timing might need to shift .
+   r1: Your surgery isn't canceled [Your insurance isn't canceled] might need to shift .
+   r2: Your surgery isn't canceled , but the timing [Your insurance isn't canceled] to shift .
+   r3: Your surgery isn't canceled , but the timing might need [Your insurance isn't canceled] .
+6.4 decoy='of water means' | ko: 물 한 모금도 금식 위반으로 친다는 걸 잊기 쉬워요.
+   chunks: It's easy to forget / that even a sip / of water counts / as breaking your fast / .
+   r0: [of water means] that even a sip of water counts as breaking your fast .
+   r1: It's easy to forget [of water means] of water counts as breaking your fast .
+   r2: It's easy to forget that even a sip [of water means] as breaking your fast .
+   r3: It's easy to forget that even a sip of water counts [of water means] .
+6.5 decoy='the signed form' | ko: 화내는 거 아니에요, 안전을 위해 정확한 내용만 필요해요.
+   chunks: I'm not upset / — I just need / the exact details / to keep you safe / .
+   r0: [the signed form] — I just need the exact details to keep you safe .
+   r1: I'm not upset [the signed form] the exact details to keep you safe .
+   r2: I'm not upset — I just need [the signed form] to keep you safe .
+   r3: I'm not upset — I just need the exact details [the signed form] .
+
+## S7 조영제·해산물 교차 알레르기
+7.0 decoy='Seasonal allergy' | ko: 해산물 알레르기가 있다고 조영제 반응이 예측되는 건 아니에요.
+   chunks: Shellfish allergy / doesn't actually predict / a contrast reaction / .
+   r0: [Seasonal allergy] doesn't actually predict a contrast reaction .
+   r1: Shellfish allergy [Seasonal allergy] a contrast reaction .
+   r2: Shellfish allergy doesn't actually predict [Seasonal allergy] .
+7.1 decoy='with the dye' | ko: 그래도 해산물에는 정확히 어떤 반응이 있었는지 말씀해 주세요.
+   chunks: But tell me exactly / what happens / with shellfish / .
+   r0: [with the dye] what happens with shellfish .
+   r1: But tell me exactly [with the dye] with shellfish .
+   r2: But tell me exactly what happens [with the dye] .
+7.2 decoy='with your family' | ko: 이 내용을 기록하고 팀과 계획을 확정할게요.
+   chunks: I'll document this / and confirm / the plan / with the team / .
+   r0: [with your family] and confirm the plan with the team .
+   r1: I'll document this [with your family] the plan with the team .
+   r2: I'll document this and confirm [with your family] with the team .
+   r3: I'll document this and confirm the plan [with your family] .
+7.3 decoy='come with' | ko: 해산물 반응과 조영제 반응은 원인이 서로 달라요.
+   chunks: A shellfish reaction / and a contrast reaction / come from / different causes / .
+   r0: [come with] and a contrast reaction come from different causes .
+   r1: A shellfish reaction [come with] come from different causes .
+   r2: A shellfish reaction and a contrast reaction [come with] different causes .
+   r3: A shellfish reaction and a contrast reaction come from [come with] .
+7.4 decoy='or a high fever' | ko: 정확히 어떤 반응이었나요, 두드러기·붓기·호흡곤란 중 어떤 거였어요?
+   chunks: What exactly / happened / — hives, swelling / , or trouble breathing / ?
+   r0: [or a high fever] happened — hives, swelling , or trouble breathing ?
+   r1: What exactly [or a high fever] — hives, swelling , or trouble breathing ?
+   r2: What exactly happened [or a high fever] , or trouble breathing ?
+   r3: What exactly happened — hives, swelling [or a high fever] ?
+7.5 decoy='so they can book' | ko: 영상의학과에 확인해서 적절한 예방 조치를 계획하게 할게요.
+   chunks: I'll confirm this / with radiology / so they can plan / the right precautions / .
+   r0: [so they can book] with radiology so they can plan the right precautions .
+   r1: I'll confirm this [so they can book] so they can plan the right precautions .
+   r2: I'll confirm this with radiology [so they can book] the right precautions .
+   r3: I'll confirm this with radiology so they can plan [so they can book] .
+
+## S8 이전 마취 오심 병력
+8.0 decoy='look back' | ko: 그건 PONV 같은데, 미리 대비할 수 있어요.
+   chunks: That sounds like PONV / , and we can / plan ahead / for it / .
+   r0: [look back] , and we can plan ahead for it .
+   r1: That sounds like PONV [look back] plan ahead for it .
+   r2: That sounds like PONV , and we can [look back] for it .
+   r3: That sounds like PONV , and we can plan ahead [look back] .
+8.1 decoy='as a new patient' | ko: 고위험군으로 표시해서 수술 후 메스꺼움에 대비할게요.
+   chunks: I'll flag you / as high-risk / for post-op nausea / .
+   r0: [as a new patient] as high-risk for post-op nausea .
+   r1: I'll flag you [as a new patient] for post-op nausea .
+   r2: I'll flag you as high-risk [as a new patient] .
+8.2 decoy='to track it' | ko: 이번엔 팀에서 예방 약물을 추가로 줄 수 있어요.
+   chunks: The team can add / medication / to prevent it / this time / .
+   r0: [to track it] medication to prevent it this time .
+   r1: The team can add [to track it] to prevent it this time .
+   r2: The team can add medication [to track it] this time .
+   r3: The team can add medication to prevent it [to track it] .
+8.3 decoy='twice' | ko: 지난번엔 많이 토하셨나요, 아니면 그냥 메스꺼운 정도였나요?
+   chunks: Did you throw up / a lot / last time / , or just feel sick / ?
+   r0: [twice] a lot last time , or just feel sick ?
+   r1: Did you throw up [twice] last time , or just feel sick ?
+   r2: Did you throw up a lot [twice] , or just feel sick ?
+   r3: Did you throw up a lot last time [twice] ?
+8.4 decoy='also shows' | ko: 멀미 병력이 있으면 메스꺼움 위험도 높아져요.
+   chunks: A history of motion sickness / also raises / your risk / for nausea / .
+   r0: [also shows] also raises your risk for nausea .
+   r1: A history of motion sickness [also shows] your risk for nausea .
+   r2: A history of motion sickness also raises [also shows] for nausea .
+   r3: A history of motion sickness also raises your risk [also shows] .
+8.5 decoy='carefully' | ko: 마취팀이 미리 항구토제를 추가하도록 전달할게요.
+   chunks: I'll pass this along / so anesthesia can add / anti-nausea medication / early / .
+   r0: [carefully] so anesthesia can add anti-nausea medication early .
+   r1: I'll pass this along [carefully] anti-nausea medication early .
+   r2: I'll pass this along so anesthesia can add [carefully] early .
+   r3: I'll pass this along so anesthesia can add anti-nausea medication [carefully] .
+
+## S9 수면무호흡 병력
+9.0 decoy='with a mask' | ko: 매일 밤 CPAP을 쓰시고, 압력 설정은 어떻게 되세요?
+   chunks: Do you use / your CPAP / every night / , and what pressure setting / ?
+   r0: [with a mask] your CPAP every night , and what pressure setting ?
+   r1: Do you use [with a mask] every night , and what pressure setting ?
+   r2: Do you use your CPAP [with a mask] , and what pressure setting ?
+   r3: Do you use your CPAP every night [with a mask] ?
+9.1 decoy='to us' | ko: 이건 마취 중 기도 확보에 아주 중요해요.
+   chunks: This matters / a lot / for your airway / during anesthesia / .
+   r0: [to us] a lot for your airway during anesthesia .
+   r1: This matters [to us] for your airway during anesthesia .
+   r2: This matters a lot [to us] during anesthesia .
+   r3: This matters a lot for your airway [to us] .
+9.2 decoy='for me' | ko: 오늘 CPAP 기계를 가져오셨어요?
+   chunks: Did you bring / your CPAP machine / with you / today / ?
+   r0: [for me] your CPAP machine with you today ?
+   r1: Did you bring [for me] with you today ?
+   r2: Did you bring your CPAP machine [for me] today ?
+   r3: Did you bring your CPAP machine with you [for me] ?
+9.3 decoy='ever complain' | ko: 배우자분이 밤에 숨이 멎는 걸 알아채신 적 있나요?
+   chunks: Does your wife or partner / ever notice / you stop breathing / at night / ?
+   r0: [ever complain] ever notice you stop breathing at night ?
+   r1: Does your wife or partner [ever complain] you stop breathing at night ?
+   r2: Does your wife or partner ever notice [ever complain] at night ?
+   r3: Does your wife or partner ever notice you stop breathing [ever complain] ?
+9.4 decoy='explains' | ko: 기도가 어려웠던 병력은 마취과의 유도 계획을 바꿔요.
+   chunks: A difficult airway history / changes / how anesthesia plans / your induction / .
+   r0: [explains] changes how anesthesia plans your induction .
+   r1: A difficult airway history [explains] how anesthesia plans your induction .
+   r2: A difficult airway history changes [explains] your induction .
+   r3: A difficult airway history changes how anesthesia plans [explains] .
+9.5 decoy="I'll bring your bag" | ko: 수술실 가기 전에 이 내용을 마취과에 바로 전달할게요.
+   chunks: I'll bring this straight / to anesthesia / before we go / back / .
+   r0: [I'll bring your bag] to anesthesia before we go back .
+   r1: I'll bring this straight [I'll bring your bag] before we go back .
+   r2: I'll bring this straight to anesthesia [I'll bring your bag] back .
+   r3: I'll bring this straight to anesthesia before we go [I'll bring your bag] .
+
+## S10 심·호흡 기저질환
+10.0 decoy='about your asthma' | ko: COPD와 평소 호흡 상태에 대해 좀 더 말씀해 주세요.
+   chunks: Tell me more / about your COPD / and how your breathing is / day to day / .
+   r0: [about your asthma] about your COPD and how your breathing is day to day .
+   r1: Tell me more [about your asthma] and how your breathing is day to day .
+   r2: Tell me more about your COPD [about your asthma] day to day .
+   r3: Tell me more about your COPD and how your breathing is [about your asthma] .
+10.1 decoy='since your fall' | ko: 스텐트 이후로 혈액 항응고제를 드시나요?
+   chunks: Are you / on any blood thinners / since your / stent / ?
+   r0: [since your fall] on any blood thinners since your stent ?
+   r1: Are you [since your fall] since your stent ?
+   r2: Are you on any blood thinners [since your fall] stent ?
+   r3: Are you on any blood thinners since your [since your fall] ?
+10.2 decoy="I'll write that" | ko: 마취과가 전체 심장 병력을 알도록 확인할게요.
+   chunks: I'll make sure / anesthesia has / your full / cardiac history / .
+   r0: [I'll write that] anesthesia has your full cardiac history .
+   r1: I'll make sure [I'll write that] your full cardiac history .
+   r2: I'll make sure anesthesia has [I'll write that] cardiac history .
+   r3: I'll make sure anesthesia has your full [I'll write that] .
+10.3 decoy='riding up' | ko: 계단을 오를 때 숨이 차시나요?
+   chunks: Do you get short / of breath / walking up / a flight of stairs / ?
+   r0: [riding up] of breath walking up a flight of stairs ?
+   r1: Do you get short [riding up] walking up a flight of stairs ?
+   r2: Do you get short of breath [riding up] a flight of stairs ?
+   r3: Do you get short of breath walking up [riding up] ?
+10.4 decoy='for sure' | ko: 일상 활동에서도 숨이 차면 저희에겐 큰 위험 신호예요.
+   chunks: Being short of breath / during daily activity / is a big red flag / for us / .
+   r0: [for sure] during daily activity is a big red flag for us .
+   r1: Being short of breath [for sure] is a big red flag for us .
+   r2: Being short of breath during daily activity [for sure] for us .
+   r3: Being short of breath during daily activity is a big red flag [for sure] .
+10.5 decoy='on the right track' | ko: 시작 전에 마취과와 집도의가 같은 정보를 알도록 할게요.
+   chunks: I'll get anesthesia / and the surgeon / on the same page / before we start / .
+   r0: [on the right track] and the surgeon on the same page before we start .
+   r1: I'll get anesthesia [on the right track] on the same page before we start .
+   r2: I'll get anesthesia and the surgeon [on the right track] before we start .
+   r3: I'll get anesthesia and the surgeon on the same page [on the right track] .
+
+## S11 한약·건강보조제 복용
+11.0 decoy='affect taste' | ko: 보조제도 실제로 중요해요, 일부는 출혈에 영향을 줘요.
+   chunks: Supplements actually do matter / — some / affect bleeding / .
+   r0: [affect taste] — some affect bleeding .
+   r1: Supplements actually do matter [affect taste] affect bleeding .
+   r2: Supplements actually do matter — some [affect taste] .
+11.1 decoy='the green tea' | ko: 생선기름과 한약재는 마지막으로 언제 드셨어요?
+   chunks: When did you / last take / the fish oil / and herbs / ?
+   r0: [the green tea] last take the fish oil and herbs ?
+   r1: When did you [the green tea] the fish oil and herbs ?
+   r2: When did you last take [the green tea] and herbs ?
+   r3: When did you last take the fish oil [the green tea] ?
+11.2 decoy='so you remember' | ko: 이걸 목록으로 정리해서 수술팀도 출혈 위험을 알게 할게요.
+   chunks: I'll list these / so surgery knows / about the bleeding / risk / .
+   r0: [so you remember] so surgery knows about the bleeding risk .
+   r1: I'll list these [so you remember] about the bleeding risk .
+   r2: I'll list these so surgery knows [so you remember] risk .
+   r3: I'll list these so surgery knows about the bleeding [so you remember] .
+11.3 decoy='can warm' | ko: 한약재와 다른 보조제들은 처방약처럼 피를 묽게 만들 수 있어요.
+   chunks: Herbs and other supplements / can thin / the blood / just like prescription medication / .
+   r0: [can warm] can thin the blood just like prescription medication .
+   r1: Herbs and other supplements [can warm] the blood just like prescription medication .
+   r2: Herbs and other supplements can thin [can warm] just like prescription medication .
+   r3: Herbs and other supplements can thin the blood [can warm] .
+11.4 decoy='of every pill' | ko: 각 보조제의 정확한 이름과 마지막 복용 시점이 필요해요.
+   chunks: I need / the exact name / and the last dose / of every supplement / .
+   r0: [of every pill] the exact name and the last dose of every supplement .
+   r1: I need [of every pill] and the last dose of every supplement .
+   r2: I need the exact name [of every pill] of every supplement .
+   r3: I need the exact name and the last dose [of every pill] .
+11.5 decoy='so surgery can pay' | ko: 출혈 위험 대비를 계획하도록 수술팀에 보고할게요.
+   chunks: I'll report this / so surgery can plan / for extra / bleeding risk / .
+   r0: [so surgery can pay] so surgery can plan for extra bleeding risk .
+   r1: I'll report this [so surgery can pay] for extra bleeding risk .
+   r2: I'll report this so surgery can plan [so surgery can pay] bleeding risk .
+   r3: I'll report this so surgery can plan for extra [so surgery can pay] .
+
+## S12 흡연·음주력 문진
+12.0 decoy='your last vacation' | ko: 마지막으로 담배 피우신 게, 그리고 마지막 술은 언제였어요?
+   chunks: When did you / have / your last cigarette / and last drink / ?
+   r0: [your last vacation] have your last cigarette and last drink ?
+   r1: When did you [your last vacation] your last cigarette and last drink ?
+   r2: When did you have [your last vacation] and last drink ?
+   r3: When did you have your last cigarette [your last vacation] ?
+12.1 decoy='decide on' | ko: 이건 기도 관리와 회복 계획에 도움이 돼요.
+   chunks: This helps us / plan for / your airway / and recovery / .
+   r0: [decide on] plan for your airway and recovery .
+   r1: This helps us [decide on] your airway and recovery .
+   r2: This helps us plan for [decide on] and recovery .
+   r3: This helps us plan for your airway [decide on] .
+12.2 decoy='a quick' | ko: 판단하는 거 아니에요, 그냥 솔직한 그림이 필요해요.
+   chunks: I'm not judging / — I just need / an honest / picture / .
+   r0: [a quick] — I just need an honest picture .
+   r1: I'm not judging [a quick] an honest picture .
+   r2: I'm not judging — I just need [a quick] picture .
+   r3: I'm not judging — I just need an honest [a quick] .
+12.3 decoy='in a row' | ko: 하루에 몇 개비 정도, 몇 년째 피우셨어요?
+   chunks: About how many cigarettes / a day / , and for how many / years / ?
+   r0: [in a row] a day , and for how many years ?
+   r1: About how many cigarettes [in a row] , and for how many years ?
+   r2: About how many cigarettes a day [in a row] years ?
+   r3: About how many cigarettes a day , and for how many [in a row] ?
+12.4 decoy='both keep' | ko: 흡연과 음주 둘 다 기도 관리를 조금 더 어렵게 만들어요.
+   chunks: Smoking and drinking / both make / your airway / a little harder to manage / .
+   r0: [both keep] both make your airway a little harder to manage .
+   r1: Smoking and drinking [both keep] your airway a little harder to manage .
+   r2: Smoking and drinking both make [both keep] a little harder to manage .
+   r3: Smoking and drinking both make your airway [both keep] .
+12.5 decoy='can wave' | ko: 회복팀이 이를 반영해 계획하도록 솔직하게 기록할게요.
+   chunks: I'll record this honestly / so recovery / can plan / around it / .
+   r0: [can wave] so recovery can plan around it .
+   r1: I'll record this honestly [can wave] can plan around it .
+   r2: I'll record this honestly so recovery [can wave] around it .
+   r3: I'll record this honestly so recovery can plan [can wave] .
+
+## S13 가임기 임신 가능성
+13.0 decoy='billing form' | ko: 임신 가능성이 있는 모든 분께 하는 일상적인 안전 검사예요.
+   chunks: It's a routine / safety test / for everyone / who could be pregnant / .
+   r0: [billing form] safety test for everyone who could be pregnant .
+   r1: It's a routine [billing form] for everyone who could be pregnant .
+   r2: It's a routine safety test [billing form] who could be pregnant .
+   r3: It's a routine safety test for everyone [billing form] .
+13.1 decoy='wonder' | ko: 마취가 임신에 영향을 줄 수 있어서 항상 확인해요.
+   chunks: Anesthesia can affect / a pregnancy / , so we always / confirm / .
+   r0: [wonder] a pregnancy , so we always confirm .
+   r1: Anesthesia can affect [wonder] , so we always confirm .
+   r2: Anesthesia can affect a pregnancy [wonder] confirm .
+   r3: Anesthesia can affect a pregnancy , so we always [wonder] .
+13.2 decoy='between us' | ko: 이 내용은 환자분과 진료팀 사이에서만 비밀로 유지돼요.
+   chunks: This stays / confidential / between you / and the care team / .
+   r0: [between us] confidential between you and the care team .
+   r1: This stays [between us] between you and the care team .
+   r2: This stays confidential [between us] and the care team .
+   r3: This stays confidential between you [between us] .
+13.3 decoy='any reason' | ko: 마지막 생리는 언제였고, 임신 가능성이 있으신가요?
+   chunks: When was your last period / , and is there / any chance / you're pregnant / ?
+   r0: [any reason] , and is there any chance you're pregnant ?
+   r1: When was your last period [any reason] any chance you're pregnant ?
+   r2: When was your last period , and is there [any reason] you're pregnant ?
+   r3: When was your last period , and is there any chance [any reason] ?
+13.4 decoy='silly' | ko: 개인적으로 느껴지실 수 있지만, 마취 중 안전을 위한 거예요.
+   chunks: I know this feels / personal / , but it keeps you / safe under anesthesia / .
+   r0: [silly] personal , but it keeps you safe under anesthesia .
+   r1: I know this feels [silly] , but it keeps you safe under anesthesia .
+   r2: I know this feels personal [silly] safe under anesthesia .
+   r3: I know this feels personal , but it keeps you [silly] .
+13.5 decoy='in your family' | ko: 이 방 밖의 누구도 결과를 알 필요 없어요.
+   chunks: No one / outside this room / needs to know / the result / .
+   r0: [in your family] outside this room needs to know the result .
+   r1: No one [in your family] needs to know the result .
+   r2: No one outside this room [in your family] the result .
+   r3: No one outside this room needs to know [in your family] .
+
+## S14 최근 상기도 감염
+14.0 decoy='the rash' | ko: 기침과 코막힘은 언제부터 시작됐어요?
+   chunks: When did / the cough / and congestion start / ?
+   r0: [the rash] the cough and congestion start ?
+   r1: When did [the rash] and congestion start ?
+   r2: When did the cough [the rash] ?
+14.1 decoy='any sore throat' | ko: 열은 있나요, 아니면 색깔 있는 가래가 나오나요?
+   chunks: Any fever / , or coughing up / any colored mucus / ?
+   r0: [any sore throat] , or coughing up any colored mucus ?
+   r1: Any fever [any sore throat] any colored mucus ?
+   r2: Any fever , or coughing up [any sore throat] ?
+14.2 decoy='to step out' | ko: 진행하기 전에 마취과 의견이 필요해요.
+   chunks: I need anesthesia / to weigh in / before we / proceed / .
+   r0: [to step out] to weigh in before we proceed .
+   r1: I need anesthesia [to step out] before we proceed .
+   r2: I need anesthesia to weigh in [to step out] proceed .
+   r3: I need anesthesia to weigh in before we [to step out] .
+14.3 decoy='the sore throat' | ko: 기침과 코막힘이 며칠째인가요?
+   chunks: How many days / have you had / the cough / and congestion / ?
+   r0: [the sore throat] have you had the cough and congestion ?
+   r1: How many days [the sore throat] the cough and congestion ?
+   r2: How many days have you had [the sore throat] and congestion ?
+   r3: How many days have you had the cough [the sore throat] ?
+14.4 decoy='comes before' | ko: 단순 콧물과 열을 동반한 심한 기침은 달라요.
+   chunks: A simple runny nose / is different / from a fever / with a bad cough / .
+   r0: [comes before] is different from a fever with a bad cough .
+   r1: A simple runny nose [comes before] from a fever with a bad cough .
+   r2: A simple runny nose is different [comes before] with a bad cough .
+   r3: A simple runny nose is different from a fever [comes before] .
+14.5 decoy='so anesthesia can sign' | ko: 오늘 수술 진행 여부를 마취과가 결정하도록 증상을 보고할게요.
+   chunks: I'll report your symptoms / so anesthesia can decide / about today's / surgery / .
+   r0: [so anesthesia can sign] so anesthesia can decide about today's surgery .
+   r1: I'll report your symptoms [so anesthesia can sign] about today's surgery .
+   r2: I'll report your symptoms so anesthesia can decide [so anesthesia can sign] surgery .
+   r3: I'll report your symptoms so anesthesia can decide about today's [so anesthesia can sign] .
+
+## S15 응급 환자 금식 위반
+15.0 decoy='— urgent' | ko: 이 환자는 full stomach로 보고 RSI로 갈게요.
+   chunks: We should treat this / as a full stomach / — RSI / it is / .
+   r0: [— urgent] as a full stomach — RSI it is .
+   r1: We should treat this [— urgent] — RSI it is .
+   r2: We should treat this as a full stomach [— urgent] it is .
+   r3: We should treat this as a full stomach — RSI [— urgent] .
+15.1 decoy='of the cart' | ko: 흡인기를 켜서 침대 머리맡에 준비해 뒀어요.
+   chunks: I have suction on / and ready / at the head / of the bed / .
+   r0: [of the cart] and ready at the head of the bed .
+   r1: I have suction on [of the cart] at the head of the bed .
+   r2: I have suction on and ready [of the cart] of the bed .
+   r3: I have suction on and ready at the head [of the cart] .
+15.2 decoy='is safe' | ko: 윤상연골 압박은 부르시면 바로 할 수 있어요.
+   chunks: Cricoid pressure / is ready / whenever you call / for it / .
+   r0: [is safe] is ready whenever you call for it .
+   r1: Cricoid pressure [is safe] whenever you call for it .
+   r2: Cricoid pressure is ready [is safe] for it .
+   r3: Cricoid pressure is ready whenever you call [is safe] .
+15.3 decoy='long delay' | ko: full stomach는 유도 중 흡인 위험이 크다는 뜻이에요.
+   chunks: Full stomach means / high risk / of aspiration / during induction / .
+   r0: [long delay] high risk of aspiration during induction .
+   r1: Full stomach means [long delay] of aspiration during induction .
+   r2: Full stomach means high risk [long delay] during induction .
+   r3: Full stomach means high risk of aspiration [long delay] .
+15.4 decoy='clean' | ko: 빨리 필요할 수도 있으니 기도 카트를 가까이 둘게요.
+   chunks: I'll keep the airway cart / close / in case we need it / fast / .
+   r0: [clean] close in case we need it fast .
+   r1: I'll keep the airway cart [clean] in case we need it fast .
+   r2: I'll keep the airway cart close [clean] fast .
+   r3: I'll keep the airway cart close in case we need it [clean] .
+15.5 decoy='the rules' | ko: 모두 계획을 알고 있으니 준비되면 바로 움직일 수 있어요.
+   chunks: Everyone knows the plan / , so we can move fast / once you're / ready / .
+   r0: [the rules] , so we can move fast once you're ready .
+   r1: Everyone knows the plan [the rules] once you're ready .
+   r2: Everyone knows the plan , so we can move fast [the rules] ready .
+   r3: Everyone knows the plan , so we can move fast once you're [the rules] .
+
+## S16 조영제 아나필락시스 병력
+16.0 decoy='for' | ko: 그건 심각한 반응이네요, 고위험군으로 표시할게요.
+   chunks: That's a serious reaction / — I'm marking you / as / high-risk / .
+   r0: [for] — I'm marking you as high-risk .
+   r1: That's a serious reaction [for] as high-risk .
+   r2: That's a serious reaction — I'm marking you [for] high-risk .
+   r3: That's a serious reaction — I'm marking you as [for] .
+16.1 decoy='and spare gloves' | ko: 에피네프린과 응급약을 준비해 둘게요.
+   chunks: We'll have epinephrine / and emergency meds / ready / .
+   r0: [and spare gloves] and emergency meds ready .
+   r1: We'll have epinephrine [and spare gloves] ready .
+   r2: We'll have epinephrine and emergency meds [and spare gloves] .
+16.2 decoy='will vote' | ko: 무엇이든 투여되기 전에 팀 전체가 알 거예요.
+   chunks: The whole team / will know / before anything / is given / .
+   r0: [will vote] will know before anything is given .
+   r1: The whole team [will vote] before anything is given .
+   r2: The whole team will know [will vote] is given .
+   r3: The whole team will know before anything [will vote] .
+16.3 decoy='your hands feel' | ko: 목이 정확히 어땠나요, 조이거나 붓거나 숨쉬기 어려웠나요?
+   chunks: Exactly how did / your throat feel / — tight, swollen / , or hard to breathe / ?
+   r0: [your hands feel] your throat feel — tight, swollen , or hard to breathe ?
+   r1: Exactly how did [your hands feel] — tight, swollen , or hard to breathe ?
+   r2: Exactly how did your throat feel [your hands feel] , or hard to breathe ?
+   r3: Exactly how did your throat feel — tight, swollen [your hands feel] ?
+16.4 decoy='what brand' | ko: 정확히 어떤 약이나 조영제가 원인이었는지 알아야 해요.
+   chunks: I need to know exactly / what medication / or contrast / caused it / .
+   r0: [what brand] what medication or contrast caused it .
+   r1: I need to know exactly [what brand] or contrast caused it .
+   r2: I need to know exactly what medication [what brand] caused it .
+   r3: I need to know exactly what medication or contrast [what brand] .
+16.5 decoy="so everyone's calm" | ko: 무엇을 주기 전에 팀 전체가 준비되도록 알릴게요.
+   chunks: I'll alert the whole team / so everyone's ready / before we give / anything / .
+   r0: [so everyone's calm] so everyone's ready before we give anything .
+   r1: I'll alert the whole team [so everyone's calm] before we give anything .
+   r2: I'll alert the whole team so everyone's ready [so everyone's calm] anything .
+   r3: I'll alert the whole team so everyone's ready before we give [so everyone's calm] .
+
+## S17 원인 미상 약물 반응
+17.0 decoy='everything you were wearing' | ko: 그때 즈음 투여된 모든 걸 파악해 봐요.
+   chunks: Let's figure out / everything you were given / around that / time / .
+   r0: [everything you were wearing] everything you were given around that time .
+   r1: Let's figure out [everything you were wearing] around that time .
+   r2: Let's figure out everything you were given [everything you were wearing] time .
+   r3: Let's figure out everything you were given around that [everything you were wearing] .
+17.1 decoy='the usual routine' | ko: 확실해지기 전까지는 의심되는 것들을 피할게요.
+   chunks: Until we know / , we'll avoid / the likely culprits / .
+   r0: [the usual routine] , we'll avoid the likely culprits .
+   r1: Until we know [the usual routine] the likely culprits .
+   r2: Until we know , we'll avoid [the usual routine] .
+17.2 decoy='on order' | ko: 만약을 대비해 응급약을 바로 쓸 수 있게 둘게요.
+   chunks: I'll have / emergency meds / on standby / just in case / .
+   r0: [on order] emergency meds on standby just in case .
+   r1: I'll have [on order] on standby just in case .
+   r2: I'll have emergency meds [on order] just in case .
+   r3: I'll have emergency meds on standby [on order] .
+17.3 decoy='got dressed' | ko: 얼굴과 몸이 정확히 어떻게 부었는지 말씀해 주시겠어요?
+   chunks: Can you describe / exactly how / your face and body / swelled up / ?
+   r0: [got dressed] exactly how your face and body swelled up ?
+   r1: Can you describe [got dressed] your face and body swelled up ?
+   r2: Can you describe exactly how [got dressed] swelled up ?
+   r3: Can you describe exactly how your face and body [got dressed] ?
+17.4 decoy='can push' | ko: 붓기와 함께 어지러움이 있으면 심각한 반응일 수 있어요.
+   chunks: Dizziness along with swelling / can point / to a serious / reaction / .
+   r0: [can push] can point to a serious reaction .
+   r1: Dizziness along with swelling [can push] to a serious reaction .
+   r2: Dizziness along with swelling can point [can push] reaction .
+   r3: Dizziness along with swelling can point to a serious [can push] .
+17.5 decoy='your belongings' | ko: 가까이서 지켜보면서 응급약을 손닿는 곳에 둘게요.
+   chunks: We'll watch you closely / and keep / emergency meds / within reach / .
+   r0: [your belongings] and keep emergency meds within reach .
+   r1: We'll watch you closely [your belongings] emergency meds within reach .
+   r2: We'll watch you closely and keep [your belongings] within reach .
+   r3: We'll watch you closely and keep emergency meds [your belongings] .
+
+## S18 마취 가족력 MH 의심
+18.0 decoy='very surprising' | ko: 그건 악성 고열일 수 있어요, 아주 중요한 정보예요.
+   chunks: That could be / malignant hyperthermia / — very important / to know / .
+   r0: [very surprising] malignant hyperthermia — very important to know .
+   r1: That could be [very surprising] — very important to know .
+   r2: That could be malignant hyperthermia [very surprising] to know .
+   r3: That could be malignant hyperthermia — very important [very surprising] .
+18.1 decoy='in the photo' | ko: 가족 중에 이런 일이 있었던 분이 계신지 아세요?
+   chunks: Do you know / if anyone else / in the family / had this / ?
+   r0: [in the photo] if anyone else in the family had this ?
+   r1: Do you know [in the photo] in the family had this ?
+   r2: Do you know if anyone else [in the photo] had this ?
+   r3: Do you know if anyone else in the family [in the photo] ?
+18.2 decoy='so they can print' | ko: 안전한 기법을 계획하도록 마취과에 알릴게요.
+   chunks: I'll alert anesthesia / so they can plan / a safe / technique / .
+   r0: [so they can print] so they can plan a safe technique .
+   r1: I'll alert anesthesia [so they can print] a safe technique .
+   r2: I'll alert anesthesia so they can plan [so they can print] technique .
+   r3: I'll alert anesthesia so they can plan a safe [so they can print] .
+18.3 decoy='to your neighbor' | ko: 형제분은 정확히 어땠나요, 고열이나 근육 경직, 혹은 더 심했나요?
+   chunks: What exactly happened / to your brother / — high fever, stiff muscles / , or worse / ?
+   r0: [to your neighbor] to your brother — high fever, stiff muscles , or worse ?
+   r1: What exactly happened [to your neighbor] — high fever, stiff muscles , or worse ?
+   r2: What exactly happened to your brother [to your neighbor] , or worse ?
+   r3: What exactly happened to your brother — high fever, stiff muscles [to your neighbor] ?
+18.4 decoy='doubles' | ko: 이런 가족력이 있으면 어떤 마취약이 안전한지가 달라져요.
+   chunks: This kind of family history / changes / which anesthesia drugs / are safe for you / .
+   r0: [doubles] changes which anesthesia drugs are safe for you .
+   r1: This kind of family history [doubles] which anesthesia drugs are safe for you .
+   r2: This kind of family history changes [doubles] are safe for you .
+   r3: This kind of family history changes which anesthesia drugs [doubles] .
+18.5 decoy='one by one' | ko: 시작한 뒤가 아니라 지금 바로 마취과에 전달해야 해요.
+   chunks: I need to send this / to anesthesia / right now / , not after we start / .
+   r0: [one by one] to anesthesia right now , not after we start .
+   r1: I need to send this [one by one] right now , not after we start .
+   r2: I need to send this to anesthesia [one by one] , not after we start .
+   r3: I need to send this to anesthesia right now [one by one] .
+
+## S19 항응고제 복용 미확인 도착
+19.0 decoy='your last visit' | ko: 어떤 항응고제이고, 마지막 복용은 언제였나요?
+   chunks: Which blood thinner / is it / , and when was / your last dose / ?
+   r0: [your last visit] is it , and when was your last dose ?
+   r1: Which blood thinner [your last visit] , and when was your last dose ?
+   r2: Which blood thinner is it [your last visit] your last dose ?
+   r3: Which blood thinner is it , and when was [your last visit] ?
+19.1 decoy='your insurance cost' | ko: 출혈 위험이 달라지니 지금 바로 보고해야 해요.
+   chunks: This changes / your bleeding risk / , so I need / to report it now / .
+   r0: [your insurance cost] your bleeding risk , so I need to report it now .
+   r1: This changes [your insurance cost] , so I need to report it now .
+   r2: This changes your bleeding risk [your insurance cost] to report it now .
+   r3: This changes your bleeding risk , so I need [your insurance cost] .
+19.2 decoy='or retire' | ko: 지연할지 진행할지는 팀에서 안전하게 결정할 거예요.
+   chunks: The team will decide / whether to delay / or proceed / safely / .
+   r0: [or retire] whether to delay or proceed safely .
+   r1: The team will decide [or retire] or proceed safely .
+   r2: The team will decide whether to delay [or retire] safely .
+   r3: The team will decide whether to delay or proceed [or retire] .
+19.3 decoy='did you find it' | ko: 정확히 언제, 얼마나 드셨어요?
+   chunks: When exactly / did you take it / , and how / much / ?
+   r0: [did you find it] did you take it , and how much ?
+   r1: When exactly [did you find it] , and how much ?
+   r2: When exactly did you take it [did you find it] much ?
+   r3: When exactly did you take it , and how [did you find it] ?
+19.4 decoy='to hold it' | ko: 아무도 끊으라고 말씀 안 드렸으니 환자분 잘못이 아니에요.
+   chunks: Nobody told you / to stop it / , so this isn't / your fault / .
+   r0: [to hold it] to stop it , so this isn't your fault .
+   r1: Nobody told you [to hold it] , so this isn't your fault .
+   r2: Nobody told you to stop it [to hold it] your fault .
+   r3: Nobody told you to stop it , so this isn't [to hold it] .
+19.5 decoy='with a form' | ko: 팀이 안전하게 재평가하도록 지금 바로 보고할게요.
+   chunks: I'm reporting this / right away / so the team / can reassess safely / .
+   r0: [with a form] right away so the team can reassess safely .
+   r1: I'm reporting this [with a form] so the team can reassess safely .
+   r2: I'm reporting this right away [with a form] can reassess safely .
+   r3: I'm reporting this right away so the team [with a form] .
+
+## S20 금식 확인 불가 무의식
+20.0 decoy='his name tag' | ko: 금식 여부를 확인할 수 없으니 full stomach로 간주할게요.
+   chunks: We can't confirm / NPO status / , so assume / a full stomach / .
+   r0: [his name tag] NPO status , so assume a full stomach .
+   r1: We can't confirm [his name tag] , so assume a full stomach .
+   r2: We can't confirm NPO status [his name tag] a full stomach .
+   r3: We can't confirm NPO status , so assume [his name tag] .
+20.1 decoy='for rounds' | ko: 흡인기는 준비됐고 RSI 준비도 됐어요.
+   chunks: Suction is / set up / and I'm ready / for RSI / .
+   r0: [for rounds] set up and I'm ready for RSI .
+   r1: Suction is [for rounds] and I'm ready for RSI .
+   r2: Suction is set up [for rounds] for RSI .
+   r3: Suction is set up and I'm ready [for rounds] .
+20.2 decoy='over there' | ko: 기도 카트를 바로 침상 곁에 둘게요.
+   chunks: Let's have / the airway cart / right here / at the bedside / .
+   r0: [over there] the airway cart right here at the bedside .
+   r1: Let's have [over there] right here at the bedside .
+   r2: Let's have the airway cart [over there] at the bedside .
+   r3: Let's have the airway cart right here [over there] .
+20.3 decoy='on paper' | ko: 의식 없는 환자는 매번 full stomach로 처치해요.
+   chunks: Unconscious patients / get treated / as a full stomach / every time / .
+   r0: [on paper] get treated as a full stomach every time .
+   r1: Unconscious patients [on paper] as a full stomach every time .
+   r2: Unconscious patients get treated [on paper] every time .
+   r3: Unconscious patients get treated as a full stomach [on paper] .
+20.4 decoy='his insurance card' | ko: 마지막 식사를 확인할 수 없으니 최악의 경우로 간주해요.
+   chunks: Nobody can confirm / his last meal / , so we assume / the worst case / .
+   r0: [his insurance card] his last meal , so we assume the worst case .
+   r1: Nobody can confirm [his insurance card] , so we assume the worst case .
+   r2: Nobody can confirm his last meal [his insurance card] the worst case .
+   r3: Nobody can confirm his last meal , so we assume [his insurance card] .
+20.5 decoy='so we can chat' | ko: 다 준비됐으니 필요한 순간 바로 움직일 수 있어요.
+   chunks: Everything is ready / , so we can move fast / the moment / he needs it / .
+   r0: [so we can chat] , so we can move fast the moment he needs it .
+   r1: Everything is ready [so we can chat] the moment he needs it .
+   r2: Everything is ready , so we can move fast [so we can chat] he needs it .
+   r3: Everything is ready , so we can move fast the moment [so we can chat] .

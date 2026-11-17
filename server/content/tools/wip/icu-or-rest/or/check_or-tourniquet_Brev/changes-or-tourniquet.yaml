@@ -1,0 +1,468 @@
+theme: or-tourniquet
+changes:
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(time); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-now
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(now); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-go
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(go); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(know); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(minute); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(patient); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-get
+  why: 너무 쉬움 — 목록 밖 판단(get); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-make
+  why: 너무 쉬움 — 목록 밖 판단(make); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움 — 목록 밖 판단(see); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-let
+  why: 너무 쉬움 — 목록 밖 판단(let); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-cannot
+  why: 너무 쉬움 — 목록 밖 판단(cannot); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-ask
+  why: 너무 쉬움 — 목록 밖 판단(ask); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-need
+  why: 너무 쉬움 — 목록 밖 판단(need); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-new
+  why: 너무 쉬움 — 목록 밖 판단(new); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-every
+  why: 너무 쉬움 — 목록 밖 판단(every); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-after
+  why: 너무 쉬움 — 목록 밖 판단(after); 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: w-confirm과 ko(확인하다)가 같아 듣고 뜻 고르기에서 정답이 둘 — check는 살펴 점검하는 쪽
+- kind: word
+  id: w-note
+  fields:
+  - ko
+  why: w-record·w-document와 ko(기록하다)가 같아 정답이 셋 — note는 짧게 메모
+- kind: word
+  id: w-document
+  fields:
+  - ko
+  why: w-record·w-note와 ko(기록하다)가 같아 정답이 셋 — document는 서류·차트에 문서로 남기는 쪽
+- kind: word
+  id: w-damage
+  fields:
+  - ko
+  why: w-injury와 ko(손상)가 같아 정답이 둘 — damage는 조직이 훼손된 것
+- kind: word
+  id: w-underneath
+  fields:
+  - ko
+  why: w-below와 ko(아래에)가 같아 정답이 둘 — underneath는 바로 밑에 가려진 자리
+- kind: word
+  id: w-below
+  fields:
+  - ko
+  why: w-underneath와 ko(아래에)가 같아 정답이 둘 — below는 기준 지점보다 더 아래쪽
+- kind: word
+  id: w-call
+  fields:
+  - ko
+  why: w-announce·w-flag·w-inform과 ko(알리다)가 같아 정답이 넷 — call은 소리 내어 알려 주는 쪽
+- kind: word
+  id: w-announce
+  fields:
+  - ko
+  why: ko(알리다)가 call·flag·inform과 같아 정답이 넷 — announce는 모두에게 공지하는 쪽
+- kind: word
+  id: w-flag
+  fields:
+  - ko
+  why: ko(알리다)가 call·announce·inform과 같아 정답이 넷 — flag는 문제점을 짚어서 알리는 쪽
+- kind: word
+  id: w-inform
+  fields:
+  - ko
+  why: ko(알리다)가 call·announce·flag와 같아 정답이 넷 — inform은 모르는 사람에게 알려 주는 쪽
+- kind: word
+  id: w-right
+  fields:
+  - ko
+  why: w-correct와 ko(맞는)가 같아 정답이 둘 — right는 크기·적절함에 알맞은 쪽
+- kind: word
+  id: w-correct
+  fields:
+  - ko
+  why: w-right와 ko(맞는)가 같아 정답이 둘 — correct는 틀림없이 정확한 쪽
+- kind: word
+  id: w-alarm
+  fields:
+  - ko
+  why: w-alert와 ko(경보)가 같아 정답이 둘 — alarm은 정한 때 울리는 알람
+- kind: word
+  id: w-alert
+  fields:
+  - ko
+  why: w-alarm과 ko(경보)가 같고 w-reminder(알림)와도 겹쳐 정답이 둘 — alert는 주의를 끄는 경고 알림
+- kind: word
+  id: w-max
+  fields:
+  - ko
+  why: w-maximum과 ko(최대)가 같아 정답이 둘 — max는 형용사로 '최대의'(maximum은 최대치)
+- kind: word
+  id: w-maximum
+  fields:
+  - ko
+  why: w-max와 ko가 겹치지 않게 명사 '최대치'로
+- kind: word
+  id: w-run
+  fields:
+  - ko
+  why: w-active와 ko(작동 중인)가 겹쳐 정답이 둘 — run은 돌아가며 작동하는 동작
+- kind: word
+  id: w-active
+  fields:
+  - ko
+  why: w-run과 ko(작동)가 겹쳐 정답이 둘 — active는 켜져 활성인 상태
+- kind: word
+  id: w-sit
+  fields:
+  - ko
+  why: '''where the cuff will sit'' — 위치하다보다 놓이다가 자연스럽다'
+- kind: word
+  id: w-pinch
+  fields:
+  - ko
+  why: w-tight(조이는)·w-compress와 겹쳐 정답이 둘 — 문장은 피부가 끼이는 뜻('isn't pinched')
+- kind: word
+  id: w-field
+  fields:
+  - ko
+  why: '''필드''는 외래어 그대로라 뜻이 흐리다 — 수술 영역'
+- kind: word
+  id: w-block
+  fields:
+  - ko
+  why: 블록은 외래어 그대로라 뜻이 흐리다 — 이중 커프 정맥 부위마취의 신경차단
+- kind: word
+  id: w-congest
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 태그된 문장이 모두 congested 형태의 형용사로 쓰여 헤드워드를 그 모습으로
+- kind: word
+  id: w-prolong
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 태그된 문장이 모두 prolonged 형태의 형용사로 쓰여 헤드워드를 그 모습으로
+- kind: sentence
+  situation: 적용 시각 기록
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 적용 시각 기록
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 적용 시각 기록
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 적용 시각 기록
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 적용 시각 기록
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 시간 알람 확인
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 시간 알람 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 최대 허용 시간 관리
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 최대 허용 시간 관리
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 최대 허용 시간 관리
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 최대 허용 시간 관리
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 최대 허용 시간 관리
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 재관류 전 팀 고지
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 재관류 전 팀 고지
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 재관류 전 팀 고지
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 허혈 시간 소통
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 허혈 시간 소통
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 허혈 시간 소통
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 허혈 시간 소통
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 허혈 시간 소통
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 이중 커프 부위마취
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 말초혈관질환 주의
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 말초혈관질환 주의
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 소아 압력 조정
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 소아 압력 조정
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 압흔 손상 예방
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 압흔 손상 예방
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 재적용 시간 관리
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 재적용 시간 관리
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 재적용 시간 관리
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 하지 정맥울혈 감시
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 허용 시간 초과 임박
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 허용 시간 초과 임박
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 허용 시간 초과 임박
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 허용 시간 초과 임박
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 재관류 저혈압 발생
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 재관류 저혈압 발생
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 재관류 저혈압 발생
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 지혈대 신경마비 손상
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 지혈대 신경마비 손상
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 압력 오류 지속 출혈
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 재관류 대사 급변
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 재관류 대사 급변
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 재관류 대사 급변
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 재관류 대사 급변
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 장시간 허혈 근손상
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 장시간 허혈 근손상
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 장시간 허혈 근손상
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 장시간 허혈 근손상
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리

@@ -1,0 +1,7185 @@
+theme: or-massive-transfusion
+words:
+- id: w-product
+  en: product
+  ipa: /ˈprɑːdʌkt/
+  ko: (혈액) 제제
+  icon: lab
+  example: This is packed red cells, correct?
+  cue: 혈액은행이 보내 준 적혈구·혈장 같은 한 종류 하나하나
+  exKo: 이건 농축적혈구 맞죠?
+  tag: 제제 확인
+  distractorsEn:
+  - procedure
+  - protocol
+  distractorsKo:
+  - (혈액) 검체
+  - (혈액) 용기
+  chips:
+  - - pro
+    - duct
+  decoyChips:
+  - duce
+- id: w-packedcell
+  en: packed red cells
+  ipa: /pækt rɛd sɛlz/
+  ko: 농축적혈구
+  icon: lab
+  example: This is packed red cells, correct?
+  cue: 적혈구만 농축해서 만든 제제 — 라벨에 적힌 이름
+  exKo: 이건 농축적혈구 맞죠?
+  tag: 제제 확인
+  distractorsEn:
+  - packed platelets
+  - washed red cells
+  distractorsKo:
+  - 농축혈소판
+  - 세척적혈구
+  chips:
+  - - pack
+    - ed
+  - - red
+  - - cells
+  decoyChips:
+  - pak
+- id: w-correct
+  en: correct
+  ipa: /kəˈrɛkt/
+  ko: 맞는
+  icon: check
+  example: This is packed red cells, correct?
+  cue: 라벨과 처방이 틀림없이 같은지 되물을 때
+  exKo: 이건 농축적혈구 맞죠?
+  tag: 제제 확인
+  distractorsEn:
+  - incorrect
+  - current
+  distractorsKo:
+  - 틀린
+  - 비슷한
+  chips:
+  - - cor
+    - rect
+  decoyChips:
+  - ruct
+- id: w-unit
+  en: unit
+  ipa: /ˈjuːnɪt/
+  ko: 혈액 제제 단위
+  icon: lab
+  example: Let's check the unit against the order.
+  cue: 혈액 한 봉지를 세는 단위 — "네 ○○ 도착"
+  exKo: 제제 단위를 처방과 대조해 봅시다.
+  tag: 제제 확인
+  distractorsEn:
+  - vial
+  - syringe
+  distractorsKo:
+  - 혈액 검체 용기
+  - 혈액 제제 라벨
+  chips:
+  - - un
+    - it
+  decoyChips:
+  - ity
+- id: w-order
+  en: order
+  ipa: /ˈɔːrdər/
+  ko: 처방
+  icon: pencil
+  example: Let's check the unit against the order.
+  cue: 의사가 내는 서류 — 걸기 전에 제제와 맞춰 본다
+  exKo: 제제 단위를 처방과 대조해 봅시다.
+  tag: 제제 확인
+  distractorsEn:
+  - label
+  - policy
+  distractorsKo:
+  - 라벨
+  - 전표
+  chips:
+  - - or
+    - der
+  decoyChips:
+  - ord
+- id: w-confirm
+  en: confirm
+  ipa: /kənˈfɜːrm/
+  ko: 확인하다
+  icon: check
+  example: I'll confirm the product type out loud.
+  cue: 눈으로만 넘기지 않고 맞다고 분명히 말하는 일
+  exKo: 제제 종류를 소리 내어 확인할게요.
+  tag: 제제 확인
+  distractorsEn:
+  - conform
+  - confide
+  distractorsKo:
+  - 순응하다
+  - 털어놓다
+  chips:
+  - - con
+    - firm
+  decoyChips:
+  - form
+- id: w-type
+  en: type
+  ipa: /taɪp/
+  ko: 종류
+  icon: board
+  example: I'll confirm the product type out loud.
+  cue: 적혈구인지 혈장인지, 제제의 갈래
+  exKo: 제제 종류를 소리 내어 확인할게요.
+  tag: 제제 확인
+  distractorsEn:
+  - grade
+  - batch
+  distractorsKo:
+  - 등급
+  - 수량
+  chips:
+  - - type
+  decoyChips:
+  - tide
+- id: w-outloud
+  en: out loud
+  ipa: /aʊt laʊd/
+  ko: 소리 내어
+  icon: speech
+  example: I'll confirm the product type out loud.
+  cue: 마음속으로가 아니라 입 밖으로 내서
+  exKo: 제제 종류를 소리 내어 확인할게요.
+  tag: 이중 확인
+  distractorsEn:
+  - in writing
+  - in person
+  distractorsKo:
+  - 글로 적어
+  - 눈으로만
+  chips:
+  - - out
+  - - loud
+  decoyChips:
+  - cloud
+- id: w-verify
+  en: verify
+  ipa: /ˈvɛrɪfaɪ/
+  ko: 대조 확인하다
+  icon: check
+  example: Let's verify the unit number and blood type together.
+  cue: 두 번째 사람이 한 번 더 맞춰 보는 일
+  exKo: 제제 번호와 혈액형을 함께 대조 확인합시다.
+  tag: 이중 확인
+  distractorsEn:
+  - clarify
+  - vary
+  distractorsKo:
+  - 설명하다
+  - 변경하다
+  chips:
+  - - ver
+    - i
+    - fy
+  decoyChips:
+  - ti
+- id: w-number
+  en: number
+  ipa: /ˈnʌmbər/
+  ko: 번호
+  icon: board
+  example: Let's verify the unit number and blood type together.
+  cue: 제제 라벨에 찍힌 식별용 숫자
+  exKo: 제제 번호와 혈액형을 함께 대조 확인합시다.
+  tag: 이중 확인
+  distractorsEn:
+  - label
+  - amount
+  distractorsKo:
+  - 날짜
+  - 수량
+  chips:
+  - - num
+    - ber
+  decoyChips:
+  - mur
+- id: w-bloodtype
+  en: blood type
+  ipa: /blʌd taɪp/
+  ko: 혈액형
+  icon: lab
+  example: Let's verify the unit number and blood type together.
+  cue: ABO와 Rh로 나뉘는 분류
+  exKo: 제제 번호와 혈액형을 함께 대조 확인합시다.
+  tag: 이중 확인
+  distractorsEn:
+  - blood test
+  - blood count
+  distractorsKo:
+  - 혈액검사
+  - 혈액량
+  chips:
+  - - blood
+  - - type
+  decoyChips:
+  - tide
+- id: w-together
+  en: together
+  ipa: /təˈɡɛðər/
+  ko: 함께
+  icon: board
+  example: Let's verify the unit number and blood type together.
+  cue: 한 사람이 아니라 둘이서 같이
+  exKo: 제제 번호와 혈액형을 함께 대조 확인합시다.
+  tag: 이중 확인
+  distractorsEn:
+  - alone
+  - apart
+  distractorsKo:
+  - 혼자
+  - 따로
+  chips:
+  - - to
+    - geth
+    - er
+  decoyChips:
+  - gath
+- id: w-id
+  en: ID
+  ipa: /aɪ diː/
+  ko: 신원
+  icon: bandage
+  example: Patient name and ID match the unit?
+  cue: 환자가 누군지 증명하는 손목 밴드나 카드의 정보
+  exKo: 환자 이름과 신원이 제제와 일치하나요?
+  tag: 이중 확인
+  distractorsEn:
+  - IV
+  - IO
+  distractorsKo:
+  - 생일
+  - 주소
+  chips:
+  - - ID
+  decoyChips:
+  - IQ
+- id: w-match
+  en: match
+  ipa: /mætʃ/
+  ko: 일치하다
+  icon: check
+  example: Patient name and ID match the unit?
+  cue: 두 쪽이 서로 딱 맞아떨어지다
+  exKo: 환자 이름과 신원이 제제와 일치하나요?
+  tag: 이중 확인
+  distractorsEn:
+  - catch
+  - patch
+  distractorsKo:
+  - 어긋나다
+  - 붙잡다
+  chips:
+  - - match
+  decoyChips:
+  - pat
+- id: w-signoff
+  en: sign off
+  ipa: /saɪn ɔːf/
+  ko: 서명 승인하다
+  icon: pencil
+  example: We both sign off before transfusing.
+  cue: 확인을 마친 사람이 서명으로 승인하는 일
+  exKo: 수혈하기 전에 둘 다 서명합니다.
+  tag: 이중 확인
+  distractorsEn:
+  - sign up
+  - switch off
+  distractorsKo:
+  - 가입 신청하다
+  - 전원을 끄다
+  chips:
+  - - sign
+  - - 'off'
+  decoyChips:
+  - oft
+- id: w-transfuse
+  en: transfuse
+  ipa: /trænsˈfjuːz/
+  ko: 수혈하다
+  icon: lab
+  example: We both sign off before transfusing.
+  cue: 혈액을 환자 혈관에 넣는 일
+  exKo: 수혈하기 전에 둘 다 서명합니다.
+  tag: 이중 확인
+  distractorsEn:
+  - transfer
+  - transform
+  distractorsKo:
+  - 이송하다
+  - 변환하다
+  chips:
+  - - trans
+    - fuse
+  decoyChips:
+  - fer
+- id: w-transfusion
+  en: transfusion
+  ipa: /trænsˈfjuːʒən/
+  ko: 수혈
+  icon: lab
+  example: Stop the transfusion immediately.
+  cue: 혈액을 넣는 치료 그 자체
+  exKo: 즉시 수혈을 멈추세요.
+  tag: 수혈 반응
+  distractorsEn:
+  - transaction
+  - transition
+  distractorsKo:
+  - 거래
+  - 전환
+  chips:
+  - - trans
+    - fu
+    - sion
+  decoyChips:
+  - tion
+- id: w-route
+  en: route
+  ipa: /ruːt/
+  ko: 거치게 하다
+  icon: gear
+  example: Let's route this through the warmer.
+  cue: 장치를 지나가도록 길을 잡아 주다
+  exKo: 이건 가온기를 거쳐 들어가게 합시다.
+  tag: 가온·체온
+  distractorsEn:
+  - rotate
+  - reduce
+  distractorsKo:
+  - 회전시키다
+  - 줄이다
+  chips:
+  - - route
+  decoyChips:
+  - root
+- id: w-warmer
+  en: warmer
+  ipa: /ˈwɔːrmər/
+  ko: 가온기
+  icon: gear
+  example: Let's route this through the warmer.
+  cue: 차가운 혈액을 체온 가까이 덥혀 주는 장비
+  exKo: 이건 가온기를 거쳐 들어가게 합시다.
+  tag: 가온·체온
+  distractorsEn:
+  - cooler
+  - washer
+  distractorsKo:
+  - 냉장기
+  - 세척기
+  chips:
+  - - warm
+    - er
+  decoyChips:
+  - arm
+- id: w-drop
+  en: drop
+  ipa: /drɑːp/
+  ko: 내려가다
+  icon: chartup
+  example: The temperature is dropping to 35.
+  cue: 체온·혈압 같은 수치가 아래쪽으로 — 차가운 피가 체온을 이렇게
+  exKo: 체온이 35도까지 떨어지고 있어요.
+  tag: 가온·체온
+  distractorsEn:
+  - rise
+  - drip
+  distractorsKo:
+  - 오르다
+  - 흐르다
+  chips:
+  - - drop
+  decoyChips:
+  - drap
+- id: w-temperature
+  en: temperature
+  ipa: /ˈtɛmpərətʃər/
+  ko: 체온
+  icon: board
+  example: Cold blood can drop the patient's temperature.
+  cue: 환자 몸이나 수술방이 얼마나 따뜻한지
+  exKo: 차가운 혈액은 환자의 체온을 떨어뜨릴 수 있어요.
+  tag: 가온·체온
+  distractorsEn:
+  - pressure
+  - saturation
+  distractorsKo:
+  - 혈압
+  - 맥박
+  chips:
+  - - tem
+    - per
+    - a
+    - ture
+  decoyChips:
+  - ter
+- id: w-set
+  en: set
+  ipa: /sɛt/
+  ko: 설정된
+  icon: gear
+  example: The warmer is set and ready.
+  cue: 장비 설정을 끝내 둔 상태
+  exKo: 가온기가 설정되고 준비됐습니다.
+  tag: 가온·체온
+  distractorsEn:
+  - sent
+  - shut
+  distractorsKo:
+  - 닫힌
+  - 보낸
+  chips:
+  - - set
+  decoyChips:
+  - sec
+- id: w-ready
+  en: ready
+  ipa: /ˈrɛdi/
+  ko: 준비된
+  icon: check
+  example: The warmer is set and ready.
+  cue: 바로 쓸 수 있게 채비를 마친
+  exKo: 가온기가 설정되고 준비됐습니다.
+  tag: 가온·체온
+  distractorsEn:
+  - steady
+  - heavy
+  distractorsKo:
+  - 안전한
+  - 멈춘
+  chips:
+  - - read
+    - y
+  decoyChips:
+  - ret
+- id: w-adjust
+  en: adjust
+  ipa: /əˈdʒʌst/
+  ko: 조정하다
+  icon: gear
+  example: Let's adjust the rate to the patient's pressure.
+  cue: 상황에 맞게 조금 고쳐 맞추다
+  exKo: 환자의 혈압에 맞춰 주입 속도를 조정합시다.
+  tag: 주입·속도
+  distractorsEn:
+  - adopt
+  - admit
+  distractorsKo:
+  - 채택하다
+  - 인정하다
+  chips:
+  - - ad
+    - just
+  decoyChips:
+  - gust
+- id: w-rate
+  en: rate
+  ipa: /reɪt/
+  ko: 속도
+  icon: chartup
+  example: Let's adjust the rate to the patient's pressure.
+  cue: 단위 시간에 들어가는 양의 빠르기
+  exKo: 환자의 혈압에 맞춰 주입 속도를 조정합시다.
+  tag: 주입·속도
+  distractorsEn:
+  - range
+  - dose
+  distractorsKo:
+  - 범위
+  - 용량
+  chips:
+  - - rate
+  decoyChips:
+  - rake
+- id: w-pressure
+  en: pressure
+  ipa: /ˈprɛʃər/
+  ko: 혈압
+  icon: chartup
+  example: Let's adjust the rate to the patient's pressure.
+  cue: 활력징후 중 쇼크 여부를 가르는 수치
+  exKo: 환자의 혈압에 맞춰 주입 속도를 조정합시다.
+  tag: 주입·속도
+  distractorsEn:
+  - pulse
+  - pleasure
+  distractorsKo:
+  - 맥박
+  - 호흡
+  chips:
+  - - pres
+    - sure
+  decoyChips:
+  - press
+- id: w-slow
+  en: slow
+  ipa: /sloʊ/
+  ko: 늦추다
+  icon: siren
+  example: We can slow it if the numbers stabilize.
+  cue: 서두르던 걸음을 늦추는 쪽의 조정
+  exKo: 수치가 안정되면 속도를 늦출 수 있어요.
+  tag: 주입·속도
+  distractorsEn:
+  - speed
+  - stall
+  distractorsKo:
+  - 서두르다
+  - 멈추다
+  chips:
+  - - slow
+  decoyChips:
+  - slaw
+- id: w-stabilize
+  en: stabilize
+  ipa: /ˈsteɪbəlaɪz/
+  ko: 안정되다
+  icon: chartup
+  example: We can slow it if the numbers stabilize.
+  cue: 오르내리던 수치가 흔들림 없이 자리 잡다
+  exKo: 수치가 안정되면 속도를 늦출 수 있어요.
+  tag: 주입·속도
+  distractorsEn:
+  - stagnate
+  - sterilize
+  distractorsKo:
+  - 정체되다
+  - 살균하다
+  chips:
+  - - sta
+    - bil
+    - ize
+  decoyChips:
+  - ile
+- id: w-watch
+  en: watch
+  ipa: /wɑːtʃ/
+  ko: 지켜보다
+  icon: magnify
+  example: I'll watch the response as it runs.
+  cue: 눈을 떼지 않고 계속 보는 일
+  exKo: 주입되는 동안 반응을 지켜볼게요.
+  tag: 주입·속도
+  distractorsEn:
+  - wash
+  - wait
+  distractorsKo:
+  - 씻다
+  - 기다리다
+  chips:
+  - - watch
+  decoyChips:
+  - catch
+- id: w-response
+  en: response
+  ipa: /rɪˈspɑːns/
+  ko: 반응
+  icon: chartup
+  example: I'll watch the response as it runs.
+  cue: 수혈이 들어가는 동안 몸이 보여 주는 모습
+  exKo: 주입되는 동안 반응을 지켜볼게요.
+  tag: 주입·속도
+  distractorsEn:
+  - respite
+  - resource
+  distractorsKo:
+  - 휴식
+  - 자원
+  chips:
+  - - re
+    - sponse
+  decoyChips:
+  - sense
+- id: w-run
+  en: run
+  ipa: /rʌn/
+  ko: 주입되다
+  icon: gear
+  example: I'll watch the response as it runs.
+  cue: 관을 타고 몸으로 흘러 들어가는 일
+  exKo: 주입되는 동안 반응을 지켜볼게요.
+  tag: 주입·속도
+  distractorsEn:
+  - ruin
+  - rub
+  distractorsKo:
+  - 막히다
+  - 새다
+  chips:
+  - - run
+  decoyChips:
+  - ran
+- id: w-arrive
+  en: arrive
+  ipa: /əˈraɪv/
+  ko: 도착하다
+  icon: plane
+  example: Four units of PRBCs just arrived.
+  cue: 배송된 제제가 수술방에 닿다
+  exKo: 농축적혈구 네 팩이 방금 도착했어요.
+  tag: 혈액 인계
+  distractorsEn:
+  - arise
+  - arrange
+  distractorsKo:
+  - 생기다
+  - 정리하다
+  chips:
+  - - ar
+    - rive
+  decoyChips:
+  - rise
+- id: w-prbc
+  en: PRBCs
+  ipa: /piː ɑːr biː siːz/
+  ko: 농축적혈구(약어)
+  icon: lab
+  example: Four units of PRBCs just arrived.
+  cue: 농축적혈구를 줄여 부르는 혈액은행 용어
+  exKo: 농축적혈구 네 팩이 방금 도착했어요.
+  tag: 혈액 인계
+  distractorsEn:
+  - FFP
+  - WBC
+  distractorsKo:
+  - 동결혈장(약어)
+  - 백혈구(약어)
+  chips:
+  - - PRBCs
+  decoyChips:
+  - PRP
+- id: w-sign
+  en: sign
+  ipa: /saɪn/
+  ko: 서명하다
+  icon: pencil
+  example: I'll sign for them and log the time.
+  cue: 받았다는 표시로 이름을 쓰는 일
+  exKo: 제가 서명하고 시각을 기록할게요.
+  tag: 혈액 인계
+  distractorsEn:
+  - assign
+  - seal
+  distractorsKo:
+  - 배정하다
+  - 봉인하다
+  chips:
+  - - sign
+  decoyChips:
+  - sigh
+- id: w-log
+  en: log
+  ipa: /lɔːɡ/
+  ko: 기록하다
+  icon: pencil
+  example: I'll sign for them and log the time.
+  cue: 도착 시각을 일지에 적어 두다
+  exKo: 제가 서명하고 시각을 기록할게요.
+  tag: 혈액 인계
+  distractorsEn:
+  - lock
+  - lift
+  distractorsKo:
+  - 잠그다
+  - 들어올리다
+  chips:
+  - - log
+  decoyChips:
+  - lag
+- id: w-record
+  en: record
+  ipa: /rɪˈkɔːrd/
+  ko: 기록하다
+  icon: pencil
+  example: Let's record baseline vitals before we start.
+  cue: 기준 수치를 먼저 적어 두다
+  exKo: 시작하기 전에 기준 활력징후를 기록합시다.
+  tag: 기록
+  distractorsEn:
+  - recall
+  - recover
+  distractorsKo:
+  - 기억해 내다
+  - 회복하다
+  chips:
+  - - re
+    - cord
+  decoyChips:
+  - cure
+- id: w-baseline
+  en: baseline
+  ipa: /ˈbeɪslaɪn/
+  ko: 기준(치)
+  icon: board
+  example: Let's record baseline vitals before we start.
+  cue: 변화를 견줄 출발점이 되는 첫 측정값
+  exKo: 시작하기 전에 기준 활력징후를 기록합시다.
+  tag: 기록
+  distractorsEn:
+  - headline
+  - timeline
+  distractorsKo:
+  - 표제
+  - 일정
+  chips:
+  - - base
+    - line
+  decoyChips:
+  - case
+- id: w-vitals
+  en: vitals
+  ipa: /ˈvaɪtəlz/
+  ko: 활력징후
+  icon: monitor
+  example: Let's record baseline vitals before we start.
+  cue: 혈압·맥박·호흡·체온을 한꺼번에 부르는 말
+  exKo: 시작하기 전에 기준 활력징후를 기록합시다.
+  tag: 기록
+  distractorsEn:
+  - vitamins
+  - visuals
+  distractorsKo:
+  - 비타민
+  - 시각자료
+  chips:
+  - - vi
+    - tals
+  decoyChips:
+  - tal
+- id: w-chart
+  en: chart
+  ipa: /tʃɑːrt/
+  ko: 기록하다
+  icon: pencil
+  example: I'll chart vitals every fifteen minutes.
+  cue: 수혈 중 잰 활력징후를 15분마다 적어 넣다
+  exKo: 십오 분마다 활력징후를 기록할게요.
+  tag: 기록
+  distractorsEn:
+  - chat
+  - charge
+  distractorsKo:
+  - 대화하다
+  - 청구하다
+  chips:
+  - - chart
+  decoyChips:
+  - charm
+- id: w-change
+  en: change
+  ipa: /tʃeɪndʒ/
+  ko: 변화
+  icon: chartup
+  example: Watch for any change during infusion.
+  cue: 처음과 달라진 점
+  exKo: 주입 중에 변화가 있는지 지켜보세요.
+  tag: 기록
+  distractorsEn:
+  - charge
+  - chance
+  distractorsKo:
+  - 요금
+  - 가능성
+  chips:
+  - - change
+  decoyChips:
+  - chase
+- id: w-infusion
+  en: infusion
+  ipa: /ɪnˈfjuːʒən/
+  ko: 주입
+  icon: lab
+  example: Watch for any change during infusion.
+  cue: 정맥으로 천천히 흘려 넣는 일
+  exKo: 주입 중에 변화가 있는지 지켜보세요.
+  tag: 주입·속도
+  distractorsEn:
+  - infection
+  - inflation
+  distractorsKo:
+  - 감염
+  - 팽창
+  chips:
+  - - in
+    - fu
+    - sion
+  decoyChips:
+  - flu
+- id: w-redcells
+  en: red cells
+  ipa: /rɛd sɛlz/
+  ko: 적혈구
+  icon: cross
+  example: Let's keep red cells, plasma, and platelets in a 1:1:1 ratio.
+  cue: 산소를 나르는 혈액 성분
+  exKo: 적혈구, 혈장, 혈소판을 1대1대1 비율로 맞춥시다.
+  tag: MTP 비율
+  distractorsEn:
+  - white cells
+  - stem cells
+  distractorsKo:
+  - 백혈구
+  - 줄기세포
+  chips:
+  - - red
+  - - cells
+  decoyChips:
+  - bed
+- id: w-plasma
+  en: plasma
+  ipa: /ˈplæzmə/
+  ko: 혈장
+  icon: lab
+  example: Let's keep red cells, plasma, and platelets in a 1:1:1 ratio.
+  cue: 노란빛 액체 성분 — 응고인자가 들어 있다
+  exKo: 적혈구, 혈장, 혈소판을 1대1대1 비율로 맞춥시다.
+  tag: MTP 비율
+  distractorsEn:
+  - plaque
+  - platelet
+  distractorsKo:
+  - 혈소판
+  - 림프
+  chips:
+  - - plas
+    - ma
+  decoyChips:
+  - mat
+- id: w-platelet
+  en: platelets
+  ipa: /ˈpleɪtlɪts/
+  ko: 혈소판
+  icon: lab
+  example: Platelets are up next in the ratio.
+  cue: 피를 멎게 하는 작은 세포 조각
+  exKo: 비율상 다음은 혈소판이에요.
+  tag: MTP 비율
+  distractorsEn:
+  - plateau
+  - pellet
+  distractorsKo:
+  - 정체기
+  - 알갱이
+  chips:
+  - - plate
+    - lets
+  decoyChips:
+  - lots
+- id: w-ratio
+  en: ratio
+  ipa: /ˈreɪʃioʊ/
+  ko: 비율
+  icon: chartup
+  example: Let's keep red cells, plasma, and platelets in a 1:1:1 ratio.
+  cue: 세 성분을 섞는 비례
+  exKo: 적혈구, 혈장, 혈소판을 1대1대1 비율로 맞춥시다.
+  tag: MTP 비율
+  distractorsEn:
+  - ration
+  - radius
+  distractorsKo:
+  - 배급량
+  - 반지름
+  chips:
+  - - ra
+    - tio
+  decoyChips:
+  - dio
+- id: w-cooler
+  en: cooler
+  ipa: /ˈkuːlər/
+  ko: (혈액) 쿨러
+  icon: board
+  example: The next MTP cooler is on the way.
+  cue: 제제를 차갑게 담아 나르는 상자
+  exKo: 다음 MTP 쿨러가 오는 중이에요.
+  tag: MTP 비율
+  distractorsEn:
+  - warmer
+  - pump
+  distractorsKo:
+  - (혈액) 가온기
+  - (혈액) 펌프
+  chips:
+  - - cool
+    - er
+  decoyChips:
+  - pool
+- id: w-track
+  en: track
+  ipa: /træk/
+  ko: 추적하다
+  icon: chartup
+  example: I'll track what's been given so far.
+  cue: 나간 양을 계속 따라가며 적다
+  exKo: 지금까지 준 것을 추적할게요.
+  tag: MTP 비율
+  distractorsEn:
+  - trade
+  - trap
+  distractorsKo:
+  - 거래하다
+  - 가두다
+  chips:
+  - - track
+  decoyChips:
+  - trick
+- id: w-give
+  en: give
+  ipa: /ɡɪv/
+  ko: 주다
+  icon: board
+  example: I'll track what's been given so far.
+  cue: 준비된 것을 환자에게 주입하다
+  exKo: 지금까지 준 것을 추적할게요.
+  tag: MTP 비율
+  distractorsEn:
+  - get
+  - guide
+  distractorsKo:
+  - 받다
+  - 이끌다
+  chips:
+  - - give
+  decoyChips:
+  - gave
+- id: w-ionized
+  en: ionized
+  ipa: /ˈaɪəˌnaɪzd/
+  ko: 이온화된
+  icon: lab
+  example: The ionized calcium is low.
+  cue: 전하를 띤 형태로 혈액에 녹아 있는
+  exKo: 이온화 칼슘 수치가 낮아요.
+  tag: 전해질
+  distractorsEn:
+  - iodized
+  - sterilized
+  distractorsKo:
+  - 요오드 처리된
+  - 멸균된
+  chips:
+  - - ion
+    - ized
+  decoyChips:
+  - ant
+- id: w-calcium
+  en: calcium
+  ipa: /ˈkælsiəm/
+  ko: 칼슘
+  icon: pill
+  example: The ionized calcium is low.
+  cue: 심장 수축과 응고에 필요한 전해질
+  exKo: 이온화 칼슘 수치가 낮아요.
+  tag: 전해질
+  distractorsEn:
+  - potassium
+  - sodium
+  distractorsKo:
+  - 칼륨
+  - 나트륨
+  chips:
+  - - cal
+    - ci
+    - um
+  decoyChips:
+  - cia
+- id: w-low
+  en: low
+  ipa: /loʊ/
+  ko: 낮은
+  icon: chartup
+  example: The ionized calcium is low.
+  cue: 정상보다 아래인
+  exKo: 이온화 칼슘 수치가 낮아요.
+  tag: 전해질
+  distractorsEn:
+  - high
+  - late
+  distractorsKo:
+  - 높은
+  - 늦은
+  chips:
+  - - low
+  decoyChips:
+  - law
+- id: w-citrate
+  en: citrate
+  ipa: /ˈsaɪtreɪt/
+  ko: 시트르산염
+  icon: lab
+  example: Citrate from the blood is binding calcium.
+  cue: 보관용 혈액에 섞여 있는 항응고 성분
+  exKo: 혈액 속 시트르산염이 칼슘과 결합하고 있어요.
+  tag: 전해질
+  distractorsEn:
+  - nitrate
+  - citrus
+  distractorsKo:
+  - 질산염
+  - 감귤류
+  chips:
+  - - cit
+    - rate
+  decoyChips:
+  - sit
+- id: w-bind
+  en: bind
+  ipa: /baɪnd/
+  ko: 결합하다
+  icon: lock
+  example: Citrate from the blood is binding calcium.
+  cue: 칼슘 같은 이온을 붙잡아 쓸 수 없게 만들다
+  exKo: 혈액 속 시트르산염이 칼슘과 결합하고 있어요.
+  tag: 전해질
+  distractorsEn:
+  - blend
+  - bend
+  distractorsKo:
+  - 섞다
+  - 구부리다
+  chips:
+  - - bind
+  decoyChips:
+  - band
+- id: w-recheck
+  en: recheck
+  ipa: /ˌriːˈtʃɛk/
+  ko: 재확인하다
+  icon: magnify
+  example: Let's give calcium and recheck.
+  cue: 조치 후 수치를 다시 확인하다
+  exKo: 칼슘을 주고 다시 확인합시다.
+  tag: 응고·검사
+  distractorsEn:
+  - reject
+  - refill
+  distractorsKo:
+  - 거부하다
+  - 다시 채우다
+  chips:
+  - - re
+    - check
+  decoyChips:
+  - deck
+- id: w-level
+  en: level
+  ipa: /ˈlɛvəl/
+  ko: 수치
+  icon: chartup
+  example: We'll recheck the level in ten minutes.
+  cue: 혈액 속 성분의 농도
+  exKo: 십 분 뒤에 수치를 다시 확인할게요.
+  tag: 전해질
+  distractorsEn:
+  - lever
+  - layer
+  distractorsKo:
+  - 지렛대
+  - 검체
+  chips:
+  - - lev
+    - el
+  decoyChips:
+  - ver
+- id: w-fluid
+  en: fluids
+  ipa: /ˈfluːɪdz/
+  ko: 수액
+  icon: lab
+  example: Let's warm all fluids and use a forced-air blanket.
+  cue: 정맥 라인으로 들어가는 식염수·링거 — 대량수혈 때는 모두 데워서
+  exKo: 모든 수액을 데우고 온풍 담요를 씁시다.
+  tag: 가온·체온
+  distractorsEn:
+  - oxygen
+  - gauze
+  distractorsKo:
+  - 산소
+  - 거즈
+  chips:
+  - - flu
+    - ids
+  decoyChips:
+  - ied
+- id: w-forcedair
+  en: forced-air
+  ipa: /fɔːrst ɛr/
+  ko: 온풍(식)
+  icon: gear
+  example: Let's warm all fluids and use a forced-air blanket.
+  cue: 바람을 불어 몸을 덥히는 방식
+  exKo: 모든 수액을 데우고 온풍 담요를 씁시다.
+  tag: 가온·체온
+  distractorsEn:
+  - cold-air
+  - water-heated
+  distractorsKo:
+  - 냉풍식
+  - 온수식
+  chips:
+  - - forced-
+    - air
+  decoyChips:
+  - heir
+- id: w-blanket
+  en: blanket
+  ipa: /ˈblæŋkɪt/
+  ko: 담요
+  icon: board
+  example: Let's warm all fluids and use a forced-air blanket.
+  cue: 몸에 덮어 따뜻하게 하는 것
+  exKo: 모든 수액을 데우고 온풍 담요를 씁시다.
+  tag: 가온·체온
+  distractorsEn:
+  - bandage
+  - barrier
+  distractorsKo:
+  - 붕대
+  - 장벽
+  chips:
+  - - blan
+    - ket
+  decoyChips:
+  - kit
+- id: w-raise
+  en: raise
+  ipa: /reɪz/
+  ko: 올리다
+  icon: chartup
+  example: I'll raise the room temperature.
+  cue: 추운 수술방에서 온도 조절기 눈금을 위로
+  exKo: 실내 온도를 올릴게요.
+  tag: 가온·체온
+  distractorsEn:
+  - lower
+  - reduce
+  distractorsKo:
+  - 내리다
+  - 줄이다
+  chips:
+  - - raise
+  decoyChips:
+  - rase
+- id: w-alongside
+  en: alongside
+  ipa: /əˌlɔːŋˈsaɪd/
+  ko: 나란히
+  icon: board
+  example: Let's give plasma alongside the red cells.
+  cue: 적혈구가 다 들어간 뒤가 아니라 같은 때 곁에서
+  exKo: 적혈구와 함께 혈장을 줍시다.
+  tag: MTP 비율
+  distractorsEn:
+  - afterward
+  - instead
+  distractorsKo:
+  - 나중에
+  - 대신에
+  chips:
+  - - a
+    - long
+    - side
+  decoyChips:
+  - hide
+- id: w-sequence
+  en: sequence
+  ipa: /ˈsiːkwəns/
+  ko: 순서
+  icon: board
+  example: I'll keep the sequence balanced.
+  cue: 어떤 것을 어떤 차례로 줄지
+  exKo: 투여 순서를 균형 있게 유지할게요.
+  tag: MTP 비율
+  distractorsEn:
+  - consequence
+  - sentence
+  distractorsKo:
+  - 결과
+  - 문장
+  chips:
+  - - se
+    - quence
+  decoyChips:
+  - dance
+- id: w-balanced
+  en: balanced
+  ipa: /ˈbælənst/
+  ko: 균형 잡힌
+  icon: check
+  example: I'll keep the sequence balanced.
+  cue: 한쪽으로 쏠리지 않고 고른
+  exKo: 투여 순서를 균형 있게 유지할게요.
+  tag: MTP 비율
+  distractorsEn:
+  - biased
+  - bounded
+  distractorsKo:
+  - 치우친
+  - 한정된
+  chips:
+  - - bal
+    - anced
+  decoyChips:
+  - ance
+- id: w-oneg
+  en: O-neg
+  ipa: /oʊ nɛɡ/
+  ko: O형 음성(약어)
+  icon: lab
+  example: How many units of O-neg do you have left?
+  cue: O형 음성 혈액을 줄여 부르는 말
+  exKo: O형 음성 제제가 몇 단위 남았나요?
+  tag: 재고·보고
+  distractorsEn:
+  - O-pos
+  - AB-neg
+  distractorsKo:
+  - O형 양성(약어)
+  - AB형 음성(약어)
+  chips:
+  - - O-
+    - neg
+  decoyChips:
+  - pos
+- id: w-left
+  en: left
+  ipa: /lɛft/
+  ko: 남은
+  icon: board
+  example: How many units of O-neg do you have left?
+  cue: 혈액은행에 묻는 재고 — 아직 쓰지 않은 채 있는
+  exKo: O형 음성 제제가 몇 단위 남았나요?
+  tag: 재고·보고
+  distractorsEn:
+  - lost
+  - less
+  distractorsKo:
+  - 잃은
+  - 적은
+  chips:
+  - - left
+  decoyChips:
+  - lift
+- id: w-need
+  en: need
+  ipa: /niːd/
+  ko: 필요하다
+  icon: speech
+  example: We may need more plasma soon.
+  cue: 없으면 안 되는 것을 말할 때
+  exKo: 곧 혈장이 더 필요할 수도 있어요.
+  tag: 재고·보고
+  distractorsEn:
+  - feed
+  - heed
+  distractorsKo:
+  - 먹이다
+  - 주의하다
+  chips:
+  - - need
+  decoyChips:
+  - node
+- id: w-fever
+  en: fever
+  ipa: /ˈfiːvər/
+  ko: 발열
+  icon: monitor
+  example: Watch for fever, hypotension, or oozing.
+  cue: 수혈 중 체온이 38도 이상으로 오르는 증상
+  exKo: 발열, 저혈압, 스며 나오는 출혈을 지켜보세요.
+  tag: 수혈 반응
+  distractorsEn:
+  - chills
+  - rash
+  distractorsKo:
+  - 오한
+  - 발진
+  chips:
+  - - fe
+    - ver
+  decoyChips:
+  - fur
+- id: w-hypotension
+  en: hypotension
+  ipa: /ˌhaɪpoʊˈtɛnʃən/
+  ko: 저혈압
+  icon: monitor
+  example: Watch for fever, hypotension, or oozing.
+  cue: 혈압이 너무 떨어진 상태
+  exKo: 발열, 저혈압, 스며 나오는 출혈을 지켜보세요.
+  tag: 수혈 반응
+  distractorsEn:
+  - hypertension
+  - hypothermia
+  distractorsKo:
+  - 고혈압
+  - 저체온증
+  chips:
+  - - hypo
+    - ten
+    - sion
+  decoyChips:
+  - hyper
+- id: w-oozing
+  en: oozing
+  ipa: /ˈuːzɪŋ/
+  ko: 스며 나오는 출혈
+  icon: cross
+  example: Watch for fever, hypotension, or oozing.
+  cue: 라인이나 수술 부위에서 천천히 배어 나오는 출혈
+  exKo: 발열, 저혈압, 스며 나오는 출혈을 지켜보세요.
+  tag: 수혈 반응
+  distractorsEn:
+  - spurting
+  - clotting
+  distractorsKo:
+  - 뿜어 나오는 출혈
+  - 굳어 가는 출혈
+  chips:
+  - - ooz
+    - ing
+  decoyChips:
+  - ung
+- id: w-urine
+  en: urine
+  ipa: /ˈjʊrɪn/
+  ko: 소변
+  icon: lab
+  example: Any change in the urine color?
+  cue: 콩팥이 만든 배설물
+  exKo: 소변 색깔에 변화가 있나요?
+  tag: 수혈 반응
+  distractorsEn:
+  - stool
+  - sweat
+  distractorsKo:
+  - 대변
+  - 땀
+  chips:
+  - - ur
+    - ine
+  decoyChips:
+  - nal
+- id: w-color
+  en: color
+  ipa: /ˈkʌlər/
+  ko: 색깔
+  icon: magnify
+  example: Any change in the urine color?
+  cue: 소변이 어떤 빛깔인지
+  exKo: 소변 색깔에 변화가 있나요?
+  tag: 수혈 반응
+  distractorsEn:
+  - odor
+  - volume
+  distractorsKo:
+  - 냄새
+  - 양
+  chips:
+  - - col
+    - or
+  decoyChips:
+  - ar
+- id: w-rightaway
+  en: right away
+  ipa: /raɪt əˈweɪ/
+  ko: 곧바로
+  icon: siren
+  example: Tell me right away if vitals shift.
+  cue: 지체 없이 곧장
+  exKo: 활력징후가 바뀌면 즉시 알려 주세요.
+  tag: 수혈 반응
+  distractorsEn:
+  - far away
+  - all right
+  distractorsKo:
+  - 오른쪽에
+  - 괜찮게
+  chips:
+  - - right
+  - - a
+    - way
+  decoyChips:
+  - weigh
+- id: w-shift
+  en: shift
+  ipa: /ʃɪft/
+  ko: 바뀌다
+  icon: chartup
+  example: Tell me right away if vitals shift.
+  cue: 수치가 한쪽으로 움직이다
+  exKo: 활력징후가 바뀌면 즉시 알려 주세요.
+  tag: 수혈 반응
+  distractorsEn:
+  - sift
+  - shut
+  distractorsKo:
+  - 거르다
+  - 닫다
+  chips:
+  - - shift
+  decoyChips:
+  - shirt
+- id: w-closely
+  en: closely
+  ipa: /ˈkloʊsli/
+  ko: 자세히
+  icon: magnify
+  example: Let's watch the urine color closely.
+  cue: 눈을 떼지 않고 가까이서
+  exKo: 소변 색깔을 자세히 지켜봅시다.
+  tag: 수혈 반응
+  distractorsEn:
+  - loosely
+  - quickly
+  distractorsKo:
+  - 느슨하게
+  - 빠르게
+  chips:
+  - - close
+    - ly
+  decoyChips:
+  - lose
+- id: w-diffuse
+  en: diffuse
+  ipa: /dɪˈfjuːs/
+  ko: 광범위한
+  icon: cross
+  example: There's diffuse oozing from the field.
+  cue: 한곳이 아니라 넓게 퍼진
+  exKo: 수술 부위 전반에서 스며 나오는 출혈이 있어요.
+  tag: 응고·검사
+  distractorsEn:
+  - focal
+  - dense
+  distractorsKo:
+  - 국소적인
+  - 치밀한
+  chips:
+  - - dif
+    - fuse
+  decoyChips:
+  - fuss
+- id: w-field
+  en: field
+  ipa: /fiːld/
+  ko: 수술 부위
+  icon: scalpel
+  example: There's diffuse oozing from the field.
+  cue: 외과의가 수술하는 몸의 자리
+  exKo: 수술 부위 전반에서 스며 나오는 출혈이 있어요.
+  tag: 응고·검사
+  distractorsEn:
+  - table
+  - drape
+  distractorsKo:
+  - 수술대
+  - 수술포
+  chips:
+  - - field
+  decoyChips:
+  - yield
+- id: w-dilute
+  en: dilute
+  ipa: /daɪˈluːt/
+  ko: 희석시키다
+  icon: lab
+  example: We may be diluting the clotting factors.
+  cue: 섞어서 농도를 묽게 만들다
+  exKo: 응고인자가 희석되고 있을 수 있어요.
+  tag: 응고·검사
+  distractorsEn:
+  - dilate
+  - delete
+  distractorsKo:
+  - 확장시키다
+  - 삭제하다
+  chips:
+  - - di
+    - lute
+  decoyChips:
+  - late
+- id: w-clottingfactor
+  en: clotting factors
+  ipa: /ˈklɑːtɪŋ ˈfæktərz/
+  ko: 응고인자
+  icon: lab
+  example: We may be diluting the clotting factors.
+  cue: 피를 굳게 하는 단백질들
+  exKo: 응고인자가 희석되고 있을 수 있어요.
+  tag: 응고·검사
+  distractorsEn:
+  - clotting time
+  - clotting agents
+  distractorsKo:
+  - 응고 시간
+  - 응고제
+  chips:
+  - - clot
+    - ting
+  - - fac
+    - tors
+  decoyChips:
+  - tory
+- id: w-coag
+  en: coags
+  ipa: /koʊˈæɡz/
+  ko: 응고검사
+  icon: lab
+  example: Let's give more plasma and check coags.
+  cue: 응고 상태를 보는 혈액 검사 묶음
+  exKo: 혈장을 더 주고 응고검사를 확인합시다.
+  tag: 응고·검사
+  distractorsEn:
+  - chems
+  - cultures
+  distractorsKo:
+  - 화학검사
+  - 배양검사
+  chips:
+  - - co
+    - ags
+  decoyChips:
+  - ugs
+- id: w-arterial
+  en: arterial
+  ipa: /ɑːrˈtɪəriəl/
+  ko: 동맥의
+  icon: cross
+  example: Let's get an arterial blood gas.
+  cue: 동맥에서 채취한
+  exKo: 동맥혈 가스검사를 합시다.
+  tag: 산-염기
+  distractorsEn:
+  - venous
+  - capillary
+  distractorsKo:
+  - 정맥의
+  - 모세혈관의
+  chips:
+  - - ar
+    - te
+    - ri
+    - al
+  decoyChips:
+  - ry
+- id: w-gas
+  en: gas
+  ipa: /ɡæs/
+  ko: (동맥혈)가스검사
+  icon: lab
+  example: Let's get an arterial blood gas.
+  cue: 혈액 속 산소·이산화탄소·산도를 보는 검사
+  exKo: 동맥혈 가스검사를 합시다.
+  tag: 산-염기
+  distractorsEn:
+  - gap
+  - gauge
+  distractorsKo:
+  - (동맥혈) 혈당검사
+  - (동맥혈) 전해질검사
+  chips:
+  - - gas
+  decoyChips:
+  - gaze
+- id: w-lactate
+  en: lactate
+  ipa: /ˈlækteɪt/
+  ko: 젖산
+  icon: lab
+  example: The lactate is climbing.
+  cue: 조직이 산소가 모자랄 때 쌓이는 수치
+  exKo: 젖산 수치가 오르고 있어요.
+  tag: 산-염기
+  distractorsEn:
+  - lactose
+  - latex
+  distractorsKo:
+  - 유당
+  - 라텍스
+  chips:
+  - - lac
+    - tate
+  decoyChips:
+  - date
+- id: w-climb
+  en: climb
+  ipa: /klaɪm/
+  ko: 오르다
+  icon: chartup
+  example: The lactate is climbing.
+  cue: 젖산처럼 한 방향으로 꾸준히 위로 오르다
+  exKo: 젖산 수치가 오르고 있어요.
+  tag: 응고·검사
+  distractorsEn:
+  - clamp
+  - clear
+  distractorsKo:
+  - 집다
+  - 비우다
+  chips:
+  - - climb
+  decoyChips:
+  - cliff
+- id: w-acidosis
+  en: acidosis
+  ipa: /ˌæsɪˈdoʊsɪs/
+  ko: 산증
+  icon: monitor
+  example: We need to correct the acidosis.
+  cue: 혈액이 너무 산성 쪽으로 기운 상태
+  exKo: 산증을 교정해야 해요.
+  tag: 산-염기
+  distractorsEn:
+  - alkalosis
+  - anemia
+  distractorsKo:
+  - 알칼리증
+  - 빈혈
+  chips:
+  - - ac
+    - i
+    - do
+    - sis
+  decoyChips:
+  - ces
+- id: w-redraw
+  en: redraw
+  ipa: /ˌriːˈdrɔː/
+  ko: 재채취하다
+  icon: magnify
+  example: Let's redraw coags and fibrinogen now.
+  cue: 이미 뽑았던 검체를 다시 뽑다
+  exKo: 지금 응고검사와 피브리노겐을 다시 채취합시다.
+  tag: 응고·검사
+  distractorsEn:
+  - redose
+  - rewarm
+  distractorsKo:
+  - 재투여하다
+  - 재가온하다
+  chips:
+  - - re
+    - draw
+  decoyChips:
+  - dry
+- id: w-fibrinogen
+  en: fibrinogen
+  ipa: /faɪˈbrɪnədʒən/
+  ko: 피브리노겐
+  icon: lab
+  example: Let's redraw coags and fibrinogen now.
+  cue: 응고인자 중 피 덩어리의 그물 재료
+  exKo: 지금 응고검사와 피브리노겐을 다시 채취합시다.
+  tag: 응고·검사
+  distractorsEn:
+  - hemoglobin
+  - albumin
+  distractorsKo:
+  - 헤모글로빈
+  - 알부민
+  chips:
+  - - fi
+    - brin
+    - o
+    - gen
+  decoyChips:
+  - ben
+- id: w-dose
+  en: dose
+  ipa: /doʊs/
+  ko: 용량, 투여하다
+  icon: pill
+  example: We'll dose product off the latest results.
+  cue: 한 번에 주는 약·제제 양
+  exKo: 최신 결과에 따라 제제 용량을 정할게요.
+  tag: 응고·검사
+  distractorsEn:
+  - drug
+  - dial
+  distractorsKo:
+  - 약물, 처방하다
+  - 용기, 보관하다
+  chips:
+  - - dose
+  decoyChips:
+  - doze
+- id: w-latest
+  en: latest
+  ipa: /ˈleɪtɪst/
+  ko: 최신의
+  icon: chartup
+  example: We'll dose product off the latest results.
+  cue: 가장 나중에 나온 것
+  exKo: 최신 결과에 따라 제제 용량을 정할게요.
+  tag: 응고·검사
+  distractorsEn:
+  - oldest
+  - largest
+  distractorsKo:
+  - 가장 오래된
+  - 가장 큰
+  chips:
+  - - late
+    - st
+  decoyChips:
+  - least
+- id: w-result
+  en: results
+  ipa: /rɪˈzʌlts/
+  ko: 결과
+  icon: lab
+  example: We'll dose product off the latest results.
+  cue: 검사가 내놓은 수치
+  exKo: 최신 결과에 따라 제제 용량을 정할게요.
+  tag: 응고·검사
+  distractorsEn:
+  - resorts
+  - resumes
+  distractorsKo:
+  - 휴양지
+  - 이력서
+  chips:
+  - - re
+    - sults
+  decoyChips:
+  - sorts
+- id: w-send
+  en: send
+  ipa: /sɛnd/
+  ko: 보내다
+  icon: speech
+  example: I'll send it stat and track the trend.
+  cue: 검체를 기송관이나 러너 편에 검사실로
+  exKo: 즉시 검사를 보내고 추이를 추적할게요.
+  tag: 응고·검사
+  distractorsEn:
+  - spend
+  - sell
+  distractorsKo:
+  - 쓰다
+  - 팔다
+  chips:
+  - - send
+  decoyChips:
+  - tend
+- id: w-stat
+  en: stat
+  ipa: /stæt/
+  ko: 즉시(검사)
+  icon: siren
+  example: I'll send it stat and track the trend.
+  cue: 지금 당장 처리해 달라는 검사실 요청
+  exKo: 즉시 검사를 보내고 추이를 추적할게요.
+  tag: 응고·검사
+  distractorsEn:
+  - later
+  - daily
+  distractorsKo:
+  - 나중에(검사)
+  - 매일(검사)
+  chips:
+  - - stat
+  decoyChips:
+  - stay
+- id: w-trend
+  en: trend
+  ipa: /trɛnd/
+  ko: 추이
+  icon: chartup
+  example: I'll send it stat and track the trend.
+  cue: 수치가 어느 쪽으로 흐르는가
+  exKo: 즉시 검사를 보내고 추이를 추적할게요.
+  tag: 응고·검사
+  distractorsEn:
+  - trial
+  - tread
+  distractorsKo:
+  - 시험
+  - 발자국
+  chips:
+  - - trend
+  decoyChips:
+  - trod
+- id: w-stop
+  en: stop
+  ipa: /stɑːp/
+  ko: 멈추다
+  icon: siren
+  example: Stop the transfusion immediately.
+  cue: 반응이 의심되면 수혈을 그 자리에서 — 끝까지 넣지 않는다
+  exKo: 즉시 수혈을 멈추세요.
+  tag: 수혈 반응
+  distractorsEn:
+  - step
+  - swap
+  distractorsKo:
+  - 걷다
+  - 바꾸다
+  chips:
+  - - stop
+  decoyChips:
+  - stoop
+- id: w-immediately
+  en: immediately
+  ipa: /ɪˈmiːdiətli/
+  ko: 즉시
+  icon: siren
+  example: Stop the transfusion immediately.
+  cue: 한순간도 미루지 않고
+  exKo: 즉시 수혈을 멈추세요.
+  tag: 수혈 반응
+  distractorsEn:
+  - eventually
+  - gradually
+  distractorsKo:
+  - 결국
+  - 서서히
+  chips:
+  - - imme
+    - di
+    - ate
+    - ly
+  decoyChips:
+  - ment
+- id: w-dark
+  en: dark
+  ipa: /dɑːrk/
+  ko: 짙은
+  icon: board
+  example: Fever, hypotension, and dark urine—suspect hemolysis.
+  cue: 평소보다 진한 빛깔의
+  exKo: 발열, 저혈압, 짙은 소변—용혈을 의심하세요.
+  tag: 수혈 반응
+  distractorsEn:
+  - dry
+  - damp
+  distractorsKo:
+  - 마른
+  - 축축한
+  chips:
+  - - dark
+  decoyChips:
+  - dart
+- id: w-suspect
+  en: suspect
+  ipa: /səˈspɛkt/
+  ko: 의심하다
+  icon: magnify
+  example: Fever, hypotension, and dark urine—suspect hemolysis.
+  cue: 아직 확정은 아니지만 그럴 가능성을 염두에 두다
+  exKo: 발열, 저혈압, 짙은 소변—용혈을 의심하세요.
+  tag: 수혈 반응
+  distractorsEn:
+  - suspend
+  - inspect
+  distractorsKo:
+  - 중단하다
+  - 점검하다
+  chips:
+  - - sus
+    - pect
+  decoyChips:
+  - port
+- id: w-hemolysis
+  en: hemolysis
+  ipa: /hiːˈmɑːləsɪs/
+  ko: 용혈
+  icon: cross
+  example: Fever, hypotension, and dark urine—suspect hemolysis.
+  cue: 적혈구가 터져 헤모글로빈이 새어 나오는 일
+  exKo: 발열, 저혈압, 짙은 소변—용혈을 의심하세요.
+  tag: 수혈 반응
+  distractorsEn:
+  - hematoma
+  - hemostasis
+  distractorsKo:
+  - 혈종
+  - 지혈
+  chips:
+  - - he
+    - mol
+    - y
+    - sis
+  decoyChips:
+  - sta
+- id: w-iv
+  en: IV
+  ipa: /aɪ viː/
+  ko: 정맥주사
+  icon: lab
+  example: Keep the IV open with saline and call the blood bank.
+  cue: 팔 등에 꽂은 혈관 연결 통로
+  exKo: 생리식염수로 정맥주사 라인을 유지하고 혈액은행에 전화하세요.
+  tag: 수혈 반응
+  distractorsEn:
+  - IM
+  - SQ
+  distractorsKo:
+  - 근육주사
+  - 피하주사
+  chips:
+  - - IV
+  decoyChips:
+  - IC
+- id: w-open
+  en: open
+  ipa: /ˈoʊpən/
+  ko: 열린
+  icon: gear
+  example: Keep the IV open with saline and call the blood bank.
+  cue: 막히지 않고 흐르게 두다
+  exKo: 생리식염수로 정맥주사 라인을 유지하고 혈액은행에 전화하세요.
+  tag: 수혈 반응
+  distractorsEn:
+  - closed
+  - clamped
+  distractorsKo:
+  - 닫힌
+  - 잠긴
+  chips:
+  - - open
+  decoyChips:
+  - oven
+- id: w-saline
+  en: saline
+  ipa: /ˈseɪliːn/
+  ko: 생리식염수
+  icon: lab
+  example: Keep the IV open with saline and call the blood bank.
+  cue: 소금을 푼 수액
+  exKo: 생리식염수로 정맥주사 라인을 유지하고 혈액은행에 전화하세요.
+  tag: 수혈 반응
+  distractorsEn:
+  - serum
+  - salve
+  distractorsKo:
+  - 멸균수
+  - 포도당 수액
+  chips:
+  - - sal
+    - ine
+  decoyChips:
+  - ive
+- id: w-call
+  en: call
+  ipa: /kɔːl/
+  ko: 전화하다
+  icon: mic
+  example: Keep the IV open with saline and call the blood bank.
+  cue: 전화로 불러 연락하다
+  exKo: 생리식염수로 정맥주사 라인을 유지하고 혈액은행에 전화하세요.
+  tag: 재고·보고
+  distractorsEn:
+  - tell
+  - pull
+  distractorsKo:
+  - 말하다
+  - 당기다
+  chips:
+  - - call
+  decoyChips:
+  - cell
+- id: w-bank
+  en: bank
+  ipa: /bæŋk/
+  ko: (혈액)은행
+  icon: hospital
+  example: Keep the IV open with saline and call the blood bank.
+  cue: 혈액을 보관하고 내주는 곳
+  exKo: 생리식염수로 정맥주사 라인을 유지하고 혈액은행에 전화하세요.
+  tag: 재고·보고
+  distractorsEn:
+  - lab
+  - ward
+  distractorsKo:
+  - (혈액) 검사실
+  - (혈액) 병동
+  chips:
+  - - bank
+  decoyChips:
+  - bark
+- id: w-potassium
+  en: potassium
+  ipa: /pəˈtæsiəm/
+  ko: 칼륨
+  icon: pill
+  example: The potassium is 7.2 with peaked T-waves.
+  cue: 심장 리듬에 영향을 주는 전해질, 올라가면 위험
+  exKo: 칼륨이 7.2이고 T파가 뾰족해요.
+  tag: 전해질
+  distractorsEn:
+  - calcium
+  - sodium
+  distractorsKo:
+  - 칼슘
+  - 나트륨
+  chips:
+  - - po
+    - tas
+    - si
+    - um
+  decoyChips:
+  - sa
+- id: w-peaked
+  en: peaked
+  ipa: /piːkt/
+  ko: 뾰족한
+  icon: chartup
+  example: The potassium is 7.2 with peaked T-waves.
+  cue: 고칼륨혈증 심전도에서 T파가 텐트처럼 솟은 모양의
+  exKo: 칼륨이 7.2이고 T파가 뾰족해요.
+  tag: 전해질
+  distractorsEn:
+  - flat
+  - wide
+  distractorsKo:
+  - 납작한
+  - 넓은
+  chips:
+  - - peak
+    - ed
+  decoyChips:
+  - peek
+- id: w-twave
+  en: T-waves
+  ipa: /tiː weɪvz/
+  ko: T파
+  icon: monitor
+  example: The potassium is 7.2 with peaked T-waves.
+  cue: 심전도에서 QRS 뒤에 나오는 파
+  exKo: 칼륨이 7.2이고 T파가 뾰족해요.
+  tag: 전해질
+  distractorsEn:
+  - P-waves
+  - U-waves
+  distractorsKo:
+  - P파
+  - U파
+  chips:
+  - - T-
+    - waves
+  decoyChips:
+  - caves
+- id: w-insulin
+  en: insulin
+  ipa: /ˈɪnsəlɪn/
+  ko: 인슐린
+  icon: pill
+  example: Let's give calcium, insulin, and glucose.
+  cue: 혈당을 낮춰 포도당과 칼륨을 세포 안으로 보내는 약
+  exKo: 칼슘, 인슐린, 포도당을 줍시다.
+  tag: 전해질
+  distractorsEn:
+  - heparin
+  - morphine
+  distractorsKo:
+  - 헤파린
+  - 모르핀
+  chips:
+  - - in
+    - su
+    - lin
+  decoyChips:
+  - sul
+- id: w-glucose
+  en: glucose
+  ipa: /ˈɡluːkoʊs/
+  ko: 포도당
+  icon: pill
+  example: Let's give calcium, insulin, and glucose.
+  cue: 혈당을 이루는 당
+  exKo: 칼슘, 인슐린, 포도당을 줍시다.
+  tag: 전해질
+  distractorsEn:
+  - lactose
+  - sucrose
+  distractorsKo:
+  - 유당
+  - 자당
+  chips:
+  - - glu
+    - cose
+  decoyChips:
+  - lose
+- id: w-rhythm
+  en: rhythm
+  ipa: /ˈrɪðəm/
+  ko: 심장 리듬
+  icon: monitor
+  example: Watch the rhythm—it could deteriorate fast.
+  cue: 심장이 뛰는 규칙적인 박자
+  exKo: 심장 리듬을 지켜보세요. 빠르게 악화될 수 있어요.
+  tag: 전해질
+  distractorsEn:
+  - murmur
+  - valve
+  distractorsKo:
+  - 심장 잡음
+  - 심장 판막
+  chips:
+  - - rhy
+    - thm
+  decoyChips:
+  - them
+- id: w-deteriorate
+  en: deteriorate
+  ipa: /dɪˈtɪəriəreɪt/
+  ko: 악화되다
+  icon: chartup
+  example: Watch the rhythm—it could deteriorate fast.
+  cue: 상태가 점점 나빠지다
+  exKo: 심장 리듬을 지켜보세요. 빠르게 악화될 수 있어요.
+  tag: 전해질
+  distractorsEn:
+  - decelerate
+  - deliberate
+  distractorsKo:
+  - 감속하다
+  - 숙고하다
+  chips:
+  - - dete
+    - ri
+    - or
+    - ate
+  decoyChips:
+  - tor
+- id: w-dangerously
+  en: dangerously
+  ipa: /ˈdeɪndʒərəsli/
+  ko: 위험할 정도로
+  icon: siren
+  example: The ionized calcium is dangerously low.
+  cue: 칼슘이 안전선을 크게 벗어나 심장이 걱정될 만큼
+  exKo: 이온화 칼슘이 위험할 정도로 낮아요.
+  tag: 전해질
+  distractorsEn:
+  - cautiously
+  - generously
+  distractorsKo:
+  - 조심스럽게
+  - 넉넉할 정도로
+  chips:
+  - - dan
+    - ger
+    - ous
+    - ly
+  decoyChips:
+  - jer
+- id: w-load
+  en: load
+  ipa: /loʊd/
+  ko: 부하(량)
+  icon: lab
+  example: Citrate load is depressing cardiac function.
+  cue: 한꺼번에 몸에 들어온 양
+  exKo: 시트르산 부하가 심장 기능을 저하시키고 있어요.
+  tag: 전해질
+  distractorsEn:
+  - road
+  - loan
+  distractorsKo:
+  - 도로
+  - 대출
+  chips:
+  - - load
+  decoyChips:
+  - lord
+- id: w-depress
+  en: depress
+  ipa: /dɪˈprɛs/
+  ko: 저하시키다
+  icon: chartup
+  example: Citrate load is depressing cardiac function.
+  cue: 기능을 눌러 떨어뜨리다
+  exKo: 시트르산 부하가 심장 기능을 저하시키고 있어요.
+  tag: 전해질
+  distractorsEn:
+  - express
+  - impress
+  distractorsKo:
+  - 표현하다
+  - 감명 주다
+  chips:
+  - - de
+    - press
+  decoyChips:
+  - ex
+- id: w-cardiac
+  en: cardiac
+  ipa: /ˈkɑːrdiæk/
+  ko: 심장의
+  icon: monitor
+  example: Citrate load is depressing cardiac function.
+  cue: 심전도·심장 기능 앞에 붙는 말
+  exKo: 시트르산 부하가 심장 기능을 저하시키고 있어요.
+  tag: 전해질
+  distractorsEn:
+  - cervical
+  - hepatic
+  distractorsKo:
+  - 목의
+  - 간의
+  chips:
+  - - car
+    - di
+    - ac
+  decoyChips:
+  - ec
+- id: w-function
+  en: function
+  ipa: /ˈfʌŋkʃən/
+  ko: 기능
+  icon: monitor
+  example: Citrate load is depressing cardiac function.
+  cue: 장기가 일을 해내는 힘
+  exKo: 시트르산 부하가 심장 기능을 저하시키고 있어요.
+  tag: 전해질
+  distractorsEn:
+  - fraction
+  - junction
+  distractorsKo:
+  - 일부
+  - 접합부
+  chips:
+  - - func
+    - tion
+  decoyChips:
+  - fact
+- id: w-push
+  en: push
+  ipa: /pʊʃ/
+  ko: 밀어 넣다(투여하다)
+  icon: gear
+  example: Push calcium and recheck immediately.
+  cue: 주사기로 눌러 넣다
+  exKo: 칼슘을 밀어 넣고 즉시 다시 확인하세요.
+  tag: 전해질
+  distractorsEn:
+  - pull
+  - pour
+  distractorsKo:
+  - 당겨 빼다(채취하다)
+  - 부어 넣다(희석하다)
+  chips:
+  - - push
+  decoyChips:
+  - plus
+- id: w-sat
+  en: Sats
+  ipa: /sæts/
+  ko: 산소포화도
+  icon: monitor
+  example: Sats are falling with new pulmonary edema.
+  cue: 혈액 속 산소가 헤모글로빈에 실린 비율
+  exKo: 산소포화도가 떨어지고 새로운 폐부종이 생겼어요.
+  tag: 수혈 반응
+  distractorsEn:
+  - BPs
+  - HRs
+  distractorsKo:
+  - 혈압 수치
+  - 맥박 수치
+  chips:
+  - - Sats
+  decoyChips:
+  - Sets
+- id: w-fall
+  en: fall
+  ipa: /fɔːl/
+  ko: 하락하다
+  icon: chartup
+  example: Sats are falling with new pulmonary edema.
+  cue: 산소포화도가 점점 아래로 밀려 내려가다
+  exKo: 산소포화도가 떨어지고 새로운 폐부종이 생겼어요.
+  tag: 수혈 반응
+  distractorsEn:
+  - feel
+  - fail
+  distractorsKo:
+  - 느끼다
+  - 실패하다
+  chips:
+  - - fall
+  decoyChips:
+  - fell
+- id: w-pulmonary
+  en: pulmonary
+  ipa: /ˈpʊlməˌnɛri/
+  ko: 폐의
+  icon: monitor
+  example: Sats are falling with new pulmonary edema.
+  cue: 폐부종·폐 소리 앞에 붙는 말
+  exKo: 산소포화도가 떨어지고 새로운 폐부종이 생겼어요.
+  tag: 수혈 반응
+  distractorsEn:
+  - pancreatic
+  - gastric
+  distractorsKo:
+  - 췌장의
+  - 위의
+  chips:
+  - - pul
+    - mo
+    - nary
+  decoyChips:
+  - nery
+- id: w-edema
+  en: edema
+  ipa: /ɪˈdiːmə/
+  ko: 부종
+  icon: monitor
+  example: Sats are falling with new pulmonary edema.
+  cue: 조직에 물이 차서 붓는 일
+  exKo: 산소포화도가 떨어지고 새로운 폐부종이 생겼어요.
+  tag: 수혈 반응
+  distractorsEn:
+  - eczema
+  - embolism
+  distractorsKo:
+  - 습진
+  - 색전증
+  chips:
+  - - e
+    - de
+    - ma
+  decoyChips:
+  - dim
+- id: w-trali
+  en: TRALI
+  ipa: /ˈtrɑːli/
+  ko: 수혈관련급성폐손상
+  icon: monitor
+  example: Stop the transfusion—this could be TRALI.
+  cue: 수혈 후 몇 시간 안에 폐가 급히 손상되는 반응
+  exKo: 수혈을 멈추세요. TRALI일 수 있어요.
+  tag: 수혈 반응
+  distractorsEn:
+  - TACO
+  - TAVR
+  distractorsKo:
+  - 수혈관련순환과부하
+  - 수혈관련발열반응
+  chips:
+  - - TRALI
+  decoyChips:
+  - TRAIL
+- id: w-support
+  en: support
+  ipa: /səˈpɔːrt/
+  ko: 보조하다
+  icon: shield
+  example: Let's support ventilation and report it.
+  cue: 힘을 보태 유지해 주다
+  exKo: 환기를 보조하고 보고합시다.
+  tag: 수혈 반응
+  distractorsEn:
+  - suppose
+  - suppress
+  distractorsKo:
+  - 가정하다
+  - 억제하다
+  chips:
+  - - sup
+    - port
+  decoyChips:
+  - post
+- id: w-ventilation
+  en: ventilation
+  ipa: /ˌvɛntəˈleɪʃən/
+  ko: 환기(호흡 보조)
+  icon: monitor
+  example: Let's support ventilation and report it.
+  cue: 폐로 공기를 넣고 빼 주는 일
+  exKo: 환기를 보조하고 보고합시다.
+  tag: 수혈 반응
+  distractorsEn:
+  - vaccination
+  - venipuncture
+  distractorsKo:
+  - 예방접종(백신 투여)
+  - 정맥천자(혈관 확보)
+  chips:
+  - - ven
+    - ti
+    - la
+    - tion
+  decoyChips:
+  - til
+- id: w-report
+  en: report
+  ipa: /rɪˈpɔːrt/
+  ko: 보고하다
+  icon: pencil
+  example: Let's support ventilation and report it.
+  cue: 알아야 할 사람에게 전하다
+  exKo: 환기를 보조하고 보고합시다.
+  tag: 수혈 반응
+  distractorsEn:
+  - repair
+  - repeat
+  distractorsKo:
+  - 수리하다
+  - 반복하다
+  chips:
+  - - re
+    - port
+  decoyChips:
+  - play
+- id: w-release
+  en: release
+  ipa: /rɪˈliːs/
+  ko: 불출하다
+  icon: gear
+  example: Can you release emergency O-negative?
+  cue: 보관된 것을 내주다
+  exKo: 응급 O형 음성을 불출해 줄 수 있나요?
+  tag: 재고·보고
+  distractorsEn:
+  - retain
+  - reserve
+  distractorsKo:
+  - 보관하다
+  - 비축하다
+  chips:
+  - - re
+    - lease
+  decoyChips:
+  - leash
+- id: w-emergency
+  en: emergency
+  ipa: /ɪˈmɜːrdʒənsi/
+  ko: 응급
+  icon: siren
+  example: Can you release emergency O-negative?
+  cue: 즉각 대처가 필요한 위급 상황
+  exKo: 응급 O형 음성을 불출해 줄 수 있나요?
+  tag: 재고·보고
+  distractorsEn:
+  - immersion
+  - evacuation
+  distractorsKo:
+  - 침수
+  - 대피
+  chips:
+  - - e
+    - mer
+    - gen
+    - cy
+  decoyChips:
+  - ce
+- id: w-onegative
+  en: O-negative
+  ipa: /oʊ ˈnɛɡətɪv/
+  ko: O형 음성 혈액
+  icon: lab
+  example: Can you release emergency O-negative?
+  cue: 혈액형을 모를 때 응급으로 먼저 내주는 혈액
+  exKo: 응급 O형 음성을 불출해 줄 수 있나요?
+  tag: 재고·보고
+  distractorsEn:
+  - O-positive
+  - AB-negative
+  distractorsKo:
+  - O형 양성 혈액
+  - AB형 음성 혈액
+  chips:
+  - - O-
+    - neg
+    - a
+    - tive
+  decoyChips:
+  - pos
+- id: w-activate
+  en: activate
+  ipa: /ˈæktɪveɪt/
+  ko: 발동하다
+  icon: siren
+  example: Let's activate the emergency release now.
+  cue: 정해 둔 절차를 가동시키다
+  exKo: 지금 응급 불출을 요청합시다.
+  tag: 재고·보고
+  distractorsEn:
+  - accelerate
+  - terminate
+  distractorsKo:
+  - 가속하다
+  - 종료하다
+  chips:
+  - - ac
+    - ti
+    - vate
+  decoyChips:
+  - vite
+- id: w-regional
+  en: regional
+  ipa: /ˈriːdʒənəl/
+  ko: 지역의
+  icon: compass
+  example: Should we ask the blood bank to order from the regional supplier?
+  cue: 병원 밖 지역 공급처 쪽 범위를 말할 때
+  exKo: 혈액은행에 지역 공급처에서 주문해 달라고 할까요?
+  tag: 재고·보고
+  distractorsEn:
+  - national
+  - rational
+  distractorsKo:
+  - 전국의
+  - 합리적인
+  chips:
+  - - re
+    - gion
+    - al
+  decoyChips:
+  - gen
+- id: w-venous
+  en: venous
+  ipa: /ˈviːnəs/
+  ko: 정맥의
+  icon: monitor
+  example: The venous pressure and edema are rising.
+  cue: 정맥압처럼 정맥 쪽 수치 앞에 붙는 말
+  exKo: 정맥압과 부종이 올라가고 있어요.
+  tag: 수혈 반응
+  distractorsEn:
+  - arterial
+  - nervous
+  distractorsKo:
+  - 동맥의
+  - 신경의
+  chips:
+  - - ve
+    - nous
+  decoyChips:
+  - tous
+- id: w-rise
+  en: rise
+  ipa: /raɪz/
+  ko: 상승하다
+  icon: chartup
+  example: The venous pressure and edema are rising.
+  cue: 정맥압 수치가 위쪽으로 올라서다
+  exKo: 정맥압과 부종이 올라가고 있어요.
+  tag: 수혈 반응
+  distractorsEn:
+  - raise
+  - rinse
+  distractorsKo:
+  - 올리다
+  - 헹구다
+  chips:
+  - - rise
+  decoyChips:
+  - rice
+- id: w-taco
+  en: TACO
+  ipa: /ˈtækoʊ/
+  ko: 수혈관련순환과부하
+  icon: monitor
+  example: Stop the transfusion—this looks like TACO.
+  cue: 수혈이 너무 많거나 빨라서 순환이 넘치는 일
+  exKo: 수혈을 멈추세요. TACO 같아요.
+  tag: 수혈 반응
+  distractorsEn:
+  - TRALI
+  - TAVR
+  distractorsKo:
+  - 수혈관련급성폐손상
+  - 수혈관련발열반응
+  chips:
+  - - TACO
+  decoyChips:
+  - TAKO
+- id: w-diuretic
+  en: diuretic
+  ipa: /ˌdaɪəˈrɛtɪk/
+  ko: 이뇨제
+  icon: pill
+  example: Let's give a diuretic and reassess.
+  cue: 소변을 많이 만들어 몸의 물을 빼는 약
+  exKo: 이뇨제를 주고 다시 평가합시다.
+  tag: 수혈 반응
+  distractorsEn:
+  - laxative
+  - antibiotic
+  distractorsKo:
+  - 하제
+  - 항생제
+  chips:
+  - - di
+    - u
+    - ret
+    - ic
+  decoyChips:
+  - tic
+- id: w-reassess
+  en: reassess
+  ipa: /ˌriːəˈsɛs/
+  ko: 재평가하다
+  icon: magnify
+  example: Let's give a diuretic and reassess.
+  cue: 처치 뒤에 다시 평가하다
+  exKo: 이뇨제를 주고 다시 평가합시다.
+  tag: 수혈 반응
+  distractorsEn:
+  - reassure
+  - reassign
+  distractorsKo:
+  - 안심시키다
+  - 재배정하다
+  chips:
+  - - re
+    - as
+    - sess
+  decoyChips:
+  - sure
+- id: w-setting
+  en: setting
+  ipa: /ˈsɛtɪŋ/
+  ko: 설정값
+  icon: gear
+  example: Let's check the warmer's temperature setting.
+  cue: 장비 다이얼에 맞춰 둔 값
+  exKo: 가온기의 온도 설정을 확인합시다.
+  tag: 가온·체온
+  distractorsEn:
+  - setback
+  - sentence
+  distractorsKo:
+  - 차질
+  - 문장
+  chips:
+  - - set
+    - ting
+  decoyChips:
+  - ling
+- id: w-hypothermia
+  en: hypothermia
+  ipa: /ˌhaɪpoʊˈθɜːrmiə/
+  ko: 저체온증
+  icon: monitor
+  example: Warm fluids help prevent hypothermia.
+  cue: 수술 중 심부 체온이 36도 아래로 내려간 상태
+  exKo: 따뜻한 수액이 저체온을 막는 데 도움이 돼요.
+  tag: 가온·체온
+  distractorsEn:
+  - hyperthermia
+  - hypoglycemia
+  distractorsKo:
+  - 고체온증
+  - 저혈당증
+  chips:
+  - - hypo
+    - ther
+    - mi
+    - a
+  decoyChips:
+  - hyper
+- id: w-prevent
+  en: prevent
+  ipa: /prɪˈvɛnt/
+  ko: 예방하다
+  icon: shield
+  example: Warm fluids help prevent hypothermia.
+  cue: 일이 생기기 전에 막다
+  exKo: 따뜻한 수액이 저체온을 막는 데 도움이 돼요.
+  tag: 가온·체온
+  distractorsEn:
+  - present
+  - prevail
+  distractorsKo:
+  - 제시하다
+  - 우세하다
+  chips:
+  - - pre
+    - vent
+  decoyChips:
+  - vend
+- id: w-ph
+  en: pH
+  ipa: /piː eɪtʃ/
+  ko: 산도
+  icon: lab
+  example: The pH is dropping along with the lactate.
+  cue: 혈액이 산성인지 알칼리성인지 가리는 수치
+  exKo: 젖산과 함께 pH도 떨어지고 있어요.
+  tag: 산-염기
+  distractorsEn:
+  - PaO2
+  - PCO2
+  distractorsKo:
+  - 산소 분압
+  - 탄산 분압
+  chips:
+  - - pH
+  decoyChips:
+  - pK
+situations:
+- title: 혈액 제제 확인
+  sentences:
+  - en: This is packed red cells, correct?
+    ko: 이건 농축적혈구 맞죠?
+    chunks:
+    - This is
+    - packed red cells
+    - ','
+    - correct
+    - '?'
+    words:
+    - w-packedcell
+    - w-correct
+    goal: 1
+    tag: 제제 확인
+    icon: lab
+    why: 문장 끝에 correct?를 붙이면 단정하지 않고 상대가 맞다고 해 주기를 구하는 질문이 돼요. 두 사람이 제제 이름을 말로 맞춰 보는 틀이에요.
+    decoy: a bag of saline
+    distractorsKo:
+    - 이건 농축적혈구 새것이죠?
+    - 이건 농축적혈구 차죠?
+    blank:
+      answer: red
+      options:
+      - en: red
+      - en: white
+      - en: clear
+      - en: dark
+  - en: Let's check the unit against the order.
+    ko: 제제 단위를 처방과 대조해 봅시다.
+    chunks:
+    - Let's check
+    - the unit
+    - against the order
+    - .
+    words:
+    - w-unit
+    - w-order
+    goal: 2
+    tag: 처방 대조
+    icon: pencil
+    why: Let's로 시작하면 지시가 아니라 같이 하자는 제안이라 두 사람이 함께 대조하는 분위기가 돼요. against 뒤에 기준이 되는 것을 말해요.
+    decoy: against the clock
+    distractorsKo:
+    - 제제 단위를 처방과 함께 셉시다.
+    - 제제 단위를 처방 순서로 정리해 봅시다.
+    blank:
+      answer: order
+      options:
+      - en: order
+      - en: schedule
+      - en: invoice
+      - en: receipt
+  - en: I'll confirm the product type out loud.
+    ko: 제제 종류를 소리 내어 확인할게요.
+    chunks:
+    - I'll confirm
+    - the product type
+    - out loud
+    - .
+    words:
+    - w-confirm
+    - w-product
+    - w-type
+    - w-outloud
+    goal: 1
+    tag: 소리 내 확인
+    icon: speech
+    why: out loud를 끝에 붙여 소리 내어 확인한다고 밝히면 옆 사람도 같이 듣고 맞춰 볼 수 있어요. I'll로 내가 맡는다는 뜻도 분명해요.
+    decoy: one by one
+    distractorsKo:
+    - 제제 수량을 소리 내어 확인할게요.
+    - 제제 종류를 작은 소리로 확인할게요.
+    blank:
+      answer: product
+      options:
+      - en: product
+      - en: delivery
+      - en: shipping
+      - en: storage
+  - en: Can you read the unit number to me?
+    ko: 제제 번호를 저에게 읽어 주시겠어요?
+    chunks:
+    - Can you read
+    - the unit number
+    - to me
+    - '?'
+    words:
+    - w-unit
+    - w-number
+    goal: 1
+    tag: 번호 요청
+    icon: mic
+    why: Can you …?는 부탁을 질문으로 건네 상대가 부담 없이 따르게 해요. to me로 누구에게 읽는지 분명히 해요.
+    decoy: the room number
+    distractorsKo:
+    - 제제 번호를 저에게 적어 주시겠어요?
+    - 제제 번호를 저에게 보여 주시겠어요?
+    blank:
+      answer: number
+      options:
+      - en: number
+      - en: price
+      - en: cost
+      - en: count
+  - en: The blood type on the label matches the order.
+    ko: 라벨의 혈액형이 처방과 일치해요.
+    chunks:
+    - The blood type
+    - on the label
+    - matches
+    - the order
+    - .
+    words:
+    - w-bloodtype
+    - w-match
+    - w-order
+    goal: 2
+    tag: 라벨 일치
+    icon: lab
+    why: matches 한 낱말로 대조 결과를 짧게 보고해요. on the label이 blood type 바로 뒤에 붙어 어느 혈액형인지 한정해요.
+    decoy: on the shelf
+    distractorsKo:
+    - 라벨의 혈액형 글씨가 커요.
+    - 라벨의 혈액형이 빨간색이에요.
+    blank:
+      answer: label
+      options:
+      - en: label
+      - en: tray
+      - en: rack
+      - en: box
+  - en: Let's hang this once we both agree.
+    ko: 둘 다 확인되면 이걸 걸겠습니다.
+    chunks:
+    - Let's hang this
+    - once
+    - we both agree
+    - .
+    words: []
+    goal: 2
+    tag: 함께 걸기
+    icon: check
+    why: once we both agree는 둘의 합의를 걸기의 조건으로 못 박는 말이에요. hang this는 팩을 라인에 매다는 동작을 가리켜요.
+    decoy: if you agree
+    distractorsKo:
+    - 셋 다 확인되면 이걸 걸겠습니다.
+    - 둘 다 확인되면 이걸 보내겠습니다.
+    blank:
+      answer: hang
+      options:
+      - en: hang
+      - en: wash
+      - en: weigh
+      - en: cover
+  nuance:
+  - kind: slider
+    words:
+    - w-confirm
+    cue: 'Nurse: "My partner and I both checked the label, and we both said it is right."'
+    scale:
+    - glance
+    - check
+    - confirm
+    answerAt: 2
+    why: glance는 슬쩍 보는 것, check는 혼자 살펴보는 것이고, confirm은 확인한 뒤 맞다고 분명히 말해 주는 것이에요. 두 사람이 같이 맞다고 말한 장면이라 confirm이에요.
+    example: I'll confirm the product type out loud.
+    exKo: 제제 종류를 소리 내어 확인할게요.
+  - kind: context
+    words:
+    - w-product
+    word: product
+    ko: (혈액) 제제
+    scenes:
+    - who: 간호사끼리
+      icon: check
+      en: Let's confirm the product type before we hang it.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Product type and unit number confirmed by RN and anesthesia.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: We confirmed the product with a second nurse.
+      ok: false
+      fix: We checked with a second nurse that this is the right blood for him.
+    why: product는 혈액을 부르는 혈액은행·의료진 말이라 가족에게는 물건처럼 들려요. 가족에게는 '맞는 피인지 두 번째 간호사와 확인했다'로 말해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 혈액 제제 확인 4문장 순서
+    why: 제제 이름을 묻고 처방과 대조한 뒤, 라벨과 처방이 맞는지 보고하고, 둘이 동의하면 건다는 순서로 가요.
+    lines:
+    - en: This is packed red cells, correct?
+      icon: lab
+      ko: 이건 농축적혈구 맞죠?
+      note: 질문
+    - en: Let's check it against the order.
+      icon: pencil
+      ko: 처방과 대조해 봅시다
+      note: 대조
+    - en: The blood type on the label matches the order.
+      icon: lab
+      ko: 라벨 혈액형이 처방과 일치해요
+      note: 일치
+    - en: Let's hang this once we both agree.
+      icon: check
+      ko: 둘 다 확인되면 걸겠습니다
+      note: 걸기
+- title: 수혈 전 이중 확인
+  sentences:
+  - en: Let's verify the unit number and blood type together.
+    ko: 제제 번호와 혈액형을 함께 대조 확인합시다.
+    chunks:
+    - Let's verify
+    - the unit number
+    - and blood type
+    - together
+    - .
+    words:
+    - w-verify
+    - w-unit
+    - w-number
+    - w-bloodtype
+    - w-together
+    goal: 1
+    tag: 함께 대조
+    icon: check
+    why: together를 끝에 두면 한 사람이 아니라 두 사람이 같이 대조한다는 뜻이 선명해요. verify는 읽고 맞춰 보는 정식 확인에 써요.
+    decoy: and room number
+    distractorsKo:
+    - 함께 대조 확인하려고 제제 번호를 읽어요.
+    - 제제 번호와 혈액형이 맞아야 수혈해요.
+    blank:
+      answer: unit
+      options:
+      - en: unit
+      - en: bed
+      - en: room
+      - en: case
+  - en: Patient name and ID match the unit?
+    ko: 환자 이름과 신원이 제제와 일치하나요?
+    chunks:
+    - Patient name and ID
+    - match
+    - the unit
+    - '?'
+    words:
+    - w-id
+    - w-match
+    - w-unit
+    goal: 1
+    tag: 환자 대조
+    icon: me
+    why: 동사 없이 명사만 이어 붙인 짧은 질문이라 눈으로 대조하며 바로 던질 수 있어요. 끝을 올리면 질문이 돼요.
+    decoy: the pump
+    distractorsKo:
+    - 환자 이름과 신원이 팔찌와 일치하나요?
+    - 이름과 신원 맞는지 보려고 팩 들까요?
+    blank:
+      answer: ID
+      options:
+      - en: ID
+      - en: bed
+      - en: room
+      - en: wing
+  - en: We both sign off before transfusing.
+    ko: 수혈하기 전에 둘 다 서명합니다.
+    chunks:
+    - We both
+    - sign off
+    - before transfusing
+    - .
+    words:
+    - w-signoff
+    - w-transfuse
+    goal: 2
+    tag: 이중 서명
+    icon: pencil
+    why: We both로 두 사람이 각자 서명해야 한다는 점을 못 박아요. before transfusing으로 서명이 수혈보다 앞서는 시점을 정해요.
+    decoy: in blue ink
+    distractorsKo:
+    - 수혈하기 전에 셋 다 서명합니다.
+    - 수혈하기 전에 둘 다 손을 씻습니다.
+    blank:
+      answer: transfusing
+      options:
+      - en: transfusing
+      - en: discharging
+      - en: extubating
+      - en: charting
+  - en: I'll read the patient's date of birth out loud.
+    ko: 환자의 생년월일을 소리 내어 읽을게요.
+    chunks:
+    - I'll read
+    - the patient's
+    - date of birth
+    - out loud
+    - .
+    words:
+    - w-outloud
+    goal: 1
+    tag: 생년월일
+    icon: calendar
+    why: date of birth는 이름과 함께 쓰는 두 번째 식별 정보예요. 소리 내어 읽으면 상대가 팩의 정보와 눈으로 맞춰 볼 수 있어요.
+    decoy: in the chart
+    distractorsKo:
+    - 환자의 성함을 소리 내어 읽을게요.
+    - 환자의 생년월일을 작은 소리로 읽을게요.
+    blank:
+      answer: birth
+      options:
+      - en: birth
+      - en: admission
+      - en: surgery
+      - en: arrival
+  - en: Confirm the expiration date before we transfuse.
+    ko: 수혈하기 전에 유효기한을 확인하세요.
+    chunks:
+    - Confirm
+    - the expiration date
+    - before we transfuse
+    - .
+    words:
+    - w-confirm
+    - w-transfuse
+    goal: 1
+    tag: 유효기한
+    icon: calendar
+    why: 명령형으로 시작해 확인이 먼저 올 일이라는 점을 앞에 세워요. before we transfuse로 시점을 못 박되 we로 같이 하는 일임을 보여요.
+    decoy: before we chart
+    distractorsKo:
+    - 유효기한을 확인하려고 팩을 돌리세요.
+    - 유효기한이 지나면 쓸 수 없어요.
+    blank:
+      answer: expiration
+      options:
+      - en: expiration
+      - en: billing
+      - en: surgery
+      - en: admission
+  - en: Everything matches, so we're clear to transfuse.
+    ko: 다 일치해요. 수혈해도 됩니다.
+    chunks:
+    - Everything matches
+    - ','
+    - so we're clear
+    - to transfuse
+    - .
+    words:
+    - w-match
+    - w-transfuse
+    goal: 2
+    tag: 최종 승인
+    icon: shield
+    why: so로 앞의 확인 결과와 허락을 한 문장에 이어요. we're clear to …는 같이 진행해도 된다는 신호예요.
+    decoy: to chart
+    distractorsKo:
+    - 다 일치해요. 서명해도 됩니다.
+    - 다 일치해요. 가온해도 됩니다.
+    blank:
+      answer: matches
+      options:
+      - en: matches
+      - en: changes
+      - en: expires
+      - en: leaks
+  nuance:
+  - kind: slider
+    words:
+    - w-match
+    cue: 'Nurse: "The wristband says Kim, Jisoo, and the unit tag says Kim, Jisu."'
+    scale:
+    - match
+    - nearly match
+    - mismatch
+    answerAt: 2
+    why: 수혈 전 대조에서는 이름 철자 한 글자가 달라도 mismatch예요. 'nearly match'로 넘기지 않고 수혈을 멈춘 채 혈액은행·팀과 확인해 해결해요.
+    example: Patient name and ID match the unit?
+    exKo: 환자 이름과 신원이 제제와 일치하나요?
+  - kind: swap
+    words:
+    - w-verify
+    who: 수술 팀원에게 · 이중 확인을 청할 때
+    icon: check
+    before:
+    - 'Let''s '
+    - glance at
+    - ' the unit number and blood type together.'
+    options:
+    - glance at
+    - verify
+    - hurry through
+    answer: verify
+    notes:
+      glance at: 슬쩍 보는 것이라 이중 확인이 아니에요. 번호 한 자리 오류도 놓칠 수 있어요.
+      verify: 라벨과 처방을 하나하나 맞춰 보는 대조 확인. 둘이 같이 하는 확인에 맞는 말이에요.
+      hurry through: 서두르며 넘기자는 뜻이라 안전 확인과 반대예요.
+    why: 수혈 전 두 사람 확인은 번호와 혈액형을 소리 내어 맞춰 보는 절차라서 verify가 맞아요.
+    ko: 제제 번호와 혈액형을 함께 대조 확인합시다
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수혈 전 이중 확인 4문장 순서
+    why: 제제 번호와 혈액형부터 함께 대조하고, 환자 이름과 신원을 맞춰 본 뒤, 다 맞으면 둘이 서명하고, 서명이 끝나야 수혈로 넘어가요.
+    lines:
+    - en: Let's verify the unit number and blood type together.
+      icon: check
+      ko: 제제 번호와 혈액형을 함께 대조해요
+      note: 대조
+    - en: Do the patient's name and ID match that unit?
+      icon: me
+      ko: 환자 이름과 신원이 그 제제와 맞나요
+      note: 식별
+    - en: With everything matched, we both sign off.
+      icon: pencil
+      ko: 다 맞았으니 둘이 서명해요
+      note: 서명
+    - en: With both signatures on it, we're clear to transfuse.
+      icon: shield
+      ko: 서명이 끝났으니 수혈해도 돼요
+      note: 승인
+- title: 혈액 가온 적용
+  sentences:
+  - en: Let's route this through the warmer.
+    ko: 이건 가온기를 거쳐 들어가게 합시다.
+    chunks:
+    - Let's route
+    - this
+    - through the warmer
+    - .
+    words:
+    - w-route
+    - w-warmer
+    goal: 1
+    tag: 가온기 사용
+    icon: fire
+    why: route this through …는 라인을 장치로 우회시켜 지난다는 그림이 그려져요. Let's로 둘이 같이 연결하자는 제안이에요.
+    decoy: through the cooler
+    distractorsKo:
+    - 거쳐 들어가게 하려고 라인을 채웁시다.
+    - 가온기를 거치면 피가 따뜻해져요.
+    blank:
+      answer: warmer
+      options:
+      - en: warmer
+      - en: freezer
+      - en: suction
+      - en: drape
+  - en: Cold blood can drop the patient's temperature.
+    ko: 차가운 혈액은 환자의 체온을 떨어뜨릴 수 있어요.
+    chunks:
+    - Cold blood
+    - can drop
+    - the patient's temperature
+    - .
+    words:
+    - w-drop
+    - w-temperature
+    goal: 2
+    tag: 가온 이유
+    icon: bulb
+    why: can으로 가능성을 말해 지금 당장 그렇다는 단정은 피해요. 원인(Cold blood)을 주어로 세워 가온의 이유를 한 문장에 담아요.
+    decoy: the patient's sodium
+    distractorsKo:
+    - 차가운 혈액은 환자의 혈압을 떨어뜨릴 수 있어요.
+    - 차가운 혈액은 환자의 혈당을 떨어뜨릴 수 있어요.
+    blank:
+      answer: temperature
+      options:
+      - en: temperature
+      - en: sodium
+      - en: hemoglobin
+      - en: weight
+  - en: The warmer is set and ready.
+    ko: 가온기가 설정되고 준비됐습니다.
+    chunks:
+    - The warmer
+    - is set
+    - and ready
+    - .
+    words:
+    - w-warmer
+    - w-set
+    - w-ready
+    goal: 1
+    tag: 준비 보고
+    icon: check
+    why: is set and ready로 두 상태를 한 번에 알려 줘서 듣는 사람이 바로 연결해도 된다고 알아요.
+    decoy: and off
+    distractorsKo:
+    - 가온기가 닦이고 준비됐습니다.
+    - 가온기가 옮겨지고 준비됐습니다.
+    blank:
+      answer: ready
+      options:
+      - en: ready
+      - en: empty
+      - en: dirty
+      - en: noisy
+  - en: Every unit goes through the warmer from now on.
+    ko: 지금부터 모든 제제는 가온기를 거칩니다.
+    chunks:
+    - Every unit
+    - goes through
+    - the warmer
+    - from now on
+    - .
+    words:
+    - w-unit
+    - w-warmer
+    goal: 1
+    tag: 전 제제 가온
+    icon: fire
+    why: Every unit로 예외 없이 전부라는 범위를 먼저 말하고 from now on으로 시작 시점을 못 박아요.
+    decoy: the scanner
+    distractorsKo:
+    - 지금부터 모든 수액도 가온기를 거칩니다.
+    - 가온기를 거치도록 호스를 연결해요.
+    blank:
+      answer: unit
+      options:
+      - en: unit
+      - en: cart
+      - en: tray
+      - en: sample
+  - en: Let's check the warmer's temperature setting.
+    ko: 가온기의 온도 설정을 확인합시다.
+    chunks:
+    - Let's check
+    - the warmer's
+    - temperature setting
+    - .
+    words:
+    - w-warmer
+    - w-temperature
+    - w-setting
+    goal: 1
+    tag: 설정 확인
+    icon: gear
+    why: '''s로 어느 장비의 설정인지 먼저 좁혀요. check 뒤에 구체적 대상을 붙여 무엇을 볼지 분명히 해요.'
+    decoy: carrying case
+    distractorsKo:
+    - 가온기의 온도 설정을 알려 줍시다.
+    - 온도 설정이 맞아야 피가 데워져요.
+    blank:
+      answer: temperature
+      options:
+      - en: temperature
+      - en: speed
+      - en: brightness
+      - en: timer
+  - en: Warm blood is easier on the heart.
+    ko: 따뜻한 혈액이 심장에 부담이 덜해요.
+    chunks:
+    - Warm blood
+    - is easier
+    - on the heart
+    - .
+    words: []
+    goal: 2
+    tag: 가온 효과
+    icon: stetho
+    why: easier on …는 몸에 부담이 덜하다는 관용 표현이에요. 상태를 주어(Warm blood)로 세워 가온을 권하는 근거를 대요. 차가운 피를 빨리 넣으면 부정맥 위험이 커지니 데운 피가 심장에 덜 부담이에요.
+    decoy: on the line
+    distractorsKo:
+    - 따뜻한 혈액이 폐에 부담이 덜해요.
+    - 따뜻한 혈액이 신장에 부담이 덜해요.
+    blank:
+      answer: heart
+      options:
+      - en: heart
+      - en: leg
+      - en: hand
+      - en: knee
+  nuance:
+  - kind: slider
+    words:
+    - w-drop
+    cue: 'Monitor: "Temp went from 36.8 to 36.7 over the last hour."'
+    scale:
+    - dip
+    - drop
+    - plunge
+    answerAt: 0
+    why: dip은 살짝 내려갔다 마는 정도, drop은 눈에 띄게 내려가는 것, plunge는 급격히 곤두박질치는 것이에요. 0.1도 차이는 dip이에요.
+    example: Cold blood can drop the patient's temperature.
+    exKo: 차가운 혈액은 환자의 체온을 떨어뜨릴 수 있어요.
+  - kind: context
+    words:
+    - w-warmer
+    word: warmer
+    ko: 가온기
+    scenes:
+    - who: 간호사끼리
+      icon: gear
+      en: Is the warmer primed and set before we hang this?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Products infused via in-line blood warmer.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: Every unit is routed through the in-line warmer.
+      ok: false
+      fix: We warm the blood first so it doesn't make him cold.
+    why: 의료진끼리나 차트에서는 in-line warmer, outlet temperature 같은 장비 용어가 정확해요. 가족에게는 '몸이 차가워지지 않게 먼저 데운다'로 목적만 쉽게 말해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 혈액 가온 4문장 순서
+    why: 차가운 혈액의 위험을 말하고, 그래서 가온기를 쓴다고 하고, 설정을 확인한 뒤, 확인이 끝나면 모든 제제를 거치게 해요.
+    lines:
+    - en: Cold blood can drop the patient's temperature.
+      icon: bulb
+      ko: 차가운 혈액은 체온을 떨어뜨릴 수 있어요
+      note: 이유
+    - en: That's why we route it through the warmer.
+      icon: fire
+      ko: 그래서 가온기를 거치게 해요
+      note: 적용
+    - en: Let's check the warmer's temperature setting.
+      icon: gear
+      ko: 가온기의 온도 설정을 확인합시다
+      note: 확인
+    - en: With the setting confirmed, every unit goes through it from now on.
+      icon: check
+      ko: 설정이 확인됐으니 모든 제제가 거쳐요
+      note: 전체
+- title: 수혈 속도 조정
+  sentences:
+  - en: Let's adjust the rate to the patient's pressure.
+    ko: 환자의 혈압에 맞춰 주입 속도를 조정합시다.
+    chunks:
+    - Let's adjust
+    - the rate
+    - to the patient's pressure
+    - .
+    words:
+    - w-adjust
+    - w-rate
+    - w-pressure
+    goal: 1
+    tag: 속도 조정
+    icon: gear
+    why: adjust A to B로 기준(혈압)에 맞춰 속도를 움직인다는 틀이에요. Let's로 팀이 함께 조정하자는 제안이에요.
+    decoy: to the next unit
+    distractorsKo:
+    - 환자의 혈압에 맞춰 수술대 높이를 조정합시다.
+    - 환자의 혈압이 주입 속도의 기준이에요.
+    blank:
+      answer: rate
+      options:
+      - en: rate
+      - en: warmer
+      - en: suction
+      - en: dressing
+  - en: We can slow it if the numbers stabilize.
+    ko: 수치가 안정되면 속도를 늦출 수 있어요.
+    chunks:
+    - We can
+    - slow it
+    - if the numbers stabilize
+    - .
+    words:
+    - w-slow
+    - w-stabilize
+    goal: 2
+    tag: 감속 조건
+    icon: chartup
+    why: We can …은 허락의 범위를 알리는 말이라 꼭 늦추라는 뜻이 아니에요. if 절이 늦춰도 되는 조건을 한 번에 달아요.
+    decoy: if the cooler arrives
+    distractorsKo:
+    - 수치가 안정되면 한시름 놓을 수 있어요.
+    - 수치가 안정되면 쿨러를 비울 수 있어요.
+    blank:
+      answer: slow
+      options:
+      - en: slow
+      - en: warm
+      - en: flush
+      - en: weigh
+  - en: I'll watch the response as it runs.
+    ko: 주입되는 동안 반응을 지켜볼게요.
+    chunks:
+    - I'll watch
+    - the response
+    - as it runs
+    - .
+    words:
+    - w-watch
+    - w-response
+    - w-run
+    goal: 2
+    tag: 반응 감시
+    icon: monitor
+    why: as it runs는 주입이 진행되는 동안이라는 뜻의 짧은 종속절이에요. I'll로 내가 지켜보는 담당이라는 점도 분명해요.
+    decoy: as it warms
+    distractorsKo:
+    - 반응을 지켜보려고 의자를 당길게요.
+    - 반응은 대개 주입 초반에 나와요.
+    blank:
+      answer: runs
+      options:
+      - en: runs
+      - en: ends
+      - en: clogs
+      - en: leaks
+  - en: The pressure is dropping, so let's speed it up.
+    ko: 혈압이 떨어지고 있어요. 속도를 올립시다.
+    chunks:
+    - The pressure
+    - is dropping
+    - ','
+    - so
+    - let's speed it up
+    - .
+    words:
+    - w-pressure
+    - w-drop
+    goal: 1
+    tag: 속도 올림
+    icon: siren
+    why: The pressure is dropping으로 이유를 먼저 대고 so로 이어 올리자는 결론을 말해요. 출혈로 떨어질 때의 말이고, 열·짙은 소변 같은 수혈 반응 징후가 같이 보이면 올리지 않고 멈춰요. 속도는 마취과 의사가 정해요.
+    decoy: so the surgeon says
+    distractorsKo:
+    - 혈압이 떨어져요. 올리려고 펌프로 가요.
+    - 혈압이 떨어지고 있어요. 속도를 적읍시다.
+    blank:
+      answer: dropping
+      options:
+      - en: dropping
+      - en: rising
+      - en: steady
+      - en: normal
+  - en: Let's keep the rate steady for now.
+    ko: 지금은 속도를 일정하게 유지합시다.
+    chunks:
+    - Let's keep
+    - the rate
+    - steady
+    - for now
+    - .
+    words:
+    - w-rate
+    goal: 1
+    tag: 속도 유지
+    icon: check
+    why: keep A steady는 A를 흔들리지 않게 둔다는 뜻이에요. for now는 상황이 바뀔 수 있다는 여지를 남겨요.
+    decoy: at the pole
+    distractorsKo:
+    - 지금은 속도를 일정하게 설명합시다.
+    - 속도가 일정하면 계산하기 쉬워요.
+    blank:
+      answer: steady
+      options:
+      - en: steady
+      - en: random
+      - en: uneven
+      - en: unclear
+  - en: I'll recheck the pressure in five minutes.
+    ko: 오 분 뒤에 혈압을 다시 확인할게요.
+    chunks:
+    - I'll recheck
+    - the pressure
+    - in five minutes
+    - .
+    words:
+    - w-pressure
+    goal: 2
+    tag: 혈압 재확인
+    icon: monitor
+    why: in five minutes는 지금부터 오 분 뒤라는 시점을 말해요. recheck는 이미 한 번 잰 것을 다시 본다는 뜻이에요.
+    decoy: at the bedside
+    distractorsKo:
+    - 오 분 뒤에 확인하려고 커프를 준비할게요.
+    - 오 분이면 속도 조정 효과가 나와요.
+    blank:
+      answer: pressure
+      options:
+      - en: pressure
+      - en: cooler
+      - en: tag
+      - en: slip
+  nuance:
+  - kind: slider
+    words:
+    - w-slow
+    cue: 'Anesthesiologist: "Pressure is steady — back it off just a touch."'
+    scale:
+    - ease off
+    - slow
+    - stop
+    answerAt: 0
+    why: ease off는 살짝 줄이는 것, slow는 눈에 띄게 늦추는 것, stop은 멈추는 것이에요. '조금만 늦추면 된다'는 말이라 ease off예요.
+    example: We can slow it if the numbers stabilize.
+    exKo: 수치가 안정되면 속도를 늦출 수 있어요.
+  - kind: swap
+    words:
+    - w-rate
+    - w-pressure
+    - w-drop
+    who: 마취과 의사에게 · 출혈로 혈압이 떨어질 때
+    icon: monitor
+    before:
+    - 'The pressure is dropping, so let''s '
+    - slow it down
+    - ' right now.'
+    options:
+    - slow it down
+    - speed it up
+    - hold the rate
+    answer: speed it up
+    notes:
+      slow it down: 출혈로 혈압이 떨어질 때 속도를 줄이면 부족한 양이 더 커져요. 반응이 의심되면 얘기가 달라요(상황 15).
+      speed it up: 출혈로 혈압이 떨어질 때는 마취과 의사의 판단으로 주입을 올려 따라잡아요.
+      hold the rate: 수치가 안정됐을 때의 선택이에요. 지금처럼 떨어지는 중에는 맞지 않아요.
+    why: 출혈로 혈압이 떨어질 때의 말이에요. 발열·짙은 소변·라인 출혈처럼 수혈 반응 징후가 같이 보이면 올리지 않고 멈추고 알려요. 얼마나 올릴지는 마취과 의사가 정해요.
+    ko: 혈압이 떨어지고 있어요. 지금 속도를 올립시다
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수혈 속도 조정 4문장 순서
+    why: 먼저 혈압에 맞춰 속도를 정하고, 반응을 지켜보며, 지켜보는 동안 수치가 가라앉으면 늦추고, 늦춘 뒤 오 분 지나 혈압을 다시 확인해요.
+    lines:
+    - en: Let's adjust the rate to the patient's pressure.
+      icon: gear
+      ko: 혈압에 맞춰 속도를 조정해요
+      note: 조정
+    - en: I'll watch how the patient responds to that.
+      icon: monitor
+      ko: 그에 대한 반응을 지켜볼게요
+      note: 감시
+    - en: If the numbers settle while I watch, we can slow it down.
+      icon: chartup
+      ko: 지켜보는 동안 수치가 가라앉으면 늦출 수 있어요
+      note: 감속
+    - en: After slowing it, I'll recheck the pressure in five minutes.
+      icon: calendar
+      ko: 늦춘 뒤 오 분 뒤에 혈압을 다시 확인할게요
+      note: 재확인
+- title: 혈액 도착 인계
+  sentences:
+  - en: Four units of PRBCs just arrived.
+    ko: 농축적혈구 네 팩이 방금 도착했어요.
+    chunks:
+    - Four units
+    - of PRBCs
+    - just arrived
+    - .
+    words:
+    - w-unit
+    - w-prbc
+    - w-arrive
+    goal: 1
+    tag: 도착 알림
+    icon: pager
+    why: just arrived에서 just가 방금이라는 막 일어난 일의 느낌을 줘요. 수량(Four units)을 먼저 말해 받는 사람이 세어 볼 수 있어요.
+    decoy: of saline
+    distractorsKo:
+    - 농축적혈구 네 팩이 방금 출발했어요.
+    - 농축적혈구 네 팩이 방금 주문됐어요.
+    blank:
+      answer: arrived
+      options:
+      - en: arrived
+      - en: expired
+      - en: spilled
+      - en: melted
+  - en: Let's confirm each against the order.
+    ko: 각각을 처방과 대조해 확인합시다.
+    chunks:
+    - Let's confirm
+    - each
+    - against the order
+    - .
+    words:
+    - w-confirm
+    - w-order
+    goal: 1
+    tag: 도착 대조
+    icon: check
+    why: each가 도착한 팩 하나하나를 가리켜 빠뜨리지 않겠다는 뜻이 돼요. against the order로 대조할 기준을 정해요.
+    decoy: against the invoice
+    distractorsKo:
+    - 각각을 라벨과 대조해 확인합시다.
+    - 처방과 대조해 확인하려고 팩을 나눠요.
+    blank:
+      answer: each
+      options:
+      - en: each
+      - en: half
+      - en: some
+      - en: one
+  - en: I'll sign for them and log the time.
+    ko: 제가 서명하고 시각을 기록할게요.
+    chunks:
+    - I'll sign for them
+    - and log
+    - the time
+    - .
+    words:
+    - w-sign
+    - w-log
+    goal: 2
+    tag: 서명 기록
+    icon: pencil
+    why: for them에서 them이 방금 도착한 팩들을 받아 이어요. 서명과 시각 기록을 and로 묶어 받는 일의 증거를 한 번에 남겨요.
+    decoy: and check
+    distractorsKo:
+    - 제가 서명하고 이름을 기록할게요.
+    - 제가 서명하고 팩 수를 기록할게요.
+    blank:
+      answer: sign
+      options:
+      - en: sign
+      - en: pay
+      - en: ask
+      - en: wait
+  - en: Two more units arrived from the blood bank.
+    ko: 제제 두 팩이 혈액은행에서 더 도착했어요.
+    chunks:
+    - Two more units
+    - arrived
+    - from the blood bank
+    - .
+    words:
+    - w-unit
+    - w-arrive
+    goal: 1
+    tag: 추가 도착
+    icon: pager
+    why: from the blood bank로 출처를 밝혀 어디서 온 팩인지 분명히 해요. more는 앞서 받은 것에 더해진다는 뜻이에요.
+    decoy: from the pharmacy
+    distractorsKo:
+    - 제제 두 팩이 혈액은행 직원과 함께 도착했어요.
+    - 제제 두 팩이 수술실 앞에서 더 기다려요.
+    blank:
+      answer: bank
+      options:
+      - en: bank
+      - en: cart
+      - en: tube
+      - en: room
+  - en: Let's check the unit numbers against the delivery slip.
+    ko: 제제 번호를 배송 전표와 대조합시다.
+    chunks:
+    - Let's
+    - check
+    - the unit numbers
+    - against the delivery slip
+    - .
+    words:
+    - w-unit
+    - w-number
+    goal: 1
+    tag: 전표 대조
+    icon: board
+    why: against 뒤에 대조할 기준(delivery slip)을 말하는 틀은 앞의 order 대조와 같아요. numbers처럼 복수로 말하면 팩마다 본다는 뜻이에요.
+    decoy: against the pole
+    distractorsKo:
+    - 제제 번호를 배송 전표에 적읍시다.
+    - 전표와 맞춰야 빠진 팩을 알아요.
+    blank:
+      answer: slip
+      options:
+      - en: slip
+      - en: bin
+      - en: rack
+      - en: crate
+  - en: I'll store the extra units in the cooler for now.
+    ko: 남은 제제는 지금 쿨러에 보관할게요.
+    chunks:
+    - I'll store
+    - the extra units
+    - in the cooler
+    - for now
+    - .
+    words:
+    - w-unit
+    goal: 2
+    tag: 남은 제제
+    icon: lab
+    why: extra units는 당장 쓰지 않는 여분의 팩이에요. for now가 임시로 둔다는 여지를 남겨요.
+    decoy: in the system
+    distractorsKo:
+    - 남은 거즈는 지금 카트에 보관할게요.
+    - 남은 서류는 지금 서랍에 보관할게요.
+    blank:
+      answer: cooler
+      options:
+      - en: cooler
+      - en: freezer
+      - en: drawer
+      - en: closet
+  nuance:
+  - kind: slider
+    words:
+    - w-arrive
+    cue: 'Runner: "I am at the door with the cooler — here it is."'
+    scale:
+    - on the way
+    - just arrived
+    - signed for
+    answerAt: 1
+    why: on the way는 아직 오는 중, just arrived는 방금 도착한 것, signed for는 도착 뒤 서명까지 마친 것이에요. 문 앞에서 건네는 순간은 just arrived예요.
+    example: Four units of PRBCs just arrived.
+    exKo: 농축적혈구 네 팩이 방금 도착했어요.
+  - kind: context
+    words:
+    - w-prbc
+    word: PRBCs
+    ko: 농축적혈구
+    scenes:
+    - who: 간호사끼리
+      icon: check
+      en: Sign here for the PRBCs and I'll log the time.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 4 units PRBCs received and signed for by RN.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: His PRBCs just arrived from the blood bank.
+      ok: false
+      fix: The blood just arrived, and we're checking it carefully before it goes in.
+    why: PRBCs는 수술실·혈액은행끼리 쓰는 줄임말이에요. 가족에게는 '피가 도착했고 넣기 전에 꼼꼼히 확인한다'로 말해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 혈액 도착 인계 4문장 순서
+    why: 도착을 알리고 처방과 대조한 뒤, 맞으면 서명하고, 서명한 시각을 기록해요.
+    lines:
+    - en: Four units of PRBCs just arrived.
+      icon: pager
+      ko: 농축적혈구 네 팩이 방금 도착했어요
+      note: 도착
+    - en: Let's confirm each against the order.
+      icon: check
+      ko: 각각을 처방과 대조해 확인해요
+      note: 대조
+    - en: Once they match, I'll sign for them.
+      icon: pencil
+      ko: 맞으면 제가 서명할게요
+      note: 서명
+    - en: I'll log the time I signed for them.
+      icon: calendar
+      ko: 서명한 시각을 기록할게요
+      note: 기록
+- title: 수혈 중 활력 기록
+  sentences:
+  - en: Let's record baseline vitals before we start.
+    ko: 시작하기 전에 기준 활력징후를 기록합시다.
+    chunks:
+    - Let's record
+    - baseline vitals
+    - before we start
+    - .
+    words:
+    - w-record
+    - w-baseline
+    - w-vitals
+    goal: 1
+    tag: 기준 기록
+    icon: monitor
+    why: baseline은 변화를 비교할 기준값이라 시작 전에 먼저 재야 이후 이상을 알아봐요. before we start가 시점을 못 박아요.
+    decoy: with the cuff
+    distractorsKo:
+    - 활력징후를 기록하려고 커프를 감아요.
+    - 기준 활력징후가 있어야 반응을 비교해요.
+    blank:
+      answer: baseline
+      options:
+      - en: baseline
+      - en: weekly
+      - en: average
+      - en: final
+  - en: I'll chart vitals every fifteen minutes.
+    ko: 십오 분마다 활력징후를 기록할게요.
+    chunks:
+    - I'll chart
+    - vitals
+    - every fifteen minutes
+    - .
+    words:
+    - w-chart
+    - w-vitals
+    goal: 1
+    tag: 주기 기록
+    icon: calendar
+    why: every fifteen minutes로 간격을 못 박아 기록이 빠지지 않게 해요. chart는 차트에 적는다는 간호 현장의 동사예요.
+    decoy: on the whiteboard
+    distractorsKo:
+    - 활력징후를 기록하려고 알람을 맞출게요.
+    - 십오 분마다 활력징후를 읽어 줄게요.
+    blank:
+      answer: vitals
+      options:
+      - en: vitals
+      - en: weight
+      - en: height
+      - en: allergies
+  - en: Watch for any change during infusion.
+    ko: 주입 중에 변화가 있는지 지켜보세요.
+    chunks:
+    - Watch for
+    - any change
+    - during infusion
+    - .
+    words:
+    - w-watch
+    - w-change
+    - w-infusion
+    goal: 2
+    tag: 변화 감시
+    icon: monitor
+    why: Watch for는 ~가 생기는지 살피라는 뜻이에요. any change로 어떤 변화든 놓치지 말라고 범위를 넓혀요.
+    decoy: any delay
+    distractorsKo:
+    - 변화를 일찍 알면 반응을 빨리 막아요.
+    - 변화 지켜보려고 자리 잡으세요.
+    blank:
+      answer: change
+      options:
+      - en: change
+      - en: noise
+      - en: smell
+      - en: delay
+  - en: The vitals look stable after this unit.
+    ko: 이 제제 이후로 활력징후가 안정적이에요.
+    chunks:
+    - The vitals
+    - look stable
+    - after this unit
+    - .
+    words:
+    - w-vitals
+    - w-unit
+    goal: 2
+    tag: 경과 보고
+    icon: chartup
+    why: look stable은 지금 보이는 상태를 전하되 단정은 피하는 말이에요. after this unit으로 어느 시점부터 안정인지 짚어요.
+    decoy: after this shift
+    distractorsKo:
+    - 이 제제 이후로 활력징후가 기록돼 있어요.
+    - 이 제제 이후로 활력징후를 두 번 쟀어요.
+    blank:
+      answer: stable
+      options:
+      - en: stable
+      - en: worse
+      - en: odd
+      - en: mixed
+  - en: Let's record the temperature at each check.
+    ko: 확인할 때마다 체온을 기록합시다.
+    chunks:
+    - Let's record
+    - the temperature
+    - at each check
+    - .
+    words:
+    - w-record
+    - w-temperature
+    goal: 1
+    tag: 체온 기록
+    icon: monitor
+    why: at each check로 기록 시점을 확인할 때마다로 묶어 빠짐없이 적게 해요. temperature는 대량 수혈에서 따로 챙기는 활력이에요.
+    decoy: of each unit
+    distractorsKo:
+    - 확인할 때마다 체온을 말해 줍시다.
+    - 체온을 기록하려고 체온계를 가져옵시다.
+    blank:
+      answer: temperature
+      options:
+      - en: temperature
+      - en: height
+      - en: allergies
+      - en: diagnosis
+  - en: I'll flag it right away if anything changes.
+    ko: 뭔가 바뀌면 바로 알릴게요.
+    chunks:
+    - I'll flag it
+    - right away
+    - if anything changes
+    - .
+    words:
+    - w-change
+    goal: 2
+    tag: 즉시 보고
+    icon: pager
+    why: right away로 보고 시점을 지체 없이로 못 박아요. if anything changes는 아무 변화나 조건이 되도록 범위를 넓혀요.
+    decoy: if anyone asks
+    distractorsKo:
+    - 작은 변화도 중요한 신호예요.
+    - 알리려고 호출기 찾을게요.
+    blank:
+      answer: changes
+      options:
+      - en: changes
+      - en: breaks
+      - en: ends
+      - en: spills
+  nuance:
+  - kind: slider
+    words:
+    - w-change
+    cue: 'Monitor: "BP 124/76 down to 84/48 in five minutes."'
+    scale:
+    - no change
+    - slight change
+    - sharp change
+    answerAt: 2
+    why: no change는 그대로, slight change는 조금 달라진 것, sharp change는 짧은 시간에 크게 달라진 것이에요. 5분 만에 혈압이 크게 떨어졌으니 sharp change예요.
+    example: Watch for any change during infusion.
+    exKo: 주입 중에 변화가 있는지 지켜보세요.
+  - kind: context
+    words:
+    - w-baseline
+    word: baseline
+    ko: 기준치
+    scenes:
+    - who: 마취과와
+      icon: monitor
+      en: Compare these numbers to his baseline before the next unit.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: BP 84/48, baseline 124/76.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: His pressure is well below baseline.
+      ok: false
+      fix: His blood pressure is lower than usual, and we're giving blood to bring it back up.
+    why: baseline은 의료진끼리 '수혈 전 기준 수치'를 가리키는 짧고 정확한 말이에요. 가족에게는 '평소보다 낮다'처럼 풀어 말해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수혈 중 활력 기록 4문장 순서
+    why: 시작 전 기준을 재고, 그 뒤 십오 분마다 기록하며, 새 수치마다 변화를 살피고, 변화가 보이면 바로 알려요.
+    lines:
+    - en: Let's record baseline vitals before we start.
+      icon: monitor
+      ko: 시작 전 기준 활력징후를 기록해요
+      note: 기준
+    - en: Once that's done, I'll chart vitals every fifteen minutes.
+      icon: calendar
+      ko: 그 뒤 십오 분마다 기록할게요
+      note: 주기
+    - en: Watch each new number for any change during infusion.
+      icon: monitor
+      ko: 새 수치마다 변화를 지켜보세요
+      note: 감시
+    - en: If one shows up, I'll flag it right away.
+      icon: pager
+      ko: 변화가 보이면 바로 알릴게요
+      note: 보고
+- title: MTP 비율 준비
+  sentences:
+  - en: Let's keep red cells, plasma, and platelets in a 1:1:1 ratio.
+    ko: 적혈구, 혈장, 혈소판을 1대1대1 비율로 맞춥시다.
+    chunks:
+    - Let's keep
+    - red cells
+    - ','
+    - plasma
+    - ','
+    - and platelets
+    - in a 1:1:1 ratio
+    - .
+    words:
+    - w-redcells
+    - w-plasma
+    - w-platelet
+    - w-ratio
+    goal: 1
+    tag: 1:1:1 비율
+    icon: lab
+    why: keep … in a ratio로 정해진 비율을 계속 유지한다는 틀이에요. 세 제제를 쉼표로 나열해 빠진 것이 없게 해요.
+    decoy: in a row
+    distractorsKo:
+    - 적혈구, 혈장, 혈소판을 맞추려고 쿨러를 열어요.
+    - 적혈구, 혈장, 혈소판 1대1대1은 출혈을 줄여요.
+    blank:
+      answer: plasma
+      options:
+      - en: plasma
+      - en: saline
+      - en: albumin
+      - en: glucose
+  - en: The next MTP cooler is on the way.
+    ko: 다음 MTP 쿨러가 오는 중이에요.
+    chunks:
+    - The next
+    - MTP cooler
+    - is on the way
+    - .
+    words:
+    - w-cooler
+    goal: 1
+    tag: 쿨러 이동
+    icon: pager
+    why: on the way는 이미 출발해 오는 중이라는 진행의 말이에요. The next로 지금 있는 것 다음 차례라는 걸 알려 줘요.
+    decoy: is at the door
+    distractorsKo:
+    - 다음 MTP 쿨러에는 제제가 담겨 있어요.
+    - 다음 MTP 쿨러가 지금 채워져요.
+    blank:
+      answer: cooler
+      options:
+      - en: cooler
+      - en: pump
+      - en: monitor
+      - en: bed
+  - en: I'll track what's been given so far.
+    ko: 지금까지 준 것을 추적할게요.
+    chunks:
+    - I'll track
+    - what's been given
+    - so far
+    - .
+    words:
+    - w-track
+    - w-give
+    goal: 2
+    tag: 투여 추적
+    icon: board
+    why: what's been given은 이미 들어간 것 전체를 한 덩어리로 가리켜요. so far로 지금까지의 누적이라는 범위를 정해요.
+    decoy: what's been sent
+    distractorsKo:
+    - 추적하려고 표 그릴게요.
+    - 지금까지 받은 것을 추적할게요.
+    blank:
+      answer: given
+      options:
+      - en: given
+      - en: spilled
+      - en: broken
+      - en: ordered
+  - en: Let's count the units of product in this cooler.
+    ko: 이 쿨러에 든 제제 단위를 세어 봅시다.
+    chunks:
+    - Let's count
+    - the units
+    - of product
+    - in this cooler
+    - .
+    words:
+    - w-cooler
+    - w-unit
+    - w-product
+    goal: 1
+    tag: 수량 확인
+    icon: lab
+    why: Let's count …로 같이 세어 보자고 제안해요. 쿨러에 몇 단위가 드는지는 병원 MTP 프로토콜마다 달라서, 받으면 먼저 세어 목록과 맞춰요.
+    decoy: of tubing
+    distractorsKo:
+    - 이 쿨러에 든 제제 단위를 적어 봅시다.
+    - 이 쿨러에 든 제제 라벨을 세어 봅시다.
+    blank:
+      answer: count
+      options:
+      - en: count
+      - en: thaw
+      - en: warm
+      - en: stack
+  - en: I'll call for the next cooler now.
+    ko: 지금 다음 쿨러를 요청할게요.
+    chunks:
+    - I'll call
+    - for the next cooler
+    - now
+    - .
+    words:
+    - w-cooler
+    goal: 1
+    tag: 쿨러 요청
+    icon: pager
+    why: 여기서 call for는 사람이 아니라 필요한 물건(쿨러)을 요청한다는 뜻이에요. now로 미루지 않고 바로 한다는 점을 못 박아요.
+    decoy: for the next shift
+    distractorsKo:
+    - 요청하려고 수화기를 들어요.
+    - 지금 다음 쿨러를 받아 둘게요.
+    blank:
+      answer: next
+      options:
+      - en: next
+      - en: empty
+      - en: old
+      - en: broken
+  - en: We're staying close to the 1:1:1 ratio.
+    ko: 1대1대1 비율에 가깝게 유지하고 있어요.
+    chunks:
+    - We're staying
+    - close to
+    - the 1:1:1 ratio
+    - .
+    words:
+    - w-ratio
+    goal: 1
+    tag: 비율 유지
+    icon: chartup
+    why: stay close to는 정확히 같지는 않아도 가깝게 따라간다는 표현이에요. 진행형(We're staying)으로 지금도 유지하는 중임을 보여요.
+    decoy: the warmer
+    distractorsKo:
+    - 1대1대1 비율을 기록으로 남기고 있어요.
+    - 1대1대1 비율을 팀에게 공유하고 있어요.
+    blank:
+      answer: ratio
+      options:
+      - en: ratio
+      - en: label
+      - en: schedule
+      - en: budget
+  nuance:
+  - kind: pair
+    words:
+    - w-redcells
+    - w-plasma
+    - w-platelet
+    pairs:
+    - - red cells
+      - to carry oxygen
+    - - plasma
+      - to replace clotting factors
+    - - platelets
+      - to plug small leaks
+    decoys:
+    - to raise the blood sugar
+    why: 적혈구는 산소를 나르고, 혈장은 응고인자를 채워 주고, 혈소판은 작은 혈관의 새는 곳을 막아요. 대량수혈에서 세 가지를 비슷한 비율로 주는 이유예요.
+  - kind: context
+    words:
+    - w-cooler
+    word: cooler
+    ko: 쿨러
+    scenes:
+    - who: 간호사끼리
+      icon: gear
+      en: Runner's bringing the next cooler now.
+      ok: true
+    - who: 혈액은행에게
+      icon: speech
+      en: Please send the next cooler as soon as it's ready.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: The second MTP cooler arrived with the 1:1:1 pack.
+      ok: false
+      fix: More blood just came up from the blood bank.
+    why: 수술실과 혈액은행 사이에서는 MTP cooler라고 해도 바로 통해요. 가족에게는 쿨러·비율 같은 말 대신 '피가 더 올라왔다'로 말해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: MTP 비율 준비 4문장 순서
+    why: 쿨러를 요청하고, 도착하면 세 제제의 비율을 맞추고, 들어간 양을 추적하며, 그 수치로 비율에 가깝게 유지해요.
+    lines:
+    - en: I'll call for the next cooler now.
+      icon: pager
+      ko: 지금 다음 쿨러를 요청할게요
+      note: 요청
+    - en: Once it arrives, let's keep the three products in a 1:1:1 ratio.
+      icon: lab
+      ko: 도착하면 세 제제를 1대1대1로 맞춰요
+      note: 비율
+    - en: I'll track what's been given from it so far.
+      icon: board
+      ko: 거기서 지금까지 준 것을 추적할게요
+      note: 추적
+    - en: Going by those numbers, we're staying close to the ratio.
+      icon: chartup
+      ko: 그 수치로 비율에 가깝게 유지해요
+      note: 유지
+- title: 저칼슘 칼슘 보충
+  sentences:
+  - en: The ionized calcium is low.
+    ko: 이온화 칼슘 수치가 낮아요.
+    chunks:
+    - The ionized calcium
+    - is
+    - low
+    - .
+    words:
+    - w-ionized
+    - w-calcium
+    - w-low
+    goal: 1
+    tag: 수치 보고
+    icon: lab
+    why: ionized calcium은 혈액 속에서 실제로 쓰이는 칼슘이에요. is low로 결과를 짧게 보고해요.
+    decoy: on the screen
+    distractorsKo:
+    - 칼슘 수치가 방금 나왔어요.
+    - 이온화 칼슘 수치가 화면에 떠요.
+    blank:
+      answer: low
+      options:
+      - en: low
+      - en: high
+      - en: late
+      - en: steady
+  - en: Citrate from the blood is binding calcium.
+    ko: 혈액 속 시트르산염이 칼슘과 결합하고 있어요.
+    chunks:
+    - Citrate
+    - from the blood
+    - is binding
+    - calcium
+    - .
+    words:
+    - w-citrate
+    - w-bind
+    - w-calcium
+    goal: 1
+    tag: 원인 설명
+    icon: bulb
+    why: is binding으로 지금 일어나는 과정임을 진행형으로 보여요. from the blood가 시트르산염의 출처를 밝혀 왜 칼슘이 낮은지 이어요.
+    decoy: from the lab
+    distractorsKo:
+    - 혈액 속 시트르산염이 칼륨과 결합하고 있어요.
+    - 혈액 속 시트르산염이 나트륨과 결합하고 있어요.
+    blank:
+      answer: calcium
+      options:
+      - en: calcium
+      - en: sodium
+      - en: chloride
+      - en: potassium
+  - en: Let's give calcium and recheck.
+    ko: 칼슘을 주고 다시 확인합시다.
+    chunks:
+    - Let's give
+    - calcium
+    - and recheck
+    - .
+    words:
+    - w-give
+    - w-calcium
+    - w-recheck
+    goal: 2
+    tag: 보충·재확인
+    icon: pill
+    why: give와 recheck를 and로 묶어 투여 뒤 확인까지 한 흐름으로 말해요. Let's로 팀이 함께 한다는 제안이에요. 칼슘 투여는 마취과 처방에 따라 해요.
+    decoy: and rewrap
+    distractorsKo:
+    - 칼슘을 주면 혈압이 올라요.
+    - 칼슘 주려고 앰풀 확인합시다.
+    blank:
+      answer: recheck
+      options:
+      - en: recheck
+      - en: refill
+      - en: reorder
+      - en: relabel
+  - en: We'll recheck the level in ten minutes.
+    ko: 십 분 뒤에 수치를 다시 확인할게요.
+    chunks:
+    - We'll recheck
+    - the level
+    - in ten minutes
+    - .
+    words:
+    - w-recheck
+    - w-level
+    goal: 2
+    tag: 재검 시점
+    icon: calendar
+    why: We'll …in ten minutes로 시점을 못 박는 약속이에요. the level은 앞서 말한 칼슘 수치를 가리켜요.
+    decoy: in the lab
+    distractorsKo:
+    - 십 분이면 칼슘이 수치에 반영돼요.
+    - 십 분 뒤에 확인하려고 알람을 맞출게요.
+    blank:
+      answer: recheck
+      options:
+      - en: recheck
+      - en: reset
+      - en: relabel
+      - en: restock
+  - en: Low calcium can weaken the heart.
+    ko: 낮은 칼슘 수치는 심장을 약하게 할 수 있어요.
+    chunks:
+    - Low calcium
+    - can weaken
+    - the heart
+    - .
+    words:
+    - w-low
+    - w-calcium
+    goal: 1
+    tag: 위험 설명
+    icon: stetho
+    why: can weaken은 가능성의 말이라 모든 경우에 그렇다는 뜻이 아니에요. 원인(Low calcium)을 주어로 세워 보충이 필요한 이유를 대요.
+    decoy: the cooler
+    distractorsKo:
+    - 낮은 칼슘 수치는 폐를 약하게 할 수 있어요.
+    - 낮은 칼슘 수치는 신장을 약하게 할 수 있어요.
+    blank:
+      answer: heart
+      options:
+      - en: heart
+      - en: liver
+      - en: lungs
+      - en: kidneys
+  - en: Let's give another dose and check again.
+    ko: 한 번 더 주고 다시 확인합시다.
+    chunks:
+    - Let's give
+    - another dose
+    - and check again
+    - .
+    words:
+    - w-give
+    goal: 2
+    tag: 추가 투여
+    icon: pill
+    why: another dose는 같은 약을 한 번 더라는 뜻이라 앞 문장에서 준 약을 이어받아요. and check again으로 투여 뒤 확인을 같은 틀에 붙여요. 추가 용량은 마취과 의사의 처방과 병원 프로토콜에 따라 줘요.
+    decoy: and clean up
+    distractorsKo:
+    - 한 번 더 주면 칼슘이 올라요.
+    - 한 번 더 주기 위해 용량을 읽읍시다.
+    blank:
+      answer: dose
+      options:
+      - en: dose
+      - en: sample
+      - en: tube
+      - en: slip
+  nuance:
+  - kind: slider
+    words:
+    - w-low
+    cue: 'Anesthesiologist: "Calcium is so low that his heart is struggling."'
+    scale:
+    - slightly low
+    - low
+    - critically low
+    answerAt: 2
+    why: slightly low는 정상 바로 아래, low는 눈에 띄게 낮은 것, critically low는 심장이 영향을 받을 만큼 낮은 것이에요. 심장이 힘들어하는 상황이라 critically low예요.
+    example: The ionized calcium is low.
+    exKo: 이온화 칼슘 수치가 낮아요.
+  - kind: context
+    words:
+    - w-ionized
+    word: ionized
+    ko: 이온화된
+    scenes:
+    - who: 간호사끼리
+      icon: pill
+      en: The ionized calcium is low — let's give calcium and recheck.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Ionized calcium 0.9; calcium given per protocol.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: His ionized calcium is low, so we're replacing it.
+      ok: false
+      fix: The blood we're giving can lower his calcium, so we're replacing it.
+    why: ionized calcium은 검사 이름이라 의료진끼리는 정확하지만 가족에게는 낯설어요. 가족에게는 '들어가는 피가 칼슘을 낮출 수 있어 보충한다'로 풀어요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 저칼슘 보충 4문장 순서
+    why: 낮은 칼슘 수치를 알리고, 시트르산염이 결합한다는 원인을 말하고, 결합된 만큼 칼슘을 준다고 하고, 십 분 뒤 재검을 약속해요.
+    lines:
+    - en: The ionized calcium is low.
+      icon: lab
+      ko: 이온화 칼슘이 낮아요
+      note: 보고
+    - en: Citrate from the blood is binding it.
+      icon: bulb
+      ko: 혈액 속 시트르산염이 결합하고 있어요
+      note: 원인
+    - en: To replace what's bound, let's give calcium now.
+      icon: pill
+      ko: 결합된 만큼 지금 칼슘을 줘요
+      note: 투여
+    - en: We'll recheck the level in ten minutes.
+      icon: calendar
+      ko: 십 분 뒤에 수치를 다시 확인할게요
+      note: 재검
+- title: 수혈 저체온 예방
+  sentences:
+  - en: The temperature is dropping to 35.
+    ko: 체온이 35도까지 떨어지고 있어요.
+    chunks:
+    - The temperature
+    - is dropping
+    - to 35
+    - .
+    words:
+    - w-temperature
+    - w-drop
+    goal: 1
+    tag: 체온 보고
+    icon: monitor
+    why: is dropping으로 지금 계속 내려가는 중임을 진행형으로 알려요. to 35로 도달한 수치를 구체적으로 말해 위험 정도를 전해요.
+    decoy: in the room
+    distractorsKo:
+    - 체온이 35도로 기록돼 있어요.
+    - 체온이 35도라고 모니터에 떠요.
+    blank:
+      answer: dropping
+      options:
+      - en: dropping
+      - en: rising
+      - en: settling
+      - en: spiking
+  - en: Let's warm all fluids and use a forced-air blanket.
+    ko: 모든 수액을 데우고 온풍 담요를 씁시다.
+    chunks:
+    - Let's warm
+    - all fluids
+    - and use
+    - a forced-air blanket
+    - .
+    words:
+    - w-fluid
+    - w-forcedair
+    - w-blanket
+    goal: 2
+    tag: 가온 강화
+    icon: fire
+    why: warm과 use 두 동사를 and로 이어 할 일 두 가지를 한 번에 말해요. all fluids로 범위를 전부로 넓혀요.
+    decoy: a paper gown
+    distractorsKo:
+    - 모든 수액을 데우려고 가온기를 연결합시다.
+    - 모든 수액을 데우면 체온이 지켜져요.
+    blank:
+      answer: warm
+      options:
+      - en: warm
+      - en: rinse
+      - en: weigh
+      - en: sort
+  - en: I'll raise the room temperature.
+    ko: 실내 온도를 올릴게요.
+    chunks:
+    - I'll
+    - raise
+    - the room temperature
+    - .
+    words:
+    - w-raise
+    - w-temperature
+    goal: 2
+    tag: 실내 가온
+    icon: fire
+    why: raise the room temperature는 환자 몸이 아니라 방을 데워 열 손실을 줄이는 일이에요. I'll로 내가 맡는다는 뜻이에요.
+    decoy: the room lights
+    distractorsKo:
+    - 올리려고 조절기를 찾을게요.
+    - 방을 데우면 덜 식어요.
+    blank:
+      answer: raise
+      options:
+      - en: raise
+      - en: lower
+      - en: check
+      - en: record
+  - en: Let's keep the blanket running throughout the case.
+    ko: 수술 내내 담요를 계속 틀어 둡시다.
+    chunks:
+    - Let's keep
+    - the blanket running
+    - throughout the case
+    - .
+    words:
+    - w-blanket
+    goal: 2
+    tag: 내내 유지
+    icon: check
+    why: keep A running은 켠 상태를 끄지 않고 이어 간다는 뜻이에요. throughout the case로 수술이 끝날 때까지라는 기간을 정해요.
+    decoy: throughout the hall
+    distractorsKo:
+    - 담요 틀어 두려고 코드 살핍시다.
+    - 수술 내내 수액을 계속 데워 둡시다.
+    blank:
+      answer: running
+      options:
+      - en: running
+      - en: folded
+      - en: stored
+      - en: damp
+  - en: We'll recheck the temperature every ten minutes.
+    ko: 십 분마다 체온을 다시 확인할게요.
+    chunks:
+    - We'll recheck
+    - the temperature
+    - every ten minutes
+    - .
+    words:
+    - w-recheck
+    - w-temperature
+    goal: 1
+    tag: 체온 재확인
+    icon: monitor
+    why: every ten minutes로 반복 간격을 못 박아 체온 추이를 놓치지 않게 해요. recheck는 이미 잰 것을 다시 본다는 뜻이에요.
+    decoy: at every bedside
+    distractorsKo:
+    - 십 분마다 확인하려고 체온계를 챙길게요.
+    - 자주 재야 변화를 놓치지 않아요.
+    blank:
+      answer: temperature
+      options:
+      - en: temperature
+      - en: drape
+      - en: tag
+      - en: inventory
+  - en: Warm fluids help prevent hypothermia.
+    ko: 따뜻한 수액이 저체온을 막는 데 도움이 돼요.
+    chunks:
+    - Warm fluids
+    - help prevent
+    - hypothermia
+    - .
+    words:
+    - w-fluid
+    - w-hypothermia
+    - w-prevent
+    goal: 1
+    tag: 가온 효과
+    icon: bulb
+    why: help prevent는 완전히 막는다는 단정이 아니라 도움이 된다는 완곡한 표현이에요. 원인(Warm fluids)을 주어로 세워 가온의 목적을 설명해요.
+    decoy: allergies
+    distractorsKo:
+    - 따뜻한 수액이 혈압 유지에 도움이 돼요.
+    - 따뜻한 수액이 떨림을 줄이는 데 도움이 돼요.
+    blank:
+      answer: hypothermia
+      options:
+      - en: hypothermia
+      - en: fever
+      - en: allergy
+      - en: hypertension
+  nuance:
+  - kind: slider
+    words:
+    - w-temperature
+    - w-hypothermia
+    cue: 'Anesthesiologist: "He is a little cool, nothing to worry about yet."'
+    scale:
+    - slightly cool
+    - cold
+    - hypothermic
+    answerAt: 0
+    why: slightly cool은 살짝 서늘한 정도, cold는 확실히 차가운 것, hypothermic은 저체온증 상태예요. '조금 서늘하고 아직 걱정 없다'는 말이라 slightly cool이에요.
+    example: Warm fluids help prevent hypothermia.
+    exKo: 따뜻한 수액이 저체온을 막는 데 도움이 돼요.
+  - kind: swap
+    words:
+    - w-hypothermia
+    - w-prevent
+    - w-fluid
+    who: 가족에게 · 따뜻한 수액을 설명할 때
+    icon: me
+    before:
+    - 'Warm fluids help prevent '
+    - hypothermia
+    - ' during surgery.'
+    options:
+    - hypothermia
+    - getting too cold
+    - rewarming
+    answer: getting too cold
+    notes:
+      hypothermia: 의료진끼리 쓰는 임상어예요. 가족은 못 알아들을 수 있어요.
+      getting too cold: 가족이 바로 알아듣는 쉬운 말이에요. 따뜻한 수액의 목적이 그대로 전달돼요.
+      rewarming: 이미 식은 몸을 다시 데우는 일이라 '막아 준다'와 뜻이 맞지 않아요.
+    why: 같은 사실이라도 가족에게는 임상어 대신 쉬운 말로 목적을 알려 줘요.
+    ko: 따뜻한 수액이 수술 중에 몸이 너무 차가워지는 것을 막아 줘요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수혈 저체온 예방 4문장 순서
+    why: 체온이 떨어지는 것을 알리고, 수액을 데우고 담요를 쓰며, 십 분마다 효과를 확인하고, 도움이 되는 동안 담요를 유지해요.
+    lines:
+    - en: The temperature is dropping to 35.
+      icon: monitor
+      ko: 체온이 35도까지 떨어지고 있어요
+      note: 보고
+    - en: Let's warm all fluids and use a forced-air blanket.
+      icon: fire
+      ko: 수액을 데우고 온풍 담요를 써요
+      note: 가온
+    - en: We'll recheck the temperature every ten minutes to see if that helps.
+      icon: monitor
+      ko: 십 분마다 체온으로 효과를 봐요
+      note: 재확인
+    - en: If it does, let's keep the blanket running throughout the case.
+      icon: check
+      ko: 도움이 되면 수술 내내 담요를 계속 틀어요
+      note: 유지
+- title: 혈소판·FFP 순서
+  sentences:
+  - en: Let's give plasma alongside the red cells.
+    ko: 적혈구와 함께 혈장을 줍시다.
+    chunks:
+    - Let's give
+    - plasma
+    - alongside
+    - the red cells
+    - .
+    words:
+    - w-give
+    - w-plasma
+    - w-alongside
+    - w-redcells
+    goal: 1
+    tag: 병행 투여
+    icon: lab
+    why: alongside는 순서를 뒤로 미루지 않고 나란히 함께 준다는 뜻이에요. Let's로 팀이 함께 하는 제안이에요.
+    decoy: the albumin
+    distractorsKo:
+    - 혈장을 같이 주면 피가 잘 굳어요.
+    - 혈장 넣으려고 쿨러를 엽시다.
+    blank:
+      answer: red
+      options:
+      - en: red
+      - en: white
+      - en: pink
+      - en: green
+  - en: Platelets are up next in the ratio.
+    ko: 비율상 다음은 혈소판이에요.
+    chunks:
+    - Platelets
+    - are up next
+    - in the ratio
+    - .
+    words:
+    - w-platelet
+    - w-ratio
+    goal: 1
+    tag: 다음 제제
+    icon: lab
+    why: are up next는 다음 차례라는 말로 곧 준비해 둘 것을 알려 줘요. in the ratio가 그 순서의 근거를 짚어요.
+    decoy: on the tray
+    distractorsKo:
+    - 비율상 다음은 혈장이에요.
+    - 비율상 다음은 적혈구예요.
+    blank:
+      answer: next
+      options:
+      - en: next
+      - en: last
+      - en: late
+      - en: early
+  - en: I'll keep the sequence balanced.
+    ko: 투여 순서를 균형 있게 유지할게요.
+    chunks:
+    - I'll keep
+    - the sequence
+    - balanced
+    - .
+    words:
+    - w-sequence
+    - w-balanced
+    goal: 2
+    tag: 순서 균형
+    icon: chartup
+    why: keep A balanced는 한쪽으로 쏠리지 않게 맞춰 둔다는 뜻이에요. the sequence로 무엇의 균형인지 정해요.
+    decoy: the budget
+    distractorsKo:
+    - 순서가 쏠리면 피가 묽어져요.
+    - 균형 맞추려고 표를 만들게요.
+    blank:
+      answer: balanced
+      options:
+      - en: balanced
+      - en: uneven
+      - en: random
+      - en: reversed
+  - en: We don't want all red cells and no plasma.
+    ko: 적혈구만 주고 혈장은 안 주면 안 돼요.
+    chunks:
+    - We
+    - don't want
+    - all red cells
+    - and no plasma
+    - .
+    words:
+    - w-redcells
+    - w-plasma
+    goal: 2
+    tag: 편중 경계
+    icon: siren
+    why: We don't want …는 피하고 싶은 상황을 부드럽게 경고하는 말이에요. all … and no …로 쏠린 모양을 대비해 보여요.
+    decoy: and no coolers
+    distractorsKo:
+    - 적혈구만 데우고 혈장은 안 데우면 안 돼요.
+    - 적혈구만 세고 혈장은 안 세면 안 돼요.
+    blank:
+      answer: plasma
+      options:
+      - en: plasma
+      - en: saline
+      - en: albumin
+      - en: sugar
+  - en: Let's check the ratio after this cooler.
+    ko: 이번 쿨러 이후 비율을 확인합시다.
+    chunks:
+    - Let's check
+    - the ratio
+    - after this cooler
+    - .
+    words:
+    - w-ratio
+    - w-cooler
+    goal: 1
+    tag: 비율 점검
+    icon: check
+    why: after this cooler로 점검 시점을 쿨러 하나가 끝난 뒤로 잡아요. check the ratio는 지금까지 들어간 비율이 맞는지 보는 일이에요.
+    decoy: after this call
+    distractorsKo:
+    - 쿨러마다 봐야 비율이 맞아요.
+    - 이번 쿨러 이전 비율을 확인합시다.
+    blank:
+      answer: ratio
+      options:
+      - en: ratio
+      - en: strap
+      - en: seal
+      - en: lid
+  - en: Platelets go in as soon as they arrive.
+    ko: 혈소판은 도착하는 대로 바로 줍니다.
+    chunks:
+    - Platelets go in
+    - as soon as
+    - they arrive
+    - .
+    words:
+    - w-platelet
+    - w-arrive
+    goal: 2
+    tag: 즉시 투여
+    icon: lab
+    why: as soon as는 도착과 투여 사이에 지체가 없다는 뜻이에요. go in은 환자에게 들어간다는 구어체 동사예요. 두 사람 확인을 마친 뒤에 넣어요.
+    decoy: they leave
+    distractorsKo:
+    - 혈소판은 실온에서 흔들며 보관해요.
+    - 혈소판은 도착하면 넣으려고 포장을 엽니다.
+    blank:
+      answer: arrive
+      options:
+      - en: arrive
+      - en: thaw
+      - en: spin
+      - en: settle
+  nuance:
+  - kind: slider
+    words:
+    - w-balanced
+    cue: 'Charge nurse: "Red cells, plasma, and platelets are going in at the same pace."'
+    scale:
+    - balanced
+    - uneven
+    - lopsided
+    answerAt: 0
+    why: balanced는 고르게 들어가는 것, uneven은 어느 쪽이 더 많은 것, lopsided는 한쪽으로 크게 쏠린 것이에요. 세 가지가 같은 속도라 balanced예요.
+    example: I'll keep the sequence balanced.
+    exKo: 투여 순서를 균형 있게 유지할게요.
+  - kind: context
+    words:
+    - w-ratio
+    word: ratio
+    ko: 비율
+    scenes:
+    - who: 간호사끼리
+      icon: check
+      en: Let's keep the ratio close to 1:1:1.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Products given in a 1:1:1 ratio per MTP.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: We're giving his blood products in a 1:1:1 ratio.
+      ok: false
+      fix: We're giving him red cells, plasma, and platelets together in the right balance.
+    why: 의료진끼리는 1:1:1 ratio라고만 해도 의미가 통해요. 가족에게는 숫자 대신 '세 가지를 균형 있게 준다'로 풀어 말해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 혈소판·FFP 순서 4문장 순서
+    why: 혈장을 적혈구와 함께 주고, 혈소판이 다음 차례임을 알리며, 도착하는 대로 넣고, 쿨러 하나가 끝나면 비율을 확인해요.
+    lines:
+    - en: Let's give plasma alongside the red cells.
+      icon: lab
+      ko: 적혈구와 함께 혈장을 줍시다
+      note: 병행
+    - en: Platelets are up next in the ratio.
+      icon: lab
+      ko: 비율상 다음은 혈소판이에요
+      note: 차례
+    - en: They go in as soon as they arrive.
+      icon: lab
+      ko: 도착하는 대로 바로 들어가요
+      note: 투여
+    - en: Let's check the ratio after this cooler.
+      icon: check
+      ko: 이번 쿨러 이후 비율을 확인해요
+      note: 점검
+- title: 혈액은행 재고 조율
+  sentences:
+  - en: How many units of O-neg do you have left?
+    ko: O형 음성 제제가 몇 단위 남았나요?
+    chunks:
+    - How many units
+    - of O-neg
+    - do you have
+    - left
+    - '?'
+    words:
+    - w-unit
+    - w-oneg
+    - w-left
+    goal: 1
+    tag: 재고 문의
+    icon: lab
+    why: How many …?로 수량을 직접 묻는 질문이에요. do you have left의 left가 쓰고 남은 양을 묻는 말이에요.
+    decoy: of gauze
+    distractorsKo:
+    - O형 음성 제제가 언제 도착하나요?
+    - O형 음성 제제가 어디에 있나요?
+    blank:
+      answer: O-neg
+      options:
+      - en: O-neg
+      - en: AB-pos
+      - en: B-pos
+      - en: A-neg
+  - en: We may need more plasma soon.
+    ko: 곧 혈장이 더 필요할 수도 있어요.
+    chunks:
+    - We may need
+    - more plasma
+    - soon
+    - .
+    words:
+    - w-need
+    - w-plasma
+    goal: 2
+    tag: 예측 알림
+    icon: bulb
+    why: may로 확정이 아닌 가능성을 알려 미리 준비하게 해요. soon으로 가까운 시점임을 더해 재고를 서두르게 해요.
+    decoy: more tape
+    distractorsKo:
+    - 곧 혈장이 더 도착할 수도 있어요.
+    - 혈장은 해동에 시간이 걸릴 수 있어요.
+    blank:
+      answer: more
+      options:
+      - en: more
+      - en: less
+      - en: 'no'
+      - en: old
+  - en: Please keep the next cooler ready.
+    ko: 다음 쿨러를 준비해 주세요.
+    chunks:
+    - Please keep
+    - the next cooler
+    - ready
+    - .
+    words:
+    - w-cooler
+    - w-ready
+    goal: 2
+    tag: 준비 요청
+    icon: pager
+    why: Please …로 부탁의 어조를 얹어요. keep A ready는 곧 쓸 수 있게 대기시켜 둔다는 뜻이에요.
+    decoy: the spare tray
+    distractorsKo:
+    - 다음 쿨러를 문 앞에 두세요.
+    - 다음 쿨러를 이쪽으로 보내 주세요.
+    blank:
+      answer: ready
+      options:
+      - en: ready
+      - en: open
+      - en: empty
+      - en: lost
+  - en: We're running low on platelets too.
+    ko: 혈소판도 부족해지고 있어요.
+    chunks:
+    - We're running low
+    - on platelets
+    - too
+    - .
+    words:
+    - w-low
+    - w-platelet
+    goal: 1
+    tag: 부족 알림
+    icon: siren
+    why: running low on은 재고가 줄어 곧 바닥난다는 뜻이에요. too가 앞서 말한 혈장에 더해 혈소판도 같은 처지라고 덧붙여요.
+    decoy: on tubing
+    distractorsKo:
+    - 혈소판도 보관 기간이 짧아요.
+    - 혈소판도 오는 중이에요.
+    blank:
+      answer: low
+      options:
+      - en: low
+      - en: late
+      - en: slow
+      - en: high
+  - en: Let's call the blood bank for an update.
+    ko: 혈액은행에 전화해서 상황을 알아봅시다.
+    chunks:
+    - Let's call
+    - the blood bank
+    - for an update
+    - .
+    words: []
+    goal: 1
+    tag: 상황 문의
+    icon: pager
+    why: call A for B는 A에게 전화해 B를 얻으려는 목적을 말하는 틀이에요. for an update로 새 소식을 묻는다는 뜻이 분명해요.
+    decoy: for a refund
+    distractorsKo:
+    - 혈액은행 전화하려고 수화기 찾읍시다.
+    - 혈액은행에 전화해서 쿨러를 부탁합시다.
+    blank:
+      answer: update
+      options:
+      - en: update
+      - en: invoice
+      - en: audit
+      - en: apology
+  - en: I'll let you know as soon as the next cooler arrives.
+    ko: 다음 쿨러가 도착하면 바로 알려 드릴게요.
+    chunks:
+    - I'll let you know
+    - as soon as
+    - the next cooler
+    - arrives
+    - .
+    words:
+    - w-cooler
+    - w-arrive
+    goal: 2
+    tag: 도착 통보
+    icon: pager
+    why: let you know는 알려 주겠다는 약속의 관용구예요. as soon as로 지체 없이 알리는 시점을 못 박아요.
+    decoy: the next order
+    distractorsKo:
+    - 도착하면 알려 드리려고 연락처를 적어 둘게요.
+    - 다음 쿨러가 도착하면 바로 서명할게요.
+    blank:
+      answer: arrives
+      options:
+      - en: arrives
+      - en: breaks
+      - en: spills
+      - en: closes
+  nuance:
+  - kind: slider
+    words:
+    - w-low
+    cue: 'Blood bank: "We still have a few platelet units, but we are getting short."'
+    scale:
+    - running low
+    - nearly out
+    - out
+    answerAt: 0
+    why: running low는 아직 있지만 줄어드는 중, nearly out은 거의 바닥, out은 하나도 없는 것이에요. 아직 몇 개 있다는 말이라 running low예요.
+    example: We're running low on platelets too.
+    exKo: 혈소판도 부족해지고 있어요.
+  - kind: context
+    words:
+    - w-oneg
+    word: O-neg
+    ko: O형 음성
+    scenes:
+    - who: 혈액은행에게
+      icon: speech
+      en: How many units of O-neg do you have left?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 2 units O-neg given; type-specific pending.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: We're giving him O-neg until his own type is ready.
+      ok: false
+      fix: We're giving him blood that's safe for almost anyone until blood matched to him is ready.
+    why: O-neg는 의료진이 혈액형을 줄여 부르는 말이에요. 가족에게는 '거의 누구에게나 쓸 수 있는 피를 먼저 쓰고, 맞춘 피가 준비되면 바꾼다'로 말해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 혈액은행 재고 조율 4문장 순서
+    why: 남은 수량을 묻고, 그 수량에 맞춰 쿨러를 부탁하고, 혈소판도 넣어 달라고 한 뒤, 다 담기면 연락을 받기로 해요.
+    lines:
+    - en: How many units of O-neg do you have left?
+      icon: lab
+      ko: O형 음성이 몇 단위 남았나요
+      note: 문의
+    - en: At that count, please keep the next cooler ready.
+      icon: pager
+      ko: 그 수량이면 다음 쿨러를 준비해 주세요
+      note: 준비
+    - en: We're running low on platelets too, so add some to it.
+      icon: lab
+      ko: 혈소판도 부족하니 거기에 넣어 주세요
+      note: 추가
+    - en: Once they're packed, call me and I'll send someone.
+      icon: pager
+      ko: 다 담기면 전화 주세요, 사람을 보낼게요
+      note: 연락
+- title: 수혈 반응 초기 감시
+  sentences:
+  - en: Watch for fever, hypotension, or oozing.
+    ko: 발열, 저혈압, 스며 나오는 출혈을 지켜보세요.
+    chunks:
+    - Watch for
+    - fever
+    - ','
+    - hypotension
+    - ','
+    - or oozing
+    - .
+    words:
+    - w-watch
+    - w-fever
+    - w-hypotension
+    - w-oozing
+    goal: 1
+    tag: 반응 징후
+    icon: monitor
+    why: Watch for 뒤에 or로 징후 셋을 나열해 어느 하나도 빠뜨리지 않게 해요. oozing은 상처에서 천천히 배어 나오는 출혈을 가리켜요.
+    decoy: or hiccups
+    distractorsKo:
+    - 발열, 저혈압, 출혈을 지켜보려고 화면을 고정하세요.
+    - 발열, 저혈압, 출혈은 수혈 반응의 징후예요.
+    blank:
+      answer: oozing
+      options:
+      - en: oozing
+      - en: constipation
+      - en: snoring
+      - en: blinking
+  - en: Any change in the urine color?
+    ko: 소변 색깔에 변화가 있나요?
+    chunks:
+    - Any change
+    - in the urine
+    - color
+    - '?'
+    words:
+    - w-change
+    - w-urine
+    - w-color
+    goal: 1
+    tag: 소변 문의
+    icon: lab
+    why: Any change in …?로 동사 없이 짧게 묻는 구어체 질문이에요. the urine color로 어느 부분의 변화인지 좁혀 물어요.
+    decoy: in the tubing
+    distractorsKo:
+    - 소변 색깔이 언제부터 그랬나요?
+    - 소변 색깔이 걱정되시나요?
+    blank:
+      answer: color
+      options:
+      - en: color
+      - en: bag
+      - en: cup
+      - en: stand
+  - en: Tell me right away if vitals shift.
+    ko: 활력징후가 바뀌면 즉시 알려 주세요.
+    chunks:
+    - Tell me
+    - right away
+    - if vitals shift
+    - .
+    words:
+    - w-rightaway
+    - w-vitals
+    - w-shift
+    goal: 2
+    tag: 즉시 보고
+    icon: pager
+    why: Tell me는 나에게 직접 알리라는 지시라 보고 대상이 분명해요. right away와 if vitals shift로 즉시와 조건을 함께 못 박아요.
+    decoy: if the cuff shifts
+    distractorsKo:
+    - 바뀌면 알리려고 호출기를 쥐세요.
+    - 활력징후 변화는 첫 신호예요.
+    blank:
+      answer: vitals
+      options:
+      - en: vitals
+      - en: plans
+      - en: staff
+      - en: schedules
+  - en: Oozing from the line can be an early sign.
+    ko: 라인에서 스며 나오는 출혈은 초기 징후일 수 있어요.
+    chunks:
+    - Oozing
+    - from the line
+    - can be
+    - an early sign
+    - .
+    words:
+    - w-oozing
+    goal: 1
+    tag: 조기 징후
+    icon: bulb
+    why: can be는 늘 그렇다는 단정이 아닌 가능성을 말해요. early sign으로 빨리 알아채야 한다는 점을 짚어요.
+    decoy: from the pole
+    distractorsKo:
+    - 라인에서 스며 나오는 출혈은 눈에 띄어요.
+    - 라인에서 스며 나오는 출혈은 거즈에 묻어나요.
+    blank:
+      answer: line
+      options:
+      - en: line
+      - en: cuff
+      - en: monitor
+      - en: pump
+  - en: Let's watch the urine color closely.
+    ko: 소변 색깔을 자세히 지켜봅시다.
+    chunks:
+    - Let's watch
+    - the urine color
+    - closely
+    - .
+    words:
+    - w-watch
+    - w-urine
+    - w-color
+    - w-closely
+    goal: 1
+    tag: 소변 관찰
+    icon: monitor
+    why: closely는 흘려보지 말고 가까이서 주의 깊게 본다는 뜻이에요. Let's로 팀이 함께 지켜보자고 청해요.
+    decoy: the cuff size
+    distractorsKo:
+    - 색깔을 지켜보려고 조명을 맞춥시다.
+    - 소변이 붉으면 용혈을 의심해요.
+    blank:
+      answer: closely
+      options:
+      - en: closely
+      - en: briefly
+      - en: rarely
+      - en: loosely
+  - en: A fever this early worries me.
+    ko: 이렇게 이른 발열이 걱정돼요.
+    chunks:
+    - A fever
+    - this early
+    - worries me
+    - .
+    words:
+    - w-fever
+    goal: 2
+    tag: 걱정 표현
+    icon: faceWorried
+    why: this early로 수혈 시작 직후에 열이 났다는 시점이 걱정의 이유라는 점을 알려요. worries me는 판단을 나의 걱정으로 말해 단정을 피해요.
+    decoy: this evening
+    distractorsKo:
+    - 이렇게 이른 발열이 났어요.
+    - 이렇게 이른 발열을 차트에서 봤어요.
+    blank:
+      answer: worries
+      options:
+      - en: worries
+      - en: reassures
+      - en: calms
+      - en: relieves
+  nuance:
+  - kind: slider
+    words:
+    - w-oozing
+    cue: 'Nurse: "Blood is slowly seeping from the IV site — no spurting, no pool."'
+    scale:
+    - damp
+    - oozing
+    - spurting
+    answerAt: 1
+    why: damp는 살짝 젖은 정도, oozing은 천천히 스며 나오는 출혈, spurting은 뿜어져 나오는 출혈이에요. 천천히 배어 나오는 것은 oozing이에요.
+    example: Oozing from the line can be an early sign.
+    exKo: 라인에서 스며 나오는 출혈은 초기 징후일 수 있어요.
+  - kind: context
+    words:
+    - w-hypotension
+    word: hypotension
+    ko: 저혈압
+    scenes:
+    - who: 간호사끼리
+      icon: magnify
+      en: Watch for fever, hypotension, or oozing.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: No fever or hypotension during transfusion.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: We're watching him for hypotension during the transfusion.
+      ok: false
+      fix: We're keeping a close eye on his blood pressure in case his body reacts to the blood.
+    why: hypotension은 의료진끼리 쓰는 임상어예요. 가족에게는 '혈압을 계속 지켜본다'로 쉽게 말해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수혈 반응 초기 감시 4문장 순서
+    why: 살필 징후를 말하고, 그 이유를 밝히고, 그 징후를 염두에 두고 소변 색깔을 지켜보며, 변화가 생기면 바로 알려 달라고 해요.
+    lines:
+    - en: Watch for fever, hypotension, or oozing.
+      icon: monitor
+      ko: 발열, 저혈압, 출혈을 지켜보세요
+      note: 징후
+    - en: That's because oozing from the line can be an early sign.
+      icon: bulb
+      ko: 라인의 출혈이 초기 징후일 수 있어서예요
+      note: 이유
+    - en: With those signs in mind, let's watch the urine color closely.
+      icon: monitor
+      ko: 그 징후를 염두에 두고 소변 색을 봐요
+      note: 관찰
+    - en: While you do that, tell me right away if vitals shift.
+      icon: pager
+      ko: 그러는 동안 활력징후가 바뀌면 즉시 알려 주세요
+      note: 보고
+- title: 희석성 응고장애
+  sentences:
+  - en: There's diffuse oozing from the field.
+    ko: 수술 부위 전반에서 스며 나오는 출혈이 있어요.
+    chunks:
+    - There's
+    - diffuse oozing
+    - from the field
+    - .
+    words:
+    - w-diffuse
+    - w-oozing
+    - w-field
+    goal: 1
+    tag: 출혈 보고
+    icon: siren
+    why: diffuse는 한 곳이 아니라 넓게 퍼진 모양을 말해요. There's …로 지금 눈앞에 보이는 것을 알려요.
+    decoy: from the dressing
+    distractorsKo:
+    - 수술 부위 한쪽에서 스며 나오는 출혈이 있어요.
+    - 수술 부위 전반의 출혈이 거즈에 묻어요.
+    blank:
+      answer: diffuse
+      options:
+      - en: diffuse
+      - en: focal
+      - en: arterial
+      - en: dry
+  - en: We may be diluting the clotting factors.
+    ko: 응고인자가 희석되고 있을 수 있어요.
+    chunks:
+    - We may be
+    - diluting
+    - the clotting factors
+    - .
+    words:
+    - w-dilute
+    - w-clottingfactor
+    goal: 1
+    tag: 원인 추정
+    icon: bulb
+    why: may be diluting으로 아직 확정이 아닌 추정임을 밝혀요. 우리가 주는 것이 원인일 수 있다는 점을 We로 솔직하게 말해요.
+    decoy: the clotting tubes
+    distractorsKo:
+    - 응고인자가 배달되고 있을 수 있어요.
+    - 응고인자는 혈소판과 함께 작용해요.
+    blank:
+      answer: diluting
+      options:
+      - en: diluting
+      - en: freezing
+      - en: storing
+      - en: counting
+  - en: Let's give more plasma and check coags.
+    ko: 혈장을 더 주고 응고검사를 확인합시다.
+    chunks:
+    - Let's give
+    - more plasma
+    - and check coags
+    - .
+    words:
+    - w-give
+    - w-plasma
+    - w-coag
+    goal: 2
+    tag: 보충·검사
+    icon: pill
+    why: give와 check를 and로 묶어 투여 뒤 확인까지 한 흐름이에요. coags는 응고검사를 줄여 부르는 현장 말이에요.
+    decoy: and check tubes
+    distractorsKo:
+    - 혈장을 더 넣으려고 해동을 확인합시다.
+    - 더 준 혈장이 응고인자를 채워 주고 있어요.
+    blank:
+      answer: coags
+      options:
+      - en: coags
+      - en: labels
+      - en: coolers
+      - en: slips
+  - en: The surgeon says the field looks wet.
+    ko: 외과의가 수술 부위가 축축해 보인다고 해요.
+    chunks:
+    - The surgeon says
+    - the field
+    - looks wet
+    - .
+    words:
+    - w-field
+    goal: 1
+    tag: 외과 소견
+    icon: scalpel
+    why: The surgeon says로 시작해 전해 들은 소견임을 분명히 해요. looks wet은 눈으로 본 인상을 말하는 표현이에요.
+    decoy: The scrub says
+    distractorsKo:
+    - 외과의가 수술 부위가 좁아 보인다고 해요.
+    - 외과의가 수술 부위를 계속 보겠다고 해요.
+    blank:
+      answer: wet
+      options:
+      - en: wet
+      - en: dry
+      - en: narrow
+      - en: bright
+  - en: Let's send coags again after this plasma.
+    ko: 이번 혈장 이후 응고검사를 다시 보냅시다.
+    chunks:
+    - Let's send coags
+    - again
+    - after this plasma
+    - .
+    words:
+    - w-coag
+    - w-plasma
+    goal: 2
+    tag: 재검 보냄
+    icon: lab
+    why: again으로 앞서 보낸 검사를 한 번 더라는 뜻이에요. after this plasma로 보내는 시점을 혈장 투여 뒤로 잡아요.
+    decoy: after this drape
+    distractorsKo:
+    - 응고검사는 결과가 나오기까지 시간이 걸려요.
+    - 응고검사 다시 보내려고 용지 붙입시다.
+    blank:
+      answer: send
+      options:
+      - en: send
+      - en: stamp
+      - en: print
+      - en: file
+  - en: More plasma may help the oozing.
+    ko: 혈장을 더 주면 출혈에 도움이 될 수 있어요.
+    chunks:
+    - More plasma
+    - may help
+    - the oozing
+    - .
+    words:
+    - w-plasma
+    - w-oozing
+    goal: 2
+    tag: 기대 효과
+    icon: bulb
+    why: may help로 효과를 단정하지 않고 기대로 말해요. the oozing으로 도움이 닿을 대상을 짚어요.
+    decoy: the noise
+    distractorsKo:
+    - 혈장을 더 주면 통증에 도움이 될 수 있어요.
+    - 혈장을 더 주면 호흡에 도움이 될 수 있어요.
+    blank:
+      answer: oozing
+      options:
+      - en: oozing
+      - en: fever
+      - en: rash
+      - en: swelling
+  nuance:
+  - kind: slider
+    words:
+    - w-diffuse
+    cue: 'Surgeon: "It is oozing from the whole field, not from one vessel."'
+    scale:
+    - focal
+    - patchy
+    - diffuse
+    answerAt: 2
+    why: focal은 한 곳, patchy는 군데군데, diffuse는 넓게 퍼진 것이에요. 한 혈관이 아니라 수술 부위 전체라서 diffuse예요.
+    example: There's diffuse oozing from the field.
+    exKo: 수술 부위 전반에서 스며 나오는 출혈이 있어요.
+  - kind: context
+    words:
+    - w-coag
+    word: coags
+    ko: 응고검사
+    scenes:
+    - who: 간호사끼리
+      icon: lab
+      en: Let's send coags again after this plasma.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Coags sent stat; fibrinogen low.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: His coags show a dilutional coagulopathy.
+      ok: false
+      fix: We're checking how well his blood is clotting.
+    why: coags는 의료진끼리 쓰는 줄임말이에요. 가족에게는 줄임말과 병명 대신 '피가 잘 굳는지 확인한다'로 말해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 희석성 응고장애 4문장 순서
+    why: 넓게 스며 나오는 출혈을 보고하고, 응고인자가 희석됐을 수 있다고 추정하며, 혈장을 주고 검사하고, 혈장 뒤에 검사를 다시 보내요.
+    lines:
+    - en: There's diffuse oozing from the field.
+      icon: siren
+      ko: 수술 부위 전반에서 출혈이 스며 나와요
+      note: 보고
+    - en: That may mean we're diluting the clotting factors.
+      icon: bulb
+      ko: 응고인자가 희석되는 중일 수 있어요
+      note: 추정
+    - en: To replace them, let's give more plasma and check coags.
+      icon: pill
+      ko: 보충하려고 혈장을 더 주고 검사해요
+      note: 보충
+    - en: Let's send coags again after this plasma.
+      icon: lab
+      ko: 이 혈장 뒤에 응고검사를 다시 보내요
+      note: 재검
+- title: 산-염기 대사 감시
+  sentences:
+  - en: Let's get an arterial blood gas.
+    ko: 동맥혈 가스검사를 합시다.
+    chunks:
+    - Let's
+    - get
+    - an arterial blood gas
+    - .
+    words:
+    - w-arterial
+    - w-gas
+    goal: 1
+    tag: 가스검사
+    icon: lab
+    why: get an …은 검사를 하나 받아 오자는 구어 표현이에요. arterial로 정맥이 아니라 동맥에서 뽑는다는 점이 붙어요.
+    decoy: a venous blood gas
+    distractorsKo:
+    - 검사하려고 부위를 정합시다.
+    - 가스검사가 산증을 알려요.
+    blank:
+      answer: get
+      options:
+      - en: get
+      - en: label
+      - en: print
+      - en: chart
+  - en: The lactate is climbing.
+    ko: 젖산 수치가 오르고 있어요.
+    chunks:
+    - The lactate
+    - is climbing
+    - .
+    words:
+    - w-lactate
+    - w-climb
+    goal: 1
+    tag: 젖산 보고
+    icon: chartup
+    why: is climbing으로 지금도 계속 오르는 중이라는 추세를 진행형으로 알려요. The lactate처럼 검사 이름만 말해도 수치를 가리켜요.
+    decoy: is printed
+    distractorsKo:
+    - 젖산 수치는 가스검사로 나와요.
+    - 젖산 수치가 화면에 뜨네요.
+    blank:
+      answer: climbing
+      options:
+      - en: climbing
+      - en: falling
+      - en: clotting
+      - en: settling
+  - en: We need to correct the acidosis.
+    ko: 산증을 교정해야 해요.
+    chunks:
+    - We need
+    - to correct
+    - the acidosis
+    - .
+    words:
+    - w-need
+    - w-acidosis
+    goal: 2
+    tag: 산증 교정
+    icon: stetho
+    why: need to로 선택이 아닌 해야 할 일임을 분명히 해요. correct the acidosis는 원인을 해결해 산증을 바로잡는다는 뜻이에요.
+    decoy: to rename
+    distractorsKo:
+    - 산증은 응고를 해쳐요.
+    - 교정하려고 이유를 찾아요.
+    blank:
+      answer: correct
+      options:
+      - en: correct
+      - en: worsen
+      - en: cause
+      - en: chart
+  - en: Let's draw another gas in twenty minutes.
+    ko: 이십 분 뒤에 가스검사를 다시 합시다.
+    chunks:
+    - Let's draw
+    - another gas
+    - in twenty minutes
+    - .
+    words:
+    - w-gas
+    goal: 1
+    tag: 재검 시점
+    icon: calendar
+    why: another gas는 같은 검사를 한 번 더라는 뜻이에요. in twenty minutes로 다시 하는 시점을 못 박아요.
+    decoy: in the hallway
+    distractorsKo:
+    - 가스검사 다시 하려고 팔을 소독합시다.
+    - 이십 분 뒤에 알람을 맞춰 둡시다.
+    blank:
+      answer: draw
+      options:
+      - en: draw
+      - en: file
+      - en: chart
+      - en: waste
+  - en: The pH is dropping along with the lactate.
+    ko: 젖산과 함께 pH도 떨어지고 있어요.
+    chunks:
+    - The pH
+    - is dropping
+    - along with
+    - the lactate
+    - .
+    words:
+    - w-drop
+    - w-lactate
+    - w-ph
+    goal: 1
+    tag: 추세 보고
+    icon: chartup
+    why: along with는 두 변화가 함께 일어난다는 뜻이라 pH 하락을 젖산 상승과 이어요. is dropping은 지금도 진행 중인 변화예요.
+    decoy: the clock
+    distractorsKo:
+    - 젖산과 함께 pH도 측정하고 있어요.
+    - 젖산과 함께 pH도 가스검사에 나와요.
+    blank:
+      answer: lactate
+      options:
+      - en: lactate
+      - en: glucose
+      - en: chloride
+      - en: sodium
+  - en: I'll report the numbers to the team.
+    ko: 수치를 팀에 보고할게요.
+    chunks:
+    - I'll report
+    - the numbers
+    - to the team
+    - .
+    words:
+    - w-report
+    goal: 2
+    tag: 수치 보고
+    icon: speech
+    why: report A to B로 보고할 내용과 대상을 순서대로 말해요. the team으로 개인이 아니라 수술실 팀 전체에 알린다는 뜻이에요.
+    decoy: to the wall
+    distractorsKo:
+    - 보고하려고 정리할게요.
+    - 수치로 팀이 처치를 정해요.
+    blank:
+      answer: report
+      options:
+      - en: report
+      - en: fax
+      - en: mail
+      - en: text
+  nuance:
+  - kind: slider
+    words:
+    - w-climb
+    - w-lactate
+    cue: 'Lab: "Lactate 2, then 3.5, then 5 over the last hour."'
+    scale:
+    - creep up
+    - climb
+    - spike
+    answerAt: 1
+    why: creep up은 아주 천천히 오르는 것, climb은 꾸준히 오르는 것, spike는 갑자기 확 뛰는 것이에요. 한 시간 동안 조금씩 꾸준히 올랐으니 climb이에요.
+    example: The lactate is climbing.
+    exKo: 젖산 수치가 오르고 있어요.
+  - kind: context
+    words:
+    - w-acidosis
+    word: acidosis
+    ko: 산증
+    scenes:
+    - who: 마취과와
+      icon: monitor
+      en: The ABG shows worsening acidosis.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: ABG pH 7.18, lactate 8; acidosis noted.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: He has a severe metabolic acidosis from hypoperfusion.
+      ok: false
+      fix: His blood has turned more acidic because his tissues aren't getting enough oxygen, and we're working to correct it.
+    why: 의료진끼리는 acidosis, ABG처럼 짧고 정확한 말을 써요. 가족에게는 병명 대신 '피가 산성으로 기울었고 교정 중이다'로 풀어 줘요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 산-염기 대사 감시 4문장 순서
+    why: 동맥혈 가스검사부터 하고, 젖산 상승과 pH 하락을 알리고, 그 산증을 교정해야 한다고 하며, 이십 분 뒤 가스검사를 다시 해요.
+    lines:
+    - en: Let's get an arterial blood gas.
+      icon: lab
+      ko: 동맥혈 가스검사를 합시다
+      note: 검사
+    - en: The lactate is climbing, and the pH is dropping along with it.
+      icon: chartup
+      ko: 젖산은 오르고 pH는 떨어져요
+      note: 결과
+    - en: We need to correct that acidosis.
+      icon: stetho
+      ko: 그 산증을 교정해야 해요
+      note: 교정
+    - en: Let's draw another gas in twenty minutes.
+      icon: calendar
+      ko: 이십 분 뒤에 가스검사를 다시 해요
+      note: 재검
+- title: 반복 응고검사
+  sentences:
+  - en: Let's redraw coags and fibrinogen now.
+    ko: 지금 응고검사와 피브리노겐을 다시 채취합시다.
+    chunks:
+    - Let's redraw
+    - coags
+    - and fibrinogen
+    - now
+    - .
+    words:
+    - w-redraw
+    - w-coag
+    - w-fibrinogen
+    goal: 1
+    tag: 재채취
+    icon: lab
+    why: redraw는 이미 한 번 뽑은 검사를 다시 뽑는다는 뜻이에요. coags and fibrinogen으로 같이 볼 검사 둘을 한 번에 말해요.
+    decoy: and invoices
+    distractorsKo:
+    - 다시 채취하려고 응고검사 채혈관을 준비합시다.
+    - 응고검사와 피브리노겐으로 다음 제제를 정해요.
+    blank:
+      answer: coags
+      options:
+      - en: coags
+      - en: cultures
+      - en: labels
+      - en: slips
+  - en: We'll dose product off the latest results.
+    ko: 최신 결과에 따라 제제 용량을 정할게요.
+    chunks:
+    - We'll
+    - dose product
+    - off the latest results
+    - .
+    words:
+    - w-dose
+    - w-product
+    - w-latest
+    - w-result
+    goal: 2
+    tag: 용량 결정
+    icon: pill
+    why: dose는 여기서 동사로 용량을 정해 준다는 뜻이에요. off the latest results로 가장 최근 수치를 근거로 삼는다고 밝혀요.
+    decoy: off the latest news
+    distractorsKo:
+    - 제제 용량을 정하려고 최신 결과를 모을게요.
+    - 최신 결과는 몇 분 사이에도 바뀌어요.
+    blank:
+      answer: dose
+      options:
+      - en: dose
+      - en: thaw
+      - en: warm
+      - en: store
+  - en: I'll send it stat and track the trend.
+    ko: 즉시 검사를 보내고 추이를 추적할게요.
+    chunks:
+    - I'll send it
+    - stat
+    - and track
+    - the trend
+    - .
+    words:
+    - w-send
+    - w-stat
+    - w-track
+    - w-trend
+    goal: 1
+    tag: 긴급 발송
+    icon: pager
+    why: stat은 지체 없이 바로라는 병원 현장어예요. and track the trend로 보낸 뒤 변화 방향까지 챙긴다고 덧붙여요.
+    decoy: and file
+    distractorsKo:
+    - 즉시 검사를 보내야 결과를 빨리 받아요.
+    - 추이를 추적하려고 표를 그릴게요.
+    blank:
+      answer: track
+      options:
+      - en: track
+      - en: fax
+      - en: print
+      - en: hide
+  - en: The fibrinogen is trending down too.
+    ko: 피브리노겐도 낮아지고 있어요.
+    chunks:
+    - The fibrinogen
+    - is trending down
+    - too
+    - .
+    words:
+    - w-fibrinogen
+    goal: 2
+    tag: 추세 보고
+    icon: chartup
+    why: is trending down은 한 번의 수치가 아니라 내려가는 흐름을 말해요. too가 앞서 말한 다른 수치에 더해 이것도 그렇다고 덧붙여요.
+    decoy: on the board
+    distractorsKo:
+    - 피브리노겐도 다시 보내고 있어요.
+    - 피브리노겐도 결과가 나왔어요.
+    blank:
+      answer: down
+      options:
+      - en: down
+      - en: up
+      - en: sideways
+      - en: higher
+  - en: Let's send another set of coags in an hour.
+    ko: 한 시간 뒤에 응고검사를 다시 보냅시다.
+    chunks:
+    - Let's send
+    - another set
+    - of coags
+    - in an hour
+    - .
+    words:
+    - w-send
+    - w-coag
+    goal: 1
+    tag: 재검 시점
+    icon: calendar
+    why: another set of …는 한 벌을 더라는 뜻이에요. in an hour로 다음 검사 시점을 못 박아요.
+    decoy: in an envelope
+    distractorsKo:
+    - 한 시간 뒤에 보내려고 접수지 모읍시다.
+    - 한 시간 뒤면 투여 효과가 응고검사에 나와요.
+    blank:
+      answer: set
+      options:
+      - en: set
+      - en: tray
+      - en: bag
+      - en: box
+  - en: Let's dose the next unit off these results.
+    ko: 이 결과에 따라 다음 제제 용량을 정합시다.
+    chunks:
+    - Let's dose
+    - the next unit
+    - off these results
+    - .
+    words:
+    - w-dose
+    - w-unit
+    - w-result
+    goal: 2
+    tag: 다음 용량
+    icon: pill
+    why: the next unit으로 앞으로 줄 팩을 가리켜요. off these results로 방금 나온 결과를 근거로 삼는다는 뜻이에요. 다음 용량은 마취과 의사의 처방과 병원 프로토콜에 따라 정해요.
+    decoy: off these shelves
+    distractorsKo:
+    - 용량을 정하려고 결과를 읽읍시다.
+    - 이 결과로 용량을 정하면 과다 투여를 막아요.
+    blank:
+      answer: unit
+      options:
+      - en: unit
+      - en: shift
+      - en: form
+      - en: case
+  nuance:
+  - kind: slider
+    words:
+    - w-stat
+    cue: 'Lab slip: "Lowest priority — run with the morning batch."'
+    scale:
+    - routine
+    - urgent
+    - stat
+    answerAt: 0
+    why: routine은 일상적인 순서대로, urgent는 서둘러서, stat은 지금 당장 최우선으로 처리하는 것이에요. 아침 묶음에 같이 돌린다면 routine이에요.
+    example: I'll send it stat and track the trend.
+    exKo: 즉시 검사를 보내고 추이를 추적할게요.
+  - kind: context
+    words:
+    - w-fibrinogen
+    word: fibrinogen
+    ko: 피브리노겐
+    scenes:
+    - who: 간호사끼리
+      icon: chartup
+      en: Let's watch the fibrinogen trend.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'Fibrinogen trending down: 142, 118, 96.'
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: His fibrinogen is trending down, so we're replacing it.
+      ok: false
+      fix: His clotting numbers are slowly getting lower, so we're giving more of what helps him clot.
+    why: fibrinogen은 검사·성분 이름이라 의료진끼리 쓰는 말이에요. 가족에게는 '피를 굳게 하는 수치가 낮아져 보충한다'로 말해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 반복 응고검사 4문장 순서
+    why: 검사를 다시 뽑고, 즉시 보내 추이를 챙기며, 그 결과로 다음 용량을 정하고, 투여 뒤 한 시간 뒤에 다시 보내요.
+    lines:
+    - en: Let's redraw coags and fibrinogen now.
+      icon: lab
+      ko: 응고검사와 피브리노겐을 다시 채취해요
+      note: 채취
+    - en: I'll send it stat and track the trend.
+      icon: pager
+      ko: 즉시 보내고 추이를 추적할게요
+      note: 발송
+    - en: Let's dose the next unit off these results.
+      icon: pill
+      ko: 이 결과로 다음 용량을 정해요
+      note: 용량
+    - en: After dosing, let's send another set of coags in an hour.
+      icon: calendar
+      ko: 투여 뒤 한 시간 후 다시 보내요
+      note: 재검
+- title: 급성 용혈반응
+  sentences:
+  - en: Stop the transfusion immediately.
+    ko: 즉시 수혈을 멈추세요.
+    chunks:
+    - Stop
+    - the transfusion
+    - immediately
+    - .
+    words:
+    - w-stop
+    - w-transfusion
+    - w-immediately
+    goal: 1
+    tag: 즉시 중단
+    icon: siren
+    why: 명령형 Stop으로 시작해 가장 먼저 할 행동을 앞세워요. immediately는 어떤 확인보다 먼저 한다는 긴급함을 더해요.
+    decoy: the transfer
+    distractorsKo:
+    - 멈춰야 용혈이 덜해요.
+    - 멈추려고 클램프를 잡으세요.
+    blank:
+      answer: transfusion
+      options:
+      - en: transfusion
+      - en: count
+      - en: timer
+      - en: irrigation
+  - en: Fever, hypotension, and dark urine—suspect hemolysis.
+    ko: 발열, 저혈압, 짙은 소변—용혈을 의심하세요.
+    chunks:
+    - Fever
+    - ','
+    - hypotension
+    - ','
+    - and dark urine—suspect hemolysis
+    - .
+    words:
+    - w-fever
+    - w-hypotension
+    - w-dark
+    - w-suspect
+    - w-hemolysis
+    - w-urine
+    goal: 1
+    tag: 용혈 의심
+    icon: siren
+    why: 증상 셋을 먼저 나열한 뒤 대시로 결론을 붙여 이유와 판단을 한 문장에 담아요. suspect는 확정이 아니라 가능성으로 보라는 동사예요.
+    decoy: and clear urine—suspect hemolysis
+    distractorsKo:
+    - 발열, 저혈압, 짙은 소변—용혈 의심하려고 소변 받으세요.
+    - 발열, 저혈압, 짙은 소변—용혈이면 서둘러요.
+    blank:
+      answer: dark
+      options:
+      - en: dark
+      - en: clear
+      - en: pale
+      - en: light
+  - en: Keep the IV open with saline and call the blood bank.
+    ko: 생리식염수로 정맥주사 라인을 유지하고 혈액은행에 전화하세요.
+    chunks:
+    - Keep
+    - the IV open
+    - with saline
+    - and call
+    - the blood bank
+    - .
+    words:
+    - w-iv
+    - w-open
+    - w-saline
+    - w-call
+    - w-bank
+    goal: 2
+    tag: 라인 유지
+    icon: pill
+    why: Keep A open은 라인을 막히지 않게 열어 둔다는 뜻이에요. with saline으로 혈액 대신 무엇을 흘리는지, and call로 이어서 할 일을 한 문장에 담아요.
+    decoy: with tape
+    distractorsKo:
+    - 생리식염수로 라인을 유지하고 혈액은행에 전화하려고 연락처를 찾으세요.
+    - 생리식염수로 라인을 유지해야 전화 중에도 약이 들어가요.
+    blank:
+      answer: saline
+      options:
+      - en: saline
+      - en: gauze
+      - en: tape
+      - en: caps
+  - en: The urine looks dark, and this could be hemolysis.
+    ko: 소변이 짙어 보여요. 용혈일 수 있어요.
+    chunks:
+    - The urine looks dark
+    - ','
+    - and this
+    - could be
+    - hemolysis
+    - .
+    words:
+    - w-urine
+    - w-dark
+    - w-hemolysis
+    goal: 1
+    tag: 소변 소견
+    icon: stetho
+    why: looks dark로 눈에 보이는 소견을 먼저 말하고 could be로 원인을 가능성으로 이어요. and this가 앞의 관찰과 뒤의 추정을 한 문장에 묶어요.
+    decoy: a spill
+    distractorsKo:
+    - 소변이 짙어 보여요. 소변 주머니에 모여요.
+    - 소변이 짙어 보여요. 양을 재야 해요.
+    blank:
+      answer: looks
+      options:
+      - en: looks
+      - en: stays
+      - en: feels
+      - en: sounds
+  - en: Let's call the blood bank right now.
+    ko: 지금 바로 혈액은행에 전화합시다.
+    chunks:
+    - Let's call
+    - the blood bank
+    - right now
+    - .
+    words:
+    - w-call
+    - w-bank
+    goal: 2
+    tag: 즉시 호출
+    icon: pager
+    why: right now로 지금 즉시라는 긴급함을 두 겹으로 강조해요. call A는 전화로 A에게 직접 알리는 가장 흔한 말이에요.
+    decoy: right here
+    distractorsKo:
+    - 알리면 검사가 바로 시작돼요.
+    - 혈액은행에 전화하려고 수화기를 듭시다.
+    blank:
+      answer: call
+      options:
+      - en: call
+      - en: thank
+      - en: visit
+      - en: email
+  - en: I'll keep the saline running and watch closely.
+    ko: 생리식염수를 계속 흘리며 자세히 지켜볼게요.
+    chunks:
+    - I'll keep
+    - the saline running
+    - and watch
+    - closely
+    - .
+    words:
+    - w-saline
+    - w-watch
+    - w-closely
+    goal: 2
+    tag: 지속·관찰
+    icon: monitor
+    why: keep A running은 흐름을 멈추지 않고 이어 간다는 뜻이에요. and watch closely로 곁에서 계속 살핀다는 약속을 한 문장에 담아요.
+    decoy: with gloves
+    distractorsKo:
+    - 생리식염수를 계속 흘리려고 수액을 더 걸게요.
+    - 생리식염수를 계속 흘려야 라인이 열려 있어요.
+    blank:
+      answer: closely
+      options:
+      - en: closely
+      - en: lightly
+      - en: vaguely
+      - en: idly
+  nuance:
+  - kind: slider
+    words:
+    - w-dark
+    - w-urine
+    cue: 'Nurse: "The urine looks its usual honey-yellow — nothing unusual."'
+    scale:
+    - pale
+    - amber
+    - dark
+    answerAt: 1
+    why: pale은 옅은 노랑, amber는 보통의 호박색, dark는 콜라처럼 짙은 색이에요. 수혈 중 짙은 소변은 용혈 신호일 수 있어 따로 보고해요.
+    example: The urine looks dark, and this could be hemolysis.
+    exKo: 소변이 짙어 보여요. 용혈일 수 있어요.
+  - kind: swap
+    words:
+    - w-immediately
+    - w-stop
+    - w-transfusion
+    who: 팀원에게 · 반응이 의심될 때
+    icon: siren
+    before:
+    - 'Stop the transfusion '
+    - when you can
+    - .
+    options:
+    - when you can
+    - immediately
+    - after this unit
+    answer: immediately
+    notes:
+      when you can: 여유가 될 때 하라는 말이라 급성 반응에는 늦어요.
+      immediately: 미루지 않고 지금 멈추라는 말이에요. 반응이 의심되면 바로 멈춰요.
+      after this unit: 이 제제를 다 넣고 멈추면 반응 중인 혈액이 계속 들어가요.
+    why: 수혈 반응이 의심되면 일단 즉시 멈추고, 이후 라인 유지·혈액은행 연락·보고로 이어가요.
+    ko: 지금 바로 수혈을 멈추세요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 급성 용혈반응 4문장 순서
+    why: 가장 먼저 수혈을 멈추고, 생리식염수로 라인을 유지하고, 식염수가 흐르는 동안 혈액은행에 짙은 소변을 알리고, 혈액은행이 찾을 제제를 서류와 함께 보관해요.
+    lines:
+    - en: Stop the transfusion immediately.
+      icon: siren
+      ko: 즉시 수혈을 멈추세요
+      note: 중단
+    - en: Keep the IV open with saline.
+      icon: pager
+      ko: 생리식염수로 정맥주사 라인을 유지하세요
+      note: 라인
+    - en: With the saline running, call the blood bank and tell them about the dark urine.
+      icon: pager
+      ko: 식염수를 흘리며 혈액은행에 알리세요
+      note: 호출
+    - en: They'll want the unit back, so keep it with the paperwork.
+      icon: lab
+      ko: 제제를 서류와 함께 보관하세요
+      note: 보관
+- title: 고칼륨혈증 부정맥
+  sentences:
+  - en: The potassium is 7.2 with peaked T-waves.
+    ko: 칼륨이 7.2이고 T파가 뾰족해요.
+    chunks:
+    - The potassium
+    - is 7.2
+    - with peaked T-waves
+    - .
+    words:
+    - w-potassium
+    - w-peaked
+    - w-twave
+    goal: 1
+    tag: 위험 수치
+    icon: siren
+    why: with로 수치와 심전도 소견을 한 문장에 묶어 둘이 함께 위험 신호임을 보여요. peaked T-waves는 뾰족하게 솟은 T파를 가리키는 현장어예요.
+    decoy: with a loud alarm
+    distractorsKo:
+    - 칼륨이 7.2이고 P파가 뾰족해요.
+    - 칼륨이 7.2라고 검사실에서 전화 왔어요.
+    blank:
+      answer: peaked
+      options:
+      - en: peaked
+      - en: flat
+      - en: small
+      - en: short
+  - en: Let's give calcium, insulin, and glucose.
+    ko: 칼슘, 인슐린, 포도당을 줍시다.
+    chunks:
+    - Let's give
+    - calcium
+    - ','
+    - insulin
+    - ','
+    - and glucose
+    - .
+    words:
+    - w-give
+    - w-calcium
+    - w-insulin
+    - w-glucose
+    goal: 2
+    tag: 약 투여
+    icon: pill
+    why: 세 약을 쉼표로 나열해 함께 준비할 약을 빠짐없이 말해요. Let's로 팀이 같이 진행한다는 제안이에요. 투약은 마취과 처방에 따라 진행해요.
+    decoy: and a warmer
+    distractorsKo:
+    - 칼슘, 인슐린, 포도당 주려고 약 읽어요.
+    - 칼슘은 먼저 심근을 안정시켜요.
+    blank:
+      answer: insulin
+      options:
+      - en: insulin
+      - en: saline
+      - en: oxygen
+      - en: albumin
+  - en: Watch the rhythm—it could deteriorate fast.
+    ko: 심장 리듬을 지켜보세요. 빠르게 악화될 수 있어요.
+    chunks:
+    - Watch
+    - the rhythm—it
+    - could deteriorate fast
+    - .
+    words:
+    - w-watch
+    - w-rhythm
+    - w-deteriorate
+    goal: 1
+    tag: 리듬 감시
+    icon: monitor
+    why: 대시 뒤에 it could …를 붙여 지켜봐야 하는 이유를 바로 이어요. deteriorate fast는 상태가 빠르게 나빠진다는 뜻이에요.
+    decoy: the cooler—it
+    distractorsKo:
+    - 리듬을 보려고 화면을 키우세요. 빠르게 악화될 수 있어요.
+    - 칼륨이 높으면 심장 리듬이 빠르게 나빠져요.
+    blank:
+      answer: rhythm
+      options:
+      - en: rhythm
+      - en: warmer
+      - en: cooler
+      - en: tubing
+  - en: Peaked T-waves mean we need to act now.
+    ko: 뾰족한 T파는 지금 조치가 필요하다는 뜻이에요.
+    chunks:
+    - Peaked T-waves
+    - mean we need
+    - to act now
+    - .
+    words:
+    - w-peaked
+    - w-twave
+    goal: 1
+    tag: 긴급 판단
+    icon: siren
+    why: mean 뒤에 we need to …로 소견이 곧 행동 지시라는 연결을 보여요. act now는 기다리지 말고 지금 움직인다는 뜻이에요.
+    decoy: to relabel it
+    distractorsKo:
+    - 뾰족한 P파는 지금 조치가 필요하다는 뜻이에요.
+    - 뾰족한 T파라서 조치하려고 라인을 확인해요.
+    blank:
+      answer: Peaked
+      options:
+      - en: Peaked
+      - en: Flat
+      - en: Tiny
+      - en: Normal
+  - en: Let's recheck the potassium after this dose.
+    ko: 이번 투여 후 칼륨을 다시 확인합시다.
+    chunks:
+    - Let's recheck
+    - the potassium
+    - after this dose
+    - .
+    words:
+    - w-recheck
+    - w-potassium
+    goal: 2
+    tag: 칼륨 재확인
+    icon: lab
+    why: after this dose로 재확인 시점을 약을 준 직후로 못 박아요. recheck는 이미 잰 수치를 다시 본다는 뜻이에요.
+    decoy: after this alarm
+    distractorsKo:
+    - 다시 확인하려고 부위를 소독합시다.
+    - 인슐린 뒤엔 칼륨이 내려가야 해요.
+    blank:
+      answer: potassium
+      options:
+      - en: potassium
+      - en: lactate
+      - en: fibrinogen
+      - en: hematocrit
+  - en: The rhythm looks better after calcium.
+    ko: 칼슘 투여 후 심장 리듬이 나아졌어요.
+    chunks:
+    - The rhythm
+    - looks better
+    - after calcium
+    - .
+    words:
+    - w-rhythm
+    - w-calcium
+    goal: 2
+    tag: 호전 보고
+    icon: chartup
+    why: looks better는 단정 대신 눈에 보이는 개선을 말해요. after calcium으로 변화가 어떤 처치 뒤에 왔는지 짚어요.
+    decoy: after the scan
+    distractorsKo:
+    - 칼슘 투여 후 심전도를 다시 찍었어요.
+    - 칼슘 투여 후 심장 리듬을 지켜봤어요.
+    blank:
+      answer: better
+      options:
+      - en: better
+      - en: worse
+      - en: odd
+      - en: tired
+  nuance:
+  - kind: slider
+    words:
+    - w-peaked
+    - w-twave
+    cue: 'ECG: "The T-waves are narrow and pointed, like tents."'
+    scale:
+    - flat
+    - tall
+    - peaked
+    answerAt: 2
+    why: flat은 납작한 것, tall은 키가 큰 것, peaked는 키가 크면서 좁고 뾰족한 모양이에요. 고칼륨혈증에서 보이는 T파의 전형적인 모양이 peaked예요.
+    example: Peaked T-waves mean we need to act now.
+    exKo: 뾰족한 T파는 지금 조치가 필요하다는 뜻이에요.
+  - kind: context
+    words:
+    - w-deteriorate
+    word: deteriorate
+    ko: 악화되다
+    scenes:
+    - who: 간호사끼리
+      icon: monitor
+      en: Watch the rhythm — it could deteriorate fast.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Rhythm deteriorated; calcium given.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: His rhythm may deteriorate into a lethal arrhythmia.
+      ok: false
+      fix: His heartbeat could turn dangerous quickly, so we're treating it right now.
+    why: 의료진끼리나 차트에서는 deteriorate가 정확하고 짧은 임상어예요. 가족에게는 lethal arrhythmia 같은 말 대신 '위험해질 수 있어서 지금 치료 중'이라고 말해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 고칼륨혈증 부정맥 4문장 순서
+    why: 위험 수치를 알리고, 지금 칼슘·인슐린·포도당을 준다고 하며, 칼슘 뒤 리듬이 나아졌음을 보고하고, 그 상태에서 칼륨을 다시 확인해요.
+    lines:
+    - en: The potassium is 7.2 with peaked T-waves.
+      icon: siren
+      ko: 칼륨이 7.2이고 T파가 뾰족해요
+      note: 수치
+    - en: 'That means we act now: calcium, insulin, and glucose.'
+      icon: pill
+      ko: 지금 칼슘, 인슐린, 포도당을 줘요
+      note: 투여
+    - en: The rhythm looks better after calcium.
+      icon: chartup
+      ko: 칼슘 뒤 리듬이 나아졌어요
+      note: 호전
+    - en: With that settled, let's recheck the potassium after this dose.
+      icon: lab
+      ko: 이번 투여 후 칼륨을 다시 확인해요
+      note: 재확인
+- title: 시트르산 저칼슘 위기
+  sentences:
+  - en: The ionized calcium is dangerously low.
+    ko: 이온화 칼슘이 위험할 정도로 낮아요.
+    chunks:
+    - The ionized calcium
+    - is
+    - dangerously low
+    - .
+    words:
+    - w-ionized
+    - w-calcium
+    - w-dangerously
+    - w-low
+    goal: 1
+    tag: 위험 수치
+    icon: siren
+    why: dangerously가 low의 정도를 위험 수준으로 끌어올려 급하다는 뜻을 담아요. 형용사 앞에 부사를 얹는 가장 흔한 강조 틀이에요.
+    decoy: at the lab
+    distractorsKo:
+    - 이온화 칼슘이 위험할 정도로 늦게 나왔어요.
+    - 이온화 칼슘이 방금 다시 나왔어요.
+    blank:
+      answer: low
+      options:
+      - en: low
+      - en: high
+      - en: steady
+      - en: normal
+  - en: Citrate load is depressing cardiac function.
+    ko: 시트르산 부하가 심장 기능을 저하시키고 있어요.
+    chunks:
+    - Citrate load
+    - is depressing
+    - cardiac function
+    - .
+    words:
+    - w-citrate
+    - w-load
+    - w-depress
+    - w-cardiac
+    - w-function
+    goal: 1
+    tag: 원인 설명
+    icon: bulb
+    why: is depressing으로 지금 계속 눌러 내리고 있는 중임을 진행형으로 알려요. cardiac function으로 영향받는 곳이 심장 기능이라고 짚어요.
+    decoy: kidney function
+    distractorsKo:
+    - 시트르산 부하가 신장 기능을 저하시키고 있어요.
+    - 시트르산 부하가 폐 기능을 저하시키고 있어요.
+    blank:
+      answer: cardiac
+      options:
+      - en: cardiac
+      - en: kidney
+      - en: lung
+      - en: liver
+  - en: Push calcium and recheck immediately.
+    ko: 칼슘을 밀어 넣고 즉시 다시 확인하세요.
+    chunks:
+    - Push calcium
+    - and recheck
+    - immediately
+    - .
+    words:
+    - w-push
+    - w-calcium
+    - w-recheck
+    - w-immediately
+    goal: 2
+    tag: 즉시 투여
+    icon: pill
+    why: Push는 정맥으로 빠르게 주입한다는 병원 동사예요. and recheck immediately로 투여 뒤 확인까지 지체 없이 이어요. 마취과 처방에 따라 밀어 넣어요.
+    decoy: and rewrap
+    distractorsKo:
+    - 칼슘을 밀어 넣으려고 앰풀을 따세요.
+    - 칼슘을 밀어 넣어야 수치가 올라요.
+    blank:
+      answer: recheck
+      options:
+      - en: recheck
+      - en: restock
+      - en: refill
+      - en: reorder
+  - en: We need calcium in the line right now.
+    ko: 지금 당장 라인으로 칼슘이 필요해요.
+    chunks:
+    - We need
+    - calcium
+    - in the line
+    - right now
+    - .
+    words:
+    - w-need
+    - w-calcium
+    goal: 2
+    tag: 긴급 요청
+    icon: siren
+    why: We need …는 필요를 직접 말해 요청이 분명해요. in the line right now로 어디로 얼마나 급하게인지 함께 말해요.
+    decoy: on the wall
+    distractorsKo:
+    - 지금 당장 칼슘을 주려고 라인을 확인해요.
+    - 지금 칼슘이 들어가야 심장이 버텨요.
+    blank:
+      answer: line
+      options:
+      - en: line
+      - en: cooler
+      - en: drawer
+      - en: basin
+  - en: Let's see if the heart function improves after this dose.
+    ko: 이번 투여 후 심장 기능이 나아지는지 봅시다.
+    chunks:
+    - Let's see
+    - if the heart function
+    - improves
+    - after this dose
+    - .
+    words:
+    - w-function
+    goal: 1
+    tag: 호전 확인
+    icon: chartup
+    why: Let's see if …로 결과를 단정하지 않고 투여 뒤에 같이 확인하자고 말해요. 칼슘이 심장에 어떻게 듣는지는 환자마다 달라서 다시 봐야 해요.
+    decoy: after this page
+    distractorsKo:
+    - 나아지는지 보려고 투여 후 심전도를 찍읍시다.
+    - 이번 투여 후 심장 기능을 적어 봅시다.
+    blank:
+      answer: dose
+      options:
+      - en: dose
+      - en: cart
+      - en: scale
+      - en: badge
+  - en: Let's recheck the calcium in five minutes.
+    ko: 오 분 뒤에 칼슘을 다시 확인합시다.
+    chunks:
+    - Let's recheck
+    - the calcium
+    - in five minutes
+    - .
+    words:
+    - w-recheck
+    - w-calcium
+    goal: 1
+    tag: 재확인 시점
+    icon: calendar
+    why: in five minutes로 재확인 시점을 못 박아요. recheck는 방금 한 번 잰 수치를 다시 본다는 뜻이에요.
+    decoy: in a cup
+    distractorsKo:
+    - 오 분 뒤 수치가 다음 용량을 정해요.
+    - 오 분 뒤에 확인하려고 소독솜을 챙깁시다.
+    blank:
+      answer: recheck
+      options:
+      - en: recheck
+      - en: relabel
+      - en: refill
+      - en: reorder
+  nuance:
+  - kind: slider
+    words:
+    - w-dangerously
+    - w-low
+    cue: 'Anesthesiologist: "Calcium is only a little under normal, and the heart is fine."'
+    scale:
+    - slightly
+    - quite
+    - dangerously
+    answerAt: 0
+    why: slightly는 아주 조금, quite는 꽤, dangerously는 위험할 만큼이에요. 정상보다 조금 낮고 심장도 괜찮다면 slightly low예요.
+    example: The ionized calcium is dangerously low.
+    exKo: 이온화 칼슘이 위험할 정도로 낮아요.
+  - kind: context
+    words:
+    - w-cardiac
+    word: cardiac
+    ko: 심장의
+    scenes:
+    - who: 마취과와
+      icon: monitor
+      en: Cardiac function is dropping — push calcium.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Cardiac function depressed; calcium given.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: His cardiac function is depressed by the citrate load.
+      ok: false
+      fix: The blood we're giving lowers his calcium, which his heart needs, so we're giving calcium to help.
+    why: 의료진끼리는 cardiac function, citrate load처럼 정확한 말이 빠르고 분명해요. 가족에게는 '피가 심장의 힘을 떨어뜨려 칼슘을 준다'로 쉽게 풀어 말해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 시트르산 저칼슘 위기 4문장 순서
+    why: 칼슘이 위험하게 낮다고 알리고, 시트르산 부하가 원인임을 말하고, 당장 칼슘이 필요하다고 요청하며, 이번 투여 뒤의 호전을 같이 확인하자고 해요.
+    lines:
+    - en: The ionized calcium is dangerously low.
+      icon: siren
+      ko: 이온화 칼슘이 위험할 정도로 낮아요
+      note: 보고
+    - en: That's from the citrate load, which is depressing cardiac function.
+      icon: bulb
+      ko: 시트르산 부하가 심장 기능을 눌러요
+      note: 원인
+    - en: To reverse that effect, we need calcium in the line right now.
+      icon: siren
+      ko: 그 영향을 되돌리려면 지금 라인으로 칼슘이 필요해요
+      note: 요청
+    - en: Let's see if the heart function improves after this dose.
+      icon: chartup
+      ko: 이번 투여 후 심장 기능이 나아지는지 봅시다
+      note: 확인
+- title: TRALI 급성 호흡곤란
+  sentences:
+  - en: Sats are falling with new pulmonary edema.
+    ko: 산소포화도가 떨어지고 새로운 폐부종이 생겼어요.
+    chunks:
+    - Sats
+    - are falling
+    - with new pulmonary edema
+    - .
+    words:
+    - w-sat
+    - w-fall
+    - w-pulmonary
+    - w-edema
+    goal: 1
+    tag: 호흡 악화
+    icon: siren
+    why: with 뒤에 새로 생긴 소견을 붙여 두 가지 변화가 함께 일어남을 보여요. Sats는 산소포화도를 줄여 부르는 현장 말이에요.
+    decoy: with new wheezing
+    distractorsKo:
+    - 산소포화도가 떨어지고 새로운 알람이 울려요.
+    - 산소포화도가 떨어지고 새로운 제제가 걸렸어요.
+    blank:
+      answer: pulmonary
+      options:
+      - en: pulmonary
+      - en: facial
+      - en: ankle
+      - en: scalp
+  - en: Stop the transfusion—this could be TRALI.
+    ko: 수혈을 멈추세요. TRALI일 수 있어요.
+    chunks:
+    - Stop
+    - the transfusion—this could be
+    - TRALI
+    - .
+    words:
+    - w-stop
+    - w-transfusion
+    - w-trali
+    goal: 1
+    tag: 즉시 중단
+    icon: siren
+    why: 대시 뒤에 this could be …를 붙여 멈추는 이유를 곧바로 밝혀요. TRALI는 수혈과 관련된 급성 폐손상을 줄여 부르는 말이에요.
+    decoy: fatigue
+    distractorsKo:
+    - 멈추려고 줄을 잡으세요. TRALI일 수 있어요.
+    - 수혈을 멈추면 원인 제제가 더 안 들어가요.
+    blank:
+      answer: transfusion
+      options:
+      - en: transfusion
+      - en: irrigation
+      - en: drill
+      - en: recording
+  - en: Let's support ventilation and report it.
+    ko: 환기를 보조하고 보고합시다.
+    chunks:
+    - Let's support
+    - ventilation
+    - and report it
+    - .
+    words:
+    - w-support
+    - w-ventilation
+    - w-report
+    goal: 2
+    tag: 호흡 보조
+    icon: stetho
+    why: support는 환자가 숨 쉬는 일을 대신하거나 돕는다는 뜻으로 쓰여요. and report it으로 처치 뒤 바로 알리는 일을 같은 문장에 이어요.
+    decoy: and recycle it
+    distractorsKo:
+    - 환기를 보조하면 산소화가 나아져요.
+    - 보조하려고 백을 잡읍시다.
+    blank:
+      answer: report
+      options:
+      - en: report
+      - en: label
+      - en: file
+      - en: bag
+  - en: The lungs sound wet on both sides.
+    ko: 양쪽 폐가 축축한 소리가 나요.
+    chunks:
+    - The lungs
+    - sound wet
+    - on both sides
+    - .
+    words: []
+    goal: 1
+    tag: 청진 소견
+    icon: stetho
+    why: sound wet은 청진기로 들리는 소리를 말해요. on both sides로 한쪽이 아니라 양쪽이라는 범위를 알려요.
+    decoy: on the monitor
+    distractorsKo:
+    - 한쪽 폐가 축축한 소리가 나요.
+    - 양쪽 폐가 청진기로 잘 들려요.
+    blank:
+      answer: wet
+      options:
+      - en: wet
+      - en: loud
+      - en: thin
+      - en: flat
+  - en: Let's stop this unit and save the bag for the blood bank.
+    ko: 이 제제를 멈추고 백은 혈액은행에 보낼 수 있게 남겨 둡시다.
+    chunks:
+    - Let's stop
+    - this unit
+    - and save the bag
+    - for the blood bank
+    - .
+    words:
+    - w-stop
+    - w-unit
+    - w-bank
+    goal: 1
+    tag: 중단·보관
+    icon: lab
+    why: stop과 save를 and로 이어 할 일 두 가지를 한 번에 말해요. 수혈 반응이 의심되면 남은 백과 세트를 버리지 않고 혈액은행 조사용으로 돌려보내요.
+    decoy: the cart
+    distractorsKo:
+    - 이 제제를 멈추고 라벨은 혈액은행에 보낼 수 있게 남겨 둡시다.
+    - 이 제제를 멈추고 백은 혈액은행에 보낼 수 있게 접어 둡시다.
+    blank:
+      answer: unit
+      options:
+      - en: unit
+      - en: warmer
+      - en: drape
+      - en: drill
+  - en: I'll report this reaction right away.
+    ko: 이 반응을 즉시 보고할게요.
+    chunks:
+    - I'll report
+    - this reaction
+    - right away
+    - .
+    words:
+    - w-report
+    - w-rightaway
+    goal: 2
+    tag: 즉시 보고
+    icon: pager
+    why: report this reaction으로 무엇을 보고하는지 분명히 해요. right away로 지체 없이 한다는 약속을 더해요.
+    decoy: this receipt
+    distractorsKo:
+    - 보고하려고 내용 모을게요.
+    - 이 반응은 6시간 안에 생겨요.
+    blank:
+      answer: reaction
+      options:
+      - en: reaction
+      - en: shortage
+      - en: delay
+      - en: price
+  nuance:
+  - kind: slider
+    words:
+    - w-support
+    - w-ventilation
+    cue: 'Team: "He''s breathing on his own under the LMA, and we''re adding pressure support and oxygen."'
+    scale:
+    - watch
+    - support
+    - take over
+    answerAt: 1
+    why: watch는 지켜보기만 하는 것, support는 환자의 호흡을 도와주는 것, take over는 기계가 호흡을 대신하는 것이에요. 호흡은 하는데 기계로 돕는 상황이라 support예요.
+    example: Let's support ventilation and report it.
+    exKo: 환기를 보조하고 보고합시다.
+  - kind: context
+    words:
+    - w-edema
+    word: edema
+    ko: 부종
+    scenes:
+    - who: 간호사끼리
+      icon: monitor
+      en: Sats falling, new pulmonary edema.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Bilateral pulmonary edema; TRALI suspected.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: He has acute pulmonary edema from the transfusion.
+      ok: false
+      fix: Fluid is building up in his lungs, and we're helping him breathe while we find out why.
+    why: 의료진끼리는 pulmonary edema라고 하면 바로 통해요. 가족에게는 원인을 단정하기보다 '폐에 물이 차고 있고 이유를 찾는 중'이라고 말해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: TRALI 급성 호흡곤란 4문장 순서
+    why: 산소포화도 저하와 폐부종을 알리고, 수혈을 멈추며, 멈춘 뒤 환기를 보조하고 백을 혈액은행에 남기고, 백을 남긴 뒤 반응을 바로 보고해요.
+    lines:
+    - en: Sats are falling with new pulmonary edema.
+      icon: siren
+      ko: 산소포화도가 떨어지고 폐부종이 생겼어요
+      note: 소견
+    - en: With that picture, stop the transfusion—this could be TRALI.
+      icon: siren
+      ko: 그 소견이면 수혈을 멈추세요, TRALI일 수 있어요
+      note: 중단
+    - en: Once it's stopped, let's support ventilation and save the bag for the blood bank.
+      icon: stetho
+      ko: 멈췄으면 환기를 보조하고 백을 혈액은행에 남겨 둡시다
+      note: 보조
+    - en: With the bag saved, I'll report this reaction right away.
+      icon: pager
+      ko: 백을 남겼으니 이 반응을 즉시 보고할게요
+      note: 보고
+- title: 혈액 재고 소진 위기
+  sentences:
+  - en: We're down to our last two units.
+    ko: 이제 마지막 두 단위밖에 안 남았어요.
+    chunks:
+    - We're
+    - down to
+    - our last two units
+    - .
+    words:
+    - w-unit
+    goal: 1
+    tag: 재고 경고
+    icon: siren
+    why: down to는 줄고 줄어 이만큼만 남았다는 뜻의 관용구예요. our last two units로 남은 양을 정확히 말해요.
+    decoy: our last two blankets
+    distractorsKo:
+    - 이제 마지막 두 단위까지 확인했어요.
+    - 이제 마지막 두 단위가 곧 쓰여요.
+    blank:
+      answer: two
+      options:
+      - en: two
+      - en: nine
+      - en: five
+      - en: seven
+  - en: Can you release emergency O-negative?
+    ko: 응급 O형 음성을 불출해 줄 수 있나요?
+    chunks:
+    - Can you release
+    - emergency
+    - O-negative
+    - '?'
+    words:
+    - w-release
+    - w-emergency
+    - w-onegative
+    goal: 2
+    tag: 방출 요청
+    icon: pager
+    why: Can you …?로 부탁을 질문으로 건네 상대의 권한 안에서 결정하게 해요. release는 혈액은행이 보관하던 것을 내보낸다는 뜻이에요.
+    decoy: frozen
+    distractorsKo:
+    - O형 음성을 불출하려고 서명할까요?
+    - 응급 O형 음성은 교차시험 없이 불출하나요?
+    blank:
+      answer: emergency
+      options:
+      - en: emergency
+      - en: routine
+      - en: ordinary
+      - en: regular
+  - en: Should we ask the blood bank to order from the regional supplier?
+    ko: 혈액은행에 지역 공급처에서 주문해 달라고 할까요?
+    chunks:
+    - Should we ask
+    - the blood bank
+    - to order
+    - from the regional supplier
+    - '?'
+    words:
+    - w-bank
+    - w-regional
+    goal: 2
+    tag: 지역 주문
+    icon: pager
+    why: Should we …?로 혼자 정하지 않고 팀에 먼저 물어요. 지역 공급처에 주문을 넣는 건 병원 혈액은행이라, ask the blood bank to order로 누가 주문하는지를 분명히 해요.
+    decoy: to borrow
+    distractorsKo:
+    - 지역 공급처에 주문하기 전에 남은 단위를 셀까요?
+    - 지역 공급처에서 오는 혈액은 시간이 걸릴까요?
+    blank:
+      answer: supplier
+      options:
+      - en: supplier
+      - en: office
+      - en: courier
+      - en: registry
+  - en: We only have two units of O-negative left.
+    ko: O형 음성이 두 단위밖에 안 남았어요.
+    chunks:
+    - We only have
+    - two units
+    - of O-negative
+    - left
+    - .
+    words:
+    - w-unit
+    - w-onegative
+    - w-left
+    goal: 1
+    tag: 잔여 보고
+    icon: siren
+    why: only가 two units를 적은 양으로 부각해 부족함을 강조해요. left가 쓰고 남은 양이라는 뜻을 더해요.
+    decoy: of bedsheets
+    distractorsKo:
+    - O형 음성이 두 단위밖에 안 왔어요.
+    - O형 음성 두 단위는 곧 쓰여요.
+    blank:
+      answer: O-negative
+      options:
+      - en: O-negative
+      - en: AB-positive
+      - en: A-negative
+      - en: B-positive
+  - en: Let's activate the emergency release now.
+    ko: 지금 응급 불출을 요청합시다.
+    chunks:
+    - Let's activate
+    - the emergency release
+    - now
+    - .
+    words:
+    - w-activate
+    - w-emergency
+    - w-release
+    goal: 2
+    tag: 응급 방출
+    icon: siren
+    why: activate와 emergency release를 짝지어 비상 절차를 정식으로 가동한다는 말이에요. now로 미루지 않고 바로 한다는 점을 못 박아요. 응급 불출에는 의사 서명이 필요해요.
+    decoy: the annual release
+    distractorsKo:
+    - 요청하려고 서류를 찾읍시다.
+    - 요청 뒤엔 서명이 필요해요.
+    blank:
+      answer: release
+      options:
+      - en: release
+      - en: drill
+      - en: review
+      - en: meeting
+  - en: I'll ask the blood bank to call the regional supplier.
+    ko: 혈액은행에 지역 혈액 공급처로 연락해 달라고 할게요.
+    chunks:
+    - I'll ask
+    - the blood bank
+    - to call
+    - the regional supplier
+    - .
+    words:
+    - w-call
+    - w-regional
+    - w-bank
+    goal: 1
+    tag: 지역 요청
+    icon: pager
+    why: ask the blood bank to call …로 부탁하는 일과 연락할 곳을 나눠 말해요. 지역 공급처에 긴급 주문을 넣는 건 병원 혈액은행이라, 수술실은 혈액은행에 요청하고 상황을 알려요.
+    decoy: to hold
+    distractorsKo:
+    - 지역 공급처에 연락해 달라고 하려고 연락처를 찾을게요.
+    - 지역 혈액 공급처로 연락하는 건 혈액은행 일이에요.
+    blank:
+      answer: bank
+      options:
+      - en: bank
+      - en: drive
+      - en: donor
+      - en: type
+  nuance:
+  - kind: slider
+    words:
+    - w-emergency
+    cue: 'Blood bank order: "Daily shelf restock — no hurry."'
+    scale:
+    - routine
+    - urgent
+    - emergency
+    answerAt: 0
+    why: routine은 평소 순서대로, urgent는 서둘러서, emergency는 곧바로 대처해야 하는 위급 상황이에요. 서두를 일 없는 일상 보충이라 routine이에요.
+    example: Let's activate the emergency release now.
+    exKo: 지금 응급 불출을 요청합시다.
+  - kind: context
+    words:
+    - w-release
+    word: release
+    ko: 불출하다
+    scenes:
+    - who: 마취과에서
+      icon: speech
+      en: Can you release emergency O-negative now?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Emergency release of 2 units O-neg approved.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: We requested emergency release of uncrossmatched O-neg.
+      ok: false
+      fix: The blood bank is sending blood that works for most people because he needs it right now.
+    why: 의료진끼리는 emergency release, O-neg 같은 용어가 정확하고 빨라요. 가족에게는 '대부분의 사람에게 쓸 수 있는 피를 바로 보낸다'처럼 풀어 말해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 혈액 재고 소진 위기 4문장 순서
+    why: 남은 양을 알리고, 응급 O형 음성 불출을 요청하고, 예비로 지역 공급처 주문을 혈액은행에 부탁할지 팀에 물은 뒤, 팀이 동의하면 혈액은행에 그 주문을 넣어 달라고 연락해요.
+    lines:
+    - en: We're down to our last two units.
+      icon: siren
+      ko: 이제 마지막 두 단위밖에 안 남았어요
+      note: 경고
+    - en: Can you release emergency O-negative?
+      icon: pager
+      ko: 응급 O형 음성을 불출해 줄 수 있나요
+      note: 요청
+    - en: Should we ask the blood bank to order from the regional supplier as a backup?
+      icon: pager
+      ko: 예비로 혈액은행에 지역 공급처에서 주문해 달라고 할까요
+      note: 제안
+    - en: If the team agrees, I'll call our blood bank to place that order.
+      icon: pager
+      ko: 팀이 동의하면 혈액은행에 연락해 그 주문을 넣어 달라고 할게요
+      note: 요청
+- title: 순환 과부하 TACO
+  sentences:
+  - en: The venous pressure and edema are rising.
+    ko: 정맥압과 부종이 올라가고 있어요.
+    chunks:
+    - The venous pressure
+    - and edema
+    - are rising
+    - .
+    words:
+    - w-venous
+    - w-pressure
+    - w-edema
+    - w-rise
+    goal: 1
+    tag: 과부하 징후
+    icon: siren
+    why: 두 가지 수치를 and로 묶어 함께 오르고 있음을 한 번에 알려요. are rising은 지금 계속 오르는 중이라는 진행형이에요.
+    decoy: and humidity
+    distractorsKo:
+    - 정맥압과 부종이 기록돼 있어요.
+    - 정맥압과 부종을 다시 재고 있어요.
+    blank:
+      answer: venous
+      options:
+      - en: venous
+      - en: bladder
+      - en: intraocular
+      - en: compartment
+  - en: Stop the transfusion—this looks like TACO.
+    ko: 수혈을 멈추세요. TACO 같아요.
+    chunks:
+    - Stop
+    - the transfusion—this
+    - looks like TACO
+    - .
+    words:
+    - w-stop
+    - w-transfusion
+    - w-taco
+    goal: 1
+    tag: 수혈 중단
+    icon: siren
+    why: Stop을 맨 앞에 두어 할 일을 먼저 말하고 this looks like로 이유를 짧게 붙여요. 순환 과부하가 의심되면 수혈을 일단 멈추고 마취과 의사에게 알려 다음 조치를 정해요.
+    decoy: looks like TRALI
+    distractorsKo:
+    - 수혈을 멈추세요. TRALI 같아요.
+    - 수혈을 멈추면 순환 부담이 줄어요.
+    blank:
+      answer: transfusion
+      options:
+      - en: transfusion
+      - en: irrigation
+      - en: suction
+      - en: cautery
+  - en: Let's give a diuretic and reassess.
+    ko: 이뇨제를 주고 다시 평가합시다.
+    chunks:
+    - Let's give
+    - a diuretic
+    - and reassess
+    - .
+    words:
+    - w-give
+    - w-diuretic
+    - w-reassess
+    goal: 2
+    tag: 이뇨제 투여
+    icon: pill
+    why: a diuretic처럼 약 종류만 말하면 처방된 이뇨제를 가리켜요. and reassess로 투여 뒤 상태를 다시 평가하는 단계까지 이어요.
+    decoy: and reboot
+    distractorsKo:
+    - 이뇨제 넣으려고 처방 확인합시다.
+    - 이뇨제를 주면 폐의 물이 빠져요.
+    blank:
+      answer: reassess
+      options:
+      - en: reassess
+      - en: rewarm
+      - en: restock
+      - en: reroute
+  - en: The lungs sound wet again.
+    ko: 폐가 다시 축축한 소리가 나요.
+    chunks:
+    - The lungs
+    - sound wet
+    - again
+    - .
+    words: []
+    goal: 1
+    tag: 청진 소견
+    icon: stetho
+    why: again이 이전에도 그랬음을 알려 반복되는 소견임을 짚어요. sound wet은 청진기로 들리는 소리를 말해요.
+    decoy: The lights
+    distractorsKo:
+    - 폐가 처음으로 축축한 소리가 나요.
+    - 폐가 다시 청진기로 잘 들려요.
+    blank:
+      answer: wet
+      options:
+      - en: wet
+      - en: hollow
+      - en: metallic
+      - en: musical
+  - en: Let's slow the rate and recheck the pressure.
+    ko: 속도를 늦추고 혈압을 다시 확인합시다.
+    chunks:
+    - Let's slow
+    - the rate
+    - and recheck
+    - the pressure
+    - .
+    words:
+    - w-slow
+    - w-rate
+    - w-recheck
+    - w-pressure
+    goal: 1
+    tag: 감속·재확인
+    icon: gear
+    why: 평가 뒤 수혈을 다시 이어 갈 때의 말이에요. slow와 recheck를 and로 이어 속도를 낮추고 확인하는 두 단계를 한 문장에 담고, the pressure로 재확인 대상이 혈압임을 분명히 해요.
+    decoy: the pillow
+    distractorsKo:
+    - 속도를 늦추려고 조절기를 돌립시다.
+    - 수혈 속도를 늦추면 폐에 물이 덜 차요.
+    blank:
+      answer: recheck
+      options:
+      - en: recheck
+      - en: raise
+      - en: reset
+      - en: reroute
+  - en: I'll reassess after the diuretic.
+    ko: 이뇨제 투여 후 다시 평가할게요.
+    chunks:
+    - I'll
+    - reassess
+    - after the diuretic
+    - .
+    words:
+    - w-reassess
+    - w-diuretic
+    goal: 2
+    tag: 재평가 약속
+    icon: check
+    why: after the diuretic으로 평가 시점을 약을 준 뒤로 잡아요. I'll로 내가 직접 맡겠다는 약속이에요.
+    decoy: after the drape
+    distractorsKo:
+    - 이뇨제 투여 후 소변량이 늘어요.
+    - 다시 평가하려고 청진기를 쥘게요.
+    blank:
+      answer: after
+      options:
+      - en: after
+      - en: from
+      - en: against
+      - en: without
+  nuance:
+  - kind: slider
+    words:
+    - w-rise
+    cue: 'Monitor: "CVP has climbed steadily over the last half hour."'
+    scale:
+    - tick up
+    - rise
+    - surge
+    answerAt: 1
+    why: tick up은 아주 조금 오르는 것, rise는 꾸준히 오르는 것, surge는 갑자기 확 치솟는 것이에요. 30분 동안 꾸준히 오른 것은 rise예요.
+    example: The venous pressure and edema are rising.
+    exKo: 정맥압과 부종이 올라가고 있어요.
+  - kind: swap
+    words:
+    - w-stop
+    - w-transfusion
+    - w-taco
+    who: 마취과 의사에게 · TACO가 의심될 때
+    icon: monitor
+    before:
+    - 'Let''s '
+    - speed up
+    - ' the transfusion — this looks like TACO.'
+    options:
+    - speed up
+    - slow down
+    - stop
+    answer: stop
+    notes:
+      speed up: 순환이 이미 넘치는데 더 빨리 넣으면 폐부종이 심해져요.
+      slow down: 늦추기만 하면 이미 넘친 순환에 피가 계속 들어가요. 과부하가 의심되면 먼저 멈추고 평가해요.
+      stop: 순환 과부하가 의심되면 수혈을 일단 멈추고 마취과 의사에게 알려 평가해요.
+    why: TACO는 너무 많이, 너무 빨리 넣어 순환이 넘치는 반응이에요. 수혈을 일단 멈추고 마취과 의사와 다음 조치를 정해요.
+    ko: 수혈을 멈춥시다. TACO 같아요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 순환 과부하 TACO 4문장 순서
+    why: 정맥압과 부종이 오른다고 알리고, 수혈을 일단 멈춘 뒤, 이뇨제를 주고, 투여 뒤 폐와 혈압을 다시 평가해요.
+    lines:
+    - en: The venous pressure and edema are rising.
+      icon: siren
+      ko: 정맥압과 부종이 올라가고 있어요
+      note: 징후
+    - en: With those rising, stop the transfusion—this looks like TACO.
+      icon: siren
+      ko: 그게 오르니 수혈을 멈추세요, TACO 같아요
+      note: 중단
+    - en: Let's give a diuretic to pull the fluid off.
+      icon: pill
+      ko: 이뇨제로 수분을 빼 봅시다
+      note: 투여
+    - en: I'll reassess the lungs and pressure after it.
+      icon: check
+      ko: 그 뒤 폐와 혈압을 다시 평가할게요
+      note: 재평가

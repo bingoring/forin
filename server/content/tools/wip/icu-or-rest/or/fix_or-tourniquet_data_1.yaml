@@ -1,0 +1,81 @@
+# 문장 — A가 en·ko를 바꾸는 것(7건)과 B의 why·tag·icon. 키 = "상황.문장"
+sentences:
+  "4.3":
+    en: "We choose the widest cuff that still fits."
+    ko: "맞는 것 중 가장 넓은 커프를 골라요."
+    chunks: ["We choose", "the widest cuff", "that still fits", "."]
+    words: [w-choose, w-wide, w-cuff, w-fit]
+    tag: "가장 넓은 것"
+    icon: bandage
+    why: "the widest … that still fits는 맞는 것들 가운데 가장 넓은 것을 고르는 틀이에요. 같은 사지라면 넓은 커프가 더 낮은 압력으로 혈류를 막아 조직 손상이 적어요."
+    decoy: "that still beeps"
+    distractorsKo: ["맞는 것 중 가장 깨끗한 커프를 골라요.", "맞는 것 중 가장 싼 커프를 골라요."]
+    blank: {answer: widest, options: [widest, cheapest, newest, oldest]}
+  "13.3":
+    en: "This time, let's ask the surgeon how long we can go."
+    ko: "이번에는 얼마나 오래 둘지 집도의에게 물어봅시다."
+    chunks: ["This time", ", let's ask the surgeon", "how long", "we can go", "."]
+    words: [w-surgeon, w-long]
+    tag: "집도의 문의"
+    icon: calendar
+    why: "This time,이 지난번과 대비하는 시점을 알려요. how long we can go는 얼마나 둘지를 묻는 의문사절이라, 시간을 정하는 집도의에게 결정을 구하는 말이 돼요."
+    decoy: "how wide"
+    distractorsKo: ["다음에는 얼마나 오래 둘지 집도의에게 물어봅시다.", "처음에는 얼마나 오래 둘지 집도의에게 물어봅시다."]
+    blank: {answer: long, options: [long, wide, fast, high]}
+  "15.3":
+    en: "We need to act now — shall we deflate?"
+    ko: "지금 조치해야 해요 — 공기를 뺄까요?"
+    chunks: ["We need to act", "now", "— shall we", "deflate", "?"]
+    words: [w-act, w-deflate]
+    tag: "결정 요청"
+    icon: siren
+    why: "시급함은 We need to act now로 분명히 말하고, 감압 여부는 shall we deflate?로 집도의에게 물어요. 감압은 집도의가 정해요."
+    decoy: "We need to chart"
+    distractorsKo: ["지금 조치해야 해요 — 시간이 다 됐어요.", "지금 공기를 빼려고 밸브를 잡을까요?"]
+    blank: {answer: act, options: [act, chart, scrub, pause]}
+  "15.4":
+    en: "This is the maximum time — how would you like to proceed?"
+    ko: "최대 시간이에요 — 어떻게 진행할까요?"
+    chunks: ["This is", "the maximum time", "— how would you like", "to proceed", "?"]
+    words: [w-maximum]
+    tag: "진행 문의"
+    icon: siren
+    why: "the maximum time으로 한계를 사실대로 알리고, how would you like to proceed?로 판단을 집도의에게 넘겨요. 공손한 의문문이 결정권을 존중해요."
+    decoy: "to document"
+    distractorsKo: ["최대 시간이에요 — 언제 진행할까요?", "최대 시간이에요 — 어떻게 마무리할까요?"]
+    blank: {answer: maximum, options: [maximum, typical, first, usual]}
+  "9.4":
+    en: "The proximal cuff comes down only after the distal one is up."
+    ko: "근위 커프는 원위 커프를 올린 뒤에야 내려요."
+    chunks: ["The proximal cuff", "comes down", "only after", "the distal one", "is up", "."]
+    words: [w-proximal, w-cuff, w-distal, w-up]
+    tag: "커프 순서"
+    icon: bandage
+    why: "only after가 순서를 못 박아요. 근위 커프를 먼저 내리면 국소마취제가 한꺼번에 몸으로 들어갈 수 있어서, 원위 커프가 올라간 것을 확인한 뒤에 내려요."
+    decoy: "the spare one"
+    distractorsKo: ["근위 커프는 원위 커프를 올린 뒤에야 닦아요.", "근위 커프는 원위 커프를 올린 뒤에야 점검해요."]
+    blank: {answer: distal, options: [distal, pediatric, disposable, sterile]}
+  "18.3":
+    en: "The field is still bleeding with the cuff up."
+    ko: "커프를 올렸는데도 수술 영역에서 여전히 출혈이 있어요."
+    chunks: ["The field is", "still bleeding", "with the cuff", "up", "."]
+    words: [w-field, w-bleed, w-cuff, w-up]
+    tag: "영역 출혈"
+    icon: siren
+    why: "still이 이미 계속된 상태를, with the cuff up이 커프를 올려 둔 조건을 알려요. 커프가 올라가 있는데도 피가 나니 압력과 장비를 살펴야 한다는 신호예요."
+    decoy: "still glowing"
+    distractorsKo: ["커프를 올렸는데도 수술 영역에서 처음으로 출혈이 있어요.", "커프를 올렸는데도 수술 영역에서 여전히 통증이 있어요."]
+    blank: {answer: bleeding, options: [bleeding, swelling, clotting, healing]}
+  "14.1":
+    ko: "구혈이 충분했는지 확인할게요."
+    tag: "구혈 확인"
+    distractorsKo: ["구혈이 빨랐는지 확인할게요.", "구혈이 깨끗했는지 확인할게요."]
+# B 단독 — why·tag·icon
+sentence_why:
+  "13.1": "carefully를 붙여, 재관류 뒤 새로 잡은 간격은 놓치면 안 된다는 긴장을 전해요."
+  "13.4": "closely는 눈을 떼지 않는다는 강도예요 — 재적용 간격은 집도의가 정한 값에 맞춰 정확히 지켜야 해요."
+  "20.2": "carefully가 이 숫자가 근손상 평가의 근거라는 무게를 실어요."
+sentence_tag:
+  "16.1": "도움 제안"
+sentence_icon:
+  "0.1": gear

@@ -1,0 +1,109 @@
+# 문장 수정 — 키: "상황.문장"(0부터). 값은 바꿀 필드.
+sentences:
+  "6.4":   # S1
+    en: "It's easy to forget — anesthesia will decide if a sip with your pill counts."
+    ko: "잊기 쉬운 일이에요. 약과 함께 마신 한 모금이 문제가 되는지는 마취과가 판단해요."
+    chunks: ["It's easy to forget", "— anesthesia will decide", "if a sip with your pill", "counts", "."]
+    words: [w-forget, w-anesthesia, w-decide, w-sip, w-count]
+    why: "It's easy to forget…으로 환자의 실수를 개인 잘못이 아닌 흔한 일로 만들어요. 한 모금이 문제가 되는지는 간호사가 단정하지 않고 마취과가 판단한다고 알려 줘요."
+    decoy: "if a sip with your tea"
+    distractorsKo:
+      - "믿기 쉬운 일이에요. 약과 함께 마신 한 모금이 문제가 되는지는 마취과가 판단해요."
+      - "잊기 쉬운 일이에요. 식사와 함께 마신 한 모금이 문제가 되는지는 마취과가 판단해요."
+    blank: {answer: forget, options: [forget, finish, borrow, deliver]}
+  "6.3":   # S2
+    en: "This doesn't always mean your surgery is canceled — the timing may just shift."
+    ko: "수술이 꼭 취소된다는 뜻은 아니에요, 시간만 조정될 수 있어요."
+    chunks: ["This doesn't always mean", "your surgery is canceled", "— the timing", "may just shift", "."]
+    words: [w-mean, w-surgery, w-cancel, w-shift]
+    why: "This doesn't always mean…으로 가장 큰 걱정인 취소를 단정하지 않고, 시간이 조정될 수 있다는 가능성만 may로 낮춰 전해요. 진행이나 취소는 마취과가 정하는 일이라 간호사는 약속하지 않아요."
+    decoy: "your insurance is canceled"
+    distractorsKo:
+      - "수술이 꼭 취소된다는 뜻은 아니에요, 장소만 조정될 수 있어요."
+      - "수술이 꼭 취소된다는 뜻은 아니에요, 병실만 조정될 수 있어요."
+  "13.5":  # S3
+    en: "We won't share the result with anyone outside your care team."
+    ko: "결과는 진료팀 밖의 누구에게도 알리지 않아요."
+    chunks: ["We won't share", "the result", "with anyone", "outside your care team", "."]
+    words: [w-result, w-outside, w-care, w-team]
+    why: "We won't share…로 결과를 알리는 범위를 진료팀 안으로 한정해 말해요. outside your care team이 공개 범위의 경계를 분명히 해서 환자가 안심하고 답하게 돕고, 팀 안에서는 결과를 나눈다는 점도 숨기지 않아요."
+    decoy: "with your family"
+    distractorsKo:
+      - "일정은 진료팀 밖의 누구에게도 알리지 않아요."
+      - "이유는 진료팀 밖의 누구에게도 알리지 않아요."
+  "1.4":   # S4
+    en: "I'll record this as an allergy, and anesthesia will review it."
+    ko: "알레르기로 기록해 두고, 마취과에서 검토할 거예요."
+    chunks: ["I'll record this", "as an allergy", ", and anesthesia", "will review it", "."]
+    words: [w-record, w-allergy, w-anesthesia]
+    tag: "기록 안내"
+    icon: pencil
+    why: "I'll record this as…로 알레르기인지 가리는 판단은 하지 않고, 환자가 말한 반응을 알레르기로 기록한다고 말해요. 검토는 마취과가 한다고 덧붙여 간호사의 몫과 마취과의 몫을 나눠요."
+    decoy: "to an allergist"
+    distractorsKo:
+      - "알레르기로 기록해 두고, 마취과에서 취소할 거예요."
+      - "알레르기로 기록해 두고, 마취과에서 거절할 거예요."
+    blank: {answer: allergy, options: [allergy, infection, injury, illness]}
+  "11.3":  # S5
+    en: "Some herbs and supplements can thin the blood and raise bleeding risk."
+    ko: "일부 한약재와 보조제는 피를 묽게 해서 출혈 위험을 높일 수 있어요."
+    chunks: ["Some herbs and supplements", "can thin", "the blood", "and raise bleeding risk", "."]
+    words: [w-herb, w-supplement, w-thin, w-blood, w-bleed, w-risk]
+    why: "Some…으로 모든 제품이 아니라 일부만 해당한다고 범위를 좁혀 말해요. can은 가능성이라 단정하지 않고, and raise bleeding risk로 왜 알려야 하는지까지 이어요."
+    decoy: "can warm"
+    distractorsKo:
+      - "일부 녹차와 보조제는 피를 묽게 해서 출혈 위험을 높일 수 있어요."
+      - "일부 한약재와 식품은 피를 묽게 해서 출혈 위험을 높일 수 있어요."
+  "12.4":  # S6
+    en: "Smoking makes your airway a bit harder to manage, and drinking matters too."
+    ko: "흡연은 기도 관리를 조금 더 어렵게 하고, 음주도 중요해요."
+    chunks: ["Smoking makes your airway", "a bit harder to manage", ", and drinking", "matters too", "."]
+    words: [w-smoke, w-airway, w-manage, w-drink, w-matter]
+    why: "Smoking makes…로 흡연이 기도를 다루기 어렵게 한다는 영향을 먼저 말해요. and drinking matters too로 음주도 알아야 할 정보라고 이어, 왜 묻는지 설명해요. a bit이 위협이 아닌 조금의 차이라는 어조를 맞춰 줘요."
+    decoy: "Smoking keeps your airway"
+    distractorsKo:
+      - "흡연은 수면 관리를 조금 더 어렵게 하고, 음주도 중요해요."
+      - "흡연은 식단 관리를 조금 더 어렵게 하고, 음주도 중요해요."
+  "0.3":   # S7
+    en: "Let's start with solid food, since your stomach clears it the slowest."
+    ko: "고형식부터 시작할게요, 위에서 가장 늦게 비워지거든요."
+    chunks: ["Let's start", "with solid food", ", since your stomach", "clears it", "the slowest", "."]
+    why: "since로 이유를 뒤에 붙여 왜 고형식부터 묻는지 밝혀요. the slowest 최상급은 여럿 중 위에서 가장 오래 걸리는 것을 짚어요."
+    decoy: "since your mouth"
+    distractorsKo:
+      - "고형식부터 시작할게요, 장에서 가장 늦게 비워지거든요."
+      - "고형식부터 점검할게요, 위에서 가장 늦게 비워지거든요."
+    blank: {answer: stomach, options: [stomach, throat, kidney, bladder]}
+  "19.4":  # S8
+    en: "If no one told you to stop it, this isn't your fault."
+    ko: "아무도 끊으라고 말씀드리지 않았다면 환자분 잘못이 아니에요."
+    chunks: ["If no one told you", "to stop it", ", this isn't", "your fault", "."]
+    why: "If no one told you…로 환자의 말을 전제로 두어, 간호사가 사실로 단정하지 않고 말해요. this isn't your fault로 죄책감을 덜어 환자가 정직하게 말하도록 돕는 말이에요."
+    distractorsKo:
+      - "아무도 가져오라고 말씀드리지 않았다면 환자분 잘못이 아니에요."
+      - "아무도 적으라고 말씀드리지 않았다면 환자분 잘못이 아니에요."
+  # S9 — chunks만
+  "9.5":  {chunks: ["I'll bring this", "straight", "to anesthesia", "before we go back", "."]}
+  "10.3": {chunks: ["Do you get", "short of breath", "walking up", "a flight of stairs", "?"]}
+  "11.5": {chunks: ["I'll report this", "so surgery", "can plan", "for extra bleeding risk", "."]}
+  "12.3": {chunks: ["About how many cigarettes", "a day", ", and", "for how many years", "?"]}
+  "14.5": {chunks: ["I'll report your symptoms", "so anesthesia", "can decide", "about today's surgery", "."]}
+  "15.5": {chunks: ["Everyone knows the plan", ", so we can", "move fast", "once you're ready", "."]}
+  "16.3": {chunks: ["Exactly how", "did your throat feel", "— tight, swollen", ", or hard to breathe", "?"]}
+  "17.4": {chunks: ["Dizziness", "along with swelling", "can point", "to a serious reaction", "."]}
+  "19.3": {chunks: ["When exactly", "did you take it", ", and", "how much", "?"]}
+  # D1 — keyPhrase, ko만
+  "12.2":
+    ko: "탓하려는 게 아니에요, 있는 그대로 알고 싶을 뿐이에요."
+    distractorsKo:
+      - "탓하려는 게 아니에요, 있는 그대로 잊고 싶을 뿐이에요."
+      - "칭찬하려는 게 아니에요, 있는 그대로 알고 싶을 뿐이에요."
+# 문장 때문에 example을 옮기는 단어(옛 문장과 example이 다른 것)
+example_moves:
+  w-thin: "11.3"
+  w-sound: "8.0"
+# 문장 why만 보강
+why_append:
+  "15.2": " 병원 정책과 마취과 요청에 따라 시행해요."
+  "13.0": " 확인 방법(소변 검사 등)은 병원 정책을 따라요."
+  "13.1": " 확인 방법은 병원 정책을 따라요."

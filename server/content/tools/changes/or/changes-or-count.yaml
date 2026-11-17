@@ -1,0 +1,465 @@
+theme: or-count
+changes:
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(time); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(see); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-room
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(room); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(patient); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(hand); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(know); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-make
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(make); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-get
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(get); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-say
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(say); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-look
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(look); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-move
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(move); 어느 문장도 태그하지 않게 됐다
+- kind: word-add
+  id: w-done
+  why: 바늘 회수 확인 상황이 hand 태그를 빼면 단어 6개(V3 8개 미만) — 그 상황 문장 'as soon as you're done'에 이미 있는 말
+- kind: word
+  id: w-begin
+  fields:
+  - ko
+  why: w-start와 ko(시작하다)가 같아 듣고 뜻 고르기에서 정답이 둘 — begin은 본격적으로 개시하는 쪽
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: w-confirm·w-verify와 ko(확인하다)가 같아 정답이 셋 — check는 눈으로 살펴 점검하는 쪽
+- kind: word
+  id: w-verify
+  fields:
+  - ko
+  why: w-confirm·w-check와 ko(확인하다)가 같아 정답이 셋 — verify는 기준과 대조해 검증하는 쪽
+- kind: word
+  id: w-note
+  fields:
+  - ko
+  why: w-record·w-log와 ko(기록하다)가 같아 정답이 셋 — note는 짧게 메모해 두는 쪽
+- kind: word
+  id: w-log
+  fields:
+  - ko
+  why: w-record·w-note와 ko(기록하다)가 같아 정답이 셋 — log는 대장에 올려 기입하는 쪽
+- kind: word
+  id: w-extra
+  fields:
+  - ko
+  why: w-additional과 ko(추가의)가 같아 정답이 둘 — extra는 계획보다 더 나온 여분
+- kind: word
+  id: w-call
+  fields:
+  - ko
+  why: w-declare와 ko(선언하다)가 같아 정답이 둘 — call은 소리 내어 부르는 쪽(declare는 선언)
+- kind: word
+  id: w-match
+  fields:
+  - ko
+  why: 태그 문장이 모두 '목록·총계와 일치한다'는 뜻이라 대조하다보다 일치하다가 맞다
+- kind: word
+  id: w-retain
+  fields:
+  - ko
+  why: 잔류시키다는 타동사 형태라 'retained sponge(잔류한 거즈)' 문장과 맞지 않는다
+- kind: word
+  id: w-fragment
+  fields:
+  - ko
+  why: w-piece와 ko(조각)가 같아 정답이 둘 — fragment는 깨지거나 부러져 나온 파편
+- kind: word
+  id: w-component
+  fields:
+  - ko
+  why: w-part와 ko(부품)가 같아 정답이 둘 — component는 기구를 이루는 구성품
+- kind: word
+  id: w-pick
+  fields:
+  - ko
+  why: w-restart와 ko(다시 시작하다)가 같아 정답이 둘 — 'pick up'은 중단한 자리에서 이어 가는 것
+- kind: word
+  id: w-systematic
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 태그된 문장이 모두 부사(systematically)로 쓰여 헤드워드를 부사로
+- kind: word
+  id: w-careful
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 태그된 문장이 모두 부사(carefully)로 쓰여 헤드워드를 부사로
+- kind: word
+  id: w-immediate
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 태그된 문장이 모두 부사(immediately)로 쓰여 헤드워드를 부사로
+- kind: word
+  id: w-proper
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 태그된 문장이 모두 부사(properly)로 쓰여 헤드워드를 부사로
+- kind: sentence
+  situation: 절개 전 초기 계수
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 거즈 소리내어 확인
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 바늘 회수 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 계수 기록 작성
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 계수 기록 작성
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 계수 기록 작성
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 봉합 전 계수 개시
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 추가 거즈 투입 기록
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 기구 분해 부품 계수
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 소독포 안 잔류 확인
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 계수 방해 응급 상황
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 두 명 동시 계수
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 두 명 동시 계수
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: X선 잔류 거즈 확인
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 소실 바늘 필드 수색
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 소실 바늘 필드 수색
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 봉합 후 계수 오류
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 이물 잔류 의심 보고
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 이물 잔류 의심 보고
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 계수 불일치 은폐 압력
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: word-remove
+  id: w-loud
+  why: ko 큰 소리로가 out loud(소리 내어)의 뜻이 아니고 같은 뜻은 w-aloud가 가르침 — 1.0 태그를 빼 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-eye
+  why: 너무 쉬움(눈) — two sets of eyes는 pair 13에서 구로 계속 가르침; 13.3 태그를 빼 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-late
+  why: w-run을 run late로 바꿔 같은 문장에서 같은 말을 두 카드가 가르치게 됨 — 20.3 태그를 빼 어느 문장도 태그하지 않게 됨
+- kind: word
+  id: w-shake
+  fields:
+  - ko
+  why: shake out은 소독포를 털어 내는 동작 — 흔들다보다 털다
+- kind: word
+  id: w-miss
+  fields:
+  - en
+  - ipa
+  why: 문장은 is still missing(형용사 뜻 없어진) — 헤드워드를 부사·동사 아닌 형용사 missing으로
+- kind: word
+  id: w-interrupt
+  fields:
+  - ko
+  why: 문장 12.2는 계수가 중단됐다는 수동 — 방해하다가 아니라 중단시키다
+- kind: word
+  id: w-pick
+  fields:
+  - en
+  - ipa
+  - example
+  why: ko 이어 가다는 pick up의 뜻 — 구 단위 헤드워드; 12.4 문장을 바꿔 예문도 맞춤
+- kind: word
+  id: w-bin
+  fields:
+  - ko
+  why: 쓴 거즈는 최종 계수가 끝날 때까지 버리지 않고 수거통에 모아 둠 — 쓰레기통이 아님
+- kind: word
+  id: w-rule
+  fields:
+  - en
+  - ipa
+  why: ko 배제하다는 rule out의 뜻 — 구 단위 헤드워드(결정 11)
+- kind: word
+  id: w-careful
+  fields:
+  - ko
+  why: 수색의 carefully는 조심스럽게(살살 다룸)가 아니라 빠짐없이 꼼꼼히
+- kind: word
+  id: w-movement
+  fields:
+  - example
+  why: 17.4 문장을 바꿔 예문도 맞춤
+- kind: word
+  id: w-turn
+  fields:
+  - en
+  - ipa
+  - example
+  why: ko 나타나다는 turn up의 뜻 — 구 단위 헤드워드; 17.4 문장을 바꿔 예문도 맞춤
+- kind: word
+  id: w-request
+  fields:
+  - example
+  why: 19.4 문장을 바꿔 예문도 맞춤
+- kind: word
+  id: w-run
+  fields:
+  - en
+  - ipa
+  why: ko 늦어지다는 run late의 뜻 — 구 단위 헤드워드(w-late 삭제)
+- kind: sentence
+  situation: 거즈 소리내어 확인
+  index: 0
+  fields:
+  - ko
+  - words
+  why: w-loud 삭제로 태그 뺌, ko 띄어쓰기(검토 A W6·S10)
+- kind: sentence
+  situation: 거즈 소리내어 확인
+  index: 3
+  fields:
+  - chunks
+  why: 구동사 call it out이 끊기지 않게 청크(검토 A S8)
+- kind: sentence
+  situation: 바늘 회수 확인
+  index: 1
+  fields:
+  - ko
+  why: 번역투 ko를 자연스럽게(검토 A S10)
+- kind: sentence
+  situation: 봉합 전 계수 개시
+  index: 4
+  fields:
+  - chunks
+  why: accounted for now가 for now(당분간)로 잘못 읽히지 않게 청크(검토 A S8)
+- kind: sentence
+  situation: 계수 방해 응급 상황
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 중단된 계수를 확인 없이 그 자리에서 잇는 것은 안전하지 않음 — 마지막으로 확인된 계수로 돌아가는 문장으로(검토 A S1)
+- kind: sentence
+  situation: 두 명 동시 계수
+  index: 3
+  fields:
+  - words
+  why: w-eye 삭제로 태그 뺌(검토 A W7)
+- kind: sentence
+  situation: 두 명 동시 계수
+  index: 4
+  fields:
+  - ko
+  - chunks
+  why: at the same time이 한 덩어리로 끊기도록 청크, ko를 동시에로(검토 A S7)
+- kind: sentence
+  situation: 전자 계수 병행
+  index: 3
+  fields:
+  - ko
+  why: 쓴 거즈는 최종 계수 전까지 버리지 않고 수거통에 모아 둠(검토 A S6)
+- kind: sentence
+  situation: 봉합 직전 거즈 불일치
+  index: 3
+  fields:
+  - ko
+  why: Please hold는 잠깐만요가 아니라 멈춰 달라는 요청(검토 A S4)
+- kind: sentence
+  situation: 봉합 직전 거즈 불일치
+  index: 4
+  fields:
+  - chunks
+  why: — we're one short가 끊기지 않게 청크(검토 A S8)
+- kind: sentence
+  situation: 소실 바늘 필드 수색
+  index: 3
+  fields:
+  - ko
+  why: 수색의 carefully는 빠짐없이 꼼꼼히(검토 A S5)
+- kind: sentence
+  situation: 소실 바늘 필드 수색
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 전원 정지가 아니라 방 안 움직임을 줄이는 것이 실제 관행 — 문장·태그(w-stop 뺌)(검토 A S3)
+- kind: sentence
+  situation: 봉합 후 계수 오류
+  index: 3
+  fields:
+  - words
+  why: don't add up(맞아떨어지다)은 카드 w-add(추가하다)가 아님 — 태그 뺌(검토 A S9)
+- kind: sentence
+  situation: 이물 잔류 의심 보고
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 영상 처방은 집도의 몫 — 처방된 후속 엑스선을 요청하는 문장으로, w-scan 대신 w-xray·w-surgeon(검토 A S2)
+- kind: sentence
+  situation: 계수 불일치 은폐 압력
+  index: 3
+  fields:
+  - words
+  why: w-run을 run late로 바꾸며 w-late 삭제 — 태그 뺌(검토 A W9)
+- kind: sentence
+  situation: 소실 바늘 필드 수색
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): Nobody moves until we find it → Nothing leaves the room until we find it(전원 정지로 읽힘 — 실제는 방에서 물건이 나가지 않게 하고 환자 처치는 계속; 검토 A K1). words [w-find] 그대로(room은 공통 쉬운 단어)'
+- kind: sentence
+  situation: 방사선 표지 거즈 확인
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let me confirm / each one / has the radiopaque / marker) → Let me confirm / each one / has / the radiopaque marker — 문장은 그대로'
+- kind: sentence
+  situation: 기구 분해 부품 계수
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(All / the small parts / need to be / accounted for) → All the small parts / need / to be / accounted for — 문장은 그대로'
+- kind: sentence
+  situation: 봉합 직전 거즈 불일치
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We''re one sponge / short / , we need / to search now) → We''re / one sponge short / , we need / to search now — 문장은 그대로'
+- kind: sentence
+  situation: 소실 바늘 필드 수색
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s search / the field, / drapes, and floor / systematically) → Let''s search / the field, drapes, and floor / systematically — 문장은 그대로'
+- kind: sentence
+  situation: 이물 잔류 의심 보고
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(This is / a possible retained object / — I''m documenting / it) → This is / a possible retained object / — I''m / documenting it — 문장은 그대로'
+- kind: sentence
+  situation: 계수 불일치 은폐 압력
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We have to / document and resolve / this properly) → We have to / document and resolve this / properly — 문장은 그대로'

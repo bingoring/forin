@@ -1,0 +1,183 @@
+# 문장 en 이 바뀐 곳 (A 검토 S1~S12, S14) — v46 필드 전부 새로. 키 = 상황.문장
+"17.4":
+  en: Every unidentified patient gets a temporary band with a unique number.
+  ko: 미확인 환자마다 고유 번호가 적힌 임시 밴드를 채워요.
+  chunks: [Every unidentified patient, gets, a temporary band, with a unique number, .]
+  words: [w-every, w-unidentified, w-temporary, w-band, w-number]
+  tag: 고유 번호
+  icon: shield
+  why: with a unique number로 환자마다 겹치지 않는 번호를 붙인다고 밝혀요. 같은 번호를 두 사람이 쓰면 미확인 환자끼리 섞이기 때문이에요.
+  decoy: with a paper tag
+  distractorsKo:
+    - 미확인 환자마다 고유 번호는 이름이 확인되면 바뀌어요.
+    - 미확인 환자의 임시 번호는 차트 맨 위에 올려 둬요.
+  blank: {answer: band, options: [band, gown, sheet, pillow]}
+"14.3":
+  en: If you're worried they'll find something else, ask your surgeon first.
+  ko: 안에서 다른 게 발견될까 걱정되시면, 먼저 집도의에게 물어보세요.
+  chunks: [If you're worried, they'll find something else, ", ask your surgeon", first, .]
+  words: [w-find, w-else, w-ask, w-surgeon, w-first]
+  tag: 사전 문의
+  icon: speech
+  why: If you're worried로 환자의 걱정에서 말을 시작하고, ask your surgeon first로 예상 밖의 소견을 어떻게 다룰지는 집도의에게 먼저 물어보라고 안내해요. 간호사가 범위를 대신 약속하지 않아요.
+  decoy: If you're hungry
+  distractorsKo:
+    - 수술 후에 다른 게 발견될까 걱정되시면, 먼저 집도의에게 물어보세요.
+    - 안에서 다른 게 발견될까 걱정되시면, 먼저 팔찌를 확인해 보세요.
+  blank: {answer: surgeon, options: [surgeon, pharmacist, receptionist, dietitian]}
+"6.5":
+  en: Your surgeon will redo the paperwork with you before anyone signs anything else.
+  ko: 다른 서명을 하기 전에 집도의가 환자분과 서류를 다시 작성할 거예요.
+  chunks: [Your surgeon will redo, the paperwork with you, before anyone signs, anything else, .]
+  words: [w-surgeon, w-paperwork, w-anyone, w-sign, w-else]
+  tag: 서류 재작성
+  icon: pencil
+  why: Your surgeon will redo로 서류를 다시 쓰는 사람이 집도의임을 밝히고, before anyone signs anything else로 그 전에는 다른 서명을 받지 않는다는 순서를 정해요.
+  decoy: the supply list
+  distractorsKo:
+    - 다른 서명을 하기 전에 집도의가 환자분과 일정을 다시 잡을 거예요.
+    - 다른 서명을 하기 전에 집도의가 환자분과 서류를 한 부씩 복사할 거예요.
+  blank: {answer: redo, options: [redo, copy, scan, print]}
+"16.4":
+  en: I'm not comfortable proceeding with induction without a signed form.
+  ko: 서명된 서식 없이 마취 유도를 진행하는 건 마음이 편하지 않아요.
+  chunks: [I'm not comfortable, proceeding with induction, without, a signed form, .]
+  words: [w-comfortable, w-proceed, w-induction, w-sign, w-form]
+  tag: 우려 표현
+  icon: faceWorried
+  why: I'm not comfortable로 우려를 분명히 꺼내는 단계예요. without a signed form으로 그 이유가 서명된 서식이 없다는 점임을 붙여요. 위계가 있어도 말을 꺼내기 쉬운 표현이에요.
+  decoy: a second nurse
+  distractorsKo:
+    - 서명된 서식 없이 마취 유도를 진행하면 동의가 무효가 돼요.
+    - 서명된 서식 없이 마취 유도를 진행하는 건 시간이 걸려요.
+  blank: {answer: signed, options: [signed, blank, torn, wet]}
+"3.5":
+  en: We only accept a mark in permanent ink that stays visible after the prep.
+  ko: 소독 후에도 보이는, 지워지지 않는 잉크 표시만 인정해요.
+  chunks: [We only accept, a mark in permanent ink, that stays visible, after the prep, .]
+  words: [w-accept, w-mark, w-permanent, w-ink, w-prep]
+  tag: 표시 기준
+  icon: shield
+  why: only로 받아들이는 표시를 좁히고, permanent ink that stays visible after the prep으로 소독을 해도 남는 표시여야 한다는 기준을 밝혀요.
+  decoy: that rubs off
+  distractorsKo:
+    - 소독 직후에만 보이는, 지워지지 않는 잉크 표시만 인정해요.
+    - 소독 후에도 보이는, 굵은 잉크 표시만 인정해요.
+  blank: {answer: permanent, options: [permanent, temporary, erasable, fading]}
+"3.3":
+  en: Your surgeon marks the site with their initials while you're still awake.
+  ko: 집도의가 환자분이 아직 깨어 계실 때 부위에 이니셜로 표시해요.
+  chunks: [Your surgeon marks the site, with their initials, while you're still, awake, .]
+  words: [w-surgeon, w-mark, w-site, w-initial, w-awake]
+  tag: 표시 시점
+  icon: calendar
+  why: while you're still awake로 표시가 마취 전, 환자가 직접 보고 확인할 수 있을 때 이뤄진다는 시점을 알려요. with their initials로 누가 표시했는지도 남겨요.
+  decoy: with their notes
+  distractorsKo:
+    - 집도의가 환자분이 아직 병동에 계실 때 부위에 이니셜로 표시해요.
+    - 집도의가 환자분이 아직 깨어 계실 때 부위에 스티커로 표시해요.
+  blank: {answer: awake, options: [awake, alone, dressed, standing]}
+"13.3":
+  en: We never prep both eyes at the same moment — one eye at a time.
+  ko: 두 눈을 동시에 소독하지 않아요 — 한 번에 한쪽씩이에요.
+  chunks: [We never prep, both eyes, at the same moment, "— one eye at a time", .]
+  words: [w-prep, w-both, w-moment]
+  tag: 동시 금지
+  icon: shield
+  why: never로 예외 없는 규칙임을 알리고, one eye at a time으로 한 번에 한쪽 눈만 소독한다고 풀어 줘요. 양쪽 표시는 미리 해 두지만 소독과 타임아웃은 눈마다 따로 해요.
+  decoy: both arms
+  distractorsKo:
+    - 양쪽 눈은 수술 전에 미리 둘 다 표시해 두는 게 원칙이에요.
+    - 소독이 끝나면 소독약이 완전히 마를 때까지 기다려요.
+  blank: {answer: never, options: [never, rarely, often, sometimes]}
+"15.4":
+  en: Everyone stops what they're doing until the site and the consent agree.
+  ko: 부위와 동의서가 일치할 때까지 모두 하던 일을 멈춰요.
+  chunks: [Everyone stops, what they're doing, until the site, and the consent, agree, .]
+  words: [w-stop, w-site, w-consent, w-agree]
+  tag: 전원 멈춤
+  icon: siren
+  why: Everyone으로 한 명도 빠지지 않는다는 점과 stops what they're doing으로 하던 일을 멈춘다는 점을 보여요. agree가 풀리는 조건이에요. 불일치는 말로 풀어야 하니 멈추는 것은 하던 일이에요.
+  decoy: until the chart
+  distractorsKo:
+    - 부위와 동의서가 다르면 팀이 함께 의논해서 풀어요.
+    - 동의서가 부위와 다르면 집도의에게 바로 알려요.
+  blank: {answer: stops, options: [stops, starts, hurries, repeats]}
+"11.4":
+  en: Per policy, two clinicians witness and sign off on the verbal consent.
+  ko: 규정에 따라 임상의 두 명이 구두 동의를 증인으로 확인하고 서명해요.
+  chunks: [Per policy, ", two clinicians", witness and sign off, on the verbal consent, .]
+  words: [w-clinician, w-witness, w-sign, w-verbal, w-consent]
+  tag: 증인 확보
+  icon: shield
+  why: Per policy로 병원 규정에 따라 한다는 점을 밝히고, two로 증인 수를 정해요. sign off는 기록에 서명으로 확인한다는 뜻이에요. 규정은 병원마다 다를 수 있어서 단정하지 않고 규정에 따른다고 말해요.
+  decoy: ", two visitors"
+  distractorsKo:
+    - 규정에 따라 임상의 세 명이 구두 동의를 증인으로 확인하고 서명해요.
+    - 규정에 따라 임상의 두 명이 구두 동의를 녹음하고 서명해요.
+  blank: {answer: two, options: [two, three, four, six]}
+"12.3":
+  en: A parent or legal guardian must sign for a child who's a minor.
+  ko: 미성년 아이는 부모나 법적 보호자가 대신 서명해야 해요.
+  chunks: [A parent or legal guardian, must sign, for a child, who's a minor, .]
+  words: [w-parent, w-legal, w-guardian, w-must, w-sign, w-child]
+  tag: 서명 자격
+  icon: shield
+  why: must로 선택이 아니라 요건임을 밝히고, parent or legal guardian으로 서명할 수 있는 사람의 범위를 정해요. 성년이 되는 나이는 주마다 다를 수 있어서 minor라고만 말해요.
+  decoy: who's a visitor
+  distractorsKo:
+    - 미성년 아이는 부모나 법적 보호자가 대신 안내를 받아야 해요.
+    - 미성년 아이는 부모나 법적 보호자가 함께 대기해야 해요.
+  blank: {answer: parent, options: [parent, neighbor, nurse, teacher]}
+"10.5":
+  en: If the timing is wrong, the surgeon gets a new consent before we proceed.
+  ko: 시점이 잘못됐다면 진행하기 전에 집도의가 동의를 새로 받아요.
+  chunks: [If the timing is wrong, ", the surgeon gets", a new consent, before we proceed, .]
+  words: [w-timing, w-wrong, w-surgeon, w-new, w-consent, w-proceed]
+  tag: 대응 조치
+  icon: pencil
+  why: If … , the surgeon gets으로 조건과 대응을 한 쌍으로 말해요. 동의는 시술을 맡은 집도의가 받으므로 새 동의도 집도의가 받고, 그 전에는 진행하지 않아요.
+  decoy: a new band
+  distractorsKo:
+    - 시점이 잘못됐다면 진행하기 전에 집도의가 동의서를 보관해요.
+    - 시점이 잘못됐다면 진행하기 전에 집도의가 서식 위쪽에 날짜를 써요.
+  blank: {answer: wrong, options: [wrong, early, short, tight]}
+"16.5":
+  en: We're holding everything here until the surgeon gets the consent signed.
+  ko: 집도의가 동의서 서명을 받을 때까지 여기서 모든 걸 보류해요.
+  chunks: [We're holding everything, here, until the surgeon, gets the consent signed, .]
+  words: [w-hold, w-surgeon, w-consent, w-sign]
+  tag: 보류 선언
+  icon: siren
+  why: We're holding everything으로 지금 모든 걸 멈추고 있다고 사실로 알리고, until the surgeon gets the consent signed로 풀리는 조건을 밝혀요. 위협이 아니라 조건을 말해야 협력을 얻어요.
+  decoy: until the porter
+  distractorsKo:
+    - 동의서 서명은 집도의가 직접 마주 앉아서 받아요.
+    - 집도의가 동의서 서명을 받으면 여기서 바로 확인해요.
+  blank: {answer: consent, options: [consent, schedule, menu, map]}
+"5.5":
+  en: Your instructions said nothing after midnight — when did you last eat?
+  ko: 안내에는 자정 이후 금식이라고 되어 있었는데요 — 마지막으로 언제 드셨어요?
+  chunks: [Your instructions said, nothing after midnight, "— when did you", last eat, "?"]
+  words: [w-instruction, w-midnight, w-eat]
+  tag: 금식 질문
+  icon: speech
+  why: Your instructions said nothing after midnight으로 환자가 받은 안내를 사실로 짚고, when did you last eat?으로 마지막으로 먹은 시각을 열린 질문으로 물어요. '지키셨죠?' 하고 닫힌 질문을 하면 작은 것도 놓쳐요.
+  decoy: nothing after sunrise
+  distractorsKo:
+    - 안내에는 아침 식사 후 금식이라고 되어 있었는데요 — 마지막으로 언제 드셨어요?
+    - 안내에는 자정 이후 금식이라고 되어 있었는데요 — 마지막으로 뭘 드셨어요?
+  blank: {answer: midnight, options: [midnight, sunrise, noon, sunset]}
+"14.4":
+  en: Anything outside this scope would normally need a separate consent.
+  ko: 이 범위 밖의 것은 보통 별도 동의가 필요해요.
+  chunks: [Anything outside, this scope, would normally need, a separate consent, .]
+  words: [w-outside, w-scope, w-separate, w-consent]
+  tag: 별도 동의
+  icon: shield
+  why: would normally need로 보통은 그렇다는 정도의 말투로 규칙을 알리고, a separate consent로 기존 동의를 늘려 쓰지 않고 따로 받는다고 밝혀요. 응급 같은 예외도 있어서 단정하지 않아요.
+  decoy: a separate bill
+  distractorsKo:
+    - 이 범위 밖의 것은 서식 아래쪽에 적혀 있어요.
+    - 이 범위 밖의 것은 집도의가 미리 알려 드려요.
+  blank: {answer: scope, options: [scope, floor, door, wall]}
