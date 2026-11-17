@@ -101,6 +101,8 @@ changes:
   id: w-try
   fields:
   - ko
+  - example
+  - exKo
   why: w-attempt(시도)와 ko(시도하다)가 겹쳐 정답이 둘 — try는 동사 '해 보다'
 - kind: word
   id: w-right
@@ -151,6 +153,8 @@ changes:
   id: w-plan
   fields:
   - ko
+  - example
+  - exKo
   why: 태그된 문장 대부분이 명사 plan(plan A, next plan, failed airway plan)
 - kind: word
   id: w-move
@@ -419,3 +423,302 @@ changes:
   fields:
   - words
   why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: Mallampati 평가
+  index: 3
+  fields:
+  - en
+  - chunks
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: sentence
+  situation: 비디오후두경 준비
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: sentence
+  situation: 산소화 유지 보조
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: sentence
+  situation: 예측 어려운 기도 계획
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: sentence
+  situation: 각성 삽관 보조
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: sentence
+  situation: 산소화 우선 원칙
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: sentence
+  situation: CICO 상황
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: sentence
+  situation: 저산소 서맥 진행
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: sentence
+  situation: 예상외 어려운 기도
+  index: 3
+  fields:
+  - chunks
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: sentence
+  situation: 예상외 어려운 기도
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: sentence
+  situation: 기도 완전 폐쇄
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: sentence
+  situation: 위기 후 기도 계획 문서화
+  index: 4
+  fields:
+  - chunks
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: sentence
+  situation: Mallampati 평가
+  index: 2
+  fields:
+  - ko
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: sentence
+  situation: 목·비만 위험 인자
+  index: 0
+  fields:
+  - ko
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: sentence
+  situation: 목·비만 위험 인자
+  index: 1
+  fields:
+  - ko
+  why: 검토 목록 반영(간호사 업무 범위·사실·구 경계·번역투)
+- kind: word-remove
+  id: w-have
+  why: 쉬운 말에 억지 ko를 붙인 단어 — 결정 11로 제거
+- kind: word-remove
+  id: w-begin
+  why: 쉬운 말에 억지 ko를 붙인 단어 — 결정 11로 제거
+- kind: word
+  id: w-away
+  fields:
+  - en
+  - ipa
+  - chips
+  - decoyChips
+  - distractorsEn
+  - cue
+  why: away의 ko(곧바로)는 right away 전체의 뜻 — 헤드워드를 right away로
+- kind: word
+  id: w-got
+  fields:
+  - cue
+  why: cue의 시제가 사실과 다름
+- kind: word
+  id: w-tracheal
+  fields:
+  - cue
+  why: cue가 ko를 되풀이함
+- kind: word
+  id: w-factor
+  fields:
+  - decoyChips
+  why: decoy fat이 비만 장면 옆에서 체형 비하로 읽힘
+- kind: sentence
+  situation: 팀 역할 배정
+  index: 4
+  fields:
+  - words
+  why: 제거한 단어(결정 11)를 태그에서 뺌
+- kind: word
+  id: w-help
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-safely
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-tonsil
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-palate
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-next
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-keep
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-until
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-fully
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-asleep
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-secure
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-wake
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-later
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-numb
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-throat
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-local
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-spray
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-short
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-obesity
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-increase
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-difficulty
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-ramping
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-improve
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-intubate
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤
+- kind: word
+  id: w-protocol
+  fields:
+  - example
+  - exKo
+  why: 예문 문장이 고쳐져 예문·exKo를 새 문장에 맞춤

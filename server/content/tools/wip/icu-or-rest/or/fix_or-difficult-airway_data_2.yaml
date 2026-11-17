@@ -1,0 +1,107 @@
+# 뉘앙스·order·단어. nuance는 상황 번호 + kind 로 찾는다.
+slider:
+  "5": {why: "전산소화가 됐는지는 마취과가 호기말 산소 농도로 판단해요. 간호사는 본 것 — 마스크가 밀착돼 있고 포화도가 유지되는지 — 를 그대로 알려요. '아마 산소를 줬다'는 확인이 아니고, 몇 분 줬다는 말도 효과를 알려 주지는 않아요."}
+  "11":
+    scale: ["We keep trying until it works", "We try a few more times first", "We limit the number of attempts"]
+    answerAt: 2
+    why: "어려운 기도 지침들은 시도 횟수를 제한하라고 해요. 반복 시도는 외상과 부종 위험을 키워 기도를 더 좁힐 수 있기 때문이에요. 될 때까지 계속하는 것도, 몇 번 더 해 보자는 것도 제한이 아니에요. 횟수와 다음 방법은 마취과가 정하고, 간호사는 몇 번째인지 소리 내어 알려요."
+  "20": {cue: "Anesthesia says the video scope worked well and asks you to write that down; the airway alert is already in the chart."}
+  "4": {scale2: "Extra hands are already helping you"}
+  "7": {cue: "An awake patient is nervous while anesthesia works on his airway, and you stand at his side."}
+  "15": {why: "CICO는 삽관도 산소화도 안 되는 상황이에요. 한쪽만 말하면 아직 산소화는 되는 줄 알 수 있으니, 둘 다 안 된다고 분명히 말해야 응급 목 시술로 넘어갈 신호가 돼요. 보통 마취과가 이렇게 선언하고, 간호사는 같은 말로 복창하며 도움을 부르고 키트를 열어요."}
+swap:
+  "12":
+    before: ["Dr. Rao, ", "you have to stop and bag him.", ""]
+    options: ["I'm concerned about his saturation — can we oxygenate first?", "you have to stop and bag him.", "it's your call whether to keep trying."]
+    answer: "I'm concerned about his saturation — can we oxygenate first?"
+    notes:
+      "I'm concerned about his saturation — can we oxygenate first?": "걱정되는 점을 구체적으로 말하고 제안으로 묻는다. 결정은 마취과가 하고, 간호사는 의견을 분명히 낸다."
+      "you have to stop and bag him.": "지시하는 말투다. 처치 결정은 마취과가 하니, 간호사는 수치를 대며 우려를 분명히 말하고 반응이 없으면 다시 강하게 말한다."
+      "it's your call whether to keep trying.": "우려를 말하지 않고 판단을 떠넘긴다. 환자가 위험한 순간에는 걱정을 분명히 전해야 한다."
+  "16":
+    before: ["Cric kit is open — ", "here's the sharp one", "."]
+    options: ["I'm handing you the scalpel", "here's the sharp one", "here's the cutter"]
+    answer: "I'm handing you the scalpel"
+    notes:
+      "I'm handing you the scalpel": "기구의 정확한 이름과 건네는 행동을 함께 말한다. 받는 사람이 무엇을 받는지 안다."
+      "here's the sharp one": "'sharp one'은 무엇인지 분명하지 않다. 날붙이는 이름과 건넨다는 말을 함께 해야 찔리지 않는다."
+      "here's the cutter": "수술 기구를 가리키는 업무 용어가 아니다. 어떤 기구인지 알 수 없다."
+  "15":
+    before: ["Charge nurse, ", "we have a bit of an airway issue", "."]
+    options: ["I need help in here right now — airway emergency", "we have a bit of an airway issue", "someone can come by when they're free"]
+    answer: "I need help in here right now — airway emergency"
+    notes:
+      "someone can come by when they're free": "시간이 날 때 오라는 말이다. 기도 응급에서는 곧바로 와야 한다."
+  "1":
+    before0: "We're checking "
+    options: ["how much of your throat we can see", "your oropharyngeal view", "your Mallampati class"]
+    answer: "how much of your throat we can see"
+    note_old: "how much of your throat I can see"
+  "2": {ko: "카트가 채워져 있는 걸 확인했어요 — 침상 곁에 있어요"}
+  "4": {ko: "보조할 사람이 한 명 더 준비돼 있어요 — 말씀만 하세요"}
+context:
+  "17": {fix: "His heart rate got very slow when his oxygen dropped during anesthesia, and the team treated it right away."}
+order:
+  "1":
+    2: {en: "That shows us how much of your palate we can see.", ko: "그러면 구개가 얼마나 보이는지 알 수 있어요"}
+    3: {en: "What we see helps us plan for your airway.", ko: "저희가 본 것이 기도 계획에 도움이 돼요"}
+    why: "입을 벌려 달라고 하고, 벌린 채 혀를 내밀게 하고, 그때 보이는 정도를 말하고, 그 결과가 기도 계획에 쓰인다고 설명해요."
+  "3":
+    3: {en: "Tell me if you want a different size next.", ko: "다음에 다른 크기가 필요하면 말해 주세요"}
+    why: "장비가 켜지고 화면이 선명하다고 보고하고, 맞는 블레이드를 끼웠다고 말하고, 그 상태로 손 닿는 곳에 둔다고 알린 뒤, 다음엔 다른 크기가 필요한지 물어요."
+  "5":
+    3: {en: "Even so, I'll help keep the mask sealed until he's fully asleep.", ko: "그래도 완전히 잠들 때까지 마스크 밀착을 도울게요", note: "유지"}
+    why: "마스크 밀착을 잡고 있다고 알리고, 그것이 예비능을 최대로 올린다고 말하고, 효과가 나서 포화도가 좋다고 보고한 뒤, 그래도 완전히 잠들 때까지 밀착 유지를 돕겠다고 해요."
+  "6":
+    2: {en: "If none of those work, is the plan to wake him up and try later?", ko: "그게 다 안 되면 깨워서 나중에 다시 시도하는 게 계획인가요?", note: "확인"}
+    why: "계획 A, B, C를 먼저 정하고, A가 실패하면 B 다음 C로 넘어간다고 하고, 그것들이 모두 안 되면 깨워서 나중에 다시 시도하는 게 계획인지 확인한 뒤, 이 모든 것을 시작 전에 모두가 알게 해요."
+  "7":
+    0: {en: "Anesthesia will numb the throat with local spray first.", ko: "먼저 마취과가 국소 스프레이로 목구멍을 마취할 거예요"}
+    why: "먼저 마취과가 목구멍을 스프레이로 마취하고, 환자를 격려하며 천천히 숨 쉬게 하고, 그렇게 숨 쉬는 동안 약이 듣게 하고, 그다음 필요한 도구를 말해 달라고 해요."
+  "8":
+    0: {en: "Here's the LMA — we couldn't ventilate with the mask.", ko: "후두마스크 여기 있어요 — 마스크로 환기가 안 돼요", note: "건넴"}
+    why: "후두마스크를 건네며 마스크로 환기가 안 됐다고 알리고, 받아서 넣는다고 알리고, 들어갔으니 흉곽 상승을 확인하겠다고 하고, 효과가 나타났다고 알려요."
+  "9":
+    3: {en: "If it still won't pass, we move to the next plan.", ko: "그래도 안 들어가면 다음 계획으로 넘어가요", note: "대안", icon: compass}
+    why: "부지를 건네며 기관 클릭이 느껴지는지 묻고, 느껴지면 튜브를 밀어 넣으라 하고, 그동안 부지를 잡아 주겠다고 하고, 그래도 안 되면 다음 계획으로 넘어간다고 해요."
+  "11":
+    0: {en: "Repeated tries can cause trauma and edema.", ko: "반복된 시도는 외상과 부종을 일으킬 수 있어요"}
+    why: "반복 시도가 외상과 부종을 일으킬 수 있다고 이유를 말하고, 그래서 횟수를 제한한다고 하고, 시도마다 번호를 소리 내어 말하고, 이번에도 실패하면 멈추고 계획을 바꾼다고 해요."
+  "12":
+    1: {en: "So with sats dropping, should we stop and mask ventilate him?", ko: "그러니 포화도가 떨어지는데, 멈추고 마스크로 환기할까요?", note: "제안"}
+    2: {en: "While you bag him, let's get his saturation up before another attempt.", ko: "백을 짜는 동안 다음 시도 전에 산소포화도를 올려요", note: "회복", icon: monitor}
+    why: "우선순위가 산소라고 말하고, 포화도가 떨어지는 점을 대며 멈추고 환기할지 묻고, 백을 짜는 동안 다음 시도 전에 포화도를 올리자고 하고, 포화도가 회복되면 다시 시도할 수 있다고 해요."
+  "13":
+    2: {en: "If anyone's unsure of that split, ask before we start.", ko: "그 분담이 확실하지 않으면 시작 전에 물어보세요", note: "질문", icon: bulb}
+  "14":
+    1: {en: "That puts the LMA, bougie, and cric kit out and ready.", ko: "그러면 후두마스크, 부지, 윤상절개 키트가 꺼내져 준비돼요", note: "보고", icon: check}
+    2: {en: "I've checked that all three are within reach.", ko: "셋 다 손 닿는 곳에 있는지 확인했어요", note: "확인", icon: pushpin}
+    3: {en: "So we're ready to move to any backup plan quickly.", ko: "그래서 어떤 백업 계획으로든 빨리 넘어갈 수 있어요", note: "선언", icon: shield}
+  "15":
+    1: {en: "So anesthesia is moving to emergency front-of-neck access now.", ko: "그러니 마취과가 지금 응급 전경부 접근으로 넘어가요"}
+    3: {en: "With the kit open, I'm following the protocol now.", ko: "키트가 열렸으니 지금 절차를 따르고 있어요", note: "진행"}
+    why: "상황을 선언하고, 그래서 마취과가 전경부 접근으로 넘어간다고 알리고, 그것을 위해 키트를 열고 도움을 부르라 하고, 키트가 열리면 절차를 따른다고 해요."
+  "16":
+    1: {en: "While you hold it, I'll stabilize his head and neck for you.", ko: "그걸 쥔 동안 머리와 목을 고정해 드릴게요"}
+    2: {en: "With his head and neck steady, tell me the moment you're through the membrane.", ko: "머리와 목이 고정되면 막을 통과하는 순간 말씀해 주세요"}
+    3: {en: "As soon as you say so, I'll hand you the bougie.", ko: "말씀하시는 즉시 부지를 건네드릴게요", icon: handshake2}
+    why: "키트가 열렸고 메스를 건넨다고 하고, 메스를 쥔 동안 머리와 목을 잡아 준다고 하고, 고정되면 막을 통과하는 순간을 말해 달라 하고, 말하는 즉시 부지를 건넨다고 해요(메스 → 부지 → 튜브 순서)."
+  "17":
+    2: {en: "So I'm prepping for a code — the crash cart is coming.", ko: "그러니 저는 코드에 대비하고 있어요 — 크래시 카트가 오고 있어요", note: "준비"}
+    3: {en: "He's still not saturating — we keep prepping for the code.", ko: "여전히 포화가 안 되니 계속 코드에 대비해요", note: "지속"}
+    why: "수치가 위험하다고 보고하고, 그래서 즉시 산소화해야 한다고 하고, 코드를 준비하며 크래시 카트가 오고 있다고 하고, 아직도 포화되지 않으니 계속 대비한다고 해요."
+  "18":
+    2: {en: "That means anesthesia is switching to the failed airway algorithm now.", ko: "그러니 마취과가 지금 실패 기도 알고리즘으로 전환해요"}
+    why: "시야가 예상보다 나쁘다고 말하고, 예상치 못한 어려운 기도라고 선언하고, 그러니 마취과가 실패 기도 알고리즘으로 전환한다고 알리고, 전원이 그것을 따르며 카트를 들이라고 해요."
+  "19":
+    1: {en: "So anesthesia is going straight to front-of-neck access.", ko: "그러니 마취과가 곧장 전경부 접근으로 가요"}
+    2: {en: "For that, I've got the cric kit open and I'm calling for the surgeon.", ko: "그래서 윤상절개 키트를 열어 뒀고 외과의를 부르고 있어요", note: "진행"}
+    3: {en: "The front-of-neck plan is already running — the surgeon takes over on arrival.", ko: "전경부 계획은 이미 진행 중이에요 — 외과의가 오면 넘겨받아요", note: "진행", icon: compass}
+    why: "완전 폐쇄를 선언하고, 마취과가 전경부 접근으로 간다고 알리고, 그에 맞춰 키트를 열어 뒀고 외과의를 부르고 있다고 하고, 전경부 계획은 이미 진행 중이며 외과의가 오면 넘겨받는다고 해요."
+words:
+  w-away: {en: "right away", ipa: "/ˌraɪt əˈweɪ/", chips: [[right],[away]], decoyChips: [light, wake], distractorsEn: ["right after", "later on"],
+           cue: "시간을 끌지 않고 바로 하겠다고 알릴 때 쓰는 말 — 병력을 마취과에 전할 때"}
+  w-got: {cue: "이미 손에 넣어 갖춰 두었다고 알릴 때 I've 뒤에 붙여 쓰는 말"}
+  w-tracheal: {cue: "목 앞쪽 공기 통로에 관한 말 — 부지가 지나갈 때 연골 고리가 걸리는 곳"}
+  w-factor: {decoyChips: [fec, fic]}
+remove_words: [w-have, w-begin]

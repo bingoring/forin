@@ -1,0 +1,111 @@
+# 문장 수정 (A 1~14 + KP ko 3건). 키: "상황.문장"
+sentences:
+  "1.3":
+    en: "We're looking at how much of your tonsils and palate we can see."
+    chunks: ["We're looking at", "how much of your tonsils", "and palate", "we can see", "."]
+    why: "how much … we can see는 보이는 정도 자체가 평가 기준이라, 지금 무엇을 보는지 환자에게 소리 내어 말해 주는 틀이에요. We're는 마취 팀이 함께 본다는 뜻이에요."
+  "3.4":
+    en: "Tell me if you want a different blade size next."
+    ko: "다음에 다른 블레이드 크기가 필요하면 말해 주세요."
+    chunks: ["Tell me", "if you want", "a different blade size", "next", "."]
+    words: [w-blade, w-size, w-next]
+    why: "Tell me if …는 필요할 때만 말해 달라는 가벼운 요청이라 상대가 부담 없이 답해요. next는 지금 다음 순서에 필요한 것을 가리켜요."
+    decoy: "a different handle color"
+    dk: ["오늘은 다른 블레이드 크기가 필요하면 말해 주세요.", "다음에 다른 후두경 손잡이가 필요하면 말해 주세요."]
+    blank: [next, [next, last, yesterday, twice]]
+  "5.3":
+    en: "I'll help keep the mask sealed until he's fully asleep."
+    ko: "완전히 잠들 때까지 마스크 밀착을 도울게요."
+    chunks: ["I'll help", "keep the mask sealed", "until he's", "fully asleep", "."]
+    words: [w-help, w-keep, w-mask, w-seal, w-until, w-fully, w-asleep]
+    why: "I'll help는 마스크를 쥔 마취과를 곁에서 보조한다는 약속이에요. keep … sealed는 한 번 붙이고 끝이 아니라 유지한다는 뜻이고, until he's fully asleep이 유지할 기간의 끝을 정해 줘요."
+    decoy: "keep the room quiet"
+    dk: ["완전히 잠들 때까지 마스크 정리를 도울게요.", "완전히 잠들 때까지 모니터 확인을 도울게요."]
+    blank: [sealed, [sealed, labeled, colored, dated]]
+  "6.3":
+    en: "So if we can't secure it safely, the plan is to wake him up and try later?"
+    ko: "그러니까 안전하게 확보가 안 되면 깨워서 나중에 다시 시도하는 게 계획이죠?"
+    chunks: ["So if we can't", "secure it safely", ", the plan is", "to wake him up", "and try later", "?"]
+    words: [w-secure, w-safely, w-plan, w-wake, w-try, w-later]
+    tag: "계획 확인"
+    why: "So if …?로 앞서 들은 계획을 되물어 확인해요. the plan is …로 깨울지 정하는 쪽은 마취과이고, 간호사는 그 계획을 복창해 팀이 같은 말을 하는지 맞춰 봐요."
+    decoy: "and tell his wife"
+    dk: ["그러니까 안전하게 확보가 안 되면 깨워서 내일 다시 시도하는 게 계획이죠?", "그러니까 안전하게 확보가 안 되면 깨워서 나중에 다시 의논하는 게 계획이죠?"]
+    blank: [wake, [wake, cheer, warm, tidy]]
+  "7.3":
+    en: "Your anesthesia team will numb your throat with a local spray before we start."
+    ko: "시작하기 전에 마취 팀이 국소 스프레이로 목구멍을 마취해 드릴 거예요."
+    chunks: ["Your anesthesia team", "will numb your throat", "with a local spray", "before we start", "."]
+    words: [w-anesthesia, w-numb, w-throat, w-local, w-spray, w-start]
+    why: "Your anesthesia team will은 약을 고르고 마취를 시행하는 쪽이 마취 팀이라고 환자에게 분명히 알려요. with a local spray로 방법을, before we start로 순서를 말해요."
+    decoy: "the forearm"
+    dk: ["시작하기 전에 마취 팀이 국소 스프레이로 목구멍을 닦아 드릴 거예요.", "시작하기 전에 수술 팀이 국소 스프레이로 목구멍을 마취해 드릴 거예요."]
+    blank: [throat, [throat, hand, knee, ear]]
+  "12.3":
+    en: "Sats are dropping — should we stop and mask ventilate him?"
+    ko: "포화도가 떨어지고 있어요 — 멈추고 마스크로 환기할까요?"
+    chunks: ["Sats are", "dropping", "— should we stop", "and mask ventilate him", "?"]
+    words: [w-sats, w-stop, w-mask, w-ventilate]
+    tag: "우려 전달"
+    why: "수치(Sats are dropping)를 먼저 대고 should we …?로 묻는 틀이에요. 멈출지 정하는 쪽은 마취과이니, 간호사는 근거를 대며 제안해요."
+    decoy: "— should we chart"
+    dk: ["포화도가 떨어지고 있어요 — 멈추려고 마스크를 집을까요?", "포화도가 떨어지고 있어요 — 멈추면 부종이 덜 생길까요?"]
+    blank: [stop, [stop, chart, count, clean]]
+  "15.4":
+    en: "I'm opening the kit and following the front-of-neck access protocol."
+    ko: "키트를 열고 전경부 접근 프로토콜을 따르고 있어요."
+    chunks: ["I'm opening", "the kit", "and following", "the front-of-neck access protocol", "."]
+    words: [w-open, w-kit, w-frontofneck, w-access, w-protocol]
+    tag: "진행 보고"
+    why: "I'm opening … and following …은 지금 하고 있는 일을 진행형으로 알리는 말이에요. 접근을 시작할지는 마취과가 정하고, 간호사는 키트와 프로토콜을 따라가며 보조해요."
+    decoy: "the intubation protocol"
+    dk: ["키트를 열고 전경부 접근 프로토콜 카드를 펴고 있어요.", "키트를 열면 전경부 접근으로 산소가 들어가요."]
+    blank: [protocol, [protocol, budget, menu, survey]]
+  "17.4":
+    en: "Let's prep for a code — I'll bring the crash cart."
+    ko: "코드에 대비해요 — 제가 크래시 카트를 가져올게요."
+    chunks: ["Let's prep", "for a code", "— I'll bring", "the crash cart", "."]
+    words: [w-prep, w-code, w-bring]
+    tag: "준비 선언"
+    why: "Let's로 같이 대비하자고 하고, 대시 뒤 I'll bring으로 내가 맡을 일을 정해요. for a code의 a는 코드가 하나의 사건이라서 붙는 관사예요."
+    decoy: "the supply closet"
+    dk: ["코드에 대비해요 — 제가 크래시 카트를 정리할게요.", "회진에 대비해요 — 제가 크래시 카트를 가져올게요."]
+    blank: [code, [code, delivery, dialysis, biopsy]]
+  "18.3":
+    chunks: ["The view is", "much worse", "than we expected", "."]
+  "18.4":
+    en: "Heads up, everyone — anesthesia is moving to the failed airway plan."
+    ko: "모두 주목해 주세요 — 마취과가 실패 기도 계획으로 넘어가요."
+    chunks: ["Heads up", ", everyone", "— anesthesia is moving", "to the failed airway plan", "."]
+    words: [w-everyone, w-anesthesia, w-move, w-fail, w-airway, w-plan]
+    tag: "전원 알림"
+    why: "Heads up으로 주의를 끈 뒤 anesthesia is moving으로 결정한 쪽(마취과)을 밝혀요. 간호사는 결정을 팀에 전하고, to the failed airway plan이 향하는 곳을 알려요."
+    decoy: "to the intubation drill"
+    dk: ["모두 주목해 주세요 — 외과가 실패 기도 계획으로 넘어가요.", "모두 주목해 주세요 — 마취과가 어려운 기도 카트로 넘어가요."]
+    blank: [anesthesia, [anesthesia, pharmacy, radiology, security]]
+  "19.4":
+    en: "I've got the cric kit open, and I'm calling for the surgeon."
+    ko: "윤상절개 키트를 열어 뒀고, 외과의를 부르고 있어요."
+    chunks: ["I've got", "the cric kit open", ", and I'm calling", "for the surgeon", "."]
+    words: [w-got, w-cric, w-kit, w-open, w-call, w-surgeon]
+    tag: "진행 보고"
+    why: "I've got … open은 이미 해 둔 일을 현재 상태로 알리고, and I'm calling은 지금 하는 일을 진행형으로 이어요. 시술은 외과의가 하니 간호사는 키트 준비와 호출을 맡아요."
+    decoy: "for the pharmacist"
+    dk: ["윤상절개 키트를 열려고 포장을 잡고 있어요.", "완전 폐쇄라서 외과의 손이 꼭 필요한 상황이에요."]
+    blank: [cric, [cric, lab, dental, suture]]
+  "20.4":
+    chunks: ["Let's flag", "this", "as a difficult airway alert", "for next time", "."]
+  # keyPhrase — ko만
+  "1.2":
+    ko: "기도를 안전하게 관리할 계획을 세우는 데 도움이 돼요."
+    dk: ["식사를 안전하게 관리할 계획을 세우는 데 도움이 돼요.", "기도를 신속하게 관리할 계획을 세우는 데 도움이 돼요."]
+  "10.0":
+    ko: "짧은 목과 비만 때문에 더 어려워져요."
+    dk: ["짧은 목과 비만 때문에 더 오래 걸려요.", "긴 목과 비만 때문에 더 어려워져요."]
+  "10.1":
+    ko: "시야가 좋아지도록 램핑 자세를 잡아요."
+    dk: ["통증이 줄도록 램핑 자세를 잡아요.", "소음이 줄도록 램핑 자세를 잡아요."]
+  # KP why 보강(유지 항목)
+why_append:
+  "5.0": " 마스크를 쥐는 쪽은 보통 마취과이고, 간호사는 마취과 지시로 밀착을 거들어요."
+  "13.0": " 윤상연골 압박은 마취과가 요청할 때에만 해요."

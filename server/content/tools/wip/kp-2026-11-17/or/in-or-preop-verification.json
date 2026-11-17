@@ -1,0 +1,446 @@
+{
+ "theme": "or-preop-verification",
+ "situations": [
+  {
+   "title": "환자 신원 2가지 확인",
+   "tagline": "Good morning — I'm here for surgery, do you need to check my details again?",
+   "room": "PRE-OP 3",
+   "brief": "이름과 생년월일을 개방형 질문으로 물어 신원을 두 가지로 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "개방형 질문",
+    "신원 확인",
+    "정중한 소통"
+   ],
+   "keyPhrases": [
+    "Can you tell me your full name and date of birth?",
+    "I just want to confirm who you are before we go in.",
+    "Thank you — that matches your chart."
+   ],
+   "goals": [
+    "이름과 생년월일을 개방형으로 물어 확인한다",
+    "차트와 대조해 신원을 검증한다"
+   ]
+  },
+  {
+   "title": "수술 부위·측 확인",
+   "tagline": "It's my right knee they're operating on today.",
+   "room": "PRE-OP 3",
+   "brief": "수술 부위와 좌우 측을 환자에게 구두로 재확인하세요.",
+   "role": "patient",
+   "skills": [
+    "부위 확인",
+    "좌우 확인",
+    "구두 재확인"
+   ],
+   "keyPhrases": [
+    "Which side are we operating on today?",
+    "Can you point to the exact spot for me?",
+    "So that's your right knee — let me confirm with your chart."
+   ],
+   "goals": [
+    "환자에게 부위와 측을 직접 말하게 한다",
+    "차트 및 표시와 일치하는지 확인한다"
+   ]
+  },
+  {
+   "title": "수술 동의서 서명 확인",
+   "tagline": "Yes, I signed the consent form yesterday with the doctor.",
+   "room": "PRE-OP 3",
+   "brief": "동의서의 서명과 날짜, 수술명이 일치하는지 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "동의서 확인",
+    "서명 대조",
+    "일치 확인"
+   ],
+   "keyPhrases": [
+    "Can you confirm you signed this consent form?",
+    "Does this match the surgery you're expecting today?",
+    "I see your signature and the date here."
+   ],
+   "goals": [
+    "서명과 날짜를 확인한다",
+    "동의서 수술명이 예정 수술과 일치하는지 검증한다"
+   ]
+  },
+  {
+   "title": "수술 부위 표시 확인",
+   "tagline": "The surgeon drew his initials on my arm earlier — is that right?",
+   "room": "PRE-OP 3",
+   "brief": "집도의 이니셜로 된 수술 부위 표시가 있는지 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "부위 표시 확인",
+    "이니셜 대조",
+    "관찰"
+   ],
+   "keyPhrases": [
+    "Let me check the marking the surgeon made.",
+    "I can see the initials here on your arm.",
+    "That confirms we have the correct site marked."
+   ],
+   "goals": [
+    "집도의 이니셜 표시를 육안으로 확인한다",
+    "표시 부위가 예정 부위와 일치하는지 검증한다"
+   ]
+  },
+  {
+   "title": "알레르기 밴드 대조",
+   "tagline": "I'm allergic to penicillin — it's on my wristband.",
+   "room": "PRE-OP 3",
+   "brief": "알레르기 밴드와 차트의 알레르기 정보를 대조해 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "알레르기 확인",
+    "밴드 대조",
+    "안전 확인"
+   ],
+   "keyPhrases": [
+    "Can you tell me about any allergies you have?",
+    "Let me check your allergy band against your chart.",
+    "I'll make sure the whole team knows about this."
+   ],
+   "goals": [
+    "환자가 말한 알레르기를 밴드와 대조한다",
+    "차트와 일치하는지 확인하고 팀에 공유한다"
+   ]
+  },
+  {
+   "title": "금식 여부 구두 확인",
+   "tagline": "I didn't eat anything after midnight, just like they told me.",
+   "room": "PRE-OP 3",
+   "brief": "마지막 식이 시각을 물어 금식 여부를 구두로 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "금식 확인",
+    "시각 확인",
+    "구두 확인"
+   ],
+   "keyPhrases": [
+    "When did you last have anything to eat or drink?",
+    "Did you have any water or medications this morning?",
+    "Good — that means you've been fasting long enough."
+   ],
+   "goals": [
+    "마지막 식이 시각을 확인한다",
+    "물이나 약 복용 여부까지 확인한다"
+   ]
+  },
+  {
+   "title": "동의서 수술명 불일치",
+   "tagline": "Wait — this form says laparoscopic, but I was told it'd be open surgery.",
+   "room": "PRE-OP 3",
+   "brief": "동의서 수술명이 예정 수술과 다르면 진행을 보류하고 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "불일치 발견",
+    "진행 보류",
+    "확인 소통"
+   ],
+   "keyPhrases": [
+    "I want to pause here — the consent doesn't match what you described.",
+    "Let me hold everything until we clarify this with your surgeon.",
+    "I won't proceed until this is corrected."
+   ],
+   "goals": [
+    "동의서 수술명 불일치를 발견하고 진행을 보류한다",
+    "집도의에게 확인해 정정한다"
+   ]
+  },
+  {
+   "title": "환자가 부위를 다르게 진술",
+   "tagline": "I thought they were doing my left hip, not the right one?",
+   "room": "PRE-OP 3",
+   "brief": "환자 진술과 부위 표시가 다르면 진행을 멈추고 차이를 조정하세요.",
+   "role": "patient",
+   "skills": [
+    "진술 대조",
+    "차이 조정",
+    "진행 보류"
+   ],
+   "keyPhrases": [
+    "You said left, but the marking is on the right — let's stop.",
+    "I need to clarify this before we move forward.",
+    "I'll bring in your surgeon to confirm the correct side."
+   ],
+   "goals": [
+    "환자 진술과 표시의 차이를 인지한다",
+    "절차를 멈추고 집도의와 재확인한다"
+   ]
+  },
+  {
+   "title": "부위 표시 없이 입실",
+   "tagline": "The surgeon didn't mark the site — the patient just came up from the floor.",
+   "room": "PRE-OP 3",
+   "brief": "부위 표시가 누락된 채 입실하면 보고하고 표시 전까지 재확인을 요청하세요.",
+   "role": "colleague",
+   "skills": [
+    "표시 누락 보고",
+    "재확인 요청",
+    "프로토콜 준수"
+   ],
+   "keyPhrases": [
+    "The site isn't marked — we can't proceed yet.",
+    "Can we get the surgeon to mark before we continue?",
+    "I'm reporting this as a missing site marking."
+   ],
+   "goals": [
+    "부위 표시 누락을 보고한다",
+    "집도의가 표시할 때까지 진행을 보류한다"
+   ]
+  },
+  {
+   "title": "언어 장벽 신원 확인 지연",
+   "tagline": "저는 영어를 잘 못해요, 통역이 필요해요.",
+   "room": "PRE-OP 3",
+   "brief": "언어 장벽으로 신원 확인이 지연되면 통역을 통해 재확인하세요.",
+   "role": "patient",
+   "skills": [
+    "통역 활용",
+    "신원 재확인",
+    "인내심 있는 소통"
+   ],
+   "keyPhrases": [
+    "Let me get an interpreter so we can confirm your details.",
+    "Please tell me your name and date of birth through the interpreter.",
+    "I want to make sure you understand every step."
+   ],
+   "goals": [
+    "통역을 확보해 신원을 재확인한다",
+    "환자가 이해했는지 확인한다"
+   ]
+  },
+  {
+   "title": "진정 상태 동의 유효성",
+   "tagline": "She got her pre-med already — can her consent still be valid?",
+   "room": "PRE-OP 3",
+   "brief": "진정 후 얻은 동의의 효력이 유효한지 확인하고 필요 시 재검토하세요.",
+   "role": "colleague",
+   "skills": [
+    "동의 효력 확인",
+    "진정 상태 판단",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "Was this consent signed before she was sedated?",
+    "If she was already medicated, we need to verify its validity.",
+    "Let's check the timing before we proceed."
+   ],
+   "goals": [
+    "동의 서명 시점과 진정 시점을 확인한다",
+    "동의 효력이 유효한지 판단한다"
+   ]
+  },
+  {
+   "title": "응급 수술 동의 시간 부족",
+   "tagline": "There's no time for a full consent — we need to move now.",
+   "room": "PRE-OP 3",
+   "brief": "응급 수술로 시간이 부족할 때 구두 동의를 받고 즉시 문서화하세요.",
+   "role": "colleague",
+   "skills": [
+    "응급 동의",
+    "구두 동의 문서화",
+    "신속 소통"
+   ],
+   "keyPhrases": [
+    "Let's get verbal consent and document it immediately.",
+    "I'll note the time and witnesses on the record.",
+    "We proceed under emergency consent — I'm charting it now."
+   ],
+   "goals": [
+    "응급 구두 동의를 확보한다",
+    "시각과 증인을 즉시 문서화한다"
+   ]
+  },
+  {
+   "title": "소아 법적 대리 동의",
+   "tagline": "I'm his mother — do you need me to sign for the surgery?",
+   "room": "PRE-OP 3",
+   "brief": "소아 환자의 보호자에게 법적 대리 동의권이 있는지 확인하세요.",
+   "role": "family",
+   "skills": [
+    "대리 동의 확인",
+    "보호자 권한 확인",
+    "가족 소통"
+   ],
+   "keyPhrases": [
+    "Are you his legal guardian?",
+    "I'll need you to sign the consent on his behalf.",
+    "Can I confirm your relationship to the patient?"
+   ],
+   "goals": [
+    "보호자의 법적 대리 동의권을 확인한다",
+    "대리 서명을 받아 문서화한다"
+   ]
+  },
+  {
+   "title": "양측 수술 측 혼동 방지",
+   "tagline": "They're doing both my eyes today — how do you keep them straight?",
+   "room": "PRE-OP 3",
+   "brief": "양측 수술 시 각 부위를 개별적으로 확인해 측 혼동을 방지하세요.",
+   "role": "patient",
+   "skills": [
+    "양측 확인",
+    "개별 검증",
+    "혼동 방지"
+   ],
+   "keyPhrases": [
+    "We'll confirm each side separately, one at a time.",
+    "Let me verify the right eye and then the left.",
+    "Both procedures are documented individually."
+   ],
+   "goals": [
+    "양측 부위를 각각 개별로 확인한다",
+    "측 혼동을 방지하는 절차를 설명한다"
+   ]
+  },
+  {
+   "title": "추가 시술 동의 범위",
+   "tagline": "If they find something else in there, are they allowed to fix it too?",
+   "room": "PRE-OP 3",
+   "brief": "동의 범위를 벗어난 추가 시술 여부를 확인하고 범위를 명확히 하세요.",
+   "role": "patient",
+   "skills": [
+    "동의 범위 확인",
+    "추가 시술 소통",
+    "명확화"
+   ],
+   "keyPhrases": [
+    "The consent only covers the planned procedure.",
+    "Anything beyond that would need your permission.",
+    "Let me clarify exactly what you've agreed to."
+   ],
+   "goals": [
+    "동의 범위를 환자와 확인한다",
+    "추가 시술이 범위를 초과하는지 명확히 한다"
+   ]
+  },
+  {
+   "title": "타임아웃 중 표시 불일치",
+   "tagline": "Hold on — the consent says left but the marking is on the right.",
+   "room": "OR 5",
+   "brief": "타임아웃 중 부위 표시 불일치를 발견하면 즉시 절차를 중단하세요.",
+   "role": "colleague",
+   "skills": [
+    "타임아웃 수행",
+    "불일치 제기",
+    "팀 정지 소통"
+   ],
+   "keyPhrases": [
+    "I need us to pause — the consent and marking don't match.",
+    "Let's verify the correct side before we proceed.",
+    "Nobody starts until this is resolved."
+   ],
+   "goals": [
+    "표시 불일치를 발견 즉시 절차를 멈춘다",
+    "팀 전원이 부위를 재확인하게 한다"
+   ]
+  },
+  {
+   "title": "동의 없이 유도 직전",
+   "tagline": "I'm about to induce — is the consent signed and confirmed?",
+   "room": "OR 5",
+   "brief": "동의 확인 없이 마취 유도 직전이면 유도를 중단하고 동의를 재확보하세요.",
+   "role": "colleague",
+   "skills": [
+    "유도 중단",
+    "동의 재확보",
+    "위기 소통"
+   ],
+   "keyPhrases": [
+    "Stop — we don't have a confirmed consent yet.",
+    "Please hold induction until this is signed.",
+    "I can't let us proceed without valid consent."
+   ],
+   "goals": [
+    "동의 누락을 발견하고 유도를 중단시킨다",
+    "유효한 동의를 재확보한다"
+   ]
+  },
+  {
+   "title": "신원 밴드 없는 무의식 환자",
+   "tagline": "This patient came in unconscious with no ID band — how do we verify?",
+   "room": "OR 5",
+   "brief": "신원 밴드 없는 무의식 환자에 대해 미확인 환자 프로토콜을 따르세요.",
+   "role": "colleague",
+   "skills": [
+    "미확인 환자 프로토콜",
+    "신원 대체 확인",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "We follow the unidentified patient protocol.",
+    "Let's assign a temporary ID and document everything.",
+    "We confirm identity through the transferring team."
+   ],
+   "goals": [
+    "미확인 환자 프로토콜을 적용한다",
+    "임시 식별과 이송팀 확인을 문서화한다"
+   ]
+  },
+  {
+   "title": "잘못된 환자 입실",
+   "tagline": "This isn't the patient on my list — stop, we have the wrong person.",
+   "room": "OR 5",
+   "brief": "잘못된 환자가 입실했음을 인지하면 즉시 절차를 차단하세요.",
+   "role": "colleague",
+   "skills": [
+    "wrong patient 차단",
+    "즉시 중단",
+    "위기 보고"
+   ],
+   "keyPhrases": [
+    "This is the wrong patient — everyone stop.",
+    "The name and DOB don't match our case.",
+    "I'm halting everything until we correct this."
+   ],
+   "goals": [
+    "잘못된 환자를 즉시 인지하고 차단한다",
+    "절차를 멈추고 정확한 환자를 확인한다"
+   ]
+  },
+  {
+   "title": "동의 철회 의사 표현",
+   "tagline": "I've changed my mind — I don't want to go through with this.",
+   "room": "PRE-OP 3",
+   "brief": "환자가 동의 철회 의사를 밝히면 이를 존중하고 수술을 보류하세요.",
+   "role": "patient",
+   "skills": [
+    "철회 존중",
+    "수술 보류",
+    "환자 자율성 소통"
+   ],
+   "keyPhrases": [
+    "You have every right to change your mind.",
+    "I'll stop everything and let your surgeon know.",
+    "Nothing will happen without your agreement."
+   ],
+   "goals": [
+    "환자의 철회 의사를 존중한다",
+    "수술을 보류하고 팀에 알린다"
+   ]
+  },
+  {
+   "title": "반대 측 수술 직전 인지",
+   "tagline": "The surgeon's prepping the left, but the case is the right — stop now.",
+   "room": "OR 5",
+   "brief": "반대 측 수술이 임박했음을 인지하면 wrong-site를 즉시 차단하세요.",
+   "role": "colleague",
+   "skills": [
+    "wrong-site 차단",
+    "즉시 정지",
+    "위기 소통"
+   ],
+   "keyPhrases": [
+    "Stop — you're prepping the wrong side.",
+    "The case is the right side, not the left.",
+    "We do not incise until this is confirmed."
+   ],
+   "goals": [
+    "반대 측 준비를 즉시 인지한다",
+    "절개 전 절차를 멈추고 재확인한다"
+   ]
+  }
+ ]
+}

@@ -3,7 +3,7 @@ words:
 - id: w-last
   en: last
   ipa: /læst/
-  ko: 마지막으로
+  ko: 마지막
   icon: calendar
   example: When did you last eat any solid food?
   cue: 그 뒤로는 한 번도 하지 않은, 가장 최근의 그때를 짚을 때 쓰는 말
@@ -12,8 +12,8 @@ words:
   - first
   - least
   distractorsKo:
-  - 처음으로
-  - 가끔씩
+  - 처음
+  - 다음
   chips:
   - - last
   decoyChips:
@@ -183,7 +183,7 @@ words:
   ipa: /stɑːrt/
   ko: 시작하다
   icon: gear
-  example: Let's start with solid food, since that clears your stomach the slowest.
+  example: Let's start with solid food, since your stomach clears it the slowest.
   cue: 멈춰 있던 일을 처음으로 움직이게 하는 동작
   tag: 시점·순서
   distractorsEn:
@@ -196,13 +196,13 @@ words:
   - - start
   decoyChips:
   - smart
-  exKo: 고형식부터 시작할게요, 위를 가장 늦게 비우거든요.
+  exKo: 고형식부터 시작할게요, 위에서 가장 늦게 비워지거든요.
 - id: w-clear
   en: clear
   ipa: /klɪr/
   ko: 비우다
   icon: gear
-  example: Let's start with solid food, since that clears your stomach the slowest.
+  example: Let's start with solid food, since your stomach clears it the slowest.
   cue: 찼던 것이 다 내려가 속이 텅 비게 되는 일 — 위가 이렇게 된다
   tag: 금식·섭취
   distractorsEn:
@@ -215,13 +215,13 @@ words:
   - - clear
   decoyChips:
   - clerk
-  exKo: 고형식부터 시작할게요, 위를 가장 늦게 비우거든요.
+  exKo: 고형식부터 시작할게요, 위에서 가장 늦게 비워지거든요.
 - id: w-stomach
   en: stomach
   ipa: /ˈstʌmək/
   ko: 위
   icon: stetho
-  example: Let's start with solid food, since that clears your stomach the slowest.
+  example: Let's start with solid food, since your stomach clears it the slowest.
   cue: 먹은 것이 들어가 소화되기 시작하는 배 속의 주머니
   tag: 금식·섭취
   distractorsEn:
@@ -235,14 +235,14 @@ words:
     - ach
   decoyChips:
   - stum
-  - ick
-  exKo: 고형식부터 시작할게요, 위를 가장 늦게 비우거든요.
+  - ink
+  exKo: 고형식부터 시작할게요, 위에서 가장 늦게 비워지거든요.
 - id: w-slow
   en: slow
   ipa: /sloʊ/
   ko: 느린
   icon: board
-  example: Let's start with solid food, since that clears your stomach the slowest.
+  example: Let's start with solid food, since your stomach clears it the slowest.
   cue: 속도가 느려 시간이 많이 걸리는 상태
   tag: 상태·정도
   distractorsEn:
@@ -255,7 +255,7 @@ words:
   - - slow
   decoyChips:
   - slot
-  exKo: 고형식부터 시작할게요, 위를 가장 늦게 비우거든요.
+  exKo: 고형식부터 시작할게요, 위에서 가장 늦게 비워지거든요.
 - id: w-small
   en: small
   ipa: /smɔːl/
@@ -334,6 +334,28 @@ words:
   - el
   - art
   exKo: 물을 끊은 정확한 시각도 필요해요.
+- id: w-exactly
+  en: exactly
+  ipa: /ɪɡˈzæktli/
+  ko: 정확히
+  icon: check
+  example: Exactly how much water did you have, and at what time?
+  cue: 어림이 아니라 딱 맞게 묻고 싶을 때 '몇 시·얼마나' 앞에 붙이는 부사
+  tag: 상태·정도
+  distractorsEn:
+  - directly
+  - extremely
+  distractorsKo:
+  - 대충
+  - 대략
+  chips:
+  - - ex
+    - act
+    - ly
+  decoyChips:
+  - ix
+  - lee
+  exKo: 물을 정확히 얼마나, 몇 시에 드셨어요?
 - id: w-stop
   en: stop
   ipa: /stɒp/
@@ -675,7 +697,7 @@ words:
   ipa: /saʊnd/
   ko: ~처럼 들리다
   icon: speech
-  example: This sounds like a real allergy, not just a side effect.
+  example: That sounds like PONV, and we can plan ahead for it.
   cue: 듣기에 그렇게 느껴진다고 판단을 말할 때 쓰는 동사
   tag: 소통
   distractorsEn:
@@ -688,13 +710,13 @@ words:
   - - sound
   decoyChips:
   - sand
-  exKo: 이건 단순 부작용이 아니라 진짜 알레르기 같아요.
+  exKo: 그건 PONV 같은데, 미리 대비할 수 있어요.
 - id: w-allergy
   en: allergy
   ipa: /ˈælərdʒi/
   ko: 알레르기
   icon: bandage
-  example: This sounds like a real allergy, not just a side effect.
+  example: I'll record this as an allergy, and anesthesia will review it.
   cue: 특정 약이나 음식에 몸이 해로운 면역 반응을 보이는 체질
   tag: 알레르기
   distractorsEn:
@@ -710,47 +732,7 @@ words:
   decoyChips:
   - el
   - lur
-  exKo: 이건 단순 부작용이 아니라 진짜 알레르기 같아요.
-- id: w-side
-  en: side
-  ipa: /saɪd/
-  ko: 부작용의
-  icon: board
-  example: This sounds like a real allergy, not just a side effect.
-  cue: 주된 작용 말고 곁가지로 따라오는 것 앞에 붙는 말
-  tag: 약물
-  distractorsEn:
-  - main
-  - minor
-  distractorsKo:
-  - 주요한
-  - 약효의
-  chips:
-  - - side
-  decoyChips:
-  - slide
-  exKo: 이건 단순 부작용이 아니라 진짜 알레르기 같아요.
-- id: w-effect
-  en: effect
-  ipa: /ɪˈfɛkt/
-  ko: 효과
-  icon: chartup
-  example: This sounds like a real allergy, not just a side effect.
-  cue: 어떤 원인 때문에 뒤따라 나타나는 결과나 변화
-  tag: 약물
-  distractorsEn:
-  - effort
-  - edge
-  distractorsKo:
-  - 원인
-  - 부담
-  chips:
-  - - ef
-    - fect
-  decoyChips:
-  - af
-  - fact
-  exKo: 이건 단순 부작용이 아니라 진짜 알레르기 같아요.
+  exKo: 알레르기로 기록해 두고, 마취과에서 검토할 거예요.
 - id: w-note
   en: note
   ipa: /noʊt/
@@ -1084,8 +1066,8 @@ words:
   cue: 하루도 거르지 않고 날마다 되풀이된다는 뜻
   tag: 시점·순서
   distractorsEn:
-  - dairy
   - weekly
+  - hourly
   distractorsKo:
   - 매주
   - 가끔
@@ -1172,12 +1154,12 @@ words:
   chips:
   - - pill
   decoyChips:
-  - pall
+  - poll
   exKo: 오늘 아침에 혈압약 드셨어요?
 - id: w-thinner
   en: thinner
   ipa: /ˈθɪnər/
-  ko: 혈액 항응고제
+  ko: 항혈전제
   icon: pill
   example: Are you on a blood thinner, insulin, or an inhaler?
   cue: 피가 엉겨 굳는 걸 막아 주는 약
@@ -1300,22 +1282,22 @@ words:
   - chick
   exKo: 기준치를 확인하려고 활력징후를 잴게요.
 - id: w-vital
-  en: vital
-  ipa: /ˈvaɪtəl/
+  en: vitals
+  ipa: /ˈvaɪtəlz/
   ko: 활력징후
   icon: monitor
   example: I'm going to check your vitals to get a baseline.
   cue: 생명을 유지하는 징후 — 혈압·맥박·체온을 묶어 복수로 부르는 말
   tag: 활력·계측
   distractorsEn:
-  - vitamin
+  - vitamins
   - virus
   distractorsKo:
   - 체온
   - 혈당
   chips:
   - - vi
-    - tal
+    - tals
   decoyChips:
   - vo
   - tail
@@ -1427,21 +1409,21 @@ words:
 - id: w-fast
   en: fast
   ipa: /fæst/
-  ko: 빠른
+  ko: 빠르게
   icon: board
   example: Your heart's beating a little fast, which often happens when people feel nervous.
   cue: 움직임이나 변화의 속도가 빠르다는 말
   tag: 상태·정도
   distractorsEn:
-  - vast
-  - fussy
+  - far
+  - first
   distractorsKo:
-  - 깊은
-  - 높은
+  - 깊게
+  - 높게
   chips:
   - - fast
   decoyChips:
-  - fist
+  - fest
   exKo: 심장이 조금 빨리 뛰는데, 긴장하면 흔히 그래요.
 - id: w-nervous
   en: nervous
@@ -1968,7 +1950,7 @@ words:
   ipa: /ˈkænsəl/
   ko: 취소하다
   icon: siren
-  example: Your surgery isn't canceled, but the timing might need to shift.
+  example: This doesn't always mean your surgery is canceled — the timing may just shift.
   cue: 잡혀 있던 일정이나 처치를 없던 일로 하는 것
   tag: 시점·순서
   distractorsEn:
@@ -1983,13 +1965,13 @@ words:
   decoyChips:
   - con
   - sel
-  exKo: 수술이 취소되는 건 아니지만, 시간이 조정될 수 있어요.
+  exKo: 수술이 꼭 취소된다는 뜻은 아니에요, 시간만 조정될 수 있어요.
 - id: w-shift
   en: shift
   ipa: /ʃɪft/
   ko: 밀리다
   icon: calendar
-  example: Your surgery isn't canceled, but the timing might need to shift.
+  example: This doesn't always mean your surgery is canceled — the timing may just shift.
   cue: 정해 둔 때가 앞뒤로 움직여 달라지는 일
   tag: 시점·순서
   distractorsEn:
@@ -2002,13 +1984,13 @@ words:
   - - shift
   decoyChips:
   - shirt
-  exKo: 수술이 취소되는 건 아니지만, 시간이 조정될 수 있어요.
+  exKo: 수술이 꼭 취소된다는 뜻은 아니에요, 시간만 조정될 수 있어요.
 - id: w-forget
   en: forget
   ipa: /fərˈɡɛt/
   ko: 잊다
   icon: bulb
-  example: It's easy to forget that even a sip of water counts as breaking your fast.
+  example: It's easy to forget — anesthesia will decide if a sip with your pill counts.
   cue: 해야 할 일이나 들은 말이 기억에서 사라져 버리는 일
   tag: 시점·순서
   distractorsEn:
@@ -2023,11 +2005,11 @@ words:
   decoyChips:
   - fir
   - jet
-  exKo: 물 한 모금도 금식 위반으로 친다는 걸 잊기 쉬워요.
+  exKo: 잊기 쉬운 일이에요. 약과 함께 마신 한 모금이 문제가 되는지는 마취과가 판단해요.
 - id: w-shellfish
   en: shellfish
   ipa: /ˈʃɛlfɪʃ/
-  ko: 해산물
+  ko: 갑각류·조개류
   icon: coffee
   example: Shellfish allergy doesn't actually predict a contrast reaction.
   cue: 새우·게·조개처럼 껍데기가 있는 바다 먹거리 — 흔한 알레르기 원인
@@ -2036,15 +2018,15 @@ words:
   - starfish
   - shelter
   distractorsKo:
-  - 육류
-  - 채소
+  - 육류·가금류
+  - 견과류·씨앗
   chips:
   - - shell
     - fish
   decoyChips:
   - shall
   - fin
-  exKo: 해산물 알레르기가 있다고 조영제 반응이 예측되는 건 아니에요.
+  exKo: 갑각류·조개류 알레르기가 있다고 조영제 반응이 예측되는 건 아니에요.
 - id: w-actually
   en: actually
   ipa: /ˈæktʃuəli/
@@ -2067,7 +2049,7 @@ words:
   decoyChips:
   - ec
   - tul
-  exKo: 해산물 알레르기가 있다고 조영제 반응이 예측되는 건 아니에요.
+  exKo: 갑각류·조개류 알레르기가 있다고 조영제 반응이 예측되는 건 아니에요.
 - id: w-predict
   en: predict
   ipa: /prɪˈdɪkt/
@@ -2088,7 +2070,7 @@ words:
   decoyChips:
   - pro
   - duct
-  exKo: 해산물 알레르기가 있다고 조영제 반응이 예측되는 건 아니에요.
+  exKo: 갑각류·조개류 알레르기가 있다고 조영제 반응이 예측되는 건 아니에요.
 - id: w-contrast
   en: contrast
   ipa: /ˈkɒntræst/
@@ -2109,7 +2091,7 @@ words:
   decoyChips:
   - can
   - trust
-  exKo: 해산물 알레르기가 있다고 조영제 반응이 예측되는 건 아니에요.
+  exKo: 갑각류·조개류 알레르기가 있다고 조영제 반응이 예측되는 건 아니에요.
 - id: w-document
   en: document
   ipa: /ˈdɒkjəmɛnt/
@@ -2135,7 +2117,7 @@ words:
 - id: w-confirm
   en: confirm
   ipa: /kənˈfɜːrm/
-  ko: 확정하다
+  ko: 확인하다
   icon: check
   example: I'll document this and confirm the plan with the team.
   cue: 맞다는 것을 확실히 해서 굳히는 일
@@ -2171,7 +2153,7 @@ words:
   - - cause
   decoyChips:
   - cave
-  exKo: 해산물 반응과 조영제 반응은 원인이 서로 달라요.
+  exKo: 갑각류·조개류 반응과 조영제 반응은 원인이 서로 달라요.
 - id: w-radiology
   en: radiology
   ipa: /ˌreɪdiˈɒlədʒi/
@@ -2215,7 +2197,7 @@ words:
     - tion
   decoyChips:
   - pri
-  - cow
+  - caw
   exKo: 영상의학과에 확인해서 적절한 예방 조치를 계획하게 할게요.
 - id: w-ponv
   en: PONV
@@ -2296,23 +2278,25 @@ words:
   - bent
   exKo: 이번엔 팀에서 예방 약물을 추가로 줄 수 있어요.
 - id: w-throw
-  en: throw
-  ipa: /θroʊ/
+  en: throw up
+  ipa: /ˌθroʊ ˈʌp/
   ko: 토하다
   icon: siren
   example: Did you throw up a lot last time, or just feel sick?
   cue: 속에 든 것을 입으로 게워 내는 일 — 속이 뒤집혀 올라오는 것
   tag: 증상
   distractorsEn:
-  - thrive
-  - throb
+  - throw off
+  - blow up
   distractorsKo:
   - 트림하다
   - 하품하다
   chips:
   - - throw
+  - - up
   decoyChips:
   - grow
+  - op
   exKo: 지난번엔 많이 토하셨나요, 아니면 그냥 메스꺼운 정도였나요?
 - id: w-sick
   en: sick
@@ -2465,7 +2449,7 @@ words:
   cue: 어떤 일이 이어지는 동안 내내라는 뜻
   tag: 시점·순서
   distractorsEn:
-  - through
+  - despite
   - without
   distractorsKo:
   - ~이후
@@ -2558,7 +2542,7 @@ words:
     - cult
   decoyChips:
   - dim
-  - colt
+  - calt
   exKo: 기도가 어려웠던 병력은 마취과의 유도 계획을 바꿔요.
 - id: w-induction
   en: induction
@@ -2789,7 +2773,7 @@ words:
 - id: w-bleed
   en: bleed
   ipa: /bliːd/
-  ko: 출혈
+  ko: 출혈하다
   icon: siren
   example: Supplements actually do matter — some affect bleeding.
   cue: 다쳐서 몸 밖이나 안으로 피가 새어 나오는 일
@@ -2798,8 +2782,8 @@ words:
   - bleach
   - blend
   distractorsKo:
-  - 수혈
-  - 응고
+  - 수혈하다
+  - 응고하다
   chips:
   - - bleed
   decoyChips:
@@ -2867,7 +2851,7 @@ words:
   ipa: /θɪn/
   ko: 묽게 하다
   icon: lab
-  example: Some herbal supplements thin the blood just like prescription medication.
+  example: Some herbs and supplements can thin the blood and raise bleeding risk.
   cue: 피가 묽어져서 쉽게 엉기지 않게 만드는 일
   tag: 약물
   distractorsEn:
@@ -2880,7 +2864,7 @@ words:
   - - thin
   decoyChips:
   - thing
-  exKo: 일부 한약 보조제는 처방약처럼 피를 묽게 만들 수 있어요.
+  exKo: 일부 한약재와 보조제는 피를 묽게 해서 출혈 위험을 높일 수 있어요.
 - id: w-cigarette
   en: cigarette
   ipa: /ˌsɪɡəˈrɛt/
@@ -2888,7 +2872,7 @@ words:
   icon: siren
   example: When did you have your last cigarette and last drink?
   cue: 종이로 만 담배 한 개비
-  tag: 소통
+  tag: 상태·정도
   distractorsEn:
   - cassette
   - cabinet
@@ -2901,7 +2885,7 @@ words:
     - rette
   decoyChips:
   - sig
-  - rat
+  - ret
   exKo: 마지막으로 담배 피우신 게, 그리고 마지막 술은 언제였어요?
 - id: w-recovery
   en: recovery
@@ -2923,12 +2907,12 @@ words:
     - ery
   decoyChips:
   - ra
-  - cow
+  - cav
   exKo: 이건 기도 관리와 회복 계획에 도움이 돼요.
 - id: w-judge
   en: judge
   ipa: /dʒʌdʒ/
-  ko: 판단하다
+  ko: 평가하다
   icon: board
   example: I'm not judging — I just need an honest picture.
   cue: 잘잘못을 따져 마음속으로 평가하고 단정하는 일
@@ -2943,7 +2927,7 @@ words:
   - - judge
   decoyChips:
   - badge
-  exKo: 판단하는 거 아니에요, 그냥 솔직한 그림이 필요해요.
+  exKo: 탓하려는 게 아니에요, 있는 그대로 알고 싶을 뿐이에요.
 - id: w-honest
   en: honest
   ipa: /ˈɒnɪst/
@@ -2964,7 +2948,7 @@ words:
   decoyChips:
   - han
   - ist
-  exKo: 판단하는 거 아니에요, 그냥 솔직한 그림이 필요해요.
+  exKo: 탓하려는 게 아니에요, 있는 그대로 알고 싶을 뿐이에요.
 - id: w-picture
   en: picture
   ipa: /ˈpɪktʃər/
@@ -2985,7 +2969,7 @@ words:
   decoyChips:
   - pec
   - tour
-  exKo: 판단하는 거 아니에요, 그냥 솔직한 그림이 필요해요.
+  exKo: 탓하려는 게 아니에요, 있는 그대로 알고 싶을 뿐이에요.
 - id: w-year
   en: year
   ipa: /jɪr/
@@ -3008,28 +2992,28 @@ words:
 - id: w-smoke
   en: smoke
   ipa: /smoʊk/
-  ko: 흡연
+  ko: (담배를) 피우다
   icon: siren
-  example: Smoking and drinking both make your airway a little harder to manage.
+  example: Smoking makes your airway a bit harder to manage, and drinking matters too.
   cue: 담배를 피워 연기를 들이마시는 일
-  tag: 소통
+  tag: 상태·정도
   distractorsEn:
   - stoke
   - smash
   distractorsKo:
-  - 금주
-  - 절식
+  - (담배를) 끊다
+  - (담배를) 사다
   chips:
   - - smoke
   decoyChips:
   - smock
-  exKo: 흡연과 음주 둘 다 기도 관리를 조금 더 어렵게 만들어요.
+  exKo: 흡연은 기도 관리를 조금 더 어렵게 하고, 음주도 중요해요.
 - id: w-manage
   en: manage
   ipa: /ˈmænɪdʒ/
   ko: 관리하다
   icon: gear
-  example: Smoking and drinking both make your airway a little harder to manage.
+  example: Smoking makes your airway a bit harder to manage, and drinking matters too.
   cue: 어려운 상황을 맡아 잘 다루고 이끌어 가는 일
   tag: 기도·응급
   distractorsEn:
@@ -3044,7 +3028,7 @@ words:
   decoyChips:
   - men
   - edge
-  exKo: 흡연과 음주 둘 다 기도 관리를 조금 더 어렵게 만들어요.
+  exKo: 흡연은 기도 관리를 조금 더 어렵게 하고, 음주도 중요해요.
 - id: w-routine
   en: routine
   ipa: /ruːˈtiːn/
@@ -3154,7 +3138,7 @@ words:
 - id: w-stay
   en: stay
   ipa: /steɪ/
-  ko: 유지되다
+  ko: (그대로) 남다
   icon: lock
   example: This stays confidential between you and the care team.
   cue: 떠나지 않고 같은 자리나 상태에 머무는 일
@@ -3163,8 +3147,8 @@ words:
   - stray
   - stain
   distractorsKo:
-  - 노출되다
-  - 변질되다
+  - (밖으로) 새다
+  - (바로) 바뀌다
   chips:
   - - stay
   decoyChips:
@@ -3219,7 +3203,7 @@ words:
   icon: calendar
   example: When was your last period, and is there any chance you're pregnant?
   cue: 한 달에 한 번 자궁에서 피가 나오는 때를 점잖게 부르는 말
-  tag: 시점·순서
+  tag: 상태·정도
   distractorsEn:
   - perfume
   - pedal
@@ -3232,7 +3216,7 @@ words:
     - od
   decoyChips:
   - po
-  - rip
+  - rid
   exKo: 마지막 생리는 언제였고, 임신 가능성이 있으신가요?
 - id: w-chance
   en: chance
@@ -3280,7 +3264,7 @@ words:
   ipa: /ˌaʊtˈsaɪd/
   ko: 밖의
   icon: board
-  example: No one outside this room needs to know the result.
+  example: We won't share the result with anyone outside your care team.
   cue: 어떤 곳의 경계 밖에 있는 쪽
   tag: 시점·순서
   distractorsEn:
@@ -3295,13 +3279,13 @@ words:
   decoyChips:
   - oat
   - sigh
-  exKo: 이 방 밖의 누구도 결과를 알 필요 없어요.
+  exKo: 결과는 진료팀 밖의 누구에게도 알리지 않아요.
 - id: w-result
   en: result
   ipa: /rɪˈzʌlt/
   ko: 결과
   icon: chartup
-  example: No one outside this room needs to know the result.
+  example: We won't share the result with anyone outside your care team.
   cue: 검사나 일을 끝낸 뒤에 나오는 결말이나 수치
   tag: 팀·보고
   distractorsEn:
@@ -3316,7 +3300,7 @@ words:
   decoyChips:
   - ra
   - salt
-  exKo: 이 방 밖의 누구도 결과를 알 필요 없어요.
+  exKo: 결과는 진료팀 밖의 누구에게도 알리지 않아요.
 - id: w-cough
   en: cough
   ipa: /kɔːf/
@@ -3422,21 +3406,22 @@ words:
   - cap
   exKo: 열은 있나요, 아니면 색깔 있는 가래가 나오나요?
 - id: w-weigh
-  en: weigh
-  ipa: /weɪ/
+  en: weigh in
+  ipa: /ˌweɪ ˈɪn/
   ko: (의견을) 내다
   icon: speech
   example: I need anesthesia to weigh in before we proceed.
-  cue: 저울에 올려 무게를 달거나 여러 쪽을 견주어 보는 일 — 의견을 보탤 때도 쓴다
+  cue: 결정 전에 담당자가 자기 의견을 보태 주는 일
   tag: 소통
   distractorsEn:
-  - weave
-  - wedge
+  - way in
+  - weigh down
   distractorsKo:
   - (의견을) 묻다
   - (의견을) 막다
   chips:
   - - weigh
+  - - in
   decoyChips:
   - neigh
   exKo: 진행하기 전에 마취과 의견이 필요해요.
@@ -3525,17 +3510,17 @@ words:
 - id: w-treat
   en: treat
   ipa: /triːt/
-  ko: 처치하다
+  ko: (~로) 다루다
   icon: cross
   example: We should treat this as a full stomach — RSI it is.
-  cue: 상황에 맞는 방식으로 다루어 처리하는 일 — 환자를 이렇게 다룬다
+  cue: 어떤 상태라고 보고 그에 맞게 대하는 일 — '~로 보고 대비한다'고 할 때
   tag: 기도·응급
   distractorsEn:
   - tread
   - trick
   distractorsKo:
-  - 거절하다
-  - 기록하다
+  - (~로) 부르다
+  - (~로) 옮기다
   chips:
   - - treat
   decoyChips:
@@ -3563,7 +3548,7 @@ words:
 - id: w-suction
   en: suction
   ipa: /ˈsʌkʃən/
-  ko: 흡인
+  ko: 흡인기
   icon: monitor
   example: I have suction on and ready at the head of the bed.
   cue: 관 끝으로 입속의 액체를 빨아들이는 기계나 그 작동
@@ -3572,8 +3557,8 @@ words:
   - section
   - auction
   distractorsKo:
-  - 주입
-  - 배출
+  - 주입기
+  - 배액관
   chips:
   - - suc
     - tion
@@ -3611,8 +3596,8 @@ words:
   cue: 목 앞 갑상연골 아래에서 기도를 감싸는 고리 모양 연골
   tag: 기도·응급
   distractorsEn:
+  - arytenoid
   - thyroid
-  - asteroid
   distractorsKo:
   - 갑상연골
   - 후두개
@@ -3869,22 +3854,23 @@ words:
   - rent
   exKo: 무엇을 주기 전에 팀 전체가 준비되도록 알릴게요.
 - id: w-figure
-  en: figure
-  ipa: /ˈfɪɡjər/
+  en: figure out
+  ipa: /ˌfɪɡjər ˈaʊt/
   ko: 파악하다
   icon: magnify
   example: Let's figure out everything you were given around that time.
   cue: 여러 단서를 따져서 정답이나 이유를 알아내는 일
   tag: 소통
   distractorsEn:
-  - fancy
-  - fasten
+  - figure in
+  - fill out
   distractorsKo:
   - 오해하다
   - 포기하다
   chips:
   - - fig
     - ure
+  - - out
   decoyChips:
   - fog
   - ore
@@ -4011,7 +3997,7 @@ words:
     - zi
     - ness
   decoyChips:
-  - dis
+  - des
   - zo
   exKo: 붓기와 함께 어지러움이 있으면 심각한 반응일 수 있어요.
 - id: w-point
@@ -4031,7 +4017,7 @@ words:
   chips:
   - - point
   decoyChips:
-  - pint
+  - pont
   exKo: 붓기와 함께 어지러움이 있으면 심각한 반응일 수 있어요.
 - id: w-watch
   en: watch
@@ -4055,7 +4041,7 @@ words:
 - id: w-closely
   en: closely
   ipa: /ˈkloʊsli/
-  ko: 가까이서
+  ko: 면밀히
   icon: magnify
   example: We'll watch you closely and keep emergency meds within reach.
   cue: 바싹 붙어서 빈틈없이 자세히 살핀다는 뜻의 부사
@@ -4064,8 +4050,8 @@ words:
   - clearly
   - cleverly
   distractorsKo:
-  - 멀찍이
-  - 느긋이
+  - 막연히
+  - 드문드문
   chips:
   - - close
     - ly
@@ -4098,7 +4084,7 @@ words:
   ko: 악성의
   icon: siren
   example: That could be malignant hyperthermia — very important to know.
-  cue: 나쁘게 자라 생명을 위협할 만큼 악성인
+  cue: 빠르게 나빠져 생명을 위협하는 — 병 이름 앞에 붙어 위험하다는 뜻을 더하는 말
   tag: 마취 병력
   distractorsEn:
   - magnificent
@@ -4169,10 +4155,10 @@ words:
   tag: 소통
   distractorsEn:
   - anything
-  - anywhere
+  - everyone
   distractorsKo:
-  - 그 밖의 어딘가
-  - 그 밖의 무언가
+  - 어디든
+  - 무엇이든
   chips:
   - - an
     - y
@@ -4342,7 +4328,7 @@ words:
 - id: w-delay
   en: delay
   ipa: /dɪˈleɪ/
-  ko: 지연
+  ko: 미루다
   icon: calendar
   example: The team will decide whether to delay or proceed safely.
   cue: 정해진 때보다 늦춰서 미루는 일
@@ -4351,8 +4337,8 @@ words:
   - decay
   - relay
   distractorsKo:
-  - 단축
-  - 취소
+  - 앞당기다
+  - 서두르다
   chips:
   - - de
     - lay
@@ -4386,7 +4372,7 @@ words:
   ipa: /fɔːlt/
   ko: 잘못
   icon: board
-  example: Nobody told you to stop it, so this isn't your fault.
+  example: If no one told you to stop it, this isn't your fault.
   cue: 일이 잘못된 책임이 놓이는 쪽
   tag: 소통
   distractorsEn:
@@ -4399,22 +4385,23 @@ words:
   - - fault
   decoyChips:
   - faults
-  exKo: 아무도 끊으라고 말씀 안 드렸으니 환자분 잘못이 아니에요.
+  exKo: 아무도 끊으라고 말씀드리지 않았다면 환자분 잘못이 아니에요.
 - id: w-away
-  en: away
-  ipa: /əˈweɪ/
+  en: right away
+  ipa: /ˌraɪt əˈweɪ/
   ko: 즉시
   icon: board
   example: I'm reporting this right away so the team can reassess safely.
-  cue: '''right ○○''로 이어서 ''지금 당장''이라는 뜻을 만드는 부사'
+  cue: '''지금 당장''이라는 뜻으로 보고·처치 앞에 붙이는 말'
   tag: 시점·순서
   distractorsEn:
-  - along
-  - aside
+  - far away
+  - away from
   distractorsKo:
   - 나중에
   - 천천히
   chips:
+  - - right
   - - a
     - way
   decoyChips:
@@ -4597,7 +4584,7 @@ words:
   - movement
   - monument
   distractorsKo:
-  - 오랫동안
+  - 오랜 시간
   - 하루
   chips:
   - - mo
@@ -4634,8 +4621,8 @@ situations:
       options:
       - en: last
       - en: first
-      - en: next
-      - en: only
+      - en: usually
+      - en: normally
   - en: Water is a bit different — when did you have your last sip?
     ko: 물은 좀 다른데, 마지막으로 언제 한 모금 드셨어요?
     chunks:
@@ -4690,13 +4677,13 @@ situations:
       - en: late
       - en: tight
       - en: short
-  - en: Let's start with solid food, since that clears your stomach the slowest.
-    ko: 고형식부터 시작할게요, 위를 가장 늦게 비우거든요.
+  - en: Let's start with solid food, since your stomach clears it the slowest.
+    ko: 고형식부터 시작할게요, 위에서 가장 늦게 비워지거든요.
     chunks:
     - Let's start
     - with solid food
-    - ', since that clears'
-    - your stomach
+    - ', since your stomach'
+    - clears it
     - the slowest
     - .
     words:
@@ -4709,18 +4696,18 @@ situations:
     goal: 1
     tag: 순서 이유
     icon: bulb
-    why: since로 이유를 뒤에 붙여 왜 고형식부터 묻는지 밝혀요. the slowest 최상급은 여럿 중 가장 오래 걸리는 것을 짚어요.
-    decoy: your mouth
+    why: since로 이유를 뒤에 붙여 왜 고형식부터 묻는지 밝혀요. the slowest 최상급은 여럿 중 위에서 가장 오래 걸리는 것을 짚어요.
+    decoy: since your mouth
     distractorsKo:
-    - 고형식부터 시작할게요, 장을 가장 늦게 비우거든요.
-    - 고형식부터 점검할게요, 위를 가장 늦게 비우거든요.
+    - 고형식부터 시작할게요, 장에서 가장 늦게 비워지거든요.
+    - 고형식부터 점검할게요, 위에서 가장 늦게 비워지거든요.
     blank:
       answer: stomach
       options:
       - en: stomach
       - en: throat
       - en: kidney
-      - en: lungs
+      - en: bladder
   - en: Even a small snack counts as solid food for this.
     ko: 간단한 간식도 이 경우에는 고형식으로 쳐요.
     chunks:
@@ -4742,7 +4729,7 @@ situations:
     decoy: tastes like
     distractorsKo:
     - 간단한 음료도 이 경우에는 고형식으로 쳐요.
-    - 간단한 커피도 이 경우에는 고형식으로 쳐요.
+    - 간단한 국물도 이 경우에는 고형식으로 쳐요.
     blank:
       answer: snack
       options:
@@ -4861,12 +4848,12 @@ situations:
     - 페니실린을 드시면 어떻게 되시는지 써 주시겠어요?
     - 페니실린을 드시면 어떻게 되시는지 읽어 주시겠어요?
     blank:
-      answer: penicillin
+      answer: take
       options:
-      - en: penicillin
-      - en: ibuprofen
-      - en: insulin
-      - en: aspirin
+      - en: take
+      - en: order
+      - en: store
+      - en: mix
   - en: Was it just a rash, or any trouble breathing or swelling?
     ko: 그냥 발진만 있었나요, 아니면 숨쉬기 힘들거나 붓기도 있었나요?
     chunks:
@@ -4892,9 +4879,9 @@ situations:
       answer: rash
       options:
       - en: rash
-      - en: cough
-      - en: fever
       - en: bruise
+      - en: scar
+      - en: cramp
   - en: I'll flag this in your chart so the whole team knows.
     ko: 이 내용을 차트에 표시해서 팀 전체가 알도록 할게요.
     chunks:
@@ -4914,7 +4901,7 @@ situations:
     why: flag는 눈에 띄게 표시한다는 동사라 단순 기록과 달리 다음 사람이 놓치지 않게 한다는 약속이에요. so …로 그 목적을 뒤에 붙여요.
     decoy: I'll read this
     distractorsKo:
-    - 이 내용을 차트에 붙여서 팀 전체가 알도록 할게요.
+    - 이 내용을 차트에 표시해서 다음에도 보이게 할게요.
     - 이 내용을 차트에 표시해서 팀 전체가 배우도록 할게요.
     blank:
       answer: flag
@@ -4949,35 +4936,34 @@ situations:
       - en: treatment
       - en: payment
       - en: transport
-      - en: insurance
-  - en: This sounds like a real allergy, not just a side effect.
-    ko: 이건 단순 부작용이 아니라 진짜 알레르기 같아요.
+      - en: paperwork
+  - en: I'll record this as an allergy, and anesthesia will review it.
+    ko: 알레르기로 기록해 두고, 마취과에서 검토할 거예요.
     chunks:
-    - This sounds like
-    - a real allergy
-    - ', not just'
-    - a side effect
+    - I'll record this
+    - as an allergy
+    - ', and anesthesia'
+    - will review it
     - .
     words:
-    - w-sound
+    - w-record
     - w-allergy
-    - w-side
-    - w-effect
+    - w-anesthesia
     goal: 1
-    tag: 판단 설명
-    icon: bulb
-    why: sounds like는 단정을 피하고 들은 내용으로 추정하는 완곡한 틀이에요. not just a…로 흔한 오해를 먼저 걷어 내요. 알레르기는 면역 반응이라는 점에서 부작용과 구분돼요.
-    decoy: a real infection
+    tag: 기록 안내
+    icon: pencil
+    why: I'll record this as…로 알레르기인지 가리는 판단은 하지 않고, 환자가 말한 반응을 알레르기로 기록한다고 말해요. 검토는 마취과가 한다고 덧붙여 간호사의 몫과 마취과의 몫을 나눠요.
+    decoy: to an allergist
     distractorsKo:
-    - 이건 단순 통증이 아니라 진짜 알레르기 같아요.
-    - 이건 단순 소화불량이 아니라 진짜 알레르기 같아요.
+    - 알레르기로 기록해 두고, 마취과에서 취소할 거예요.
+    - 알레르기로 기록해 두고, 마취과에서 거절할 거예요.
     blank:
       answer: allergy
       options:
       - en: allergy
       - en: infection
       - en: injury
-      - en: disease
+      - en: illness
   - en: I'll note the severity and make sure anesthesia sees it before we start.
     ko: 심각도를 기록해서 시작 전에 마취과도 확인하게 할게요.
     chunks:
@@ -4995,10 +4981,10 @@ situations:
     tag: 전달 약속
     icon: check
     why: make sure는 내가 책임지고 확인한다는 뜻이라 적어 두는 것 이상의 약속이에요. before we start가 전달 시점을 시작 앞에 못 박아요.
-    decoy: and look into
+    decoy: and hope
     distractorsKo:
-    - 빈도를 기록해서 시작 전에 마취과도 확인하게 할게요.
-    - 원인을 기록해서 시작 전에 마취과도 확인하게 할게요.
+    - 심각도를 기록하기 전에 차트의 알레르기 칸을 열게요.
+    - 심각도 기록은 마취과가 약을 고르는 데 쓰여요.
     blank:
       answer: severity
       options:
@@ -5045,7 +5031,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 약물 알레르기 문진 4문장 순서
-    why: 약을 먹었을 때의 반응을 묻고, 증상의 정도를 좁혀 묻고, 들은 내용으로 진짜 알레르기라고 판단을 전한 뒤, 그에 따라 차트에 표시해요.
+    why: 약을 먹었을 때의 반응을 묻고, 증상의 정도를 좁혀 묻고, 들은 내용을 알레르기로 기록하겠다고 전한 뒤, 그에 따라 차트에 표시해요.
     lines:
     - en: Can you tell me what happens when you take penicillin?
       icon: pill
@@ -5055,13 +5041,13 @@ situations:
       icon: magnify
       ko: 발진만이었나요, 숨쉬기 힘들거나 붓기도 있었나요?
       note: 좁히기
-    - en: From what you've described, this sounds like a real allergy.
+    - en: From what you've described, I'll record it as an allergy.
       icon: bulb
-      ko: 말씀하신 걸로는 진짜 알레르기 같아요
-      note: 판단
-    - en: Because of that, I'll flag it in your chart so the whole team knows.
+      ko: 말씀하신 걸로는 알레르기로 기록해 둘게요
+      note: 기록
+    - en: Because it's an allergy, I'll flag it in your chart so the whole team knows.
       icon: pushpin
-      ko: 그래서 차트에 표시해 팀 전체가 알게 할게요
+      ko: 알레르기니 차트에 표시해 팀 전체가 알게 할게요
       note: 표시
 - title: 과거 수술·마취 이력
   sentences:
@@ -5084,15 +5070,15 @@ situations:
     why: feel을 써서 사실 확인이 아니라 환자의 느낌을 묻는 열린 질문이에요. waking up from…으로 깨어나는 순간에 초점을 좁혀요.
     decoy: Why did you feel
     distractorsKo:
-    - 지난번 수술에서 깨어나실 때 기분이 어떠셨어요?
+    - 처음 마취에서 깨어나실 때 기분이 어떠셨어요?
     - 지난번 마취에서 깨어나실 때 통증이 어떠셨어요?
     blank:
       answer: anesthesia
       options:
       - en: anesthesia
-      - en: surgery
-      - en: dentist
-      - en: recovery
+      - en: injection
+      - en: dialysis
+      - en: transfusion
   - en: Did you have any nausea, breathing issues, or a bad reaction?
     ko: 메스꺼움이나 호흡 문제, 혹은 나쁜 반응이 있었나요?
     chunks:
@@ -5109,18 +5095,18 @@ situations:
     goal: 1
     tag: 증상 열거
     icon: stetho
-    why: any를 세 번 겹쳐 쓴 열거형이라 환자가 하나씩 떠올리며 답하기 쉬워요. 마지막에 a bad reaction을 둬 앞에서 놓친 반응까지 묻습니다.
+    why: any 하나로 세 항목을 묶은 열거형이라 환자가 하나씩 떠올리며 답하기 쉬워요. 마지막에 a bad reaction을 둬 앞에서 놓친 반응까지 물어요.
     decoy: any bleeding
     distractorsKo:
-    - 메스꺼움이나 호흡 문제, 혹은 통증이 있었나요?
-    - 메스꺼움이나 호흡 문제, 혹은 두통이 있었나요?
+    - 메스꺼움이나 호흡 문제, 혹은 나쁜 반응이 언제 있었나요?
+    - 메스꺼움이나 호흡 문제는 마취 뒤에 흔히 생겨요.
     blank:
-      answer: nausea
+      answer: have
       options:
-      - en: nausea
-      - en: dizziness
-      - en: itching
-      - en: fatigue
+      - en: have
+      - en: treat
+      - en: cause
+      - en: prevent
   - en: I'll let the anesthesia team know about the nausea.
     ko: 마취팀에 메스꺼움 있었던 거 전달할게요.
     chunks:
@@ -5140,15 +5126,15 @@ situations:
     why: let A know는 알려서 알고 있게 한다는 구라 단순 보고보다 부드러워요. about the nausea로 무엇을 전하는지 분명히 해요.
     decoy: talk about
     distractorsKo:
-    - 마취팀에 어지러움 있었던 거 전달할게요.
-    - 마취팀에 두통 있었던 거 전달할게요.
+    - 전달하기 전에 메스꺼움 정도를 여쭐게요.
+    - 마취팀은 메스꺼움 예방약을 미리 쓰기도 해요.
     blank:
       answer: nausea
       options:
       - en: nausea
       - en: headache
-      - en: fever
-      - en: cough
+      - en: chills
+      - en: hiccups
   - en: Did you have any breathing problems during or after that surgery?
     ko: 그 수술 중이나 후에 호흡 문제가 있었나요?
     chunks:
@@ -5166,15 +5152,15 @@ situations:
     why: during or after로 시간 범위를 넓혀 수술 중과 후 어느 쪽 문제도 놓치지 않게 해요. that surgery가 지난번 수술임을 가리켜요.
     decoy: that visit
     distractorsKo:
-    - 그 검사 중이나 후에 호흡 문제가 있었나요?
-    - 그 입원 중이나 후에 호흡 문제가 있었나요?
+    - 그 수술 중이나 후에 호흡 문제가 몇 번 있었나요?
+    - 수술 중 호흡 문제는 마취 기록에 남아요.
     blank:
-      answer: breathing
+      answer: have
       options:
-      - en: breathing
-      - en: bleeding
-      - en: swallowing
-      - en: sleeping
+      - en: have
+      - en: fix
+      - en: spread
+      - en: solve
   - en: Was it hard for the anesthesia team to place your breathing tube?
     ko: 마취팀이 기관삽관 튜브를 넣기 어려웠나요?
     chunks:
@@ -5196,8 +5182,8 @@ situations:
     why: Was it hard for A to…는 사실을 묻되 평가하지 않는 틀이에요. place는 튜브를 자리 잡게 넣는 동작을 가리키는 동사예요.
     decoy: to explain
     distractorsKo:
-    - 마취팀이 기관삽관 튜브를 빼기 어려웠나요?
-    - 마취팀이 기관삽관 튜브를 고정하기 어려웠나요?
+    - 삽관이 어려웠으면 오늘 계획이 달라져요.
+    - 마취팀이 기관삽관 튜브를 넣을 때 깨어 계셨나요?
     blank:
       answer: place
       options:
@@ -5248,26 +5234,27 @@ situations:
     why: 환자가 말한 만큼, 약간 멍했다는 것만 그대로 전해요. 없던 문제를 키워 말하면 마취팀이 불필요하게 대비하고, 환자가 말한 내용이 왜곡돼요.
     example: How did you feel waking up from your last anesthesia?
     exKo: 지난번 마취에서 깨어나실 때 기분이 어떠셨어요?
-  - kind: context
+  - kind: swap
     words:
     - w-nausea
-    word: nausea
-    ko: 메스꺼움
-    scenes:
-    - who: 환자에게
-      icon: me
-      en: You felt nausea after your last anesthesia, so we'll let the anesthesia team know.
-      ok: true
-    - who: 차트 기록
-      icon: board
-      en: 'Prior anesthesia: nausea postop, resolved by evening.'
-      ok: true
-    - who: 간호사 → 마취팀
-      icon: speech
-      en: She felt a little queasy last time, no big deal, some nausea or whatever.
-      ok: false
-      fix: She had nausea after her last anesthesia, so I wanted you to know.
-    why: 뜻은 셋 다 '메스꺼움'이에요. 환자에게는 쉬운 말로, 차트에는 짧게 적어요. 하지만 마취팀에 알릴 때 '별일 아니고 뭐 그런 거'처럼 가볍게 말하면 위험 정보로 들리지 않아요. 있었던 일과 시점을 분명히 전해요.
+    - w-anesthesia
+    who: 간호사 → 마취팀 · 병력 전달
+    icon: speech
+    before:
+    - ''
+    - She felt a little queasy, no big deal
+    - .
+    options:
+    - She had nausea after her last anesthesia
+    - She felt a little queasy, no big deal
+    - She had a hard time last time
+    answer: She had nausea after her last anesthesia
+    notes:
+      She had nausea after her last anesthesia: 있었던 일과 시점을 분명히 말해서 마취팀이 위험 정보로 받는다.
+      She felt a little queasy, no big deal: 별일 아니라고 줄여 말해서 위험 정보로 들리지 않는다.
+      She had a hard time last time: 무엇이 힘들었는지 빠져 있어서 마취팀이 쓸 정보가 없다.
+    why: 마취팀에 지난 마취의 문제를 전할 때는 있었던 일과 시점을 분명히 말해요. '별일 아니에요'처럼 줄여 말하면 위험 정보로 들리지 않아요.
+    ko: 지난번 마취 뒤에 메스꺼움이 있었어요
   order:
     tag: 대화 흐름
     icon: compass
@@ -5311,7 +5298,7 @@ situations:
     why: list는 하나씩 나열해 달라는 동사라 tell보다 빠뜨림 없는 답을 끌어내요. all이 처방약 밖의 약까지 포함시켜요.
     decoy: you bought
     distractorsKo:
-    - 매일 드시는 약을 전부 써 주시겠어요?
+    - 매일 드시는 약을 전부 가져와 주시겠어요?
     - 매일 드시는 약을 전부 보여 주시겠어요?
     blank:
       answer: daily
@@ -5335,8 +5322,8 @@ situations:
     why: Do you know…?는 모른다고 답해도 부담이 없는 예·아니오 질문이에요. names와 doses를 한 문장에 묶어 두 정보가 다 필요하다는 점을 알려요.
     decoy: the prices
     distractorsKo:
-    - 약 색깔과 용량도 아세요?
-    - 약 이름과 제조사도 아세요?
+    - 약 이름과 용량도 적어 오셨어요?
+    - 약 이름은 봉투에 있어요.
     blank:
       answer: doses
       options:
@@ -5392,14 +5379,14 @@ situations:
     decoy: a heart pill
     distractorsKo:
     - 혈액 항응고제나 인슐린, 흡입기를 챙기셨나요?
-    - 혈액 항응고제나 인슐린, 흡입기를 사셨나요?
+    - 항응고제·인슐린·흡입기는 꼭 확인해요.
     blank:
       answer: insulin
       options:
       - en: insulin
-      - en: morphine
-      - en: oxygen
-      - en: iron
+      - en: antacids
+      - en: vitamins
+      - en: laxatives
   - en: Do you take any injections, like insulin shots, at home?
     ko: 집에서 인슐린 주사 같은 걸 맞으세요?
     chunks:
@@ -5419,7 +5406,7 @@ situations:
     why: like로 예를 들면 injections가 무엇인지 환자가 바로 알아들어요. at home을 끝에 붙여 병원 밖 자가 투여를 묻는다는 범위를 밝혀요.
     decoy: any infusions
     distractorsKo:
-    - 집에서 비타민 주사 같은 걸 맞으세요?
+    - 집에서 인슐린 주사 같은 걸 두세요?
     - 약국에서 인슐린 주사 같은 걸 맞으세요?
     blank:
       answer: injections
@@ -5438,7 +5425,7 @@ situations:
     - .
     words:
     - w-need
-    - w-exact
+    - w-exactly
     - w-take
     - w-last
     - w-dose
@@ -5476,7 +5463,7 @@ situations:
     words:
     - w-thinner
     word: thinner
-    ko: 혈액 항응고제
+    ko: 항혈전제
     scenes:
     - who: 간호사 → 집도의
       icon: speech
@@ -5506,9 +5493,9 @@ situations:
       icon: board
       ko: 그 약들의 이름과 용량을 아세요?
       note: 이름
-    - en: Now for the timing — I need to know exactly when you took your last dose of each one.
+    - en: Besides names and doses, I need exactly when you took your last dose of each.
       icon: calendar
-      ko: 이제 시각이요, 각 약을 마지막으로 언제 드셨는지 정확히 알아야 해요
+      ko: 이름과 용량 말고도 각 약을 마지막으로 언제 드셨는지 정확히 알아야 해요
       note: 시각
     - en: For the blood pressure pill, was it this morning?
       icon: pill
@@ -5704,16 +5691,16 @@ situations:
     icon: me
     before:
     - ''
-    - Your heart rate is tachycardic, above the usual range.
+    - You're tachycardic, above the usual range.
     - ''
     options:
-    - Your heart rate is tachycardic, above the usual range.
+    - You're tachycardic, above the usual range.
     - Your heart is racing dangerously fast, and that worries me.
-    - Your pulse is a bit fast, which is common when nervous.
-    answer: Your pulse is a bit fast, which is common when nervous.
+    - Your pulse is a bit fast, which is common when you're nervous.
+    answer: Your pulse is a bit fast, which is common when you're nervous.
     notes:
-      Your pulse is a bit fast, which is common when nervous.: 환자가 알아듣는 쉬운 말이고, 긴장 때문일 수 있다는 점까지 알려서 안심시킨다.
-      Your heart rate is tachycardic, above the usual range.: 의료진끼리의 용어라 환자는 뜻을 몰라 오히려 불안해한다.
+      Your pulse is a bit fast, which is common when you're nervous.: 환자가 알아듣는 쉬운 말이고, 긴장 때문일 수 있다는 점까지 알려서 안심시킨다.
+      You're tachycardic, above the usual range.: 의료진끼리의 용어라 환자는 뜻을 몰라 오히려 불안해한다.
       Your heart is racing dangerously fast, and that worries me.: 사실보다 무겁게 들려 불안을 키운다.
     why: 같은 수치라도 긴장한 환자에게는 쉬운 말로, 의료진끼리는 정확한 용어로 말해요.
     ko: 맥박이 조금 빠른데, 긴장하면 흔히 그래요
@@ -5766,8 +5753,8 @@ situations:
       answer: accurate
       options:
       - en: accurate
-      - en: rough
-      - en: approximate
+      - en: estimated
+      - en: older
       - en: average
   - en: Can you step on the scale for me?
     ko: 체중계에 올라가 주시겠어요?
@@ -5822,7 +5809,7 @@ situations:
       - en: dose
       - en: size
       - en: brand
-      - en: price
+      - en: color
   - en: Let's also measure your height so we can record your BMI.
     ko: 키도 재서 체질량지수를 기록할게요.
     chunks:
@@ -5949,7 +5936,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 체중·키 측정 4문장 순서
-    why: 정확한 체중이 필요하다고 말하고, 체중계에 올라가 달라고 부탁하고, 그 수치가 용량에 쓰인다고 이유를 밝힌 뒤, 이어서 키를 재겠다고 해요.
+    why: 정확한 체중이 필요하다고 말하고, 체중계에 올라가 달라고 부탁하고, 그 수치가 용량에 쓰인다고 밝힌 뒤, 용량 말고 체질량지수에는 키도 필요하다고 이어요.
     lines:
     - en: Let's get an accurate weight for your medication dosing.
       icon: monitor
@@ -5963,9 +5950,9 @@ situations:
       icon: pill
       ko: 그 수치로 정확한 용량을 드려요
       note: 설명
-    - en: Next, let's also measure your height so we can record your BMI.
+    - en: Besides that dose, your height is also needed for your BMI.
       icon: me
-      ko: 다음엔 키도 재서 체질량지수를 기록할게요
+      ko: 그 용량 말고도 체질량지수에는 키가 필요해요
       note: 키
 - title: 물 한 모금 금식 위반
   sentences:
@@ -5978,7 +5965,7 @@ situations:
     - what time
     - '?'
     words:
-    - w-exact
+    - w-exactly
     - w-water
     goal: 1
     tag: 정확히 묻기
@@ -6012,10 +5999,10 @@ situations:
     tag: 보고 안내
     icon: pager
     why: need to는 내 재량이 아니라 해야 하는 절차라는 어감이라 환자가 불이익으로 느끼지 않게 해요. report는 책임 있는 사람에게 올리는 공식 보고를 뜻하는 동사예요.
-    decoy: I need to hand
+    decoy: the bill
     distractorsKo:
-    - 이 서류를 마취팀에 보고해야 해요.
-    - 이 사진을 마취팀에 보고해야 해요.
+    - 보고하려고 마신 시각을 적어 둘게요.
+    - 마취팀은 마신 양과 시각을 봐요.
     blank:
       answer: need
       options:
@@ -6051,27 +6038,27 @@ situations:
       - en: cancel
       - en: repeat
       - en: measure
-  - en: Your surgery isn't canceled, but the timing might need to shift.
-    ko: 수술이 취소되는 건 아니지만, 시간이 조정될 수 있어요.
+  - en: This doesn't always mean your surgery is canceled — the timing may just shift.
+    ko: 수술이 꼭 취소된다는 뜻은 아니에요, 시간만 조정될 수 있어요.
     chunks:
-    - Your surgery isn't canceled
-    - ', but the timing'
-    - might need
-    - to shift
+    - This doesn't always mean
+    - your surgery is canceled
+    - — the timing
+    - may just shift
     - .
     words:
+    - w-mean
     - w-surgery
     - w-cancel
-    - w-need
     - w-shift
     goal: 2
     tag: 안심과 안내
     icon: calendar
-    why: isn't canceled를 먼저 말해 환자의 가장 큰 걱정을 풀고, but 뒤에 변동 가능성을 might로 낮춰 전해요. 나쁜 소식 앞에 안심을 두는 순서예요.
-    decoy: Your insurance isn't canceled
+    why: This doesn't always mean…으로 가장 큰 걱정인 취소를 단정하지 않고, 시간이 조정될 수 있다는 가능성만 may로 낮춰 전해요. 진행이나 취소는 마취과가 정하는 일이라 간호사는 약속하지 않아요.
+    decoy: your insurance is canceled
     distractorsKo:
-    - 수술이 취소되는 건 아니지만, 장소가 조정될 수 있어요.
-    - 수술이 취소되는 건 아니지만, 순서가 조정될 수 있어요.
+    - 수술이 꼭 취소된다는 뜻은 아니에요, 장소만 조정될 수 있어요.
+    - 수술이 꼭 취소된다는 뜻은 아니에요, 병실만 조정될 수 있어요.
     blank:
       answer: canceled
       options:
@@ -6079,34 +6066,35 @@ situations:
       - en: finished
       - en: scheduled
       - en: approved
-  - en: It's easy to forget that even a sip of water counts as breaking your fast.
-    ko: 물 한 모금도 금식 위반으로 친다는 걸 잊기 쉬워요.
+  - en: It's easy to forget — anesthesia will decide if a sip with your pill counts.
+    ko: 잊기 쉬운 일이에요. 약과 함께 마신 한 모금이 문제가 되는지는 마취과가 판단해요.
     chunks:
     - It's easy to forget
-    - that even a sip
-    - of water counts
-    - as breaking your fast
+    - — anesthesia will decide
+    - if a sip with your pill
+    - counts
     - .
     words:
     - w-forget
+    - w-anesthesia
+    - w-decide
     - w-sip
-    - w-water
     - w-count
     goal: 1
     tag: 공감 설명
     icon: bulb
-    why: It's easy to forget…으로 환자의 실수를 개인 잘못이 아닌 흔한 일로 만들어요. counts as는 규정상 그렇게 분류한다는 표현이라 비난 없이 기준을 알려요.
-    decoy: of water means
+    why: It's easy to forget…으로 환자의 실수를 개인 잘못이 아닌 흔한 일로 만들어요. 한 모금이 문제가 되는지는 간호사가 단정하지 않고 마취과가 판단한다고 알려 줘요.
+    decoy: if a sip with your tea
     distractorsKo:
-    - 물 한 모금도 금식 위반으로 친다는 걸 믿기 쉬워요.
-    - 물 한 모금도 금식 위반으로 친다는 걸 설명하기 쉬워요.
+    - 믿기 쉬운 일이에요. 약과 함께 마신 한 모금이 문제가 되는지는 마취과가 판단해요.
+    - 잊기 쉬운 일이에요. 식사와 함께 마신 한 모금이 문제가 되는지는 마취과가 판단해요.
     blank:
-      answer: fast
+      answer: forget
       options:
-      - en: fast
-      - en: diet
-      - en: promise
-      - en: record
+      - en: forget
+      - en: finish
+      - en: borrow
+      - en: deliver
   - en: I'm not upset — I just need the exact details to keep you safe.
     ko: 화내는 거 아니에요, 안전을 위해 정확한 내용만 필요해요.
     chunks:
@@ -6127,7 +6115,7 @@ situations:
     decoy: the signed form
     distractorsKo:
     - 화내는 거 아니에요, 안전을 위해 정확한 이름만 필요해요.
-    - 화내는 거 아니에요, 안전을 위해 정확한 시각만 필요해요.
+    - 화내는 거 아니에요, 규정이라 정확한 내용만 필요해요.
     blank:
       answer: upset
       options:
@@ -6148,8 +6136,8 @@ situations:
     - Your surgery is canceled
     answerAt: 1
     why: 진행·연기·취소는 마취과가 정해요. 간호사는 '시간이 조정될 수 있다'까지만 말하고 보고하겠다고 해요. '그대로 진행'이라거나 '취소'라고 단정하면 간호사가 정하지 못하는 일을 약속하게 돼요.
-    example: Your surgery isn't canceled, but the timing might need to shift.
-    exKo: 수술이 취소되는 건 아니지만, 시간이 조정될 수 있어요.
+    example: This doesn't always mean your surgery is canceled — the timing may just shift.
+    exKo: 수술이 꼭 취소된다는 뜻은 아니에요, 시간만 조정될 수 있어요.
   - kind: swap
     words:
     - w-report
@@ -6171,12 +6159,12 @@ situations:
       You broke the rules, so I have to report you now.: 환자를 탓하는 말투라 다음부터 사실대로 말하기 어려워진다.
       Don't worry about it, we'll keep this between us.: 마취과에 알리지 않겠다는 말이라 안전을 해친다.
     why: 금식을 어긴 환자에게는 탓하지 않고, 안전을 위해 마취과에 알려야 한다고 말해요. 숨기겠다는 약속은 절대 하지 않아요.
-    ko: 마취과에 알려서 결정하도록 할게요
+    ko: 마취과가 결정할 수 있게 알려야 해요
   order:
     tag: 대화 흐름
     icon: compass
     ko: 금식 위반 확인 4문장 순서
-    why: 마신 양과 시각을 정확히 묻고, 그 내용을 마취팀에 보고해야 한다고 알리고, 그쪽이 결정한다고 말한 뒤, 어느 쪽이든 수술이 취소되는 건 아니라고 안심시켜요.
+    why: 마신 양과 시각을 정확히 묻고, 그 내용을 마취팀에 보고해야 한다고 알리고, 그쪽이 결정한다고 말한 뒤, 어느 쪽이든 수술이 꼭 취소되는 건 아니라고 안심시켜요.
     lines:
     - en: Exactly how much water did you have, and at what time?
       icon: speech
@@ -6190,14 +6178,14 @@ situations:
       icon: handshake2
       ko: 시간 조정이 필요한지는 그쪽에서 안전하게 결정해요
       note: 결정
-    - en: Either way, your surgery isn't canceled.
+    - en: Either way, this doesn't always mean your surgery is canceled.
       icon: check
-      ko: 어느 쪽이든 수술이 취소되는 건 아니에요
+      ko: 어느 쪽이든 수술이 꼭 취소된다는 뜻은 아니에요
       note: 안심
 - title: 조영제·해산물 교차 알레르기
   sentences:
   - en: Shellfish allergy doesn't actually predict a contrast reaction.
-    ko: 해산물 알레르기가 있다고 조영제 반응이 예측되는 건 아니에요.
+    ko: 갑각류·조개류 알레르기가 있다고 조영제 반응이 예측되는 건 아니에요.
     chunks:
     - Shellfish allergy
     - doesn't actually predict
@@ -6213,11 +6201,11 @@ situations:
     goal: 1
     tag: 교차반응 오해
     icon: bulb
-    why: doesn't actually로 흔한 오해를 부드럽게 바로잡는 틀이에요. 조영제 반응은 해산물 단백질 때문이 아니라서 해산물 알레르기가 곧 위험 신호는 아니라는 설명이에요.
+    why: doesn't actually로 흔한 오해를 부드럽게 바로잡는 틀이에요. 조영제 반응은 갑각류·조개류 단백질 때문이 아니라서 갑각류·조개류 알레르기가 곧 위험 신호는 아니라는 설명이에요.
     decoy: Seasonal allergy
     distractorsKo:
-    - 해산물 알레르기가 있다고 조영제 비용이 예측되는 건 아니에요.
-    - 해산물 알레르기가 있다고 조영제 대기시간이 예측되는 건 아니에요.
+    - 갑각류·조개류 알레르기가 있다고 조영제 비용이 예측되는 건 아니에요.
+    - 갑각류·조개류 알레르기가 있다고 조영제 대기시간이 예측되는 건 아니에요.
     blank:
       answer: predict
       options:
@@ -6226,7 +6214,7 @@ situations:
       - en: reduce
       - en: remove
   - en: But tell me exactly what happens with shellfish.
-    ko: 그래도 해산물에는 정확히 어떤 반응이 있었는지 말씀해 주세요.
+    ko: 그래도 갑각류·조개류에는 정확히 어떤 반응이 있었는지 말씀해 주세요.
     chunks:
     - But tell me exactly
     - what happens
@@ -6234,7 +6222,7 @@ situations:
     - .
     words:
     - w-tell
-    - w-exact
+    - w-exactly
     - w-happen
     - w-shellfish
     goal: 1
@@ -6243,8 +6231,8 @@ situations:
     why: But으로 앞 말(교차반응은 흔치 않다)을 인정하면서도 묻는 일은 계속한다는 방향 전환을 해요. exactly가 막연한 그냥 알레르기가 아니라 실제 증상을 요구해요.
     decoy: with the dye
     distractorsKo:
-    - 그래도 해산물에는 정확히 어떤 반응이 있었는지 써 주세요.
-    - 그래도 해산물에는 정확히 어떤 반응이 있었는지 보여 주세요.
+    - 그래도 갑각류·조개류에는 정확히 어떤 반응이 있었는지 써 주세요.
+    - 갑각류·조개류 알레르기는 조영제 반응과 상관없어도 기록해 둬요.
     blank:
       answer: shellfish
       options:
@@ -6281,7 +6269,7 @@ situations:
       - en: copy
       - en: borrow
   - en: A shellfish reaction and a contrast reaction come from different causes.
-    ko: 해산물 반응과 조영제 반응은 원인이 서로 달라요.
+    ko: 갑각류·조개류 반응과 조영제 반응은 원인이 서로 달라요.
     chunks:
     - A shellfish reaction
     - and a contrast reaction
@@ -6300,8 +6288,8 @@ situations:
     why: A and B come from different causes로 둘을 나란히 놓아 같은 알레르기가 아니라는 구조를 한눈에 보여요. causes가 복수라 원인이 각각 따로 있음을 뜻해요.
     decoy: come with
     distractorsKo:
-    - 해산물 반응과 조영제 반응은 속도가 서로 달라요.
-    - 해산물 반응과 조영제 반응은 이름이 서로 달라요.
+    - 갑각류·조개류 반응과 조영제 반응은 속도가 서로 달라요.
+    - 갑각류·조개류 반응과 조영제 반응은 이름이 서로 달라요.
     blank:
       answer: causes
       options:
@@ -6318,7 +6306,7 @@ situations:
     - ', or trouble breathing'
     - '?'
     words:
-    - w-exact
+    - w-exactly
     - w-happen
     - w-swell
     - w-trouble
@@ -6330,7 +6318,7 @@ situations:
     decoy: or a high fever
     distractorsKo:
     - 정확히 어떤 반응이었나요, 두드러기·붓기·호흡곤란이 다 있었어요?
-    - 정확히 어떻게 시작됐나요, 두드러기·붓기·호흡곤란 중 어떤 거였어요?
+    - 정확히 어떤 반응이었나요, 두드러기·붓기·호흡곤란은 약으로 나았어요?
     blank:
       answer: hives
       options:
@@ -6379,7 +6367,7 @@ situations:
     - We'll note it and confirm with radiology
     - We'll cancel your scan right now
     answerAt: 1
-    why: 해산물 알레르기가 곧 조영제 알레르기를 뜻하지는 않지만, 환자가 말한 반응은 기록해서 영상의학과와 확인해요. 무시하겠다거나 간호사가 검사를 취소하겠다는 말은 모두 맞지 않아요.
+    why: 갑각류·조개류 알레르기가 곧 조영제 알레르기를 뜻하지는 않지만, 환자가 말한 반응은 기록해서 영상의학과와 확인해요. 무시하겠다거나 간호사가 검사를 취소하겠다는 말은 모두 맞지 않아요.
     example: I'll confirm this with radiology so they can plan the right precautions.
     exKo: 영상의학과에 확인해서 적절한 예방 조치를 계획하게 할게요.
   - kind: swap
@@ -6399,24 +6387,24 @@ situations:
     - A shellfish allergy has no link to anything we ever give you.
     answer: A shellfish allergy doesn't actually predict a contrast reaction.
     notes:
-      A shellfish allergy doesn't actually predict a contrast reaction.: 해산물 알레르기가 조영제 반응을 예측하지는 않는다는 사실을 정확히 말한다.
+      A shellfish allergy doesn't actually predict a contrast reaction.: 갑각류·조개류 알레르기가 조영제 반응을 예측하지는 않는다는 사실을 정확히 말한다.
       A shellfish allergy means you will definitely react to contrast.: 연관이 있다고 단정해서 환자를 불필요하게 겁준다.
       A shellfish allergy has no link to anything we ever give you.: 모든 약과 무관하다는 말이라 과장이고, 환자가 다른 알레르기를 말하지 않게 만든다.
-    why: 해산물 알레르기가 조영제 반응을 예측하지는 않는다는 점은 정확히 안내하되, 환자가 말한 반응은 빠짐없이 기록하고 확인해요.
-    ko: 해산물 알레르기가 있다고 조영제 반응이 예측되는 건 아니에요
+    why: 갑각류·조개류 알레르기가 조영제 반응을 예측하지는 않는다는 점은 정확히 안내하되, 환자가 말한 반응은 빠짐없이 기록하고 확인해요.
+    ko: 갑각류·조개류 알레르기가 있다고 조영제 반응이 예측되는 건 아니에요
   order:
     tag: 대화 흐름
     icon: compass
     ko: 조영제 교차 알레르기 4문장 순서
-    why: 해산물 알레르기와 조영제 반응이 별개라고 먼저 짚고, 그래도 실제 증상을 묻고, 들은 내용을 기록한 뒤, 영상의학과와 예방 조치를 확인해요.
+    why: 갑각류·조개류 알레르기와 조영제 반응이 별개라고 먼저 짚고, 그래도 실제 증상을 묻고, 들은 내용을 기록한 뒤, 영상의학과와 예방 조치를 확인해요.
     lines:
     - en: Shellfish allergy doesn't actually predict a contrast reaction.
       icon: bulb
-      ko: 해산물 알레르기로 조영제 반응이 예측되진 않아요
+      ko: 갑각류·조개류 알레르기로 조영제 반응이 예측되진 않아요
       note: 설명
     - en: But tell me exactly what happened with shellfish — hives, swelling, or trouble breathing?
       icon: speech
-      ko: 그래도 해산물로 정확히 어땠는지 말씀해 주세요
+      ko: 그래도 갑각류·조개류로 정확히 어땠는지 말씀해 주세요
       note: 질문
     - en: I'll document that and confirm the plan with the team.
       icon: pencil
@@ -6473,8 +6461,8 @@ situations:
     why: flag A as B 틀로 환자를 어떤 위험군으로 분류해 표시한다는 뜻이에요. high-risk를 하이픈으로 한 낱말처럼 써서 for 뒤 위험 대상과 이어요.
     decoy: as a new patient
     distractorsKo:
-    - 고위험군으로 표시해서 수술 후 가려움에 대비할게요.
-    - 고위험군으로 표시해서 수술 후 졸림에 대비할게요.
+    - 고위험군으로 표시하려고 지난번 기록을 찾아볼게요.
+    - 멀미나 지난번 메스꺼움은 고위험의 근거가 돼요.
     blank:
       answer: high-risk
       options:
@@ -6501,8 +6489,8 @@ situations:
     why: can add는 확정이 아니라 가능한 선택지를 알리는 말이라 처방 권한이 팀에 있음을 존중해요. to prevent it은 약의 목적을 앞의 문제(오심)에 연결해요.
     decoy: to track it
     distractorsKo:
-    - 다음엔 팀에서 예방 약물을 추가로 줄 수 있어요.
-    - 이번엔 팀에서 예방 식단을 추가로 줄 수 있어요.
+    - PONV 고위험엔 예방 약물을 여러 가지 써요.
+    - 이번엔 예방 약물을 주려고 팀이 알레르기부터 확인해요.
     blank:
       answer: medication
       options:
@@ -6562,7 +6550,7 @@ situations:
       answer: risk
       options:
       - en: risk
-      - en: price
+      - en: fee
       - en: speed
       - en: temperature
   - en: I'll pass this along so anesthesia can add anti-nausea medication early.
@@ -6585,7 +6573,7 @@ situations:
     why: pass this along은 받은 정보를 다음 사람에게 넘긴다는 구예요. so…can add로 넘기는 목적을 마취팀의 행동으로 이어 말해요. early는 증상이 생기기 전에 쓴다는 점을 짚어요.
     decoy: carefully
     distractorsKo:
-    - 마취팀이 미리 항구토제를 준비하도록 전달할게요.
+    - 항구토제는 수술 중에 미리 써 둬야 효과가 좋아요.
     - 마취팀이 미리 항구토제를 기억하도록 전달할게요.
     blank:
       answer: anti-nausea
@@ -6600,13 +6588,13 @@ situations:
     - w-risk
     - w-nausea
     - w-flag
-    cue: 'Patient: "After my last surgery I threw up twice and felt sick all night." How do you flag the risk?'
+    cue: 'Patient: "After my last surgery I threw up twice and felt sick all night — I get carsick too, and I''ve never smoked." How do you flag the risk?'
     scale:
     - Low risk for nausea
     - Some risk for nausea
     - High risk of PONV
     answerAt: 2
-    why: 지난 수술 뒤에 반복해서 토했다면 수술 후 오심구토 위험이 높다고 표시해서 마취팀에 전해요. 예방 약을 쓸지는 마취과가 정해요.
+    why: 지난 수술 뒤에 반복해서 토했다면 수술 후 오심구토 위험이 높다고 표시해서 마취팀에 전해요. 예방 약을 쓸지는 마취과가 정해요. 이전 PONV·멀미·비흡연 같은 위험 인자가 겹치면 고위험으로 표시해요.
     example: I'll flag you as high-risk for post-op nausea.
     exKo: 고위험군으로 표시해서 수술 후 메스꺼움에 대비할게요.
   - kind: context
@@ -6643,9 +6631,9 @@ situations:
       icon: bulb
       ko: PONV 같은데 미리 대비할 수 있어요
       note: 판단
-    - en: Because of that, I'll flag you as high-risk for post-op nausea.
+    - en: If it's MH, this kind of family history changes which anesthesia drugs are safe.
       icon: pushpin
-      ko: 그래서 수술 후 메스꺼움 고위험군으로 표시할게요
+      ko: 악성 고열이라면 이런 가족력은 어떤 마취약이 안전한지를 바꿔요
       note: 표시
     - en: With you flagged, I'll pass this along so anesthesia can add anti-nausea medication early.
       icon: handshake2
@@ -6727,7 +6715,7 @@ situations:
     why: bring … with you today로 병원에 가져왔는지 묻는 현재 시점의 질문이에요. 회복 중에 쓸 수 있으니 챙겨 왔는지 미리 확인하는 거예요.
     decoy: for me
     distractorsKo:
-    - 오늘 CPAP 기계를 사 오셨어요?
+    - 오늘 CPAP 기계를 맡기셨어요?
     - 오늘 CPAP 기계를 고치셨어요?
     blank:
       answer: today
@@ -6796,10 +6784,10 @@ situations:
   - en: I'll bring this straight to anesthesia before we go back.
     ko: 수술실 가기 전에 이 내용을 마취과에 바로 전달할게요.
     chunks:
-    - I'll bring this straight
+    - I'll bring this
+    - straight
     - to anesthesia
-    - before we go
-    - back
+    - before we go back
     - .
     words:
     - w-bring
@@ -6810,8 +6798,8 @@ situations:
     why: straight는 거치는 사람 없이 곧바로 전한다는 부사예요. before we go back으로 전달 시점이 수술실 이동보다 앞임을 못 박아요.
     decoy: I'll bring your bag
     distractorsKo:
-    - 수술실 가기 전에 이 차트를 마취과에 바로 전달할게요.
-    - 수술실 가기 전에 이 보고서를 마취과에 바로 전달할게요.
+    - 수면무호흡이 있으면 마취 중 기도가 막히기 쉬워요.
+    - 이 내용을 전달하려고 마취과 번호를 찾을게요.
     blank:
       answer: straight
       options:
@@ -6857,23 +6845,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 수면무호흡 병력 4문장 순서
-    why: CPAP 사용과 설정을 묻고, 그 기계를 가져왔는지 확인하고, 이 정보가 마취 중 기도에 중요하다고 설명한 뒤, 마취과에 바로 전하겠다고 해요.
+    why: CPAP 사용과 설정을 묻고, 그게 마취 중 기도에 중요하다고 설명한 뒤, 그래서 기계를 가져왔는지 묻고, 어느 쪽이든 마취과에 바로 전해요.
     lines:
     - en: Do you use your CPAP every night, and what pressure setting?
       icon: monitor
       ko: 매일 밤 CPAP을 쓰시고 압력 설정은 어떻게 되세요?
       note: 사용
-    - en: Did you bring that machine with you today?
-      icon: me
-      ko: 그 기계를 오늘 가져오셨어요?
-      note: 지참
     - en: This matters a lot for your airway during anesthesia.
       icon: bulb
       ko: 이건 마취 중 기도에 아주 중요해요
       note: 이유
-    - en: Because it matters, I'll bring all of this straight to anesthesia before we go back.
+    - en: That's why I'm asking — did you bring that machine with you today?
+      icon: me
+      ko: 그래서 여쭤요, 오늘 그 기계를 가져오셨어요?
+      note: 지참
+    - en: Either way, I'll bring all of this straight to anesthesia before we go back.
       icon: handshake2
-      ko: 중요하니 이 내용을 수술실 가기 전에 마취과에 바로 전달할게요
+      ko: 어느 쪽이든 수술실 가기 전에 마취과에 바로 전달할게요
       note: 전달
 - title: 심·호흡 기저질환
   sentences:
@@ -6896,7 +6884,7 @@ situations:
     decoy: about your asthma
     distractorsKo:
     - COPD와 평소 호흡 상태에 대해 좀 더 써 주세요.
-    - COPD와 평소 식사 상태에 대해 좀 더 말씀해 주세요.
+    - COPD와 평소 호흡 상태는 마취 계획에 쓰여요.
     blank:
       answer: COPD
       options:
@@ -6949,8 +6937,8 @@ situations:
     why: make sure는 상대가 실제로 알고 있게 하겠다는 약속이라 단순 전달보다 강해요. full은 일부가 아니라 전체 병력을 빠짐없이 넘기겠다는 뜻이에요.
     decoy: I'll write that
     distractorsKo:
-    - 마취과가 전체 치과 병력을 알도록 확인할게요.
-    - 마취과가 전체 가족 병력을 알도록 확인할게요.
+    - 마취과에 알리기 전에 스텐트 날짜를 여쭐게요.
+    - 스텐트가 있으면 마취과가 항응고제를 꼭 확인해요.
     blank:
       answer: cardiac
       options:
@@ -6961,8 +6949,8 @@ situations:
   - en: Do you get short of breath walking up a flight of stairs?
     ko: 계단을 오를 때 숨이 차시나요?
     chunks:
-    - Do you get short
-    - of breath
+    - Do you get
+    - short of breath
     - walking up
     - a flight of stairs
     - '?'
@@ -6976,7 +6964,7 @@ situations:
     why: walking up a flight of stairs는 환자가 바로 떠올릴 수 있는 일상 활동이라 운동 능력을 가늠하는 질문이에요. get short of breath로 숨이 차는 상태를 완곡하게 물어요.
     decoy: riding up
     distractorsKo:
-    - 언덕을 오를 때 숨이 차시나요?
+    - 계단은 운동 능력 기준이에요.
     - 엘리베이터를 탈 때 숨이 차시나요?
     blank:
       answer: breath
@@ -7186,28 +7174,29 @@ situations:
       - en: color
       - en: smell
       - en: sound
-  - en: Herbs and other supplements can thin the blood just like prescription medication.
-    ko: 한약재와 다른 보조제들은 처방약처럼 피를 묽게 만들 수 있어요.
+  - en: Some herbs and supplements can thin the blood and raise bleeding risk.
+    ko: 일부 한약재와 보조제는 피를 묽게 해서 출혈 위험을 높일 수 있어요.
     chunks:
-    - Herbs and other supplements
+    - Some herbs and supplements
     - can thin
     - the blood
-    - just like prescription medication
+    - and raise bleeding risk
     - .
     words:
     - w-herb
     - w-supplement
     - w-thin
     - w-blood
-    - w-medication
+    - w-bleed
+    - w-risk
     goal: 1
     tag: 작용 설명
     icon: pill
-    why: just like로 보조제를 처방약과 같은 선에 놓아 가볍게 여기던 생각을 바로잡아요. can은 모든 제품이 그렇다는 단정이 아니라 가능성을 말해요.
+    why: Some…으로 모든 제품이 아니라 일부만 해당한다고 범위를 좁혀 말해요. can은 가능성이라 단정하지 않고, and raise bleeding risk로 왜 알려야 하는지까지 이어요.
     decoy: can warm
     distractorsKo:
-    - 녹차와 다른 보조제들은 처방약처럼 피를 묽게 만들 수 있어요.
-    - 한약재와 다른 식품들은 처방약처럼 피를 묽게 만들 수 있어요.
+    - 일부 녹차와 보조제는 피를 묽게 해서 출혈 위험을 높일 수 있어요.
+    - 일부 한약재와 식품은 피를 묽게 해서 출혈 위험을 높일 수 있어요.
     blank:
       answer: thin
       options:
@@ -7236,7 +7225,7 @@ situations:
     decoy: of every pill
     distractorsKo:
     - 각 보조제의 정확한 가격과 마지막 복용 시점이 필요해요.
-    - 각 보조제의 정확한 색깔과 마지막 복용 시점이 필요해요.
+    - 보조제마다 이름을 알아야 출혈 위험을 따질 수 있어요.
     blank:
       answer: name
       options:
@@ -7248,9 +7237,9 @@ situations:
     ko: 출혈 위험 대비를 계획하도록 수술팀에 보고할게요.
     chunks:
     - I'll report this
-    - so surgery can plan
-    - for extra
-    - bleeding risk
+    - so surgery
+    - can plan
+    - for extra bleeding risk
     - .
     words:
     - w-report
@@ -7271,7 +7260,7 @@ situations:
       options:
       - en: extra
       - en: future
-      - en: private
+      - en: minor
       - en: distant
   nuance:
   - kind: slider
@@ -7356,9 +7345,9 @@ situations:
       answer: drink
       options:
       - en: drink
-      - en: snack
       - en: nap
-      - en: visit
+      - en: checkup
+      - en: workout
   - en: This helps us plan for your airway and recovery.
     ko: 이건 기도 관리와 회복 계획에 도움이 돼요.
     chunks:
@@ -7376,7 +7365,7 @@ situations:
     tag: 이유 안내
     icon: bulb
     why: This helps us…로 질문의 이유를 의료진이 준비하는 데 도움이 된다는 쪽으로 말해 캐묻는 느낌을 줄여요. airway and recovery 두 가지로 이유를 구체화해요.
-    decoy: decide on
+    decoy: ask about
     distractorsKo:
     - 이건 기도 관리와 퇴원 계획에 도움이 돼요.
     - 이건 기도 관리와 식사 계획에 도움이 돼요.
@@ -7388,7 +7377,7 @@ situations:
       - en: vote
       - en: wait
   - en: I'm not judging — I just need an honest picture.
-    ko: 판단하는 거 아니에요, 그냥 솔직한 그림이 필요해요.
+    ko: 탓하려는 게 아니에요, 있는 그대로 알고 싶을 뿐이에요.
     chunks:
     - I'm not judging
     - — I just need
@@ -7406,8 +7395,8 @@ situations:
     why: I'm not judging을 먼저 말해 음주·흡연 이야기를 꺼리게 하는 부담을 덜어요. picture는 숫자가 아닌 전체 모습이라 정확한 답을 부담 없이 청하는 은유예요.
     decoy: a quick
     distractorsKo:
-    - 판단하는 거 아니에요, 그냥 간단한 그림이 필요해요.
-    - 판단하는 거 아니에요, 그냥 솔직한 사진이 필요해요.
+    - 탓하려는 게 아니에요, 있는 그대로 잊고 싶을 뿐이에요.
+    - 칭찬하려는 게 아니에요, 있는 그대로 알고 싶을 뿐이에요.
     blank:
       answer: judging
       options:
@@ -7420,8 +7409,8 @@ situations:
     chunks:
     - About how many cigarettes
     - a day
-    - ', and for how many'
-    - years
+    - ', and'
+    - for how many years
     - '?'
     words:
     - w-cigarette
@@ -7429,7 +7418,7 @@ situations:
     goal: 1
     tag: 흡연량
     icon: speech
-    why: About이 대략의 수를 말해도 된다는 신호라 정확히 기억 못하는 환자의 부담을 덜어요. 하루 개비 수와 연수를 곱해 누적 흡연량(pack-year)을 가늠해요.
+    why: About이 대략의 수를 말해도 된다는 신호라 정확히 기억 못하는 환자의 부담을 덜어요. 하루 개비 수(20개비가 1갑)와 연수로 누적 흡연량(pack-year)을 가늠해요.
     decoy: in a row
     distractorsKo:
     - 하루에 몇 개비 정도, 몇 달째 피우셨어요?
@@ -7441,27 +7430,28 @@ situations:
       - en: weeks
       - en: hours
       - en: minutes
-  - en: Smoking and drinking both make your airway a little harder to manage.
-    ko: 흡연과 음주 둘 다 기도 관리를 조금 더 어렵게 만들어요.
+  - en: Smoking makes your airway a bit harder to manage, and drinking matters too.
+    ko: 흡연은 기도 관리를 조금 더 어렵게 하고, 음주도 중요해요.
     chunks:
-    - Smoking and drinking
-    - both make
-    - your airway
-    - a little harder to manage
+    - Smoking makes your airway
+    - a bit harder to manage
+    - ', and drinking'
+    - matters too
     - .
     words:
     - w-smoke
-    - w-drink
     - w-airway
     - w-manage
+    - w-drink
+    - w-matter
     goal: 2
     tag: 영향 설명
     icon: bulb
-    why: both make A B 틀로 두 습관이 똑같이 기도를 다루기 어렵게 한다는 점을 한 번에 말해요. a little이 위협이 아닌 조금의 차이라는 어조를 맞춰 줘요.
-    decoy: both keep
+    why: Smoking makes…로 흡연이 기도를 다루기 어렵게 한다는 영향을 먼저 말해요. and drinking matters too로 음주도 알아야 할 정보라고 이어, 왜 묻는지 설명해요. a bit이 위협이 아닌 조금의 차이라는 어조를 맞춰 줘요.
+    decoy: Smoking keeps your airway
     distractorsKo:
-    - 흡연과 음주 둘 다 수면 관리를 조금 더 어렵게 만들어요.
-    - 흡연과 음주 둘 다 식단 관리를 조금 더 어렵게 만들어요.
+    - 흡연은 수면 관리를 조금 더 어렵게 하고, 음주도 중요해요.
+    - 흡연은 식단 관리를 조금 더 어렵게 하고, 음주도 중요해요.
     blank:
       answer: harder
       options:
@@ -7550,7 +7540,7 @@ situations:
       note: 양
     - en: I'm not judging — I just need an honest picture of those numbers.
       icon: handshake2
-      ko: 판단하는 게 아니라 그 수치의 솔직한 모습이 필요해요
+      ko: 탓하려는 게 아니라 그 수치를 있는 그대로 알고 싶어요
       note: 안심
     - en: With that, I'll record this honestly so recovery can plan around it.
       icon: pencil
@@ -7573,7 +7563,7 @@ situations:
     goal: 2
     tag: 검사 안내
     icon: check
-    why: routine과 for everyone이 특정인을 의심해서가 아니라 모두에게 하는 표준 절차임을 알려 불쾌감을 줄여요. who could be pregnant가 대상 범위를 정해요.
+    why: routine과 for everyone이 특정인을 의심해서가 아니라 모두에게 하는 표준 절차임을 알려 불쾌감을 줄여요. who could be pregnant가 대상 범위를 정해요. 확인 방법(소변 검사 등)은 병원 정책을 따라요.
     decoy: billing form
     distractorsKo:
     - 임신 가능성이 있는 모든 분께 하는 일상적인 수면 검사예요.
@@ -7584,7 +7574,7 @@ situations:
       - en: routine
       - en: rare
       - en: special
-      - en: private
+      - en: costly
   - en: Anesthesia can affect a pregnancy, so we always confirm.
     ko: 마취가 임신에 영향을 줄 수 있어서 항상 확인해요.
     chunks:
@@ -7602,7 +7592,7 @@ situations:
     goal: 1
     tag: 이유 설명
     icon: bulb
-    why: can affect는 모든 경우가 아니라 영향을 줄 수 있다는 가능성만 말해 겁주지 않아요. so we always로 그래서 모두에게 같은 확인을 한다는 결론을 이어요.
+    why: can affect는 모든 경우가 아니라 영향을 줄 수 있다는 가능성만 말해 겁주지 않아요. so we always로 그래서 모두에게 같은 확인을 한다는 결론을 이어요. 확인 방법은 병원 정책을 따라요.
     decoy: wonder
     distractorsKo:
     - 마취가 식욕에 영향을 줄 수 있어서 항상 확인해요.
@@ -7661,8 +7651,8 @@ situations:
     why: last period와 any chance를 한 문장에 묶어 날짜와 가능성을 한꺼번에 물어요. any chance는 확신이 없어도 가능성만으로 답하라는 부드러운 틀이에요.
     decoy: any reason
     distractorsKo:
-    - 마지막 생리는 언제였고, 알레르기 가능성이 있으신가요?
-    - 마지막 생리는 언제였고, 출혈 가능성이 있으신가요?
+    - 첫 생리는 언제였고, 임신 가능성이 있으신가요?
+    - 마지막 생리 날짜로 임신 가능성을 가늠해요.
     blank:
       answer: chance
       options:
@@ -7699,25 +7689,27 @@ situations:
       - en: rushed
       - en: lonely
       - en: random
-  - en: No one outside this room needs to know the result.
-    ko: 이 방 밖의 누구도 결과를 알 필요 없어요.
+  - en: We won't share the result with anyone outside your care team.
+    ko: 결과는 진료팀 밖의 누구에게도 알리지 않아요.
     chunks:
-    - No one
-    - outside this room
-    - needs to know
+    - We won't share
     - the result
+    - with anyone
+    - outside your care team
     - .
     words:
-    - w-outside
     - w-result
+    - w-outside
+    - w-care
+    - w-team
     goal: 2
     tag: 비밀 안심
     icon: lock
-    why: No one…needs to know로 알 필요가 있는 사람만 알게 된다는 최소 공개 원칙을 쉬운 말로 풀어요. outside this room이 공개 범위의 경계를 눈에 보이는 장소로 줄여 줘요.
-    decoy: in your family
+    why: We won't share…로 결과를 알리는 범위를 진료팀 안으로 한정해 말해요. outside your care team이 공개 범위의 경계를 분명히 해서 환자가 안심하고 답하게 돕고, 팀 안에서는 결과를 나눈다는 점도 숨기지 않아요.
+    decoy: with your family
     distractorsKo:
-    - 이 방 밖의 누구도 이유를 알 필요 없어요.
-    - 이 방 밖의 누구도 일정을 알 필요 없어요.
+    - 일정은 진료팀 밖의 누구에게도 알리지 않아요.
+    - 이유는 진료팀 밖의 누구에게도 알리지 않아요.
     blank:
       answer: result
       options:
@@ -7756,15 +7748,15 @@ situations:
       ok: true
     - who: 대기실 가족에게
       icon: speech
-      en: The result is confidential, but she is two weeks pregnant.
+      en: Per HIPAA, her information is confidential and cannot be disclosed.
       ok: false
-      fix: I can't share her results, but she can tell you herself if she wants to.
-    why: 뜻은 셋 다 '비밀의'예요. 환자와 진료팀에는 비밀이 지켜진다고 말하지만, 가족에게는 결과 자체를 말하면 안 돼요. 비밀이라고 하면서 내용을 말하면 환자의 개인정보를 가족에게 알리는 일이에요.
+      fix: I'm sorry, I can't share her health information, but she's welcome to tell you herself.
+    why: 뜻은 셋 다 '비밀의'예요. 환자와 진료팀에는 비밀이 지켜진다고 말하지만, 가족에게 법 조항처럼 말하면 차갑게 들려요. 무엇을 검사했는지도 말하지 않고, 정중하게 본인에게 들으시라고 해요.
   order:
     tag: 대화 흐름
     icon: compass
     ko: 임신 가능성 확인 4문장 순서
-    why: 마취가 임신에 영향을 줄 수 있어 늘 확인한다고 이유를 말하고, 마지막 생리와 임신 가능성을 묻고, 개인적인 질문이라는 점을 인정하며 안전 때문이라고 한 뒤, 결과가 방 밖으로 나가지 않는다고 해요.
+    why: 마취가 임신에 영향을 줄 수 있어 늘 확인한다고 이유를 말하고, 마지막 생리와 임신 가능성을 묻고, 개인적인 질문이라는 점을 인정하며 안전 때문이라고 한 뒤, 결과를 진료팀 밖에는 알리지 않는다고 해요.
     lines:
     - en: Anesthesia can affect a pregnancy, so we always confirm.
       icon: bulb
@@ -7774,13 +7766,13 @@ situations:
       icon: calendar
       ko: 그래서 마지막 생리는 언제였고 임신 가능성이 있나요?
       note: 질문
-    - en: I know this feels personal, but it keeps you safe under anesthesia.
+    - en: Besides names and doses, I need exactly when you took your last dose of each.
       icon: faceWorried
-      ko: 개인적으로 느껴지시겠지만 마취 중 안전을 위한 거예요
+      ko: 이름과 용량 말고도 각 약을 마지막으로 언제 드셨는지 정확히 알아야 해요
       note: 공감
-    - en: Because it's personal, no one outside this room needs to know the result.
+    - en: Because it's personal, we won't share the result outside your care team.
       icon: lock
-      ko: 개인적인 일이니 이 방 밖에선 결과를 알 필요 없어요
+      ko: 개인적인 일이니 결과를 진료팀 밖에는 알리지 않아요
       note: 비밀
 - title: 최근 상기도 감염
   sentences:
@@ -7834,8 +7826,8 @@ situations:
       answer: colored
       options:
       - en: colored
-      - en: thick
-      - en: sticky
+      - en: clear
+      - en: watery
       - en: dry
   - en: I need anesthesia to weigh in before we proceed.
     ko: 진행하기 전에 마취과 의견이 필요해요.
@@ -7885,12 +7877,12 @@ situations:
     - 기침과 코막힘이 몇 주째인가요?
     - 기침과 코막힘이 몇 번째인가요?
     blank:
-      answer: days
+      answer: cough
       options:
-      - en: days
-      - en: weeks
-      - en: months
-      - en: times
+      - en: cough
+      - en: rash
+      - en: limp
+      - en: bruise
   - en: A simple runny nose is different from a fever with a bad cough.
     ko: 단순 콧물과 열을 동반한 심한 기침은 달라요.
     chunks:
@@ -7924,9 +7916,9 @@ situations:
     ko: 오늘 수술 진행 여부를 마취과가 결정하도록 증상을 보고할게요.
     chunks:
     - I'll report your symptoms
-    - so anesthesia can decide
-    - about today's
-    - surgery
+    - so anesthesia
+    - can decide
+    - about today's surgery
     - .
     words:
     - w-report
@@ -8080,18 +8072,18 @@ situations:
     goal: 2
     tag: 압박 대기
     icon: siren
-    why: whenever you call for it은 지시를 받는 즉시 할 수 있다는 대기 상태를 말해요. 윤상연골 압박은 부르는 쪽이 타이밍을 정하기 때문에 준비됐다고 알리는 문장이에요.
+    why: whenever you call for it은 지시를 받는 즉시 할 수 있다는 대기 상태를 말해요. 윤상연골 압박은 부르는 쪽이 타이밍을 정하기 때문에 준비됐다고 알리는 문장이에요. 병원 정책과 마취과 요청에 따라 시행해요.
     decoy: is safe
     distractorsKo:
-    - 윤상연골 압박은 부르시기 전에 손을 올려요.
-    - 윤상연골 압박은 부르시면 바로 알려 드려요.
+    - 윤상연골 압박은 부르시기 전에 자리를 짚어 둬요.
+    - 윤상연골 압박은 부르는 쪽이 시점을 정해요.
     blank:
       answer: ready
       options:
       - en: ready
       - en: painful
-      - en: legal
-      - en: quiet
+      - en: gentle
+      - en: brief
   - en: Full stomach means high risk of aspiration during induction.
     ko: full stomach는 유도 중 흡인 위험이 크다는 뜻이에요.
     chunks:
@@ -8144,7 +8136,7 @@ situations:
     decoy: clean
     distractorsKo:
     - 기도 카트를 가까이 두려고 바퀴 잠금을 풀게요.
-    - 빨리 필요할 수도 있으니 기도 카트를 점검할게요.
+    - 기도 카트에는 삽관이 어려울 때 쓸 도구가 들어 있어요.
     blank:
       answer: fast
       options:
@@ -8156,9 +8148,9 @@ situations:
     ko: 모두 계획을 알고 있으니 준비되면 바로 움직일 수 있어요.
     chunks:
     - Everyone knows the plan
-    - ', so we can move fast'
-    - once you're
-    - ready
+    - ', so we can'
+    - move fast
+    - once you're ready
     - .
     words:
     - w-plan
@@ -8228,9 +8220,9 @@ situations:
       icon: bulb
       ko: full stomach는 유도 중 흡인 위험이 크기 때문이에요
       note: 이유
-    - en: For that, I have suction on and ready at the head of the bed.
+    - en: Because of that aspiration risk, suction is on and ready at the bedside.
       icon: monitor
-      ko: 그래서 흡인기를 켜서 침대 머리맡에 준비해 뒀어요
+      ko: 그 흡인 위험 때문에 흡인기를 켜서 머리맡에 준비해 뒀어요
       note: 흡인기
     - en: With all of that in place, everyone knows the plan, so we can move fast once you're ready.
       icon: check
@@ -8255,7 +8247,7 @@ situations:
     tag: 위험 표시
     icon: pushpin
     why: That's a serious reaction으로 환자 경험을 가볍게 넘기지 않고 인정한 뒤, 대시 뒤에 구체적 조치를 이어요. marking A as B가 위험군 표시를 환자에게 투명하게 알려요.
-    decoy: for
+    decoy: a donor
     distractorsKo:
     - 그건 힘든 경험이네요, 고위험군으로 표시할게요.
     - 그건 낯선 반응이네요, 고위험군으로 표시할게요.
@@ -8263,7 +8255,7 @@ situations:
       answer: serious
       options:
       - en: serious
-      - en: rare
+      - en: mild
       - en: strange
       - en: quiet
   - en: We'll have epinephrine and emergency meds ready.
@@ -8284,8 +8276,8 @@ situations:
     why: We'll have A and B ready처럼 두 가지를 and로 묶고 ready로 끝내 곧바로 쓸 수 있는 상태를 말해요. 아나필락시스의 1차 약은 에피네프린이에요.
     decoy: and spare gloves
     distractorsKo:
-    - 에피네프린과 응급약 쓸 순서를 정해 둘게요.
-    - 에피네프린과 안내문을 준비해 둘게요.
+    - 에피네프린을 준비하려고 날짜를 볼게요.
+    - 에피네프린이 첫 번째 약이에요.
     blank:
       answer: epinephrine
       options:
@@ -8312,7 +8304,7 @@ situations:
     decoy: will vote
     distractorsKo:
     - 무엇이든 투여되기 전에 팀 전체가 올 거예요.
-    - 무엇이든 투여되기 전에 팀 전체가 모일 거예요.
+    - 투여 전에 알리는 건 바로 대처하려는 거예요.
     blank:
       answer: given
       options:
@@ -8323,13 +8315,13 @@ situations:
   - en: Exactly how did your throat feel — tight, swollen, or hard to breathe?
     ko: 목이 정확히 어땠나요, 조이거나 붓거나 숨쉬기 어려웠나요?
     chunks:
-    - Exactly how did
-    - your throat feel
+    - Exactly how
+    - did your throat feel
     - — tight, swollen
     - ', or hard to breathe'
     - '?'
     words:
-    - w-exact
+    - w-exactly
     - w-throat
     - w-feel
     - w-tight
@@ -8342,8 +8334,8 @@ situations:
     why: Exactly how did…feel로 느낌을 구체적으로 묻고, 대시 뒤에 tight·swollen·hard to breathe를 보기로 줘 환자가 말로 설명하기 어려워도 고를 수 있게 해요.
     decoy: your hands feel
     distractorsKo:
-    - 목이 정확히 어땠나요, 조이거나 붓거나 삼키기 어려웠나요?
-    - 목이 정확히 어땠나요, 조이거나 붓거나 말하기 어려웠나요?
+    - 목이 정확히 언제부터 조이거나 붓거나 숨쉬기 어려웠나요?
+    - 목이 조이거나 붓는 건 기도가 막혀 간다는 신호예요.
     blank:
       answer: tight
       options:
@@ -8361,7 +8353,7 @@ situations:
     - .
     words:
     - w-need
-    - w-exact
+    - w-exactly
     - w-medication
     - w-contrast
     - w-cause
@@ -8369,17 +8361,17 @@ situations:
     tag: 원인 확인
     icon: magnify
     why: I need to know exactly로 필요한 정보를 단도직입으로 요청해요. what medication or contrast가 약과 조영제를 함께 짚어 원인 후보를 넓게 열어 둬요.
-    decoy: what brand
+    decoy: what food
     distractorsKo:
-    - 정확히 어떤 약이나 조영제가 처음이었는지 알아야 해요.
+    - 원인을 알면 그 약이나 조영제를 피할 수 있어요.
     - 정확히 어떤 약이나 조영제가 남았는지 알아야 해요.
     blank:
-      answer: contrast
+      answer: caused
       options:
-      - en: contrast
-      - en: food
-      - en: latex
-      - en: tape
+      - en: caused
+      - en: followed
+      - en: delayed
+      - en: labeled
   - en: I'll alert the whole team so everyone's ready before we give anything.
     ko: 무엇을 주기 전에 팀 전체가 준비되도록 알릴게요.
     chunks:
@@ -8445,7 +8437,7 @@ situations:
       That sounds like a side effect, nothing to be alarmed about.: 심각한 반응을 단순 부작용으로 줄여서 고위험 표시를 놓치게 한다.
       That sounds like nothing to worry about, so let's move on.: 환자에게 괜찮다고 안심시켜서 중요한 병력을 흘리게 한다.
     why: 조영제 뒤에 목이 조이고 두드러기가 났다면 부작용으로 줄이지 않고 심각한 반응으로 표시해서 팀에 알려요.
-    ko: 심각한 반응 같아서 팀에 표시해 둘게요
+    ko: 심각한 반응 같아서 표시해 둘게요
   order:
     tag: 대화 흐름
     icon: compass
@@ -8460,9 +8452,9 @@ situations:
       icon: pushpin
       ko: 심각한 반응이네요, 고위험군으로 표시할게요
       note: 표시
-    - en: To prepare for that, I'll alert the whole team before we give anything.
+    - en: Because you're high-risk, I'll alert the whole team before we give anything.
       icon: handshake2
-      ko: 그에 대비해 투여 전에 팀 전체에 알릴게요
+      ko: 고위험이시니 투여 전에 팀 전체에 알릴게요
       note: 알림
     - en: With everyone alerted, we'll have epinephrine and emergency meds ready.
       icon: pill
@@ -8514,7 +8506,7 @@ situations:
     decoy: the usual routine
     distractorsKo:
     - 확실해지기 전까지 의심되는 것들을 피하려고 메모해요.
-    - 확실해지기 전까지는 의심되는 걸 표시할게요.
+    - 확실해지기 전까지는 의심되는 게 여럿이에요.
     blank:
       answer: culprits
       options:
@@ -8538,10 +8530,10 @@ situations:
     tag: 응급약 대기
     icon: pill
     why: on standby는 쓰지 않아도 바로 꺼낼 수 있게 대기시킨다는 뜻이에요. just in case가 지금 위험해서가 아니라 만약을 위한 준비라고 알려 환자를 안심시켜요.
-    decoy: on order
+    decoy: extra blankets
     distractorsKo:
-    - 응급약을 바로 쓸 수 있게 서랍을 열게요.
-    - 만약을 대비해 응급 서류를 바로 쓸 수 있게 둘게요.
+    - 응급약을 대기시키려고 약 카트 열쇠를 받을게요.
+    - 응급약은 만약을 위한 거라 지금 쓰지는 않아요.
     blank:
       answer: standby
       options:
@@ -8559,7 +8551,7 @@ situations:
     - '?'
     words:
     - w-describe
-    - w-exact
+    - w-exactly
     - w-swell
     goal: 1
     tag: 붓기 묘사
@@ -8568,21 +8560,21 @@ situations:
     decoy: got dressed
     distractorsKo:
     - 얼굴과 몸이 정확히 어떻게 부었는지 그려 주시겠어요?
-    - 얼굴과 몸이 정확히 어떻게 부었는지 보여 주시겠어요?
+    - 얼굴과 몸이 정확히 어떻게 부었는지 사진이 있으세요?
     blank:
-      answer: face
+      answer: swelled
       options:
-      - en: face
-      - en: hands
-      - en: feet
-      - en: legs
+      - en: swelled
+      - en: healed
+      - en: dried
+      - en: warmed
   - en: Dizziness along with swelling can point to a serious reaction.
     ko: 붓기와 함께 어지러움이 있으면 심각한 반응일 수 있어요.
     chunks:
-    - Dizziness along with swelling
+    - Dizziness
+    - along with swelling
     - can point
-    - to a serious
-    - reaction
+    - to a serious reaction
     - .
     words:
     - w-dizziness
@@ -8596,8 +8588,8 @@ situations:
     why: along with로 두 증상이 함께 나타나는 조합을 짚어요. can point to는 확정이 아니라 가리킨다는 신중한 표현이에요. 붓기와 어지러움이 함께면 아나필락시스를 의심해요.
     decoy: can push
     distractorsKo:
-    - 붓기와 함께 가려움이 있으면 심각한 반응일 수 있어요.
-    - 붓기와 함께 어지러움이 있으면 심각한 감염일 수 있어요.
+    - 붓기와 함께 어지러움이 있으면 혈압이 떨어졌을 수 있어요.
+    - 붓기와 함께 어지러움이 있으면 바로 알려 주세요.
     blank:
       answer: Dizziness
       options:
@@ -8627,7 +8619,7 @@ situations:
     decoy: your belongings
     distractorsKo:
     - 가까이서 지켜보려고 의자를 당겨 앉을게요.
-    - 가까이서 지켜보면서 응급 서류를 손닿는 곳에 둘게요.
+    - 가까이서 지켜보는 건 반응이 늦게 올 수도 있어서예요.
     blank:
       answer: emergency
       options:
@@ -8641,13 +8633,13 @@ situations:
     - w-watch
     - w-closely
     - w-swell
-    cue: 'Patient: "Right after the injection my face puffed up and I felt dizzy, but it passed." How closely do you watch him?'
+    cue: Years ago, an unknown injection made his face swell and his head spin. Anesthesia is about to give his first meds. How closely do you watch him?
     scale:
     - Check once before surgery
     - Check on him now and then
     - Stay with him and watch closely
     answerAt: 2
-    why: 원인을 모르는 반응이 붓기와 어지러움까지 있었으면 곁에서 가까이 지켜보고, 응급약을 손닿는 곳에 둬요. 한 번 지나갔다고 가볍게 보면 다시 나타났을 때 늦어요.
+    why: 원인을 모르는 반응이 붓기와 어지러움까지 있었으면 곁에서 가까이 지켜보고, 응급약을 손닿는 곳에 둬요. 한 번 지나갔다고 가볍게 보면 다시 나타났을 때 늦어요. 붓기·어지러움이 다시 보이면 바로 마취과에 알려요.
     example: We'll watch you closely and keep emergency meds within reach.
     exKo: 가까이서 지켜보면서 응급약을 손닿는 곳에 둘게요.
   - kind: context
@@ -8666,10 +8658,10 @@ situations:
       ok: true
     - who: 불안한 환자에게
       icon: faceWorried
-      en: Your dizziness is vertiginous, likely secondary to hypotension.
+      en: We're monitoring your dizziness and facial angioedema for progression.
       ok: false
       fix: You feel dizzy and your face swelled up, so we're watching you closely.
-    why: 뜻은 셋 다 '어지러움'이에요. 팀과 차트에는 증상을 짧게 적지만, 환자에게 '현훈성'이나 '저혈압 때문'처럼 원인을 단정하는 말을 하면 간호사의 진단이 되고 겁도 줘요. 환자가 말한 증상을 그대로 확인하고 지켜보겠다고 말해요.
+    why: 뜻은 셋 다 '어지러움'이에요. 팀과 차트에는 증상을 짧게 적지만, angioedema·progression 같은 임상어는 환자에게 낯설어 불안을 키워요. 증상을 쉬운 말로 확인하고 지켜보겠다고 말해요.
   order:
     tag: 대화 흐름
     icon: compass
@@ -8738,8 +8730,8 @@ situations:
     why: Do you know if…?는 모를 수 있다는 걸 인정하는 질문이라 환자가 모른다고 답해도 괜찮아요. anyone else가 이미 말한 사람 말고 다른 가족을 묻는다는 점을 짚어요.
     decoy: in the photo
     distractorsKo:
-    - 가족 중에 이런 약을 쓰셨던 분이 계신지 아세요?
-    - 가족 중에 이런 입원을 하셨던 분이 계신지 아세요?
+    - 가족 중에 이런 일이 있었던 분이 몇 분인지 아세요?
+    - 악성 고열은 가족 안에서 유전되기도 해요.
     blank:
       answer: family
       options:
@@ -8770,12 +8762,12 @@ situations:
     - 새로운 기법을 계획하도록 마취과에 알릴게요.
     - 빠른 기법을 계획하도록 마취과에 알릴게요.
     blank:
-      answer: alert
+      answer: safe
       options:
-      - en: alert
-      - en: thank
-      - en: bill
-      - en: hire
+      - en: safe
+      - en: quick
+      - en: fancy
+      - en: simple
   - en: What exactly happened to your brother — high fever, stiff muscles, or worse?
     ko: 형제분은 정확히 어땠나요, 고열이나 근육 경직, 혹은 더 심했나요?
     chunks:
@@ -8785,7 +8777,7 @@ situations:
     - ', or worse'
     - '?'
     words:
-    - w-exact
+    - w-exactly
     - w-happen
     - w-fever
     - w-stiff
@@ -8852,9 +8844,9 @@ situations:
     tag: 즉시 전달
     icon: pager
     why: right now, not after we start로 지금이라는 시점을 대조 구조로 못 박아요. 가족력은 마취 계획에 쓰이므로 시작 뒤에는 늦어요.
-    decoy: one by one
+    decoy: in writing
     distractorsKo:
-    - 시작한 뒤가 아니라 지금 마취과에 전달할 수 있어요.
+    - 이런 가족력은 마취약을 고르는 데 바로 쓰여요.
     - 시작한 뒤가 아니라 지금 바로 마취과에 전달하려고 차트를 펼쳐요.
     blank:
       answer: start
@@ -8942,13 +8934,13 @@ situations:
     why: Which…is it, and when…으로 약 이름과 마지막 복용 시점을 한 문장에 묻는 구조예요. 항응고제는 종류에 따라 끊어야 하는 기간이 달라서 두 가지를 같이 확인해요.
     decoy: your last visit
     distractorsKo:
-    - 어떤 항응고제이고, 마지막 복용량은 얼마죠?
+    - 항응고제는 종류마다 끊는 기간이 달라요.
     - 어떤 항응고제이고, 마지막 병원 방문은 언제였나요?
     blank:
       answer: dose
       options:
       - en: dose
-      - en: visit
+      - en: refill
       - en: meal
       - en: test
   - en: This changes your bleeding risk, so I need to report it now.
@@ -8972,7 +8964,7 @@ situations:
     decoy: your insurance cost
     distractorsKo:
     - 치료 비용이 달라지니 지금 바로 보고해야 해요.
-    - 출혈 위험이 달라지니 보고하려고 차트를 펼쳐요.
+    - 출혈 위험이 달라지니 피검사를 다시 하기도 해요.
     blank:
       answer: bleeding
       options:
@@ -9015,11 +9007,11 @@ situations:
     chunks:
     - When exactly
     - did you take it
-    - ', and how'
-    - much
+    - ', and'
+    - how much
     - '?'
     words:
-    - w-exact
+    - w-exactly
     - w-take
     goal: 1
     tag: 복용 확인
@@ -9036,12 +9028,12 @@ situations:
       - en: buy
       - en: keep
       - en: lose
-  - en: Nobody told you to stop it, so this isn't your fault.
-    ko: 아무도 끊으라고 말씀 안 드렸으니 환자분 잘못이 아니에요.
+  - en: If no one told you to stop it, this isn't your fault.
+    ko: 아무도 끊으라고 말씀드리지 않았다면 환자분 잘못이 아니에요.
     chunks:
-    - Nobody told you
+    - If no one told you
     - to stop it
-    - ', so this isn''t'
+    - ', this isn''t'
     - your fault
     - .
     words:
@@ -9051,11 +9043,11 @@ situations:
     goal: 1
     tag: 자책 덜기
     icon: faceWorried
-    why: Nobody told you…으로 환자가 몰랐던 이유를 먼저 짚고, so this isn't your fault로 결론을 내려 죄책감을 덜어 줘요. 환자가 정직하게 말하도록 돕는 말이에요.
-    decoy: to hold it
+    why: If no one told you…로 환자의 말을 전제로 두어, 간호사가 사실로 단정하지 않고 말해요. this isn't your fault로 죄책감을 덜어 환자가 정직하게 말하도록 돕는 말이에요.
+    decoy: to fill it
     distractorsKo:
-    - 아무도 가져오라고 말씀 안 드렸으니 환자분 잘못이 아니에요.
-    - 아무도 적으라고 말씀 안 드렸으니 환자분 잘못이 아니에요.
+    - 아무도 가져오라고 말씀드리지 않았다면 환자분 잘못이 아니에요.
+    - 아무도 적으라고 말씀드리지 않았다면 환자분 잘못이 아니에요.
     blank:
       answer: fault
       options:
@@ -9115,7 +9107,7 @@ situations:
     scenes:
     - who: 간호사 → 집도의
       icon: speech
-      en: I'll reassess his bleeding risk once we confirm the last dose.
+      en: Once we confirm the last dose, the team will need to reassess his bleeding risk.
       ok: true
     - who: 수술 기록
       icon: board
@@ -9137,9 +9129,9 @@ situations:
       icon: pill
       ko: 어떤 항응고제이고 마지막 복용은 언제였나요?
       note: 질문
-    - en: Nobody told you to stop it, so this isn't your fault.
+    - en: If no one told you to stop it, this isn't your fault.
       icon: faceWorried
-      ko: 끊으라고 한 사람이 없으니 환자분 잘못이 아니에요
+      ko: 끊으라고 한 사람이 없다면 환자분 잘못이 아니에요
       note: 안심
     - en: Even so, this changes your bleeding risk, so I need to report it to the team now.
       icon: pager
@@ -9172,8 +9164,8 @@ situations:
     why: We can't confirm…, so assume…로 확인이 안 될 때의 안전 쪽 가정을 짧게 말해요. 금식 여부를 모르면 위가 찼다고 보고 흡인에 대비해요.
     decoy: his name tag
     distractorsKo:
-    - 금식 여부를 확인할 수 없으니 full stomach로 기록할게요.
-    - 금식 여부를 확인할 수 없으니 full stomach로 설명할게요.
+    - full stomach로 간주하려고 마지막 식사 기록부터 찾아볼게요.
+    - full stomach로 간주하는 건 흡인을 막으려는 거예요.
     blank:
       answer: confirm
       options:
@@ -9200,8 +9192,8 @@ situations:
     why: Suction is set up과 I'm ready for RSI를 and로 이어 준비 상황을 두 가지로 나눠 보고해요. set up은 장비를 쓸 수 있게 갖춰 놓았다는 뜻이에요.
     decoy: for rounds
     distractorsKo:
-    - 흡인기는 준비됐고 RSI 약을 확인해요.
-    - 흡인기는 준비됐고 기록 준비도 됐어요.
+    - 흡인기를 준비하려고 벽에 연결했어요.
+    - RSI는 흡인 위험이 클 때 쓰는 유도 방식이에요.
     blank:
       answer: RSI
       options:
@@ -9225,10 +9217,10 @@ situations:
     tag: 카트 위치
     icon: gear
     why: Let's have A right here at B로 장비와 위치를 한 문장에 못 박아요. right here와 at the bedside가 겹쳐 지금 바로 손이 닿는 곳이라는 점을 강조해요.
-    decoy: over there
+    decoy: the linen cart
     distractorsKo:
-    - 기도 카트를 두려고 잠금을 풀게요.
-    - 기도 카트 목록을 바로 침상 곁에 둘게요.
+    - 기도 카트를 두려고 복도에서 끌어와요.
+    - 기도 카트는 쓴 뒤에 다시 채워요.
     blank:
       answer: bedside
       options:
@@ -9253,17 +9245,17 @@ situations:
     tag: 일반 원칙
     icon: bulb
     why: Unconscious patients를 주어로 일반 원칙을 말해 특정 환자에게 하는 결정이 아니라 표준 절차임을 알려요. every time이 예외가 없다는 뜻이에요.
-    decoy: on paper
+    decoy: as a priority
     distractorsKo:
-    - 의식 없는 환자는 매번 full stomach로 기록해요.
-    - 의식 없는 환자는 매번 full stomach로 설명해요.
+    - 의식 없는 환자는 스스로 기도를 지키기 어려워요.
+    - 의식 없는 환자는 금식 여부를 직접 말할 수 없어요.
     blank:
       answer: Unconscious
       options:
       - en: Unconscious
-      - en: Unmarried
-      - en: Unpaid
-      - en: Uninsured
+      - en: Fasting
+      - en: Elderly
+      - en: Pediatric
   - en: Nobody can confirm his last meal, so we assume the worst case.
     ko: 마지막 식사를 확인할 수 없으니 최악의 경우로 간주해요.
     chunks:
@@ -9290,9 +9282,9 @@ situations:
       answer: meal
       options:
       - en: meal
-      - en: visit
       - en: call
       - en: note
+      - en: checkup
   - en: Everything is ready, so we can move fast the moment he needs it.
     ko: 다 준비됐으니 필요한 순간 바로 움직일 수 있어요.
     chunks:
@@ -9312,8 +9304,8 @@ situations:
     why: Everything is ready로 상태를 먼저 보고하고, so we can move fast로 그 결과를 이어요. the moment he needs it은 필요한 바로 그 순간에 움직인다는 뜻이에요.
     decoy: so we can chat
     distractorsKo:
-    - 다 준비됐으니 필요한 순간 움직이려고 자리를 잡아요.
-    - 다 확인됐으니 필요한 순간 바로 움직일 수 있어요.
+    - 다 준비됐다고 마취과에 바로 알릴게요.
+    - 필요한 순간 바로 움직이려고 흡인기를 켜 둘게요.
     blank:
       answer: ready
       options:
