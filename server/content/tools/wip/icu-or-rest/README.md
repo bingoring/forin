@@ -130,3 +130,14 @@ keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't a
 
 - **OR 묶음 1 (2주제, 2026-10-30)**: or-massive-transfusion(Fable 표본)·or-count. 사용자 결정('추천대로'): 바꿈 3 — or-count 17 "Nothing leaves the room until we find it."(전원 정지 → 반출 금지, goals[1]도), MT 20 "Stop the transfusion—this looks like TACO."(tagline·goals[0]·skills도 '중단'으로), MT 19 "Should we ask the blood bank to order from the regional supplier?"(w-request 삭제) / 유지 나머지 / chunks or-count 6·MT 9문장(MT 6.1·7.0·11.1·17.0은 3조각 대안이 더 나빠 유지). 작업 `../kp-2026-10-30c/`. 정본 합침, OR 위반 0(경고 21은 이전 주제 MH 등).
   남은 작은 일: or-count 17.0 "We're one needle / short" chunks(검토 목록 밖).
+
+- **OR 묶음 2·3 (4주제, 2026-10-30 저작 → 2026-11-17 합침)**: 묶음 2 preop-verification·tourniquet, 묶음 3 preop-assessment·difficult-airway.
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | changes(KP 반영 후) |
+  |---|---|---|---|
+  | or-preop-verification | 약 50(1) — 미확인 환자 같은 번호·마취 중 "먼저 물어본다" | 128(64·20) — 확인 대상 바꾸기·부분 정지 | 133 |
+  | or-tourniquet | 62(5) — smallest cuff·간호사 감압 단정·구획증후군 관찰 | 149(62 포함) | 114 |
+  | or-preop-assessment | 49(2) — 물 한 모금 단정·지킬 수 없는 약속 | B 사본 반영 | 166 |
+  | or-difficult-airway | 31(8) — 간호사가 FONA·시도 중단·국소마취 결정 | B 사본 반영(cric 시작 줄은 안전하게 바꿈) | 155 |
+  keyPhrase 결정(사용자 2026-11-17 전부 '추천대로'): tourniquet 바꿈 5(widest cuff, 타이머 재설정, deflate를 묻기, about to exceed, labs drawn or meds drawn up; 상황 13 brief·goals·skills도), preop-verification 유지 + chunks 2, difficult-airway 바꿈 8(go over plan, can we bag, should we switch, FONA 복창 2, head and neck, prepping for a code, Here's the LMA; 상황 brief·goals·skills 4곳), preop-assessment 바꿈 1(I'll set up for RSI) / chunks difficult-airway 5·preop-assessment 13 다시 자름(구를 지키면 V8 못 맞추는 7문장은 유지). 작업 `../kp-2026-11-17/`. 정본 합침, OR 위반 0.
+  남은 작은 일: difficult-airway S11 KP "Repeated tries only cause…"(→ can cause, 사용자 결정 필요), w-set ko `설치하다`(set up for RSI에는 '준비하다'), preop-assessment 3.3 ko 항응고제/w-thinner ko 불일치, w-confirm exKo, preop-verification '적-' 오답 6회(W19 활용형 미검출).
+  남은 OR: 27주제.
