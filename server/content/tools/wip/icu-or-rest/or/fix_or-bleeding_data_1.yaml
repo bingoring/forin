@@ -1,0 +1,562 @@
+# B 검토자 사본(_reviewB_or-bleeding_after.yaml)과 원본의 차이 — 문장 v46 필드와 order
+sentences:
+  '0.1':
+    decoy: and spare towels
+    distractorsKo:
+    - 흡인기를 준비하려고 상자를 풀게요.
+    - 여분의 흡인기와 랩패드는 출혈이 많을 때 써요.
+  '0.3':
+    distractorsKo:
+    - 이 수술에서는 수혈을 미리 준비해요.
+    - 이 수술에서는 교차시험 결과를 확인해요.
+    blank:
+      answer: lose
+      options:
+      - en: lose
+      - en: gain
+      - en: save
+      - en: test
+  '0.4':
+    decoy: extra skin markers
+    blank:
+      answer: need
+      options:
+      - en: need
+      - en: return
+      - en: waste
+      - en: break
+  '1.2':
+    distractorsKo:
+    - EBL 합계를 기록하려고 펜을 쥐고 있어요.
+    - EBL의 누적 합계는 마취과도 함께 알아야 해요.
+  '2.0':
+    distractorsKo:
+    - 거즈 개수를 세서 출혈량을 추정할게요.
+    - 거즈 무게를 재려고 마른 무게부터 확인해요.
+  '2.1':
+    decoy: Basin weight added
+    distractorsKo:
+    - 건조 무게를 빼려고 거즈 장수를 세어요.
+    - 건조 무게는 거즈 종류마다 조금씩 다릅니다.
+  '2.2':
+    distractorsKo:
+    - 이걸 누적 EBL에 더하려고 합계를 찾을게요.
+    - 이 값은 마취과에도 같이 알려요.
+  '2.3':
+    distractorsKo:
+    - 이 거즈들이 마른 것보다 더 커 보이네요.
+    - 이 거즈들이 아까 것보다 더 무거워 보이네요.
+  '2.4':
+    distractorsKo:
+    - 무게를 달려고 저울을 맞춥시다.
+    - 마르기 전에 재야 무게가 정확해요.
+    blank:
+      answer: weigh
+      options:
+      - en: weigh
+      - en: rinse
+      - en: sort
+      - en: soak
+  '3.1':
+    distractorsKo:
+    - 지혈제는 종류마다 쓰는 법이 달라요.
+    - 지혈제를 필드에서 열려고 봉지를 잡아요.
+    blank:
+      answer: open
+      options:
+      - en: open
+      - en: sealed
+      - en: dropped
+      - en: expired
+  '3.3':
+    distractorsKo:
+    - 소작기를 준비하려고 출력값을 맞출게요.
+    - 소작기 펜은 안 쓸 때 홀스터에 꽂아 둬요.
+  '3.4':
+    distractorsKo:
+    - 당신을 위해 여분의 클립과 결찰사를 미리 세어 둘게요.
+    - 당신을 위해 여분의 클립을 크기별로 정리해 둘게요.
+  '4.0':
+    distractorsKo:
+    - 출혈 위치를 알리려고 조명을 옮겨요.
+    - 출혈이 나면 거즈부터 대요.
+  '4.2':
+    distractorsKo:
+    - 클램프나 소작기 중 어느 쪽이 준비됐나요?
+    - 클램프나 소작기 중 어느 게 더 빠른가요?
+    blank:
+      answer: clamp
+      options:
+      - en: clamp
+      - en: scalpel
+      - en: retractor
+      - en: towel clip
+  '4.4':
+    distractorsKo:
+    - 그 혈관을 클램프로 잡으려고 크기를 고릅시다.
+    - 클램프로 잡은 혈관은 묶거나 지져요.
+  '5.1':
+    why: wide open은 조절기를 최대로 열었다는 뜻이고, if we need it을 붙여 그 속도가 필요할 때를 위한 대비임을 밝혀요.
+  '5.3':
+    distractorsKo:
+    - 양쪽 라인 모두 제 쪽에서 잘 보여요.
+    - 제 쪽 라인이 막히지 않는지 지켜볼게요.
+    blank:
+      answer: well
+      options:
+      - en: well
+      - en: slowly
+      - en: unevenly
+      - en: dry
+  '5.4':
+    distractorsKo:
+    - 마취과에서 원하면 두 번째 라인을 놓으려고 팔을 살펴요.
+    - 두 번째 라인은 굵은 바늘로 놓는 게 좋아요.
+  '6.0':
+    distractorsKo:
+    - EBL 추세를 보고하려고 숫자를 모으고 있어요.
+    - EBL은 흡인통과 거즈 무게를 합친 값이에요.
+  '6.1':
+    distractorsKo:
+    - 빠른 출혈은 총량보다 속도가 더 중요해요.
+    - 나간 양은 잰 시각과 함께 바로 적어요.
+  '6.2':
+    distractorsKo:
+    - 마취과에 알리려고 지금 수치를 정리할까요?
+    - 마취과에 알리면 혈액 준비가 빨라져요.
+  '6.3':
+    blank:
+      answer: faster
+      options:
+      - en: faster
+      - en: slower
+      - en: lower
+      - en: smaller
+  '6.4':
+    distractorsKo:
+    - 몇 분마다 추적하려고 타이머를 켭시다.
+    - 몇 분 새에도 EBL이 변해요.
+    blank:
+      answer: minutes
+      options:
+      - en: minutes
+      - en: hours
+      - en: shifts
+      - en: cases
+  '7.0':
+    distractorsKo:
+    - 지혈 매트릭스를 적용하려고 주사기에 채워요.
+    - 매트릭스는 출혈면에 직접 닿게 써요.
+  '7.1':
+    distractorsKo:
+    - 출혈면에 대려고 흡인으로 시야를 열게요.
+    - 매트릭스는 젖은 면에 닿으면 부풀어요.
+  '7.3':
+    distractorsKo:
+    - 압박하면 지혈제가 출혈면에 잘 붙어요.
+    - 출혈이 줄면 압박이 먹힌다는 뜻이에요.
+  '7.4':
+    distractorsKo:
+    - 남은 매트릭스는 필드 위에 덮어 둬요.
+    - 출혈이 계속되면 쓰기 전에 먼저 닦아요.
+  '8.0':
+    distractorsKo:
+    - 최근 응고검사 결과를 말하려고 수치를 표로 옮겨요.
+    - 응고병증이 생기면 출혈이 잘 멎지 않고 오래가요.
+    blank:
+      answer: coagulopathy
+      options:
+      - en: coagulopathy
+      - en: thrombosis
+      - en: hematoma
+      - en: leukocytosis
+  '8.1':
+    decoy: a chest x-ray
+  '8.2':
+    distractorsKo:
+    - 혈액은행에 전화하려고 제제 목록을 찾을게요.
+    - 혈액은행에는 환자 혈액형 검체가 필요해요.
+  '8.3':
+    distractorsKo:
+    - 혈소판은 지혈 마개를 만드는 데 쓰여요.
+    - INR이 높으면 혈액이 늦게 굳어요.
+    blank:
+      answer: INR
+      options:
+      - en: INR
+      - en: hemoglobin
+      - en: hematocrit
+      - en: sodium
+  '8.4':
+    distractorsKo:
+    - FFP를 처방하고 혈액은행에 전화하려고 화면을 띄웁시다.
+    - FFP를 처방하면 혈액은행이 해동을 시작해요.
+  '9.0':
+    distractorsKo:
+    - 혈압과 심박수를 알리려고 추세 화면을 띄워요.
+    - 혈압은 커프와 동맥관 두 가지로 잴 수 있어요.
+  '9.1':
+    distractorsKo:
+    - 징후를 전하려고 활력 수치를 챙겨요.
+    - 저혈량증이 오면 맥박이 빨라져요.
+  '9.2':
+    blank:
+      answer: calling
+      options:
+      - en: calling
+      - en: testing
+      - en: stalling
+      - en: resting
+  '9.3':
+    distractorsKo:
+    - 혈압은 심박수보다 늦게 떨어지는 편이에요.
+    - 심박수가 오르는 건 몸의 보상 반응이에요.
+    blank:
+      answer: climbing
+      options:
+      - en: climbing
+      - en: dropping
+      - en: settling
+      - en: stalling
+  '10.0':
+    distractorsKo:
+    - 대구경 카테터를 가져오려고 카트 쪽으로 가요.
+    - 대구경 카테터는 수액을 빠르게 줄 때 써요.
+  '10.4':
+    distractorsKo:
+    - 라인이 들어가면 연결하려고 주입기 회로를 미리 채워요.
+    - 신속 주입기는 분당 수백 밀리리터를 넣을 수 있어요.
+  '11.0':
+    distractorsKo:
+    - 가온 수액기를 설치하려고 전원을 찾고 있어요.
+    - 가온기는 수액 줄 중간에 끼워 써요.
+  '11.2':
+    decoy: his drape
+    distractorsKo:
+    - 체온이 떨어지면 피가 잘 굳지 않아요.
+    - 체온을 유지하려고 가온 담요를 꺼내요.
+  '11.3':
+    distractorsKo:
+    - 가온기는 모든 수액을 데우려고 미리 예열해요.
+    - 가온기는 혈액 제제에 쓰이기도 해요.
+    blank:
+      answer: body
+      options:
+      - en: body
+      - en: room
+      - en: fridge
+      - en: outdoor
+  '11.4':
+    distractorsKo:
+    - 체온은 수술 동안 식도 탐침으로도 재요.
+    - 회복실에서 체온이 떨어지지 않았으면 해요.
+    blank:
+      answer: dropping
+      options:
+      - en: dropping
+      - en: rising
+      - en: charted
+      - en: covered
+  '12.0':
+    distractorsKo:
+    - 프라이밍하려고 식염수 한 병을 걸게요.
+    - 세포회수기는 모을 때 항응고제를 섞어요.
+  '12.1':
+    distractorsKo:
+    - 그의 적혈구를 회수하려고 회수기를 켜요.
+    - 적혈구를 회수해 돌려주면 수혈이 줄어요.
+    blank:
+      answer: salvage
+      options:
+      - en: salvage
+      - en: donate
+      - en: freeze
+      - en: discard
+  '12.2':
+    distractorsKo:
+    - 저장고에 모으려고 줄을 이어요.
+    - 저장고에는 눈금이 있어요.
+  '12.3':
+    why: once …로 프라이밍이 먼저라는 순서를 알려요. 실제로는 저장고에 모은 피를 씻어 처리한 뒤에 돌려줘요.
+  '12.4':
+    distractorsKo:
+    - 필드에서 피를 모으려고 음압을 낮춰요.
+    - 모은 피는 씻어서 환자에게 돌려줘요.
+  '13.0':
+    blank:
+      answer: coagulopathy
+      options:
+      - en: coagulopathy
+      - en: hematoma
+      - en: vasospasm
+      - en: hernia
+  '13.1':
+    decoy: to position
+  '13.2':
+    distractorsKo:
+    - 둘 다 다루려고 팀을 부릅시다.
+    - 조사 중에도 출혈은 계속돼요.
+  '13.3':
+    distractorsKo:
+    - 외과적 출혈로 보인다고 말하려고 부위를 짚어요.
+    - 응고병증은 여러 곳에서 스며 나오듯 피가 나요.
+  '13.4':
+    blank:
+      answer: until
+      options:
+      - en: until
+      - en: unless
+      - en: because
+      - en: though
+  '14.0':
+    distractorsKo:
+    - 소변량 저하를 전하려고 시간당 값을 계산해요.
+    - 콩팥 혈류가 줄면 소변량이 줄어요.
+  '14.1':
+    distractorsKo:
+    - 관류는 피부색과 체온으로도 가늠해요.
+    - 관류가 저하되면 젖산이 같이 올라가요.
+  '14.3':
+    distractorsKo:
+    - 소변 기준은 시간당 0.5mL/kg이에요.
+    - 소변량은 한 시간 단위로 모아서 재요.
+    blank:
+      answer: low
+      options:
+      - en: low
+      - en: high
+      - en: clear
+      - en: cloudy
+  '14.4':
+    distractorsKo:
+    - 젖산을 지켜보려고 채혈 시각을 적을게요.
+    - 젖산이 올라가면 산증이 따라와요.
+  '15.0':
+    distractorsKo:
+    - 대량출혈이에요 — 혈액을 요청하려고 수화기를 잡아요.
+    - 대량출혈이에요 — 혈액은 쿨러에 담겨 와요.
+  '15.1':
+    decoy: basins
+  '15.2':
+    decoy: and the clock
+    distractorsKo:
+    - EBL을 계속 추적하려고 계산기를 꺼낼게요.
+    - EBL은 마취과와 수시로 비교해요.
+  '15.3':
+    distractorsKo:
+    - 대량출혈이라 응고 인자가 모자라져요.
+    - 대량출혈이라 체온도 같이 떨어져요.
+    blank:
+      answer: fast
+      options:
+      - en: fast
+      - en: twice
+      - en: alone
+      - en: returned
+  '15.4':
+    distractorsKo:
+    - 두 번째 흡인기와 랩패드를 요청하려고 인터콤을 눌러요.
+    - 두 번째 흡인기는 다른 벽 흡인구에 꽂아요.
+  '16.0':
+    distractorsKo:
+    - 승압제를 투여하려고 약을 뽑고 있어요.
+    - 혈압이 급강하하면 뇌와 심장이 위험해져요.
+    blank:
+      answer: crashed
+      options:
+      - en: crashed
+      - en: spiked
+      - en: settled
+      - en: normalized
+  '16.2':
+    decoy: of the suction
+  '16.3':
+    distractorsKo:
+    - 승압제는 수액이 부족하면 효과가 약해요.
+    - 승압제는 혈관을 좁혀서 혈압을 올려 줘요.
+  '16.4':
+    distractorsKo:
+    - 출혈이 조절되면 랩패드가 덜 젖어요.
+    - 출혈이 조절됐는지는 필드를 보면 알아요.
+  '17.0':
+    distractorsKo:
+    - 응고병증이 생겼어요 — FFP는 해동에 시간이 걸려요.
+    - 응고병증이 생겼어요 — 저체온이면 더 심해져요.
+    blank:
+      answer: coagulopathic
+      options:
+      - en: coagulopathic
+      - en: hypoglycemic
+      - en: hypoxemic
+      - en: febrile
+  '17.1':
+    decoy: for a stretcher
+    distractorsKo:
+    - 크라이오를 요청하려고 요청서를 쓰고 있어요.
+    - 크라이오는 피브리노겐을 보충해 줘요.
+  '17.3':
+    blank:
+      answer: coagulopathy
+      options:
+      - en: coagulopathy
+      - en: arrhythmia
+      - en: hyperthermia
+      - en: hyperkalemia
+  '17.4':
+    distractorsKo:
+    - 혈소판과 크라이오는 혈액은행에서 해동하거나 준비해요.
+    - 혈소판과 크라이오를 더 요청하려고 혈액은행 번호를 누를게요.
+  '18.0':
+    decoy: cart
+  '18.3':
+    decoy: with more forms
+  '19.1':
+    distractorsKo:
+    - 임시 봉합을 쓰려고 크기를 물어요.
+    - 임시 봉합은 배를 임시로 덮어요.
+  '19.3':
+    decoy: get a stool here
+    blank:
+      answer: if
+      options:
+      - en: if
+      - en: so
+      - en: unless
+      - en: though
+  '19.4':
+    decoy: sealed
+    blank:
+      answer: closure
+      options:
+      - en: closure
+      - en: label
+      - en: table
+      - en: pole
+  '20.1':
+    distractorsKo:
+    - 흉부압박은 분당 100에서 120회로 해요.
+    - 맥박이 사라졌는지는 목 동맥을 짚어서 알아요.
+    blank:
+      answer: pulse
+      options:
+      - en: pulse
+      - en: line
+      - en: count
+      - en: light
+  '20.2':
+    decoy: through the cooler
+    blank:
+      answer: warmer
+      options:
+      - en: warmer
+      - en: cooler
+      - en: scale
+      - en: drain
+  '20.3':
+    blank:
+      answer: pulse
+      options:
+      - en: pulse
+      - en: line
+      - en: drape
+      - en: gown
+  '20.4':
+    distractorsKo:
+    - 크래시카트는 매일 점검하고 그 점검표를 카트에 붙여 놓아요.
+    - 심정지가 올 경우를 대비해 크래시카트를 가져다 두려고 카트 잠금을 확인해요.
+    blank:
+      answer: crash cart
+      options:
+      - en: crash cart
+      - en: supply cart
+      - en: linen cart
+      - en: case cart
+order:
+  0:
+    tag: 대화 흐름
+    icon: compass
+    ko: 출혈 대비 4문장 순서
+    why: 예상 출혈량을 묻고, 그에 맞춰 물품을 갖추고, 그와 함께 추정치 대비 기록을 이어 가며 변화를 알리는 순서예요. 앞 줄을 가리키는 말이 순서를 잡아 줘요.
+    lines:
+    - en: What's the expected blood loss for this procedure?
+      icon: chartup
+      ko: 이 수술의 예상 출혈량이 얼마나 될까요?
+      note: 질문
+    - en: Based on that, I'll have extra suction and lap pads ready.
+      icon: bandage
+      ko: 그에 맞춰 여분의 흡인기와 랩패드를 준비할게요
+      note: 준비
+    - en: With those ready, I'll track EBL against the estimate as we go.
+      icon: pencil
+      ko: 그것들이 준비되면 진행하며 추정치 대비 EBL을 기록할게요
+      note: 기록
+    - en: I'll update you whenever the total changes much.
+      icon: speech
+      ko: 합계가 많이 변하면 그때마다 알릴게요
+      note: 보고
+  5:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수액로 확인 4문장 순서
+    why: 라인 상태를 알리고, 수액을 최대로 열 준비를 말하고, 그것으로 모자랄 때 라인 추가를 제안한 뒤, 어느 쪽이든 개통을 계속 확인한다는 순서예요.
+    lines:
+    - en: Both IVs are patent and flowing freely.
+      icon: check
+      ko: 양쪽 정맥로 모두 개통돼 있고 잘 흘러요
+      note: 상태
+    - en: I've got fluids ready to run wide open if we need it.
+      icon: pill
+      ko: 필요하면 수액을 완전히 열 준비가 됐어요
+      note: 대기
+    - en: If that isn't enough, I can place another line for anesthesia.
+      icon: handshake2
+      ko: 그걸로 모자라면 마취과를 위해 라인을 하나 더 놓을게요
+      note: 제안
+    - en: Either way, I'll keep checking that the lines stay patent.
+      icon: magnify
+      ko: 어느 쪽이든 라인이 열려 있는지 계속 볼게요
+      note: 확인
+  11:
+    tag: 대화 흐름
+    icon: compass
+    ko: 가온 수액 4문장 순서
+    why: 가온기를 설치하고, 모든 수액이 그것을 거치게 하고, 그렇게 수액이 체온으로 유지된다고 설명한 뒤, 결론으로 체온 저하를 막겠다고 맺는 순서예요.
+    lines:
+    - en: I'm setting up the fluid warmer now.
+      icon: gear
+      ko: 지금 가온 수액기를 설치하고 있어요
+      note: 설치
+    - en: All the volume will run through it.
+      icon: pill
+      ko: 모든 수액량이 그걸 거쳐 흐를 거예요
+      note: 경로
+    - en: With all of it going through, the fluids stay at body temperature.
+      icon: stetho
+      ko: 전부 거쳐 가니 수액이 체온으로 유지돼요
+      note: 효과
+    - en: So we'll keep his temperature from dropping during the case.
+      icon: faceWorried
+      ko: 그래서 수술 동안 체온 저하를 막을게요
+      note: 목표
+  13:
+    tag: 대화 흐름
+    icon: compass
+    ko: 출혈 원인 논의 4문장 순서
+    why: 원인을 묻고, 검사가 치료 방향을 정해 준다고 말하고, 알기 전까지 둘 다 다루자고 한 뒤, 결과가 나오면 원인에 맞춰 좁히는 순서예요.
+    lines:
+    - en: Is this a surgical bleeder or a coagulopathy?
+      icon: stetho
+      ko: 이건 외과적 출혈인가요, 응고병증인가요
+      note: 질문
+    - en: The coags will tell us which way to treat.
+      icon: lab
+      ko: 응고검사가 치료 방향을 알려줄 거예요
+      note: 근거
+    - en: Until they do, let's address both.
+      icon: handshake2
+      ko: 결과가 나올 때까지는 둘 다 다룹시다
+      note: 병행
+    - en: When the coags are back, we'll narrow treatment to the cause.
+      icon: check
+      ko: 결과가 나오면 원인에 맞춰 치료를 좁힐게요
+      note: 좁히기

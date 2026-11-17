@@ -131,7 +131,7 @@ words:
   ko: 준비된
   icon: check
   example: I'll have extra suction and lap pads ready.
-  cue: 곧 쓸 수 있게 갖춰져 있는 상태
+  cue: 소작기를 켜 두고 클립을 열어 두어, 달라고 하면 바로 건넬 수 있는
   tag: 지혈 수단
   distractorsEn:
   - steady
@@ -168,17 +168,17 @@ words:
 - id: w-ebl
   en: EBL
   ipa: /iː biː ɛl/
-  ko: 추정실혈량(EBL)
+  ko: 추정실혈량
   icon: chartup
   example: I'll track EBL as we go.
-  cue: 수술이 진행되는 동안 집계해 보고하는 '추정 실혈량'의 약어
+  cue: 흡인통 눈금과 거즈 무게를 더해 수술 중 계속 부르는 출혈량 — 세 글자 약어
   tag: 출혈 추정
   distractorsEn:
   - EKG
   - ETT
   distractorsKo:
-  - 추정수액량(IVF)
-  - 추정소변량(UOP)
+  - 추정수액량
+  - 추정소변량
   chips:
   - - EBL
   decoyChips:
@@ -282,7 +282,7 @@ words:
   cue: 어떤 상태나 물건을 그대로 두고 이어 가는 일 — 준비해 두거나 계속할 때 쓴다
   tag: 일반 표현
   distractorsEn:
-  - kill
+  - seep
   - kneel
   distractorsKo:
   - 버리다
@@ -317,7 +317,7 @@ words:
   ko: 합계
   icon: chartup
   example: I'm keeping a running total of the EBL.
-  cue: 낱개를 모두 더한 최종 값
+  cue: 흡인통과 거즈에서 나온 양을 모두 더해 마취과에 부르는 숫자
   tag: 출혈 추정
   distractorsEn:
   - torch
@@ -578,7 +578,7 @@ words:
   ko: 손이 닿는 곳
   icon: board
   example: Extra clips and ties are within reach.
-  cue: 팔만 뻗으면 바로 집을 수 있는 거리
+  cue: 스크럽이 몸을 돌리지 않고 팔만 뻗어 클립을 집을 수 있는 거리
   tag: 지혈 수단
   distractorsEn:
   - region
@@ -625,11 +625,11 @@ words:
   - 중앙(한가운데)
   - 바닥(아랫면)
   chips:
-  - - mar
-    - gin
+  - - marg
+    - in
   decoyChips:
-  - mir
-  - gen
+  - merg
+  - en
   exKo: 아래쪽 경계에서 출혈이 보여요.
 - id: w-visualize
   en: visualize
@@ -679,7 +679,7 @@ words:
   ko: 꾸준한
   icon: board
   example: The bleeding is steady but not fast right now.
-  cue: 세지도 줄지도 않고 일정한 속도로 이어지는
+  cue: 출혈이 뿜지도 멎지도 않고 같은 속도로 계속 흐르는 모양
   tag: 출혈 보고
   distractorsEn:
   - sturdy
@@ -699,7 +699,7 @@ words:
   ipa: /ˈvɛsəl/
   ko: 혈관
   icon: board
-  example: Let's clamp that vessel before it gets worse.
+  example: I'll have a clamp ready for that vessel.
   cue: 피가 흐르는 관 — 동맥과 정맥을 통틀어 부르는 말
   tag: 출혈 보고
   distractorsEn:
@@ -714,7 +714,7 @@ words:
   decoyChips:
   - vis
   - sal
-  exKo: 더 나빠지기 전에 그 혈관을 클램프로 잡읍시다.
+  exKo: 그 혈관에 쓸 클램프를 준비해 둘게요.
 - id: w-iv
   en: IV
   ipa: /aɪ viː/
@@ -777,7 +777,7 @@ words:
 - id: w-free
   en: freely
   ipa: /ˈfriːli/
-  ko: 자유롭게
+  ko: 막힘없이
   icon: board
   example: Both IVs are patent and flowing freely.
   cue: 걸림 없이 마음껏, 막히지 않고
@@ -899,7 +899,7 @@ words:
   icon: monitor
   example: I can place a second line if anesthesia wants one.
   cue: 수술 중 환자의 마취를 맡아 호흡·혈압·수액을 관리하는 팀
-  tag: 수액·라인
+  tag: 출혈 보고
   distractorsEn:
   - analgesia
   - anastomosis
@@ -933,25 +933,6 @@ words:
   - - trend
   decoyChips:
   - trad
-  exKo: EBL이 예상보다 더 빠르게 증가하고 있어요.
-- id: w-fast
-  en: fast
-  ipa: /fæst/
-  ko: 빠른
-  icon: board
-  example: The EBL is trending up faster than expected.
-  cue: 느리지 않게, 짧은 시간에 많이 일어나는
-  tag: 일반 표현
-  distractorsEn:
-  - fat
-  - last
-  distractorsKo:
-  - 느린
-  - 약한
-  chips:
-  - - fast
-  decoyChips:
-  - fist
   exKo: EBL이 예상보다 더 빠르게 증가하고 있어요.
 - id: w-lose
   en: lose
@@ -1118,7 +1099,7 @@ words:
 - id: w-coags
   en: coags
   ipa: /koʊægz/
-  ko: 응고검사(코악스)
+  ko: 응고검사
   icon: lab
   example: The latest coags show a coagulopathy developing.
   cue: 수술 중 피가 잘 굳는지 보려고 채혈해 내는 혈액검사 묶음의 줄임말
@@ -1127,8 +1108,8 @@ words:
   - crits
   - cogs
   distractorsKo:
-  - 혈당검사(당수치)
-  - 소변검사(요검사)
+  - 혈당검사
+  - 소변검사
   chips:
   - - co
     - ags
@@ -1184,7 +1165,7 @@ words:
 - id: w-ffp
   en: FFP
   ipa: /ɛf ɛf piː/
-  ko: 신선동결혈장(FFP)
+  ko: 신선동결혈장
   icon: lab
   example: Do you want FFP and platelets ordered now?
   cue: 혈액에서 분리해 얼려 둔 노란 액체 성분 — 응고인자를 채우려고 쓰는 제제의 세 글자 약어
@@ -1193,13 +1174,13 @@ words:
   - PRBC
   - ABG
   distractorsKo:
-  - 농축적혈구(PRBC)
-  - 알부민용액(ALB)
+  - 농축적혈구
+  - 알부민용액
   chips:
   - - FFP
   decoyChips:
   - FFA
-  exKo: 지금 FFP와 혈소판을 처방할까요?
+  exKo: 지금 FFP와 혈소판을 주문할까요?
 - id: w-platelet
   en: platelet
   ipa: /ˈpleɪtlɪt/
@@ -1220,11 +1201,11 @@ words:
   decoyChips:
   - place
   - lit
-  exKo: 지금 FFP와 혈소판을 처방할까요?
+  exKo: 지금 FFP와 혈소판을 주문할까요?
 - id: w-order
   en: order
   ipa: /ˈɔːrdər/
-  ko: 처방(주문)하다
+  ko: 주문하다
   icon: board
   example: Do you want FFP and platelets ordered now?
   cue: 필요한 혈액제제를 혈액은행에 공식적으로 신청해 내보내게 하는 일
@@ -1233,15 +1214,15 @@ words:
   - offer
   - orbit
   distractorsKo:
-  - 취소(철회)하다
-  - 반납(회수)하다
+  - 취소하다
+  - 반납하다
   chips:
   - - or
     - der
   decoyChips:
   - er
   - dor
-  exKo: 지금 FFP와 혈소판을 처방할까요?
+  exKo: 지금 FFP와 혈소판을 주문할까요?
 - id: w-call
   en: call
   ipa: /kɔːl/
@@ -1306,7 +1287,7 @@ words:
 - id: w-inr
   en: INR
   ipa: /aɪ ɛn ɑːr/
-  ko: 국제표준화비율(INR)
+  ko: 국제표준화비율
   icon: lab
   example: His platelets are low and his INR is elevated.
   cue: 혈액이 굳는 데 걸리는 시간을 표준화한 수치 — 응고 상태를 숫자로 보여 준다
@@ -1315,8 +1296,8 @@ words:
   - BUN
   - ABG
   distractorsKo:
-  - 활성응고시간(ACT)
-  - 산소포화도(SpO2)
+  - 활성응고시간
+  - 산소포화도
   chips:
   - - INR
   decoyChips:
@@ -1371,7 +1352,7 @@ words:
   ko: 초기의
   icon: board
   example: These look like early signs of hypovolemia.
-  cue: 병이나 변화가 이제 막 시작되어 아직 가벼운 때
+  cue: 저혈량에서 혈압이 떨어지기 전, 심박수부터 오르는 첫 단계의
   tag: 쇼크 징후
   distractorsEn:
   - earnest
@@ -1434,7 +1415,7 @@ words:
   ko: 떨어지다
   icon: board
   example: His heart rate keeps climbing while his pressure drops.
-  cue: 수치가 갑자기 아래로 내려가는 일
+  cue: 출혈이 이어지면서 모니터의 혈압 숫자가 아래로 — 심박수는 반대로 오른다
   tag: 쇼크 징후
   distractorsEn:
   - drain
@@ -1465,7 +1446,7 @@ words:
   - - grab
   decoyChips:
   - grub
-  exKo: 당신을 위해 대구경 카테터를 가져올게요.
+  exKo: 대구경 카테터를 가져다 드릴게요.
 - id: w-largebore
   en: large-bore
   ipa: /lɑːrdʒ bɔːr/
@@ -1486,7 +1467,7 @@ words:
   decoyChips:
   - lunge
   - born
-  exKo: 당신을 위해 대구경 카테터를 가져올게요.
+  exKo: 대구경 카테터를 가져다 드릴게요.
 - id: w-catheter
   en: catheter
   ipa: /ˈkæθɪtər/
@@ -1500,7 +1481,7 @@ words:
   - cartridge
   distractorsKo:
   - 스텐트
-  - 스탬프
+  - 배액관
   chips:
   - - cath
     - e
@@ -1508,28 +1489,7 @@ words:
   decoyChips:
   - coth
   - i
-  exKo: 당신을 위해 대구경 카테터를 가져올게요.
-- id: w-second
-  en: second
-  ipa: /ˈsɛkənd/
-  ko: 두 번째의
-  icon: board
-  example: Second line is in and running wide open.
-  cue: 첫 번째 다음에 오는, 하나 더 추가되는 순서
-  tag: 일반 표현
-  distractorsEn:
-  - single
-  - secret
-  distractorsKo:
-  - 첫 번째의
-  - 마지막의
-  chips:
-  - - sec
-    - ond
-  decoyChips:
-  - sic
-  - ind
-  exKo: 두 번째 라인이 들어갔고 완전히 열려 흐르고 있어요.
+  exKo: 대구경 카테터를 가져다 드릴게요.
 - id: w-rapid
   en: rapid
   ipa: /ˈræpɪd/
@@ -1614,7 +1574,7 @@ words:
   decoyChips:
   - worm
   - or
-  exKo: 지금 가온 수액기를 설치하고 있어요.
+  exKo: 지금 수액 가온기를 설치하고 있어요.
 - id: w-volume
   en: volume
   ipa: /ˈvɒljuːm/
@@ -1720,14 +1680,14 @@ words:
   decoyChips:
   - sil
   - vague
-  exKo: 그의 적혈구를 회수해서 돌려줄 수 있어요.
+  exKo: 환자 본인의 적혈구를 회수해서 돌려줄 수 있어요.
 - id: w-return
   en: return
   ipa: /rɪˈtɜːrn/
   ko: 되돌려주다
   icon: board
   example: We can salvage and return his own red cells.
-  cue: 받았거나 모은 것을 원래 있던 사람이나 곳에 다시 가져다주는 일
+  cue: 세포회수기로 씻은 적혈구를 환자 몸에 다시 넣어 주는 일
   tag: 혈액 제제
   distractorsEn:
   - retain
@@ -1741,7 +1701,7 @@ words:
   decoyChips:
   - ri
   - torn
-  exKo: 그의 적혈구를 회수해서 돌려줄 수 있어요.
+  exKo: 환자 본인의 적혈구를 회수해서 돌려줄 수 있어요.
 - id: w-redcell
   en: red cell
   ipa: /rɛd sɛl/
@@ -1762,7 +1722,7 @@ words:
   decoyChips:
   - rid
   - sell
-  exKo: 그의 적혈구를 회수해서 돌려줄 수 있어요.
+  exKo: 환자 본인의 적혈구를 회수해서 돌려줄 수 있어요.
 - id: w-reservoir
   en: reservoir
   ipa: /ˈrɛzərˌvwɑːr/
@@ -1791,7 +1751,7 @@ words:
   ko: 모으다
   icon: board
   example: The reservoir is collecting now.
-  cue: 흩어져 있는 것을 한곳에 거두어 담는 일
+  cue: 세포회수기 저장고에 흡인한 피가 차오르게 하는 일
   tag: 혈액 제제
   distractorsEn:
   - connect
@@ -1932,7 +1892,7 @@ words:
   decoyChips:
   - or
   - ing
-  exKo: 소변량이 시간당 30 이하로 떨어졌어요.
+  exKo: 소변량이 시간당 30 미만으로 떨어졌어요.
 - id: w-output
   en: output
   ipa: /ˈaʊtˌpʊt/
@@ -1953,7 +1913,7 @@ words:
   decoyChips:
   - oat
   - putt
-  exKo: 소변량이 시간당 30 이하로 떨어졌어요.
+  exKo: 소변량이 시간당 30 미만으로 떨어졌어요.
 - id: w-suggest
   en: suggest
   ipa: /səˈdʒɛst/
@@ -1974,7 +1934,7 @@ words:
   decoyChips:
   - sag
   - jest
-  exKo: 그건 관류가 저하되고 있다는 뜻이에요.
+  exKo: 관류가 저하되고 있다는 신호일 수 있어요.
 - id: w-perfusion
   en: perfusion
   ipa: /pərˈfjuːʒən/
@@ -1996,7 +1956,7 @@ words:
   decoyChips:
   - par
   - fi
-  exKo: 그건 관류가 저하되고 있다는 뜻이에요.
+  exKo: 관류가 저하되고 있다는 신호일 수 있어요.
 - id: w-compromise
   en: compromise
   ipa: /ˈkɒmprəˌmaɪz/
@@ -2018,7 +1978,7 @@ words:
   decoyChips:
   - con
   - per
-  exKo: 그건 관류가 저하되고 있다는 뜻이에요.
+  exKo: 관류가 저하되고 있다는 신호일 수 있어요.
 - id: w-lactate
   en: lactate
   ipa: /ˈlækteɪt/
@@ -2029,7 +1989,7 @@ words:
   tag: 쇼크 징후
   distractorsEn:
   - lactose
-  - locate
+  - lactase
   distractorsKo:
   - 포도당
   - 칼륨
@@ -2259,8 +2219,8 @@ words:
   cue: 얼린 혈장을 녹일 때 남는 침전물로 만든, 피브리노겐이 풍부한 제제의 준말
   tag: 혈액 제제
   distractorsEn:
+  - crit
   - crown
-  - crypt
   distractorsKo:
   - 농축적혈구(적혈구제제)
   - 알부민용액(단백제제)
@@ -2408,7 +2368,7 @@ words:
   ko: 비율
   icon: chartup
   example: First cooler is on the way with the ratio ready.
-  cue: 두 수 사이의 비 — 예를 들어 1대 1대 1
+  cue: 대량수혈 쿨러에 적혈구·혈장·혈소판을 몇 대 몇으로 맞춰 담는지 — 흔히 1대 1대 1
   tag: 혈액 제제
   distractorsEn:
   - ration
@@ -2435,7 +2395,7 @@ words:
   - union
   - uniform
   distractorsKo:
-  - 용량(검사 수치)
+  - 용량(투여량)
   - 속도(주입 속도)
   chips:
   - - u
@@ -2450,7 +2410,7 @@ words:
   ko: 수량(카운트)
   icon: chartup
   example: I'll track units in and keep the counts straight.
-  cue: 하나하나 세어 얻은 개수
+  cue: 대량수혈 중 들어온 혈액 단위를 하나하나 세어 맞춘 숫자
   tag: 혈액 제제
   distractorsEn:
   - amount
@@ -2488,7 +2448,7 @@ words:
   ko: 전환하다
   icon: board
   example: Let's pack and shift to damage control.
-  cue: 하던 방식에서 다른 방식으로 옮겨 가는 일
+  cue: 지혈이 안 돼 집도의가 수술 방식을 손상통제로 바꾸는 일
   tag: 대량출혈
   distractorsEn:
   - shine
@@ -2529,7 +2489,7 @@ words:
   ko: 임시의
   icon: board
   example: I have packing and a temporary closure ready.
-  cue: 곧 다시 바꾸거나 걷어 낼 것을 전제로 잠깐만 하는
+  cue: 손상통제 때 배를 완전히 닫지 않고, 며칠 안에 다시 열 것을 전제로 하는
   tag: 대량출혈
   distractorsEn:
   - terminal
@@ -2544,7 +2504,7 @@ words:
   decoyChips:
   - tim
   - pa
-  exKo: 패킹과 임시 봉합을 준비해 뒀어요.
+  exKo: 패킹과 임시 폐쇄 물품을 준비해 뒀어요.
 - id: w-closure
   en: closure
   ipa: /ˈkloʊʒər/
@@ -2565,7 +2525,7 @@ words:
   decoyChips:
   - cla
   - shore
-  exKo: 패킹과 임시 봉합을 준비해 뒀어요.
+  exKo: 패킹과 임시 폐쇄 물품을 준비해 뒀어요.
 - id: w-icu
   en: ICU
   ipa: /aɪ siː juː/
@@ -2584,7 +2544,7 @@ words:
   - - ICU
   decoyChips:
   - ICE
-  exKo: 그를 중환자실로 보내 소생시킨 뒤 다시 데려올 계획이에요.
+  exKo: 환자를 중환자실로 보내 소생시킨 뒤 다시 데려올 계획이에요.
 - id: w-resuscitate
   en: resuscitate
   ipa: /rɪˈsʌsɪˌteɪt/
@@ -2607,21 +2567,21 @@ words:
   decoyChips:
   - ri
   - sas
-  exKo: 그를 중환자실로 보내 소생시킨 뒤 다시 데려올 계획이에요.
+  exKo: 환자를 중환자실로 보내 소생시킨 뒤 다시 데려올 계획이에요.
 - id: w-arrest
   en: arrest
   ipa: /əˈrɛst/
-  ko: 심정지
+  ko: 심정지가 오다
   icon: siren
   example: He's about to arrest — crash cart at the bedside.
-  cue: 심장이 갑자기 멈춰 맥박이 없어지는 응급 상황 — cardiac ~
+  cue: 출혈이 계속돼 혈압이 바닥나면 곧 닥치는 일 — 크래시카트를 침상 곁에 부르는 이유
   tag: 쇼크 징후
   distractorsEn:
-  - asthma
-  - seizure
+  - seize
+  - assess
   distractorsKo:
-  - 호흡곤란
-  - 경련
+  - 경련이 오다
+  - 열이 오르다
   chips:
   - - ar
     - rest
@@ -2656,7 +2616,7 @@ words:
   ko: 침상 곁
   icon: board
   example: He's about to arrest — crash cart at the bedside.
-  cue: 환자가 누운 침대 바로 옆
+  cue: 크래시카트를 끌고 와 세워 두는, 수술대 바로 옆 자리
   tag: 쇼크 징후
   distractorsEn:
   - bedroom
@@ -2758,10 +2718,10 @@ situations:
     tag: 대비 준비
     icon: bandage
     why: have X ready는 쓰기 전에 미리 갖춰 둔다는 틀이에요. extra를 붙여 평소 분량 이상으로 대비한다는 점을 알려요.
-    decoy: and spare gowns
+    decoy: and spare towels
     distractorsKo:
     - 흡인기를 준비하려고 상자를 풀게요.
-    - 여분의 흡인기와 랩패드를 수술 후에 정리해 둘게요.
+    - 여분의 흡인기와 랩패드는 출혈이 많을 때 써요.
     blank:
       answer: ready
       options:
@@ -2811,15 +2771,15 @@ situations:
     why: could는 확정이 아닌 가능성을 말해 팀이 미리 대비하게 하되 불안을 키우지 않아요. 위험을 수술 이름에 붙여 한정해요.
     decoy: of heat
     distractorsKo:
-    - 이 수술에서는 통증이 많을 수 있어요.
-    - 이 수술에서는 시간이 오래 걸릴 수 있어요.
+    - 이 수술에서는 수혈을 미리 준비해요.
+    - 이 수술에서는 교차시험 결과를 확인해요.
     blank:
       answer: lose
       options:
       - en: lose
       - en: gain
       - en: save
-      - en: give
+      - en: test
   - en: I'll keep extra lap pads within reach in case we need them.
     ko: 필요할 경우를 대비해 여분의 랩패드를 손 닿는 곳에 둘게요.
     chunks:
@@ -2836,7 +2796,7 @@ situations:
     tag: 대비 준비
     icon: bandage
     why: within reach는 손만 뻗으면 닿는다는 뜻이고, in case…로 지금 필요해서가 아니라 대비임을 밝혀요.
-    decoy: extra sterile gowns
+    decoy: extra skin markers
     distractorsKo:
     - 필요할 경우를 대비해 여분의 랩패드는 멸균 포장으로 둬요.
     - 필요할 경우를 대비해 여분의 랩패드를 손 닿는 곳에 두려고 봉지를 풀게요.
@@ -2844,7 +2804,7 @@ situations:
       answer: need
       options:
       - en: need
-      - en: drop
+      - en: return
       - en: waste
       - en: break
   nuance:
@@ -2858,7 +2818,7 @@ situations:
     - Moderate blood loss
     - Major blood loss
     answerAt: 0
-    why: 수술 전에 예상 출혈량을 말할 때는 minimal·moderate·major처럼 단계를 나눠 불러요. 피부 병변을 간단히 떼어 내는 정도라면 minimal이고, 큰 수술일수록 뒤쪽 단계로 올라가요.
+    why: 수술 전에 예상 출혈량을 말할 때는 minimal·moderate·major처럼 정도를 붙여 말해요. 피부 병변을 간단히 떼어 내는 정도라면 minimal이고, 큰 수술일수록 뒤쪽으로 올라가요.
     example: We expect minimal blood loss with this procedure.
     exKo: 이 수술은 출혈이 거의 없을 것으로 예상해요.
   - kind: context
@@ -2879,7 +2839,7 @@ situations:
       icon: me
       en: Her EBL is 400 mL so far, which is what we expected.
       ok: false
-      fix: She has lost a little blood so far, about what we expected, and we're watching it closely.
+      fix: She's lost about as much blood as we expected, and we're keeping a close eye on it.
     why: EBL은 의료진끼리 쓰는 약어이고 차트에도 이 형태로 남겨요. 보호자에게는 약어와 숫자만 던지면 낯설고 차갑게 들려서, 지금 어떤 상태인지 쉬운 말로 풀어 줘요.
   order:
     tag: 대화 흐름
@@ -2895,9 +2855,9 @@ situations:
       icon: bandage
       ko: 그에 맞춰 여분의 흡인기와 랩패드를 준비할게요
       note: 준비
-    - en: Alongside that, I'll track EBL against that estimate as we go.
+    - en: With those ready, I'll track EBL against the estimate as we go.
       icon: pencil
-      ko: 그와 함께 진행하며 그 추정치 대비 EBL을 기록할게요
+      ko: 그것들이 준비되면 진행하며 추정치 대비 EBL을 기록할게요
       note: 기록
     - en: I'll update you whenever the total changes much.
       icon: speech
@@ -2974,7 +2934,7 @@ situations:
     decoy: a spare copy
     distractorsKo:
     - EBL 합계를 기록하려고 펜을 쥐고 있어요.
-    - EBL의 누적 합계는 계속 바뀌고 있어요.
+    - EBL의 누적 합계는 마취과도 함께 알아야 해요.
     blank:
       answer: running
       options:
@@ -3114,7 +3074,7 @@ situations:
     decoy: the trays
     distractorsKo:
     - 거즈 개수를 세서 출혈량을 추정할게요.
-    - 거즈 무게를 재려고 저울에 올려 둘게요.
+    - 거즈 무게를 재도록 마른 무게부터 확인해요.
     blank:
       answer: weigh
       options:
@@ -3138,10 +3098,10 @@ situations:
     tag: 수치 보고
     icon: chartup
     why: 분사구 Dry weight subtracted로 계산 방법을 앞에 짧게 밝힌 뒤 결과를 말하는 보고 방식이에요.
-    decoy: Gown weight added
+    decoy: Basin weight added
     distractorsKo:
-    - 젖은 무게를 뺀 값은 약 150밀리리터입니다.
-    - 건조 무게를 뺀 값은 제품마다 다릅니다.
+    - 건조 무게를 빼려고 거즈 장수를 세어요.
+    - 건조 무게는 거즈 종류마다 조금씩 다릅니다.
     blank:
       answer: Dry
       options:
@@ -3150,7 +3110,7 @@ situations:
       - en: Gross
       - en: Sterile
   - en: I'll add this to our running EBL.
-    ko: 이걸 우리의 누적 EBL에 더할게요.
+    ko: 이걸 누적 EBL에 더할게요.
     chunks:
     - I'll add
     - this
@@ -3165,8 +3125,8 @@ situations:
     why: add A to B로 새 값을 기존 합계에 더한다는 방향이 어순에 있어요. our로 팀이 함께 쓰는 한 기록임을 보여요.
     decoy: to the supply list
     distractorsKo:
-    - 이걸 누적 EBL에 더하려고 합계를 열게요.
-    - 누적 EBL에 더하면 합계가 변해요.
+    - 이걸 누적 EBL과 비교할게요.
+    - 이 값은 마취과에도 같이 알려요.
     blank:
       answer: running
       options:
@@ -3191,7 +3151,7 @@ situations:
     decoy: than the old ones
     distractorsKo:
     - 이 거즈들이 마른 것보다 더 커 보이네요.
-    - 이 거즈들이 새 것보다 더 무거워 보이네요.
+    - 이 거즈들이 아까 것보다 더 무거워 보이네요.
     blank:
       answer: heavier
       options:
@@ -3217,14 +3177,14 @@ situations:
     decoy: to the next bag
     distractorsKo:
     - 무게를 달려고 저울을 맞춥시다.
-    - 지금 개수를 세고 합계에 더합시다.
+    - 마르기 전에 재야 무게가 정확해요.
     blank:
       answer: weigh
       options:
       - en: weigh
       - en: rinse
       - en: sort
-      - en: bag
+      - en: soak
   nuance:
   - kind: slider
     words:
@@ -3258,7 +3218,7 @@ situations:
     answer: weigh
     notes:
       weigh: 젖은 거즈 무게에서 마른 무게를 빼면 흡수된 피의 양을 추정할 수 있다. 눈대중보다 정확하다.
-      look at: 눈으로 보는 것만으로는 출혈량을 숫자로 추정하기 어렵다.
+      look at: 눈대중은 실제보다 적거나 많게 잡기 쉬워서 출혈량을 믿고 추정하기 어렵다.
       count: 개수는 계수 절차에 필요하지만, 출혈량을 추정하는 방법은 아니다.
     why: 거즈로 출혈량을 추정할 때는 눈대중이 아니라 무게를 재서 마른 무게를 빼요.
     ko: 거즈 무게를 재서 출혈량을 추정할게요
@@ -3330,14 +3290,14 @@ situations:
     why: open on the field로 포장을 열어 필드에 둔 상태를 말해 바로 쓸 수 있음이 전해져요. have + 상태 틀이에요.
     decoy: sterile saline
     distractorsKo:
-    - 지혈제를 수술 필드에 올려 뒀어요.
+    - 지혈제는 종류마다 쓰는 법이 달라요.
     - 지혈제를 필드에서 열려고 봉지를 잡아요.
     blank:
       answer: open
       options:
       - en: open
       - en: sealed
-      - en: labeled
+      - en: dropped
       - en: expired
   - en: Extra clips and ties are within reach.
     ko: 여분의 클립과 결찰사가 손 닿는 곳에 있어요.
@@ -3378,15 +3338,14 @@ situations:
     - w-keep
     - w-cautery
     - w-ready
-    - w-fast
     goal: 1
     tag: 대기 상태
     icon: gear
     why: in case…는 지금 쓰지 않아도 갑자기 필요할 때를 위한 대비라는 이유를 붙이는 틀이에요. fast가 끝에서 속도 요구를 강조해요.
     decoy: with gloves
     distractorsKo:
-    - 소작기를 준비하려고 전원부터 볼게요.
-    - 필요할 때 빨리 쓰려면 소작기는 켜져야 해요.
+    - 소작기를 준비할 때 출력값부터 맞춰요.
+    - 소작기 펜은 안 쓸 때 홀스터에 꽂아 둬요.
     blank:
       answer: fast
       options:
@@ -3395,7 +3354,7 @@ situations:
       - en: alone
       - en: apart
   - en: I'll set extra clips and ties within reach for you.
-    ko: 당신을 위해 여분의 클립과 결찰사를 손 닿는 곳에 둘게요.
+    ko: 여분의 클립과 결찰사를 손 닿는 곳에 놓아 드릴게요.
     chunks:
     - I'll set
     - extra clips and ties
@@ -3414,8 +3373,8 @@ situations:
     why: for you가 끝에 붙어 누구를 위한 준비인지 분명히 하고, 요청받기 전에 먼저 챙기는 배려의 말이에요.
     decoy: for the tech
     distractorsKo:
-    - 당신을 위해 여분의 클립과 결찰사를 손 닿는 곳에 두려고 봉지를 열게요.
-    - 당신을 위해 여분의 클립을 크기별로 정리해 둘게요.
+    - 여분의 클립과 결찰사를 미리 세어 드릴게요.
+    - 여분의 클립을 크기별로 정리해 드릴게요.
     blank:
       answer: ties
       options:
@@ -3428,7 +3387,7 @@ situations:
     words:
     - w-clip
     - w-reach
-    cue: You're holding a clip, ready to pass it the instant the surgeon asks.
+    cue: The surgeon will ask for a clip any second, so it's already between your fingers.
     scale:
     - in the room
     - within reach
@@ -3499,7 +3458,7 @@ situations:
     why: bleeding을 먼저 말하고 위치를 at the…로 덧붙여, 무엇이 어디서 일어나는지 순서대로 알려요. 보이는 것을 바로 보고하는 I'm seeing 틀이에요.
     decoy: a small tear
     distractorsKo:
-    - 경계의 출혈을 닦으려고 거즈를 쥐어요.
+    - 출혈 위치를 알릴 때 조명부터 옮겨요.
     - 출혈이 나면 거즈부터 대요.
     blank:
       answer: bleeding
@@ -3550,7 +3509,7 @@ situations:
     why: a clamp or cautery처럼 or로 두 선택지를 이으면 집도의가 한마디로 고를 수 있어요. for that으로 대상을 가리켜요.
     decoy: a drain
     distractorsKo:
-    - 클램프나 소작기 중 뭐가 더 낫나요?
+    - 클램프나 소작기 중 어느 쪽이 준비됐나요?
     - 클램프나 소작기 중 어느 게 더 빠른가요?
     blank:
       answer: clamp
@@ -3558,7 +3517,7 @@ situations:
       - en: clamp
       - en: scalpel
       - en: retractor
-      - en: stapler
+      - en: towel clip
   - en: The bleeding is steady but not fast right now.
     ko: 출혈이 꾸준하지만 지금은 빠르지 않아요.
     chunks:
@@ -3570,7 +3529,6 @@ situations:
     words:
     - w-bleed
     - w-steady
-    - w-fast
     goal: 1
     tag: 상태 보고
     icon: monitor
@@ -3586,31 +3544,33 @@ situations:
       - en: heavy
       - en: pulsing
       - en: sudden
-  - en: Let's clamp that vessel before it gets worse.
-    ko: 더 나빠지기 전에 그 혈관을 클램프로 잡읍시다.
+  - en: I'll have a clamp ready for that vessel.
+    ko: 그 혈관에 쓸 클램프를 준비해 둘게요.
     chunks:
-    - Let's clamp
-    - that vessel
-    - before it gets worse
+    - I'll have
+    - a clamp
+    - ready
+    - for that vessel
     - .
     words:
     - w-clamp
     - w-vessel
+    - w-ready
     goal: 1
-    tag: 즉시 지혈
+    tag: 기구 준비
     icon: scalpel
-    why: Let's로 같이 하자는 제안이고, before it gets worse로 지금 바로 해야 하는 이유를 붙여 행동을 정당화해요.
-    decoy: that tray
+    why: I'll have A ready는 요청받기 전에 미리 챙겨 두겠다는 말이에요. for that vessel로 어느 출혈 부위에 쓸 클램프인지 분명히 해요. 클램프를 거는 일은 집도의가 해요.
+    decoy: for that sponge
     distractorsKo:
-    - 그 혈관을 클램프로 잡으려고 조명을 먼저 맞춥시다.
+    - 클램프는 혈관을 물어서 피가 못 흐르게 해요.
     - 클램프로 잡은 혈관은 묶거나 지져요.
     blank:
-      answer: clamp
+      answer: vessel
       options:
-      - en: clamp
-      - en: irrigate
-      - en: drape
-      - en: flush
+      - en: vessel
+      - en: nerve
+      - en: valve
+      - en: muscle
   nuance:
   - kind: slider
     words:
@@ -3641,15 +3601,15 @@ situations:
       ok: true
     - who: 깨어 있는 환자에게(척추마취)
       icon: me
-      en: Clamp on the bleeder — it's pumping, so hold still.
+      en: The surgeon is clamping a bleeder, so hold still.
       ok: false
-      fix: You may feel some pressure; I'm just stopping a small bleed.
-    why: clamp는 의료진끼리 기구를 주고받을 때와 기록에서 자연스러운 말이에요. 깨어 있는 환자에게 출혈이 뿜는다고 말하면 겁을 줘요. 무슨 일이 일어나는지만 쉽게 알려 줘요.
+      fix: You may feel some pressure or tugging. The surgeon is taking care of some bleeding, so please stay still.
+    why: clamp·bleeder는 수술팀끼리 기구와 출혈 부위를 부르는 말이라, 깨어 있는 환자에게는 무엇을 하는지 알 수 없고 무섭게 들려요. 환자에게는 느낄 감각과 지금 다루고 있다는 것만 쉽게 말해요.
   order:
     tag: 대화 흐름
     icon: compass
     ko: 출혈 부위 대응 4문장 순서
-    why: 출혈을 알리고, 시야를 위해 흡인을 요청하고, 보이면 도구를 묻고, 어느 쪽이 정해지든 악화 전에 혈관을 잡는 순서예요. 대명사 it이 앞 줄을 가리켜 순서를 잡아 줘요.
+    why: 출혈을 알리고, 시야를 위해 흡인을 요청하고, 보이면 도구를 묻고, 어느 쪽이 정해지든 바로 준비해 둔다는 순서예요. 대명사 it이 앞 줄을 가리켜 순서를 잡아 줘요.
     lines:
     - en: I'm seeing bleeding at the lower margin.
       icon: siren
@@ -3663,10 +3623,10 @@ situations:
       icon: scalpel
       ko: 보이면 클램프와 소작기 중 어느 걸 원하세요
       note: 질문
-    - en: Whichever you choose, let's control that vessel before it gets worse.
+    - en: Whichever you choose, I'll have it ready right away.
       icon: check
-      ko: 어느 쪽이든 더 나빠지기 전에 그 혈관을 잡읍시다
-      note: 지혈
+      ko: 어느 쪽이든 바로 준비해 둘게요
+      note: 준비
 - title: 수액로 개통 확인
   sentences:
   - en: Both IVs are patent and flowing freely.
@@ -3712,7 +3672,7 @@ situations:
     goal: 2
     tag: 수액 대기
     icon: pill
-    why: wide open은 조절기를 최대로 열었다는 뜻이고, if we need it으로 지금은 대기 중이라는 조건을 밝혀요.
+    why: wide open은 조절기를 최대로 열었다는 뜻이고, if we need it을 붙여 그 속도가 필요할 때를 위한 대비임을 밝혀요.
     decoy: at room temperature
     distractorsKo:
     - 필요하면 수액을 완전히 열려고 조절기를 잡고 있어요.
@@ -3766,7 +3726,7 @@ situations:
     why: on my end는 내가 확인한 범위에서라는 뜻이라 보고의 범위를 정직하게 한정해요.
     decoy: at the pump
     distractorsKo:
-    - 양쪽 라인 모두 제 쪽에서 잘 고정돼 있어요.
+    - 양쪽 라인 모두 제 쪽에서 잘 보여요.
     - 제 쪽 라인이 막히지 않는지 지켜볼게요.
     blank:
       answer: well
@@ -3774,14 +3734,14 @@ situations:
       - en: well
       - en: slowly
       - en: unevenly
-      - en: slightly
+      - en: dry
   - en: I can place a second line if anesthesia wants one.
     ko: 마취과에서 원하면 두 번째 라인을 놓을 수 있어요.
     chunks:
     - I can place
     - a second line
-    - if anesthesia wants
-    - one
+    - if
+    - anesthesia wants one
     - .
     words:
     - w-place
@@ -3793,8 +3753,8 @@ situations:
     why: I can …은 능력과 제안을 함께 알리고, if anesthesia wants one으로 결정권이 마취과에 있음을 존중해요.
     decoy: a pump
     distractorsKo:
-    - 마취과에서 원하면 두 번째 라인을 놓으려고 정맥을 짚어요.
-    - 마취과에서 원하면 두 번째 라인에 약을 걸어요.
+    - 마취과에서 원하면 두 번째 라인을 놓으려고 팔을 살펴요.
+    - 두 번째 라인은 굵은 바늘로 놓는 게 좋아요.
     blank:
       answer: place
       options:
@@ -3808,13 +3768,13 @@ situations:
     - w-fluid
     - w-wide
     - w-run
-    cue: Anesthesia asks how the fluids are running. You open the clamp fully and the bag drains as fast as the tubing allows.
+    cue: Anesthesia rolls the clamp all the way up, and the bag empties as fast as the tubing allows.
     scale:
     - dripping slowly
     - running steadily
     - wide open
     answerAt: 2
-    why: 수액 속도는 dripping slowly(천천히 떨어짐) → running steadily(일정하게) → wide open(조절기를 끝까지 열어 최대 속도) 순으로 빨라져요. 조절기를 끝까지 열었다면 wide open이에요.
+    why: 수액 속도는 dripping slowly(천천히 떨어짐) → running steadily(일정하게) → wide open(조절기를 끝까지 열어 최대 속도) 순으로 빨라져요. 조절기가 끝까지 열려 있다면 wide open이에요.
     example: The fluids are running wide open.
     exKo: 수액이 완전히 열려 흐르고 있어요.
   - kind: swap
@@ -3843,7 +3803,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 수액로 확인 4문장 순서
-    why: 라인 상태를 알리고, 수액을 최대로 열 준비를 말하고, 그것으로 모자랄 때 둘째 라인을 제안한 뒤, 어느 쪽이든 개통을 계속 확인한다는 순서예요.
+    why: 라인 상태를 알리고, 수액을 최대로 열 준비를 말하고, 그것으로 모자랄 때 라인 추가를 제안한 뒤, 어느 쪽이든 개통을 계속 확인한다는 순서예요.
     lines:
     - en: Both IVs are patent and flowing freely.
       icon: check
@@ -3853,13 +3813,13 @@ situations:
       icon: pill
       ko: 필요하면 수액을 완전히 열 준비가 됐어요
       note: 대기
-    - en: If that isn't enough, I can place a second line for anesthesia.
+    - en: If that isn't enough, I can place another line for anesthesia.
       icon: handshake2
-      ko: 그걸로 모자라면 마취과를 위해 라인을 놓을게요
+      ko: 그걸로 모자라면 마취과를 위해 라인을 하나 더 놓을게요
       note: 제안
-    - en: Either way, I'll keep checking that both lines stay patent.
+    - en: Either way, I'll keep checking that the lines stay patent.
       icon: magnify
-      ko: 어느 쪽이든 양쪽 라인이 열려 있는지 계속 볼게요
+      ko: 어느 쪽이든 라인이 열려 있는지 계속 볼게요
       note: 확인
 - title: 출혈량 증가 추세 보고
   sentences:
@@ -3873,7 +3833,6 @@ situations:
     words:
     - w-ebl
     - w-trend
-    - w-fast
     - w-expect
     goal: 1
     tag: 추세 보고
@@ -3881,7 +3840,7 @@ situations:
     why: is trending up은 수치가 올라가는 방향을 말하고, faster than expected로 기준과 비교해 긴급도를 알려요.
     decoy: is posted on the board
     distractorsKo:
-    - EBL이 예상보다 빠른지 따지려고 표를 펴요.
+    - EBL 추세를 보고하려고 숫자를 모으고 있어요.
     - EBL은 흡인통과 거즈 무게를 합친 값이에요.
     blank:
       answer: expected
@@ -3906,8 +3865,8 @@ situations:
     why: 양과 시간을 함께 말하는 in ten minutes가 핵심이에요. 속도를 알려 주면 총량보다 긴급도가 더 잘 전해져요.
     decoy: in the sponges
     distractorsKo:
-    - 10분 만에 나간 양을 재려고 눈금을 읽어요.
-    - 나간 양은 흡인통과 거즈 무게로 재요.
+    - 빠른 출혈은 총량보다 속도가 더 중요해요.
+    - 나간 양은 잰 시각과 함께 바로 적어요.
     blank:
       answer: lost
       options:
@@ -3933,7 +3892,7 @@ situations:
     why: Do you want me to …?는 지시를 기다리지 않고 구체적 행동 둘(알림·혈액 준비)을 먼저 제안하는 질문이에요.
     decoy: Do you want it
     distractorsKo:
-    - 마취과에 알리려고 번호부터 볼까요?
+    - 마취과에 알리려고 지금 수치를 정리할까요?
     - 마취과에 알리면 혈액 준비가 빨라져요.
     blank:
       answer: ready
@@ -3951,7 +3910,6 @@ situations:
     - an hour ago
     - .
     words:
-    - w-fast
     - w-expect
     goal: 1
     tag: 비교 판단
@@ -3962,12 +3920,12 @@ situations:
     - 어제 아침에 예상했던 것보다 더 빠르네요.
     - 한 시간 전에 봤던 것보다 더 빠르네요.
     blank:
-      answer: ago
+      answer: faster
       options:
-      - en: ago
-      - en: later
-      - en: since
-      - en: after
+      - en: faster
+      - en: slower
+      - en: lower
+      - en: smaller
   - en: Let's keep tracking the EBL every few minutes.
     ko: 몇 분마다 EBL을 계속 추적합시다.
     chunks:
@@ -3985,15 +3943,15 @@ situations:
     why: keep + -ing는 이미 하던 일을 이어 가자는 틀이고, every few minutes로 확인 간격을 정해 주는 것이 핵심이에요.
     decoy: the sponge count
     distractorsKo:
-    - 몇 분마다 EBL을 추적하려고 시계 봅시다.
+    - 몇 분마다 추적하려고 타이머를 켭시다.
     - 몇 분 새에도 EBL이 변해요.
     blank:
       answer: minutes
       options:
       - en: minutes
       - en: hours
-      - en: days
-      - en: weeks
+      - en: shifts
+      - en: cases
   nuance:
   - kind: slider
     words:
@@ -4010,24 +3968,24 @@ situations:
     exKo: EBL이 천천히 늘고 있어요.
   - kind: context
     words:
-    - w-alert
-    word: alert
-    ko: 알리다
+    - w-trend
+    word: trend
+    ko: 추세를 보이다
     scenes:
     - who: 순환 간호사 → 마취과
       icon: speech
-      en: I'm alerting the blood bank that we may need blood.
+      en: EBL is trending up — 500 in the last ten minutes.
       ok: true
     - who: 수술 기록
       icon: board
-      en: Blood bank alerted at 10:42; products on standby.
+      en: EBL trending up; blood bank notified at 10:42.
       ok: true
     - who: 대기실 보호자에게
       icon: me
-      en: We've alerted the blood bank because his EBL is rising.
+      en: His blood loss is trending up faster than expected.
       ok: false
       fix: He's bleeding a bit more than we expected, so we're getting blood ready, just in case.
-    why: alert는 의료진 사이에서 '미리 알려 대비시키다'는 뜻으로 간결하게 쓰여요. 보호자에게 blood bank가 alert됐다고만 하면 갑자기 큰일이 난 것처럼 들려서, 쉽게 풀어 설명해 줘요.
+    why: trending up은 수치 흐름을 읽어 주는 의료진의 보고 말투예요. 보호자에게는 그래프를 읽듯 들리고 무엇을 하고 있는지가 빠져요. 쉬운 말로 상태와 대비를 함께 말해 줘요.
   order:
     tag: 대화 흐름
     icon: compass
@@ -4070,7 +4028,7 @@ situations:
     why: ready to apply는 지금 바로 바를 수 있는 상태라는 뜻이고, have + 대상 + 상태 틀로 준비 완료를 보고해요.
     decoy: the spare gloves
     distractorsKo:
-    - 지혈 매트릭스를 적용하려고 뚜껑을 열어요.
+    - 지혈 매트릭스를 적용하도록 주사기에 채워요.
     - 매트릭스는 출혈면에 직접 닿게 써요.
     blank:
       answer: ready
@@ -4096,8 +4054,8 @@ situations:
     why: pack it against …는 지혈제를 눌러 채워 넣는 동작을 한 동사로 말해요. against가 눌러 붙이는 방향을 나타내요.
     decoy: tray
     distractorsKo:
-    - 압박하려고 출혈면 위에 손을 올릴게요.
-    - 출혈면은 압박하면 안 보여요.
+    - 출혈면에 닿도록 흡인으로 시야를 열게요.
+    - 매트릭스는 젖은 면에 닿으면 부풀어요.
     blank:
       answer: pack
       options:
@@ -4150,7 +4108,7 @@ situations:
     why: until을 쓰면 시간이 아니라 상태(출혈이 줄어듦)가 기준이 되어 충분히 줄 때까지라는 뜻이 선명해요.
     decoy: on the monitor
     distractorsKo:
-    - 출혈이 줄어들 때까지 압박하려고 손을 올릴게요.
+    - 압박하면 지혈제가 출혈면에 잘 붙어요.
     - 출혈이 줄면 압박이 먹힌다는 뜻이에요.
     blank:
       answer: slows
@@ -4176,7 +4134,7 @@ situations:
     why: if…로 더 쓰는 조건(출혈 지속)을 밝혀 기계적 반복이 아니라 판단에 따른 행동임을 보여요.
     decoy: if the surgeon asks
     distractorsKo:
-    - 출혈이 계속되면 매트릭스를 더 쓰려고 봉지를 열어요.
+    - 남은 매트릭스는 필드 위에 덮어 둬요.
     - 출혈이 계속되면 쓰기 전에 먼저 닦아요.
     blank:
       answer: apply
@@ -4208,8 +4166,7 @@ situations:
     words:
     - w-hold
     - w-pressure
-    - w-set
-    who: 순환 간호사 → 수술 보조 · 지혈제 적용 중
+    who: 스크럽 간호사 → 수술 보조 · 지혈제 적용 중
     icon: speech
     before:
     - 'Hold pressure while it '
@@ -4267,17 +4224,17 @@ situations:
     why: coags는 응고검사의 줄임말이고, show 뒤 명사 + 분사 developing으로 지금 진행 중인 변화임을 알려요.
     decoy: The latest cultures
     distractorsKo:
-    - 응고병증이 발생하는지 가리려고 최근 응고검사를 짚어요.
+    - 최근 응고검사 결과를 말하려고 수치를 표로 옮겨요.
     - 응고병증이 생기면 출혈이 잘 멎지 않고 오래가요.
     blank:
       answer: coagulopathy
       options:
       - en: coagulopathy
-      - en: pneumothorax
+      - en: thrombosis
       - en: hematoma
-      - en: fever
+      - en: leukocytosis
   - en: Do you want FFP and platelets ordered now?
-    ko: 지금 FFP와 혈소판을 처방할까요?
+    ko: 지금 FFP와 혈소판을 주문할까요?
     chunks:
     - Do you want
     - FFP and platelets
@@ -4288,12 +4245,12 @@ situations:
     - w-platelet
     - w-order
     goal: 2
-    tag: 처방 제안
+    tag: 주문 제안
     icon: pill
-    why: ordered는 처방이 나가는 결과를 말해 내가 주문하겠다는 제안을 짧게 해요. FFP와 혈소판을 함께 묻는 것이 포인트예요.
-    decoy: a cup of ice
+    why: ordered는 주문이 나가는 결과를 말해, 직접 정하지 않고 의사에게 주문할지 묻는 정중한 제안이 돼요. FFP와 혈소판을 함께 묻는 것이 포인트예요.
+    decoy: a chest x-ray
     distractorsKo:
-    - FFP와 혈소판을 처방하려고 차트를 열까요?
+    - FFP와 혈소판을 주문하려고 차트를 열까요?
     - FFP와 혈소판은 온도가 달라요.
     blank:
       answer: ordered
@@ -4322,7 +4279,7 @@ situations:
     decoy: a callback
     distractorsKo:
     - 혈액은행에 전화하려고 제제 목록을 찾을게요.
-    - 혈액은행에서 제제를 해동하거나 준비해요.
+    - 혈액은행에는 환자 혈액형 검체가 필요해요.
     blank:
       answer: call
       options:
@@ -4348,7 +4305,7 @@ situations:
     why: 두 검사 결과를 and로 이어 한 문장에 담아 응고 문제의 근거를 함께 전해요. low와 elevated로 방향을 말해요.
     decoy: are counted
     distractorsKo:
-    - 혈소판이 낮은지 따지려고 결과를 뽑아요.
+    - 혈소판은 지혈 마개를 만드는 데 쓰여요.
     - INR이 높으면 혈액이 늦게 굳어요.
     blank:
       answer: INR
@@ -4356,13 +4313,13 @@ situations:
       - en: INR
       - en: hemoglobin
       - en: hematocrit
-      - en: BMI
-  - en: Let's order FFP now and call the blood bank.
-    ko: 지금 FFP를 처방하고 혈액은행에 전화합시다.
+      - en: sodium
+  - en: Once FFP is ordered, I'll call the blood bank.
+    ko: FFP 주문이 들어가면 혈액은행에 전화할게요.
     chunks:
-    - Let's order FFP
-    - now
-    - and call
+    - Once FFP
+    - is ordered
+    - ', I''ll call'
     - the blood bank
     - .
     words:
@@ -4371,20 +4328,20 @@ situations:
     - w-call
     - w-bloodbank
     goal: 2
-    tag: 즉시 대응
+    tag: 후속 연락
     icon: pager
-    why: Let's로 두 행동(처방·호출)을 이어 제안하고, now로 지체 없이 하자는 뜻을 더해요.
-    decoy: twice
+    why: Once …로 주문이 먼저 들어간다는 조건을 밝히고, 그다음 내 몫인 혈액은행 연락을 I'll로 말해요. 주문할지는 의료진이 정해요.
+    decoy: the monitor
     distractorsKo:
-    - FFP를 처방하고 혈액은행에 전화하려고 차트를 봅시다.
-    - FFP를 처방하면 혈액은행이 해동을 시작해요.
+    - FFP 주문이 들어가면 혈액은행이 해동을 시작해요.
+    - FFP 주문이 들어가면 전화하려고 번호부터 찾을게요.
     blank:
-      answer: order
+      answer: blood bank
       options:
-      - en: order
-      - en: file
-      - en: read
-      - en: copy
+      - en: blood bank
+      - en: pharmacy
+      - en: radiology
+      - en: dietary
   nuance:
   - kind: slider
     words:
@@ -4423,7 +4380,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 응고검사 대응 4문장 순서
-    why: 검사 결과가 나왔음을 알리고, 그 내용을 말하고, 처방을 제안한 뒤, 처방이 나가면 혈액은행에 부르는 순서예요. 대명사 They·those가 앞 줄을 가리켜요.
+    why: 검사 결과가 나왔음을 알리고, 그 내용을 말하고, 주문을 제안한 뒤, 주문이 나가면 혈액은행에 부르는 순서예요. 대명사 They·those가 앞 줄을 가리켜요.
     lines:
     - en: The latest coags are back.
       icon: lab
@@ -4435,11 +4392,11 @@ situations:
       note: 내용
     - en: Do you want FFP and platelets ordered now?
       icon: pill
-      ko: 지금 FFP와 혈소판을 처방할까요
+      ko: 지금 FFP와 혈소판을 주문할까요
       note: 제안
     - en: Once those are ordered, I'll call the blood bank to get products ready.
       icon: pager
-      ko: 처방되면 제제 준비를 위해 혈액은행에 전화할게요
+      ko: 주문되면 제제 준비를 위해 혈액은행에 전화할게요
       note: 호출
 - title: 저혈량 초기 징후
   sentences:
@@ -4461,8 +4418,8 @@ situations:
     why: pressure와 heart rate의 방향을 down/up으로 나란히 말해 두 수치가 반대로 움직이는 위험 신호를 한 문장에 담아요.
     decoy: and temperature
     distractorsKo:
-    - 혈압이 떨어지는 걸 확인하려고 모니터를 다시 맞춰요.
-    - 혈압이 떨어지면 심박수는 보통 올라가요.
+    - 혈압과 심박수를 알리려고 추세 화면을 띄워요.
+    - 혈압은 커프와 동맥관 두 가지로 잴 수 있어요.
     blank:
       answer: up
       options:
@@ -4487,7 +4444,7 @@ situations:
     why: look like는 확정 진단이 아니라 관찰에 근거한 판단이라 단정을 피하면서도 경고를 전해요. early signs로 아직 초기임을 밝혀요.
     decoy: of an allergy
     distractorsKo:
-    - 저혈량증인지 가리려고 맥박부터 짚어요.
+    - 징후를 전하려고 활력 수치를 챙겨요.
     - 저혈량증이 오면 맥박이 빨라져요.
     blank:
       answer: hypovolemia
@@ -4511,7 +4468,7 @@ situations:
     goal: 2
     tag: 즉시 대응
     icon: siren
-    why: 진행형 두 동사(opening up, calling)를 and로 이어 지금 동시에 하고 있다고 알려요. for blood의 for가 요청 대상을 가리켜요.
+    why: 진행형 두 동사(opening up, calling)를 and로 이어 지금 동시에 하고 있다고 알려요. for blood의 for가 요청 대상을 가리켜요. 마취과 지시에 따라 하는 일이에요.
     decoy: for a pillow
     distractorsKo:
     - 수액을 열고 혈액을 요청하려고 연락처를 찾아요.
@@ -4520,7 +4477,7 @@ situations:
       answer: calling
       options:
       - en: calling
-      - en: waiting
+      - en: testing
       - en: stalling
       - en: resting
   - en: His heart rate keeps climbing while his pressure drops.
@@ -4541,15 +4498,15 @@ situations:
     why: keeps climbing은 멈추지 않고 계속 오른다는 뜻이고, while로 두 변화가 동시에 일어남을 묶어 알려요.
     decoy: is checked
     distractorsKo:
-    - 혈압을 다시 재려고 커프를 감고 있어요.
-    - 심박수는 몸이 피를 보상하느라 올라가요.
+    - 혈압은 심박수보다 늦게 떨어지는 편이에요.
+    - 심박수가 오르는 건 몸의 보상 반응이에요.
     blank:
       answer: climbing
       options:
       - en: climbing
-      - en: sinking
       - en: dropping
-      - en: falling
+      - en: settling
+      - en: stalling
   - en: Let's open another line and call for blood now.
     ko: 라인을 하나 더 열고 지금 혈액을 요청합시다.
     chunks:
@@ -4612,7 +4569,7 @@ situations:
       let's just keep watching: 지켜보기만 하면 대응이 늦어진다.
       let's check back in an hour: 한 시간 뒤에 보자는 것은 급변 상황에 맞지 않게 느긋하다.
     why: 심박수 상승과 혈압 하락이 함께 오면 출혈 쪽을 의심하고 바로 준비해요. 그냥 지켜보자거나 한 시간 뒤에 보자는 말은 대응이 너무 늦어요.
-    ko: 라인을 하나 더 열고 혈액을 요청합시다
+    ko: 심박수는 계속 오르고 혈압은 떨어지니, 라인을 하나 더 열고 혈액을 요청합시다
   order:
     tag: 대화 흐름
     icon: compass
@@ -4638,7 +4595,7 @@ situations:
 - title: 대구경 라인 추가
   sentences:
   - en: I'll grab a large-bore catheter for you.
-    ko: 당신을 위해 대구경 카테터를 가져올게요.
+    ko: 대구경 카테터를 가져다 드릴게요.
     chunks:
     - I'll grab
     - a large-bore catheter
@@ -4654,7 +4611,7 @@ situations:
     why: grab은 바로 가서 집어 온다는 가벼운 구어체 동사이고, for you가 요청 전에 먼저 챙기는 배려를 나타내요.
     decoy: a pair of scissors
     distractorsKo:
-    - 대구경 카테터를 가져오려고 서랍을 열게요.
+    - 카테터를 가져오려고 카트로 가요.
     - 대구경 카테터는 수액을 빠르게 줄 때 써요.
     blank:
       answer: large-bore
@@ -4672,7 +4629,6 @@ situations:
     - wide open
     - .
     words:
-    - w-second
     - w-line
     - w-run
     - w-wide
@@ -4718,40 +4674,40 @@ situations:
       - en: taken down
       - en: put away
       - en: locked up
-  - en: I'll place the large-bore catheter in his other arm.
-    ko: 다른 쪽 팔에 대구경 카테터를 놓을게요.
+  - en: Do you want the large-bore catheter placed in his other arm?
+    ko: 대구경 카테터를 다른 쪽 팔에 놓으시겠어요?
     chunks:
-    - I'll place
+    - Do you want
     - the large-bore catheter
-    - in his
-    - other arm
-    - .
+    - placed
+    - in his other arm
+    - '?'
     words:
     - w-place
     - w-largebore
     - w-catheter
     goal: 1
-    tag: 위치 설명
+    tag: 제안 질문
     icon: stetho
-    why: other arm으로 이미 라인이 있는 팔과 구분해 어디에 놓는지 분명히 해요. 같은 팔에 라인을 몰지 않으려는 이유예요.
-    decoy: I'll label
+    why: Do you want A placed …?는 A를 …에 놓을지 정중하게 묻는 말이에요. 라인을 어디에 놓을지는 놓는 사람이 정하니 먼저 묻고, in his other arm으로 이미 라인이 있는 팔과 구분해요.
+    decoy: in the other room
     distractorsKo:
-    - 카테터를 놓으려고 지혈대를 맬게요.
     - 대구경 카테터는 팔꿈치 정맥에 자주 놓아요.
+    - 카테터를 놓으려고 지혈대를 맬까요?
     blank:
-      answer: other
+      answer: placed
       options:
-      - en: other
-      - en: same
-      - en: sore
-      - en: bare
+      - en: placed
+      - en: removed
+      - en: drawn
+      - en: cleaned
   - en: Let's hook up the rapid infuser once the line's in.
     ko: 라인이 들어가면 신속 수액 주입기를 연결합시다.
     chunks:
     - Let's hook up
     - the rapid infuser
-    - once the line's
-    - in
+    - once
+    - the line's in
     - .
     words:
     - w-hook
@@ -4764,8 +4720,8 @@ situations:
     why: once …는 라인이 들어가는 순간 곧바로 다음 단계로 넘어간다는 순서를 알려요. 라인이 먼저, 주입기가 그다음이에요.
     decoy: the pressure bag
     distractorsKo:
-    - 라인이 들어가면 주입기 연결하려고 호스를 챙겨요.
-    - 신속 수액 주입기는 라인에 직접 연결해요.
+    - 라인이 들어가면 연결하려고 주입기 회로를 미리 채워요.
+    - 신속 주입기는 분당 수백 밀리리터를 넣을 수 있어요.
     blank:
       answer: hook up
       options:
@@ -4784,7 +4740,7 @@ situations:
     - mid-size
     - large-bore
     answerAt: 2
-    why: 카테터는 굵기를 bore로 말해요. 혈액이나 수액을 빨리 넣어야 할 때는 굵은 large-bore 카테터가 필요하고, 가는 small-bore는 속도를 따라가지 못해요.
+    why: IV 카테터 굵기는 게이지(gauge)로 말하고 숫자가 작을수록 굵어요. 16~18게이지처럼 굵은 것을 통틀어 large-bore라고 해요. 22게이지 같은 가는 관은 혈액을 빨리 넣기에 부족해요.
     example: I need a large-bore catheter.
     exKo: 대구경 카테터가 필요해요.
   - kind: swap
@@ -4813,16 +4769,16 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 대구경 라인 4문장 순서
-    why: 카테터를 가져오고, 그것을 다른 팔에 놓고, 라인이 들어갔다고 알린 뒤, 그 라인에 주입기를 연결하는 순서예요.
+    why: 카테터를 가져오고, 가져왔다고 건네며 다른 팔에 쓸 준비를 알리고, 라인이 들어갔다고 알린 뒤, 그 라인에 주입기를 연결하는 순서예요.
     lines:
     - en: I'll grab a large-bore catheter for you.
       icon: handshake2
       ko: 대구경 카테터를 가져올게요
       note: 준비
-    - en: Once I have it, I'll place it in his other arm.
+    - en: Here it is — ready for his other arm.
       icon: stetho
-      ko: 가져오면 그걸 다른 팔에 놓을게요
-      note: 삽입
+      ko: 여기 있어요, 다른 팔에 쓸 준비가 됐어요
+      note: 전달
     - en: Second line is in and running wide open.
       icon: check
       ko: 두 번째 라인이 들어가 완전히 열려 흘러요
@@ -4834,7 +4790,7 @@ situations:
 - title: 가온 수액 준비
   sentences:
   - en: I'm setting up the fluid warmer now.
-    ko: 지금 가온 수액기를 설치하고 있어요.
+    ko: 지금 수액 가온기를 설치하고 있어요.
     chunks:
     - I'm setting up
     - the fluid warmer
@@ -4850,8 +4806,8 @@ situations:
     why: be + -ing 진행형이고 now로 지금 하는 중임을 알려요. 수액을 따뜻하게 해 저체온을 막으려는 설치예요.
     decoy: the back table
     distractorsKo:
-    - 가온 수액기를 설치하려고 전원을 찾고 있어요.
-    - 가온기는 수액을 체온 가까이 데워요.
+    - 수액 가온기를 설치하려고 전원부터 찾아요.
+    - 가온기는 수액 줄 중간에 끼워 써요.
     blank:
       answer: setting up
       options:
@@ -4900,10 +4856,10 @@ situations:
     tag: 목표 설명
     icon: stetho
     why: keep A from -ing는 A가 …하지 않게 막는다는 틀이에요. 지켜야 할 값이 체온임을 his temperature가 분명히 해요.
-    decoy: his gown
+    decoy: his drape
     distractorsKo:
     - 체온이 떨어지면 피가 잘 굳지 않아요.
-    - 체온 유지하려고 방 온도를 맞춰요.
+    - 체온을 유지하려고 가온 담요를 꺼내요.
     blank:
       answer: dropping
       options:
@@ -4912,12 +4868,12 @@ situations:
       - en: leaking
       - en: ending
   - en: The warmer keeps all his fluids at body temperature.
-    ko: 가온기가 모든 수액을 체온으로 유지해 줘요.
+    ko: 가온기가 모든 수액을 체온 가까이로 유지해 줘요.
     chunks:
     - The warmer
-    - keeps all his fluids
-    - at body
-    - temperature
+    - keeps
+    - all his fluids
+    - at body temperature
     - .
     words:
     - w-warmer
@@ -4928,16 +4884,16 @@ situations:
     tag: 기능 설명
     icon: pill
     why: keeps A at B는 A를 B 상태로 유지한다는 틀이에요. at body temperature로 기준 온도를 알려요.
-    decoy: at room
+    decoy: at room temperature
     distractorsKo:
-    - 가온기를 모든 수액에 쓰려고 호스를 이어요.
-    - 가온기는 혈액 제제에 쓰이기도 해요.
+    - 가온기는 모든 수액을 데우려고 미리 예열해요.
+    - 가온기는 혈액 제제를 데우는 데 쓰이기도 해요.
     blank:
       answer: body
       options:
       - en: body
-      - en: freezing
-      - en: boiling
+      - en: room
+      - en: fridge
       - en: outdoor
   - en: I don't want his temperature dropping during this case.
     ko: 이 수술 동안 체온이 떨어지지 않았으면 해요.
@@ -4957,26 +4913,26 @@ situations:
     decoy: during the count
     distractorsKo:
     - 체온은 수술 동안 식도 탐침으로도 재요.
-    - 체온이 떨어지지 않게 수술실 방을 데워요.
+    - 회복실에서 체온이 떨어지지 않았으면 해요.
     blank:
       answer: dropping
       options:
       - en: dropping
       - en: rising
-      - en: spiking
-      - en: jumping
+      - en: charted
+      - en: covered
   nuance:
   - kind: slider
     words:
     - w-warmer
     - w-temperature
-    cue: A fluid warmer should bring cold storage-room fluid up to about the patient's own body temperature.
+    cue: Refrigerated blood should reach about the patient's own body temperature before it goes in — no hotter.
     scale:
     - cold
     - warm
     - scalding
     answerAt: 1
-    why: 가온기의 목적은 차가운 수액을 체온 가까이로 데우는 거예요. cold면 몸을 식히고, scalding은 화상을 입힐 수 있어요. 그래서 warm이 목표예요.
+    why: 가온기의 목적은 냉장 혈액·수액을 체온 가까이로 데우는 거예요. cold면 저체온을 부르고, scalding처럼 지나치게 뜨거우면 적혈구가 깨지고(용혈) 혈관을 다칠 수 있어요. 그래서 warm이 목표예요.
     example: The fluid should be warm, not hot.
     exKo: 수액은 따뜻해야 하고 뜨거우면 안 돼요.
   - kind: swap
@@ -5009,15 +4965,15 @@ situations:
     lines:
     - en: I'm setting up the fluid warmer now.
       icon: gear
-      ko: 지금 가온 수액기를 설치하고 있어요
+      ko: 지금 수액 가온기를 설치하고 있어요
       note: 설치
     - en: All the volume will run through it.
       icon: pill
       ko: 모든 수액량이 그걸 거쳐 흐를 거예요
       note: 경로
-    - en: That way the fluids stay at body temperature.
+    - en: With all of it going through, the fluids stay at body temperature.
       icon: stetho
-      ko: 그러면 수액이 체온으로 유지돼요
+      ko: 전부 거쳐 가니 수액이 체온으로 유지돼요
       note: 효과
     - en: So we'll keep his temperature from dropping during the case.
       icon: faceWorried
@@ -5044,7 +5000,7 @@ situations:
     decoy: and labeled
     distractorsKo:
     - 프라이밍하려고 식염수 한 병을 걸게요.
-    - 세포회수기는 수술 전에 프라이밍해 둬요.
+    - 세포회수기는 모을 때 항응고제를 섞어요.
     blank:
       answer: primed
       options:
@@ -5053,7 +5009,7 @@ situations:
       - en: emptied
       - en: cooled
   - en: We can salvage and return his own red cells.
-    ko: 그의 적혈구를 회수해서 돌려줄 수 있어요.
+    ko: 환자 본인의 적혈구를 회수해서 돌려줄 수 있어요.
     chunks:
     - We can salvage
     - and return
@@ -5070,7 +5026,7 @@ situations:
     why: salvage와 return을 and로 이어 모으고 돌려주는 순환을 한 문장에 담아요. his own으로 남의 혈액이 아님을 강조해요.
     decoy: his old
     distractorsKo:
-    - 그의 적혈구를 회수하려고 저장고를 열어요.
+    - 환자 본인의 적혈구를 회수하려고 회수기를 켜요.
     - 적혈구를 회수해 돌려주면 수혈이 줄어요.
     blank:
       answer: salvage
@@ -5078,7 +5034,7 @@ situations:
       - en: salvage
       - en: donate
       - en: freeze
-      - en: bank
+      - en: discard
   - en: The reservoir is collecting now.
     ko: 저장고에 지금 모이고 있어요.
     chunks:
@@ -5095,7 +5051,7 @@ situations:
     why: is collecting은 지금 진행 중인 동작이라 회수기가 작동 중임을 알려요. reservoir는 모은 혈액을 담는 통이에요.
     decoy: The tubing
     distractorsKo:
-    - 저장고에서 지금 비워지고 있어요.
+    - 저장고에 모이도록 줄을 이어요.
     - 저장고에는 눈금이 있어요.
     blank:
       answer: collecting
@@ -5104,30 +5060,29 @@ situations:
       - en: warming
       - en: beeping
       - en: tilting
-  - en: Once it's primed, we'll return the red cells to him.
-    ko: 프라이밍이 끝나면 적혈구를 그에게 돌려줄게요.
+  - en: Once the red cells are washed, we'll return them to him.
+    ko: 세척이 끝나면 적혈구를 환자에게 돌려줄게요.
     chunks:
-    - Once it's primed
-    - ', we''ll return'
-    - the red cells
+    - Once the red cells
+    - are washed
+    - ', we''ll return them'
     - to him
     - .
     words:
-    - w-prime
     - w-return
     - w-redcell
     goal: 1
     tag: 순서 설명
     icon: cross
-    why: once …로 프라이밍이 끝난 뒤에야 돌려준다는 순서를 알려요. 준비가 끝나기 전에는 환자에게 돌려주지 않는다는 안전 순서예요.
+    why: once …로 세척이 먼저라는 순서를 알려요. 세포회수기는 모은 피를 씻어 처리한 뒤에야 돌려줘요.
     decoy: to the cooler
     distractorsKo:
-    - 프라이밍이 끝나면 적혈구를 돌려주려고 라인을 걸게요.
-    - 프라이밍은 식염수로 라인을 채우는 일이에요.
+    - 적혈구를 돌려주려고 환자 라인을 걸게요.
+    - 세척은 식염수로 피를 헹궈 내는 일이에요.
     blank:
-      answer: primed
+      answer: washed
       options:
-      - en: primed
+      - en: washed
       - en: cooled
       - en: tilted
       - en: frozen
@@ -5149,7 +5104,7 @@ situations:
     why: will collect는 앞으로 할 일이고, from the field가 출처를 말해 수술 필드의 피만 모은다는 범위를 알려요.
     decoy: saline
     distractorsKo:
-    - 필드에서 피를 모으려고 압력을 맞춰요.
+    - 필드에서 피를 모을 때 음압부터 낮춰요.
     - 모은 피는 씻어서 환자에게 돌려줘요.
     blank:
       answer: collect
@@ -5196,7 +5151,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 세포회수기 4문장 순서
-    why: 회수기를 준비하고, 준비되면 필드의 피를 모으고, 저장고가 모으는 중임을 알린 뒤, 모은 뒤에 적혈구를 돌려주는 순서예요.
+    why: 회수기를 준비하고, 준비되면 필드의 피를 모으고, 저장고가 모으는 중임을 알린 뒤, 모은 피를 씻고 나서 적혈구를 돌려주는 순서예요.
     lines:
     - en: I'll get the cell saver set up and primed.
       icon: gear
@@ -5210,9 +5165,9 @@ situations:
       icon: check
       ko: 저장고에 지금 모이고 있어요
       note: 상태
-    - en: When that's done, we can return his own red cells.
+    - en: Once the blood is washed, we can return his own red cells.
       icon: handshake2
-      ko: 그게 끝나면 그의 적혈구를 돌려줄 수 있어요
+      ko: 씻고 나면 환자 본인의 적혈구를 돌려줄 수 있어요
       note: 반환
 - title: 출혈 원인 팀 논의
   sentences:
@@ -5239,9 +5194,9 @@ situations:
       answer: coagulopathy
       options:
       - en: coagulopathy
-      - en: pneumothorax
-      - en: fracture
-      - en: seizure
+      - en: hematoma
+      - en: vasospasm
+      - en: hernia
   - en: The coags will tell us which way to treat.
     ko: 응고검사 결과가 어떻게 치료할지 알려줄 거예요.
     chunks:
@@ -5257,7 +5212,7 @@ situations:
     tag: 판단 근거
     icon: lab
     why: will tell us which way to …로 검사 결과가 치료 방향을 정해 준다는 뜻이에요. which way가 두 갈래 중 선택을 나타내요.
-    decoy: to turn
+    decoy: to position
     distractorsKo:
     - 어떻게 치료할지 정하려고 응고검사를 다시 낼 거예요.
     - 응고검사에는 파란 뚜껑 튜브에 채혈해요.
@@ -5284,7 +5239,7 @@ situations:
     why: both가 두 가능성을 모두 다룬다는 뜻이고, while we investigate로 원인을 찾느라 치료를 미루지 않는다는 점을 알려요.
     decoy: the labs
     distractorsKo:
-    - 조사하며 둘 다 다루려고 나눕시다.
+    - 둘 다 다루려고 팀을 부릅시다.
     - 조사 중에도 출혈은 계속돼요.
     blank:
       answer: address
@@ -5297,8 +5252,7 @@ situations:
     ko: 이건 응고병증이 아니라 외과적 출혈처럼 보여요.
     chunks:
     - This looks
-    - like surgical
-    - bleeding
+    - like surgical bleeding
     - ', not a coagulopathy'
     - .
     words:
@@ -5311,7 +5265,7 @@ situations:
     why: looks like는 확정이 아니라 관찰에 근거한 판단이고, not …로 배제할 쪽을 분명히 해요.
     decoy: ', not a rash'
     distractorsKo:
-    - 이게 외과적 출혈인지 가리려고 부위를 살펴요.
+    - 외과적 출혈로 보인다고 말하려고 부위를 짚어요.
     - 응고병증은 여러 곳에서 스며 나오듯 피가 나요.
     blank:
       answer: surgical
@@ -5323,8 +5277,8 @@ situations:
   - en: Let's treat both possibilities until the coags come back.
     ko: 응고검사 결과가 나올 때까지 둘 다 치료합시다.
     chunks:
-    - Let's treat both
-    - possibilities
+    - Let's treat
+    - both possibilities
     - until the coags
     - come back
     - .
@@ -5343,9 +5297,9 @@ situations:
       answer: until
       options:
       - en: until
-      - en: after
       - en: unless
-      - en: since
+      - en: because
+      - en: though
   nuance:
   - kind: slider
     words:
@@ -5355,10 +5309,10 @@ situations:
     scale:
     - possibly surgical
     - likely surgical
-    - surely surgical
+    - definitely surgical
     answerAt: 2
-    why: 원인을 말하는 확신의 정도는 possibly → likely → surely 순으로 강해져요. 집도의가 잘린 혈관을 보며 의심 없다고 했다면 surely예요.
-    example: This is surely a surgical bleeder.
+    why: 원인을 말하는 확신의 정도는 possibly → likely → definitely 순으로 강해져요. 집도의가 잘린 혈관을 보며 의심 없다고 했다면 definitely예요.
+    example: This is definitely a surgical bleeder.
     exKo: 이건 분명히 외과적 출혈이에요.
   - kind: swap
     words:
@@ -5395,9 +5349,9 @@ situations:
       icon: lab
       ko: 응고검사가 치료 방향을 알려줄 거예요
       note: 근거
-    - en: Until we know, let's address both.
+    - en: Until they do, let's address both.
       icon: handshake2
-      ko: 알기 전까지는 둘 다 다룹시다
+      ko: 결과가 나올 때까지는 둘 다 다룹시다
       note: 병행
     - en: When the coags are back, we'll narrow treatment to the cause.
       icon: check
@@ -5406,7 +5360,7 @@ situations:
 - title: 소변·관류 감시
   sentences:
   - en: Urine output is down to under 30 an hour.
-    ko: 소변량이 시간당 30 이하로 떨어졌어요.
+    ko: 소변량이 시간당 30 미만으로 떨어졌어요.
     chunks:
     - Urine output
     - is down
@@ -5422,8 +5376,8 @@ situations:
     why: is down to …는 어떤 수치까지 내려갔는지 결과를 말하고, an hour로 시간당 단위를 붙여 기준과 비교할 수 있게 해요.
     decoy: a bag
     distractorsKo:
-    - 소변량을 파악하려고 소변줄 주머니 눈금을 읽어요.
-    - 소변량이 줄면 콩팥으로 가는 피가 줄어요.
+    - 소변량 저하를 전하려고 시간당 값을 계산해요.
+    - 콩팥 혈류가 줄면 소변량도 같이 줄어요.
     blank:
       answer: output
       options:
@@ -5432,7 +5386,7 @@ situations:
       - en: smell
       - en: bag
   - en: That suggests his perfusion is compromised.
-    ko: 그건 관류가 저하되고 있다는 뜻이에요.
+    ko: 관류가 저하되고 있다는 신호일 수 있어요.
     chunks:
     - That suggests
     - his perfusion
@@ -5448,7 +5402,7 @@ situations:
     why: suggests는 확정이 아니라 근거가 가리키는 해석을 말해요. perfusion은 조직으로 가는 혈류예요.
     decoy: is charted
     distractorsKo:
-    - 관류를 가늠하려고 손톱 색을 짚어요.
+    - 관류는 피부색과 체온으로도 가늠해요.
     - 관류가 저하되면 젖산이 같이 올라가요.
     blank:
       answer: perfusion
@@ -5488,9 +5442,9 @@ situations:
     ko: 지난 한 시간 동안 소변량이 낮았어요.
     chunks:
     - His urine output
-    - has been low
-    - for the last
-    - hour
+    - has been
+    - low
+    - for the last hour
     - .
     words:
     - w-urine
@@ -5499,16 +5453,16 @@ situations:
     tag: 경과 보고
     icon: lab
     why: has been low는 지금까지 이어진 상태이고, for the last hour로 얼마나 지속됐는지 밝혀 일시적 변동이 아님을 알려요.
-    decoy: case
+    decoy: for the last case
     distractorsKo:
-    - 한 시간 소변량이 낮은지 알려고 기록을 뒤져요.
-    - 소변량이 낮으면 수액을 늘려요.
+    - 소변 기준은 시간당 0.5mL/kg이에요.
+    - 소변량은 한 시간 단위로 모아서 재요.
     blank:
       answer: low
       options:
       - en: low
       - en: high
-      - en: dark
+      - en: clear
       - en: cloudy
   - en: I'll keep watching his lactate in case it climbs.
     ko: 젖산이 올라갈까 봐 계속 지켜볼게요.
@@ -5527,7 +5481,7 @@ situations:
     why: keep + -ing로 계속 하겠다는 약속이고, in case it climbs로 오르면 바로 알아채려는 대비를 밝혀요.
     decoy: he shivers
     distractorsKo:
-    - 젖산을 지켜보려고 채혈관을 챙길게요.
+    - 젖산을 지켜보도록 채혈 시각을 적을게요.
     - 젖산이 올라가면 산증이 따라와요.
     blank:
       answer: climbs
@@ -5550,10 +5504,10 @@ situations:
     - - capillary
       - refill
     - - lactate
-      - level
+      - is climbing
     decoys:
     - the clock
-    why: urine output은 소변량, capillary refill은 눌렀다 뗀 손톱 밑 색이 돌아오는 시간, lactate level은 혈중 젖산 수치예요. 관류를 볼 때 자주 같이 나오는 표현이에요.
+    why: urine output은 소변량, capillary refill은 눌렀다 뗀 손톱 밑 색이 돌아오는 시간, lactate is climbing은 젖산 수치가 오르고 있다는 말이에요.
   - kind: context
     words:
     - w-perfusion
@@ -5617,7 +5571,7 @@ situations:
     decoy: by the blood
     distractorsKo:
     - 대량출혈이에요 — 혈액을 요청하려고 수화기를 잡아요.
-    - 대량출혈이에요 — 지금 혈액이 제일 필요해요.
+    - 대량출혈이에요 — 혈액은 쿨러에 담겨 와요.
     blank:
       answer: massive
       options:
@@ -5634,14 +5588,13 @@ situations:
     - lap pads
     - .
     words:
-    - w-second
     - w-suction
     - w-lappad
     goal: 1
     tag: 지원 보고
     icon: siren
     why: 첫 절은 coming(오는 중), 둘째 절은 I've got(이미 손에 있음)으로 상태를 구분해 말해요. 동사를 줄인 보고체라 급할 때 쓰기 좋아요.
-    decoy: gowns
+    decoy: basins
     distractorsKo:
     - 두 번째 흡인기가 오고 있고, 랩패드도 더 풀어 놨어요.
     - 두 번째 흡인기가 오고 있고, 랩패드도 더 세어 뒀어요.
@@ -5668,10 +5621,10 @@ situations:
     tag: 추적·보고
     icon: pencil
     why: keep tracking과 update you를 and로 묶어 기록하는 일과 알리는 일을 함께 약속해요. you가 보고받는 사람을 분명히 해요.
-    decoy: and sign it
+    decoy: and the clock
     distractorsKo:
-    - EBL을 계속 추적하려고 계산기를 열게요.
-    - EBL은 재는 순간에도 계속 바뀌어요.
+    - EBL을 계속 추적하도록 계산기를 꺼낼게요.
+    - EBL은 마취과와 수시로 비교해요.
     blank:
       answer: tracking
       options:
@@ -5690,22 +5643,21 @@ situations:
     words:
     - w-massive
     - w-hemorrhage
-    - w-fast
     goal: 1
     tag: 위기 선언
     icon: siren
     why: and we need …로 상황 판단과 필요한 것을 한 문장에 이어요. fast를 끝에 두어 시급함을 강조해요.
     decoy: and we keep
     distractorsKo:
-    - 대량출혈이라 혈액을 빨리 데워야 해요.
-    - 대량출혈이라 혈액이 빠져나가요.
+    - 대량출혈이라 응고 인자가 모자라져요.
+    - 대량출혈이라 체온도 같이 떨어져요.
     blank:
       answer: fast
       options:
       - en: fast
       - en: twice
       - en: alone
-      - en: slowly
+      - en: returned
   - en: I'm calling for a second suction and more lap pads.
     ko: 두 번째 흡인기와 랩패드를 더 요청하고 있어요.
     chunks:
@@ -5716,7 +5668,6 @@ situations:
     - .
     words:
     - w-call
-    - w-second
     - w-suction
     - w-lappad
     goal: 2
@@ -5725,8 +5676,8 @@ situations:
     why: calling for로 필요한 것을 큰 소리로 요청하는 중임을 알려요. and more…로 흡인기에 이어 랩패드도 더 달라고 덧붙여요.
     decoy: tape
     distractorsKo:
-    - 두 번째 흡인기를 요청하려고 연락처를 짚고 있어요.
-    - 두 번째 흡인기와 랩패드가 더 필요해요.
+    - 두 번째 흡인기와 랩패드를 요청하려고 인터콤을 눌러요.
+    - 두 번째 흡인기는 다른 벽 흡인구에 꽂아요.
     blank:
       answer: suction
       options:
@@ -5809,18 +5760,18 @@ situations:
     goal: 1
     tag: 위기 보고
     icon: siren
-    why: 현재완료 has crashed로 이미 벌어진 결과를 먼저 알리고, 대시 뒤에 지금 하는 조치(pushing pressors)를 덧붙여요. 짧은 보고체예요.
+    why: 현재완료 has crashed로 이미 벌어진 결과를 먼저 알리고, 대시 뒤에 지금 하는 조치(pushing pressors)를 덧붙여요. 승압제는 마취과가 쓰니, 간호사는 이 보고를 듣는 쪽이에요.
     decoy: Pressure has expired
     distractorsKo:
     - 승압제를 투여하려고 약을 뽑고 있어요.
-    - 혈압이 급강하해서 승압제가 필요한 상태예요.
+    - 혈압이 급강하하면 뇌와 심장이 위험해져요.
     blank:
       answer: crashed
       options:
       - en: crashed
       - en: spiked
-      - en: doubled
-      - en: climbed
+      - en: settled
+      - en: normalized
   - en: Volume wide open through both lines and the warmer.
     ko: 양쪽 라인과 가온기를 통해 수액을 완전히 열어 놓았어요.
     chunks:
@@ -5838,7 +5789,7 @@ situations:
     goal: 1
     tag: 상태 보고
     icon: pill
-    why: 동사 없이 명사 + 상태(wide open)로 말하는 보고체예요. through로 어떤 경로로 들어가는지 알려요.
+    why: 동사 없이 명사 + 상태(wide open)로 말하는 보고체예요. through로 어떤 경로로 들어가는지 알려요. 마취과 지시에 따라 보조하는 말이에요.
     decoy: and the scale
     distractorsKo:
     - 양쪽 라인과 가온기를 통해 수액을 완전히 열려고 조절기를 잡아요.
@@ -5865,7 +5816,7 @@ situations:
     tag: 보고 요청
     icon: speech
     why: Tell me the moment …는 그 시점에 즉시 알려 달라는 요구예요. have control of the bleeding은 출혈이 잡혔다는 상태를 가리켜요.
-    decoy: of the weather
+    decoy: of the suction
     distractorsKo:
     - 출혈이 잡히는 순간 바로 흡인을 줄여 주세요.
     - 출혈이 잡히면 수액 속도를 줄여 가요.
@@ -5876,33 +5827,33 @@ situations:
       - en: record
       - en: copy
       - en: notice
-  - en: We're pushing pressors and giving volume at the same time.
-    ko: 승압제를 투여하면서 동시에 수액도 주고 있어요.
+  - en: Pressors are going in, and volume is running at the same time.
+    ko: 승압제가 들어가고 있고, 동시에 수액도 들어가고 있어요.
     chunks:
-    - We're pushing
-    - pressors
-    - and giving volume
+    - Pressors
+    - are going in
+    - ', and volume is running'
     - at the same time
     - .
     words:
-    - w-push
     - w-pressor
     - w-volume
+    - w-run
     goal: 1
-    tag: 병행 처치
+    tag: 상태 보고
     icon: siren
-    why: and로 두 처치를 묶고 at the same time으로 순서가 아니라 동시에 한다고 밝혀요.
-    decoy: at the same rate
+    why: Pressors are going in은 누가 투여하는지 말하지 않고 지금 상태만 알리는 보고체예요. and … at the same time으로 두 처치가 동시에 진행 중임을 밝혀요.
+    decoy: one at a time
     distractorsKo:
-    - 승압제를 투여하면서 동시에 수액도 데우고 있어요.
-    - 승압제는 혈관을 좁혀서 혈압을 올려 줘요.
+    - 승압제는 수액이 모자라면 효과가 약해지기도 해요.
+    - 승압제는 혈관을 좁혀서 혈압을 올려 주는 약이에요.
     blank:
-      answer: pushing
+      answer: running
       options:
-      - en: pushing
-      - en: reading
-      - en: signing
-      - en: counting
+      - en: running
+      - en: pausing
+      - en: resting
+      - en: waiting
   - en: Let me know the moment you have the bleeding under control.
     ko: 출혈이 조절되는 순간 알려주세요.
     chunks:
@@ -5920,8 +5871,8 @@ situations:
     why: Let me know는 Tell me보다 부드러운 요청이고, under control은 통제 가능한 상태를 가리켜요.
     decoy: under the drape
     distractorsKo:
-    - 출혈이 조절되는 순간 기록해 주세요.
-    - 출혈이 조절됐나는 필드로 알아요.
+    - 출혈이 조절되면 랩패드가 덜 젖어요.
+    - 출혈이 조절됐는지는 필드를 보면 알아요.
     blank:
       answer: know
       options:
@@ -5967,7 +5918,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 혈압 급강하 4문장 순서
-    why: 혈압 저하와 승압제 투여를 알리고, 동시에 수액을 열었다고 말하고, 그 모든 것이 돌아가는 중에 출혈이 잡히면 알려 달라고 한 뒤, 잡히면 마취과에 알리는 순서예요.
+    why: 혈압 저하와 승압제 투여를 알리고, 동시에 수액을 열었다고 말하고, 그 모든 것이 돌아가는 중에 출혈이 잡히면 알려 달라고 한 뒤, 잡히면 승압제를 줄여 가는 순서예요.
     lines:
     - en: Pressure has crashed — pushing pressors now.
       icon: siren
@@ -5981,10 +5932,10 @@ situations:
       icon: speech
       ko: 다 돌아가는 중에 출혈이 잡히면 바로 알려 주세요
       note: 요청
-    - en: Once you do, I'll let anesthesia know the bleeding is controlled.
+    - en: Once you do, I'll start easing off the pressors.
       icon: check
-      ko: 그러면 출혈이 잡혔다고 마취과에 알릴게요
-      note: 보고
+      ko: 그러면 승압제를 줄이기 시작할게요
+      note: 조정
 - title: 응고병증 발생
   sentences:
   - en: He's coagulopathic — I need FFP and platelets now.
@@ -6002,16 +5953,16 @@ situations:
     goal: 1
     tag: 위기 요청
     icon: siren
-    why: 상태(coagulopathic)를 먼저 말하고 대시 뒤 I need로 필요한 것을 곧바로 요청해 이유와 요청이 한 호흡이에요.
+    why: 상태(coagulopathic)를 먼저 말하고 대시 뒤 I need로 필요한 것을 곧바로 요청해 이유와 요청이 한 호흡이에요. 마취과가 하는 말이라, 간호사는 이 요청을 듣고 혈액은행에 연결해요.
     decoy: He's complicated
     distractorsKo:
-    - 응고병증이 생겼어요 — FFP와 혈소판을 요청하려고 수화기를 들어요.
-    - 응고병증이 생기면 지혈이 어려워지고 피가 계속 나요.
+    - 응고병증이 생겼어요 — FFP는 해동에 시간이 걸려요.
+    - 응고병증이 생겼어요 — 저체온이면 더 심해져요.
     blank:
       answer: coagulopathic
       options:
       - en: coagulopathic
-      - en: hypotensive
+      - en: hypoglycemic
       - en: hypoxemic
       - en: febrile
   - en: Calling blood bank for cryo as well.
@@ -6029,9 +5980,9 @@ situations:
     tag: 추가 요청
     icon: pager
     why: 주어를 생략하고 진행형만 쓴 보고체예요. for cryo는 무엇을 요청하는지, as well은 앞서 요청한 것에 더한다는 표시예요.
-    decoy: for the ice
+    decoy: for a stretcher
     distractorsKo:
-    - 크라이오를 요청하려고 전화기를 쥐고 있어요.
+    - 크라이오를 요청하도록 요청서를 써요.
     - 크라이오는 피브리노겐을 보충해 줘요.
     blank:
       answer: cryo
@@ -6058,7 +6009,7 @@ situations:
     why: while로 집도의는 지혈, 우리는 응고 교정을 동시에 한다고 역할을 나눠요. correct the coags는 수치를 바로잡는 치료예요.
     decoy: the specimen
     distractorsKo:
-    - 응고 수치를 교정하려고 처방부터 봅시다.
+    - 응고 수치를 교정하려고 주문부터 봅시다.
     - 지혈하는 동안에도 응고 수치는 변해요.
     blank:
       answer: coags
@@ -6078,21 +6029,20 @@ situations:
     words:
     - w-correct
     - w-coagulopathy
-    - w-fast
     goal: 2
     tag: 시급성
     icon: siren
     why: need to …로 해야 할 일을 분명히 하고, fast를 문장 끝에 두어 시급함을 강조해요.
     decoy: this specimen
     distractorsKo:
-    - 이 응고병증을 교정하려고 처방을 열어요.
+    - 이 응고병증을 교정하려고 주문을 열어요.
     - 이 응고병증은 FFP로 교정해요.
     blank:
       answer: coagulopathy
       options:
       - en: coagulopathy
       - en: arrhythmia
-      - en: hypotension
+      - en: hyperthermia
       - en: hyperkalemia
   - en: I'll call the blood bank for more platelets and cryo.
     ko: 혈소판과 크라이오를 더 요청하려고 혈액은행에 전화할게요.
@@ -6114,7 +6064,7 @@ situations:
     decoy: and a pillow
     distractorsKo:
     - 혈소판과 크라이오는 혈액은행에서 해동하거나 준비해요.
-    - 혈소판과 크라이오를 더 요청하려고 필요한 양을 계산할게요.
+    - 혈소판과 크라이오를 더 요청하려고 혈액은행 번호를 누를게요.
     blank:
       answer: platelets
       options:
@@ -6127,19 +6077,17 @@ situations:
     words:
     - w-correct
     - w-coagulopathy
-    - w-call
-    - w-bloodbank
     - w-hemostasis
     pairs:
     - - correct
       - the coagulopathy
-    - - call
-      - the blood bank
+    - - thaw
+      - the plasma
     - - achieve
       - hemostasis
     decoys:
     - the stretcher
-    why: correct the coagulopathy는 응고 이상을 바로잡는다, call the blood bank는 혈액은행에 연락한다, achieve hemostasis는 출혈을 멎게 한다는 뜻이에요. 수술 중 응고 문제에서 자주 나와요.
+    why: correct the coagulopathy는 응고 이상을 바로잡는다, thaw the plasma는 얼려 보관한 혈장(FFP)을 혈액은행이 녹인다, achieve hemostasis는 출혈을 멎게 한다는 뜻이에요.
   - kind: context
     words:
     - w-coagulopathic
@@ -6158,7 +6106,7 @@ situations:
       icon: me
       en: He's coagulopathic, so he's bleeding more.
       ok: false
-      fix: His blood isn't clotting well, so we're giving him clotting products.
+      fix: His blood isn't clotting well, so we're giving him blood products that help him clot.
     why: coagulopathic은 응고에 문제가 있는 환자를 가리키는 정확한 임상어예요. 보호자에게는 뜻이 전해지지 않고 차갑게 들려서, 피가 잘 안 굳는다는 쉬운 말로 풀어 줘요.
   order:
     tag: 대화 흐름
@@ -6199,8 +6147,8 @@ situations:
     goal: 1
     tag: 프로토콜 발동
     icon: siren
-    why: 진행형 I'm activating으로 지금 발동하는 중임을 알리고, 이름 그대로 protocol을 말해 팀 모두가 같은 절차로 움직이게 해요.
-    decoy: pump
+    why: 진행형 I'm activating으로 지금 발동하는 중임을 알리고, 이름 그대로 protocol을 말해 팀 모두가 같은 절차로 움직이게 해요. 발동할지는 집도의·마취과가 정하고, 순환 간호사는 정해진 뒤 혈액은행에 알려요.
+    decoy: cart
     distractorsKo:
     - 프로토콜을 발동하려고 호출 버튼을 눌러요.
     - 프로토콜은 혈액을 정해진 비율로 줘요.
@@ -6282,7 +6230,7 @@ situations:
     tag: 도착 예고
     icon: pill
     why: should be here는 곧 올 것으로 예상된다는 뜻이고, with more units로 이어서 오는 양을 알려요.
-    decoy: with fresh ice
+    decoy: with more forms
     distractorsKo:
     - 다음 쿨러를 받으려고 자리를 비워 둘게요.
     - 다음 쿨러가 오면 앞 쿨러는 돌려보내요.
@@ -6327,7 +6275,7 @@ situations:
     words:
     - w-activate
     - w-protocol
-    cue: Blood loss is above plan but he is stable, and nobody has asked for products yet. You offer the lightest step first.
+    cue: Blood loss is above plan, but he is stable and no one has ordered blood products yet.
     scale:
     - alert the blood bank
     - send for two units
@@ -6410,7 +6358,7 @@ situations:
       - en: drape
       - en: scrub
   - en: I have packing and a temporary closure ready.
-    ko: 패킹과 임시 봉합을 준비해 뒀어요.
+    ko: 패킹과 임시 폐쇄 물품을 준비해 뒀어요.
     chunks:
     - I have packing
     - and a temporary closure
@@ -6427,8 +6375,8 @@ situations:
     why: have + 대상 + ready로 준비 완료를 알려요. temporary closure는 배를 임시로만 닫는 방법이에요.
     decoy: and a permanent closure
     distractorsKo:
-    - 임시 봉합을 쓰려고 포장을 풀어 뒀어요.
-    - 임시 봉합은 배를 임시로 덮어요.
+    - 임시 폐쇄 물품을 쓰려고 크기를 물어요.
+    - 임시 폐쇄는 배를 임시로 덮어요.
     blank:
       answer: temporary
       options:
@@ -6437,7 +6385,7 @@ situations:
       - en: final
       - en: complete
   - en: Plan to get him to ICU to resuscitate and return.
-    ko: 그를 중환자실로 보내 소생시킨 뒤 다시 데려올 계획이에요.
+    ko: 환자를 중환자실로 보내 소생시킨 뒤 다시 데려올 계획이에요.
     chunks:
     - Plan to get him
     - to ICU
@@ -6454,7 +6402,7 @@ situations:
     why: Plan to …는 주어를 생략한 계획 보고체예요. to ICU, to resuscitate, and return으로 가고→소생→복귀 순서를 이어 말해요.
     decoy: to the lab
     distractorsKo:
-    - 그를 중환자실로 보내려고 자리를 확인할 계획이에요.
+    - 환자를 중환자실로 보내려고 자리를 확인할 계획이에요.
     - 중환자실에서는 체온과 응고를 먼저 바로잡아요.
     blank:
       answer: ICU
@@ -6463,13 +6411,13 @@ situations:
       - en: PACU
       - en: ER
       - en: OR
-  - en: We'll shift to damage control if we can't get control here.
-    ko: 여기서 지혈이 안 되면 손상통제로 전환할게요.
+  - en: We may need to shift to damage control if we can't get control here.
+    ko: 여기서 지혈이 안 되면 손상통제로 전환해야 할 수도 있어요.
     chunks:
-    - We'll shift
+    - We may need
+    - to shift
     - to damage control
-    - if we can't
-    - get control here
+    - if we can't get control here
     - .
     words:
     - w-shift
@@ -6478,20 +6426,20 @@ situations:
     goal: 1
     tag: 조건부 계획
     icon: scalpel
-    why: if we can't …로 전환 조건(여기서 지혈이 안 될 때)을 밝혀 포기가 아니라 판단 기준이 있다는 점을 알려요.
-    decoy: get a pump here
+    why: We may need to …는 결정이 아니라 대비를 위한 예상이에요. if we can't …로 전환할 조건을 밝혀, 팀이 미리 알고 준비하게 해요. 전환은 집도의가 정해요.
+    decoy: if we can't get a stool here
     distractorsKo:
-    - 손상통제로 전환하려고 패킹 물품을 챙길게요.
     - 손상통제 전환은 집도의가 팀과 함께 결정해요.
+    - 여기서 지혈이 안 되면 손상통제로 전환하려고 패킹 물품을 챙길게요.
     blank:
-      answer: if
+      answer: shift
       options:
-      - en: if
-      - en: so
-      - en: unless
-      - en: before
+      - en: shift
+      - en: return
+      - en: retreat
+      - en: hurry
   - en: I'll get the temporary closure ready before we pack.
-    ko: 패킹하기 전에 임시 봉합을 준비해 둘게요.
+    ko: 패킹하기 전에 임시 폐쇄 물품을 준비해 둘게요.
     chunks:
     - I'll get
     - the temporary closure
@@ -6507,15 +6455,15 @@ situations:
     tag: 선행 준비
     icon: bandage
     why: before we pack으로 패킹보다 먼저 준비한다는 순서를 밝혀요. get A ready는 A를 쓸 수 있게 준비한다는 틀이에요.
-    decoy: open
+    decoy: sealed
     distractorsKo:
-    - 임시 봉합을 준비하려고 도구를 열어요.
-    - 패킹을 하고 나면 임시 봉합이 필요해져요.
+    - 임시 폐쇄 물품을 준비하려고 도구를 열어요.
+    - 패킹을 하고 나면 임시 폐쇄가 필요해져요.
     blank:
       answer: closure
       options:
       - en: closure
-      - en: gown
+      - en: label
       - en: table
       - en: pole
   nuance:
@@ -6523,17 +6471,17 @@ situations:
     words:
     - w-damagecontrol
     - w-closure
-    - w-return
+    - w-pack
     pairs:
     - - damage
       - control
     - - abdominal
       - closure
-    - - return
-      - to the OR
+    - - packing
+      - removal
     decoys:
-    - the cooler
-    why: damage control은 목숨을 지키는 데 필요한 처치만 먼저 하는 방식이에요. abdominal closure는 배를 닫는 단계이고, return to the OR은 중환자실에서 안정시킨 뒤 수술방으로 다시 오는 것이에요.
+    - transfusion
+    why: damage control은 목숨에 필요한 지혈만 먼저 하는 방식, abdominal closure는 배를 닫는 단계, packing removal은 중환자실에서 안정시킨 뒤 수술방으로 돌아와 넣어 둔 패킹을 빼는 단계예요.
   - kind: context
     words:
     - w-damagecontrol
@@ -6552,21 +6500,21 @@ situations:
       icon: me
       en: We went to damage control surgery because his bleeding wouldn't stop.
       ok: false
-      fix: The surgeon did only what was needed to stop the bleeding and save his life, and will finish the surgery later.
+      fix: The surgeon controlled the bleeding as much as is safe for now and will finish the surgery later, once he's more stable.
     why: damage control은 의료진끼리 방식을 가리키는 정확한 임상어예요. 보호자에게는 뜻이 전해지지 않으니, 지금은 생명을 지키는 처치만 했고 나머지는 나중에 한다고 풀어 줘요.
   order:
     tag: 대화 흐름
     icon: compass
     ko: 손상통제 전환 4문장 순서
-    why: 지혈이 안 되면 전환하겠다는 기준을 말하고, 그 경우를 대비해 임시 봉합을 준비하고, 패킹하며 전환한 뒤, 그다음 계획으로 중환자실 소생을 말하는 순서예요.
+    why: 지혈이 안 되면 전환할 수도 있다는 기준을 말하고, 그 경우를 대비해 임시 폐쇄 물품을 준비하고, 패킹하며 전환한 뒤, 그다음 계획으로 중환자실 소생을 말하는 순서예요.
     lines:
-    - en: If we can't get control here, we'll shift to damage control.
+    - en: If we can't get control here, we may need to shift to damage control.
       icon: scalpel
-      ko: 여기서 지혈이 안 되면 손상통제로 전환해요
+      ko: 여기서 지혈이 안 되면 손상통제로 전환해야 할 수도 있어요
       note: 기준
     - en: In that case, I'll get the temporary closure ready before we pack.
       icon: bandage
-      ko: 그렇다면 패킹 전에 임시 봉합을 준비해 둘게요
+      ko: 그렇다면 패킹 전에 임시 폐쇄 물품을 준비해 둘게요
       note: 준비
     - en: Let's pack and shift to damage control.
       icon: siren
@@ -6623,15 +6571,15 @@ situations:
     why: If …로 조건을 먼저 밝히고, I'm starting으로 그 즉시 시작한다는 결심을 현재진행형으로 말해 망설임이 없다는 느낌을 줘요.
     decoy: a cooler
     distractorsKo:
-    - 흉부압박을 시작하려고 손을 올릴게요.
+    - 흉부압박은 분당 100에서 120회로 해요.
     - 맥박이 사라졌는지는 목 동맥을 짚어서 알아요.
     blank:
-      answer: lose
+      answer: pulse
       options:
-      - en: lose
-      - en: find
-      - en: keep
-      - en: feel
+      - en: pulse
+      - en: line
+      - en: count
+      - en: light
   - en: Keep the blood going wide open through the warmer.
     ko: 가온기를 거쳐 혈액이 완전히 열린 채로 계속 흐르게 하세요.
     chunks:
@@ -6647,18 +6595,18 @@ situations:
     goal: 2
     tag: 지시
     icon: pill
-    why: Keep + 목적어 + -ing는 이미 하던 것을 이어 가라는 명령이에요. wide open으로 속도를, through the warmer로 경로를 정해요.
-    decoy: through the window
+    why: Keep + 목적어 + -ing는 이미 하던 것을 이어 가라는 명령이에요. wide open으로 속도를, through the warmer로 경로를 정해요. 마취과 지시에 따라 보조하는 말이에요.
+    decoy: through the cooler
     distractorsKo:
     - 혈액을 완전히 열고 흐르게 하려고 라인을 펴세요.
     - 가온기를 거친 혈액은 체온 가까이로 들어가요.
     blank:
-      answer: wide
+      answer: warmer
       options:
-      - en: wide
-      - en: barely
-      - en: slightly
-      - en: narrowly
+      - en: warmer
+      - en: cooler
+      - en: scale
+      - en: drain
   - en: We'll start compressions the moment we lose his pulse.
     ko: 맥박이 사라지는 순간 바로 흉부압박을 시작할게요.
     chunks:
@@ -6680,12 +6628,12 @@ situations:
     - 흉부압박을 시작하려고 침상 높이를 낮출게요.
     - 맥박이 사라지면 몇 초 안에 뇌에 피가 끊겨요.
     blank:
-      answer: lose
+      answer: pulse
       options:
-      - en: lose
-      - en: gain
-      - en: hold
-      - en: read
+      - en: pulse
+      - en: line
+      - en: drape
+      - en: gown
   - en: Get the crash cart to the bedside in case he arrests.
     ko: 심정지가 올 경우를 대비해 크래시카트를 침상 곁에 가져다 두세요.
     chunks:
@@ -6704,15 +6652,15 @@ situations:
     why: Get A to B로 가져다 두라는 명령이고, in case he arrests로 지금 필요해서가 아니라 대비임을 밝혀요.
     decoy: he coughs
     distractorsKo:
-    - 크래시카트는 심정지가 오면 바로 쓰는 응급 장비가 담긴 카트예요.
-    - 심정지가 올 경우를 대비해 크래시카트를 가져다 두려고 통로를 비워요.
+    - 크래시카트는 매일 점검하고 그 점검표를 카트에 붙여 놓아요.
+    - 심정지가 올 경우를 대비해 크래시카트를 가져다 두려고 카트 잠금을 확인해요.
     blank:
       answer: crash cart
       options:
       - en: crash cart
       - en: supply cart
       - en: linen cart
-      - en: food cart
+      - en: case cart
   nuance:
   - kind: slider
     words:
@@ -6745,7 +6693,7 @@ situations:
     notes:
       starting compressions: 맥박이 사라지면 지체 없이 흉부압박을 시작한다. 간호사가 직접 할 수 있는 기본 응급 처치다.
       checking the monitor again: 모니터를 다시 보는 것은 확인일 뿐이라 압박이 시작되지 않는다.
-      writing it down: 기록은 나중에 한다. 그 순간 필요한 행동이 아니다.
+      writing it down: 기록은 따로 맡은 사람이 그 자리에서 한다. 맥박이 없으면 먼저 압박부터 시작해야 한다.
     why: 맥박이 사라지면 확인이나 기록보다 흉부압박을 바로 시작해요.
     ko: 맥박이 사라지면 바로 흉부압박을 시작할게요
   order:
