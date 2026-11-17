@@ -1,0 +1,1239 @@
+===== 0 응급 세팅 신속 준비
+--0.0 EN: Let's get the room set up as fast as we can.
+   KO: 우리가 할 수 있는 한 빨리 방을 세팅합시다. (25)
+   DK: 우리가 할 수 있는 한 꼼꼼히 방을 세팅합시다. (26)
+   DK: 우리가 할 수 있는 한 깔끔히 방을 세팅합시다. (26)
+   tag=신속 요청 icon=siren | why: Let's로 함께 하자고 제안해 팀을 다그치지 않고, as fast as we can로 속도를 분명히 해요.
+   chunks: Let's get / the room / set up / as fast as we can / .  || decoy: the back table
+   =B: Let's get the [room] set up as fast as we can.
+    B: Let's get the [ward] set up as fast as we can.
+    B: Let's get the [clinic] set up as fast as we can.
+    B: Let's get the [lab] set up as fast as we can.
+--0.1 EN: I'm opening the basic emergency setup now.
+   KO: 지금 기본 응급 세팅을 개봉하고 있어요. (22)
+   DK: 지금 큰 응급 세팅을 개봉하고 있어요. (21)
+   DK: 지금 기본 외래 세팅을 개봉하고 있어요. (22)
+   tag=세트 개봉 icon=gear | why: I'm opening은 진행형이라 지금 손이 움직이고 있음을 알려요. basic으로 꼭 필요한 세트부터 연다는 범위를 밝혀요.
+   chunks: I'm opening / the basic emergency setup / now / .  || decoy: the standard tray cover
+    B: I'm opening the basic [routine] setup now.
+    B: I'm opening the basic [elective] setup now.
+   =B: I'm opening the basic [emergency] setup now.
+    B: I'm opening the basic [outpatient] setup now.
+--0.2 EN: Tell me what you need first and I'll grab it.
+   KO: 먼저 뭐가 필요한지 말씀해 주시면 제가 가져올게요. (28)
+   DK: 먼저 뭐가 필요한지 말씀해 주시면 제가 빌려 올게요. (29)
+   DK: 먼저 몇 개가 필요한지 말씀해 주시면 제가 가져올게요. (30)
+   tag=필요 묻기 icon=speech | why: Tell me … first로 순서를 상대에게 맡기고, I'll grab it으로 가져오는 일을 내가 맡겠다고 해요.
+   chunks: Tell me / what you need / first / and I'll grab it / .  || decoy: which gown you wear
+   =B: Tell me what you need first and I'll [grab] it.
+    B: Tell me what you need first and I'll [sterilize] it.
+    B: Tell me what you need first and I'll [borrow] it.
+    B: Tell me what you need first and I'll [return] it.
+--0.3 EN: We need everything ready in a few minutes.
+   KO: 몇 분 안에 전부 준비돼야 해요. (18)
+   DK: 몇 분 안에 전부 포장돼야 해요. (18)
+   DK: 몇 분 안에 전부 분류돼야 해요. (18)
+   tag=기한 알림 icon=bell | why: 마감을 숫자 대신 a few minutes로 말해, 급하지만 공황을 만들지 않고 목표 시간을 분명히 해요.
+   chunks: We need / everything ready / in a few minutes / .  || decoy: with the sterile covers
+    B: We need everything [sealed] in a few minutes.
+    B: We need everything [labeled] in a few minutes.
+   =B: We need everything [ready] in a few minutes.
+    B: We need everything [folded] in a few minutes.
+--0.4 EN: I'll bring extra basins and drapes right away.
+   KO: 여분의 대야와 드레이프를 바로 가져올게요. (23)
+   DK: 여분의 대야와 가운을 바로 가져올게요. (21)
+   DK: 여분의 장갑과 드레이프를 바로 가져올게요. (23)
+   tag=추가 준비 icon=pushpin | why: I'll bring … right away는 말이 끝나자마자 움직이겠다는 약속이에요. extra는 지금 있는 것 말고 더 얹는다는 뜻이에요.
+   chunks: I'll bring / extra basins / and drapes / right away / .  || decoy: extra stools
+   =B: I'll bring extra basins and [drapes] right away.
+    B: I'll bring extra basins and [pillows] right away.
+    B: I'll bring extra basins and [mattresses] right away.
+    B: I'll bring extra basins and [stretchers] right away.
+  ORDER ko=응급 세팅 준비 4문장 순서 tag=대화 흐름 | why: 요청으로 시작해, 그 요청에 맞춰 세트를 열고, 세트 밖에 더 필요한 것을 묻고, 말한 것을 가져오는 순서예요. 뒤 줄이 앞 줄을 가리키는 말(for that·beyond that·whatever you name)로 이어져요.
+   1. Let's get the room set up as fast as we can.  (빨리 방을 세팅합시다/요청/siren)
+   2. I'm opening the basic emergency setup for that now.  (그걸 위해 기본 응급 세팅을 개봉해요/개봉/gear)
+   3. Tell me what else you need beyond that setup.  (그 세팅 말고 또 필요한 걸 말씀해 주세요/질문/speech)
+   4. Whatever you name, I'll bring it with extra drapes right away.  (말씀하신 걸 여분의 드레이프와 바로 가져올게요/약속/pushpin)
+   swap12: I'm opening the basic emergency setup for that now. | Let's get the room set up as fast as we can. | Tell me what else you need beyond that setup. | Whatever you name, I'll bring it with extra drapes right away.
+   swap23: Let's get the room set up as fast as we can. | Tell me what else you need beyond that setup. | I'm opening the basic emergency setup for that now. | Whatever you name, I'll bring it with extra drapes right away.
+   swap34: Let's get the room set up as fast as we can. | I'm opening the basic emergency setup for that now. | Whatever you name, I'll bring it with extra drapes right away. | Tell me what else you need beyond that setup.
+===== 1 응급 기구 세트 개방
+--1.0 EN: Opening the emergency lap set now.
+   KO: 지금 응급 개복 세트를 개봉하고 있어요. (22)
+   DK: 지금 표준 개복 세트를 개봉하고 있어요. (22)
+   DK: 지금 소형 개복 세트를 개봉하고 있어요. (22)
+   tag=세트 개봉 icon=gear | why: I를 줄인 -ing 문장이라 손을 움직이며 하는 현장 말투가 돼요. now로 지금 진행 중임을 알려요.
+   chunks: Opening / the emergency lap set / now / .  || decoy: a sterile table cover
+    B: Opening the emergency [chest] set now.
+   =B: Opening the emergency [lap] set now.
+    B: Opening the emergency [eye] set now.
+    B: Opening the emergency [hand] set now.
+--1.1 EN: Major instruments are up and counted.
+   KO: 주요 기구가 준비됐고 계수도 됐어요. (20)
+   DK: 작은 기구가 준비됐고 계수도 됐어요. (20)
+   DK: 주요 기구가 준비됐고 보관도 됐어요. (20)
+   tag=계수 보고 icon=check | why: up은 펼쳐져 쓸 수 있는 상태를 뜻해요. counted를 함께 말해 개복 전에 기구 수를 맞춰 봤다는 점을 빠뜨리지 않아요.
+   chunks: Major instruments / are up / and counted / .  || decoy: and labeled
+    B: Major instruments are up and [boxed].
+    B: Major instruments are up and [stacked].
+    B: Major instruments are up and [moved].
+   =B: Major instruments are up and [counted].
+--1.2 EN: What else do you want opened for backup?
+   KO: 백업용으로 또 뭘 열어 두길 원하세요? (21)
+   DK: 교체용으로 또 뭘 열어 두길 원하세요? (21)
+   DK: 백업용으로 또 몇 개 열어 두길 원하세요? (23)
+   tag=백업 묻기 icon=speech | why: do you want opened로 열 물건을 상대가 정하게 해요. for backup이 목적을 밝혀 질문이 짧게 끝나요.
+   chunks: What else / do you want opened / for backup / ?  || decoy: for the next case
+    B: What else do you want [folded] for backup?
+   =B: What else do you want [opened] for backup?
+    B: What else do you want [wrapped] for backup?
+    B: What else do you want [stacked] for backup?
+--1.3 EN: I'll open the backup tray in case we need it.
+   KO: 필요할 경우를 대비해 백업 트레이를 열어 둘게요. (27)
+   DK: 필요할 경우를 대비해 백업 가운을 열어 둘게요. (26)
+   DK: 필요할 경우를 대비해 백업 대야를 열어 둘게요. (26)
+   tag=백업 개봉 icon=gear | why: in case는 지금 쓰지는 않지만 미리 대비한다는 표현이에요. 바로 열지 않고 열어 둔다는 점까지 알려요.
+   chunks: I'll open / the backup tray / in case / we need it / .  || decoy: as we count it
+    B: I'll open the backup [gown] in case we need it.
+    B: I'll open the backup [basin] in case we need it.
+    B: I'll open the backup [bin] in case we need it.
+   =B: I'll open the backup [tray] in case we need it.
+--1.4 EN: The major set is fully counted and ready to go.
+   KO: 주요 세트는 계수가 끝났고 진행할 준비가 됐어요. (27)
+   DK: 작은 세트는 계수가 끝났고 진행할 준비가 됐어요. (27)
+   DK: 주요 세트는 포장이 끝났고 진행할 준비가 됐어요. (27)
+   tag=준비 보고 icon=check | why: ready to go는 바로 진행해도 된다는 관용 표현이에요. fully counted를 앞에 두어 준비의 근거를 먼저 말해요.
+   chunks: The major set / is fully counted / and ready / to go / .  || decoy: is neatly stacked
+    B: The major set is [partly] counted and ready to go.
+   =B: The major set is [fully] counted and ready to go.
+    B: The major set is [quickly] counted and ready to go.
+    B: The major set is [loosely] counted and ready to go.
+  ORDER ko=기구 세트 개방 4문장 순서 tag=대화 흐름 | why: 세트를 열고, 그 세트의 계수를 보고한 뒤, 그 계수를 마친 상태에서 백업을 묻고, 고른 것을 바로 여는 순서예요. 뒤 줄이 앞 줄의 세트·계수·답을 가리켜요.
+   1. Opening the emergency lap set now.  (응급 개복 세트를 개봉해요/개봉/gear)
+   2. Major instruments from that set are up and counted.  (그 세트의 주요 기구가 준비되고 계수됐어요/계수/check)
+   3. With that count done, what else do you want opened for backup?  (계수를 마쳤으니 백업으로 뭘 더 열까요/질문/speech)
+   4. Whatever you pick, I'll open it right away.  (고르시는 걸 바로 열게요/약속/pushpin)
+   swap12: Major instruments from that set are up and counted. | Opening the emergency lap set now. | With that count done, what else do you want opened for backup? | Whatever you pick, I'll open it right away.
+   swap23: Opening the emergency lap set now. | With that count done, what else do you want opened for backup? | Major instruments from that set are up and counted. | Whatever you pick, I'll open it right away.
+   swap34: Opening the emergency lap set now. | Major instruments from that set are up and counted. | Whatever you pick, I'll open it right away. | With that count done, what else do you want opened for backup?
+===== 2 대량 흡인 준비
+--2.0 EN: I've got two suctions on and ready.
+   KO: 흡인기 두 대를 켜서 준비해 뒀어요. (20)
+   DK: 흡인기 두 대를 꽂아서 준비해 뒀어요. (21)
+   DK: 흡인통 두 개를 켜서 준비해 뒀어요. (20)
+   tag=흡인 준비 icon=monitor | why: I've got …은 이미 확보해 둔 것을 보고하는 말이에요. on and ready로 켜짐과 바로 쓸 수 있음을 한 번에 말해요.
+   chunks: I've got / two suctions / on and ready / .  || decoy: two lights
+    B: I've got two [lights] on and ready.
+    B: I've got two [monitors] on and ready.
+   =B: I've got two [suctions] on and ready.
+    B: I've got two [scopes] on and ready.
+--2.1 EN: Extra canisters and tubing are standing by.
+   KO: 여분의 흡인통과 튜빙이 대기 중이에요. (21)
+   DK: 여분의 흡인통과 거즈가 대기 중이에요. (21)
+   DK: 여분의 흡인통과 튜빙이 복도에 있어요. (21)
+   tag=여분 대기 icon=pushpin | why: standing by는 부르면 바로 쓸 수 있게 대기한다는 병원 표현이에요. extra로 가득 차거나 고장 날 때를 대비한 여분임을 알려요.
+   chunks: Extra canisters / and tubing / are standing by / .  || decoy: are stacked together
+   =B: Extra [canisters] and tubing are standing by.
+    B: Extra [regulators] and tubing are standing by.
+    B: Extra [adapters] and tubing are standing by.
+    B: Extra [gauges] and tubing are standing by.
+--2.2 EN: Say the word and I'll swap them out fast.
+   KO: 말씀만 하시면 제가 빨리 교체할게요. (20)
+   DK: 말씀만 하시면 제가 차분히 교체할게요. (21)
+   DK: 말씀만 하시면 제가 전부 교체할게요. (20)
+   tag=교체 약속 icon=speech | why: Say the word and …는 신호만 주면 바로 한다는 관용 표현이에요. fast로 교체 속도를 약속해 판단은 상대에게 남겨요.
+   chunks: Say the word / and I'll swap / them out / fast / .  || decoy: in the hall
+    B: Say the word and I'll [count] them out fast.
+    B: Say the word and I'll [label] them out fast.
+   =B: Say the word and I'll [swap] them out fast.
+    B: Say the word and I'll [lift] them out fast.
+--2.3 EN: I'll set up an extra suction now.
+   KO: 지금 여분의 흡인기를 하나 더 세팅할게요. (23)
+   DK: 지금 여분의 튜빙을 하나 더 세팅할게요. (22)
+   DK: 지금 여분의 흡인기를 두 개 더 세팅할게요. (24)
+   tag=추가 세팅 icon=gear | why: set up은 쓸 수 있게 갖춰 놓는다는 뜻이에요. an extra …를 하나 더 얹어 지금 있는 두 대 말고 선제로 대비하는 일임을 알려요.
+   chunks: I'll set up / an extra suction / now / .  || decoy: a step stool
+   =B: I'll set up an [extra] suction now.
+    B: I'll set up an [old] suction now.
+    B: I'll set up an [idle] suction now.
+    B: I'll set up an [electric] suction now.
+--2.4 EN: Say the word and we'll have two more ready.
+   KO: 말씀만 하시면 두 대를 더 준비해 둘게요. (23)
+   DK: 말씀만 하시면 세 대를 더 준비해 둘게요. (23)
+   DK: 말씀만 하시면 한 대를 더 준비해 둘게요. (23)
+   tag=추가 약속 icon=check | why: we'll have … ready에서 have는 준비된 상태로 둔다는 뜻이에요. 지금은 충분하지만 신호가 오면 늘린다는 약속이에요.
+   chunks: Say the word / and we'll have / two more / ready / .  || decoy: two long cords
+    B: Say the word and we'll have two more [wet].
+    B: Say the word and we'll have two more [noisy].
+   =B: Say the word and we'll have two more [ready].
+    B: Say the word and we'll have two more [dusty].
+  ORDER ko=흡인 준비 4문장 순서 tag=대화 흐름 | why: 켜 둔 흡인기를 보고하고, 그에 딸린 여분 흡인통을 알리고, 그 여분으로 교체하겠다고 약속한 뒤, 같은 신호로 더 늘리겠다고 이어요. 뒤 줄이 for them·the extras·again으로 앞 줄을 가리켜요.
+   1. I've got two suctions on and ready.  (흡인기 두 대를 켜 뒀어요/보고/monitor)
+   2. Extra canisters for them are standing by.  (그것들의 여분 흡인통이 대기 중이에요/여분/pushpin)
+   3. Say the word and I'll swap in the extras fast.  (말씀만 하시면 여분으로 빨리 교체해요/교체/speech)
+   4. Say the word again and we'll have two more suctions ready.  (다시 말씀하시면 흡인기 두 대를 더 준비해요/추가/gear)
+   swap12: Extra canisters for them are standing by. | I've got two suctions on and ready. | Say the word and I'll swap in the extras fast. | Say the word again and we'll have two more suctions ready.
+   swap23: I've got two suctions on and ready. | Say the word and I'll swap in the extras fast. | Extra canisters for them are standing by. | Say the word again and we'll have two more suctions ready.
+   swap34: I've got two suctions on and ready. | Extra canisters for them are standing by. | Say the word again and we'll have two more suctions ready. | Say the word and I'll swap in the extras fast.
+===== 3 혈액 확보 확인
+--3.0 EN: We have units in the cooler right here.
+   KO: 바로 여기 쿨러에 팩이 있어요. (17)
+   DK: 바로 여기 상자에 팩이 있어요. (17)
+   DK: 바로 여기 쿨러에 얼음이 있어요. (18)
+   tag=현황 보고 icon=check | why: We have …로 지금 확보한 양을 짧게 보고해요. right here로 위치가 이 방 안임을 분명히 해요.
+   chunks: We have / units / in the cooler / right here / .  || decoy: in the old box
+    B: We have units in the [freezer] right here.
+    B: We have units in the [drawer] right here.
+    B: We have units in the [closet] right here.
+   =B: We have units in the [cooler] right here.
+--3.1 EN: Blood bank can send more within minutes.
+   KO: 혈액은행에서 몇 분 안에 더 보낼 수 있어요. (25)
+   DK: 혈액은행에서 몇 분 안에 더 반납할 수 있어요. (26)
+   DK: 혈액은행에서 몇 분 안에 더 보관할 수 있어요. (26)
+   tag=보급 안내 icon=pager | why: can send more는 보낼 수 있다는 능력을 말해 아직 요청은 아님을 보여 줘요. within minutes로 보충 속도를 알려요.
+   chunks: Blood bank / can send more / within minutes / .  || decoy: with the next cooler
+    B: Blood bank can [cancel] more within minutes.
+   =B: Blood bank can [send] more within minutes.
+    B: Blood bank can [return] more within minutes.
+    B: Blood bank can [store] more within minutes.
+--3.2 EN: I'll keep a line open with the blood bank.
+   KO: 혈액은행과 연락선을 열어 둘게요. (18)
+   DK: 혈액은행과 연락선을 새로 열어 둘게요. (21)
+   DK: 혈액은행과 연락선을 직접 열어 둘게요. (21)
+   tag=연락 유지 icon=pager | why: keep a line open은 연락이 끊기지 않게 유지한다는 표현이에요. 지금 부르는 것이 아니라 필요할 때 바로 닿게 해 두는 말이에요.
+   chunks: I'll keep / a line / open / with the blood bank / .  || decoy: a long line
+    B: I'll keep a line [busy] with the blood bank.
+    B: I'll keep a line [short] with the blood bank.
+    B: I'll keep a line [quiet] with the blood bank.
+   =B: I'll keep a line [open] with the blood bank.
+--3.3 EN: I'll check the cooler and count the units again.
+   KO: 쿨러를 확인하고 팩을 다시 세어 볼게요. (22)
+   DK: 냉장고를 확인하고 팩을 다시 세어 볼게요. (23)
+   DK: 쿨러를 확인하고 얼음을 다시 세어 볼게요. (23)
+   tag=재확인 icon=magnify | why: again은 이미 센 수를 다시 맞춰 본다는 뜻이에요. 확인과 세기를 and로 이어 쿨러 안의 실제 수를 확인해요.
+   chunks: I'll check / the cooler / and count / the units again / .  || decoy: I'll wipe
+    B: I'll check the cooler and [weigh] the units again.
+   =B: I'll check the cooler and [count] the units again.
+    B: I'll check the cooler and [order] the units again.
+    B: I'll check the cooler and [price] the units again.
+--3.4 EN: Let's keep the blood bank updated as units go in.
+   KO: 팩이 들어가는 대로 혈액은행에 계속 알립시다. (25)
+   DK: 팩이 도착하는 대로 혈액은행에 계속 알립시다. (25)
+   DK: 팩이 쌓이는 대로 혈액은행에 계속 알립시다. (24)
+   tag=계속 보고 icon=pager | why: keep … updated는 한 번 알리고 끝내지 않고 변화마다 계속 공유한다는 뜻이에요. as units go in이 알리는 때를 정해 줘요.
+   chunks: Let's keep / the blood bank updated / as units / go in / .  || decoy: as the labels print
+    B: Let's keep the blood bank [billed] as units go in.
+    B: Let's keep the blood bank [closed] as units go in.
+    B: Let's keep the blood bank [thanked] as units go in.
+   =B: Let's keep the blood bank [updated] as units go in.
+  ORDER ko=혈액 확보 확인 4문장 순서 tag=대화 흐름 | why: 지금 있는 양을 말하고, 더 보낼 수 있다고 알리고, 그 연락선을 열어 두겠다고 한 뒤, 팩이 들어갈 때마다 그 연락선을 갱신해요. more·them·that line이 앞 줄을 가리켜요.
+   1. We have units in the cooler right here.  (바로 여기 쿨러에 팩이 있어요/현황/check)
+   2. Blood bank can send more within minutes.  (혈액은행에서 몇 분 안에 더 보낼 수 있어요/보급/pager)
+   3. I'll keep a line open with them.  (그쪽과 연락선을 열어 둘게요/연락/pager)
+   4. Let's keep that line updated as units go in.  (팩이 들어가는 대로 계속 알립시다/갱신/check)
+   swap12: Blood bank can send more within minutes. | We have units in the cooler right here. | I'll keep a line open with them. | Let's keep that line updated as units go in.
+   swap23: We have units in the cooler right here. | I'll keep a line open with them. | Blood bank can send more within minutes. | Let's keep that line updated as units go in.
+   swap34: We have units in the cooler right here. | Blood bank can send more within minutes. | Let's keep that line updated as units go in. | I'll keep a line open with them.
+===== 4 신속 초기 계수
+--4.0 EN: Quick baseline count before we open.
+   KO: 개복 전에 신속히 초기 계수를 합시다. (21)
+   DK: 개복 전에 꼼꼼히 초기 계수를 합시다. (21)
+   DK: 개복 전에 신속히 최종 계수를 합시다. (21)
+   tag=계수 제안 icon=check | why: Quick을 문장 맨 앞에 둔 동사 없는 현장 말투예요. before we open이 기준 계수를 개복 전에 해야 하는 이유를 박아요.
+   chunks: Quick / baseline count / before we open / .  || decoy: before we scrub
+   =B: Quick [baseline] count before we open.
+    B: Quick [final] count before we open.
+    B: Quick [partial] count before we open.
+    B: Quick [random] count before we open.
+--4.1 EN: Sponges and sharps are counted and recorded.
+   KO: 거즈와 sharp가 계수됐고 기록됐어요. (22)
+   DK: 거즈와 sharp가 계수됐고 서명됐어요. (22)
+   DK: 거즈와 sharp가 계수됐고 보관됐어요. (22)
+   tag=기록 보고 icon=pencil | why: counted and recorded는 센 것과 적은 것을 나눠 말해요. 기록까지 말해야 나중에 대조할 수 있어요.
+   chunks: Sponges / and sharps / are counted / and recorded / .  || decoy: and bagged
+    B: Sponges and sharps are counted and [signed].
+    B: Sponges and sharps are counted and [scanned].
+   =B: Sponges and sharps are counted and [recorded].
+    B: Sponges and sharps are counted and [filed].
+--4.2 EN: We'll reconcile everything at closing.
+   KO: 봉합 때 전부 다시 대조할게요. (17)
+   DK: 봉합 때 전부 다시 정리할게요. (17)
+   DK: 봉합 때 전부 다시 닦을게요. (16)
+   tag=대조 예고 icon=pushpin | why: reconcile은 기준 계수와 현재 계수를 맞춰 본다는 뜻이에요. at closing으로 마지막 대조 시점을 미리 예고해요.
+   chunks: We'll reconcile / everything / at closing / .  || decoy: at the table
+   =B: We'll [reconcile] everything at closing.
+    B: We'll [organize] everything at closing.
+    B: We'll [assemble] everything at closing.
+    B: We'll [rearrange] everything at closing.
+--4.3 EN: I'll get the count started even though this is an emergency.
+   KO: 응급 상황이지만 계수를 시작할게요. (19)
+   DK: 응급 상황이지만 계수를 이어 갈게요. (20)
+   DK: 수술 상황이지만 계수를 시작할게요. (19)
+   tag=계수 시작 icon=check | why: even though로 급해도 계수는 건너뛰지 않는다는 태도를 한 문장에 담아요. get the count started는 시작을 내가 맡는다는 말투예요.
+   chunks: I'll get / the count started / even though / this is an emergency / .  || decoy: it is a long case
+    B: I'll get the count started even though this is an [weekend].
+    B: I'll get the count started even though this is an [holiday].
+   =B: I'll get the count started even though this is an [emergency].
+    B: I'll get the count started even though this is an [training].
+--4.4 EN: We'll double check the sponge count before we close.
+   KO: 봉합 전에 거즈 계수를 다시 확인할게요. (22)
+   DK: 봉합 전에 거즈 수납함을 다시 확인할게요. (23)
+   DK: 봉합 전에 거즈 포장을 다시 확인할게요. (22)
+   tag=재확인 icon=magnify | why: double check는 한 번 더 확인한다는 관용 표현이에요. before we close로 마지막 확인의 시점을 못 박아 빠뜨림을 막아요.
+   chunks: We'll double check / the sponge count / before we / close / .  || decoy: the specimen labels
+   =B: We'll double check the [sponge] count before we close.
+    B: We'll double check the [drape] count before we close.
+    B: We'll double check the [gown] count before we close.
+    B: We'll double check the [glove] count before we close.
+  ORDER ko=초기 계수 4문장 순서 tag=대화 흐름 | why: 개복 전에 기준 계수를 하고, 센 것을 기록하고, 그 기록을 봉합 때 대조하겠다고 예고한 뒤, 그 대조의 일부로 거즈 계수를 한 번 더 확인해요. against that record·Part of that이 앞 줄을 가리켜요.
+   1. Quick baseline count before we open.  (개복 전에 신속히 초기 계수를 해요/계수/check)
+   2. Sponges and sharps are counted and recorded.  (거즈와 sharp가 계수되고 기록됐어요/기록/pencil)
+   3. We'll reconcile everything against that record at closing.  (봉합 때 그 기록과 전부 대조할게요/대조/pushpin)
+   4. Part of that is one more check of the sponge count.  (그중에는 거즈 계수를 한 번 더 확인하는 일도 있어요/재확인/magnify)
+   swap12: Sponges and sharps are counted and recorded. | Quick baseline count before we open. | We'll reconcile everything against that record at closing. | Part of that is one more check of the sponge count.
+   swap23: Quick baseline count before we open. | We'll reconcile everything against that record at closing. | Sponges and sharps are counted and recorded. | Part of that is one more check of the sponge count.
+   swap34: Quick baseline count before we open. | Sponges and sharps are counted and recorded. | Part of that is one more check of the sponge count. | We'll reconcile everything against that record at closing.
+===== 5 긴급 팀 소집
+--5.0 EN: I'm paging additional staff to the room.
+   KO: 방으로 추가 인력을 호출하고 있어요. (20)
+   DK: 방으로 숙련된 인력을 호출하고 있어요. (21)
+   DK: 입구로 추가 인력을 호출하고 있어요. (20)
+   tag=인력 호출 icon=pager | why: I'm paging은 지금 호출 중임을 알려요. additional을 붙여 현재 인력으로는 모자라 더 부른다는 뜻을 분명히 해요.
+   chunks: I'm paging / additional staff / to the room / .  || decoy: from the float pool
+    B: I'm paging [visiting] staff to the room.
+   =B: I'm paging [additional] staff to the room.
+    B: I'm paging [retired] staff to the room.
+    B: I'm paging [former] staff to the room.
+--5.1 EN: We need a second scrub and another circulator.
+   KO: 스크럽 요원 한 명과 순환 간호사 한 명이 더 필요해요. (31)
+   DK: 스크럽 요원 두 명과 순환 간호사 한 명이 더 필요해요. (31)
+   DK: 스크럽 요원 한 명과 순환 간호사 두 명이 더 필요해요. (31)
+   tag=인원 요청 icon=me | why: second와 another로 이미 있는 역할을 한 명씩 더 달라고 말해요. 필요한 역할 이름을 정확히 말해야 호출이 빨라요.
+   chunks: We need / a second scrub / and another circulator / .  || decoy: a second lamp
+    B: We need a second scrub and another [porter].
+    B: We need a second scrub and another [pharmacist].
+    B: We need a second scrub and another [coordinator].
+   =B: We need a second scrub and another [circulator].
+--5.2 EN: Anesthesia backup is on the way.
+   KO: 마취과 백업이 오고 있어요. (15)
+   DK: 마취과 백업이 대기 중이에요. (16)
+   DK: 마취과 백업이 호출되고 있어요. (17)
+   tag=지원 안내 icon=run | why: on the way는 이미 출발해 오는 중이라는 뜻이에요. 아직 도착한 것은 아니라는 사실까지 정확히 알려 줘요.
+   chunks: Anesthesia backup / is on / the way / .  || decoy: with the cart
+    B: Anesthesia [machine] is on the way.
+   =B: Anesthesia [backup] is on the way.
+    B: Anesthesia [supplies] is on the way.
+    B: Anesthesia [cart] is on the way.
+--5.3 EN: Let's page another circulator and get anesthesia backup in here.
+   KO: 순환 간호사를 한 명 더 호출하고 마취과 백업도 부릅시다. (32)
+   DK: 순환 간호사를 두 명 더 호출하고 마취과 백업도 부릅시다. (32)
+   DK: 순환 간호사를 한 명 더 호출하고 마취과 백업도 두 명 부릅시다. (36)
+   tag=호출 제안 icon=pager | why: Let's로 함께 하자고 제안하며 page와 get을 이어 두 가지 일을 한 문장에 묶어요.
+   chunks: Let's page / another circulator / and get / anesthesia backup in here / .  || decoy: the sign-in sheet in here
+    B: Let's [relieve] another circulator and get anesthesia backup in here.
+    B: Let's [replace] another circulator and get anesthesia backup in here.
+    B: Let's [rotate] another circulator and get anesthesia backup in here.
+   =B: Let's [page] another circulator and get anesthesia backup in here.
+--5.4 EN: I'll bring in the extra staff we need for this room.
+   KO: 이 방에 필요한 여분의 인력을 데려올게요. (23)
+   DK: 이 방에 필요한 숙련된 인력을 데려올게요. (23)
+   DK: 이 방에 필요한 인력을 모두 데려올게요. (22)
+   tag=합류 약속 icon=handshake2 | why: bring in은 밖에서 안으로 데려온다는 구동사예요. we need for this room이 어디에 쓸 인력인지 범위를 정해 줘요.
+   chunks: I'll bring in / the extra staff / we need / for this room / .  || decoy: for the night staff
+    B: I'll bring in the [retired] staff we need for this room.
+   =B: I'll bring in the [extra] staff we need for this room.
+    B: I'll bring in the [former] staff we need for this room.
+    B: I'll bring in the [visiting] staff we need for this room.
+  ORDER ko=긴급 팀 소집 4문장 순서 tag=대화 흐름 | why: 필요한 역할을 말하고, 그들과 마취과 백업을 호출한다고 알리고, 이미 오고 있다고 확인한 뒤, 도착하는 대로 방으로 안내해요. them·already·they가 앞 줄을 가리켜요.
+   1. We need a second scrub and another circulator.  (스크럽 한 명과 순환 간호사 한 명이 더 필요해요/요청/me)
+   2. I'm paging them and anesthesia backup to the room now.  (그들과 마취과 백업을 방으로 호출 중이에요/호출/pager)
+   3. Anesthesia backup is already on the way.  (마취과 백업은 이미 오고 있어요/확인/run)
+   4. As they arrive, I'll bring them in for this room.  (도착하는 대로 이 방으로 데려올게요/안내/handshake2)
+   swap12: I'm paging them and anesthesia backup to the room now. | We need a second scrub and another circulator. | Anesthesia backup is already on the way. | As they arrive, I'll bring them in for this room.
+   swap23: We need a second scrub and another circulator. | Anesthesia backup is already on the way. | I'm paging them and anesthesia backup to the room now. | As they arrive, I'll bring them in for this room.
+   swap34: We need a second scrub and another circulator. | I'm paging them and anesthesia backup to the room now. | As they arrive, I'll bring them in for this room. | Anesthesia backup is already on the way.
+===== 6 복강 대량 출혈
+--6.0 EN: The abdomen is full of blood — suctioning now.
+   KO: 복강이 피로 가득 찼어요 — 지금 흡인하고 있어요. (28)
+   DK: 복강이 피로 가득 찼어요 — 흡인하기 전에 통을 봐요. (30)
+   DK: 복강이 피로 가득 찼어요 — 시야 때문에 흡인해요. (28)
+   tag=흡인 보고 icon=siren | why: 상태를 먼저 말하고 대시(—)로 지금 하는 행동을 이어, 무슨 일이 벌어졌고 내가 무엇을 하는지를 한 호흡에 알려요.
+   chunks: The abdomen / is full / of blood / — suctioning now / .  || decoy: — lights on now
+    B: The abdomen is [empty] of blood — suctioning now.
+    B: The abdomen is [clear] of blood — suctioning now.
+   =B: The abdomen is [full] of blood — suctioning now.
+    B: The abdomen is [free] of blood — suctioning now.
+--6.1 EN: Handing you lap pads to pack the quadrants.
+   KO: 각 구역을 패킹하시게 랩패드를 건네드릴게요. (24)
+   DK: 각 구역을 닦으시게 랩패드를 건네드릴게요. (23)
+   DK: 각 구역을 말리시게 랩패드를 건네드릴게요. (23)
+   tag=패킹 준비 icon=pushpin | why: Handing you …은 I를 줄여 손을 내밀며 하는 말이에요. to pack the quadrants가 패드를 건네는 목적을 밝혀요.
+   chunks: Handing you / lap pads / to pack / the quadrants / .  || decoy: to drape the quadrants
+   =B: Handing you lap pads to [pack] the quadrants.
+    B: Handing you lap pads to [mark] the quadrants.
+    B: Handing you lap pads to [trim] the quadrants.
+    B: Handing you lap pads to [tag] the quadrants.
+--6.2 EN: I'll call for more blood to the room.
+   KO: 방으로 혈액을 더 요청할게요. (16)
+   DK: 방 앞으로 혈액을 더 요청할게요. (18)
+   DK: 방으로 혈액을 먼저 요청할게요. (17)
+   tag=혈액 요청 icon=pager | why: call for는 요청해서 가져오게 한다는 뜻이에요. more blood to the room으로 이미 있는 팩이 모자라 보충을 요청한다는 점을 밝혀요.
+   chunks: I'll call / for more blood / to the room / .  || decoy: to the lab
+    B: I'll call for more [tape] to the room.
+    B: I'll call for more [towels] to the room.
+   =B: I'll call for more [blood] to the room.
+    B: I'll call for more [sutures] to the room.
+--6.3 EN: Keep the suction going while I pack the quadrants.
+   KO: 제가 각 구역을 패킹하는 동안 흡인을 계속하세요. (27)
+   DK: 제가 각 구역을 닦는 동안 흡인을 계속하세요. (25)
+   DK: 제가 각 구역을 말리는 동안 흡인을 계속하세요. (26)
+   tag=흡인 유지 icon=monitor | why: Keep … going은 멈추지 말고 계속하라는 명령형이에요. while I …로 패킹하는 동안 흡인이 끊기면 안 되는 이유를 시간으로 묶어요.
+   chunks: Keep the suction / going / while I / pack the quadrants / .  || decoy: move the quadrants
+   =B: Keep the suction going while I [pack] the quadrants.
+    B: Keep the suction going while I [mark] the quadrants.
+    B: Keep the suction going while I [trim] the quadrants.
+    B: Keep the suction going while I [tag] the quadrants.
+--6.4 EN: The abdomen is full and we need more blood now.
+   KO: 복강이 가득 찼으니 지금 혈액이 더 필요해요. (25)
+   DK: 복강이 가득 찼으니 지금 흡인이 더 필요해요. (25)
+   DK: 복강이 가득 찼으니 지금 랩패드가 더 필요해요. (26)
+   tag=혈액 필요 icon=siren | why: and가 상태와 요구를 이어 이유와 요청을 한 번에 말해요. more blood now가 긴급도를 나타내요.
+   chunks: The abdomen / is full / and we need / more blood now / .  || decoy: more music now
+    B: The abdomen is full and we need more [drapes] now.
+    B: The abdomen is full and we need more [towels] now.
+   =B: The abdomen is full and we need more [blood] now.
+    B: The abdomen is full and we need more [stools] now.
+  ORDER ko=복강 대량 출혈 4문장 순서 tag=대화 흐름 | why: 상황과 흡인을 알리고, 그에 대한 혈액을 요청하고, 혈액이 오는 동안 패드를 건네고, 패킹하는 동안 내가 흡인을 유지하겠다고 해요. for that·while that's coming·pack them이 앞 줄을 가리켜요.
+   1. The abdomen is full of blood — suctioning now.  (복강이 피로 가득 찼어요 — 지금 흡인해요/보고/siren)
+   2. I'm calling for more blood to the room for that.  (그래서 방으로 혈액을 더 요청해요/요청/pager)
+   3. While that's coming, handing you lap pads to pack the quadrants.  (혈액이 오는 동안 패킹하시게 랩패드를 건네요/준비/pushpin)
+   4. I'll keep the suction going while you pack them.  (패킹하시는 동안 제가 흡인을 계속할게요/약속/monitor)
+   swap12: I'm calling for more blood to the room for that. | The abdomen is full of blood — suctioning now. | While that's coming, handing you lap pads to pack the quadrants. | I'll keep the suction going while you pack them.
+   swap23: The abdomen is full of blood — suctioning now. | While that's coming, handing you lap pads to pack the quadrants. | I'm calling for more blood to the room for that. | I'll keep the suction going while you pack them.
+   swap34: The abdomen is full of blood — suctioning now. | I'm calling for more blood to the room for that. | I'll keep the suction going while you pack them. | While that's coming, handing you lap pads to pack the quadrants.
+===== 7 응급 제왕 신생아 준비
+--7.0 EN: The infant warmer is on and ready.
+   KO: 영아 워머는 켜져 있고 준비됐어요. (19)
+   DK: 영아 워머는 꽂혀 있고 준비됐어요. (19)
+   DK: 영아 모니터는 켜져 있고 준비됐어요. (20)
+   tag=워머 준비 icon=baby | why: on and ready처럼 상태 낱말 둘을 and로 이어 켜짐과 쓸 수 있음을 구분해 보고해요. infant는 영아를 가리키는 병원 표현이에요.
+   chunks: The infant warmer / is on / and ready / .  || decoy: is by the door
+    B: The infant [scale] is on and ready.
+    B: The infant [monitor] is on and ready.
+    B: The infant [crib] is on and ready.
+   =B: The infant [warmer] is on and ready.
+--7.1 EN: Neonatal resuscitation supplies are set up.
+   KO: 신생아 소생술 물품이 세팅됐어요. (18)
+   DK: 신생아 소생술 물품이 정리됐어요. (18)
+   DK: 신생아 흡인 물품이 세팅됐어요. (17)
+   tag=물품 세팅 icon=baby | why: 물품은 사람이 해 둔 결과라 수동 are set up을 써요. 누가 했는지보다 준비가 끝난 상태를 알려요.
+   chunks: Neonatal / resuscitation supplies / are set up / .  || decoy: cleaning supplies
+    B: [Adult] resuscitation supplies are set up.
+   =B: [Neonatal] resuscitation supplies are set up.
+    B: [Dental] resuscitation supplies are set up.
+    B: [Bariatric] resuscitation supplies are set up.
+--7.2 EN: Is the NICU team in the room yet?
+   KO: NICU팀이 아직 방에 왔나요? (17)
+   DK: NICU팀이 아직 복도에 있나요? (18)
+   DK: NICU팀이 방에 어떻게 왔나요? (18)
+   tag=팀 확인 icon=speech | why: Is …yet?은 이미 와 있어야 할 사람이 왔는지 묻는 전형적인 질문이에요. 부르기 전에 도착 여부를 확인하는 말이에요.
+   chunks: Is the NICU team / in the room / yet / ?  || decoy: on the unit
+    B: Is the NICU team in the [hall] yet?
+    B: Is the NICU team in the [lobby] yet?
+    B: Is the NICU team in the [elevator] yet?
+   =B: Is the NICU team in the [room] yet?
+--7.3 EN: I'll page the NICU team to come down now.
+   KO: 지금 NICU팀을 내려오라고 호출할게요. (22)
+   DK: 지금 NICU팀을 올라오라고 호출할게요. (22)
+   DK: 지금 NICU팀 번호를 찾고 있어요. (20)
+   tag=팀 호출 icon=pager | why: page … to come down은 호출해서 내려오게 한다는 뜻이에요. now가 지금 바로 부르는 것임을 밝혀요.
+   chunks: I'll page / the NICU team / to come down / now / .  || decoy: to bring the cart
+    B: I'll [warn] the NICU team to come down now.
+   =B: I'll [page] the NICU team to come down now.
+    B: I'll [train] the NICU team to come down now.
+    B: I'll [teach] the NICU team to come down now.
+--7.4 EN: Let's bring an extra warmer just in case.
+   KO: 혹시 몰라서 여분의 워머를 하나 더 가져옵시다. (26)
+   DK: 혹시 몰라서 여분의 저울을 하나 더 가져옵시다. (26)
+   DK: 혹시 몰라서 여분의 워머를 세 개 더 가져옵시다. (27)
+   tag=여분 준비 icon=check | why: just in case는 쓸 일이 없을 수도 있지만 대비한다는 표현이라 과한 요청처럼 들리지 않게 해요.
+   chunks: Let's bring / an extra warmer / just in case / .  || decoy: just in time
+    B: Let's bring an [old] warmer just in case.
+    B: Let's bring an [open] warmer just in case.
+    B: Let's bring an [ancient] warmer just in case.
+   =B: Let's bring an [extra] warmer just in case.
+  ORDER ko=신생아 준비 4문장 순서 tag=대화 흐름 | why: 워머를 켜고, 그 곁에 소생술 물품을 세팅하고, 그 준비가 끝난 상태에서 팀이 아직 안 왔다고 말한 뒤 바로 호출해요. beside it·that·them이 앞 줄을 가리켜요.
+   1. The infant warmer is on and ready.  (영아 워머가 켜져 있고 준비됐어요/워머/baby)
+   2. Neonatal resuscitation supplies are set up beside it.  (그 옆에 신생아 소생술 물품이 세팅됐어요/물품/baby)
+   3. With that set, the NICU team isn't in the room yet.  (그 준비가 됐는데 NICU팀은 아직 방에 없어요/확인/speech)
+   4. I'm paging them to come down now.  (그들을 지금 내려오라고 호출해요/호출/pager)
+   swap12: Neonatal resuscitation supplies are set up beside it. | The infant warmer is on and ready. | With that set, the NICU team isn't in the room yet. | I'm paging them to come down now.
+   swap23: The infant warmer is on and ready. | With that set, the NICU team isn't in the room yet. | Neonatal resuscitation supplies are set up beside it. | I'm paging them to come down now.
+   swap34: The infant warmer is on and ready. | Neonatal resuscitation supplies are set up beside it. | I'm paging them to come down now. | With that set, the NICU team isn't in the room yet.
+===== 8 제왕 산모 출혈 감시
+--8.0 EN: I'm watching closely for postpartum hemorrhage.
+   KO: 산후 출혈을 면밀히 지켜보고 있어요. (20)
+   DK: 산후 출혈을 조용히 지켜보고 있어요. (20)
+   DK: 산후 출혈용 모니터를 맞추고 있어요. (20)
+   tag=출혈 감시 icon=monitor | why: watching for ~는 ~이 생기는지 살피는 중이라는 감시 표현이에요. closely로 눈을 떼지 않고 본다는 뜻을 더해요.
+   chunks: I'm watching / closely / for postpartum hemorrhage / .  || decoy: for the next contraction
+   =B: I'm watching [closely] for postpartum hemorrhage.
+    B: I'm watching [rarely] for postpartum hemorrhage.
+    B: I'm watching [briefly] for postpartum hemorrhage.
+    B: I'm watching [loosely] for postpartum hemorrhage.
+--8.1 EN: Uterotonics are drawn up and ready if we need them.
+   KO: 필요하면 쓸 수 있게 자궁수축제를 뽑아 준비해 뒀어요. (30)
+   DK: 필요하면 쓸 수 있게 자궁수축제를 카트에 준비해 뒀어요. (31)
+   DK: 필요하면 쓸 수 있게 자궁수축제를 냉장고에 준비해 뒀어요. (32)
+   tag=약 준비 보고 icon=pill | why: drawn up and ready는 주사기에 뽑아 둔 상태와 바로 쓸 수 있음을 이어 보고해요. if we need them이 쓸 시점을 정하지 않은 대비임을 알려요.
+   chunks: Uterotonics / are drawn up / and ready / if we need them / .  || decoy: on the cart
+    B: Uterotonics are drawn up and [expired] if we need them.
+    B: Uterotonics are drawn up and [loose] if we need them.
+   =B: Uterotonics are drawn up and [ready] if we need them.
+    B: Uterotonics are drawn up and [cold] if we need them.
+--8.2 EN: Her tone is soft — do you want oxytocin now?
+   KO: 자궁 긴장도가 부드러운데 — 지금 옥시토신을 원하세요? (30)
+   DK: 자궁 긴장도가 부드러운데 — 지금 옥시토신을 준비할까요? (31)
+   DK: 자궁 긴장도가 부드러운데 — 지금 용량을 원하세요? (28)
+   tag=지시 문의 icon=speech | why: 상태를 먼저 말하고 대시 뒤에 do you want …?를 이어, 약을 쓸지는 의사의 판단에 맡기는 질문으로 제안해요.
+   chunks: Her tone is soft / — do you want / oxytocin / now / ?  || decoy: an update
+   =B: Her tone is [soft] — do you want oxytocin now?
+    B: Her tone is [firm] — do you want oxytocin now?
+    B: Her tone is [pale] — do you want oxytocin now?
+    B: Her tone is [dry] — do you want oxytocin now?
+--8.3 EN: I'm drawing up an extra dose just in case.
+   KO: 혹시 몰라서 여분의 용량을 뽑고 있어요. (22)
+   DK: 곧 쓸 것 같아서 여분의 용량을 뽑고 있어요. (25)
+   DK: 혹시 몰라서 여분의 라벨을 미리 붙여 둘게요. (25)
+   tag=용량 준비 icon=pill | why: just in case는 필요 없을 수도 있지만 미리 한다는 대비 표현이에요. 지금 쓰는 것이 아니라는 뉘앙스를 줘요.
+   chunks: I'm drawing up / an extra dose / just / in case / .  || decoy: a blood sample
+    B: I'm drawing up an extra [vial] just in case.
+    B: I'm drawing up an extra [bag] just in case.
+   =B: I'm drawing up an extra [dose] just in case.
+    B: I'm drawing up an extra [tube] just in case.
+--8.4 EN: Let's keep watching her tone after delivery.
+   KO: 분만 후에도 자궁 긴장도를 계속 지켜봅시다. (24)
+   DK: 분만 후에도 자궁 긴장도를 번갈아 지켜봅시다. (25)
+   DK: 이송 후에도 자궁 긴장도를 계속 지켜봅시다. (24)
+   tag=감시 계속 icon=monitor | why: keep watching은 한 번 보고 끝내지 않고 계속 본다는 뜻이에요. after delivery로 분만이 끝나도 감시가 이어지는 시점을 짚어요.
+   chunks: Let's keep watching / her tone / after delivery / .  || decoy: on the monitor
+   =B: Let's keep watching her [tone] after delivery.
+    B: Let's keep watching her [weight] after delivery.
+    B: Let's keep watching her [height] after delivery.
+    B: Let's keep watching her [age] after delivery.
+  ORDER ko=산모 출혈 감시 4문장 순서 tag=대화 흐름 | why: 출혈을 지켜보고, 그에 대비한 약을 준비해 두고, 그 약이 준비된 상태에서 긴장도를 보고 쓸지 묻고, 어떤 결정이든 분만 후에도 계속 지켜봐요. for that·those·whatever you decide가 앞 줄을 가리켜요.
+   1. I'm watching closely for postpartum hemorrhage.  (산후 출혈을 면밀히 지켜보고 있어요/감시/monitor)
+   2. Uterotonics are drawn up for that and ready.  (그에 대비해 자궁수축제를 뽑아 준비해 뒀어요/준비/pill)
+   3. Her tone is soft, so with those ready, do you want oxytocin now?  (긴장도가 부드러우니 준비된 걸로 옥시토신을 원하세요?/질문/speech)
+   4. Whatever you decide, I'll keep watching her tone after delivery.  (결정하시는 대로 분만 후에도 계속 지켜볼게요/지속/monitor)
+   swap12: Uterotonics are drawn up for that and ready. | I'm watching closely for postpartum hemorrhage. | Her tone is soft, so with those ready, do you want oxytocin now? | Whatever you decide, I'll keep watching her tone after delivery.
+   swap23: I'm watching closely for postpartum hemorrhage. | Her tone is soft, so with those ready, do you want oxytocin now? | Uterotonics are drawn up for that and ready. | Whatever you decide, I'll keep watching her tone after delivery.
+   swap34: I'm watching closely for postpartum hemorrhage. | Uterotonics are drawn up for that and ready. | Whatever you decide, I'll keep watching her tone after delivery. | Her tone is soft, so with those ready, do you want oxytocin now?
+===== 9 신속 마취 유도 협조
+--9.0 EN: Suction is on and cricoid pressure is ready.
+   KO: 흡인이 켜졌고 윤상연골 압박도 준비됐어요. (23)
+   DK: 흡인이 설치됐고 윤상연골 압박도 준비됐어요. (24)
+   DK: 흡인이 켜졌고 윤상연골 압박도 점검됐어요. (23)
+   tag=준비 보고 icon=check | why: 두 준비를 and로 묶어 한 번에 보고해요. 흡인과 윤상연골 압박은 둘 다 구토·역류에 대비하는 준비예요.
+   chunks: Suction is on / and cricoid pressure / is ready / .  || decoy: the stylet
+    B: Suction is on and cricoid pressure is [loose].
+   =B: Suction is on and cricoid pressure is [ready].
+    B: Suction is on and cricoid pressure is [empty].
+    B: Suction is on and cricoid pressure is [late].
+--9.1 EN: Tell me when to apply and when to release.
+   KO: 언제 가하고 언제 풀지 말씀해 주세요. (21)
+   DK: 어디에 가하고 어디서 풀지 말씀해 주세요. (23)
+   DK: 얼마나 가하고 언제 풀지 말씀해 주세요. (22)
+   tag=신호 요청 icon=speech | why: Tell me when to …로 시점 판단을 상대에게 넘기는 정중한 요청이에요. apply와 release를 짝으로 말해 가하는 때와 푸는 때를 모두 물어요.
+   chunks: Tell me / when to apply / and when / to release / .  || decoy: where to stand
+    B: Tell me when to apply and when to [record].
+    B: Tell me when to apply and when to [rotate].
+    B: Tell me when to apply and when to [repeat].
+   =B: Tell me when to apply and when to [release].
+--9.2 EN: Tube and blade are set on your right.
+   KO: 튜브와 블레이드는 오른쪽에 세팅돼 있어요. (23)
+   DK: 튜브와 블레이드는 오른쪽에 펼쳐져 있어요. (23)
+   DK: 튜브와 블레이드는 오른쪽 카트에 있어요. (22)
+   tag=세팅 보고 icon=stetho | why: set on your right처럼 상대 기준 방향으로 위치를 알려 주면 헷갈리지 않아요. 기도 확보 전에 손 닿는 곳에 있어야 하는 기구예요.
+   chunks: Tube and blade / are set / on your right / .  || decoy: on the sterile wrap
+    B: Tube and blade are [stuck] on your right.
+   =B: Tube and blade are [set] on your right.
+    B: Tube and blade are [hung] on your right.
+    B: Tube and blade are [tied] on your right.
+--9.3 EN: I'm ready to help with the induction now.
+   KO: 지금 유도를 도울 준비가 됐어요. (18)
+   DK: 지금 각성을 도울 준비가 됐어요. (18)
+   DK: 지금 이송을 도울 준비가 됐어요. (18)
+   tag=도움 준비 icon=handshake2 | why: I'm ready to …는 준비 상태를 알려 도움을 청하기 쉽게 해요. with the induction now가 도울 일의 범위와 시점을 정해요.
+   chunks: I'm ready / to help / with the induction now / .  || decoy: with the transport now
+    B: I'm ready to help with the [recovery] now.
+    B: I'm ready to help with the [discharge] now.
+    B: I'm ready to help with the [handoff] now.
+   =B: I'm ready to help with the [induction] now.
+--9.4 EN: Say the word and I'll apply cricoid pressure.
+   KO: 말씀만 하시면 윤상연골 압박을 가할게요. (22)
+   DK: 말씀만 하시면 윤상연골 압박을 계속 가할게요. (25)
+   DK: 말씀하시면 압박하기 전에 손을 올려요. (21)
+   tag=압박 약속 icon=speech | why: Say the word and …는 신호만 주면 바로 한다는 표현으로 시작 결정을 마취과에 맡겨요. 압박은 요청이 있을 때 가해요.
+   chunks: Say the word / and I'll apply / cricoid pressure / .  || decoy: a cold pack
+    B: Say the word and I'll apply [ocular] pressure.
+   =B: Say the word and I'll apply [cricoid] pressure.
+    B: Say the word and I'll apply [nasal] pressure.
+    B: Say the word and I'll apply [sacral] pressure.
+  ORDER ko=신속 마취 유도 협조 4문장 순서 tag=대화 흐름 | why: 도울 준비를 알리고, 그 유도를 위해 기구가 세팅됐다고 말하고, 흡인과 압박도 준비됐다고 더한 뒤, 압박을 언제 가하고 풀지 신호를 청해요. for it·on top of that·it이 앞 줄을 가리켜요.
+   1. I'm ready to help with the induction now.  (지금 유도를 도울 준비가 됐어요/준비/handshake2)
+   2. Tube and blade are set on your right for it.  (그걸 위해 튜브와 블레이드가 오른쪽에 있어요/기구/stetho)
+   3. Suction is on and cricoid pressure is ready on top of that.  (그에 더해 흡인이 켜졌고 윤상연골 압박도 준비됐어요/보고/check)
+   4. Tell me when to apply it and when to release.  (언제 가하고 언제 풀지 말씀해 주세요/신호/speech)
+   swap12: Tube and blade are set on your right for it. | I'm ready to help with the induction now. | Suction is on and cricoid pressure is ready on top of that. | Tell me when to apply it and when to release.
+   swap23: I'm ready to help with the induction now. | Suction is on and cricoid pressure is ready on top of that. | Tube and blade are set on your right for it. | Tell me when to apply it and when to release.
+   swap34: I'm ready to help with the induction now. | Tube and blade are set on your right for it. | Tell me when to apply it and when to release. | Suction is on and cricoid pressure is ready on top of that.
+===== 10 시간 압박 무균 유지
+--10.0 EN: Even in a rush, we protect the sterile field.
+   KO: 급해도 무균 영역은 지켜요. (15)
+   DK: 급해도 순서는 지켜요. (12)
+   DK: 밤중에도 무균 영역은 지켜요. (16)
+   tag=원칙 선언 icon=shield | why: Even in a rush로 조건을 먼저 깔고 we protect …로 원칙을 말하면 급해도 양보하지 않는 것이 분명해져요.
+   chunks: Even in a rush / , we protect / the sterile / field / .  || decoy: Even at night
+    B: Even in a rush, we protect the [quiet] field.
+    B: Even in a rush, we protect the [dark] field.
+   =B: Even in a rush, we protect the [sterile] field.
+    B: Even in a rush, we protect the [wide] field.
+--10.1 EN: Let me gown and glove you quickly.
+   KO: 제가 빨리 가운과 장갑을 입혀 드릴게요. (22)
+   DK: 제가 조용히 가운과 장갑을 입혀 드릴게요. (23)
+   DK: 제가 차례로 가운과 장갑을 입혀 드릴게요. (23)
+   tag=가운 보조 icon=handshake2 | why: Let me …는 제가 해 드릴게요라는 정중한 제안이에요. gown과 glove를 동사로 써서 입히는 동작을 짧게 말해요.
+   chunks: Let me / gown and glove you / quickly / .  || decoy: mask and cap you
+   =B: Let me gown and [glove] you quickly.
+    B: Let me gown and [wrap] you quickly.
+    B: Let me gown and [wash] you quickly.
+    B: Let me gown and [tape] you quickly.
+--10.2 EN: Watch your hands — I'll guide you in.
+   KO: 손 조심하세요 — 제가 안내해 드릴게요. (22)
+   DK: 손 조심하세요 — 제가 가운을 잡아 드릴게요. (25)
+   DK: 손 조심하세요 — 제가 장갑을 끼워 드릴게요. (25)
+   tag=주의 안내 icon=faceWorried | why: Watch your hands는 손이 닿지 않게 조심하라는 짧은 주의예요. 대시 뒤에 I'll guide you in을 붙여 혼자 헤매지 않게 도와 주겠다고 닫아요.
+   chunks: Watch your hands / — I'll guide / you in / .  || decoy: your head
+    B: Watch your hands — I'll [carry] you in.
+    B: Watch your hands — I'll [lift] you in.
+   =B: Watch your hands — I'll [guide] you in.
+    B: Watch your hands — I'll [drag] you in.
+--10.3 EN: We protect the field even when we rush.
+   KO: 급해도 우리는 영역을 지켜요. (16)
+   DK: 급해도 우리는 약속을 지켜요. (16)
+   DK: 붐벼도 우리는 영역을 지켜요. (16)
+   tag=원칙 공유 icon=shield | why: even when we rush로 같은 원칙을 다른 틀로 말해요. we로 말해 팀 모두의 약속임을 드러내요.
+   chunks: We protect / the field / even when we rush / .  || decoy: the doors
+   =B: We protect the field even when we [rush].
+    B: We protect the field even when we [rest].
+    B: We protect the field even when we [relax].
+    B: We protect the field even when we [wait].
+--10.4 EN: I'll gown you quickly so we can start.
+   KO: 시작할 수 있게 빨리 가운을 입혀 드릴게요. (24)
+   DK: 시작할 수 있게 바르게 가운을 입혀 드릴게요. (25)
+   DK: 시작할 수 있게 먼저 가운을 입혀 드릴게요. (24)
+   tag=시작 준비 icon=gear | why: so we can start가 서두르는 목적을 말해 줘요. 서두름이 무균을 해치지 않게 quickly를 쓰되 동작은 정확히 하는 거예요.
+   chunks: I'll gown you / quickly / so we can start / .  || decoy: so you can see
+    B: I'll gown you [neatly] so we can start.
+    B: I'll gown you [gently] so we can start.
+   =B: I'll gown you [quickly] so we can start.
+    B: I'll gown you [slowly] so we can start.
+  ORDER ko=시간 압박 무균 유지 4문장 순서 tag=대화 흐름 | why: 급해도 무균 영역을 지킨다는 원칙을 먼저 말하고, 그래서 가운 입는 걸 손 조심시키며 안내하고, 가운을 입은 뒤 장갑을 끼우고, 끼운 장갑 손을 앞에 두게 해요. That's why·Once you're gowned·gloved가 앞 줄을 가리켜요.
+   1. Even in a rush, we protect the sterile field.  (급해도 무균 영역은 지켜요/원칙/shield)
+   2. That's why I'll guide you into the gown — watch your hands.  (그래서 가운을 입도록 안내할게요 — 손 조심하세요/안내/handshake2)
+   3. Once you're gowned, let me glove you quickly.  (가운을 입으셨으니 제가 빨리 장갑을 끼워 드릴게요/장갑/gear)
+   4. Keep your gloved hands in front of you.  (장갑 낀 손은 앞에 두세요/주의/faceWorried)
+   swap12: That's why I'll guide you into the gown — watch your hands. | Even in a rush, we protect the sterile field. | Once you're gowned, let me glove you quickly. | Keep your gloved hands in front of you.
+   swap23: Even in a rush, we protect the sterile field. | Once you're gowned, let me glove you quickly. | That's why I'll guide you into the gown — watch your hands. | Keep your gloved hands in front of you.
+   swap34: Even in a rush, we protect the sterile field. | That's why I'll guide you into the gown — watch your hands. | Keep your gloved hands in front of you. | Once you're gowned, let me glove you quickly.
+===== 11 다발성 외상 우선순위
+--11.0 EN: The biggest bleeding source comes first.
+   KO: 가장 큰 출혈 부위부터 처치해요. (18)
+   DK: 가장 큰 부종 부위부터 처치해요. (18)
+   DK: 가장 큰 멍 부위부터 처치해요. (17)
+   tag=우선순위 icon=siren | why: comes first는 가장 먼저 다룬다는 우선순위 표현이에요. 가장 큰 출혈을 문장 첫머리에 두어 판단 기준을 먼저 밝혀요.
+   chunks: The biggest bleeding source / comes / first / .  || decoy: The brightest light
+    B: The biggest [swelling] source comes first.
+    B: The biggest [bruising] source comes first.
+    B: The biggest [itching] source comes first.
+   =B: The biggest [bleeding] source comes first.
+--11.1 EN: I'll have supplies staged for both injuries.
+   KO: 두 부상 모두를 위해 물품을 단계별로 준비해 둘게요. (29)
+   DK: 두 부상 모두를 위해 물품을 한꺼번에 준비해 둘게요. (29)
+   DK: 두 부상 모두를 위해 기구를 단계별로 준비해 둘게요. (29)
+   tag=물품 대기 icon=pushpin | why: have + 물건 + 과거분사는 그렇게 되어 있도록 해 둔다는 뜻이에요. staged로 쓸 순서대로 놓아 두겠다는 사전 준비를 말해요.
+   chunks: I'll have supplies / staged / for both injuries / .  || decoy: for each shift
+    B: I'll have supplies [boxed] for both injuries.
+   =B: I'll have supplies [staged] for both injuries.
+    B: I'll have supplies [washed] for both injuries.
+    B: I'll have supplies [wrapped] for both injuries.
+--11.2 EN: Tell me your priority and I'll set up for it.
+   KO: 우선순위를 말씀해 주시면 그에 맞춰 세팅할게요. (26)
+   DK: 원하는 기구를 말씀해 주시면 그에 맞춰 세팅할게요. (28)
+   DK: 우선순위를 외쳐 주시면 그에 맞춰 세팅할게요. (25)
+   tag=순서 묻기 icon=speech | why: Tell me … and I'll …은 말해 주면 내가 맞춘다는 협조 구조예요. 우선순위 판단은 집도의가 하고 간호사는 거기에 맞춰 준비해요.
+   chunks: Tell me / your priority / and I'll set up / for it / .  || decoy: your gown size
+    B: Tell me your [name] and I'll set up for it.
+    B: Tell me your [age] and I'll set up for it.
+    B: Tell me your [weight] and I'll set up for it.
+   =B: Tell me your [priority] and I'll set up for it.
+--11.3 EN: Which injury needs us first?
+   KO: 어느 부상을 먼저 처치해야 하나요? (19)
+   DK: 어느 환자를 먼저 처치해야 하나요? (19)
+   DK: 어디 부상을 먼저 처치해야 하나요? (19)
+   tag=순서 문의 icon=speech | why: Which …?는 선택지가 정해져 있을 때 쓰는 which 의문문이에요. 어느 쪽을 먼저 처치할지 판단은 집도의에게 묻는 질문이에요.
+   chunks: Which injury / needs us / first / ?  || decoy: is bleeding
+    B: Which [floor] needs us first?
+   =B: Which [injury] needs us first?
+    B: Which [shift] needs us first?
+    B: Which [order] needs us first?
+--11.4 EN: I'll keep supplies staged for both priorities.
+   KO: 두 우선순위 모두를 위해 물품을 단계별로 준비해 둘게요. (31)
+   DK: 두 우선순위 모두를 위해 물품을 한 칸에 준비해 둘게요. (31)
+   DK: 두 우선순위 모두를 위해 물품을 따로따로 준비해 둘게요. (31)
+   tag=대기 약속 icon=pushpin | why: keep + 목적어 + 과거분사로 그 상태를 유지한다는 뜻이에요. 우선순위가 바뀌어도 바로 따라가도록 양쪽을 다 대비해요.
+   chunks: I'll keep supplies / staged / for both priorities / .  || decoy: for both shifts
+    B: I'll keep supplies staged for both [positions].
+    B: I'll keep supplies staged for both [quadrants].
+    B: I'll keep supplies staged for both [rotations].
+   =B: I'll keep supplies staged for both [priorities].
+  ORDER ko=다발성 외상 우선순위 4문장 순서 tag=대화 흐름 | why: 어느 부상이 먼저인지 묻고, 가장 큰 출혈이 먼저라는 답을 받고, 그쪽부터 세팅하고, 그동안 다른 부상 물품도 대기시켜 둬요. Whichever·that one·meanwhile이 앞 줄을 가리켜요.
+   1. Which injury needs us first?  (어느 부상을 먼저 처치해야 하나요/질문/speech)
+   2. Whichever is the biggest bleeding source comes first.  (가장 큰 출혈 부위가 먼저예요/기준/siren)
+   3. I'll set up for that one first.  (그쪽부터 세팅할게요/세팅/gear)
+   4. I'll keep supplies staged for the other injury meanwhile.  (그동안 다른 부상 물품도 대기시켜 둘게요/대기/pushpin)
+   swap12: Whichever is the biggest bleeding source comes first. | Which injury needs us first? | I'll set up for that one first. | I'll keep supplies staged for the other injury meanwhile.
+   swap23: Which injury needs us first? | I'll set up for that one first. | Whichever is the biggest bleeding source comes first. | I'll keep supplies staged for the other injury meanwhile.
+   swap34: Which injury needs us first? | Whichever is the biggest bleeding source comes first. | I'll keep supplies staged for the other injury meanwhile. | I'll set up for that one first.
+===== 12 신속 수혈 조율
+--12.0 EN: I'm tracking every unit as it goes in.
+   KO: 들어가는 팩 하나하나를 추적하고 있어요. (22)
+   DK: 들어가는 방울 하나하나를 추적하고 있어요. (23)
+   DK: 나가는 팩 하나하나를 추적하고 있어요. (21)
+   tag=추적 보고 icon=check | why: tracking … as it goes in은 들어가는 순간마다 따라가며 파악하는 진행형이에요. every unit으로 빠지는 팩이 없음을 약속해요.
+   chunks: I'm tracking / every unit / as it goes in / .  || decoy: as it gets labeled
+   =B: I'm tracking every [unit] as it goes in.
+    B: I'm tracking every [chart] as it goes in.
+    B: I'm tracking every [scale] as it goes in.
+    B: I'm tracking every [ticket] as it goes in.
+--12.1 EN: Next cooler is ready when this one's done.
+   KO: 이번 것이 끝나면 다음 쿨러가 준비돼 있어요. (25)
+   DK: 이번 것이 끝나면 다음 교대가 준비돼 있어요. (25)
+   DK: 이번 것이 끝나면 다음 쿨러가 열려 있어요. (24)
+   tag=다음 준비 icon=check | why: ready when this one's done처럼 조건을 뒤에 붙여 끊김 없이 이어진다고 안심시켜요. this one이 지금 쓰는 쿨러를 가리켜요.
+   chunks: Next cooler / is ready / when this one's done / .  || decoy: if this one's cold
+    B: Next cooler is [locked] when this one's done.
+    B: Next cooler is [open] when this one's done.
+   =B: Next cooler is [ready] when this one's done.
+    B: Next cooler is [closed] when this one's done.
+--12.2 EN: I'll call out totals as we transfuse.
+   KO: 수혈하는 동안 총계를 소리 내어 말할게요. (23)
+   DK: 수혈하는 동안 시각을 소리 내어 말할게요. (23)
+   DK: 수혈하는 동안 속도를 소리 내어 말할게요. (23)
+   tag=총계 호창 icon=mic | why: call out은 소리 내어 알린다는 구동사예요. as we transfuse로 수혈이 진행되는 내내 반복한다는 뜻을 더해요.
+   chunks: I'll call out / totals / as we transfuse / .  || decoy: the dates
+   =B: I'll call out [totals] as we transfuse.
+    B: I'll call out [names] as we transfuse.
+    B: I'll call out [labels] as we transfuse.
+    B: I'll call out [prices] as we transfuse.
+--12.3 EN: I'll record every unit and the time it went in.
+   KO: 팩 하나하나와 들어간 시각을 기록할게요. (22)
+   DK: 팩 하나하나와 나온 시각을 기록할게요. (21)
+   DK: 팩 하나하나와 들어간 속도를 기록할게요. (22)
+   tag=기록 약속 icon=pencil | why: record every unit and the time은 무엇을과 언제를 한 번에 기록한다는 말이에요. 수혈 기록은 몇 번째 팩이 몇 시에 들어갔는지가 핵심이에요.
+   chunks: I'll record / every unit / and the time / it went in / .  || decoy: and the cooler color
+    B: I'll record every unit and the [size] it went in.
+    B: I'll record every unit and the [brand] it went in.
+   =B: I'll record every unit and the [time] it went in.
+    B: I'll record every unit and the [cost] it went in.
+--12.4 EN: Tell me the total units so far.
+   KO: 지금까지 총 몇 팩인지 말씀해 주세요. (21)
+   DK: 지금까지 총 몇 시간인지 말씀해 주세요. (22)
+   DK: 지금까지 총 몇 명인지 말씀해 주세요. (21)
+   tag=총계 질문 icon=speech | why: Tell me …는 정보를 요청하는 가장 간단한 명령형이에요. so far로 지금까지의 누적을 묻고 있음을 분명히 해요.
+   chunks: Tell me / the total units / so far / .  || decoy: the total cost
+   =B: Tell me the [total] units so far.
+    B: Tell me the [first] units so far.
+    B: Tell me the [next] units so far.
+    B: Tell me the [last] units so far.
+  ORDER ko=신속 수혈 조율 4문장 순서 tag=대화 흐름 | why: 들어가는 팩을 추적하고, 팩마다 들어간 시각을 기록하고, 그 기록에서 총계를 소리 내어 말하고, 그 총계를 기록과 맞춰 보라고 해요. each one·that record·my totals가 앞 줄을 가리켜요.
+   1. I'm tracking every unit as it goes in.  (들어가는 팩을 하나하나 추적해요/추적/check)
+   2. I'll record each one with the time it went in.  (팩마다 들어간 시각을 기록할게요/기록/pencil)
+   3. I'll call out the totals from that record as we transfuse.  (그 기록으로 총계를 소리 내어 말할게요/호창/mic)
+   4. Check my totals against that record anytime.  (제 총계를 언제든 기록과 맞춰 보세요/대조/magnify)
+   swap12: I'll record each one with the time it went in. | I'm tracking every unit as it goes in. | I'll call out the totals from that record as we transfuse. | Check my totals against that record anytime.
+   swap23: I'm tracking every unit as it goes in. | I'll call out the totals from that record as we transfuse. | I'll record each one with the time it went in. | Check my totals against that record anytime.
+   swap34: I'm tracking every unit as it goes in. | I'll record each one with the time it went in. | Check my totals against that record anytime. | I'll call out the totals from that record as we transfuse.
+===== 13 태아 곤란 신속 분만
+--13.0 EN: Fetal heart rate is dropping — I'm ready to go.
+   KO: 태아 심박수가 떨어지고 있어요 — 저는 준비됐어요. (28)
+   DK: 태아 심박수가 떨어지고 있어요 — 저는 가운을 입었어요. (31)
+   DK: 태아 심박수가 떨어지고 있어요 — 저는 손을 씻었어요. (30)
+   tag=준비 보고 icon=siren | why: 대시 앞에 상황, 뒤에 내 준비 상태를 붙여 무슨 일이 벌어졌고 나는 바로 움직일 수 있다를 한 문장에 담아요. ready to go는 즉시 시작 가능하다는 관용 표현이에요.
+   chunks: Fetal heart rate / is dropping / — I'm ready / to go / .  || decoy: is being charted
+    B: Fetal heart rate is [rising] — I'm ready to go.
+   =B: Fetal heart rate is [dropping] — I'm ready to go.
+    B: Fetal heart rate is [steady] — I'm ready to go.
+    B: Fetal heart rate is [normal] — I'm ready to go.
+--13.1 EN: Warmer and neonatal team are standing by.
+   KO: 워머와 신생아팀이 대기 중이에요. (18)
+   DK: 워머와 신생아팀이 이동 중이에요. (18)
+   DK: 카트와 신생아팀이 대기 중이에요. (18)
+   tag=대기 보고 icon=check | why: standing by는 호출만 기다리며 준비해 둔 상태라는 병원 표현이에요. 두 대상을 and로 묶어 한 번에 상태를 보고해요.
+   chunks: Warmer / and neonatal team / are standing by / .  || decoy: are in the hall
+    B: Warmer and [adult] team are standing by.
+    B: Warmer and [dental] team are standing by.
+    B: Warmer and [geriatric] team are standing by.
+   =B: Warmer and [neonatal] team are standing by.
+--13.2 EN: Everything you need to deliver is right here.
+   KO: 분만에 필요한 모든 것이 바로 여기 있어요. (24)
+   DK: 이송에 필요한 모든 것이 바로 여기 있어요. (24)
+   DK: 봉합에 필요한 모든 것이 바로 여기 있어요. (24)
+   tag=준비 안내 icon=check | why: Everything you need는 필요한 건 전부를 한 덩어리로 말해 요청 전에 안심시켜요. right here로 위치까지 짚어 찾을 필요가 없게 해요.
+   chunks: Everything you need / to deliver / is right here / .  || decoy: on the counter
+    B: Everything you need to [transfer] is right here.
+   =B: Everything you need to [deliver] is right here.
+    B: Everything you need to [discharge] is right here.
+    B: Everything you need to [admit] is right here.
+--13.3 EN: I'll call for the neonatal team right now.
+   KO: 지금 바로 신생아팀을 요청할게요. (18)
+   DK: 신생아팀을 요청하려고 폰을 들어요. (19)
+   DK: 다시 신생아팀을 요청할게요. (15)
+   tag=요청 약속 icon=pager | why: I'll call for …는 제가 불러 올게요라는 즉각적인 약속이에요. right now로 지금 바로임을 분명히 해요.
+   chunks: I'll call / for the neonatal team / right now / .  || decoy: for a quiet room
+    B: I'll call for the neonatal [tray] right now.
+    B: I'll call for the neonatal [room] right now.
+    B: I'll call for the neonatal [floor] right now.
+   =B: I'll call for the neonatal [team] right now.
+--13.4 EN: Her heart rate dropped again — let's deliver now.
+   KO: 심박수가 다시 떨어졌어요 — 지금 분만합시다. (25)
+   DK: 심박수가 두 번 떨어졌어요 — 지금 분만합시다. (26)
+   DK: 심박수가 다시 떨어졌어요 — 분만 전에 준비해요. (27)
+   tag=분만 제안 icon=siren | why: again으로 이미 한 번 떨어졌음을 환기해 판단 근거를 보여 줘요. let's deliver now는 제안형이라 분만 결정은 집도의에게 맡기는 말투예요.
+   chunks: Her heart rate dropped / again / — let's deliver / now / .  || decoy: The room temperature dropped
+    B: Her heart rate [rose] again — let's deliver now.
+   =B: Her heart rate [dropped] again — let's deliver now.
+    B: Her heart rate [held] again — let's deliver now.
+    B: Her heart rate [jumped] again — let's deliver now.
+  ORDER ko=태아 곤란 신속 분만 4문장 순서 tag=대화 흐름 | why: 상황과 내 준비를 알리고, 그에 따라 신생아팀을 부르고, 그 팀과 워머가 대기 중이라고 알리고, 다시 떨어진 심박수에 분만을 제안해요. With that·The team I called·all of that이 앞 줄을 가리켜요.
+   1. Fetal heart rate is dropping — I'm ready to go.  (태아 심박수가 떨어지고 있어요 — 준비됐어요/보고/siren)
+   2. With that, I'll call for the neonatal team right now.  (그래서 지금 바로 신생아팀을 요청할게요/요청/pager)
+   3. The team I called and the warmer are standing by.  (부른 팀과 워머가 대기 중이에요/대기/check)
+   4. Her heart rate dropped again — with all of that standing by, let's deliver now.  (심박수가 다시 떨어졌어요 — 다 대기 중이니 지금 분만합시다/제안/siren)
+   swap12: With that, I'll call for the neonatal team right now. | Fetal heart rate is dropping — I'm ready to go. | The team I called and the warmer are standing by. | Her heart rate dropped again — with all of that standing by, let's deliver now.
+   swap23: Fetal heart rate is dropping — I'm ready to go. | The team I called and the warmer are standing by. | With that, I'll call for the neonatal team right now. | Her heart rate dropped again — with all of that standing by, let's deliver now.
+   swap34: Fetal heart rate is dropping — I'm ready to go. | With that, I'll call for the neonatal team right now. | Her heart rate dropped again — with all of that standing by, let's deliver now. | The team I called and the warmer are standing by.
+===== 14 응급 검체·계수 관리
+--14.0 EN: I'm labeling each specimen as it comes off.
+   KO: 검체가 나올 때마다 표시하고 있어요. (20)
+   DK: 트레이가 나올 때마다 표시하고 있어요. (21)
+   DK: 검체가 들어올 때마다 표시하고 있어요. (21)
+   tag=검체 표시 icon=lab | why: labeling each specimen as it comes off는 나오는 즉시 한 개씩 이름을 붙인다는 뜻이에요. 나중에 몰아서 하면 섞일 위험이 있어요.
+   chunks: I'm labeling / each specimen / as it comes off / .  || decoy: as it dries
+    B: I'm labeling each [sponge] as it comes off.
+    B: I'm labeling each [needle] as it comes off.
+   =B: I'm labeling each [specimen] as it comes off.
+    B: I'm labeling each [glove] as it comes off.
+--14.1 EN: Running count is documented despite the pace.
+   KO: 속도가 빨라도 진행 중인 계수는 기록되고 있어요. (27)
+   DK: 속도가 빨라도 진행 중인 계수는 저장되고 있어요. (27)
+   DK: 속도가 빨라도 진행 중인 계수는 공유되고 있어요. (27)
+   tag=계수 기록 icon=pencil | why: despite the pace는 속도에도 불구하고라는 뜻이에요. documented는 문서로 남긴이라는 수동태라 바쁜 와중에도 기록이 이어짐을 말해요.
+   chunks: Running count / is documented / despite the pace / .  || decoy: despite the noise
+   =B: Running count is documented [despite] the pace.
+    B: Running count is documented [during] the pace.
+    B: Running count is documented [after] the pace.
+    B: Running count is documented [before] the pace.
+--14.2 EN: We'll do a full reconciliation before closing.
+   KO: 봉합 전에 전체 대조 확인을 할게요. (20)
+   DK: 봉합 전에 전체 재고 확인을 할게요. (20)
+   DK: 봉합 전에 전체 포장 확인을 할게요. (20)
+   tag=대조 예고 icon=check | why: full reconciliation은 기준 계수와 현재 계수를 전부 맞춘다는 뜻이에요. before closing으로 마지막 점검 시점을 정해요.
+   chunks: We'll do / a full reconciliation / before closing / .  || decoy: a final photo
+    B: We'll do a full [presentation] before closing.
+    B: We'll do a full [observation] before closing.
+   =B: We'll do a full [reconciliation] before closing.
+    B: We'll do a full [orientation] before closing.
+--14.3 EN: I'll label every specimen the moment it comes off.
+   KO: 검체가 나오는 순간마다 표시할게요. (19)
+   DK: 트레이가 나오는 순간마다 표시할게요. (20)
+   DK: 검체가 들어오는 순간마다 표시할게요. (20)
+   tag=표시 약속 icon=lab | why: the moment it comes off는 나오는 바로 그 순간이라는 관용 표현이에요. 나중으로 미루지 않고 즉시 표시한다는 약속이에요.
+   chunks: I'll label / every specimen / the moment / it comes off / .  || decoy: every tray
+   =B: I'll label every specimen the [moment] it comes off.
+    B: I'll label every specimen the [reason] it comes off.
+    B: I'll label every specimen the [place] it comes off.
+    B: I'll label every specimen the [size] it comes off.
+--14.4 EN: Let's keep the count documented no matter the pace.
+   KO: 속도와 상관없이 계수를 계속 기록합시다. (22)
+   DK: 속도와 상관없이 검체 목록을 계속 기록합시다. (25)
+   DK: 속도와 상관없이 시각을 계속 기록합시다. (22)
+   tag=기록 유지 icon=pencil | why: no matter …는 와 상관없이라는 뜻이에요. 속도가 빨라져도 계수 기록이 끊기지 않게 하자는 팀 약속을 Let's로 제안해요.
+   chunks: Let's keep / the count documented / no matter / the pace / .  || decoy: no matter the shift
+    B: Let's keep the count documented no matter the [table].
+    B: Let's keep the count documented no matter the [tray].
+   =B: Let's keep the count documented no matter the [pace].
+    B: Let's keep the count documented no matter the [price].
+  ORDER ko=응급 검체·계수 관리 4문장 순서 tag=대화 흐름 | why: 검체를 나오는 대로 표시하고, 계수도 같은 방식으로 기록하고, 봉합 전에 둘을 대조하고, 맞지 않으면 닫기 전에 보고해요. the same way·both·Anything that doesn't match가 앞 줄을 가리켜요.
+   1. I'm labeling each specimen as it comes off.  (검체가 나올 때마다 표시하고 있어요/표시/lab)
+   2. The running count is documented the same way despite the pace.  (계수도 속도와 상관없이 같은 방식으로 기록돼요/기록/pencil)
+   3. We'll do a full reconciliation of both at closing.  (봉합 때 둘을 전체 대조할게요/대조/check)
+   4. Anything that doesn't match gets reported before we close.  (맞지 않는 건 닫기 전에 보고해요/보고/bell)
+   swap12: The running count is documented the same way despite the pace. | I'm labeling each specimen as it comes off. | We'll do a full reconciliation of both at closing. | Anything that doesn't match gets reported before we close.
+   swap23: I'm labeling each specimen as it comes off. | We'll do a full reconciliation of both at closing. | The running count is documented the same way despite the pace. | Anything that doesn't match gets reported before we close.
+   swap34: I'm labeling each specimen as it comes off. | The running count is documented the same way despite the pace. | Anything that doesn't match gets reported before we close. | We'll do a full reconciliation of both at closing.
+===== 15 개복 중 심정지
+--15.0 EN: No pulse — I'm starting compressions now.
+   KO: 맥박이 없어요 — 지금 흉부압박을 시작할게요. (25)
+   DK: 맥박이 없어요 — 압박하려고 침대를 낮춰요. (24)
+   DK: 맥박이 없어요 — 다시 흉부압박을 시작할게요. (25)
+   tag=압박 시작 icon=siren | why: 대시 앞에 근거(맥박 없음), 뒤에 행동을 말해 왜 시작하는지가 한 호흡에 전달돼요. starting … now는 지금 시작하는 중임을 알려요.
+   chunks: No pulse / — I'm starting / compressions now / .  || decoy: the music now
+    B: No pulse — I'm starting compressions [again].
+    B: No pulse — I'm starting compressions [first].
+    B: No pulse — I'm starting compressions [twice].
+   =B: No pulse — I'm starting compressions [now].
+--15.1 EN: Crash cart is here and epinephrine is drawn.
+   KO: 응급 카트가 왔고 에피네프린도 뽑아 뒀어요. (24)
+   DK: 응급 카트가 복도에 있고 에피네프린도 뽑아 뒀어요. (28)
+   DK: 응급 카트가 열렸고 에피네프린도 뽑아 뒀어요. (25)
+   tag=카트 보고 icon=check | why: 카트 도착과 약 준비를 짧은 수동태 두 개로 이어 보고해요. 코드에서 현재 상태를 빠르게 공유하는 방식이에요.
+   chunks: Crash cart / is here / and epinephrine is drawn / .  || decoy: is at the door
+    B: Crash cart is here and epinephrine is [capped].
+   =B: Crash cart is here and epinephrine is [drawn].
+    B: Crash cart is here and epinephrine is [wasted].
+    B: Crash cart is here and epinephrine is [expired].
+--15.2 EN: I'll run the code timing and call it out.
+   KO: 코드 타이밍을 재면서 소리 내어 말할게요. (23)
+   DK: 코드 타이밍을 재면서 에피네프린 시각을 말할게요. (27)
+   DK: 코드 타이밍을 재면서 압박 횟수를 말할게요. (24)
+   tag=타이밍 icon=bell | why: run the code timing은 코드 시간을 관리한다는 현장 표현이에요. call it out으로 소리 내어 알려 모두가 같은 시간 정보를 갖게 해요.
+   chunks: I'll run / the code timing / and call / it out / .  || decoy: the code cart
+    B: I'll run the code [volume] and call it out.
+    B: I'll run the code [weight] and call it out.
+    B: I'll run the code [tone] and call it out.
+   =B: I'll run the code [timing] and call it out.
+--15.3 EN: Compressions are started — someone call the code now.
+   KO: 흉부압박이 시작됐어요 — 누가 지금 코드를 불러 주세요. (31)
+   DK: 흉부압박이 교대됐어요 — 누가 지금 코드를 불러 주세요. (31)
+   DK: 흉부압박이 이어지고 있어요 — 누가 지금 코드를 불러 주세요. (34)
+   tag=코드 호출 icon=pager | why: someone을 써서 특정인이 아닌 곁의 누군가에게 부탁하는 현장 말투예요. now로 지체 없이 부르라는 급함을 전해요.
+   chunks: Compressions are started / — someone call / the code / now / .  || decoy: the bed
+    B: Compressions are started — someone [name] the code now.
+   =B: Compressions are started — someone [call] the code now.
+    B: Compressions are started — someone [mark] the code now.
+    B: Compressions are started — someone [copy] the code now.
+--15.4 EN: I'll draw epinephrine and keep timing the code.
+   KO: 에피네프린을 뽑으면서 코드 타이밍을 계속 잴게요. (27)
+   DK: 에피네프린을 뽑기 전에 라벨을 확인해요. (22)
+   DK: 에피네프린을 뽑으면서 압박 횟수를 계속 셀게요. (26)
+   tag=약 준비 icon=pill | why: draw … and keep timing …에서 and가 약 준비와 시간 관리를 동시에 맡는다는 뜻이에요. keep으로 한 번이 아니라 계속한다고 약속해요.
+   chunks: I'll draw epinephrine / and keep timing / the code / .  || decoy: and keep the vial cold
+    B: I'll [hang] epinephrine and keep timing the code.
+    B: I'll [pour] epinephrine and keep timing the code.
+    B: I'll [freeze] epinephrine and keep timing the code.
+   =B: I'll [draw] epinephrine and keep timing the code.
+  ORDER ko=개복 중 심정지 4문장 순서 tag=대화 흐름 | why: 압박을 시작하고, 압박이 시작됐으니 코드를 부르게 하고, 부른 코드에 카트가 도착해 약이 준비되고, 카트가 온 상태에서 타이밍을 재요. you called·With the cart here가 앞 줄을 가리켜요.
+   1. No pulse — I'm starting compressions now.  (맥박이 없어요 — 지금 압박을 시작해요/시작/siren)
+   2. Compressions are started — someone call the code now.  (압박이 시작됐어요 — 누가 지금 코드를 불러 주세요/호출/pager)
+   3. The crash cart you called for is here and epinephrine is drawn.  (부르신 응급 카트가 왔고 에피네프린도 뽑아 뒀어요/보고/check)
+   4. With the cart here, I'll run the code timing and call it out.  (카트가 왔으니 코드 타이밍을 재며 말할게요/타이밍/bell)
+   swap12: Compressions are started — someone call the code now. | No pulse — I'm starting compressions now. | The crash cart you called for is here and epinephrine is drawn. | With the cart here, I'll run the code timing and call it out.
+   swap23: No pulse — I'm starting compressions now. | The crash cart you called for is here and epinephrine is drawn. | Compressions are started — someone call the code now. | With the cart here, I'll run the code timing and call it out.
+   swap34: No pulse — I'm starting compressions now. | Compressions are started — someone call the code now. | With the cart here, I'll run the code timing and call it out. | The crash cart you called for is here and epinephrine is drawn.
+===== 16 산모 대량 출혈 위기
+--16.0 EN: Activating the OB massive transfusion protocol.
+   KO: 산과 대량수혈 프로토콜을 개시하고 있어요. (23)
+   DK: 프로토콜을 개시하려고 번호를 눌러요. (20)
+   DK: 산과 대량수혈 체크리스트를 개시하고 있어요. (24)
+   tag=프로토콜 개시 icon=siren | why: Activating은 주어 I를 줄인 현장 말투예요. 프로토콜 이름을 정확히 말해야 혈액은행과 팀이 같은 절차를 떠올려요.
+   chunks: Activating / the OB massive / transfusion protocol / .  || decoy: discharge protocol
+   =B: Activating the OB [massive] transfusion protocol.
+    B: Activating the OB [minor] transfusion protocol.
+    B: Activating the OB [tiny] transfusion protocol.
+    B: Activating the OB [brief] transfusion protocol.
+--16.1 EN: Uterotonics are in and I'm calling for more blood.
+   KO: 자궁수축제는 투여됐고 혈액을 더 요청하고 있어요. (27)
+   DK: 자궁수축제는 투여됐고 혈액을 먼저 요청하고 있어요. (28)
+   DK: 자궁수축제는 투여됐고 혈액을 요청하려고 번호를 봐요. (29)
+   tag=상황 보고 icon=pill | why: Uterotonics are in은 들어갔다(투여됐다)는 병원 속어예요. 약을 보고한 뒤 and로 다음 행동을 이어 지금 하는 일을 알려요.
+   chunks: Uterotonics / are in / and I'm calling / for more blood / .  || decoy: for more sutures
+    B: Uterotonics are [out] and I'm calling for more blood.
+    B: Uterotonics are [off] and I'm calling for more blood.
+   =B: Uterotonics are [in] and I'm calling for more blood.
+    B: Uterotonics are [over] and I'm calling for more blood.
+--16.2 EN: I'll track EBL and units as we go.
+   KO: 진행하면서 추정 실혈량과 팩을 추적할게요. (23)
+   DK: 진행하면서 추정 실혈량과 흡인통을 추적할게요. (25)
+   DK: 진행하면서 추정 실혈량과 소변량을 추적할게요. (25)
+   tag=추적 약속 icon=chartup | why: track A and B로 추정 실혈량과 들어간 팩을 함께 본다고 말해요. as we go는 상황이 진행되는 내내라는 뜻이에요.
+   chunks: I'll track EBL / and units / as we go / .  || decoy: as we rotate
+   =B: I'll track EBL and [units] as we go.
+    B: I'll track EBL and [forms] as we go.
+    B: I'll track EBL and [tags] as we go.
+    B: I'll track EBL and [orders] as we go.
+--16.3 EN: Blood bank is sending units for the massive transfusion.
+   KO: 혈액은행이 대량수혈용 팩을 보내고 있어요. (23)
+   DK: 혈액은행이 대량수혈용 팩을 세고 있어요. (22)
+   DK: 혈액은행이 대량수혈용 팩을 받고 있어요. (22)
+   tag=혈액 도착 icon=pager | why: is sending은 진행형이라 지금 팩이 오는 중임을 알려요. for the massive transfusion이 보내는 목적을 밝혀요.
+   chunks: Blood bank / is sending units / for the massive / transfusion / .  || decoy: for the donor drive
+    B: Blood bank is [returning] units for the massive transfusion.
+    B: Blood bank is [storing] units for the massive transfusion.
+   =B: Blood bank is [sending] units for the massive transfusion.
+    B: Blood bank is [counting] units for the massive transfusion.
+--16.4 EN: I'm calling for uterotonics and tracking every unit.
+   KO: 자궁수축제를 요청하면서 팩 하나하나를 추적하고 있어요. (30)
+   DK: 자궁수축제를 요청하면서 쿨러 하나하나를 추적하고 있어요. (31)
+   DK: 자궁수축제를 요청하면서 팩 하나하나를 표시하고 있어요. (30)
+   tag=요청·추적 icon=chartup | why: -ing 두 개를 and로 이어 동시에 하고 있는 두 일을 말해요. every unit으로 팩이 하나도 빠지지 않음을 강조해요.
+   chunks: I'm calling / for uterotonics / and tracking / every unit / .  || decoy: every drain
+   =B: I'm calling for [uterotonics] and tracking every unit.
+    B: I'm calling for [sutures] and tracking every unit.
+    B: I'm calling for [retractors] and tracking every unit.
+    B: I'm calling for [clamps] and tracking every unit.
+  ORDER ko=산모 대량 출혈 4문장 순서 tag=대화 흐름 | why: 프로토콜을 개시하고, 혈액은행이 팩을 보내는 상황을 알리고, 그 팩 말고도 더 요청하고, 도착하는 팩을 추적해요. for it·beyond those·arrives가 앞 줄을 가리켜요.
+   1. Activating the OB massive transfusion protocol.  (산과 대량수혈 프로토콜을 개시해요/개시/siren)
+   2. Blood bank is sending units for it.  (혈액은행이 그걸 위해 팩을 보내고 있어요/도착/pager)
+   3. Uterotonics are in, and I'm calling for even more units beyond those.  (자궁수축제는 들어갔고 그 외 팩도 더 요청해요/요청/pill)
+   4. I'll track EBL and every unit that arrives as we go.  (진행하며 추정 실혈량과 도착하는 팩을 추적해요/추적/chartup)
+   swap12: Blood bank is sending units for it. | Activating the OB massive transfusion protocol. | Uterotonics are in, and I'm calling for even more units beyond those. | I'll track EBL and every unit that arrives as we go.
+   swap23: Activating the OB massive transfusion protocol. | Uterotonics are in, and I'm calling for even more units beyond those. | Blood bank is sending units for it. | I'll track EBL and every unit that arrives as we go.
+   swap34: Activating the OB massive transfusion protocol. | Blood bank is sending units for it. | I'll track EBL and every unit that arrives as we go. | Uterotonics are in, and I'm calling for even more units beyond those.
+===== 17 신생아 소생 지원
+--17.0 EN: Baby's on the warmer — starting resuscitation.
+   KO: 아기가 워머 위에 있어요 — 소생술을 시작할게요. (27)
+   DK: 아기가 워머 위에 있어요 — 소생술하기 전에 장갑을 껴요. (32)
+   DK: 아기가 저울 위에 있어요 — 소생술을 시작할게요. (27)
+   tag=소생 시작 icon=baby | why: 대시 앞에 위치, 뒤에 시작하는 행동을 붙이는 현장 보고 틀이에요. starting resuscitation은 주어 I를 줄인 진행형이에요.
+   chunks: Baby's / on the warmer / — starting resuscitation / .  || decoy: on the table
+    B: Baby's on the [scale] — starting resuscitation.
+   =B: Baby's on the [warmer] — starting resuscitation.
+    B: Baby's on the [cart] — starting resuscitation.
+    B: Baby's on the [crib] — starting resuscitation.
+--17.1 EN: Bag-mask ready and suction is set.
+   KO: 백밸브마스크는 준비됐고 흡인도 세팅됐어요. (23)
+   DK: 백밸브마스크는 준비됐고 흡인도 켜졌어요. (22)
+   DK: 산소마스크는 준비됐고 흡인도 세팅됐어요. (22)
+   tag=장비 보고 icon=check | why: ready와 set은 장비를 쓸 수 있는 상태로 두었다는 뜻의 짝이에요. 앞은 형용사, 뒤는 수동태로 말을 바꿔 두 장비를 구분해요.
+   chunks: Bag-mask ready / and suction / is set / .  || decoy: the tape is cut
+    B: Bag-mask [stuck] and suction is set.
+    B: Bag-mask [loose] and suction is set.
+    B: Bag-mask [empty] and suction is set.
+   =B: Bag-mask [ready] and suction is set.
+--17.2 EN: Is the neonatal team taking over now?
+   KO: 신생아팀이 지금 인계받고 있나요? (18)
+   DK: 신생아팀이 지금 도착했나요? (15)
+   DK: 신생아팀이 지금 인계하고 있나요? (18)
+   tag=인계 질문 icon=speech | why: taking over는 책임을 넘겨받는다는 구동사예요. now로 지금 소생 책임이 넘어가는지 시점을 물어 질문을 짧게 줄여요.
+   chunks: Is the neonatal team / taking over / now / ?  || decoy: waiting outside
+    B: Is the [adult] team taking over now?
+   =B: Is the [neonatal] team taking over now?
+    B: Is the [dental] team taking over now?
+    B: Is the [geriatric] team taking over now?
+--17.3 EN: I'll bring the bag-mask and set up suction.
+   KO: 백밸브마스크를 가져오고 흡인을 세팅할게요. (23)
+   DK: 백밸브마스크를 가져오고 튜빙을 세팅할게요. (23)
+   DK: 산소마스크를 가져오고 흡인을 세팅할게요. (22)
+   tag=장비 약속 icon=pushpin | why: bring과 set up을 and로 이어 가져오는 일과 세팅하는 일을 한 문장으로 약속해요. set up은 쓸 수 있게 갖춰 놓는다는 뜻이에요.
+   chunks: I'll bring / the bag-mask / and set up / suction / .  || decoy: mark the chart
+    B: I'll [borrow] the bag-mask and set up suction.
+    B: I'll [wash] the bag-mask and set up suction.
+    B: I'll [hide] the bag-mask and set up suction.
+   =B: I'll [bring] the bag-mask and set up suction.
+--17.4 EN: The neonatal team is ready to take over now.
+   KO: 신생아팀이 지금 인계받을 준비가 됐어요. (22)
+   DK: 신생아팀이 지금 이송할 준비가 됐어요. (21)
+   DK: 신생아팀이 지금 도울 준비가 됐어요. (20)
+   tag=인계 준비 icon=handshake2 | why: ready to take over는 넘겨받을 준비가 됐다는 말이에요. now가 붙어 이제 책임이 넘어가는 시점임을 알려요.
+   chunks: The neonatal team / is ready / to take over / now / .  || decoy: to rehearse
+    B: The neonatal team is ready to take [up] now.
+   =B: The neonatal team is ready to take [over] now.
+    B: The neonatal team is ready to take [out] now.
+    B: The neonatal team is ready to take [off] now.
+  ORDER ko=신생아 소생 지원 4문장 순서 tag=대화 흐름 | why: 아기를 워머에 두고 소생술을 시작하고, 그 소생을 위해 장비를 갖췄다고 알리고, 그 준비가 된 상태에서 팀의 인계를 묻고, 인계받을 때 보고하겠다고 약속해요. for it·all that·them이 앞 줄을 가리켜요.
+   1. Baby's on the warmer — starting resuscitation.  (아기가 워머 위에 있어요 — 소생술을 시작해요/시작/baby)
+   2. Bag-mask ready and suction is set for it.  (그걸 위해 백밸브마스크와 흡인을 갖췄어요/장비/check)
+   3. With all that set, is the neonatal team taking over now?  (다 갖췄는데 신생아팀이 지금 인계받나요/질문/speech)
+   4. We'll give them a full report when they take over.  (인계받을 때 전체 보고를 드릴게요/보고/handshake2)
+   swap12: Bag-mask ready and suction is set for it. | Baby's on the warmer — starting resuscitation. | With all that set, is the neonatal team taking over now? | We'll give them a full report when they take over.
+   swap23: Baby's on the warmer — starting resuscitation. | With all that set, is the neonatal team taking over now? | Bag-mask ready and suction is set for it. | We'll give them a full report when they take over.
+   swap34: Baby's on the warmer — starting resuscitation. | Bag-mask ready and suction is set for it. | We'll give them a full report when they take over. | With all that set, is the neonatal team taking over now?
+===== 18 파종성 응고장애
+--18.0 EN: She's oozing everywhere — this is DIC.
+   KO: 곳곳에서 배어 나오고 있어요 — 이건 DIC예요. (27)
+   DK: 곳곳에서 흘러나오고 있어요 — 이건 DIC예요. (26)
+   DK: 곳곳에서 배어 나오고 있어요 — 이건 감염이에요. (27)
+   tag=출혈 보고 icon=siren | why: oozing은 스며 나오다라는 뜻으로 조금씩 계속 나오는 출혈을 묘사해요. 증상을 먼저 말하고 대시 뒤에 이름을 붙여요.
+   chunks: She's oozing / everywhere / — this is DIC / .  || decoy: from the port
+    B: She's [swelling] everywhere — this is DIC.
+    B: She's [sweating] everywhere — this is DIC.
+   =B: She's [oozing] everywhere — this is DIC.
+    B: She's [shaking] everywhere — this is DIC.
+--18.1 EN: I need FFP, platelets, and cryo now.
+   KO: 지금 FFP와 혈소판, 크라이오가 필요해요. (24)
+   DK: 지금 FFP와 혈소판, 크라이오가 모자라요. (24)
+   DK: 지금 FFP와 혈소판, 크라이오가 쓰이고 있어요. (27)
+   tag=제제 요청 icon=pill | why: 필요한 것을 이름으로 곧장 나열하고 now를 붙이는 요청이에요. 응급에서는 설명보다 목록이 급함을 전하고, 제제는 처방에 따라 전달해요.
+   chunks: I need / FFP / , platelets / , and cryo now / .  || decoy: a warmer
+   =B: I need FFP, [platelets], and cryo now.
+    B: I need FFP, [gloves], and cryo now.
+    B: I need FFP, [forms], and cryo now.
+    B: I need FFP, [lids], and cryo now.
+--18.2 EN: Blood bank is preparing the products.
+   KO: 혈액은행이 제제를 준비하고 있어요. (19)
+   DK: 혈액은행이 제제를 분류하고 있어요. (19)
+   DK: 혈액은행이 제제를 보내고 있어요. (18)
+   tag=준비 보고 icon=pager | why: is preparing은 지금 진행 중인 준비를 말해요. the products는 혈액 제제를 가리키는 병원 표현이라 하나하나 되풀이하지 않아도 돼요.
+   chunks: Blood bank / is preparing / the products / .  || decoy: the schedule
+    B: Blood bank is preparing the [tickets].
+    B: Blood bank is preparing the [meals].
+   =B: Blood bank is preparing the [products].
+    B: Blood bank is preparing the [rooms].
+--18.3 EN: I'll call blood bank and request more platelets.
+   KO: 혈액은행에 전화해서 혈소판을 더 요청할게요. (24)
+   DK: 혈액은행에 전화해서 혈소판을 먼저 요청할게요. (25)
+   DK: 혈액은행에 메시지로 혈소판을 더 요청할게요. (24)
+   tag=요청 약속 icon=pager | why: call … and request …는 먼저 전화하고 이어서 요청 내용을 말한다는 순서를 한 문장에 담아요. more를 붙여 이미 받은 것에 더해 달라는 뜻을 전해요.
+   chunks: I'll call blood bank / and request / more platelets / .  || decoy: more tubing
+   =B: I'll call blood bank and [request] more platelets.
+    B: I'll call blood bank and [inspect] more platelets.
+    B: I'll call blood bank and [price] more platelets.
+    B: I'll call blood bank and [wrap] more platelets.
+--18.4 EN: She's oozing from everywhere — we need FFP and cryo now.
+   KO: 곳곳에서 배어 나오고 있어요 — 지금 FFP와 크라이오가 필요해요. (37)
+   DK: 곳곳에서 흘러나오고 있어요 — 지금 FFP와 크라이오가 필요해요. (36)
+   DK: 곳곳에서 배어 나오고 있어요 — 지금 FFP와 크라이오가 모자라요. (37)
+   tag=제제 필요 icon=siren | why: from everywhere처럼 전치사를 더해 한 곳이 아니라 여러 곳에서임을 강조해요. 증상을 말한 뒤 we need로 요청을 이어요.
+   chunks: She's oozing / from everywhere / — we need / FFP and cryo now / .  || decoy: from the drain
+    B: She's oozing from everywhere — we need FFP and [iron] now.
+    B: She's oozing from everywhere — we need FFP and [saline] now.
+   =B: She's oozing from everywhere — we need FFP and [cryo] now.
+    B: She's oozing from everywhere — we need FFP and [albumin] now.
+  ORDER ko=파종성 응고장애 4문장 순서 tag=대화 흐름 | why: 출혈을 알리고, 필요한 제제를 나열하고, 그 전체를 혈액은행에 요청하고, 혈액은행이 그 제제를 준비 중이라고 확인해요. all of that·those products가 앞 줄을 가리켜요.
+   1. She's oozing everywhere — this is DIC.  (곳곳에서 배어 나와요 — 이건 DIC예요/보고/siren)
+   2. I need FFP, platelets, and cryo now.  (지금 FFP와 혈소판, 크라이오가 필요해요/요청/pill)
+   3. I'll call blood bank and request all of that.  (혈액은행에 전화해 전부 요청할게요/전화/pager)
+   4. Blood bank is preparing those products now.  (혈액은행이 그 제제를 준비 중이에요/확인/check)
+   swap12: I need FFP, platelets, and cryo now. | She's oozing everywhere — this is DIC. | I'll call blood bank and request all of that. | Blood bank is preparing those products now.
+   swap23: She's oozing everywhere — this is DIC. | I'll call blood bank and request all of that. | I need FFP, platelets, and cryo now. | Blood bank is preparing those products now.
+   swap34: She's oozing everywhere — this is DIC. | I need FFP, platelets, and cryo now. | Blood bank is preparing those products now. | I'll call blood bank and request all of that.
+===== 19 손상통제 수술 전환
+--19.0 EN: Let's pack and do a temporary closure.
+   KO: 패킹하고 임시 봉합을 합시다. (16)
+   DK: 패킹하고 나서 물품을 찾읍시다. (17)
+   DK: 세척하고 임시 봉합을 합시다. (16)
+   tag=전환 제안 icon=scalpel | why: Let's로 팀이 함께 할 일을 제안해요. 수술 방법의 전환은 집도의가 정하니 간호사는 제안이나 질문으로 말하는 쪽이 안전해요.
+   chunks: Let's pack / and do / a temporary closure / .  || decoy: a ward round
+    B: Let's [irrigate] and do a temporary closure.
+    B: Let's [retract] and do a temporary closure.
+    B: Let's [drape] and do a temporary closure.
+   =B: Let's [pack] and do a temporary closure.
+--19.1 EN: We'll resuscitate in ICU and come back.
+   KO: 중환자실에서 소생시키고 다시 돌아올게요. (22)
+   DK: 중환자실에서 안정시키고 다시 돌아올게요. (22)
+   DK: 중환자실에서 소생시키고 다시 보낼게요. (21)
+   tag=계획 공유 icon=hospital | why: We'll …로 팀 전체의 계획을 말해요. in ICU로 소생을 이어 갈 장소를, come back으로 수술을 이어서 한다는 뜻을 담아요.
+   chunks: We'll resuscitate / in ICU / and come back / .  || decoy: with the team
+    B: We'll resuscitate in [lab] and come back.
+   =B: We'll resuscitate in [ICU] and come back.
+    B: We'll resuscitate in [clinic] and come back.
+    B: We'll resuscitate in [office] and come back.
+--19.2 EN: I have the temp closure supplies ready.
+   KO: 임시 봉합 물품을 준비해 뒀어요. (18)
+   DK: 임시 봉합 물품을 꺼내 뒀어요. (17)
+   DK: 임시 봉합 물품을 세어 뒀어요. (17)
+   tag=물품 준비 icon=check | why: have + 물건 + ready는 준비해 둔 상태라는 뜻이에요. 미리 준비해 두었다고 보고하면 결정이 났을 때 바로 움직일 수 있어요.
+   chunks: I have / the temp closure supplies / ready / .  || decoy: the transport monitor
+    B: I have the temp closure [forms] ready.
+    B: I have the temp closure [notes] ready.
+    B: I have the temp closure [orders] ready.
+   =B: I have the temp closure [supplies] ready.
+--19.3 EN: Let's do a temporary closure and get her to ICU.
+   KO: 임시 봉합을 하고 중환자실로 옮깁시다. (21)
+   DK: 임시 봉합을 하고 엘리베이터로 옮깁시다. (22)
+   DK: 임시 봉합을 하고 대기실로 옮깁시다. (20)
+   tag=이송 제안 icon=hospital | why: 두 단계를 and로 이어 봉합 후 이송이라는 순서를 말해요. get her to ICU의 get은 데려가다라는 뜻이에요.
+   chunks: Let's do / a temporary closure / and get her / to ICU / .  || decoy: to the lounge
+    B: Let's do a temporary [delivery] and get her to ICU.
+   =B: Let's do a temporary [closure] and get her to ICU.
+    B: Let's do a temporary [session] and get her to ICU.
+    B: Let's do a temporary [anesthesia] and get her to ICU.
+--19.4 EN: We'll pack now and come back to close later.
+   KO: 지금 패킹하고 나중에 다시 와서 봉합할게요. (24)
+   DK: 지금 패킹하고 곧 다시 와서 봉합할게요. (22)
+   DK: 지금 패킹하고 나중에 다시 와서 소독할게요. (24)
+   tag=재수술 계획 icon=calendar | why: pack now and come back later처럼 지금 할 일과 나중에 할 일을 시간 낱말로 나눠 말해요. come back to close는 같은 환자에게 돌아와 봉합한다는 뜻이에요.
+   chunks: We'll pack / now / and come back / to close later / .  || decoy: to text later
+    B: We'll pack now and come [up] to close later.
+    B: We'll pack now and come [out] to close later.
+    B: We'll pack now and come [down] to close later.
+   =B: We'll pack now and come [back] to close later.
+  ORDER ko=손상통제 수술 전환 4문장 순서 tag=대화 흐름 | why: 패킹과 임시 봉합을 제안하고, 그 봉합 물품이 준비됐다고 알리고, 물품이 준비된 상태에서 봉합 후 중환자실 이송을 말하고, 그곳에서 소생시키고 돌아온다고 계획을 맺어요. that closure·With those supplies ready·there가 앞 줄을 가리켜요.
+   1. Let's pack and do a temporary closure.  (패킹하고 임시 봉합을 합시다/제안/scalpel)
+   2. I have the supplies for that closure ready.  (그 봉합 물품을 준비해 뒀어요/준비/check)
+   3. With those supplies ready, let's get her to ICU after that closure.  (물품이 준비됐으니 그 봉합 후 중환자실로 옮깁시다/이송/hospital)
+   4. We'll resuscitate her there and come back.  (거기서 소생시키고 다시 돌아올게요/계획/calendar)
+   swap12: I have the supplies for that closure ready. | Let's pack and do a temporary closure. | With those supplies ready, let's get her to ICU after that closure. | We'll resuscitate her there and come back.
+   swap23: Let's pack and do a temporary closure. | With those supplies ready, let's get her to ICU after that closure. | I have the supplies for that closure ready. | We'll resuscitate her there and come back.
+   swap34: Let's pack and do a temporary closure. | I have the supplies for that closure ready. | We'll resuscitate her there and come back. | With those supplies ready, let's get her to ICU after that closure.
+===== 20 다중 위기 동시 대응
+--20.0 EN: You take the airway, I'll manage the transfusion.
+   KO: 선생님이 기도를 맡으시면 저는 수혈을 관리할게요. (27)
+   DK: 선생님이 머리를 맡으시면 저는 수혈을 관리할게요. (27)
+   DK: 선생님이 기도를 맡으시면 저는 수액을 관리할게요. (27)
+   tag=역할 분담 icon=handshake2 | why: You take …, I'll …처럼 두 사람의 몫을 쉼표로 나란히 말하면 누가 무엇을 하는지 한 번에 정리돼요. 역할은 팀이 같이 정하는 거예요.
+   chunks: You take / the airway / , I'll manage / the transfusion / .  || decoy: the sign-up list
+   =B: You take the [airway], I'll manage the transfusion.
+    B: You take the [cart], I'll manage the transfusion.
+    B: You take the [door], I'll manage the transfusion.
+    B: You take the [phone], I'll manage the transfusion.
+--20.1 EN: Let's assign a role to each pair of hands.
+   KO: 손 하나하나에 역할을 배정합시다. (18)
+   DK: 손 하나하나에 장비를 배정합시다. (18)
+   DK: 손 하나하나에 구역을 배정합시다. (18)
+   tag=역할 배정 icon=handshake2 | why: assign a role to each …는 사람마다 맡을 일을 정해 준다는 구조예요. pair of hands로 사람을 손으로 세어 일손이 모자란 장면을 생생하게 말해요.
+   chunks: Let's assign / a role / to each pair / of hands / .  || decoy: a radio
+    B: Let's assign a [shift] to each pair of hands.
+    B: Let's assign a [break] to each pair of hands.
+   =B: Let's assign a [role] to each pair of hands.
+    B: Let's assign a [seat] to each pair of hands.
+--20.2 EN: I'll keep the whole team updated as it changes.
+   KO: 상황이 바뀌는 대로 팀 전체에 계속 알릴게요. (25)
+   DK: 상황이 바뀌는 대로 팀 전체에 계속 방송할게요. (26)
+   DK: 상황이 바뀌는 대로 방 전체에 계속 알릴게요. (25)
+   tag=상황 공유 icon=speaker | why: keep + 목적어 + updated는 계속 최신 상태로 알려 주다라는 뜻이에요. 위기에서는 한 번 알리고 끝내지 않고 바뀔 때마다 공유해야 해요.
+   chunks: I'll keep / the whole team / updated / as it changes / .  || decoy: as it clears
+   =B: I'll keep the [whole] team updated as it changes.
+    B: I'll keep the [half] team updated as it changes.
+    B: I'll keep the [new] team updated as it changes.
+    B: I'll keep the [night] team updated as it changes.
+--20.3 EN: I'll manage the airway while you handle the bleeding.
+   KO: 선생님이 출혈을 처치하시는 동안 저는 기도를 관리할게요. (31)
+   DK: 선생님이 출혈을 처치하시는 동안 저는 산소를 관리할게요. (31)
+   DK: 선생님이 출혈을 처치하시는 동안 저는 수액을 관리할게요. (31)
+   tag=역할 약속 icon=handshake2 | why: while로 두 일이 동시에 진행됨을 보여 줘요. manage와 handle을 나눠 써 두 사람의 몫을 구분해요.
+   chunks: I'll manage / the airway / while you handle / the bleeding / .  || decoy: the tape
+    B: I'll manage the airway while you handle the [swelling].
+    B: I'll manage the airway while you handle the [rash].
+   =B: I'll manage the airway while you handle the [bleeding].
+    B: I'll manage the airway while you handle the [bruise].
+--20.4 EN: We'll change roles as the situation changes.
+   KO: 상황이 바뀌는 대로 역할도 바꿀게요. (20)
+   DK: 상황이 바뀌는 대로 위치도 바꿀게요. (20)
+   DK: 상황이 바뀌는 대로 순서도 바꿀게요. (20)
+   tag=역할 변경 icon=redo | why: as the situation changes로 바꾸는 때를 상황이 변하는 순간으로 잡아요. 처음 분담에 고정하지 않고 상황에 맞춰 바꾼다는 뜻이에요.
+   chunks: We'll change roles / as the situation / changes / .  || decoy: as the clock
+   =B: We'll change [roles] as the situation changes.
+    B: We'll change [names] as the situation changes.
+    B: We'll change [colors] as the situation changes.
+    B: We'll change [labels] as the situation changes.
+  ORDER ko=다중 위기 동시 대응 4문장 순서 tag=대화 흐름 | why: 손마다 역할을 배정하자고 하고, 배정된 역할로 서로의 몫을 말하고, 그 역할을 상황에 따라 바꾸겠다고 하고, 바뀔 때마다 팀에 알려요. With roles assigned·those roles·every swap이 앞 줄을 가리켜요.
+   1. Let's assign a role to each pair of hands.  (손 하나하나에 역할을 배정합시다/배정/handshake2)
+   2. With roles assigned, you take the airway, I'll manage the transfusion.  (역할이 정해졌으니 선생님은 기도를, 저는 수혈을 맡을게요/분담/handshake2)
+   3. We'll swap those roles as the situation changes.  (상황이 바뀌는 대로 그 역할을 바꿀게요/변경/redo)
+   4. I'll keep the whole team updated on every swap.  (바뀔 때마다 팀 전체에 계속 알릴게요/공유/speaker)
+   swap12: With roles assigned, you take the airway, I'll manage the transfusion. | Let's assign a role to each pair of hands. | We'll swap those roles as the situation changes. | I'll keep the whole team updated on every swap.
+   swap23: Let's assign a role to each pair of hands. | We'll swap those roles as the situation changes. | With roles assigned, you take the airway, I'll manage the transfusion. | I'll keep the whole team updated on every swap.
+   swap34: Let's assign a role to each pair of hands. | With roles assigned, you take the airway, I'll manage the transfusion. | I'll keep the whole team updated on every swap. | We'll swap those roles as the situation changes.
