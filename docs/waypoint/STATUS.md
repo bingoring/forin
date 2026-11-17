@@ -6,6 +6,8 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-10-28
 
+> ✅ **OR 한 번에 저작 묶음 4 — core-language-or·or-bleeding 합침(2026-11-17).** keyPhrase 11문장 교체(설명 주체를 집도의·마취팀이 통역을 통해, MTP는 혈액은행 연락, 승압제는 마취과 등), chunks 29문장, OR 위반 0. TASK.md에 '~려고' 쏠림 규칙 추가. 머지·배포 보류. 묶음 5(emergency-open·core-family-or) 진행 중, 남은 OR 25주제.
+>
 > ✅ **OR 한 번에 저작 묶음 2·3 — preop-verification·tourniquet·preop-assessment·difficult-airway 합침(2026-11-17).** keyPhrase 14문장 교체(커프 폭·감압은 집도의·FONA 복창 등), chunks 20문장, OR 위반 0. 머지·배포는 사용자 지시로 보류. 남은 OR 27주제.
 >
 > ✅ **OR 한 번에 저작 묶음 1 — massive-transfusion·count 합침(2026-10-30).** keyPhrase 3문장 교체(반출 금지·수혈 중단·혈액은행 지역 주문), chunks 15문장 다시 자름, OR 위반 0. 머지·배포는 사용자 지시로 보류. 묶음 2(preop-verification·tourniquet)는 검토 중.
