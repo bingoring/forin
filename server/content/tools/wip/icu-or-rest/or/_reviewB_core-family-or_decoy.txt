@@ -1,0 +1,624 @@
+
+## S0 대기실 안내
+0.0 decoy='quietly' | ko: 여기 이 수술 대기 구역에서 기다리시면 돼요.
+   chunks: You can wait / right here / in the surgical / waiting area / .
+   r0: [quietly] right here in the surgical waiting area .
+   r1: You can wait [quietly] in the surgical waiting area .
+   r2: You can wait right here [quietly] waiting area .
+   r3: You can wait right here in the surgical [quietly] .
+0.1 decoy='and vending machines' | ko: 복도 바로 저쪽에 커피와 화장실이 있어요.
+   chunks: There's coffee / and restrooms / just down the hall / .
+   r0: [and vending machines] and restrooms just down the hall .
+   r1: There's coffee [and vending machines] just down the hall .
+   r2: There's coffee and restrooms [and vending machines] .
+0.2 decoy='with the paperwork' | ko: 소식이 있으면 저희가 여기로 와서 알려드릴게요.
+   chunks: We'll come find you / here / with any updates / .
+   r0: [with the paperwork] here with any updates .
+   r1: We'll come find you [with the paperwork] with any updates .
+   r2: We'll come find you here [with the paperwork] .
+0.3 decoy='with your family' | ko: 기다리시는 동안 편하게 계세요.
+   chunks: Please make yourself / comfortable / while you wait / .
+   r0: [with your family] comfortable while you wait .
+   r1: Please make yourself [with your family] while you wait .
+   r2: Please make yourself comfortable [with your family] .
+0.4 decoy='past the elevators' | ko: 화장실이 필요하시면 바로 모퉁이 돌면 있어요.
+   chunks: The restrooms are / just around the corner / if you / need them / .
+   r0: [past the elevators] just around the corner if you need them .
+   r1: The restrooms are [past the elevators] if you need them .
+   r2: The restrooms are just around the corner [past the elevators] need them .
+   r3: The restrooms are just around the corner if you [past the elevators] .
+
+## S1 예상 소요 시간 안내
+1.0 decoy='four to five' | ko: 수술은 보통 두세 시간 정도 걸려요.
+   chunks: The surgery usually / takes about / two to three / hours / .
+   r0: [four to five] takes about two to three hours .
+   r1: The surgery usually [four to five] two to three hours .
+   r2: The surgery usually takes about [four to five] hours .
+   r3: The surgery usually takes about two to three [four to five] .
+1.1 decoy='paperwork and billing' | ko: 그건 준비 시간과 회복 시간까지 포함한 거예요.
+   chunks: That includes / prep and recovery / afterward / .
+   r0: [paperwork and billing] prep and recovery afterward .
+   r1: That includes [paperwork and billing] afterward .
+   r2: That includes prep and recovery [paperwork and billing] .
+1.2 decoy='you waiting' | ko: 시간은 달라질 수 있고, 계속 알려드릴게요.
+   chunks: Times can vary / , and we'll keep / you posted / .
+   r0: [you waiting] , and we'll keep you posted .
+   r1: Times can vary [you waiting] you posted .
+   r2: Times can vary , and we'll keep [you waiting] .
+1.3 decoy='during the visit' | ko: 자세를 잡고 마취를 하는 데도 수술 자체가 시작되기 전에 시간이 좀 걸려요.
+   chunks: Positioning and anesthesia / take some time / before the surgery / itself starts / .
+   r0: [during the visit] take some time before the surgery itself starts .
+   r1: Positioning and anesthesia [during the visit] before the surgery itself starts .
+   r2: Positioning and anesthesia take some time [during the visit] itself starts .
+   r3: Positioning and anesthesia take some time before the surgery [during the visit] .
+1.4 decoy='for families to wait' | ko: 예상보다 조금 더 오래 걸리는 건 흔한 일이에요.
+   chunks: It's normal / for things to run / a little longer / than expected / .
+   r0: [for families to wait] for things to run a little longer than expected .
+   r1: It's normal [for families to wait] a little longer than expected .
+   r2: It's normal for things to run [for families to wait] than expected .
+   r3: It's normal for things to run a little longer [for families to wait] .
+
+## S2 진행 상황 업데이트
+2.0 decoy='a little late' | ko: 팀에서 방금 잘 진행되고 있다고 알려줬어요.
+   chunks: The team just / let me know / things are going / well / .
+   r0: [a little late] let me know things are going well .
+   r1: The team just [a little late] things are going well .
+   r2: The team just let me know [a little late] well .
+   r3: The team just let me know things are going [a little late] .
+2.1 decoy='and the paperwork' | ko: 환자분은 안정적이고 수술도 잘 진행되고 있어요.
+   chunks: She's stable / and the surgery / is progressing / .
+   r0: [and the paperwork] and the surgery is progressing .
+   r1: She's stable [and the paperwork] is progressing .
+   r2: She's stable and the surgery [and the paperwork] .
+2.2 decoy="I'll stay here" | ko: 다음 소식이 있으면 다시 와서 알려드릴게요.
+   chunks: I'll come back / with the next / update / .
+   r0: [I'll stay here] with the next update .
+   r1: I'll come back [I'll stay here] update .
+   r2: I'll come back with the next [I'll stay here] .
+2.3 decoy='on hold' | ko: 지금까지는 다 계획대로 잘 되고 있어요.
+   chunks: Everything is / on track / so far / .
+   r0: [on hold] on track so far .
+   r1: Everything is [on hold] so far .
+   r2: Everything is on track [on hold] .
+2.4 decoy='with the nurse' | ko: 한 시간쯤 뒤에 다시 와서 확인할게요.
+   chunks: I'll check in / again / in about an hour / .
+   r0: [with the nurse] again in about an hour .
+   r1: I'll check in [with the nurse] in about an hour .
+   r2: I'll check in again [with the nurse] .
+
+## S3 가족 질문 응대
+3.0 decoy='in the OR' | ko: 회복실에서 통증을 세심하게 관리해드릴게요.
+   chunks: We'll manage / his pain closely / in recovery / .
+   r0: [in the OR] his pain closely in recovery .
+   r1: We'll manage [in the OR] in recovery .
+   r2: We'll manage his pain closely [in the OR] .
+3.1 decoy='from the pharmacy' | ko: 필요한 순간에 바로 약을 드릴 수 있게 준비해둘게요.
+   chunks: He'll have medication / ready / the moment / he needs it / .
+   r0: [from the pharmacy] ready the moment he needs it .
+   r1: He'll have medication [from the pharmacy] the moment he needs it .
+   r2: He'll have medication ready [from the pharmacy] he needs it .
+   r3: He'll have medication ready the moment [from the pharmacy] .
+3.2 decoy='about the billing' | ko: 흔히 하시는 걱정이고, 저희도 그에 대한 계획이 있어요.
+   chunks: That's a common / concern / , and we plan / for it / .
+   r0: [about the billing] concern , and we plan for it .
+   r1: That's a common [about the billing] , and we plan for it .
+   r2: That's a common concern [about the billing] for it .
+   r3: That's a common concern , and we plan [about the billing] .
+3.3 decoy='before the visit' | ko: 수술 후 통증을 걱정하는 건 자연스러운 일이에요.
+   chunks: It's normal / to worry about pain / after surgery / .
+   r0: [before the visit] to worry about pain after surgery .
+   r1: It's normal [before the visit] after surgery .
+   r2: It's normal to worry about pain [before the visit] .
+3.4 decoy="if you're hungry" | ko: 더 궁금하신 게 있으면 언제든 말씀해 주세요.
+   chunks: Please let us know / if you / have more / questions / .
+   r0: [if you're hungry] if you have more questions .
+   r1: Please let us know [if you're hungry] have more questions .
+   r2: Please let us know if you [if you're hungry] questions .
+   r3: Please let us know if you have more [if you're hungry] .
+
+## S4 회복실 면회 안내
+4.0 decoy="before she's settled" | ko: 회복실에서 안정을 찾으시면 뵈러 들어가실 수 있어요.
+   chunks: You can see her / once / she's settled / in recovery / .
+   r0: [before she's settled] once she's settled in recovery .
+   r1: You can see her [before she's settled] she's settled in recovery .
+   r2: You can see her once [before she's settled] in recovery .
+   r3: You can see her once she's settled [before she's settled] .
+4.1 decoy='to the desk' | ko: 준비되면 간호사가 모시러 올 거예요.
+   chunks: A nurse will come / get you / when she's / ready / .
+   r0: [to the desk] get you when she's ready .
+   r1: A nurse will come [to the desk] when she's ready .
+   r2: A nurse will come get you [to the desk] ready .
+   r3: A nurse will come get you when she's [to the desk] .
+4.2 decoy='from the clinic' | ko: 보통 수술 후 삼십 분 정도 걸려요.
+   chunks: Usually that's about / thirty minutes / after surgery / .
+   r0: [from the clinic] thirty minutes after surgery .
+   r1: Usually that's about [from the clinic] after surgery .
+   r2: Usually that's about thirty minutes [from the clinic] .
+4.3 decoy='and very pale' | ko: 처음엔 조금 졸리고 혼란스러워 보이실 수 있어요.
+   chunks: She may still seem / sleepy / and a little confused / at first / .
+   r0: [and very pale] sleepy and a little confused at first .
+   r1: She may still seem [and very pale] and a little confused at first .
+   r2: She may still seem sleepy [and very pale] at first .
+   r3: She may still seem sleepy and a little confused [and very pale] .
+4.4 decoy='upstairs' | ko: 저희가 가능한 한 빨리 다시 모시고 올게요.
+   chunks: We'll bring you back / as soon / as we / can / .
+   r0: [upstairs] as soon as we can .
+   r1: We'll bring you back [upstairs] as we can .
+   r2: We'll bring you back as soon [upstairs] can .
+   r3: We'll bring you back as soon as we [upstairs] .
+
+## S5 연락 방법 안내
+5.0 decoy='and your name' | ko: 휴대폰 번호 남겨주시면 제가 전화드릴게요.
+   chunks: Leave me / your cell number / and I'll / call you / .
+   r0: [and your name] your cell number and I'll call you .
+   r1: Leave me [and your name] and I'll call you .
+   r2: Leave me your cell number [and your name] call you .
+   r3: Leave me your cell number and I'll [and your name] .
+5.1 decoy='for the desk' | ko: 원하시면 호출기 방식도 있어요.
+   chunks: There's a pager / system / if you prefer / .
+   r0: [for the desk] system if you prefer .
+   r1: There's a pager [for the desk] if you prefer .
+   r2: There's a pager system [for the desk] .
+5.2 decoy='to stay close' | ko: 소식이 있을 경우를 대비해 연락 가능하게 계셔주세요.
+   chunks: Please stay reachable / in case / we have news / .
+   r0: [to stay close] in case we have news .
+   r1: Please stay reachable [to stay close] we have news .
+   r2: Please stay reachable in case [to stay close] .
+5.3 decoy='if you wait' | ko: 자리를 비우시면 데스크에 어디 계실지 알려만 주세요.
+   chunks: If you step out / , just let / the desk know / where you'll be / .
+   r0: [if you wait] , just let the desk know where you'll be .
+   r1: If you step out [if you wait] the desk know where you'll be .
+   r2: If you step out , just let [if you wait] where you'll be .
+   r3: If you step out , just let the desk know [if you wait] .
+5.4 decoy="when it's quiet" | ko: 변화가 생기는 순간 바로 호출해드릴게요.
+   chunks: We'll page you / the moment / anything changes / .
+   r0: [when it's quiet] the moment anything changes .
+   r1: We'll page you [when it's quiet] anything changes .
+   r2: We'll page you the moment [when it's quiet] .
+
+## S6 수술 지연 사유 설명
+6.0 decoy='than yesterday' | ko: 앞 수술이 예상보다 길어졌어요.
+   chunks: The earlier case / ran longer / than expected / .
+   r0: [than yesterday] ran longer than expected .
+   r1: The earlier case [than yesterday] than expected .
+   r2: The earlier case ran longer [than yesterday] .
+6.1 decoy='to make room' | ko: 지연되는 건 모든 게 준비되고 안전한지 확실히 하기 위해서예요.
+   chunks: The delay is / to make sure / everything's ready / and safe / .
+   r0: [to make room] to make sure everything's ready and safe .
+   r1: The delay is [to make room] everything's ready and safe .
+   r2: The delay is to make sure [to make room] and safe .
+   r3: The delay is to make sure everything's ready [to make room] .
+6.2 decoy='from the desk' | ko: 시작 시간이 정해지는 대로 바로 알려드릴게요.
+   chunks: I'll update you / the moment / we have / a start time / .
+   r0: [from the desk] the moment we have a start time .
+   r1: I'll update you [from the desk] we have a start time .
+   r2: I'll update you the moment [from the desk] a start time .
+   r3: I'll update you the moment we have [from the desk] .
+6.3 decoy='extra coffee' | ko: 팀에서 이걸 안전하게 하려고 더 신경 쓰고 있어요.
+   chunks: The team is taking / extra care / to do this / safely / .
+   r0: [extra coffee] extra care to do this safely .
+   r1: The team is taking [extra coffee] to do this safely .
+   r2: The team is taking extra care [extra coffee] safely .
+   r3: The team is taking extra care to do this [extra coffee] .
+6.4 decoy='about the case' | ko: 이렇게 지연된다고 해서 뭔가 잘못됐다는 뜻은 아니에요.
+   chunks: A delay like this / doesn't mean / anything is / wrong / .
+   r0: [about the case] doesn't mean anything is wrong .
+   r1: A delay like this [about the case] anything is wrong .
+   r2: A delay like this doesn't mean [about the case] wrong .
+   r3: A delay like this doesn't mean anything is [about the case] .
+
+## S7 장시간 수술 안심
+7.0 decoy='a delay' | ko: 수술이 길어진다고 항상 문제가 생긴 건 아니에요.
+   chunks: A longer surgery / doesn't always / mean a problem / .
+   r0: [a delay] doesn't always mean a problem .
+   r1: A longer surgery [a delay] mean a problem .
+   r2: A longer surgery doesn't always [a delay] .
+7.1 decoy='and quick' | ko: 팀이 꼼꼼하고 신중하게 하고 있는 거예요.
+   chunks: The team is being / thorough / and careful / .
+   r0: [and quick] thorough and careful .
+   r1: The team is being [and quick] and careful .
+   r2: The team is being thorough [and quick] .
+7.2 decoy='with the lab' | ko: 제가 확인해봤는데, 꾸준히 잘 진행되고 있어요.
+   chunks: I checked in / , and things are / progressing steadily / .
+   r0: [with the lab] , and things are progressing steadily .
+   r1: I checked in [with the lab] progressing steadily .
+   r2: I checked in , and things are [with the lab] .
+7.3 decoy='again' | ko: 때로는 제대로 하려면 시간이 좀 더 걸리기도 해요.
+   chunks: Sometimes it just takes / extra time / to do things / right / .
+   r0: [again] extra time to do things right .
+   r1: Sometimes it just takes [again] to do things right .
+   r2: Sometimes it just takes extra time [again] right .
+   r3: Sometimes it just takes extra time to do things [again] .
+7.4 decoy='go' | ko: 계속 확인해서 바로바로 알려드릴게요.
+   chunks: I'll keep checking in / and let you / know / right away / .
+   r0: [go] and let you know right away .
+   r1: I'll keep checking in [go] know right away .
+   r2: I'll keep checking in and let you [go] right away .
+   r3: I'll keep checking in and let you know [go] .
+
+## S8 불안 가족 정서 지지
+8.0 decoy='to feel better' | ko: 이렇게 느끼시는 건 충분히 이해할 만한 일이에요.
+   chunks: It's completely understandable / to feel / this way / .
+   r0: [to feel better] to feel this way .
+   r1: It's completely understandable [to feel better] this way .
+   r2: It's completely understandable to feel [to feel better] .
+8.1 decoy='and have a snack' | ko: 잠깐 앉아서 이야기 나누는 게 도움이 될까요?
+   chunks: Would it help / to sit down / and talk / for a moment / ?
+   r0: [and have a snack] to sit down and talk for a moment ?
+   r1: Would it help [and have a snack] and talk for a moment ?
+   r2: Would it help to sit down [and have a snack] for a moment ?
+   r3: Would it help to sit down and talk [and have a snack] ?
+8.2 decoy='for you' | ko: 혼자가 아니에요, 제가 여기 함께 있을게요.
+   chunks: You're not alone / — I'm here / with you / .
+   r0: [for you] — I'm here with you .
+   r1: You're not alone [for you] with you .
+   r2: You're not alone — I'm here [for you] .
+8.3 decoy='about the surgery' | ko: 기다리는 동안 무서운 마음이 드는 것도 괜찮아요.
+   chunks: It's okay / to feel scared / while you wait / .
+   r0: [about the surgery] to feel scared while you wait .
+   r1: It's okay [about the surgery] while you wait .
+   r2: It's okay to feel scared [about the surgery] .
+8.4 decoy='and count along' | ko: 저와 함께 숨을 한 번 쉬어봐요, 제가 바로 여기 있어요.
+   chunks: Take a breath / with me / — I'm right here / .
+   r0: [and count along] with me — I'm right here .
+   r1: Take a breath [and count along] — I'm right here .
+   r2: Take a breath with me [and count along] .
+
+## S9 제한된 정보 범위 소통
+9.0 decoy='and resting' | ko: 안정적이고 잘 지내고 계신다는 건 말씀드릴 수 있어요.
+   chunks: I can share / that he's stable / and doing / well / .
+   r0: [and resting] that he's stable and doing well .
+   r1: I can share [and resting] and doing well .
+   r2: I can share that he's stable [and resting] well .
+   r3: I can share that he's stable and doing [and resting] .
+9.1 decoy='about the schedule' | ko: 자세한 내용은 나중에 집도의 선생님이 설명해드릴 거예요.
+   chunks: The surgeon will / explain the details / afterward / .
+   r0: [about the schedule] explain the details afterward .
+   r1: The surgeon will [about the schedule] afterward .
+   r2: The surgeon will explain the details [about the schedule] .
+9.2 decoy='and some opinions' | ko: 추측이 아니라 정확한 정보를 드리고 싶어요.
+   chunks: I want / to give you / accurate information / , not guesses / .
+   r0: [and some opinions] to give you accurate information , not guesses .
+   r1: I want [and some opinions] accurate information , not guesses .
+   r2: I want to give you [and some opinions] , not guesses .
+   r3: I want to give you accurate information [and some opinions] .
+9.3 decoy='to the family' | ko: 지금은 구체적인 내용을 말씀드릴 수는 없어요.
+   chunks: I'm not able / to speak / to the specifics / right now / .
+   r0: [to the family] to speak to the specifics right now .
+   r1: I'm not able [to the family] to the specifics right now .
+   r2: I'm not able to speak [to the family] right now .
+   r3: I'm not able to speak to the specifics [to the family] .
+9.4 decoy='to ask' | ko: 그 질문에는 집도의 선생님이 답해드리는 게 맞아요.
+   chunks: The surgeon is / the right person / to answer / that question / .
+   r0: [to ask] the right person to answer that question .
+   r1: The surgeon is [to ask] to answer that question .
+   r2: The surgeon is the right person [to ask] that question .
+   r3: The surgeon is the right person to answer [to ask] .
+
+## S10 다국어 가족 소통
+10.0 decoy='and tired' | ko: 아드님은 잘 지내고 있고, 안정적이에요.
+   chunks: Your son is doing / well / — he's stable / .
+   r0: [and tired] well — he's stable .
+   r1: Your son is doing [and tired] — he's stable .
+   r2: Your son is doing well [and tired] .
+10.1 decoy='to help us' | ko: 서로 잘 이해할 수 있게 통역사를 불러올게요.
+   chunks: Let me get / an interpreter / so we understand / each other / .
+   r0: [to help us] an interpreter so we understand each other .
+   r1: Let me get [to help us] so we understand each other .
+   r2: Let me get an interpreter [to help us] each other .
+   r3: Let me get an interpreter so we understand [to help us] .
+10.2 decoy='and loudly' | ko: 천천히 말할게요, 이해되시는지 확인하면서요.
+   chunks: I'll speak slowly / and make sure / you follow / .
+   r0: [and loudly] and make sure you follow .
+   r1: I'll speak slowly [and loudly] you follow .
+   r2: I'll speak slowly and make sure [and loudly] .
+10.3 decoy='on the phone' | ko: 통역사가 모든 걸 어머님 언어로 설명해드릴 수 있어요.
+   chunks: The interpreter can / explain everything / in your language / .
+   r0: [on the phone] explain everything in your language .
+   r1: The interpreter can [on the phone] in your language .
+   r2: The interpreter can explain everything [on the phone] .
+10.4 decoy='about the surgery' | ko: 혹시 명확하지 않은 게 있으면 말씀해 주세요.
+   chunks: Please tell me / if anything / isn't clear / .
+   r0: [about the surgery] if anything isn't clear .
+   r1: Please tell me [about the surgery] isn't clear .
+   r2: Please tell me if anything [about the surgery] .
+
+## S11 소아 보호자 소통
+11.0 decoy='in the lobby' | ko: 따님은 아주 잘 돌봐드리고 있으니 안심하세요.
+   chunks: Your daughter is / in very good / hands / .
+   r0: [in the lobby] in very good hands .
+   r1: Your daughter is [in the lobby] hands .
+   r2: Your daughter is in very good [in the lobby] .
+11.1 decoy='for adults' | ko: 소아과 팀은 아이들을 돌보는 데 전문이에요.
+   chunks: The pediatric team / specializes in caring / for children / .
+   r0: [for adults] specializes in caring for children .
+   r1: The pediatric team [for adults] for children .
+   r2: The pediatric team specializes in caring [for adults] .
+11.2 decoy='and see her' | ko: 회복실로 옮기시면 바로 따님께 모셔갈게요.
+   chunks: I'll bring you / to her / as soon as / she's in recovery / .
+   r0: [and see her] to her as soon as she's in recovery .
+   r1: I'll bring you [and see her] as soon as she's in recovery .
+   r2: I'll bring you to her [and see her] she's in recovery .
+   r3: I'll bring you to her as soon as [and see her] .
+11.3 decoy='and her doctor' | ko: 간호사가 계속 곁에서 세심하게 지켜볼 거예요.
+   chunks: She'll have a nurse / watching her closely / the whole / time / .
+   r0: [and her doctor] watching her closely the whole time .
+   r1: She'll have a nurse [and her doctor] the whole time .
+   r2: She'll have a nurse watching her closely [and her doctor] time .
+   r3: She'll have a nurse watching her closely the whole [and her doctor] .
+11.4 decoy='and say hello' | ko: 곧 따님을 보실 수 있을 거예요.
+   chunks: You'll be able / to see her / very soon / .
+   r0: [and say hello] to see her very soon .
+   r1: You'll be able [and say hello] very soon .
+   r2: You'll be able to see her [and say hello] .
+
+## S12 면회 규정 설명
+12.0 decoy='and quiet halls' | ko: 회복실을 차분하게 유지하려고 한 번에 한 분만 면회하실 수 있어요.
+   chunks: We keep / recovery calm / , so one visitor / at a time / .
+   r0: [and quiet halls] recovery calm , so one visitor at a time .
+   r1: We keep [and quiet halls] , so one visitor at a time .
+   r2: We keep recovery calm [and quiet halls] at a time .
+   r3: We keep recovery calm , so one visitor [and quiet halls] .
+12.1 decoy='and quietly' | ko: 이렇게 하면 저희가 더 안전하고 세심하게 지켜볼 수 있어요.
+   chunks: It helps us / monitor her closely / and safely / .
+   r0: [and quietly] monitor her closely and safely .
+   r1: It helps us [and quietly] and safely .
+   r2: It helps us monitor her closely [and quietly] .
+12.2 decoy='and sign in' | ko: 교대로 들어가시면 다들 뵐 수 있어요.
+   chunks: You can switch out / so everyone / gets to see / her / .
+   r0: [and sign in] so everyone gets to see her .
+   r1: You can switch out [and sign in] gets to see her .
+   r2: You can switch out so everyone [and sign in] her .
+   r3: You can switch out so everyone gets to see [and sign in] .
+12.3 decoy='and leave' | ko: 이 규칙 덕분에 환자분이 더 잘 쉬고 더 빨리 회복하실 수 있어요.
+   chunks: This rule helps her / rest / and heal faster / .
+   r0: [and leave] rest and heal faster .
+   r1: This rule helps her [and leave] and heal faster .
+   r2: This rule helps her rest [and leave] .
+12.4 decoy='who comes back' | ko: 누가 먼저 들어가실지 함께 정해주세요.
+   chunks: Please decide together / who goes in / first / .
+   r0: [who comes back] who goes in first .
+   r1: Please decide together [who comes back] first .
+   r2: Please decide together who goes in [who comes back] .
+
+## S13 추가 시술 결정 소통
+13.0 decoy="that's wrong" | ko: 지금 바로 처리해야 할 걸 발견했어요.
+   chunks: They found something / that needs / to be addressed / now / .
+   r0: [that's wrong] that needs to be addressed now .
+   r1: They found something [that's wrong] to be addressed now .
+   r2: They found something that needs [that's wrong] now .
+   r3: They found something that needs to be addressed [that's wrong] .
+13.1 decoy='and the schedule' | ko: 집도의 선생님이 자세한 내용과 선택지를 설명해주실 거예요.
+   chunks: The surgeon will explain / the details / and options / .
+   r0: [and the schedule] the details and options .
+   r1: The surgeon will explain [and the schedule] and options .
+   r2: The surgeon will explain the details [and the schedule] .
+13.2 decoy='and heard' | ko: 궁금하신 것들이 다 답변되도록 챙길게요.
+   chunks: I'll make sure / your questions / get answered / .
+   r0: [and heard] your questions get answered .
+   r1: I'll make sure [and heard] get answered .
+   r2: I'll make sure your questions [and heard] .
+13.3 decoy="but she's resting" | ko: 계획이 조금 바뀌긴 했지만, 여전히 안정적이세요.
+   chunks: This changes the plan / a little / , but she's / still stable / .
+   r0: [but she's resting] a little , but she's still stable .
+   r1: This changes the plan [but she's resting] , but she's still stable .
+   r2: This changes the plan a little [but she's resting] still stable .
+   r3: This changes the plan a little , but she's [but she's resting] .
+13.4 decoy='alone' | ko: 집도의 선생님이 가능한 한 빨리 와서 말씀 나눌 거예요.
+   chunks: The surgeon will come / speak with you / as soon / as possible / .
+   r0: [alone] speak with you as soon as possible .
+   r1: The surgeon will come [alone] as soon as possible .
+   r2: The surgeon will come speak with you [alone] as possible .
+   r3: The surgeon will come speak with you as soon [alone] .
+
+## S14 종교적 요구 조율
+14.0 decoy='to review' | ko: 요청하신 걸 존중해드리도록 최선을 다할게요.
+   chunks: We'll do our best / to honor / your request / .
+   r0: [to review] to honor your request .
+   r1: We'll do our best [to review] your request .
+   r2: We'll do our best to honor [to review] .
+14.1 decoy='an update' | ko: 모시고 들어가기 전에 잠깐 시간을 마련해드릴 수 있어요.
+   chunks: I can arrange / a moment / before we take him / back / .
+   r0: [an update] a moment before we take him back .
+   r1: I can arrange [an update] before we take him back .
+   r2: I can arrange a moment [an update] back .
+   r3: I can arrange a moment before we take him [an update] .
+14.2 decoy='on the third floor' | ko: 원하시면 저희 원목님도 도와드릴 수 있어요.
+   chunks: Our chaplain is / also available / if you'd like / .
+   r0: [on the third floor] also available if you'd like .
+   r1: Our chaplain is [on the third floor] if you'd like .
+   r2: Our chaplain is also available [on the third floor] .
+14.3 decoy='a concern' | ko: 중요하게 여기시는 관습이 있으면 저희에게 말씀해 주세요.
+   chunks: Please tell us / if there's a practice / that matters / to you / .
+   r0: [a concern] if there's a practice that matters to you .
+   r1: Please tell us [a concern] that matters to you .
+   r2: Please tell us if there's a practice [a concern] to you .
+   r3: Please tell us if there's a practice that matters [a concern] .
+14.4 decoy='to ask' | ko: 가족분들께 중요한 걸 존중하고 싶어요.
+   chunks: We want / to respect / what's important / to your family / .
+   r0: [to ask] to respect what's important to your family .
+   r1: We want [to ask] what's important to your family .
+   r2: We want to respect [to ask] to your family .
+   r3: We want to respect what's important [to ask] .
+
+## S15 술중 합병증 소식 전달
+15.0 decoy='during the transfer' | ko: 수술 중에 합병증이 하나 있었어요.
+   chunks: There was / a complication / during the surgery / .
+   r0: [during the transfer] a complication during the surgery .
+   r1: There was [during the transfer] during the surgery .
+   r2: There was a complication [during the transfer] .
+15.1 decoy="and she's asleep" | ko: 팀에서 대응하고 있고, 지금은 안정적이세요.
+   chunks: The team is / managing it / and she's stable / right now / .
+   r0: [and she's asleep] managing it and she's stable right now .
+   r1: The team is [and she's asleep] and she's stable right now .
+   r2: The team is managing it [and she's asleep] right now .
+   r3: The team is managing it and she's stable [and she's asleep] .
+15.2 decoy='in writing' | ko: 집도의 선생님이 자세히 다 설명해드릴 거예요.
+   chunks: The surgeon will explain / everything / in detail / .
+   r0: [in writing] everything in detail .
+   r1: The surgeon will explain [in writing] in detail .
+   r2: The surgeon will explain everything [in writing] .
+15.3 decoy='to share' | ko: 받아들이기 힘든 소식이라는 거 알아요.
+   chunks: I know / this is hard / news to hear / .
+   r0: [to share] this is hard news to hear .
+   r1: I know [to share] news to hear .
+   r2: I know this is hard [to share] .
+15.4 decoy='after the surgeon' | ko: 집도의 선생님이 이야기하러 오실 때까지 함께 있을게요.
+   chunks: I'll stay with you / until the surgeon / comes / to talk / .
+   r0: [after the surgeon] until the surgeon comes to talk .
+   r1: I'll stay with you [after the surgeon] comes to talk .
+   r2: I'll stay with you until the surgeon [after the surgeon] to talk .
+   r3: I'll stay with you until the surgeon comes [after the surgeon] .
+
+## S16 나쁜 소식 준비·전달
+16.0 decoy='by the window' | ko: 함께 앉아요, 힘든 소식을 전해드려야 해서요.
+   chunks: Let's sit down / together / — I have / some difficult news / .
+   r0: [by the window] together — I have some difficult news .
+   r1: Let's sit down [by the window] — I have some difficult news .
+   r2: Let's sit down together [by the window] some difficult news .
+   r3: Let's sit down together — I have [by the window] .
+16.1 decoy='about the plan' | ko: 무슨 일이 있었는지 솔직하게 말씀드리고 싶어요.
+   chunks: I want to be honest / with you / about what / happened / .
+   r0: [about the plan] with you about what happened .
+   r1: I want to be honest [about the plan] about what happened .
+   r2: I want to be honest with you [about the plan] happened .
+   r3: I want to be honest with you about what [about the plan] .
+16.2 decoy='Take whatever seat' | ko: 필요하신 만큼 시간을 가지세요, 제가 바로 여기 있어요.
+   chunks: Take whatever time / you need / , and I'm / right here / .
+   r0: [Take whatever seat] you need , and I'm right here .
+   r1: Take whatever time [Take whatever seat] , and I'm right here .
+   r2: Take whatever time you need [Take whatever seat] right here .
+   r3: Take whatever time you need , and I'm [Take whatever seat] .
+16.3 decoy='to fix' | ko: 쉽게 말씀드릴 방법은 없네요.
+   chunks: There's no easy way / to say / this / .
+   r0: [to fix] to say this .
+   r1: There's no easy way [to fix] this .
+   r2: There's no easy way to say [to fix] .
+16.4 decoy='behind you' | ko: 저는 어디 안 가요, 계속 바로 곁에 있을게요.
+   chunks: I'm not going / anywhere / — I'll stay right / beside you / .
+   r0: [behind you] anywhere — I'll stay right beside you .
+   r1: I'm not going [behind you] — I'll stay right beside you .
+   r2: I'm not going anywhere [behind you] beside you .
+   r3: I'm not going anywhere — I'll stay right [behind you] .
+
+## S17 사망 소식 지원
+17.0 decoy='for the delay' | ko: 깊은 애도의 마음을 전합니다.
+   chunks: I'm so deeply sorry / for your / loss / .
+   r0: [for the delay] for your loss .
+   r1: I'm so deeply sorry [for the delay] loss .
+   r2: I'm so deeply sorry for your [for the delay] .
+17.1 decoy='tonight' | ko: 필요한 만큼 시간을 가지세요, 제가 곁에 있을게요.
+   chunks: Take all the time / you need / — I'm here / with you / .
+   r0: [tonight] you need — I'm here with you .
+   r1: Take all the time [tonight] — I'm here with you .
+   r2: Take all the time you need [tonight] with you .
+   r3: Take all the time you need — I'm here [tonight] .
+17.2 decoy='by phone' | ko: 준비되시면 다음 절차를 도와드릴게요.
+   chunks: When you're ready / , I can help / with the next / steps / .
+   r0: [by phone] , I can help with the next steps .
+   r1: When you're ready [by phone] with the next steps .
+   r2: When you're ready , I can help [by phone] steps .
+   r3: When you're ready , I can help with the next [by phone] .
+17.3 decoy='for a day' | ko: 이런 상실에는 어떤 말도 부족하네요.
+   chunks: There are / no words / for a loss / like this / .
+   r0: [for a day] no words for a loss like this .
+   r1: There are [for a day] for a loss like this .
+   r2: There are no words [for a day] like this .
+   r3: There are no words for a loss [for a day] .
+17.4 decoy='happened' | ko: 준비되실 때, 다음에 무엇을 할지 함께 이야기해요.
+   chunks: Whenever you're ready / , we can talk / about what / comes next / .
+   r0: [happened] , we can talk about what comes next .
+   r1: Whenever you're ready [happened] about what comes next .
+   r2: Whenever you're ready , we can talk [happened] comes next .
+   r3: Whenever you're ready , we can talk about what [happened] .
+
+## S18 분노·항의 가족 대응
+18.0 decoy='and worried' | ko: 많이 속상하고 화나신 게 보여요.
+   chunks: I can see / how upset / and angry / you are / .
+   r0: [and worried] how upset and angry you are .
+   r1: I can see [and worried] and angry you are .
+   r2: I can see how upset [and worried] you are .
+   r3: I can see how upset and angry [and worried] .
+18.1 decoy='about the delay' | ko: 지금 느끼시는 감정은 충분히 정당해요.
+   chunks: Your feelings are / completely valid / right now / .
+   r0: [about the delay] completely valid right now .
+   r1: Your feelings are [about the delay] right now .
+   r2: Your feelings are completely valid [about the delay] .
+18.2 decoy="and I'll write" | ko: 앉으세요, 제가 답할 수 있는 건 다 답해드릴게요.
+   chunks: Let's sit down / and I'll answer / everything / I can / .
+   r0: [and I'll write] and I'll answer everything I can .
+   r1: Let's sit down [and I'll write] everything I can .
+   r2: Let's sit down and I'll answer [and I'll write] I can .
+   r3: Let's sit down and I'll answer everything [and I'll write] .
+18.3 decoy='to explain' | ko: 듣고 있어요, 뭐가 잘못됐는지 이해하고 싶어요.
+   chunks: I hear you / , and I want / to understand / what's wrong / .
+   r0: [to explain] , and I want to understand what's wrong .
+   r1: I hear you [to explain] to understand what's wrong .
+   r2: I hear you , and I want [to explain] what's wrong .
+   r3: I hear you , and I want to understand [to explain] .
+18.4 decoy='a waiting room' | ko: 조용한 곳을 찾아서 차근차근 이야기해봐요.
+   chunks: Let's find / a quiet place / where we can / talk this through / .
+   r0: [a waiting room] a quiet place where we can talk this through .
+   r1: Let's find [a waiting room] where we can talk this through .
+   r2: Let's find a quiet place [a waiting room] talk this through .
+   r3: Let's find a quiet place where we can [a waiting room] .
+
+## S19 응급 상황 급한 소통
+19.0 decoy='carefully' | ko: 환자분 상태가 바뀌어서 팀이 빠르게 움직이고 있어요.
+   chunks: Her condition changed / and the team / is acting / fast / .
+   r0: [carefully] and the team is acting fast .
+   r1: Her condition changed [carefully] is acting fast .
+   r2: Her condition changed and the team [carefully] fast .
+   r3: Her condition changed and the team is acting [carefully] .
+19.1 decoy='step by step' | ko: 지금 할 수 있는 모든 걸 다 하고 있어요.
+   chunks: They're doing / everything they can / right now / .
+   r0: [step by step] everything they can right now .
+   r1: They're doing [step by step] right now .
+   r2: They're doing everything they can [step by step] .
+19.2 decoy='to show you' | ko: 더 알려드릴 게 생기면 바로 다시 올게요.
+   chunks: I'll come back / the moment / I have more / to tell you / .
+   r0: [to show you] the moment I have more to tell you .
+   r1: I'll come back [to show you] I have more to tell you .
+   r2: I'll come back the moment [to show you] to tell you .
+   r3: I'll come back the moment I have more [to show you] .
+19.3 decoy='to the lab' | ko: 다시 들어가야 하지만, 곧 돌아올게요.
+   chunks: I need to go / back in / , but I'll return / soon / .
+   r0: [to the lab] back in , but I'll return soon .
+   r1: I need to go [to the lab] , but I'll return soon .
+   r2: I need to go back in [to the lab] soon .
+   r3: I need to go back in , but I'll return [to the lab] .
+19.4 decoy='bring you water' | ko: 바로 여기 계세요, 누군가 와서 알려드릴 거예요.
+   chunks: Please stay right here / — someone will / update you / .
+   r0: [bring you water] — someone will update you .
+   r1: Please stay right here [bring you water] update you .
+   r2: Please stay right here — someone will [bring you water] .
+
+## S20 위기 중 가족 결정 지원
+20.0 decoy='the schedule' | ko: 선택지를 최대한 명확하게 설명해드릴게요.
+   chunks: Let me explain / the options / as clearly / as I can / .
+   r0: [the schedule] the options as clearly as I can .
+   r1: Let me explain [the schedule] as clearly as I can .
+   r2: Let me explain the options [the schedule] as I can .
+   r3: Let me explain the options as clearly [the schedule] .
+20.1 decoy='what you would' | ko: 환자분이 원하셨을 걸 생각해보세요.
+   chunks: Think about / what he would / have wanted / .
+   r0: [what you would] what he would have wanted .
+   r1: Think about [what you would] have wanted .
+   r2: Think about what he would [what you would] .
+20.2 decoy='Before you decide' | ko: 무엇을 결정하시든, 저희가 온전히 지지할게요.
+   chunks: Whatever you decide / , we'll support you / fully / .
+   r0: [Before you decide] , we'll support you fully .
+   r1: Whatever you decide [Before you decide] fully .
+   r2: Whatever you decide , we'll support you [Before you decide] .
+20.3 decoy='no clear answer' | ko: 여기서는 틀린 선택이 없어요, 어느 쪽이든 저희가 곁을 지킬게요.
+   chunks: There's no wrong choice / here / — we'll stand by you / either way / .
+   r0: [no clear answer] here — we'll stand by you either way .
+   r1: There's no wrong choice [no clear answer] — we'll stand by you either way .
+   r2: There's no wrong choice here [no clear answer] either way .
+   r3: There's no wrong choice here — we'll stand by you [no clear answer] .
+20.4 decoy='about the rules' | ko: 천천히 생각하시고, 필요한 건 뭐든 물어보세요.
+   chunks: Take your time / , and ask me / anything / you need / .
+   r0: [about the rules] , and ask me anything you need .
+   r1: Take your time [about the rules] anything you need .
+   r2: Take your time , and ask me [about the rules] you need .
+   r3: Take your time , and ask me anything [about the rules] .
