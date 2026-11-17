@@ -32,7 +32,7 @@ S = {
                 1: "회진 시간을 대비해 연락 가능하게 계셔주세요."},
          "blank": ("reachable", ["reachable", "silent", "offline", "busy"])},
  "5.3": {"dk": {0: "식사하러 가시면 데스크에 어디 계실지 알려만 주세요.",
-                1: "주차하러 나가시면 데스크에 어디 계실지 알려만 주세요."},
+                1: "자리를 비우시면 저한테 어디 계실지 알려만 주세요."},
          "blank": ("desk", ["desk", "pharmacy", "lab", "gift shop"])},
  "5.4": {"blank": ("page", ["page", "bill", "fax", "seat"]), "decoy": "anything arrives"},
  # 6 지연 사유
@@ -61,7 +61,7 @@ S = {
  "10.1": {"dk": {0: "서로 잘 이해할 수 있게 쓰시는 언어부터 여쭤볼게요.",
                  1: "제 말을 잘 이해하시게 통역사를 불러올게요."},
           "blank": ("interpreter", ["interpreter", "orderly", "attendant", "escort"])},
- "10.3": {"blank": ("language", ["language", "room", "file", "car"])},
+ "10.3": {"blank": ("language", ["language", "folder", "lobby", "room"])},
  # 11 소아 보호자
  "11.0": {"dk": {0: "아드님은 아주 잘 돌봐드리고 있으니 안심하세요.",
                  1: "따님은 아주 좋은 병실에 계시니 안심하세요."},
@@ -83,7 +83,7 @@ S = {
                  1: "지금 바로 처리해야 할 걸 찾고 있어요."}},
  "13.3": {"dk": {0: "계획이 조금 바뀌긴 했지만, 여전히 마취 중이세요."}},
  "13.4": {"dk": {0: "집도의 선생님이 가능한 한 빨리 전화로 말씀 나눌 거예요.",
-                 1: "집도의 선생님이 이야기를 마치면 다시 들어가실 거예요."}},
+                 1: "집도의 선생님이 말씀을 마치면 다시 들어가실 거예요."}},
  # 14 종교
  "14.1": {"dk": {1: "모시고 들어가기 전에 잠깐 통화를 연결해드릴 수 있어요."},
           "blank": ("before", ["before", "after", "until", "once"])},
@@ -116,8 +116,8 @@ S = {
           "blank": ("back in", ["back in", "home", "on break", "to lunch"])},
  "19.4": {"dk": {0: "바로 여기 계세요, 누군가 와서 물을 드릴 거예요."}, "blank": ("right here", ["right here", "at home", "downstairs", "in the car"])},
  # 20 결정 지원
- "20.1": {"dk": {0: "환자분이 원하셨을 걸 적어 보세요."},
-          "blank": ("wanted", ["wanted", "missed", "forgotten", "ordered"]), "decoy": "Write down"},
+ "20.1": {"dk": {0: "환자분이 원하셨을 걸 찾아보세요."},
+          "blank": ("wanted", ["wanted", "missed", "forgotten", "ordered"]), "decoy": "Look for"},
  "20.3": {"blank": ("wrong", ["wrong", "free", "legal", "medical"]), "decoy": "There's no easy choice"},
  "20.4": {"dk": {0: "천천히 생각하시고, 필요한 건 뭐든 적어 두세요."},
           "blank": ("time", ["time", "turn", "pick", "coat"]), "decoy": "Take a seat"},
