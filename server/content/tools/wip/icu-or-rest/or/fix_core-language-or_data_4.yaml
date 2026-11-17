@@ -1,0 +1,44 @@
+# order 고침(B 사본 위에 덧씀). at: 상황 번호, lines: {줄 번호: 덮어쓸 필드}
+order:
+  - at: 1
+    why: 집도의가 통역사를 통해 동의서를 설명한다고 알린 뒤 이해했는지 묻고, 끄덕임만으로는 부족하다고 짚은 다음, 그러니 자기 말로 다시 말하게 해요.
+    lines:
+      0: {en: "The surgeon will explain the consent through the interpreter.", ko: "집도의가 통역사를 통해 동의서를 설명해 드릴 거예요"}
+  - at: 2
+    why: 통역사를 통해 지침을 짚어 준다고 알린 뒤 금식 범위를 말하고, 시작 시각을 환자 입으로 말하게 한 다음 그 시각을 차트에 적어요.
+    lines:
+      0: {en: "I'll go over your fasting instructions through the interpreter.", ko: "통역사를 통해 금식 지침을 하나하나 짚어 드릴게요"}
+      1: {en: "No food or drink after midnight, and no water unless we say so.", ko: "자정 이후로는 음식도 음료도 안 되고, 물도 따로 말씀드릴 때만 돼요"}
+      2: {en: "Could you tell me what time that starts?", ko: "그게 몇 시부터인지 말씀해 주시겠어요?"}
+  - at: 3
+    why: 마취의 원리를 설명하고, 잠든 동안 아프지 않을 거라고 말한 뒤, 깨어난 후 기억에 대해 안내하고 걱정을 물으며 마무리해요.
+    lines:
+      0: {en: "The anesthesia team will explain how it works through the interpreter.", ko: "마취팀이 통역사를 통해 마취의 원리를 설명해 드릴 거예요"}
+      1: {en: "Once it takes effect, you'll be asleep, so you shouldn't feel any pain.", ko: "효과가 나타나면 잠드셔서 아프지 않으실 거예요"}
+      2: {en: "Afterward, most people don't remember the surgery.", ko: "그 뒤에 대부분은 수술을 기억하지 못하세요"}
+  - at: 4
+    why: 숫자로 통증을 묻고, 말하기 어려우면 차트에서 숫자를 가리키게 한 다음, 그 답을 차트에 적고 통증을 다시 확인할 때 통역사와 함께 오겠다고 알려요.
+    lines:
+      3: {en: "Next, I'll bring the interpreter back when I check your pain again.", ko: "다음으로 통증을 다시 확인하러 올 때 통역사와 함께 올게요"}
+  - at: 9
+    lines:
+      1: {ko: "그러니 '네'면 한 번, '아니요'면 두 번 쥐어 주세요"}
+  - at: 12
+    lines:
+      1: {en: "Then tell me exactly what they said, without leaving anything out.", ko: "그다음 환자분이 한 말을 빠짐없이 그대로 전해 주세요"}
+  - at: 14
+    why: 긴급하다고 알려 연결을 요청하고, 연결되면 핵심부터 전하자고 하며, 빠짐없이 통역하게 한 뒤 불명확하면 바로 알리게 해요.
+    lines:
+      2: {en: "Please interpret what I say exactly and completely.", ko: "제가 하는 말을 빠짐없이 그대로 통역해 주세요"}
+  - at: 15
+    why: 응급이고 통역사가 없다고 상황을 말하고, 집도의가 환자 안전을 근거로 응급 규정에 따라 진행한다고 밝힌 뒤, 그 규정을 쓰니 이유를 기록해야 한다고 하고, 차트에 적도록 요청해요.
+    lines:
+      1: {en: "The surgeon says patient safety justifies proceeding under emergency provisions.", ko: "집도의 말로는 환자 안전이 응급 규정에 따라 진행하는 걸 정당화해요"}
+  - at: 16
+    why: 알레르기를 확인할 수 없다는 한계를 말하고 위험으로 표시한 뒤, 해결책으로 통역사를 부르고, 응급이 아니면 확인 전에는 약을 주지 않겠다고 기준을 세워요.
+    lines:
+      3: {en: "Unless it's an emergency, we'll wait to give any until allergies are confirmed.", ko: "응급이 아니면 알레르기가 확인될 때까지 약은 드리지 않을 거예요"}
+  - at: 18
+    why: 상태가 변했다고 알리고 급히 통역해 달라고 요청한 뒤, 말하는 내가 간단히 말하겠다고 하고, 끝나면 환자가 되받아 한 말을 알려 달라고 해요.
+    lines:
+      2: {en: "While you do, I'll keep it simple so nothing is misunderstood.", ko: "통역하시는 동안 잘못 이해되지 않게 제가 간단하게 말할게요"}
