@@ -732,3 +732,17 @@ changes:
   fields:
   - ko
   why: A 검토 S19·S20 — 소독 뜻 바로잡기, 환자에게 쓰는 "당신" 표현을 "환자분"으로
+- kind: sentence
+  situation: 환자 신원 2가지 확인
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I just want to / confirm who you are / before we go / in) → I just want to / confirm / who you are / before we go in — 문장은 그대로; 검토 A KP 0.1; V8 때문에 confirm / who you are로 한 번 더 나눔, decoy는 before we go in 자리 모양으로(옛 decoy의 who we are는 ko “신원을 확인”에 그대로 맞아 바꿈)'
+- kind: sentence
+  situation: 부위 표시 없이 입실
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''m reporting this / as a missing / site marking) → I''m / reporting this / as a missing site marking — 문장은 그대로; 검토 A KP 8.2; V8 때문에 I''m / reporting this로 나눔, decoy는 옛 decoy(name band)를 새 명사구 자리 모양으로'

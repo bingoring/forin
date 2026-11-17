@@ -532,3 +532,93 @@ changes:
   - chunks
   - words
   why: 수술 영역은 커프보다 원위라 커프 아래 출혈은 장면이 맞지 않음 — 커프를 올렸는데도 영역 출혈로(검토 A S6)
+- kind: word-remove
+  id: w-small
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): 11.2 문장을 smallest → widest로 바꿔 어느 문장도 태그하지 않게 됨(w-wide는 4.3에 이미 있음)'
+- kind: sentence
+  situation: 소아 압력 조정
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): We use the smallest appropriate cuff → We use the widest appropriate cuff(AORN은 사지에 맞는 것 중 가장 넓은 커프를 권함; 검토 A K1); −w-small 태그(word-remove) +w-wide 태그(4.3에 있음)'
+- kind: word
+  id: w-appropriate
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word-remove
+  id: w-short
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): 13.0 문장을 바꿔(resets shorter → we reset the timer) 어느 문장도 태그하지 않게 됨'
+- kind: sentence
+  situation: 재적용 시간 관리
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): After reperfusion, the safe reinflation time resets shorter → After reperfusion, we reset the timer for reinflation(재적용 안전 시간이 짧아진다는 것은 일반 규칙이 아니고 resets shorter도 어색함; 검토 A K2); −w-safe 태그(다른 문장에 남음) −w-short 태그(word-remove)'
+- kind: word
+  id: w-reinflation
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-reset
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-reset
+  fields:
+  - ko
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): 예문이 타동사 문장(we reset the timer)으로 바뀌어 뜻을 재설정되다 → 재설정하다로'
+- kind: sentence
+  situation: 허용 시간 초과 임박
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): We''re at the maximum safe time — we need to deflate now → … — do we deflate now?(감압은 집도의가 정함 — 간호사는 시급함을 알리며 묻는다; 검토 A K3)'
+- kind: sentence
+  situation: 허용 시간 초과 임박
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): Surgeon, we cannot exceed this time → Surgeon, we''re about to exceed this time(집도의에게 한계를 명령하지 않고 임박을 알림; 검토 A K4)'
+- kind: word
+  id: w-exceed
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word-remove
+  id: w-treatment
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): 19.1 문장을 바꿔(labs or treatment drawn up → labs drawn or meds drawn up) 어느 문장도 태그하지 않게 됨'
+- kind: word-add
+  id: w-med
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): 19.1 새 문장의 meds(약을 줄여 부르는 구어)를 가르칠 말 — w-treatment 대신'
+- kind: sentence
+  situation: 재관류 대사 급변
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): Anesthesia, do you need labs or treatment drawn up → … labs drawn or meds drawn up(labs drawn up은 어색함 — 채혈과 약 준비를 가름; 검토 A K5); −w-treatment 태그(word-remove) −w-up 태그(drawn up의 up은 지혈대를 올린 상태를 뜻하는 w-up과 다름; 다른 문장에 남음) +w-med 태그(word-add)'
+- kind: word
+  id: w-lab
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-draw
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-17 사용자 결정): 예문을 바꾼 문장으로'
