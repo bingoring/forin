@@ -174,13 +174,16 @@ changes:
 - kind: word
   id: w-shift
   fields:
+  - example
   - ko
-  why: '''timing might need to shift''(시간이 밀리다)에 맞춰 — 옮기다는 물건 옮기기로 읽힘'
+  why: '''timing might need to shift''(시간이 밀리다)에 맞춰 — 옮기다는 물건 옮기기로 읽힘 / 문장 수정에 맞춰 예문·번역을 새 문장으로'
 - kind: word
   id: w-away
   fields:
+  - en
+  - ipa
   - ko
-  why: '''right away'' 한 구에서만 쓰이는데 ko에 영어를 섞어 길어서 즉시로'
+  why: '''right away'' 한 구에서만 쓰이는데 ko에 영어를 섞어 길어서 즉시로 / 즉시는 right away라는 구의 뜻이라 구 단위 헤드워드로'
 - kind: word
   id: w-cpap
   fields:
@@ -256,7 +259,7 @@ changes:
   index: 5
   fields:
   - words
-  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 검토 수정 — 태그 정리(w-exact → w-exactly)
 - kind: sentence
   situation: 기저 활력징후 측정
   index: 0
@@ -286,7 +289,7 @@ changes:
   index: 0
   fields:
   - words
-  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 검토 수정 — 태그 정리(w-exact → w-exactly)
 - kind: sentence
   situation: 물 한 모금 금식 위반
   index: 2
@@ -297,14 +300,20 @@ changes:
   situation: 물 한 모금 금식 위반
   index: 3
   fields:
+  - chunks
+  - en
+  - ko
   - words
-  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 검토 수정 — 문장 en·ko를 사실·업무 범위에 맞게 고침(keyPhrase 아님)
 - kind: sentence
   situation: 물 한 모금 금식 위반
   index: 4
   fields:
+  - chunks
+  - en
+  - ko
   - words
-  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 검토 수정 — 문장 en·ko를 사실·업무 범위에 맞게 고침(keyPhrase 아님)
 - kind: sentence
   situation: 이전 마취 오심 병력
   index: 2
@@ -339,8 +348,9 @@ changes:
   situation: 수면무호흡 병력
   index: 5
   fields:
+  - chunks
   - words
-  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 검토 수정 — chunks를 구 경계에 맞게 다시 끊음
 - kind: sentence
   situation: 심·호흡 기저질환
   index: 0
@@ -381,14 +391,18 @@ changes:
   situation: 흡연·음주력 문진
   index: 3
   fields:
+  - chunks
   - words
-  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 검토 수정 — chunks를 구 경계에 맞게 다시 끊음
 - kind: sentence
   situation: 흡연·음주력 문진
   index: 4
   fields:
+  - chunks
+  - en
+  - ko
   - words
-  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 검토 수정 — 문장 en·ko를 사실·업무 범위에 맞게 고침(keyPhrase 아님)
 - kind: sentence
   situation: 가임기 임신 가능성
   index: 4
@@ -399,8 +413,11 @@ changes:
   situation: 가임기 임신 가능성
   index: 5
   fields:
+  - chunks
+  - en
+  - ko
   - words
-  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 검토 수정 — 문장 en·ko를 사실·업무 범위에 맞게 고침(keyPhrase 아님)
 - kind: sentence
   situation: 최근 상기도 감염
   index: 3
@@ -423,8 +440,9 @@ changes:
   situation: 응급 환자 금식 위반
   index: 5
   fields:
+  - chunks
   - words
-  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 검토 수정 — chunks를 구 경계에 맞게 다시 끊음
 - kind: sentence
   situation: 조영제 아나필락시스 병력
   index: 2
@@ -436,7 +454,7 @@ changes:
   index: 4
   fields:
   - words
-  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 검토 수정 — 태그 정리(w-exact → w-exactly)
 - kind: sentence
   situation: 원인 미상 약물 반응
   index: 0
@@ -454,7 +472,7 @@ changes:
   index: 3
   fields:
   - words
-  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 검토 수정 — 태그 정리(w-exact → w-exactly)
 - kind: sentence
   situation: 마취 가족력 MH 의심
   index: 0
@@ -472,7 +490,7 @@ changes:
   index: 3
   fields:
   - words
-  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / 검토 수정 — 태그 정리(w-exact → w-exactly)
 - kind: sentence
   situation: 마취 가족력 MH 의심
   index: 4
@@ -509,3 +527,270 @@ changes:
   fields:
   - words
   why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: word
+  id: w-last
+  fields:
+  - ko
+  why: 11문장 중 9문장이 형용사(last dose·last meal)라 '마지막으로'는 틀림
+- kind: word
+  id: w-start
+  fields:
+  - example
+  why: 문장 수정에 맞춰 예문·번역을 새 문장으로
+- kind: word
+  id: w-clear
+  fields:
+  - example
+  why: 문장 수정에 맞춰 예문·번역을 새 문장으로
+- kind: word
+  id: w-stomach
+  fields:
+  - example
+  why: 문장 수정에 맞춰 예문·번역을 새 문장으로
+- kind: word
+  id: w-slow
+  fields:
+  - example
+  why: 문장 수정에 맞춰 예문·번역을 새 문장으로
+- kind: word
+  id: w-sound
+  fields:
+  - example
+  why: 문장 수정에 맞춰 예문·번역을 새 문장으로
+- kind: word
+  id: w-allergy
+  fields:
+  - example
+  why: 문장 수정에 맞춰 예문·번역을 새 문장으로
+- kind: word
+  id: w-thinner
+  fields:
+  - ko
+  why: blood thinner는 항응고제·항혈소판제를 함께 부르는 말이고 스텐트 뒤에는 보통 항혈소판제라 '항혈전제'
+- kind: word
+  id: w-vital
+  fields:
+  - en
+  - ipa
+  why: 문장은 늘 vitals(복수)이고 vital 홀로는 '필수적인'이라 헤드워드를 복수형으로
+- kind: word
+  id: w-fast
+  fields:
+  - ko
+  why: 4문장 모두 부사(beating a little fast·need it fast·move fast)라 '빠른'은 틀림
+- kind: word
+  id: w-cancel
+  fields:
+  - example
+  why: 문장 수정에 맞춰 예문·번역을 새 문장으로
+- kind: word
+  id: w-forget
+  fields:
+  - example
+  why: 문장 수정에 맞춰 예문·번역을 새 문장으로
+- kind: word
+  id: w-shellfish
+  fields:
+  - ko
+  why: shellfish는 갑각류·조개류이고 해산물은 생선까지 포함해 알레르기 정보로 부정확
+- kind: word
+  id: w-confirm
+  fields:
+  - ko
+  why: 5문장 중 4문장이 '확인'(confirm with radiology·always confirm·can't confirm NPO·can't confirm his last meal)이라 '확정하다'는 틀림
+- kind: word
+  id: w-throw
+  fields:
+  - en
+  - ipa
+  why: 토하다는 throw up이라는 구의 뜻이라 구 단위 헤드워드로
+- kind: word
+  id: w-bleed
+  fields:
+  - ko
+  why: en은 동사인데 ko가 명사(출혈)라 품사를 맞춤
+- kind: word
+  id: w-thin
+  fields:
+  - example
+  why: 문장 수정에 맞춰 예문·번역을 새 문장으로
+- kind: word
+  id: w-judge
+  fields:
+  - ko
+  why: I'm not judging은 평가·비난이라 '판단하다'보다 '평가하다'가 맞음
+- kind: word
+  id: w-smoke
+  fields:
+  - example
+  - ko
+  why: en은 동사인데 ko가 명사(흡연)라 품사를 맞춤
+- kind: word
+  id: w-manage
+  fields:
+  - example
+  why: 문장 수정에 맞춰 예문·번역을 새 문장으로
+- kind: word
+  id: w-stay
+  fields:
+  - ko
+  why: 같은 상황의 w-keep(유지하다)과 ko가 겹쳐 가름
+- kind: word
+  id: w-outside
+  fields:
+  - example
+  why: 문장 수정에 맞춰 예문·번역을 새 문장으로
+- kind: word
+  id: w-result
+  fields:
+  - example
+  why: 문장 수정에 맞춰 예문·번역을 새 문장으로
+- kind: word
+  id: w-weigh
+  fields:
+  - en
+  - ipa
+  why: '''의견을 내다''는 weigh in이라는 구의 뜻이라 구 단위 헤드워드로'
+- kind: word
+  id: w-treat
+  fields:
+  - ko
+  why: 두 문장 모두 treat … as a full stomach(~로 보고 다루다)라 '처치하다'는 틀림
+- kind: word
+  id: w-suction
+  fields:
+  - ko
+  why: 같은 상황의 w-aspiration(흡인)과 듣고 뜻 고르기에서 겹쳐 — 두 문장 모두 기계라 '흡인기'
+- kind: word
+  id: w-figure
+  fields:
+  - en
+  - ipa
+  why: '''파악하다''는 figure out이라는 구의 뜻이라 구 단위 헤드워드로'
+- kind: word
+  id: w-closely
+  fields:
+  - ko
+  why: watch closely는 '면밀히' 지켜보는 것이라 '가까이서'는 어색
+- kind: word
+  id: w-delay
+  fields:
+  - ko
+  why: 문장은 whether to delay(동사)라 '지연'(명사)은 틀림
+- kind: word
+  id: w-fault
+  fields:
+  - example
+  why: 문장 수정에 맞춰 예문·번역을 새 문장으로
+- kind: word-remove
+  id: w-side
+  why: 문장 1.4를 '알레르기로 기록' 문장으로 고쳐 side·effect를 태그하는 문장이 없어졌다
+- kind: word-remove
+  id: w-effect
+  why: 문장 1.4를 '알레르기로 기록' 문장으로 고쳐 side·effect를 태그하는 문장이 없어졌다
+- kind: word-add
+  id: w-exactly
+  why: w-exact는 13문장 중 9문장이 부사 exactly라 부사 단어를 새로 만든다
+- kind: sentence
+  situation: 금식 시작 시각 확인
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 검토 수정 — 문장 en·ko를 사실·업무 범위에 맞게 고침(keyPhrase 아님)
+- kind: sentence
+  situation: 약물 알레르기 문진
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 수정 — 문장 en·ko를 사실·업무 범위에 맞게 고침(keyPhrase 아님)
+- kind: sentence
+  situation: 조영제·해산물 교차 알레르기
+  index: 0
+  fields:
+  - ko
+  why: 검토 수정 — keyPhrase ko 번역만 고침
+- kind: sentence
+  situation: 조영제·해산물 교차 알레르기
+  index: 1
+  fields:
+  - ko
+  - words
+  why: 검토 수정 — 문장 수정
+- kind: sentence
+  situation: 조영제·해산물 교차 알레르기
+  index: 3
+  fields:
+  - ko
+  why: 검토 수정 — keyPhrase ko 번역만 고침
+- kind: sentence
+  situation: 조영제·해산물 교차 알레르기
+  index: 4
+  fields:
+  - words
+  why: 검토 수정 — 태그 정리(w-exact → w-exactly)
+- kind: sentence
+  situation: 심·호흡 기저질환
+  index: 3
+  fields:
+  - chunks
+  why: 검토 수정 — chunks를 구 경계에 맞게 다시 끊음
+- kind: sentence
+  situation: 한약·건강보조제 복용
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 수정 — 문장 en·ko를 사실·업무 범위에 맞게 고침(keyPhrase 아님)
+- kind: sentence
+  situation: 한약·건강보조제 복용
+  index: 5
+  fields:
+  - chunks
+  why: 검토 수정 — chunks를 구 경계에 맞게 다시 끊음
+- kind: sentence
+  situation: 흡연·음주력 문진
+  index: 2
+  fields:
+  - ko
+  why: 검토 수정 — keyPhrase ko 번역만 고침
+- kind: sentence
+  situation: 최근 상기도 감염
+  index: 5
+  fields:
+  - chunks
+  why: 검토 수정 — chunks를 구 경계에 맞게 다시 끊음
+- kind: sentence
+  situation: 조영제 아나필락시스 병력
+  index: 3
+  fields:
+  - chunks
+  - words
+  why: 검토 수정 — 문장 수정
+- kind: sentence
+  situation: 원인 미상 약물 반응
+  index: 4
+  fields:
+  - chunks
+  why: 검토 수정 — chunks를 구 경계에 맞게 다시 끊음
+- kind: sentence
+  situation: 항응고제 복용 미확인 도착
+  index: 3
+  fields:
+  - chunks
+  - words
+  why: 검토 수정 — 문장 수정
+- kind: sentence
+  situation: 항응고제 복용 미확인 도착
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 검토 수정 — 문장 en·ko를 사실·업무 범위에 맞게 고침(keyPhrase 아님)
