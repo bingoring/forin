@@ -1,0 +1,81 @@
+import yaml,collections,re,json
+d=yaml.safe_load(open('_reviewB_or-preop-assessment_after.yaml'))
+B={ # (sit,sent): (answer, options, reason)
+(0,0):("last",["last","first","usually","normally"],"next·only — 'When did you only eat'가 문법으로 걸러짐"),
+(1,0):("take",["take","order","store","mix"],"정답이 약 이름 — ibuprofen·aspirin·insulin 알레르기도 같은 질문으로 성립(정답 둘), 영어로 추론 불가 → 빈칸을 take로"),
+(1,1):("rash",["rash","bruise","scar","cramp"],"cough·fever 되풀이(부탁하신 판정), 'just a fever'(약열)도 성립"),
+(1,3):("treatment",["treatment","payment","transport","paperwork"],"insurance — decoy 3곳(6.3·19.1·20.4)과 겹친 낱말"),
+(2,0):("anesthesia",["anesthesia","injection","dialysis","transfusion"],"surgery — 'waking up from your last surgery' 정답 둘"),
+(2,1):("have",["have","treat","cause","prevent"],"dizziness·itching·fatigue — 마취 뒤 흔한 증상이라 어떤 증상을 넣어도 질문이 성립(정답 둘) → 빈칸을 have로(주어가 환자라 treat·cause·prevent는 틀림)"),
+(2,2):("nausea",["nausea","headache","chills","hiccups"],"fever·cough 되풀이(부탁하신 판정)"),
+(2,3):("have",["have","fix","spread","solve"],"bleeding·swallowing problems — 수술 전 표준 질문(출혈 경향·삼킴) 그대로 — 정답 둘, 같은 분야 명사는 다 성립 → 빈칸을 have로"),
+(3,3):("insulin",["insulin","antacids","vitamins","laxatives"],"oxygen(가정 산소)·morphine(만성 아편유사제)도 수술 전에 꼭 묻는 고위험 약 — 정답 둘; 저위험 약으로"),
+(5,0):("accurate",["accurate","estimated","older","average"],"'an rough' — 관사로 걸러짐"),
+(5,2):("dose",["dose","size","brand","color"],"price 3회 되풀이(5.2·8.4·13.5)"),
+(8,4):("risk",["risk","fee","speed","temperature"],"price 되풀이"),
+(11,5):("extra",["extra","future","minor","distant"],"private 3회 되풀이·'private bleeding risk' 문법이 어색해 걸러짐"),
+(12,0):("drink",["drink","nap","checkup","workout"],"snack — 'last snack'은 금식 문진 그대로 — 정답 둘; visit 3회 되풀이"),
+(13,0):("routine",["routine","rare","special","costly"],"private — 비공개로 하는 검사라 'a private safety test'도 성립(정답 둘), private 되풀이"),
+(14,1):("colored",["colored","clear","watery","dry"],"thick·sticky — 진한 가래도 감염 신호라 정답 둘"),
+(14,3):("cough",["cough","rash","limp","bruise"],"weeks·months — 기간은 영어로 추론 불가(정답 둘), 시간 단위 묶음 되풀이 → 빈칸을 cough로"),
+(15,2):("ready",["ready","painful","gentle","brief"],"legal — 장면 밖"),
+(16,0):("serious",["serious","mild","strange","quiet"],"rare — 'That's a rare reaction — high-risk'도 성립"),
+(16,4):("caused",["caused","followed","delayed","labeled"],"food·latex·tape — 라텍스는 수술실 아나필락시스의 흔한 원인, 셋 다 원인으로 성립 — 정답 둘 → 빈칸을 caused로"),
+(17,3):("swelled",["swelled","healed","dried","warmed"],"hands·feet·legs — 손발 붓기도 그대로 성립 — 정답 둘 → 빈칸을 swelled로"),
+(18,2):("safe",["safe","quick","fancy","simple"],"16.5와 같은 오답 묶음(thank·bill·hire) 되풀이, 같은 분야 동사(page·call)는 정답 둘 → 빈칸을 safe로"),
+(19,0):("dose",["dose","refill","meal","test"],"visit — 같은 문장 decoy 'your last visit'·오답 '병원 방문'과 세 겹"),
+(20,3):("Unconscious",["Unconscious","Fasting","Elderly","Pediatric"],"Unmarried·Unpaid·Uninsured — un- 소리만 닮음(TASK 6), 보험·결혼 여부로 처치가 갈린다는 말로 읽힘"),
+(20,4):("meal",["meal","call","note","checkup"],"visit 되풀이"),
+}
+C={ # decoy
+(1,5):("and hope","'and look into' — 어느 청크 자리에 넣어도 문법이 깨져 모양으로 걸러짐"),
+(6,1):("the bill","'I need to hand' — 'hand this to the anesthesia team' = 보고 — 정답 둘"),
+(12,1):("ask about","'decide on' ≈ 'plan for' — 정답 둘에 가까움"),
+(16,0):("a donor","'for' — 'marking you for high-risk'가 같은 뜻으로 조립됨 — 정답 둘"),
+(16,4):("what food","'what brand' — '어떤 약(상표)'으로 ko에 그대로 맞음"),
+(17,2):("extra blankets","'on order' — 조립하면 응급약이 아직 주문 중 — 대비를 늦추는 조립(TASK 7)"),
+(18,5):("in writing","'one by one' — 어느 청크 자리에도 맞지 않음(전달 대상·시점 자리를 피해 방식 자리로)"),
+(19,4):("to fill it","'to hold it' — hold = 약을 끊다 — 정답 둘"),
+(20,2):("the linen cart","'over there' — 조립하면 기도 카트를 저쪽에 — 위기 장비를 멀리 두는 반대말 decoy"),
+(20,3):("as a priority","'on paper' — 조립하면 '서류상으로만 처치' — 처치를 기록으로 바꾸는 조립"),
+}
+O={ # order: sit -> {line_idx:(en,ko,note,icon)} , new why
+1:({3:("Because it's an allergy, I'll flag it in your chart so the whole team knows.","알레르기니 차트에 표시해 팀 전체가 알게 할게요",None,None)},None,"swap34 자연스러움 — 'Because of that'이 2줄(호흡곤란)에도 붙음"),
+5:({3:("Besides that dose, your height is also needed for your BMI.","그 용량 말고도 체질량지수에는 키가 필요해요",None,None)},"정확한 체중이 필요하다고 말하고, 체중계에 올라가 달라고 부탁하고, 그 수치가 용량에 쓰인다고 밝힌 뒤, 용량 말고 체질량지수에는 키도 필요하다고 이어요.","swap34 자연스러움 — 3·4줄이 둘 다 2줄에 기대어 바꿔도 말이 됨"),
+3:({2:("Besides names and doses, I need exactly when you took your last dose of each.","이름과 용량 말고도 각 약을 마지막으로 언제 드셨는지 정확히 알아야 해요",None,None)},None,"swap23 경계 — 'Now for the timing'이 1줄 뒤에도 붙음; 3줄을 2줄에 묶음"),
+8:({2:("Because it's PONV, I'll flag you as high-risk for post-op nausea.","PONV라서 수술 후 메스꺼움 고위험군으로 표시할게요",None,None)},None,"swap23 자연스러움 — 'Because of that'이 1줄(토했다는 답)에도 붙음"),
+9:({1:("This matters a lot for your airway during anesthesia.","이건 마취 중 기도에 아주 중요해요","이유","bulb"),
+    2:("That's why I'm asking — did you bring that machine with you today?","그래서 여쭤요, 오늘 그 기계를 가져오셨어요?","지참","me"),
+    3:("Either way, I'll bring all of this straight to anesthesia before we go back.","어느 쪽이든 수술실 가기 전에 마취과에 바로 전달할게요","전달","handshake2")},
+   "CPAP 사용과 설정을 묻고, 그게 마취 중 기도에 중요하다고 설명한 뒤, 그래서 기계를 가져왔는지 묻고, 어느 쪽이든 마취과에 바로 전해요.","swap23 자연스러움 — '기계를 가져왔나요'와 '기도에 중요해요'가 서로 기대지 않음; 4줄 'Because it matters'도 2·3줄 어느 쪽 뒤에나 붙음"),
+13:({2:("I know that question feels personal, but it keeps you safe under anesthesia.","그 질문이 개인적으로 느껴지시겠지만 마취 중 안전을 위한 거예요",None,None)},None,"swap23 자연스러움 — 이유→공감→질문(공감→이유→요청 꼴)도 그대로 성립"),
+15:({2:("Because of that aspiration risk, suction is on and ready at the bedside.","그 흡인 위험 때문에 흡인기를 켜서 머리맡에 준비해 뒀어요",None,None)},None,"swap23 자연스러움 — 'For that'(=RSI를 위해) 뒤에 'That's because…'가 흡인기 이유로 읽힘"),
+16:({2:("Because you're high-risk, I'll alert the whole team before we give anything.","고위험이시니 투여 전에 팀 전체에 알릴게요",None,None)},None,"swap23 자연스러움 — 'To prepare for that'이 1줄 답에도 붙음"),
+13:({2:("Besides names and doses, I need exactly when you took your last dose of each.","이름과 용량 말고도 각 약을 마지막으로 언제 드셨는지 정확히 알아야 해요",None,None)},None,"swap23 경계 — 'Now for the timing'이 1줄 뒤에도 붙음; 3줄을 2줄에 묶음"),
+8:({2:("If it's MH, this kind of family history changes which anesthesia drugs are safe.","악성 고열이라면 이런 가족력은 어떤 마취약이 안전한지를 바꿔요",None,None)},None,"swap23 자연스러움 — 형제 이야기 바로 뒤 'This kind of family history'가 그대로 붙음"),
+}
+W={ # why
+(2,1):("any 하나로 세 항목을 묶은 열거형이라 환자가 하나씩 떠올리며 답하기 쉬워요. 마지막에 a bad reaction을 둬 앞에서 놓친 반응까지 물어요.","'any를 세 번 겹쳐 쓴' — en에 any는 한 번뿐(사실 오류)"),
+(12,3):("About이 대략의 수를 말해도 된다는 신호라 정확히 기억 못하는 환자의 부담을 덜어요. 하루 개비 수(20개비가 1갑)와 연수로 누적 흡연량(pack-year)을 가늠해요.","'하루 개비 수와 연수를 곱해 pack-year' — pack-year는 하루 갑 수×연수(개비는 20으로 나눔)"),
+}
+S=d['situations']
+for (i,j),(a,o,r) in B.items():
+  x=S[i]['sentences'][j]; assert re.search(r'(?<![A-Za-z])'+re.escape(a)+r'(?![A-Za-z])',x['en']) and len(re.findall(r'(?<![A-Za-z])'+re.escape(a)+r'(?![A-Za-z])',x['en']))==1,(i,j)
+  x['blank']={'answer':a,'options':[{'en':t} for t in o]}
+for (i,j),(v,r) in C.items():
+  x=S[i]['sentences'][j]; assert v not in x['en'] and v not in x['chunks']; x['decoy']=v
+for i,(lines,why,r) in O.items():
+  L=S[i]['order']['lines']
+  for k,(en,ko,note,icon) in lines.items():
+    L[k]['en']=en; L[k]['ko']=ko
+    if note: L[k]['note']=note
+    if icon: L[k]['icon']=icon
+    assert len(en.split())<=15,(i,k,len(en.split()))
+  if why: S[i]['order']['why']=why
+for (i,j),(v,r) in W.items(): S[i]['sentences'][j]['why']=v
+c=collections.Counter(o['en'] for s in S for x in s['sentences'] for o in x['blank']['options'] if o['en']!=x['blank']['answer'])
+print('blank wrong >=3',[(k,v) for k,v in c.items() if v>=3])
+dw=collections.Counter(t for s in S for x in s['sentences'] for t in set(re.findall(r'[a-z]+',x['decoy'].lower())) if t not in {'the','a','an','of','to','in','on','at','and','for','so','you','can','i','ll','did','any','your','we'})
+print('decoy words >=3',[(k,v) for k,v in dw.items() if v>=3])
+yaml.safe_dump(d,open('_reviewB_or-preop-assessment_after.yaml','w'),allow_unicode=True,sort_keys=False)
+json.dump({'blank':{f'{i}.{j}':v for (i,j),v in B.items()},'decoy':{f'{i}.{j}':v for (i,j),v in C.items()},'order':{str(i):v for i,v in O.items()},'why':{f'{i}.{j}':v for (i,j),v in W.items()}},open('_reviewB_or-preop-assessment_rest.json','w'),ensure_ascii=False,indent=0)
