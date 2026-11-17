@@ -6,6 +6,8 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-10-28
 
+> ✅ **OR 한 번에 저작 묶음 2·3 — preop-verification·tourniquet·preop-assessment·difficult-airway 합침(2026-11-17).** keyPhrase 14문장 교체(커프 폭·감압은 집도의·FONA 복창 등), chunks 20문장, OR 위반 0. 머지·배포는 사용자 지시로 보류. 남은 OR 27주제.
+>
 > ✅ **OR 한 번에 저작 묶음 1 — massive-transfusion·count 합침(2026-10-30).** keyPhrase 3문장 교체(반출 금지·수혈 중단·혈액은행 지역 주문), chunks 15문장 다시 자름, OR 위반 0. 머지·배포는 사용자 지시로 보류. 묶음 2(preop-verification·tourniquet)는 검토 중.
 >
 > ✅ **ICU 한 번에 저작 묶음 9 — 마지막 3주제 합침, ICU 66주제 완료(2026-10-30).** core-language·core-family·core-safety-icu: keyPhrase 8문장 교체(통역사·깜빡임·윤리위원회·독립 이중 확인·ICU 의사 호출 등), ICU 위반 0.
