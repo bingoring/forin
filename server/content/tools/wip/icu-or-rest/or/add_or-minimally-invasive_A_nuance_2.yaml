@@ -1,0 +1,331 @@
+"CO2 흡수 EtCO2 상승":
+- "kind": "slider"
+  "words":
+  - "w-etco2"
+  - "w-absorb"
+  - "w-co2"
+  - "w-climb"
+  "cue": "The number on his anesthesia monitor keeps rising, and you want to flag it to Peter. What do you say?"
+  "scale":
+  - "The EtCO2 looks a bit different from before."
+  - "The EtCO2 is climbing — is it from the CO2?"
+  - "EtCO2 is climbing; what's your call on ventilation?"
+  "answerAt": 2
+  "why": "마취과의사에게는 모호한 느낌이 아니라 수치의 방향을 말하고, 환기를 어떻게 할지는 그쪽에 물어야 해요. 원인을 단정하는 말도 간호사가 정할 일이 아니에요."
+  "example": "The EtCO2 numbers are climbing steadily."
+  "exKo": "EtCO2 수치가 꾸준히 오르고 있습니다."
+- "kind": "context"
+  "words":
+  - "w-etco2"
+  "word": "EtCO2"
+  "ko": "호기말 이산화탄소"
+  "scenes":
+  - "who": "마취과 동료에게"
+    "icon": "monitor"
+    "en": "EtCO2 is climbing, so let's check the ventilation."
+    "ok": true
+  - "who": "차트 기록"
+    "icon": "board"
+    "en": "EtCO2 trending up since insufflation began."
+    "ok": true
+  - "who": "수술 전 환자에게"
+    "icon": "me"
+    "en": "Your EtCO2 will be monitored, and we'll adjust the ventilation as needed."
+    "ok": false
+    "fix": "A monitor will measure the carbon dioxide you breathe out, and the anesthesia team will adjust your breathing as needed."
+  "why": "EtCO2는 마취 팀이 쓰는 모니터 용어예요. 환자에게는 무엇을 재는지와 어떻게 조절하는지를 쉬운 말로 풀어야 해요."
+- "kind": "swap"
+  "words":
+  - "w-etco2"
+  - "w-ventilation"
+  "who": "순회간호사 → 마취과의사 · EtCO2 보고"
+  "icon": "speaker"
+  "before":
+  - "Peter, the EtCO2 is climbing, "
+  - "so please change the ventilator settings right now"
+  - "."
+  "options":
+  - "and I'd like your call on the ventilation"
+  - "so please change the ventilator settings right now"
+  - "so I've already turned up the ventilator settings for you"
+  "answer": "and I'd like your call on the ventilation"
+  "notes":
+    "and I'd like your call on the ventilation": "변화를 알리고 환기 조정은 마취과의사의 판단에 맡겨요."
+    "so please change the ventilator settings right now": "환기는 마취과의사의 일이라 간호사가 지시하는 말이 되고 무례하게 들려요."
+    "so I've already turned up the ventilator settings for you": "간호사가 환기 설정을 직접 바꿨다는 뜻이라 업무 범위를 넘어요."
+  "why": "환기와 호흡 관리는 마취과의사의 몫이에요. 간호사는 보이는 변화를 알리고 판단을 구해요."
+  "ko": "피터, EtCO2가 오르고 있어서 환기는 판단을 부탁드려요"
+"로봇팔 충돌 방지":
+- "kind": "slider"
+  "words":
+  - "w-arm"
+  - "w-space"
+  - "w-collision"
+  "cue": "Olivia glances at the robot and asks, \"How do the arms look?\""
+  "scale":
+  - "The arms have enough space right now."
+  - "They have space, but let's re-angle one now anyway."
+  - "The arms are colliding — undock everything!"
+  "answerAt": 0
+  "why": "여유가 있을 때는 지금 상태를 그대로 알리면 돼요. 아직 부딪히지 않는데 다시 잡자고 하거나 전부 언도킹하자고 하면 불필요하게 팀을 멈추게 해요."
+  "example": "I'll adjust the arm position from the cart."
+  "exKo": "카트에서 팔 위치를 조정할게요."
+- "kind": "swap"
+  "words":
+  - "w-adjust"
+  - "w-arm"
+  - "w-position"
+  - "w-cart"
+  "who": "간호사 → 순회간호사 · 팔 위치 조정"
+  "icon": "speaker"
+  "before":
+  - "Olivia, I'll adjust "
+  - "everything on the cart"
+  - " if the arms get closer."
+  "options":
+  - "everything on the cart"
+  - "the arm position from the cart"
+  - "the surgeon's console settings"
+  "answer": "the arm position from the cart"
+  "notes":
+    "everything on the cart": "범위가 너무 넓어서 무엇을 건드리는지 알 수 없어요."
+    "the arm position from the cart": "카트에서 팔 위치를 맞춘다는 구체적이고 맡은 범위 안의 행동이에요."
+    "the surgeon's console settings": "콘솔 설정은 집도의가 다루는 것이라 순회간호사가 건드릴 부분이 아니에요."
+  "why": "카트 쪽 팔 위치 조정은 순회간호사가 하는 일이에요. 내가 무엇을 맞출지를 구체적으로 말해야 해요."
+  "ko": "올리비아, 팔이 더 가까워지면 카트에서 팔 위치를 조정할게요"
+"개복 전환 대비":
+- "kind": "slider"
+  "words":
+  - "w-open"
+  - "w-laparotomy"
+  - "w-tray"
+  - "w-ready"
+  "cue": "Samuel asks if we're ready in case the surgeon has to convert."
+  "scale":
+  - "I hope we're covered if that happens."
+  - "I think we have an open set somewhere."
+  - "The laparotomy tray is in the room and ready."
+  "answerAt": 2
+  "why": "전환 대비는 '있을 것 같다'가 아니라 어디에 무엇이 준비됐는지로 말해야 해요. 전환을 결정하는 사람은 집도의이고, 간호사는 트레이를 준비해 둬요."
+  "example": "I'll keep the laparotomy tray ready."
+  "exKo": "개복술 트레이를 준비 상태로 둘게요."
+- "kind": "context"
+  "words":
+  - "w-laparotomy"
+  "word": "laparotomy"
+  "ko": "개복술"
+  "scenes":
+  - "who": "수술 전 환자에게"
+    "icon": "me"
+    "en": "If we have to, we'll switch to a laparotomy."
+    "ok": false
+    "fix": "If we need to, the surgeon may open your belly with a larger cut instead."
+  - "who": "차트 기록"
+    "icon": "board"
+    "en": "Converted to laparotomy; tray opened."
+    "ok": true
+  - "who": "소독간호사에게"
+    "icon": "speaker"
+    "en": "The laparotomy tray is in the room and ready."
+    "ok": true
+  "why": "laparotomy는 의료진이 쓰는 정확한 수술 이름이에요. 환자에게는 '배를 더 크게 여는 수술'처럼 풀어서 말해야 이해해요."
+- "kind": "swap"
+  "words":
+  - "w-convert"
+  - "w-keep"
+  - "w-laparotomy"
+  - "w-tray"
+  "who": "순회간호사 → 소독간호사 · 전환 대비"
+  "icon": "speaker"
+  "before":
+  - "Samuel, "
+  - "we'll convert whenever we need to"
+  - "."
+  "options":
+  - "I'll keep the laparotomy tray ready in case we convert"
+  - "we'll convert whenever we need to"
+  - "the open set is probably somewhere in the room if anyone needs it"
+  "answer": "I'll keep the laparotomy tray ready in case we convert"
+  "notes":
+    "I'll keep the laparotomy tray ready in case we convert": "전환 여부는 집도의가 정하니 간호사는 준비를 맡는다고 말해요."
+    "we'll convert whenever we need to": "간호사가 전환 시점을 정하는 것처럼 들려요."
+    "the open set is probably somewhere in the room if anyone needs it": "'probably'라서 실제로 준비된 건지 알 수 없어요."
+  "why": "전환은 집도의가 결정해요. 간호사는 기구를 준비해 두는 일을 분명히 말해요."
+  "ko": "새뮤얼, 전환하게 될 경우에 대비해 개복술 트레이를 준비해 둘게요"
+"트렌델렌버그 순환 영향":
+- "kind": "slider"
+  "words":
+  - "w-steep"
+  - "w-facial"
+  - "w-swell"
+  - "w-watch"
+  "cue": "His cheeks and eyelids look slightly puffy after a long time tilted head-down. What do you tell Rachel?"
+  "scale":
+  - "His face looks the same as before."
+  - "His face looks a little bit swollen."
+  - "His face is swelling fast — emergency!"
+  "answerAt": 1
+  "why": "본 것을 정도에 맞게 알리는 게 좋아요. 아무 일 없다는 듯 말하면 놓치고, 응급이라고 부풀리면 마취과의사가 실제 상태를 가늠하기 어려워요."
+  "example": "Watch the pressure and facial swelling."
+  "exKo": "혈압과 얼굴 부종을 지켜보세요."
+- "kind": "context"
+  "words":
+  - "w-trendelenburg"
+  "word": "Trendelenburg"
+  "ko": "트렌델렌버그 체위"
+  "scenes":
+  - "who": "마취과 동료에게"
+    "icon": "monitor"
+    "en": "We're in steep Trendelenburg, so I'll watch his face and airway pressures."
+    "ok": true
+  - "who": "마취 전 환자에게"
+    "icon": "me"
+    "en": "You'll be in steep Trendelenburg for the whole case."
+    "ok": false
+    "fix": "You'll be tilted with your head lower than your feet for the whole case."
+  - "who": "차트 기록"
+    "icon": "board"
+    "en": "Steep Trendelenburg maintained; table leveled periodically."
+    "ok": true
+  "why": "Trendelenburg는 의료진이 쓰는 체위 이름이에요. 환자에게는 '머리가 발보다 낮게 기울어진다'처럼 모습으로 풀어서 말해야 해요."
+- "kind": "swap"
+  "words":
+  - "w-level"
+  - "w-table"
+  - "w-periodically"
+  "who": "순회간호사 → 마취과의사 · 테이블 수평"
+  "icon": "speaker"
+  "before":
+  - "Rachel, "
+  - "I'll level the table by myself"
+  - "."
+  "options":
+  - "let's level the table anytime now"
+  - "I'll level the table by myself"
+  - "let's level the table periodically if the surgeon agrees"
+  "answer": "let's level the table periodically if the surgeon agrees"
+  "notes":
+    "let's level the table anytime now": "수술 진행을 고려하지 않고 아무 때나 하자는 말이에요."
+    "I'll level the table by myself": "테이블 각도는 집도의·마취과와 맞춰야 해서 혼자 정할 일이 아니에요."
+    "let's level the table periodically if the surgeon agrees": "주기적으로 맞추되 집도의 동의를 구한다는 점을 함께 말해요."
+  "why": "테이블 각도는 수술 진행과 환자 상태를 같이 봐야 해서 팀이 합의해 바꿔요."
+  "ko": "레이첼, 집도의가 동의하면 주기적으로 테이블을 수평으로 맞춥시다"
+"장비 고장 대응":
+- "kind": "slider"
+  "words":
+  - "w-insufflator"
+  - "w-show"
+  - "w-error"
+  - "w-tubing"
+  - "w-connection"
+  "cue": "Eric points at the insufflator's display and asks what's up."
+  "scale":
+  - "It's only a glitch, so let's keep going."
+  - "It shows an error; I'm checking the tubing and connections."
+  - "The whole system is down — call everyone in!"
+  "answerAt": 1
+  "why": "오류가 뜨면 먼저 원인이 될 만한 튜빙과 연결부를 확인한다고 알려요. 별일 아니라며 넘기거나 전체가 멈췄다고 하면 팀이 잘못 움직여요."
+  "example": "Let's check the tubing and connections."
+  "exKo": "튜빙과 연결부를 확인합시다."
+- "kind": "swap"
+  "words":
+  - "w-check"
+  - "w-tubing"
+  - "w-backup"
+  - "w-unit"
+  "who": "간호사 → 순회간호사 · 오류 대응"
+  "icon": "speaker"
+  "before":
+  - "Eric, "
+  - "I'm resetting it and hoping it works"
+  - "."
+  "options":
+  - "I'm resetting it and hoping it works"
+  - "I'll check the tubing, then get the backup unit ready"
+  - "let's wait for the vendor to call back"
+  "answer": "I'll check the tubing, then get the backup unit ready"
+  "notes":
+    "I'm resetting it and hoping it works": "원인을 확인하지 않고 운에 맡기는 말이라 같은 오류가 다시 날 수 있어요."
+    "I'll check the tubing, then get the backup unit ready": "원인 점검과 대비책을 순서대로 말해서 팀이 수술을 이어 갈 준비를 해요."
+    "let's wait for the vendor to call back": "수술 중에 업체 연락을 기다리면 그만큼 수술과 마취 시간이 길어져요."
+  "why": "수술 중 장비 오류는 점검과 예비 장비 준비를 함께 말해서 팀이 같은 순서로 움직이게 해요."
+  "ko": "에릭, 튜빙을 확인한 다음 예비 유닛을 준비해 둘게요"
+"렌즈 시야 관리":
+- "kind": "slider"
+  "words":
+  - "w-scope"
+  - "w-fog"
+  - "w-defog"
+  - "w-warm"
+  - "w-lens"
+  "cue": "The scope keeps fogging. Hana asks what you want to do."
+  "scale":
+  - "Let's try something quick."
+  - "Let's clean the lens again."
+  - "Let's warm and defog the lens first."
+  "answerAt": 2
+  "why": "김서림은 렌즈가 몸 안보다 차가울 때 잘 생겨서, 닦는 것만이 아니라 데우고 김서림을 막는 처치가 필요해요. 막연한 말은 소독간호사가 무엇을 할지 알 수 없어요."
+  "example": "Let's warm and defog the lens."
+  "exKo": "렌즈를 데워서 김서림을 없앱시다."
+- "kind": "swap"
+  "words":
+  - "w-wipe"
+  - "w-warm"
+  - "w-reinsert"
+  - "w-quickly"
+  "who": "순회간호사 → 소독간호사 · 스코프 재삽입"
+  "icon": "speaker"
+  "before":
+  - "Hana, I'll "
+  - "rinse it in cold water and put it back in"
+  - "."
+  "options":
+  - "wipe the lens, warm it, and reinsert it quickly"
+  - "rinse it in cold water and put it back in"
+  - "leave the lens alone and just keep working through the haze"
+  "answer": "wipe the lens, warm it, and reinsert it quickly"
+  "notes":
+    "wipe the lens, warm it, and reinsert it quickly": "닦고 데운 뒤 빠르게 다시 넣으면 시야가 다시 흐려지는 시간을 줄여요."
+    "rinse it in cold water and put it back in": "차가운 렌즈가 따뜻한 복강에 들어가면 다시 김이 서려요."
+    "leave the lens alone and just keep working through the haze": "흐린 시야로 수술을 이어 가면 위험해요."
+  "why": "렌즈는 닦기만 하면 다시 흐려지기 쉬워요. 데우는 단계까지 말해서 같은 일을 되풀이하지 않게 해요."
+  "ko": "하나, 렌즈를 닦고 데운 뒤 빠르게 다시 삽입할게요"
+"로봇 응급 언도킹 준비":
+- "kind": "slider"
+  "words":
+  - "w-review"
+  - "w-emergency"
+  - "w-undock"
+  - "w-step"
+  "cue": "Before the case, Craig asks how to prepare the team for an emergency undock."
+  "scale":
+  - "Let's review the undocking steps."
+  - "Let's review them and rehearse on the live case."
+  - "Let's hold the setup until everyone signs off."
+  "answerAt": 0
+  "why": "응급 언도킹은 시작 전에 절차를 같이 훑어 두는 게 기본이에요. 실제 수술 중에 연습하거나 서명을 받을 때까지 세팅을 멈추는 건 과해요."
+  "example": "Let's review the emergency undocking steps."
+  "exKo": "응급 언도킹 절차를 검토합시다."
+- "kind": "swap"
+  "words":
+  - "w-role"
+  - "w-undock"
+  - "w-sequence"
+  - "w-convert"
+  "who": "간호사 → 순회간호사 · 역할 확인"
+  "icon": "speaker"
+  "before":
+  - "Craig, "
+  - "everyone will figure out their roles when it happens"
+  - "."
+  "options":
+  - "I'll just wing the undocking steps if it happens"
+  - "everyone will figure out their roles when it happens"
+  - "let's confirm everyone's role in the undocking sequence now"
+  "answer": "let's confirm everyone's role in the undocking sequence now"
+  "notes":
+    "I'll just wing the undocking steps if it happens": "절차 없이 닥치면 하겠다는 뜻이라 응급 때 순서가 어긋나요."
+    "everyone will figure out their roles when it happens": "역할을 미리 정하지 않아 위급할 때 서로 기다릴 수 있어요."
+    "let's confirm everyone's role in the undocking sequence now": "미리 역할과 순서를 확인해서 응급 때 바로 움직이게 해요."
+  "why": "응급 언도킹은 시간이 중요해서 역할을 미리 정해 두어야 해요."
+  "ko": "크레이그, 지금 언도킹 순서에서 각자 역할이 뭔지 확인합시다"

@@ -1166,7 +1166,7 @@ situations:
     why: Anyone은 직급을 가리지 않고 모두를 가리켜요. can은 허락의 뜻이라 말해도 된다는 분위기를 만들어요.
     decoy: raise a hand
     distractorsKo:
-    - 여기서는 누구든 우려를 정리할 수 있어요.
+    - 여기서는 누구든 우려를 분류할 수 있어요.
     - 여기서는 누구든 우려를 취합할 수 있어요.
     blank:
       answer: raise
@@ -1195,12 +1195,12 @@ situations:
     - 환자 정보가 속도보다 우선이에요.
     - 환자 안전이 비용보다 우선이에요.
     blank:
-      answer: safety
+      answer: comes
       options:
-      - en: risk
-      - en: harm
-      - en: delay
-      - en: safety
+      - en: stays
+      - en: sits
+      - en: hangs
+      - en: comes
   - en: We support each other in speaking up.
     ko: 우리는 말을 꺼내는 서로를 지지해요.
     chunks:
@@ -1218,14 +1218,14 @@ situations:
     why: each other는 지지하는 사람과 받는 사람이 같은 팀원이라는 뜻이에요. in speaking up은 어떤 일에서 지지하는지 짚어요.
     decoy: in training
     distractorsKo:
-    - 우리는 말을 꺼내는 서로를 기억해요.
+    - 우리는 말을 꺼내는 서로를 소개해요.
     - 우리는 말을 꺼내는 서로를 지켜봐요.
     blank:
       answer: support
       options:
-      - en: copy
       - en: judge
       - en: rate
+      - en: score
       - en: support
   - en: I feel safe speaking up in this room.
     ko: 이 방에서는 말을 꺼내도 안전하다고 느껴요.
@@ -1312,7 +1312,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 수술 안전 문화 4문장 순서
-    why: 먼저 우려를 다루는 방식을 소개하고, 누구나 제기할 수 있다고 말한 뒤, 그때 감사한다는 것을 보여 주고, 마지막에 오늘도 그렇게 해 달라고 청해요.
+    why: 우려를 다루는 방식을 소개한 뒤, 누구나 제기할 수 있다고 하고, 그때 감사한다고 알리고, 그걸 알았으니 오늘 말해 달라고 청해요.
     lines:
     - en: Let me explain how we handle concerns in this room.
       icon: board
@@ -1326,9 +1326,9 @@ situations:
       icon: handshake2
       ko: 누가 그러면 우리는 고마워해요
       note: 감사
-    - en: Since you'd get that same thanks, please speak up today if something feels wrong.
+    - en: Knowing that, please say so today if something feels wrong.
       icon: speech
-      ko: 같은 고마움을 받을 테니 오늘 뭔가 이상하면 말해 주세요
+      ko: 그걸 알았으니 오늘 뭔가 이상하면 말해 주세요
       note: 요청
 - title: 부위 표시 확인
   sentences:
@@ -1349,8 +1349,8 @@ situations:
     why: Is … marked?는 예·아니오로 답하는 확인 질문이에요. surgical을 붙여 수술 부위라고 범위를 좁혀요.
     decoy: room
     distractorsKo:
-    - 수술 부위에 표시가 번져 있나요?
-    - 수술 부위 표시가 어디에 되어 있나요?
+    - 표시를 살필 조명을 비춰요.
+    - 표시는 집도의가 직접 그려요.
     blank:
       answer: marked
       options:
@@ -1372,11 +1372,11 @@ situations:
     goal: 2
     tag: 서류 대조
     icon: board
-    why: '''it matches''의 it은 앞서 말한 부위 표시를 가리켜요. Let''s가 혼자 하는 검사가 아니라 함께 하는 확인으로 만들어요.'
+    why: '''it matches''의 it은 앞에서 다루던 표시나 부위를 가리켜요. Let''s가 혼자 하는 검사가 아니라 함께 하는 확인으로 만들어요.'
     decoy: the schedule
     distractorsKo:
-    - 일치하는지 확인하도록 동의서를 펴요.
-    - 동의서를 두 부 복사해 둘게요.
+    - 대조할 동의서를 꺼내요.
+    - 동의서는 마취 전에 서명받아요.
     blank:
       answer: matches
       options:
@@ -1428,8 +1428,8 @@ situations:
     why: Can you …?는 지시보다 부드러운 부탁이에요. where you marked가 요청의 초점을 위치로 좁혀요.
     decoy: the chart
     distractorsKo:
-    - 부위를 어디에 표시했는지 적어 주시겠어요?
-    - 부위를 어디에 표시했는지 찍어 주시겠어요?
+    - 표시를 보는 동안 드레이프를 걷을게요.
+    - 표시는 절개할 자리 바로 가까이에 둬요.
     blank:
       answer: where
       options:
@@ -1455,8 +1455,8 @@ situations:
     why: double-check은 이미 한 확인을 한 번 더 하겠다는 말이에요. I want to로 시작해 지시보다 바람으로 부드럽게 전해요.
     decoy: the lab slip
     distractorsKo:
-    - 이걸 동의서와 다시 한번 복사하고 싶어요.
-    - 이걸 동의서에 다시 한번 끼워 두고 싶어요.
+    - 대조할 동의서를 다시 한번 펴고 싶어요.
+    - 대조는 두 사람이 같이 하는 게 안전해요.
     blank:
       answer: consent
       options:
@@ -1483,8 +1483,8 @@ situations:
     why: themselves는 환자 본인이 직접 한다는 점을 못 박아요. Let's ask로 지시가 아니라 함께 부탁하는 말투가 돼요.
     decoy: the intern
     distractorsKo:
-    - 환자분께 직접 부위를 써 달라고 부탁해요.
-    - 환자분께 직접 부위를 그려 달라고 부탁해요.
+    - 환자분이 부위를 확인하는 동안 베개를 올려 드려요.
+    - 본인이 직접 부위를 말씀하셔도 괜찮아요.
     blank:
       answer: confirm
       options:
@@ -1496,24 +1496,24 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 부위 표시 확인 4문장 순서
-    why: 먼저 표시가 있는지 묻고, 그 표시를 동의서와 맞춰 본 뒤, 수술포를 덮은 후에도 보이는지 짚고, 환자 본인에게도 부탁해요.
+    why: 표시를 찾고, 그 내용을 동의서와 맞춰 본 뒤, 맞으면 환자 본인에게 부탁하고, 그 확인 뒤에 수술포를 덮은 후에도 보이는지 봐요.
     lines:
-    - en: Is the surgical site marked?
+    - en: I'm looking for the mark on the surgical site.
       icon: pushpin
-      ko: 수술 부위에 표시가 되어 있나요
-      note: 질문
-    - en: Good. Let's confirm it matches the consent.
+      ko: 수술 부위의 표시를 찾고 있어요
+      note: 찾기
+    - en: Let's confirm what it says matches the consent.
       icon: board
-      ko: 좋아요, 동의서와 일치하는지 확인해요
+      ko: 거기 적힌 게 동의서와 일치하는지 확인해요
       note: 대조
-    - en: The mark is visible after draping, right?
-      icon: check
-      ko: 수술포를 덮은 뒤에도 표시가 보이죠
-      note: 유지
-    - en: After all that, let's ask the patient to confirm the side themselves.
+    - en: With that matched, let's ask the patient to confirm the side themselves.
       icon: me
-      ko: 그 모든 걸 마친 뒤 환자분께 직접 부위를 확인해 달라고 해요
+      ko: 그게 맞으면 환자분께 직접 부위를 확인해 달라고 해요
       note: 환자
+    - en: After they confirm, I'll check the mark stays visible once draped.
+      icon: check
+      ko: 환자분이 확인한 뒤 수술포를 덮어도 표시가 보이는지 볼게요
+      note: 유지
 - title: 타임아웃 참여
   sentences:
   - en: Let's do the time-out now.
@@ -1532,15 +1532,15 @@ situations:
     why: Let's do …는 함께 시작하자는 제안이에요. time-out은 수술 직전에 모두가 멈추고 하는 안전 확인이에요.
     decoy: the handoff
     distractorsKo:
-    - 지금 타임아웃 시계를 맞춰요.
-    - 지금 타임아웃 표를 붙여요.
+    - 타임아웃 위해 지금 팀이 모여요.
+    - 타임아웃은 절개 직전에 진행돼요.
     blank:
       answer: time-out
       options:
       - en: time-out
-      - en: handoff
-      - en: huddle
-      - en: count
+      - en: scrub
+      - en: prep
+      - en: dressing
   - en: Patient, procedure, and site—everyone agree?
     ko: 환자, 수술명, 부위—다들 동의하시나요?
     chunks:
@@ -1557,7 +1557,7 @@ situations:
     goal: 2
     tag: 전체 확인
     icon: check
-    why: 사이에 '—'를 두어 세 항목을 말한 뒤 한꺼번에 묻는 말투예요. everyone agree?는 한 사람씩 동의를 구해요.
+    why: 사이에 '—'를 두어 세 항목을 말한 뒤 한꺼번에 묻는 말투예요. everyone agree?는 모두에게 동의하는지 묻는 짧은 질문이에요.
     decoy: ready
     distractorsKo:
     - 환자, 수술명, 부위—다들 들으셨나요?
@@ -1585,15 +1585,15 @@ situations:
     why: Any concerns?는 짧게 묻는 정해진 표현이에요. before we start가 아직 말할 수 있는 시점이라고 알려요.
     decoy: Any changes
     distractorsKo:
-    - 시작하기 전에 우려되는 점 적으셨나요?
-    - 시작하기 전에 우려되는 점 들으셨나요?
+    - 우려되는 점 말씀하시게 시작을 잠깐 미뤄요.
+    - 우려되는 점은 작아도 말씀하세요.
     blank:
-      answer: start
+      answer: before
       options:
-      - en: finish
-      - en: leave
-      - en: start
-      - en: decide
+      - en: since
+      - en: unless
+      - en: before
+      - en: while
   - en: I'll read each item out loud so we all hear it.
     ko: 모두가 듣도록 항목마다 소리 내어 읽을게요.
     chunks:
@@ -1612,15 +1612,15 @@ situations:
     why: out loud는 소리를 내서라는 뜻이에요. so we all hear it으로 이유를 붙여 이해시켜요.
     decoy: every page
     distractorsKo:
-    - 모두가 듣도록 항목마다 번호를 매길게요.
-    - 모두가 듣도록 항목마다 세어 볼게요.
+    - 모두가 듣도록 읽을 항목마다 번호를 붙일게요.
+    - 소리 내어 읽는 건 듣는 쪽을 돕는 방법이에요.
     blank:
       answer: read
       options:
-      - en: spell
-      - en: read
       - en: shout
-      - en: sort
+      - en: read
+      - en: chant
+      - en: sing
   - en: Everyone stops what they're doing during the time-out.
     ko: 타임아웃 동안에는 다들 하던 일을 멈춰요.
     chunks:
@@ -1638,15 +1638,15 @@ situations:
     why: Everyone으로 예외 없이 모두를 가리켜요. 현재형은 늘 그렇게 한다는 규칙처럼 들려요.
     decoy: what they're wearing
     distractorsKo:
-    - 타임아웃은 수술 직전에 진행해요.
-    - 타임아웃은 수술 전에 다 같이 해요.
+    - 타임아웃은 피부를 가르기 직전에 해요.
+    - 타임아웃은 팀원이 모두 서는 절차예요.
     blank:
       answer: stops
       options:
       - en: stops
-      - en: explains
-      - en: writes
-      - en: shares
+      - en: finishes
+      - en: repeats
+      - en: doubles
   - en: If something's unclear, this is the moment to say it.
     ko: 불분명한 게 있다면 지금이 말할 순간이에요.
     chunks:
@@ -1666,36 +1666,36 @@ situations:
     why: If something's unclear는 확신이 없어도 된다는 문턱을 낮춰요. the moment는 지금이 바로 그때라고 짚어요.
     decoy: the place
     distractorsKo:
-    - 불분명한 게 있다면 지금이 적을 순간이에요.
-    - 불분명한 게 있다면 지금이 기억할 순간이에요.
+    - 불분명한 게 있다면 말할 사람을 지금 정해요.
+    - 불분명한 게 있다면 작은 일도 환영이에요.
     blank:
       answer: unclear
       options:
       - en: heavy
-      - en: cold
-      - en: unclear
       - en: empty
+      - en: unclear
+      - en: thin
   order:
     tag: 대화 흐름
     icon: compass
     ko: 타임아웃 참여 4문장 순서
-    why: 시작을 알리고, 핵심 항목을 읽고 동의를 구한 뒤, 말할 우려를 묻고, 마지막으로 그 기회가 지금뿐임을 일깨워요.
+    why: 타임아웃을 시작하고, 이번 타임아웃의 핵심 항목에 동의를 구한 뒤, 그 동의 후 우려를 묻고, 있다면 지금 말해 달라고 청해요.
     lines:
     - en: Let's do the time-out now.
       icon: pager
       ko: 지금 타임아웃을 해요
       note: 시작
-    - en: Patient, procedure, and site—everyone agree?
+    - en: For this time-out, patient, procedure, and site—everyone agree?
       icon: check
-      ko: 환자, 수술명, 부위—다들 동의하시나요
+      ko: 이번에는 환자, 수술명, 부위—다들 동의하시나요
       note: 확인
-    - en: After that, any concerns before we start?
+    - en: Once we agree on that, any concerns before we start?
       icon: bell
-      ko: 그다음, 시작하기 전에 우려되는 점 있으세요
+      ko: 그에 동의하면 시작하기 전에 우려되는 점 있나요
       note: 우려
-    - en: If something's unclear, this is the moment to say it.
+    - en: If there are any, this is the moment to say so.
       icon: speech
-      ko: 불분명한 게 있으면 지금이 말할 때예요
+      ko: 있다면 지금이 말할 순간이에요
       note: 기회
 - title: 계수 기본 참여
   sentences:
@@ -1713,18 +1713,18 @@ situations:
     goal: 1
     tag: 함께 계수
     icon: check
-    why: Let's count는 함께 센다는 제안이에요. sponges and needles는 둘 다 센다는 뜻으로 세 가지 이상을 빼먹지 않게 해요.
+    why: Let's count는 함께 센다는 제안이에요. sponges and needles처럼 and로 이어서 두 가지를 다 센다고 밝혀요.
     decoy: Let's sort
     distractorsKo:
-    - 거즈와 바늘을 함께 모아요.
-    - 거즈와 바늘을 함께 옮겨요.
+    - 셀 거즈와 바늘을 함께 챙겨요.
+    - 거즈와 바늘은 세는 물건이에요.
     blank:
       answer: count
       options:
-      - en: sort
-      - en: stack
-      - en: count
       - en: fold
+      - en: pile
+      - en: count
+      - en: dry
   - en: I'll count out loud with you.
     ko: 당신과 함께 소리 내어 셀게요.
     chunks:
@@ -1741,15 +1741,15 @@ situations:
     why: with you는 혼자가 아니라 짝과 함께 센다는 뜻이에요. out loud로 두 사람이 같은 숫자를 듣게 해요.
     decoy: at the table
     distractorsKo:
-    - 당신과 함께 소리 내어 읽을게요.
-    - 당신과 함께 소리 내어 정리할게요.
+    - 소리 내어 셀 수 있게 옆에 설게요.
+    - 소리 내어 세면 숫자가 귀에 남아요.
     blank:
       answer: count
       options:
-      - en: read
-      - en: sort
-      - en: count
       - en: stack
+      - en: wrap
+      - en: count
+      - en: tie
   - en: The initial count is correct.
     ko: 초기 계수는 맞습니다.
     chunks:
@@ -1775,7 +1775,7 @@ situations:
       - en: correct
       - en: late
       - en: long
-      - en: loud
+      - en: rough
   - en: I want to hear each number as we count together.
     ko: 함께 셀 때 숫자마다 듣고 싶어요.
     chunks:
@@ -1796,14 +1796,14 @@ situations:
     decoy: your voice
     distractorsKo:
     - 함께 셀 때 숫자마다 보고 싶어요.
-    - 함께 셀 때 숫자마다 적고 싶어요.
+    - 함께 셀 때는 숫자를 소리 내어 말해요.
     blank:
       answer: hear
       options:
       - en: hear
       - en: write
-      - en: copy
       - en: guess
+      - en: echo
   - en: Let's count together so two people agree on the same number.
     ko: 두 사람이 같은 숫자에 동의하도록 함께 세요.
     chunks:
@@ -1851,8 +1851,8 @@ situations:
     why: so nothing gets missed는 놓치는 일이 없도록이라는 목적절이에요. clearly로 숫자가 헷갈리지 않게 해요.
     decoy: every number
     distractorsKo:
-    - 아무것도 놓치지 않도록 항목마다 번호를 붙일게요.
-    - 아무것도 놓치지 않도록 항목마다 한 줄씩 적을게요.
+    - 분명하게 말할 항목마다 번호를 하나씩 붙일게요.
+    - 항목을 또박또박 한 번씩 부르면 빠지는 게 줄어요.
     blank:
       answer: clearly
       options:
@@ -1864,23 +1864,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 계수 기본 참여 4문장 순서
-    why: 함께 세자고 제안하고, 소리 내어 센다고 약속하고, 그 숫자를 하나씩 듣고 싶다고 하며, 두 사람이 같은 숫자를 맞춘다고 이유를 밝혀요.
+    why: 함께 세자고 하고, 그것들을 소리 내어 같이 센다고 말하고, 내 숫자와 상대 숫자를 번갈아 듣겠다고 한 뒤, 두 숫자가 맞으면 두 사람이 동의한 것이라고 설명해요.
     lines:
     - en: Let's count the sponges and needles.
       icon: check
       ko: 거즈와 바늘을 함께 세요
       note: 제안
-    - en: I'll count out loud with you.
+    - en: I'll count them out loud with you.
       icon: mic
-      ko: 함께 소리 내어 셀게요
+      ko: 그것들을 함께 소리 내어 셀게요
       note: 약속
-    - en: As we do, I want to hear each number.
-      icon: ear
-      ko: 그렇게 할 때 숫자마다 듣고 싶어요
+    - en: I'll say my number, and I want to hear yours each time.
+      icon: mic
+      ko: 제 숫자를 말하고, 매번 당신 숫자를 듣고 싶어요
       note: 듣기
-    - en: That way, two people agree on the same number.
+    - en: When our numbers match, two people agree on the same count.
       icon: handshake2
-      ko: 그렇게 하면 두 사람이 같은 숫자에 동의해요
+      ko: 우리 숫자가 맞으면 두 사람이 같은 계수에 동의해요
       note: 이유
 - title: 검체 라벨 확인
   sentences:
@@ -1902,14 +1902,14 @@ situations:
     why: Let's read는 함께 읽자는 제안이에요. the specimen label은 검체에 붙은 라벨 하나를 가리켜요.
     decoy: the order sheet
     distractorsKo:
-    - 검체 라벨을 함께 붙여요.
-    - 검체 라벨을 함께 옮겨요.
+    - 읽을 검체 라벨을 함께 붙여요.
+    - 라벨은 이름을 알려 줘요.
     blank:
       answer: read
       options:
-      - en: sign
       - en: tape
       - en: carry
+      - en: peel
       - en: read
   - en: This is the right specimen and site?
     ko: 이게 맞는 검체와 부위인가요?
@@ -1928,8 +1928,8 @@ situations:
     why: This is …?처럼 평서문 억양으로 올려 말하면 확인을 구하는 질문이에요. the right는 맞는 것이 하나뿐이라는 뜻이에요.
     decoy: and cup
     distractorsKo:
-    - 이게 맞는 검체와 용기인가요?
-    - 이게 맞는 검체와 병리과인가요?
+    - 맞는지 볼 검체를 들어요.
+    - 검체와 부위는 라벨로 짝을 맞춰요.
     blank:
       answer: right
       options:
@@ -1954,8 +1954,8 @@ situations:
     why: before는 뒤따르는 일보다 확인이 먼저라는 순서예요. leaves the room은 검체가 방을 떠나는 순간이에요.
     decoy: the floor
     distractorsKo:
-    - 방을 나가기 전에 서명할게요.
-    - 방을 나가기 전에 라벨을 붙일게요.
+    - 나가기 전에 확인할 검체를 들어요.
+    - 방을 나간 검체는 확인하기 어려워요.
     blank:
       answer: before
       options:
@@ -1982,15 +1982,15 @@ situations:
     why: Can you say …?는 지시보다 부드러운 부탁이에요. out loud로 눈으로만 읽고 지나치는 일을 막아요.
     decoy: the lot number
     distractorsKo:
-    - 라벨에 있는 환자 이름을 받아 적어 주시겠어요?
-    - 라벨에 있는 환자 이름을 가리켜 주시겠어요?
+    - 라벨에 있는 환자 이름을 말해주시는 동안 짚어 드릴게요.
+    - 라벨의 이름은 생년월일과 짝을 이루는 정보예요.
     blank:
-      answer: label
+      answer: name
       options:
-      - en: wall
-      - en: door
-      - en: floor
-      - en: label
+      - en: weight
+      - en: height
+      - en: room
+      - en: name
   - en: Let's both read it before anyone touches the specimen.
     ko: 누구든 검체를 만지기 전에 둘이 함께 읽어요.
     chunks:
@@ -2010,15 +2010,15 @@ situations:
     why: Let's both는 둘이 함께 한다는 뜻이에요. before anyone touches로 만지기 전이라는 시점을 정해요.
     decoy: bag it
     distractorsKo:
-    - 누구든 검체를 만지기 전에 둘이 함께 장갑을 껴요.
-    - 누구든 검체를 만지기 전에 둘이 함께 손을 씻어요.
+    - 둘이 함께 읽을 목록을 검체 옆에 놓아요.
+    - 누구든 검체를 만지기 전에 장갑을 먼저 껴요.
     blank:
       answer: read
       options:
       - en: read
-      - en: move
       - en: lift
       - en: spin
+      - en: turn
   - en: I won't send it until we agree it's correct.
     ko: 맞다고 동의할 때까지 보내지 않을게요.
     chunks:
@@ -2034,23 +2034,23 @@ situations:
     goal: 2
     tag: 보류 약속
     icon: lock
-    why: I won't은 의지를 담은 약속이에요. until we agree는 둘의 동의가 풀리는 조건이라고 말해요.
+    why: I won't은 의지를 담은 약속이에요. until we agree는 둘이 맞다고 할 때까지라는 조건이에요.
     decoy: pack it
     distractorsKo:
-    - 맞다고 동의할 때까지 옮기지 않을게요.
-    - 맞다고 동의할 때까지 묶지 않을게요.
+    - 맞다고 동의할 라벨을 둘이 함께 봐요.
+    - 둘의 의견이 맞아야 보내는 거예요.
     blank:
       answer: send
       options:
       - en: pack
       - en: send
-      - en: weigh
-      - en: tape
+      - en: bag
+      - en: stamp
   order:
     tag: 대화 흐름
     icon: compass
     ko: 검체 라벨 확인 4문장 순서
-    why: 함께 읽자고 하고, 이름을 소리 내어 말해 달라고 청한 뒤, 둘이 맞다고 동의했는지 묻고, 그 뒤에 내보낸다는 약속으로 끝내요.
+    why: 함께 읽자고 하고, 이름을 소리 내어 말해 달라고 청한 뒤, 고마워하며 맞는 검체인지도 묻고, 둘이 맞다고 할 때만 보낸다고 해요.
     lines:
     - en: Let's read the specimen label together.
       icon: lab
@@ -2060,13 +2060,13 @@ situations:
       icon: speech
       ko: 거기 있는 환자 이름을 소리 내어 말해 주시겠어요
       note: 요청
-    - en: And is that the right specimen and site?
+    - en: Thanks. Is it also the right specimen and site?
       icon: check
-      ko: 그리고 그게 맞는 검체와 부위인가요
+      ko: 고마워요. 맞는 검체와 부위이기도 한가요
       note: 질문
-    - en: I won't send it until we agree it's correct.
+    - en: Only if we both agree it's correct will I send it.
       icon: lock
-      ko: 맞다고 동의할 때까지 보내지 않을게요
+      ko: 둘 다 맞다고 동의할 때만 보낼게요
       note: 약속
 - title: 화재 위험 인지
   sentences:
@@ -2088,14 +2088,14 @@ situations:
     decoy: the fire exit
     distractorsKo:
     - 여기서 화재 경보기를 살펴요.
-    - 여기서 화재 삼각형을 그려요.
+    - 여기서 화재 삼각형을 소개해요.
     blank:
       answer: watch
       options:
       - en: watch
-      - en: paint
-      - en: repair
-      - en: rent
+      - en: draw
+      - en: measure
+      - en: trace
   - en: Oxygen, prep alcohol, and cautery together are a risk.
     ko: 산소, 소독용 알코올, 소작기가 함께 있으면 위험해요.
     chunks:
@@ -2117,8 +2117,8 @@ situations:
     why: 세 가지를 쉼표로 나열한 뒤 together가 한꺼번에 있는 상황임을 짚어요. a risk는 위험 요인이라는 뜻이에요.
     decoy: and gloves
     distractorsKo:
-    - 산소, 소독용 알코올, 청진기가 함께 있으면 위험해요.
-    - 산소, 소독용 알코올, 소작기가 함께 있으면 냄새가 나요.
+    - 산소, 소독용 알코올, 소작기는 흔히 쓰는 물품이에요.
+    - 산소와 소독용 알코올은 불꽃을 키우는 편이에요.
     blank:
       answer: alcohol
       options:
@@ -2143,8 +2143,8 @@ situations:
     why: Let the prep dry는 소독액이 마르도록 두라는 사역 표현이에요. before we drape는 수술포를 덮는 때보다 먼저라는 순서예요.
     decoy: while we count
     distractorsKo:
-    - 수술포를 덮기 전에 소독액을 기록해요.
-    - 수술포를 덮기 전에 소독 라벨을 읽어요.
+    - 소독액은 마르는 데 시간이 걸려요.
+    - 알코올 소독액은 불이 붙는 물질이에요.
     blank:
       answer: dry
       options:
@@ -2224,23 +2224,23 @@ situations:
     goal: 2
     tag: 우려 말하기
     icon: speech
-    why: I'll say something은 무엇인지 밝히지 않고 말하겠다는 짧은 약속이에요. if seems high는 확실하지 않아도 보이는 대로 말하라는 문턱이에요.
+    why: I'll say something은 무엇인지 밝히지 않고 말하겠다는 짧은 약속이에요. if … seems high는 확실하지 않아도 높아 보이기만 하면 말한다는 조건이에요.
     decoy: if the room temperature
     distractorsKo:
-    - 산소 농도가 높아 보이면 적어 둘게요.
-    - 산소 농도가 높아 보이면 기억해 둘게요.
+    - 말할 산소 농도를 농도판에서 봐요.
+    - 산소 농도가 높으면 불이 잘 붙어요.
     blank:
       answer: high
       options:
       - en: high
       - en: loud
-      - en: wet
-      - en: cold
+      - en: dim
+      - en: dark
   order:
     tag: 대화 흐름
     icon: compass
     ko: 화재 위험 인지 4문장 순서
-    why: 위험한 조합을 짚고, 소독액을 말리라고 말하고, 고이면 말하자고 청하며, 농도가 높아 보여도 말하겠다고 마무리해요.
+    why: 위험한 조합을 짚고, 그래서 소독액을 말리자고 한 뒤, 대신 고이면 말하자고 하고, 마찬가지로 산소 농도가 높아 보여도 말하겠다고 해요.
     lines:
     - en: Oxygen, prep alcohol, and cautery together are a risk.
       icon: fire
@@ -2250,13 +2250,13 @@ situations:
       icon: fire
       ko: 그래서 수술포를 덮기 전에 소독액을 말려요
       note: 건조
-    - en: If it pools near the drapes, let's speak up before we start.
+    - en: If it pools near the drapes instead, let's speak up before we start.
       icon: siren
-      ko: 그게 수술포 근처에 고이면 시작 전에 말해요
+      ko: 대신 수술포 근처에 고이면 시작 전에 말해요
       note: 보고
-    - en: And I'll say something if the oxygen concentration seems high.
+    - en: Likewise, I'll say something if the oxygen concentration seems high.
       icon: speech
-      ko: 그리고 산소 농도가 높아 보이면 제가 말할게요
+      ko: 마찬가지로 산소 농도가 높아 보이면 제가 말할게요
       note: 농도
 - title: speak-up 우려 표현
   sentences:
@@ -2277,8 +2277,8 @@ situations:
     why: I have a concern은 우려가 있다고 먼저 알리는 가장 간단한 신호예요. I need to raise는 말해야 한다는 책임감을 보여요.
     decoy: a request
     distractorsKo:
-    - 정리해야 할 우려가 있어요.
-    - 적어 둬야 할 우려가 있어요.
+    - 제기할 우려를 적을 종이가 있어요.
+    - 우려는 작아도 환영이에요.
     blank:
       answer: concern
       options:
@@ -2300,10 +2300,10 @@ situations:
     tag: 멈춤 요청
     icon: redo
     why: Can we …?는 지시보다 부드러운 제안이에요. pause는 잠깐 멈추자는 뜻으로 꼭 필요한 요청이에요.
-    decoy: and read through
+    decoy: that tray
     distractorsKo:
-    - 잠시 멈추고 이걸 다시 읽을 수 있을까요?
-    - 잠시 멈추고 이걸 다시 설명할 수 있을까요?
+    - 다시 확인할 이걸 잠시 펼칠 수 있을까요?
+    - 잠시 멈춤은 요청해도 되는 일이에요.
     blank:
       answer: pause
       options:
@@ -2328,15 +2328,15 @@ situations:
     why: I'm not comfortable …는 불편하다고 말하는 대표 표현이에요. yet이 아직은이라는 뜻을 더해 완곡해져요.
     decoy: signing
     distractorsKo:
+    - 아직은 서두르기 편하지 않아요.
     - 아직은 서명하기 편하지 않아요.
-    - 아직은 설명하기 편하지 않아요.
     blank:
       answer: proceeding
       options:
       - en: waiting
       - en: proceeding
       - en: talking
-      - en: leaving
+      - en: resting
   - en: I might be wrong, but can we check one thing first?
     ko: 제가 틀릴 수도 있지만, 한 가지 먼저 확인할 수 있을까요?
     chunks:
@@ -2357,15 +2357,15 @@ situations:
     why: I might be wrong은 틀릴 수 있다고 먼저 낮춰 말해서 상대가 방어하지 않게 해요. 그래도 확인을 청해요.
     decoy: that page
     distractorsKo:
-    - 제가 틀릴 수도 있지만, 한 가지 먼저 적어 둘 수 있을까요?
+    - 제가 틀릴 수도 있지만, 한 가지 확인하려면 먼저 시간이 필요해요.
     - 제가 틀릴 수도 있지만, 한 가지 먼저 물어볼 수 있을까요?
     blank:
-      answer: one
+      answer: wrong
       options:
-      - en: two
-      - en: three
-      - en: four
-      - en: one
+      - en: late
+      - en: loud
+      - en: rude
+      - en: wrong
   - en: Before we go further, I need everyone to hear this.
     ko: 더 나아가기 전에 모두가 이걸 들어야 해요.
     chunks:
@@ -2385,15 +2385,15 @@ situations:
     why: Before we go further는 더 진행하기 전이라는 뜻이에요. I need everyone to는 모두를 향한 분명한 요청이에요.
     decoy: to read this
     distractorsKo:
-    - 더 나아가기 전에 모두가 이걸 읽어야 해요.
-    - 더 나아가기 전에 모두가 이걸 외워야 해요.
+    - 모두가 들을 수 있게 더 나아가기 전에 조용히 해요.
+    - 더 나아가기 전에 모두가 이걸 가져가야 해요.
     blank:
       answer: hear
       options:
       - en: hear
       - en: sign
-      - en: copy
-      - en: print
+      - en: approve
+      - en: vote
   - en: I'd rather ask now than stay quiet and regret it.
     ko: 조용히 있다가 후회하느니 차라리 지금 물을게요.
     chunks:
@@ -2414,36 +2414,36 @@ situations:
     why: I'd rather A than B는 두 가지 중 A를 고른다는 비교 표현이에요. 후회가 남는 침묵보다 지금 묻는 쪽을 택해요.
     decoy: than stay late
     distractorsKo:
-    - 조용히 있다가 후회하느니 차라리 지금 적을게요.
-    - 조용히 있다가 후회하느니 차라리 지금 배울게요.
+    - 후회하지 않게 차라리 지금 물을 질문을 정할게요.
+    - 조용히 지나가면 나중에 후회하기도 해요.
     blank:
       answer: ask
       options:
       - en: rest
-      - en: sign
-      - en: leave
+      - en: sit
+      - en: walk
       - en: ask
   order:
     tag: 대화 흐름
     icon: compass
     ko: speak-up 4문장 순서
-    why: 우려가 있다고 알리고, 불편하다고 말한 뒤, 멈추고 확인하자고 청하고, 침묵보다 묻겠다고 마무리해요.
+    why: 우려가 있다고 알리고, 그 우려가 아직은 편하지 않다는 것임을 밝히고, 그래서 멈추고 확인하자고 청하고, 번거로워도 조용히 있기보다 묻겠다고 해요.
     lines:
     - en: I have a concern I need to raise.
       icon: bell
       ko: 제기해야 할 우려가 있어요
       note: 신호
-    - en: I'm not comfortable proceeding yet.
+    - en: It's that I'm not comfortable proceeding yet.
       icon: faceWorried
-      ko: 아직은 진행하기 편하지 않아요
+      ko: 아직은 진행하기 편하지 않다는 거예요
       note: 불편
-    - en: Can we pause and double-check it?
+    - en: Because of that, can we pause and double-check this?
       icon: redo
-      ko: 잠시 멈추고 그걸 다시 확인할 수 있을까요
+      ko: 그래서 잠시 멈추고 이걸 다시 확인할 수 있을까요
       note: 요청
-    - en: I'd rather ask now than stay quiet and regret it.
+    - en: If that's a hassle, I'd still rather ask now than stay quiet.
       icon: speech
-      ko: 조용히 있다가 후회하느니 지금 물을게요
+      ko: 번거로워도 조용히 있다가 후회하느니 지금 물을게요
       note: 다짐
 - title: 계수 불일치 초기 대응
   sentences:
@@ -2464,15 +2464,15 @@ situations:
     why: The count is off는 계수가 어긋났다는 가장 짧은 보고 표현이에요. by one sponge로 얼마나 어긋났는지 정확히 짚어요.
     decoy: by one tray
     distractorsKo:
-    - 계수가 바늘 하나만큼 어긋났어요.
-    - 계수가 거즈 두 개만큼 어긋났어요.
+    - 계수는 거즈와 바늘을 하나씩 세어요.
+    - 계수가 어긋나면 먼저 다시 세어요.
     blank:
-      answer: sponge
+      answer: count
       options:
-      - en: needle
-      - en: towel
-      - en: drape
-      - en: sponge
+      - en: tray
+      - en: case
+      - en: slot
+      - en: count
   - en: Let's stop and recount together.
     ko: 멈추고 함께 다시 세요.
     chunks:
@@ -2490,8 +2490,8 @@ situations:
     why: Let's stop and recount에서 stop이 먼저 오고 recount가 따라와요. together로 혼자 세지 않는다는 뜻이 담겨요.
     decoy: and tidy up
     distractorsKo:
-    - 멈추고 함께 다시 정리해요.
-    - 멈추고 함께 다시 모여요.
+    - 다시 셀 수 있게 함께 멈춰요.
+    - 다시 세는 건 짝과 맞춰요.
     blank:
       answer: recount
       options:
@@ -2544,14 +2544,14 @@ situations:
     why: I need to say it은 말하는 것이 필요하다는 강한 표현이에요. now와 before we go any further가 지금 바로라는 점을 겹쳐 말해요.
     decoy: any faster
     distractorsKo:
-    - 더 나아가기 전에 지금 정해야 해요.
-    - 더 나아가기 전에 지금 쉬어야 해요.
+    - 말할 수 있게 더 나아가기 전에 숨을 골라요.
+    - 나아가기 전에 짚는 건 늦지 않아요.
     blank:
       answer: say
       options:
-      - en: sign
-      - en: sell
-      - en: spell
+      - en: swear
+      - en: mumble
+      - en: mutter
       - en: say
   - en: Let's search the field before anyone leaves the room.
     ko: 누구든 방을 나가기 전에 수술 부위를 수색해요.
@@ -2578,9 +2578,9 @@ situations:
     blank:
       answer: search
       options:
-      - en: clean
       - en: dim
-      - en: cover
+      - en: spray
+      - en: mop
       - en: search
   - en: I won't stay quiet about a number that doesn't match.
     ko: 맞지 않는 숫자에 대해 조용히 있지 않을게요.
@@ -2600,37 +2600,37 @@ situations:
     why: I won't stay quiet은 입을 다물지 않겠다는 의지의 표현이에요. 맞지 않는 숫자라는 구체적 이유가 뒤따라요.
     decoy: a bill
     distractorsKo:
-    - 맞지 않는 숫자에 대해 혼자 고민하지 않을게요.
-    - 맞지 않는 숫자를 혼자 외우지 않을게요.
+    - 맞지 않는 숫자는 조용히 넘어가기 십상이에요.
+    - 맞지 않는 숫자는 바로 말할수록 좋아요.
     blank:
       answer: quiet
       options:
       - en: quiet
       - en: calm
-      - en: late
-      - en: home
+      - en: angry
+      - en: tense
   order:
     tag: 대화 흐름
     icon: compass
     ko: 계수 불일치 초기 대응 4문장 순서
-    why: 어긋났다고 알리고, 멈추고 다시 세자고 한 뒤, 그래도 맞지 않으면 찾아보고, 찾을 때까지 봉합을 보류해 달라고 해요.
+    why: 어긋났다고 알리고, 해결될 때까지 봉합을 보류해 달라고 한 뒤, 그동안 멈추고 다시 세고, 그래도 안 맞으면 수색해요.
     lines:
     - en: The count is off by one sponge.
       icon: siren
       ko: 계수가 거즈 하나만큼 어긋났어요
       note: 보고
-    - en: Let's stop and recount together.
-      icon: redo
-      ko: 멈추고 함께 다시 세요
-      note: 재계수
-    - en: If it still doesn't match, we'll search the field.
-      icon: magnify
-      ko: 그래도 안 맞으면 수술 부위를 수색할 거예요
-      note: 수색
-    - en: Until we find it, please hold closure.
+    - en: Please hold closure until we resolve this.
       icon: lock
-      ko: 찾을 때까지 봉합을 보류해 주세요
+      ko: 이걸 해결할 때까지 봉합을 보류해 주세요
       note: 보류
+    - en: In the meantime, let's stop and recount it together.
+      icon: redo
+      ko: 그동안 멈추고 그걸 함께 다시 세요
+      note: 재계수
+    - en: If the number still doesn't match, we'll search the field.
+      icon: magnify
+      ko: 숫자가 그래도 안 맞으면 수술 부위를 수색할 거예요
+      note: 수색
 - title: 검체 처리 확인
   sentences:
   - en: Let's confirm the fixative and label.
@@ -2650,8 +2650,8 @@ situations:
     why: Let's confirm은 함께 확인하자는 제안이에요. the fixative and label처럼 두 대상을 and로 묶어 한꺼번에 점검해요.
     decoy: and the bin
     distractorsKo:
-    - 고정액과 라벨을 메모해 둬요.
-    - 고정액과 라벨을 옮겨 둬요.
+    - 점검할 고정액과 라벨을 꺼내요.
+    - 고정액 종류는 라벨로 알아요.
     blank:
       answer: confirm
       options:
@@ -2701,15 +2701,15 @@ situations:
     why: I'll document는 지금 정해서 하겠다는 약속이에요. the handling and time으로 무엇을 기록하는지 밝혀요.
     decoy: the weight
     distractorsKo:
-    - 처리 과정과 시간을 정리할게요.
-    - 처리 과정과 시간을 읽어 드릴게요.
+    - 문서화할 처리 과정과 시간을 확인해요.
+    - 처리 과정과 시간은 기록에 꼭 남아요.
     blank:
       answer: document
       options:
       - en: document
-      - en: rename
       - en: copy
       - en: print
+      - en: scan
   - en: Let's say out loud where each specimen is going.
     ko: 검체마다 어디로 가는지 소리 내어 말해요.
     chunks:
@@ -2734,9 +2734,9 @@ situations:
       answer: say
       options:
       - en: say
-      - en: sing
       - en: spell
       - en: shout
+      - en: chant
   - en: I'll write down the time so we both agree on it.
     ko: 우리 둘 다 동의하도록 시간을 적어둘게요.
     chunks:
@@ -2760,10 +2760,10 @@ situations:
     blank:
       answer: write down
       options:
-      - en: fold
+      - en: pick up
       - en: write down
-      - en: tear
-      - en: seal
+      - en: cut off
+      - en: hand in
   - en: If the label looks wrong, I'll ask before it's sent.
     ko: 라벨이 잘못돼 보이면 보내기 전에 물을게요.
     chunks:
@@ -2783,12 +2783,12 @@ situations:
     why: If the label looks wrong은 확신하지 않아도 이상해 보이면이라는 조건이에요. before it's sent로 보내기 전에 묻는다는 시점을 정해요.
     decoy: If the bag looks wet,
     distractorsKo:
-    - 라벨이 잘못돼 보이면 보내기 전에 적을게요.
-    - 라벨이 잘못돼 보이면 보내기 전에 기억할게요.
+    - 라벨이 잘못돼 보이면 물을 사람을 보내기 전에 정해요.
+    - 잘못 나간 라벨은 되돌리기 힘들어요.
     blank:
       answer: wrong
       options:
-      - en: wet
+      - en: damp
       - en: wrong
       - en: new
       - en: small
@@ -2796,7 +2796,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 검체 처리 확인 4문장 순서
-    why: 고정액과 라벨부터 확인하고, 어디로 가는지 묻고, 처리와 시간을 기록하겠다고 하고, 보내기 전에 그곳을 소리 내어 말해요.
+    why: 고정액과 라벨부터 확인하고, 어디로 가는지 묻고, 병리과라는 답을 받아 기록하고, 기록한 뒤 가는 곳을 소리 내어 말해요.
     lines:
     - en: Let's confirm the fixative and label.
       icon: lab
@@ -2810,9 +2810,9 @@ situations:
       icon: pencil
       ko: 그럼 병리과네요, 처리와 시간을 문서화할게요
       note: 기록
-    - en: Before it's sent there, let's say that out loud together.
+    - en: Once that's noted, let's say where it's going out loud together.
       icon: speech
-      ko: 거기로 보내기 전에 그걸 함께 소리 내어 말해요
+      ko: 그게 기록되면 어디로 가는지 함께 소리 내어 말해요
       note: 낭독
 - title: wrong-site 예방 재확인
   sentences:
@@ -2833,8 +2833,8 @@ situations:
     why: re-verify의 re-는 다시라는 뜻이라 이미 한 확인을 되풀이한다는 말이에요. the correct side로 맞는 쪽이 하나뿐임을 말해요.
     decoy: name
     distractorsKo:
-    - 맞는 쪽을 다시 설명해요.
-    - 맞는 쪽을 다시 외워요.
+    - 다시 볼 동의서를 펴요.
+    - 맞는 쪽은 동의서에 적혀 나와요.
     blank:
       answer: correct
       options:
@@ -2885,8 +2885,8 @@ situations:
     why: I won't proceed는 의지를 담은 약속이에요. until we all confirm이 모두가 함께 확인해야 풀린다는 조건이에요.
     decoy: until we all sign
     distractorsKo:
-    - 다 함께 확인할 때까지 서명하지 않을게요.
-    - 다 함께 확인할 때까지 기록하지 않을게요.
+    - 다 함께 대조할 동의서를 책상에 놓아요.
+    - 다 함께 확인하고 나면 진행해도 돼요.
     blank:
       answer: proceed
       options:
@@ -2943,8 +2943,8 @@ situations:
     why: If … doesn't match는 일치하지 않는 경우를 조건으로 건 문장이에요. I need to know now로 지금 바로 알려 달라고 강하게 말해요.
     decoy: I need to see
     distractorsKo:
-    - 표시는 보통 외과의가 환자와 함께 해요.
-    - 동의서는 수술 전에 환자가 직접 서명해요.
+    - 표시는 외과의가 직접 그리는 경우가 많아요.
+    - 동의서는 이름과 서명이 담긴 문서예요.
     blank:
       answer: match
       options:
@@ -2968,28 +2968,28 @@ situations:
     why: even if는 이미 했어도 한다는 양보의 표현이에요. again과 once가 짝을 이뤄 한 번 더라는 뜻을 강조해요.
     decoy: twice
     distractorsKo:
-    - 이미 한 번 물었어도 다시 들을게요.
-    - 이미 한 번 적었어도 다시 물을게요.
+    - 한 번 물은 걸 다시 묻는 건 괜찮아요.
+    - 이미 한 번 들었어도 다시 물을게요.
     blank:
       answer: ask
       options:
       - en: ask
       - en: answer
-      - en: count
       - en: order
+      - en: cancel
   order:
     tag: 대화 흐름
     icon: compass
     ko: wrong-site 재확인 4문장 순서
-    why: 맞는 쪽을 다시 확인하자고 하고, 세 가지가 일치하는지 묻고, 안 맞으면 알려 달라고 한 뒤, 절개 전에 쪽을 다시 소리 내어 말해요.
+    why: 맞는 쪽을 다시 확인하자고 하고, 그러려고 세 가지가 일치하는지 묻고, 하나라도 안 맞으면 알려 달라고 한 뒤, 정리되면 절개 전에 쪽을 소리 내어 말해요.
     lines:
     - en: Let's re-verify the correct side.
       icon: check
       ko: 맞는 쪽을 다시 확인해요
       note: 제안
-    - en: The consent, mark, and imaging all agree?
+    - en: To do that, do the consent, mark, and imaging all agree?
       icon: check
-      ko: 동의서, 표시, 영상이 다 일치하나요
+      ko: 그러려면 동의서, 표시, 영상이 다 일치하나요
       note: 질문
     - en: If any of them doesn't match, I need to know now.
       icon: siren
@@ -3026,7 +3026,7 @@ situations:
       options:
       - en: long
       - en: big
-      - en: early
+      - en: short
       - en: high
   - en: Let's lower the oxygen and let prep dry.
     ko: 산소를 낮추고 소독액을 말려요.
@@ -3047,13 +3047,13 @@ situations:
     decoy: and let it cool
     distractorsKo:
     - 불은 산소와 열과 연료로 나요.
-    - 소독액은 알코올 성분이면 타기 쉬워요.
+    - 소독액 속 알코올은 불에 약해요.
     blank:
       answer: lower
       options:
-      - en: label
-      - en: weigh
-      - en: rename
+      - en: stir
+      - en: rinse
+      - en: shake
       - en: lower
   - en: Where's the saline and the extinguisher?
     ko: 생리식염수와 소화기는 어디 있나요?
@@ -3100,13 +3100,13 @@ situations:
     decoy: the rules
     distractorsKo:
     - 시작하기 전에 모두가 자리에 앉았으면 해요.
-    - 시작하기 전에 모두가 계획을 외웠으면 해요.
+    - 시작하기 전에 모두가 계획표를 받았으면 해요.
     blank:
       answer: know
       options:
-      - en: copy
-      - en: print
       - en: file
+      - en: frame
+      - en: mail
       - en: know
   - en: Let's agree on this together before the drapes go up.
     ko: 수술포를 덮기 전에 함께 합의해요.
@@ -3126,15 +3126,15 @@ situations:
     why: Let's agree on this는 함께 합의하자는 제안이에요. before the drapes go up으로 덮기 전이라는 시점을 정해요.
     decoy: before we scrub
     distractorsKo:
-    - 수술포를 덮기 전에 함께 정리해요.
-    - 수술포를 덮기 전에 함께 외워요.
+    - 합의하게 수술포를 덮기 전에 모여요.
+    - 수술포를 덮기 전에 함께 맞춰요.
     blank:
       answer: agree
       options:
       - en: argue
       - en: agree
-      - en: joke
-      - en: shout
+      - en: bargain
+      - en: compete
   - en: If the risk feels high, I'll say it before we begin.
     ko: 위험이 높게 느껴지면 시작 전에 말할게요.
     chunks:
@@ -3154,20 +3154,20 @@ situations:
     why: If the risk feels high는 확실하지 않아도 느낌이면 된다는 조건이에요. before we begin으로 시작 전에 말한다는 시점을 정해요.
     decoy: note it
     distractorsKo:
-    - 위험이 높게 느껴지면 시작 전에 알아볼게요.
-    - 위험이 높게 느껴지면 시작 전에 정할게요.
+    - 위험이 높게 느껴지면 말하게 시작 전에 숨을 골라요.
+    - 위험을 느끼면 시작 전에 짚어도 괜찮아요.
     blank:
       answer: high
       options:
       - en: heavy
       - en: high
-      - en: loud
-      - en: late
+      - en: slow
+      - en: dark
   order:
     tag: 대화 흐름
     icon: compass
     ko: 화재 위험 사전 소통 4문장 순서
-    why: 위험이 높다고 알리고, 산소와 소독액을 줄이자고 한 뒤, 불이 났을 때 쓸 물건의 위치를 묻고, 덮기 전에 이 모두에 합의해요.
+    why: 위험이 높다고 알리고, 그래서 산소와 소독액을 줄이자고 한 뒤, 그래도 불이 나면 쓸 물건의 위치를 묻고, 위치를 안 다음 덮기 전에 모두 합의해요.
     lines:
     - en: This is a high fire-risk case.
       icon: fire
@@ -3177,13 +3177,13 @@ situations:
       icon: fire
       ko: 그래서 산소를 낮추고 소독액을 말려요
       note: 예방
-    - en: In case that happens, where's the saline and the extinguisher?
+    - en: In case fire starts anyway, where's the saline and the extinguisher?
       icon: magnify
-      ko: 혹시 그런 일이 나면 식염수와 소화기는 어디 있나요
+      ko: 그래도 불이 나면 식염수와 소화기는 어디 있나요
       note: 위치
-    - en: Let's agree on all of this together before the drapes go up.
+    - en: Knowing where those are, let's agree on all of this before draping.
       icon: handshake2
-      ko: 이 모두에 수술포를 덮기 전에 함께 합의해요
+      ko: 그 위치를 알면 수술포를 덮기 전에 이 모두에 함께 합의해요
       note: 합의
 - title: 안전 체크리스트 준수
   sentences:
@@ -3205,15 +3205,15 @@ situations:
     why: Let's complete는 함께 끝내자는 제안이에요. the full은 일부가 아니라 전부라는 뜻이에요.
     decoy: the new
     distractorsKo:
-    - 안전 체크리스트를 전부 출력해요.
-    - 안전 체크리스트를 전부 걸어 둬요.
+    - 완료할 안전 체크리스트를 전부 펴요.
+    - 체크리스트는 단계가 세 번으로 나뉘어요.
     blank:
       answer: complete
       options:
       - en: post
       - en: complete
-      - en: print
       - en: laminate
+      - en: frame
   - en: We don't skip any item, even when busy.
     ko: 바쁠 때도 어떤 항목도 건너뛰지 않아요.
     chunks:
@@ -3231,15 +3231,15 @@ situations:
     why: We don't skip은 늘 하는 원칙처럼 들리는 현재형 부정이에요. even when busy로 바쁜 때도 예외가 아니라는 점을 짚어요.
     decoy: even at night
     distractorsKo:
+    - 바쁜 때일수록 항목이 빠지는 법이죠.
     - 바쁠 때도 어떤 항목도 바꾸지 않아요.
-    - 바쁠 때도 어떤 항목도 잃어버리지 않아요.
     blank:
       answer: skip
       options:
       - en: skip
       - en: add
       - en: lose
-      - en: move
+      - en: number
   - en: Sign-in, time-out, and sign-out all done.
     ko: 사인인, 타임아웃, 사인아웃 다 끝났어요.
     chunks:
@@ -3258,15 +3258,15 @@ situations:
     why: 세 단계를 쉼표로 늘어놓고 all done으로 한꺼번에 끝났다고 보고해요. 문장에 동사가 없어 짧고 빠른 보고 말투예요.
     decoy: all posted
     distractorsKo:
-    - 사인인, 타임아웃, 사인아웃 다 읽었어요.
+    - 사인인, 타임아웃, 사인아웃 다 나눴어요.
     - 사인인, 타임아웃, 사인아웃 다 붙였어요.
     blank:
       answer: done
       options:
       - en: lost
-      - en: loud
-      - en: done
       - en: slow
+      - en: done
+      - en: torn
   - en: I read every step out loud, even the ones we know by heart.
     ko: 외우고 있는 단계라도 다 소리 내어 읽어요.
     chunks:
@@ -3287,15 +3287,15 @@ situations:
     why: even the ones we know by heart는 익숙한 단계도 예외가 아니라는 뜻이에요. out loud로 눈으로만 훑는 일을 막아요.
     decoy: by sight
     distractorsKo:
-    - 외우고 있는 단계라도 다 소리 내어 세어요.
+    - 외우고 있는 단계라도 다 소리 내어 따라 해요.
     - 외우고 있는 단계라도 다 소리 내어 번호를 매겨요.
     blank:
       answer: read
       options:
       - en: read
-      - en: count
       - en: list
-      - en: number
+      - en: count
+      - en: chant
   - en: Let's confirm each step together before we move on.
     ko: 다음으로 넘어가기 전에 단계마다 함께 확인해요.
     chunks:
@@ -3315,14 +3315,14 @@ situations:
     decoy: each sheet
     distractorsKo:
     - 다음으로 넘어가기 전에 단계마다 함께 서명해요.
-    - 다음으로 넘어가기 전에 단계마다 함께 정리해요.
+    - 다음으로 넘어가기 전에 단계마다 함께 훑어요.
     blank:
       answer: confirm
       options:
       - en: rename
-      - en: print
+      - en: tally
       - en: confirm
-      - en: file
+      - en: stamp
   - en: Even in a rush, I won't skip the checklist.
     ko: 바빠도 체크리스트를 건너뛰지 않을게요.
     chunks:
@@ -3347,14 +3347,14 @@ situations:
       answer: skip
       options:
       - en: skip
-      - en: move
       - en: rip
-      - en: stack
+      - en: fold
+      - en: burn
   order:
     tag: 대화 흐름
     icon: compass
     ko: 안전 체크리스트 준수 4문장 순서
-    why: 전부 끝내자고 하고, 바빠도 건너뛰지 않는다고 말하고, 넘어가기 전에 함께 확인하자고 한 뒤, 서둘러도 다 한다고 다짐해요.
+    why: 전부 끝내자고 하고, 그러니 바빠도 건너뛰지 않는다고 말하고, 넘어가기 전에 하나씩 확인하자고 한 뒤, 그때 재촉받아도 같은 걸 한다고 다짐해요.
     lines:
     - en: Let's complete the full safety checklist.
       icon: check
@@ -3368,9 +3368,9 @@ situations:
       icon: check
       ko: 그러니 넘어가기 전에 하나씩 함께 확인해요
       note: 확인
-    - en: Even when someone rushes us, I'll still do every one of them.
+    - en: Even if someone rushes us then, I'll still do that for every item.
       icon: shield
-      ko: 누가 재촉해도 저는 그 모두를 할게요
+      ko: 그때 누가 재촉해도 모든 항목에 그걸 할게요
       note: 다짐
 - title: 이식물·기기 안전 확인
   sentences:
@@ -3393,8 +3393,8 @@ situations:
     why: Let's confirm은 함께 확인하자는 제안이에요. implant size and serial number는 이식물을 식별하는 두 정보예요.
     decoy: and box color
     distractorsKo:
-    - 이식물 크기와 일련번호를 메모해 둬요.
-    - 이식물 크기와 일련번호를 옮겨 둬요.
+    - 점검할 이식물 상자를 책상에 올려요.
+    - 크기와 일련번호는 상자에서 찾아요.
     blank:
       answer: confirm
       options:
@@ -3426,8 +3426,8 @@ situations:
       options:
       - en: break
       - en: match
-      - en: leave
-      - en: weigh
+      - en: dodge
+      - en: beat
   - en: I'll document the implant details.
     ko: 이식물 상세 정보를 문서화할게요.
     chunks:
@@ -3445,8 +3445,8 @@ situations:
     why: I'll document는 지금 정해서 하겠다는 약속이에요. the implant details로 무엇을 기록하는지 밝혀요.
     decoy: the supply
     distractorsKo:
-    - 이식물 상세 정보를 확인할게요.
-    - 이식물 상세 정보를 정리할게요.
+    - 문서화할 이식물 상세 정보를 확인할게요.
+    - 이식물 상세 정보는 나중에 다시 찾아봐요.
     blank:
       answer: document
       options:
@@ -3473,14 +3473,14 @@ situations:
     why: Can you …?는 지시보다 부드러운 부탁이에요. out loud with me로 둘이 같은 숫자를 듣게 해요.
     decoy: the box size
     distractorsKo:
-    - 저와 함께 일련번호를 받아 적어 주시겠어요?
-    - 저와 함께 일련번호를 찾아봐 주시겠어요?
+    - 읽으시게 저와 함께 일련번호를 보여 드릴게요.
+    - 일련번호는 소리 내어 읽으면 틀리기 어려워요.
     blank:
       answer: read
       options:
       - en: spell
-      - en: copy
       - en: dial
+      - en: punch
       - en: read
   - en: I need to see the package before it's opened.
     ko: 포장을 열기 전에 봐야 해요.
@@ -3501,14 +3501,14 @@ situations:
     why: I need to see는 반드시 봐야 한다는 필요를 말해요. before it's opened는 열기 전이라는 시점을 정해요.
     decoy: the invoice
     distractorsKo:
-    - 포장을 열기 전에 들어야 해요.
-    - 포장을 열기 전에 세어야 해요.
+    - 열기 전에 볼 포장에 불을 켜요.
+    - 열린 포장은 되돌릴 길이 없죠.
     blank:
       answer: see
       options:
-      - en: pay
+      - en: shake
       - en: see
-      - en: move
+      - en: stamp
       - en: rinse
   - en: Let's both sign off once the details are confirmed.
     ko: 상세 정보가 확인되면 둘 다 서명해요.
@@ -3528,8 +3528,8 @@ situations:
     why: Let's both로 둘이 함께 한다는 뜻이에요. once the details are confirmed는 확인이 끝난 뒤라는 조건이에요.
     decoy: step back
     distractorsKo:
-    - 상세 정보가 확인되면 둘 다 전달해요.
-    - 상세 정보가 확인되면 둘 다 복사해요.
+    - 상세 정보가 확인되도록 둘 다 읽어요.
+    - 서명은 확인을 마친 쪽의 몫이에요.
     blank:
       answer: sign off
       options:
@@ -3541,7 +3541,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 이식물·기기 안전 확인 4문장 순서
-    why: 크기와 일련번호를 확인하자고 하고, 요청과 맞는지 묻고, 상세 정보를 기록하겠다고 하며, 그다음 둘이 서명하자고 해요.
+    why: 크기와 일련번호를 확인하자고 하고, 그게 요청과 맞는지 묻고, 맞으면 그 정보를 기록하고, 기록이 끝나면 둘이 서명해요.
     lines:
     - en: Let's confirm the implant size and serial number.
       icon: check
@@ -3551,13 +3551,13 @@ situations:
       icon: board
       ko: 그게 외과의 요청과 일치하나요
       note: 대조
-    - en: Then I'll document the implant details.
+    - en: If it does, I'll document those details.
       icon: pencil
-      ko: 그럼 이식물 상세 정보를 문서화할게요
+      ko: 맞으면 그 정보를 문서화할게요
       note: 기록
-    - en: Once that's done, let's both sign off.
+    - en: Once that's recorded, let's both sign off.
       icon: handshake2
-      ko: 그게 끝나면 둘 다 서명해요
+      ko: 그게 기록되면 둘 다 서명해요
       note: 서명
 - title: 근접오류 보고
   sentences:
@@ -3577,8 +3577,8 @@ situations:
     why: a near-miss는 사고로 이어지지 않았지만 그럴 뻔한 일이에요. we should report는 보고해야 한다는 의무를 말해요.
     decoy: a good catch
     distractorsKo:
-    - 그건 우리가 기억해야 할 근접오류였어요.
-    - 그건 우리가 정리해야 할 근접오류였어요.
+    - 근접오류는 해가 닿기 직전에 멈춘 일이에요.
+    - 근접오류는 큰 사고의 신호일 때가 많아요.
     blank:
       answer: report
       options:
@@ -3604,8 +3604,8 @@ situations:
     why: Reporting it에서 동명사가 주어라 보고하는 행위 자체가 문장의 중심이에요. next time은 다음에 같은 일을 막는다는 뜻이에요.
     decoy: explain it
     distractorsKo:
-    - 보고하는 건 다음번에 기억하는 데 도움이 돼요.
-    - 보고하는 건 다음번에 정리하는 데 도움이 돼요.
+    - 보고하는 건 다음번에 설명하는 데 도움이 돼요.
+    - 보고하는 건 다음번에 비교하는 데 도움이 돼요.
     blank:
       answer: prevent
       options:
@@ -3631,15 +3631,15 @@ situations:
     why: I'll file은 지금 정해서 하겠다는 약속이에요. the safety report로 어떤 보고서인지 밝히고 today로 시점을 정해요.
     decoy: the time sheet
     distractorsKo:
-    - 오늘 안전 보고서를 인쇄할게요.
-    - 오늘 안전 보고서를 읽을게요.
+    - 제출할 안전 보고서를 오늘 찾아요.
+    - 안전 보고서는 사건 후 되도록 빨리 내요.
     blank:
       answer: file
       options:
       - en: file
-      - en: print
-      - en: read
+      - en: frame
       - en: mail
+      - en: fax
   - en: No one gets blamed for reporting a near-miss.
     ko: 근접오류를 보고한다고 탓하지 않아요.
     chunks:
@@ -3685,15 +3685,15 @@ situations:
     why: so the team can learn from it은 말하는 목적이에요. what happened는 일어난 일 그대로를 가리켜요.
     decoy: what you saw
     distractorsKo:
-    - 팀이 기억할 수 있도록 무슨 일이 있었는지 말해요.
+    - 팀이 볼 수 있도록 무슨 일이 있었는지 말해요.
     - 팀이 준비할 수 있도록 무슨 일이 있었는지 말해요.
     blank:
       answer: learn
       options:
       - en: learn
-      - en: laugh
-      - en: argue
-      - en: shop
+      - en: suffer
+      - en: escape
+      - en: stray
   - en: I'd rather report a close call than say nothing.
     ko: 아무 말도 안 하느니 차라리 아슬아슬했던 일을 보고할게요.
     chunks:
@@ -3713,8 +3713,8 @@ situations:
     why: I'd rather A than B는 두 가지 중 A를 고른다는 비교 표현이에요. a close call은 아슬아슬했던 일이에요.
     decoy: than file twice
     distractorsKo:
-    - 아무 말도 안 하느니 차라리 아슬아슬했던 일을 떠올릴게요.
-    - 아무 말도 안 하느니 차라리 아슬아슬했던 일을 정리할게요.
+    - 아무 말도 안 하느니 차라리 보고할 아슬아슬했던 일을 떠올릴게요.
+    - 아슬아슬했던 일을 알려야 팀이 배움을 얻는 법이에요.
     blank:
       answer: report
       options:
@@ -3726,7 +3726,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 근접오류 보고 4문장 순서
-    why: 근접오류였다고 말하고, 보고가 왜 도움이 되는지 설명하고, 오늘 보고서를 내겠다고 한 뒤, 팀이 배우도록 무슨 일이 있었는지 말하자고 해요.
+    why: 근접오류였다고 말하고, 보고가 왜 도움이 되는지 설명하고, 그 도움을 위해 오늘 보고서를 내겠다고 한 뒤, 제출한 다음 팀이 배우도록 알려요.
     lines:
     - en: That was a near-miss we should report.
       icon: bell
@@ -3736,13 +3736,13 @@ situations:
       icon: shield
       ko: 보고하면 다음번에 막는 데 도움이 돼요
       note: 이유
-    - en: I'll file the safety report today.
+    - en: To help with that, I'll file the safety report today.
       icon: board
-      ko: 오늘 안전 보고서를 제출할게요
+      ko: 그러려고 오늘 안전 보고서를 제출할게요
       note: 약속
-    - en: After that, let's tell the team what happened so they can learn.
+    - en: After I file it, let's tell the team what happened so they can learn.
       icon: speech
-      ko: 그다음 팀이 배우도록 무슨 일이 있었는지 말해요
+      ko: 제출한 뒤 팀이 배우도록 무슨 일이 있었는지 말해요
       note: 공유
 - title: 팀 안전 브리핑
   sentences:
@@ -3764,15 +3764,15 @@ situations:
     why: Let's brief는 함께 브리핑하자는 제안이에요. the plan and key risks로 무엇을 다루는지 밝혀요.
     decoy: the staff
     distractorsKo:
-    - 계획과 핵심 일정을 브리핑해요.
-    - 계획과 핵심 장비를 브리핑해요.
+    - 브리핑할 계획과 핵심 위험 요소를 펴 둬요.
+    - 브리핑은 시작 직전에 팀이 나눠 받아요.
     blank:
       answer: brief
       options:
       - en: brief
       - en: rehearse
       - en: rewrite
-      - en: rename
+      - en: reorder
   - en: Any concerns before we begin?
     ko: 시작하기 전에 우려되는 점 있나요?
     chunks:
@@ -3789,14 +3789,14 @@ situations:
     why: Any concerns?는 짧게 묻는 정해진 표현이에요. before we begin이 아직 말할 수 있는 시점이라고 알려요.
     decoy: Any updates
     distractorsKo:
-    - 시작하기 전에 우려되는 점 적어 뒀나요?
-    - 시작하기 전에 우려되는 점 정해졌나요?
+    - 들을 우려가 있는지 시작 전에 둘러봐요.
+    - 시작하기 전에 우려는 짚어도 괜찮아요.
     blank:
       answer: begin
       options:
-      - en: finish
-      - en: leave
-      - en: stop
+      - en: retire
+      - en: relax
+      - en: rest
       - en: begin
   - en: Everyone knows their role and the backup plan.
     ko: 모두가 자기 역할과 대비책을 알고 있어요.
@@ -3850,9 +3850,9 @@ situations:
       answer: share
       options:
       - en: share
-      - en: sort
       - en: pack
-      - en: sell
+      - en: lend
+      - en: count
   - en: I'll say my concern now, while we can still plan for it.
     ko: 아직 계획을 세울 수 있을 때 지금 제 우려를 말할게요.
     chunks:
@@ -3870,16 +3870,16 @@ situations:
     tag: 우려 사전 공유
     icon: speech
     why: while we can still는 아직 가능한 동안이라는 뜻이에요. plan for it은 그 우려에 맞춰 준비한다는 뜻이에요.
-    decoy: today,
+    decoy: I'll say my concern today,
     distractorsKo:
-    - 아직 계획을 세울 수 있을 때 지금 제 우려를 적을게요.
-    - 아직 계획을 세울 수 있을 때 지금 제 우려를 정리할게요.
+    - 말할 제 우려를 아직 계획을 세울 수 있을 때 정해요.
+    - 아직 계획이 가능할 때 알리면 대비가 되는 법입니다.
     blank:
       answer: plan
       options:
       - en: rest
       - en: vote
-      - en: shop
+      - en: run
       - en: plan
   - en: A short briefing helps everyone speak up later.
     ko: 짧은 브리핑은 나중에 모두가 말을 꺼내는 데 도움이 돼요.
@@ -3902,31 +3902,31 @@ situations:
     decoy: A long meeting
     distractorsKo:
     - 짧은 브리핑은 나중에 모두가 서로 아는 데 도움이 돼요.
-    - 짧은 브리핑은 나중에 모두가 시간을 맞추는 데 도움이 돼요.
+    - 짧은 브리핑은 나중에 모두가 일정을 맞추는 데 도움이 돼요.
     blank:
       answer: speak up
       options:
-      - en: wake up
+      - en: stand up
       - en: speak up
+      - en: wake up
       - en: line up
-      - en: dress up
   order:
     tag: 대화 흐름
     icon: compass
     ko: 팀 안전 브리핑 4문장 순서
-    why: 브리핑을 제안하고, 역할을 아는지 묻고, 우려가 있는지 묻고, 있다면 지금 말해 달라고 청해요.
+    why: 브리핑을 제안하고, 그 계획에서 역할을 아는지 묻고, 역할이 분명하면 우려를 묻고, 있다면 아직 대비할 수 있을 때 말해 달라고 청해요.
     lines:
     - en: Let's brief the plan and key risks.
       icon: board
       ko: 계획과 핵심 위험 요소를 브리핑해요
       note: 제안
-    - en: Everyone knows their role and the backup plan, right?
+    - en: Does everyone know their role in that plan, and the backup plan?
       icon: handshake2
-      ko: 모두 자기 역할과 대비책을 아시죠
+      ko: 그 계획에서 모두 자기 역할과 대비책을 아시나요
       note: 확인
-    - en: Any concerns before we begin?
+    - en: Once roles are clear, any concerns before we begin?
       icon: bell
-      ko: 시작하기 전에 우려되는 점 있나요
+      ko: 역할이 분명하면 시작하기 전에 우려되는 점 있나요
       note: 질문
     - en: If you have one, say it now while we can still plan for it.
       icon: speech
@@ -3951,8 +3951,8 @@ situations:
     why: Stop으로 시작하는 짧은 명령이라 한 단어로 모두를 멈춰요. wrong side는 무엇이 틀렸는지를 바로 짚어요.
     decoy: the wrong room
     distractorsKo:
-    - 멈추세요—틀린 기구예요.
-    - 멈추세요—틀린 서류예요.
+    - 틀린 쪽 절개는 중대한 사건이에요.
+    - 멈춤은 직급과 무관한 권리예요.
     blank:
       answer: wrong
       options:
@@ -3977,15 +3977,15 @@ situations:
     why: The consent says …는 문서가 근거라는 뜻이에요. left, not right는 맞는 쪽과 틀린 쪽을 짝지어 말해요.
     decoy: not below
     distractorsKo:
-    - 영상에는 왼쪽이라고 되어 있지, 오른쪽이 아니에요.
-    - 동의서에는 왼쪽이라고 되어 있고, 서명도 있어요.
+    - 동의서에는 왼쪽이라고 되어 있지, 날짜도 적혀 나와요.
+    - 동의서에는 왼쪽이라고 되어 있지, 시행일도 나와요.
     blank:
       answer: consent
       options:
       - en: consent
       - en: label
-      - en: menu
-      - en: wall
+      - en: badge
+      - en: monitor
   - en: We halt now and re-verify everything.
     ko: 지금 멈추고 모든 걸 다시 확인해요.
     chunks:
@@ -4005,7 +4005,7 @@ situations:
     decoy: and re-sort
     distractorsKo:
     - 멈추고 다시 확인하도록 서류를 펴요.
-    - 멈춤은 간호사 누구든 요청할 수 있어요.
+    - 멈춤은 누구나 요청하는 거예요.
     blank:
       answer: re-verify
       options:
@@ -4038,8 +4038,8 @@ situations:
       options:
       - en: stop
       - en: nod
-      - en: listen
-      - en: look
+      - en: bow
+      - en: wave
   - en: I'm not moving forward until the side is confirmed.
     ko: 부위가 확인될 때까지 앞으로 나아가지 않을게요.
     chunks:
@@ -4059,15 +4059,15 @@ situations:
     why: I'm not moving forward는 지금 진행하지 않겠다는 선언이에요. until the side is confirmed가 풀리는 조건을 정해요.
     decoy: stepping back
     distractorsKo:
-    - 부위는 수술 전에 외과의가 직접 표시해요.
-    - 부위 확인에는 동의서와 표시를 같이 봐요.
+    - 부위는 집도의가 직접 표시하는 편이에요.
+    - 부위 확인에는 동의서와 표시를 맞춰 봐요.
     blank:
       answer: confirmed
       options:
       - en: printed
-      - en: moved
-      - en: confirmed
       - en: cleaned
+      - en: confirmed
+      - en: packed
   - en: Let's check the whole chart again before we touch the patient.
     ko: 환자에게 손대기 전에 차트 전체를 다시 확인해요.
     chunks:
@@ -4088,32 +4088,32 @@ situations:
     why: the whole chart는 일부가 아니라 전체라는 뜻이에요. before we touch the patient가 환자에게 손대기 전이라는 시점을 정해요.
     decoy: the whole room
     distractorsKo:
-    - 환자에게 손대기 전에 차트 전체를 다시 출력해요.
-    - 환자에게 손대기 전에 차트 전체를 다시 가져와요.
+    - 확인할 차트를 환자에게 손대기 전에 펴요.
+    - 차트 전체에는 동의서와 영상 기록이 묶여 나와요.
     blank:
       answer: check
       options:
-      - en: check
+      - en: lock
       - en: carry
-      - en: file
-      - en: stack
+      - en: check
+      - en: shelve
   order:
     tag: 대화 흐름
     icon: compass
     ko: wrong-site 임박 저지 4문장 순서
-    why: 먼저 틀린 쪽이라고 멈춰 세우고, 동의서를 근거로 대고, 다 멈추고 다시 확인하자고 한 뒤, 그때까지 진행하지 않겠다고 해요.
+    why: 먼저 틀린 쪽이라고 멈춰 세우고, 이유로 동의서를 대고, 그 내용에 따라 다 멈추고 다시 확인하자고 한 뒤, 그때까지 진행하지 않겠다고 해요.
     lines:
     - en: Stop—this is the wrong side.
       icon: siren
       ko: 멈추세요—틀린 쪽이에요
       note: 저지
-    - en: The consent says left, not right.
+    - en: That's because the consent says left, not right.
       icon: board
-      ko: 동의서에는 왼쪽이라고 되어 있지, 오른쪽이 아니에요
+      ko: 동의서에는 왼쪽이라고 되어 있지, 오른쪽이 아니라서요
       note: 근거
-    - en: We halt now and re-verify everything.
+    - en: Given what it says, we halt now and re-verify everything.
       icon: redo
-      ko: 지금 멈추고 모든 걸 다시 확인해요
+      ko: 그 내용대로 지금 멈추고 모든 걸 다시 확인해요
       note: 재확인
     - en: Until then, I'm not moving forward.
       icon: lock
@@ -4138,8 +4138,8 @@ situations:
     why: We're still missing은 아직도 못 찾았다는 현재진행 보고예요. one sponge로 무엇이 몇 개 없는지 정확히 말해요.
     decoy: one drape
     distractorsKo:
-    - 바늘 하나가 여전히 안 보여요.
-    - 거즈 두 개가 여전히 안 보여요.
+    - 거즈는 하나씩 세어서 묶어요.
+    - 거즈는 포장된 물품이에요.
     blank:
       answer: missing
       options:
@@ -4163,15 +4163,15 @@ situations:
     why: We can't close는 할 수 없다는 강한 금지 표현이에요. until it's found가 풀리는 조건이에요.
     decoy: leave
     distractorsKo:
-    - 찾을 때까지 이동할 수 없어요.
-    - 찾을 때까지 보낼 수 없어요.
+    - 봉합은 계수가 맞은 뒤의 일이에요.
+    - 찾는 일은 팀 전체의 몫이에요.
     blank:
       answer: close
       options:
       - en: wrap
       - en: tape
-      - en: lock
       - en: close
+      - en: lock
   - en: Let's search the field and get an X-ray.
     ko: 수술 부위를 수색하고 엑스레이를 찍어요.
     chunks:
@@ -4189,15 +4189,15 @@ situations:
     why: search the field와 get an X-ray가 and로 이어진 두 가지 행동이에요. 엑스레이는 눈으로 안 보이는 곳까지 확인해요.
     decoy: a bandage
     distractorsKo:
-    - 거즈에는 엑스레이에 보이는 선이 있어요.
-    - 수색은 수술 부위부터 차례로 해요.
+    - 거즈에는 엑스레이에 비치는 선이 들어가요.
+    - 수색은 가까운 곳부터 차례로 이어져요.
     blank:
       answer: search
       options:
-      - en: label
       - en: trim
-      - en: search
       - en: rinse
+      - en: search
+      - en: dress
   - en: I said something the moment I noticed it was gone.
     ko: 사라진 걸 알아챈 순간 바로 말했어요.
     chunks:
@@ -4218,8 +4218,8 @@ situations:
     why: I said something은 무엇인지 밝히지 않고 말했다는 뜻이에요. the moment는 그 순간이라는 시점이에요.
     decoy: it was wet
     distractorsKo:
-    - 사라진 걸 알아챈 순간 바로 적었어요.
-    - 사라진 걸 알아챈 순간 바로 기억했어요.
+    - 알아챈 순간부터 속도가 중요해요.
+    - 사라진 건 일찍 알릴수록 되찾기 좋죠.
     blank:
       answer: gone
       options:
@@ -4244,15 +4244,15 @@ situations:
     why: Let's recount는 함께 다시 세자는 제안이에요. before we search everywhere는 찾기 전에 먼저라는 순서예요.
     decoy: the corner
     distractorsKo:
-    - 모든 곳을 수색하기 전에 다시 모여요.
-    - 모든 곳을 수색하기 전에 다시 물어요.
+    - 수색하기 전에 다시 셀 거즈를 모아요.
+    - 수색은 구역을 나눠 이어서 진행돼요.
     blank:
       answer: recount
       options:
       - en: recount
-      - en: rewrite
       - en: resort
       - en: redraw
+      - en: rewind
   - en: I won't say it's fine until we actually find it.
     ko: 실제로 찾을 때까지 괜찮다고 말하지 않을게요.
     chunks:
@@ -4277,15 +4277,15 @@ situations:
     blank:
       answer: find
       options:
-      - en: find
-      - en: weigh
-      - en: rename
+      - en: trade
       - en: wrap
+      - en: find
+      - en: name
   order:
     tag: 대화 흐름
     icon: compass
     ko: 이물 잔류 위기 대응 4문장 순서
-    why: 하나가 안 보인다고 알리고, 수색 전에 먼저 다시 세자고 하고, 그래도 없으면 수색과 엑스레이를 하고, 찾기 전엔 괜찮다고 안 하겠다고 해요.
+    why: 하나가 안 보인다고 알리고, 수색 전에 먼저 다시 세자고 하고, 그 뒤에도 없으면 수색과 엑스레이를 하고, 그 결과로 찾기 전엔 괜찮다고 안 하겠다고 해요.
     lines:
     - en: We're still missing one sponge.
       icon: siren
@@ -4295,13 +4295,13 @@ situations:
       icon: redo
       ko: 모든 곳을 수색하기 전에 다시 세요
       note: 재계수
-    - en: If it's still gone, let's search the field and get an X-ray.
+    - en: If it's still gone after that, let's search the field and get an X-ray.
       icon: magnify
-      ko: 그래도 없으면 수술 부위를 수색하고 엑스레이를 찍어요
+      ko: 그 뒤에도 없으면 수술 부위를 수색하고 엑스레이를 찍어요
       note: 수색
-    - en: Until we actually find it, I won't say it's fine.
+    - en: Until the X-ray or search finds it, I won't say it's fine.
       icon: lock
-      ko: 실제로 찾을 때까지 괜찮다고 말하지 않을게요
+      ko: 엑스레이나 수색으로 찾을 때까지 괜찮다고 말하지 않을게요
       note: 약속
 - title: 수술 화재 발생 대응
   sentences:
@@ -4321,7 +4321,7 @@ situations:
     tag: 산소 차단
     icon: fire
     why: Fire on the field로 상황을 먼저 알리고 stop the oxygen으로 바로 지시해요. 명령문이라 주어 없이 동사로 시작해요.
-    decoy: the music
+    decoy: the heater
     distractorsKo:
     - 화재예요—차단하도록 산소 호스를 잡아요.
     - 화재에는 산소와 열과 연료가 필요해요.
@@ -4351,15 +4351,15 @@ situations:
     why: Pour saline and remove burning material은 두 동작을 and로 이은 명령문이에요. 불과 불붙은 물질을 함께 다뤄요.
     decoy: wet gauze
     distractorsKo:
-    - 불꽃은 산소가 있어야 계속 탈 수 있어요.
-    - 수술포는 불에 타기 쉬운 물건 중 하나예요.
+    - 불꽃은 산소가 끊기면 금방 약해지고 줄어요.
+    - 알코올 소독액은 쉽게 불이 붙는 물질이에요.
     blank:
       answer: saline
       options:
-      - en: gel
+      - en: syrup
       - en: saline
-      - en: foam
-      - en: powder
+      - en: soap
+      - en: glue
   - en: Get the extinguisher and call for help.
     ko: 소화기를 가져오고 도움을 요청하세요.
     chunks:
@@ -4375,17 +4375,17 @@ situations:
     tag: 소화기·요청
     icon: siren
     why: Get the extinguisher and call for help도 and로 이은 명령문이에요. call for help는 도움을 청한다는 정해진 표현이에요.
-    decoy: the keys
+    decoy: the stretcher
     distractorsKo:
-    - 소화기는 불이 작을 때만 써요.
-    - 병원 복도에는 소화기가 걸려 있어요.
+    - 소화기는 작은 불에 쓰는 장비예요.
+    - 소화기는 복도 벽 쪽에 걸린 장비예요.
     blank:
       answer: extinguisher
       options:
-      - en: stretcher
-      - en: ventilator
-      - en: defibrillator
+      - en: stethoscope
+      - en: thermometer
       - en: extinguisher
+      - en: wheelchair
   - en: I'll shout it the second I see the flame.
     ko: 불꽃을 보는 즉시 외칠게요.
     chunks:
@@ -4403,7 +4403,7 @@ situations:
     tag: 즉시 외침
     icon: speaker
     why: the second I see는 보는 즉시라는 뜻의 시간절이에요. shout it은 소리쳐 알린다는 뜻이에요.
-    decoy: the doctor
+    decoy: the cart
     distractorsKo:
     - 연기 냄새를 맡는 즉시 외칠게요.
     - 불꽃을 보는 즉시 세 번 외칠게요.
@@ -4413,7 +4413,7 @@ situations:
       - en: shout
       - en: whisper
       - en: mumble
-      - en: hum
+      - en: giggle
   - en: Everyone needs to hear the call at the same time.
     ko: 모두가 동시에 그 외침을 들어야 해요.
     chunks:
@@ -4439,10 +4439,10 @@ situations:
     blank:
       answer: hear
       options:
-      - en: hear
-      - en: see
-      - en: copy
       - en: trace
+      - en: hear
+      - en: mimic
+      - en: mark
   - en: Once it's out, I'll say what happened while it's fresh.
     ko: 불이 꺼지면 기억이 생생할 때 무슨 일이 있었는지 말할게요.
     chunks:
@@ -4461,32 +4461,32 @@ situations:
     why: Once it's out은 불이 꺼진 뒤라는 시간절이에요. while it's fresh는 기억이 생생한 동안이라는 뜻이에요.
     decoy: while it's loud
     distractorsKo:
-    - 불이 꺼지면 기억이 생생할 때 무슨 일이 있었는지 정리할게요.
+    - 기억이 생생할 때 말할 일을 불이 꺼지면 먼저 정할게요.
     - 불이 꺼지면 기억이 생생할 때 무슨 일이 있었는지 물을게요.
     blank:
       answer: fresh
       options:
-      - en: loud
       - en: hot
-      - en: fresh
       - en: dry
+      - en: fresh
+      - en: bright
   order:
     tag: 대화 흐름
     icon: compass
     ko: 수술 화재 발생 대응 4문장 순서
-    why: 화재를 알리며 산소를 막고, 식염수를 붓고 타는 물질을 치우고, 계속 타면 소화기와 도움을 청하고, 꺼진 뒤 일어난 일을 말해요.
+    why: 화재를 알리며 산소를 막고, 산소가 꺼진 채 식염수를 붓고 타는 물질을 치우고, 그동안 소화기와 도움을 청하고, 꺼진 뒤 일어난 일을 말해요.
     lines:
     - en: Fire on the field—stop the oxygen.
       icon: fire
       ko: 필드에 화재예요—산소를 차단하세요
       note: 산소
-    - en: Pour saline and remove burning material.
+    - en: With the oxygen off, pour saline and remove burning material.
       icon: fire
-      ko: 생리식염수를 붓고 타는 물질을 제거해요
+      ko: 산소를 막은 채 생리식염수를 붓고 타는 물질을 제거해요
       note: 소화
-    - en: If it keeps burning, get the extinguisher and call for help.
+    - en: While you do that, get the extinguisher and call for help.
       icon: siren
-      ko: 계속 타면 소화기를 가져오고 도움을 요청하세요
+      ko: 그동안 소화기를 가져오고 도움을 요청하세요
       note: 도움
     - en: Once it's out, I'll say what happened while it's fresh.
       icon: speech
@@ -4510,15 +4510,15 @@ situations:
     why: is unaccounted for는 행방을 알 수 없다는 정해진 표현이에요. 사람이나 물건이 안 보일 때 써요.
     decoy: One sponge
     distractorsKo:
-    - 거즈 하나의 행방이 확인되지 않아요.
-    - 검체 두 개의 행방이 확인되지 않아요.
+    - 검체 하나의 행방은 라벨로 확인해요.
+    - 행방은 인계 기록에 남는 법이에요.
     blank:
-      answer: unaccounted
+      answer: specimen
       options:
-      - en: waited
-      - en: unaccounted
-      - en: asked
-      - en: paid
+      - en: monitor
+      - en: specimen
+      - en: stretcher
+      - en: elevator
   - en: Let's stop and search everywhere now.
     ko: 지금 멈추고 모든 곳을 수색해요.
     chunks:
@@ -4543,8 +4543,8 @@ situations:
       answer: search
       options:
       - en: count
-      - en: sort
-      - en: stack
+      - en: tidy
+      - en: scrub
       - en: search
   - en: I'm reporting this to pathology and the surgeon.
     ko: 병리과와 외과의에게 이걸 보고할게요.
@@ -4563,15 +4563,15 @@ situations:
     why: I'm reporting this는 지금 하고 있다는 진행형이에요. to pathology and the surgeon으로 누구에게 알리는지 밝혀요.
     decoy: I'm printing this
     distractorsKo:
-    - 병리과와 외과의에게서 이걸 보고받을게요.
-    - 병리과와 외과의에게 이걸 복사해 줄게요.
+    - 병리과와 외과의에게 보고할 내용을 적어 둬요.
+    - 병리과는 조직을 접수하는 곳이에요.
     blank:
       answer: reporting
       options:
       - en: printing
       - en: folding
-      - en: signing
       - en: reporting
+      - en: signing
   - en: I noticed it was missing and said so right away.
     ko: 없어진 걸 알아채고 즉시 말했어요.
     chunks:
@@ -4591,15 +4591,15 @@ situations:
     why: and said so는 알아챈 뒤 바로 말했다는 뜻이에요. right away가 지체 없이라는 뜻을 더해요.
     decoy: and wrote it down
     distractorsKo:
-    - 없어진 걸 알아채고 즉시 적었어요.
-    - 없어진 걸 알아채고 즉시 정리했어요.
+    - 없어진 검체는 먼저 찾는 게 급해요.
+    - 없어진 걸 알아채고 보니 방이 조용했어요.
     blank:
       answer: missing
       options:
       - en: broken
       - en: missing
-      - en: bent
-      - en: cold
+      - en: stuck
+      - en: spilled
   - en: Let's check every step from the field to the lab.
     ko: 필드부터 검사실까지 모든 단계를 확인해요.
     chunks:
@@ -4619,15 +4619,15 @@ situations:
     why: from the field to the lab은 시작과 끝을 말해 모든 구간을 가리켜요. every step은 하나도 빼지 않는다는 뜻이에요.
     decoy: from the door
     distractorsKo:
-    - 필드부터 검사실까지 모든 단계를 그려 봐요.
-    - 필드부터 검사실까지 모든 단계를 걸어 봐요.
+    - 확인할 길을 필드부터 검사실까지 걸어 봐요.
+    - 필드에서 검사실까지는 단계가 여럿이에요.
     blank:
       answer: check
       options:
       - en: time
-      - en: clean
+      - en: rate
       - en: check
-      - en: sort
+      - en: mark
   - en: We don't stay quiet about a missing specimen.
     ko: 검체가 없어진 일에 대해 조용히 있지 않아요.
     chunks:
@@ -4658,7 +4658,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 검체 분실 위기 4문장 순서
-    why: 행방이 안 보인다고 알리고, 멈추고 수색하자고 한 뒤, 병리과와 외과의에게 보고하고, 그동안 경로를 확인해요.
+    why: 행방이 안 보인다고 알리고, 멈추고 수색하자고 한 뒤, 수색하는 동안 병리과와 외과의에게 보고하고, 그들이 찾는 동안 경로를 확인해요.
     lines:
     - en: One specimen is unaccounted for.
       icon: siren
@@ -4668,9 +4668,9 @@ situations:
       icon: magnify
       ko: 지금 멈추고 모든 곳을 수색해요
       note: 수색
-    - en: I'm reporting this to pathology and the surgeon.
+    - en: While we search, I'm reporting this to pathology and the surgeon.
       icon: speaker
-      ko: 병리과와 외과의에게 이걸 보고할게요
+      ko: 수색하는 동안 병리과와 외과의에게 이걸 보고할게요
       note: 보고
     - en: While they look, let's check every step from the field to the lab.
       icon: check
@@ -4696,8 +4696,8 @@ situations:
     why: an adverse event는 환자에게 해가 된 사건이에요. we must report는 반드시 보고해야 한다는 의무를 말해요.
     decoy: a small delay
     distractorsKo:
-    - 이건 우리가 파악해야 할 위해사건이에요.
-    - 이건 우리가 지켜봐야 할 위해사건이에요.
+    - 위해사건은 해가 실제로 닿은 일이에요.
+    - 위해사건은 안전 보고서의 대상이에요.
     blank:
       answer: report
       options:
@@ -4722,8 +4722,8 @@ situations:
     why: Let's preserve는 그대로 보존하자는 제안이에요. the device and packaging으로 무엇을 보존하는지 밝혀요.
     decoy: the cable
     distractorsKo:
-    - 기기와 포장재를 세어 둬요.
-    - 기기와 포장재를 확인해요.
+    - 보존할 기기와 포장재를 가리켜요.
+    - 기기와 포장재는 증거로 쓰여요.
     blank:
       answer: preserve
       options:
@@ -4749,10 +4749,10 @@ situations:
     tag: 알림·제출
     icon: bell
     why: I'll notify는 알리겠다는 약속이에요. and file the report로 두 가지를 이어서 하겠다고 말해요.
-    decoy: the chart
+    decoy: the folder
     distractorsKo:
-    - 책임 간호사에게 알리고 보고서를 복사할게요.
-    - 책임 간호사에게 알리고 보고서를 찾을게요.
+    - 책임 간호사에게 알릴 내용을 보고서에 적을게요.
+    - 책임 간호사는 사건 보고를 받는 사람이에요.
     blank:
       answer: notify
       options:
@@ -4777,17 +4777,17 @@ situations:
     tag: 즉시 말하기
     icon: speech
     why: right away가 지체 없이라는 뜻이에요. before anything gets moved로 아무것도 옮겨지기 전이라는 시점을 정해요.
-    decoy: wet
+    decoy: gets wet
     distractorsKo:
-    - 아무도 떠나기 전에 즉시 말할게요.
-    - 아무것도 옮겨지기 전에 즉시 셀게요.
+    - 옮겨진 물건은 원래 자리를 잃어요.
+    - 즉시 말하면 증거가 그대로 남아요.
     blank:
       answer: moved
       options:
+      - en: dented
       - en: moved
-      - en: bent
-      - en: wet
-      - en: cold
+      - en: cracked
+      - en: tilted
   - en: Let's keep everything exactly as it happened.
     ko: 모든 걸 일어난 그대로 정확히 유지해요.
     chunks:
@@ -4806,15 +4806,15 @@ situations:
     why: exactly as it happened는 일어난 그대로라는 뜻이에요. keep everything으로 하나도 바꾸지 않는다는 뜻이에요.
     decoy: just as planned
     distractorsKo:
-    - 모든 걸 일어난 그대로 정확히 그려요.
-    - 모든 걸 일어난 그대로 정확히 세어요.
+    - 일어난 그대로여야 원인을 가려내는 법이죠.
+    - 정확히 일어난 일은 기록과 맞아야 해요.
     blank:
       answer: keep
       options:
       - en: keep
       - en: draw
-      - en: count
       - en: name
+      - en: trace
   - en: I'll write down the time and what I saw.
     ko: 시간과 제가 본 걸 적어둘게요.
     chunks:
@@ -4846,23 +4846,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 위해사건 즉시 보고 4문장 순서
-    why: 위해사건이라고 알리고, 기기와 포장재를 보존하자고 한 뒤, 그대로 둔 채 책임 간호사에게 알리고 보고서를 내고, 그다음 시간과 본 것을 적어요.
+    why: 위해사건이라고 알리고, 바로 기기와 포장재를 보존하자고 하고, 그대로 두는 동안 알리고 보고서를 내고, 제출한 뒤 시간과 본 것을 적어요.
     lines:
     - en: This is an adverse event we must report.
       icon: bell
       ko: 이건 우리가 보고해야 할 위해사건이에요
       note: 인지
-    - en: Let's preserve the device and packaging.
+    - en: Right away, let's preserve the device and packaging.
       icon: lock
-      ko: 기기와 포장재를 보존해요
+      ko: 바로 기기와 포장재를 보존해요
       note: 보존
-    - en: Once it's kept as is, I'll notify the charge nurse and file the report.
+    - en: While it's kept as is, I'll notify the charge nurse and file the report.
       icon: bell
-      ko: 그대로 둔 뒤 책임 간호사에게 알리고 보고서를 낼게요
+      ko: 그대로 둔 동안 책임 간호사에게 알리고 보고서를 낼게요
       note: 보고
-    - en: After that, I'll write down the time and what I saw.
+    - en: After I file it, I'll write down the time and what I saw.
       icon: pencil
-      ko: 그다음 시간과 제가 본 걸 적어둘게요
+      ko: 제출한 뒤 시간과 제가 본 걸 적어둘게요
       note: 기록
 - title: 안전 위반 압력 저항
   sentences:
@@ -4883,15 +4883,15 @@ situations:
     why: I can't skip은 할 수 없다는 단호한 거절이에요. this safety step으로 무엇을 건너뛸 수 없는지 짚어요.
     decoy: this extra
     distractorsKo:
-    - 이 안전 단계는 바꿀 수 없어요.
-    - 이 안전 단계는 옮길 수 없어요.
+    - 이 안전 단계는 보호를 위한 거예요.
+    - 이 안전 단계는 삼십 초쯤 걸려요.
     blank:
       answer: skip
       options:
-      - en: move
-      - en: sell
+      - en: swap
+      - en: reorder
       - en: skip
-      - en: rent
+      - en: reprint
   - en: I understand the pressure, but this protects the patient.
     ko: 압박은 이해하지만, 이건 환자를 보호해요.
     chunks:
@@ -4909,7 +4909,7 @@ situations:
     tag: 압박 인정
     icon: shield
     why: I understand the pressure, but은 먼저 상대 사정을 인정한 뒤 하려는 말로 넘어가는 틀이에요. this protects가 그 이유예요.
-    decoy: the schedule
+    decoy: the budget
     distractorsKo:
     - 압박은 이해하지만, 이건 서류를 보호해요.
     - 압박은 이해하지만, 이건 기구를 보호해요.
@@ -4935,7 +4935,7 @@ situations:
     tag: 삼십 초
     icon: check
     why: Let's take thirty seconds로 필요한 시간을 짧고 구체적으로 말해서 거절이 아니라 제안이 돼요. right는 제대로라는 뜻이에요.
-    decoy: twice
+    decoy: slowly
     distractorsKo:
     - 제대로 하려면 십 초만 써요.
     - 제대로 하려면 삼 분만 써요.
@@ -4993,7 +4993,7 @@ situations:
     decoy: in the morning
     distractorsKo:
     - 압박 속에서도 이 단계는 장비를 보호해요.
-    - 압박 속에서도 이 단계는 시간을 아껴 줘요.
+    - 압박 속에서도 이 단계는 일정을 아껴 줘요.
     blank:
       answer: protects
       options:
@@ -5020,20 +5020,20 @@ situations:
     why: I won't skip은 의지를 담은 약속이에요. just because we're busy는 바쁘다는 이유만으로는 안 된다는 뜻이에요.
     decoy: a lunch break
     distractorsKo:
-    - 안전 단계는 바쁜 때에도 모두의 책임이에요.
-    - 안전 단계는 수술마다 똑같은 순서로 해요.
+    - 안전 단계는 바쁜 때에도 팀 전체의 책임이에요.
+    - 안전 단계는 바쁜 날에도 똑같은 순서예요.
     blank:
       answer: skip
       options:
-      - en: move
-      - en: swap
+      - en: trim
+      - en: bend
       - en: skip
-      - en: sell
+      - en: stretch
   order:
     tag: 대화 흐름
     icon: compass
     ko: 안전 위반 압력 저항 4문장 순서
-    why: 압박을 인정하며 환자를 위한 것이라 말하고, 건너뛸 수 없다고 하고, 삼십 초만 쓰자고 제안하고, 끝나면 곧 이어 간다고 해요.
+    why: 압박을 인정하며 환자를 위한 것이라 말하고, 그래서 건너뛸 수 없다고 하고, 대신 삼십 초만 쓰자고 제안하고, 끝나면 곧 일정으로 돌아간다고 해요.
     lines:
     - en: I understand the pressure, but this protects the patient.
       icon: shield
@@ -5043,9 +5043,9 @@ situations:
       icon: shield
       ko: 그래서 이 안전 단계는 건너뛸 수 없어요
       note: 거절
-    - en: Let's take thirty seconds to do it right.
+    - en: Instead, let's take thirty seconds to do it right.
       icon: check
-      ko: 제대로 하도록 삼십 초만 써요
+      ko: 대신 제대로 하도록 삼십 초만 써요
       note: 제안
     - en: Once that's done, we'll be right back on schedule.
       icon: check

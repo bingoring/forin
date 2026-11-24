@@ -1,0 +1,398 @@
+theme: core-safety-or
+changes:
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움/뜻이 흐림 — 공통 쉬운 단어 목록(patient); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-room
+  why: 너무 쉬움/뜻이 흐림 — 공통 쉬운 단어 목록(room); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-now
+  why: 너무 쉬움/뜻이 흐림 — 공통 쉬운 단어 목록(now); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움/뜻이 흐림 — 공통 쉬운 단어 목록(time); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움/뜻이 흐림 — 공통 쉬운 단어 목록(know); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움/뜻이 흐림 — 공통 쉬운 단어 목록(see); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-today
+  why: 너무 쉬움/뜻이 흐림 — 공통 쉬운 단어 목록(today); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-nurse
+  why: 너무 쉬움/뜻이 흐림 — 공통 쉬운 단어 목록(nurse); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-thing
+  why: 너무 쉬움/뜻이 흐림 — 너무 쉬움 — 목록 밖 판단(thing); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-first
+  why: 너무 쉬움/뜻이 흐림 — 너무 쉬움 — 목록 밖 판단(first); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-next
+  why: 너무 쉬움/뜻이 흐림 — 너무 쉬움 — 목록 밖 판단(next); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-later
+  why: 너무 쉬움/뜻이 흐림 — 너무 쉬움 — 목록 밖 판단(later); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-thirty
+  why: 너무 쉬움/뜻이 흐림 — 너무 쉬움 — 목록 밖 판단(thirty); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-short
+  why: 너무 쉬움/뜻이 흐림 — 너무 쉬움 — 목록 밖 판단(short); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-fine
+  why: 너무 쉬움/뜻이 흐림 — 너무 쉬움 — 목록 밖 판단(fine); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-still
+  why: 너무 쉬움/뜻이 흐림 — 너무 쉬움 — 목록 밖 판단(still); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-yet
+  why: 너무 쉬움/뜻이 흐림 — 너무 쉬움 — 목록 밖 판단(yet); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-right
+  why: 너무 쉬움/뜻이 흐림 — 한 카드에 뜻 셋(맞는/오른쪽/제대로)이 묶였고 correct와 ko가 같음 — 너무 쉬워 뺌; 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-heart
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 문장은 know by heart — 단독 heart(마음)가 아니라 by heart 구(외워서)로
+- kind: word
+  id: w-away
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 두 문장 모두 right away — 단독 away(멀리)가 아니라 right away 구(즉시)로
+- kind: word
+  id: w-miss
+  fields:
+  - en
+  - ipa
+  - ko
+  - example
+  why: 태그된 문장 셋이 missing(없어진·빠진) — 놓치다(miss) 카드와 뜻이 다름. 'nothing gets missed' 문장은 태그를 뺌
+- kind: word
+  id: w-speak
+  fields:
+  - ko
+  why: say(말하다)와 ko가 같아 정답이 둘 — 문장은 모두 speak up(말을 꺼내다)
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: confirm(확인하다)과 ko가 같아 정답이 둘 — check는 눈으로 살펴 점검
+- kind: word
+  id: w-doublecheck
+  fields:
+  - ko
+  why: re-verify와 ko(다시 확인하다)가 같아 정답이 둘 — 거듭 대조해 확인하는 쪽
+- kind: word
+  id: w-reverify
+  fields:
+  - ko
+  why: double-check와 ko가 같아 정답이 둘 — 근거와 맞춰 다시 검증하는 쪽
+- kind: word
+  id: w-begin
+  fields:
+  - ko
+  why: start(시작하다)와 ko가 같아 정답이 둘 — begin은 격식 있는 개시
+- kind: word
+  id: w-pause
+  fields:
+  - ko
+  why: stop·halt와 ko(멈추다)가 같아 정답이 셋 — pause는 잠깐 세워 두는 것
+- kind: word
+  id: w-halt
+  fields:
+  - ko
+  why: stop·pause와 ko(멈추다)가 같아 정답이 셋 — halt는 진행하던 일을 완전히 중단
+- kind: word
+  id: w-full
+  fields:
+  - ko
+  why: whole(전체의)과 ko가 같아 정답이 둘 — full safety checklist는 빠짐없는
+- kind: word
+  id: w-field
+  fields:
+  - ko
+  why: site(부위)·side(쪽)와 겹치는 '부위'를 빼고 수술 필드(멸균 구역)로
+- kind: word
+  id: w-side
+  fields:
+  - ko
+  why: site(부위)와 겹치는 '부위'를 빼고 좌·우 쪽으로
+- kind: word
+  id: w-dry
+  fields:
+  - ko
+  why: 문장은 'Let the prep dry'(동사) — 형용사 '마른'이 아니라 마르다
+- kind: word
+  id: w-drape
+  fields:
+  - ko
+  why: 명사(drapes)와 동사(draping)가 섞여 쓰임 — 둘을 함께 표시
+- kind: word
+  id: w-mark
+  fields:
+  - ko
+  why: 명사(The mark)와 동사(marked)가 섞여 쓰임 — 둘을 함께 표시
+- kind: word
+  id: w-report
+  fields:
+  - ko
+  why: 동사(report it)와 명사(safety report)가 섞여 쓰임 — 둘을 함께 표시
+- kind: word
+  id: w-call
+  fields:
+  - ko
+  why: 외치다/부르다 두 뜻을 하나로 — shout(외치다)과 겹치지 않게 부르다만. 명사 문장은 태그를 뺌
+- kind: word
+  id: w-close
+  fields:
+  - ko
+  why: 아슬아슬한/닫다 두 뜻 — close call 문장만 남기고 닫다 문장은 태그를 뺌
+- kind: sentence
+  situation: 수술 안전 문화 인지
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수술 안전 문화 인지
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 부위 표시 확인
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 타임아웃 참여
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 타임아웃 참여
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 계수 기본 참여
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 검체 라벨 확인
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 검체 라벨 확인
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 검체 라벨 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 화재 위험 인지
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: speak-up 우려 표현
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: speak-up 우려 표현
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: speak-up 우려 표현
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 계수 불일치 초기 대응
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 계수 불일치 초기 대응
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 검체 처리 확인
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 검체 처리 확인
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: wrong-site 예방 재확인
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 화재 위험 사전 소통
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 안전 체크리스트 준수
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 이식물·기기 안전 확인
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 근접오류 보고
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 근접오류 보고
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 팀 안전 브리핑
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 팀 안전 브리핑
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 팀 안전 브리핑
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: wrong-site 임박 저지
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: wrong-site 임박 저지
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: wrong-site 임박 저지
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 이물 잔류 위기 대응
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 이물 잔류 위기 대응
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 이물 잔류 위기 대응
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수술 화재 발생 대응
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수술 화재 발생 대응
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 검체 분실 위기
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 위해사건 즉시 보고
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 위해사건 즉시 보고
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 안전 위반 압력 저항
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 안전 위반 압력 저항
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 안전 위반 압력 저항
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 뜻이 다른 태그 빼기

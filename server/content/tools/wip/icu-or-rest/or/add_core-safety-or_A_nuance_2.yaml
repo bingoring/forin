@@ -89,7 +89,7 @@ wrong-site 예방 재확인:
   - {who: 간호사 → 집도의, icon: speech, en: "The consent, mark, and imaging all agree on the right side.", ok: true}
   - {who: 수술 기록, icon: board, en: "Consent signed; site marked; consent matches the surgical schedule.", ok: true}
   - {who: 간호사 → 환자, icon: faceWorried, en: "Your consent indemnifies the hospital against procedural liability.", ok: false, fix: "Your consent form says which knee we're operating on, and I'll check it with you again right now."}
-  why: 뜻은 셋 다 '동의서'예요. 집도의에게는 동의서·표시·영상이 맞는다고 짧게, 기록에는 서명과 일치 여부를 건조하게 적어요. 하지만 환자에게 병원의 책임을 면하게 한다는 말은 겁을 주고 이 서류의 목적과도 달라요. 환자에게는 어느 쪽 수술인지 적힌 서류라고 쉬운 말로 해요.
+  why: 뜻은 셋 다 '동의서'예요. 같은 수술팀에는 동의서·표시·영상이 맞는다고 짧게, 기록에는 서명과 일치 여부를 건조하게 적어요. 하지만 환자에게 병원의 책임을 면하게 한다는 말은 겁을 주고 이 서류의 목적과도 달라요. 환자에게는 어느 쪽 수술인지 적힌 서류라고 쉬운 말로 해요.
 - kind: swap
   words: [w-mark, w-match, w-consent, w-need]
   who: 간호사 → 집도의 · 불일치 발견
@@ -148,13 +148,13 @@ wrong-site 예방 재확인:
   words: [w-skip, w-checklist, w-busy]
   cue: "The room is busy, and the surgeon says, \"We've done this a hundred times — skip the checklist.\""
   scale:
-  - "I hear you, but I'll read the checklist — it only takes a minute."
+  - "I hear you, but I'll read the checklist — it's quick."
   - "Okay, we'll skip it this once because we're busy."
   - "Skipping the checklist is against the rules, period!"
   answerAt: 0
   why: 바쁘다는 말을 들어 주면서도 체크리스트는 짧게 읽겠다고 분명히 해요. 한 번만 건너뛰자는 말에 넘어가면 기준이 무너지고, 규칙만 내세워 몰아붙이면 협조를 잃어요.
-  example: "I hear you, but I'll read the checklist — it only takes a minute."
-  exKo: 알겠지만 체크리스트는 읽을게요 — 1분이면 돼요.
+  example: "I hear you, but I'll read the checklist — it's quick."
+  exKo: 알겠지만 체크리스트는 읽을게요 — 금방이에요.
 - kind: context
   words: [w-checklist]
   word: checklist
