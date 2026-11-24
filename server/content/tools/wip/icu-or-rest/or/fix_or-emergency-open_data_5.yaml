@@ -1,0 +1,51 @@
+words:
+  w-manage: {example: "I'll manage the blood products while you handle the bleeding."}
+why_word:
+  w-run: 'A W3 — 문장은 형용사 Running count, 헤드워드를 running으로'
+  w-pair: 'A W4 — 문장은 each pair of hands(일손), 헤드워드를 구로'
+  w-crash: 'A W14 — crash cart 한 구를 두 카드로 쪼갠 것을 합침'
+  w-bleed: 'A W15 — 문장은 명사·형용사 bleeding'
+  w-pack: 'A W16 — 패킹은 거즈를 채워 넣는 일'
+  w-manage: 'A S9 — 새 문장 20.3을 example로'
+why_remove:
+  w-cart: 'w-crash(crash cart)에 합침 — 15.1에만 쓰였고 어느 문장도 태그하지 않게 됐다(A W14)'
+why_sentence:
+  '0.0': 'KO9 번역투(우리가 할 수 있는 한)'
+  '3.4': 'S10 chunks 구 경계'
+  '4.1': 'KO1 ko에 영어 sharp'
+  '4.4': 'S10 chunks 구 경계'
+  '5.4': 'S11 여분의 인력→추가 인력'
+  '6.3': 'S1 간호사가 패킹(집도의 일)·집도의에게 흡인 지시 → 흡인 유지 약속'
+  '7.2': 'KO2 비문(아직 … 왔나요)'
+  '8.1': 'KO3 주어 없는 상태 보고에 행위자(뽑아 뒀어요)'
+  '8.2': 'KO4 번역투(부드러운데·원하세요)'
+  '8.3': 'S2 처방 없이 여분 약 준비 → 자궁수축제를 손 닿는 곳에'
+  '11.1': 'KO5 단계별로 → 미리 꺼내 놓기'
+  '11.4': 'S12 단계별로 → 미리 꺼내 놓기'
+  '13.4': 'S3 분만 결정을 간호사가 선언 → 분만 준비 보고'
+  '15.1': 'KO6 뽑아 뒀어요 → 주사기에 뽑혀 있어요 / W14 w-cart 태그 빼기'
+  '15.3': 'S4 call the code(소생 중단 선언으로도 읽힘)·someone → 코드팀 호출 부탁'
+  '15.4': 'S5 기록자가 투약 준비까지 → 코드 시간 재고 투약 시점 알림'
+  '16.3': 'S10 chunks 구 경계'
+  '18.4': 'S6 제제 요구(처방) → 주문이 들어가면 혈액은행에 전화'
+  '19.1': 'KO7 소생시키고 → 소생 치료를 한 뒤'
+  '19.3': 'S7 수술 방법·이송을 간호사가 결정 → 봉합 후 중환자실에 연락'
+  '19.4': 'S8 방법 선언 → 계획 전달'
+  '20.1': 'KO8 손 하나하나 직역 → 한 사람 한 사람'
+  '20.3': 'S9 순환간호사가 기도 관리(마취과 몫) → 혈액제제 관리'
+  '20.4': 'S10 chunks 구 경계'
+nuance:   # slider 정답이 가장 짧은/긴 보기에 몰리지 않게 보기 길이를 섞음(A N11). 키는 상황.nuance번호
+  '0.0': {scale: ['Basic setup open, more coming', Almost everything is ready now, Everything is ready right now]}
+  '1.0': {scale: [Major instruments are being opened up, 'Major instruments are open, not counted yet', Major instruments are up and counted]}
+  '2.0': {scale: ["We have no spare canisters in here", 'Two suctions on, spares standing by', "Suction can't possibly fail now"]}
+  '3.0': {scale: ["We have what's in the cooler", 'Units here, more within minutes', 'We have all the blood we need']}
+  '4.0': {scale: ["We'll do the count after the case is over", "We'll count if there's any time at all", 'We start a quick baseline count now']}
+  '5.0': {scale: ['Two more people: a scrub and a circulator', Several more people from other rooms, Everyone in the whole department right now]}
+  '8.0': {scale: ['Her tone is soft — do you want oxytocin now?', 'Her tone is soft — oxytocin now, please', "Her tone is soft — I'll go ahead and give oxytocin now"]}
+  '9.0': {scale: ["I'll press whenever I think it's right", 'Tell me when to apply and when to release', "I'll hold the pressure until it's done"]}
+  '10.0': {scale: ["Fine, go ahead and reach across, it's quicker", Please be careful when you reach across the table, 'Even in a rush, we protect the sterile field']}
+  '12.0': {scale: ["I'll try to jot down a few of the units", "I'll note most of the units as they go in", "I'll record every unit and its time"]}
+  '13.0': {scale: ["I'm ready to go when you are", "I'll start the delivery", We must deliver now]}
+  '14.0': {scale: ['Specimens are labeled when things slow down', Specimens are labeled together in batches, Each specimen is labeled as it comes off]}
+  '15.0': {scale: [Her pulse feels a little weaker than before, 'Her pulse is gone — keep watching', "No pulse — I'm starting compressions now"]}
+  '20.0': {scale: ['Maybe someone could possibly take over the airway?', Somebody needs to handle the airway right now, "You take the airway, I'll manage the transfusion"]}
