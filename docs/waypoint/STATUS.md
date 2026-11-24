@@ -6,6 +6,8 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-10-28
 
+> ✅ **OR 한 번에 저작 묶음 6 — or-preop-checklist·or-specimen 합침(2026-11-24).** keyPhrase 11문장 교체(MTP·항생제 투여 주체·직접 운반·혼자 재라벨·결과 받는 곳 등), chunks 15문장, OR 위반 0. 확인·위기 문장 오답 기준 결정(안전 우선, 하나는 같은 모양) → TASK.md. 머지·배포 보류. 묶음 7 저작 중, 남은 OR 21주제.
+>
 > ✅ **OR 한 번에 저작 묶음 5 — core-family-or·or-emergency-open 합침(2026-11-24).** keyPhrase 12문장 교체(간호사 고지 → 집도의 면담 연결, DIC·FFP를 묻기, MTP는 혈액은행 연락 등), chunks 24문장, OR 위반 0. 앱 보기 위치 쏠림 발견 → 별도 작업. 머지·배포 보류. 묶음 6(preop-checklist·specimen) 저작 중, 남은 OR 23주제.
 >
 > ✅ **OR 한 번에 저작 묶음 4 — core-language-or·or-bleeding 합침(2026-11-17).** keyPhrase 11문장 교체(설명 주체를 집도의·마취팀이 통역을 통해, MTP는 혈액은행 연락, 승압제는 마취과 등), chunks 29문장, OR 위반 0. TASK.md에 '~려고' 쏠림 규칙 추가. 머지·배포 보류. 묶음 5(emergency-open·core-family-or) 진행 중, 남은 OR 25주제.
