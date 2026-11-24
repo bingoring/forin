@@ -1,0 +1,74 @@
+# 단어 (A W1~W16)
+words:
+  w-line: {distractorsKo: ['쪽지(메모 전달)', '명단(연락처 목록)']}
+  w-manage: {distractorsEn: [mandate, massage]}
+  w-run:
+    en: running
+    ipa: /ˈrʌnɪŋ/
+    chips: [[run, ning]]
+    decoyChips: [ran]
+  w-pair:
+    en: pair of hands
+    ipa: /ˌpɛr əv ˈhændz/
+    ko: 일손(한 사람)
+    chips: [[pair], [of], [hands]]
+    distractorsEn: [pair of gloves, pair of scissors]
+    distractorsKo: [장갑 한 켤레, 가위 한 자루]
+    decoyChips: [pail, hens]
+    cue: 위기 때 일할 수 있는 사람 하나하나를 손으로 세어 부르는 말
+  w-each: {distractorsKo: [몇몇의, 어떤]}
+  w-dic: {distractorsKo: [심부정맥혈전증, 당뇨병성케톤산증]}
+  w-instrument: {distractorsKo: [봉합사, 약물]}
+  w-up: {cue: '스크럽이 백 테이블에 기구를 다 펼쳐 놓아 집도의가 바로 쓸 수 있게 된 상태'}
+  w-platelet: {cue: '피가 엉기도록 돕는 작은 세포 조각을 모은 혈액 제제'}
+  w-resuscitate: {cue: '손상통제 뒤 중환자실에서 체온·응고·혈액량을 바로잡아 환자를 되살려 놓는 일의 동사'}
+  w-start: {cue: '맥박이 없을 때 흉부압박에, 아기가 숨을 안 쉴 때 소생술에 막 들어가며 하는 말'}
+  w-check: {cue: '쿨러 속 혈액 팩을 다시 들여다보며 이상이 없는지 볼 때'}
+  w-apply: {cue: '마취과가 "지금"이라고 하면 윤상연골에 손가락 힘을 주기 시작할 때'}
+  w-next: {cue: '지금 쓰는 쿨러가 비면 곧바로 이어 쓸 쿨러를 가리킬 때'}
+  w-rate: {cue: '태아 모니터의 1분당 박동 숫자를 말할 때 ''심박'' 뒤에 붙는 말'}
+  w-baseline: {cue: '칼을 대기 전에 처음 세어 두어 봉합 때 맞춰 볼 숫자'}
+  w-tell: {cue: '윤상연골 압박을 언제 풀지 마취과에게 알려 달라고 부탁할 때'}
+  w-protect: {cue: '급한 집도의가 기구대 너머로 손을 뻗을 때 지켜야 하는 것을 말하는 동사'}
+  w-role: {cue: '다중 위기에서 누가 기도, 누가 혈액을 맡을지 나눌 때의 몫'}
+  w-need: {cue: '집도의에게 "먼저 뭐가 필요하세요?"라고 묻거나 모자란 인력·제제를 말할 때의 동사'}
+  w-heart: {cue: '태아가 위험할 때 모니터에서 가장 먼저 숫자를 보는 장기'}
+  w-blood: {cue: '쿨러에 담겨 혈액은행에서 오고 팩 단위로 세어 수혈하는 것'}
+  w-change: {cue: '상황이 달라지면 팀에 알리거나 역할을 다시 정한다고 말할 때의 동사'}
+  w-drop: {cue: '태아 심박수가 다시 내려가는 것을 집도의에게 알릴 때의 동사'}
+  w-every: {cue: '들어가는 팩이나 나오는 검체를 하나도 빼놓지 않고 챙긴다고 말할 때'}
+  w-else: {cue: '준비해 둔 것 말고 열어 둘 것이 더 있는지 집도의에게 물을 때 "무엇" 뒤에 붙는 말'}
+  w-whole: {cue: '팀 일부가 아니라 방 안 모든 사람에게 변화를 알린다고 할 때'}
+  w-crash:
+    en: crash cart
+    ipa: /ˈkræʃ kɑːrt/
+    ko: 응급 카트
+    chips: [[crash], [cart]]
+    distractorsEn: [code blue, supply cart]
+    distractorsKo: [심정지 호출, 물품 카트]
+    decoyChips: [crate, card]
+    cue: 심정지가 나면 약·제세동기·기도 기구를 싣고 방으로 밀고 오는 수레
+  w-bleed:
+    en: bleeding
+    ipa: /ˈbliːdɪŋ/
+    ko: 피 흘림(출혈 중)
+    chips: [[bleed, ing]]
+    distractorsEn: [breeding, bleaching]
+    distractorsKo: [지혈(피 멎음), 세척(피 닦음)]
+    decoyChips: [bread]
+  w-pack: {ko: 패킹하다(채워 넣다)}
+dEn:
+  w-keep: [seek, reap]
+  w-circulator: [calculator, coordinator]
+  w-blood: [flood, brood]
+  w-track: [trick, trim]
+  w-massive: [passive, impressive]
+  w-cryo: [crop, crypt]
+  w-whole: [wild, hollow]
+  w-change: [charge, chafe]
+decoy_swap:   # 불쾌 조각
+  w-platelet: {lit: lot}
+  w-quick: {quack: quirk}
+  w-quickly: {quack: quirk}
+  w-staff: {stiff: staph}
+remove: [w-cart]

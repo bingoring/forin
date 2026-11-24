@@ -1,0 +1,142 @@
+# 문장 en·ko·chunks·words + 그 문장의 v46 필드 (A S1~S12, KO1~KO9 + B 새 값을 새 문장에 맞춘 것)
+sentences:
+  '0.0':   # KO9
+    ko: 최대한 빨리 방을 세팅합시다.
+    distractorsKo: ['최대한 꼼꼼히 방을 세팅합시다.', '최대한 밝게 방을 세팅합시다.']
+  '3.4':   # S10 chunks만
+    chunks: ["Let's keep", 'the blood bank', 'updated', 'as units go in', '.']
+  '4.1':   # KO1
+    ko: 거즈와 날카로운 기구를 세었고 기록했어요.
+    distractorsKo: ['거즈와 날카로운 기구를 세었고 서명했어요.', '거즈와 날카로운 기구를 세었고 보관했어요.']
+  '4.4':   # S10 chunks만
+    chunks: ["We'll double check", 'the sponge count', 'before', 'we close', '.']
+  '5.4':   # S11
+    ko: 이 방에 필요한 추가 인력을 불러올게요.
+    distractorsKo: ['이 방에 필요한 숙련 인력을 불러올게요.', '이 방에 인력이 추가되면 역할을 다시 나눠야 해요.']
+  '6.3':   # S1
+    en: "I'll keep the suction going while you pack the quadrants."
+    ko: 선생님이 각 구역을 패킹하시는 동안 제가 흡인을 계속할게요.
+    chunks: ["I'll keep", 'the suction going', 'while you pack', 'the quadrants', '.']
+    words: [w-keep, w-suction, w-pack, w-quadrant]
+    tag: 흡인 유지
+    icon: monitor
+    why: I'll keep … going은 멈추지 않고 계속하겠다는 약속이에요. while you …로 집도의가 패킹하는 동안 흡인이 끊기면 안 되는 이유를 시간으로 묶어요.
+    decoy: the drapes
+    distractorsKo: ['선생님이 각 구역을 닦으시는 동안 제가 흡인을 계속할게요.', '선생님이 각 구역을 말리시는 동안 제가 흡인을 계속할게요.']
+    blank: {answer: pack, options: [pack, photograph, label, number]}
+  '7.2':   # KO2
+    ko: NICU팀은 방에 와 있나요?
+    distractorsKo: ['NICU팀은 복도에 있나요?', 'NICU팀은 언제 방에 왔나요?']
+  '8.1':   # KO3
+    ko: 자궁수축제가 주사기에 뽑혀 있어 필요하면 바로 쓸 수 있어요.
+    distractorsKo: ['자궁수축제가 카트에서 꺼내져 있어 필요하면 바로 쓸 수 있어요.', '자궁수축제가 냉장고에 들어 있어 필요하면 바로 쓸 수 있어요.']
+  '8.2':   # KO4
+    ko: 자궁 긴장도가 약해요 — 지금 옥시토신 쓰실까요?
+    distractorsKo: ['자궁 긴장도가 약해요 — 지금 옥시토신을 준비할까요?', '자궁 긴장도가 약하면 출혈이 늘 수 있어요.']
+  '8.3':   # S2
+    en: "I'll have an extra uterotonic on hand just in case."
+    ko: 혹시 몰라서 자궁수축제를 하나 더 가까이 준비해 둘게요.
+    chunks: ["I'll have", 'an extra uterotonic', 'on hand', 'just in case', '.']
+    words: [w-extra, w-uterotonic]
+    tag: 추가 준비
+    icon: pill
+    why: just in case는 지금 쓰는 것이 아니라 미리 대비한다는 표현이에요. on hand는 손 닿는 곳에 둔다는 뜻이에요.
+    decoy: an extra gown
+    distractorsKo: ['혹시 몰라서 마스크를 하나 더 가까이 준비해 둘게요.', '혹시 몰라서 라벨을 하나 더 가까이 준비해 둘게요.']
+    blank: {answer: uterotonic, options: [uterotonic, antacid, laxative, vitamin]}
+  '11.1':  # KO5
+    ko: 두 부상 모두에 쓸 물품을 미리 꺼내 놓을게요.
+    distractorsKo: ['두 팀 모두에 쓸 물품을 미리 꺼내 놓을게요.', '두 부상 모두에 쓸 물품은 멸균 포장돼 있어요.']
+  '11.4':  # S12
+    ko: 두 우선순위 모두에 쓸 물품을 미리 꺼내 놓아 둘게요.
+    distractorsKo: ['두 우선순위 모두에 쓸 물품을 한 상자에 모아 둘게요.', '우선순위가 바뀌면 필요한 물품도 바뀔 수 있어요.']
+  '13.4':  # S3
+    en: "The baby's heart rate dropped again — ready to deliver when you are."
+    ko: 아기 심박수가 또 떨어졌어요 — 언제든 분만하실 수 있게 준비돼 있어요.
+    chunks: ["The baby's heart rate", 'dropped again', '— ready to deliver', 'when you are', '.']
+    words: [w-heart, w-rate, w-drop, w-ready, w-deliver]
+    tag: 준비 보고
+    icon: siren
+    why: again으로 이미 한 번 떨어졌음을 환기해 판단 근거를 보여 줘요. when you are로 분만 시점의 결정은 집도의에게 두고 준비가 됐음을 알려요.
+    decoy: The room temperature
+    distractorsKo: ['아기 심박수가 또 떨어졌어요 — 언제든 분만하실 수 있게 워머를 켜 놓을게요.', '아기 심박수가 또 떨어졌어요 — 태아에게 산소가 모자랄 수 있어요.']
+    blank: {answer: dropped, options: [rose, dropped, held, jumped]}
+  '15.1':  # KO6
+    ko: 응급 카트가 왔고 에피네프린도 주사기에 뽑혀 있어요.
+    words: [w-crash, w-epinephrine, w-draw]
+    distractorsKo: ['응급 카트가 복도에 있고 에피네프린도 주사기에 뽑혀 있어요.', '응급 카트가 왔고 에피네프린도 꺼내져 있어요.']
+  '15.3':  # S4
+    en: Compressions are going — can you call for the code team now?
+    ko: 흉부압박 중이에요 — 지금 코드팀을 불러 주시겠어요?
+    chunks: [Compressions are going, '— can you call', for the code team, now, '?']
+    words: [w-compression, w-call, w-code]
+    tag: 코드 호출
+    icon: pager
+    why: Can you …?로 부탁해 요청을 받아들이기 쉽게 하고, for the code team으로 부를 대상을 분명히 해요. now로 지체 없이 부르라는 급함을 전해요.
+    decoy: for the supply list
+    distractorsKo: ['흉부압박 교대 중이에요 — 지금 코드팀을 불러 주시겠어요?', '코드팀이 도착하면 흉부압박은 2분마다 교대로 해요.']
+    blank: {answer: call, options: [name, call, mark, copy]}
+  '15.4':  # S5
+    en: I'll keep timing the code and call out when epinephrine is due.
+    ko: 코드 시간을 계속 재면서 에피네프린 줄 때가 되면 소리 내어 알릴게요.
+    chunks: ["I'll keep timing", 'the code', 'and call out', 'when epinephrine is due', '.']
+    words: [w-keep, w-timing, w-code, w-epinephrine]
+    tag: 시간 알림
+    icon: bell
+    why: keep timing으로 한 번이 아니라 계속 시간을 잰다고 약속하고, call out when …으로 에피네프린 줄 때를 팀에 소리로 알려요. 시간 관리 담당의 말이에요.
+    decoy: and keep the vial cold
+    distractorsKo: ['에피네프린은 코드가 이어지는 동안 3~5분마다 한 번씩 줘요.', '코드 중 에피네프린 투약 시각은 차트에 시간과 함께 남겨요.']
+    blank: {answer: timing, options: [timing, weighing, washing, tagging]}
+  '16.3':  # S10 chunks만
+    chunks: [Blood bank, is sending, units, for the massive transfusion, .]
+  '18.4':  # S6
+    en: Once FFP and cryo are ordered, I'll call blood bank.
+    ko: FFP와 크라이오 주문이 들어가면 혈액은행에 전화할게요.
+    chunks: [Once FFP and cryo, are ordered, ", I'll call", blood bank, .]
+    words: [w-ffp, w-cryo, w-call, w-bloodbank]
+    tag: 주문 후 전화
+    icon: pager
+    why: Once …, I'll …은 앞 일이 끝나면 이어 하겠다는 순서를 말해요. 제제는 처방이 난 뒤에 혈액은행에 전화로 요청한다는 뜻이에요.
+    decoy: the front desk
+    distractorsKo: ['FFP는 해동하는 데 시간이 걸려서 미리 요청해야 해요.', '크라이오에는 피브리노겐이 많아서 출혈이 심한 환자에게 써요.']
+    blank: {answer: cryo, options: [cryo, iron, albumin, vitamins]}
+  '19.1':  # KO7
+    ko: 중환자실에서 소생 치료를 한 뒤 다시 수술방으로 돌아올 거예요.
+    distractorsKo: ['중환자실에서 소생 치료를 한 뒤 다시 수술방으로 보낼 거예요.', '중환자실 소생 치료는 보통 하루나 이틀 정도 걸려요.']
+  '19.3':  # S7
+    en: After the temporary closure, I'll call ICU to get her bed ready.
+    ko: 임시 봉합이 끝나면 중환자실에 연락해 침상을 준비해 달라고 할게요.
+    chunks: [After, the temporary closure, ", I'll call ICU", to get her bed ready, .]
+    words: [w-temporary, w-closure, w-icu, w-call, w-ready]
+    tag: 이송 준비
+    icon: hospital
+    why: After …로 순서를 시간으로 묶어, 봉합이 끝난 뒤 중환자실에 연락한다는 계획을 말해요. get her bed ready는 침상이 미리 준비되게 한다는 뜻이에요.
+    decoy: to ask about visiting hours
+    distractorsKo: ['임시 봉합은 배를 덮어 두고 나중에 다시 들어가는 거예요.', '임시 봉합이 끝나면 이 환자는 중환자실 침상이 곧바로 필요해요.']
+    blank: {answer: closure, options: [delivery, closure, session, anesthesia]}
+  '19.4':  # S8
+    en: The plan is to pack now and come back to close later.
+    ko: 지금은 패킹하고 나중에 다시 와서 봉합하는 계획이에요.
+    chunks: [The plan is, to pack now, and come back, to close later, .]
+    tag: 재수술 계획
+    icon: calendar
+    why: The plan is to …로 정해진 계획을 전하는 말이에요. pack now와 come back to close later를 시간 낱말로 나눠 지금 할 일과 나중 일을 구분해요.
+    decoy: to text later
+    distractorsKo: ['지금은 패킹하면 출혈이 우선 잡혀서 시간을 벌어요.', '지금은 패킹하고 남긴 패드 수를 적는 계획이에요.']
+    blank: {answer: back, options: [up, out, down, back]}
+  '20.1':  # KO8
+    ko: 한 사람 한 사람에게 역할을 정해 줍시다.
+    distractorsKo: ['한 사람 한 사람에게 장비를 정해 줍시다.', '한 사람 한 사람에게 구역을 정해 줍시다.']
+  '20.3':  # S9
+    en: I'll manage the blood products while you handle the bleeding.
+    ko: 선생님이 출혈을 처치하시는 동안 저는 혈액제제를 관리할게요.
+    chunks: ["I'll manage", the blood products, while you handle, the bleeding, .]
+    words: [w-manage, w-product, w-bleed]
+    tag: 역할 약속
+    icon: handshake2
+    why: while로 두 일이 동시에 진행됨을 보여 줘요. manage와 handle을 나눠 써서 혈액제제 관리와 출혈 처치라는 두 사람의 몫을 구분해요.
+    decoy: the tape
+    distractorsKo: ['출혈이 많으면 혈액제제가 생각보다 빨리 줄어들기 쉬워요.', '혈액제제는 혈액은행에서 쿨러에 담아 방으로 전달해요.']
+    blank: {answer: bleeding, options: [swelling, rash, bleeding, bruise]}
+  '20.4':  # S10 chunks만
+    chunks: ["We'll change", roles, as the situation changes, .]
