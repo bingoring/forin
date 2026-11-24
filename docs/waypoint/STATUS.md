@@ -6,6 +6,8 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-10-28
 
+> ✅ **OR 한 번에 저작 묶음 5 — core-family-or·or-emergency-open 합침(2026-11-24).** keyPhrase 12문장 교체(간호사 고지 → 집도의 면담 연결, DIC·FFP를 묻기, MTP는 혈액은행 연락 등), chunks 24문장, OR 위반 0. 앱 보기 위치 쏠림 발견 → 별도 작업. 머지·배포 보류. 묶음 6(preop-checklist·specimen) 저작 중, 남은 OR 23주제.
+>
 > ✅ **OR 한 번에 저작 묶음 4 — core-language-or·or-bleeding 합침(2026-11-17).** keyPhrase 11문장 교체(설명 주체를 집도의·마취팀이 통역을 통해, MTP는 혈액은행 연락, 승압제는 마취과 등), chunks 29문장, OR 위반 0. TASK.md에 '~려고' 쏠림 규칙 추가. 머지·배포 보류. 묶음 5(emergency-open·core-family-or) 진행 중, 남은 OR 25주제.
 >
 > ✅ **OR 한 번에 저작 묶음 2·3 — preop-verification·tourniquet·preop-assessment·difficult-airway 합침(2026-11-17).** keyPhrase 14문장 교체(커프 폭·감압은 집도의·FONA 복창 등), chunks 20문장, OR 위반 0. 머지·배포는 사용자 지시로 보류. 남은 OR 27주제.
