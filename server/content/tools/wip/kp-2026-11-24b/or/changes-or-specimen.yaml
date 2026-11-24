@@ -1,0 +1,460 @@
+theme: or-specimen
+changes:
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(patient); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(name); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(time); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-go
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(go); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-add
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(add); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-call
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(call); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-next
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(next); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-open
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(open); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-another
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(another); 어느 문장도 태그하지 않게 됐다
+- kind: word-add
+  id: w-mixup
+  why: 문장 3에 이미 있는 말 — 상황 단어 수(V3)를 채우고 가르칠 값이 있는 구
+- kind: word-add
+  id: w-figureout
+  why: 문장 4에 이미 있는 구 — 상황 단어 수(V3)를 채움
+- kind: word-add
+  id: w-unlabeled
+  why: 문장 1에 이미 있는 말 — 상황 단어 수(V3)를 채움
+- kind: word
+  id: w-label
+  fields:
+  - ko
+  - example
+  why: tag된 문장 대부분이 명사(on the label·this label) — 동사 문장은 태그를 뺌 / example이 동사 문장 — 명사 문장(0.2)으로 (A W8)
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: w-confirm·w-verify와 ko(확인하다)가 같아 정답이 둘 — check는 눈으로 살피는 쪽
+- kind: word
+  id: w-hand
+  fields:
+  - en
+  - ko
+  - ipa
+  why: 문장은 handing off(넘겨주다) — 단독 hand(손)는 뜻이 틀리고 공통 쉬운 단어
+- kind: word
+  id: w-log
+  fields:
+  - ko
+  why: w-record(기록하다)와 ko가 같아 정답이 둘 — log는 기록부(일지)에 올리는 일
+- kind: word
+  id: w-count
+  fields:
+  - ko
+  why: tag된 문장 대부분이 명사(the count) — 동사(count the pieces) 문장은 태그를 뺌
+- kind: word
+  id: w-frozen
+  fields:
+  - ko
+  why: 문장 6개가 모두 냉동절편의 뜻 — ko 냉동된을 냉동절편용의로 (A W5)
+- kind: word
+  id: w-way
+  fields:
+  - en
+  - ko
+  - ipa
+  why: 문장은 on the way(가는 중) — 단독 way(길)는 뜻이 틀림
+- kind: word
+  id: w-verify
+  fields:
+  - ko
+  why: w-confirm·w-check와 ko(확인하다)가 같아 정답이 둘 — verify는 기록과 맞춰 보는 쪽
+- kind: word
+  id: w-run
+  fields:
+  - ko
+  why: run it to pathology는 '달리다'가 아니라 서둘러 가져가는 일
+- kind: word
+  id: w-carry
+  fields:
+  - example
+  why: 7.4가 수술 중 직접 운반을 약속하는 말이라 바뀜 — example도 새 문장으로 (A S5·W15)
+- kind: word
+  id: w-fragment
+  fields:
+  - ko
+  why: w-piece(조각)와 ko가 같아 정답이 둘 — fragment는 떨어져 나온 단편
+- kind: word
+  id: w-identify
+  fields:
+  - ko
+  why: w-confirm 등과 ko가 겹치지 않게 — identify는 누구 것인지 밝히는 일
+- kind: word
+  id: w-search
+  fields:
+  - ko
+  why: 수색하다는 간호 현장에 어색 — search the field는 빠짐없이 찾아보는 일
+- kind: word
+  id: w-sample
+  fields:
+  - ko
+  why: w-specimen(검체)과 ko가 같아 정답이 둘 — sample은 덜어 낸 시료
+- kind: sentence
+  situation: 검체 용기 라벨 부착
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 검체 용기 라벨 부착
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 검체 용기 라벨 부착
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 조직명 구두 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 조직명 구두 확인
+  index: 5
+  fields:
+  - ko
+  why: 방을 떠나다 직역 — 수술방을 나가기 전에(A ko)
+- kind: sentence
+  situation: 검체 보존액 선택
+  index: 1
+  fields:
+  - ko
+  why: 검사실에서 신선한 상태로 원해요 비문(A ko)
+- kind: sentence
+  situation: 검체 보존액 선택
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 근거 없이 단정 — 요청서를 근거로 밝히는 문장으로(A 사실)
+- kind: sentence
+  situation: 검체 보존액 선택
+  index: 5
+  fields:
+  - chunks
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그 / 청크가 if we're / not sure로 끊김 — 구 경계로(A 청크)
+- kind: sentence
+  situation: 검체 전달 기록
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 검체 전달 기록
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 냉동절편 검체 준비
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 냉동절편 검체 준비
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 냉동절편 결과는 병리의가 집도의에게 직접 전함 — 간호사는 전화를 연결(A 범위)
+- kind: sentence
+  situation: 라벨 정보 불일치
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 라벨 정보 불일치
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 라벨 정보 불일치
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 라벨 정보 불일치
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그 / 어느 쪽이 틀렸는지 모른 채 고친 뒤 확인하는 순서가 거꾸로 — 고치기 전에 확인(A 사실)
+- kind: sentence
+  situation: 냉동절편 신속 이송
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 냉동절편 신속 이송
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 냉동절편 신속 이송
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 수술 중 순환간호사는 방을 비우지 않음 — 옮겨 줄 사람을 찾는 문장으로(A 범위)
+- kind: sentence
+  situation: 냉동절편 신속 이송
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 결과는 병리과에서 수술방으로 직접 전화 — 이송 담당자에게 간호사에게 알리라 하지 않음(A 범위)
+- kind: sentence
+  situation: 배양 검체 무균 채취
+  index: 0
+  fields:
+  - words
+  why: fresh는 '새것'(a fresh sterile swab)이라 w-fresh 태그를 뺌(A 태그)
+- kind: sentence
+  situation: 배양 검체 무균 채취
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 다수 검체 혼동 방지
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 다수 검체 혼동 방지
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 다수 검체 혼동 방지
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 다수 검체 혼동 방지
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 다수 검체 혼동 방지
+  index: 5
+  fields:
+  - ko
+  why: 번역투 — 자연스러운 말로(A ko)
+- kind: sentence
+  situation: 검체 크기·개수 기록
+  index: 3
+  fields:
+  - chunks
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그 / 청크가 write / them down으로 끊김 — 구 경계로(A 청크)
+- kind: sentence
+  situation: 특수 검체 취급 지침
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 근거 없이 단정 — 지침을 근거로 밝히는 문장으로(A 사실)
+- kind: sentence
+  situation: 특수 검체 취급 지침
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 병리 요청서 일치
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그 / 부위 불일치를 혼자 정정하지 않음 — 집도의와 함께 바로잡기(A 안전)
+- kind: sentence
+  situation: 라벨 없는 검체 발견
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 라벨 없는 검체 발견
+  index: 2
+  fields:
+  - ko
+  why: it은 검체 — 신원이 아니라 식별(A ko)
+- kind: sentence
+  situation: 라벨 없는 검체 발견
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 라벨 없는 검체 발견
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그 / 수술방 환자는 이미 확인된 사람 — 모르는 것은 '무슨 검체인가'(A 사실)
+- kind: sentence
+  situation: 검체 분실 즉시 대응
+  index: 1
+  fields:
+  - ko
+  why: 옛 말 수색 — 샅샅이 찾아봐요(A ko)
+- kind: sentence
+  situation: 검체 분실 즉시 대응
+  index: 3
+  fields:
+  - ko
+  why: w-search ko를 샅샅이 찾다로 고치면서 문장 ko의 옛 말 수색을 맞춤(A ko)
+- kind: sentence
+  situation: 검체 분실 즉시 대응
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 수술 시야 수색은 집도의 몫이고 before we panic은 비전문적 — 동시에 나눠 찾는 문장으로(A 범위)
+- kind: sentence
+  situation: 냉동절편 결과 수술 변경
+  index: 1
+  fields:
+  - ko
+  why: 확대할게요는 간호사의 결정으로 들림 — 넓히게 됐어요(A ko)
+- kind: sentence
+  situation: 냉동절편 결과 수술 변경
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 결과의 출처(병리과 → 집도의)를 밝히는 문장으로(A 범위)
+- kind: sentence
+  situation: 오염 검체 재채취
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 오염 검체 재채취
+  index: 4
+  fields:
+  - ko
+  - words
+  why: fresh는 '새것'이라 w-fresh 태그를 뺌, ko 신선한 검체 오역을 새 검체로(A 태그·ko)
+- kind: sentence
+  situation: 오염 검체 재채취
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 닿았는지 확인한 뒤 버린다는 순서가 어색하고 버릴지는 집도의 — 버리기 전 보고(A 사실)
+- kind: sentence
+  situation: 잘못된 환자 라벨
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 잘못된 환자 라벨
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 잘못된 환자 라벨
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 잘못된 환자 라벨
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 잘못된 환자 라벨
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 보고 없이 혼자 재라벨하지 않음 — 보고 뒤에(A 안전)
+- kind: sentence
+  situation: 대체 불가 검체 위기
+  index: 3
+  fields:
+  - chunks
+  why: 청크가 can't / be replaced로 끊김 — 구 경계로(A 청크)
+- kind: sentence
+  situation: 대체 불가 검체 위기
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 수술 중 순환간호사가 직접 가지 않음 — 전화로 도착 확인(A 범위)
+- kind: sentence
+  situation: 대체 불가 검체 위기
+  index: 6
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그

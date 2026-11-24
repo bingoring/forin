@@ -1,0 +1,522 @@
+theme: or-preop-checklist
+changes:
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(name); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-today
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(today); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(time); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(minute); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-morning
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(morning); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(patient); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-family
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(family); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(know); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-go
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(go); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-both
+  why: 너무 쉬움 — 목록 밖 판단(both); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-help
+  why: 너무 쉬움 — 목록 밖 판단(help); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-high
+  why: 너무 쉬움 — 목록 밖 판단(high); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-low
+  why: 너무 쉬움 — 목록 밖 판단(low); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-short
+  why: 너무 쉬움 — 목록 밖 판단(short); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-left
+  why: 너무 쉬움 — 목록 밖 판단(left); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-right
+  why: 너무 쉬움 — 목록 밖 판단(right); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-second
+  why: 너무 쉬움 — 목록 밖 판단(second); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-push
+  why: 16.4를 'A short delay is better…'로 고쳐 쓰는 문장이 없어졌다 (급속 주입으로 들리는 push 제거)
+- kind: word-remove
+  id: w-critical
+  why: 7.3을 'This lab is required…'로 고쳐 쓰는 문장이 없어졌다 (15.0의 critically 위급 수치와 섞임)
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: w-confirm(확인하다)·w-verify와 ko가 겹쳐 — check는 살펴 점검하다
+- kind: word
+  id: w-flag
+  fields:
+  - ko
+  why: w-label과 ko(표시하다)가 같아 정답이 둘 — flag는 눈에 띄게 표시해 두다
+- kind: word
+  id: w-run
+  fields:
+  - ko
+  why: w-flow와 ko(흐르다)가 같아 정답이 둘 — IV가 running은 수액이 들어가는 중
+- kind: word
+  id: w-burn
+  fields:
+  - ko
+  why: 문장은 burning(화끈거림 증상) — 타는 듯하다보다 화끈거리다
+- kind: word
+  id: w-label
+  fields:
+  - ko
+  why: w-flag와 ko(표시하다)가 같아 정답이 둘 — label은 이름표를 붙이다
+- kind: word
+  id: w-give
+  fields:
+  - ko
+  why: w-push와 ko(투여하다)가 겹쳐 push를 가르며 give를 투여하다로 정리
+- kind: word
+  id: w-draw
+  fields:
+  - ko
+  why: 괄호 줄임 — 주사기로 약을 뽑다
+- kind: word
+  id: w-surgeon
+  fields:
+  - example
+  why: 5.4가 새 문장(Let's time it…)으로 바뀌어 예문을 14.2 KP로 옮김
+- kind: word
+  id: w-case
+  fields:
+  - example
+  why: 6.3이 새 문장으로 바뀌어 예문을 새 문장으로
+- kind: word
+  id: w-proceed
+  fields:
+  - example
+  why: 7.3이 새 문장으로 바뀌어 예문을 새 문장으로
+- kind: word
+  id: w-replacement
+  fields:
+  - ko
+  why: joint replacement는 인공관절 치환술
+- kind: word
+  id: w-timing
+  fields:
+  - ko
+  why: w-time(삭제)과 겹치던 '시각' 대신 시점
+- kind: word
+  id: w-clear
+  fields:
+  - ko
+  why: 문장은 airway clear(트여 있다) — 괄호 줄임
+- kind: word
+  id: w-wake
+  fields:
+  - example
+  why: 11.4가 새 문장으로 바뀌어 예문을 새 문장으로
+- kind: word
+  id: w-thinner
+  fields:
+  - en
+  - ipa
+  why: 문장은 a blood thinner — 'thinner'만으로는 시너(희석제)라 ko 혈액희석제와 어긋나 헤드워드를 구로
+- kind: word
+  id: w-prevention
+  fields:
+  - ko
+  why: w-prevent(예방하다)와 ko가 겹쳐 — prevention은 예방 조치
+- kind: word
+  id: w-order
+  fields:
+  - ko
+  why: 괄호 줄임 — 의사의 지시(오더)
+- kind: word
+  id: w-number
+  fields:
+  - ko
+  why: w-level·w-value와 ko(수치)가 같아 정답이 셋 — number는 숫자
+- kind: word
+  id: w-dose
+  fields:
+  - example
+  why: 13.4가 의사 처방 문장으로 바뀌어 예문을 새 문장으로
+- kind: word
+  id: w-correct
+  fields:
+  - ko
+  why: 문장은 correct side(형용사) — 괄호의 동사 뜻은 뺌(동사 문장은 태그를 뺌)
+- kind: word
+  id: w-value
+  fields:
+  - ko
+  why: w-level·w-number와 ko(수치)가 같아 정답이 셋 — value는 측정값
+- kind: word
+  id: w-cut
+  fields:
+  - ko
+  - example
+  why: w-incision(절개)과 ko가 겹쳐 — cut은 피부를 가르다 / 16.3이 새 문장으로 바뀌어 예문을 새 문장으로
+- kind: word
+  id: w-release
+  fields:
+  - ko
+  why: 혈액은행이 혈액을 내주는 말은 불출하다(방출은 어색)
+- kind: word
+  id: w-heavy
+  fields:
+  - en
+  - ko
+  - ipa
+  why: 문장은 bleeding heavily(부사) — 헤드워드를 부사로
+- kind: word
+  id: w-bipolar
+  fields:
+  - ko
+  why: 괄호 줄임 — bipolar(양극성) 소작
+- kind: word
+  id: w-risk
+  fields:
+  - ko
+  why: w-dangerous(위험한)와 ko가 겹쳐 — risk는 위험성
+- kind: word
+  id: w-reach
+  fields:
+  - ko
+  why: 문장은 reach the family(연락하다) — 연락이 닿다보다 연락하다
+- kind: word
+  id: w-record
+  fields:
+  - ko
+  why: w-document(기록하다)와 ko가 겹쳐 — record는 기록 문서
+- kind: word
+  id: w-treat
+  fields:
+  - ko
+  why: 괄호 줄임 — 취급하다는 뜻이 같다
+- kind: sentence
+  situation: 체크리스트 항목 순차 점검
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 체크리스트 항목 순차 점검
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 검사 결과 도착 확인
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 검사 결과 도착 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 장신구·의치 제거 확인
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 방광 비움 확인
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 예방적 항생제 준비
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 예방적 항생제 준비
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 예방적 항생제 준비
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 상대가 마취과의사 — 간호사가 주는 말이고 기준이 집도의 준비라 절개 전 한 시간 안에 시점을 맞추는 문장으로(A 역할·시점)
+- kind: sentence
+  situation: 혈액형·교차적합 미완료
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 교차적합 필요 여부·시작 결정은 간호사가 단정할 일이 아님 — 마취과에 확인한다는 문장으로(A 사실)
+- kind: sentence
+  situation: 혈액형·교차적합 미완료
+  index: 4
+  fields:
+  - chunks
+  why: 청크가 on을 홀로 남김 — 구 경계로(A 청크)
+- kind: sentence
+  situation: 필수 검사 결과 누락
+  index: 1
+  fields:
+  - words
+  why: until it results는 동사라 명사 w-result 태그를 뺌(A 태그)
+- kind: sentence
+  situation: 필수 검사 결과 누락
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 필수 검사 결과 누락
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: critical이 15.0의 위급 수치와 섞여 모호 — required로(A 모호)
+- kind: sentence
+  situation: 필수 검사 결과 누락
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 인공관절·심박동기 정보
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 항생제 투여 시각 지연
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 정맥로 불량 재확보
+  index: 3
+  fields:
+  - chunks
+  why: 청크가 on your other / arm으로 끊김 — 구 경계로(A 청크)
+- kind: sentence
+  situation: 정맥로 불량 재확보
+  index: 4
+  fields:
+  - chunks
+  - words
+  why: 청크 정리 + give you a better flow는 '투여하다'가 아니라 w-give 태그를 뺌(A 청크·태그)
+- kind: sentence
+  situation: 의치·보청기 제거 거부
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 의치·보청기 제거 거부
+  index: 3
+  fields:
+  - ko
+  why: ko 깨끗하게는 clear airway(막히지 않은 기도)의 뜻이 아님(A ko)
+- kind: sentence
+  situation: 의치·보청기 제거 거부
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 깨어나자마자 바로는 지킬 수 없는 약속 — 깨어난 뒤 회복실에서(A 약속)
+- kind: sentence
+  situation: 수술 전 VTE 예방 확인
+  index: 0
+  fields:
+  - ko
+  why: gently(부드럽게)가 ko에서 빠짐(A ko)
+- kind: sentence
+  situation: 수술 전 VTE 예방 확인
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 수술 전 VTE 예방 확인
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 마지막 복용 시각을 묻는 문장으로 — '예정대로 먹었나'는 수술 당일에도 평소대로 먹는다는 전제를 가르침(A 안전)
+- kind: sentence
+  situation: 당뇨 환자 혈당 조절
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 당뇨 환자 혈당 조절
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 당뇨 환자 혈당 조절
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 당뇨 환자 혈당 조절
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 인슐린은 지시·처방에 따름 — 간호사가 소량 줄 수 있다는 약속을 의사 처방으로(A 업무범위)
+- kind: sentence
+  situation: 기록 간 정보 불일치
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 검사 이상치 수술 지연
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 검사 이상치 수술 지연
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 항생제 미투여 절개 임박
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 항생제 미투여 절개 임박
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 기준은 절개 전 투여 '시작'(fully in은 틀림) — 새 문장(A 사실)
+- kind: sentence
+  situation: 항생제 미투여 절개 임박
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 소독간호사에게 push it now(급속 정주)를 시키는 문장이라 — 짧은 지연이 절개보다 낫다는 문장으로(A 안전·역할)
+- kind: sentence
+  situation: 교차혈액 없이 출혈 수술
+  index: 1
+  fields:
+  - ko
+  why: '방출 → 불출: 불출은 혈액은행이 하므로 ''받을''(A·저자 메모)'
+- kind: sentence
+  situation: 교차혈액 없이 출혈 수술
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: MTP 발동은 집도의·마취과 판단 — 혼자 시작하자는 말을 결정권자에게 묻는 문장으로(A 역할)
+- kind: sentence
+  situation: 심박동기 환자 소작 위험
+  index: 0
+  fields:
+  - ko
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / ko 주어 뒤바뀜 — 소작이 기기에 간섭할 수 있다(A·B 메모)
+- kind: sentence
+  situation: 심박동기 환자 소작 위험
+  index: 4
+  fields:
+  - words
+  why: just in case는 '(수술) 건'이 아니라 w-case 태그를 뺌(A 태그)
+- kind: sentence
+  situation: 응급 체크리스트 생략 압박
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 체크리스트 생략 압박
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 응급 체크리스트 생략 압박
+  index: 3
+  fields:
+  - ko
+  why: ko 어색 — 위험을 감수할 가치가 없다는 뜻으로(A·B 메모)
+- kind: sentence
+  situation: 응급 체크리스트 생략 압박
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 이식물 정보 불명 응급
+  index: 0
+  fields:
+  - words
+  why: in place는 '자리'가 아니라 w-place 태그를 뺌(A 태그)
+- kind: sentence
+  situation: 이식물 정보 불명 응급
+  index: 2
+  fields:
+  - ko
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기 / ko 어색 — 가족에게 연락하거나 이전 기록을 찾아본다(A ko)
+- kind: sentence
+  situation: 이식물 정보 불명 응급
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 이식물 정보 불명 응급
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 정체 모를 이식물 장면에서 pacemaker를 이미 아는 꼴 — prior device로(A 내용)
