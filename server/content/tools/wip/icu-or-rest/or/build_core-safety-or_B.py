@@ -28,5 +28,34 @@ for i,sit in enumerate(out['situations']):
     assert len(d['L'])==4,i
     sit['order']={'tag':'대화 흐름','icon':'compass','ko':d['O'][0],'why':d['O'][1],
       'lines':[{'en':l[0],'icon':l[1],'ko':l[2],'note':l[3]} for l in d['L']]}
+import ovr_core_safety_or_B as O
+for (si,j),v in O.DK.items():
+    cur=out['situations'][si]['sentences'][j]['distractorsKo']
+    out['situations'][si]['sentences'][j]['distractorsKo']=[v[0] or cur[0], v[1] or cur[1]]
+for (si,j),w in O.BL.items():
+    sn=out['situations'][si]['sentences'][j]
+    pos=int(hashlib.md5(sn['en'].encode()).hexdigest(),16)%4
+    opts=list(w[1:]); opts.insert(pos,w[0])
+    sn['blank']={'answer':w[0],'options':[{'en':x} for x in opts]}
+for (si,j),dc in O.DECOY.items(): out['situations'][si]['sentences'][j]['decoy']=dc
+for sit in out['situations']:
+    for l in sit['order']['lines']:
+        if l['icon']=='ear': l['icon']='mic'
+for (si,j),w in O.WHY.items(): out['situations'][si]['sentences'][j]['why']=w
+for si,(ko,why,lines) in O.ORD.items():
+    out['situations'][si]['order']={'tag':'대화 흐름','icon':'compass','ko':ko,'why':why,
+      'lines':[{'en':l[0],'icon':l[1],'ko':l[2],'note':l[3]} for l in lines]}
+# 정답 자리 균형 — 해시로 정한 자리가 한쪽에 몰리면 일부만 맞바꿔 네 자리를 고르게
+import collections
+allS=[x for sit in out['situations'] for x in sit['sentences']]
+def posof(x): return [o['en'] for o in x['blank']['options']].index(x['blank']['answer'])
+tgt=len(allS)/4
+for _ in range(200):
+    cnt=collections.Counter(posof(x) for x in allS)
+    hi=max(range(4),key=lambda k:cnt[k]); lo=min(range(4),key=lambda k:cnt[k])
+    if cnt[hi]-cnt[lo]<=2: break
+    cands=[x for x in allS if posof(x)==hi]
+    x=cands[int(hashlib.md5(x_en.encode()).hexdigest(),16)%len(cands)] if False else cands[(len(cands)*7+cnt[lo])%len(cands)]
+    ops=x['blank']['options']; a=posof(x); ops[a],ops[lo]=ops[lo],ops[a]
 yaml.safe_dump(out,open(f'{T}.B.yaml','w',encoding='utf-8'),allow_unicode=True,sort_keys=False,width=1000)
 print('built',len(data))

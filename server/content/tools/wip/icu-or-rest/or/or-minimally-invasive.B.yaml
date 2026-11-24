@@ -1245,7 +1245,7 @@ situations:
     decoy: the back table
     distractorsKo:
     - 복강경 타워를 옮겨 둡시다.
-    - 복강경 카메라를 세팅합시다.
+    - 복강경 타워는 바퀴가 달렸습니다.
     blank:
       answer: set up
       options:
@@ -1271,15 +1271,15 @@ situations:
     why: 명사 셋을 쉼표로 나열하고 and는 마지막에만 둬서, 켜진 장비를 빠짐없이 한 번에 보고해요.
     decoy: ', warm saline'
     distractorsKo:
-    - 모니터, 광원, 기복기를 켜 둡시다.
-    - 모니터, 광원, 기복기는 타워에 실립니다.
+    - 모니터, 광원, 기복기는 타워에 모입니다.
+    - 모니터, 광원, 기복기는 전원이 따로예요.
     blank:
       answer: light source
       options:
       - en: camera head
       - en: foot pedal
-      - en: light source
       - en: suction tubing
+      - en: light source
   - en: I'll confirm everything's working before draping.
     ko: 수술포를 덮기 전에 전부 작동하는지 확인할게요.
     chunks:
@@ -1301,10 +1301,10 @@ situations:
     blank:
       answer: working
       options:
-      - en: working
       - en: labeled
       - en: sterile
       - en: packed
+      - en: working
   - en: The monitor screen looks clear and sharp.
     ko: 모니터 화면이 선명하고 또렷해 보입니다.
     chunks:
@@ -1324,7 +1324,7 @@ situations:
     decoy: and large
     distractorsKo:
     - 모니터 화면이 밝고 널찍해 보입니다.
-    - 모니터 화면을 선명하고 또렷하게 조절합시다.
+    - 모니터 화면은 영상 크기를 바꿀 수 있습니다.
     blank:
       answer: clear
       options:
@@ -1357,8 +1357,8 @@ situations:
       options:
       - en: filters
       - en: lenses
+      - en: gloves
       - en: cables
-      - en: drapes
   - en: I'll turn on the light source now.
     ko: 지금 광원을 켤게요.
     chunks:
@@ -1376,8 +1376,8 @@ situations:
     why: I'll … now로 지금 바로 하겠다고 즉시 행동을 알리고, turn on은 스위치를 켠다는 구동사예요.
     decoy: for you
     distractorsKo:
-    - 지금 모니터를 켤게요.
     - 지금 광원 선을 꽂을게요.
+    - 광원은 앞면 스위치예요.
     blank:
       answer: turn on
       options:
@@ -1427,15 +1427,15 @@ situations:
     why: is full and connected 두 상태를 and로 묶어, 가스가 충분하고 라인에도 이어져 있다고 한 번에 보고해요.
     decoy: is labeled
     distractorsKo:
-    - CO2 탱크를 가득 채워 연결합시다.
-    - CO2 탱크는 기기 아래칸에 실립니다.
+    - CO2 탱크는 단단한 금속 통이에요.
+    - CO2 탱크는 바닥 가까이에 세워요.
     blank:
       answer: full
       options:
+      - en: full
       - en: empty
       - en: spare
       - en: new
-      - en: full
   - en: Let's set the insufflation pressure limit.
     ko: 기복 압력 한계를 설정합시다.
     chunks:
@@ -1454,12 +1454,12 @@ situations:
     why: pressure limit처럼 명사를 이어 붙여 넘으면 안 되는 상한이라는 한 개념을 만들고, Let's로 함께 정해요.
     decoy: tubing
     distractorsKo:
-    - 한계 설정에 앞서 전원을 켭시다.
-    - 기복 압력 한계는 화면에 표시돼요.
+    - 설정 전에 전원을 켭시다.
+    - 기복 압력 한계는 기기에서 정합니다.
     blank:
       answer: limit
       options:
-      - en: label
+      - en: button
       - en: filter
       - en: timer
       - en: limit
@@ -1481,14 +1481,14 @@ situations:
     decoy: with you
     distractorsKo:
     - 유량을 확인하기 전에 호스를 펼게요.
-    - 기복 때 유량은 모니터에 떠요.
+    - 기복 전 유량은 기기에서 읽어요.
     blank:
       answer: flow
       options:
-      - en: flow
       - en: color
       - en: weight
       - en: brand
+      - en: flow
   - en: The tank pressure gauge reads normal.
     ko: 탱크 압력 게이지가 정상으로 나타납니다.
     chunks:
@@ -1508,15 +1508,15 @@ situations:
     why: reads는 계기가 보여 주는 값을 말하고, normal로 기준 안에 있다는 판단을 짧게 전해요.
     decoy: The tank pressure hose
     distractorsKo:
-    - 탱크 압력 게이지는 카트 쪽에 달립니다.
-    - 탱크 압력 게이지가 정상인지 봅시다.
+    - 탱크 압력 게이지는 탱크 위에 달립니다.
+    - 탱크 압력 게이지는 바늘로 가리켜요.
     blank:
       answer: normal
       options:
+      - en: normal
       - en: high
       - en: low
       - en: zero
-      - en: normal
   - en: Let's keep the flow rate steady.
     ko: 유량 속도를 일정하게 유지합시다.
     chunks:
@@ -1535,8 +1535,8 @@ situations:
     why: keep에 형용사를 붙여 그 상태를 이어 가자는 뜻을 만들고, Let's로 팀이 함께 맞춘다고 말해요.
     decoy: in mind
     distractorsKo:
-    - 유량 속도를 화면에 계속 띄웁시다.
-    - 유량 속도는 기기 옆면에서 읽어요.
+    - 유량 눈금을 먼저 읽어 봅시다.
+    - 유량 속도는 분당 리터로 셉니다.
     blank:
       answer: flow rate
       options:
@@ -1567,8 +1567,8 @@ situations:
       options:
       - en: charged
       - en: stacked
-      - en: wrapped
       - en: connected
+      - en: wrapped
   order:
     tag: 대화 흐름
     icon: compass
@@ -1636,13 +1636,13 @@ situations:
     why: is at the right intensity로 정해진 수준에 와 있다고 말하고, right는 너무 세지도 약하지도 않다는 뜻이에요.
     decoy: the right angle
     distractorsKo:
-    - 광원 세기를 적절하게 조절합시다.
-    - 광원이 카메라 케이블에 이어져 있습니다.
+    - 광원 세기는 손잡이로 조절합니다.
+    - 광원이 광케이블에 이어져 있습니다.
     blank:
       answer: intensity
       options:
-      - en: intensity
       - en: height
+      - en: intensity
       - en: distance
       - en: temperature
   - en: I'll defog the lens before insertion.
@@ -1667,10 +1667,10 @@ situations:
     blank:
       answer: insertion
       options:
+      - en: insertion
       - en: docking
       - en: closure
       - en: removal
-      - en: insertion
   - en: Let's check the white balance one more time.
     ko: 화이트밸런스를 한 번 더 확인합시다.
     chunks:
@@ -1687,13 +1687,13 @@ situations:
     why: one more time은 이미 한 번 본 것을 다시 본다는 뜻이고, Let's로 함께 보자고 해요.
     decoy: for the record
     distractorsKo:
-    - 화이트밸런스 확인에 앞서 흰 거즈를 폅시다.
-    - 화이트밸런스 버튼은 카메라 헤드에 달립니다.
+    - 화이트밸런스 확인 전에 흰 거즈를 폅시다.
+    - 화이트밸런스 버튼은 헤드 쪽에 달립니다.
     blank:
       answer: check
       options:
-      - en: save
       - en: check
+      - en: save
       - en: print
       - en: copy
   - en: The lens looks clean and ready.
@@ -1713,7 +1713,7 @@ situations:
     why: looks로 눈으로 본 인상임을 밝히고, clean and ready로 흐림이 없고 바로 쓸 수 있다는 뜻을 짧게 이어요.
     decoy: and round
     distractorsKo:
-    - 렌즈를 깨끗이 닦고 준비합시다.
+    - 렌즈는 스코프 맨 끝에 붙습니다.
     - 렌즈 크기는 스코프마다 다릅니다.
     blank:
       answer: clean
@@ -1738,32 +1738,32 @@ situations:
     why: slowly를 문장 끝에 붙여 서두르지 않는다는 방식을 알려요. 삽입은 시야를 보며 천천히 하는 것이 기본이에요.
     decoy: next
     distractorsKo:
-    - 삽입 직전에 스코프를 받을게요.
-    - 스코프는 광섬유 케이블에 이어집니다.
+    - 스코프를 광케이블에 이을게요.
+    - 스코프는 길고 가느다란 관입니다.
     blank:
       answer: scope
       options:
-      - en: scope
       - en: camera
       - en: trocar
       - en: cable
+      - en: scope
   order:
     tag: 대화 흐름
     icon: compass
     ko: 카메라·광원 준비 4문장 순서
-    why: 카메라를 맞추고, 그 뒤에 광원 세기를 보고, 광원이 맞으면 삽입 전에 김서림을 없애고, 렌즈가 깨끗하면 천천히 삽입하는 순서예요. 각 줄이 앞 줄의 결과를 이어받아 순서가 하나로 정해져요.
+    why: 광원 세기를 먼저 맞추고, 그 불빛에서 카메라 화이트밸런스를 맞추고, 맞춘 뒤 삽입 전에 김서림을 없애고, 렌즈가 깨끗하면 천천히 삽입하는 순서예요. 각 줄이 앞 줄의 결과를 이어받아 순서가 하나로 정해져요.
     lines:
-    - en: Let's white-balance the camera.
-      icon: magnify
-      ko: 카메라 화이트밸런스를 맞춥시다
-      note: 맞춤
-    - en: With the camera balanced, let's check the light intensity.
+    - en: The light source is at the right intensity.
       icon: bulb
-      ko: 카메라를 맞췄으니 광원 세기를 봅시다
-      note: 광원
-    - en: Once the light is right, I'll defog the lens before insertion.
+      ko: 광원이 적절한 세기로 맞춰져 있어요
+      note: 보고
+    - en: With the light set, let's white-balance the camera.
       icon: magnify
-      ko: 광원이 맞으면 삽입 전에 김서림을 없앨게요
+      ko: 광원이 맞으니 카메라를 맞춥시다
+      note: 맞춤
+    - en: Once it's balanced, I'll defog the lens before insertion.
+      icon: magnify
+      ko: 맞춰지면 삽입 전에 김서림을 없앨게요
       note: 김서림
     - en: The lens looks clean and ready, so I'll insert the scope slowly.
       icon: scalpel
@@ -1788,8 +1788,8 @@ situations:
     why: bring A into position은 물건을 제자리로 옮겨 놓는다는 틀이고, Let's로 팀이 함께 움직인다고 말해요.
     decoy: for the case
     distractorsKo:
-    - 이동에 앞서 바닥 길을 비웁시다.
-    - 로봇은 문 옆 구석에 보관합니다.
+    - 로봇 앞 바닥을 먼저 비웁시다.
+    - 로봇은 카트와 콘솔입니다.
     blank:
       answer: robot
       options:
@@ -1814,15 +1814,15 @@ situations:
     why: dock A to B는 로봇팔을 트로카에 연결해 고정한다는 틀이고, We'll로 팀이 함께 한다고 알려요.
     decoy: to the cart
     distractorsKo:
-    - 도킹 직전에 트로카를 볼게요.
-    - 트로카는 환자 복부에 꽂습니다.
+    - 팔 덮개를 먼저 펼게요.
+    - 로봇팔에는 관절이 여럿 있습니다.
     blank:
       answer: trocars
       options:
+      - en: trocars
       - en: wheels
       - en: drapes
       - en: lights
-      - en: trocars
   - en: I'll confirm the cart is aligned.
     ko: 카트가 정렬됐는지 확인할게요.
     chunks:
@@ -1840,8 +1840,8 @@ situations:
     why: is aligned는 이미 줄이 맞춰진 상태를 말하고, confirm 뒤에 that 없이 바로 문장이 이어지는 구어예요.
     decoy: has a label
     distractorsKo:
-    - 정렬 확인보다 먼저 불을 켤게요.
     - 카트는 바퀴가 네 개 달렸어요.
+    - 카트는 정렬 표시선을 따라 섭니다.
     blank:
       answer: aligned
       options:
@@ -1867,15 +1867,15 @@ situations:
     why: lines up with는 둘이 한 줄로 맞는다는 구동사이고, port sites는 포트가 들어가는 자리를 가리켜요.
     decoy: waits
     distractorsKo:
-    - 카트를 포트 자리와 일렬로 맞춥시다.
+    - 포트 자리는 복부에 미리 정합니다.
     - 카트 바닥에 포트 자리 표시가 붙습니다.
     blank:
       answer: port sites
       options:
-      - en: port sites
       - en: floor marks
       - en: wheel locks
       - en: power cords
+      - en: port sites
   - en: Let's lock the wheels before docking.
     ko: 도킹 전에 바퀴를 고정합시다.
     chunks:
@@ -1893,15 +1893,15 @@ situations:
     why: lock은 움직이지 않게 잠근다는 뜻이고, before docking으로 팔을 연결하기 전에 카트가 밀리지 않게 한다는 순서를 말해요.
     decoy: on the cart
     distractorsKo:
-    - 고정 직전에 카트를 정렬합시다.
-    - 바퀴 잠금 레버는 아래쪽입니다.
+    - 고정 전에 카트를 정렬합시다.
+    - 바퀴 잠금 레버는 아래쪽에 달려요.
     blank:
       answer: wheels
       options:
-      - en: wheels
       - en: doors
       - en: drawers
       - en: lids
+      - en: wheels
   - en: I'll check that each arm has clearance.
     ko: 각 팔에 여유 공간이 있는지 확인할게요.
     chunks:
@@ -1919,13 +1919,13 @@ situations:
     why: that each arm으로 한 팔도 빠뜨리지 않고 하나씩 본다고 말하고, clearance는 부딪치지 않을 틈이에요.
     decoy: has a tag
     distractorsKo:
-    - 여유 공간 확인 직전에 카트를 잠글게요.
     - 각 팔 끝에는 번호표가 하나씩 붙습니다.
+    - 각 팔은 관절이 여러 마디로 나뉘어요.
     blank:
       answer: clearance
       options:
-      - en: clearance
       - en: a battery
+      - en: clearance
       - en: a number
       - en: a handle
   order:
@@ -1974,10 +1974,10 @@ situations:
     blank:
       answer: sizes
       options:
+      - en: sizes
       - en: colors
       - en: brands
       - en: boxes
-      - en: sizes
   - en: I have 5-millimeter and 12-millimeter ready.
     ko: 5밀리미터와 12밀리미터를 준비해 뒀습니다.
     chunks:
@@ -1995,12 +1995,12 @@ situations:
     decoy: labeled
     distractorsKo:
     - 5밀리미터와 12밀리미터는 일회용입니다.
-    - 5밀리미터와 12밀리미터는 멸균 포장입니다.
+    - 5밀리미터와 12밀리미터는 길이가 달라요.
     blank:
       answer: ready
       options:
-      - en: ready
       - en: wrapped
+      - en: ready
       - en: counted
       - en: boxed
   - en: Let's confirm the ports before insertion.
@@ -2028,7 +2028,7 @@ situations:
       - en: ports
       - en: bags
       - en: labels
-      - en: drapes
+      - en: folders
   - en: I'll open the trocar tray now.
     ko: 지금 트로카 트레이를 개봉할게요.
     chunks:
@@ -2054,7 +2054,7 @@ situations:
       - en: cover
       - en: move
       - en: open
-      - en: label
+      - en: flip
   - en: The 5-millimeter port goes in first.
     ko: 5밀리미터 포트가 먼저 들어갑니다.
     chunks:
@@ -2102,9 +2102,9 @@ situations:
     blank:
       answer: count
       options:
-      - en: label
-      - en: count
+      - en: tag
       - en: stack
+      - en: count
       - en: sort
   order:
     tag: 대화 흐름
@@ -2147,8 +2147,8 @@ situations:
     why: positioning and padding을 and로 묶어 자세와 눌림 방지 패드를 한 번에 확인하자고 해요.
     decoy: and the screen
     distractorsKo:
-    - 확인에 앞서 패드를 가져옵시다.
     - 패딩은 젤 소재로 만들어집니다.
+    - 패딩은 눌림 방지용이에요.
     blank:
       answer: padding
       options:
@@ -2199,7 +2199,7 @@ situations:
     why: is secured는 이미 고정이 끝난 상태를 말하고, to the table로 어디에 묶였는지 밝혀 보고가 분명해요.
     decoy: with a blanket
     distractorsKo:
-    - 환자를 테이블에 고정합시다.
+    - 환자 몸은 테이블에 맞춰 눕힙니다.
     - 환자는 테이블 중앙에 누워 있습니다.
     blank:
       answer: table
@@ -2226,7 +2226,7 @@ situations:
     why: heels and elbows로 눌림이 잘 생기는 두 부위를 짚고, for padding으로 무엇을 보는지 목적을 밝혀요.
     decoy: for tape
     distractorsKo:
-    - 확인보다 먼저 발과 팔의 담요를 걷읍시다.
+    - 혈액순환을 위해 발뒤꿈치와 팔꿈치를 확인합시다.
     - 발뒤꿈치와 팔꿈치는 눌림이 잘 생겨요.
     blank:
       answer: padding
@@ -2253,15 +2253,15 @@ situations:
     why: tucked는 몸 옆에 넣어 고정했다는 뜻이고, safely로 끼이거나 늘어지지 않게 했다는 점을 알려요.
     decoy: in blankets
     distractorsKo:
-    - 팔을 옆에 안전하게 고정합시다.
-    - 팔은 얇은 담요 한 장으로 덮어 둡니다.
+    - 팔은 몸 옆선을 따라 놓습니다.
+    - 팔은 얇은 담요 한 장으로 덮습니다.
     blank:
       answer: tucked
       options:
+      - en: tucked
       - en: folded
       - en: crossed
       - en: raised
-      - en: tucked
   - en: I'll double-check the safety straps.
     ko: 안전 스트랩을 다시 확인할게요.
     chunks:
@@ -2279,8 +2279,8 @@ situations:
     why: double-check는 한 번 확인한 것을 다시 본다는 뜻이고, safety straps는 환자가 미끄러지지 않게 잡는 끈이에요.
     decoy: the arm boards
     distractorsKo:
-    - 스트랩 확인에 앞서 담요를 걷을게요.
     - 안전 스트랩은 허벅지 위에 둘러요.
+    - 안전 스트랩은 환자 몸을 붙잡아요.
     blank:
       answer: double-check
       options:
@@ -2292,11 +2292,11 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 체위 조정 확인 4문장 순서
-    why: 체위와 패딩을 확인하자고 하고, 발뒤꿈치와 팔꿈치부터 보고, 패딩 뒤에 팔을 옆에 고정하고, 팔이 자리 잡으면 안전 스트랩을 다시 확인하는 순서예요. those와 with the arms in place가 앞 줄을 가리켜 순서가 하나로 정해져요.
+    why: 체위와 패딩을 먼저 확인하자고 하고, 발뒤꿈치와 팔꿈치부터 보고, 패딩 뒤에 팔을 옆에 고정하고, 팔이 자리 잡으면 안전 스트랩을 다시 확인하는 순서예요. First와 those와 with the arms in place가 앞 줄을 가리켜 순서가 하나로 정해져요.
     lines:
-    - en: Let's confirm the positioning and padding.
+    - en: First, let's confirm the positioning and padding.
       icon: check
-      ko: 체위와 패딩을 확인합시다
+      ko: 먼저 체위와 패딩을 확인합시다
       note: 확인
     - en: Let's start with the heels and elbows for padding.
       icon: check
@@ -2328,15 +2328,15 @@ situations:
     why: is at 뒤에 숫자만 말해 지금 값을 있는 그대로 보고해요. 수치 보고는 숫자를 짧게 읽는 것이 관례예요.
     decoy: The insufflation hose
     distractorsKo:
-    - 기복 압력을 15에 맞춥시다.
-    - 기복 압력 표시는 오른쪽에 있습니다.
+    - 기복 압력은 mmHg로 읽어요.
+    - 기복 압력 숫자는 오른쪽에 뜹니다.
     blank:
       answer: pressure
       options:
-      - en: pressure
       - en: flow
       - en: volume
       - en: rate
+      - en: pressure
   - en: Let's not let it climb too high.
     ko: 너무 높이 오르지 않게 합시다.
     chunks:
@@ -2353,8 +2353,8 @@ situations:
     why: Let's not은 하지 말자는 부정 청유로 상한을 정하는 말이고, too high는 넘으면 위험한 선을 가리켜요.
     decoy: by itself
     distractorsKo:
-    - 압력이 높으면 복부가 팽팽해집니다.
-    - 압력 수치는 화면 위쪽에 나와요.
+    - 과하게 차면 복부가 팽팽해집니다.
+    - 수치는 모니터 위쪽에서 읽어요.
     blank:
       answer: too high
       options:
@@ -2380,14 +2380,14 @@ situations:
     decoy: if the screen
     distractorsKo:
     - 말씀하시기 전에 복부를 봐 주세요.
-    - 복부가 팽팽해지면 가스가 많이 찬 거예요.
+    - 복부가 팽팽해지면 많이 찬 거예요.
     blank:
       answer: tense
       options:
-      - en: tense
       - en: hot
       - en: wet
       - en: loud
+      - en: tense
   - en: I'll watch the pressure number closely.
     ko: 압력 수치를 면밀히 지켜볼게요.
     chunks:
@@ -2406,15 +2406,15 @@ situations:
     why: closely를 끝에 붙여 흘끗 보는 것이 아니라 계속 가까이 본다는 뜻을 더해요. 감시를 맡겠다는 I'll와 어울려요.
     decoy: with her
     distractorsKo:
-    - 감시 전에 수치부터 챙길게요.
     - 압력 수치는 숫자와 막대로 나와요.
+    - 압력 수치는 기기 위쪽에 뜹니다.
     blank:
       answer: closely
       options:
       - en: quickly
       - en: calmly
-      - en: closely
       - en: loudly
+      - en: closely
   - en: Let's keep it under 15 if we can.
     ko: 가능하면 15 아래로 유지합시다.
     chunks:
@@ -2430,15 +2430,15 @@ situations:
     why: under 15로 넘지 말아야 할 선을 숫자로 못 박고, if we can으로 가능한 범위에서 하자고 부드럽게 말해요.
     decoy: on screen
     distractorsKo:
-    - 유지하기 전에 수치부터 봅시다.
     - 15는 눈금에 빨간 선으로 보여요.
+    - 기복 압력은 낮게 시작할 수 있어요.
     blank:
-      answer: can
+      answer: keep
       options:
-      - en: must
-      - en: need
-      - en: want
-      - en: can
+      - en: log
+      - en: mark
+      - en: read
+      - en: keep
   - en: The abdomen looks a little distended.
     ko: 복부가 조금 팽창된 것 같습니다.
     chunks:
@@ -2455,20 +2455,20 @@ situations:
     why: looks로 눈으로 본 인상임을 밝히고, a little로 정도를 낮춰 단정하지 않으면서도 변화를 알려요.
     decoy: very
     distractorsKo:
-    - 복부 쪽 압력을 조금 확인합시다.
+    - 복부 쪽 상태를 조금 확인합시다.
     - 복부에 거즈가 조금 붙었습니다.
     blank:
       answer: distended
       options:
+      - en: distended
       - en: relaxed
       - en: flattened
       - en: bruised
-      - en: distended
   order:
     tag: 대화 흐름
     icon: compass
     ko: 기복 압력 감시 4문장 순서
-    why: 현재 압력을 보고하고, 너무 높이 오르지 않게 하자고 하고, 수치를 감시하며 읽어 주고, 읽어 준 뒤 복부가 팽팽해지면 알려 달라고 하는 순서예요. it과 call it out이 앞 줄을 가리켜 순서가 하나로 정해져요.
+    why: 현재 압력을 보고하고, 너무 높이 오르지 않게 하자고 하고, 그러려고 수치를 감시하며 읽어 주고, 읽어 준 뒤 복부가 팽팽해지면 알려 달라고 하는 순서예요. it과 call it out이 앞 줄을 가리켜 순서가 하나로 정해져요.
     lines:
     - en: The insufflation pressure is at 15.
       icon: monitor
@@ -2478,9 +2478,9 @@ situations:
       icon: shield
       ko: 너무 높이 오르지 않게 합시다
       note: 상한
-    - en: I'll watch the pressure number closely and call it out.
+    - en: To keep it down, I'll watch the pressure number closely and call it out.
       icon: monitor
-      ko: 압력 수치를 지켜보며 소리 내어 읽을게요
+      ko: 그러려고 압력 수치를 지켜보며 읽어 줄게요
       note: 감시
     - en: After I call it out, tell me if the abdomen gets too tense.
       icon: speech
@@ -2500,6 +2500,20 @@ situations:
     - w-absorb
     - w-co2
     goal: 1
+    tag: 수치 보고
+    icon: chartup
+    why: as we absorb로 오르는 이유를 한 문장에 묶어 수치 변화와 원인을 함께 보고해요. is rising은 지금도 진행 중인 변화예요.
+    decoy: as we vent
+    distractorsKo:
+    - CO2를 흡수하면서 EtCO2를 지켜보고 있습니다.
+    - EtCO2는 호흡 회로에서 재는 수치입니다.
+    blank:
+      answer: absorb
+      options:
+      - en: absorb
+      - en: measure
+      - en: count
+      - en: store
   - en: Let's increase minute ventilation.
     ko: 분당 환기량을 늘립시다.
     chunks:
@@ -2511,6 +2525,20 @@ situations:
     - w-minute
     - w-ventilation
     goal: 2
+    tag: 환기 조정
+    icon: gear
+    why: increase는 늘린다는 뜻이고, minute ventilation은 분당 내보내는 공기량이라 CO2를 더 빼내는 조정이에요.
+    decoy: the room lights
+    distractorsKo:
+    - 분당 환기량은 모니터에 뜹니다.
+    - 분당 환기량은 리터로 셉니다.
+    blank:
+      answer: ventilation
+      options:
+      - en: humidity
+      - en: temperature
+      - en: ventilation
+      - en: lighting
   - en: We may need to lower the insufflation pressure.
     ko: 기복 압력을 낮춰야 할 수도 있습니다.
     chunks:
@@ -2524,6 +2552,20 @@ situations:
     - w-insufflation
     - w-pressure
     goal: 2
+    tag: 대응 예고
+    icon: gear
+    why: may need는 아직 확정이 아닌 가능성으로 말하는 완곡한 표현이고, lower는 CO2 흡수를 줄이려는 압력 조정이에요.
+    decoy: the room temperature
+    distractorsKo:
+    - 기복 압력은 집도의가 설정해 둡니다.
+    - 기복 압력이 낮으면 시야가 좁아집니다.
+    blank:
+      answer: pressure
+      options:
+      - en: tubing
+      - en: tank
+      - en: filter
+      - en: pressure
   - en: The EtCO2 numbers are climbing steadily.
     ko: EtCO2 수치가 꾸준히 오르고 있습니다.
     chunks:
@@ -2537,6 +2579,20 @@ situations:
     - w-climb
     - w-steadily
     goal: 1
+    tag: 추세 보고
+    icon: chartup
+    why: steadily는 갑자기가 아니라 일정하게 계속이라는 뜻이고, are climbing은 지금도 오르는 중이라는 진행형이에요.
+    decoy: as well
+    distractorsKo:
+    - EtCO2 수치를 꾸준히 지켜보고 있습니다.
+    - EtCO2 수치는 날숨에서 잽니다.
+    blank:
+      answer: climbing
+      options:
+      - en: flashing
+      - en: beeping
+      - en: climbing
+      - en: printing
   - en: Let's watch the ventilation settings closely.
     ko: 환기 설정을 면밀히 지켜봅시다.
     chunks:
@@ -2549,6 +2605,20 @@ situations:
     - w-ventilation
     - w-closely
     goal: 2
+    tag: 설정 감시
+    icon: monitor
+    why: watch는 계속 지켜본다는 뜻이고, closely로 대충이 아니라 가까이 본다는 정도를 더해요.
+    decoy: twice
+    distractorsKo:
+    - 환기 설정은 마취과가 맡습니다.
+    - 환기 설정에는 호흡수가 포함돼요.
+    blank:
+      answer: settings
+      options:
+      - en: settings
+      - en: tubing
+      - en: filters
+      - en: labels
   - en: I'll tell anesthesia if the pressure needs to come down.
     ko: 압력을 낮춰야 하면 마취과에 알릴게요.
     chunks:
@@ -2563,6 +2633,42 @@ situations:
     - w-pressure
     - w-need
     goal: 2
+    tag: 보고 약속
+    icon: pager
+    why: I'll tell로 내가 알리겠다고 약속하고, if절로 어떤 경우에 알릴지 조건을 정해요. 알릴 대상은 anesthesia예요.
+    decoy: back
+    distractorsKo:
+    - 마취과에 알리기 직전에 압력을 볼게요.
+    - 마취과는 환기 설정을 맡고 있어요.
+    blank:
+      answer: pressure
+      options:
+      - en: pressure
+      - en: table
+      - en: tank
+      - en: bed
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: CO2 흡수 EtCO2 상승 4문장 순서
+    why: EtCO2 상승을 보고하고, 낮추려고 환기를 늘리고, 그 뒤 환기 설정을 면밀히 지켜보고, 수치가 계속 오르면 압력 인하를 예고하는 순서예요. 각 줄이 앞 줄을 가리켜 순서가 하나로 정해져요.
+    lines:
+    - en: The EtCO2 is rising as we absorb CO2.
+      icon: chartup
+      ko: CO2를 흡수하면서 EtCO2가 올라요
+      note: 보고
+    - en: To bring it down, let's increase minute ventilation.
+      icon: gear
+      ko: 낮추려고 분당 환기량을 늘립시다
+      note: 환기
+    - en: With the ventilation up, let's watch the ventilation settings closely.
+      icon: monitor
+      ko: 환기를 늘렸으니 환기 설정을 면밀히 지켜봐요
+      note: 감시
+    - en: If the numbers keep climbing, we may need to lower the insufflation pressure.
+      icon: gear
+      ko: 수치가 계속 오르면 압력을 낮춰야 할 수 있어요
+      note: 예고
 - title: 로봇팔 충돌 방지
   sentences:
   - en: The arms are getting too close.
@@ -2576,6 +2682,20 @@ situations:
     - w-arm
     - w-close
     goal: 1
+    tag: 위험 보고
+    icon: bell
+    why: are getting은 지금 가까워지는 중이라는 변화를 말하고, too close로 부딪칠까 걱정되는 거리라는 판단을 알려요.
+    decoy: very warm
+    distractorsKo:
+    - 팔들이 너무 느리게 움직이고 있습니다.
+    - 팔들이 너무 높이 올라가고 있습니다.
+    blank:
+      answer: close
+      options:
+      - en: loud
+      - en: warm
+      - en: close
+      - en: slow
   - en: Let's space the ports and re-angle.
     ko: 포트 간격을 두고 각도를 다시 잡읍시다.
     chunks:
@@ -2588,6 +2708,20 @@ situations:
     - w-port
     - w-reangle
     goal: 2
+    tag: 간격 조정
+    icon: gear
+    why: space는 동사로 간격을 둔다는 뜻이고, re-angle은 re-가 다시라는 뜻이라 각도를 다시 잡는다는 말이에요.
+    decoy: and re-label
+    distractorsKo:
+    - 팔을 먼저 멈추고 각도를 다시 잡읍시다.
+    - 포트 간격이 좁으면 팔끼리 부딪힙니다.
+    blank:
+      answer: re-angle
+      options:
+      - en: re-drape
+      - en: re-angle
+      - en: re-count
+      - en: re-sort
   - en: I'll adjust the arm position from the cart.
     ko: 카트에서 팔 위치를 조정할게요.
     chunks:
@@ -2601,6 +2735,20 @@ situations:
     - w-position
     - w-cart
     goal: 2
+    tag: 위치 조정
+    icon: gear
+    why: adjust는 손봐서 맞춘다는 뜻이고, from the cart로 조작하는 곳을 밝혀 누가 어디서 하는지 분명해요.
+    decoy: for the surgeon
+    distractorsKo:
+    - 카트에서 팔 덮개를 조정할게요.
+    - 카트 옆면에 팔 위치 표시등이 있어요.
+    blank:
+      answer: adjust
+      options:
+      - en: record
+      - en: mark
+      - en: sketch
+      - en: adjust
   - en: Let's give the arms more room.
     ko: 팔에 더 여유 공간을 줍시다.
     chunks:
@@ -2612,6 +2760,20 @@ situations:
     - w-arm
     - w-room
     goal: 2
+    tag: 공간 확보
+    icon: gear
+    why: give A more room은 A에게 더 자리를 준다는 틀이고, Let's로 팀이 함께 한다고 말해요.
+    decoy: a new drape
+    distractorsKo:
+    - 팔에 더 굵은 번호를 붙입시다.
+    - 팔 공간은 카트 위치로 정해집니다.
+    blank:
+      answer: room
+      options:
+      - en: tape
+      - en: paint
+      - en: grease
+      - en: room
   - en: I'll re-angle the port on the left side.
     ko: 왼쪽 포트 각도를 다시 잡을게요.
     chunks:
@@ -2625,6 +2787,20 @@ situations:
     - w-port
     - w-side
     goal: 2
+    tag: 각도 조정
+    icon: gear
+    why: re-angle은 다시 각도를 잡는다는 뜻이고, on the left side로 어느 쪽 포트인지 짚어 헷갈리지 않게 해요.
+    decoy: for the camera
+    distractorsKo:
+    - 각도는 팔 관절에서 정해집니다.
+    - 포트는 복벽을 뚫고 지나갑니다.
+    blank:
+      answer: left
+      options:
+      - en: upper
+      - en: lower
+      - en: left
+      - en: far
   - en: Watch for arm collisions during the case.
     ko: 케이스 중에 팔 충돌을 조심하세요.
     chunks:
@@ -2637,6 +2813,42 @@ situations:
     - w-collision
     - w-case
     goal: 1
+    tag: 충돌 주의
+    icon: bell
+    why: Watch for는 어떤 일이 생기는지 눈여겨보라는 명령형이고, during the case로 수술 내내라는 범위를 정해요.
+    decoy: on the screen
+    distractorsKo:
+    - 팔 충돌은 두 팔이 겹치면 생겨요.
+    - 팔 충돌은 간격과 관련이 깊습니다.
+    blank:
+      answer: collisions
+      options:
+      - en: vibrations
+      - en: disconnections
+      - en: collisions
+      - en: reflections
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 로봇팔 충돌 방지 4문장 순서
+    why: 팔이 너무 가까워졌다고 알리고, 팔에 여유를 주자고 하고, 그러려고 카트에서 위치를 조정하고, 팔이 떨어지면 수술 내내 충돌을 살피는 순서예요. 대명사가 앞 줄을 가리켜 순서가 하나로 정해져요.
+    lines:
+    - en: The arms are getting too close.
+      icon: bell
+      ko: 팔들이 너무 가까워지고 있어요
+      note: 보고
+    - en: Let's give the arms more room.
+      icon: gear
+      ko: 팔에 더 여유 공간을 줍시다
+      note: 공간
+    - en: To do that, I'll adjust the arm position from the cart.
+      icon: gear
+      ko: 그러려고 카트에서 팔 위치를 조정할게요
+      note: 조정
+    - en: Once they're clear, watch for arm collisions during the case.
+      icon: bell
+      ko: 떨어지면 케이스 중 팔 충돌을 조심하세요
+      note: 주의
 - title: 개복 전환 대비
   sentences:
   - en: Let's have the open set on standby.
@@ -2650,6 +2862,20 @@ situations:
     - w-open
     - w-standby
     goal: 1
+    tag: 대기 준비
+    icon: scalpel
+    why: have A on standby는 바로 쓸 수 있게 대기시켜 둔다는 틀이고, open set은 개복할 때 쓰는 기구 세트예요.
+    decoy: on loan
+    distractorsKo:
+    - 개방 세트는 기구 수가 많습니다.
+    - 개방 세트는 묶음으로 나옵니다.
+    blank:
+      answer: open
+      options:
+      - en: spare
+      - en: open
+      - en: extra
+      - en: small
   - en: We can convert quickly if needed.
     ko: 필요하면 빠르게 전환할 수 있습니다.
     chunks:
@@ -2662,6 +2888,20 @@ situations:
     - w-quickly
     - w-need
     goal: 1
+    tag: 전환 가능
+    icon: scalpel
+    why: We can은 지금 준비돼 있어 할 수 있다는 능력의 말이고, if needed로 필요할 때만이라는 조건을 붙여요.
+    decoy: together
+    distractorsKo:
+    - 전환 속도는 팀 연습에 달렸습니다.
+    - 개복 전환은 환자 동의서에 포함됩니다.
+    blank:
+      answer: convert
+      options:
+      - en: restart
+      - en: reschedule
+      - en: refill
+      - en: convert
   - en: I'll keep the laparotomy tray ready.
     ko: 개복술 트레이를 준비 상태로 둘게요.
     chunks:
@@ -2675,6 +2915,20 @@ situations:
     - w-tray
     - w-ready
     goal: 2
+    tag: 트레이 대기
+    icon: scalpel
+    why: keep A ready는 A를 쓸 수 있는 상태로 유지한다는 틀이고, laparotomy는 배를 여는 개복술이에요.
+    decoy: labeled
+    distractorsKo:
+    - 개복술 트레이에는 긴 기구가 담깁니다.
+    - 개복술 트레이는 소독간호사가 관리합니다.
+    blank:
+      answer: laparotomy
+      options:
+      - en: thoracotomy
+      - en: laparotomy
+      - en: craniotomy
+      - en: tracheostomy
   - en: Let's confirm the open tray is in the room.
     ko: 개방 트레이가 방에 있는지 확인합시다.
     chunks:
@@ -2689,6 +2943,20 @@ situations:
     - w-tray
     - w-room
     goal: 2
+    tag: 위치 확인
+    icon: check
+    why: is in the room으로 어디에 있는지를 확인하고, Let's로 팀이 함께 눈으로 본다는 뜻이에요.
+    decoy: order
+    distractorsKo:
+    - 개방 트레이는 보통 방 밖에서 준비됩니다.
+    - 개방 트레이는 개복술에 쓰입니다.
+    blank:
+      answer: tray
+      options:
+      - en: bag
+      - en: bin
+      - en: tray
+      - en: gown
   - en: We'll convert if the bleeding doesn't stop.
     ko: 출혈이 멈추지 않으면 전환할게요.
     chunks:
@@ -2701,6 +2969,20 @@ situations:
     - w-bleed
     - w-stop
     goal: 1
+    tag: 전환 기준
+    icon: siren
+    why: if절로 전환의 기준을 못 박고, doesn't stop으로 스스로 멈추지 않는 출혈이라는 조건을 말해요.
+    decoy: is dark
+    distractorsKo:
+    - 전환은 집도의가 판단합니다.
+    - 출혈이 멈추지 않으면 시야가 흐려집니다.
+    blank:
+      answer: bleeding
+      options:
+      - en: bleeding
+      - en: swelling
+      - en: smoke
+      - en: noise
   - en: I'll keep the instruments within reach.
     ko: 기구를 손이 닿는 거리에 둘게요.
     chunks:
@@ -2713,6 +2995,42 @@ situations:
     - w-instrument
     - w-reach
     goal: 2
+    tag: 기구 위치
+    icon: scalpel
+    why: within reach는 손이 닿는 범위 안이라는 관용구이고, keep A within reach로 바로 집을 수 있게 둔다는 뜻이에요.
+    decoy: in a row
+    distractorsKo:
+    - 기구를 번호 순서대로 둘게요.
+    - 기구를 깨끗한 포 위에 둘게요.
+    blank:
+      answer: keep
+      options:
+      - en: wash
+      - en: stack
+      - en: sort
+      - en: keep
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 개복 전환 대비 4문장 순서
+    why: 개방 세트를 대기시키고, 그 세트가 방에 있는지 확인하고, 방에 있으니 기구를 손 닿는 곳에 두고, 모든 것이 닿는 곳에 있으니 출혈이 멈추지 않으면 전환하는 순서예요. 각 줄이 앞 줄을 가리켜 순서가 하나로 정해져요.
+    lines:
+    - en: Let's have the open set on standby.
+      icon: scalpel
+      ko: 개방 세트를 대기시켜 둡시다
+      note: 대기
+    - en: Let's confirm that set is in the room.
+      icon: check
+      ko: 그 세트가 방에 있는지 확인합시다
+      note: 확인
+    - en: With it here, I'll keep the instruments within reach.
+      icon: scalpel
+      ko: 여기 있으니 기구를 손 닿는 곳에 둘게요
+      note: 배치
+    - en: With everything within reach, we'll convert if the bleeding doesn't stop.
+      icon: siren
+      ko: 다 닿으니 출혈이 안 멈추면 전환할게요
+      note: 기준
 - title: 트렌델렌버그 순환 영향
   sentences:
   - en: We're in steep Trendelenburg.
@@ -2725,6 +3043,20 @@ situations:
     - w-steep
     - w-trendelenburg
     goal: 1
+    tag: 체위 보고
+    icon: compass
+    why: We're in은 지금 그 상태에 있다고 알리는 말이고, steep은 각도가 크다는 뜻이라 순환 영향을 챙기는 신호예요.
+    decoy: a quiet room
+    distractorsKo:
+    - 트렌델렌버그는 머리를 낮추는 체위입니다.
+    - 가파른 각도는 골반 수술에 쓰입니다.
+    blank:
+      answer: Trendelenburg
+      options:
+      - en: lithotomy
+      - en: orthostatic
+      - en: Trendelenburg
+      - en: decubitus
   - en: Watch the pressure and facial swelling.
     ko: 혈압과 얼굴 부종을 지켜보세요.
     chunks:
@@ -2738,6 +3070,20 @@ situations:
     - w-facial
     - w-swell
     goal: 1
+    tag: 감시 대상
+    icon: monitor
+    why: Watch 뒤에 감시할 두 가지를 and로 이어 빠짐없이 짚고, pressure는 여기서 혈압을 줄여 부르는 말이에요.
+    decoy: and the blue drape
+    distractorsKo:
+    - 머리가 낮으면 얼굴이 붓기 쉽습니다.
+    - 혈압은 마취기 모니터에 나옵니다.
+    blank:
+      answer: swelling
+      options:
+      - en: swelling
+      - en: redness
+      - en: dryness
+      - en: itching
   - en: Let's level the table periodically.
     ko: 주기적으로 테이블을 수평으로 맞춥시다.
     chunks:
@@ -2750,6 +3096,20 @@ situations:
     - w-table
     - w-periodically
     goal: 2
+    tag: 주기 수평
+    icon: gear
+    why: level은 동사로 수평으로 맞춘다는 뜻이고, periodically로 한 번이 아니라 일정한 간격으로 반복한다는 말이에요.
+    decoy: for anesthesia
+    distractorsKo:
+    - 테이블은 리모컨으로 기울기를 조절합니다.
+    - 수평 테이블은 다리 혈류에 도움이 됩니다.
+    blank:
+      answer: periodically
+      options:
+      - en: periodically
+      - en: carefully
+      - en: quickly
+      - en: slowly
   - en: The pressure looks low in this position.
     ko: 이 체위에서 혈압이 낮아 보입니다.
     chunks:
@@ -2762,6 +3122,20 @@ situations:
     - w-low
     - w-position
     goal: 1
+    tag: 혈압 보고
+    icon: chartup
+    why: looks low는 수치가 기준보다 낮게 보인다는 판단이고, in this position으로 체위 때문일 수 있다는 맥락을 붙여요.
+    decoy: in this chart
+    distractorsKo:
+    - 혈압은 체위를 바꾸면 달라집니다.
+    - 혈압은 마취과가 기록합니다.
+    blank:
+      answer: pressure
+      options:
+      - en: pulse
+      - en: oxygen
+      - en: glucose
+      - en: pressure
   - en: Let's check his face and eyes closely.
     ko: 얼굴과 눈을 면밀히 확인합시다.
     chunks:
@@ -2774,6 +3148,20 @@ situations:
     - w-face
     - w-closely
     goal: 2
+    tag: 얼굴·눈 점검
+    icon: magnify
+    why: his face and eyes로 부종이 먼저 보이는 두 부위를 짚고, closely로 대충이 아닌 자세히 본다는 정도를 더해요.
+    decoy: by name
+    distractorsKo:
+    - 얼굴과 눈에는 보호 패드를 댑니다.
+    - 얼굴과 눈 보호는 마취과가 챙깁니다.
+    blank:
+      answer: eyes
+      options:
+      - en: ears
+      - en: eyes
+      - en: nose
+      - en: lips
   - en: I'll let you know if his pressure drops further.
     ko: 혈압이 더 떨어지면 알려드릴게요.
     chunks:
@@ -2786,6 +3174,42 @@ situations:
     - w-pressure
     - w-drop
     goal: 1
+    tag: 보고 약속
+    icon: pager
+    why: I'll let you know로 먼저 알리겠다는 약속이고, further는 지금보다 더라는 뜻이라 추가 하락만 골라 알려요.
+    decoy: if his cuff
+    distractorsKo:
+    - 혈압이 떨어지면 맥박이 빨라집니다.
+    - 혈압은 팔에 감는 커프로 잽니다.
+    blank:
+      answer: drops
+      options:
+      - en: swells
+      - en: clears
+      - en: drops
+      - en: freezes
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 트렌델렌버그 순환 영향 4문장 순서
+    why: 체위를 알리고, 그 영향을 덜려고 테이블을 주기적으로 수평으로 맞추고, 그 사이 혈압과 얼굴 부종을 지켜보고, 혈압이 더 떨어지면 알리는 순서예요. that과 those와 it이 앞 줄을 가리켜 순서가 하나로 정해져요.
+    lines:
+    - en: We're in steep Trendelenburg.
+      icon: compass
+      ko: 지금 가파른 트렌델렌버그예요
+      note: 보고
+    - en: To ease that, let's level the table periodically.
+      icon: gear
+      ko: 덜려고 주기적으로 테이블을 수평으로 맞춥시다
+      note: 수평
+    - en: Between those, watch the pressure and facial swelling.
+      icon: monitor
+      ko: 그 사이 혈압과 얼굴 부종을 보세요
+      note: 감시
+    - en: I'll let you know if it drops further.
+      icon: pager
+      ko: 더 떨어지면 알려드릴게요
+      note: 보고
 - title: 장비 고장 대응
   sentences:
   - en: The insufflator is showing an error.
@@ -2800,6 +3224,20 @@ situations:
     - w-show
     - w-error
     goal: 1
+    tag: 오류 보고
+    icon: siren
+    why: is showing은 지금 화면에 나타나 있다는 진행형이고, an error로 장비가 이상을 알리고 있다고 간단히 보고해요.
+    decoy: a logo
+    distractorsKo:
+    - 기복기가 경고음을 내고 있습니다.
+    - 기복기는 유량을 조절합니다.
+    blank:
+      answer: showing
+      options:
+      - en: showing
+      - en: hiding
+      - en: sending
+      - en: erasing
   - en: Let's check the tubing and connections.
     ko: 튜빙과 연결부를 확인합시다.
     chunks:
@@ -2812,6 +3250,20 @@ situations:
     - w-tubing
     - w-connection
     goal: 1
+    tag: 연결 점검
+    icon: check
+    why: tubing and connections를 and로 묶어 가스가 지나는 길과 이음매를 한 번에 확인하자고 해요.
+    decoy: and the date
+    distractorsKo:
+    - 튜빙은 기복기와 환자를 이어요.
+    - 튜빙에는 일회용 필터가 달립니다.
+    blank:
+      answer: tubing
+      options:
+      - en: tubing
+      - en: camera
+      - en: cart
+      - en: monitor
   - en: I'll grab the backup unit now.
     ko: 지금 예비 유닛을 가져올게요.
     chunks:
@@ -2824,6 +3276,20 @@ situations:
     - w-backup
     - w-unit
     goal: 2
+    tag: 예비 확보
+    icon: run
+    why: grab은 급히 집어 온다는 구어이고, now로 지체 없이 한다고 알려 고장 상황의 속도를 맞춰요.
+    decoy: quietly
+    distractorsKo:
+    - 가져오기 직전에 문을 열게요.
+    - 예비 유닛은 따로 보관합니다.
+    blank:
+      answer: grab
+      options:
+      - en: wash
+      - en: grab
+      - en: sign
+      - en: ship
   - en: Let's swap in the backup insufflator right away.
     ko: 지금 바로 예비 기복기로 교체합시다.
     chunks:
@@ -2836,6 +3302,20 @@ situations:
     - w-backup
     - w-insufflator
     goal: 2
+    tag: 즉시 교체
+    icon: gear
+    why: swap in은 쓰던 것을 다른 것으로 바꿔 끼운다는 구동사이고, right away로 지체 없이 하자고 해요.
+    decoy: in pairs
+    distractorsKo:
+    - 교체하기 앞서 전원을 끕시다.
+    - 예비 기복기도 한계를 다시 설정합니다.
+    blank:
+      answer: insufflator
+      options:
+      - en: humidifier
+      - en: monitor
+      - en: insufflator
+      - en: camera
   - en: The error code says low gas pressure.
     ko: 오류 코드가 가스 압력이 낮다고 나옵니다.
     chunks:
@@ -2850,6 +3330,20 @@ situations:
     - w-gas
     - w-pressure
     goal: 1
+    tag: 코드 보고
+    icon: magnify
+    why: says는 코드가 말해 주는 내용을 읽어 전할 때 쓰고, low gas pressure로 원인 후보를 구체적으로 알려요.
+    decoy: a long number
+    distractorsKo:
+    - 오류 코드는 숫자와 글자로 나옵니다.
+    - 압력이 낮으면 복강이 덜 부풀어요.
+    blank:
+      answer: pressure
+      options:
+      - en: pressure
+      - en: flow
+      - en: volume
+      - en: level
   - en: I'll reset the machine and check again.
     ko: 기계를 재설정하고 다시 확인할게요.
     chunks:
@@ -2862,6 +3356,42 @@ situations:
     - w-machine
     - w-check
     goal: 1
+    tag: 재설정
+    icon: redo
+    why: reset은 설정을 처음 상태로 돌린다는 뜻이고, and check again으로 끝이 아니라 다시 확인까지 한 흐름으로 말해요.
+    decoy: and write it down
+    distractorsKo:
+    - 재설정하면 저장된 설정이 지워집니다.
+    - 재설정은 기계마다 방법이 다릅니다.
+    blank:
+      answer: reset
+      options:
+      - en: reset
+      - en: wipe
+      - en: tilt
+      - en: lift
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 장비 고장 대응 4문장 순서
+    why: 오류를 알리고, 코드가 가스 압력이 낮다고 하고, 그 원인이면 튜빙과 연결부를 확인하고, 그래도 안 되면 예비 기복기로 바로 교체하는 순서예요. 각 줄이 앞 줄을 가리켜 순서가 하나로 정해져요.
+    lines:
+    - en: The insufflator is showing an error.
+      icon: siren
+      ko: 기복기가 오류를 보이고 있어요
+      note: 보고
+    - en: The error code says low gas pressure.
+      icon: magnify
+      ko: 오류 코드가 가스 압력이 낮다고 해요
+      note: 코드
+    - en: For that, let's check the tubing and connections.
+      icon: check
+      ko: 그러니 튜빙과 연결부를 확인합시다
+      note: 점검
+    - en: If that doesn't fix it, let's swap in the backup insufflator right away.
+      icon: gear
+      ko: 안 고쳐지면 바로 예비 기복기로 교체해요
+      note: 교체
 - title: 렌즈 시야 관리
   sentences:
   - en: The scope is fogging up.
@@ -2875,6 +3405,20 @@ situations:
     - w-scope
     - w-fog
     goal: 1
+    tag: 김서림 보고
+    icon: magnify
+    why: is fogging up은 지금 김이 서리는 중이라는 진행형이고, up은 점점 뿌옇게 된다는 뜻을 더해요.
+    decoy: down
+    distractorsKo:
+    - 스코프에 얼룩이 지고 있습니다.
+    - 스코프는 빛과 영상을 전합니다.
+    blank:
+      answer: fogging
+      options:
+      - en: heating
+      - en: filling
+      - en: fogging
+      - en: lighting
   - en: Let's warm and defog the lens.
     ko: 렌즈를 데워서 김서림을 없앱시다.
     chunks:
@@ -2887,6 +3431,20 @@ situations:
     - w-defog
     - w-lens
     goal: 1
+    tag: 데우고 제거
+    icon: gear
+    why: warm and defog를 and로 묶어 데우는 것과 김서림 제거를 한 흐름으로 말하고, Let's로 함께 한다고 해요.
+    decoy: and relabel
+    distractorsKo:
+    - 김서림은 온도 차이로 생깁니다.
+    - 렌즈 표면은 쉽게 긁힙니다.
+    blank:
+      answer: warm
+      options:
+      - en: wrap
+      - en: warm
+      - en: rinse
+      - en: mark
   - en: I'll clean it and reinsert quickly.
     ko: 닦아서 빠르게 다시 삽입할게요.
     chunks:
@@ -2899,6 +3457,20 @@ situations:
     - w-reinsert
     - w-quickly
     goal: 1
+    tag: 닦고 재삽입
+    icon: scalpel
+    why: clean it으로 먼저 닦고 and reinsert로 다시 넣는 두 동작을 순서대로 말해요. quickly는 시야 없이 오래 두지 않으려는 속도예요.
+    decoy: with tape
+    distractorsKo:
+    - 스코프는 닦아도 금방 다시 흐려집니다.
+    - 삽입하면 시야가 순간 끊깁니다.
+    blank:
+      answer: clean
+      options:
+      - en: cap
+      - en: tag
+      - en: clean
+      - en: sign
   - en: The view keeps getting blurry.
     ko: 시야가 자꾸 흐릿해집니다.
     chunks:
@@ -2910,6 +3482,20 @@ situations:
     - w-view
     - w-blurry
     goal: 2
+    tag: 시야 보고
+    icon: magnify
+    why: keeps getting은 한 번이 아니라 되풀이된다는 뜻이고, blurry로 선명하지 않다는 상태를 알려요.
+    decoy: tilted
+    distractorsKo:
+    - 시야는 모니터로 확인합니다.
+    - 시야가 흐리면 조작이 어렵습니다.
+    blank:
+      answer: blurry
+      options:
+      - en: bright
+      - en: narrow
+      - en: blurry
+      - en: dark
   - en: Let's dip the scope in the warmer.
     ko: 스코프를 워머에 담급시다.
     chunks:
@@ -2922,6 +3508,20 @@ situations:
     - w-scope
     - w-warmer
     goal: 1
+    tag: 워머 사용
+    icon: gear
+    why: dip A in B는 B에 잠깐 담근다는 틀이고, the warmer는 스코프를 따뜻하게 보관하는 장치예요.
+    decoy: with a towel
+    distractorsKo:
+    - 워머는 스코프를 데워 둡니다.
+    - 워머 온도는 따로 맞춥니다.
+    blank:
+      answer: warmer
+      options:
+      - en: cooler
+      - en: basin
+      - en: warmer
+      - en: dryer
   - en: I'll wipe the lens before we go back in.
     ko: 다시 들어가기 전에 렌즈를 닦을게요.
     chunks:
@@ -2934,6 +3534,42 @@ situations:
     - w-wipe
     - w-lens
     goal: 2
+    tag: 닦고 재진입
+    icon: magnify
+    why: wipe는 문질러 닦는다는 뜻이고, before we go back in으로 다시 넣기 전에 먼저 한다는 순서를 말해요.
+    decoy: in line
+    distractorsKo:
+    - 렌즈를 닦기 전에 장갑부터 바꿀게요.
+    - 렌즈 거즈는 한 장씩 따로 쓰입니다.
+    blank:
+      answer: wipe
+      options:
+      - en: tap
+      - en: lift
+      - en: wipe
+      - en: spin
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 렌즈 시야 관리 4문장 순서
+    why: 김이 서린다고 알리고, 스코프를 워머에 담그고, 따뜻해지면 다시 들어가기 전에 렌즈를 닦고, 그래도 계속 흐리면 닦아서 빠르게 다시 삽입하는 순서예요. it과 that이 앞 줄을 가리켜 순서가 하나로 정해져요.
+    lines:
+    - en: The scope is fogging up.
+      icon: magnify
+      ko: 스코프에 김이 서리고 있어요
+      note: 보고
+    - en: Let's dip the scope in the warmer.
+      icon: gear
+      ko: 스코프를 워머에 담급시다
+      note: 워머
+    - en: Once it's warm, I'll wipe the lens before we go back in.
+      icon: magnify
+      ko: 따뜻해지면 들어가기 전에 렌즈를 닦을게요
+      note: 닦기
+    - en: If it keeps getting blurry after that, I'll clean it and reinsert quickly.
+      icon: scalpel
+      ko: 그래도 흐리면 닦고 빠르게 다시 넣을게요
+      note: 재삽입
 - title: 로봇 응급 언도킹 준비
   sentences:
   - en: Let's review the emergency undocking steps.
@@ -2949,6 +3585,20 @@ situations:
     - w-undock
     - w-step
     goal: 1
+    tag: 절차 검토
+    icon: board
+    why: review는 훑어 다시 짚어 본다는 뜻이고, emergency undocking steps로 어떤 절차인지 앞에서 분명히 해요.
+    decoy: exit steps
+    distractorsKo:
+    - 응급 언도킹은 집도의 지시를 따라요.
+    - 언도킹 절차는 로봇마다 다릅니다.
+    blank:
+      answer: review
+      options:
+      - en: post
+      - en: file
+      - en: sign
+      - en: review
   - en: Everyone knows their role if we need to convert.
     ko: 전환해야 할 경우 모두 자기 역할을 알고 있습니다.
     chunks:
@@ -2963,6 +3613,20 @@ situations:
     - w-need
     - w-convert
     goal: 2
+    tag: 역할 확인
+    icon: handshake2
+    why: Everyone knows는 모두가 이미 안다는 사실을 말하고, their role은 사람마다 맡은 몫이 있다는 뜻이에요.
+    decoy: their names
+    distractorsKo:
+    - 전환해야 할 경우 역할은 미리 정해 둡니다.
+    - 전환해야 할 경우 팀이 함께 움직입니다.
+    blank:
+      answer: role
+      options:
+      - en: name
+      - en: badge
+      - en: role
+      - en: shift
   - en: I'll keep the release ready at the cart.
     ko: 카트에서 해제 준비를 해 둘게요.
     chunks:
@@ -2976,6 +3640,20 @@ situations:
     - w-ready
     - w-cart
     goal: 1
+    tag: 해제 대기
+    icon: gear
+    why: keep A ready는 A를 바로 쓰게 대기시킨다는 틀이고, at the cart로 해제 장치가 어디에서 대기하는지 밝혀요.
+    decoy: with a manual
+    distractorsKo:
+    - 해제 방법은 매뉴얼에 적힙니다.
+    - 해제 장치는 로봇 제조사가 정합니다.
+    blank:
+      answer: release
+      options:
+      - en: manual
+      - en: release
+      - en: switch
+      - en: brake
   - en: Let's make sure everyone knows the undocking sequence.
     ko: 모두 언도킹 순서를 알고 있는지 확인합시다.
     chunks:
@@ -2988,6 +3666,20 @@ situations:
     - w-undock
     - w-sequence
     goal: 2
+    tag: 순서 공유
+    icon: handshake2
+    why: make sure는 확실히 하자는 뜻이고, everyone knows로 한 명도 빠지지 않고 아는지를 확인 대상으로 삼아요.
+    decoy: everyone writes
+    distractorsKo:
+    - 언도킹 순서는 로봇 매뉴얼에 나옵니다.
+    - 언도킹 순서는 반복 연습으로 익힙니다.
+    blank:
+      answer: sequence
+      options:
+      - en: schedule
+      - en: menu
+      - en: color
+      - en: sequence
   - en: I'll practice the release lever now.
     ko: 지금 해제 레버를 연습해 볼게요.
     chunks:
@@ -3000,6 +3692,20 @@ situations:
     - w-release
     - w-lever
     goal: 1
+    tag: 레버 연습
+    icon: gear
+    why: practice는 실제로 해 보며 익힌다는 뜻이고, now로 지금 바로 한다고 알려 위급해지기 전에 익힌다는 점을 짚어요.
+    decoy: first
+    distractorsKo:
+    - 해제 레버는 응급 전용입니다.
+    - 레버 연습은 시뮬레이션으로도 해요.
+    blank:
+      answer: practice
+      options:
+      - en: inspect
+      - en: oil
+      - en: tag
+      - en: practice
   - en: We'll undock quickly if the surgeon calls it.
     ko: 집도의가 알리면 빠르게 언도킹할게요.
     chunks:
@@ -3013,6 +3719,42 @@ situations:
     - w-call
     - w-surgeon
     goal: 1
+    tag: 언도킹 조건
+    icon: siren
+    why: if the surgeon calls it으로 언도킹을 결정하는 사람을 집도의로 못 박고, calls it은 그 판단을 소리 내어 알린다는 표현이에요.
+    decoy: writes it
+    distractorsKo:
+    - 빠른 언도킹은 팀 연습이 필요합니다.
+    - 언도킹은 팔을 떼어 내는 일입니다.
+    blank:
+      answer: undock
+      options:
+      - en: undock
+      - en: unplug
+      - en: unwrap
+      - en: unpack
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 로봇 응급 언도킹 준비 4문장 순서
+    why: 응급 언도킹 절차를 검토하고, 검토했으니 모두 순서를 아는지 확인하고, 모두 알면 해제 장치를 대기시키고, 해제가 준비되면 집도의가 알릴 때 빠르게 언도킹하는 순서예요. 각 줄이 앞 줄을 가리켜 순서가 하나로 정해져요.
+    lines:
+    - en: Let's review the emergency undocking steps.
+      icon: board
+      ko: 응급 언도킹 절차를 검토합시다
+      note: 검토
+    - en: With the steps reviewed, let's make sure everyone knows the undocking sequence.
+      icon: handshake2
+      ko: 검토했으니 모두 순서를 아는지 확인합시다
+      note: 공유
+    - en: Once everyone knows, I'll keep the release ready at the cart.
+      icon: gear
+      ko: 모두 알면 카트에서 해제를 대기시킬게요
+      note: 대기
+    - en: With the release ready, we'll undock quickly if the surgeon calls it.
+      icon: siren
+      ko: 해제가 준비되면 집도의가 알릴 때 언도킹해요
+      note: 조건
 - title: 최소침습 검체 회수
   sentences:
   - en: Let's use the retrieval bag for the specimen.
@@ -3028,6 +3770,20 @@ situations:
     - w-bag
     - w-specimen
     goal: 1
+    tag: 회수백 사용
+    icon: bandage
+    why: use A for B는 A를 B의 용도로 쓴다는 틀이고, retrieval bag은 조직을 담아 포트로 꺼내는 주머니예요.
+    decoy: for the drape
+    distractorsKo:
+    - 포트 통과를 위해 회수백을 사용합시다.
+    - 회수백은 검체 크기에 맞춰 고릅니다.
+    blank:
+      answer: retrieval
+      options:
+      - en: biohazard
+      - en: drainage
+      - en: retrieval
+      - en: laundry
   - en: We'll bring it out through the port intact.
     ko: 포트를 통해 온전한 상태로 꺼낼게요.
     chunks:
@@ -3040,6 +3796,20 @@ situations:
     - w-port
     - w-intact
     goal: 1
+    tag: 회수 방법
+    icon: scalpel
+    why: bring A out은 A를 밖으로 꺼낸다는 구동사이고, intact로 부서지지 않은 채라는 조건을 붙여 검체 보존을 말해요.
+    decoy: by hand
+    distractorsKo:
+    - 꺼낸 검체는 병리과로 보냅니다.
+    - 큰 검체는 절개를 넓혀 꺼내기도 합니다.
+    blank:
+      answer: port
+      options:
+      - en: tray
+      - en: port
+      - en: table
+      - en: basin
   - en: I'll confirm the specimen is complete.
     ko: 검체가 완전한지 확인할게요.
     chunks:
@@ -3052,6 +3822,20 @@ situations:
     - w-specimen
     - w-complete
     goal: 2
+    tag: 완전성 확인
+    icon: check
+    why: is complete는 빠진 조각 없이 다 있다는 뜻이고, confirm으로 눈으로 보고 확인하겠다고 약속해요.
+    decoy: is wet
+    distractorsKo:
+    - 확인에 앞서 백을 열게요.
+    - 검체 모양은 병리과에서 다시 봅니다.
+    blank:
+      answer: complete
+      options:
+      - en: complete
+      - en: labeled
+      - en: damaged
+      - en: pink
   - en: Let's double-check the bag before we seal it.
     ko: 밀봉 전에 백을 다시 확인합시다.
     chunks:
@@ -3065,6 +3849,20 @@ situations:
     - w-bag
     - w-seal
     goal: 1
+    tag: 밀봉 전 점검
+    icon: check
+    why: double-check는 이미 본 것을 한 번 더 보는 일이고, before we seal it으로 닫아 버리기 전이 마지막 기회라는 시점을 짚어요.
+    decoy: the lid
+    distractorsKo:
+    - 확인 전에 장갑부터 바꿉시다.
+    - 밀봉 방식은 백 종류마다 달라집니다.
+    blank:
+      answer: seal
+      options:
+      - en: seal
+      - en: label
+      - en: weigh
+      - en: wrap
   - en: The specimen looks intact and complete.
     ko: 검체가 온전하고 완전해 보입니다.
     chunks:
@@ -3077,6 +3875,20 @@ situations:
     - w-intact
     - w-complete
     goal: 2
+    tag: 검체 상태
+    icon: check
+    why: looks로 눈으로 본 인상임을 밝히고, intact와 complete 두 낱말로 부서지지 않았고 빠진 것도 없다는 점을 짚어요.
+    decoy: and pink
+    distractorsKo:
+    - 검체를 온전하고 완전하게 보존합시다.
+    - 검체는 온전해야 병리 판독이 쉽습니다.
+    blank:
+      answer: intact
+      options:
+      - en: firm
+      - en: intact
+      - en: dark
+      - en: round
   - en: I'll label the bag before it leaves the room.
     ko: 방을 나가기 전에 백에 라벨을 붙일게요.
     chunks:
@@ -3090,6 +3902,42 @@ situations:
     - w-bag
     - w-room
     goal: 1
+    tag: 라벨 부착
+    icon: pencil
+    why: label은 이름표를 붙인다는 동사이고, before it leaves the room으로 방을 떠나기 전에 반드시라는 시점을 정해요. 검체 혼동을 막는 순서예요.
+    decoy: the cart
+    distractorsKo:
+    - 라벨을 붙이기 전에 펜을 챙길게요.
+    - 라벨 없는 검체는 병리과가 받지 않습니다.
+    blank:
+      answer: label
+      options:
+      - en: weigh
+      - en: label
+      - en: wrap
+      - en: tape
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 최소침습 검체 회수 4문장 순서
+    why: 회수백을 쓰자고 하고, 백에 담기면 포트로 온전히 꺼내고, 꺼낸 뒤 검체가 완전한지 확인하고, 확인되면 방을 나가기 전에 라벨을 붙이는 순서예요. 각 줄이 앞 줄을 가리켜 순서가 하나로 정해져요.
+    lines:
+    - en: Let's use the retrieval bag for the specimen.
+      icon: bandage
+      ko: 검체를 위해 회수백을 사용합시다
+      note: 사용
+    - en: Once it's in the bag, we'll bring it out through the port intact.
+      icon: scalpel
+      ko: 백에 담기면 포트로 온전히 꺼낼게요
+      note: 회수
+    - en: When it's out, I'll confirm the specimen is complete.
+      icon: check
+      ko: 꺼내면 검체가 완전한지 확인할게요
+      note: 확인
+    - en: Once it's confirmed, I'll label the bag before it leaves the room.
+      icon: pencil
+      ko: 확인되면 방을 나가기 전에 라벨을 붙일게요
+      note: 라벨
 - title: 기복 가스 색전
   sentences:
   - en: Stop insufflation and release the pneumoperitoneum.
@@ -3105,6 +3953,20 @@ situations:
     - w-release
     - w-pneumoperitoneum
     goal: 2
+    tag: 기복 중단
+    icon: siren
+    why: Stop과 release 두 명령을 and로 이어 짧게 연달아 지시해요. 위급할 때는 동사로 시작하는 명령형이 가장 빨라요.
+    decoy: the camera cable
+    distractorsKo:
+    - 기복에 쓰는 가스는 보통 CO2입니다.
+    - 가스 색전은 혈관을 막는 상태입니다.
+    blank:
+      answer: insufflation
+      options:
+      - en: dissection
+      - en: retraction
+      - en: insufflation
+      - en: stapling
   - en: Sudden drop in EtCO2 with hypotension—suspect gas embolism.
     ko: 저혈압을 동반한 갑작스러운 EtCO2 하락 — 가스 색전증을 의심하세요.
     chunks:
@@ -3122,6 +3984,20 @@ situations:
     - w-gas
     - w-embolism
     goal: 1
+    tag: 색전 의심
+    icon: siren
+    why: 원인을 설명하기보다 징후 둘을 짧게 나열한 뒤 suspect로 의심하라고 명령해요. 위기에서는 명사구와 동사 하나로 압축해요.
+    decoy: a spare drape
+    distractorsKo:
+    - 가스 색전증은 드물지만 수술 중에 아주 위험한 합병증입니다.
+    - 가스 색전증은 혈관을 막아 순환을 크게 흔드는 위험한 상태입니다.
+    blank:
+      answer: embolism
+      options:
+      - en: infection
+      - en: embolism
+      - en: allergy
+      - en: cramp
   - en: Left lateral, head down, and 100% oxygen.
     ko: 왼쪽 측위, 머리를 낮추고, 100% 산소를 주세요.
     chunks:
@@ -3135,6 +4011,20 @@ situations:
     - w-down
     - w-oxygen
     goal: 2
+    tag: 체위·산소
+    icon: siren
+    why: 명령을 동사 없이 명사구 셋으로 나열해 위급할 때 가장 짧게 지시해요. 체위 둘과 산소를 쉼표로 이어 차례로 해요.
+    decoy: ', arms out'
+    distractorsKo:
+    - 왼쪽 측위는 공기가 심장 위쪽에 모이게 합니다.
+    - 100% 산소는 몸속 질소를 줄여 흡수를 돕습니다.
+    blank:
+      answer: oxygen
+      options:
+      - en: humidity
+      - en: oxygen
+      - en: brightness
+      - en: speed
   - en: Let's get him flat and turn him left-side down.
     ko: 환자를 평평하게 눕히고 왼쪽으로 돌립시다.
     chunks:
@@ -3148,6 +4038,20 @@ situations:
     - w-turn
     - w-down
     goal: 2
+    tag: 체위 변경
+    icon: siren
+    why: get him flat과 turn him을 and로 이어 눕히고 돌리는 두 동작을 순서대로 말해요. left-side down은 왼쪽이 아래로 가게라는 뜻이에요.
+    decoy: feet-first
+    distractorsKo:
+    - 환자를 돌릴 때는 여러 명이 함께 움직입니다.
+    - 눕힌 환자는 머리와 어깨를 함께 받칩니다.
+    blank:
+      answer: flat
+      options:
+      - en: tall
+      - en: calm
+      - en: warm
+      - en: flat
   - en: I'll call for help right now.
     ko: 지금 바로 도움을 요청할게요.
     chunks:
@@ -3159,6 +4063,20 @@ situations:
     - w-call
     - w-help
     goal: 2
+    tag: 도움 요청
+    icon: pager
+    why: call for help는 소리쳐 또는 연락해 사람을 부른다는 관용구이고, right now로 지체 없이 한다고 알려요.
+    decoy: the elevator
+    distractorsKo:
+    - 요청하기 직전에 위치를 외칠게요.
+    - 도움은 보통 코드 호출로 부릅니다.
+    blank:
+      answer: help
+      options:
+      - en: supplies
+      - en: help
+      - en: gloves
+      - en: a cart
   - en: We need to lower the pressure immediately.
     ko: 즉시 압력을 낮춰야 합니다.
     chunks:
@@ -3172,6 +4090,42 @@ situations:
     - w-pressure
     - w-immediately
     goal: 2
+    tag: 압력 하강
+    icon: gear
+    why: We need to는 선택이 아니라 해야 한다는 필요를 말하고, immediately로 지체 없이라는 시점을 더해요.
+    decoy: the lights immediately
+    distractorsKo:
+    - 압력은 CO2 주입으로 오릅니다.
+    - 압력이 높으면 순환이 줄어듭니다.
+    blank:
+      answer: pressure
+      options:
+      - en: volume
+      - en: noise
+      - en: pressure
+      - en: light
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기복 가스 색전 4문장 순서
+    why: 징후를 보고 색전을 의심하고, 그 의심으로 바로 도움을 요청하고, 부르는 동안 기복을 멈추고 가스를 빼고, 이미 들어간 가스에는 왼쪽 측위와 순수 산소를 하는 순서예요. On that suspicion과 As I call이 앞 줄을 가리켜 순서가 정해져요.
+    lines:
+    - en: Sudden drop in EtCO2 with hypotension—suspect gas embolism.
+      icon: siren
+      ko: 저혈압과 EtCO2 하락이면 가스 색전을 의심해요
+      note: 의심
+    - en: On that suspicion, I'll call for help right now.
+      icon: pager
+      ko: 그 의심으로 지금 바로 도움을 요청할게요
+      note: 호출
+    - en: As I call, stop insufflation so no more gas goes in, and release the pneumoperitoneum.
+      icon: siren
+      ko: 제가 부르는 동안 기복을 멈추고 복강 가스를 빼요
+      note: 중단
+    - en: Left lateral, head down, and 100% oxygen for the gas already in.
+      icon: siren
+      ko: 이미 들어간 가스에는 왼쪽 측위, 머리 낮춤, 100% 산소
+      note: 체위
 - title: 트로카 혈관 손상
   sentences:
   - en: There's brisk bleeding at the trocar.
@@ -3186,6 +4140,20 @@ situations:
     - w-bleed
     - w-trocar
     goal: 1
+    tag: 출혈 보고
+    icon: siren
+    why: There's로 지금 눈앞에 보이는 것을 알리고, brisk bleeding은 빠르고 활발한 출혈이라는 뜻이에요.
+    decoy: a loose drape
+    distractorsKo:
+    - 트로카는 날카로운 끝으로 복벽을 뚫습니다.
+    - 트로카 부위에는 복벽 혈관이 지나갑니다.
+    blank:
+      answer: bleeding
+      options:
+      - en: smoke
+      - en: fogging
+      - en: hissing
+      - en: bleeding
   - en: Suspect a major vessel injury.
     ko: 주요 혈관 손상을 의심하세요.
     chunks:
@@ -3199,6 +4167,20 @@ situations:
     - w-vessel
     - w-injury
     goal: 1
+    tag: 손상 의심
+    icon: siren
+    why: Suspect로 시작하는 명령형이라 진단을 단정하지 않고 의심부터 하라고 하고, major vessel은 큰 혈관이라는 뜻이에요.
+    decoy: a major cable
+    distractorsKo:
+    - 주요 혈관 손상은 출혈이 많습니다.
+    - 트로카 손상은 삽입 중에 생겨요.
+    blank:
+      answer: vessel
+      options:
+      - en: nerve
+      - en: vessel
+      - en: muscle
+      - en: joint
   - en: Let's prep for open conversion and call for help.
     ko: 개복 전환을 준비하고 도움을 요청합시다.
     chunks:
@@ -3214,6 +4196,20 @@ situations:
     - w-call
     - w-help
     goal: 2
+    tag: 전환·호출
+    icon: pager
+    why: prep과 call 두 동작을 and로 이어 준비와 호출을 함께 하자고 하고, for A, for B로 각각의 목적을 붙여요.
+    decoy: for the form
+    distractorsKo:
+    - 개복 전환은 배를 열어 직접 처치합니다.
+    - 도움 요청은 위급 호출 번호를 씁니다.
+    blank:
+      answer: conversion
+      options:
+      - en: closure
+      - en: conversion
+      - en: docking
+      - en: inspection
   - en: Let's apply pressure at the site right away.
     ko: 지금 바로 부위에 압박을 가합시다.
     chunks:
@@ -3226,6 +4222,20 @@ situations:
     - w-pressure
     - w-site
     goal: 2
+    tag: 압박 지혈
+    icon: bandage
+    why: apply pressure는 눌러서 출혈을 막는다는 뜻이고, right away로 한 순간도 미루지 말자고 해요.
+    decoy: with the camera
+    distractorsKo:
+    - 압박은 출혈을 줄여 시간을 얻어요.
+    - 직접 압박은 지혈의 기본입니다.
+    blank:
+      answer: site
+      options:
+      - en: site
+      - en: cart
+      - en: bed
+      - en: door
   - en: I'll call the surgeon back to the field.
     ko: 집도의를 필드로 다시 부를게요.
     chunks:
@@ -3238,6 +4248,20 @@ situations:
     - w-surgeon
     - w-field
     goal: 2
+    tag: 집도의 호출
+    icon: pager
+    why: call A back to B는 A를 B로 다시 불러온다는 틀이고, the surgeon으로 부를 대상을 분명히 밝혀요.
+    decoy: to the lounge
+    distractorsKo:
+    - 집도의는 필드에서 수술을 이끕니다.
+    - 필드는 소독된 수술 영역입니다.
+    blank:
+      answer: field
+      options:
+      - en: field
+      - en: chart
+      - en: cart
+      - en: stool
   - en: We need more suction here.
     ko: 여기 흡인이 더 필요합니다.
     chunks:
@@ -3249,6 +4273,42 @@ situations:
     - w-need
     - w-suction
     goal: 2
+    tag: 흡인 요청
+    icon: siren
+    why: We need로 필요를 직접 말하고, more suction으로 지금 있는 것으로는 부족하다는 뜻을 전해요. here는 가리키는 자리예요.
+    decoy: more tape
+    distractorsKo:
+    - 흡인은 피와 액체를 빼냅니다.
+    - 흡인은 석션 팁으로 해요.
+    blank:
+      answer: suction
+      options:
+      - en: irrigation
+      - en: suction
+      - en: cautery
+      - en: clamps
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 트로카 혈관 손상 4문장 순서
+    why: 출혈을 알리고, 가장 먼저 바로 압박하고, 그 출혈 속도로 큰 혈관 손상을 의심하고, 그 의심으로 개복 전환 준비와 호출을 하는 순서예요. First와 At that rate, On that suspicion이 앞 줄을 가리켜 순서가 하나로 정해져요.
+    lines:
+    - en: There's brisk bleeding at the trocar.
+      icon: siren
+      ko: 트로카 부위에서 출혈이 빨라요
+      note: 보고
+    - en: First, let's apply pressure at that site right away.
+      icon: bandage
+      ko: 먼저 그 부위를 지금 바로 압박합시다
+      note: 압박
+    - en: At that rate, suspect a major vessel injury.
+      icon: siren
+      ko: 그 속도면 주요 혈관 손상을 의심해요
+      note: 의심
+    - en: On that suspicion, let's prep for open conversion and call for help.
+      icon: pager
+      ko: 그 의심으로 개복 준비하고 도움을 부릅시다
+      note: 전환
 - title: 긴급 개복 전환
   sentences:
   - en: We're converting to open now.
@@ -3262,6 +4322,20 @@ situations:
     - w-convert
     - w-open
     goal: 1
+    tag: 전환 선언
+    icon: siren
+    why: We're converting으로 지금 진행 중인 결정을 팀 전체에 알리고, to open은 복강경에서 개복으로라는 방향을 말해요.
+    decoy: to paper
+    distractorsKo:
+    - 개복 전환은 팀 모두가 알아야 해요.
+    - 전환하면 절개가 훨씬 커져요.
+    blank:
+      answer: open
+      options:
+      - en: open
+      - en: closed
+      - en: dry
+      - en: quiet
   - en: Open the laparotomy tray immediately.
     ko: 즉시 개복술 트레이를 개봉하세요.
     chunks:
@@ -3275,6 +4349,20 @@ situations:
     - w-tray
     - w-immediately
     goal: 1
+    tag: 트레이 개봉
+    icon: scalpel
+    why: Open으로 시작하는 명령형이라 동사부터 들리고, immediately로 지체 없이 하라고 못 박아요. 위급할 때는 짧은 명령이 빨라요.
+    decoy: the glove box
+    distractorsKo:
+    - 개봉하기 직전에 장갑을 확인하세요.
+    - 트레이는 깨끗한 상태로 열어야 합니다.
+    blank:
+      answer: laparotomy
+      options:
+      - en: cesarean
+      - en: sternotomy
+      - en: laparotomy
+      - en: amputation
   - en: Let's get another set of hands in the room.
     ko: 방에 일손을 더 들여옵시다.
     chunks:
@@ -3287,6 +4375,20 @@ situations:
     - w-hand
     - w-room
     goal: 2
+    tag: 인력 요청
+    icon: handshake2
+    why: another set of hands는 일손 한 사람을 더라는 관용구이고, in the room으로 지금 방 안으로 들이자고 해요.
+    decoy: on the roster
+    distractorsKo:
+    - 들여오기 앞서 문을 엽시다.
+    - 위급 때는 일손이 모자랍니다.
+    blank:
+      answer: hands
+      options:
+      - en: tables
+      - en: stools
+      - en: hands
+      - en: carts
   - en: Let's move quickly and stay calm.
     ko: 빠르게 움직이되 침착함을 유지합시다.
     chunks:
@@ -3300,6 +4402,20 @@ situations:
     - w-stay
     - w-calm
     goal: 1
+    tag: 침착 유지
+    icon: shield
+    why: move quickly와 stay calm을 and로 묶어 서두르되 침착하라는 두 요구를 함께 하고, 위급 때 흐트러지지 않게 해요.
+    decoy: warm
+    distractorsKo:
+    - 침착하면 실수가 많이 줄어듭니다.
+    - 빠른 움직임은 연습에서 나옵니다.
+    blank:
+      answer: calm
+      options:
+      - en: still
+      - en: seated
+      - en: calm
+      - en: tired
   - en: I'll open the tray while you prep the field.
     ko: 필드를 준비하는 동안 트레이를 열게요.
     chunks:
@@ -3314,6 +4430,20 @@ situations:
     - w-prep
     - w-field
     goal: 1
+    tag: 역할 분담
+    icon: handshake2
+    why: while로 두 일이 동시에 진행된다고 밝혀 역할을 나누고, I'll와 you를 맞세워 누가 무엇을 하는지 분명히 해요.
+    decoy: the form
+    distractorsKo:
+    - 필드 준비는 소독 영역을 만드는 일입니다.
+    - 트레이는 겉 포장을 벗겨 엽니다.
+    blank:
+      answer: tray
+      options:
+      - en: bin
+      - en: lid
+      - en: box
+      - en: tray
   - en: We need extra hands right now.
     ko: 지금 일손이 더 필요합니다.
     chunks:
@@ -3326,6 +4456,42 @@ situations:
     - w-extra
     - w-hand
     goal: 2
+    tag: 인력 필요
+    icon: siren
+    why: We need로 필요를 직접 말하고, extra hands는 일손이 더 필요하다는 관용구예요. right now로 급하다는 시점을 알려요.
+    decoy: on call
+    distractorsKo:
+    - 일손 요청은 소리 내어 합니다.
+    - 일손은 역할이 정해져야 해요.
+    blank:
+      answer: extra
+      options:
+      - en: clean
+      - en: sterile
+      - en: wet
+      - en: extra
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 긴급 개복 전환 4문장 순서
+    why: 전환을 알리고, 그러려고 트레이를 열고 필드를 준비하고, 거기에 더해 일손을 더 들이고, 일손이 들어오는 동안 빠르게 움직이되 침착하라는 순서예요. For that과 On top of that과 hands coming in이 앞 줄을 가리켜 순서가 하나로 정해져요.
+    lines:
+    - en: We're converting to open now.
+      icon: siren
+      ko: 지금 개복으로 전환하고 있어요
+      note: 선언
+    - en: For that, I'll open the tray while you prep the field.
+      icon: scalpel
+      ko: 그러려고 필드 준비 동안 트레이를 열게요
+      note: 분담
+    - en: On top of that, let's get another set of hands in the room.
+      icon: handshake2
+      ko: 거기에 방에 일손을 더 들입시다
+      note: 인력
+    - en: With all of that going on, let's move quickly and stay calm.
+      icon: shield
+      ko: 일손이 오는 동안 빠르게 움직이되 침착해요
+      note: 침착
 - title: 로봇 고장 긴급 언도킹
   sentences:
   - en: The robot has faulted and won't respond.
@@ -3340,6 +4506,20 @@ situations:
     - w-fault
     - w-respond
     goal: 1
+    tag: 고장 보고
+    icon: siren
+    why: has faulted는 오류로 멈춘 결과가 지금 남아 있다는 완료형이고, won't respond로 조작해도 반응이 없다는 점을 더해요.
+    decoy: has docked
+    distractorsKo:
+    - 로봇은 콘솔과 카트로 나뉩니다.
+    - 로봇은 팔이 네 개 달린 장비입니다.
+    blank:
+      answer: faulted
+      options:
+      - en: faulted
+      - en: tilted
+      - en: rolled
+      - en: shifted
   - en: Let's emergency undock all arms now.
     ko: 지금 모든 팔을 응급 언도킹합시다.
     chunks:
@@ -3352,6 +4532,20 @@ situations:
     - w-undock
     - w-arm
     goal: 1
+    tag: 응급 언도킹
+    icon: siren
+    why: emergency undock처럼 동사 앞에 emergency를 붙여 평소 순서가 아닌 비상 절차라고 말하고, all arms로 하나도 남기지 않아요.
+    decoy: all drapes
+    distractorsKo:
+    - 언도킹하기 직전에 팔 위치를 읽읍시다.
+    - 응급 언도킹은 평소 절차보다 빠릅니다.
+    blank:
+      answer: arms
+      options:
+      - en: ports
+      - en: carts
+      - en: tools
+      - en: arms
   - en: Prep for open conversion immediately.
     ko: 즉시 개복 전환을 준비하세요.
     chunks:
@@ -3365,6 +4559,20 @@ situations:
     - w-conversion
     - w-immediately
     goal: 2
+    tag: 전환 준비
+    icon: siren
+    why: Prep으로 시작하는 명령형이고, for open conversion으로 무엇을 위한 준비인지 밝혀요. immediately가 지체 없이를 더해요.
+    decoy: in writing
+    distractorsKo:
+    - 전환 준비는 소독간호사도 돕습니다.
+    - 개복 준비는 기구 세트가 핵심입니다.
+    blank:
+      answer: open
+      options:
+      - en: open
+      - en: robotic
+      - en: hybrid
+      - en: elective
   - en: The console isn't responding to any input.
     ko: 콘솔이 어떤 입력에도 반응하지 않습니다.
     chunks:
@@ -3377,6 +4585,20 @@ situations:
     - w-respond
     - w-input
     goal: 1
+    tag: 콘솔 보고
+    icon: siren
+    why: isn't responding은 지금 반응이 없는 진행 상태를 말하고, any input으로 어떤 조작에도라는 범위를 넓게 잡아요.
+    decoy: to the music
+    distractorsKo:
+    - 콘솔은 집도의가 앉아서 조작합니다.
+    - 콘솔은 로봇 팔을 원격으로 움직입니다.
+    blank:
+      answer: console
+      options:
+      - en: tablet
+      - en: console
+      - en: speaker
+      - en: printer
   - en: Let's release the clamps by hand.
     ko: 클램프를 손으로 풀어냅시다.
     chunks:
@@ -3389,6 +4611,20 @@ situations:
     - w-clamp
     - w-hand
     goal: 1
+    tag: 수동 해제
+    icon: gear
+    why: by hand는 기계 대신 손으로 한다는 뜻이고, release는 눌린 것을 풀어 놓는 동사예요. 로봇이 반응하지 않을 때의 수동 방법이에요.
+    decoy: by phone
+    distractorsKo:
+    - 풀어내기 앞서 장갑을 낍시다.
+    - 수동 해제는 고장 상황용이에요.
+    blank:
+      answer: clamps
+      options:
+      - en: straps
+      - en: wheels
+      - en: clamps
+      - en: drapes
   - en: I'll call the team to start the emergency steps.
     ko: 응급 절차를 시작하도록 팀에 알릴게요.
     chunks:
@@ -3404,6 +4640,42 @@ situations:
     - w-emergency
     - w-step
     goal: 2
+    tag: 팀 호출
+    icon: pager
+    why: call the team to start로 누구를 불러 무엇을 시키는지 한 문장에 담고, the emergency steps로 비상 절차임을 분명히 해요.
+    decoy: the safety forms
+    distractorsKo:
+    - 응급 절차는 순서대로 진행합니다.
+    - 팀을 부르는 일은 소리 내어 하는 편이에요.
+    blank:
+      answer: steps
+      options:
+      - en: forms
+      - en: notes
+      - en: signs
+      - en: steps
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 로봇 고장 긴급 언도킹 4문장 순서
+    why: 고장을 알리고, 그 일로 가장 먼저 팀을 불러 응급 절차를 시작하고, 그 절차로 팔을 언도킹하고, 언도킹하는 동안 개복 전환을 준비하는 순서예요. For that과 those steps와 As we undock이 앞 줄을 가리켜 순서가 하나로 정해져요.
+    lines:
+    - en: The robot has faulted and won't respond.
+      icon: siren
+      ko: 로봇이 고장 나서 반응하지 않아요
+      note: 보고
+    - en: For that, first I'll call the team to start the emergency steps.
+      icon: pager
+      ko: 그래서 먼저 응급 절차를 시작하도록 팀을 부를게요
+      note: 호출
+    - en: For those steps, let's emergency undock all arms now.
+      icon: siren
+      ko: 그 절차로 지금 모든 팔을 응급 언도킹해요
+      note: 언도킹
+    - en: As we undock, prep for open conversion immediately.
+      icon: siren
+      ko: 언도킹하면서 즉시 개복 전환을 준비해요
+      note: 준비
 - title: 피하기종 호흡 위기
   sentences:
   - en: There's crepitus up to the neck.
@@ -3417,6 +4689,20 @@ situations:
     - w-crepitus
     - w-neck
     goal: 1
+    tag: 염발음 보고
+    icon: siren
+    why: There's로 지금 만져지는 것을 알리고, crepitus는 피부 밑 공기에서 나는 뽀드득 감촉을 가리켜요. up to the neck가 퍼진 범위예요.
+    decoy: the ceiling
+    distractorsKo:
+    - 염발음은 손으로 눌러 느낍니다.
+    - 피하기종은 피부 밑이 부풀어요.
+    blank:
+      answer: crepitus
+      options:
+      - en: swelling
+      - en: redness
+      - en: numbness
+      - en: crepitus
   - en: The airway pressures are climbing.
     ko: 기도 압력이 오르고 있습니다.
     chunks:
@@ -3429,6 +4715,20 @@ situations:
     - w-pressure
     - w-climb
     goal: 1
+    tag: 압력 보고
+    icon: monitor
+    why: are climbing은 지금 오르는 중이라는 진행형이고, airway pressures는 환기할 때 기도에 걸리는 압력을 복수로 말해요.
+    decoy: ringing
+    distractorsKo:
+    - 기도 압력은 환기 장치에서 잽니다.
+    - 압력이 높으면 폐에 부담입니다.
+    blank:
+      answer: climbing
+      options:
+      - en: blinking
+      - en: pulsing
+      - en: loading
+      - en: climbing
   - en: Let's release the pneumoperitoneum and support ventilation.
     ko: 복강 내 가스를 해제하고 환기를 지원합시다.
     chunks:
@@ -3442,6 +4742,20 @@ situations:
     - w-support
     - w-ventilation
     goal: 2
+    tag: 가스 해제
+    icon: siren
+    why: release와 support 두 동사를 and로 이어 가스를 빼고 환기를 돕는 두 처치를 함께 말해요. 압력 상승의 원인을 먼저 없애는 순서예요.
+    decoy: and hold the camera
+    distractorsKo:
+    - 복강 내 가스를 빼면 폐가 편해집니다.
+    - 환기 지원은 마취과가 이끌어 갑니다.
+    blank:
+      answer: ventilation
+      options:
+      - en: ventilation
+      - en: circulation
+      - en: hydration
+      - en: nutrition
   - en: I can feel crackling under the skin.
     ko: 피부 밑에서 뿌드득거리는 게 만져집니다.
     chunks:
@@ -3453,6 +4767,20 @@ situations:
     - w-crackle
     - w-skin
     goal: 1
+    tag: 촉진 보고
+    icon: stetho
+    why: I can feel로 손으로 느낀 것을 내 감각으로 보고하고, crackling은 뽀드득 터지는 느낌을 나타내는 낱말이에요.
+    decoy: under the sheet
+    distractorsKo:
+    - 피부 밑 공기는 눌러 보면 느껴집니다.
+    - 피하기종은 목과 가슴으로 번질 수 있습니다.
+    blank:
+      answer: crackling
+      options:
+      - en: crackling
+      - en: warmth
+      - en: throbbing
+      - en: tingling
   - en: Let's tell anesthesia the pressures are rising fast.
     ko: 압력이 빠르게 오르고 있다고 마취과에 알립시다.
     chunks:
@@ -3466,6 +4794,20 @@ situations:
     - w-pressure
     - w-fast
     goal: 1
+    tag: 마취과 보고
+    icon: pager
+    why: tell anesthesia로 알릴 대상을 먼저 밝히고, the pressures are rising fast로 무엇을 알릴지 문장째 담아요.
+    decoy: are in the log
+    distractorsKo:
+    - 마취과는 환기와 기도를 맡아 관리합니다.
+    - 압력이 빠르게 오르면 환기가 어려워집니다.
+    blank:
+      answer: pressures
+      options:
+      - en: pressures
+      - en: alarms
+      - en: lights
+      - en: doors
   - en: We'll deflate slowly and recheck the airway.
     ko: 천천히 가스를 빼고 기도를 다시 확인할게요.
     chunks:
@@ -3479,6 +4821,42 @@ situations:
     - w-recheck
     - w-airway
     goal: 2
+    tag: 감압·재확인
+    icon: check
+    why: deflate slowly로 갑자기가 아니라 천천히 뺀다는 방식을 말하고, and recheck로 뺀 뒤 기도를 다시 확인한다고 이어요.
+    decoy: the schedule
+    distractorsKo:
+    - 가스를 천천히 빼면 순환이 안정됩니다.
+    - 기도 확인은 호흡음과 수치로 봅니다.
+    blank:
+      answer: airway
+      options:
+      - en: tubing
+      - en: monitor
+      - en: airway
+      - en: chart
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 피하기종 호흡 위기 4문장 순서
+    why: 염발음이 목까지 퍼진 것을 알리고, 거기에 기도 압력이 오른다고 더하고, 압력이 오르니 가스를 빼고 환기를 지원하고, 그다음 천천히 빼며 기도를 다시 확인하는 순서예요. On top of that과 After that이 앞 줄을 가리켜 순서가 하나로 정해져요.
+    lines:
+    - en: There's crepitus up to the neck.
+      icon: siren
+      ko: 목까지 염발음이 퍼지고 있어요
+      note: 보고
+    - en: On top of that, the airway pressures are climbing.
+      icon: monitor
+      ko: 게다가 기도 압력이 오르고 있어요
+      note: 압력
+    - en: With pressures climbing, let's release the pneumoperitoneum and support ventilation.
+      icon: siren
+      ko: 압력이 오르니 가스를 빼고 환기를 지원해요
+      note: 해제
+    - en: After that, we'll deflate slowly and recheck the airway.
+      icon: check
+      ko: 그다음 천천히 빼며 기도를 다시 확인해요
+      note: 재확인
 - title: 시야 상실 대량 출혈
   sentences:
   - en: We've lost the view—the field is full of blood.
@@ -3496,6 +4874,20 @@ situations:
     - w-full
     - w-blood
     goal: 1
+    tag: 시야 상실
+    icon: siren
+    why: We've lost로 이미 잃은 결과를 알리고, 대시 뒤에 이유를 이어 시야를 잃은 까닭이 출혈이라고 한 호흡에 전해요.
+    decoy: of tape
+    distractorsKo:
+    - 시야를 잃으면 영상이 온통 붉게 보입니다.
+    - 복강경 시야는 렌즈로만 확보합니다.
+    blank:
+      answer: lost
+      options:
+      - en: found
+      - en: kept
+      - en: moved
+      - en: lost
   - en: Let's apply pressure and prepare to convert.
     ko: 압박을 가하고 전환을 준비합시다.
     chunks:
@@ -3509,6 +4901,20 @@ situations:
     - w-prepare
     - w-convert
     goal: 2
+    tag: 압박·전환 준비
+    icon: bandage
+    why: apply와 prepare 두 동사를 and로 이어 지혈과 전환 준비를 함께 말하고, to convert로 준비의 목적을 밝혀요.
+    decoy: to document
+    distractorsKo:
+    - 압박을 가하기 앞서 장갑을 낍시다.
+    - 전환 준비에는 기구가 필요합니다.
+    blank:
+      answer: convert
+      options:
+      - en: document
+      - en: relocate
+      - en: restart
+      - en: convert
   - en: Suction and get more units in the room.
     ko: 흡인하고 방에 혈액 팩을 더 들여오세요.
     chunks:
@@ -3521,6 +4927,20 @@ situations:
     - w-unit
     - w-room
     goal: 2
+    tag: 흡인·혈액
+    icon: siren
+    why: Suction을 동사로 써서 바로 시작하는 명령이고, units는 수혈용 혈액 팩 단위를 줄여 부르는 현장 말이에요.
+    decoy: with a label
+    distractorsKo:
+    - 혈액 팩은 혈액은행에서 받아 옵니다.
+    - 흡인은 시야를 가리는 피를 뺍니다.
+    blank:
+      answer: units
+      options:
+      - en: tools
+      - en: gowns
+      - en: units
+      - en: masks
   - en: Let's get two more units on the way.
     ko: 혈액 팩 두 개를 더 오는 중으로 합시다.
     chunks:
@@ -3531,6 +4951,20 @@ situations:
     words:
     - w-unit
     goal: 2
+    tag: 혈액 추가
+    icon: pill
+    why: get A on the way는 A가 오는 중이 되게 한다는 틀이고, two more units로 지금 필요한 양을 숫자로 못 박아요.
+    decoy: in the fridge
+    distractorsKo:
+    - 혈액 팩은 교차적합 뒤에 보냅니다.
+    - 대량 출혈에는 혈액 팩이 계속 쓰입니다.
+    blank:
+      answer: way
+      options:
+      - en: floor
+      - en: desk
+      - en: wall
+      - en: way
   - en: I'll pack the area and hold pressure.
     ko: 부위를 패킹하고 압박을 유지할게요.
     chunks:
@@ -3544,6 +4978,20 @@ situations:
     - w-hold
     - w-pressure
     goal: 2
+    tag: 패킹·압박
+    icon: bandage
+    why: pack과 hold 두 동사를 and로 이어 채워 넣고 눌러 유지하는 두 동작을 말해요. hold pressure는 계속 눌러 둔다는 뜻이에요.
+    decoy: the bag
+    distractorsKo:
+    - 패킹은 거즈로 부위를 채웁니다.
+    - 압박을 유지하면 출혈이 줄어듭니다.
+    blank:
+      answer: pack
+      options:
+      - en: pour
+      - en: pack
+      - en: paint
+      - en: wash
   - en: We need the surgeon back at the table now.
     ko: 지금 집도의가 다시 테이블로 와야 합니다.
     chunks:
@@ -3557,3 +5005,39 @@ situations:
     - w-surgeon
     - w-table
     goal: 2
+    tag: 집도의 호출
+    icon: pager
+    why: need A back은 A가 다시 와야 한다는 틀이고, at the table로 어디로 와야 하는지, now로 급하다는 시점을 붙여요.
+    decoy: at the door
+    distractorsKo:
+    - 수술은 집도의가 이끄는 팀 작업입니다.
+    - 위급 때는 집도의 판단이 우선입니다.
+    blank:
+      answer: table
+      options:
+      - en: desk
+      - en: table
+      - en: sink
+      - en: scale
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 시야 상실 대량 출혈 4문장 순서
+    why: 시야를 잃었다고 알리고, 그러니 집도의를 부르고, 그가 올 때를 대비해 압박하며 전환을 준비하고, 압박이 걸린 채로 흡인하며 혈액 팩을 더 들이는 순서예요. 각 줄이 앞 줄을 가리켜 순서가 하나로 정해져요.
+    lines:
+    - en: We've lost the view—the field is full of blood.
+      icon: siren
+      ko: 시야를 잃었어요 — 필드가 피로 가득해요
+      note: 보고
+    - en: With the view gone, we need the surgeon back at the table now.
+      icon: pager
+      ko: 시야가 없으니 집도의가 지금 와야 해요
+      note: 호출
+    - en: For when he's back, let's apply pressure and prepare to convert.
+      icon: bandage
+      ko: 그가 오면 대비해 압박하고 전환을 준비해요
+      note: 준비
+    - en: With pressure on, suction and get more units in the room.
+      icon: siren
+      ko: 압박한 채 흡인하고 혈액 팩을 더 들여요
+      note: 흡인
