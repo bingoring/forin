@@ -1,0 +1,58 @@
+# 단어 수정 데이터 — A 검토 W1~W13, W15.
+dEn:   # [id, 옛 오답, 새 오답]
+  - [w-container, canister, contaminant]
+  - [w-kit, tray, cot]
+  - [w-check, cheek, chalk]
+  - [w-wait, weight, wade]
+  - [w-touch, torch, tuck]
+  - [w-date, dare, gate]
+  - [w-right, eight, height]
+dKo:
+  - [w-section, 절개, 도말]
+  - [w-section, 봉합, 염색]
+  - [w-run, 느리게 걷다, 보관해 두다]
+  - [w-run, 쉬러 가다, 전화로 알리다]
+  - [w-formalin, 진통제, 조영제]
+decoyChips:
+  - [w-appendix, pan, pond]
+  - [w-appendix, dice, ex]
+  - [w-protocol, pot, pat]
+  - [w-report, pot, part]
+  - [w-compress, come, comb]
+  - [w-collect, lick, lock]
+set:
+  w-appendix:
+    chips: [[ap, pend, ix]]
+  w-positive:
+    chips: [[po, si, tive]]
+  w-frozen:
+    ko: 냉동절편용의
+  w-identify:
+    ko: 식별하다
+    cue: 라벨 없는 용기를 앞에 두고 그것이 무엇이고 누구 것인지 알아내 분명히 하는 일
+  w-label:
+    example: I'll add the date and time on the label.
+  w-media:
+    cue: 검체를 살아 있는 상태로 담아 보내는 특수 용액이나 배양 바탕 — 검사마다 정해진 것을 쓴다
+  w-log:
+    cue: 검체를 넘길 때 받은 사람과 시각을 인계 기록부에 한 줄 올려 두는 일 — 그 기록부도 같은 말로 부른다
+  w-carry:
+    example: I'll find someone to carry it to the lab now.
+whyChanges:
+  w-section: "section의 다른 뜻(제왕절개·절단)이라 정답 둘 — 오답 ko를 도말·염색으로 (A W1)"
+  w-container: "canister는 '통·용기'라 정답 둘 — contaminant로 (A W2)"
+  w-kit: "tray는 cue(도구 한 묶음)에 그대로 맞아 정답 둘 — cot로 (A W3)"
+  w-appendix: "dix가 비속어 발음 조각 — [ap, pend, ix] (A W4)"
+  w-frozen: "문장 6개가 모두 냉동절편의 뜻 — ko 냉동된을 냉동절편용의로 (A W5)"
+  w-identify: "KP 15.2의 it은 검체 — 신원이 아니라 식별 (A W6)"
+  w-label: "example이 동사 문장 — 명사 문장(0.2)으로 (A W8)"
+  w-media: "특수 검체용 배지는 대개 액체 — 젤리 같은 바탕 표현을 뺌 (A W10)"
+  w-log: "cue가 ko(일지에 적다)를 되풀이 — 인계 기록부 설명으로 (A W13)"
+  w-carry: "7.4가 수술 중 직접 운반을 약속하는 말이라 바뀜 — example도 새 문장으로 (A S5·W15)"
+  w-positive: "정답 조각 pos가 비속어 약어 — [po, si, tive] (A W9)"
+  w-run: "'달리다'의 반대를 그대로 쓴 오답 — 보관해 두다·전화로 알리다 (A W11)"
+  w-formalin: "진통제는 분야 밖 — 소독약·조영제 (A W12)"
+  w-protocol: "decoyChips pot가 마리화나 속어 — pat (A W9)"
+  w-report: "decoyChips pot가 마리화나 속어 — part (A W9)"
+  w-compress: "decoyChips come이 성적 속어로도 쓰임 — comb (A W9)"
+  w-collect: "decoyChips lick — lock (A W9)"

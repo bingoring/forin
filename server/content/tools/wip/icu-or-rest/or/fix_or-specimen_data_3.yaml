@@ -1,0 +1,203 @@
+# 뉘앙스 수정 데이터 — 키 "상황:kind". 있는 필드만 덮어쓴다.
+# scene_set {인덱스: {필드}} = context 장면 일부, scale_set = slider scale 일부, rename = swap 보기 문자열 바꾸기(options·before·answer·notes 키가 따라온다),
+# notes_set = 새 키의 해설, bad = 어색한 장면의 위치(검증용).
+nuance:
+  # ---------- pair ----------
+  "1:pair":      # N2
+    words: [w-read, w-say, w-write, w-confirm]
+    pairs: [[out, loud], [word for, word], [write it, down]]
+    decoys: [a label]
+    why: "'out loud(소리 내어)', 'word for word(한 마디도 빼지 않고)', 'write it down(받아 적다)'는 서로 바꿔 끼울 수 없는 굳은 짝이에요. 검체 이름은 소리 내어 읽고, 한 마디도 빼지 않고 받아 적어요."
+  "9:pair":      # N1 정답 둘 해소
+    words: [w-label, w-specimen, w-confirm, w-container]
+    pairs: [[one at, a time], [in its own, container], [as soon, as it's out]]
+    decoys: [on the field]
+    why: "'one at a time(하나씩)', 'in its own container(자기 용기에 따로)', 'as soon as(~하자마자)'는 서로 바꿔 끼울 수 없는 굳은 짝이에요. 검체가 여러 개일 때는 나오자마자 하나씩, 각자 자기 용기에 라벨을 붙여요."
+  # ---------- slider ----------
+  "2:slider":    # N11
+    scale: ["Maybe formalin? I'm not really sure.", "It goes in formalin, as the requisition says.", "Formalin, always — every specimen goes in formalin."]
+    answerAt: 1
+    why: 요청서가 일반 병리라고 하면 포르말린이에요. 망설이면 집도의가 다시 확인해야 하고, '모든 검체는 포르말린'이라고 단정하면 냉동절편·배양·특수 검사용 검체를 망쳐요.
+  "4:slider":    # N11
+    scale: ["I'll send it once we're closing.", "It goes fresh with no fixative, straight to pathology.", "I'll leave the room and run it down myself right now."]
+    answerAt: 1
+    why: 냉동절편은 수술 중 결과를 기다리는 검사라서 고정액에 담그지 않고 신선한 상태로 곧바로 병리과에 보내요. 수술이 끝날 때까지 두면 집도의가 결과를 기다리지 못하고, 순환간호사가 방을 비우고 직접 뛰어가면 수술방에 사람이 비어요. 이송은 정해진 사람에게 맡겨요.
+  "6:slider":    # N10
+    scale: ["It's probably a typo, so I'll send it.", "I'm holding it until we sort this out.", "I'll just reprint it to match the requisition."]
+    answerAt: 1
+    why: 라벨과 요청서가 한 글자라도 다르면 보내지 않고 멈춰서 바로잡아요. 오타일 거라 넘기면 다른 환자의 결과와 섞일 수 있고, 요청서에 맞춰 혼자 라벨을 다시 뽑으면 어느 쪽이 맞는지 확인되지 않아요.
+  "7:slider":    # N7
+    scale_set: {1: "I'm sending it to pathology right now."}
+    why: 냉동절편은 수술 중 결과를 기다리는 검체라 미루지 않고 바로 병리과로 보내요. 짬이 날 때로 미루면 집도의가 기다리고, 아무에게나 넘기면 누가 가져갔는지 알 수 없어요.
+  "8:slider":    # N8·N10
+    cue: The surgeon asks for a culture. As you open the swab, its tip brushes the outside of the wrapper.
+    scale: ["It's only the wrapper, so I'll use it as it is.", "I'll just wipe the tip off and use it.", "I'll open a new sterile swab and redo it."]
+    answerAt: 2
+  "10:slider":   # N14
+    why: 방향을 표시한 봉합사는 병리과가 절제연의 방향을 알아보는 중요한 표지라서 자르지 않고 두라고 말해요. 모른 척 두거나 자르면 방향 정보가 사라져요.
+  "11:slider":   # N10
+    scale: ["A few bits, and the lab can count them.", "Several small pieces, sizes aren't needed.", "Three pieces, with each size on the form."]
+    answerAt: 2
+  "13:slider":   # N11
+    scale: ["I'll carry it flat and keep it steady.", "I'll stop at every corner so it never tilts.", "I'll wrap it tight in gauze so it can't move."]
+    answerAt: 0
+    why: 평평하고 흔들림 없이 옮기면 충분해요. 모퉁이마다 멈추면 늦어지고, 거즈로 꽁꽁 싸면 그 자체가 조직을 눌러요.
+  "14:slider":   # N11
+    scale: ["Hmm, okay — I'll send it as is.", "I'll resolve that with you before sending.", "I'll just change the requisition myself to match."]
+    answerAt: 1
+    why: 그대로 보내면 잘못된 부위로 진단이 나가고, 혼자 요청서를 고치면 어느 쪽이 맞는지 확인되지 않아요. 보내기 전에 집도의와 함께 바로잡아요.
+  "16:slider":   # N11·N15
+    cue: Two specimens were passed off the field, and you can find only one.
+    scale: ["I'll chalk it up to a counting mistake.", "I'll look for it quietly once the case is over.", "I'm stopping to search and tell the surgeon."]
+    answerAt: 2
+  "17:slider":   # N10
+    scale: ["I'll prepare nothing until the result is final.", "I'll wait to see if the surgeon asks again.", "I'll get set up for a wider resection now."]
+    answerAt: 2
+  "18:slider":   # N9
+    cue: "A culture sample just touched the circulator's counter, which is not sterile."
+    why: 무균이 아닌 곳에 닿은 시료는 오염된 것이라 집도의에게 알리고 새 키트를 준비해요. 다시 채취할지는 집도의가 정해요. 잠깐이라며 보내거나 씻어서 쓰면 균 배양 결과를 믿을 수 없어요.
+  "19:slider":   # N11
+    scale: ["I'll just cross out the name and write ours in.", "I'm stopping to recheck the patient's identity.", "I'll throw the specimen out and start fresh."]
+    answerAt: 1
+    why: 이름을 고쳐 쓰면 검체의 출처를 보증할 수 없고, 검체를 버리면 다시 얻지 못할 수 있어요. 멈추고 신원을 다시 확인한 뒤 기관 절차(집도의·병리과 알림, 사건 보고)를 따라요.
+  "20:slider":   # N11
+    scale: ["I'll hand it to whoever is walking past.", "I'll have it signed for and confirm it arrived.", "I'll leave the case and walk it down myself."]
+    answerAt: 1
+    why: 다시 얻을 수 없는 검체는 인계마다 서명을 남기고 도착을 확인해요. 지나가는 사람에게 넘기면 사라져도 어디서 놓쳤는지 알 수 없고, 수술 중에 교대 없이 방을 비우고 직접 가면 수술방에 사람이 비어요.
+  # ---------- swap ----------
+  "6:swap":      # N5
+    rename:
+      "The label doesn't match the requisition, so I'll fix it first.": "The label doesn't match the requisition, so let's verify it before I fix it."
+    notes_set:
+      "The label doesn't match the requisition, so let's verify it before I fix it.": 다른 점을 말하고 확인한 뒤 바로잡는 올바른 순서예요.
+    ko: 라벨이 요청서와 일치하지 않으니 고치기 전에 함께 확인해요
+    why: 라벨과 요청서가 다르면 어느 쪽이 맞는지 확인한 뒤에 바로잡아요. 비슷하다고 넘기거나 병리과에 미루지 않아요.
+  "7:swap":      # N12
+    ko: 집도의가 이 냉동절편 결과를 기다리고 있으니 수술방으로 전화해 주세요
+    why: 냉동절편은 집도의가 기다린다는 점을 분명히 하며 나오는 대로 수술방으로 알려 달라고 부탁해요. 아무 때나, 하루 끝에 알려 달라는 말이 아니에요.
+  "8:swap":      # N8
+    rename:
+      "The tip touched the drape, but it's fine to use.": "The tip touched the wrapper, but it's fine to use."
+      "The tip touched the drape, so I'm opening a new sterile swab.": "The tip touched the wrapper, so I'm opening a new sterile swab."
+    ko: 끝이 포장지 바깥에 닿아서 새 무균 면봉을 열게요
+  "14:swap":     # N4
+    rename:
+      "The site doesn't match, so I'll fix it before sending.": "The site doesn't match, so let's resolve it before sending."
+    notes_set:
+      "The site doesn't match, so let's resolve it before sending.": 다른 점을 말하고 집도의와 함께 바로잡는 올바른 순서예요.
+    ko: 부위가 일치하지 않으니 보내기 전에 함께 바로잡아요
+    why: 부위가 요청서와 다르면 보내기 전에 집도의와 함께 바로잡아요. 비슷하다며 보내거나 병리과의 눈에 맡기지 않아요.
+  "15:swap":     # N6
+    who: 간호사 → 동료 간호사 · 라벨 없는 용기
+  "17:swap":     # N13
+    why: 양성 결과를 받으면 집도의의 결정을 전하고 추가 준비로 이어가요. 마무리하거나 준비를 그대로 두지 않아요.
+  "18:swap":     # N3
+    who: 간호사 → 동료 간호사 · 시료 오염
+    rename:
+      "It touched the table, so I'll tell the surgeon and recollect.": "It touched the counter, so I'll tell the surgeon and open a new kit."
+      "It touched the table, but the sample is probably fine.": "It touched the counter, but the sample is probably fine."
+      "It touched the table, so the lab can decide later.": "It touched the counter, so the lab can decide later."
+    notes_set:
+      "It touched the counter, so I'll tell the surgeon and open a new kit.": 사실을 알리고 새 키트를 준비하는 올바른 대응이에요.
+    ko: 카운터에 닿아서 집도의에게 알리고 새 키트를 열게요
+    why: 오염된 시료는 집도의에게 알리고 새 키트를 준비해요. 다시 채취할지는 집도의가 정해요.
+  # ---------- context ----------
+  "0:context":   # C0
+    ko: 라벨(붙이다)
+    bad: 2
+    scene_set:
+      2: {who: 간호사 → 이송 담당자, icon: pager, en: "Label verified: two identifiers, site and laterality concordant.", fix: "It's labeled and checked — please take it straight to pathology."}
+    why: 뜻은 셋 다 '라벨'이에요. 집도의에게는 지금 붙이고 있다고 짧게 말하고, 차트에는 식별자와 이송을 건조하게 적어요. 하지만 이송 담당자에게 'Label verified…' 같은 차트 말은 무엇을 하라는지 알려 주지 못해요. 라벨했고 확인했으니 곧바로 병리과로 가져가 달라고 말해요.
+  "1:context":   # C1
+    bad: 0
+    scene_set:
+      0: {who: 간호사 → 보호자, icon: faceWorried, en: The appendix specimen was verbally confirmed and sent for histopathology., fix: "Her appendix is out, and we've sent it to the lab to be checked."}
+    why: 뜻은 셋 다 '맹장(충수)'이에요. 집도의에게는 맹장이 맞는지 묻고, 차트에는 누구와 확인했는지 적어요. 하지만 보호자에게 'verbally confirmed'·'histopathology' 같은 차트 말은 낯설고 차가워요. 수술에서 떼어 낸 맹장을 검사실로 보내 살펴본다고 쉽게 말해요.
+  "2:context":   # C2
+    bad: 1
+    scene_set:
+      1: {en: "So I just popped the gallbladder in formalin and sent it off!"}
+    why: 뜻은 셋 다 '포르말린'이에요. 동료와 병리 쪽에는 무엇이 어디에 들었는지 짧고 분명하게 말해요. 하지만 차트에 '그냥 포르말린에 넣고 보냈다!'처럼 구어와 감탄으로 쓰면 기록 문체가 아니에요. 차트에는 무엇을 어디에 담아 보냈는지 건조하게 적어요.
+  "3:context":   # C3
+    bad: 2
+    scene_set:
+      2: {en: "Did the handoff to the courier — he signed, all good!"}
+    why: 뜻은 셋 다 '인계'예요. 동료와 병리 쪽에는 몇 개를 언제 넘겼는지 분명히 말해요. 하지만 차트에 '서명받았고 다 됐어요!'처럼 구어를 쓰면 기록으로 부족해요. 차트에는 몇 개를 누구에게 언제 넘겼고 서명을 받았는지 적어요.
+  "4:context":   # C4 ★
+    ko: 냉동절편
+    bad: 0
+    scene_set:
+      0: {who: 간호사 → 보호자, icon: faceWorried, en: His tissue went for frozen section during the case., fix: We sent a small piece of tissue to the lab for a quick check during surgery.}
+    why: 뜻은 셋 다 '냉동절편'이에요. 집도의에게는 지금 가는 중이라고 짧게 알리고, 차트에는 신선한 채로 언제 보냈는지 적어요. 하지만 보호자에게 'frozen section'은 조직을 얼린다는 말로 들려 헷갈려요. 수술 중에 작은 조직을 검사실로 보내 빨리 살펴본다고 풀어 말해요.
+  "5:context":   # C5
+    bad: 1
+    scene_set:
+      1: {en: "Got the orientation from the surgeon — short one's up top, long one's on the side!"}
+    why: 뜻은 셋 다 '방향'이에요. 집도의에게는 방향을 말해 달라고 요청하고, 병리 쪽에는 봉합사와 요청서로 표시했다고 전해요. 하지만 차트에 '짧은 게 위쪽이래요!'처럼 구어와 감탄을 쓰면 기록 문체가 아니에요. 집도의가 말한 대로 어느 봉합사가 어느 방향인지 건조하게 적어요.
+  "6:context":   # C6
+    bad: 2
+    scene_set:
+      2: {who: 간호사 → 이송 담당자, icon: pager, en: "Label–requisition discrepancy on the first name; specimen pending reconciliation.", fix: "Please don't take this one yet — the label needs fixing first."}
+    why: 뜻은 셋 다 '라벨'이에요. 동료에게는 라벨이 요청서와 다르다고 바로 알리고, 차트에는 발견하고 멈추고 정정했다고 적어요. 하지만 이송 담당자에게 'discrepancy'·'pending reconciliation' 같은 차트 말은 무엇을 하라는지 알려 주지 못해요. 아직 가져가지 말라고 분명히 말해요.
+  "8:context":   # N8·C8
+    bad: 1
+    scene_set:
+      0: {en: "The swab touched the outside of the wrapper, so it is no longer sterile."}
+      1: {who: 간호사 → 깨어 있는 환자, icon: me, en: "Sterile technique was breached, so the culture swab is compromised.", fix: "I'm just opening a new swab to keep everything clean."}
+    why: 뜻은 셋 다 '무균'이에요. 집도의에게는 무균이 깨졌다고 짧게 알리고, 차트에는 무균 면봉으로 채취해 보냈다고 적어요. 하지만 깨어 있는 환자에게 'breached'·'compromised' 같은 말은 겁을 줘요. 새 면봉을 열어 깨끗하게 하겠다고 편하게 말해요.
+  "9:context":   # C9
+    bad: 2
+    scene_set:
+      2: {who: 간호사 → 보호자, icon: faceWorried, en: "Bilateral specimens, A left and B right, are en route to pathology.", fix: "We've sent both samples, one from each side, to the lab."}
+    why: 뜻은 셋 다 '검체'예요. 동료에게는 섞이지 않게 하자고 짧게 말하고, 차트에는 각각 따로 라벨했다고 적어요. 하지만 보호자에게 'bilateral'·'en route' 같은 말은 차가운 전문어예요. 양쪽에서 하나씩 떼어 검사실로 보냈다고 쉽게 말해요.
+  "10:context":  # C10
+    bad: 0
+    scene_set:
+      0: {who: 간호사 → 깨어 있는 환자, icon: me, en: Your margins are marked so pathology can check for residual tumor., fix: The surgeon marked the tissue so the lab can look at it carefully.}
+    why: 뜻은 셋 다 '절제연'이에요. 집도의에게는 어느 땀이 어느 절제연인지 묻고, 차트에는 집도의 설명대로 표시하고 요청서에 적었다고 기록해요. 하지만 깨어 있는 환자에게 'residual tumor' 같은 말은 결과를 단정하듯 들려 겁을 줘요. 집도의가 조직에 표시해 검사실이 꼼꼼히 본다고 편하게 말해요.
+  "11:context":  # C11
+    bad: 1
+    scene_set:
+      1: {who: 간호사 → 보호자, icon: faceWorried, en: Three fragments were submitted in toto for histologic evaluation., fix: We sent three small pieces of tissue to the lab.}
+    why: 뜻은 셋 다 '단편'이에요. 동료에게는 밀봉하기 전에 수를 확인하자고 말하고, 차트에는 몇 단편을 서식에 기록했는지 적어요. 하지만 보호자에게 'in toto'·'histologic' 같은 말은 못 알아들어요. 작은 조직 세 조각을 검사실로 보냈다고 쉽게 말해요.
+  "12:context":  # C12
+    bad: 2
+    scene_set:
+      2: {who: 간호사 → 보호자, icon: faceWorried, en: Her specimen requires special handling per lab protocol., fix: "The lab has special steps for her sample, and we're following them."}
+    why: 뜻은 셋 다 '지침'이에요. 동료에게는 먼저 지침을 확인하겠다고 말하고, 차트에는 지침대로 처리해 전달했다고 적어요. 하지만 보호자에게 'per lab protocol'은 딱딱하게 들려요. 검사실의 특별한 절차를 따르고 있다고 쉽게 말해요.
+  "13:context":  # C13
+    bad: 0
+    scene_set:
+      0: {en: "Oops, the specimen got a little crushed on the way — told the surgeon and pathology!"}
+    why: 뜻은 셋 다 '으스러뜨리다'예요. 이송 담당자에게는 누르지 말고 평평하게 들라고 하고, 동료에게는 눌리지 않을 용기를 고르자고 말해요. 하지만 차트에 '앗, 조금 눌렸어요!'처럼 감탄과 구어를 쓰면 사고 기록이 되지 않아요. 무슨 일이 있었고 누구에게 알렸는지 건조하게 적어요.
+  "14:context":  # C14
+    bad: 1
+    scene_set:
+      1: {who: 간호사 → 이송 담당자, icon: pager, en: "Site: left breast; laterality concordant with the requisition, verified.", fix: "It's checked and ready — please take it to pathology now."}
+    why: 뜻은 셋 다 '부위'예요. 집도의에게는 보내기 전에 부위와 쪽을 확인하자고 하고, 차트에는 요청서와 대조해 확인했다고 적어요. 하지만 이송 담당자에게 'laterality concordant' 같은 차트 말은 무엇을 하라는지 알려 주지 못해요. 확인했고 준비됐으니 지금 병리과로 가져가 달라고 말해요.
+  "15:context":  # C15
+    bad: 2
+    scene_set:
+      2: {who: 간호사 → 이송 담당자, icon: pager, en: "Unlabeled container — specimen identification pending surgeon verification.", fix: "Please don't take this one — it isn't labeled yet."}
+    why: 뜻은 셋 다 '라벨이 없는'이에요. 동료에게는 라벨 없는 용기가 있다고 알리고, 차트에는 검체를 보류하고 집도의에게 알렸다고 적어요. 하지만 이송 담당자에게 'identification pending surgeon verification' 같은 차트 말은 무엇을 하라는지 알려 주지 못해요. 라벨이 아직 없으니 가져가지 말라고 분명히 말해요.
+  "16:context":  # C16·N16
+    bad: 0
+    scene_set:
+      0: {who: 간호사 → 이송 담당자, icon: pager, en: "Specimen unaccounted for; sterile field search in progress.", fix: "We're still looking for one sample — please wait here a moment."}
+      1: {en: "We're searching the field and the containers for the missing one."}
+    why: 뜻은 셋 다 '수술 시야'예요. 집도의에게는 수술 시야와 용기를 찾고 있다고 알리고, 차트에는 어디를 찾았고 누구에게 알렸는지 적어요. 하지만 이송 담당자에게 'unaccounted for'·'sterile field search in progress'는 무엇을 하라는지 알려 주지 못해요. 아직 한 개를 찾고 있으니 잠깐 기다려 달라고 분명히 말해요.
+  "18:context":  # C18
+    bad: 2
+    scene_set:
+      2: {who: 간호사 → 깨어 있는 환자, icon: me, en: The culture contacted a non-sterile surface and is contaminated., fix: "We're taking a fresh sample so the result is accurate."}
+    why: 뜻은 셋 다 '표면'이에요. 집도의에게는 무균이 아닌 표면에 닿았다고 알리고, 차트에는 닿은 사실과 재채취를 적어요. 하지만 깨어 있는 환자에게 'contaminated' 같은 말은 불안을 줘요. 결과가 정확하도록 새로 채취한다고 편하게 말해요.
+  "19:context":  # C19
+    bad: 0
+    scene_set:
+      0: {who: 간호사 → 이송 담당자, icon: pager, en: Identity discrepancy on the label — specimen on hold pending re-verification., fix: "Please wait — this label needs fixing before it goes."}
+    why: 뜻은 셋 다 '신원'이에요. 집도의에게는 다시 라벨하기 전에 확인하자고 하고, 차트에는 오류를 발견하고 신원을 다시 확인해 보고했다고 적어요. 하지만 이송 담당자에게 'identity discrepancy'·'pending re-verification' 같은 차트 말은 무엇을 하라는지 알려 주지 못해요. 라벨을 먼저 고쳐야 하니 기다려 달라고 분명히 말해요.
+  "20:context":  # C20
+    bad: 1
+    scene_set:
+      1: {en: "Log the chain-of-custody transfer with a timestamp and receiver attestation."}
+    why: 뜻은 셋 다 '일지에 적다'예요. 동료에게는 방을 나가기 전에 적겠다고 알리고, 차트에는 시간과 이름과 서명을 적었다고 기록해요. 하지만 이송 담당자에게 'chain-of-custody'·'attestation' 같은 말은 지나치게 딱딱해 무엇을 할지 흐려요. 인계 기록지에 이름과 시간을 적고 서명하라고 쉽게 말해요.
