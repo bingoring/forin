@@ -1,0 +1,145 @@
+"이송·인계 중 안전 확인":
+  - kind: slider
+    words: [w-oxygen, w-battery]
+    cue: "Nurse: \"The tank and battery will last through the scan and the trip back, with extra to spare.\""
+    scale: [barely enough, enough, a safe margin]
+    answerAt: 2
+    why: "이송 전에는 예상 시간만큼이 아니라 여유분까지 포함해 산소와 배터리를 확인해요. 지연이 생길 수 있어서 병원 지침도 대개 여유분을 요구해요."
+    example: "We need a safe margin of oxygen for transport."
+    exKo: "이송에는 산소 여유분이 필요해요."
+  - kind: context
+    words: [w-checklist]
+    word: checklist
+    ko: 점검표
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Let's run the transport checklist before we leave the unit.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Transport checklist completed; airway, drips, and monitor confirmed.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We're completing a pre-transport checklist per hospital protocol, including a battery and FiO2 audit.", ok: false, fix: "Before we take him down for his scan, we go through a list to be sure he has everything he needs."}
+    why: "가족에게는 무엇을 왜 확인하는지 쉬운 말로 설명해요. FiO2 audit 같은 용어는 안심시키기보다 낯설게 들려요."
+"사건 보고·학습 문화":
+  - kind: slider
+    words: [w-nearmiss, w-harm]
+    cue: "Nurse: \"I caught the wrong dose at the scan — it never reached the patient.\""
+    scale: [near-miss, error without harm, error with harm]
+    answerAt: 0
+    why: "near-miss는 환자에게 닿기 전에 잡아낸 것이에요. 닿았지만 해가 없으면 error without harm, 해가 생기면 error with harm으로 나눠요. 모두 보고하고 배우는 대상이에요."
+    example: "That was a near-miss, so we still report it."
+    exKo: "그건 아차 사고지만 그래도 보고해요."
+  - kind: context
+    words: [w-report]
+    word: report
+    ko: 보고하다
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "I'll report it as a near-miss, because that's how we learn.", ok: true}
+      - {who: 관리자에게, icon: board, en: "I'm filing a report on this near-miss with the details I have.", ok: true}
+      - {who: 환자에게, icon: me, en: "A report has been filed regarding the sentinel event involving your infusion.", ok: false, fix: "We wrote down exactly what happened so we can make care safer, and your doctor will talk with you."}
+    why: "환자에게는 보고한 이유를 쉬운 말로 알려요. sentinel event 같은 용어는 겁만 주고 정보가 되지 않아요."
+"라인·튜브 치명적 오류 대응":
+  - kind: slider
+    words: [w-immediate]
+    cue: "Nurse: \"Stop the infusion and disconnect it at once.\""
+    scale: [later, soon, immediately]
+    answerAt: 2
+    why: "잘못 연결된 주입은 원인을 따지기 전에 즉시 멈추고 분리해요. 환자 상태를 사정하고 담당 의사에게 알리는 일도 이어서 바로 해요."
+    example: "Stop it immediately."
+    exKo: "즉시 멈추세요."
+  - kind: context
+    words: [w-stop]
+    word: stop
+    ko: 멈추다
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Stop the infusion now and disconnect it from the patient.", ok: true}
+      - {who: 의사에게, icon: monitor, en: "I stopped the infusion after a line mix-up and I'm assessing him now.", ok: true}
+      - {who: 가족에게, icon: me, en: "I've stopped the infusion and disconnected the cross-connected lumen.", ok: false, fix: "We've stopped the medicine that was running by mistake, and we're checking him closely while the doctor is called."}
+    why: "가족에게는 무슨 일이 있었고 지금 무엇을 하는지 쉬운 말로 설명해요. lumen이나 cross-connected는 어려운 용어예요."
+"고위험약 용량사고 위기":
+  - kind: slider
+    words: [w-dose, w-order]
+    cue: "Nurse, to the charge nurse: \"He received ten times the ordered heparin dose.\""
+    scale: [a minor issue, a medication error, a total disaster]
+    answerAt: 1
+    why: "보고할 때는 '사소한 일'이나 '재앙' 같은 감정어보다 사실과 중립적인 용어를 써요. 어떤 약을 얼마나, 언제 받았는지 쓰고 medication error라고 부르세요."
+    example: "This is a medication error."
+    exKo: "이건 투약 오류예요."
+  - kind: context
+    words: [w-document]
+    word: document
+    ko: 기록하다
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Document the time you stopped the drip and who you notified.", ok: true}
+      - {who: 안전 담당자에게, icon: board, en: "I documented the heparin dose, the rate, and when I stopped the drip.", ok: true}
+      - {who: 보호자에게, icon: me, en: "The supratherapeutic heparin exposure has been documented in the incident report.", ok: false, fix: "We've written down exactly what happened, and the doctor will go over it with you."}
+    why: "가족에게는 무엇을 했는지 쉬운 말로 알려요. supratherapeutic 같은 용어는 정확하지만 가족에게는 의미가 없어요."
+"억제대 관련 질식·손상 위기":
+  - kind: slider
+    words: [w-tight, w-restraint]
+    cue: "Nurse: \"The strap is cutting into his chest and he can't breathe deeply.\""
+    scale: [loose, snug, too tight]
+    answerAt: 2
+    why: "억제대는 풀리지 않을 만큼 단단하되 호흡과 순환을 막으면 안 돼요. 가슴을 조이면 숨쉬기 어려우니 바로 풀고 기도와 호흡을 확인해요."
+    example: "The restraint is too tight across his chest."
+    exKo: "억제대가 가슴을 너무 조여요."
+  - kind: context
+    words: [w-release]
+    word: release
+    ko: 풀어주다
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Release the restraint now and reposition him.", ok: true}
+      - {who: 의사에게, icon: monitor, en: "I released the restraint after he slid down; his airway is clear.", ok: true}
+      - {who: 환자에게, icon: me, en: "I will release the restraint device immediately in accordance with hospital policy.", ok: false, fix: "I'm taking this off right away so you can breathe easier."}
+    why: "환자에게는 무엇을 하는지, 왜 하는지 짧고 쉬운 말로 해요. 규정을 읊는 말투는 위급할 때 차갑게 들려요."
+"알람 무시 급변 위기":
+  - kind: slider
+    words: [w-stable, w-crash]
+    cue: "Nurse: \"Sat is 78 and falling, and he's getting worse in front of me.\""
+    scale: [stable, unstable, crashing]
+    answerAt: 2
+    why: "stable은 상태가 유지된다는 뜻이고, unstable은 불안정하다는 뜻이에요. crashing은 급격히 무너지는 구어체 표현이에요. 보고할 때는 수치와 함께 말하세요."
+    example: "He's crashing, so we need help now."
+    exKo: "급변하고 있어서 지금 도움이 필요해요."
+  - kind: context
+    words: [w-alarm]
+    word: alarm
+    ko: 알람
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "The sat alarm is going off, so look at him now.", ok: true}
+      - {who: 담당의에게, icon: monitor, en: "The sat alarm sounded at 0230 with sats at 82, so I started oxygen and called you.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His desaturation alarm indicates hypoxemia with SpO2 down to 82.", ok: false, fix: "The alarm means his oxygen level dropped, and we're giving him oxygen right now."}
+    why: "가족에게는 알람이 무슨 뜻인지 쉬운 말로, 동료와 의사에게는 수치와 조치를 정확히 전해요."
+"전원·펌프 고장 위기 대응":
+  - kind: slider
+    words: [w-prioritize, w-lifesustaining]
+    cue: "Nurse: \"If the pressor stops, his blood pressure will crash.\""
+    scale: [routine, important, life-sustaining]
+    answerAt: 2
+    why: "정전이나 펌프 고장에서는 끊기면 바로 위험해지는 주입을 먼저 지켜요. 승압제나 진정제처럼 life-sustaining에 가까운 것부터 챙기고, 중요도는 환자 상태와 처방에 따라 달라요."
+    example: "Prioritize the life-sustaining infusions."
+    exKo: "생명 유지 주입을 먼저 챙겨요."
+  - kind: context
+    words: [w-battery]
+    word: battery
+    ko: 배터리
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Switch the pump to battery now, and plug the others into the red outlets.", ok: true}
+      - {who: 의사에게, icon: monitor, en: "Power loss at 0300; pumps on battery backup and pressors running without a gap.", ok: true}
+      - {who: 보호자에게, icon: me, en: "The uninterruptible power supply failed and we are on battery reserve.", ok: false, fix: "The power flickered, but his machines run on a battery in the meantime, and we're checking everything."}
+    why: "가족에게는 지금 안전하다는 근거와 조치를 쉬운 말로 설명해요. uninterruptible power supply 같은 용어는 오히려 불안을 키워요."
+"심각 안전사건 공개·소통":
+  - kind: slider
+    words: [w-guess, w-fact]
+    cue: "Nurse: \"The pump log shows exactly when the rate changed.\""
+    scale: [guess, assumption, fact]
+    answerAt: 2
+    why: "공개할 때는 확인된 사실만 말하고 원인은 추측하지 않아요. 로그처럼 기록으로 확인되는 것이 fact이고, 조사가 끝나기 전의 원인 설명은 아직 guess예요."
+    example: "We only share facts, not guesses."
+    exKo: "추측이 아니라 사실만 전해요."
+  - kind: swap
+    words: [w-empathy, w-acknowledge]
+    who: "가족에게 · 사건 공개"
+    icon: me
+    before: ["I can see how upsetting this is, and I'm ", "sorry you feel that way", "."]
+    options: [sorry this happened, sorry you feel that way, sorry for the confusion]
+    answer: sorry this happened
+    notes: {sorry this happened: "일어난 일 자체에 공감하고 유감을 표해요. 가족의 감정이 아니라 사건을 인정해요.", sorry you feel that way: "가족의 감정 탓으로 돌리는 말로 들려 사과로 받아들여지지 않아요.", sorry for the confusion: "일어난 일을 혼란 정도로 줄여서 말하는 것처럼 들려요."}
+    why: "공감은 감정을 탓하는 말이 아니라 일어난 일을 인정하는 말로 전해요. 사건의 설명과 공개는 담당 의사가 주도해요."
+    ko: "이런 일이 생겨서 정말 죄송해요"

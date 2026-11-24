@@ -1,0 +1,175 @@
+words:
+  w-hypothermia: {cue: "수술 중 심부 체온이 36도 아래로 내려간 상태"}
+  w-fever: {cue: "수혈 중 체온이 38도 이상으로 오르는 증상"}
+  w-id: {distractorsEn: [IV, IO]}
+  w-rightaway: {distractorsEn: [far away, all right], decoyChips: [weigh]}
+  w-ph: {ko: "산도", tag: "산-염기"}
+  w-chart: {cue: "수혈 중 잰 활력징후를 15분마다 적어 넣다"}
+  w-record: {cue: "기준 수치를 먼저 적어 두다"}
+  w-drop: {example: "The temperature is dropping to 35.", cue: "체온·혈압 같은 수치가 아래쪽으로 — 차가운 피가 체온을 이렇게"}
+  w-fluid: {cue: "정맥 라인으로 들어가는 식염수·링거 — 대량수혈 때는 모두 데워서"}
+  w-raise: {cue: "추운 수술방에서 온도 조절기 눈금을 위로"}
+  w-alongside: {cue: "적혈구가 다 들어간 뒤가 아니라 같은 때 곁에서"}
+  w-left: {cue: "혈액은행에 묻는 재고 — 아직 쓰지 않은 채 있는"}
+  w-send: {cue: "검체를 기송관이나 러너 편에 검사실로"}
+  w-stop: {cue: "반응이 의심되면 수혈을 그 자리에서 — 끝까지 넣지 않는다"}
+  w-peaked: {cue: "고칼륨혈증 심전도에서 T파가 텐트처럼 솟은 모양의"}
+  w-onegative: {cue: "혈액형을 모를 때 응급으로 먼저 내주는 혈액"}
+  w-cardiac: {cue: "심전도·심장 기능 앞에 붙는 말"}
+  w-pulmonary: {cue: "폐부종·폐 소리 앞에 붙는 말"}
+  w-venous: {cue: "정맥압처럼 정맥 쪽 수치 앞에 붙는 말", tag: "수혈 반응"}
+  w-regional: {cue: "병원 밖 지역 공급처 쪽 범위를 말할 때"}
+  w-dangerously: {cue: "칼슘이 안전선을 크게 벗어나 심장이 걱정될 만큼"}
+  w-climb: {cue: "젖산처럼 한 방향으로 꾸준히 위로 오르다"}
+  w-rise: {cue: "정맥압 수치가 위쪽으로 올라서다"}
+  w-fall: {cue: "산소포화도가 점점 아래로 밀려 내려가다"}
+  w-release: {ko: "불출하다"}
+  w-support: {ko: "보조하다"}
+  w-level: {distractorsKo: [지렛대, 검체], tag: "전해질"}
+  w-slow: {decoyChips: [slaw]}
+  w-report: {tag: "수혈 반응"}
+  w-field: {tag: "응고·검사"}
+  w-arterial: {tag: "산-염기"}
+  w-gas: {tag: "산-염기"}
+  w-lactate: {tag: "산-염기"}
+  w-acidosis: {tag: "산-염기"}
+  w-match: {chips: [[match]]}
+  w-urine: {chips: [[ur, ine]]}
+
+nuance:
+  # --- A: context 단어 교체 -------------------------------------------------
+  - situation: 0
+    kind: context
+    set: {word: product, ko: "(혈액) 제제", words: [w-product],
+          why: "product는 혈액을 부르는 혈액은행·의료진 말이라 가족에게는 물건처럼 들려요. 가족에게는 '맞는 피인지 두 번째 간호사와 확인했다'로 말해요."}
+    scenes:
+      - {who: 간호사끼리, icon: check, en: "Let's confirm the product type before we hang it.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Product type and unit number confirmed by RN and anesthesia.", ok: true}
+      - {who: 가족에게, icon: me, en: "We confirmed the product with a second nurse.", ok: false, fix: "We checked with a second nurse that this is the right blood for him."}
+  - situation: 4
+    kind: context
+    set: {word: PRBCs, ko: "농축적혈구", words: [w-prbc],
+          why: "PRBCs는 수술실·혈액은행끼리 쓰는 줄임말이에요. 가족에게는 '피가 도착했고 넣기 전에 꼼꼼히 확인한다'로 말해요."}
+    scenes:
+      - {who: 간호사끼리, icon: check, en: "Sign here for the PRBCs and I'll log the time.", ok: true}
+      - {who: 차트 기록, icon: board, en: "4 units PRBCs received and signed for by RN.", ok: true}
+      - {who: 가족에게, icon: me, en: "His PRBCs just arrived from the blood bank.", ok: false, fix: "The blood just arrived, and we're checking it carefully before it goes in."}
+  - situation: 7
+    kind: context
+    set: {word: ionized, ko: "이온화된", words: [w-ionized],
+          why: "ionized calcium은 검사 이름이라 의료진끼리는 정확하지만 가족에게는 낯설어요. 가족에게는 '들어가는 피가 칼슘을 낮출 수 있어 보충한다'로 풀어요."}
+    scenes:
+      - {who: 간호사끼리, icon: pill, en: "The ionized calcium is low — let's give calcium and recheck.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Ionized calcium 0.9; calcium given per protocol.", ok: true}
+      - {who: 가족에게, icon: me, en: "His ionized calcium is low, so we're replacing it.", ok: false, fix: "The blood we're giving can lower his calcium, so we're replacing it."}
+  - situation: 10
+    kind: context
+    set: {word: O-neg, ko: "O형 음성", words: [w-oneg],
+          why: "O-neg는 의료진이 혈액형을 줄여 부르는 말이에요. 가족에게는 '거의 누구에게나 쓸 수 있는 피를 먼저 쓰고, 맞춘 피가 준비되면 바꾼다'로 말해요."}
+    scenes:
+      - {who: 혈액은행에게, icon: speech, en: "How many units of O-neg do you have left?", ok: true}
+      - {who: 차트 기록, icon: board, en: "2 units O-neg given; type-specific pending.", ok: true}
+      - {who: 가족에게, icon: me, en: "We're giving him O-neg until his own type is ready.", ok: false, fix: "We're giving him blood that's safe for almost anyone until blood matched to him is ready."}
+  - situation: 11
+    kind: context
+    set: {word: hypotension, ko: "저혈압", words: [w-hypotension],
+          why: "hypotension은 의료진끼리 쓰는 임상어예요. 가족에게는 '혈압을 계속 지켜본다'로 쉽게 말해요."}
+    scenes:
+      - {who: 간호사끼리, icon: magnify, en: "Watch for fever, hypotension, or oozing.", ok: true}
+      - {who: 차트 기록, icon: board, en: "No fever or hypotension during transfusion.", ok: true}
+      - {who: 가족에게, icon: me, en: "We're watching him for hypotension during the transfusion.", ok: false, fix: "We're keeping a close eye on his blood pressure in case his body reacts to the blood."}
+  - situation: 14
+    kind: context
+    set: {word: fibrinogen, ko: "피브리노겐", words: [w-fibrinogen],
+          why: "fibrinogen은 검사·성분 이름이라 의료진끼리 쓰는 말이에요. 가족에게는 '피를 굳게 하는 수치가 낮아져 보충한다'로 말해요."}
+    scenes:
+      - {who: 간호사끼리, icon: chartup, en: "Let's watch the fibrinogen trend.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Fibrinogen trending down: 142, 118, 96.", ok: true}
+      - {who: 가족에게, icon: me, en: "His fibrinogen is trending down, so we're replacing it.", ok: false, fix: "His clotting numbers are slowly getting lower, so we're giving more of what helps him clot."}
+  - situation: 19
+    kind: context
+    set: {ko: "불출하다"}
+  # --- 권장 R1·R3 -----------------------------------------------------------
+  - situation: 2
+    kind: context
+    set: {scene2.en: "Every unit is routed through the in-line warmer."}
+  - situation: 17
+    kind: context
+    set: {scene2.fix: "The blood we're giving lowers his calcium, which his heart needs, so we're giving calcium to help."}
+  # --- N7 swap 3 --------------------------------------------------------------
+  - situation: 3
+    kind: swap
+    set:
+      who: "마취과 의사에게 · 출혈로 혈압이 떨어질 때"
+      notes.speed it up: "출혈로 혈압이 떨어질 때는 마취과 의사의 판단으로 주입을 올려 따라잡아요."
+      notes.slow it down: "출혈로 혈압이 떨어질 때 속도를 줄이면 부족한 양이 더 커져요. 반응이 의심되면 얘기가 달라요(상황 15)."
+      why: "출혈로 혈압이 떨어질 때의 말이에요. 발열·짙은 소변·라인 출혈처럼 수혈 반응 징후가 같이 보이면 올리지 않고 멈추고 알려요. 얼마나 올릴지는 마취과 의사가 정해요."
+  # --- slider cue --------------------------------------------------------------
+  - situation: 15
+    kind: slider
+    set: {cue: "Nurse: \"The urine looks its usual honey-yellow — nothing unusual.\""}
+  - situation: 19
+    kind: slider
+    set: {cue: "Blood bank order: \"Daily shelf restock — no hurry.\""}
+  - situation: 16
+    kind: slider
+    set: {cue: "ECG: \"The T-waves are narrow and pointed, like tents.\""}
+  - situation: 13
+    kind: slider
+    set: {cue: "Lab: \"Lactate 2, then 3.5, then 5 over the last hour.\"", answerAt: 1,
+          why: "creep up은 아주 천천히 오르는 것, climb은 꾸준히 오르는 것, spike는 갑자기 확 뛰는 것이에요. 한 시간 동안 조금씩 꾸준히 올랐으니 climb이에요."}
+  - situation: 3
+    kind: slider
+    set: {cue: "Anesthesiologist: \"Pressure is steady — back it off just a touch.\""}
+  - situation: 18
+    kind: slider
+    set: {cue: "Team: \"He's breathing on his own under the LMA, and we're adding pressure support and oxygen.\""}
+  # --- N12 pair ------------------------------------------------------------------
+  - situation: 6
+    kind: pair
+    set:
+      pairs: [[red cells, to carry oxygen], [plasma, to replace clotting factors], [platelets, to plug small leaks]]
+      decoys: [to raise the blood sugar]
+
+order:
+  "3":
+    why: "먼저 혈압에 맞춰 속도를 정하고, 반응을 지켜보며, 지켜보는 동안 수치가 가라앉으면 늦추고, 늦춘 뒤 오 분 지나 혈압을 다시 확인해요."
+    lines:
+      2: {en: "If the numbers settle while I watch, we can slow it down.", ko: "지켜보는 동안 수치가 가라앉으면 늦출 수 있어요"}
+      3: {en: "After slowing it, I'll recheck the pressure in five minutes.", ko: "늦춘 뒤 오 분 뒤에 혈압을 다시 확인할게요"}
+  "7":
+    why: "낮은 칼슘 수치를 알리고, 시트르산염이 결합한다는 원인을 말하고, 결합된 만큼 칼슘을 준다고 하고, 십 분 뒤 재검을 약속해요."
+    lines:
+      2: {en: "To replace what's bound, let's give calcium now.", ko: "결합된 만큼 지금 칼슘을 줘요"}
+  "8":
+    lines:
+      3: {en: "If it does, let's keep the blanket running throughout the case.", ko: "도움이 되면 수술 내내 담요를 계속 틀어요"}
+  "10":
+    why: "남은 수량을 묻고, 그 수량에 맞춰 쿨러를 부탁하고, 혈소판도 넣어 달라고 한 뒤, 다 담기면 연락을 받기로 해요."
+    all_lines:
+      - {en: "How many units of O-neg do you have left?", icon: lab, ko: "O형 음성이 몇 단위 남았나요", note: 문의}
+      - {en: "At that count, please keep the next cooler ready.", icon: pager, ko: "그 수량이면 다음 쿨러를 준비해 주세요", note: 준비}
+      - {en: "We're running low on platelets too, so add some to it.", icon: lab, ko: "혈소판도 부족하니 거기에 넣어 주세요", note: 추가}
+      - {en: "Once they're packed, call me and I'll send someone.", icon: pager, ko: "다 담기면 전화 주세요, 사람을 보낼게요", note: 연락}
+  "11":
+    lines:
+      3: {en: "While you do that, tell me right away if vitals shift.", ko: "그러는 동안 활력징후가 바뀌면 즉시 알려 주세요"}
+  "17":
+    why: "칼슘이 위험하게 낮다고 알리고, 시트르산 부하가 원인임을 말하고, 당장 칼슘이 필요하다고 요청하며, 이번 투여 뒤의 호전을 같이 확인하자고 해요."
+    lines:
+      2: {en: "To reverse that effect, we need calcium in the line right now.", ko: "그 영향을 되돌리려면 지금 라인으로 칼슘이 필요해요"}
+      3: {en: "Let's see if the heart function improves after this dose.", ko: "이번 투여 후 심장 기능이 나아지는지 봅시다", note: 확인}
+  "18":
+    why: "산소포화도 저하와 폐부종을 알리고, 수혈을 멈추며, 멈춘 뒤 환기를 보조하고 백을 혈액은행에 남기고, 백을 남긴 뒤 반응을 바로 보고해요."
+    lines:
+      1: {en: "With that picture, stop the transfusion—this could be TRALI.", ko: "그 소견이면 수혈을 멈추세요, TRALI일 수 있어요"}
+      2: {en: "Once it's stopped, let's support ventilation and save the bag for the blood bank.", ko: "멈췄으면 환기를 보조하고 백을 혈액은행에 남겨 둡시다", note: 보조, icon: stetho}
+      3: {en: "With the bag saved, I'll report this reaction right away.", ko: "백을 남겼으니 이 반응을 즉시 보고할게요"}
+  "19":
+    why: "남은 양을 알리고, 응급 O형 음성 불출을 요청하고, 예비로 지역 혈액 요청을 제안한 뒤, 혈액은행에 지역 공급처로 시작해 달라고 부탁해요."
+    lines:
+      1: {en: "Can you release emergency O-negative?", ko: "응급 O형 음성을 불출해 줄 수 있나요"}
+      3: {en: "I'll ask our blood bank to start it with the regional supplier.", ko: "혈액은행에 지역 공급처로 시작해 달라고 할게요", note: 요청}
+  "20":
+    lines:
+      1: {en: "With those rising, slow the transfusion—this looks like TACO.", ko: "그게 오르니 수혈 속도를 늦추세요, TACO 같아요"}

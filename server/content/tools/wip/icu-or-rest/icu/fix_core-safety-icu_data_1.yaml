@@ -1,0 +1,112 @@
+# 단어 수정 — A W1~W21 (core-safety-icu)
+# de_swap: 단어 en -> [[옛 dEn, 새 dEn], ...]
+de_swap:
+  together: [[tougher, otherwise]]
+  trace: [[track, brace]]
+  blame: [[shame, blare]]
+  slid: [[skid, shed]]
+  annoying: [[enjoying, alarming], [avoiding, appealing]]
+  document: [[monument, augment]]
+  incident: [[insistent, incentive]]
+  transport: [[transform, transcript]]
+  trust: [[thrust, truss]]
+  reach: [[retch, teach]]
+  drop: [[drown, droop]]
+  schedule: [[scaffold, scalpel]]
+  near-miss: [[near-death, near-field]]
+# dk_swap: 단어 en -> [[옛 dKo, 새 dKo], ...]
+dk_swap:
+  bag: [[용기, 거즈]]
+  slid: [[미끄러져 올라갔다, 굴러떨어졌다]]
+  tailor: [[줄이다, 해제하다]]
+  prompt: [[지시하다, 방해하다]]
+  drip: [[심전도(검사기), 일시 주사], [혈압계(측정기), 근육 주사]]
+  slip: [[채워지다(보충되다), 중복되다], [붙다(고정되다), 지연되다]]
+  need: [[허락, 허락하다], [거부, 거부하다]]
+  call: [[기록, 기록·작성], [무시, 무시·외면]]
+# dc_swap: decoyChips 교체 단어 id -> [[옛, 새], ...]
+dc_swap:
+  w-outlet: [[lit, lat]]
+  w-number: [[bar, bur]]
+  w-rapidresponse: [[rip, rep]]
+  w-immediate: [[dye, da]]
+  w-enter: [[tar, tor]]
+  w-battery: [[tar, tor]]
+  w-later: [[tar, tor]]
+  w-after: [[tar, tor]]
+  w-checklist: [[chick, chuck]]
+  w-control: [[troll, trawl]]
+  w-trust: [[tryst, trast]]
+# words: 직접 덮어쓰기
+words:
+  w-stand:
+    en: stand out
+    ipa: /stænd aʊt/
+    chips: [[stand], [out]]
+    decoyChips: [stan, oat]
+    distractorsEn: [stand by, stamp out]
+  w-label:
+    cue: 라인 양 끝에 무엇이 흐르는지 적어 표시해 두는 일
+    distractorsEn: [level, ladle]
+  w-drip: {ko: 지속 점적}
+  w-slip: {ko: 누락되다}
+  w-feeding: {ko: 영양 공급용의}
+  w-full: {cue: 일부가 아니라 처음부터 끝까지 다 — 나중에 하는 사건 검토를 말할 때}
+  w-need: {ko: 필요하다}
+  w-call: {ko: 부르다·호출}
+remove: [w-key]
+why:
+  w-stand: 헤드워드를 문장의 stand out으로 (ko 두드러지다는 stand out의 뜻)
+  w-drip: 괄호 ko를 없애고 지속 점적으로
+  w-slip: 괄호 ko를 없애고 누락되다로
+  w-feeding: 급식용(학교 급식)을 영양 공급용으로 바로잡음
+  w-need: 문장이 동사로 쓰여 ko를 필요하다로
+  w-call: 문장 대부분이 동사로 쓰여 ko를 부르다·호출로
+  w-key: 9.5를 일반화해 열쇠 문장이 사라져 어느 문장도 태그하지 않음
+# cues (W21 + w-label/w-full 은 위에서)
+cues:
+  w-keep: 섬망 환자의 수면 주기나 익숙한 물건을 그대로 이어 두겠다고 할 때
+  w-reach: 호출 버튼은 환자 손이 미치는 곳에, 고농도 칼륨은 미치지 않는 곳에 둘 때
+  w-step: 억제대 전에 대안을 먼저 써 보는 것처럼, 절차에서 건너뛰면 안 되는 한 부분
+  w-off: 억제대를 다 떼어 낸 뒤의 상태 — 그다음 자세를 바꿔요
+  w-verify: 처방·용량을 원본과 하나하나 맞춰 본 뒤에야 경고를 넘길 때
+  w-unit: 인슐린·헤파린 양에서 숫자 뒤에 붙는 말 — 50과 5를 헷갈리면 안 돼요
+  w-stop: 오류를 발견한 순간 주입을 바로 끊으며 하는 첫마디
+  w-check: 투약 전 알레르기, 이송 전 케이블처럼 빠짐없이 살펴볼 때
+  w-right: "투약 원칙에서 환자·약·용량·경로·시간 앞에 붙는 말, '제가 ○○ 이해했나요?'에도"
+  w-wrong: "'제가 ○○ 수도 있지만…'으로 우려를 꺼낼 때, 엉뚱한 라인에 엉뚱한 약"
+  w-hear: 이중확인에서 상대가 따로 계산한 값을 귀로 받아 맞춰 볼 때
+  w-start: 둘 다 서명한 뒤 펌프를, 급변 때 산소를 처음 켤 때
+  w-end: 라인 라벨은 백 쪽과 환자 쪽, 양쪽 ○에 붙여요
+  w-lock: 낙상 예방으로 침대를 낮춘 뒤 바퀴가 구르지 않게 할 때
+  w-item: 안경·전화기처럼 환자 손 닿는 곳에 둘 소지품 하나하나
+  w-shift: 낙상 위험을 다시 평가하는 간격 — 낮 번·밤 번 교대마다
+  w-okay: 원인 해결 없이 알람만 끄는 건 절대 ○○ 않다고 못 박을 때
+  w-fit: 연결부가 쉽게 들어가지 않으면 억지로 꽂지 말라고 할 때
+  w-system: 색 구분·라벨처럼 모두가 똑같이 따르는 장치와 규칙의 묶음
+  w-alike: 작은 색띠 말고는 구별이 안 되는 두 연결부를 보고
+  w-separately: 고농도 전해질 보관, 독립확인처럼 서로 섞이지 않게 할 때
+  w-require: 마약 규정이 두 간호사 확인과 잠금 보관을 꼭 하게 할 때
+  w-count: 교대 때 마약을 한 앰플씩 두 사람이 맞춰 볼 때
+  w-log: 마약을 센 뒤 두 사람이 서명하는 장부
+  w-reduce: 섬망 예방으로 밤의 소음과 불빛을 낮출 때
+  w-clock: 섬망 환자가 지금 몇 시인지 알도록 벽에 거는 것
+  w-calendar: 섬망 환자가 오늘 날짜를 알도록 침상 맞은편에 두는 것
+  w-catch: 펌프 약물 라이브러리가 잘못 입력된 용량을 걸러 낼 때
+  w-move: 기도·점적·모니터를 확인한 뒤 침대를 CT실로 출발시킬 때
+  w-checklist: 이송 전 산소·배터리·라인을 하나씩 소리 내어 짚는 종이
+  w-miss: 울린 알람을 아무도 못 알아챘을 때, 인계에서 빠뜨린 항목
+  w-harm: 아차 사고와 달리 환자에게 실제로 닿은 손상
+  w-learning: 보고는 비난이 아니라 이것을 위한 것 — 다음 환자를 위해 얻는 것
+  w-save: 10분 들여 쓴 보고서가 나중에 누군가의 목숨을 건질 수도
+  w-lesson: 아차 사고 하나가 병동 전체가 알게 되는 것으로 바뀔 때
+  w-disconnect: 잘못 연결된 주입을 멈춘 직후 튜브를 환자에게서 뗄 때
+  w-physician: 치명적 오류 직후 바로 알리고, 사건 공개를 이끄는 사람
+  w-lab: 헤파린 과량 뒤 PTT·혈색소처럼 피를 뽑아 확인하는 결과
+  w-status: 검사 결과와 함께 환자가 지금 어떤지 — 의식·활력징후 전체
+  w-slid: 억제대를 한 환자의 몸이 침대 아래쪽으로 쏠려 끈이 가슴에 걸렸을 때
+  w-review: 환자가 안정된 뒤 알람을 왜 놓쳤는지 팀이 되짚을 때
+  w-stable: 급변이 지나 활력징후가 더 흔들리지 않을 때 — 그때 원인을 따져요
+  w-drop: 정전으로 전기가 갑자기 나갔을 때 '전원이 ○○'
+  w-fact: 사건 공개 때 추측 대신 기록·로그로 확인된 것만
+  w-lead: 사건 공개 대화에서 의사가 맡는 역할 — 간호사는 곁에서 거들어요

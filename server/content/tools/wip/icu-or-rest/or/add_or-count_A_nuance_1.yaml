@@ -1,0 +1,91 @@
+절개 전 초기 계수:
+  - kind: pair
+    words: [w-baseline, w-incision]
+    pairs: [[baseline, count], [skin, incision], [sterile, field]]
+    decoys: [the stretcher]
+    why: "baseline count는 수술을 시작할 때 처음 세어 이후 계수의 비교 기준이 되는 숫자예요. skin incision은 피부 절개, sterile field는 멸균 상태를 지키는 수술 영역이고요. 세 표현 모두 수술 시작 전 준비에서 자주 들려요."
+  - kind: context
+    words: [w-incision]
+    word: incision
+    ko: 절개
+    scenes:
+      - {who: 순환 간호사 → 집도의, icon: speech, en: "Counts are correct, Dr. Lee — we're ready for the incision.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Initial counts correct x2; incision at 0912.", ok: true}
+      - {who: 불안한 환자에게, icon: me, en: "Soon the surgeon will make an incision in your belly.", ok: false, fix: "Soon the surgeon will make a small cut, after you're asleep."}
+    why: "incision은 의료진끼리, 그리고 기록에서 쓰는 정확한 말이에요. 수술을 앞두고 긴장한 환자에게는 '배에 절개를 낸다'가 차갑게 들려서, 'a small cut'처럼 쉬운 말로 풀어 줘요."
+거즈 소리내어 확인:
+  - kind: slider
+    words: [w-loud, w-count]
+    cue: "The room is noisy — suction, monitors, a second nurse across the table. She has to hear your sponge number."
+    scale: [Whisper it, Say it clearly, Shout it out]
+    answerAt: 1
+    why: "계수는 상대가 숫자를 분명히 들어야 확인이 돼요. 속삭이면 소음에 묻히고, 소리를 지르면 수술방이 어수선해져요. 또렷하고 충분히 크게 말하는 것이 맞아요."
+    example: "Let's count these out loud, one by one."
+    exKo: "소리 내어 하나씩 세어 봐요."
+  - kind: swap
+    words: [w-count, w-sponge, w-check]
+    who: "순환 간호사 → 집도의 · 계수 결과 보고"
+    icon: speech
+    before: ["Dr. Lee, ", "the sponges look about right", " — may we proceed?"]
+    options: [the sponge count is correct, the sponges look about right, I think the sponges are fine]
+    answer: the sponge count is correct
+    notes: {the sponge count is correct: "두 사람이 세어 맞춘 결과를 사실대로 보고한다. 집도의가 믿고 진행할 근거가 된다.", the sponges look about right: "'대략'이라는 말은 계수에 쓰지 않는다. 숫자가 맞았는지 아닌지를 말해야 한다.", I think the sponges are fine: "추측으로 들린다. 계수는 짐작이 아니라 확인한 결과를 전한다."}
+    why: "계수 결과는 '맞다/틀리다'로 분명히 보고해요. '대략 맞다'나 '괜찮은 것 같다'는 확인하지 않은 말로 들려서 집도의가 진행해도 되는지 판단할 수 없어요."
+    ko: "거즈 계수가 맞아요"
+기구 목록 대조:
+  - kind: slider
+    words: [w-total, w-correct, w-confirm]
+    cue: "You counted the tray once by yourself, and your partner hasn't looked at it yet."
+    scale: [The total seems close, The total looks correct to me, We both confirmed the total]
+    answerAt: 1
+    why: "혼자 한 번 센 결과는 '내가 보기엔 맞다'까지만 말할 수 있어요. 'We both confirmed'는 두 사람이 따로 같은 숫자를 확인한 뒤에 쓰는 말이고, 'seems close'는 계수에서는 너무 느슨해요."
+    example: "The total looks correct to me."
+    exKo: "총 개수가 맞는 것 같아요."
+  - kind: swap
+    words: [w-tray, w-list, w-count]
+    who: "순환 간호사 → 스크럽 · 쟁반과 목록이 다를 때"
+    icon: speech
+    before: ["The tray has twelve, but the list says thirteen — ", "it's probably fine", "."]
+    options: [let's count it again, it's probably fine, just write twelve]
+    answer: let's count it again
+    notes: {let's count it again: "숫자가 어긋나면 다시 세어 원인을 찾는다. 정석적인 대응이다.", it's probably fine: "불일치를 짐작으로 넘긴다. 빠진 기구가 있을 수 있다.", just write twelve: "기록을 숫자에 끼워 맞추는 말이다. 기록을 조작하는 셈이 된다."}
+    why: "목록과 쟁반의 숫자가 다르면 그대로 넘기거나 기록을 맞추지 않고, 다시 세어 원인을 찾아요. 계수 기록은 실제와 일치해야 의미가 있어요."
+    ko: "다시 세어 봐요"
+바늘 회수 확인:
+  - kind: slider
+    words: [w-account, w-needle]
+    cue: "Four needles were opened for this case, and the scrub has just returned all four to the magnet."
+    scale: [I believe we have them, We seem to have them all, All four are accounted for]
+    answerAt: 2
+    why: "바늘은 '있는 것 같다'가 아니라 숫자로 맞춰 봤다고 말해요. 'accounted for'는 개수를 하나도 빠짐없이 셈에 넣고 확인했다는 뜻이라 계수 보고에 알맞아요."
+    example: "Let's account for every needle we've used."
+    exKo: "사용한 바늘을 전부 셈에 넣어요."
+  - kind: swap
+    words: [w-needle, w-done]
+    who: "스크럽 간호사 → 집도의 · 바늘 반납 요청"
+    icon: speech
+    before: ["Please ", "set it down anywhere", " as soon as you're done."]
+    options: [hand me the needle, set it down anywhere, keep it in your hand]
+    answer: hand me the needle
+    notes: {hand me the needle: "다 쓴 바늘을 스크럽에게 돌려주어야 자석에 올려 개수를 맞출 수 있다.", set it down anywhere: "아무 데나 두면 바늘이 어디 있는지 모르게 된다.", keep it in your hand: "쥐고 있으면 계수가 맞아떨어지지 않고 다음 동작에도 위험하다."}
+    why: "바늘은 쓰고 나면 곧바로 스크럽에게 돌려줘야 계수와 안전이 지켜져요. 아무 데나 두거나 손에 쥐고 있으면 위치를 놓쳐요."
+    ko: "다 쓰시면 바로 바늘을 저한테 건네 주세요"
+계수 기록 작성:
+  - kind: slider
+    words: [w-board, w-write, w-document]
+    cue: "Mid-case, a team member just wants a quick look at the running numbers — nothing needs to be filed yet."
+    scale: [I wrote it on the board, I told the team the count, I documented it in the record]
+    answerAt: 0
+    why: "수술 중 모두가 볼 수 있게 현재 숫자를 보드에 적어 두는 것은 가장 가벼운 공유 방법이에요. 환자 기록에 남기는 'document'는 정식 서류 작업이라 지금 필요한 것과 달라요."
+    example: "I'm writing the counts on the board now."
+    exKo: "지금 보드에 계수를 적고 있어요."
+  - kind: swap
+    words: [w-note, w-exact, w-count]
+    who: "순환 간호사 · 계수 기록 습관"
+    icon: pencil
+    before: ["I always note ", "about the time", " of each count."]
+    options: [the exact time, about the time, a rough time]
+    answer: the exact time
+    notes: {the exact time: "계수를 한 시각을 정확히 남겨 두면 나중에 어느 계수 사이에 일이 있었는지 가릴 수 있다.", about the time: "어림으로 적으면 기록이 흐려진다.", a rough time: "대략의 시각은 기록으로서 가치가 떨어진다."}
+    why: "기록은 나중에 되짚어 볼 수 있도록 정확하게 남겨요. 시각을 어림으로 적으면 어느 시점의 계수였는지 확인하기 어려워요."
+    ko: "매번 계수의 정확한 시각을 적어 둬요"

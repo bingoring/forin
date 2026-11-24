@@ -1,0 +1,182 @@
+11:
+  - kind: slider
+    words: [w-oozing]
+    cue: 'Nurse: "Blood is slowly seeping from the IV site — no spurting, no pool."'
+    scale: [damp, oozing, spurting]
+    answerAt: 1
+    why: "damp는 살짝 젖은 정도, oozing은 천천히 스며 나오는 출혈, spurting은 뿜어져 나오는 출혈이에요. 천천히 배어 나오는 것은 oozing이에요."
+    example: "Oozing from the line can be an early sign."
+    exKo: "라인에서 스며 나오는 출혈은 초기 징후일 수 있어요."
+  - kind: context
+    words: [w-watch]
+    word: watch
+    ko: 지켜보다
+    scenes:
+      - {who: 간호사끼리, icon: magnify, en: "Watch the urine color for the next hour.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Watched for fever and chills; none noted.", ok: true}
+      - {who: 가족에게, icon: me, en: "We're watching for a hemolytic or febrile reaction.", ok: false, fix: "We're keeping a close eye on him in case his body reacts to the blood."}
+    why: "의료진끼리는 hemolytic, febrile 같은 반응 이름을 바로 말해도 통해요. 가족에게는 '몸이 반응할까 봐 계속 지켜본다'로 쉽게 말해요."
+12:
+  - kind: slider
+    words: [w-diffuse]
+    cue: 'Surgeon: "It is oozing from the whole field, not from one vessel."'
+    scale: [focal, patchy, diffuse]
+    answerAt: 2
+    why: "focal은 한 곳, patchy는 군데군데, diffuse는 넓게 퍼진 것이에요. 한 혈관이 아니라 수술 부위 전체라서 diffuse예요."
+    example: "There's diffuse oozing from the field."
+    exKo: "수술 부위 전반에서 스며 나오는 출혈이 있어요."
+  - kind: context
+    words: [w-coag]
+    word: coags
+    ko: 응고검사
+    scenes:
+      - {who: 간호사끼리, icon: lab, en: "Let's send coags again after this plasma.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Coags sent stat; fibrinogen low.", ok: true}
+      - {who: 가족에게, icon: me, en: "His coags show a dilutional coagulopathy.", ok: false, fix: "We're checking how well his blood is clotting."}
+    why: "coags는 의료진끼리 쓰는 줄임말이에요. 가족에게는 줄임말과 병명 대신 '피가 잘 굳는지 확인한다'로 말해요."
+13:
+  - kind: slider
+    words: [w-climb, w-lactate]
+    cue: 'Lab: "Lactate was 2 an hour ago and it is 9 now."'
+    scale: [creep up, climb, spike]
+    answerAt: 2
+    why: "creep up은 아주 천천히 오르는 것, climb은 꾸준히 오르는 것, spike는 갑자기 확 뛰는 것이에요. 한 시간 만에 2에서 9로 뛰었으니 spike예요."
+    example: "The lactate is climbing."
+    exKo: "젖산 수치가 오르고 있어요."
+  - kind: context
+    words: [w-acidosis]
+    word: acidosis
+    ko: 산증
+    scenes:
+      - {who: 마취과와, icon: monitor, en: "The ABG shows worsening acidosis.", ok: true}
+      - {who: 차트 기록, icon: board, en: "ABG pH 7.18, lactate 8; acidosis noted.", ok: true}
+      - {who: 가족에게, icon: me, en: "He has a severe metabolic acidosis from hypoperfusion.", ok: false, fix: "His blood has turned more acidic because his tissues aren't getting enough oxygen, and we're working to correct it."}
+    why: "의료진끼리는 acidosis, ABG처럼 짧고 정확한 말을 써요. 가족에게는 병명 대신 '피가 산성으로 기울었고 교정 중이다'로 풀어 줘요."
+14:
+  - kind: slider
+    words: [w-stat]
+    cue: 'Lab slip: "Lowest priority — run with the morning batch."'
+    scale: [routine, urgent, stat]
+    answerAt: 0
+    why: "routine은 일상적인 순서대로, urgent는 서둘러서, stat은 지금 당장 최우선으로 처리하는 것이에요. 아침 묶음에 같이 돌린다면 routine이에요."
+    example: "I'll send it stat and track the trend."
+    exKo: "즉시 검사를 보내고 추이를 추적할게요."
+  - kind: context
+    words: [w-trend]
+    word: trend
+    ko: 추이
+    scenes:
+      - {who: 간호사끼리, icon: chartup, en: "Let's watch the fibrinogen trend.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Fibrinogen trend down: 142, 118, 96.", ok: true}
+      - {who: 가족에게, icon: me, en: "The fibrinogen trend suggests a consumptive coagulopathy.", ok: false, fix: "His clotting numbers are slowly getting lower, so we're giving more of what helps him clot."}
+    why: "의료진끼리는 수치의 흐름을 trend 한 단어로 말해요. 가족에게는 병명 대신 '응고 수치가 낮아지고 있어서 보충한다'로 말해요."
+15:
+  - kind: slider
+    words: [w-dark, w-urine]
+    cue: 'Nurse: "The urine looks like normal amber — nothing unusual."'
+    scale: [pale, amber, dark]
+    answerAt: 1
+    why: "pale은 옅은 노랑, amber는 보통의 호박색, dark는 콜라처럼 짙은 색이에요. 수혈 중 짙은 소변은 용혈 신호일 수 있어 따로 보고해요."
+    example: "The urine looks dark, and this could be hemolysis."
+    exKo: "소변이 짙어 보여요. 용혈일 수 있어요."
+  - kind: swap
+    words: [w-immediately, w-stop, w-transfusion]
+    who: "팀원에게 · 반응이 의심될 때"
+    icon: siren
+    before: ["Stop the transfusion ", "when you can", "."]
+    options: [when you can, immediately, after this unit]
+    answer: immediately
+    notes: {when you can: "여유가 될 때 하라는 말이라 급성 반응에는 늦어요.", immediately: "미루지 않고 지금 멈추라는 말이에요. 반응이 의심되면 바로 멈춰요.", after this unit: "이 제제를 다 넣고 멈추면 반응 중인 혈액이 계속 들어가요."}
+    why: "수혈 반응이 의심되면 일단 즉시 멈추고, 이후 라인 유지·혈액은행 연락·보고로 이어가요."
+    ko: "지금 바로 수혈을 멈추세요"
+16:
+  - kind: slider
+    words: [w-peaked, w-twave]
+    cue: 'ECG: "The T-waves are tall and narrow, pointed like tents."'
+    scale: [flat, tall, peaked]
+    answerAt: 2
+    why: "flat은 납작한 것, tall은 키가 큰 것, peaked는 키가 크면서 좁고 뾰족한 모양이에요. 고칼륨혈증에서 보이는 T파의 전형적인 모양이 peaked예요."
+    example: "Peaked T-waves mean we need to act now."
+    exKo: "뾰족한 T파는 지금 조치가 필요하다는 뜻이에요."
+  - kind: context
+    words: [w-deteriorate]
+    word: deteriorate
+    ko: 악화되다
+    scenes:
+      - {who: 간호사끼리, icon: monitor, en: "Watch the rhythm — it could deteriorate fast.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Rhythm deteriorated; calcium given.", ok: true}
+      - {who: 가족에게, icon: me, en: "His rhythm may deteriorate into a lethal arrhythmia.", ok: false, fix: "His heartbeat could turn dangerous quickly, so we're treating it right now."}
+    why: "의료진끼리나 차트에서는 deteriorate가 정확하고 짧은 임상어예요. 가족에게는 lethal arrhythmia 같은 말 대신 '위험해질 수 있어서 지금 치료 중'이라고 말해요."
+17:
+  - kind: slider
+    words: [w-dangerously, w-low]
+    cue: 'Anesthesiologist: "Calcium is only a little under normal, and the heart is fine."'
+    scale: [slightly, quite, dangerously]
+    answerAt: 0
+    why: "slightly는 아주 조금, quite는 꽤, dangerously는 위험할 만큼이에요. 정상보다 조금 낮고 심장도 괜찮다면 slightly low예요."
+    example: "The ionized calcium is dangerously low."
+    exKo: "이온화 칼슘이 위험할 정도로 낮아요."
+  - kind: context
+    words: [w-cardiac]
+    word: cardiac
+    ko: 심장의
+    scenes:
+      - {who: 마취과와, icon: monitor, en: "Cardiac function is dropping — push calcium.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Cardiac function depressed; calcium given.", ok: true}
+      - {who: 가족에게, icon: me, en: "His cardiac function is depressed by the citrate load.", ok: false, fix: "The blood we're giving is weakening his heart's squeeze, so we're giving calcium to help."}
+    why: "의료진끼리는 cardiac function, citrate load처럼 정확한 말이 빠르고 분명해요. 가족에게는 '피가 심장의 힘을 떨어뜨려 칼슘을 준다'로 쉽게 풀어 말해요."
+18:
+  - kind: slider
+    words: [w-support, w-ventilation]
+    cue: 'Team: "He is still breathing, but we are helping every breath with the ventilator."'
+    scale: [watch, support, take over]
+    answerAt: 1
+    why: "watch는 지켜보기만 하는 것, support는 환자의 호흡을 도와주는 것, take over는 기계가 호흡을 대신하는 것이에요. 호흡은 하는데 기계로 돕는 상황이라 support예요."
+    example: "Let's support ventilation and report it."
+    exKo: "환기를 지지하고 보고합시다."
+  - kind: context
+    words: [w-edema]
+    word: edema
+    ko: 부종
+    scenes:
+      - {who: 간호사끼리, icon: monitor, en: "Sats falling, new pulmonary edema.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Bilateral pulmonary edema; TRALI suspected.", ok: true}
+      - {who: 가족에게, icon: me, en: "He has acute pulmonary edema from the transfusion.", ok: false, fix: "Fluid is building up in his lungs, and we're helping him breathe while we find out why."}
+    why: "의료진끼리는 pulmonary edema라고 하면 바로 통해요. 가족에게는 원인을 단정하기보다 '폐에 물이 차고 있고 이유를 찾는 중'이라고 말해요."
+19:
+  - kind: slider
+    words: [w-emergency]
+    cue: 'Blood bank order: "Routine daily restock — no hurry."'
+    scale: [routine, urgent, emergency]
+    answerAt: 0
+    why: "routine은 평소 순서대로, urgent는 서둘러서, emergency는 곧바로 대처해야 하는 위급 상황이에요. 서두를 일 없는 일상 보충이라 routine이에요."
+    example: "Let's activate the emergency release now."
+    exKo: "지금 응급 방출을 발동합시다."
+  - kind: context
+    words: [w-release]
+    word: release
+    ko: 방출하다
+    scenes:
+      - {who: 마취과에서, icon: speech, en: "Can you release emergency O-negative now?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Emergency release of 2 units O-neg approved.", ok: true}
+      - {who: 가족에게, icon: me, en: "We requested emergency release of uncrossmatched O-neg.", ok: false, fix: "The blood bank is sending blood that works for most people because he needs it right now."}
+    why: "의료진끼리는 emergency release, O-neg 같은 용어가 정확하고 빨라요. 가족에게는 '대부분의 사람에게 쓸 수 있는 피를 바로 보낸다'처럼 풀어 말해요."
+20:
+  - kind: slider
+    words: [w-rise]
+    cue: 'Monitor: "CVP has climbed steadily over the last half hour."'
+    scale: [tick up, rise, surge]
+    answerAt: 1
+    why: "tick up은 아주 조금 오르는 것, rise는 꾸준히 오르는 것, surge는 갑자기 확 치솟는 것이에요. 30분 동안 꾸준히 오른 것은 rise예요."
+    example: "The venous pressure and edema are rising."
+    exKo: "정맥압과 부종이 올라가고 있어요."
+  - kind: swap
+    words: [w-slow, w-transfusion, w-taco]
+    who: "마취과 의사에게 · TACO가 의심될 때"
+    icon: monitor
+    before: ["Let's ", "speed up", " the transfusion — this looks like TACO."]
+    options: [speed up, slow down, keep running]
+    answer: slow down
+    notes: {speed up: "순환이 이미 넘치는데 더 빨리 넣으면 폐부종이 심해져요.", slow down: "순환 과부하가 의심되면 주입을 늦추거나 멈추고 평가해요.", keep running: "과부하 신호가 보이는데 그대로 가면 악화될 수 있어요."}
+    why: "TACO는 너무 많이, 너무 빨리 넣어 순환이 넘치는 반응이에요. 속도를 늦추거나 멈추고 마취과 의사와 다음 조치를 정해요."
+    ko: "수혈 속도를 늦춥시다. TACO 같아요"

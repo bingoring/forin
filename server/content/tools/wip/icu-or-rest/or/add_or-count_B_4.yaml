@@ -1,0 +1,70 @@
+# [tag, icon, why, decoy, ko1, ko2, ans, w1, w2, w3]
+situations:
+- title: 계수 방해 응급 상황
+  s:
+  - ["계수 재개", redo, "'Once'는 조건이 끝나는 순간을 가리켜 안정된 뒤에 재개한다는 뜻이에요. 'a known point'는 확실히 맞는 지점을 뜻해요.", "a quiet room", "상황이 진정되면 확실한 지점부터 청소를 다시 시작해요.", "상황이 진정되면 확실한 지점부터 수술을 다시 시작해요.", "known", "random", "rough", "old"]
+  - ["재계수", redo, "'Let's'로 같이 다시 하자고 제안하고, 'recount'의 're-'로 이미 센 것을 다시 센다는 뜻이 돼요. 'to be safe'는 이유를 짧게 붙인 표현이에요.", "to be polite", "안전하게 전부 다시 놔요.", "안전하게 전부 다시 포장해요.", "safe", "quick", "kind", "fair"]
+  - ["중단 기록", pencil, "'document that …'은 that 절로 기록할 사실을 말해요. 'was interrupted'는 중단된 사실을 수동태로 남겨 누구 탓인지는 말하지 않아요.", "the power", "회의가 중단됐다는 것을 문서화할게요.", "통화가 중단됐다는 것을 문서화할게요.", "interrupted", "repeated", "approved", "ordered"]
+  - ["중단 설명", siren, "'stopped our count'에서 응급 상황이 주어라 누구 탓도 아닌 사건이 원인임을 말해요. 'halfway through'는 절반쯤 진행된 지점을 가리켜요.", "all night long", "응급 상황 때문에 계수가 처음에 멈췄어요.", "응급 상황 때문에 계수가 두 번 멈췄어요.", "stopped", "started", "finished", "ordered"]
+  - ["이어서 계수", redo, "'pick up'은 구동사로 하던 일을 다시 이어 간다는 뜻이에요. 'exactly where we left off'는 멈춘 바로 그 지점을 가리켜요.", "slowly", "멈췄던 지점부터 빠르게 다시 시작해요.", "멈췄던 지점부터 차분히 다시 시작해요.", "exactly", "loosely", "vaguely", "partly"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 계수 방해 응급 상황 4문장 순서
+    why: 응급 상황이 계수를 멈췄다고 알리고, 중단을 기록하고, 안정되면 확실한 지점부터 재개하고, 멈춘 바로 그 지점부터 이어 가요.
+    lines:
+    - ["The emergency stopped our count halfway through.", siren, "응급 상황 때문에 계수가 중간에 멈췄어요", "중단"]
+    - ["I'll document that, so the record shows the interruption.", pencil, "그걸 문서화해서 기록에 중단이 남게 할게요", "기록"]
+    - ["Once things settle, we restart the count from a known point.", redo, "상황이 진정되면 확실한 지점부터 계수를 다시 시작해요", "재개"]
+    - ["From there, we pick up exactly where we left off.", redo, "거기서 멈췄던 지점부터 정확히 이어 가요", "이어서"]
+- title: 두 명 동시 계수
+  s:
+  - ["이중 시선", handshake2, "'both of us'로 두 사람이 모두 같은 물품을 본다는 점을 분명히 해요. 한 사람이 세고 다른 사람이 듣기만 하면 실수를 못 잡아요.", "each room", "함께 세요 — 둘 다 각 칸을 봐요.", "함께 세요 — 둘 다 각 서류를 봐요.", "together", "alone", "apart", "slowly"]
+  - ["역할 분담", speaker, "'aloud'는 소리를 내어서라는 뜻이라 확인하는 사람이 숫자를 귀로 들어요. 'I'll verify'는 한 사람이 세고 다른 사람이 따로 맞춰 본다는 역할 분담이에요.", "and I'll fold", "당신이 소리 내어 세면 제가 건네줄게요.", "당신이 소리 내어 세면 제가 펼쳐줄게요.", "verify", "stack", "fold", "wrap"]
+  - ["이중 계수", handshake2, "'A dual count means …'는 용어를 정의하는 틀이라 처음 듣는 사람도 뜻을 알아요. 'dual'은 둘이 함께라는 뜻이에요.", "the weekend", "이중 계수는 둘 다 총계를 기억한다는 뜻이에요.", "이중 계수는 둘 다 총계를 발표한다는 뜻이에요.", "dual", "single", "blind", "late"]
+  - ["이중 확인", magnify, "'sets of eyes'는 사람을 눈으로 세는 비유예요. 둘이 보면 한 사람이 놓친 것을 다른 사람이 잡을 수 있어요.", "more shadows", "두 사람의 귀가 실수를 더 잘 잡아요.", "두 사람의 손이 실수를 더 잘 잡아요.", "eyes", "ears", "hands", "arms"]
+  - ["동시 확인", magnify, "'at the same time'은 둘이 한꺼번에 본다는 뜻이라 한 사람이 먼저 보고 전하는 것과 달라요. 'Let's both'는 둘이 같이 하자는 제안이에요.", "at the monitor", "같은 시간에 둘 다 카트를 봐요.", "같은 시간에 둘 다 서류를 봐요.", "tray", "cart", "bag", "bin"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 두 명 동시 계수 4문장 순서
+    why: 이중 계수가 무엇인지 정의하고, 한 사람이 소리 내어 세고 다른 사람이 확인하게 역할을 나눈 뒤, 둘이 보며 세고, 총계가 맞으면 마무리해요.
+    lines:
+    - ["A dual count means we both confirm the total.", handshake2, "이중 계수는 둘 다 총계를 확인한다는 뜻이에요", "정의"]
+    - ["So you count aloud and I'll verify.", speaker, "그러니 당신이 소리 내어 세면 제가 확인할게요", "역할"]
+    - ["We both see each item as you count.", magnify, "당신이 셀 때 둘 다 각 물품을 봐요", "시선"]
+    - ["Our totals match, so that's one clean dual count.", check, "총계가 맞으니 이중 계수가 깔끔하게 끝났어요", "마무리"]
+- title: 전자 계수 병행
+  s:
+  - ["이중 계수", gear, "'scanned and manually counted'는 기계와 사람이 모두 센다는 뜻이라 한쪽이 틀려도 잡아요. 'Each sponge gets …'는 거즈마다 빠짐없이 한다는 수동 표현이에요.", "painted", "묶음마다 스캔되고 수기로도 계수돼요.", "거즈마다 스캔되고 사진으로도 계수돼요.", "manually", "randomly", "rarely", "lightly"]
+  - ["일치 기준", monitor, "'should match'는 'must'보다 약한 기대지만 계수에서는 어긋나면 바로 확인하라는 신호로 들려요. 'electronic'과 'manual'을 맞세워 두 방식을 대비해요.", "our lunch order", "전자 시스템이 수기 총계와 연결돼야 해요.", "전자 시스템이 수기 총계보다 빨라야 해요.", "match", "replace", "beat", "shorten"]
+  - ["맞춰 보기", board, "'reconcile'은 서로 다른 두 기록의 차이를 맞춰 일치시킨다는 뜻이에요. 'with the board'로 무엇과 맞대어 보는지를 말해요.", "the scan room", "스캔 계수를 게시판에 옮겨 봐요.", "스캔 계수를 사진과 맞춰 봐요.", "board", "cabinet", "wall", "door"]
+  - ["폐기 전 스캔", gear, "'before it goes in'은 버려지기 전이라는 시점이라 일단 버려지면 확인이 안 돼요. 'every'는 하나도 건너뛰지 않는다는 뜻이에요.", "in the sink", "서랍에 들어가기 전에 거즈마다 스캔해요.", "세탁기에 들어가기 전에 거즈마다 스캔해요.", "scan", "tag", "rinse", "stack"]
+  - ["완전 일치", check, "'exactly'를 문장 끝에 붙여 한 개 차이도 허용하지 않는다는 뜻이에요. 'Both'는 스캔 숫자와 수기 숫자 둘을 가리켜요.", "Both doors", "두 이름이 정확히 일치해야 해요.", "두 날짜가 정확히 일치해야 해요.", "exactly", "nearly", "barely", "almost"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 전자 계수 병행 4문장 순서
+    why: 거즈를 스캔과 수기로 함께 센다고 말하고, 두 방식이 일치해야 한다고 한 뒤, 두 숫자를 게시판에서 맞춰 보고, 정확히 같아야 넘어간다고 마무리해요.
+    lines:
+    - ["Each sponge gets scanned and manually counted.", gear, "거즈마다 스캔되고 수기로도 계수돼요", "병행"]
+    - ["So the electronic system should match our manual total.", monitor, "그러니 전자 시스템이 수기 총계와 일치해야 해요", "기준"]
+    - ["Let's reconcile those two numbers on the board.", board, "그 두 숫자를 게시판에서 맞춰 봐요", "대조"]
+    - ["Both of them need to match exactly before we go on.", check, "넘어가기 전에 둘이 정확히 일치해야 해요", "확정"]
+- title: 봉합 직전 거즈 불일치
+  s:
+  - ["불일치 선언", siren, "'declare'는 공식적으로 알린다는 뜻이라 조용히 넘기지 않고 팀 전체에 알려요. 'hold closure'는 닫는 일을 멈추라는 짧은 명령이에요.", "a fresh start", "서명 불일치를 선언할게요 — 봉합을 멈춰요.", "시간 불일치를 선언할게요 — 봉합을 멈춰요.", "count", "time", "date", "name"]
+  - ["부족 보고", siren, "'one sponge short'는 하나 모자란다는 짧은 보고로 정확한 개수를 바로 알려요. 'now'를 끝에 붙여 즉시 하라는 신호예요.", "one window", "거즈가 둘 부족해요, 지금 수색해야 해요.", "거즈가 셋 부족해요, 지금 수색해야 해요.", "short", "over", "late", "low"]
+  - ["봉합 보류", siren, "'No closing'은 동명사로 시작해 금지를 짧고 단호하게 말해요. 'reconciles'는 두 기록이 맞아떨어진다는 뜻이에요.", "the weather", "마취가 안정될 때까지 봉합하지 않아요.", "지혈이 끝날 때까지 봉합하지 않아요.", "reconciles", "expires", "shrinks", "arrives"]
+  - ["정지 요청", siren, "'Please hold'는 일단 멈추라는 정중한 명령이에요. 'resolved'는 문제가 풀려 끝났다는 뜻이에요.", "this is quiet", "잠깐요 — 서명될 때까지 닫을 수 없어요.", "잠깐요 — 교대할 때까지 닫을 수 없어요.", "resolved", "signed", "scheduled", "printed"]
+  - ["불일치 선언", siren, "'I'm calling'은 'declare'처럼 공식적으로 알린다는 뜻으로 쓰는 말이에요. 'one short'로 모자란 개수를 짧게 덧붙여요.", "tall", "불일치를 선언할게요 — 둘 부족해요.", "불일치를 선언할게요 — 셋 부족해요.", "calling", "fixing", "making", "solving"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 봉합 직전 불일치 4문장 순서
+    why: 개수가 모자란다고 보고하고, 그 이유로 불일치를 선언하며 닫기를 멈추고, 해결될 때까지 닫지 않겠다고 한 뒤, 맞으면 닫을 수 있다고 해요.
+    lines:
+    - ["We're one sponge short, we need to search now.", siren, "거즈가 하나 부족해요, 지금 수색해야 해요", "보고"]
+    - ["Because of that, I'm declaring a count discrepancy — hold closure.", siren, "그래서 계수 불일치를 선언할게요 — 봉합을 멈춰요", "선언"]
+    - ["Please hold — we can't close until this is resolved.", siren, "잠깐요 — 해결될 때까지 닫을 수 없어요", "정지"]
+    - ["Once the count reconciles, we can close.", check, "계수가 맞으면 닫을 수 있어요", "재개"]

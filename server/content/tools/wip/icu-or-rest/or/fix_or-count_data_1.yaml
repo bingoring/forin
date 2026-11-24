@@ -1,0 +1,79 @@
+# or-count 수정 데이터 1 — 문장 en·ko·chunks·words를 바꾸는 항목(A) 전부와 그 v46 필드. 키 = "상황.문장"(0부터).
+# 필드는 그 문장에 덮어쓴다. distractorsKo·blank·decoy 등은 새 문장에 맞춰 새로 쓴 값.
+sentences:
+  "12.4":   # A S1 안전 — 중단된 계수는 그 자리에서 잇지 않고 마지막 확인된 계수로 돌아간다
+    en: "We don't just pick up where we left off — we go back to the last verified count."
+    ko: "멈춘 데서 그냥 이어 가지 않고, 마지막으로 확인된 계수로 돌아가요."
+    chunks: ["We don't just pick up", "where we left off", "— we go back", "to the last verified count", "."]
+    words: [w-pick, w-count]
+    tag: "재계수 원칙"
+    icon: redo
+    why: "'don't just … — we …'는 흔한 방식을 먼저 짚고 바른 절차를 덧붙이는 틀이에요. 'verified'는 두 사람이 확인한 계수만 기준이 된다는 말이에요."
+    decoy: "to the back table"
+    distractorsKo:
+      - "멈춘 데서 그냥 이어 가지 않고, 마지막으로 확인된 쟁반으로 돌아가요."
+      - "멈춘 데서 그냥 이어 가지 않고, 마지막으로 확인된 바늘로 돌아가요."
+    blank:
+      answer: verified
+      options: [{en: verified}, {en: estimated}, {en: assumed}, {en: rounded}]
+  "17.4":   # A S3 안전 — 방 안 이동을 줄이는 것이지 전원 정지가 아니다
+    en: "We limit movement in the room until the needle turns up."
+    ko: "바늘이 나타날 때까지 방 안의 움직임을 줄여요."
+    chunks: ["We limit movement", "in the room", "until the needle", "turns up", "."]
+    words: [w-movement, w-needle, w-turn]
+    tag: "이동 제한"
+    icon: siren
+    why: "'limit'은 막는 게 아니라 줄인다는 뜻이라 마취·지혈 같은 환자 처치까지 멈추라는 말이 아니에요. 'until the needle turns up'은 바늘이 나올 때까지만 이어지는 조건이에요."
+    decoy: "until the cart"
+    distractorsKo:
+      - "바늘이 나타날 때까지 방 안의 쓰레기를 그대로 둬요."
+      - "바늘이 나타날 때까지 문을 닫아 둬요."
+    blank:
+      answer: movement
+      options: [{en: movement}, {en: lighting}, {en: heating}, {en: cooling}]
+  "19.4":   # A S2 역할 — 영상 처방은 집도의 몫, 간호사는 그 처방을 요청
+    en: "I'll request the follow-up X-ray the surgeon ordered."
+    ko: "집도의가 처방한 후속 엑스선 촬영을 요청할게요."
+    chunks: ["I'll request", "the follow-up X-ray", "the surgeon ordered", "."]
+    words: [w-request, w-xray, w-surgeon]
+    tag: "영상 요청"
+    icon: monitor
+    why: "'the surgeon ordered'는 영상 처방이 집도의 몫이고 간호사는 그 처방대로 요청한다는 점을 말해요. 'follow-up'은 처음 영상 뒤에 이어 찍는 추가 촬영이에요."
+    decoy: "the follow-up call"
+    distractorsKo:
+      - "집도의가 처방한 수술 전 엑스선 촬영을 요청할게요."
+      - "후속 엑스선 촬영을 요청하려고 처방을 읽어요."
+    blank:
+      answer: ordered
+      options: [{en: ordered}, {en: cancelled}, {en: refused}, {en: postponed}]
+  "15.3":   # A S4 ko — hold는 '잠깐만요'가 아니라 멈추라는 요청
+    ko: "멈춰 주세요 — 해결될 때까지 닫을 수 없어요."
+    distractorsKo:
+      - "멈춰 주세요 — 해결될 때까지 나갈 수 없어요."
+      - "멈춰 주세요 — 해결될 때까지 옮길 수 없어요."
+  "17.3":   # A S5 ko — carefully는 '꼼꼼히'
+    ko: "방 구석구석을 꼼꼼히 확인해요."
+    why: "'every corner'는 구석까지 하나도 빼지 않는다는 비유적 범위 표현이에요. 'carefully'는 서두르지 않고 빠짐없이 살핀다는 뜻이에요."
+  "14.3":   # A S6 사실·ko — 쓴 거즈는 최종 계수 전까지 수거통에 모아 둔다
+    ko: "수거통에 들어가기 전에 거즈마다 스캔해요."
+    why: "'before it goes in'은 수거통에 들어가기 전이라는 시점이에요. 한번 들어가면 거즈를 하나씩 확인하기 어려워서 들어가기 전에 스캔해요."
+  "13.4":   # A S7 청크·ko — at the same time이 한 덩어리
+    chunks: ["Let's", "both look", "at the tray", "at the same time", "."]
+    ko: "둘 다 동시에 쟁반을 봐요."
+  "1.3":    # A S8 청크 — as I call it out(구동사) 한 덩어리
+    chunks: ["Please confirm", "each sponge", "as I", "call it out", "."]
+  "5.4":    # A S8 청크 — for now로 잘못 읽히던 끊김
+    chunks: ["Everything needs", "to be accounted for", "now", "."]
+  "15.4":   # A S8 청크 — we're one short 한 덩어리
+    chunks: ["I'm calling", "a discrepancy", "— we're one short", "."]
+  "18.3":   # A S9 — don't add up(맞아떨어지다)은 카드의 '추가하다'가 아님
+    words: [w-number, w-closure]
+  "1.0":    # A S9·S10 — w-loud 삭제, 띄어쓰기
+    words: [w-count]
+    ko: "소리 내어 하나씩 세요."
+  "13.3":   # A S9 — w-eye 삭제
+    words: [w-mistake]
+  "20.3":   # A S9 — w-late 삭제(w-run이 run late로)
+    words: [w-understand, w-run, w-skip]
+  "3.1":    # A S10 ko — 번역투
+    ko: "바늘은 세기 위해 전부 자석 패드에 다시 꽂아 둬요."

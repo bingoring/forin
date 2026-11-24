@@ -1,0 +1,143 @@
+# A 문장 수정 + 딸린 B 필드 (키 = "상황.문장")
+sentences:
+  "12.5":
+    en: "You confirm the dose on your own first, then we compare."
+    ko: "먼저 선생님이 혼자 용량을 확인하시고, 그다음 서로 맞춰 봐요."
+    chunks: ["You confirm", "the dose", "on your own first", ", then we compare", "."]
+    words: [w-dose, w-confirm]
+    tag: "순서 안내"
+    icon: speech
+    why: "on your own first로 상대가 내 값을 듣기 전에 혼자 확인하게 하고, then we compare로 맞춰 보는 건 그 뒤라고 순서를 정해요. 값을 먼저 말해 주면 독립확인이 깨져요."
+    decoy: "with the order open"
+    dk:
+      - "먼저 선생님이 혼자 용량을 확인하려고, 화면을 먼저 열어 둬요."
+      - "혼자 용량을 확인하는 건 서로에게 영향을 주지 않으려는 거예요."
+    blank: {answer: compare, options: [compare, guess, argue, vote]}
+  "2.5":
+    en: "Tell me how many units of insulin you get before I say mine."
+    ko: "제 걸 말하기 전에 인슐린이 몇 단위로 나왔는지 먼저 말해 주세요."
+    chunks: ["Tell me", "how many units of insulin", "you get", "before I say mine", "."]
+    words: [w-unit, w-insulin]
+    tag: "각자 먼저"
+    icon: speech
+    why: "before I say mine이 내 값을 말하기 전에 상대 값부터 듣는 순서를 정해요. 내 값을 먼저 들려주면 상대가 맞춰 따라 하게 돼 독립확인이 깨져요."
+    decoy: "once you've scanned it"
+    dk:
+      - "인슐린이 몇 단위로 나왔는지 말해 달라고 하려고 제 계산을 먼저 끝내요."
+      - "인슐린은 한 단위만 틀려도 큰 차이가 나는 고위험 약이에요."
+    blank: {answer: units, options: [units, grams, tablets, puffs]}
+  "15.4":
+    en: "Let's act fast: you check his airway while I call the physician."
+    ko: "빠르게 움직여요, 선생님은 기도를 확인하고 그동안 제가 의사를 부를게요."
+    chunks: ["Let's act fast:", "you check his airway", "while I call", "the physician", "."]
+    words: [w-act, w-airway, w-call, w-physician]
+    tag: "동시 진행"
+    icon: run
+    why: "콜론 뒤에 두 사람의 일을 while로 묶어 한꺼번에 시작해요. 위기에는 사정과 호출을 차례로 하지 않고 한 사람은 사정, 다른 사람은 호출로 나눠 맡아요."
+    decoy: "Let's be clear:"
+    dk:
+      - "빠르게 움직여요, 선생님은 기도를 확인하고 제가 의사를 부르려고 침대 번호를 말할게요."
+      - "빠르게 움직여요, 오연결 직후에는 환자 상태가 금방 바뀔 수 있어요."
+    blank: {answer: airway, options: [airway, bed, chart, floor]}
+  "16.5":
+    en: "I'm calling the doctor now, and we'll prepare protamine if it's ordered."
+    ko: "지금 의사를 부르고 있고, 처방이 나오면 프로타민을 준비할게요."
+    chunks: ["I'm calling", "the doctor now", ", and we'll prepare protamine", "if it's ordered", "."]
+    words: [w-call, w-prepare, w-protamine, w-order]
+    tag: "진행 보고"
+    icon: pager
+    why: "I'm calling은 지금 하고 있는 호출을, we'll prepare는 앞으로 할 준비를 말해요. if it's ordered가 해독제는 처방이 나온 뒤라는 범위를 지켜 줘요."
+    decoy: "at the bedside"
+    dk:
+      - "지금 의사를 부르고 있고, 프로타민을 준비하려고 약물 카트를 열어요."
+      - "지금 의사를 부르고 있고, 프로타민은 헤파린 해독제예요."
+    blank: {answer: ordered, options: [ordered, expired, famous, painted]}
+  "9.5":
+    en: "The narcotics stay locked, and we never share our cabinet login."
+    ko: "마약은 늘 잠겨 있고, 보관함 로그인은 절대 같이 쓰지 않아요."
+    chunks: ["The narcotics", "stay locked", ", and we never share", "our cabinet login", "."]
+    words: [w-narcotic, w-locked]
+    tag: "로그인 관리"
+    icon: lock
+    why: "stay locked로 잠긴 상태가 유지됨을 말하고, never share가 로그인을 절대 같이 쓰지 않는다는 규칙을 못 박아요. and로 잠금과 개인 접근 두 가지 장치를 이어요."
+    decoy: "our lab coats"
+    dk:
+      - "마약은 늘 잠겨 있고, 보관함 청소는 절대 같이 하지 않아요."
+      - "마약은 늘 잠겨 있고, 보관함 로그인은 근무마다 새로 받아요."
+    blank: {answer: cabinet, options: [cabinet, printer, scanner, timesheet]}
+  "20.3":
+    en: "The physician will talk with the family, and I'll be there to support them."
+    ko: "의사 선생님이 가족과 이야기하고, 저는 곁에서 가족을 도울게요."
+    chunks: ["The physician", "will talk with the family", ", and I'll be there", "to support them", "."]
+    words: [w-physician, w-support]
+    tag: "역할 분담"
+    icon: handshake2
+    why: "will talk와 I'll be there로 말하는 사람과 곁을 지키는 사람의 역할을 나눠요. support는 편을 든다는 뜻이 아니라 가족 곁에서 돕는다는 뜻이에요."
+    decoy: "to watch the monitor"
+    dk:
+      - "의사 선생님이 가족과 이야기하고, 저는 곁에서 기록을 정리할게요."
+      - "의사 선생님이 환자와 이야기하고, 저는 곁에서 가족을 도울게요."
+    blank: {answer: support, options: [support, interrupt, correct, question]}
+  "3.6":
+    en: "A line labeled at both ends is one less chance of a mix-up."
+    ko: "양쪽 끝에 라벨이 붙은 라인은 헷갈릴 위험을 하나 줄여 줘요."
+    chunks: ["A line labeled", "at both ends", "is one less chance", "of a mix-up", "."]
+    words: [w-label, w-line, w-end, w-mix]
+    tag: "라벨 효과"
+    icon: shield
+    why: "one less chance는 위험을 하나 줄인다는 표현이라 라벨 하나가 만능은 아니라는 겸손한 사실을 담아요. mix-up은 둘을 헷갈리는 실수예요."
+    decoy: "is one extra tool"
+    dk:
+      - "양쪽 끝에 라벨이 붙은 라인은 엉킬 위험을 하나 줄여 줘요."
+      - "양쪽 끝에 라벨이 붙은 라인은 헷갈릴 위험을 두 개 줄여 줘요."
+    blank: {answer: labeled, options: [labeled, coiled, wrapped, shortened]}
+  "15.5":
+    en: "I'll stay with him while you notify the team of what happened."
+    chunks: ["I'll stay with him", "while you notify", "the team", "of what happened", "."]
+  "2.4":
+    chunks: ["Let's stop", "and check this together", "before", "we give it", "."]
+    decoy: "we print it"
+  "4.4":
+    chunks: ["Let's check", "his call light works", "before", "I step out", "."]
+    decoy: "his TV remote works"
+  "3.0":
+    chunks: ["I might be wrong,", "but I want to check something", "before", "we go ahead", "."]
+  "9.0":
+    ko: "고농도 전해질은 따로 잠가서 보관해요."
+    dk:
+      - "고농도 전해질은 따로 잠가서 주문해요."
+      - "고농도 전해질은 따로 잠가서 세어요."
+  "12.2":
+    ko: "이건 모든 고위험 약물에 꼭 해야 하는 절차예요."
+    words: [w-required, w-medication]
+    dk:
+      - "이건 모든 신입 교육에 꼭 해야 하는 절차예요."
+      - "이건 모든 고위험 환자에게 꼭 해야 하는 절차예요."
+  "12.6":
+    ko: "인슐린이나 헤파린 같은 고위험 약물은 항상 이 추가 단계를 거쳐요."
+    words: [w-drug, w-insulin, w-heparin, w-step]
+    dk:
+      - "인슐린이나 헤파린 같은 고위험 약물은 항상 시간이 조금 더 걸려요."
+      - "인슐린이나 헤파린 같은 고위험 약물은 항상 이 추가 서류를 거쳐요."
+  "6.2":
+    ko: "원인을 해결하지 않고 알람 소리만 끄는 건 절대 안 돼요."
+    dk:
+      - "원인을 해결하지 않고 서류 작성만 하는 건 절대 안 돼요."
+      - "원인을 해결하지 않고 커피만 마시는 건 절대 안 돼요."
+  "8.4":
+    ko: "잠깐요, 그건 경관영양 라인이에요, 정맥 포트는 여기고요."
+    dk:
+      - "잠깐요, 그건 소변 라인이에요, 정맥 포트는 여기고요."
+      - "잠깐요, 그건 경관영양 라인이에요, 끝에 이름표가 달렸어요."
+  "20.1":
+    ko: "의사가 공개를 이끌고, 우리는 곁에서 뒷받침해요."
+    dk:
+      - "의사가 회의를 이끌고, 우리는 곁에서 뒷받침해요."
+      - "의사가 공개를 이끌고, 우리는 곁에서 정리해요."
+# KP 문장 why 보강 (en·chunks 그대로)
+why_kp:
+  "2.0": "verify 뒤에 항목을 나열해 확인 범위를 한 번에 열거해요. together는 같은 자리에서 한다는 뜻이고, 확인 자체는 각자 따로 한 뒤 맞춰 봐요(독립확인)."
+  "16.1": "Prepare와 notify를 and로 이어 약 준비와 보고를 한꺼번에 시작하라고 해요. protamine은 헤파린 효과를 되돌리는 약이지만 투여는 의사 처방이 있어야 해서, 지금은 처방이 나는 즉시 쓸 수 있게 꺼내 두는 준비예요."
+  "20.2": "acknowledge 뒤에 what happened와 our plan 두 내용을 and로 이어 사실 인정과 앞으로의 계획을 같이 말해요. 간호사가 임의로 약속하는 게 아니라 병원 공개 절차와 담당 의사가 정한 계획을 전하는 말이에요."
+  "6.1": "without 뒤에 동명사를 쓰면 한 가지를 하면서 다른 것은 지킨다는 틀이에요. non-critical로 넓혀도 되는 범위를 위중하지 않은 것으로 한정하고, 병원 규정과 처방(또는 승인된 범위) 안에서만 조정해요."
+  "7.0": "We check로 시작해 정기적으로 하는 일을 습관처럼 말해요. every two hours가 주기를 숫자로 못 박지만, 실제 간격은 억제대 종류와 병원 정책을 따라요."

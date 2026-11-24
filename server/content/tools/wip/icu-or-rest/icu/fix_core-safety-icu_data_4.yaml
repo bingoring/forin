@@ -1,0 +1,149 @@
+# 뉘앙스·order 수정 (A N1~N10, 딸린 order)
+nuance:
+  # slider: "상황.n"
+  "10.0": {scale: ["person only", "person and place", "person, place, and time"]}
+  "3.0": {cue: "Nurse: \"I'm not certain, but something about this line looks off — can we look before we push anything?\""}
+  "9.0": {scale: [diluted, standard strength, concentrated], answerAt: 2}
+  "16.0":
+    scale: [near-miss, medication error, sentinel event]
+    answerAt: 1
+    cue: "Nurse, to the charge nurse: \"The heparin reached him at ten times the ordered dose; no bleeding so far.\""
+    why: "환자에게 닿기 전에 잡으면 near-miss, 닿았으면 medication error, 사망·영구 손상 같은 심각한 위해까지 가면 sentinel event(Joint Commission)예요. 확인된 사실로만 이름을 붙여요."
+  "7.0": {scale: [now and then, on a schedule, continuously]}
+  "6.0": {why: "silence(또는 pause)는 정해진 시간만 소리를 멈추고 다시 울려요. mute는 다시 켤 때까지 소리를 끄는 뜻으로 쓰일 때가 많고(기기마다 이름이 달라요), turn off는 그 알람 자체를 끄는 거예요. 원인을 해결하지 않은 채 끄면 안 돼요."}
+  "5.0": {scale: [not asked yet, chart says none, chart and patient agree]}
+  "20.1": {ko: "얼마나 속상하실지 알아요, 이런 일이 생겨서 정말 안타까워요"}
+  "2.0": {exKo: "이 용량은 마음이 놓이지 않아요"}
+  "8.0": {example: "These two connectors look nearly identical."}
+# context 재작성: 상황 번호 -> 새 context
+context:
+  0:
+    word: artifact
+    ko: 잡음 신호
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "That alarm was artifact from him scratching at the leads.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Alarm artifact from patient movement; leads reapplied.", ok: true}
+      - {who: 보호자에게, icon: home, en: "Don't worry, that alarm was just artifact.", ok: false, fix: "That alarm went off because he moved and a sticker shifted — his heart rhythm is fine."}
+    why: "동료와 차트에는 artifact(움직임 등으로 생긴 잡음 신호)라고 정확히 쓰지만, 보호자에게는 무슨 일이었는지 쉬운 말로 풀어 줘요. artifact만 던지면 가족은 무슨 뜻인지, 정말 괜찮은 건지 알 수 없어요."
+  1:
+    word: least restrictive
+    ko: 가장 덜 제한적인
+    scenes:
+      - {who: 의사에게, icon: monitor, en: "We've tried the least restrictive options; the sitter isn't enough.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Least restrictive alternatives (sitter, mitts) tried first.", ok: true}
+      - {who: 보호자에게, icon: home, en: "We tried the least restrictive alternatives first.", ok: false, fix: "Before using these soft ties, we tried having someone sit with him and covering his lines."}
+    why: "의사와 차트에는 least restrictive(가장 덜 제한적인) 대안을 먼저 썼다고 정확히 말하지만, 보호자에게는 무엇을 먼저 해 봤는지 쉬운 말로 알려요. 이 표현만 들으면 가족은 무슨 뜻인지 몰라 억제대부터 썼다고 오해할 수 있어요."
+  3:
+    word: lumen
+    ko: (중심정맥관의) 내강
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Which lumen is the heparin running in?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Distal lumen labeled heparin; proximal lumen TPN.", ok: true}
+      - {who: 환자에게, icon: me, en: "I'm checking which lumen each medicine goes into.", ok: false, fix: "I'm following each tube to make sure every medicine goes where it should."}
+    why: "동료와 차트에는 lumen(중심정맥관의 내강)으로 정확히 말하고, 환자에게는 무엇을 하는지 쉬운 말로 설명해요. 환자는 lumen이 무슨 뜻인지 몰라 오히려 불안해해요."
+  5:
+    word: two identifiers
+    ko: 환자 식별자 두 가지
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Did you use two identifiers before you scanned?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Two identifiers (name, DOB) verified before administration.", ok: true}
+      - {who: 환자에게, icon: me, en: "I need two identifiers from you.", ok: false, fix: "Before I give this, can you tell me your full name and date of birth?"}
+    why: "동료와 차트에는 two identifiers(이름과 생년월일 같은 식별자 두 가지)라고 정확히 말하고, 환자에게는 무엇을 말해 달라는 건지 쉬운 말로 물어요. 이름과 생년월일을 환자가 직접 말하게 해야 확인이 되고, 침상 번호는 식별자로 쓰지 않아요."
+  7:
+    words: [w-skin]
+    word: bony prominences
+    ko: 뼈 돌출부
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Check his bony prominences when we turn him.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Skin over bony prominences intact, no redness.", ok: true}
+      - {who: 환자에게, icon: me, en: "I'm checking your bony prominences for pressure.", ok: false, fix: "I'm checking the skin over your hips and heels, where pressure builds up."}
+    why: "동료와 차트에는 bony prominences(뼈 돌출부)라고 정확히 쓰지만, 환자에게는 어디를 왜 보는지 쉬운 말로 설명해요. 환자는 bony prominences가 어디인지 알아듣기 어려워요."
+  8:
+    word: misconnection
+    ko: 오연결
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "This is how misconnections happen — trace it first.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Tubing misconnection caught before infusion; feeding set traced and relabeled.", ok: true}
+      - {who: 환자에게, icon: me, en: "I'm checking for misconnections.", ok: false, fix: "I'm making sure each tube is hooked to the right place."}
+    why: "동료와 차트에는 misconnection(오연결)이라고 정확히 말하고, 환자에게는 지금 무엇을 하는지 쉬운 말로 설명해요. misconnection은 환자에게 무슨 뜻인지 모르는 말이고 겁만 줘요."
+  9:
+    words: [w-narcotic]
+    word: waste
+    ko: (남은 마약) 폐기
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Can you witness my waste of the leftover fentanyl?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Fentanyl 50 mcg wasted, witnessed by second RN.", ok: true}
+      - {who: 보호자에게, icon: home, en: "I just need someone to witness my fentanyl waste.", ok: false, fix: "Another nurse is watching me throw away the leftover pain medicine — that's our safety rule."}
+    why: "남은 마약을 폐기하는 waste는 간호사끼리 증인을 세우는 용어이고, 보호자에게는 무엇을 왜 하는지 쉬운 말로 알려요. waste만 들으면 가족은 낭비나 사고로 오해할 수 있어요."
+  12:
+    word: high-alert
+    ko: 고위험(약)
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Heparin is high-alert, so I need a second nurse.", ok: true}
+      - {who: 차트 기록, icon: board, en: "High-alert med; independent double-check done with second RN.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your heparin is a high-alert drug.", ok: false, fix: "This medicine needs extra care, so a second nurse will check it too."}
+    why: "동료와 차트에는 high-alert(고위험 약)이라고 정확히 말하고, 환자에게는 왜 한 번 더 확인하는지 쉬운 말로 설명해요. 약에 위험하다는 딱지를 붙이는 말은 환자를 불안하게 해요."
+  13:
+    word: FiO2
+    ko: 흡입 산소 농도
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "What's his FiO2 before we switch to the transport vent?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Transported on FiO2 40%, sats 96%.", ok: true}
+      - {who: 보호자에게, icon: home, en: "We're keeping his FiO2 at forty percent for the trip.", ok: false, fix: "We're bringing enough oxygen so he gets the same amount on the way to his scan."}
+    why: "동료와 차트에는 FiO2(흡입 산소 농도)를 숫자로 정확히 말하고, 보호자에게는 무엇을 챙기는지 쉬운 말로 설명해요. FiO2 같은 약어는 가족에게 안심보다 낯섦을 줘요."
+  14:
+    word: sentinel event
+    ko: 적신호(중대 위해) 사건
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "If this caused harm, it may be a sentinel event.", ok: true}
+      - {who: 관리자에게, icon: board, en: "Reporting a possible sentinel event on bed six.", ok: true}
+      - {who: 환자에게, icon: me, en: "This is being reviewed as a sentinel event.", ok: false, fix: "We're looking closely at what happened so it doesn't happen again, and your doctor will talk with you."}
+    why: "동료와 관리자에게는 sentinel event(심각한 위해 사건)라고 정확히 말하고, 환자에게는 무엇을 하는지 쉬운 말로 알려요. sentinel event 같은 용어는 겁만 주고 정보가 되지 않아요."
+  15:
+    word: wrong-route
+    ko: 경로 오류(투여)
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "That's a wrong-route infusion — stop it now.", ok: true}
+      - {who: 의사에게, icon: monitor, en: "Wrong-route infusion stopped at 1410; he's alert, vitals stable.", ok: true}
+      - {who: 가족에게, icon: home, en: "There was a wrong-route infusion.", ok: false, fix: "We stopped one of his medicines and we're checking him closely; the doctor will come talk with you."}
+    why: "동료와 의사에게는 wrong-route(경로 오류)라고 정확히 말하고, 가족에게는 무슨 일이 있었고 지금 무엇을 하는지 쉬운 말로 설명해요. wrong-route만 말하면 가족은 무슨 일인지 알 수 없어요."
+  16:
+    word: supratherapeutic
+    ko: 치료 범위를 넘은
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "His PTT is supratherapeutic — hold the drip.", ok: true}
+      - {who: 차트 기록, icon: board, en: "PTT supratherapeutic at 150; drip held, MD notified.", ok: true}
+      - {who: 보호자에게, icon: home, en: "His heparin level is supratherapeutic.", ok: false, fix: "His blood is thinner than we want, so we stopped that medicine and the doctor is on the way."}
+    why: "동료와 차트에는 supratherapeutic(치료 범위를 넘은)이라고 정확히 말하고, 보호자에게는 무슨 상태인지 쉬운 말로 알려요. supratherapeutic은 정확하지만 가족에게는 의미가 없어요."
+  17:
+    word: positional asphyxia
+    ko: 자세성 질식
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "He slid down — that's how positional asphyxia happens.", ok: true}
+      - {who: 의사에게, icon: monitor, en: "Restraint released; no signs of positional asphyxia.", ok: true}
+      - {who: 환자에게, icon: me, en: "We released it to prevent positional asphyxia.", ok: false, fix: "I'm taking this off right away so you can breathe easier."}
+    why: "동료와 의사에게는 positional asphyxia(자세성 질식)라고 정확히 말하고, 환자에게는 지금 무엇을 하는지 짧고 쉬운 말로 해요. 위급할 때 전문 용어를 읊으면 환자는 겁만 나요."
+  18:
+    word: desat
+    ko: 산소포화도가 떨어지다
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "He's desatting — look at him now.", ok: true}
+      - {who: 담당의에게, icon: monitor, en: "He desatted to 82 at 0230; I turned up his oxygen and called you.", ok: true}
+      - {who: 보호자에게, icon: home, en: "He desatted a few minutes ago.", ok: false, fix: "His oxygen level dropped, and we're giving him more oxygen right now."}
+    why: "동료와 담당의에게는 desat(산소포화도 하락)이라는 줄임말과 수치로 정확히 전하고, 보호자에게는 무슨 일이고 무엇을 하는지 쉬운 말로 설명해요. desat는 가족에게 통하지 않는 현장 줄임말이에요."
+  19:
+    word: pressors
+    ko: 승압제
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Keep the pressors running — move them to battery first.", ok: true}
+      - {who: 의사에게, icon: monitor, en: "Pressors running on battery without a gap.", ok: true}
+      - {who: 보호자에게, icon: home, en: "His pressors are on battery.", ok: false, fix: "The medicine holding up his blood pressure is still running on battery, and we're watching it closely."}
+    why: "동료와 의사에게는 pressors(승압제)라고 정확히 말하고, 보호자에게는 그 약이 무슨 일을 하는지 쉬운 말로 알려요. pressors는 가족에게 의미가 없는 말이에요."
+order:
+  "2.2": {en: "Tell me what you got before I say mine.", ko: "제 걸 말하기 전에 선생님이 얻은 값을 먼저 말해 주세요", note: 각자값, icon: speech}
+  "20.0": {en: "Before anything is shared outside this room, we agree who will talk with the family.", ko: "이 방 밖에 알리기 전에 누가 가족과 이야기할지 맞춰요", note: 준비}
+  "20.1": {ko: "그 대화에서 의사가 공개를 이끌고 우리는 뒷받침해요"}
+  "9.0": {ko: "고농도 전해질은 따로 잠가서 보관해요"}
+order_why:
+  "2": "값에 어긋남이 있으면 먼저 멈추고, 들어가기 전에 처방과 함께 확인하고, 내 값을 말하기 전에 상대 값을 먼저 듣고, 합의 뒤에 서명하고 시작해요."
+  "20": "이 방 밖에 알리기 전에 누가 가족과 이야기할지 정하고, 그 대화를 의사가 이끌고, 그 안에서 일어난 일과 계획을 인정하고, 사실만 말한다는 태도로 닫아요."

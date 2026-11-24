@@ -1,0 +1,97 @@
+# 뉘앙스 수정 — 상황 index의 해당 kind 항목을 찾아 바꾼다.
+contexts:   # context 10개 전체 재작성 (word·ko·scenes·why). words(id)는 그대로.
+  0:
+    word: LEP
+    ko: 영어 사용 제한
+    scenes:
+      - {who: 병동 동료에게, icon: handshake2, en: "Pt is LEP — can you book a Korean interpreter for rounds?", ok: true}
+      - {who: 차트 기록, icon: board, en: "LEP, Korean; interpreter used for admission history.", ok: true}
+      - {who: 가족에게, icon: home, en: "Your mother is LEP, so we have to use an interpreter.", ok: false, fix: "We'll bring in an interpreter so your mother can follow everything in Korean."}
+    why: "LEP(영어가 서툰 환자)는 동료나 차트에서는 짧고 정확한 분류어예요. 가족에게 '어머님은 LEP라서'라고 하면 환자를 꼬리표로 부르고 통역을 규정 때문에 하는 일처럼 들려요. 어머님이 한국어로 다 이해하도록 돕는 일이라고 쉬운 말로 알려 주세요."
+  2:
+    word: RASS
+    ko: 진정 점수
+    scenes:
+      - {who: 차트 기록, icon: board, en: "RASS -1, comfortable on current sedation.", ok: true}
+      - {who: 야간 인계, icon: handshake2, en: "Her RASS is minus one on propofol.", ok: true}
+      - {who: 보호자에게, icon: home, en: "Her RASS is minus one right now.", ok: false, fix: "She's resting and opens her eyes when we talk to her."}
+    why: "RASS는 진정이 얼마나 깊은지를 숫자로 매기는 척도예요. 차트와 인계에서는 숫자 하나로 상태가 정확히 전해져요. 보호자에게 '마이너스 1'이라고만 하면 무슨 뜻인지 몰라 불안해해요. 지금 어떤 모습인지(쉬고 있고 말을 걸면 눈을 뜨는 것)를 쉬운 말로 풀어 주세요."
+  5:
+    word: reconcile
+    ko: (약 목록을) 맞춰 보다
+    scenes:
+      - {who: 약사에게, icon: pill, en: "Can you help me reconcile his home meds tonight?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Home meds reconciled with pharmacy list.", ok: true}
+      - {who: 깨어난 환자에게, icon: me, en: "We need to reconcile your medications.", ok: false, fix: "We'll go over your medicines with you and the interpreter to make sure our list is right."}
+    why: "reconcile은 집에서 먹던 약 목록과 병원 처방을 맞춰 보는 절차를 가리키는 의료진 용어예요. 약사나 차트에서는 정확한 말이지만 환자에게는 무슨 일을 하는 건지 알 수 없어요. 환자의 약을 함께 살펴보며 목록이 맞는지 확인한다고 쉬운 말로 알려 주세요."
+  7:
+    word: attending
+    ko: 담당 전문의
+    scenes:
+      - {who: 동료 간호사에게, icon: handshake2, en: "The attending will explain the procedure at three; I've booked the interpreter.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Attending at bedside for consent, Korean interpreter present.", ok: true}
+      - {who: 가족에게, icon: home, en: "The attending will explain the procedure.", ok: false, fix: "Dr. Kim, the doctor in charge of his care, will explain it, and the interpreter will tell you every word."}
+    why: "attending은 환자 치료를 책임지는 담당 전문의를 가리키는 병원 안의 직함이에요. 동료와 차트에서는 정확하지만 가족은 그 직함이 누구인지 몰라요. 치료를 맡은 의사라고 풀어 주고, 동의 설명은 의사가 하며 통역사는 그 말을 하나도 빼지 않고 옮긴다고 알려 주세요."
+  8:
+    word: MODS
+    ko: 다발성 장기부전
+    scenes:
+      - {who: 의사에게 보고, icon: stetho, en: "He's in MODS — kidneys and liver both failing.", ok: true}
+      - {who: 차트 기록, icon: board, en: "MODS, CRRT started.", ok: true}
+      - {who: 가족에게, icon: home, en: "He's in MODS.", ok: false, fix: "Several of his organs, like his kidneys and liver, are very weak right now."}
+    why: "MODS는 여러 장기가 동시에 제 기능을 못 하는 상태를 줄여 부르는 의료진 약어예요. 의사 보고나 차트에서는 한마디로 상태가 전해져요. 가족에게 약어만 말하면 무슨 뜻인지 몰라 겁이 나요. 어느 장기가 얼마나 약한지를 쉬운 말로 풀어 주세요."
+  12:
+    word: PRN
+    ko: 필요할 때
+    scenes:
+      - {who: 약사에게, icon: pill, en: "Can you add the PRN doses to the Korean med list?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Oxycodone PRN given for pain 6/10.", ok: true}
+      - {who: 보호자에게, icon: home, en: "Give this one PRN.", ok: false, fix: "Give this one only when he needs it for pain."}
+    why: "PRN은 정해진 시간이 아니라 필요할 때 쓰는 약이라는 뜻의 처방 약어예요. 약사와 차트에서는 정확하지만, 보호자에게 약어만 말하면 언제 줘야 하는지 몰라요. 언제, 무엇 때문에 주는 약인지를 쉬운 말로 풀어 주세요."
+  13:
+    word: VRI
+    ko: 영상 원격 통역
+    scenes:
+      - {who: 병동 직원에게, icon: monitor, en: "Is the Korean VRI free in the next five minutes?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Korean VRI used, interpreter ID noted.", ok: true}
+      - {who: 가족에게, icon: home, en: "I'll set up the VRI now.", ok: false, fix: "I'll set up the video interpreter on this screen now."}
+    why: "VRI는 화면으로 연결하는 영상 원격 통역을 줄여 부르는 병원 안의 말이에요. 직원끼리나 차트에서는 짧고 정확해요. 가족은 VRI가 무엇인지 몰라요. 화면에 통역사가 나온다고 쉬운 말로 알려 주세요."
+  15:
+    word: respiratory distress
+    ko: 호흡곤란
+    scenes:
+      - {who: 동료에게 도움 요청, icon: bell, en: "Bed four is in respiratory distress — I need help now.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Acute respiratory distress, RT at bedside.", ok: true}
+      - {who: 보호자에게, icon: home, en: "She's in acute respiratory distress.", ok: false, fix: "She's having a hard time breathing, and we're helping her right now."}
+    why: "respiratory distress는 호흡곤란을 가리키는 임상어예요. 동료에게는 어디에서 무슨 일인지 짧게 말해 도움을 부르는 데 맞고, 차트에도 정확해요. 보호자에게 임상어를 읊으면 차갑고 불안해져요. 지금 숨쉬기 힘들어하고 우리가 돕고 있다고 쉬운 말로 알려 주세요."
+  17:
+    word: surrogate
+    ko: 대리 결정자
+    scenes:
+      - {who: 동료 간호사에게, icon: handshake2, en: "The daughter is the surrogate — family meeting at four.", ok: true}
+      - {who: 통역사에게, icon: mic, en: "Please interpret for the surrogate, his daughter, word for word.", ok: true}
+      - {who: 가족에게, icon: home, en: "As the surrogate, you have to make this decision.", ok: false, fix: "You know him best, so we'll think together about what he would have wanted."}
+    why: "surrogate는 환자를 대신해 결정하는 사람을 가리키는 병원 용어예요. 동료와 통역사에게는 역할이 분명해서 좋아요. 가족에게 '대리 결정자니까 당신이 정해야 한다'고 하면 결정의 짐을 떠넘기는 말이 돼요. 결정은 환자가 원했을 것을 기준으로(substituted judgment) 함께 하는 일이라고 알려 주세요."
+  20:
+    word: ethics consult
+    ko: 윤리 자문
+    scenes:
+      - {who: 동료에게, icon: handshake2, en: "Can we get an ethics consult for bed seven?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Ethics consult placed re: treatment refusal.", ok: true}
+      - {who: 가족에게, icon: home, en: "I've placed an ethics consult.", ok: false, fix: "I've asked our ethics team, who help families and doctors with hard choices, to talk with us."}
+    why: "ethics consult(윤리 자문)는 병원이 실제로 쓰는 절차예요. 동료와 차트에서는 한마디로 통해요. 가족에게 '윤리 자문을 걸었다'고만 하면 치료 거부를 문제 삼는 것처럼 들려요. 어려운 선택을 가족·의사와 함께 풀도록 돕는 팀이라고 쉬운 말로 소개하세요."
+pairs:      # (situation index) → 바꿀 것
+  19:
+    pairs: [["point to", "the picture board"], ["squeeze my hand", "once for yes"], ["ask", "simple yes-or-no questions"]]
+    why: "통역사를 아직 못 불렀을 때는 그림판을 가리키게 하고, 손 쥐기로 예를 표시하게 하고, 예·아니오 질문만 해요. 이 셋을 같이 쓰면 말 없이도 확인이 돼요."
+  10:
+    pairs: [["hearing", "aids"], ["lip", "reading"], ["large", "letters"]]
+    words: [w-aid, w-lip, w-read, w-large, w-letter]
+    decoys: ["a call bell"]
+    why: "hearing aids는 보청기, lip reading은 입 모양 읽기, large letters는 큰 글씨예요. 듣기와 보기가 모두 어려운 환자에게는 보조기기와 큰 글씨 도구를 함께 챙겨요."
+  8:
+    decoys: ["a warm blanket"]
+  12:
+    pairs: [["measure", "the dose with a syringe"], ["call", "this number if he seems worse"], ["miss", "a dose by mistake"]]
+  13:
+    decoys: ["the call bell"]

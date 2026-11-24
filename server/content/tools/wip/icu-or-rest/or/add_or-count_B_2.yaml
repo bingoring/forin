@@ -1,0 +1,87 @@
+# [tag, icon, why, decoy, ko1, ko2, ans, w1, w2, w3]
+situations:
+- title: 바늘 회수 확인
+  s:
+  - ["바늘 계수", pushpin, "'account for'는 단순히 세는 것을 넘어 어디 있는지 다 안다는 뜻이에요. 'every'로 하나라도 빠지면 안 된다는 점을 짚어요.", "we've ordered", "사용한 바늘을 전부 통에 넣어요.", "사용한 바늘을 전부 쟁반에 올려요.", "needle", "sponge", "towel", "gown"]
+  - ["바늘 회수", pushpin, "'go back on'은 쓴 바늘이 정해진 자리로 돌아온다는 뜻이에요. 자석 위에 모아 두면 개수를 한눈에 세기 쉬워요.", "on the monitor", "바늘은 전부 보관을 위해 자석 위로 돌아가요.", "바늘은 전부 정리를 위해 자석 위로 돌아가요.", "magnet", "bench", "mat", "stand"]
+  - ["하나씩 계수", check, "'each one'은 묶어서 어림하지 않고 하나하나 센다는 뜻이에요. 'before we move on'은 다음 단계 전에 끝내야 한다는 신호예요.", "each tray", "넘어가기 전에 하나씩 꺼내요.", "넘어가기 전에 하나씩 펴요.", "one", "pair", "set", "kit"]
+  - ["바늘 반납", handshake2, "'as soon as'는 다 쓴 즉시라는 뜻이라 바늘이 손에 남지 않아요. 'Please hand me'는 직접 건네 달라는 정중한 요청이에요.", "the scissors", "다 쓰면 바로 가위를 건네줘요.", "다 쓰면 바로 실을 건네줘요.", "needle", "scissors", "clamp", "stapler"]
+  - ["정확성", check, "'has to be'는 선택이 아닌 의무를 말해요. 'exact'는 대략이 아니라 하나도 틀리지 않는 값이라, 작은 바늘은 한 개 차이도 안전과 이어져요.", "ready", "바늘 계수는 간단해야 해요.", "바늘 계수는 깔끔해야 해요.", "exact", "quick", "simple", "cheap"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 바늘 회수 확인 4문장 순서
+    why: 쓴 바늘을 전부 셈에 넣자고 말하고, 자석 위로 모은 뒤 하나씩 세고, 그 숫자가 맞으면 게시판에 적어요.
+    lines:
+    - ["Let's account for every needle we've used.", pushpin, "사용한 바늘을 전부 셈에 넣어요", "개시"]
+    - ["All of them go back on the magnet for counting.", pushpin, "전부 계수를 위해 자석 위로 돌아가요", "회수"]
+    - ["I count each one before we move on.", check, "넘어가기 전에 하나씩 세요", "계수"]
+    - ["If that number is exact, I'll write it on the board.", pencil, "그 숫자가 정확하면 게시판에 적을게요", "기록"]
+- title: 계수 기록 작성
+  s:
+  - ["진행 보고", pencil, "'I'm writing'은 지금 진행 중이라는 현재진행형이라 팀이 지금 보게 해요. 'the counts'로 거즈·기구·바늘 계수 모두를 가리켜요.", "on the door", "지금 서류에 계수를 적고 있어요.", "지금 게시판에 날짜를 적고 있어요.", "counts", "doses", "orders", "labels"]
+  - ["시각 기록", calendar, "'is documented with the time'은 값뿐 아니라 언제였는지까지 남긴다는 뜻이에요. 시각이 있어야 나중에 어느 계수인지 가려요.", "with a pen", "계수마다 날짜와 함께 문서화해요.", "계수마다 방 번호와 함께 문서화해요.", "time", "date", "name", "room"]
+  - ["일치 확인", check, "'shows'는 기록이 근거라는 뜻이라 기억이 아니라 적힌 값으로 말해요. 'all'로 총계가 하나도 어긋나지 않았다는 보고예요.", "all dates", "기록을 보면 시각이 전부 일치해요.", "기록을 보면 순서가 전부 일치해요.", "totals", "dates", "names", "signatures"]
+  - ["시각 기록", calendar, "'exact'로 대략이 아니라 분 단위까지 적는다는 뜻이 돼요. 'always'는 계수마다 예외 없이 하는 습관을 말해요.", "of each visit", "매번 계수의 정확한 장소를 적어요.", "매번 계수의 정확한 방법을 적어요.", "exact", "rough", "usual", "odd"]
+  - ["공유 확인", board, "'Everyone can see'는 값이 한 사람만 아는 것이 아니라 팀 모두에게 열려 있다는 뜻이에요. 같은 숫자를 보니 어긋나면 바로 눈에 띄어요.", "The nurse can see", "누구나 게시판의 이름을 볼 수 있어요.", "누구나 모니터의 숫자를 볼 수 있어요.", "numbers", "names", "orders", "dates"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 계수 기록 작성 4문장 순서
+    why: 계수를 적는 중이라고 알리고, 각각에 시각을 붙이고, 그 기록으로 총계가 맞는지 보고, 모두가 볼 수 있다는 점으로 마무리해요.
+    lines:
+    - ["I'm writing the counts on the board now.", pencil, "지금 게시판에 계수를 적고 있어요", "작성"]
+    - ["Each one is documented with the time.", calendar, "하나하나 시각과 함께 문서화해요", "시각"]
+    - ["With the times written, I can see all totals match.", check, "시각이 적혀 있어서 총계가 전부 맞는 게 보여요", "일치"]
+    - ["Everyone can see that from the board.", board, "누구나 게시판에서 그걸 볼 수 있어요", "공유"]
+- title: 봉합 전 계수 개시
+  s:
+  - ["봉합 계수", check, "'Before we close'를 문장 맨 앞에 두면 닫기 전에 해야 할 일이라는 점이 먼저 들려요. 'closing count'는 닫는 단계에서 하는 계수를 가리켜요.", "the overhead lights", "닫기 전에 흡인을 시작할게요.", "닫기 전에 봉합사를 꺼낼게요.", "closing", "initial", "opening", "partial"]
+  - ["닫기 전 확인", magnify, "'Let's'로 같이 확인하자고 제안하고, 'everything'으로 거즈·기구·바늘 전부를 한꺼번에 가리켜요. 'cavity'는 수술로 열어 둔 몸 안의 빈 공간이에요.", "the room", "체강을 닫기 전에 모두 세척해요.", "체강을 닫기 전에 모두 말려요.", "verify", "tidy", "stack", "dry"]
+  - ["일치 조건", check, "'All'과 'need to'가 합쳐져 예외 없는 필수 조건으로 들려요. 'closure'는 'close'의 명사형이라 닫는 단계 전체를 가리켜요.", "All sizes", "봉합 전에 모든 날짜가 일치해야 해요.", "봉합 전에 모든 라벨이 일치해야 해요.", "closure", "incision", "transfer", "discharge"]
+  - ["매번 시행", calendar, "'every time'을 문장 가운데 넣어 예외 없는 반복을 강조해요. 'this'는 앞서 말한 계수를 가리켜서 이름을 되풀이하지 않아요.", "every visit", "체강을 닫기 전에는 매번 이걸 씻어요.", "체강을 닫기 전에는 매번 이걸 켜요.", "every time", "every hour", "every week", "every year"]
+  - ["전부 확인", check, "'be accounted for'는 수동태라 누가 세느냐보다 하나도 빠짐없이 소재가 확인된다는 점을 말해요. 'now'는 닫기 직전의 시점을 짚어요.", "to be shipped", "이제 모두 쟁반에 올려야 해요.", "이제 모두 접어야 해요.", "accounted", "wrapped", "moved", "washed"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 봉합 전 계수 4문장 순서
+    why: 닫기 전에 계수를 시작한다고 알리고, 그것을 함께 하자고 말하고, 일치해야 한다는 조건을 짚은 뒤 일치하면 닫을 수 있다고 마무리해요.
+    lines:
+    - ["Before we close, I'm starting the closing count.", check, "닫기 전에 봉합 계수를 시작할게요", "개시"]
+    - ["Let's do it together so nothing is missed.", handshake2, "빠지는 게 없게 함께 해요", "제안"]
+    - ["All counts need to match before closure.", check, "봉합 전에 모든 계수가 일치해야 해요", "조건"]
+    - ["With all of them matching, we can close the cavity.", star, "전부 일치하면 체강을 닫을 수 있어요", "승인"]
+- title: 추가 거즈 투입 기록
+  s:
+  - ["추가 보고", bandage, "숫자와 'additional'로 늘어난 개수를 먼저 말한 뒤 'updating the count'로 기록을 고친다고 알려요. 개수가 바뀐 즉시 갱신해야 총계가 맞아요.", "the schedule", "거즈 열다섯 개 추가됐어요 — 계수를 갱신할게요.", "거즈 셋 추가됐어요 — 계수를 갱신할게요.", "sponges", "needles", "gowns", "drapes"]
+  - ["기록", pencil, "'Let me'로 시작하면 허락을 구하듯 부드럽게 내 행동을 알려요. 'before they go into the field'는 수술 부위에 들어가기 전에 기록한다는 시점이에요.", "to the lab", "필드에 들어가기 전에 이걸 소독할게요.", "필드에 들어가기 전에 이걸 펼칠게요.", "log", "fold", "sort", "tag"]
+  - ["총계 갱신", chartup, "'includes'는 새로 늘어난 거즈까지 합쳐서 센다는 뜻이에요. 'new total'은 갱신된 총계를 가리켜요.", "Our old total", "새 비용에는 추가된 거즈가 포함돼요.", "새 무게에는 추가된 거즈가 포함돼요.", "total", "price", "weight", "budget"]
+  - ["개봉 알림", speech, "'every time you'로 조건을 걸어 새 포장이 열릴 때마다 알려 달라는 규칙이 돼요. 새 포장을 열면 거즈가 더 늘어서 총계가 바뀌어요.", "a new glove", "새 포장을 버릴 때마다 매번 말해줘요.", "새 장갑을 열 때마다 매번 말해줘요.", "open", "close", "drop", "carry"]
+  - ["갱신", pencil, "'update … with'는 무엇으로 고치는지를 뒤에 붙여 바뀐 값을 분명히 해요. 늘어난 거즈를 반영한 숫자를 팀 모두가 보게 하려는 거예요.", "the new shift", "게시판을 새 담당자로 갱신할게요.", "게시판을 새 팀으로 갱신할게요.", "update", "clean", "cover", "move"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 추가 거즈 투입 4문장 순서
+    why: 추가된 거즈를 알린 뒤 필드에 들어가기 전에 기록하고, 기록을 반영한 새 총계를 말하고, 그 총계로 게시판을 고쳐요.
+    lines:
+    - ["Ten additional sponges added — updating the count.", bandage, "거즈 열 개 추가됐어요 — 계수를 갱신할게요", "알림"]
+    - ["Let me log those now, before they go into the field.", pencil, "필드에 들어가기 전에 지금 그걸 기록할게요", "기록"]
+    - ["With them logged, our new total includes the extra sponges.", chartup, "기록해서 새 총계에 추가된 거즈가 포함돼요", "총계"]
+    - ["I'll update the board with that new total.", board, "그 새 총계로 게시판을 갱신할게요", "갱신"]
+- title: 계수 중 교대 인계
+  s:
+  - ["인계 전 계수", handshake2, "'before I take over'로 교대 전에 해야 할 일이라는 시점이 분명해요. 'together'라 넘기는 사람과 받는 사람이 같은 숫자를 봐요.", "a full circle", "제가 넘겨받기 전에 전체 소개를 함께 해요.", "제가 넘겨받기 전에 전체 정리를 함께 해요.", "count", "drill", "tour", "scrub"]
+  - ["현황 요청", magnify, "'Show me'는 말로 듣는 대신 눈으로 직접 보겠다는 요청이에요. 'so nothing is lost'는 요청하는 목적을 붙여 이유를 밝혀요.", "the clean gowns", "아무것도 놓치지 않게 현재 시각을 보여줘요.", "아무것도 놓치지 않게 현재 담당자를 보여줘요.", "current", "old", "future", "rough"]
+  - ["재계수", redo, "'recount'는 re-가 붙어 한 번 센 것을 다시 센다는 뜻이에요. 'to confirm'은 목적을 밝혀 다시 세는 이유를 보여 줘요.", "to relax", "인계 전에 다시 세서 정리해요.", "인계 전에 다시 세서 적어 둬요.", "handover", "break", "transport", "rounds"]
+  - ["인수 선언", handshake2, "'I'm taking over'는 지금 이 순간부터 내가 맡는다는 선언이라 책임이 넘어가는 시점이 분명해요. 'your count'로 무엇을 넘겨받는지도 함께 말해요.", "your coffee", "지금부터 당신 카트를 넘겨받을게요.", "지금부터 당신 차트를 넘겨받을게요.", "your", "my", "his", "their"]
+  - ["현황 보고", speech, "'exactly'를 넣어 대략이 아니라 구체적으로 말하라는 요구가 돼요. 'still open'은 아직 정리되지 않고 남아 있는 것을 가리켜요.", "in the hallway", "카트에 아직 열려 있는 게 뭔지 정확히 말해줘요.", "탁자에 아직 열려 있는 게 뭔지 정확히 말해줘요.", "exactly", "roughly", "maybe", "slowly"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 계수 중 교대 인계 4문장 순서
+    why: 넘겨받기 전에 함께 세자고 하고, 아직 열린 것을 말하게 하고, 그 정리 뒤 다시 세어 확인한 다음에야 넘겨받겠다고 선언해요.
+    lines:
+    - ["Let's do a full count together before I take over.", handshake2, "제가 넘겨받기 전에 전체 계수를 함께 해요", "제안"]
+    - ["Tell me exactly what's still open on the field.", speech, "필드에 아직 열려 있는 게 뭔지 정확히 말해줘요", "요청"]
+    - ["With that settled, we recount to confirm before the handover.", redo, "그게 정리되면 인계 전에 다시 세서 확인해요", "재확인"]
+    - ["Good, I'm taking over your count now.", star, "좋아요, 지금부터 당신 계수를 넘겨받을게요", "인수"]

@@ -1,0 +1,198 @@
+0:
+  - kind: slider
+    words: [w-confirm]
+    cue: 'Nurse: "My partner and I both checked the label, and we both said it is right."'
+    scale: [glance, check, confirm]
+    answerAt: 2
+    why: "glance는 슬쩍 보는 것, check는 혼자 살펴보는 것이고, confirm은 확인한 뒤 맞다고 분명히 말해 주는 것이에요. 두 사람이 같이 맞다고 말한 장면이라 confirm이에요."
+    example: "I'll confirm the product type out loud."
+    exKo: "제제 종류를 소리 내어 확인할게요."
+  - kind: context
+    words: [w-confirm]
+    word: confirm
+    ko: 확인하다
+    scenes:
+      - {who: 간호사끼리, icon: check, en: "Let's confirm the unit number and blood type together.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Product type and unit number confirmed by two RNs.", ok: true}
+      - {who: 가족에게, icon: me, en: "Product type and ABO group confirmed per dual-RN verification.", ok: false, fix: "We confirm every bag with a second nurse before it goes in."}
+    why: "의료진끼리나 차트에서는 dual-RN verification, ABO group처럼 정확한 말이 빠르고 분명해요. 가족에게는 '두 번째 간호사와 함께 확인한다'처럼 절차를 풀어서 말해 줘요."
+1:
+  - kind: slider
+    words: [w-match]
+    cue: 'Nurse: "The wristband says Kim, Jisoo, and the unit tag says Kim, Jisu."'
+    scale: [match, nearly match, mismatch]
+    answerAt: 2
+    why: "수혈 전 대조에서는 이름 철자 한 글자가 달라도 mismatch예요. 'nearly match'로 넘기지 않고 수혈을 멈춘 채 혈액은행·팀과 확인해 해결해요."
+    example: "Patient name and ID match the unit?"
+    exKo: "환자 이름과 신원이 제제와 일치하나요?"
+  - kind: swap
+    words: [w-verify]
+    who: "수술 팀원에게 · 이중 확인을 청할 때"
+    icon: check
+    before: ["Let's ", "glance at", " the unit number and blood type together."]
+    options: [glance at, verify, hurry through]
+    answer: verify
+    notes: {glance at: "슬쩍 보는 것이라 이중 확인이 아니에요. 번호 한 자리 오류도 놓칠 수 있어요.", verify: "라벨과 처방을 하나하나 맞춰 보는 대조 확인. 둘이 같이 하는 확인에 맞는 말이에요.", hurry through: "서두르며 넘기자는 뜻이라 안전 확인과 반대예요."}
+    why: "수혈 전 두 사람 확인은 번호와 혈액형을 소리 내어 맞춰 보는 절차라서 verify가 맞아요."
+    ko: "제제 번호와 혈액형을 함께 대조 확인합시다"
+2:
+  - kind: slider
+    words: [w-drop]
+    cue: 'Monitor: "Temp went from 36.8 to 36.7 over the last hour."'
+    scale: [dip, drop, plunge]
+    answerAt: 0
+    why: "dip은 살짝 내려갔다 마는 정도, drop은 눈에 띄게 내려가는 것, plunge는 급격히 곤두박질치는 것이에요. 0.1도 차이는 dip이에요."
+    example: "Cold blood can drop the patient's temperature."
+    exKo: "차가운 혈액은 환자의 체온을 떨어뜨릴 수 있어요."
+  - kind: context
+    words: [w-warmer]
+    word: warmer
+    ko: 가온기
+    scenes:
+      - {who: 간호사끼리, icon: gear, en: "Is the warmer primed and set before we hang this?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Products infused via in-line blood warmer.", ok: true}
+      - {who: 가족에게, icon: me, en: "All products are infused through an in-line warmer at a set outlet temperature.", ok: false, fix: "We warm the blood first so it doesn't make him cold."}
+    why: "의료진끼리나 차트에서는 in-line warmer, outlet temperature 같은 장비 용어가 정확해요. 가족에게는 '몸이 차가워지지 않게 먼저 데운다'로 목적만 쉽게 말해요."
+3:
+  - kind: slider
+    words: [w-slow]
+    cue: 'Anesthesiologist: "Pressure is steady — just a touch slower is enough."'
+    scale: [ease off, slow, stop]
+    answerAt: 0
+    why: "ease off는 살짝 줄이는 것, slow는 눈에 띄게 늦추는 것, stop은 멈추는 것이에요. '조금만 늦추면 된다'는 말이라 ease off예요."
+    example: "We can slow it if the numbers stabilize."
+    exKo: "수치가 안정되면 속도를 늦출 수 있어요."
+  - kind: swap
+    words: [w-rate, w-pressure, w-drop]
+    who: "마취과 의사에게 · 혈압이 떨어질 때"
+    icon: monitor
+    before: ["The pressure is dropping, so let's ", "slow it down", " right now."]
+    options: [slow it down, speed it up, hold the rate]
+    answer: speed it up
+    notes: {slow it down: "혈압이 떨어지는데 속도를 줄이면 부족한 양이 더 커져요.", speed it up: "출혈로 혈압이 떨어질 때는 보통 주입을 올려 따라잡아요.", hold the rate: "수치가 안정됐을 때의 선택이에요. 지금처럼 떨어지는 중에는 맞지 않아요."}
+    why: "혈압이 떨어지는 출혈 환자는 속도를 올려 따라잡는 게 일반적이에요. 얼마나 올릴지는 마취과 의사와 함께 정해요."
+    ko: "혈압이 떨어지고 있어요. 지금 속도를 올립시다"
+4:
+  - kind: slider
+    words: [w-arrive]
+    cue: 'Runner: "I am at the door with the cooler — here it is."'
+    scale: [on the way, just arrived, signed for]
+    answerAt: 1
+    why: "on the way는 아직 오는 중, just arrived는 방금 도착한 것, signed for는 도착 뒤 서명까지 마친 것이에요. 문 앞에서 건네는 순간은 just arrived예요."
+    example: "Four units of PRBCs just arrived."
+    exKo: "농축적혈구 네 팩이 방금 도착했어요."
+  - kind: context
+    words: [w-sign]
+    word: sign
+    ko: 서명하다
+    scenes:
+      - {who: 간호사끼리, icon: check, en: "Sign here and I'll log the time.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Four units PRBCs received and signed for by RN.", ok: true}
+      - {who: 가족에게, icon: me, en: "The units were signed for and logged on receipt.", ok: false, fix: "The blood just arrived, and we're checking it carefully before it goes in."}
+    why: "의료진끼리는 서명하고 기록하는 절차를 짧게 말해도 통해요. 가족에게는 서류 절차보다 '피가 도착했고 꼼꼼히 확인한다'가 알아듣기 쉬워요."
+5:
+  - kind: slider
+    words: [w-change]
+    cue: 'Monitor: "BP 124/76 down to 84/48 in five minutes."'
+    scale: [no change, slight change, sharp change]
+    answerAt: 2
+    why: "no change는 그대로, slight change는 조금 달라진 것, sharp change는 짧은 시간에 크게 달라진 것이에요. 5분 만에 혈압이 크게 떨어졌으니 sharp change예요."
+    example: "Watch for any change during infusion."
+    exKo: "주입 중에 변화가 있는지 지켜보세요."
+  - kind: context
+    words: [w-baseline]
+    word: baseline
+    ko: 기준치
+    scenes:
+      - {who: 마취과와, icon: monitor, en: "Compare these numbers to his baseline before the next unit.", ok: true}
+      - {who: 차트 기록, icon: board, en: "BP 84/48, baseline 124/76.", ok: true}
+      - {who: 가족에게, icon: me, en: "His pressure is well below baseline.", ok: false, fix: "His blood pressure is lower than usual, and we're giving blood to bring it back up."}
+    why: "baseline은 의료진끼리 '수혈 전 기준 수치'를 가리키는 짧고 정확한 말이에요. 가족에게는 '평소보다 낮다'처럼 풀어 말해요."
+6:
+  - kind: pair
+    words: [w-redcells, w-plasma, w-platelet]
+    pairs: [[red cells, carry oxygen], [plasma, replaces clotting factors], [platelets, plug small leaks]]
+    decoys: [lower the temperature]
+    why: "적혈구는 산소를 나르고, 혈장은 응고인자를 채워 주고, 혈소판은 작은 혈관의 새는 곳을 막아요. 대량수혈에서 세 가지를 비슷한 비율로 주는 이유예요."
+  - kind: context
+    words: [w-cooler]
+    word: cooler
+    ko: 쿨러
+    scenes:
+      - {who: 간호사끼리, icon: gear, en: "Runner's bringing the next cooler now.", ok: true}
+      - {who: 혈액은행에게, icon: speech, en: "Please send the next cooler as soon as it's ready.", ok: true}
+      - {who: 가족에게, icon: me, en: "The second MTP cooler arrived with the 1:1:1 pack.", ok: false, fix: "More blood just came up from the blood bank."}
+    why: "수술실과 혈액은행 사이에서는 MTP cooler라고 해도 바로 통해요. 가족에게는 쿨러·비율 같은 말 대신 '피가 더 올라왔다'로 말해요."
+7:
+  - kind: slider
+    words: [w-low]
+    cue: 'Anesthesiologist: "Calcium is so low that his heart is struggling."'
+    scale: [slightly low, low, critically low]
+    answerAt: 2
+    why: "slightly low는 정상 바로 아래, low는 눈에 띄게 낮은 것, critically low는 심장이 영향을 받을 만큼 낮은 것이에요. 심장이 힘들어하는 상황이라 critically low예요."
+    example: "The ionized calcium is low."
+    exKo: "이온화 칼슘 수치가 낮아요."
+  - kind: context
+    words: [w-calcium]
+    word: calcium
+    ko: 칼슘
+    scenes:
+      - {who: 간호사끼리, icon: pill, en: "Let's give calcium and recheck the level.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Ionized calcium 0.9; calcium given per MTP.", ok: true}
+      - {who: 가족에게, icon: me, en: "His ionized calcium is low because citrate is binding it.", ok: false, fix: "The blood we're giving can lower his calcium, so we're replacing it."}
+    why: "의료진끼리는 ionized calcium, citrate 같은 말이 정확해요. 가족에게는 '들어가는 피가 칼슘을 낮출 수 있어서 보충한다'처럼 이유를 쉽게 풀어 줘요."
+8:
+  - kind: slider
+    words: [w-temperature, w-hypothermia]
+    cue: 'Anesthesiologist: "He is a little cool, nothing to worry about yet."'
+    scale: [slightly cool, cold, hypothermic]
+    answerAt: 0
+    why: "slightly cool은 살짝 서늘한 정도, cold는 확실히 차가운 것, hypothermic은 저체온증 상태예요. '조금 서늘하고 아직 걱정 없다'는 말이라 slightly cool이에요."
+    example: "Warm fluids help prevent hypothermia."
+    exKo: "따뜻한 수액이 저체온을 막는 데 도움이 돼요."
+  - kind: swap
+    words: [w-hypothermia, w-prevent, w-fluid]
+    who: "가족에게 · 따뜻한 수액을 설명할 때"
+    icon: me
+    before: ["Warm fluids help prevent ", "hypothermia", " during surgery."]
+    options: [hypothermia, getting too cold, rewarming]
+    answer: getting too cold
+    notes: {hypothermia: "의료진끼리 쓰는 임상어예요. 가족은 못 알아들을 수 있어요.", getting too cold: "가족이 바로 알아듣는 쉬운 말이에요. 따뜻한 수액의 목적이 그대로 전달돼요.", rewarming: "이미 식은 몸을 다시 데우는 일이라 '막아 준다'와 뜻이 맞지 않아요."}
+    why: "같은 사실이라도 가족에게는 임상어 대신 쉬운 말로 목적을 알려 줘요."
+    ko: "따뜻한 수액이 수술 중에 몸이 너무 차가워지는 것을 막아 줘요"
+9:
+  - kind: slider
+    words: [w-balanced]
+    cue: 'Charge nurse: "Red cells, plasma, and platelets are going in at the same pace."'
+    scale: [balanced, uneven, lopsided]
+    answerAt: 0
+    why: "balanced는 고르게 들어가는 것, uneven은 어느 쪽이 더 많은 것, lopsided는 한쪽으로 크게 쏠린 것이에요. 세 가지가 같은 속도라 balanced예요."
+    example: "I'll keep the sequence balanced."
+    exKo: "투여 순서를 균형 있게 유지할게요."
+  - kind: context
+    words: [w-ratio]
+    word: ratio
+    ko: 비율
+    scenes:
+      - {who: 간호사끼리, icon: check, en: "Let's keep the ratio close to 1:1:1.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Products given in a 1:1:1 ratio per MTP.", ok: true}
+      - {who: 가족에게, icon: me, en: "We're giving his blood products in a 1:1:1 ratio.", ok: false, fix: "We're giving him red cells, plasma, and platelets together in the right balance."}
+    why: "의료진끼리는 1:1:1 ratio라고만 해도 의미가 통해요. 가족에게는 숫자 대신 '세 가지를 균형 있게 준다'로 풀어 말해요."
+10:
+  - kind: slider
+    words: [w-low]
+    cue: 'Blood bank: "We still have a few platelet units, but we are getting short."'
+    scale: [running low, nearly out, out]
+    answerAt: 0
+    why: "running low는 아직 있지만 줄어드는 중, nearly out은 거의 바닥, out은 하나도 없는 것이에요. 아직 몇 개 있다는 말이라 running low예요."
+    example: "We're running low on platelets too."
+    exKo: "혈소판도 부족해지고 있어요."
+  - kind: context
+    words: [w-need]
+    word: need
+    ko: 필요하다
+    scenes:
+      - {who: 혈액은행에게, icon: speech, en: "We need more plasma up here.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Blood bank notified; additional plasma needed.", ok: true}
+      - {who: 가족에게, icon: me, en: "We need more plasma, but the blood bank's inventory is critically low.", ok: false, fix: "We're asking the blood bank for more blood, and they're working on it."}
+    why: "혈액은행에는 무엇이 얼마나 필요한지 짧게 말하는 게 좋아요. 가족에게는 재고 상황을 불안하게 전하기보다 '요청했고 준비 중이다'로 말해요."

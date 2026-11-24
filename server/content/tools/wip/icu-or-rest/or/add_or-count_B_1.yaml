@@ -1,0 +1,53 @@
+# [tag, icon, why, decoy, ko1, ko2, ans, w1, w2, w3]
+situations:
+- title: 절개 전 초기 계수
+  s:
+  - ["계수 개시", check, "'initial'을 붙이면 절개 전에 하는 첫 계수라는 뜻이 분명해져요. 'now'로 지금 시작한다고 팀에 알려요.", "the sterile gown", "지금 첫 소독을 시작할게요.", "지금 체위 조정을 시작할게요.", "initial", "closing", "partial", "extra"]
+  - ["함께 계수", handshake2, "'Let's'로 시작하면 지시가 아니라 같이 하자는 제안이 돼요. 거즈·기구·바늘을 한 번에 나열해 셀 대상을 빠짐없이 짚어요.", "and gloves", "거즈, 기구, 바늘을 함께 펴요.", "거즈, 기구, 바늘을 함께 펼쳐요.", "count", "open", "unwrap", "wrap"]
+  - ["기록", pencil, "'is recorded'는 수동태라 누가 쓰는지보다 기록이 남는다는 사실을 말해요. 'baseline'은 이후 계수와 견줄 기준이에요.", "for later review", "시작 전에 기저 체온을 기록해요.", "시작 전에 기저 계수를 출력해요.", "baseline", "final", "partial", "second"]
+  - ["계수 시점", calendar, "'always'와 'before the incision'을 함께 써서 계수가 예외 없이 절개 앞에 온다는 규칙으로 들려요. 'is made'는 절개가 만들어지는 순간을 가리켜요.", "is painful", "절개하기 전에 항상 소독해요.", "절개하기 전에 항상 체위를 잡아요.", "always", "usually", "often", "sometimes"]
+  - ["기록", pencil, "'the numbers'로 계수 결과를 숫자로 적는다고 분명히 해요. 게시판은 팀 전체가 보는 곳이라 한눈에 확인돼요.", "on the floor", "이름을 게시판에 적을게요.", "시각을 게시판에 적을게요.", "board", "basket", "drape", "cart"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 절개 전 초기 계수 4문장 순서
+    why: 계수를 시작하자고 말한 뒤 함께 센 결과를 말하고, 그 숫자를 확인한 다음 게시판에 적어 팀이 같은 값을 보게 해요.
+    lines:
+    - ["I'm starting the initial count now.", check, "지금 초기 계수를 시작할게요", "개시"]
+    - ["Let's count sponges, instruments, and needles together.", handshake2, "거즈, 기구, 바늘을 함께 세요", "계수"]
+    - ["Those numbers match the baseline we recorded.", chartup, "그 숫자는 기록해 둔 기저치와 맞아요", "확인"]
+    - ["Now that they match, I'll write them on the board for the team.", pencil, "일치하니 팀이 보게 게시판에 적을게요", "기록"]
+- title: 거즈 소리내어 확인
+  s:
+  - ["소리 내어", speaker, "'out loud'는 눈으로만 세지 않고 입으로 말해 둘이 같은 숫자를 듣게 해요. 'one by one'은 건너뛰지 않는다는 뜻이에요.", ", two by two", "소리내어 하나씩 펼쳐요.", "소리내어 하나씩 펴요.", "one by one", "all at once", "side by side", "two by two"]
+  - ["개수 보고", check, "개수를 말한 뒤 바로 'can you confirm?'으로 확인을 청해요. 센 값을 다른 사람이 따로 확인해야 실수를 잡아요.", "I wash", "거즈 셋 세었는데 — 확인해 줄래요?", "거즈 여덟 개 세었는데 — 확인해 줄래요?", "ten", "twenty", "five", "nine"]
+  - ["함께 말하기", speaker, "'each number'와 'together'로 모든 숫자를 두 사람이 같이 말한다는 규칙이 돼요. 'as we go'는 세는 동안 바로바로라는 뜻이에요.", "as we leave", "이름을 하나씩 함께 말해요.", "크기를 하나씩 함께 말해요.", "together", "alone", "silently", "separately"]
+  - ["호명 확인", check, "'as I call it out'으로 한 사람이 부르는 즉시 다른 사람이 확인하는 리듬이 돼요. 'each'는 하나도 건너뛰지 않는다는 뜻이에요.", "each sterile pack", "제가 놓을 때마다 거즈를 확인해 줘요.", "제가 쓸 때마다 거즈를 확인해 줘요.", "sponge", "blade", "towel", "glove"]
+  - ["이중 확인", magnify, "'twice'로 횟수를 말해 두 번 확인한다는 규칙이 분명해요. 'before we move on'은 넘어가기 전에 끝내야 한다는 신호예요.", "at the door", "다음 방으로 넘어가기 전에 두 번 확인해요.", "다음으로 넘어가기 전에 세 번 확인해요.", "twice", "once", "often", "slowly"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 거즈 소리내어 확인 4문장 순서
+    why: 소리 내어 세기를 제안하고, 센 개수를 말해 확인을 청하고, 상대가 같은 값을 말해 일치를 확인한 뒤 그 숫자를 적어요.
+    lines:
+    - ["Let's count these out loud, one by one.", speaker, "소리내어 하나씩 세요", "제안"]
+    - ["I count ten sponges in total — can you confirm?", check, "거즈 모두 열 개 세었는데 — 확인해 줄래요?", "보고"]
+    - ["I counted ten as well, so we match.", handshake2, "저도 열 개 세었으니 일치해요", "확인"]
+    - ["Good, then I'll write that number on the board.", pencil, "좋아요, 그럼 그 숫자를 게시판에 적을게요", "기록"]
+- title: 기구 목록 대조
+  s:
+  - ["목록 대조", board, "'each'로 하나도 빼지 않고 보고, 'against'로 기준이 되는 목록에 맞대어 본다는 뜻이 돼요. 기구마다 목록지에 한 줄이 있어요.", "the wall clock", "기구를 계수 목록지 옆에 놓아요.", "기구를 계수 목록지대로 닦아요.", "instrument", "syringe", "gown", "bandage"]
+  - ["일치 조건", check, "'needs to match'는 권고가 아니라 반드시 지킬 조건으로 들려요. 'Every'로 예외가 없다는 점이 강조돼요.", "in the drawer", "카트 위 물품은 전부 목록과 일치해야 해요.", "쟁반 위 물품은 전부 라벨과 일치해야 해요.", "tray", "table", "stand", "shelf"]
+  - ["총계 확인", handshake2, "'with you'로 혼자가 아니라 둘이 같이 본다는 뜻이 돼요. 'I'll'은 지금 하겠다는 즉석 약속이에요.", "on paper", "총 시간을 당신과 함께 확인할게요.", "총 비용을 당신과 함께 확인할게요.", "totals", "prices", "times", "sizes"]
+  - ["개수 보고", scalpel, "'has … on it'는 지금 눈앞의 개수를 말하는 현재형이에요. 숫자를 또렷이 말해야 서로 같은 값을 확인해요.", "in a bag", "이 쟁반에는 기구 열네 개가 있어요.", "이 쟁반에는 기구 여덟 개가 있어요.", "twelve", "twenty", "fifteen", "two"]
+  - ["일치 판단", check, "'looks correct to me'는 단정 대신 내 눈에는 그렇다는 완곡한 말이라 상대가 다른 의견을 말하기 쉬워요. 맞춰 본 뒤에 하는 말이에요.", "by my watch", "총 시간이 맞는 것 같아요.", "총 가격이 맞는 것 같아요.", "correct", "wrong", "short", "high"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기구 목록 대조 4문장 순서
+    why: 목록과 대조하겠다고 말한 뒤 쟁반의 개수를 말하고, 목록과 같은지 판단한 다음 총계를 함께 확인해 마무리해요.
+    lines:
+    - ["Let's check each instrument against the count sheet.", board, "기구를 계수 목록지와 대조해요", "대조"]
+    - ["On this tray I see twelve instruments.", scalpel, "이 쟁반에는 기구 열두 개가 보여요", "보고"]
+    - ["The sheet also says twelve, so they match.", check, "목록지에도 열두 개라 일치해요", "판단"]
+    - ["Then I'll confirm that total with you.", handshake2, "그럼 그 총계를 당신과 함께 확인할게요", "확인"]

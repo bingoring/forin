@@ -1,0 +1,950 @@
+w-hide|hide|숨기다|tag=소통|icon=magnify
+   cue=불신하는 가족 앞에서 '아무것도 ~지 않는다'고 말할 때
+   dEn=['hold', 'hurry'] dKo=['드러내다', '미루다']
+   chips=[['hide']] decoy=['hid']
+   ex=Nothing is being hidden — let me go through everything with you. / 아무것도 숨기지 않아요 — 전부 함께 살펴볼게요.
+w-walk|walk|안내하다|tag=환경 안내|icon=compass
+   cue=병동과 절차를 처음부터 차근차근 짚어 주며 이끌 때
+   dEn=['wake', 'wait'] dKo=['대기하다', '점검하다']
+   chips=[['walk']] decoy=['wal']
+   ex=Let me walk you through the unit. / 병동을 차근차근 안내해 드릴게요.
+w-bedside|bedside|침상 곁|tag=환경 안내|icon=hospital
+   cue=환자 침대 바로 옆자리 — 가족에게 머물러도 된다고 안내할 때
+   dEn=['bedpan', 'bedrail'] dKo=['침상 난간', '병실 입구']
+   chips=[['bed', 'side']] decoy=['bad', 'site']
+   ex=Please stay at the bedside. / 침상 곁에 계셔도 돼요.
+w-monitor|monitor|모니터|tag=장비·알람|icon=monitor
+   cue=환자의 심박수와 산소 수치를 화면에 띄워 보여 주는 장치
+   dEn=['motor', 'mentor'] dKo=['호흡기', '주입기']
+   chips=[['mon', 'i', 'tor']] decoy=['men', 'ter']
+   ex=This monitor shows her heart rate. / 이 모니터는 심박수를 보여줘요.
+w-tube|tube|튜브|tag=장비·알람|icon=bandage
+   cue=환자 몸에 연결돼 공기나 수액이 지나가는 가느다란 관
+   dEn=['tune', 'tool'] dKo=['밸브', '바늘']
+   chips=[['tube']] decoy=['tub']
+   ex=There will be monitors and tubes. / 모니터와 튜브들이 있을 거예요.
+w-normal|normal|정상적인|tag=환경 안내|icon=check
+   cue=예상 범위 안이라 걱정하지 않아도 된다고 안심시킬 때
+   dEn=['formal', 'nominal'] dKo=['비정상적인', '일시적인']
+   chips=[['nor', 'mal']] decoy=['for', 'nal']
+   ex=That's normal here. / 여기서는 정상적인 거예요.
+w-talk|talk|이야기하다|tag=가족 참여|icon=speech
+   cue=환자에게 소리 내어 말을 건네도 좋다고 가족에게 권할 때
+   dEn=['tall', 'take'] dKo=['노래하다', '질문하다']
+   chips=[['talk']] decoy=['tal']
+   ex=You can talk to her anytime. / 언제든 환자분께 말을 걸어도 돼요.
+w-hold|hold|잡다|tag=가족 참여|icon=board
+   cue=손을 꼭 쥐어 곁에서 온기를 전할 때
+   dEn=['fold', 'hunt'] dKo=['놓다', '닦다']
+   chips=[['hold']] decoy=['hole']
+   ex=You can hold her hand. / 손을 잡아 드려도 돼요.
+w-hand|hand|손|tag=가족 참여|icon=board
+   cue=환자 곁에서 잡아 주고, 씻고, 소독하는 신체 부위
+   dEn=['head', 'arm'] dKo=['팔', '발']
+   chips=[['hand']] decoy=['hard']
+   ex=Hold her hand gently. / 손을 부드럽게 잡아 주세요.
+w-overwhelming|overwhelming|압도적인|tag=정서 지지|icon=siren
+   cue=처음 ICU에 온 가족이 장비와 소리에 눌려 감당하기 벅찬 느낌
+   dEn=['overbearing', 'overreaching'] dKo=['무관심한', '친숙한']
+   chips=[['over', 'whelm', 'ing']] decoy=['under', 'helm']
+   ex=It can feel overwhelming at first. / 처음엔 감당하기 벅차게 느껴질 수 있어요.
+w-sound|sound|소리|tag=장비·알람|icon=speaker
+   cue=모니터와 펌프에서 울려 귀에 들어오는 것
+   dEn=['sight', 'sign'] dKo=['냄새', '온도']
+   chips=[['sound']] decoy=['sand']
+   ex=The sounds can be startling at first. / 처음엔 소리가 깜짝 놀랄 수 있어요.
+w-light|light|불빛|tag=장비·알람|icon=bulb
+   cue=장비에서 깜빡이며 상태를 알려 주는 것
+   dEn=['right', 'tight'] dKo=['소음', '진동']
+   chips=[['light']] decoy=['lit']
+   ex=The lights blink for different reasons. / 불빛은 각기 다른 이유로 깜빡여요.
+w-watch|watch|지켜보다|tag=장비·알람|icon=magnify
+   cue=간호사가 자리를 지키며 환자 상태를 눈여겨볼 때
+   dEn=['match', 'patch'] dKo=['기록하다', '기다리다']
+   chips=[['watch']] decoy=['wach']
+   ex=We watch over her closely. / 저희가 그녀를 꼼꼼히 지켜보고 있어요.
+w-alarm|alarm|알람|tag=장비·알람|icon=bell
+   cue=장비가 확인할 일을 소리로 알리는 신호
+   dEn=['arm', 'aim'] dKo=['알약', '알레르기']
+   chips=[['a', 'larm']] decoy=['e', 'lamp']
+   ex=Most alarms are just reminders. / 대부분의 알람은 그냥 알림이에요.
+w-remind|reminder|알림|tag=장비·알람|icon=bell
+   cue=해야 할 일을 놓치지 않게 짚어 주는 가벼운 신호
+   dEn=['remainder', 'remover'] dKo=['나머지', '지시']
+   chips=[['re', 'mind', 'er']] decoy=['rem', 'mend']
+   ex=Most alarms are just reminders, not emergencies. / 대부분의 알람은 그냥 알림이에요.
+w-emergency|emergency|응급상황|tag=장비·알람|icon=siren
+   cue=당장 처치가 필요한 위급한 사태
+   dEn=['immersion', 'emulsion'] dKo=['응급실', '처치실']
+   chips=[['e', 'mer', 'gen', 'cy']] decoy=['im', 'ment']
+   ex=Not every alarm means an emergency. / 모든 알람이 응급상황은 아니에요.
+w-heart|heart|심장|tag=장비·알람|icon=stetho
+   cue=가슴 안에서 피를 뿜어 내보내는 장기
+   dEn=['heard', 'hearth'] dKo=['폐', '간']
+   chips=[['heart']] decoy=['hart']
+   ex=This monitor shows her heart rate. / 이 모니터는 심박수를 보여줘요.
+w-rate|rate|속도·율|tag=장비·알람|icon=chartup
+   cue=일정 시간 동안 몇 번이나 되는지 따진 값
+   dEn=['rare', 'race'] dKo=['용량', '온도']
+   chips=[['rate']] decoy=['rat']
+   ex=Her heart rate looks steady today. / 오늘은 심박수가 안정적이에요.
+w-oxygen|oxygen|산소|tag=장비·알람|icon=lab
+   cue=숨을 쉴 때 들어와 몸이 쓰는 기체
+   dEn=['oxide', 'ozone'] dKo=['수소', '질소']
+   chips=[['ox', 'y', 'gen']] decoy=['ex', 'den']
+   ex=This monitor shows her oxygen level. / 이 모니터는 산소 수치를 보여줘요.
+w-pump|pump|펌프|tag=장비·알람|icon=gear
+   cue=수액이나 약을 정해진 속도로 밀어 넣는 기계
+   dEn=['bump', 'plump'] dKo=['밸브', '호스']
+   chips=[['pump']] decoy=['pomp']
+   ex=The pump alarm means her IV bag needs changing. / 펌프 알람은 수액백을 갈아야 한다는 뜻이에요.
+w-iv|IV|정맥주사|tag=장비·알람|icon=bandage
+   cue=팔의 정맥에 꽂아 수액이나 약을 넣는 통로
+   dEn=['IM', 'IO'] dKo=['근육주사', '피하주사']
+   chips=[['IV']] decoy=['IU']
+   ex=Her IV bag needs changing. / 정맥주사 백을 갈아야 해요.
+w-bag|bag|백|tag=장비·알람|icon=bandage
+   cue=수액을 담아 걸어 두는 비닐 용기
+   dEn=['bad', 'bug'] dKo=['컵', '통']
+   chips=[['bag']] decoy=['bog']
+   ex=The IV bag is almost empty. / 수액백이 거의 비었어요.
+w-change|change|바꾸다|tag=장비·알람|icon=gear
+   cue=수액이 비면 새것으로 갈아 끼우는 일
+   dEn=['charge', 'chance'] dKo=['채우다', '비우다']
+   chips=[['change']] decoy=['chain']
+   ex=The bag needs changing soon. / 수액백을 곧 갈아야 해요.
+w-urgent|urgent|긴급한|tag=장비·알람|icon=siren
+   cue=한시를 다투어 지금 바로 대처해야 하는
+   dEn=['current', 'parent'] dKo=['사소한', '느긋한']
+   chips=[['ur', 'gent']] decoy=['ar', 'rent']
+   ex=If something is truly urgent, I'll come right away. / 정말 긴급한 일이면 바로 갈게요.
+w-color|color|색|tag=장비·알람|icon=board
+   cue=화면에서 빨강·노랑처럼 서로 구분해 주는 것
+   dEn=['collar', 'colon'] dKo=['선', '점']
+   chips=[['col', 'or']] decoy=['cal', 'er']
+   ex=Each color on the monitor means something different. / 모니터의 각 색은 서로 다른 뜻이에요.
+w-different|different|다른|tag=장비·알람|icon=board
+   cue=서로 같지 않고 따로따로인
+   dEn=['difficult', 'indifferent'] dKo=['비슷한', '새로운']
+   chips=[['dif', 'fer', 'ent']] decoy=['dis', 'ten']
+   ex=Each alarm sound means something different. / 알람 소리마다 뜻이 달라요.
+w-level|level|수준|tag=상태 전달|icon=chartup
+   cue=산소가 얼마만큼인지를 가리키는 정도의 단계
+   dEn=['lever', 'label'] dKo=['무게', '크기']
+   chips=[['lev', 'el']] decoy=['lov', 'il']
+   ex=His oxygen levels are improving. / 산소 수준이 좋아지고 있어요.
+w-better|better|더 나은|tag=상태 전달|icon=chartup
+   cue=어제보다 좋은 쪽으로 달라져 걱정이 줄었을 때
+   dEn=['batter', 'bitter'] dKo=['더 나쁜', '더 느린']
+   chips=[['bet', 'ter']] decoy=['bat', 'ner']
+   ex=His numbers are a little better today. / 오늘은 수치가 조금 더 나아졌어요.
+w-reduce|reduce|줄이다|tag=상태 전달|icon=gear
+   cue=장비의 도움이나 약의 양을 조금씩 덜어 낼 때
+   dEn=['reuse', 'deduce'] dKo=['늘리다', '멈추다']
+   chips=[['re', 'duce']] decoy=['pro', 'dice']
+   ex=We're slowly reducing the support he needs. / 필요한 지원을 천천히 줄이고 있어요.
+w-support|support|지원|tag=상태 전달|icon=shield
+   cue=숨쉬기나 순환을 대신 도와주는 치료, 또는 마음의 기댈 곳
+   dEn=['suppress', 'supply'] dKo=['제한', '보류']
+   chips=[['sup', 'port']] decoy=['sub', 'part']
+   ex=We're reducing the support he needs. / 필요한 지원을 줄이고 있어요.
+w-step|step|걸음|tag=상태 전달|icon=chartup
+   cue=목표를 향해 한 칸씩 나아가는 작은 단위
+   dEn=['stop', 'stem'] dKo=['멈춤', '도약']
+   chips=[['step']] decoy=['stap']
+   ex=It's a small step in the right direction. / 작은 걸음이지만 옳은 방향이에요.
+w-direction|direction|방향|tag=상태 전달|icon=compass
+   cue=나아가는 쪽, 어디로 가고 있는지 가리키는 것
+   dEn=['directive', 'detection'] dKo=['위치', '속도']
+   chips=[['di', 'rec', 'tion']] decoy=['de', 'rect']
+   ex=We're moving in the right direction. / 옳은 방향으로 가고 있어요.
+w-yesterday|yesterday|어제|tag=상태 전달|icon=calendar
+   cue=오늘의 바로 전날
+   dEn=['birthday', 'holiday'] dKo=['내일', '그제']
+   chips=[['yes', 'ter', 'day']] decoy=['yet', 'ten']
+   ex=Compared to yesterday, he looks better. / 어제와 비교하면 훨씬 나아 보여요.
+w-breathing|breathing|호흡|tag=상태 전달|icon=stetho
+   cue=공기를 들이쉬고 내쉬는 움직임
+   dEn=['breeding', 'bleeding'] dKo=['출혈', '맥박']
+   chips=[['breath', 'ing']] decoy=['bath', 'ed']
+   ex=His breathing looks calmer today. / 오늘은 호흡이 더 차분해 보여요.
+w-improvement|improvement|호전|tag=상태 전달|icon=chartup
+   cue=나빴던 것이 눈에 띄게 나아진 변화
+   dEn=['involvement', 'impairment'] dKo=['악화', '정체']
+   chips=[['im', 'prove', 'ment']] decoy=['in', 'move']
+   ex=Every small improvement matters. / 작은 호전 하나하나가 중요해요.
+w-matter|matter|중요하다|tag=상태 전달|icon=star
+   cue=하나하나가 의미 있고 소홀히 할 수 없다는 뜻
+   dEn=['mother', 'master'] dKo=['무시하다', '해결하다']
+   chips=[['mat', 'ter']] decoy=['met', 'tar']
+   ex=Every small improvement matters. / 작은 호전 하나하나가 중요해요.
+w-slow|slow|느린|tag=상태 전달|icon=calendar
+   cue=빠르지 않고 더디게 진행되는
+   dEn=['snow', 'slope'] dKo=['빠른', '높은']
+   chips=[['slow']] decoy=['slaw']
+   ex=Progress can be slow, but it's real. / 진행이 느려도 분명 나아지고 있어요.
+w-soon|soon|곧|tag=소통|icon=calendar
+   cue=머지않아, 얼마 걸리지 않고
+   dEn=['noon', 'spoon'] dKo=['늦게', '자주']
+   chips=[['soon']] decoy=['sun']
+   ex=I'll let you know as soon as possible. / 가능한 한 빨리 알려드릴게요.
+w-ask|ask|묻다|tag=소통|icon=speech
+   cue=궁금한 것을 상대에게 묻는 일
+   dEn=['act', 'ash'] dKo=['권하다', '알리다']
+   chips=[['ask']] decoy=['aks']
+   ex=Please ask me anything. / 뭐든 물어보세요.
+w-explain|explain|설명하다|tag=소통|icon=speech
+   cue=이해하기 쉽게 풀어서 말해 주는 일
+   dEn=['explore', 'explode'] dKo=['탐색하다', '확인하다']
+   chips=[['ex', 'plain']] decoy=['im', 'plan']
+   ex=Let me explain that in a way that makes sense. / 이해되시도록 설명해 드릴게요.
+w-sense|sense|이치|tag=소통|icon=bulb
+   cue='make ~'로 쓰면 앞뒤가 맞아 납득된다는 뜻의 명사
+   dEn=['since', 'scene'] dKo=['소문', '규칙']
+   chips=[['sense']] decoy=['cense']
+   ex=I want this to make sense to you. / 이해가 되시도록 말씀드리고 싶어요.
+w-find|find|찾다|tag=소통|icon=magnify
+   cue=수소문해서 알아내려 할 때 'out'과 함께 쓰는 말
+   dEn=['fine', 'fund'] dKo=['잃다', '막다']
+   chips=[['find']] decoy=['fond']
+   ex=I'll find out and get back to you. / 알아봐서 다시 알려드릴게요.
+w-question|question|질문|tag=소통|icon=speech
+   cue=궁금해서 던지는 물음
+   dEn=['quotient', 'suggestion'] dKo=['대답', '제안']
+   chips=[['ques', 'tion']] decoy=['quiz', 'shun']
+   ex=No question is too small to ask. / 너무 작아서 못 물어볼 질문은 없어요.
+w-small|small|작은|tag=소통|icon=board
+   cue=크기나 양이 많지 않고 사소한
+   dEn=['smell', 'stall'] dKo=['넓은', '높은']
+   chips=[['small']] decoy=['smal']
+   ex=It's a small step, but it's real. / 작은 걸음이지만 분명한 변화예요.
+w-write|write|적다|tag=소통|icon=pencil
+   cue=펜이나 키보드로 글자를 남기는 일
+   dEn=['white', 'wrist'] dKo=['지우다', '짓다']
+   chips=[['write']] decoy=['wright']
+   ex=I'll write down your question. / 질문을 적어 둘게요.
+w-forget|forget|잊다|tag=소통|icon=board
+   cue=머릿속에서 사라져 떠올리지 못하게 되는
+   dEn=['forgive', 'forbid'] dKo=['용서하다', '금지하다']
+   chips=[['for', 'get']] decoy=['fore', 'gaze']
+   ex=I'll write it down so I don't forget. / 잊지 않도록 적어 둘게요.
+w-same|same|같은|tag=소통|icon=board
+   cue=다를 것 없이 똑같은
+   dEn=['some', 'game'] dKo=['다른', '새로운']
+   chips=[['same']] decoy=['sam']
+   ex=You can ask the same question again. / 같은 질문을 다시 물어보셔도 돼요.
+w-gown|gown|가운|tag=감염관리|icon=bandage
+   cue=방문 전에 옷 위에 걸쳐 입는 헐렁한 보호복
+   dEn=['gone', 'grown'] dKo=['마스크', '앞치마']
+   chips=[['gown']] decoy=['gawn']
+   ex=Please put on a gown before you go in. / 들어가시기 전에 가운을 입어 주세요.
+w-glove|glove|장갑|tag=감염관리|icon=bandage
+   cue=손에 끼워 직접 닿는 것을 막는 얇은 보호구
+   dEn=['grove', 'glue'] dKo=['양말', '신발']
+   chips=[['glove']] decoy=['clove']
+   ex=The gown and gloves protect her from infection. / 가운과 장갑은 감염으로부터 환자를 보호해요.
+w-protect|protect|보호하다|tag=감염관리|icon=shield
+   cue=해로운 것으로부터 막아 지켜 주는 일
+   dEn=['protest', 'project'] dKo=['방해하다', '관찰하다']
+   chips=[['pro', 'tect']] decoy=['per', 'text']
+   ex=These steps protect both of you. / 이 절차들은 두 분 모두를 보호해요.
+w-infection|infection|감염|tag=감염관리|icon=shield
+   cue=세균이 몸에 들어가 번져 생기는 병
+   dEn=['infusion', 'injection'] dKo=['출혈', '소독']
+   chips=[['in', 'fec', 'tion']] decoy=['un', 'flec']
+   ex=The gown and gloves protect her from infection. / 가운과 장갑은 감염으로부터 환자를 보호해요.
+w-wash|wash|씻다|tag=감염관리|icon=check
+   cue=물과 비누로 깨끗이 문질러 내는 일
+   dEn=['wish', 'wax'] dKo=['말리다', '가리다']
+   chips=[['wash']] decoy=['wesh']
+   ex=Please wash your hands before and after visiting. / 방문 전후로 손을 씻어 주세요.
+w-visit|visit|방문하다|tag=감염관리|icon=home
+   cue=누군가를 만나러 병실에 찾아오는 일
+   dEn=['vision', 'visual'] dKo=['퇴원하다', '입원하다']
+   chips=[['vis', 'it']] decoy=['pis', 'ut']
+   ex=Please wash your hands before and after visiting. / 방문 전후로 손을 씻어 주세요.
+w-keep|keep|지키다|tag=감염관리|icon=shield
+   cue=어떤 상태가 그대로 이어지게 하거나 안전하게 붙들어 줌
+   dEn=['keen', 'peek'] dKo=['깨뜨리다', '버리다']
+   chips=[['keep']] decoy=['kep']
+   ex=These steps keep both of you safe. / 이 절차들이 두 분 모두를 안전하게 지켜줘요.
+w-safe|safe|안전한|tag=감염관리|icon=shield
+   cue=다치거나 위험해질 걱정이 없는
+   dEn=['save', 'sale'] dKo=['위험한', '불편한']
+   chips=[['safe']] decoy=['saf']
+   ex=These steps keep both of you safe. / 이 절차들이 두 분 모두를 안전하게 지켜줘요.
+w-germ|germ|세균|tag=감염관리|icon=shield
+   cue=눈에 보이지 않지만 병을 일으킬 수 있는 아주 작은 생물
+   dEn=['gem', 'term'] dKo=['먼지', '땀']
+   chips=[['germ']] decoy=['jerm']
+   ex=This keeps her safe from germs. / 세균으로부터 환자를 안전하게 지키려는 거예요.
+w-visitor|visitor|방문객|tag=감염관리|icon=me
+   cue=환자를 만나러 온 사람
+   dEn=['investor', 'vicinity'] dKo=['직원', '환자']
+   chips=[['vis', 'it', 'or']] decoy=['vit', 'ar']
+   ex=Only two visitors are allowed at the bedside. / 침상 곁에는 방문객 두 명만 허용돼요.
+w-allow|allow|허용하다|tag=감염관리|icon=check
+   cue=해도 된다고 허락해 주는 일
+   dEn=['alloy', 'allude'] dKo=['금지하다', '요구하다']
+   chips=[['al', 'low']] decoy=['el', 'lew']
+   ex=Only two visitors are allowed at a time. / 한 번에 방문객 두 명만 허용돼요.
+w-protection|protection|보호|tag=감염관리|icon=shield
+   cue=해로운 것을 막아 주는 장치나 상태
+   dEn=['projection', 'prediction'] dKo=['소독', '방해']
+   chips=[['pro', 'tec', 'tion']] decoy=['per', 'tek']
+   ex=These steps are for her protection. / 이 절차들은 환자를 보호하기 위한 거예요.
+w-understandable|understandable|이해할 만한|tag=정서 지지|icon=bulb
+   cue=그런 감정이 드는 것이 당연하다고 수긍이 되는
+   dEn=['unreasonable', 'uncomfortable'] dKo=['당황스러운', '걱정스러운']
+   chips=[['under', 'stand', 'able']] decoy=['over', 'sand']
+   ex=It's completely understandable to feel this way. / 이렇게 느끼시는 건 충분히 이해할 만해요.
+w-alone|alone|혼자|tag=정서 지지|icon=me
+   cue=곁에 아무도 없이 홀로인
+   dEn=['along', 'alike'] dKo=['함께', '모두']
+   chips=[['a', 'lone']] decoy=['e', 'lane']
+   ex=You don't have to go through this alone. / 이걸 혼자 겪지 않으셔도 돼요.
+w-service|service|서비스|tag=정서 지지|icon=home
+   cue=병원이 환자와 가족에게 제공하는 도움 체계, 예컨대 상담이나 영적 돌봄
+   dEn=['serving', 'surface'] dKo=['보험', '처방']
+   chips=[['ser', 'vice']] decoy=['sir', 'vase']
+   ex=There are support services here whenever you need them. / 필요하실 때면 언제든 이용할 수 있는 지원 서비스가 있어요.
+w-cry|cry|울다|tag=정서 지지|icon=me
+   cue=슬픔이나 충격에 눈물을 흘리는
+   dEn=['dry', 'try'] dKo=['웃다', '졸다']
+   chips=[['cry']] decoy=['cri']
+   ex=It's okay to cry. / 울어도 괜찮아요.
+w-angry|angry|화난|tag=정서 지지|icon=siren
+   cue=분노로 마음이 끓어오르는
+   dEn=['hungry', 'angel'] dKo=['놀란', '슬픈']
+   chips=[['an', 'gry']] decoy=['un', 'pry']
+   ex=It's okay to be angry sometimes. / 가끔 화가 나도 괜찮아요.
+w-numb|numb|멍한|tag=정서 지지|icon=board
+   cue=충격으로 감각과 감정이 무뎌져 아무것도 느껴지지 않는
+   dEn=['limp', 'nimble'] dKo=['들뜬', '멀쩡한']
+   chips=[['numb']] decoy=['nub']
+   ex=It's okay to feel numb right now. / 지금은 멍해져도 괜찮아요.
+w-chaplain|chaplain|원목|tag=정서 지지|icon=home
+   cue=종교와 상관없이 가족의 영적·정서적 위로를 돕는 병원 소속 성직자
+   dEn=['champion', 'challenge'] dKo=['약사', '통역사']
+   chips=[['chap', 'lain']] decoy=['chip', 'lane']
+   ex=A chaplain can meet with you if you'd like. / 원하시면 원목이 만나 드릴 수 있어요.
+w-counselor|counselor|상담사|tag=정서 지지|icon=home
+   cue=마음의 어려움을 들어 주고 대처를 함께 찾아 주는 전문가
+   dEn=['councilor', 'consultant'] dKo=['검사관', '감독관']
+   chips=[['coun', 'sel', 'or']] decoy=['con', 'sal']
+   ex=A counselor can meet with you anytime. / 상담사는 언제든 만나 드릴 수 있어요.
+w-meet|meet|만나다|tag=정서 지지|icon=home
+   cue=얼굴을 맞대고 만나서 이야기하는
+   dEn=['melt', 'meek'] dKo=['떠나다', '보내다']
+   chips=[['meet']] decoy=['meat']
+   ex=A chaplain can meet with you today. / 오늘 원목이 만나 드릴 수 있어요.
+w-list|list|목록으로 만들다|tag=회의·소통|icon=pencil
+   cue=항목을 하나씩 줄 세워 적어 두는 일
+   dEn=['lift', 'lint'] dKo=['지워 버리다', '순서를 바꾸다']
+   chips=[['list']] decoy=['lest']
+   ex=Let's list the questions your family wants answered. / 가족분들이 답을 듣고 싶은 질문을 목록으로 만들어 봐요.
+w-answer|answer|답하다|tag=회의·소통|icon=speech
+   cue=묻는 말에 응해 대꾸하는
+   dEn=['offer', 'asker'] dKo=['반박하다', '요청하다']
+   chips=[['an', 'swer']] decoy=['un', 'sweep']
+   ex=We'll make sure your questions get answered. / 질문에 모두 답을 드릴게요.
+w-hear|hear|듣다|tag=회의·소통|icon=speaker
+   cue=귀로 소리나 말이 들어오는
+   dEn=['heal', 'hare'] dKo=['읽다', '쓰다']
+   chips=[['hear']] decoy=['here']
+   ex=I'll make sure everyone can hear and be heard. / 모두가 듣고 말할 수 있도록 챙길게요.
+w-condition|condition|상태|tag=회의·소통|icon=chartup
+   cue=환자가 지금 어떤 모습인지를 가리키는
+   dEn=['collision', 'tradition'] dKo=['위치', '성별']
+   chips=[['con', 'di', 'tion']] decoy=['can', 'dit']
+   ex=We'll go over his condition together, step by step. / 환자분의 상태를 함께 살펴볼게요.
+w-together|together|함께|tag=회의·소통|icon=me
+   cue=한 사람씩이 아니라 다 같이
+   dEn=['tomorrow', 'toward'] dKo=['따로', '먼저']
+   chips=[['to', 'geth', 'er']] decoy=['te', 'gath']
+   ex=We'll go over this together. / 함께 살펴볼게요.
+w-meeting|meeting|회의|tag=회의·소통|icon=home
+   cue=여럿이 모여 정해진 시간에 이야기를 나누는 자리
+   dEn=['melting', 'greeting'] dKo=['면회', '휴식']
+   chips=[['meet', 'ing']] decoy=['melt', 'ed']
+   ex=It helps to write your questions down before the meeting. / 회의 전에 질문을 적어 두면 좋아요.
+w-translate|translate|통역하다|tag=회의·소통|icon=speech
+   cue=한 언어로 된 말을 다른 언어로 옮겨 알려 주는
+   dEn=['transmit', 'transplant'] dKo=['이송하다', '이식하다']
+   chips=[['trans', 'late']] decoy=['tran', 'plate']
+   ex=I'll help translate if needed. / 필요하면 제가 통역을 도울게요.
+w-welcome|welcome|환영하는|tag=회의·소통|icon=home
+   cue=와도 좋다고 기꺼이 반기는
+   dEn=['welfare', 'wellness'] dKo=['거부하는', '불편한']
+   chips=[['wel', 'come']] decoy=['wal', 'cam']
+   ex=Everyone who wants to be there is welcome to join. / 참석하고 싶은 분은 누구나 환영이에요.
+w-join|join|참여하다|tag=회의·소통|icon=home
+   cue=모임에 끼어 함께하는
+   dEn=['joint', 'jolt'] dKo=['불참하다', '주최하다']
+   chips=[['join']] decoy=['coin']
+   ex=Everyone is welcome to join the meeting. / 누구나 회의에 참여하실 수 있어요.
+w-life|life|삶|tag=대리 결정|icon=star
+   cue=태어나서 마지막 순간까지 이어지는 시간
+   dEn=['lift', 'live'] dKo=['꿈', '집']
+   chips=[['life']] decoy=['lief']
+   ex=Tell me about what mattered most to him in life. / 그분의 삶에서 가장 소중했던 게 뭔지 말씀해 주세요.
+w-speak|speak|말하다|tag=대리 결정|icon=speech
+   cue=입을 열어 소리 내어 이야기하는
+   dEn=['speck', 'speed'] dKo=['침묵하다', '경청하다']
+   chips=[['speak']] decoy=['spake']
+   ex=What would he say if he could speak right now? / 지금 말할 수 있다면 그분이 뭐라고 했을까요?
+w-value|value|가치|tag=대리 결정|icon=star
+   cue=무엇을 소중하게 여기는지를 보여 주는 기준
+   dEn=['valve', 'volume'] dKo=['수량', '크기']
+   chips=[['val', 'ue']] decoy=['vol', 'ew']
+   ex=Let's use his values to guide our decisions. / 그분의 가치를 바탕으로 결정해 봐요.
+w-guide|guide|이끌다|tag=대리 결정|icon=compass
+   cue=나아갈 길을 보여 주며 이끌어 주는
+   dEn=['guard', 'guilt'] dKo=['막다', '맡기다']
+   chips=[['guide']] decoy=['guid']
+   ex=Let's use his values to guide our decisions. / 그분의 가치를 바탕으로 결정을 이끌어 봐요.
+w-decision|decision|결정|tag=대리 결정|icon=chartup
+   cue=여러 길 가운데 하나를 골라 정하는 일
+   dEn=['division', 'incision'] dKo=['분할', '의문']
+   chips=[['de', 'cis', 'ion']] decoy=['di', 'sion']
+   ex=Let's use his values to guide our decisions. / 그분의 가치를 바탕으로 결정을 내려 봐요.
+w-sick|sick|아픈|tag=대리 결정|icon=hospital
+   cue=몸이 안 좋아 병에 걸린
+   dEn=['sink', 'silk'] dKo=['건강한', '배부른']
+   chips=[['sick']] decoy=['sack']
+   ex=What kind of person was he before he got sick? / 아프기 전에 그분은 어떤 분이셨어요?
+w-understand|understand|이해하다|tag=대리 결정|icon=bulb
+   cue=말이나 마음의 속뜻을 알아듣는
+   dEn=['understate', 'undertake'] dKo=['오해하다', '비교하다']
+   chips=[['under', 'stand']] decoy=['over', 'stood']
+   ex=I just want to understand him better. / 그분을 더 잘 이해하고 싶을 뿐이에요.
+w-sit|sit|앉다|tag=예후 소통|icon=home
+   cue=의자에 엉덩이를 대고 몸을 낮추는
+   dEn=['set', 'sip'] dKo=['서다', '눕다']
+   chips=[['sit']] decoy=['sat']
+   ex=Let's sit down together before the doctor speaks. / 의사가 말하기 전에 함께 앉아요.
+w-conversation|conversation|대화|tag=예후 소통|icon=speech
+   cue=둘 이상이 말을 주고받는 일
+   dEn=['conversion', 'convention'] dKo=['침묵', '논쟁']
+   chips=[['con', 'ver', 'sa', 'tion']] decoy=['kon', 'ser']
+   ex=I'll be right here with you during the conversation. / 대화하는 동안 제가 바로 곁에 있을게요.
+w-pause|pause|잠시 멈추다|tag=예후 소통|icon=board
+   cue=하던 이야기를 잠깐 세워 두고 숨 돌리는 일
+   dEn=['cause', 'pulse'] dKo=['서둘러 끝내다', '곧바로 시작하다']
+   chips=[['pause']] decoy=['pose']
+   ex=We can pause whenever you need. / 필요하면 언제든 잠시 멈출 수 있어요.
+w-share|share|공유하다|tag=예후 소통|icon=speech
+   cue=알게 된 내용을 다른 사람과 나누어 알려 주는
+   dEn=['shore', 'shame'] dKo=['독점하다', '삭제하다']
+   chips=[['share']] decoy=['shape']
+   ex=The doctor will share the results and what they mean. / 의사가 결과와 그 의미를 전해 줄 거예요.
+w-result|result|검사 결과|tag=예후 소통|icon=chartup
+   cue=검사를 마친 뒤 나온 수치나 판독 내용
+   dEn=['resume', 'reset'] dKo=['검사 시간', '검사 비용']
+   chips=[['re', 'sult']] decoy=['ra', 'salt']
+   ex=The doctor will share the results and what they mean. / 의사가 결과와 그 의미를 알려 줄 거예요.
+w-mean|mean|의미하다|tag=예후 소통|icon=bulb
+   cue=말이 가리키는 속뜻이 무엇인지
+   dEn=['meal', 'moan'] dKo=['시작하다', '거절하다']
+   chips=[['mean']] decoy=['mien']
+   ex=The doctor will explain what the results mean. / 의사가 결과가 무엇을 의미하는지 설명할 거예요.
+w-repeat|repeat|반복하다|tag=예후 소통|icon=speech
+   cue=한 번 한 말을 다시 한 번 되풀이하는
+   dEn=['repeal', 'repel'] dKo=['수정하다', '중단하다']
+   chips=[['re', 'peat']] decoy=['ri', 'pat']
+   ex=It's okay to ask the doctor to repeat something. / 의사에게 다시 말해 달라고 해도 괜찮아요.
+w-give|give|주다|tag=예후 소통|icon=board
+   cue=무엇을 상대에게 건네거나 베푸는
+   dEn=['gift', 'glide'] dKo=['받다', '갚다']
+   chips=[['give']] decoy=['gave']
+   ex=We'll give you a moment before we go further. / 더 말씀드리기 전에 잠시 시간을 드릴게요.
+w-moment|moment|순간|tag=예후 소통|icon=calendar
+   cue=아주 짧은 한순간, 숨 돌릴 여유
+   dEn=['movement', 'monument'] dKo=['기간', '거리']
+   chips=[['mo', 'ment']] decoy=['ma', 'mint']
+   ex=We'll give you a moment before we go further. / 더 말씀드리기 전에 잠시 시간을 드릴게요.
+w-name|name|지정하다|tag=대리 결정|icon=pencil
+   cue=서류에 이름을 적어 누구를 대리인으로 정해 두는 일
+   dEn=['tame', 'nape'] dKo=['취소하다', '거절하다']
+   chips=[['name']] decoy=['nam']
+   ex=Did he name a healthcare proxy in any documents? / 서류에 의료 대리인을 지정해 두셨나요?
+w-healthcare|healthcare|의료|tag=대리 결정|icon=hospital
+   cue=병원과 의료진이 건강을 돌보는 체계 전반
+   dEn=['housecare', 'hospital'] dKo=['보험', '병원']
+   chips=[['health', 'care']] decoy=['wealth', 'cure']
+   ex=Did he name a healthcare proxy? / 의료 대리인을 지정해 두셨나요?
+w-proxy|proxy|대리인|tag=대리 결정|icon=shield
+   cue=환자 대신 의료 결정을 하도록 미리 지정해 둔 사람
+   dEn=['proof', 'prose'] dKo=['보증인', '조력자']
+   chips=[['prox', 'y']] decoy=['prax', 'i']
+   ex=Did he name a healthcare proxy in any documents? / 서류에 의료 대리인을 지정해 두셨나요?
+w-document|document|서류|tag=대리 결정|icon=pencil
+   cue=내용을 글로 남겨 두는 종이나 파일
+   dEn=['dominant', 'instrument'] dKo=['사진', '영수증']
+   chips=[['doc', 'u', 'ment']] decoy=['dig', 'mint']
+   ex=Did he name a healthcare proxy in any documents? / 서류에 의료 대리인을 지정해 두셨나요?
+w-follow|follow|따르다|tag=대리 결정|icon=compass
+   cue=정해진 순서나 규칙을 그대로 밟아 가는 일
+   dEn=['fallow', 'hollow'] dKo=['앞서다', '거스르다']
+   chips=[['fol', 'low']] decoy=['fel', 'lo']
+   ex=If not, we follow the legal order for surrogates. / 그렇지 않다면 대리결정자에 관한 법적 순서를 따라요.
+w-legal|legal|법적인|tag=대리 결정|icon=board
+   cue=법으로 정해져 있는
+   dEn=['loyal', 'regal'] dKo=['도덕적인', '의학적인']
+   chips=[['le', 'gal']] decoy=['li', 'gel']
+   ex=We follow the legal order for surrogates. / 대리결정자에 관한 법적 순서를 따라요.
+w-order|order|순서|tag=대리 결정|icon=board
+   cue=무엇이 먼저고 무엇이 나중인지 가르는 차례
+   dEn=['older', 'border'] dKo=['장소', '이유']
+   chips=[['order']] decoy=['ordar']
+   ex=We follow the legal order for surrogates. / 대리결정자에 관한 법적 순서를 따라요.
+w-surrogate|surrogate|대리결정자|tag=대리 결정|icon=shield
+   cue=환자가 결정할 수 없을 때 법이 정한 순서대로 대신 결정하는 사람
+   dEn=['surrender', 'surcharge'] dKo=['연락담당자', '재산관리자']
+   chips=[['sur', 'ro', 'gate']] decoy=['sir', 'ra']
+   ex=We follow the legal order for surrogates. / 대리결정자에 관한 법적 순서를 따라요.
+w-clarify|clarify|명확히 하다|tag=대리 결정|icon=magnify
+   cue=흐릿한 점을 분명히 밝혀 확실하게 하는
+   dEn=['classify', 'justify'] dKo=['미루어 두다', '얼버무리다']
+   chips=[['clar', 'i', 'fy']] decoy=['clor', 'ef']
+   ex=Let's clarify who speaks for him so we're aligned. / 누가 그분을 대변할지 명확히 해서 뜻을 맞춰 봐요.
+w-align|align|뜻을 맞추다|tag=대리 결정|icon=check
+   cue=서로의 방향과 생각을 같은 쪽으로 가지런히 맞추는
+   dEn=['alien', 'assign'] dKo=['뜻을 어기다', '뜻을 묻다']
+   chips=[['a', 'lign']] decoy=['e', 'lean']
+   ex=Let's clarify who speaks for him so we're aligned. / 누가 그분을 대변할지 명확히 해서 뜻을 맞춰 봐요.
+w-spouse|spouse|배우자|tag=대리 결정|icon=me
+   cue=결혼한 상대, 남편이나 아내
+   dEn=['sprout', 'spruce'] dKo=['동료', '이웃']
+   chips=[['spouse']] decoy=['spous']
+   ex=A spouse usually comes first, then adult children. / 보통 배우자가 먼저이고, 그다음이 성인 자녀예요.
+w-child|child|자녀|tag=대리 결정|icon=baby
+   cue=부모에게서 태어난 어린 사람
+   dEn=['chill', 'chief'] dKo=['부모', '친구']
+   chips=[['child']] decoy=['chide']
+   ex=A spouse usually comes first, then adult children. / 보통 배우자가 먼저이고, 그다음이 성인 자녀예요.
+w-agree|agree|동의하다|tag=대리 결정|icon=check
+   cue=생각이 같아서 서로 그렇다고 하는
+   dEn=['agent', 'agile'] dKo=['반대하다', '의심하다']
+   chips=[['a', 'gree']] decoy=['e', 'grey']
+   ex=It helps if the family agrees on one point of contact. / 가족이 연락 창구를 한 명으로 정하면 도움이 돼요.
+w-contact|contact|연락|tag=대리 결정|icon=speech
+   cue=서로 소식이 닿게 하는 창구나 접점
+   dEn=['contrast', 'contract'] dKo=['계약', '대조']
+   chips=[['con', 'tact']] decoy=['can', 'tack']
+   ex=It helps if the family agrees on one point of contact. / 가족이 연락 창구를 한 명으로 정하면 도움이 돼요.
+w-member|member|구성원|tag=대리 결정|icon=me
+   cue=어떤 모임이나 집단에 속한 한 사람
+   dEn=['number', 'memory'] dKo=['지도자', '손님']
+   chips=[['mem', 'ber']] decoy=['man', 'bar']
+   ex=It's normal for family members to see things differently. / 가족 구성원마다 다르게 보는 건 자연스러운 일이에요.
+w-information|information|정보|tag=회의·소통|icon=board
+   cue=알려 주는 내용, 사실과 소식
+   dEn=['inflammation', 'infiltration'] dKo=['소문', '단서']
+   chips=[['in', 'form', 'a', 'tion']] decoy=['un', 'farm']
+   ex=Let's make sure everyone hears the same information. / 모두가 같은 정보를 듣도록 챙길게요.
+w-team|team|팀|tag=회의·소통|icon=me
+   cue=한 가지 일을 함께 맡은 사람들의 모임
+   dEn=['tear', 'term'] dKo=['환자', '병동']
+   chips=[['team']] decoy=['tem']
+   ex=I'll help the team clarify what's realistic. / 무엇이 현실적인지 팀이 명확히 하도록 도울게요.
+w-realistic|realistic|현실적인|tag=예후 소통|icon=chartup
+   cue=있는 그대로의 사정에 맞아 지나치게 낙관하지 않는
+   dEn=['reasonable', 'relatable'] dKo=['이상적인', '비관적인']
+   chips=[['real', 'is', 'tic']] decoy=['roll', 'ist']
+   ex=I'll help the team clarify what's realistic. / 무엇이 현실적인지 팀이 명확히 하도록 도울게요.
+w-aunt|aunt|이모|tag=가족 참여|icon=me
+   cue=부모의 여자 형제나 삼촌의 아내
+   dEn=['uncle', 'ant'] dKo=['삼촌', '사촌']
+   chips=[['aunt']] decoy=['aunty']
+   ex=I hear that your aunt is hoping for a full recovery. / 이모님이 완전한 회복을 바라신다는 걸 알고 있어요.
+w-hope|hope|바라다|tag=예후 소통|icon=star
+   cue=그렇게 되기를 간절히 기대하는
+   dEn=['hose', 'hype'] dKo=['포기하다', '걱정하다']
+   chips=[['hope']] decoy=['hop']
+   ex=I hear that your aunt is hoping for a full recovery. / 이모님이 완전한 회복을 바라신다는 걸 알고 있어요.
+w-recovery|recovery|회복|tag=예후 소통|icon=chartup
+   cue=아프거나 다친 뒤 다시 건강을 되찾는 과정
+   dEn=['discovery', 'delivery'] dKo=['진단', '수술']
+   chips=[['re', 'cov', 'ery']] decoy=['ra', 'kov']
+   ex=I hear that your aunt is hoping for a full recovery. / 이모님이 완전한 회복을 바라신다는 걸 알고 있어요.
+w-bring|bring|데려오다|tag=회의·소통|icon=home
+   cue=어디로 같이 가서 곁에 데리고 오는
+   dEn=['brink', 'brine'] dKo=['돌려보내다', '앞세우다']
+   chips=[['bring']] decoy=['brig']
+   ex=Let's bring everyone together to hear the same update. / 같은 소식을 듣도록 모두 함께 모여요.
+w-update|update|최신 소식|tag=회의·소통|icon=chartup
+   cue=그사이 달라진 점을 정리해 전하는 말
+   dEn=['upgrade', 'upload'] dKo=['지난 일정', '지난 기록']
+   chips=[['up', 'date']] decoy=['op', 'data']
+   ex=Let's bring everyone together to hear the same update. / 같은 소식을 듣도록 모두 함께 모여요.
+w-mouth|mouth|입|tag=가족 참여|icon=board
+   cue=음식을 먹고 말을 하는 얼굴의 입구
+   dEn=['mouse', 'month'] dKo=['코', '귀']
+   chips=[['mouth']] decoy=['moth']
+   ex=You can help with mouth care. / 구강 관리를 도와주실 수 있어요.
+w-care|care|돌봄|tag=가족 참여|icon=shield
+   cue=곁에서 살피고 보살피는 일
+   dEn=['core', 'cure'] dKo=['검사', '수술']
+   chips=[['care']] decoy=['carr']
+   ex=You can help with mouth care. / 구강 관리를 도와주실 수 있어요.
+w-moisturize|moisturize|촉촉하게 하다|tag=가족 참여|icon=bandage
+   cue=입술이나 피부가 마르지 않게 물기나 보습제를 더해 주는
+   dEn=['mobilize', 'memorize'] dKo=['깨끗하게 하다', '따뜻하게 하다']
+   chips=[['moist', 'ur', 'ize']] decoy=['most', 'ar']
+   ex=You can help by moisturizing his lips. / 입술을 촉촉하게 해 드리는 걸 도와주실 수 있어요.
+w-lip|lip|입술|tag=가족 참여|icon=board
+   cue=입의 가장자리에서 말하고 먹을 때 움직이는 부드러운 살
+   dEn=['lap', 'lid'] dKo=['혀', '볼']
+   chips=[['lip']] decoy=['lop']
+   ex=You can help by moisturizing his lips. / 입술을 촉촉하게 해 드리는 걸 도와주실 수 있어요.
+w-read|read|읽어주다|tag=가족 참여|icon=pencil
+   cue=글자를 눈으로 따라가며 내용을 소리 내어 들려주는 일
+   dEn=['lead', 'road'] dKo=['적어주다', '보여주다']
+   chips=[['read']] decoy=['reed']
+   ex=Talking and reading to him really does help. / 말을 걸고 책을 읽어 주는 게 정말 도움이 돼요.
+w-meaningful|meaningful|의미 있는|tag=가족 참여|icon=star
+   cue=하는 일에 의미와 가치가 느껴지는
+   dEn=['meaningless', 'mindful'] dKo=['사소한', '의무적인']
+   chips=[['mean', 'ing', 'ful']] decoy=['mien', 'ling']
+   ex=Being here for him is meaningful care too. / 곁에 있어 주는 것도 의미 있는 돌봄이에요.
+w-play|play|틀다|tag=가족 참여|icon=speaker
+   cue=음악이나 영상이 흘러나오게 틀어 주는
+   dEn=['pray', 'plan'] dKo=['끄다', '닫다']
+   chips=[['play']] decoy=['plea']
+   ex=You could also play some music he used to enjoy. / 그분이 즐겨 듣던 음악을 틀어 드릴 수도 있어요.
+w-music|music|음악|tag=가족 참여|icon=speaker
+   cue=악기와 목소리로 만든 소리의 예술
+   dEn=['muscle', 'mosaic'] dKo=['그림', '영화']
+   chips=[['mu', 'sic']] decoy=['ma', 'sec']
+   ex=You could also play some music he used to enjoy. / 그분이 즐겨 듣던 음악을 틀어 드릴 수도 있어요.
+w-enjoy|enjoy|즐기다|tag=가족 참여|icon=star
+   cue=좋아하며 즐거움을 느끼는
+   dEn=['enjoin', 'annoy'] dKo=['싫어하다', '견디다']
+   chips=[['en', 'joy']] decoy=['in', 'jay']
+   ex=You could also play some music he used to enjoy. / 그분이 즐겨 듣던 음악을 틀어 드릴 수도 있어요.
+w-task|task|일|tag=가족 참여|icon=board
+   cue=해야 할 하나의 일
+   dEn=['mask', 'tank'] dKo=['휴식', '놀이']
+   chips=[['task']] decoy=['tusk']
+   ex=There's no small task here. / 여기서는 사소한 일이 없어요.
+w-wish|wish|~하면 좋겠다|tag=예후 소통|icon=star
+   cue=그렇지 않아 아쉽지만 그랬으면 하고 바라는 마음을 말할 때
+   dEn=['wise', 'fish'] dKo=['~할 수 없다', '~해야 한다']
+   chips=[['wish']] decoy=['wisp']
+   ex=I wish I could give you a certain answer. / 확실한 답을 드릴 수 있으면 좋겠어요.
+w-serious|serious|심각한|tag=예후 소통|icon=siren
+   cue=가볍게 넘길 수 없는 무거운 상태
+   dEn=['various', 'curious'] dKo=['가벼운', '평온한']
+   chips=[['ser', 'i', 'ous']] decoy=['sor', 'ias']
+   ex=His condition is serious, and the next days are critical. / 상태가 심각하고, 앞으로 며칠이 고비예요.
+w-critical|critical|위중한|tag=예후 소통|icon=siren
+   cue=경과가 갈리는 고비라 할 만큼 위태로운
+   dEn=['cynical', 'clinical'] dKo=['안정적인', '호전된']
+   chips=[['crit', 'ic', 'al']] decoy=['crat', 'ik']
+   ex=The next days are critical. / 앞으로 며칠이 고비예요.
+w-best|best|최선|tag=예후 소통|icon=star
+   cue=가장 좋은 것, 가장 나은 결과
+   dEn=['rest', 'test'] dKo=['최악', '평균']
+   chips=[['best']] decoy=['bist']
+   ex=We're hoping for the best. / 최선을 바라고 있어요.
+w-prepare|prepare|준비하다|tag=예후 소통|icon=chartup
+   cue=미리 갖추고 대비를 마치는
+   dEn=['prepay', 'preserve'] dKo=['연기하다', '확인하다']
+   chips=[['pre', 'pare']] decoy=['pro', 'pair']
+   ex=We're preparing for all outcomes. / 모든 결과에 대비하고 있어요.
+w-outcome|outcome|최종 결과|tag=예후 소통|icon=chartup
+   cue=치료나 상황이 마지막에 어떻게 끝나는지
+   dEn=['outcry', 'income'] dKo=['최초 증상', '최종 비용']
+   chips=[['out', 'come']] decoy=['our', 'comb']
+   ex=We're preparing for all outcomes. / 모든 결과에 대비하고 있어요.
+w-predict|predict|예측하다|tag=예후 소통|icon=magnify
+   cue=앞으로 어떻게 될지 미리 말하는
+   dEn=['prevent', 'prescribe'] dKo=['예방하다', '처방하다']
+   chips=[['pre', 'dict']] decoy=['pro', 'duct']
+   ex=No one can predict exactly how this will go. / 이게 어떻게 될지는 아무도 정확히 예측할 수 없어요.
+w-scared|scared|무서운|tag=정서 지지|icon=siren
+   cue=겁이 나서 마음이 오그라드는
+   dEn=['scarce', 'sacred'] dKo=['든든한', '뿌듯한']
+   chips=[['scar', 'ed']] decoy=['skar', 'id']
+   ex=It's okay to hope and to be scared at the same time. / 바라면서 동시에 무서워해도 괜찮아요.
+w-specialist|specialist|전문가|tag=가족 참여|icon=stetho
+   cue=한 분야를 깊이 아는 전문 인력
+   dEn=['specimen', 'spectator'] dKo=['초보자', '관리자']
+   chips=[['spe', 'cial', 'ist']] decoy=['spi', 'shal']
+   ex=Child life specialists can prepare her for the visit. / 아동생활전문가가 방문을 위해 아이를 준비시켜 줄 수 있어요.
+w-word|word|말|tag=가족 참여|icon=speech
+   cue=뜻을 지닌 말의 한 토막
+   dEn=['work', 'world'] dKo=['글', '노래']
+   chips=[['word']] decoy=['ward']
+   ex=We'll explain things in words she can understand. / 아이가 이해할 수 있는 말로 설명해 드릴게요.
+w-include|include|포함시키다|tag=가족 참여|icon=check
+   cue=한 사람을 무리에 끼워 넣는
+   dEn=['conclude', 'intrude'] dKo=['제외시키다', '분리하다']
+   chips=[['in', 'clude']] decoy=['en', 'clad']
+   ex=It's okay to include her if that feels right. / 가족에게 맞다고 느껴지면 아이를 포함시켜도 괜찮아요.
+w-sibling|sibling|형제자매|tag=가족 참여|icon=baby
+   cue=같은 부모에게서 난 형이나 동생, 누나나 언니
+   dEn=['sibilant', 'spilling'] dKo=['사촌지간', '부부사이']
+   chips=[['sib', 'ling']] decoy=['sab', 'lin']
+   ex=Siblings can feel scared or confused too. / 형제자매도 무섭거나 혼란스러울 수 있어요.
+w-social|social|사회복지의|tag=가족 참여|icon=home
+   cue=사람들과 사회에 관한, 복지 일을 가리킬 때 붙는
+   dEn=['special', 'sooner'] dKo=['의학의', '법률의']
+   chips=[['so', 'cial']] decoy=['sa', 'tial']
+   ex=A social worker can also support the siblings at home. / 사회복지사가 형제자매도 도와줄 수 있어요.
+w-worker|worker|종사자|tag=가족 참여|icon=home
+   cue=일을 맡아 하는 직업인
+   dEn=['walker', 'workout'] dKo=['고객', '방문자']
+   chips=[['work', 'er']] decoy=['walk', 'ed']
+   ex=A social worker can also support the siblings at home. / 사회복지사가 형제자매도 도와줄 수 있어요.
+w-video|video|영상|tag=가족 참여|icon=monitor
+   cue=움직이는 화면과 소리를 담은 영상
+   dEn=['audio', 'radio'] dKo=['사진', '음성']
+   chips=[['vid', 'eo']] decoy=['vod', 'io']
+   ex=We can set up a video call at the bedside. / 침상 곁에서 화상 통화를 준비해 드릴 수 있어요.
+w-call|call|통화|tag=가족 참여|icon=speaker
+   cue=목소리나 화면으로 연결해 이야기하는 통신
+   dEn=['cell', 'hall'] dKo=['문자', '전화기']
+   chips=[['call']] decoy=['cal']
+   ex=We can set up a video call at the bedside. / 침상 곁에서 화상 통화를 준비해 드릴 수 있어요.
+w-tablet|tablet|태블릿|tag=가족 참여|icon=monitor
+   cue=손에 들고 화면을 눌러 영상통화를 걸 수 있는 납작한 기기
+   dEn=['booklet', 'outlet'] dKo=['노트북', '스피커']
+   chips=[['tab', 'let']] decoy=['tub', 'lit']
+   ex=I'll hold the tablet so his son can see and talk to him. / 아드님이 보고 이야기할 수 있게 제가 태블릿을 들고 있을게요.
+w-son|son|아들|tag=가족 참여|icon=baby
+   cue=부모에게서 난 아들
+   dEn=['sun', 'soy'] dKo=['딸', '형']
+   chips=[['son']] decoy=['san']
+   ex=I'll hold the tablet so his son can see him. / 아드님이 보고 이야기할 수 있게 제가 태블릿을 들고 있을게요.
+w-zone|zone|시간대|tag=가족 참여|icon=calendar
+   cue=기준 시각이 같은 지역끼리 묶은 구획
+   dEn=['zoom', 'done'] dKo=['시간표', '시간제']
+   chips=[['zone']] decoy=['zine']
+   ex=Let's find a time that works across the time zones. / 시차를 감안해서 서로 맞는 시간을 찾아봐요.
+w-screen|screen|화면|tag=가족 참여|icon=monitor
+   cue=영상을 비춰 보여 주는 평평한 표면
+   dEn=['scrape', 'screw'] dKo=['스피커', '전선']
+   chips=[['screen']] decoy=['scren']
+   ex=The screen and camera are already set up in her room. / 화면과 카메라는 병실에 이미 준비되어 있어요.
+w-camera|camera|카메라|tag=가족 참여|icon=monitor
+   cue=장면을 찍어 영상으로 보내 주는 기계
+   dEn=['cameo', 'camper'] dKo=['마이크', '프린터']
+   chips=[['cam', 'era']] decoy=['com', 'ira']
+   ex=The screen and camera are already set up in her room. / 화면과 카메라는 병실에 이미 준비되어 있어요.
+w-angle|angle|각도를 맞추다|tag=가족 참여|icon=board
+   cue=화면이 얼굴을 잘 비추도록 기울기를 조절하는
+   dEn=['ankle', 'anchor'] dKo=['화면을 끄다', '렌즈를 닦다']
+   chips=[['an', 'gle']] decoy=['en', 'gal']
+   ex=I can angle the camera so he can see her face clearly. / 그분이 얼굴을 잘 볼 수 있게 카메라 각도를 맞춰 드릴게요.
+w-face|face|얼굴|tag=가족 참여|icon=board
+   cue=눈·코·입이 있는 머리의 앞쪽
+   dEn=['fact', 'fate'] dKo=['이마', '목']
+   chips=[['face']] decoy=['fase']
+   ex=I can angle the camera so he can see her face clearly. / 그분이 얼굴을 잘 볼 수 있게 카메라 각도를 맞춰 드릴게요.
+w-ready|ready|준비된|tag=가족 참여|icon=check
+   cue=곧바로 쓸 수 있게 다 갖춰진
+   dEn=['steady', 'heady'] dKo=['서두른', '망가진']
+   chips=[['read', 'y']] decoy=['reed', 'ie']
+   ex=We'll let you know as soon as the call is ready. / 통화 준비가 되면 바로 알려 드릴게요.
+w-sorry|sorry|유감스러운|tag=임종·비탄|icon=me
+   cue=상대의 아픔에 안타까움을 전할 때 쓰는 말
+   dEn=['story', 'surely'] dKo=['행복한', '놀라운']
+   chips=[['sor', 'ry']] decoy=['sar', 'ri']
+   ex=I'm so sorry. / 정말 안타깝습니다.
+w-respond|respond|반응을 보이다|tag=임종·비탄|icon=chartup
+   cue=치료를 했을 때 몸이 보여 주는 달라짐
+   dEn=['respect', 'resist'] dKo=['효과를 숨기다', '속도를 높이다']
+   chips=[['re', 'spond']] decoy=['ra', 'sund']
+   ex=His body is no longer responding to treatment. / 그분의 몸이 더는 치료에 반응하지 않고 있어요.
+w-treatment|treatment|치료|tag=임종·비탄|icon=pill
+   cue=병이나 증상을 낫게 하려고 하는 처치
+   dEn=['statement', 'agreement'] dKo=['진단', '예방']
+   chips=[['treat', 'ment']] decoy=['trait', 'mont']
+   ex=His body is no longer responding to treatment. / 그분의 몸이 더는 치료에 반응하지 않고 있어요.
+w-believe|believe|생각하다|tag=임종·비탄|icon=bulb
+   cue=근거를 보고 그렇다고 믿거나 판단하는
+   dEn=['relieve', 'deceive'] dKo=['의심하다', '기억하다']
+   chips=[['be', 'lieve']] decoy=['bi', 'leave']
+   ex=We believe he is nearing the end of his life. / 그분이 삶의 마지막에 가까워지고 있다고 생각해요.
+w-near|near|가까워지다|tag=임종·비탄|icon=compass
+   cue=어떤 시점이나 상태에 곧 다다르게 되는
+   dEn=['neat', 'nerve'] dKo=['멀어지다', '지나가다']
+   chips=[['near']] decoy=['neer']
+   ex=We believe he is nearing the end of his life. / 그분이 삶의 마지막에 가까워지고 있다고 생각해요.
+w-end|end|끝|tag=임종·비탄|icon=board
+   cue=이어지던 것이 멈추는 마지막 지점
+   dEn=['and', 'ear'] dKo=['시작', '중간']
+   chips=[['end']] decoy=['ened']
+   ex=We believe he is nearing the end of his life. / 그분이 삶의 마지막에 가까워지고 있다고 생각해요.
+w-comfortable|comfortable|편안한|tag=임종·비탄|icon=bandage
+   cue=아프거나 불편하지 않고 몸과 마음이 느긋한
+   dEn=['comparable', 'considerable'] dKo=['불안한', '어색한']
+   chips=[['com', 'fort', 'able']] decoy=['cam', 'fert']
+   ex=We'll keep him comfortable, and you can be with him. / 편안하게 해 드릴 거고, 곁에 계셔도 돼요.
+w-organ|organ|장기|tag=임종·비탄|icon=stetho
+   cue=심장이나 폐처럼 몸 안에서 맡은 일을 하는 기관
+   dEn=['orphan', 'orange'] dKo=['혈관', '근육']
+   chips=[['or', 'gan']] decoy=['er', 'gen']
+   ex=His organs are having a harder time keeping up. / 그분의 장기들이 점점 버티기 힘들어하고 있어요.
+w-easy|easy|쉬운|tag=임종·비탄|icon=board
+   cue=별 어려움 없이 하기 수월한
+   dEn=['edgy', 'eager'] dKo=['위험한', '복잡한']
+   chips=[['eas', 'y']] decoy=['ess', 'ie']
+   ex=This isn't easy to hear. / 듣기 쉽지 않으시겠지만 제가 곁에 있을게요.
+w-reverse|reverse|되돌리다|tag=임종·비탄|icon=gear
+   cue=지금까지 진행된 것을 거꾸로 돌려놓는
+   dEn=['reserve', 'rehearse'] dKo=['유지하다', '가속하다']
+   chips=[['re', 'verse']] decoy=['ra', 'vers']
+   ex=There's nothing more the treatments can do to reverse this. / 치료로 이걸 되돌릴 수 있는 방법은 더 없어요.
+w-get|get|마련해 주다|tag=임종·비탄|icon=board
+   cue=필요한 것을 구해 와서 건네주는
+   dEn=['jet', 'gel'] dKo=['치워 버리다', '미뤄 두다']
+   chips=[['get']] decoy=['gat']
+   ex=Let me get you a quiet space. / 조용한 공간을 마련해 드릴게요.
+w-quiet|quiet|조용한|tag=임종·비탄|icon=board
+   cue=소리가 거의 없어 고요한
+   dEn=['quite', 'quit'] dKo=['시끄러운', '어두운']
+   chips=[['qui', 'et']] decoy=['quo', 'at']
+   ex=Let me get you a quiet space. / 조용한 공간을 마련해 드릴게요.
+w-space|space|공간|tag=임종·비탄|icon=home
+   cue=비어 있어 머물 수 있는 곳
+   dEn=['spice', 'spade'] dKo=['시간', '무게']
+   chips=[['space']] decoy=['spase']
+   ex=Let me get you a quiet space. / 조용한 공간을 마련해 드릴게요.
+w-react|react|반응하다|tag=임종·비탄|icon=bulb
+   cue=충격이나 감정에 몸과 마음이 즉각 나타내는 모습을 말하는 동사
+   dEn=['reach', 'enact'] dKo=['억제하다', '거부하다']
+   chips=[['re', 'act']] decoy=['ra', 'ect']
+   ex=It's okay to react however your body needs to right now. / 지금은 몸이 필요한 대로 반응해도 괜찮아요.
+w-response|response|반응|tag=임종·비탄|icon=chartup
+   cue=어떤 충격에 몸이 보이는 반응 그 자체
+   dEn=['resource', 'reserves'] dKo=['효과', '원인']
+   chips=[['re', 'sponse']] decoy=['ra', 'spence']
+   ex=This is a normal response to shock. / 이건 충격에 대한 자연스러운 반응이에요.
+w-shock|shock|충격|tag=임종·비탄|icon=siren
+   cue=갑작스러운 나쁜 일에 얼얼해지는 큰 마음의 흔들림
+   dEn=['shake', 'stock'] dKo=['안정', '휴식']
+   chips=[['shock']] decoy=['shoc']
+   ex=This is a normal response to shock. / 이건 충격에 대한 자연스러운 반응이에요.
+w-common|common|공통의|tag=대리 결정|icon=board
+   cue=여럿에게 두루 해당하는, 서로 겹치는
+   dEn=['commit', 'combat'] dKo=['개별의', '특별한']
+   chips=[['com', 'mon']] decoy=['cam', 'men']
+   ex=That's your common ground. / 그게 두 분의 공통 기반이에요.
+w-ground|ground|기반|tag=대리 결정|icon=board
+   cue=서로 합의하는 바탕이 되는 자리
+   dEn=['around', 'growth'] dKo=['지붕', '기둥']
+   chips=[['ground']] decoy=['grond']
+   ex=That's your common ground. / 그게 두 분의 공통 기반이에요.
+w-center|center|중심에 두다|tag=대리 결정|icon=star
+   cue=어떤 것이 한가운데 오도록 모으는
+   dEn=['enter', 'censor'] dKo=['끝에 두다', '뒤로 미루다']
+   chips=[['cen', 'ter']] decoy=['sen', 'tor']
+   ex=Let's center this on what he would have wanted. / 그분이 원했을 것을 중심에 두고 생각해 봐요.
+w-ethics|ethics|윤리|tag=대리 결정|icon=board
+   cue=무엇이 옳고 그른지 가리는 원칙을 다루는 분야
+   dEn=['ethnic', 'optics'] dKo=['경제', '통계']
+   chips=[['eth', 'ics']] decoy=['oth', 'ik']
+   ex=The ethics and palliative teams can help us move forward. / 윤리팀과 완화의료팀이 앞으로 나아가도록 도와줄 수 있어요.
+w-palliative|palliative|완화의|tag=대리 결정|icon=cross
+   cue=병을 고치기보다 고통을 덜어 편안함을 돕는
+   dEn=['preventive', 'alternative'] dKo=['치유의', '예방의']
+   chips=[['pal', 'li', 'a', 'tive']] decoy=['pel', 'ly']
+   ex=The ethics and palliative teams can help us move forward. / 윤리팀과 완화의료팀이 앞으로 나아가도록 도와줄 수 있어요.
+w-move|move|나아가다|tag=대리 결정|icon=compass
+   cue=앞으로 한 걸음 나아가는
+   dEn=['movie', 'mode'] dKo=['물러서다', '가라앉다']
+   chips=[['move']] decoy=['mave']
+   ex=The ethics and palliative teams can help us move forward. / 윤리팀과 완화의료팀이 앞으로 나아가도록 도와줄 수 있어요.
+w-love|love|사랑하다|tag=대리 결정|icon=star
+   cue=깊이 아끼고 소중히 여기는
+   dEn=['loan', 'lava'] dKo=['미워하다', '존경하다']
+   chips=[['love']] decoy=['lave']
+   ex=I hear two people who both love him very much. / 두 분 다 그분을 정말 많이 사랑하신다는 게 느껴져요.
+w-side|side|입장|tag=대리 결정|icon=board
+   cue=둘로 나뉜 것 가운데 어느 한쪽의 생각
+   dEn=['site', 'slide'] dKo=['날짜', '방법']
+   chips=[['side']] decoy=['sid']
+   ex=Let's slow down and hear both sides fully. / 천천히 두 분 이야기를 다 들어봐요.
+w-thank|thank|감사하다|tag=대리 결정|icon=star
+   cue=고마운 마음을 말로 전하는
+   dEn=['tank', 'thick'] dKo=['사과하다', '축하하다']
+   chips=[['thank']] decoy=['thang']
+   ex=Thank you for being here for him. / 그분 곁을 지켜주셔서 감사해요.
+w-process|process|절차|tag=대리 결정|icon=board
+   cue=정해진 단계를 차례로 밟는 방식
+   dEn=['product', 'procure'] dKo=['이유', '도구']
+   chips=[['pro', 'cess']] decoy=['per', 'sess']
+   ex=The team follows a set process. / 저희 팀은 정해진 절차를 따라요.
+w-involve|involve|참여시키다|tag=대리 결정|icon=check
+   cue=어떤 일에 다른 사람을 끌어들여 함께하게 하는
+   dEn=['evolve', 'revolve'] dKo=['제외하다', '보고하다']
+   chips=[['in', 'volve']] decoy=['en', 'vowl']
+   ex=We'll involve the ethics committee to decide in his best interest. / 그분께 가장 이로운 방향으로 결정하도록 윤리위원회를 참여시킬게요.
+w-committee|committee|위원회|tag=대리 결정|icon=board
+   cue=특정 안건을 따져 정하도록 모인 소수의 사람들
+   dEn=['commodity', 'community'] dKo=['동호회', '연구소']
+   chips=[['com', 'mit', 'tee']] decoy=['con', 'mat']
+   ex=We'll involve the ethics committee to decide in his best interest. / 그분께 가장 이로운 방향으로 결정하도록 윤리위원회를 참여시킬게요.
+w-decide|decide|결정하다|tag=대리 결정|icon=chartup
+   cue=여러 선택지 중 하나로 마음을 정하는
+   dEn=['divide', 'decode'] dKo=['망설이다', '포기하다']
+   chips=[['de', 'cide']] decoy=['di', 'side']
+   ex=We'll involve the ethics committee to decide in his best interest. / 그분께 가장 이로운 방향으로 결정하도록 윤리위원회를 참여시킬게요.
+w-interest|interest|이익|tag=대리 결정|icon=star
+   cue=누구에게 더 이로운지를 가릴 때 쓰는 말
+   dEn=['interior', 'internet'] dKo=['손해', '취미']
+   chips=[['in', 'ter', 'est']] decoy=['an', 'tur']
+   ex=We'll involve the ethics committee to decide in his best interest. / 그분께 가장 이로운 방향으로 결정하도록 윤리위원회를 참여시킬게요.
+w-hard|hard|힘든|tag=대리 결정|icon=board
+   cue=쉽지 않아 마음이나 몸에 부담이 큰
+   dEn=['harm', 'hurt'] dKo=['즐거운', '느슨한']
+   chips=[['hard']] decoy=['hare']
+   ex=This is hard, even for someone stepping up like you. / 나서 주시는 분께도 이건 힘든 일이에요.
+w-deserve|deserve|받을 자격이 있다|tag=소통|icon=star
+   cue=마땅히 그럴 만한 권리나 가치가 있는
+   dEn=['reserve', 'preserve'] dKo=['줄 의무가 없다', '받을 이유가 없다']
+   chips=[['de', 'serve']] decoy=['di', 'surf']
+   ex=You deserve straight answers. / 정확한 답을 들으실 자격이 있어요.
+w-anger|anger|화|tag=소통|icon=siren
+   cue=참기 힘들 만큼 치미는 노여운 마음
+   dEn=['angle', 'danger'] dKo=['슬픔', '기쁨']
+   chips=[['an', 'ger']] decoy=['en', 'gar']
+   ex=Your anger makes sense. / 화가 나시는 게 당연해요.
+w-chart|chart|차트|tag=소통|icon=chartup
+   cue=환자의 수치와 기록이 모여 있는 문서
+   dEn=['chat', 'charge'] dKo=['지도', '처방']
+   chips=[['chart']] decoy=['chert']
+   ex=Let me pull up the chart so we can look at it together. / 차트를 띄워서 함께 살펴볼게요.
+w-look|look|살펴보다|tag=소통|icon=magnify
+   cue=눈여겨 자세히 들여다보는
+   dEn=['lock', 'loop'] dKo=['외면하다', '덮어두다']
+   chips=[['look']] decoy=['loke']
+   ex=Let me pull up the chart so we can look at it together. / 차트를 띄워서 함께 살펴볼게요.
+w-loss|loss|상실|tag=임종·비탄|icon=board
+   cue=소중한 사람이나 것을 잃는 일
+   dEn=['boss', 'toss'] dKo=['획득', '발견']
+   chips=[['loss']] decoy=['los']
+   ex=I'm so deeply sorry for your loss. / 깊은 애도를 표합니다.
+w-rush|rush|서두름|tag=임종·비탄|icon=board
+   cue=시간에 쫓겨 허둥대는 느낌
+   dEn=['rust', 'rash'] dKo=['여유', '지연']
+   chips=[['rush']] decoy=['rusk']
+   ex=There's no rush at all. / 전혀 서두르지 않으셔도 돼요.
+w-grief|grief|애도|tag=임종·비탄|icon=cross
+   cue=소중한 사람을 잃고 느끼는 깊은 슬픔
+   dEn=['brief', 'grind'] dKo=['분노', '불안']
+   chips=[['grief']] decoy=['greif']
+   ex=I'll give you information on next steps and grief support. / 다음 절차와 애도 지원 정보를 드릴게요.
+w-arrangement|arrangement|준비 절차|tag=임종·비탄|icon=board
+   cue=일이 순조롭게 진행되도록 미리 정해 두는 세부 절차
+   dEn=['alignment', 'engagement'] dKo=['주문 내역', '합의 내용']
+   chips=[['ar', 'range', 'ment']] decoy=['er', 'rang']
+   ex=A chaplain can help you think through arrangements when you're ready. / 준비되시면 원목이 절차를 생각하시는 걸 도와드릴 수 있어요.
+w-stay|stay|머무르다|tag=임종·비탄|icon=home
+   cue=떠나지 않고 한 곳에 계속 있는
+   dEn=['stray', 'stair'] dKo=['떠나다', '돌아가다']
+   chips=[['stay']] decoy=['stey']
+   ex=You can stay with him for as long as you'd like. / 원하시는 만큼 오래 곁에 머무르실 수 있어요.

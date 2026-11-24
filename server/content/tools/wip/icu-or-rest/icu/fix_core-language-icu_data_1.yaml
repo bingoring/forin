@@ -1,0 +1,74 @@
+# 문장 단위 수정 — (situation index, 문장 index, 옛 en으로 위치 확인). 모든 값은 pre-fix 위에 얹는다.
+# kind: rewrite = en·ko·chunks·words·v46 전부 새로 / patch = 적힌 필드만
+sentences:
+  # S1 [약속] 19.6
+  - {sit: 19, idx: 6, old: "I won't leave your side.", kind: rewrite,
+     set: {en: "I'm right here, and I'll keep checking on you.",
+           ko: "제가 여기 있어요, 계속 살펴볼게요.",
+           chunks: ["I'm right here", ", and", "I'll keep", "checking on you", "."],
+           words: [w-keep, w-check], goal: 2,
+           tag: "곁 약속", icon: "shield",
+           why: "I'm right here로 지금 곁에 있다는 사실을 말하고, I'll keep checking on you로 자리를 비울 때에도 계속 살펴보겠다고 해요. 간호사가 지킬 수 있는 약속이라 안심시키면서도 거짓이 되지 않아요.",
+           decoy: "talking to you",
+           distractorsKo: ["제가 여기 있어요, 곧 도움이 올 거예요.", "제가 여기 있어요, 도움 부를게요."],
+           blank: {answer: "checking", options: [{en: checking}, {en: counting}, {en: relying}, {en: insisting}]}}}
+  # S2 [약속] 17.6
+  - {sit: 17, idx: 6, old: "The interpreter will stay for as long as you need.", kind: rewrite,
+     set: {en: "We can call an interpreter again whenever you need one.",
+           ko: "필요하실 때마다 통역사를 다시 부를 수 있어요.",
+           chunks: ["We can call", "an interpreter again", "whenever", "you need one", "."],
+           words: [w-call, w-interpreter, w-need], goal: 1,
+           tag: "재호출 안내", icon: "mic",
+           why: "whenever you need one은 필요한 순간마다 다시 부를 수 있다는 안내예요. 통역사가 계속 곁에 있겠다는 약속이 아니라 지킬 수 있는 만큼만 알려 줘서, 가족이 망설이지 않고 요청하게 해요.",
+           decoy: "wherever",
+           distractorsKo: ["필요하실 때마다 통역사를 다시 바꿀 수 있어요.", "필요하실 때마다 통역사를 다시 소개할 수 있어요."],
+           blank: {answer: need, options: [{en: need}, {en: find}, {en: lose}, {en: hold}]}}}
+  # S3 [ko·KP] 15.1
+  - {sit: 15, idx: 1, old: "The interpreter phone is coming — stay with me.", kind: patch,
+     set: {ko: "통역 전화가 곧 연결돼요, 저한테 집중해 주세요.",
+           words: [w-interpreter, w-phone],
+           why: "is coming은 곧 연결된다는 뜻이에요. 여기서 stay with me는 '곁에 있어 달라'가 아니라 '저한테 집중해 주세요'라는 뜻이라, 겁먹은 가족에게 지금 할 일을 하나 줘서 불안을 덜어 줘요.",
+           distractorsKo: ["통역 영상이 곧 연결돼요, 저한테 집중해 주세요.", "통역사가 곧 도착해요, 저한테 집중해 주세요."]}}
+  # S4 [ko·KP] 0.0 — B X2(영상)는 vals에서 들어오고 X1만 새 ko 기준으로
+  - {sit: 0, idx: 0, old: "I'll get a professional interpreter for us right away.", kind: patch,
+     set: {ko: "제가 바로 전문 통역사를 불러드릴게요.",
+           distractorsKo: ["제가 바로 전문 통역사 두 분을 불러드릴게요.", "제가 바로 영상 통역사를 불러드릴게요."]}}
+  # S5 [ko] 5.5
+  - {sit: 5, idx: 5, old: "Please don't worry about translating everything yourself.", kind: patch,
+     set: {ko: "혼자서 전부 통역하실 걱정은 안 하셔도 돼요.",
+           distractorsKo: ["혼자서 전부 설명하실 걱정은 안 하셔도 돼요.", "혼자서 전부 읽으실 걱정은 안 하셔도 돼요."]}}
+  # S6 [청크] 15.3 (+ 옛 decoy가 자리를 잃어 같은 자리의 틀린 구로)
+  - {sit: 15, idx: 3, old: "Stay right here, I'm not leaving.", kind: patch,
+     set: {chunks: ["Stay", "right here", ", I'm not leaving", "."], decoy: "right there"}}
+  # S7 [청크] 구 경계 끊김 — decoy를 새 청크 자리에 맞춤
+  - {sit: 2, idx: 6, old: "I'll check on you again in a few minutes.", kind: patch,
+     set: {chunks: ["I'll", "check on you", "again", "in a few minutes", "."], decoy: "in a few seconds"}}
+  - {sit: 6, idx: 6, old: "We'll keep checking in every few minutes.", kind: patch,
+     set: {chunks: ["We'll keep", "checking in", "every few minutes", "."], decoy: "every few seconds"}}
+  - {sit: 4, idx: 4, old: "I'll write it down so you can see it.", kind: patch,
+     set: {chunks: ["I'll", "write it down", "so you can", "see it", "."]}}
+  - {sit: 5, idx: 6, old: "You've already helped a lot just by being here.", kind: patch,
+     set: {chunks: ["You've", "already helped", "a lot", "just by being here", "."], decoy: "just by being home"}}
+  - {sit: 12, idx: 3, old: "This sheet has pictures for each medicine.", kind: patch,
+     set: {chunks: ["This sheet has", "pictures", "for each medicine", "."], decoy: "for each meal"}}
+  - {sit: 16, idx: 3, old: "I'll speak slowly so you have time to take this in.", kind: patch,
+     set: {chunks: ["I'll", "speak slowly", "so you have time", "to take this in", "."], decoy: "speak softly"}}
+  - {sit: 17, idx: 3, old: "There's no single right answer in this situation.", kind: patch,
+     set: {chunks: ["There's", "no single right answer", "in this situation", "."]}}
+  - {sit: 20, idx: 3, old: "Tell me more about what concerns you.", kind: patch,
+     set: {chunks: ["Tell me more", "about what", "concerns you", "."], decoy: "helps you"}}
+  # T1·T2 태그
+  - {sit: 9, idx: 2, old: "This protects your father and takes the burden off you.", kind: patch,
+     set: {words: [w-protect, w-burden]}}
+  - {sit: 18, idx: 0, old: "We'll use an interpreter to assess him fairly.", kind: patch,
+     set: {words: [w-use, w-interpreter, w-assess]}}
+  # B E — why·icon
+  - {sit: 7, idx: 0, old: "The interpreter will explain the procedure fully.", kind: patch,
+     set: {why: "fully를 붙이면 설명이 일부가 아니라 빠짐없이 전해진다는 약속이 돼요. 설명은 의료진이 하고 통역사는 그 말을 옮겨요."}}
+  - {sit: 2, idx: 6, old: "I'll check on you again in a few minutes.", kind: patch,
+     set: {why: "again이 있어야 한 번 보고 끝이 아니라 다시 온다는 약속이 돼요. in a few minutes가 곧 돌아온다는 대략의 시점을 알려 줘요."}}
+  - {sit: 3, idx: 5, old: "Is the pain sharp, or dull?", kind: patch, set: {icon: "magnify"}}
+  - {sit: 2, idx: 4, old: "You're safe, just rest for now.", kind: patch,
+     set: {why: "You're safe로 먼저 안전을 말하고 just rest로 해야 할 일을 하나만 줘요. 짧은 문장이라 진정 중인 환자도 따라가기 쉬워요."}}
+  - {sit: 16, idx: 0, old: "The interpreter will convey this gently and completely.", kind: patch,
+     set: {why: "gently and completely처럼 부드러움과 완전함을 함께 약속하면 나쁜 소식을 줄이거나 흐리지 않겠다는 뜻이 돼요. 부드러움은 말하는 의료진의 말에서 나오고, 통역사는 그 어조까지 그대로 옮겨요."}}
