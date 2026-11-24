@@ -1,0 +1,302 @@
+theme: or-minimally-invasive
+changes:
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(patient); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(know); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-head
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(head); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-room
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(room); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-want
+  why: 너무 쉬움 — 목록 밖 판단(want); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-need
+  why: 너무 쉬움 — 목록 밖 판단(need); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-high
+  why: 너무 쉬움 — 목록 밖 판단(high); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-help
+  why: 너무 쉬움 — 목록 밖 판단(help); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-face
+  why: 너무 쉬움 — 목록 밖 판단(face); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-neck
+  why: 너무 쉬움 — 목록 밖 판단(neck); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-skin
+  why: 너무 쉬움 — 목록 밖 판단(skin); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-down
+  why: 너무 쉬움 — 목록 밖 판단(down); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-move
+  why: 너무 쉬움 — 목록 밖 판단(move); 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: w-confirm과 ko(확인하다)가 같아 정답이 둘 — check는 살펴 점검하다
+- kind: word
+  id: w-prep
+  fields:
+  - ko
+  why: w-prepare와 ko(준비하다)가 같아 정답이 둘 — prep은 소독·정리 같은 준비 작업
+- kind: word
+  id: w-quickly
+  fields:
+  - ko
+  why: w-fast와 ko(빠르게)가 같아 정답이 둘 — quickly는 신속하게
+- kind: word
+  id: w-lock
+  fields:
+  - ko
+  why: w-secure와 ko(고정하다)가 겹쳐 — lock은 잠그다
+- kind: word
+  id: w-tuck
+  fields:
+  - ko
+  why: w-secure·w-lock과 ko(고정하다)가 겹쳐 — tuck은 끼워 넣다
+- kind: word
+  id: w-keep
+  fields:
+  - ko
+  why: w-stay·w-hold와 ko(유지하다)가 겹쳐 — keep은 유지하다(두다)
+- kind: word
+  id: w-stay
+  fields:
+  - ko
+  why: w-keep·w-hold와 ko(유지하다)가 겹쳐 — stay는 그 상태로 있다
+- kind: word
+  id: w-hold
+  fields:
+  - ko
+  why: w-keep·w-stay와 ko(유지하다)가 겹쳐 — hold pressure는 누르고 있다
+- kind: word
+  id: w-grab
+  fields:
+  - ko
+  why: w-bring과 ko(가져오다)가 겹쳐 — grab은 집어 오다
+- kind: word
+  id: w-read
+  fields:
+  - ko
+  why: w-show와 ko(나타내다)가 같아 정답이 둘 — gauge reads는 눈금이 가리키다
+- kind: word
+  id: w-show
+  fields:
+  - ko
+  why: w-read와 ko(나타내다)가 같아 정답이 둘 — show는 화면에 보이다
+- kind: word
+  id: w-site
+  fields:
+  - ko
+  why: w-area와 ko(부위)가 겹쳐 — site는 자리
+- kind: word
+  id: w-pneumoperitoneum
+  fields:
+  - ko
+  why: w-insufflation(기복)과 ko가 같아 정답이 둘 — 복강 안에 가스가 찬 상태
+- kind: word
+  id: w-call
+  fields:
+  - ko
+  why: w-tell과 ko(알리다)가 겹쳐 — call은 호출하다
+- kind: word
+  id: w-tell
+  fields:
+  - ko
+  why: w-call과 ko(알리다)가 겹쳐 — tell은 말로 알려 주다
+- kind: word
+  id: w-clear
+  fields:
+  - ko
+  why: w-sharp와 ko(선명한/또렷한)가 겹쳐 — clear는 맑은
+- kind: word
+  id: w-tubing
+  fields:
+  - ko
+  why: w-connection(연결부)과 ko(연결부)가 겹쳐 — tubing은 관
+- kind: word
+  id: w-bleed
+  fields:
+  - ko
+  why: 문장은 bleeding(명사) — 헤드워드 뜻을 명사 쪽으로
+- kind: word
+  id: w-pad
+  fields:
+  - ko
+  why: 문장은 padding(명사) — 헤드워드 뜻을 명사 쪽으로
+- kind: word
+  id: w-hand
+  fields:
+  - ko
+  why: extra hands·set of hands(일손) 구로 남김 — 'by hand' 태그는 뺌
+- kind: word
+  id: w-complete
+  fields:
+  - ko
+  why: w-intact(온전한)와 뜻이 겹쳐 — complete는 빠짐없는
+- kind: sentence
+  situation: 트로카 준비
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 체위 조정 확인
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 기복 압력 감시
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: CO2 흡수 EtCO2 상승
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: CO2 흡수 EtCO2 상승
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 로봇팔 충돌 방지
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 개복 전환 대비
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 개복 전환 대비
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 트렌델렌버그 순환 영향
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 로봇 응급 언도킹 준비
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 로봇 응급 언도킹 준비
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 최소침습 검체 회수
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 기복 가스 색전
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 기복 가스 색전
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 기복 가스 색전
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 기복 가스 색전
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 트로카 혈관 손상
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 트로카 혈관 손상
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 긴급 개복 전환
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 긴급 개복 전환
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 긴급 개복 전환
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 로봇 고장 긴급 언도킹
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 피하기종 호흡 위기
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 피하기종 호흡 위기
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 시야 상실 대량 출혈
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: sentence
+  situation: 시야 상실 대량 출혈
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기

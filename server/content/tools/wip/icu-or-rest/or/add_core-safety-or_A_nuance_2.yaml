@@ -1,0 +1,253 @@
+계수 불일치 초기 대응:
+- kind: pair
+  words: [w-hold, w-closure, w-recount, w-search, w-field]
+  pairs:
+  - [hold, closure until we resolve this]
+  - [recount, the sponges out loud together]
+  - [search, the field for the missing sponge]
+  decoys: [the consent form]
+  why: 계수가 안 맞으면 봉합을 보류하고(hold closure), 소리 내어 함께 다시 세고(recount), 수술 부위를 수색해요(search the field). 동사마다 목적어가 정해져 있어요.
+- kind: context
+  words: [w-recount]
+  word: recount
+  ko: 다시 세다
+  scenes:
+  - {who: 간호사 → 보호자, icon: faceWorried, en: "Count discrepancy detected; initiating recount and radiographic survey.", ok: false, fix: "One sponge count didn't match, so we're counting again to be sure — this is routine."}
+  - {who: 간호사 → 집도의, icon: speech, en: "I need to say it now — the count is off, so let's recount.", ok: true}
+  - {who: 수술 기록, icon: board, en: "Count discrepancy noted; recount performed with surgeon and circulator.", ok: true}
+  why: 뜻은 셋 다 '다시 세다'예요. 집도의에게는 지금 말한다고 짧게, 기록에는 건조하게 남겨요. 하지만 보호자에게 'discrepancy'와 'radiographic survey'라고 하면 무슨 일인지 모르고 겁이 나요. 보호자에게는 숫자가 안 맞아 다시 세는 일상 절차라고 쉬운 말로 해요.
+- kind: swap
+  words: [w-count, w-off, w-stop, w-recount, w-sponge]
+  who: 간호사 → 집도의 · 계수 불일치 보고
+  icon: speech
+  before: ["", "It's probably just a miscount; let's keep going.", ""]
+  options:
+  - "It's probably just a miscount; let's keep going."
+  - "I'll quietly check later and tell you if I find it."
+  - "The count is off by one sponge — I need to stop and recount."
+  answer: "The count is off by one sponge — I need to stop and recount."
+  notes:
+    "It's probably just a miscount; let's keep going.": 숫자가 틀린 것을 '아마 실수'로 넘기면 거즈가 몸에 남을 수 있어요.
+    "I'll quietly check later and tell you if I find it.": 나중에 조용히 확인하겠다는 말은 지금 알리지 않아 닫기 전에 찾을 기회를 놓쳐요.
+    "The count is off by one sponge — I need to stop and recount.": 어긋난 내용을 사실 그대로 지금 알리고 멈추고 다시 세겠다고 해요.
+  why: 계수가 어긋나면 추측하거나 미루지 않고 바로 알리고 멈춰서 다시 세요. 닫을지 말지는 집도의가 정하지만 알리는 것은 간호사의 몫이에요.
+  ko: 계수가 거즈 하나 어긋났어요 — 멈추고 다시 세야 해요
+검체 처리 확인:
+- kind: slider
+  words: [w-pathology, w-micro, w-ask]
+  cue: "You aren't sure whether the tissue goes to pathology or micro, and the surgeon has already moved on."
+  scale:
+  - "I'll guess pathology and fix it later if it's wrong."
+  - "Quick question — does this go to pathology or micro?"
+  - "I won't touch it until somebody tells me where it goes."
+  answerAt: 1
+  why: 어디로 가는지 모르면 추측하지 않고 짧고 구체적으로 물어요. 추측하면 고정액이나 라벨이 잘못될 수 있고, 아무도 알려 줄 때까지 손대지 않겠다고 하면 일이 멈춰요.
+  example: "Quick question — does this go to pathology or micro?"
+  exKo: 잠깐 질문이요 — 이건 병리과로 가나요, 미생물실로 가나요?
+- kind: context
+  words: [w-fixative]
+  word: fixative
+  ko: 고정액
+  scenes:
+  - {who: 간호사 → 집도의, icon: speech, en: "The fixative is in the container, and I've labeled it.", ok: true}
+  - {who: 간호사 → 보호자, icon: faceWorried, en: "The specimen is submerged in neutral buffered formalin as the fixative.", ok: false, fix: "The tissue goes into a fixative — a special liquid that keeps it unchanged until the lab looks at it."}
+  - {who: 수술 기록, icon: board, en: "Specimen placed in fixative, labeled, and sent to pathology at 09:40.", ok: true}
+  why: 뜻은 셋 다 '고정액'이에요. 집도의에게는 담았다고 짧게, 기록에는 건조하게 적어요. 하지만 보호자에게 'neutral buffered formalin'이라고 하면 화학 용어라 알아듣기 어렵고 걱정돼요. 보호자에게는 조직이 변하지 않게 하는 특수한 용액이라고 풀어 말해요.
+- kind: swap
+  words: [w-say, w-loud, w-specimen, w-pathology]
+  who: 간호사 → 집도의 · 검체 행선지
+  icon: speech
+  before: ["", "It'll go wherever the courier takes it.", ""]
+  options:
+  - "It'll go wherever the courier takes it."
+  - "I'll say out loud where each specimen is going — this one to pathology."
+  - "Everything goes to pathology — that's easiest."
+  answer: "I'll say out loud where each specimen is going — this one to pathology."
+  notes:
+    "It'll go wherever the courier takes it.": 행선지를 정하지 않고 맡기면 검체가 엉뚱한 곳으로 갈 수 있어요.
+    "I'll say out loud where each specimen is going — this one to pathology.": 검체마다 행선지를 소리 내어 말하면 고정액과 라벨, 보내는 곳이 맞는지 같이 확인돼요.
+    "Everything goes to pathology — that's easiest.": 배양할 검체는 미생물실로 가요. 한꺼번에 병리과로 보내면 잘못될 수 있어요.
+  why: 검체마다 어디로 가는지 소리 내어 말해야 고정액과 라벨, 행선지가 맞는지 확인돼요. 쉬운 쪽으로 몰아 보내지 않아요.
+  ko: 검체마다 어디로 가는지 소리 내어 말할게요 — 이건 병리과로요
+wrong-site 예방 재확인:
+- kind: slider
+  words: [w-reverify, w-side, w-incision, w-loud]
+  cue: "Just before the incision, you want to say the side out loud once more, and the surgeon says it was already checked."
+  scale:
+  - "I know, but I'd like to say the side out loud once more."
+  - "Okay, if you've checked it, I won't say anything else."
+  - "We have to redo the whole verification from the start!"
+  answerAt: 0
+  why: 이미 확인했더라도 절개 직전에 부위를 한 번 더 소리 내어 말해요. 알고 있다고 인정하고 짧게 요청하면 부담이 없어요. 그냥 물러서면 확인이 사라지고, 처음부터 다시 하자고 하면 과해요.
+  example: "I know, but I'd like to say the side out loud once more."
+  exKo: 알아요, 그래도 부위를 한 번 더 소리 내어 말하고 싶어요.
+- kind: context
+  words: [w-consent]
+  word: consent
+  ko: 동의서
+  scenes:
+  - {who: 간호사 → 집도의, icon: speech, en: "The consent, mark, and imaging all agree on the right side.", ok: true}
+  - {who: 수술 기록, icon: board, en: "Consent signed; site marked; consent matches the surgical schedule.", ok: true}
+  - {who: 간호사 → 환자, icon: faceWorried, en: "Your consent indemnifies the hospital against procedural liability.", ok: false, fix: "Your consent form says which knee we're operating on, and I'll check it with you again right now."}
+  why: 뜻은 셋 다 '동의서'예요. 집도의에게는 동의서·표시·영상이 맞는다고 짧게, 기록에는 서명과 일치 여부를 건조하게 적어요. 하지만 환자에게 병원의 책임을 면하게 한다는 말은 겁을 주고 이 서류의 목적과도 달라요. 환자에게는 어느 쪽 수술인지 적힌 서류라고 쉬운 말로 해요.
+- kind: swap
+  words: [w-mark, w-match, w-consent, w-need]
+  who: 간호사 → 집도의 · 불일치 발견
+  icon: speech
+  before: ["", "It's probably just a typo in the consent.", ""]
+  options:
+  - "It's probably just a typo in the consent."
+  - "The mark doesn't match the consent — I need to know now which one is right."
+  - "I'll sort out the consent after the case."
+  answer: "The mark doesn't match the consent — I need to know now which one is right."
+  notes:
+    "It's probably just a typo in the consent.": 근거 없이 '오타겠지'라고 단정하면 틀린 부위를 수술할 수 있어요.
+    "The mark doesn't match the consent — I need to know now which one is right.": 어긋난 사실을 그대로 말하고 어느 쪽이 맞는지 지금 확인해 달라고 해요.
+    "I'll sort out the consent after the case.": 수술 뒤에 정리하면 이미 늦어요.
+  why: 표시와 동의서가 어긋나면 절개 전에 어느 쪽이 맞는지 확인해야 해요. 추측하거나 미루지 않고 사실을 말하고 지금 알려 달라고 해요.
+  ko: 표시가 동의서와 맞지 않아요 — 어느 쪽이 맞는지 지금 알아야 해요
+화재 위험 사전 소통:
+- kind: slider
+  words: [w-high, w-risk, w-plan, w-start]
+  cue: "Before a head-and-neck case with oxygen and cautery, the surgeon asks if there is anything the team should know about fire risk."
+  scale:
+  - "No, nothing special about fire risk on this one."
+  - "Some fire risk, but we'll handle it if it happens."
+  - "High fire risk, so let's agree on the plan before we start."
+  answerAt: 2
+  why: 산소와 소작기가 함께 있는 머리·목 수술은 위험이 높아요. 시작 전에 높다고 말하고 계획을 합의해요. 별것 없다고 하거나 일이 터지면 대처하겠다고 하면 이미 늦어요.
+  example: "High fire risk, so let's agree on the plan before we start."
+  exKo: 화재 위험이 높으니 시작 전에 계획을 합의해요.
+- kind: context
+  words: [w-oxygen]
+  word: oxygen
+  ko: 산소
+  scenes:
+  - {who: 간호사 → 마취과, icon: speech, en: "Can we lower the oxygen if the patient tolerates it before the cautery is used?", ok: true}
+  - {who: 수술 기록, icon: board, en: "Oxygen concentration reduced per anesthesia before cautery use.", ok: true}
+  - {who: 간호사 → 환자, icon: faceWorried, en: "Supplemental oxygen at an elevated FiO2 presents a combustion hazard.", ok: false, fix: "You'll get oxygen through the mask, and we keep it as low as is safe near the cautery."}
+  why: 뜻은 셋 다 '산소'예요. 마취과에는 환자가 견디면 낮출 수 있는지 요청 형태로, 기록에는 건조하게 적어요. 낮출지는 마취과가 정해요. 하지만 환자에게 'FiO2'나 'combustion hazard'라고 하면 알아듣지 못하고 겁이 나요. 환자에게는 산소는 필요한 만큼만 쓴다고 쉬운 말로 해요.
+- kind: swap
+  words: [w-agree, w-together, w-drape]
+  who: 간호사 → 팀 · 화재 계획 합의
+  icon: speech
+  before: ["", "I'll tell you the fire plan if something happens.", ""]
+  options:
+  - "I'll tell you the fire plan if something happens."
+  - "The surgeon knows the fire plan, so we're good."
+  - "Let's agree on the fire plan together before the drapes go up."
+  answer: "Let's agree on the fire plan together before the drapes go up."
+  notes:
+    "I'll tell you the fire plan if something happens.": 불이 난 뒤에 계획을 말하면 이미 늦어요.
+    "The surgeon knows the fire plan, so we're good.": 한 사람만 알면 팀이 같이 움직이지 못해요.
+    "Let's agree on the fire plan together before the drapes go up.": 수술포를 덮기 전에 팀 모두가 같은 계획에 합의해 둬요.
+  why: 화재 계획은 시작 전에 팀 전체가 합의해 두는 거예요. 일이 생긴 뒤에 알려 주거나 한 사람만 알면 대응이 늦어요.
+  ko: 수술포를 덮기 전에 화재 대응 계획을 함께 합의해요
+안전 체크리스트 준수:
+- kind: slider
+  words: [w-skip, w-checklist, w-busy]
+  cue: "The room is busy, and the surgeon says, \"We've done this a hundred times — skip the checklist.\""
+  scale:
+  - "I hear you, but I'll read the checklist — it only takes a minute."
+  - "Okay, we'll skip it this once because we're busy."
+  - "Skipping the checklist is against the rules, period!"
+  answerAt: 0
+  why: 바쁘다는 말을 들어 주면서도 체크리스트는 짧게 읽겠다고 분명히 해요. 한 번만 건너뛰자는 말에 넘어가면 기준이 무너지고, 규칙만 내세워 몰아붙이면 협조를 잃어요.
+  example: "I hear you, but I'll read the checklist — it only takes a minute."
+  exKo: 알겠지만 체크리스트는 읽을게요 — 1분이면 돼요.
+- kind: context
+  words: [w-checklist]
+  word: checklist
+  ko: 체크리스트
+  scenes:
+  - {who: 간호사 → 환자, icon: faceWorried, en: "The checklist is a hospital compliance instrument that is audited quarterly.", ok: false, fix: "We go through a short safety checklist before surgery so every step is covered for you."}
+  - {who: 간호사 → 동료, icon: speech, en: "Let's finish the checklist before we move on.", ok: true}
+  - {who: 수술 기록, icon: board, en: "Surgical safety checklist completed: sign-in, time-out, sign-out.", ok: true}
+  why: 뜻은 셋 다 '체크리스트'예요. 동료에게는 끝내고 가자고 짧게, 기록에는 입실·타임아웃·퇴실을 건조하게 적어요. 하지만 환자에게 '병원 규정 준수 도구'라고 하면 자기와 상관없는 서류처럼 들려요. 환자에게는 모든 단계를 빠짐없이 챙기는 확인표라고 쉬운 말로 해요.
+- kind: swap
+  words: [w-rush, w-skip, w-checklist]
+  who: 간호사 → 팀 · 바쁜 중 체크리스트
+  icon: speech
+  before: ["", "We can skip it this time, we're busy.", ""]
+  options:
+  - "Even in a rush, I won't skip the checklist."
+  - "We can skip it this time, we're busy."
+  - "I'll finish the checklist later, after the case."
+  answer: "Even in a rush, I won't skip the checklist."
+  notes:
+    "Even in a rush, I won't skip the checklist.": 바빠도 건너뛰지 않겠다고 내 입장을 분명히 말해요.
+    "We can skip it this time, we're busy.": 한 번 건너뛰면 다음에도 같은 이유가 생겨요.
+    "I'll finish the checklist later, after the case.": 수술 뒤에 하는 체크리스트는 이미 확인의 의미를 잃었어요.
+  why: 체크리스트는 바쁠 때일수록 지켜야 해요. 건너뛰자는 말에 넘어가지 않고 내가 하겠다고 분명히 해요.
+  ko: 바빠도 체크리스트는 건너뛰지 않을게요
+이식물·기기 안전 확인:
+- kind: slider
+  words: [w-size, w-implant, w-request]
+  cue: "The surgeon asked for a size 5 implant, but the box on the table says size 6."
+  scale:
+  - "It's only one size off, so it's probably fine."
+  - "The box says size 6, but you asked for 5 — let's recheck."
+  - "That's the wrong implant and the case isn't safe anymore!"
+  answerAt: 1
+  why: 차이를 보면 본 대로 말하고 다시 확인하자고 해요. '한 치수쯤 괜찮다'고 넘기면 잘못된 이식물이 들어갈 수 있고, 수술이 위험해졌다고 단정하는 것도 사실 확인 없이 과해요.
+  example: "The box says size 6, but you asked for 5 — let's recheck."
+  exKo: 상자에는 6이라고 되어 있는데 5를 요청하셨어요 — 다시 확인해요.
+- kind: context
+  words: [w-implant]
+  word: implant
+  ko: 이식물
+  scenes:
+  - {who: 간호사 → 집도의, icon: speech, en: "The implant size and serial number match your request.", ok: true}
+  - {who: 간호사 → 환자, icon: faceWorried, en: "The implant's UDI and lot traceability are recorded in the device registry.", ok: false, fix: "The implant is the one your surgeon picked, and we write down its size and number for your records."}
+  - {who: 수술 기록, icon: board, en: "Implant size 6; serial and lot recorded; verified with surgeon.", ok: true}
+  why: 뜻은 셋 다 '이식물'이에요. 집도의에게는 요청과 맞는다고 짧게, 기록에는 크기·번호를 건조하게 남겨요. 하지만 환자에게 'UDI'나 'lot traceability'라고 하면 알아듣지 못해요. 환자에게는 고른 것이고 번호를 기록해 둔다고 쉬운 말로 해요.
+- kind: swap
+  words: [w-open, w-package, w-read, w-serial, w-size]
+  who: 간호사 → 외과의 · 개봉 전 확인
+  icon: speech
+  before: ["", "I'll open it now to save time.", ""]
+  options:
+  - "I'll open it now to save time."
+  - "I'll check the package after it's opened."
+  - "Before I open it, can you read the size and serial number with me?"
+  answer: "Before I open it, can you read the size and serial number with me?"
+  notes:
+    "I'll open it now to save time.": 일단 열면 되돌릴 수 없어서 맞지 않아도 쓸 수 없게 돼요.
+    "I'll check the package after it's opened.": 확인은 열기 전에 해야 해요. 열고 나서는 이미 늦어요.
+    "Before I open it, can you read the size and serial number with me?": 열기 전에 크기와 일련번호를 함께 소리 내어 읽으면 틀린 것을 걸러요.
+  why: 이식물은 포장을 열기 전에 크기·일련번호를 함께 읽어 확인해요. 열고 나면 되돌릴 수 없어요.
+  ko: 열기 전에 저와 함께 크기와 일련번호를 읽어 주시겠어요?
+근접오류 보고:
+- kind: pair
+  words: [w-file, w-prevent, w-learn, w-report, w-nearmiss]
+  pairs:
+  - [file, a safety report today]
+  - [prevent, it from happening again]
+  - [learn, from the near-miss]
+  decoys: [the person who spoke up]
+  why: 근접오류는 보고서를 제출하고(file a report), 다시 안 일어나게 막고(prevent … from happening again), 거기서 배워요(learn from). 동사마다 짝이 정해져 있어요.
+- kind: context
+  words: [w-nearmiss]
+  word: near-miss
+  ko: 근접오류
+  scenes:
+  - {who: 간호사 → 보호자, icon: faceWorried, en: "A near-miss event was identified and entered into the patient safety event system.", ok: false, fix: "That was a near-miss — we caught it in time, and we're reporting it so it doesn't happen again."}
+  - {who: 간호사 → 동료, icon: speech, en: "That was a near-miss — let's report it so we all learn.", ok: true}
+  - {who: 보고 기록, icon: board, en: "Near-miss: mislabeled specimen caught at read-back; no harm to patient.", ok: true}
+  why: 뜻은 셋 다 '근접오류'예요. 동료에게는 보고하고 같이 배우자고 짧게, 기록에는 무슨 일이 어디서 걸러졌는지 건조하게 적어요. 하지만 보호자에게 '사건 시스템에 입력됐다'고 하면 관료적이고 무슨 일인지 모르겠어요. 보호자에게는 제때 잡았고 다시 없게 보고한다고 쉬운 말로 해요.
+- kind: swap
+  words: [w-report, w-prevent, w-nearmiss]
+  who: 간호사 → 신입 동료 · 근접오류 보고 권유
+  icon: speech
+  before: ["", "Nothing happened, so there's no need to report it.", ""]
+  options:
+  - "Nothing happened, so there's no need to report it."
+  - "Nothing happened this time, but let's report it so it doesn't happen again."
+  - "Report it only if someone asks about it."
+  answer: "Nothing happened this time, but let's report it so it doesn't happen again."
+  notes:
+    "Nothing happened, so there's no need to report it.": 해가 없었다고 보고를 건너뛰면 같은 일이 다음에 해를 끼칠 수 있어요.
+    "Nothing happened this time, but let's report it so it doesn't happen again.": 이번엔 해가 없었지만 다시 안 일어나게 보고하자고 이유와 함께 권해요.
+    "Report it only if someone asks about it.": 누가 물어볼 때만 하면 보고가 빠지고 배울 기회도 사라져요.
+  why: 근접오류는 해가 없었어도 보고해야 같은 일을 막을 수 있어요. 비난 없는 보고 문화가 있어야 사람들이 말해요.
+  ko: 이번엔 아무 일 없었지만, 다시 안 일어나게 보고해요
