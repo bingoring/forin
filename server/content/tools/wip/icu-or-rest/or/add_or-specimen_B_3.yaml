@@ -16,7 +16,7 @@ situations:
     - ["This frozen needs to go now.", run, "이 냉동절편은 지금 바로 가야 해요", "알림"]
     - ["Since it can't wait, please run it straight to pathology.", run, "기다릴 수 없으니 곧바로 병리과로 가져다주세요", "요청"]
     - ["The surgeon needs their answer quickly.", faceWorried, "집도의가 그 답을 빨리 필요로 해요", "이유"]
-    - ["So call me the moment you have it.", pager, "그러니 결과 나오는 대로 바로 전화 주세요", "연락"]
+    - ["Call me the moment you have it.", pager, "그러니 결과 나오는 대로 바로 전화 주세요", "연락"]
 - title: 배양 검체 무균 채취
   s:
   - ["새 면봉", bandage, "'fresh'와 'sterile'을 겹쳐 새것이고 무균이라는 두 조건을 함께 말해요. 'for the culture'는 이 면봉의 용도를 밝혀요.", "for the wound", "배양 검체용으로 새 무균 장갑을 써요.", "배양 검체용으로 새 무균 포를 써요.", "sterile", "large", "small", "short"]
@@ -47,12 +47,12 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 다수 검체 혼동 방지 4문장 순서
-    why: 헷갈리지 말자는 목표를 먼저 말하고, 다음 것이 나오기 전에 지금 것을 라벨하고, 그것이 무엇인지 말한 뒤 둘 다 끝나면 각각 함께 확인해요.
+    why: 헷갈리지 말자는 목표를 먼저 말하고, 지금 것이 무엇인지 밝힌 뒤 그대로 라벨하고, 다음 것이 나오기 전에 그 라벨을 함께 확인해요.
     lines:
     - ["Let's not mix up these two specimens.", shield, "이 두 검체를 헷갈리지 않도록 해요", "목표"]
-    - ["So I'll label this one before the next comes off the field.", pushpin, "그러니 다음 것이 시야에서 나오기 전에 이걸 라벨할게요", "라벨"]
-    - ["That one is specimen A, left.", compass, "그건 검체 A, 왼쪽이에요", "구분"]
-    - ["Once both are labeled, I'll confirm each one with you.", check, "둘 다 라벨하면 각각 당신과 확인할게요", "확인"]
+    - ["This one is specimen A, left; the next is specimen B, right.", compass, "이건 검체 A 왼쪽, 다음은 검체 B 오른쪽이에요", "구분"]
+    - ["So I'll label it that way before the next comes off the field.", pushpin, "그러니 그대로 다음 것이 나오기 전에 라벨할게요", "라벨"]
+    - ["I'll confirm that label with you before the next one comes off.", check, "다음 것이 나오기 전에 그 라벨을 함께 확인할게요", "확인"]
 - title: margin 방향 보존
   s:
   - ["절제연 표시", compass, "'marks'는 어느 쪽인지 알려 주는 표시라는 뜻이에요. 'lateral'은 몸 중심에서 바깥쪽이라는 방향 낱말이에요.", "The stitch tugs", "이 바늘땀이 측면 절제연에 닿아 있어요.", "이 바늘땀이 측면 절제연 가까이 있어요.", "stitch", "staple", "clip", "clamp"]
@@ -65,12 +65,12 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: margin 방향 보존 4문장 순서
-    why: 바늘땀이 어느 절제연을 표시하는지 밝히고, 그래서 봉합사를 그대로 두고, 대응을 요청서에 적은 뒤 적은 다음에는 실수로 자르지 않아요.
+    why: 바늘땀이 어느 절제연을 표시하는지 밝히고, 그래서 봉합사를 그대로 두고, 대응을 요청서에 적은 뒤 적은 것들을 실수로 자르지 않아요.
     lines:
     - ["The stitch marks the lateral margin.", compass, "그 바늘땀이 측면 절제연을 표시해요", "표시"]
     - ["That's why we keep the orientation sutures in place.", shield, "그래서 방향 봉합사를 그대로 둬요", "유지"]
     - ["I'll note which stitch marks which margin on the requisition.", pencil, "어떤 바늘땀이 어떤 절제연인지 요청서에 적을게요", "기재"]
-    - ["Once it's written down, please don't cut any of them by mistake.", shield, "적고 나면 실수로 자르지 마세요", "주의"]
+    - ["Please don't cut any of the ones I just listed by mistake.", shield, "방금 적은 것들은 실수로 자르지 마세요", "주의"]
 - title: 검체 크기·개수 기록
   s:
   - ["개수 질문", magnify, "'How many'는 셀 수 있는 것의 수를 묻는 의문사예요. 'are we sending'은 지금 함께 보내는 것을 가리켜요.", "can they", "몇 조각을 받는 건가요?", "몇 조각을 남기는 건가요?", "pieces", "slides", "blocks", "tubes"]
