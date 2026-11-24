@@ -1,0 +1,192 @@
+# 문장 수정 데이터 — 키 "상황.문장"(0부터). 있는 필드만 덮어쓴다. blank는 answer + wrong 3개(자리는 스크립트가 en 해시로 정한다).
+# A 검토 S1~S18(문장 en·ko 변경), KP는 ko만, 비KP 청크 정리.
+sentences:
+  "12.4":   # S1 [안전] 마지막 복용 시각
+    en: When was your last dose of blood thinner?
+    ko: 혈액희석제를 마지막으로 드신 게 언제예요?
+    chunks: [When was, your last dose, of blood thinner, '?']
+    words: [w-dose, w-thinner]
+    tag: 마지막 복용
+    icon: pill
+    why: When was…?로 먹었는지 여부가 아니라 마지막으로 먹은 시각을 물어요. 마지막 복용 시각이 있어야 출혈 위험과 마취 계획을 정할 수 있어요.
+    decoy: your last visit
+    distractorsKo:
+      - 혈액희석제는 보통 하루에 몇 번 드세요?
+      - 복용 시각은 마취 계획에 영향을 줘요.
+    blank:
+      answer: dose
+      wrong: [refill, delivery, bottle]
+  "16.4":   # S2 [안전·역할] 소독간호사에게 push 금지
+    en: A short delay is better than cutting without the antibiotic.
+    ko: 항생제 없이 절개하는 것보다 잠깐 늦어지는 게 나아요.
+    chunks: [A short delay, is better, than cutting, without the antibiotic, .]
+    words: [w-delay, w-better, w-cut, w-antibiotic]
+    tag: 지연 수용
+    icon: shield
+    why: A short delay is better than…으로 늦어지는 불편과 항생제 없이 절개하는 위험을 견주어, 늦추는 쪽이 낫다고 이유를 들어 말해요. 짧은 지연은 감염 예방을 지키는 값이에요.
+    decoy: without the drapes
+    distractorsKo:
+      - 항생제 없이 절개하면 감염 위험이 훨씬 커질 수 있어요.
+      - 항생제는 절개 전에 미리 들어가 있어야 해요.
+    blank:
+      answer: better
+      wrong: [worse, faster, slower]
+  "16.3":   # S3 fully in -> 투여 시작
+    en: The antibiotic should be started before we cut.
+    ko: 절개하기 전에 항생제 투여가 시작돼야 해요.
+    chunks: [The antibiotic, should be started, before we cut, .]
+    words: [w-antibiotic, w-start, w-cut]
+    tag: 투여 시점
+    icon: calendar
+    why: should be started로 투여가 끝나는 때가 아니라 시작돼야 하는 때를 말하고, before we cut으로 그 기준을 절개 앞에 둬요. 수동태라 누가 주는지는 열어 둬요.
+    decoy: should be diluted
+    distractorsKo:
+      - 항생제가 조직에 미리 닿아야 감염을 막아요.
+      - 절개하기 전에 항생제 알레르기 확인이 끝나야 해요.
+    blank:
+      answer: started
+      wrong: [diluted, labeled, counted]
+  "13.4":   # S4 인슐린 약속 -> 의사 처방
+    en: Your doctor may order a dose of insulin before surgery if it's needed.
+    ko: 필요하면 수술 전에 의사가 인슐린 투여를 처방할 수 있어요.
+    chunks: [Your doctor may order, a dose of insulin, before surgery, if it's needed, .]
+    words: [w-dose, w-insulin, w-surgery]
+    tag: 인슐린 안내
+    icon: pill
+    why: Your doctor may order…로 투여는 간호사의 약속이 아니라 의사의 처방에 달렸다고 말해요. if it's needed가 필요할 때만이라는 조건을 달아요.
+    decoy: if it's refrigerated
+    distractorsKo:
+      - 인슐린은 정맥으로도 피하로도 줄 수 있는 약이에요.
+      - 혈당 조절은 수술 전과 수술 중에도 계속 이어져요.
+    blank:
+      answer: needed
+      wrong: [labeled, stored, packed]
+  "17.4":   # S5 MTP 주도 -> 결정권자에게 묻기
+    en: Should we activate the massive transfusion protocol now?
+    ko: 지금 대량수혈 프로토콜을 발동할까요?
+    chunks: [Should we activate, the massive transfusion protocol, now, '?']
+    words: [w-activate, w-massive, w-transfusion, w-protocol]
+    tag: 발동 질문
+    icon: siren
+    why: Should we…?로 발동을 간호사가 혼자 정하지 않고 결정권자와 함께 정하자고 묻는 틀이에요. now로 기다릴 수 없는 위기임을 덧붙여요.
+    decoy: the discharge protocol
+    distractorsKo:
+      - 혈액은행에 알려야 프로토콜이 시작돼요.
+      - 출혈이 잡힌 뒤에 프로토콜을 해제해요.
+    blank:
+      answer: massive
+      wrong: [minor, routine, slow]
+  "6.3":    # S6 교차적합 단정 -> 마취과 확인
+    en: Blood was ordered for this case, so I'll check with anesthesia before we start.
+    ko: 이 건은 혈액이 오더돼 있어서 시작 전에 마취과에 확인할게요.
+    chunks: [Blood was ordered, for this case, ", so I'll check with anesthesia", before we start, .]
+    words: [w-blood, w-case, w-anesthesia, w-start]
+    tag: 시작 전 확인
+    icon: magnify
+    why: Blood was ordered…, so I'll check…로 현재 상태를 사실로 말한 뒤 그래서 할 일을 잇는 틀이에요. 시작 여부는 간호사가 단정하지 않고 마취과에 확인한다고 말해요.
+    decoy: this ward
+    distractorsKo:
+      - 이 건은 혈액이 오더돼 있어서 혈액형 검사가 필요할 수 있어요.
+      - 이 건은 출혈이 많을 수 있어서 혈액이 오더된 수술이에요.
+    blank:
+      answer: case
+      wrong: [list, plan, day]
+  "5.4":    # S7 역할·시점 -> 시점 맞추기
+    en: Let's time it so it goes in within the hour before incision.
+    ko: 절개 전 한 시간 안에 들어가도록 시점을 맞춥시다.
+    chunks: [Let's time it, so it goes in, within the hour, before incision, .]
+    words: [w-incision]
+    tag: 시점 맞추기
+    icon: calendar
+    why: Let's…로 누가 주는지는 열어 두고 함께 시점을 맞추자고 해요. so it goes in이 목적이고, within the hour before incision이 기준 시간 틀이에요(약에 따라 기준은 달라요).
+    decoy: so it stays cold
+    distractorsKo:
+      - 절개 전 한 시간 안에 약을 뽑아 둘 수 있도록 시점을 맞춥시다.
+      - 절개 전 투약은 수술 부위 감염을 줄이려는 거예요.
+    blank:
+      answer: incision
+      wrong: [discharge, transfer, arrival]
+  "11.4":   # S8 깨자마자 -> 회복실에서 깨어난 뒤
+    en: You'll get them back in recovery after you wake up.
+    ko: 깨어나신 뒤 회복실에서 돌려드릴게요.
+    chunks: [You'll get them back, in recovery, after you, wake up, .]
+    words: [w-recovery, w-wake]
+    tag: 반환 약속
+    icon: handshake2
+    why: after you wake up으로 돌려주는 때를 깨어난 뒤로 잡아 줘요. 틀니는 의식과 기도 반사가 돌아온 뒤에 돌려주고, in recovery가 돌려받을 장소예요.
+    decoy: in the lobby
+    distractorsKo:
+      - 깨어나신 뒤 병실에서 돌려드릴게요.
+      - 깨어나신 뒤 보호자께 돌려드릴게요.
+    blank:
+      answer: after
+      wrong: [before, unless, until]
+  "11.3":   # S9 ko
+    ko: 불편하신 거 알지만, 이렇게 해야 기도가 막히지 않아요.
+    distractorsKo:
+      - 무서우신 거 알지만, 이렇게 해야 기도가 막히지 않아요.
+      - 불편하신 거 알지만, 이렇게 해야 호흡이 편안하게 유지돼요.
+  "19.3":   # S10 ko
+    ko: 지금 같은 때에도 타임아웃을 건너뛰는 건 그 위험을 감수할 가치가 없어요.
+    distractorsKo:
+      - 지금 같은 때에도 타임아웃을 건너뛰면 환자 확인을 놓칠 수 있어요.
+      - 지금 같은 때에도 타임아웃은 팀 모두가 함께 해야 하는 확인이에요.
+  "18.0":   # S11 ko (KP, ko만)
+    ko: 이 환자는 심박동기가 있어서 소작이 기기에 간섭할 수 있어요.
+    distractorsKo:
+      - 이 환자는 심박동기가 있어서 패드 위치가 기기에 중요해요.
+      - 이 환자는 심박동기가 있다고 수술 전에 알려 줬어요.
+  "17.1":   # S12 ko (KP, ko만) + tag 방출 -> 불출
+    ko: 지금 응급용 O형 Rh음성 혈액을 불출받을 수 있을까요?
+    tag: 불출 요청
+    distractorsKo:
+      - 응급용 O형 Rh음성 혈액은 교차적합 없이 쓸 수 있어요.
+      - 지금 응급용 O형 Rh음성 혈액은 누가 승인해 주실 수 있나요?
+  "20.2":   # S13 ko (KP, ko만)
+    ko: 가족에게 연락하거나 이전 기록을 찾아볼게요.
+    distractorsKo:
+      - 가족에게 연락하기 전에 영상부터 찍을게요.
+      - 이식물 모델과 종류는 이전 기록지에 담겨요.
+  "12.0":   # S14 ko (KP, ko만)
+    ko: 이 슬리브가 다리를 부드럽게 조여서 혈전을 예방해요.
+    distractorsKo:
+      - 이 슬리브가 다리를 부드럽게 조여서 붓기를 줄여요.
+      - 이 슬리브가 다리를 부드럽게 조여서 피를 돌려요.
+  "6.4":    # S15 청크(비KP)
+    chunks: [Let me, follow up, with the lab, on the crossmatch, .]
+  "10.3":
+    chunks: [Let me, try, a new IV site, on your other arm, .]
+  "10.4":
+    chunks: [This new line, should, give you, a much better flow, .]
+    words: [w-line, w-better, w-flow]       # S16: give you a better flow는 투여가 아님
+  "18.4":
+    words: [w-pad, w-device]                # S16: just in case는 (수술) 건이 아님
+  "7.1":
+    words: [w-hold, w-case]                 # S16(낮음): until it results는 동사
+  "20.0":
+    words: [w-confirm, w-implant]           # S16(낮음): in place는 '자리'가 아님
+  "20.4":   # S17(낮음) 내용
+    en: Let's keep any prior device and MRI records close by, just in case.
+    ko: 만약을 위해 이전 기기 기록과 MRI 기록을 가까이 둡시다.
+    chunks: [Let's keep, any prior device and MRI records, close by, ", just in case", .]
+    words: [w-prior, w-device, w-record]
+    distractorsKo:
+      - 만약을 위해 이전 기기 기록과 MRI 기록을 사본으로 남깁시다.
+      - 만약을 위해 이전 기기 기록과 MRI 기록을 따로 둡시다.
+  "7.3":    # S18(낮음) 모호
+    en: This lab is required before we can proceed.
+    ko: 이 검사는 진행하기 전에 꼭 필요해요.
+    chunks: [This lab, is required, before we can proceed, .]
+    words: [w-lab, w-required, w-proceed]
+    tag: 필요성 설명
+    icon: shield
+    why: is required로 이 검사가 다음 단계의 조건임을 짧게 못 박고, before we can proceed로 그 조건이 풀려야 진행한다는 순서를 알려요.
+    decoy: This form
+    distractorsKo:
+      - 칼륨 이상은 심장 리듬을 흔들어요.
+      - 이 동의서는 진행하기 전에 꼭 필요해요.
+    blank:
+      answer: proceed
+      wrong: [leave, enter, discharge]
+  "5.1":    # 사실: 60분 안에 투여 시작
+    why: We need it in…으로 필요를 직접 말하고, within 60 minutes before incision으로 절개 전 60분 안에 투여가 시작돼야 한다는 시간 틀을 알려요(반코마이신·플루오로퀴놀론은 120분).

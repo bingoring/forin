@@ -1,0 +1,44 @@
+# order 동기화 — 키 "상황 번호"(0부터). lines는 {줄 번호(1부터): {en, ko, note, icon}}, why는 통째로.
+order:
+  "5":    # S7 5.4 / 투여 시점
+    lines:
+      3: {en: "So let's time it to go in within the hour.", ko: "그러니 한 시간 안에 들어가도록 시점을 맞춥시다", note: 시점, icon: handshake2}
+    why: 준비됐다고 알리고, 투여 시한을 말하고, 그 시한에 맞춰 시점을 정하고, 들어간 시각을 기록하는 순서예요. That, So, Once it's in이 앞 줄을 가리켜 순서가 하나로 정해져요.
+  "6":    # S6 6.3
+    lines:
+      2: {en: "That means I'll check with anesthesia before we start.", ko: "그러니 시작 전에 마취과에 확인할게요", note: 확인, icon: pager}
+      3: {en: "While I wait for their answer, I'll call the blood bank to expedite it.", ko: "그 답을 기다리는 동안 혈액은행에 전화해 서둘러 달라고 할게요", note: 요청, icon: speech}
+    why: 미완료를 알리고, 그래서 시작 전에 마취과에 확인하겠다고 하고, 그 답을 기다리는 동안 혈액은행에 서둘러 달라고 부탁하고, 전화한 뒤 검사실에도 확인하는 순서예요. That means, their answer, Once I've called가 앞 줄을 가리켜 순서가 정해져요.
+  "7":    # KP 7.2는 그대로 두되 줄은 듣는 마취과의사에게 3인칭이 되지 않게
+    lines:
+      2: {en: "Since this lab is required, I'll let the surgeon know.", ko: "필수 검사라 집도의에게 알릴게요", note: 공유, icon: pager}
+    why: 결과가 안 왔다고 알리고, 결정권자인 집도의에게 먼저 알린 뒤, 보류할지 그분께 여쭙고, 어느 쪽이든 결과를 다시 확인하는 순서예요. Since this lab, them, Either way가 줄을 꿰어 순서가 정해져요.
+  "11":   # S8 11.4
+    lines:
+      4: {en: "You'll get that case back in recovery after you wake up.", ko: "깨어난 뒤 회복실에서 그 통을 돌려드릴게요", note: 반환, icon: handshake2}
+    why: 이유를 말하고, 잠깐이라고 안심시킨 뒤, 그 짧은 동안 이름표 붙인 통에 보관한다고 알리고, 회복실에서 깨어난 뒤 그 통을 돌려준다고 약속하는 순서예요. It, that short time, that case가 앞 줄을 가리켜 순서가 정해져요.
+  "13":   # S4 13.4
+    lines:
+      4: {en: "Depending on that, your doctor may order insulin before surgery.", ko: "그 답에 따라 수술 전에 의사가 인슐린을 처방할 수 있어요", note: 안내, icon: pill}
+    why: 혈당을 확인하겠다고 알리고, 높다고 알리며 하나 물을 것이 있다고 하고, 복용 여부를 묻고, 그 답에 따라 의사가 인슐린을 처방할 수 있다고 하는 순서예요. so I need to ask와 that이 줄을 꿰어 순서가 정해져요.
+  "15":   # 듣는 상대는 마취과의사 — 간호사가 보류를 정하지 않고 권함
+    lines:
+      2: {en: "This value is dangerous, so I'm calling the surgeon right now.", ko: "이 수치는 위험해서 지금 바로 집도의에게 전화할게요", note: 호출, icon: pager}
+      3: {en: "Until the surgeon weighs in, I'd suggest we hold the case.", ko: "집도의가 판단할 때까지 이 건은 보류하는 게 좋겠어요", note: 보류, icon: siren}
+    why: 위급한 값을 알리고, 그래서 집도의를 부르고, 집도의가 판단할 때까지 보류를 권하고, 보류하는 동안 재검하는 순서예요. This value, the surgeon, While we hold가 줄을 꿰어 순서가 정해져요.
+  "16":   # S2·S3 (듣는 상대는 소독간호사)
+    lines:
+      3: {en: "Until it's in, a short delay is better than cutting without it.", ko: "들어갈 때까지는 항생제 없이 절개하는 것보다 잠깐 늦어지는 게 나아요", note: 이유, icon: shield}
+      4: {en: "Once it's in, I'll document the time.", ko: "들어가면 시각을 기록할게요", note: 기록, icon: pencil}
+    why: 아직 안 들어갔다고 멈춤을 외치고, 절개를 보류할 수 있는지 묻고, 들어갈 때까지는 늦어지는 게 낫다고 이유를 대고, 들어가면 시각을 기록하는 순서예요. it, Until it's in, Once it's in이 줄을 꿰어 순서가 정해져요.
+  "17":   # S5 / S12
+    lines:
+      3: {en: "That's why I'm asking: can we release emergency O-negative now?", ko: "그래서 묻는 건데, 지금 응급용 O형 Rh음성 혈액을 불출받을 수 있을까요?", note: 요청, icon: speech}
+      4: {en: "Should we also activate the massive transfusion protocol?", ko: "대량수혈 프로토콜도 발동할까요?", note: 질문, icon: siren}
+    why: 교차적합 혈액이 없다고 알리고, 그런데도 환자가 지금 혈액이 필요하다고 말하고, 그래서 응급 혈액 불출을 묻고, 이어서 프로토콜 발동도 결정권자에게 묻는 순서예요. Yet, That's why, also가 줄을 꿰어 순서가 정해져요.
+  "18":   # S11 ko
+    lines:
+      1: {en: "The patient has a pacemaker—cautery could interfere with it.", ko: "이 환자는 심박동기가 있어서 소작이 기기에 간섭할 수 있어요", note: 위험, icon: siren}
+  "20":   # S13 ko
+    lines:
+      3: {en: "Beyond the imaging, I'll try to reach the family or prior records.", ko: "영상 외에도 가족에게 연락하거나 이전 기록을 찾아볼게요", note: 연락, icon: pager}
