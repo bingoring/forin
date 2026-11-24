@@ -162,3 +162,13 @@ keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't a
   발견: 앱이 swap·context·빈칸 보기를 적힌 순서대로 보여 주는데 정답 위치가 크게 쏠려 있음(ER swap 371/373 첫 칸, ICU 빈칸 81% 첫 칸, OR context 어색 장면 전부 셋째) — 앱에서 섞는 별도 작업으로 넘김. 묶음 5부터 저작·수정 지시에 주제 안 위치 섞기를 넣음.
   남은 작은 일: core-family-or 15.3 "hard news to hear"가 새 장면(간호사가 알리지 않음)과 약하게 어긋남, 15·16 상황 title("소식 전달") 변경 여부.
   남은 OR: 23주제(묶음 6 preop-checklist·specimen 저작 중).
+
+- **OR 묶음 6 (2주제, 2026-11-24)**: or-preop-checklist·or-specimen.
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | changes(KP 반영 후) |
+  |---|---|---|---|
+  | or-preop-checklist | 44(2) — 수술 당일 항응고제 복용 전제, 소독간호사에게 항생제 push | 157(36·28) — 잘못된 안심("팀이 알아서"), 복용 확인을 "가져오셨나요"로 | 113 |
+  | or-specimen | 72(안전·범위·사실 18) — 백 테이블을 비멸균으로, 혼자 정정 모순, 냉동절편 결과 간호사 전달, 수술 중 직접 운반 | 312(175·95) — 확인·복창을 사진·적기로, 라벨·이송 대상 바꾸기 | 98 |
+  keyPhrase 결정(사용자 2026-11-24 전부 '추천대로'): preop-checklist 바꿈 5(MTP는 혈액은행에 전화 — or-bleeding과 같은 문장, 항생제는 마취과가 투여, 마취과 상대에게 3인칭 빼기 2, "Let's adjust the timing"), specimen 바꿈 6(hand-carried 되게, We'll fix, report 후 relabel, Call the room, the gallbladder, specific media) / chunks checklist 6·specimen 9. seed goals·brief·tagline 4곳. 작업 `../kp-2026-11-24b/`. 정본 합침, OR 위반 0.
+  사용자 결정(2026-11-24): 확인·위기 문장 오답은 "안전 우선, 하나는 같은 모양 목표" — `pipeline/TASK.md` B 절에 기록.
+  남은 작은 일: checklist 7.2 빈칸 let(오답 문법으로 걸러질 수 있음), slider 15 정답에 "surgeon and anesthesia" 남음, specimen 7.2/7.5·14.2/14.5·19.2/19.5 비슷한 문장 겹침, specimen W14 맹장→충수.
+  남은 OR: 21주제(묶음 7 minimally-invasive·core-safety-or 저작 중).

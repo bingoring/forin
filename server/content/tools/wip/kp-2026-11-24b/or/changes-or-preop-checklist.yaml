@@ -520,3 +520,118 @@ changes:
   - chunks
   - words
   why: 정체 모를 이식물 장면에서 pacemaker를 이미 아는 꼴 — prior device로(A 내용)
+- kind: sentence
+  situation: 교차혈액 없이 출혈 수술
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): I''m activating the massive transfusion protocol → I''m calling the blood bank to activate the massive transfusion protocol.(발동 결정은 집도의·마취과, 간호사는 혈액은행에 알림 — or-bleeding과 같은 결정; 검토 A 17.2); +w-call·w-bloodbank 태그(6.2에 있음)'
+- kind: word
+  id: w-activate
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-massive
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-transfusion
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-protocol
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 항생제 미투여 절개 임박
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): I''m giving it now and documenting the time → Anesthesia is giving it now, and I''ll document the time.(절개 직전 수술실 정맥 투여는 보통 마취과 — 같은 상황 16.3·16.4와 누가 주는지 맞춤; 검토 A 16.2); +w-anesthesia 태그'
+- kind: sentence
+  situation: 검사 이상치 수술 지연
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): I''m calling the surgeon and anesthesia right now → I''m calling the surgeon right now.(대화 상대가 마취과의사 — 지금 말하는 상대에게 마취과에 전화한다고 함; 검토 A 15.2); -w-anesthesia 태그(16.2에 남음)'
+- kind: sentence
+  situation: 필수 검사 결과 누락
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): I''ll let the surgeon and anesthesia know → I''ll let the surgeon know.(대화 상대가 마취과의사 — 지금 말하는 상대에게 마취과에 알린다고 함; 검토 A 7.2); -w-anesthesia 태그(16.2에 남음, example도 16.2로)'
+- kind: word
+  id: w-anesthesia
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): 옛 예문 문장을 바꿔 그 단어가 없어짐 — 같은 상황의 다른 문장으로 옮김'
+- kind: sentence
+  situation: 항생제 투여 시각 지연
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): I''ll adjust the timing and document it → Let''s adjust the timing, and I''ll document it.(투여 시점을 간호사 혼자 조정하는 말로 들림 — 함께 맞추고 기록은 내가; 검토 A 9.2)'
+- kind: word
+  id: w-adjust
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-timing
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 정맥로 불량 재확보
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(This line isn''t / flowing well / , so I''ll start / a new one) → This line / isn''t flowing well / , so I''ll start / a new one — 문장은 그대로'
+- kind: sentence
+  situation: 수술 전 VTE 예방 확인
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''ll confirm / the VTE / prevention orders) → I''ll / confirm / the VTE prevention orders — 문장은 그대로; decoy를 새 조각 자리 모양으로(the fall prevention orders)'
+- kind: sentence
+  situation: 심박동기 환자 소작 위험
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We should use bipolar / and place the pad / away from / the device) → We should / use bipolar / and place the pad / away from the device — 문장은 그대로'
+- kind: sentence
+  situation: 정맥로 불량 재확보
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(You''ll feel / a small / pinch) → You''ll / feel / a small pinch — 문장은 그대로; decoy를 새 조각 자리 모양으로(a sudden cramp)'
+- kind: sentence
+  situation: 응급 체크리스트 생략 압박
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We still need / the time-out / even in / an emergency) → We still need / the time-out / even / in an emergency — 문장은 그대로'
+- kind: sentence
+  situation: 인공관절·심박동기 정보
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Do you have / a pacemaker / or any / metal implants) → Do you have / a pacemaker / or / any metal implants — 문장은 그대로; decoy를 새 조각 자리 모양으로(any hearing aids)'

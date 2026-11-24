@@ -458,3 +458,134 @@ changes:
   fields:
   - words
   why: 쉬운 단어 태그 빼기 / 헤드워드와 품사·뜻이 다른 태그 빼기 / 새 단어 태그
+- kind: sentence
+  situation: 대체 불가 검체 위기
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): I''ll hand-carry it to pathology myself → I''ll make sure it''s hand-carried to pathology.(수술 중 순환간호사가 교대 없이 방을 비우는 약속 — 사람 손 운반을 챙기는 말로; 검토 A K1)'
+- kind: sentence
+  situation: 병리 요청서 일치
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): I''ll fix any discrepancy before sending → We''ll fix any discrepancy before sending.(부위·좌우 불일치를 간호사 혼자 고치는 말로 읽힘 — slider 14 오답과 겹침; 검토 A K5)'
+- kind: word
+  id: w-discrepancy
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 잘못된 환자 라벨
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): Let''s re-verify identity and relabel now → Let''s re-verify identity, report it, and then relabel.(보고 없이 그 자리에서 재라벨 — 라벨 오류는 알리고 절차대로 정정; 검토 A K4); +w-report 태그(19.5에 있음)'
+- kind: word
+  id: w-identity
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 냉동절편 신속 이송
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): Call me the moment you have a result → Call the room the moment you have a result.(냉동절편 결과를 간호사에게 달라는 말 — 결과는 수술방의 집도의에게; 검토 A K7)'
+- kind: sentence
+  situation: 검체 용기 라벨 부착
+  index: 1
+  fields:
+  - en
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): This is gallbladder, correct? → This is the gallbladder, correct?(관사 없는 영어 — 검토 A K2)'
+- kind: word
+  id: w-gallbladder
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-correct
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 특수 검체 취급 지침
+  index: 1
+  fields:
+  - en
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): Does it go on ice or in a specific media? → Does it go on ice or in specific media?(media는 복수 — 단수 관사 a를 뺌; 검토 A K10)'
+- kind: word
+  id: w-ice
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-media
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 냉동절편 검체 준비
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(This is / for frozen / section—no fixative) → This is / for / frozen section—no fixative — 문장은 그대로'
+- kind: sentence
+  situation: 다수 검체 혼동 방지
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(This is / specimen A, left; specimen B / , right) → This is / specimen A, left; / specimen B, right — 문장은 그대로; decoy를 새 조각 자리 모양으로(specimen C, midline)'
+- kind: sentence
+  situation: 검체 분실 즉시 대응
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(One specimen / is unaccounted / for) → One specimen / is / unaccounted for — 문장은 그대로'
+- kind: sentence
+  situation: 냉동절편 결과 수술 변경
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(The frozen / margins / are positive) → The frozen margins / are / positive — 문장은 그대로; decoy를 새 조각 자리 모양으로(The frozen slides)'
+- kind: sentence
+  situation: 라벨 없는 검체 발견
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(This container / has no / label) → This container / has / no label — 문장은 그대로'
+- kind: sentence
+  situation: 라벨 정보 불일치
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I won''t send it / until this / is corrected) → I won''t / send it / until this is corrected — 문장은 그대로; decoy를 새 조각 자리 모양으로(copy it)'
+- kind: sentence
+  situation: 배양 검체 무균 채취
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''ll get it / to micro / before it / dries out) → I''ll get it / to micro / before / it dries out — 문장은 그대로'
+- kind: sentence
+  situation: 검체 전달 기록
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Can you sign / that you / received them) → Can you / sign / that you received them — 문장은 그대로; decoy를 새 조각 자리 모양으로(that you counted them)'
+- kind: sentence
+  situation: 검체 손상 방지 이송
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-11-24 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Place it flat / so it / doesn''t fold) → Place it / flat / so it doesn''t fold — 문장은 그대로; decoy를 새 조각 자리 모양으로(so it stays cold)'
