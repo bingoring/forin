@@ -1,0 +1,88 @@
+CUE-EN w-situation SBAR 첫 칸 — 지금 눈앞에서 벌어지는 일을 한 줄로 말하며 인계를 여는 말
+CUE-EN w-background SBAR 둘째 칸 — 이 환자가 여기까지 오게 된 병력과 경과를 말하는 곳
+CUE-EN w-assessment SBAR 셋째 칸 — 방금 본 소견을 종합해 지금 환자를 어떻게 보는지 말하는 곳
+BADCHIP w-assessment assessment sin
+CUE-EN w-recommendation SBAR 마지막 칸 — 내가 이렇게 했으면 좋겠다고 제안하는 말
+CUE-EN w-pressure 혈관 속에서 피가 벽을 미는 힘 — 모니터에 mmHg로 뜨는 수치
+BADCHIP w-output output pot
+BADCHIP w-allergic allergic ale
+BADCHIP w-allergy allergy ale
+BADCHIP w-unit unit nut
+BADCHIP w-dry dry dye
+CUE-EN w-bed ICU에서 환자를 번호로 가리키는 말 — 몇 번 자리
+BADCHIP w-bed bed bed
+BADCHIP w-support support port
+BADCHIP w-diuresis diuresis dye
+BADCHIP w-oxygen oxygen gin
+BADCHIP w-xray X-ray rye
+BADCHIP w-transport transport port
+CUE-EN w-imaging CT·엑스레이처럼 몸 안을 찍어 둔 사진들
+BADCHIP w-report report port
+BADCHIP w-comfort comfort port
+BADCHIP w-bedside bedside bed
+CUE-KO-REPEAT w-med 약
+PAIR SBAR 구조 인계 기초
+    situation what is happening right now | situation how he got here | situation what I think is going on | situation what I would like done | situation who is on the unit
+    background what is happening right now | background how he got here | background what I think is going on | background what I would like done | background who is on the unit
+    assessment what is happening right now | assessment how he got here | assessment what I think is going on | assessment what I would like done | assessment who is on the unit
+    recommendation what is happening right now | recommendation how he got here | recommendation what I think is going on | recommendation what I would like done | recommendation who is on the unit
+PAIR 활력·주입약 인계
+    norepinephrine raises her pressure | norepinephrine keeps her sedated | norepinephrine the drip to the goal | norepinephrine lowers her sugar
+    propofol raises her pressure | propofol keeps her sedated | propofol the drip to the goal | propofol lowers her sugar
+    titrate raises her pressure | titrate keeps her sedated | titrate the drip to the goal | titrate lowers her sugar
+PAIR 라인·장치 목록 인계
+    Foley drains urine | Foley goes to suction | Foley gets changed on schedule | Foley measures blood sugar
+    NG drains urine | NG goes to suction | NG gets changed on schedule | NG measures blood sugar
+    dressing drains urine | dressing goes to suction | dressing gets changed on schedule | dressing measures blood sugar
+PAIR 간호 문제·계획 인계
+    wean off the ventilator | wean the lactate | wean the unit with the team | wean by the window
+    repeat off the ventilator | repeat the lactate | repeat the unit with the team | repeat by the window
+    round off the ventilator | round the lactate | round the unit with the team | round by the window
+PAIR 알레르기·주의사항 전달
+    contact precautions gown and gloves | contact precautions checked before every drug | contact precautions sent to the lab | contact precautions fed through a tube
+    the allergy band gown and gloves | the allergy band checked before every drug | the allergy band sent to the lab | the allergy band fed through a tube
+    the swab gown and gloves | the swab checked before every drug | the swab sent to the lab | the swab fed through a tube
+PAIR 인계 중 확인질문 응대
+    milligram a weight | milligram a measure for insulin or heparin | milligram how fast it runs | milligram how loud it is
+    unit a weight | unit a measure for insulin or heparin | unit how fast it runs | unit how loud it is
+    rate a weight | rate a measure for insulin or heparin | rate how fast it runs | rate how loud it is
+PAIR ROSC 후 환자 인계
+    ROSC a pulse is back | ROSC temperature control | ROSC a heart tracing | ROSC a lung volume
+    TTM a pulse is back | TTM temperature control | TTM a heart tracing | TTM a lung volume
+    twelve-lead a pulse is back | twelve-lead temperature control | twelve-lead a heart tracing | twelve-lead a lung volume
+PAIR OR에서 ICU 수술후 인계
+    propofol keeps him sedated | propofol holds his pressure up | propofol gives the OR handoff | propofol removes the Foley
+    norepinephrine keeps him sedated | norepinephrine holds his pressure up | norepinephrine gives the OR handoff | norepinephrine removes the Foley
+    the anesthesiologist keeps him sedated | the anesthesiologist holds his pressure up | the anesthesiologist gives the OR handoff | the anesthesiologist removes the Foley
+PAIR cath lab에서 ICU 인계
+    heparin monitored with the ACT | heparin pulled when ordered | heparin swelling under the skin | heparin checked with a swab
+    the sheath monitored with the ACT | the sheath pulled when ordered | the sheath swelling under the skin | the sheath checked with a swab
+    a hematoma monitored with the ACT | a hematoma pulled when ordered | a hematoma swelling under the skin | a hematoma checked with a swab
+PAIR night shift 인계 우선순위
+    titrate the pressor to the goal | titrate the resident early | titrate on the sickest bed | titrate the Foley bag
+    page the pressor to the goal | page the resident early | page on the sickest bed | page the Foley bag
+    focus the pressor to the goal | focus the resident early | focus on the sickest bed | focus the Foley bag
+PAIR 다학제 라운드 발표
+    extubation removing the breathing tube | extubation making more urine | extubation nutrition through a tube | extubation raising the bed
+    diuresis removing the breathing tube | diuresis making more urine | diuresis nutrition through a tube | diuresis raising the bed
+    tube feeds removing the breathing tube | tube feeds making more urine | tube feeds nutrition through a tube | tube feeds raising the bed
+PAIR 응급실에서 ICU 입실 인계
+    lactate a sign of poor perfusion | lactate covers the infection | lactate the bolus he received | lactate turned off at noon
+    antibiotic a sign of poor perfusion | antibiotic covers the infection | antibiotic the bolus he received | antibiotic turned off at noon
+    fluid a sign of poor perfusion | fluid covers the infection | fluid the bolus he received | fluid turned off at noon
+PAIR 검사·시술 후 인계
+    bronchoscopy a camera in the airway | bronchoscopy checks tube placement | bronchoscopy goes to the lab | bronchoscopy measures the sugar
+    the X-ray a camera in the airway | the X-ray checks tube placement | the X-ray goes to the lab | the X-ray measures the sugar
+    the sample a camera in the airway | the sample checks tube placement | the sample goes to the lab | the sample measures the sugar
+PAIR 불안정 환자 인계 강조점
+    escalate early to the resident | escalate a fast ventricular rhythm | escalate the pressure goal | escalate on the lab report
+    VT early to the resident | VT a fast ventricular rhythm | VT the pressure goal | VT on the lab report
+    MAP early to the resident | MAP a fast ventricular rhythm | MAP the pressure goal | MAP on the lab report
+PAIR 급변 중 긴급 인계
+    push a bolus | push the on-call team | push the airway | push a cold coffee
+    page a bolus | page the on-call team | page the airway | page a cold coffee
+    secure a bolus | secure the on-call team | secure the airway | secure a cold coffee
+PAIR 코드 상황 인계·역할
+    epi given every three to five minutes | epi compressors every two minutes | epi a rhythm without a pulse | epi once an hour
+    switch given every three to five minutes | switch compressors every two minutes | switch a rhythm without a pulse | switch once an hour
+    PEA given every three to five minutes | PEA compressors every two minutes | PEA a rhythm without a pulse | PEA once an hour

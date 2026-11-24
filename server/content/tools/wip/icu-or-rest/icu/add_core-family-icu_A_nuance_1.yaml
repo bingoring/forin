@@ -1,0 +1,199 @@
+"면회 안내·환경 설명":
+  - kind: slider
+    words: [w-normal]
+    cue: "Nurse: \"Everything you see here is expected for her condition.\""
+    scale: [normal, unusual, alarming]
+    answerAt: 0
+    why: "normal은 '예상 범위 안'이라 걱정하지 않아도 된다는 말이에요. unusual은 평소와 다르다는 뜻이라 확인이 필요하고, alarming은 놀랄 만큼 걱정스럽다는 뜻이에요."
+    example: "The beeping is normal in the ICU."
+    exKo: "ICU에서는 삑삑 소리가 나는 게 정상이에요."
+  - kind: reel
+    words: [w-normal]
+    word: normal
+    scenes:
+      - {who: "간호사 → 처음 온 가족", en: "That beeping is normal here.", ko: "그 삑삑 소리는 여기서는 흔한 거예요.", tone: 안심}
+      - {who: "차트 기록", en: "Breath sounds normal bilaterally.", ko: "양쪽 호흡음 정상.", tone: 건조}
+      - {who: "야간 인계", en: "Vitals normal overnight.", ko: "밤새 활력징후 정상.", tone: 간결}
+      - {who: "보호자에게는…", en: "Nothing here is unexpected for a patient this sick.", ko: "이 정도로 위중한 환자라면 여기 있는 건 하나도 뜻밖이 아니에요.", tone: 풀어서, swap: true}
+    feels: [안심시키는 말, 임상 판정, 풀어 줘야 함, 짧고 건조함]
+    why: "normal은 가족에게는 '여기서는 흔한 일'이라는 안심의 말이고, 차트에서는 기준 범위 안이라는 판정이에요. 환자가 좋다는 뜻은 아니라서, 가족에게는 '예상 범위 안'이라고 풀어서 말해 주세요."
+"장비·알람 설명":
+  - kind: slider
+    words: [w-remind, w-emergency]
+    cue: "Nurse: \"Someone needs to be at her bedside right now.\""
+    scale: [reminder, warning, emergency]
+    answerAt: 2
+    why: "reminder는 확인해 달라는 가벼운 알림이고, warning은 곧 주의가 필요한 신호예요. emergency는 지금 당장 달려가야 하는 상태예요."
+    example: "That beep is only a reminder."
+    exKo: "그 소리는 그냥 알림이에요."
+  - kind: context
+    words: [w-alarm]
+    word: alarm
+    ko: 알람
+    scenes:
+      - {who: 보호자에게, icon: me, en: "That alarm just means the bag is almost empty.", ok: true}
+      - {who: 야간 인계, icon: monitor, en: "The alarm was a low-pressure pump alert; I changed the bag.", ok: true}
+      - {who: 차트 기록, icon: board, en: "The alarm kept beeping a lot, nothing serious I think.", ok: false, fix: "Low SpO2 alarm; probe repositioned, SpO2 back to 96%."}
+    why: "가족에게는 쉬운 말로, 동료에게는 무슨 알람이었는지 정확하게 전해요. 차트에는 '별일 아닌 듯' 같은 추측 대신 어떤 알람이었고 무엇을 했는지 남겨요."
+"일일 상태 업데이트":
+  - kind: slider
+    words: [w-better, w-improvement]
+    cue: "Nurse: \"Same as yesterday — no change either way.\""
+    scale: [stable, better, recovered]
+    answerAt: 0
+    why: "stable은 어제와 비슷하게 유지된다는 뜻이에요. better는 나아졌다는 뜻이고, recovered는 회복을 마쳤다는 뜻이라 ICU에서는 함부로 쓰지 않아요."
+    example: "His numbers are stable today."
+    exKo: "오늘 수치는 안정적이에요."
+  - kind: swap
+    words: [w-reduce, w-support]
+    who: "가족에게 · 인공호흡기 설명"
+    icon: me
+    before: ["We're slowly ", "weaning", " the breathing support he needs."]
+    options: [turning down, weaning, stopping]
+    answer: turning down
+    notes: {turning down: "가족에게 쉬운 말. 지원을 천천히 줄인다는 사실 그대로예요.", weaning: "의료진끼리 쓰는 말(호흡기 이탈). 가족은 무슨 뜻인지 못 알아들어요.", stopping: "지원을 아예 끊는다는 뜻으로 들려 놀라게 해요."}
+    why: "같은 조치라도 가족에게는 쉬운 말로 설명해요."
+    ko: "그분께 필요한 호흡 지원을 천천히 줄이고 있어요"
+"가족 질문 응대":
+  - kind: slider
+    words: [w-ask]
+    cue: "Family: \"Could you tell me when the doctor comes by?\""
+    scale: [ask, demand, insist]
+    answerAt: 0
+    why: "ask는 부드럽게 묻는 말이에요. demand는 강하게 요구하는 말이고, insist는 물러서지 않고 고집하는 말이에요."
+    example: "Please ask me anything."
+    exKo: "뭐든 물어보세요."
+  - kind: context
+    words: [w-question]
+    word: question
+    ko: 질문
+    scenes:
+      - {who: 보호자에게, icon: me, en: "No question is too small to ask.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Family question about the plan answered; MD notified.", ok: true}
+      - {who: 의사에게 전화, icon: stetho, en: "The family has a question about everything and it's driving me crazy.", ok: false, fix: "The family has several questions about the plan; can you come speak with them?"}
+    why: "가족에게는 환영하는 말로, 의사에게는 무엇이 필요한지 정중하고 분명하게 전해요. 가족 때문에 힘들다는 말은 동료에게도 하지 않아요."
+"면회 규칙·감염관리 안내":
+  - kind: slider
+    words: [w-allow, w-visitor]
+    cue: "Nurse: \"You're welcome to bring one more visitor, two at a time.\""
+    scale: [allow, require, forbid]
+    answerAt: 0
+    why: "allow는 해도 된다는 허락이에요. require는 반드시 해야 한다는 규칙이고, forbid는 아예 못 하게 막는 말이에요."
+    example: "We allow two visitors at a time."
+    exKo: "한 번에 방문객 두 명까지 허용해요."
+  - kind: swap
+    words: [w-infection, w-germ]
+    who: "가족에게 · 가운과 장갑 설명"
+    icon: me
+    before: ["The gown and gloves protect her from ", "nosocomial infection", "."]
+    options: [germs, nosocomial infection, hospital-acquired sepsis]
+    answer: germs
+    notes: {germs: "가족에게 쉬운 말. 가운과 장갑을 왜 쓰는지 바로 떠올라요.", nosocomial infection: "의료진 용어(병원 내 감염)라 가족은 못 알아들어요.", hospital-acquired sepsis: "패혈증이라는 무거운 병명을 꺼내 불안만 키워요."}
+    why: "규칙의 이유는 가족이 바로 이해하는 말로 설명해야 협조해요."
+    ko: "가운과 장갑은 세균으로부터 그녀를 보호해요"
+"가족 정서 지지 기초":
+  - kind: slider
+    words: [w-angry]
+    cue: "Family: \"I could scream — how could this happen?!\""
+    scale: [annoyed, angry, furious]
+    answerAt: 2
+    why: "annoyed는 짜증 정도예요. angry는 분명히 화가 난 상태고, furious는 참기 힘들 만큼 격하게 화난 상태예요."
+    example: "It's okay to be angry sometimes."
+    exKo: "가끔 화가 나도 괜찮아요."
+  - kind: context
+    words: [w-support]
+    word: support
+    ko: 지원
+    scenes:
+      - {who: 야간 인계, icon: monitor, en: "Daughter declined support today; will offer again tomorrow.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Family accepted support; chaplain visit documented.", ok: true}
+      - {who: 보호자에게, icon: me, en: "I've placed a support consult order on your family unit.", ok: false, fix: "I can set up support for you — a chaplain or a counselor, whichever you'd like."}
+    why: "동료와 차트에는 제안과 수락을 짧고 정확하게 남기지만, 가족에게는 주문이나 의뢰 같은 업무 말 대신 누가 어떻게 도와줄 수 있는지 쉽게 말해요."
+"가족 회의 준비·진행 지원":
+  - kind: slider
+    words: [w-welcome, w-join]
+    cue: "Nurse: \"We really want every one of you in that room.\""
+    scale: [allowed, welcome, encouraged]
+    answerAt: 2
+    why: "allowed는 와도 된다는 허락이에요. welcome은 기꺼이 맞아 준다는 말이고, encouraged는 꼭 오라고 권하는 말이에요."
+    example: "Everyone is welcome to join."
+    exKo: "누구나 참여하실 수 있어요."
+  - kind: swap
+    words: [w-condition, w-together]
+    who: "가족에게 · 회의 안내"
+    icon: me
+    before: ["We'll go over his ", "hemodynamic parameters", " together, step by step."]
+    options: [condition, hemodynamic parameters, labs]
+    answer: condition
+    notes: {condition: "가족이 알고 싶은 '전체 상태'를 가리키는 쉬운 말이에요.", hemodynamic parameters: "의료진 용어(혈역학 지표)라 가족은 못 알아들어요.", labs: "혈액검사 쪽으로 범위가 좁아서 가족이 묻는 전체 상태를 놓쳐요."}
+    why: "가족 회의에서는 용어보다 가족이 묻는 '전체 상태'를 먼저 말해요."
+    ko: "그분의 상태를 하나씩 함께 살펴볼게요"
+"목표설정 대화 참여":
+  - kind: slider
+    words: [w-value]
+    cue: "Family: \"He never lied to anyone, even when it cost him.\""
+    scale: [preference, value, principle]
+    answerAt: 2
+    why: "preference는 취향 정도의 선호예요. value는 소중히 여기는 것이고, principle은 어떤 일이 있어도 지키는 신념에 가까워요."
+    example: "Let's use his values to guide our decisions."
+    exKo: "그분의 가치를 바탕으로 결정해 봐요."
+  - kind: context
+    words: [w-decision]
+    word: decision
+    ko: 결정
+    scenes:
+      - {who: 보호자에게, icon: me, en: "Let's use his values to guide this decision.", ok: true}
+      - {who: 야간 인계, icon: monitor, en: "Family is struggling with the decision; goals-of-care meeting planned.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Fam can't make a decision, lots of drama.", ok: false, fix: "Family having difficulty with the decision; goals-of-care meeting planned."}
+    why: "가족에게는 가치를 바탕으로 함께 정한다고 말하고, 차트에는 드라마 같은 평가 대신 가족이 어려워한다는 사실만 남겨요."
+"나쁜 소식 전달 지원":
+  - kind: slider
+    words: [w-slow, w-pause]
+    cue: "Family: \"Please go a little slower — I'm trying to follow.\""
+    scale: [slow, pause, end]
+    answerAt: 0
+    why: "slow는 속도만 늦춰 달라는 부탁이에요. pause는 잠깐 멈추고 숨 돌리자는 뜻이고, end는 이야기를 끝내자는 뜻이에요."
+    example: "Please slow down if it's too fast."
+    exKo: "너무 빠르면 천천히 말해 달라고 하세요."
+  - kind: context
+    words: [w-result]
+    word: result
+    ko: 결과
+    scenes:
+      - {who: 의사에게, icon: stetho, en: "The result is back — can you share it with the family?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Result reviewed with the family by the physician at 14:00.", ok: true}
+      - {who: 보호자에게, icon: me, en: "The result shows bilateral infiltrates and progressive organ dysfunction.", ok: false, fix: "The doctor will go over the result with you and explain what it means."}
+    why: "결과의 의미는 의사가 설명해요. 간호사는 가족에게 용어를 쏟아내기보다 누가 어떻게 설명해 줄지 알리고 곁을 지켜요."
+"의사결정 대리인 확인":
+  - kind: pair
+    words: [w-proxy, w-legal]
+    pairs: [["power of", "attorney"], ["next of", "kin"], ["advance", "directive"]]
+    decoys: [the room]
+    why: "power of attorney는 '대리 권한', next of kin은 '가장 가까운 친족', advance directive는 '사전의료지시서'예요. 모두 굳어진 덩어리라 다른 말과 바꿔 붙이지 않아요."
+  - kind: context
+    words: [w-surrogate]
+    word: surrogate
+    ko: 대리결정자
+    scenes:
+      - {who: 야간 인계, icon: monitor, en: "No proxy on file; his wife is the surrogate.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Surrogate decision-maker: spouse, per hospital policy.", ok: true}
+      - {who: 보호자에게, icon: me, en: "You are the next-in-hierarchy surrogate per state statute.", ok: false, fix: "In most states the law puts a spouse first, so you would speak for him."}
+    why: "동료와 차트에서는 surrogate를 그대로 써도 되지만, 가족에게는 '법에서 누가 먼저인지'를 쉬운 말로 풀어요. 순서는 주마다 달라요."
+"상충하는 가족 기대 조율":
+  - kind: slider
+    words: [w-hope]
+    cue: "Aunt: \"It would be wonderful if she woke up tomorrow.\""
+    scale: [wish, hope, expect]
+    answerAt: 0
+    why: "wish는 이루어지면 좋겠다는 바람이에요. hope는 그럴 가능성을 기대하는 마음이고, expect는 그렇게 되리라고 확신하는 말이에요."
+    example: "Your aunt is hoping for a full recovery."
+    exKo: "이모님이 완전한 회복을 바라고 계세요."
+  - kind: context
+    words: [w-update]
+    word: update
+    ko: 최신 소식
+    scenes:
+      - {who: 야간 인계, icon: monitor, en: "Aunt asked for an update; I'll give everyone the same update together.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Family update given at 14:00 by the team; aunt and son present.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Please be advised that the daily update has been appended to the chart.", ok: false, fix: "I'll bring everyone together so you all hear the same update."}
+    why: "동료와 차트에는 누구에게 언제 알렸는지 사실대로 남겨요. 가족에게는 문서 처리 같은 말 대신 함께 같은 소식을 듣게 하겠다고 말해요."

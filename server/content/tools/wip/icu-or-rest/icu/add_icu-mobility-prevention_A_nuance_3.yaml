@@ -1,0 +1,128 @@
+- situation: "영양·피부 통합 관리"
+  items:
+    - kind: pair
+      words: [w-wound, w-heal, w-calorie, w-dietitian]
+      pairs: [["wound", "healing"], ["calorie", "intake"], ["registered", "dietitian"]]
+      decoys: ["the weather"]
+      why: "wound healing은 상처가 아무는 과정이에요. 영양 상태를 볼 때는 calorie intake(칼로리 섭취량)를 확인하고, 식사 계획은 registered dietitian(공인 영양사)과 정해요."
+    - kind: context
+      words: [w-nutrition]
+      word: nutrition
+      ko: 영양
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Her nutrition is poor, and the wound isn't improving.", ok: true}
+        - {who: 영양사에게, icon: monitor, en: "Can you reassess his nutrition and protein needs?", ok: true}
+        - {who: 가족에게, icon: me, en: "Nutrition support matters: he's in negative nitrogen balance and granulation is delayed.", ok: false, fix: "He needs enough protein and calories so the sore can heal."}
+      why: "의료진끼리는 nitrogen balance, granulation 같은 말로 상태를 정확히 말해요. 가족에게는 그런 말이 뜻이 없어요. 충분히 먹어야 상처가 아문다고 쉬운 말로 알려 줘요."
+- situation: "심부 욕창·감염 위기"
+  items:
+    - kind: slider
+      words: [w-drainage, w-foul, w-infect]
+      cue: "Colleague: \"The dressing is soaked through with thick, yellow-green drainage, and it smells bad.\""
+      scale: [light and clear, moderate and pink, heavy and purulent]
+      answerAt: 2
+      why: "두껍고 노란빛 초록이며 냄새가 나는 배액은 고름(purulent)이에요. 감염을 의심해 주치의에게 바로 알려요."
+      example: "The wound is deep with foul drainage — this looks infected."
+      exKo: "창상이 깊고 배액에서 악취가 나요 — 감염돼 보여요."
+    - kind: context
+      words: [w-escalate]
+      word: escalate
+      ko: 상급에 보고하다
+      scenes:
+        - {who: 책임간호사에게, icon: monitor, en: "I need to escalate this wound to the provider now.", ok: true}
+        - {who: 상처팀 간호사에게, icon: stetho, en: "Do you want me to escalate this to the provider too?", ok: true}
+        - {who: 가족에게, icon: me, en: "I need to escalate your son's case because of suspected sepsis.", ok: false, fix: "I'm letting his doctor know right now because this sore may be infected."}
+      why: "의료진끼리는 escalate로 윗선에 올린다는 뜻을 짧게 전해요. 가족에게는 case를 올린다는 말이 낯설고 sepsis 같은 말이 겁을 줘요. 지금 무엇을 하는지를 쉬운 말로 알려 줘요."
+- situation: "조기 이동 중 급성 악화"
+  items:
+    - kind: slider
+      words: [w-sat, w-drop, w-increase, w-oxygen]
+      cue: "Colleague: \"Her sats fell from 95 to 86 the moment she stood.\""
+      scale: [carry on and watch, "sit her, add oxygen", start CPR right away]
+      answerAt: 1
+      why: "일어서자마자 산소포화도가 떨어지면 활동을 멈추고 앉히거나 눕히고 산소를 올려요. 계속 지켜보기만 하면 늦고, 맥박이 있는 환자에게 CPR을 시작하는 건 맞지 않아요."
+      example: "Her sats are dropping — we're stopping and sitting her down."
+      exKo: "산소포화도가 떨어지고 있어요 — 멈추고 앉힐게요."
+    - kind: context
+      words: [w-recheck]
+      word: recheck
+      ko: 재확인하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'll recheck her full vitals once she's back in bed.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you recheck her sats with the other probe?", ok: true}
+        - {who: 환자에게, icon: me, en: "I'll recheck your hemodynamic parameters and an ABG.", ok: false, fix: "I'm going to check your oxygen and blood pressure again to make sure you're okay."}
+      why: "의료진끼리는 hemodynamic parameters, ABG처럼 검사 이름을 그대로 말해요. 환자에게는 그런 말이 낯설어 불안해요. 무엇을 다시 보는지를 쉬운 말로 알려 줘요."
+- situation: "이동 중 낙상·손상 위기"
+  items:
+    - kind: slider
+      words: [w-ease, w-protect]
+      cue: "Colleague: \"Her knees just buckled, and she's sliding toward the floor.\""
+      scale: [let her drop, ease her down, lift her back up]
+      answerAt: 1
+      why: "쓰러지는 환자를 억지로 일으키려 하면 환자와 직원이 함께 다쳐요. 바닥까지 부드럽게 내려 눕히고 머리를 보호해요. 그냥 놓아 버리면 충격이 커요."
+      example: "Ease her down and protect her head."
+      exKo: "부드럽게 눕히고 머리를 보호하세요."
+    - kind: context
+      words: [w-injury]
+      word: injury
+      ko: 손상
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "No head injury noted. She's alert and following commands.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Check her for injury before anyone moves her.", ok: true}
+        - {who: 가족에게, icon: me, en: "She sustained a fall with a possible traumatic injury, and a head CT is pending.", ok: false, fix: "She slipped to the floor. We're checking her carefully to make sure she isn't hurt."}
+      why: "의료진끼리는 sustained, traumatic injury로 상태를 정확히 전해요. 가족에게는 그런 말이 겁만 줘요. 무슨 일이 있었고 지금 무엇을 하는지를 쉬운 말로 알려 줘요."
+- situation: "급성 폐색전 발생 위기"
+  items:
+    - kind: slider
+      words: [w-oxygen, w-hypoxia]
+      cue: "Colleague: \"He's gasping, and his sat is 82 on two liters by nasal cannula.\""
+      scale: [low-flow cannula, non-rebreather, intubation now]
+      answerAt: 1
+      why: "저산소가 심할 때는 낮은 유량의 코삽입관만으로 부족해서 비재호흡마스크처럼 고유량 산소를 처방과 프로토콜에 따라 줘요. 동시에 주치의에게 알려요. 삽관은 의사가 판단해요."
+      example: "I'm putting him on a non-rebreather and calling the provider now."
+      exKo: "비재호흡마스크를 씌우고 지금 주치의를 부르고 있어요."
+    - kind: context
+      words: [w-dyspnea]
+      word: dyspnea
+      ko: 호흡곤란
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Acute dyspnea with chest pain and hypoxia. I'm worried about a PE.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "He has sudden dyspnea. Can you page the provider?", ok: true}
+        - {who: 가족에게, icon: me, en: "He has acute dyspnea, and the sats are in the seventies.", ok: false, fix: "He's having trouble breathing, and we're helping him right now."}
+      why: "의료진끼리는 dyspnea 한 단어로 숨이 가쁜 증상을 정확히 말해요. 가족에게는 그 말도 수치도 낯설고 겁만 줘요. 지금 무슨 일이고 무엇을 하는지를 쉬운 말로 알려 줘요."
+- situation: "이동 중 라인·튜브 이탈 위기"
+  items:
+    - kind: slider
+      words: [w-hold, w-pressure, w-central, w-line]
+      cue: "Colleague: \"The central line pulled out, and blood is oozing from the site.\""
+      scale: [light gauze cover, firm direct pressure, a tight tourniquet]
+      answerAt: 1
+      why: "중심정맥관이 빠져 출혈이 있으면 거즈를 대고 세게 직접 압박해요. 가벼운 거즈만으로는 부족하고, 목이나 가슴 쪽 관에 지혈대를 쓰는 건 맞지 않아요. 이어서 주치의에게 알려요."
+      example: "The central line pulled — I'm holding firm pressure now."
+      exKo: "중심정맥관이 빠졌어요 — 지금 세게 압박하고 있어요."
+    - kind: context
+      words: [w-dislodge]
+      word: dislodge
+      ko: 이탈하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The feeding tube dislodged during the transfer.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Did the drain dislodge too?", ok: true}
+        - {who: 가족에게, icon: me, en: "His enteral feeding tube dislodged during the lateral transfer.", ok: false, fix: "A feeding tube slipped out when we moved him, and we're letting his doctor know."}
+      why: "의료진끼리는 dislodge로 관이 제자리에서 빠졌다는 사실을 짧게 전해요. 가족에게는 enteral, lateral transfer 같은 말이 낯설어요. 무슨 일이 있었고 누구에게 알리는지를 쉬운 말로 알려 줘요."
+- situation: "다발성 욕창·불응 목표 소통"
+  items:
+    - kind: pair
+      words: [w-comfort, w-honest, w-wound, w-dignity]
+      pairs: [["honest", "conversation"], ["comfort", "measures"], ["wound", "dressing"]]
+      decoys: ["the ceiling"]
+      why: "honest conversation은 상태를 솔직하게 나누는 대화예요. comfort measures는 편안함을 돕는 처치이고, wound dressing은 상처에 덮는 드레싱이에요."
+    - kind: swap
+      words: [w-wound, w-honest]
+      who: "가족에게 · 상처 상태 설명"
+      icon: me
+      before: ["His wounds are ", "refractory", " despite everything we've tried, and I want to be honest about that."]
+      options: [not healing, refractory, a lost cause]
+      answer: not healing
+      ko: 저희가 해 본 어떤 방법에도 상처가 낫지 않고 있어서, 솔직하게 말씀드리고 싶어요
+      notes: {not healing: "가족이 바로 알아듣는 쉬운 말이에요. 사실을 흐리지 않으면서 희망을 꺾지 않아요.", refractory: "의료진끼리 쓰는 말이에요. 가족에게는 뜻이 안 와닿아요.", a lost cause: "가망이 없다고 단정해 가족의 희망을 꺾고 실제 상태보다 무겁게 들려요."}
+      why: "가족에게는 사실을 솔직하게 말하되 쉬운 말로, 의료진끼리는 refractory 같은 임상어로 말해요."

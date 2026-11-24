@@ -1,0 +1,148 @@
+- title: 소통 오류 확인·재확립
+  nuance:
+    - kind: slider
+      words: [w-confused]
+      cue: "Patient: \"Why are you asking about the tube? I thought you said something about my medicine. I don't understand.\""
+      scale: [unsure, confused, bewildered]
+      answerAt: 1
+      why: "unsure는 조금 확신이 없는 정도, confused는 무슨 말인지 갈피를 못 잡는 상태, bewildered는 완전히 어리둥절한 상태예요. 환자가 혼란스러워하면 탓하지 말고 '말씀해 주셔서 감사해요'와 함께 설명을 다시 해요."
+      example: "Thank you for telling me you were confused."
+      exKo: "헷갈렸다고 말씀해 주셔서 고마워요."
+    - kind: swap
+      words: [w-poorly, w-explain]
+      who: "환자에게 · 되묻기 후"
+      icon: me
+      before: ["I think ", "you understood", " that part poorly — let me try again."]
+      options: [you understood, I explained, you heard]
+      answer: I explained
+      notes:
+        you understood: "환자를 탓하는 말이 되어 되묻기를 꺼리게 만든다."
+        I explained: "설명이 부족했을 수 있다는 책임을 내가 지는 말이라 환자가 마음 편히 되묻는다."
+        you heard: "환자의 듣기를 탓하는 말이라 역시 부담을 준다."
+      why: "소통이 어긋났을 때는 설명한 사람이 책임을 지는 말로 시작하면 환자가 부담 없이 되물을 수 있어요."
+      ko: "제가 그 부분을 서투르게 설명한 것 같아요, 다시 해 볼게요."
+- title: 급변 중 언어장벽 위기 소통
+  nuance:
+    - kind: slider
+      words: [w-trouble]
+      cue: "Patient is gasping, pulling with her neck muscles, and her oxygen number is dropping fast."
+      scale: ["a bit short of breath", "having trouble breathing", "in respiratory distress"]
+      answerAt: 2
+      why: "short of breath는 숨이 조금 찬 정도, trouble breathing은 숨쉬기 힘들다는 일반적인 표현, respiratory distress는 목 근육까지 쓰고 산소가 떨어지는 위급한 호흡곤란을 가리키는 임상어예요. 환자와 가족에게는 쉬운 trouble breathing으로 말하고, 위급함은 행동으로 보여 주세요."
+      example: "She's having trouble breathing, so we're helping her right now."
+      exKo: "숨쉬기 힘들어하셔서 지금 저희가 돕고 있어요."
+    - kind: context
+      words: [w-help]
+      word: help
+      ko: 돕다
+      scenes:
+        - {who: 동료에게 도움 요청, icon: bell, en: "I need help in bed four now — she's having trouble breathing.", ok: true}
+        - {who: 환자에게, icon: me, en: "More help is coming right now.", ok: true}
+        - {who: 보호자에게, icon: home, en: "Help is being escalated per the respiratory failure protocol.", ok: false, fix: "More staff are coming right now to help her breathe, and I'm staying with her."}
+      why: "동료에게는 어디에서 무슨 일인지 짧게 말해 도움을 부르는 게 맞아요. 보호자에게 프로토콜 이름을 읊으면 차갑고 불안해져요. 누가 오고 있고 지금 무엇을 하는지 쉬운 말로 알려 주세요."
+- title: 나쁜 소식 통역 상황
+  nuance:
+    - kind: slider
+      words: [w-difficult, w-news]
+      cue: "You have to tell the family that his kidneys have stopped working and he now needs dialysis."
+      scale: [disappointing, difficult, devastating]
+      answerAt: 1
+      why: "disappointing은 기대에 못 미치는 가벼운 소식, difficult는 듣기 힘든 중대한 소식, devastating은 삶이 무너질 만한 소식이에요. 힘든 소식은 'I have some difficult news'처럼 먼저 예고하고 전해요."
+      example: "I'm sorry, I have some difficult news about his kidneys."
+      exKo: "죄송하지만 그분의 콩팥에 대해 힘든 소식이 있어요."
+    - kind: swap
+      words: [w-sorry, w-share]
+      who: "가족에게 · 사망 고지"
+      icon: home
+      before: ["I'm so sorry to share that he ", "passed away", " a few minutes ago."]
+      options: [passed away, died, is no longer with us]
+      answer: died
+      notes:
+        passed away: "부드럽지만 통역을 거치면 가족이 아직 살아 있는지 되묻기 쉽다."
+        died: "분명한 낱말이라 통역을 거쳐도 뜻이 그대로 가고, 가족이 헷갈리지 않는다."
+        is no longer with us: "더 돌려 말해서 뜻이 흐려진다."
+      why: "사망 고지 교육에서는 'died'를 한 번은 분명히 말하라고 가르쳐요. 완곡어만 쓰면 가족이 아직 살아 있는지 되묻고, 통역을 거치면 뜻이 더 흐려질 수 있어요."
+      ko: "정말 죄송하지만, 그분이 몇 분 전에 돌아가셨어요."
+- title: 임종 결정 언어장벽
+  nuance:
+    - kind: pair
+      words: [w-single, w-answer, w-decide, w-want, w-alone]
+      pairs:
+        - ["no single", "right answer"]
+        - ["based on what", "he would have wanted"]
+        - ["not deciding", alone]
+      decoys: ["on the monitor"]
+      why: "임종 결정에서 가족에게는 '환자가 원했을 것'을 기준으로 이야기하자고 하고, 정답이 하나가 아니라는 점과 혼자 정하는 게 아니라는 점을 말해 주면 부담이 줄어요."
+    - kind: context
+      words: [w-situation]
+      word: situation
+      ko: 상황
+      scenes:
+        - {who: 동료 간호사에게, icon: handshake2, en: "The daughter is the surrogate, and the situation is moving toward comfort-focused care.", ok: true}
+        - {who: 통역사에게, icon: mic, en: "Please interpret every word — this is a very sensitive situation.", ok: true}
+        - {who: 가족에게, icon: home, en: "This situation meets criteria for a palliative care consult.", ok: false, fix: "We'd like our comfort-care team to help us think this through with you."}
+      why: "의료진끼리는 surrogate(대리 결정자)나 consult 같은 말이 통해요. 가족에게 '기준을 충족한다'고 하면 차갑게 들려요. 함께 생각하도록 돕는 팀이라고 쉬운 말로 소개하세요."
+- title: 동의 능력·언어 혼재 판단
+  nuance:
+    - kind: pair
+      words: [w-capacity, w-interpreter]
+      pairs:
+        - [capacity, "being able to understand and decide for himself"]
+        - [interpreter, "a trained person who carries every word across"]
+      decoys: ["a legal guardian"]
+      why: "capacity는 정보를 이해하고 따져 보고 스스로 결정을 말할 수 있는 능력이에요. 영어를 못 하는 것과는 별개라서, 이해했는지는 통역사를 통해 확인해요."
+    - kind: swap
+      words: [w-capacity, w-assess]
+      who: "의료진 회의 · 능력 판단"
+      icon: handshake2
+      before: ["Limited English ", "means", " he lacks capacity — let's assess him with an interpreter."]
+      options: [means, "doesn't mean", proves]
+      answer: "doesn't mean"
+      notes:
+        means: "영어가 서투르면 능력이 없다고 보는 틀린 전제다."
+        "doesn't mean": "언어와 능력을 따로 보고, 통역사를 써서 이해도를 확인하겠다는 올바른 입장이다."
+        proves: "더 강하게 틀린 결론이다."
+      why: "영어가 서툰 것과 결정 능력이 없는 것은 달라요. 통역사를 통해 환자가 이해하고 선택을 설명할 수 있는지를 봐야 공정해요."
+      ko: "영어가 서투르다고 결정 능력이 없는 건 아니에요, 통역사와 함께 사정해 봐요."
+- title: 통역 부재 응급 대응
+  nuance:
+    - kind: pair
+      words: [w-point, w-board, w-squeeze, w-ask, w-question]
+      pairs:
+        - ["point to", "the picture board"]
+        - ["squeeze my hand", "if you understand me"]
+        - [ask, "simple yes-or-no questions"]
+      decoys: ["the other way"]
+      why: "통역사를 아직 못 불렀을 때는 그림판을 가리키게 하고, 손 쥐기로 이해했는지 보고, 예·아니오 질문만 해요. 이 셋을 같이 쓰면 말 없이도 확인이 돼요."
+    - kind: swap
+      words: [w-safe, w-stay]
+      who: "호흡곤란 환자에게 · 위기"
+      icon: me
+      before: ["You're ", "fine", " — I'm staying right here with you."]
+      options: [fine, safe, out of danger]
+      answer: safe
+      notes:
+        fine: "아직 응급 중인데 괜찮다고 해서 거짓 안심을 준다."
+        safe: "보호받고 있다는 뜻이라 상태가 나아졌다고 단정하지 않는다."
+        out of danger: "위험이 지났다는 뜻이라 지금은 사실이 아니다."
+      why: "위기 중에는 상태를 단정해서 안심시키지 말고, 내가 곁에서 지키고 있다는 사실을 말해요."
+      ko: "안전해요, 제가 바로 여기 함께 있을게요."
+- title: 문화 갈등·치료 거부 소통
+  nuance:
+    - kind: slider
+      words: [w-respect, w-honor]
+      cue: "A parent says their faith discourages the treatment. You want to show you take it seriously, though you can't promise to follow it."
+      scale: [acknowledge, respect, honor]
+      answerAt: 1
+      why: "acknowledge는 그런 믿음이 있다는 걸 인정하는 정도, respect는 그 믿음을 가볍게 보지 않고 이해하려는 태도, honor는 실제로 반영해 지켜 준다는 무게가 있어요. 간호사 혼자 지킬 수 없는 약속은 하지 않고, respect로 이해하려는 마음을 먼저 보여요."
+      example: "I respect your belief, and I want to understand it."
+      exKo: "당신의 신념을 존중하고, 이해하고 싶어요."
+    - kind: context
+      words: [w-belief]
+      word: belief
+      ko: 신념
+      scenes:
+        - {who: 동료에게, icon: handshake2, en: "Their religious belief is shaping his treatment choices — can we get an ethics consult?", ok: true}
+        - {who: 통역사에게, icon: mic, en: "Please interpret respectfully — this belief is very important to them.", ok: true}
+        - {who: 가족에게, icon: home, en: "Your belief is a barrier to adherence.", ok: false, fix: "I'd like to understand what matters to you about this."}
+      why: "ethics consult(윤리 자문)는 병원이 실제로 쓰는 절차예요. 하지만 가족에게 신념을 '따르는 데 방해되는 것'이라 하면 비난처럼 들려요. 믿음 자체를 이해하려는 말로 시작하세요."

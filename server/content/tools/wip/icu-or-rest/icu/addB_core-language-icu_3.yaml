@@ -1,0 +1,58 @@
+situations:
+- title: 간단 지시·설명 명확화
+  s:
+  - ["쉬운 말 약속", speech, "I'll say it slowly and use simple words는 속도와 어휘 두 가지를 함께 약속해요. 환자가 따라오기 쉽게 하는 가장 기본 전략이에요.", "with a smile", "천천히, 큰 소리로 말씀드릴게요.", "천천히, 손짓으로 말씀드릴게요.", "simple", "medical", "technical", "fancy"]
+  - ["동작 시범", play, "like this를 붙이면 말로 설명하기보다 직접 보여 주겠다는 뜻이 돼요. 언어가 달라도 동작은 통해요.", "out loud", "이렇게 숨을 짧게 들이쉬어 보세요.", "이렇게 숨을 느리게 들이쉬어 보세요.", "deep", "quick", "short", "shallow"]
+  - ["이해 확인", check, "Nod if that makes sense to you는 말로 답하지 않아도 되는 이해 확인이에요. makes sense가 '알아들었다'를 가볍게 묻는 표현이에요.", "when ready", "이해가 되면 손을 흔들어 주세요.", "이해가 되면 눈을 깜빡여 주세요.", "Nod", "Wave", "Blink", "Clap"]
+  - ["반복 약속", redo, "Let me로 시작하면 내가 다시 말하겠다는 제안이라 환자는 못 알아들은 책임을 느끼지 않아요. more slowly가 어떻게 다시 하는지 알려요.", "for you", "다시 한번, 더 크게 말씀드릴게요.", "다시 한번, 더 가까이서 말씀드릴게요.", "slowly", "quickly", "briefly", "casually"]
+  - ["글로 보충", pencil, "so you can see it은 적는 목적을 말해요. 귀로 놓친 부분을 눈으로 보완하게 해 줘요.", "on paper", "보실 수 있게 그려 드릴게요.", "들으실 수 있게 읽어 드릴게요.", "see", "hear", "touch", "hold"]
+  - ["되말하기 요청", speech, "in your own words는 내 말을 따라 하는 것이 아니라 이해한 내용을 자기 말로 바꾸라는 뜻이에요. 이해했는지 가장 믿을 수 있게 확인해요.", "in one word", "제가 한 말을 제 말 그대로 다시 말해보세요.", "제가 한 말을 당신의 말로 크게 말해보세요.", "said", "meant", "asked", "wrote"]
+  - ["중단 허락", bell, "Stop me는 말을 끊어도 된다는 허락이에요. anytime이 있어야 눈치 보지 않고 바로 멈추게 할 수 있어요.", "at once", "제가 너무 빠르면 한 번만 멈춰 세워주세요.", "제가 너무 작게 말하면 언제든 멈춰 세워주세요.", "fast", "slow", "loud", "quiet"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 쉬운 설명 4문장 순서
+    why: 말하는 방식을 먼저 약속하고, 이해했는지 묻고, 못 알아들었으면 다시 말한 뒤, 이해한 내용을 되말하게 해요.
+    lines:
+    - ["I'll say it slowly and use simple words.", speech, "천천히 쉬운 말로 말씀드릴게요", "방식 약속"]
+    - ["Nod if you followed what I just said.", check, "방금 한 말을 따라오셨으면 끄덕이세요", "이해 확인"]
+    - ["If you didn't nod, I'll say it again more slowly.", redo, "끄덕이지 않으셨다면 더 천천히 다시 말할게요", "다시 말하기"]
+    - ["Either way, tell me in your own words what I said.", speech, "어느 쪽이든 제 말을 당신 말로 말해 보세요", "되말하기"]
+- title: 가족 통한 기본 정보 확인
+  s:
+  - ["기본 정보 요청", pencil, "Thank you로 먼저 고마움을 표하면 질문이 추궁이 아니라 부탁으로 들려요. can you tell me로 묻는 형태도 정중해요.", "and address", "감사해요, 복용 약과 알레르기를 적어주시겠어요?", "감사해요, 복용 약과 알레르기를 보여주시겠어요?", "allergies", "weight", "height", "diet"]
+  - ["통역 원칙", mic, "For medical details를 앞에 두면 어떤 정보에 통역을 쓰는지 범위가 분명해져요. we'll confirm은 가족에게 맡기지 않고 병원이 확인한다는 뜻이에요.", "in writing", "비용 세부사항은 통역사를 통해 확인할게요.", "서류 세부사항은 통역사를 통해 확인할게요.", "medical", "billing", "visiting", "insurance"]
+  - ["이유 설명", shield, "This helps us는 요청한 일의 이유를 먼저 말해요. keep him safe는 질문이 환자의 안전과 이어진다는 걸 보여 줘요.", "during rounds", "이것이 지금 그분을 편하게 해줘요.", "이것이 지금 저희를 안전하게 지켜줘요.", "safe", "calm", "warm", "busy"]
+  - ["범위 한정", board, "just가 요청 범위를 줄여서 가족의 부담을 덜어 줘요. for now는 지금만 이렇다는 한정이라 뒤에 더 이어질 일을 암시해요.", "from you", "지금은 서명만 필요해요.", "지금은 연락처만 필요해요.", "basics", "details", "results", "records"]
+  - ["후속 약속", redo, "again이 있어서 오늘 한 확인에서 끝나지 않고 다시 본다는 약속이 돼요. with the interpreter가 그때 누구와 하는지 못 박아요.", "in the family room", "통역사와 함께 세부사항을 미리 살펴볼게요.", "통역사와 함께 비용 내역을 다시 살펴볼게요.", "details", "costs", "names", "times"]
+  - ["부담 덜기", handshake2, "Please don't worry는 걱정하지 말라는 부탁이에요. 통역을 가족이 떠안지 않아도 된다는 뜻을 분명히 해서 가족의 부담을 덜어 줘요.", "about the cost", "전부 직접 기억하려고 걱정하지 마세요.", "전부 직접 적으려고 걱정하지 마세요.", "translating", "remembering", "writing", "carrying"]
+  - ["고마움 표현", star, "already는 지금까지 한 일이 이미 충분하다는 느낌을 줘요. just by being here가 곁에 있는 것 자체를 인정해 줘요.", "so far", "여기 계셔 주신 것만으로도 큰 위로가 됐어요.", "저희에게 전화 주신 것만으로도 큰 도움이 됐어요.", "helped", "called", "waited", "visited"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 가족 정보 확인 4문장 순서
+    why: 먼저 정보를 부탁하고, 알려 준 뒤에는 의료 세부는 통역사와 확인하겠다고 알리고, 그 확인이 끝나면 함께 다시 보고, 마지막에 그 의미를 설명해요.
+    lines:
+    - ["First, can you tell me his medications and allergies?", pencil, "먼저 복용 약과 알레르기를 알려주시겠어요", "정보 요청"]
+    - ["Once you've told me, I'll confirm the medical details with an interpreter.", mic, "말씀해 주시면 의료 세부는 통역사와 확인할게요", "통역 확인"]
+    - ["Once that's confirmed, we'll review it all again together.", redo, "확인되면 함께 전부 다시 살펴볼게요", "재검토"]
+    - ["After we review it, I'll explain what it means for him.", speech, "검토 뒤에 그분에게 어떤 의미인지 설명할게요", "설명"]
+- title: 삽관 환자 예·아니오 소통
+  s:
+  - ["신호 약속", check, "Let's agree는 신호를 일방적으로 정하지 않고 함께 정한다는 뜻이에요. 대시 뒤에 예·아니오를 한꺼번에 못 박아요.", "for water", "예는 한 번, 아니오는 두 번 쥐기로 정해요.", "예는 한 번, 아니오는 두 번 끄덕이기로 정해요.", "blink", "nod", "squeeze", "tap"]
+  - ["통증 질문", bell, "질문과 신호 안내를 한 번에 말하는 틀이에요. Are you in pain?처럼 예·아니오로만 답할 수 있는 질문이어야 깜빡임으로 대답할 수 있어요.", "right now", "아프세요? 그렇다면 한 번 쥐어주세요.", "아프세요? 그렇다면 한 번 끄덕이세요.", "once", "twice", "slowly", "often"]
+  - ["격려", star, "You're doing great로 먼저 칭찬하면 힘든 소통을 계속할 용기가 생겨요. let's keep은 함께 이어 간다는 뜻이에요.", "with me", "잘하고 계세요, 우리 신호를 잠깐 써볼게요.", "잘하고 계세요, 우리 신호를 다시 정해볼게요.", "signals", "words", "songs", "rules"]
+  - ["흡인 요청 신호", siren, "if you need suction으로 어떤 필요일 때 신호하는지 정해 줘요. 환자가 신호를 먼저 보낼 수 있게 하는 문장이에요.", "at any time", "흡인이 필요하면 한 번 쥐어주세요.", "흡인이 필요하면 한 번 끄덕이세요.", "suction", "water", "food", "visitors"]
+  - ["질문 방식 안내", speech, "yes or no questions는 환자가 한 번의 신호로 답할 수 있는 질문이에요. only로 범위를 한정해서 환자가 부담을 덜 느껴요.", "at a time", "짧게 답할 질문만 드릴게요.", "그림으로 답할 질문만 드릴게요.", "yes or no", "short", "simple", "hard"]
+  - ["신호 재확인", redo, "right?로 끝내서 신호의 뜻을 서로 같게 알고 있는지 되묻는 확인이에요. 틀린 신호로 오해하지 않도록 막아 줘요.", "in a row", "두 번 쥐면 아니오, 맞죠?", "세 번 깜빡이면 아니오, 맞죠?", "Two", "One", "Three", "Ten"]
+  - ["계속 확인", monitor, "We'll keep checking in은 한 번이 아니라 계속 살펴본다는 약속이에요. every few minutes가 얼마나 자주인지 알려 줘서 환자가 안심해요.", "by the bed", "1분마다 계속 상태를 확인할게요.", "몇 분마다 계속 소통판을 확인할게요.", "minutes", "hours", "seconds", "nights"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 예·아니오 소통 4문장 순서
+    why: 신호를 정하고, 그 신호로 답할 질문만 하겠다고 알린 뒤, 첫 질문을 하고, 마지막에 격려하며 이어 가요.
+    lines:
+    - ["Let's agree on a signal: one blink for yes, two for no.", check, "신호를 정해요, 예는 한 번 아니오는 두 번 깜빡임", "신호 약속"]
+    - ["From now, I'll only ask yes or no questions for that signal.", speech, "이제 그 신호로 답할 예·아니오 질문만 드릴게요", "방식 안내"]
+    - ["Here's the first one: are you in pain? Blink once if yes.", bell, "첫 질문이에요, 아프세요? 그렇다면 한 번 깜빡이세요", "첫 질문"]
+    - ["You're doing great, so let's keep using it.", star, "잘하고 계세요, 그러니 이걸 계속 써볼게요", "격려"]

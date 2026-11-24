@@ -1,0 +1,58 @@
+situations:
+- title: 가족 통역 한계·공식 통역 전환
+  s:
+  - ["감사 표현", star, "You've been처럼 완료형으로 지금까지의 도움을 인정하면 앞으로 통역을 맡기지 않는 말이 서운하게 들리지 않아요.", "for today", "정말 큰 위로가 됐고, 감사해요.", "정말 큰 도움이 됐고, 미안해요.", "grateful", "sorry", "tired", "afraid"]
+  - ["통역 원칙", lock, "For medical decisions로 범위를 의료 결정으로 좁히고, for accuracy로 이유를 붙이면 가족 탓이 아니라 정확성 때문이라는 설명이 돼요.", "for each visit", "의료 결정에는 편의를 위해 훈련된 통역사를 씁니다.", "일상 대화에는 정확성을 위해 훈련된 통역사를 씁니다.", "accuracy", "speed", "comfort", "cost"]
+  - ["보호와 부담", shield, "This protects your father와 takes the burden off you처럼 두 이익을 나란히 말하면 가족이 밀려나는 게 아니라 도움받는다고 느껴요.", "each time", "이것이 아버님을 편하게 하고 당신의 부담도 덜어드려요.", "이것이 아버님을 보호하고 당신의 시간도 아껴드려요.", "protects", "tires", "scares", "delays"]
+  - ["부탁 사과", handshake2, "It's not fair to ask는 부탁하는 쪽의 잘못으로 돌리는 말이라 가족의 죄책감이 줄어요. so much of you가 그동안의 부담을 인정해요.", "at night", "당신에게 너무 늦게 부탁드리는 건 공평하지 않아요.", "당신에게 너무 자주 부탁드리는 건 공평하지 않아요.", "fair", "easy", "safe", "polite"]
+  - ["통역사 설명", mic, "knows the medical words exactly는 통역사가 훈련받은 구체적인 이유를 보여 줘요. 가족의 영어 실력을 깎아내리지 않고 전문성만 말해요.", "in both languages", "훈련된 통역사는 의료 용어를 빠르게 알아요.", "훈련된 통역사는 병원 규정을 정확히 알아요.", "exactly", "slowly", "barely", "rarely"]
+  - ["통역 호출", mic, "I'll call one에서 one은 앞서 말한 a trained interpreter를 대신해요. for us는 환자와 가족 모두를 위한 일이라는 느낌을 줘요.", "by phone", "지금 바로 통역사를 두 분 불러드릴게요.", "지금 바로 통역사를 소개할게요.", "call", "meet", "greet", "thank"]
+  - ["곁 허락", home, "You can still는 바뀌는 것이 일부뿐이라는 안심이에요. stay right here with him이 통역사를 부르더라도 곁은 그대로라는 뜻이에요.", "in the corner", "그래도 여기 잠깐 계셔도 돼요.", "그래도 여기서 쉬셔도 돼요.", "stay", "sleep", "eat", "work"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 통역 전환 4문장 순서
+    why: 먼저 고마움을 전하고, 의료 결정에는 훈련된 통역사를 쓴다는 원칙을 말한 뒤, 그 이점을 설명하고, 통역사를 부르며 곁은 그대로임을 알려요.
+    lines:
+    - ["You've been a great help, and I'm grateful.", star, "큰 도움이 됐고 감사해요", "감사"]
+    - ["For medical decisions, we use a trained interpreter for accuracy.", lock, "의료 결정에는 정확성을 위해 훈련된 통역사를 씁니다", "원칙"]
+    - ["That protects your father and takes the burden off you.", shield, "그게 아버님을 보호하고 당신의 부담도 덜어요", "이점"]
+    - ["So I'll call one now, and you can still stay right here with him.", mic, "그러니 지금 부르겠고 여기 계셔도 돼요", "호출"]
+- title: 청각·시각 장애 병행 소통
+  s:
+  - ["보조기 활용", board, "We can use로 가능한 도구를 나열하면 지금 쓸 수 있는 방법이 한눈에 보여요. 청각과 시각 보조를 함께 말해서 두 장애를 다 고려한다는 걸 보여 줘요.", "and a pen", "안경과 큰 글씨 소통판을 함께 쓸 수 있어요.", "보청기와 그림 소통판을 함께 쓸 수 있어요.", "hearing", "walking", "dental", "feeding"]
+  - ["말하는 위치", speech, "face him은 마주 봐서 입 모양과 표정을 볼 수 있게 한다는 뜻이에요. on his better side는 더 잘 들리는 쪽에서 말해 소리가 닿게 해요.", "at eye level", "잘 들리는 쪽에서 그를 보고 크게 말할게요.", "잘 보이는 쪽에서 그를 보고 또렷하게 말할게요.", "clearly", "softly", "quickly", "rudely"]
+  - ["촉각 신호", handshake2, "Touch and simple signals는 소리와 글자를 못 쓰는 환자를 위한 대체 신호예요. feel oriented는 지금 어디서 무슨 일인지 안다는 뜻이에요.", "every hour", "손길과 간단한 신호가 그가 편안함을 느끼도록 도와줘요.", "빛과 간단한 신호가 그가 상황을 인지하도록 도와줘요.", "oriented", "tired", "hungry", "dizzy"]
+  - ["입술 읽기 질문", magnify, "Does he read lips처럼 환자 대신 가족에게 능력을 물으면 어떤 방법이 통할지 빨리 알 수 있어요. at all은 조금이라도 되는지 묻는 부드러운 표현이에요.", "in his chart", "그가 점자를 읽을 수 있나요?", "그가 손짓을 읽을 수 있나요?", "lips", "braille", "maps", "menus"]
+  - ["큰 글씨", pencil, "so he can see는 큰 글씨로 쓰는 목적을 말해요. 시력이 약해도 읽을 수 있게 하려는 배려예요.", "with a marker", "그가 볼 수 있게 큰 글씨로 그릴게요.", "그가 만질 수 있게 큰 글씨로 적을게요.", "letters", "numbers", "pictures", "colors"]
+  - ["손길 신호", handshake2, "will let him know I'm here는 만지는 이유를 알려 줘요. gentle이 있어야 갑자기 닿는 놀람을 줄여요.", "each time", "어깨를 부드럽게 만지면 제가 여기 있다는 걸 알 거예요.", "손을 부드럽게 만지면 제가 여기 있다는 걸 알 거예요.", "arm", "foot", "face", "hair"]
+  - ["예측 가능성", shield, "simple and predictable은 환경이 갑자기 바뀌지 않게 한다는 약속이에요. 소리와 빛으로 알 수 없는 환자에게 안정감을 줘요.", "for tonight", "그를 위해 조용하고 예측 가능하게 유지할게요.", "그를 위해 간단하고 빠르게 유지할게요.", "predictable", "noisy", "crowded", "busy"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 이중 감각 소통 4문장 순서
+    why: 쓸 수 있는 보조기를 먼저 찾고, 그것을 쓴 채 말하는 법을 정하고, 말 외의 촉각 신호를 더한 뒤, 전체 원칙으로 마무리해요.
+    lines:
+    - ["We can use his hearing aids and a large-print board.", board, "보청기와 큰 글씨 소통판을 쓸 수 있어요", "도구 확인"]
+    - ["With those on, I'll face him and speak clearly on his better side.", speech, "그걸 쓴 채 잘 들리는 쪽에서 또렷하게 말할게요", "말하는 법"]
+    - ["Beyond speaking, a gentle touch on his arm will let him know I'm here.", handshake2, "말 외에도 팔을 부드럽게 만지면 제가 있다는 걸 알아요", "촉각 신호"]
+    - ["Through all of this, we'll keep things simple and predictable for him.", shield, "이 모든 걸 통해 간단하고 예측 가능하게 유지할게요", "원칙"]
+- title: 통역 통한 목표설정 대화
+  s:
+  - ["통역 약속", mic, "will convey는 통역사가 바꾸지 않고 건넨다는 뜻이에요. carefully가 중요한 내용이라 조심스럽게 옮긴다는 약속이에요.", "from the start", "통역사가 모든 것을 또렷하게 전달할 거예요.", "통역사가 모든 것을 기록해 줄 거예요.", "carefully", "quickly", "loosely", "roughly"]
+  - ["가치 질문", bulb, "what matters most to him은 의학 정보가 아니라 환자의 삶에서 중요한 것을 묻는 틀이에요. 목표설정 대화의 출발점이에요.", "about the plan", "그분에게 가장 두려운 것에 대해 이야기해봐요.", "그분이 가장 좋아하는 것에 대해 이야기해봐요.", "matters", "scares", "hurts", "changes"]
+  - ["여유 주기", calendar, "Please take your time은 대답을 재촉하지 않는 부탁이에요. there's no rush가 같은 뜻을 한 번 더 말해 압박을 줄여요.", "with this", "앉으세요, 서두를 필요 없어요.", "좀 쉬세요, 서두를 필요 없어요.", "your", "my", "our", "his"]
+  - ["가족 가치 이해", faceWorried, "I want to understand는 판단이 아니라 이해하려는 의도를 먼저 밝혀요. what's important to your family가 질문의 범위를 가족 전체로 넓혀요.", "today", "당신 가족에게 무엇이 필요한지 이해하고 싶어요.", "당신 가족에게 무엇이 걱정인지 이해하고 싶어요.", "understand", "judge", "decide", "change"]
+  - ["정답 없음", check, "no right or wrong answers는 가족이 틀릴까 봐 말을 아끼지 않게 해요. 목표설정 대화는 의견을 묻는 자리라는 걸 알려요.", "about this", "여기서는 맞고 틀린 질문이 없어요.", "여기서는 크고 작은 답이 없어요.", "answers", "rules", "doors", "chairs"]
+  - ["통역사 신뢰", mic, "is trained for는 통역사가 이런 대화를 위해 준비된 사람이라는 근거예요. 어려운 대화를 통역에 맡겨도 된다는 신뢰를 줘요.", "in two languages", "통역사는 이런 대화를 위해 선택됐어요.", "통역사는 이런 대화를 위해 대기하고 있어요.", "trained", "paid", "chosen", "late"]
+  - ["단계 안내", compass, "one step at a time은 한꺼번에 결정하지 않고 쪼개서 간다는 관용구예요. 무거운 대화의 부담을 줄여 줘요.", "together", "한 사람씩 함께 나아갈게요.", "한 주씩 함께 나아갈게요.", "step", "day", "word", "question"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 목표설정 4문장 순서
+    why: 통역을 약속하고, 가장 중요한 것을 묻고, 가족의 가치를 이해하려는 뜻을 말한 뒤, 한 단계씩 가자고 맺어요.
+    lines:
+    - ["The interpreter will convey everything carefully.", mic, "통역사가 모든 것을 조심스럽게 전달할 거예요", "통역 약속"]
+    - ["With that in place, let's talk about what matters most to him.", bulb, "그게 마련되었으니 그분에게 가장 중요한 것을 이야기해봐요", "가치 질문"]
+    - ["As we talk, I want to understand what's important to your family.", faceWorried, "이야기하며 가족에게 중요한 것을 이해하고 싶어요", "이해 의도"]
+    - ["Whatever comes up, we'll take it one step at a time.", compass, "무엇이 나오든 한 단계씩 해요", "단계 약속"]

@@ -1,0 +1,58 @@
+situations:
+- title: 다국어 약물·안전 교육
+  s:
+  - ["약물 목록", pill, "in your language는 환자가 읽을 수 있는 언어로 된 자료라는 뜻이에요. Here's로 건네면서 말하면 자료를 눈앞에 보여 주는 말이 돼요.", "for tonight", "여기 당신 언어로 된 식단 목록이 있어요.", "여기 당신 언어로 된 약물 영상이 있어요.", "medication", "diet", "exercise", "visitor"]
+  - ["투여 시연 요청", pill, "Show me는 말로 답하는 대신 직접 해 보라는 요청이에요. how you'd give는 가정형이라 아직 틀려도 괜찮은 연습이라는 느낌을 줘요.", "with a spoon", "이 약을 어떻게 보관할지 보여주세요.", "이 용량을 언제 줄지 보여주세요.", "give", "store", "stop", "refill"]
+  - ["되말하기 요청", speech, "Tell me back의 back이 들은 내용을 되돌려 말하라는 뜻이에요. when you'd call the doctor가 말하게 할 구체적인 내용을 정해요.", "in your words", "언제 의사에게 전화할지 다시 적어보세요.", "어떻게 의사에게 전화할지 다시 말해보세요.", "back", "later", "first", "twice"]
+  - ["그림 안내", board, "pictures for each medicine은 글을 못 읽어도 약을 구별할 수 있게 해 줘요. each를 붙여서 약마다 하나씩 있다는 점을 알려요.", "in each row", "이 안내지에는 약마다 이름이 있어요.", "이 안내지에는 약마다 색이 있어요.", "pictures", "prices", "colors", "stamps"]
+  - ["투여 연습", play, "Let's practice는 함께 연습하자는 제안이라 틀려도 되는 분위기를 만들어요. measuring이 정확히 재는 동작을 연습한다는 뜻이에요.", "with water", "용량 재는 것을 함께 읽어봐요.", "약 먹는 것을 함께 연습해봐요.", "measuring", "ordering", "storing", "pricing"]
+  - ["누락 대처 질문", bulb, "What would you do는 지시가 아니라 가정 질문이에요. 환자가 어떻게 생각하는지 알아보고 필요한 부분만 바로잡을 수 있어요.", "last night", "용량이 남았다면 어떻게 하시겠어요?", "용량을 잃어버렸다면 어떻게 하시겠어요?", "missed", "doubled", "dropped", "spilled"]
+  - ["연락 안내", bell, "Call this number는 짧은 명령형이라 언어가 서툴러도 이해하기 쉬워요. if anything feels wrong이 모호하지만 넓은 조건이라 작은 이상도 연락해도 된다는 뜻이에요.", "any time", "약이 떨어지면 이 번호로 전화하세요.", "비용이 걱정되면 이 번호로 전화하세요.", "wrong", "empty", "cold", "heavy"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 약물 교육 4문장 순서
+    why: 약물 목록을 건네고, 함께 용량 재기를 연습하고, 연습한 뒤 직접 투여를 보여 달라고 한 다음, 마지막에 의사에게 전화할 때를 되말하게 해요.
+    lines:
+    - ["Here's the medication list in your language.", pill, "여기 당신 언어로 된 약물 목록이 있어요", "자료 건넴"]
+    - ["Let's practice measuring the dose together, using that list.", play, "그 목록으로 용량 재는 것을 함께 연습해봐요", "함께 연습"]
+    - ["After we practice, show me how you'd give this dose.", pill, "연습한 뒤 이 용량을 어떻게 줄지 보여주세요", "시연"]
+    - ["Last, tell me back when you'd call the doctor.", speech, "마지막으로 언제 의사에게 전화할지 다시 말해보세요", "되말하기"]
+- title: 원격 통역 활용
+  s:
+  - ["기기 준비", monitor, "I'll bring은 환자가 찾지 않아도 내가 가져온다는 약속이에요. to the bedside가 장비가 놓일 곳을 알려 줘서 환자가 어디를 보면 되는지 알아요.", "on a cart", "영상 통역 기기를 복도로 가져올게요.", "영상 통역 기기를 간호사실로 가져올게요.", "bedside", "lobby", "cafeteria", "hallway"]
+  - ["화면 배치", monitor, "so she can see clearly는 화면을 놓는 목적이에요. 영상 통역은 화면이 보여야 의미가 있어서 배치가 먼저예요.", "near the window", "화면을 그녀가 편안하게 볼 수 있게 놓을게요.", "스피커를 그녀가 또렷하게 들을 수 있게 놓을게요.", "position", "clean", "lock", "cover"]
+  - ["말 멈춤", calendar, "I'll pause는 내가 속도를 늦춘다는 뜻이에요. so the interpreter can keep up이 멈추는 이유를 알려 줘요.", "at the door", "통역사가 쉴 수 있게 잠깐 멈출게요.", "환자가 쉴 수 있게 잠깐 멈출게요.", "pause", "hurry", "shout", "rush"]
+  - ["청취 확인", speaker, "Can everyone으로 한 사람이 아니라 모두에게 묻는 형태예요. 통역이 한 사람만 알아듣고 끝나지 않게 해요.", "in this room", "모두 통역사가 편하게 들리세요?", "모두 통역사가 보이세요?", "hear", "see", "touch", "feel"]
+  - ["짧게 끊기", speech, "in short pieces는 통역사가 한 번에 옮길 만큼만 말한다는 뜻이에요. so nothing is missed가 이유를 붙여 줘요.", "for the screen", "겹치는 것 없게 짧게 끊어서 말할게요.", "놓치는 것 없게 짧게 끊어서 적을게요.", "short", "long", "loud", "fast"]
+  - ["연결 시험", gear, "Let's test는 함께 확인하자는 제안이에요. before we start가 시작 전에 확인해야 하는 이유를 시점으로 못 박아요.", "with the cart", "시작하기 전에 연결 상태를 공유해볼게요.", "시작하기 전에 화면 밝기를 확인해볼게요.", "connection", "volume", "camera", "screen"]
+  - ["답변 대기", calendar, "Please wait for ... to finish는 통역사가 말을 끝낼 때까지 기다리라는 뜻이에요. before you answer로 대답할 순서를 못 박아요.", "for your turn", "통역사가 끝낼 때까지 기다렸다가 글로 답해주세요.", "통역사가 올 때까지 기다렸다가 답해주세요.", "finish", "start", "leave", "arrive"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 원격 통역 4문장 순서
+    why: 시작 전에 연결을 시험하고, 화면을 배치하고, 말을 짧게 끊겠다고 알린 뒤, 답하기 전에 통역이 끝나길 기다리게 해요.
+    lines:
+    - ["Let's test the connection before we start.", gear, "시작하기 전에 연결 상태를 확인해볼게요", "연결 시험"]
+    - ["Once that works, let's position the screen so she can see clearly.", monitor, "연결이 되면 화면을 또렷하게 보이게 놓을게요", "화면 배치"]
+    - ["With the screen set, I'll speak in short pieces so nothing is missed.", speech, "화면이 자리 잡으면 놓치는 것 없게 짧게 말할게요", "말하는 법"]
+    - ["After each piece, please wait for the interpreter to finish before you answer.", calendar, "한 마디씩 끝나면 통역이 끝난 뒤에 답해주세요", "답변 순서"]
+- title: 소통 오류 확인·재확립
+  s:
+  - ["이해 맞추기", compass, "on the same page는 같은 내용을 같은 뜻으로 이해한다는 관용구예요. Let's make sure가 확인을 함께 하자는 제안이에요.", "before we go on", "우리 가족 모두 같은 이해를 하고 있는지 확실히 해봐요.", "우리 둘 다 같은 이해를 하고 있는지 기록해봐요.", "page", "side", "team", "floor"]
+  - ["되말하기 요청", speech, "tell me back에서 back은 들은 내용을 내게 되돌려 달라는 뜻이에요. 이해한 만큼 그대로 알 수 있어요.", "in short", "이해하신 걸 다시 그려주시겠어요?", "원하신 걸 다시 말해주시겠어요?", "tell", "show", "send", "give"]
+  - ["설명 보완", bulb, "so there's no confusion은 설명을 다시 하는 목적이에요. that part가 전체가 아니라 헷갈린 부분만 짚는다는 뜻이에요.", "with a drawing", "혼란이 없게 그 부분을 기록할게요.", "혼란이 없게 그 부분을 줄일게요.", "clarify", "hide", "cancel", "delete"]
+  - ["내 잘못으로 돌리기", faceWorried, "I think I explained poorly로 설명이 부족했던 탓을 내게 돌려요. 환자가 못 알아들은 책임을 느끼지 않게 해요.", "this morning", "제가 그 부분을 빠르게 설명한 것 같아요, 다시 해볼게요.", "제가 그 부분을 서투르게 적은 것 같아요, 다시 해볼게요.", "poorly", "quickly", "fully", "twice"]
+  - ["이해 질문", magnify, "What did you understand from는 '알아들었어요?'처럼 예·아니오로 답하게 하지 않아요. 환자가 이해한 내용을 직접 말하게 해요.", "from the form", "제가 한 말에서 무엇을 예상하셨어요?", "제가 한 말에서 무엇이 걱정되셨어요?", "understand", "remember", "expect", "want"]
+  - ["정정", redo, "That's not quite what I meant는 내가 잘못 말했음을 인정하는 틀이에요. let me correct that이 바로 고치겠다는 약속이에요.", "at all", "제가 말하려던 건 그게 아니었어요, 다시 적을게요.", "제가 말하려던 건 그게 아니었어요, 사과드릴게요.", "meant", "said", "wrote", "asked"]
+  - ["감사 표현", handshake2, "Thank you for telling me로 혼란을 말한 행동을 고마워하면 환자가 다음에도 솔직하게 말해요.", "last night", "화가 나셨다고 말씀해 주셔서 감사해요.", "피곤하셨다고 말씀해 주셔서 감사해요.", "confused", "angry", "tired", "upset"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 오류 바로잡기 4문장 순서
+    why: 먼저 이해한 내용을 묻고, 혼란을 말해 준 데 감사하고, 내 설명을 고쳐 다시 한 뒤, 두 번째로 이해를 확인해요.
+    lines:
+    - ["What did you understand from what I said?", magnify, "제가 한 말에서 무엇을 이해하셨어요", "이해 질문"]
+    - ["Thank you for telling me you were confused.", handshake2, "혼란스러우셨다고 말씀해 주셔서 감사해요", "감사"]
+    - ["I think I explained that part poorly — let me try again.", faceWorried, "그 부분을 서투르게 설명한 것 같아요 다시 해볼게요", "다시 설명"]
+    - ["This time, can you tell me back what you understood?", speech, "이번에는 이해하신 걸 다시 말해주시겠어요", "재확인"]

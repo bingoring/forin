@@ -1,0 +1,184 @@
+"가족 참여 돌봄":
+  - kind: slider
+    words: [w-enjoy]
+    cue: "Family: \"That was his favorite album — he adored it.\""
+    scale: [like, enjoy, love]
+    answerAt: 2
+    why: "like는 무난하게 좋아하는 정도예요. enjoy는 즐겁게 누린다는 뜻이고, love는 아주 아끼고 사랑한다는 뜻이에요."
+    example: "Play some music he used to enjoy."
+    exKo: "그분이 즐겨 듣던 음악을 틀어 드려도 돼요."
+  - kind: context
+    words: [w-care]
+    word: care
+    ko: 돌봄
+    scenes:
+      - {who: 보호자에게, icon: me, en: "Sitting with him is care too — it matters.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Son assisted with oral care; mouth moist, lips intact.", ok: true}
+      - {who: 야간 인계, icon: monitor, en: "Son did the fun care stuff with the lip thing.", ok: false, fix: "Son assisted with oral care and lip moisturizing."}
+    why: "가족에게는 곁에 있는 것도 돌봄이라고 말해 주고, 동료에게는 무엇을 했는지 정확히 전해요. 장난스러운 표현은 인계에 맞지 않아요."
+"예후 불확실성 소통":
+  - kind: slider
+    words: [w-serious, w-critical]
+    cue: "Nurse: \"His numbers have stayed in a safe range for two days.\""
+    scale: [stable, serious, critical]
+    answerAt: 0
+    why: "stable은 상태가 안정적으로 유지된다는 뜻이에요. serious는 심각해서 계속 지켜봐야 하는 상태고, critical은 위중해서 하루하루가 고비인 상태예요."
+    example: "His condition is serious right now."
+    exKo: "지금 상태가 심각해요."
+  - kind: reel
+    words: [w-hope]
+    word: hope
+    scenes:
+      - {who: "간호사 → 가족", en: "We're hoping for the best while preparing for all outcomes.", ko: "최선을 바라면서 모든 결과에 대비하고 있어요.", tone: 균형}
+      - {who: "가족 → 간호사", en: "I'm hoping she wakes up tomorrow.", ko: "내일 깨어나면 좋겠어요.", tone: 간절}
+      - {who: "차트 기록", en: "Family hopeful for full recovery; goals-of-care discussion planned.", ko: "가족은 완전한 회복을 바라고 있음; 목표 논의 예정.", tone: 담담}
+      - {who: "보호자에게는…", en: "It's okay to hope, and I'll always tell you honestly what I'm seeing.", ko: "바라셔도 괜찮아요. 제가 보는 것은 언제나 솔직하게 말씀드릴게요.", tone: 진솔, swap: true}
+    feels: [간절한 마음, 균형 잡힌 말, 약속은 아님, 차트엔 담담히]
+    why: "hope는 결과를 약속하는 말이 아니라 바라는 마음이에요. 가족의 바람은 인정하되, 간호사는 '그렇게 될 거예요'라고 장담하지 않고 지금 보이는 것을 솔직하게 말해요."
+"소아 방문·형제 지원":
+  - kind: slider
+    words: [w-scared]
+    cue: "Child: \"I just don't know what it will look like.\""
+    scale: [nervous, scared, terrified]
+    answerAt: 0
+    why: "nervous는 조마조마하고 긴장된 정도예요. scared는 겁이 나는 상태고, terrified는 몸이 얼어붙을 만큼 무서운 상태예요."
+    example: "Siblings can feel scared too."
+    exKo: "형제자매도 무서울 수 있어요."
+  - kind: swap
+    words: [w-word, w-understand]
+    who: "7세 아이에게 · 인공호흡기 설명"
+    icon: me
+    before: ["The ", "mechanical ventilator", " is helping Mommy breathe right now."]
+    options: [breathing machine, mechanical ventilator, respiratory apparatus]
+    answer: breathing machine
+    notes: {breathing machine: "아이가 알아듣는 쉬운 말이에요. 기계가 하는 일이 그대로 보여요.", mechanical ventilator: "의료진 용어라 아이는 무슨 기계인지 몰라요.", respiratory apparatus: "어른도 어려운 딱딱한 말이라 아이에게는 더 무서워요."}
+    why: "아이에게는 기계의 이름보다 그 기계가 하는 일을 쉬운 말로 알려 주세요."
+    ko: "숨쉬기 기계가 지금 엄마가 숨 쉬는 걸 돕고 있어요"
+"원격 가족 소통":
+  - kind: slider
+    words: [w-ready]
+    cue: "Nurse: \"Everyone is connected, and he can see you right now.\""
+    scale: [set up, ready, live]
+    answerAt: 2
+    why: "set up은 장비를 설치해 둔 단계예요. ready는 곧바로 연결할 수 있는 단계고, live는 지금 실제로 연결되어 보이는 상태예요."
+    example: "The call is ready."
+    exKo: "통화 준비가 됐어요."
+  - kind: context
+    words: [w-camera, w-angle]
+    word: camera
+    ko: 카메라
+    scenes:
+      - {who: 보호자에게, icon: me, en: "I've angled the camera so you can see her face.", ok: true}
+      - {who: 동료에게, icon: monitor, en: "Can you move the camera toward the bed? He can't see her face.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Did the camera thing with the son, I guess it worked.", ok: false, fix: "Video call with son via bedside camera; patient viewed for 10 minutes."}
+    why: "가족에게는 보이게 해 드렸다고 쉽게 말하고, 동료에게는 무엇을 옮겨 달라는지 분명히 말해요. 차트에는 '그런 것 같다' 대신 무엇을 몇 분 했는지 남겨요."
+"임종 임박 나쁜 소식 전달":
+  - kind: slider
+    words: [w-reverse, w-treatment]
+    cue: "Doctor: \"We can't bring his lungs back to the way they were.\""
+    scale: [slow, stop, reverse]
+    answerAt: 2
+    why: "치료로 늦추는 것(slow)보다 멈추는 것(stop)이, 그보다 되돌리는 것(reverse)이 더 큰 일이에요. 이 장면에서는 되돌릴 수 없다는 말이에요."
+    example: "Treatment cannot reverse the damage."
+    exKo: "치료로 손상을 되돌릴 수는 없어요."
+  - kind: swap
+    words: [w-keep, w-comfortable]
+    who: "가족에게 · 임종기 돌봄 설명"
+    icon: me
+    before: ["We'll keep him ", "sedated", " and you can be with him."]
+    options: [comfortable, sedated, medicated]
+    answer: comfortable
+    notes: {comfortable: "돌봄의 목표를 그대로 말해요. 고통과 불안을 덜어 준다는 뜻이에요.", sedated: "의식을 없앤다는 인상을 줘서 가족이 곁에 있어도 소용없다고 오해할 수 있어요.", medicated: "약을 쓴다는 사실만 있고 무엇을 위한 것인지 빠져 있어요."}
+    why: "임종기 돌봄은 약 이름이 아니라 '편안하게'라는 목표로 말해요."
+    ko: "그분을 편안하게 해 드릴 거고, 곁에 계실 수 있어요"
+"가족 급성 비탄·위기 대응":
+  - kind: slider
+    words: [w-shock]
+    cue: "Nurse notes: \"She stands frozen, can't speak, and doesn't seem to hear me.\""
+    scale: [surprised, upset, in shock]
+    answerAt: 2
+    why: "surprised는 놀란 정도예요. upset은 속상하고 마음이 상한 상태고, in shock은 충격으로 멍해져 말과 움직임이 멈춘 상태예요."
+    example: "This is a normal response to shock."
+    exKo: "충격에 대한 자연스러운 반응이에요."
+  - kind: swap
+    words: [w-quiet, w-space, w-get]
+    who: "가족에게 · 위기 대응"
+    icon: me
+    before: ["Let me get you a ", "private, low-stimulus environment", " and someone to support you."]
+    options: [quiet space, private low-stimulus environment, secluded area]
+    answer: quiet space
+    notes: {quiet space: "누구나 알아듣는 쉬운 말이에요. 조용히 쉴 곳이라는 뜻이 바로 와요.", private low-stimulus environment: "딱딱한 업무 용어라 위로가 안 돼요.", secluded area: "외딴 곳처럼 들려 가족이 혼자 남겨진다고 느낄 수 있어요."}
+    why: "급성 비탄 중인 가족에게는 짧고 따뜻한 쉬운 말로 말해요."
+    ko: "조용한 공간과 곁을 지켜줄 분을 마련해 드릴게요"
+"목표 불일치·갈등 중재":
+  - kind: slider
+    words: [w-side]
+    cue: "Nurse: \"You each see it a little differently — that's all.\""
+    scale: [differ, disagree, clash]
+    answerAt: 0
+    why: "differ는 생각이 조금 다르다는 뜻이에요. disagree는 의견이 맞서는 상태고, clash는 부딪쳐 크게 다투는 상태예요."
+    example: "Let's hear both sides fully."
+    exKo: "두 분 이야기를 다 들어봐요."
+  - kind: context
+    words: [w-ethics]
+    word: ethics
+    ko: 윤리
+    scenes:
+      - {who: 보호자에게, icon: me, en: "The ethics team can help us find a way forward.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Ethics consult requested for family disagreement on goals of care.", ok: true}
+      - {who: 야간 인계, icon: monitor, en: "Ethics is coming because the sons are fighting again.", ok: false, fix: "Ethics consult is pending for the sons' disagreement about goals of care."}
+    why: "가족에게는 도와주는 팀이라고 소개하고, 동료에게는 무슨 일로 의뢰했는지 중립적으로 전해요. 가족을 싸우는 사람처럼 말하는 건 인계에 맞지 않아요."
+"대리결정 부재 상황":
+  - kind: slider
+    words: [w-hard]
+    cue: "Nurse: \"This is more painful than anyone should have to go through.\""
+    scale: [tough, hard, heartbreaking]
+    answerAt: 2
+    why: "tough는 힘들어도 버틸 만한 정도예요. hard는 쉽지 않다는 뜻이고, heartbreaking은 가슴이 무너질 만큼 아프다는 뜻이에요."
+    example: "This is hard, even for someone like you."
+    exKo: "이건 힘든 일이에요."
+  - kind: context
+    words: [w-process]
+    word: process
+    ko: 절차
+    scenes:
+      - {who: 보호자에게, icon: me, en: "We follow a set process, and you won't be alone in it.", ok: true}
+      - {who: 차트 기록, icon: board, en: "No proxy identified; surrogate process started per hospital policy.", ok: true}
+      - {who: 야간 인계, icon: monitor, en: "The whole process thing is a mess; maybe ethics will sort it out.", ok: false, fix: "Surrogate process is in progress; ethics consult requested."}
+    why: "가족에게는 정해진 절차가 있고 혼자가 아니라고 안심시키고, 동료에게는 지금 어디까지 진행됐는지 정확히 전해요. 엉망이라는 평가는 인계에 맞지 않아요."
+"분노·불신 가족 대응":
+  - kind: slider
+    words: [w-hide]
+    cue: "Family: \"You deliberately kept the mistake from us!\""
+    scale: [leave out, hold back, hide]
+    answerAt: 2
+    why: "leave out은 빠뜨린 정도예요. hold back은 일부러 말하지 않은 것이고, hide는 감추려고 숨긴 것이에요. 화난 가족은 hide로 느끼는 경우가 많아요."
+    example: "Nothing is being hidden."
+    exKo: "숨기는 건 아무것도 없어요."
+  - kind: context
+    words: [w-chart]
+    word: chart
+    ko: 차트
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Let me pull up the chart so we can check the timeline.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Chart reviewed with family at bedside; questions answered.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Chart shows lactate trending down, MAP 70 on norepinephrine.", ok: false, fix: "Let me pull up the chart and show you how his numbers are changing."}
+    why: "동료와는 정확한 임상 용어로 확인해도 되지만, 화난 가족에게는 수치 나열 대신 함께 보며 쉬운 말로 풀어 줘요. 가족이 차트를 보게 하는 범위는 병원 규정과 대리결정자 권한을 확인해요."
+"사별·애도 지원·후속":
+  - kind: slider
+    words: [w-grief]
+    cue: "Wife: \"I can't breathe... I don't know how to go on without him.\""
+    scale: [sadness, sorrow, grief]
+    answerAt: 2
+    why: "sadness는 일반적인 슬픔이에요. sorrow는 깊은 슬픔을 말하는 문어적인 말이고, grief는 소중한 사람을 잃은 뒤의 깊은 애도를 가리켜요."
+    example: "Here is information on grief support."
+    exKo: "애도 지원에 관한 안내예요."
+  - kind: context
+    words: [w-grief]
+    word: grief
+    ko: 애도
+    scenes:
+      - {who: 보호자에게, icon: me, en: "I'll give you information on grief support when you're ready.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Grief support information given to wife; chaplain notified.", ok: true}
+      - {who: 야간 인계, icon: monitor, en: "Gave the grief packet, she took it, whatever.", ok: false, fix: "Grief support packet given to wife; chaplain notified."}
+    why: "가족에게는 준비되면 안내하겠다고 부드럽게 말하고, 동료에게는 무엇을 전했는지 정확히 알려요. 무성의한 말투는 인계에서도 쓰지 않아요."

@@ -1,0 +1,91 @@
+situations:
+- title: VTE 예방 금기·조정
+  s:
+  - ["위험 견주기", chartup, "'weigh A against B'는 두 위험을 저울에 올려 견준다는 관용구예요. 출혈 위험과 혈전 위험은 서로 반대로 당기는 문제예요.", "his clotting risk", "출혈 위험이 있으니 VTE 치료와 견주어 봐요.", "출혈 위험이 있으니 낙상 예방과 견주어 봐요.", "weigh", "pair", "match", "count"]
+  - ["금기 판단", lock, "'With his bleeding risk'로 판단의 근거를 문장 앞에 놓아요. 출혈 위험이 있으면 항응고 계열 약물은 보류하는 것이 일반적이에요.", "With his fall risk", "알레르기 때문에 지금은 약물 예방이 금기예요.", "수술 때문에 지금은 약물 예방이 금기예요.", "bleeding", "fall", "allergy", "fever"]
+  - ["대체 방법", shield, "'instead'는 앞서 막힌 방법 대신 쓸 방법을 말할 때 붙여요. 약물을 못 쓰면 기계적 예방이 남아요.", "instead of waiting", "대신 산소 치료에 의존할게요.", "대신 수액 치료에 의존할게요.", "instead", "also", "later", "again"]
+  - ["재평가 조건", redo, "'when'으로 재사정할 때를 조건으로 말해요. 출혈 위험은 변하므로 지켜보다가 나아지면 다시 판단해요.", "when his lab returns", "붓기가 나아지면 재사정할게요.", "열이 나아지면 재사정할게요.", "bleeding", "pain", "nausea", "hunger"]
+  - ["기기 사용", gear, "'while'은 금기가 이어지는 기간 동안이라는 뜻이에요. 그 기간에 순차 압박기기가 예방을 맡아요.", "while we wait", "약물 예방이 금기인 동안 공기 매트리스를 쓸게요.", "약물 예방이 금기인 동안 전기 담요를 쓸게요.", "compression", "heating", "cooling", "infusion"]
+  - ["약물 재개", pill, "'Once'는 조건이 풀리는 순간부터라는 뜻이고 'back'은 이전 상태로 돌린다는 뜻이에요. 위험이 줄면 약물 예방을 다시 쓸 수 있어요.", "Once his pain improves", "출혈 위험이 나아지면 기계적 예방을 다시 추가할게요.", "출혈 위험이 나아지면 압박양말을 다시 추가할게요.", "improves", "occurs", "starts", "peaks"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: VTE 예방 금기 조정 4문장 순서
+    why: 출혈 위험을 두고 저울질하고, 약물이 금기라고 판단하고, 그 기간에는 기기를 쓰고, 위험이 나아지면 약물을 다시 추가해요.
+    lines:
+    - ["He's got a bleeding risk, so let's weigh it against VTE prevention.", chartup, "출혈 위험이 있으니 VTE 예방과 견주어 봐요", "저울질"]
+    - ["With that risk, chemical prophylaxis is contraindicated for now.", lock, "그 위험 때문에 지금은 약물 예방이 금기예요", "금기"]
+    - ["We'll use the compression devices while that's the case.", gear, "그런 상태인 동안 압박기기를 쓸게요", "대체"]
+    - ["Once it improves, we'll add chemical prophylaxis back.", pill, "나아지면 약물 예방을 다시 추가할게요", "재개"]
+- title: 재활팀 협업 계획
+  s:
+  - ["협업 제안", handshake2, "'Let's'로 시작해 함께 한다는 분위기를 만들어요. PT와 OT는 각자 다른 영역을 맡는 재활 전문가예요.", "on a feeding plan", "물리치료사, 작업치료사와 퇴원 계획을 조율해요.", "물리치료사, 작업치료사와 수면 계획을 조율해요.", "mobility", "feeding", "staffing", "pain"]
+  - ["역할 구분", board, "'PT will … and OT will …'로 두 직종의 역할을 나란히 말해요. 이동은 PT가, 일상 기능은 OT가 주로 다뤄요.", "OT will work on speech", "물리치료사는 이동 능력을 진행시키고 작업치료사는 호흡을 다뤄요.", "물리치료사는 수면을 진행시키고 작업치료사는 기능을 다뤄요.", "function", "diet", "breathing", "medication"]
+  - ["목표와 일정", calendar, "'shared goals'는 모두가 같은 목표를 본다는 말이에요. 'and'로 목표 설정과 일정 조율을 한꺼번에 묶어요.", "shared costs", "공동 규칙을 정하고 세션 일정을 잡아요.", "공동 목표를 정하고 면회 일정을 잡아요.", "shared", "separate", "private", "hidden"]
+  - ["매일 보고", speech, "'each day'로 알려 주는 주기를 못 박아요. 내성은 그날 환자가 활동을 견딘 정도라 매일 달라져요.", "each week", "매일 그의 배변 상태를 알려줄게요.", "매일 그의 수면 상태를 알려줄게요.", "tolerance", "appetite", "visitors", "mood"]
+  - ["피로 관리", faceWorried, "'so he doesn't get too tired'로 목적을 부정형으로 말해요. 세션이 몰리면 환자가 지쳐 참여하지 못해요.", "so he doesn't get sick", "너무 아프지 않게 세션을 조율하고 있어요.", "너무 지루하지 않게 세션을 조율하고 있어요.", "tired", "cold", "lonely", "angry"]
+  - ["팀 목표", handshake2, "'with the whole team'은 일부가 아니라 모두와 함께 정한다는 말이에요. 목표를 같이 정해야 모두 따라요.", "with the night team", "팀 전체와 함께 그의 체중 목표를 정할게요.", "팀 전체와 함께 그의 퇴원 목표를 정할게요.", "goals", "meals", "visits", "rooms"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 재활팀 협업 4문장 순서
+    why: 팀과 조율을 제안하고, 직종별 역할을 말한 뒤, 그 역할을 바탕으로 공동 목표와 일정을 정하고, 매일 상태를 알려요.
+    lines:
+    - ["Let's coordinate with PT and OT on a mobility plan.", handshake2, "물리치료사, 작업치료사와 이동 계획을 조율해요", "제안"]
+    - ["PT will progress his mobility and OT will work on function.", board, "물리치료사는 이동을, 작업치료사는 기능을 맡아요", "역할"]
+    - ["With those roles, let's set shared goals and schedule sessions.", calendar, "그 역할대로 공동 목표를 정하고 세션 일정을 잡아요", "목표"]
+    - ["I'll update you on his tolerance each day.", speech, "매일 그의 내성 상태를 알려줄게요", "보고"]
+- title: ICU 획득 쇠약 예방
+  s:
+  - ["쇠약 예방", shield, "'been down a while'은 오래 누워 있었다는 완곡한 말이에요. 오래 누워 있을수록 근력이 빨리 떨어져 미리 막아요.", "so let's feed her now", "누워 지낸 지 오래돼서 지금 ICU 획득 감염을 예방해요.", "누워 지낸 지 오래돼서 지금 ICU 획득 폐렴을 예방해요.", "weakness", "infection", "pneumonia", "anemia"]
+  - ["조기 이동 효과", run, "'helps prevent'는 확정이 아니라 위험을 줄인다는 표현이에요. 조기 이동은 근력 저하를 줄이는 대표적인 방법이에요.", "Early feeding", "조기 이동은 ICU 획득 빈혈을 예방하는 데 도움이 돼요.", "조기 이동은 ICU 획득 탈수를 예방하는 데 도움이 돼요.", "mobility", "sedation", "isolation", "fasting"]
+  - ["진정 줄이기", stetho, "'to keep her participating'으로 목적을 붙이면 진정을 줄이는 이유가 분명해요. 깊은 진정은 환자가 움직이는 것을 막아요.", "to keep her sleeping", "참여할 수 있게 방문을 최소화할게요.", "참여할 수 있게 소음을 최소화할게요.", "deep", "light", "brief", "mild"]
+  - ["핵심 요소", star, "'are key'로 핵심을 짧게 짚어요. 매일의 활동과 관절 운동이 꾸준히 이어져야 근력이 유지돼요.", "are risky", "매일의 활동과 수액 조절이 핵심이에요.", "매일의 활동과 투약 기록이 핵심이에요.", "key", "rare", "risky", "costly"]
+  - ["참여 설명", speech, "'Less sedation means'로 원인과 결과를 한 줄에 말해요. 진정이 줄면 환자가 깨어 스스로 움직일 수 있어요.", "More sedation means", "소음을 줄이면 자신의 돌봄에 참여할 수 있어요.", "조명을 줄이면 자신의 돌봄에 참여할 수 있어요.", "sedation", "noise", "light", "fluid"]
+  - ["위험 인지", monitor, "'I recognize … and I'm planning …'은 위험 인식과 계획을 한 문장에 이어요. 위험을 알고 행동까지 말하면 동료가 신뢰해요.", "and I'm planning meals", "ICU 획득 쇠약 위험을 인지하고 매일 식단을 계획하고 있어요.", "ICU 획득 쇠약 위험을 인지하고 매일 면회를 계획하고 있어요.", "activity", "visits", "meals", "fluids"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: ICU 획득 쇠약 예방 4문장 순서
+    why: 위험을 먼저 알리고, 조기 이동으로 막는다는 근거를 말하고, 진정을 줄여 참여를 높이고, 그래서 매일 활동이 핵심이라고 맺어요.
+    lines:
+    - ["She's been down a while, so let's prevent ICU-acquired weakness now.", shield, "누워 지낸 지 오래돼서 지금 ICU 획득 쇠약을 예방해요", "위험"]
+    - ["Early mobility helps with that, so we'll minimize deep sedation.", run, "조기 이동이 도움이 되니 깊은 진정을 최소화할게요", "근거"]
+    - ["With less sedation, she can participate in her own care.", speech, "진정이 줄면 자신의 돌봄에 참여할 수 있어요", "참여"]
+    - ["That's why daily activity and range of motion are key.", star, "그래서 매일의 활동과 관절가동범위가 핵심이에요", "결론"]
+- title: 점진적 좌위·의자 이동
+  s:
+  - ["단계 계획", run, "'step by step'은 한 번에 한 단계씩이라는 뜻이에요. 앉기에서 의자로 가는 사이에 환자가 견디는지 확인해요.", "to the window", "앉는 것부터 보행까지 단계별로 진행해요.", "앉는 것부터 서기까지 단계별로 진행해요.", "chair", "hallway", "window", "door"]
+  - ["첫 단계", check, "'First'로 첫 단계를 알리고 'check her tolerance'로 견디는지 보겠다고 해요. 침대 끝에서 앉은 채 어지러운지를 먼저 봐요.", "at the foot", "먼저 침대 머리를 올리고 내성을 확인할게요.", "먼저 침대 난간을 내리고 내성을 확인할게요.", "edge", "foot", "head", "corner"]
+  - ["의자 이동", handshake2, "'If she stays stable'은 조건이 맞을 때만 다음 단계로 간다는 말이에요. 안정적이어야 의자로 옮겨도 안전해요.", "if she stays calm", "안정적이면 화장실로 옮길게요.", "안정적이면 검사실로 옮길게요.", "chair", "bathroom", "scale", "lobby"]
+  - ["상태 관찰", monitor, "'at each step'은 단계마다 반복해서 본다는 뜻이에요. 활력징후만이 아니라 환자의 느낌도 함께 물어요.", "at each meal", "각 단계마다 활력징후와 표정을 살피고 있어요.", "각 단계마다 활력징후와 자세를 살피고 있어요.", "watching", "weighing", "bathing", "feeding"]
+  - ["진전 격려", star, "'now look at you'는 어제와 오늘을 견줘 진전을 눈에 보이게 해 줘요. 회복을 느끼면 다음 단계에 참여할 의지가 생겨요.", "you couldn't walk", "그녀에게 '지난주에는 혼자 못 앉았는데 — 지금 보세요'라고 말했어요.", "그녀에게 '어제는 혼자 못 걸었는데 — 지금 보세요'라고 말했어요.", "look", "listen", "wait", "point"]
+  - ["경과 보고", check, "과거형 'tolerated'는 이미 끝난 결과를 보고해요. 'with stable vitals'로 근거를 덧붙여 팀이 안심해요.", "with stable meals", "내내 활력징후가 안정적이었고 휠체어도 잘 견뎠어요.", "내내 활력징후가 안정적이었고 침대도 잘 견뎠어요.", "stable", "low", "high", "erratic"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 앉기에서 의자 이동 4문장 순서
+    why: 단계별 계획을 말하고, 침대 끝에서 먼저 견디는지 보고, 안정적이면 의자로 옮긴 뒤, 의자에서 잘 견뎠다고 보고해요.
+    lines:
+    - ["Let's progress her from sitting up to the chair, step by step.", run, "앉는 것부터 의자까지 단계별로 진행해요", "계획"]
+    - ["First we'll sit her at the edge and check her tolerance.", check, "먼저 침대 끝에 앉히고 내성을 확인할게요", "첫 단계"]
+    - ["If she stays stable there, we'll transfer her to the chair.", handshake2, "거기서 안정적이면 의자로 옮길게요", "이동"]
+    - ["She tolerated the chair well, with stable vitals the whole time.", monitor, "내내 활력징후가 안정적이었고 의자도 잘 견뎠어요", "결과"]
+- title: 영양·피부 통합 관리
+  s:
+  - ["영양과 치유", bulb, "'without enough'는 부족하면 안 된다는 조건을 부정으로 말해요. 영양이 모자라면 새 조직을 만들 재료가 모자라요.", "without enough sunlight", "충분한 소금 없이는 창상이 낫지 않아요.", "충분한 운동 없이는 창상이 낫지 않아요.", "nutrition", "salt", "sunlight", "exercise"]
+  - ["영양 요소", bulb, "'support'는 뒷받침한다는 뜻이라 'cause'보다 정확해요. 단백질은 새 조직의 재료이고 칼로리는 그 에너지예요.", "and support infection", "충분한 단백질과 카페인이 창상 치유를 돕습니다.", "충분한 단백질과 나트륨이 창상 치유를 돕습니다.", "calories", "caffeine", "sodium", "alcohol"]
+  - ["영양사 협업", handshake2, "'on his targets'로 무엇을 조율하는지 말해요. 환자마다 필요한 양이 달라 영양사와 맞춰요.", "on his meals", "영양사와 식사 시간을 조율할게요.", "영양사와 식단표를 조율할게요.", "targets", "meals", "menus", "trays"]
+  - ["함께 작용", shield, "'work together'는 둘이 합쳐져 효과가 난다는 뜻이에요. 영양이 좋아도 눌리면 낫지 않아요.", "work apart", "좋은 영양과 수면은 함께 작용해요.", "좋은 영양과 환기는 함께 작용해요.", "offloading", "sleeping", "stretching", "breathing"]
+  - ["목표 설정", pencil, "'with the dietitian'으로 함께 정하는 사람을 밝혀요. 단백질과 칼로리는 목표를 숫자로 정해요.", "with the doctor", "영양사와 함께 단백질과 수분 목표치를 정할게요.", "영양사와 함께 단백질과 나트륨 목표치를 정할게요.", "protein", "fluid", "sodium", "iron"]
+  - ["치유 속도", chartup, "'Better … helps … faster'는 개선이 속도로 이어진다는 인과를 말해요. 영양이 좋아지면 치유가 빨라져요.", "Better rest", "영양이 좋아지면 붓기가 더 빨리 사라져요.", "영양이 좋아지면 열이 더 빨리 내려요.", "heal", "bleed", "spread", "swell"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 영양과 창상 치유 4문장 순서
+    why: 영양이 부족하면 안 낫는다고 말하고, 필요한 영양소를 짚고, 영양사와 목표를 조율한 뒤, 영양이 좋아지면 치유가 빨라진다고 맺어요.
+    lines:
+    - ["His wounds won't heal without enough nutrition.", bulb, "충분한 영양 없이는 창상이 낫지 않아요", "문제"]
+    - ["Adequate protein and calories support that healing.", bulb, "충분한 단백질과 칼로리가 그 치유를 도와요", "요소"]
+    - ["With that in mind, I'll coordinate with the dietitian on his targets.", handshake2, "그걸 염두에 두고 영양사와 목표치를 조율할게요", "조율"]
+    - ["Better nutrition and offloading together help his wound heal faster.", chartup, "영양이 좋아지고 압력도 분산되면 창상이 더 빨리 나아요", "결론"]
