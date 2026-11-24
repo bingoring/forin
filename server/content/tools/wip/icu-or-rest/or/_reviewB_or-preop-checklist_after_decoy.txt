@@ -1,0 +1,634 @@
+
+## S0 체크리스트 항목 순차 점검
+0.0 decoy='a few forms' | ko: 수술 전에 몇 가지 확인할게요.
+   chunks: I'm going to / confirm / a few things / before your surgery / .
+   r0: [a few forms] confirm a few things before your surgery .
+   r1: I'm going to [a few forms] a few things before your surgery .
+   r2: I'm going to confirm [a few forms] before your surgery .
+   r3: I'm going to confirm a few things [a few forms] .
+0.1 decoy='and home address' | ko: 성함과 생년월일을 말씀해 주시겠어요?
+   chunks: Can you / tell me / your name / and date of birth / ?
+   r0: [and home address] tell me your name and date of birth ?
+   r1: Can you [and home address] your name and date of birth ?
+   r2: Can you tell me [and home address] and date of birth ?
+   r3: Can you tell me your name [and home address] ?
+0.2 decoy='What diet' | ko: 오늘 어떤 시술을 받으시나요?
+   chunks: What procedure / are you having / today / ?
+   r0: [What diet] are you having today ?
+   r1: What procedure [What diet] today ?
+   r2: What procedure are you having [What diet] ?
+0.3 decoy='from the start' | ko: 점검표를 단계별로 함께 확인할게요.
+   chunks: Let's go through / your checklist / step by step / .
+   r0: [from the start] your checklist step by step .
+   r1: Let's go through [from the start] step by step .
+   r2: Let's go through your checklist [from the start] .
+0.4 decoy='with a diagram' | ko: 진행하면서 각 단계를 설명해 드릴게요.
+   chunks: I'll explain / each step / as we go / .
+   r0: [with a diagram] each step as we go .
+   r1: I'll explain [with a diagram] as we go .
+   r2: I'll explain each step [with a diagram] .
+0.5 decoy='a standard sticker' | ko: 들어가시기 전에 하는 그냥 일상적인 확인이에요.
+   chunks: This is just / a routine check / before we / take you back / .
+   r0: [a standard sticker] a routine check before we take you back .
+   r1: This is just [a standard sticker] before we take you back .
+   r2: This is just a routine check [a standard sticker] take you back .
+   r3: This is just a routine check before we [a standard sticker] .
+
+## S1 검사 결과 도착 확인
+1.0 decoy='and the notes' | ko: 검사와 영상 결과가 전부 차트에 들어와 있나요?
+   chunks: Are all / the labs / and imaging / back in the chart / ?
+   r0: [and the notes] the labs and imaging back in the chart ?
+   r1: Are all [and the notes] and imaging back in the chart ?
+   r2: Are all the labs [and the notes] back in the chart ?
+   r3: Are all the labs and imaging [and the notes] ?
+1.1 decoy='and the history' | ko: CBC와 type-and-screen 둘 다 와 있어요.
+   chunks: The CBC / and type-and-screen / are both / here / .
+   r0: [and the history] and type-and-screen are both here .
+   r1: The CBC [and the history] are both here .
+   r2: The CBC and type-and-screen [and the history] here .
+   r3: The CBC and type-and-screen are both [and the history] .
+1.2 decoy='already signed' | ko: 아직 대기 중인 게 있으면 표시해 둘게요.
+   chunks: I'll flag / anything that's / still pending / .
+   r0: [already signed] anything that's still pending .
+   r1: I'll flag [already signed] still pending .
+   r2: I'll flag anything that's [already signed] .
+1.3 decoy='with the surgeon' | ko: 차트를 한 번 더 확인해 볼게요.
+   chunks: Let me check / the chart / one more time / .
+   r0: [with the surgeon] the chart one more time .
+   r1: Let me check [with the surgeon] one more time .
+   r2: Let me check the chart [with the surgeon] .
+1.4 decoy='a single result' | ko: 칼륨 결과가 아직 안 보이네요.
+   chunks: I don't see / the potassium result / yet / .
+   r0: [a single result] the potassium result yet .
+   r1: I don't see [a single result] yet .
+   r2: I don't see the potassium result [a single result] .
+
+## S2 정맥로 개통 확인
+2.0 decoy='is almost done' | ko: IV가 잘 흐르고 있는지 확인하고 있어요.
+   chunks: I'm checking / that your IV / is running well / .
+   r0: [is almost done] that your IV is running well .
+   r1: I'm checking [is almost done] is running well .
+   r2: I'm checking that your IV [is almost done] .
+2.1 decoy='any weight' | ko: 부위에 타는 듯한 느낌이 들면 말씀해 주세요.
+   chunks: Let me know / if you feel / any burning / at the site / .
+   r0: [any weight] if you feel any burning at the site .
+   r1: Let me know [any weight] any burning at the site .
+   r2: Let me know if you feel [any weight] at the site .
+   r3: Let me know if you feel any burning [any weight] .
+2.2 decoy='gentle pressure' | ko: 이 라인으로 수술 중에 수액과 약물이 들어가요.
+   chunks: This line / will give you / fluids and medication / during surgery / .
+   r0: [gentle pressure] will give you fluids and medication during surgery .
+   r1: This line [gentle pressure] fluids and medication during surgery .
+   r2: This line will give you [gentle pressure] during surgery .
+   r3: This line will give you fluids and medication [gentle pressure] .
+2.3 decoy='flush' | ko: IV 부위를 잠깐만 볼게요.
+   chunks: I just need to / look at / your IV site / for a second / .
+   r0: [flush] look at your IV site for a second .
+   r1: I just need to [flush] your IV site for a second .
+   r2: I just need to look at [flush] for a second .
+   r3: I just need to look at your IV site [flush] .
+2.4 decoy='no redness' | ko: 잘 흐르고 있고 붓기도 없어요.
+   chunks: It's flowing well / and there's / no swelling / .
+   r0: [no redness] and there's no swelling .
+   r1: It's flowing well [no redness] no swelling .
+   r2: It's flowing well and there's [no redness] .
+
+## S3 장신구·의치 제거 확인
+3.0 decoy='or sandals' | ko: 지금 반지나 피어싱, 틀니를 착용하고 계신가요?
+   chunks: Do you have / any rings, piercings, / or dentures / on / ?
+   r0: [or sandals] any rings, piercings, or dentures on ?
+   r1: Do you have [or sandals] or dentures on ?
+   r2: Do you have any rings, piercings, [or sandals] on ?
+   r3: Do you have any rings, piercings, or dentures [or sandals] ?
+3.1 decoy='the stretcher' | ko: 장비에 방해가 되지 않도록 금속은 제거해요.
+   chunks: We remove metal / so it doesn't / interfere with / the equipment / .
+   r0: [the stretcher] so it doesn't interfere with the equipment .
+   r1: We remove metal [the stretcher] interfere with the equipment .
+   r2: We remove metal so it doesn't [the stretcher] the equipment .
+   r3: We remove metal so it doesn't interfere with [the stretcher] .
+3.2 decoy='at the front desk' | ko: 소지품은 이름표를 붙인 가방에 보관해 드릴게요.
+   chunks: I'll keep / your belongings / in a labeled bag / for you / .
+   r0: [at the front desk] your belongings in a labeled bag for you .
+   r1: I'll keep [at the front desk] in a labeled bag for you .
+   r2: I'll keep your belongings [at the front desk] for you .
+   r3: I'll keep your belongings in a labeled bag [at the front desk] .
+3.3 decoy='for the record' | ko: 반지와 피어싱을 빼 주시겠어요?
+   chunks: Can you / take off / your ring and piercings / for me / ?
+   r0: [for the record] take off your ring and piercings for me ?
+   r1: Can you [for the record] your ring and piercings for me ?
+   r2: Can you take off [for the record] for me ?
+   r3: Can you take off your ring and piercings [for the record] ?
+3.4 decoy='on the lid' | ko: 잃어버리지 않게 가방에 성함을 써 둘게요.
+   chunks: I'll write your name / on the bag / so nothing / gets lost / .
+   r0: [on the lid] on the bag so nothing gets lost .
+   r1: I'll write your name [on the lid] so nothing gets lost .
+   r2: I'll write your name on the bag [on the lid] gets lost .
+   r3: I'll write your name on the bag so nothing [on the lid] .
+
+## S4 방광 비움 확인
+4.0 decoy='your pockets' | ko: 최근에 방광을 비우셨나요?
+   chunks: Have you emptied / your bladder / recently / ?
+   r0: [your pockets] your bladder recently ?
+   r1: Have you emptied [your pockets] recently ?
+   r2: Have you emptied your bladder [your pockets] ?
+4.1 decoy='to the scale' | ko: 아니면 지금 화장실 가시는 걸 도와드릴게요.
+   chunks: If not / , I can help you / to the restroom / now / .
+   r0: [to the scale] , I can help you to the restroom now .
+   r1: If not [to the scale] to the restroom now .
+   r2: If not , I can help you [to the scale] now .
+   r3: If not , I can help you to the restroom [to the scale] .
+4.2 decoy='very quiet' | ko: 이렇게 하면 시술 중에 더 편안하실 거예요.
+   chunks: This keeps you / comfortable / during the procedure / .
+   r0: [very quiet] comfortable during the procedure .
+   r1: This keeps you [very quiet] during the procedure .
+   r2: This keeps you comfortable [very quiet] .
+4.3 decoy='while we walk' | ko: 들어가시기 전에 화장실이 필요하면 말씀해 주세요.
+   chunks: Let me know / if you need / the restroom / before we go back / .
+   r0: [while we walk] if you need the restroom before we go back .
+   r1: Let me know [while we walk] the restroom before we go back .
+   r2: Let me know if you need [while we walk] before we go back .
+   r3: Let me know if you need the restroom [while we walk] .
+4.4 decoy='than to ask' | ko: 수술실에 들어가서 참는 것보다 지금 가시는 게 나아요.
+   chunks: It's better to go now / than to wait / once you're / in the OR / .
+   r0: [than to ask] than to wait once you're in the OR .
+   r1: It's better to go now [than to ask] once you're in the OR .
+   r2: It's better to go now than to wait [than to ask] in the OR .
+   r3: It's better to go now than to wait once you're [than to ask] .
+
+## S5 예방적 항생제 준비
+5.0 decoy='for review' | ko: 수술 전 항생제는 투여 준비가 됐어요.
+   chunks: The pre-op antibiotic / is ready / to give / .
+   r0: [for review] is ready to give .
+   r1: The pre-op antibiotic [for review] to give .
+   r2: The pre-op antibiotic is ready [for review] .
+5.1 decoy='the vial' | ko: 절개 전 60분 안에는 들어가야 해요.
+   chunks: We need / it in / within 60 minutes / before incision / .
+   r0: [the vial] it in within 60 minutes before incision .
+   r1: We need [the vial] within 60 minutes before incision .
+   r2: We need it in [the vial] before incision .
+   r3: We need it in within 60 minutes [the vial] .
+5.2 decoy='the lab result' | ko: 정확한 투여 시각을 기록해 둘게요.
+   chunks: I'll document / the exact time / it goes in / .
+   r0: [the lab result] the exact time it goes in .
+   r1: I'll document [the lab result] it goes in .
+   r2: I'll document the exact time [the lab result] .
+5.3 decoy='been signed off' | ko: 항생제는 미리 뽑아 뒀나요?
+   chunks: Has the antibiotic / been drawn up / yet / ?
+   r0: [been signed off] been drawn up yet ?
+   r1: Has the antibiotic [been signed off] yet ?
+   r2: Has the antibiotic been drawn up [been signed off] ?
+5.4 decoy="I'll show it" | ko: 집도의가 준비되는 대로 바로 투여할게요.
+   chunks: I'll give it / as soon as / the surgeon / is ready / .
+   r0: [I'll show it] as soon as the surgeon is ready .
+   r1: I'll give it [I'll show it] the surgeon is ready .
+   r2: I'll give it as soon as [I'll show it] is ready .
+   r3: I'll give it as soon as the surgeon [I'll show it] .
+
+## S6 혈액형·교차적합 미완료
+6.0 decoy='being washed' | ko: 교차적합 검사가 아직 미완료예요.
+   chunks: The crossmatch / is still / incomplete / .
+   r0: [being washed] is still incomplete .
+   r1: The crossmatch [being washed] incomplete .
+   r2: The crossmatch is still [being washed] .
+6.1 decoy='until a donor' | ko: 혈액이 준비될 때까지 보류할까요?
+   chunks: Should we hold / until blood / is available / ?
+   r0: [until a donor] until blood is available ?
+   r1: Should we hold [until a donor] is available ?
+   r2: Should we hold until blood [until a donor] ?
+6.2 decoy='to ask about it' | ko: 혈액은행에 전화해서 서둘러 달라고 할게요.
+   chunks: I'll call / the blood bank / to expedite it / .
+   r0: [to ask about it] the blood bank to expedite it .
+   r1: I'll call [to ask about it] to expedite it .
+   r2: I'll call the blood bank [to ask about it] .
+6.3 decoy='this ward' | ko: 혈액이 준비되지 않으면 이 건은 시작할 수 없어요.
+   chunks: We can't start / this case / without blood ready / .
+   r0: [this ward] this case without blood ready .
+   r1: We can't start [this ward] without blood ready .
+   r2: We can't start this case [this ward] .
+6.4 decoy='the platelet count' | ko: 교차적합 건은 검사실에 다시 확인해 볼게요.
+   chunks: Let me follow up / with the lab / on / the crossmatch / .
+   r0: [the platelet count] with the lab on the crossmatch .
+   r1: Let me follow up [the platelet count] on the crossmatch .
+   r2: Let me follow up with the lab [the platelet count] the crossmatch .
+   r3: Let me follow up with the lab on [the platelet count] .
+
+## S7 필수 검사 결과 누락
+7.0 decoy="isn't normal" | ko: 필수 칼륨 수치가 아직 안 나왔어요.
+   chunks: The required potassium level / isn't back / yet / .
+   r0: [isn't normal] isn't back yet .
+   r1: The required potassium level [isn't normal] yet .
+   r2: The required potassium level isn't back [isn't normal] .
+7.1 decoy='the lab' | ko: 결과가 나올 때까지 이 건은 보류할까요?
+   chunks: Do we hold / the case / until it results / ?
+   r0: [the lab] the case until it results ?
+   r1: Do we hold [the lab] until it results ?
+   r2: Do we hold the case [the lab] ?
+7.2 decoy='decide' | ko: 집도의와 마취과에 알릴게요.
+   chunks: I'll let / the surgeon and anesthesia / know / .
+   r0: [decide] the surgeon and anesthesia know .
+   r1: I'll let [decide] know .
+   r2: I'll let the surgeon and anesthesia [decide] .
+7.3 decoy='This form is required' | ko: 이 검사는 진행 전에 꼭 필요한 수치예요.
+   chunks: This lab is critical / before we / can proceed / .
+   r0: [This form is required] before we can proceed .
+   r1: This lab is critical [This form is required] can proceed .
+   r2: This lab is critical before we [This form is required] .
+7.4 decoy='at the desk' | ko: 몇 분 뒤에 결과를 다시 확인해 볼게요.
+   chunks: I'll check / on the result / again / in a few minutes / .
+   r0: [at the desk] on the result again in a few minutes .
+   r1: I'll check [at the desk] again in a few minutes .
+   r2: I'll check on the result [at the desk] in a few minutes .
+   r3: I'll check on the result again [at the desk] .
+
+## S8 인공관절·심박동기 정보
+8.0 decoy='hearing aids' | ko: 심박동기나 다른 금속 이식물이 있으신가요?
+   chunks: Do you have / a pacemaker / or any / metal implants / ?
+   r0: [hearing aids] a pacemaker or any metal implants ?
+   r1: Do you have [hearing aids] or any metal implants ?
+   r2: Do you have a pacemaker [hearing aids] metal implants ?
+   r3: Do you have a pacemaker or any [hearing aids] ?
+8.1 decoy='When and why' | ko: 언제 어디에 삽입하셨나요?
+   chunks: When and where / was it / placed / ?
+   r0: [When and why] was it placed ?
+   r1: When and where [When and why] placed ?
+   r2: When and where was it [When and why] ?
+8.2 decoy='your name' | ko: 이 정보를 수술팀에 전달할게요.
+   chunks: I'll pass / this / to the surgical team / .
+   r0: [your name] this to the surgical team .
+   r1: I'll pass [your name] to the surgical team .
+   r2: I'll pass this [your name] .
+8.3 decoy='broken bones' | ko: 인공관절이나 다른 이식물이 있으신가요?
+   chunks: Do you / have any / joint replacements / or other implants / ?
+   r0: [broken bones] have any joint replacements or other implants ?
+   r1: Do you [broken bones] joint replacements or other implants ?
+   r2: Do you have any [broken bones] or other implants ?
+   r3: Do you have any joint replacements [broken bones] ?
+8.4 decoy='your allergy' | ko: 수술팀이 심박동기에 대해 확실히 알도록 할게요.
+   chunks: I'll make sure / the surgical team / knows about / your pacemaker / .
+   r0: [your allergy] the surgical team knows about your pacemaker .
+   r1: I'll make sure [your allergy] knows about your pacemaker .
+   r2: I'll make sure the surgical team [your allergy] your pacemaker .
+   r3: I'll make sure the surgical team knows about [your allergy] .
+
+## S9 항생제 투여 시각 지연
+9.0 decoy="isn't labeled" | ko: 항생제가 아직 안 들어갔어요.
+   chunks: The antibiotic / hasn't gone in / yet / .
+   r0: [isn't labeled] hasn't gone in yet .
+   r1: The antibiotic [isn't labeled] yet .
+   r2: The antibiotic hasn't gone in [isn't labeled] .
+9.1 decoy='a label' | ko: 절개 전인 지금 투여할 수 있을까요?
+   chunks: Can we give it / now / , before incision / ?
+   r0: [a label] now , before incision ?
+   r1: Can we give it [a label] , before incision ?
+   r2: Can we give it now [a label] ?
+9.2 decoy='the order' | ko: 시각을 조정하고 기록해 둘게요.
+   chunks: I'll adjust / the timing / and document it / .
+   r0: [the order] the timing and document it .
+   r1: I'll adjust [the order] and document it .
+   r2: I'll adjust the timing [the order] .
+9.3 decoy='for the biopsy' | ko: 항생제 투여가 벌써 일정보다 늦어졌어요.
+   chunks: We're already / behind schedule / for the antibiotic / .
+   r0: [for the biopsy] behind schedule for the antibiotic .
+   r1: We're already [for the biopsy] for the antibiotic .
+   r2: We're already behind schedule [for the biopsy] .
+9.4 decoy="so we don't rush" | ko: 절개가 늦어지지 않게 지금 바로 투여합시다.
+   chunks: Let's give it / right now / so we don't delay / the incision / .
+   r0: [so we don't rush] right now so we don't delay the incision .
+   r1: Let's give it [so we don't rush] so we don't delay the incision .
+   r2: Let's give it right now [so we don't rush] the incision .
+   r3: Let's give it right now so we don't delay [so we don't rush] .
+
+## S10 정맥로 불량 재확보
+10.0 decoy=", so I'll label" | ko: 이 라인이 잘 안 흘러서 새로 잡을게요.
+   chunks: This line isn't / flowing well / , so I'll start / a new one / .
+   r0: [, so I'll label] flowing well , so I'll start a new one .
+   r1: This line isn't [, so I'll label] , so I'll start a new one .
+   r2: This line isn't flowing well [, so I'll label] a new one .
+   r3: This line isn't flowing well , so I'll start [, so I'll label] .
+10.1 decoy='a sudden' | ko: 작은 따끔함이 느껴질 거예요.
+   chunks: You'll feel / a small / pinch / .
+   r0: [a sudden] a small pinch .
+   r1: You'll feel [a sudden] pinch .
+   r2: You'll feel a small [a sudden] .
+10.2 decoy='a bigger room' | ko: 수술에 더 알맞은 자리를 고르고 있어요.
+   chunks: I'm choosing / a better spot / for the surgery / .
+   r0: [a bigger room] a better spot for the surgery .
+   r1: I'm choosing [a bigger room] for the surgery .
+   r2: I'm choosing a better spot [a bigger room] .
+10.3 decoy='a new blood draw' | ko: 반대쪽 팔에 새로 IV 부위를 잡아 볼게요.
+   chunks: Let me try / a new IV site / on your other / arm / .
+   r0: [a new blood draw] a new IV site on your other arm .
+   r1: Let me try [a new blood draw] on your other arm .
+   r2: Let me try a new IV site [a new blood draw] arm .
+   r3: Let me try a new IV site on your other [a new blood draw] .
+10.4 decoy='a slightly slower' | ko: 새 라인은 훨씬 더 잘 흐를 거예요.
+   chunks: This new line / should give you / a much better / flow / .
+   r0: [a slightly slower] should give you a much better flow .
+   r1: This new line [a slightly slower] a much better flow .
+   r2: This new line should give you [a slightly slower] flow .
+   r3: This new line should give you a much better [a slightly slower] .
+
+## S11 의치·보청기 제거 거부
+11.0 decoy='for your jaw' | ko: 기도가 안전하려면 틀니를 빼셔야 해요.
+   chunks: The dentures need to / come out / for your airway / to stay safe / .
+   r0: [for your jaw] come out for your airway to stay safe .
+   r1: The dentures need to [for your jaw] for your airway to stay safe .
+   r2: The dentures need to come out [for your jaw] to stay safe .
+   r3: The dentures need to come out for your airway [for your jaw] .
+11.1 decoy='in a drawer' | ko: 이름표를 붙여 보관했다가 회복실에서 돌려드릴게요.
+   chunks: We'll keep them / labeled / and return them / in recovery / .
+   r0: [in a drawer] labeled and return them in recovery .
+   r1: We'll keep them [in a drawer] and return them in recovery .
+   r2: We'll keep them labeled [in a drawer] in recovery .
+   r3: We'll keep them labeled and return them [in a drawer] .
+11.2 decoy='for a quick look' | ko: 시술 중 짧은 시간 동안만이에요.
+   chunks: It's only / for a short time / during / the procedure / .
+   r0: [for a quick look] for a short time during the procedure .
+   r1: It's only [for a quick look] during the procedure .
+   r2: It's only for a short time [for a quick look] the procedure .
+   r3: It's only for a short time during [for a quick look] .
+11.3 decoy="it's expensive" | ko: 불편하신 거 알지만, 이렇게 해야 기도가 깨끗하게 유지돼요.
+   chunks: I understand / it's uncomfortable / , but this keeps / your airway clear / .
+   r0: [it's expensive] it's uncomfortable , but this keeps your airway clear .
+   r1: I understand [it's expensive] , but this keeps your airway clear .
+   r2: I understand it's uncomfortable [it's expensive] your airway clear .
+   r3: I understand it's uncomfortable , but this keeps [it's expensive] .
+11.4 decoy='you go home' | ko: 깨어나자마자 바로 돌려드릴게요.
+   chunks: You'll get them / right back / as soon as / you wake up / .
+   r0: [you go home] right back as soon as you wake up .
+   r1: You'll get them [you go home] as soon as you wake up .
+   r2: You'll get them right back [you go home] you wake up .
+   r3: You'll get them right back as soon as [you go home] .
+
+## S12 수술 전 VTE 예방 확인
+12.0 decoy='to warm your toes' | ko: 이 슬리브가 다리를 조여서 혈전을 예방해요.
+   chunks: These sleeves / gently squeeze / your legs / to prevent clots / .
+   r0: [to warm your toes] gently squeeze your legs to prevent clots .
+   r1: These sleeves [to warm your toes] your legs to prevent clots .
+   r2: These sleeves gently squeeze [to warm your toes] to prevent clots .
+   r3: These sleeves gently squeeze your legs [to warm your toes] .
+12.1 decoy='a sleeping pill' | ko: 오늘 혈액희석제를 투여받으셨나요?
+   chunks: Have you been given / a blood thinner / today / ?
+   r0: [a sleeping pill] a blood thinner today ?
+   r1: Have you been given [a sleeping pill] today ?
+   r2: Have you been given a blood thinner [a sleeping pill] ?
+12.2 decoy='prevention charts' | ko: VTE 예방 오더를 확인해 둘게요.
+   chunks: I'll confirm / the VTE / prevention orders / .
+   r0: [prevention charts] the VTE prevention orders .
+   r1: I'll confirm [prevention charts] prevention orders .
+   r2: I'll confirm the VTE [prevention charts] .
+12.3 decoy='warm blankets on' | ko: 들어가시기 전에 압박 슬리브를 착용시켜 드릴게요.
+   chunks: Let's put these / compression sleeves on / before we go / back / .
+   r0: [warm blankets on] compression sleeves on before we go back .
+   r1: Let's put these [warm blankets on] before we go back .
+   r2: Let's put these compression sleeves on [warm blankets on] back .
+   r3: Let's put these compression sleeves on before we go [warm blankets on] .
+12.4 decoy='on the phone' | ko: 오늘 아침에 혈액희석제를 예정대로 드셨나요?
+   chunks: Did you take / your blood thinner / as scheduled / this morning / ?
+   r0: [on the phone] your blood thinner as scheduled this morning ?
+   r1: Did you take [on the phone] as scheduled this morning ?
+   r2: Did you take your blood thinner [on the phone] this morning ?
+   r3: Did you take your blood thinner as scheduled [on the phone] ?
+
+## S13 당뇨 환자 혈당 조절
+13.0 decoy='your weight' | ko: 지금 혈당을 확인해 볼게요.
+   chunks: I'm going to check / your blood sugar / now / .
+   r0: [your weight] your blood sugar now .
+   r1: I'm going to check [your weight] now .
+   r2: I'm going to check your blood sugar [your weight] .
+13.1 decoy='or herbal tea' | ko: 오늘 아침에 인슐린이나 당뇨약을 드셨나요?
+   chunks: Did you take / your insulin / or diabetes pills / this morning / ?
+   r0: [or herbal tea] your insulin or diabetes pills this morning ?
+   r1: Did you take [or herbal tea] or diabetes pills this morning ?
+   r2: Did you take your insulin [or herbal tea] this morning ?
+   r3: Did you take your insulin or diabetes pills [or herbal tea] ?
+13.2 decoy='if the sheet' | ko: 수치가 너무 높거나 낮으면 조절할게요.
+   chunks: We'll adjust / if the number / is too high / or low / .
+   r0: [if the sheet] if the number is too high or low .
+   r1: We'll adjust [if the sheet] is too high or low .
+   r2: We'll adjust if the number [if the sheet] or low .
+   r3: We'll adjust if the number is too high [if the sheet] .
+13.3 decoy='Your blood pressure' | ko: 혈당이 조금 높아서 팀에 알릴게요.
+   chunks: Your blood sugar / is a little high / , so I'll let / the team know / .
+   r0: [Your blood pressure] is a little high , so I'll let the team know .
+   r1: Your blood sugar [Your blood pressure] , so I'll let the team know .
+   r2: Your blood sugar is a little high [Your blood pressure] the team know .
+   r3: Your blood sugar is a little high , so I'll let [Your blood pressure] .
+13.4 decoy='an extra pillow' | ko: 필요하면 수술 전에 소량의 인슐린을 줄 수 있어요.
+   chunks: We can give / a small dose of insulin / if it's needed / before surgery / .
+   r0: [an extra pillow] a small dose of insulin if it's needed before surgery .
+   r1: We can give [an extra pillow] if it's needed before surgery .
+   r2: We can give a small dose of insulin [an extra pillow] before surgery .
+   r3: We can give a small dose of insulin if it's needed [an extra pillow] .
+
+## S14 기록 간 정보 불일치
+14.0 decoy='but the pharmacy' | ko: 동의서에는 왼쪽인데 차트에는 오른쪽이라고 돼 있어요.
+   chunks: The consent / says left / , but the chart / says right / .
+   r0: [but the pharmacy] says left , but the chart says right .
+   r1: The consent [but the pharmacy] , but the chart says right .
+   r2: The consent says left [but the pharmacy] says right .
+   r3: The consent says left , but the chart [but the pharmacy] .
+14.1 decoy='and wait' | ko: 진행하기 전에 멈추고 대조 확인해야 해요.
+   chunks: We need to stop / and verify / before proceeding / .
+   r0: [and wait] and verify before proceeding .
+   r1: We need to stop [and wait] before proceeding .
+   r2: We need to stop and verify [and wait] .
+14.2 decoy='the green light' | ko: 집도의에게 맞는 쪽을 확인받을게요.
+   chunks: I'll get / the surgeon / to confirm / the correct side / .
+   r0: [the green light] the surgeon to confirm the correct side .
+   r1: I'll get [the green light] to confirm the correct side .
+   r2: I'll get the surgeon [the green light] the correct side .
+   r3: I'll get the surgeon to confirm [the green light] .
+14.3 decoy='This alarm' | ko: 이 불일치는 시작 전에 해결돼야 해요.
+   chunks: This mismatch / needs to be resolved / before we / start / .
+   r0: [This alarm] needs to be resolved before we start .
+   r1: This mismatch [This alarm] before we start .
+   r2: This mismatch needs to be resolved [This alarm] start .
+   r3: This mismatch needs to be resolved before we [This alarm] .
+14.4 decoy='the lab results' | ko: 영상을 다시 열어서 맞는 쪽을 확인해 봅시다.
+   chunks: Let's pull up / the imaging / to check the correct side / again / .
+   r0: [the lab results] the imaging to check the correct side again .
+   r1: Let's pull up [the lab results] to check the correct side again .
+   r2: Let's pull up the imaging [the lab results] again .
+   r3: Let's pull up the imaging to check the correct side [the lab results] .
+
+## S15 검사 이상치 수술 지연
+15.0 decoy='in the urine' | ko: 칼륨 수치가 6.8로 위급하게 높아요.
+   chunks: The potassium is / critically high / at 6.8 / .
+   r0: [in the urine] critically high at 6.8 .
+   r1: The potassium is [in the urine] at 6.8 .
+   r2: The potassium is critically high [in the urine] .
+15.1 decoy='the cart' | ko: 이게 바로잡힐 때까지 이 건은 보류해야 해요.
+   chunks: We should hold / the case / until this / is corrected / .
+   r0: [the cart] the case until this is corrected .
+   r1: We should hold [the cart] until this is corrected .
+   r2: We should hold the case [the cart] is corrected .
+   r3: We should hold the case until this [the cart] .
+15.2 decoy='about the schedule' | ko: 지금 바로 집도의와 마취과에 전화할게요.
+   chunks: I'm calling / the surgeon and anesthesia / right now / .
+   r0: [about the schedule] the surgeon and anesthesia right now .
+   r1: I'm calling [about the schedule] right now .
+   r2: I'm calling the surgeon and anesthesia [about the schedule] .
+15.3 decoy='copy it' | ko: 이 수치는 위험해서 무시할 수 없어요.
+   chunks: This value / is dangerous / and we can't / ignore it / .
+   r0: [copy it] is dangerous and we can't ignore it .
+   r1: This value [copy it] and we can't ignore it .
+   r2: This value is dangerous [copy it] ignore it .
+   r3: This value is dangerous and we can't [copy it] .
+15.4 decoy='a second opinion' | ko: 더 진행하기 전에 수치를 한 번 더 재 봅시다.
+   chunks: Let's get / a repeat level / before we go / any further / .
+   r0: [a second opinion] a repeat level before we go any further .
+   r1: Let's get [a second opinion] before we go any further .
+   r2: Let's get a repeat level [a second opinion] any further .
+   r3: Let's get a repeat level before we go [a second opinion] .
+
+## S16 항생제 미투여 절개 임박
+16.0 decoy="hasn't been mixed" | ko: 잠깐만요—항생제가 아직 안 들어갔어요.
+   chunks: Stop—the antibiotic / hasn't been given / yet / .
+   r0: [hasn't been mixed] hasn't been given yet .
+   r1: Stop—the antibiotic [hasn't been mixed] yet .
+   r2: Stop—the antibiotic hasn't been given [hasn't been mixed] .
+16.1 decoy='the next case' | ko: 다 들어갈 때까지 절개를 보류할 수 있을까요?
+   chunks: Can we hold / incision / until it's infused / ?
+   r0: [the next case] incision until it's infused ?
+   r1: Can we hold [the next case] until it's infused ?
+   r2: Can we hold incision [the next case] ?
+16.2 decoy='and checking the line' | ko: 지금 투여하고 시각을 기록할게요.
+   chunks: I'm giving it / now / and documenting the time / .
+   r0: [and checking the line] now and documenting the time .
+   r1: I'm giving it [and checking the line] and documenting the time .
+   r2: I'm giving it now [and checking the line] .
+16.3 decoy='labeled' | ko: 항생제가 완전히 들어갈 때까지 절개할 수 없어요.
+   chunks: We can't cut / until the antibiotic / is fully / in / .
+   r0: [labeled] until the antibiotic is fully in .
+   r1: We can't cut [labeled] is fully in .
+   r2: We can't cut until the antibiotic [labeled] in .
+   r3: We can't cut until the antibiotic is fully [labeled] .
+16.4 decoy="so we're not interrupted" | ko: 더 지연되지 않게 지금 투여해 주세요.
+   chunks: Please push it / now / so we're not delayed / any further / .
+   r0: [so we're not interrupted] now so we're not delayed any further .
+   r1: Please push it [so we're not interrupted] so we're not delayed any further .
+   r2: Please push it now [so we're not interrupted] any further .
+   r3: Please push it now so we're not delayed [so we're not interrupted] .
+
+## S17 교차혈액 없이 출혈 수술
+17.0 decoy='fresh plasma' | ko: 교차적합된 혈액이 하나도 없어요.
+   chunks: We have no / crossmatched blood / available / .
+   r0: [fresh plasma] crossmatched blood available .
+   r1: We have no [fresh plasma] available .
+   r2: We have no crossmatched blood [fresh plasma] .
+17.1 decoy='emergency platelets' | ko: 지금 응급 O형 Rh음성을 방출할 수 있을까요?
+   chunks: Can we release / emergency O-negative / now / ?
+   r0: [emergency platelets] emergency O-negative now ?
+   r1: Can we release [emergency platelets] now ?
+   r2: Can we release emergency O-negative [emergency platelets] ?
+17.2 decoy='the sepsis' | ko: 대량수혈 프로토콜을 발동시킬게요.
+   chunks: I'm activating / the massive / transfusion protocol / .
+   r0: [the sepsis] the massive transfusion protocol .
+   r1: I'm activating [the sepsis] transfusion protocol .
+   r2: I'm activating the massive [the sepsis] .
+17.3 decoy='breathing fast' | ko: 이 환자는 출혈이 심해서 지금 바로 혈액이 필요해요.
+   chunks: This patient is / bleeding heavily / and needs blood / right now / .
+   r0: [breathing fast] bleeding heavily and needs blood right now .
+   r1: This patient is [breathing fast] and needs blood right now .
+   r2: This patient is bleeding heavily [breathing fast] right now .
+   r3: This patient is bleeding heavily and needs blood [breathing fast] .
+17.4 decoy='the supply list' | ko: 대량수혈 프로토콜을 즉시 시작합시다.
+   chunks: Let's get / the massive transfusion protocol / started / immediately / .
+   r0: [the supply list] the massive transfusion protocol started immediately .
+   r1: Let's get [the supply list] started immediately .
+   r2: Let's get the massive transfusion protocol [the supply list] immediately .
+   r3: Let's get the massive transfusion protocol started [the supply list] .
+
+## S18 심박동기 환자 소작 위험
+18.0 decoy='with the monitor' | ko: 이 환자는 심박동기가 있어서 소작이 방해될 수 있어요.
+   chunks: The patient has / a pacemaker—cautery / could interfere / with it / .
+   r0: [with the monitor] a pacemaker—cautery could interfere with it .
+   r1: The patient has [with the monitor] could interfere with it .
+   r2: The patient has a pacemaker—cautery [with the monitor] with it .
+   r3: The patient has a pacemaker—cautery could interfere [with the monitor] .
+18.1 decoy='and place the cable' | ko: 양극성 소작을 쓰고 패드는 기기에서 멀리 두어야 해요.
+   chunks: We should use bipolar / and place the pad / away from / the device / .
+   r0: [and place the cable] and place the pad away from the device .
+   r1: We should use bipolar [and place the cable] away from the device .
+   r2: We should use bipolar and place the pad [and place the cable] the device .
+   r3: We should use bipolar and place the pad away from [and place the cable] .
+18.2 decoy='all night' | ko: 심장내과나 자석을 대기시켜야 할까요?
+   chunks: Do we need / cardiology / or a magnet / on standby / ?
+   r0: [all night] cardiology or a magnet on standby ?
+   r1: Do we need [all night] or a magnet on standby ?
+   r2: Do we need cardiology [all night] on standby ?
+   r3: Do we need cardiology or a magnet [all night] ?
+18.3 decoy='before we sign' | ko: 시작 전에 심박동기 설정을 확인합시다.
+   chunks: Let's confirm / the pacemaker settings / before we start / .
+   r0: [before we sign] the pacemaker settings before we start .
+   r1: Let's confirm [before we sign] before we start .
+   r2: Let's confirm the pacemaker settings [before we sign] .
+18.4 decoy='the extra cable' | ko: 만약을 위해 접지 패드를 기기에서 멀리 둘게요.
+   chunks: I'll keep / the grounding pad / away from the device / just in case / .
+   r0: [the extra cable] the grounding pad away from the device just in case .
+   r1: I'll keep [the extra cable] away from the device just in case .
+   r2: I'll keep the grounding pad [the extra cable] just in case .
+   r3: I'll keep the grounding pad away from the device [the extra cable] .
+
+## S19 응급 체크리스트 생략 압박
+19.0 decoy='a full drill' | ko: 응급 상황에서도 타임아웃은 여전히 필요해요.
+   chunks: We still need / the time-out / even in / an emergency / .
+   r0: [a full drill] the time-out even in an emergency .
+   r1: We still need [a full drill] even in an emergency .
+   r2: We still need the time-out [a full drill] an emergency .
+   r3: We still need the time-out even in [a full drill] .
+19.1 decoy='a few breaths' | ko: 필수 요소를 확인하는 데 30초밖에 안 걸려요.
+   chunks: It only takes / thirty seconds / to confirm / the essentials / .
+   r0: [a few breaths] thirty seconds to confirm the essentials .
+   r1: It only takes [a few breaths] to confirm the essentials .
+   r2: It only takes thirty seconds [a few breaths] the essentials .
+   r3: It only takes thirty seconds to confirm [a few breaths] .
+19.2 decoy='twice' | ko: 환자, 부위, 시술—함께 확인합시다.
+   chunks: Patient, site, / and procedure—let's verify / together / .
+   r0: [twice] and procedure—let's verify together .
+   r1: Patient, site, [twice] together .
+   r2: Patient, site, and procedure—let's verify [twice] .
+19.3 decoy='the paperwork' | ko: 지금도 타임아웃을 생략할 만한 위험은 아니에요.
+   chunks: Skipping the time-out / isn't worth / the risk / , even now / .
+   r0: [the paperwork] isn't worth the risk , even now .
+   r1: Skipping the time-out [the paperwork] the risk , even now .
+   r2: Skipping the time-out isn't worth [the paperwork] , even now .
+   r3: Skipping the time-out isn't worth the risk [the paperwork] .
+19.4 decoy='in order' | ko: 환자, 부위, 시술을 빨리 함께 확인합시다.
+   chunks: Let's confirm / the patient, site, / and procedure together / , quickly / .
+   r0: [in order] the patient, site, and procedure together , quickly .
+   r1: Let's confirm [in order] and procedure together , quickly .
+   r2: Let's confirm the patient, site, [in order] , quickly .
+   r3: Let's confirm the patient, site, and procedure together [in order] .
+
+## S20 이식물 정보 불명 응급
+20.0 decoy='what size' | ko: 어떤 이식물인지 확인할 수 없어요.
+   chunks: We can't confirm / what implant / is in place / .
+   r0: [what size] what implant is in place .
+   r1: We can't confirm [what size] is in place .
+   r2: We can't confirm what implant [what size] .
+20.1 decoy='for the file' | ko: 영상을 찍고 일단 MRI 비호환으로 가정합시다.
+   chunks: Let's get imaging / and assume / it's MRI-unsafe / for now / .
+   r0: [for the file] and assume it's MRI-unsafe for now .
+   r1: Let's get imaging [for the file] it's MRI-unsafe for now .
+   r2: Let's get imaging and assume [for the file] for now .
+   r3: Let's get imaging and assume it's MRI-unsafe [for the file] .
+20.2 decoy='or the pharmacy' | ko: 가족이나 이전 기록에 연락을 시도해 볼게요.
+   chunks: I'll try / to reach / the family / or prior records / .
+   r0: [or the pharmacy] to reach the family or prior records .
+   r1: I'll try [or the pharmacy] the family or prior records .
+   r2: I'll try to reach [or the pharmacy] or prior records .
+   r3: I'll try to reach the family [or the pharmacy] .
+20.3 decoy='this chart' | ko: 더 알기 전까지는 이 기기를 미상으로 다뤄야 해요.
+   chunks: We should treat / this device / as unknown / until we know more / .
+   r0: [this chart] this device as unknown until we know more .
+   r1: We should treat [this chart] as unknown until we know more .
+   r2: We should treat this device [this chart] until we know more .
+   r3: We should treat this device as unknown [this chart] .
+20.4 decoy=', just for today' | ko: 만약을 위해 심박동기와 MRI 기록을 가까이 둡시다.
+   chunks: Let's keep / the pacemaker and MRI records / close by / , just in case / .
+   r0: [, just for today] the pacemaker and MRI records close by , just in case .
+   r1: Let's keep [, just for today] close by , just in case .
+   r2: Let's keep the pacemaker and MRI records [, just for today] , just in case .
+   r3: Let's keep the pacemaker and MRI records close by [, just for today] .

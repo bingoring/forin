@@ -1,0 +1,572 @@
+
+## S0 체크리스트 항목 순차 점검
+0.0 ans=confirm
+   * I'm going to [confirm] a few things before your surgery.
+     I'm going to [tag] a few things before your surgery.
+     I'm going to [pack] a few things before your surgery.
+     I'm going to [wrap] a few things before your surgery.
+0.1 ans=date of birth
+     Can you tell me your name and [blood type]?
+   * Can you tell me your name and [date of birth]?
+     Can you tell me your name and [insurance plan]?
+     Can you tell me your name and [weight]?
+0.2 ans=procedure
+     What [pain] are you having today?
+     What [allergy] are you having today?
+   * What [procedure] are you having today?
+     What [symptom] are you having today?
+0.3 ans=checklist
+     Let's go through your [schedule] step by step.
+     Let's go through your [bill] step by step.
+     Let's go through your [receipt] step by step.
+   * Let's go through your [checklist] step by step.
+0.4 ans=explain
+   * I'll [explain] each step as we go.
+     I'll [number] each step as we go.
+     I'll [label] each step as we go.
+     I'll [repeat] each step as we go.
+0.5 ans=routine
+     This is just a [random] check before we take you back.
+   * This is just a [routine] check before we take you back.
+     This is just a [special] check before we take you back.
+     This is just a [rare] check before we take you back.
+
+## S1 검사 결과 도착 확인
+1.0 ans=back
+     Are all the labs and imaging [ordered] in the chart?
+     Are all the labs and imaging [signed] in the chart?
+   * Are all the labs and imaging [back] in the chart?
+     Are all the labs and imaging [copied] in the chart?
+1.1 ans=CBC
+     The [BMP] and type-and-screen are both here.
+     The [ECG] and type-and-screen are both here.
+     The [MRI] and type-and-screen are both here.
+   * The [CBC] and type-and-screen are both here.
+1.2 ans=flag
+   * I'll [flag] anything that's still pending.
+     I'll [copy] anything that's still pending.
+     I'll [sort] anything that's still pending.
+     I'll [date] anything that's still pending.
+1.3 ans=chart
+     Let me check the [monitor] one more time.
+   * Let me check the [chart] one more time.
+     Let me check the [printer] one more time.
+     Let me check the [list] one more time.
+1.4 ans=potassium
+     I don't see the [sodium] result yet.
+     I don't see the [glucose] result yet.
+   * I don't see the [potassium] result yet.
+     I don't see the [calcium] result yet.
+
+## S2 정맥로 개통 확인
+2.0 ans=running
+     I'm checking that your IV is [sitting] well.
+     I'm checking that your IV is [holding] well.
+     I'm checking that your IV is [staying] well.
+   * I'm checking that your IV is [running] well.
+2.1 ans=feel
+   * Let me know if you [feel] any burning at the site.
+     Let me know if you [hear] any burning at the site.
+     Let me know if you [smell] any burning at the site.
+     Let me know if you [see] any burning at the site.
+2.2 ans=line
+     This [mask] will give you fluids and medication during surgery.
+   * This [line] will give you fluids and medication during surgery.
+     This [cuff] will give you fluids and medication during surgery.
+     This [probe] will give you fluids and medication during surgery.
+2.3 ans=look at
+     I just need to [tape] your IV site for a second.
+     I just need to [touch] your IV site for a second.
+   * I just need to [look at] your IV site for a second.
+     I just need to [wipe] your IV site for a second.
+2.4 ans=no
+     It's flowing well and there's [some] swelling.
+     It's flowing well and there's [mild] swelling.
+     It's flowing well and there's [big] swelling.
+   * It's flowing well and there's [no] swelling.
+
+## S3 장신구·의치 제거 확인
+3.0 ans=dentures
+   * Do you have any rings, piercings, or [dentures] on?
+     Do you have any rings, piercings, or [wigs] on?
+     Do you have any rings, piercings, or [braces] on?
+     Do you have any rings, piercings, or [hats] on?
+3.1 ans=metal
+     We remove [plastic] so it doesn't interfere with the equipment.
+   * We remove [metal] so it doesn't interfere with the equipment.
+     We remove [paper] so it doesn't interfere with the equipment.
+     We remove [cotton] so it doesn't interfere with the equipment.
+3.2 ans=keep
+     I'll [carry] your belongings in a labeled bag for you.
+     I'll [pack] your belongings in a labeled bag for you.
+   * I'll [keep] your belongings in a labeled bag for you.
+     I'll [mail] your belongings in a labeled bag for you.
+3.3 ans=take off
+     Can you [show] your ring and piercings for me?
+     Can you [sort] your ring and piercings for me?
+     Can you [clean] your ring and piercings for me?
+   * Can you [take off] your ring and piercings for me?
+3.4 ans=name
+   * I'll write your [name] on the bag so nothing gets lost.
+     I'll write your [weight] on the bag so nothing gets lost.
+     I'll write your [age] on the bag so nothing gets lost.
+     I'll write your [ward] on the bag so nothing gets lost.
+
+## S4 방광 비움 확인
+4.0 ans=emptied
+     Have you [filled] your bladder recently?
+   * Have you [emptied] your bladder recently?
+     Have you [cleaned] your bladder recently?
+     Have you [tested] your bladder recently?
+4.1 ans=restroom
+     If not, I can help you to the [lobby] now.
+     If not, I can help you to the [hallway] now.
+   * If not, I can help you to the [restroom] now.
+     If not, I can help you to the [elevator] now.
+4.2 ans=comfortable
+     This keeps you [unsettled] during the procedure.
+     This keeps you [overheated] during the procedure.
+     This keeps you [exhausted] during the procedure.
+   * This keeps you [comfortable] during the procedure.
+4.3 ans=restroom
+   * Let me know if you need the [restroom] before we go back.
+     Let me know if you need the [blanket] before we go back.
+     Let me know if you need the [pillow] before we go back.
+     Let me know if you need the [charger] before we go back.
+4.4 ans=OR
+     It's better to go now than to wait once you're in the [elevator].
+   * It's better to go now than to wait once you're in the [OR].
+     It's better to go now than to wait once you're in the [lobby].
+     It's better to go now than to wait once you're in the [lab].
+
+## S5 예방적 항생제 준비
+5.0 ans=give
+     The pre-op antibiotic is ready to [sign].
+     The pre-op antibiotic is ready to [order].
+   * The pre-op antibiotic is ready to [give].
+     The pre-op antibiotic is ready to [return].
+5.1 ans=incision
+     We need it in within 60 minutes before [discharge].
+     We need it in within 60 minutes before [arrival].
+     We need it in within 60 minutes before [admission].
+   * We need it in within 60 minutes before [incision].
+5.2 ans=exact
+   * I'll document the [exact] time it goes in.
+     I'll document the [usual] time it goes in.
+     I'll document the [planned] time it goes in.
+     I'll document the [rough] time it goes in.
+5.3 ans=drawn up
+     Has the antibiotic been [filled up] yet?
+   * Has the antibiotic been [drawn up] yet?
+     Has the antibiotic been [mixed up] yet?
+     Has the antibiotic been [rolled up] yet?
+5.4 ans=surgeon
+     I'll give it as soon as the [porter] is ready.
+     I'll give it as soon as the [clerk] is ready.
+   * I'll give it as soon as the [surgeon] is ready.
+     I'll give it as soon as the [driver] is ready.
+
+## S6 혈액형·교차적합 미완료
+6.0 ans=crossmatch
+     The [type] is still incomplete.
+     The [screen] is still incomplete.
+     The [antibody] is still incomplete.
+   * The [crossmatch] is still incomplete.
+6.1 ans=until
+   * Should we hold [until] blood is available?
+     Should we hold [while] blood is available?
+     Should we hold [since] blood is available?
+     Should we hold [after] blood is available?
+6.2 ans=expedite
+     I'll call the blood bank to [describe] it.
+   * I'll call the blood bank to [expedite] it.
+     I'll call the blood bank to [measure] it.
+     I'll call the blood bank to [weigh] it.
+6.3 ans=case
+     We can't start this [list] without blood ready.
+     We can't start this [plan] without blood ready.
+   * We can't start this [case] without blood ready.
+     We can't start this [day] without blood ready.
+6.4 ans=lab
+     Let me follow up with the [ward] on the crossmatch.
+     Let me follow up with the [desk] on the crossmatch.
+     Let me follow up with the [floor] on the crossmatch.
+   * Let me follow up with the [lab] on the crossmatch.
+
+## S7 필수 검사 결과 누락
+7.0 ans=potassium
+   * The required [potassium] level isn't back yet.
+     The required [magnesium] level isn't back yet.
+     The required [chloride] level isn't back yet.
+     The required [albumin] level isn't back yet.
+7.1 ans=hold
+     Do we [book] the case until it results?
+   * Do we [hold] the case until it results?
+     Do we [assign] the case until it results?
+     Do we [list] the case until it results?
+7.2 ans=surgeon
+     I'll let the [chaplain] and anesthesia know.
+     I'll let the [dietitian] and anesthesia know.
+   * I'll let the [surgeon] and anesthesia know.
+     I'll let the [volunteer] and anesthesia know.
+7.3 ans=proceed
+     This lab is critical before we can [leave].
+     This lab is critical before we can [enter].
+     This lab is critical before we can [relax].
+   * This lab is critical before we can [proceed].
+7.4 ans=again
+   * I'll check on the result [again] in a few minutes.
+     I'll check on the result [alone] in a few minutes.
+     I'll check on the result [always] in a few minutes.
+     I'll check on the result [easily] in a few minutes.
+
+## S8 인공관절·심박동기 정보
+8.0 ans=have
+     Do you [need] a pacemaker or any metal implants?
+   * Do you [have] a pacemaker or any metal implants?
+     Do you [want] a pacemaker or any metal implants?
+     Do you [hear] a pacemaker or any metal implants?
+8.1 ans=placed
+     When and where was it [tested]?
+     When and where was it [found]?
+   * When and where was it [placed]?
+     When and where was it [taken]?
+8.2 ans=surgical
+     I'll pass this to the [dental] team.
+     I'll pass this to the [billing] team.
+     I'll pass this to the [laundry] team.
+   * I'll pass this to the [surgical] team.
+8.3 ans=joint replacements
+   * Do you have any [joint replacements] or other implants?
+     Do you have any [dental fillings] or other implants?
+     Do you have any [eye drops] or other implants?
+     Do you have any [hair dye] or other implants?
+8.4 ans=knows
+     I'll make sure the surgical team [asks] about your pacemaker.
+   * I'll make sure the surgical team [knows] about your pacemaker.
+     I'll make sure the surgical team [writes] about your pacemaker.
+     I'll make sure the surgical team [reads] about your pacemaker.
+
+## S9 항생제 투여 시각 지연
+9.0 ans=antibiotic
+     The [sedative] hasn't gone in yet.
+     The [painkiller] hasn't gone in yet.
+   * The [antibiotic] hasn't gone in yet.
+     The [fluid] hasn't gone in yet.
+9.1 ans=give
+     Can we [mix] it now, before incision?
+     Can we [send] it now, before incision?
+     Can we [label] it now, before incision?
+   * Can we [give] it now, before incision?
+9.2 ans=document
+   * I'll adjust the timing and [document] it.
+     I'll adjust the timing and [announce] it.
+     I'll adjust the timing and [circle] it.
+     I'll adjust the timing and [print] it.
+9.3 ans=schedule
+     We're already behind [budget] for the antibiotic.
+   * We're already behind [schedule] for the antibiotic.
+     We're already behind [quota] for the antibiotic.
+     We're already behind [inventory] for the antibiotic.
+9.4 ans=give
+     Let's [mix] it right now so we don't delay the incision.
+     Let's [warm] it right now so we don't delay the incision.
+   * Let's [give] it right now so we don't delay the incision.
+     Let's [chill] it right now so we don't delay the incision.
+
+## S10 정맥로 불량 재확보
+10.0 ans=flowing
+     This line isn't [clamping] well, so I'll start a new one.
+     This line isn't [closing] well, so I'll start a new one.
+     This line isn't [sticking] well, so I'll start a new one.
+   * This line isn't [flowing] well, so I'll start a new one.
+10.1 ans=pinch
+   * You'll feel a small [pinch].
+     You'll feel a small [cramp].
+     You'll feel a small [chill].
+     You'll feel a small [itch].
+10.2 ans=choosing
+     I'm [marking] a better spot for the surgery.
+   * I'm [choosing] a better spot for the surgery.
+     I'm [taping] a better spot for the surgery.
+     I'm [labeling] a better spot for the surgery.
+10.3 ans=try
+     Let me [bring] a new IV site on your other arm.
+     Let me [wrap] a new IV site on your other arm.
+   * Let me [try] a new IV site on your other arm.
+     Let me [sign] a new IV site on your other arm.
+10.4 ans=flow
+     This new line should give you a much better [grip].
+     This new line should give you a much better [fit].
+     This new line should give you a much better [view].
+   * This new line should give you a much better [flow].
+
+## S11 의치·보청기 제거 거부
+11.0 ans=dentures
+   * The [dentures] need to come out for your airway to stay safe.
+     The [glasses] need to come out for your airway to stay safe.
+     The [earrings] need to come out for your airway to stay safe.
+     The [bracelets] need to come out for your airway to stay safe.
+11.1 ans=labeled
+     We'll keep them [locked] and return them in recovery.
+   * We'll keep them [labeled] and return them in recovery.
+     We'll keep them [wrapped] and return them in recovery.
+     We'll keep them [weighed] and return them in recovery.
+11.2 ans=only
+     It's [also] for a short time during the procedure.
+     It's [even] for a short time during the procedure.
+   * It's [only] for a short time during the procedure.
+     It's [still] for a short time during the procedure.
+11.3 ans=uncomfortable
+     I understand it's [unfamiliar], but this keeps your airway clear.
+     I understand it's [uncertain], but this keeps your airway clear.
+     I understand it's [unpredictable], but this keeps your airway clear.
+   * I understand it's [uncomfortable], but this keeps your airway clear.
+11.4 ans=as soon as
+   * You'll get them right back [as soon as] you wake up.
+     You'll get them right back [even if] you wake up.
+     You'll get them right back [in case] you wake up.
+     You'll get them right back [so that] you wake up.
+
+## S12 수술 전 VTE 예방 확인
+12.0 ans=clots
+     These sleeves gently squeeze your legs to prevent [infection].
+   * These sleeves gently squeeze your legs to prevent [clots].
+     These sleeves gently squeeze your legs to prevent [nausea].
+     These sleeves gently squeeze your legs to prevent [allergies].
+12.1 ans=given
+     Have you been [offered] a blood thinner today?
+     Have you been [shown] a blood thinner today?
+   * Have you been [given] a blood thinner today?
+     Have you been [taught] a blood thinner today?
+12.2 ans=confirm
+     I'll [print] the VTE prevention orders.
+     I'll [copy] the VTE prevention orders.
+     I'll [file] the VTE prevention orders.
+   * I'll [confirm] the VTE prevention orders.
+12.3 ans=compression
+   * Let's put these [compression] sleeves on before we go back.
+     Let's put these [cooling] sleeves on before we go back.
+     Let's put these [warming] sleeves on before we go back.
+     Let's put these [charging] sleeves on before we go back.
+12.4 ans=take
+     Did you [share] your blood thinner as scheduled this morning?
+   * Did you [take] your blood thinner as scheduled this morning?
+     Did you [borrow] your blood thinner as scheduled this morning?
+     Did you [return] your blood thinner as scheduled this morning?
+
+## S13 당뇨 환자 혈당 조절
+13.0 ans=check
+     I'm going to [write] your blood sugar now.
+     I'm going to [sketch] your blood sugar now.
+   * I'm going to [check] your blood sugar now.
+     I'm going to [tape] your blood sugar now.
+13.1 ans=diabetes
+     Did you take your insulin or [allergy] pills this morning?
+     Did you take your insulin or [asthma] pills this morning?
+     Did you take your insulin or [thyroid] pills this morning?
+   * Did you take your insulin or [diabetes] pills this morning?
+13.2 ans=number
+   * We'll adjust if the [number] is too high or low.
+     We'll adjust if the [bed] is too high or low.
+     We'll adjust if the [chair] is too high or low.
+     We'll adjust if the [light] is too high or low.
+13.3 ans=high
+     Your blood sugar is a little [low], so I'll let the team know.
+   * Your blood sugar is a little [high], so I'll let the team know.
+     Your blood sugar is a little [slow], so I'll let the team know.
+     Your blood sugar is a little [odd], so I'll let the team know.
+13.4 ans=needed
+     We can give a small dose of insulin if it's [shipped] before surgery.
+     We can give a small dose of insulin if it's [stored] before surgery.
+   * We can give a small dose of insulin if it's [needed] before surgery.
+     We can give a small dose of insulin if it's [packed] before surgery.
+
+## S14 기록 간 정보 불일치
+14.0 ans=chart
+     The consent says left, but the [wristband] says right.
+     The consent says left, but the [calendar] says right.
+     The consent says left, but the [menu] says right.
+   * The consent says left, but the [chart] says right.
+14.1 ans=verify
+   * We need to stop and [verify] before proceeding.
+     We need to stop and [photograph] before proceeding.
+     We need to stop and [translate] before proceeding.
+     We need to stop and [repeat] before proceeding.
+14.2 ans=surgeon
+     I'll get the [dentist] to confirm the correct side.
+   * I'll get the [surgeon] to confirm the correct side.
+     I'll get the [porter] to confirm the correct side.
+     I'll get the [driver] to confirm the correct side.
+14.3 ans=mismatch
+     This [message] needs to be resolved before we start.
+     This [menu] needs to be resolved before we start.
+   * This [mismatch] needs to be resolved before we start.
+     This [mark] needs to be resolved before we start.
+14.4 ans=imaging
+     Let's pull up the [menu] to check the correct side again.
+     Let's pull up the [calendar] to check the correct side again.
+     Let's pull up the [radio] to check the correct side again.
+   * Let's pull up the [imaging] to check the correct side again.
+
+## S15 검사 이상치 수술 지연
+15.0 ans=potassium
+   * The [potassium] is critically high at 6.8.
+     The [sodium] is critically high at 6.8.
+     The [calcium] is critically high at 6.8.
+     The [glucose] is critically high at 6.8.
+15.1 ans=corrected
+     We should hold the case until this is [filed].
+   * We should hold the case until this is [corrected].
+     We should hold the case until this is [printed].
+     We should hold the case until this is [copied].
+15.2 ans=calling
+     I'm [thanking] the surgeon and anesthesia right now.
+     I'm [greeting] the surgeon and anesthesia right now.
+   * I'm [calling] the surgeon and anesthesia right now.
+     I'm [copying] the surgeon and anesthesia right now.
+15.3 ans=dangerous
+     This value is [familiar] and we can't ignore it.
+     This value is [visible] and we can't ignore it.
+     This value is [private] and we can't ignore it.
+   * This value is [dangerous] and we can't ignore it.
+15.4 ans=level
+   * Let's get a repeat [level] before we go any further.
+     Let's get a repeat [form] before we go any further.
+     Let's get a repeat [photo] before we go any further.
+     Let's get a repeat [sheet] before we go any further.
+
+## S16 항생제 미투여 절개 임박
+16.0 ans=given
+     Stop—the antibiotic hasn't been [shown] yet.
+   * Stop—the antibiotic hasn't been [given] yet.
+     Stop—the antibiotic hasn't been [sealed] yet.
+     Stop—the antibiotic hasn't been [wrapped] yet.
+16.1 ans=hold
+     Can we [mark] incision until it's infused?
+     Can we [plan] incision until it's infused?
+   * Can we [hold] incision until it's infused?
+     Can we [sketch] incision until it's infused?
+16.2 ans=time
+     I'm giving it now and documenting the [name].
+     I'm giving it now and documenting the [color].
+     I'm giving it now and documenting the [weight].
+   * I'm giving it now and documenting the [time].
+16.3 ans=antibiotic
+   * We can't cut until the [antibiotic] is fully in.
+     We can't cut until the [saline] is fully in.
+     We can't cut until the [contrast] is fully in.
+     We can't cut until the [dye] is fully in.
+16.4 ans=delayed
+     Please push it now so we're not [tired] any further.
+   * Please push it now so we're not [delayed] any further.
+     Please push it now so we're not [bored] any further.
+     Please push it now so we're not [hungry] any further.
+
+## S17 교차혈액 없이 출혈 수술
+17.0 ans=available
+     We have no crossmatched blood [labeled].
+     We have no crossmatched blood [counted].
+   * We have no crossmatched blood [available].
+     We have no crossmatched blood [warmed].
+17.1 ans=release
+     Can we [sort] emergency O-negative now?
+     Can we [weigh] emergency O-negative now?
+     Can we [store] emergency O-negative now?
+   * Can we [release] emergency O-negative now?
+17.2 ans=massive
+   * I'm activating the [massive] transfusion protocol.
+     I'm activating the [minor] transfusion protocol.
+     I'm activating the [routine] transfusion protocol.
+     I'm activating the [slow] transfusion protocol.
+17.3 ans=bleeding
+     This patient is [sweating] heavily and needs blood right now.
+   * This patient is [bleeding] heavily and needs blood right now.
+     This patient is [shaking] heavily and needs blood right now.
+     This patient is [coughing] heavily and needs blood right now.
+17.4 ans=started
+     Let's get the massive transfusion protocol [booked] immediately.
+     Let's get the massive transfusion protocol [stored] immediately.
+   * Let's get the massive transfusion protocol [started] immediately.
+     Let's get the massive transfusion protocol [printed] immediately.
+
+## S18 심박동기 환자 소작 위험
+18.0 ans=pacemaker
+     The patient has a [stent]—cautery could interfere with it.
+     The patient has a [valve]—cautery could interfere with it.
+     The patient has a [splint]—cautery could interfere with it.
+   * The patient has a [pacemaker]—cautery could interfere with it.
+18.1 ans=pad
+   * We should use bipolar and place the [pad] away from the device.
+     We should use bipolar and place the [cuff] away from the device.
+     We should use bipolar and place the [tray] away from the device.
+     We should use bipolar and place the [drape] away from the device.
+18.2 ans=cardiology
+     Do we need [dermatology] or a magnet on standby?
+   * Do we need [cardiology] or a magnet on standby?
+     Do we need [podiatry] or a magnet on standby?
+     Do we need [dentistry] or a magnet on standby?
+18.3 ans=settings
+     Let's confirm the pacemaker [colors] before we start.
+     Let's confirm the pacemaker [sounds] before we start.
+   * Let's confirm the pacemaker [settings] before we start.
+     Let's confirm the pacemaker [logos] before we start.
+18.4 ans=grounding
+     I'll keep the [heating] pad away from the device just in case.
+     I'll keep the [cooling] pad away from the device just in case.
+     I'll keep the [sticky] pad away from the device just in case.
+   * I'll keep the [grounding] pad away from the device just in case.
+
+## S19 응급 체크리스트 생략 압박
+19.0 ans=time-out
+   * We still need the [time-out] even in an emergency.
+     We still need the [scan] even in an emergency.
+     We still need the [tour] even in an emergency.
+     We still need the [speech] even in an emergency.
+19.1 ans=thirty
+     It only takes [twenty] seconds to confirm the essentials.
+   * It only takes [thirty] seconds to confirm the essentials.
+     It only takes [forty] seconds to confirm the essentials.
+     It only takes [fifty] seconds to confirm the essentials.
+19.2 ans=procedure
+     Patient, site, and [room]—let's verify together.
+     Patient, site, and [bed]—let's verify together.
+   * Patient, site, and [procedure]—let's verify together.
+     Patient, site, and [insurance]—let's verify together.
+19.3 ans=risk
+     Skipping the time-out isn't worth the [rule], even now.
+     Skipping the time-out isn't worth the [form], even now.
+     Skipping the time-out isn't worth the [clock], even now.
+   * Skipping the time-out isn't worth the [risk], even now.
+19.4 ans=quickly
+   * Let's confirm the patient, site, and procedure together, [quickly].
+     Let's confirm the patient, site, and procedure together, [quietly].
+     Let's confirm the patient, site, and procedure together, [calmly].
+     Let's confirm the patient, site, and procedure together, [politely].
+
+## S20 이식물 정보 불명 응급
+20.0 ans=implant
+     We can't confirm what [allergy] is in place.
+   * We can't confirm what [implant] is in place.
+     We can't confirm what [rash] is in place.
+     We can't confirm what [dressing] is in place.
+20.1 ans=imaging
+     Let's get [labs] and assume it's MRI-unsafe for now.
+     Let's get [vitals] and assume it's MRI-unsafe for now.
+   * Let's get [imaging] and assume it's MRI-unsafe for now.
+     Let's get [notes] and assume it's MRI-unsafe for now.
+20.2 ans=reach
+     I'll try to [thank] the family or prior records.
+     I'll try to [greet] the family or prior records.
+     I'll try to [pay] the family or prior records.
+   * I'll try to [reach] the family or prior records.
+20.3 ans=unknown
+   * We should treat this device as [unknown] until we know more.
+     We should treat this device as [fragile] until we know more.
+     We should treat this device as [private] until we know more.
+     We should treat this device as [heavy] until we know more.
+20.4 ans=records
+     Let's keep the pacemaker and MRI [photos] close by, just in case.
+   * Let's keep the pacemaker and MRI [records] close by, just in case.
+     Let's keep the pacemaker and MRI [bills] close by, just in case.
+     Let's keep the pacemaker and MRI [menus] close by, just in case.

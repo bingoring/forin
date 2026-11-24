@@ -1,0 +1,92 @@
+# 단어 수정 데이터 — A 검토 W1~W9, S2·S18의 단어 삭제, W5 헤드워드.
+dEn:   # [id, 옛 오답, 새 오답]
+  - [w-surgeon, surgical, sturgeon]
+  - [w-surgical, surgeon, cervical]
+  - [w-safe, save, sane]
+  - [w-safe, sale, same]
+  - [w-device, devise, advice]
+  - [w-device, divide, decade]
+  - [w-together, tougher, altogether]
+  - [w-together, toward, thereafter]
+  - [w-emergency, emergent, emerald]
+  - [w-massive, missile, abrasive]
+  - [w-step, steep, stamp]
+  - [w-pending, ending, impending]
+  - [w-feel, fee, feed]
+  - [w-site, cite, side]
+  - [w-fluid, fluent, fluke]
+  - [w-flow, flaw, float]
+  - [w-remove, remote, resolve]
+  - [w-metal, mental, mantle]
+  - [w-belongings, believing, beginnings]
+  - [w-better, butter, bigger]
+  - [w-keep, keen, heap]
+  - [w-place, plate, plan]
+  - [w-pass, past, pace]
+  - [w-insulin, insulate, inulin]
+  - [w-value, vague, venue]
+  - [w-release, relief, relieve]
+  - [w-activate, activity, motivate]
+  - [w-bipolar, bicycle, binocular]
+  - [w-cardiology, cardiac, radiology]
+  - [w-magnet, magnify, magenta]
+  - [w-prior, priest, proper]
+dKo:   # [id, 옛 오답, 새 오답]
+  - [w-case, 환자, 수술실]
+  - [w-case, 상황, 일정]
+  - [w-timeout, 휴식 시간, 인계 시간]
+  - [w-uncomfortable, 불쾌한, 어지러운]
+  - [w-comfortable, 안정된, 조용한]
+  - [w-level, 위치, 종류]
+  - [w-essential, 부수적인, 부수 요소]
+  - [w-essential, 임의의, 선택 항목]
+decoyChips:   # [id, 옛, 새]
+  - [w-metal, ale, all]
+  - [w-ignore, in, 'on']
+  - [w-explain, com, cam]
+  - [w-essential, as, is]
+  - [w-repeat, bee, pet]
+  - [w-ready, ie, ey]
+  - [w-check, chick, cheek]
+  - [w-diabetes, dye, day]
+  - [w-expedite, pea, pa]
+  - [w-magnet, nut, nat]
+  - [w-number, bar, bur]
+  - [w-heavy, lie, lee]
+  - [w-treat, threat, trait]
+set:   # 직접 덮어쓰기 {id: {필드: 값}}
+  w-thinner:      # W5 헤드워드 (결정 11)
+    en: blood thinner
+    ipa: /ˈblʌd ˌθɪnər/
+    chips: [[blood], [thin, ner]]
+    decoyChips: [flood, tin]
+    distractorsEn: [blood donor, blood type]
+  w-procedure:
+    cue: 오늘 무엇을 받는지 환자 입으로 말하게 할 때 묻는 말 — 수술과 시술을 두루 이른다
+  w-start:
+    cue: 잘 안 흐르는 IV를 빼고 새 라인을 잡을 때 쓰는 동사
+  w-stop:
+    cue: 동의서와 차트가 어긋난 걸 보면 팀 모두가 손을 놓게 하는 말
+  w-treat:
+    cue: 정체 모를 기기를 '모르는 것'으로 여기고 대할 때의 동사
+  w-feel:
+    cue: 주사 자리에 화끈거림이 오면 알려 달라고 할 때, 환자가 몸으로 ~하는 일
+remove:   # 문장이 쓰지 않게 돼 삭제 (changes의 word-remove)
+  w-push: 16.4를 'A short delay is better…'로 고쳐 쓰는 문장이 없어졌다 (급속 주입으로 들리는 push 제거)
+  w-critical: 7.3을 'This lab is required…'로 고쳐 쓰는 문장이 없어졌다 (15.0의 critically 위급 수치와 섞임)
+# 문장이 새 문장으로 바뀌어 예문을 다시 지정하는 단어: {id: 새 문장 en}
+example:
+  w-surgeon: I'll get the surgeon to confirm the correct side.     # 5.4가 바뀌어 14.2 KP로
+  w-dose: Your doctor may order a dose of insulin before surgery if it's needed.
+  w-cut: The antibiotic should be started before we cut.
+  w-case: Blood was ordered for this case, so I'll check with anesthesia before we start.
+  w-wake: You'll get them back in recovery after you wake up.
+  w-proceed: This lab is required before we can proceed.
+whyChanges:   # changes-or-preop-checklist.yaml에 더할 why (대상 id 또는 상황|인덱스)
+  w-thinner: "문장은 a blood thinner — 'thinner'만으로는 시너(희석제)라 ko 혈액희석제와 어긋나 헤드워드를 구로"
+  w-surgeon: "5.4가 새 문장(Let's time it…)으로 바뀌어 예문을 14.2 KP로 옮김"
+  w-dose: "13.4가 의사 처방 문장으로 바뀌어 예문을 새 문장으로"
+  w-cut: "16.3이 새 문장으로 바뀌어 예문을 새 문장으로"
+  w-case: "6.3이 새 문장으로 바뀌어 예문을 새 문장으로"
+  w-wake: "11.4가 새 문장으로 바뀌어 예문을 새 문장으로"
+  w-proceed: "7.3이 새 문장으로 바뀌어 예문을 새 문장으로"
