@@ -1,0 +1,71 @@
+# 뉘앙스 고침. at: [상황 번호, kind] — 덮어쓸 필드만. scenes는 [장면 번호]별로 en·fix.
+nuance:
+  - at: [3, slider]   # E1
+    scale:
+      - Everyone fears that, so there's no need to discuss it
+      - That's common, and the anesthesia team will explain
+      - Don't worry, nothing will go wrong at all here
+    answerAt: 1
+  - at: [4, slider]   # E2
+    cue: Through the interpreter, the patient points at his belly and says, "It hurts a little, but it's okay." How do you chart it?
+    scale:
+      - Mild pain, by patient report
+      - Moderate pain, by patient report
+      - Severe pain, by patient report
+    answerAt: 0
+    why: "'조금 아프지만 괜찮다'면 약한 쪽이에요. 환자가 숫자를 말하지 않았으면 간호사가 숫자를 지어내지 않고, 말한 정도를 적은 뒤 통역을 통해 0~10 숫자를 다시 물어요."
+  - at: [5, slider]   # E3
+    scale:
+      - None — professionals handle medical talk
+      - Simple medical questions, but not consent
+      - All of it, including the consent talk
+    answerAt: 0
+    why: 미국 병원은 가족, 특히 아이에게 의료 통역을 맡기지 않아요. 아이가 의학 용어를 몰라 틀릴 수 있고, 어머니의 민감한 이야기를 아이가 옮기게 되는 부담도 있어요. 의료 내용은 자격 있는 통역사가 맡아요(응급으로 통역사를 기다릴 수 없을 때 말고는).
+  - at: [14, slider]  # E4
+    why: 환자가 급격히 나빠지는 상황이라 가장 급한 표현이 맞아요. 통역 서비스에 응급이라는 것과 필요한 언어를 함께 분명히 알려요.
+  - at: [17, slider]  # E5
+    cue: During teach-back, the patient says she'll take the medicine every two hours, but the surgeon said every twelve.
+  - at: [2, swap]     # E6
+    options:
+      - Stop eating at midnight.
+      - Can you tell me what time you need to stop eating and drinking?
+      - You didn't eat anything after midnight, did you?
+    answer: Can you tell me what time you need to stop eating and drinking?
+    notes:
+      "Stop eating at midnight.": 지시만 하고 환자가 이해했는지 알 수 없어요.
+      "Can you tell me what time you need to stop eating and drinking?": 환자가 금식 시각을 직접 말해서 지침을 이해했는지 바로 드러나요(teach-back).
+      "You didn't eat anything after midnight, did you?": 답을 먼저 말해 주는 질문이라 환자가 '네'로 답하기 쉬워요.
+    why: 금식 안내는 지시로 끝내지 않고 환자가 금식 시각을 직접 말하게 해서 이해를 확인해야 해요. 통역사가 옮긴 환자의 대답을 그대로 차트에 적어요.
+    ko: 몇 시부터 드시고 마시면 안 되는지 말씀해 주시겠어요?
+  - at: [16, swap]    # E7
+    why: 응급이 아니면, 알레르기를 모를 때 없다고 가정하지 않고 통역사·약국 기록·가족·의료 팔찌로 먼저 확인해요.
+  - at: [3, context]  # E8
+    scenes:
+      0: {en: "He may ask if he'll be asleep the whole time, so please interpret his questions exactly."}
+      2: {en: "You'll be asleep after induction, and then we'll intubate you."}
+    why: "뜻은 셋 다 '잠든'이에요. 통역사에게는 환자의 질문을 정확히 옮겨 달라고, 차트에는 짧게 적어요. 하지만 겁먹은 환자에게 'induction'이나 'intubate' 같은 임상어를 쓰면 설명이 아니라 시술 용어를 읽어 주는 것처럼 들려요."
+  - at: [4, context]  # E9
+    scenes:
+      0: {en: "I'll tell her we'll manage her pain together, so please interpret everything I say."}
+      2: {en: "Pain is being managed per the multimodal protocol; reassess in 30 minutes."}
+    why: "뜻은 셋 다 '조절하다'예요. 통역사에게는 내가 하는 말을 빠짐없이 옮겨 달라고, 차트에는 계획대로 조절됐다고 적어요. 하지만 환자에게 'multimodal protocol'·'reassess' 같은 차트 말투로 말하면 서류를 읽어 주는 것 같아 곁에 있다는 느낌이 들지 않아요."
+  - at: [10, context] # E10
+    scenes:
+      0: {en: "I'm going to say it's normal to feel scared before surgery, so please interpret it exactly."}
+    why: "뜻은 셋 다 '정상적인'이에요. 통역사에게는 내가 하는 말을 그대로 옮겨 달라고, 차트에는 짧게 적어요. 하지만 겁먹은 환자에게 'tachycardia'나 'normal limits'라고 하면 위로가 아니라 검사 결과를 읽어 주는 것처럼 들려요."
+  - at: [11, context] # E11
+    scenes:
+      0: {en: "I'll keep it simple, so please interpret exactly what I say."}
+    why: "뜻은 셋 다 '간단한'이에요. 내가 쉽게 말하고 통역사는 그대로 옮기게, 차트에는 짧게 적어요. 하지만 환자에게 '귀염둥이'라며 걱정할 것 없다고 하면 어른을 아이처럼 대하는 말이라 무시로 들려요."
+  - at: [20, context] # E12
+    scenes:
+      0: {en: "I'll pause after each sentence so you can interpret it all, and we'll support the family together."}
+    why: "뜻은 셋 다 '지지하다'예요. 통역사가 다 옮길 수 있게 문장마다 끊어 말하겠다고, 차트에는 짧게 적어요. 하지만 슬퍼하는 가족에게 규정과 전화번호를 안내하며 떠넘기면 곁에 없다는 느낌을 줘요. 지금 곁에 있겠다고 말해요."
+  - at: [14, context] # E13
+    scenes:
+      2: {en: "Urgent: LEP patient, Vietnamese, interpreter needed stat — patient decompensating."}
+    why: "뜻은 셋 다 '긴급한'이에요. 통역 서비스에는 필요한 언어와 함께 급하다고 짧게, 차트에는 시각과 함께 적어요. 하지만 환자 앞에서 'LEP'·'stat'·'decompensating' 같은 동료끼리의 약어와 임상어로 말하면 환자는 무슨 말인지도 모르고 불안만 커져요. 지금 하고 있는 일을 쉬운 말로 말해요."
+  - at: [2, context]  # E14
+    why: "뜻은 셋 다 '지침'이에요. 통역사에게는 하나씩 전해 달라고, 차트에는 짧게 적어요. 하지만 '의무'나 '준수' 같은 규정 말투로 말하면 겁먹은 환자는 모르는 것도 묻기 어려워져요. 지키지 않으면 수술이 미뤄질 수 있다는 건 알려야 할 교육 내용이니, 쉬운 말로 이유와 함께 전해요."
+  - at: [11, pair]    # E15
+    decoys: [stickers on your chest that track your heart]

@@ -1,0 +1,203 @@
+theme: or-bleeding
+changes:
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움 — 공통 쉬운 단어 목록(minute); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-blood
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(blood); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-show
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(show); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-tell
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(tell); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-start
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(start); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-add
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(add); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-moment
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(moment); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-number
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(number); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-check
+  why: 너무 쉬움 — 너무 쉬움 — 목록 밖 판단(check); 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-agent
+  fields:
+  - ko
+  why: w-product와 ko(제제)가 같아 듣고 뜻 고르기에서 정답이 둘 — agent는 특정 작용을 하는 약제
+- kind: word
+  id: w-product
+  fields:
+  - ko
+  why: w-agent와 ko(제제)가 같아 정답이 둘 — product는 혈액은행이 내주는 혈액제제('get products ready')
+- kind: word
+  id: w-hold
+  fields:
+  - ko
+  why: w-keep와 ko(유지하다)가 같아 정답이 둘 — hold는 문장에서 압박을 누르고 있다는 뜻
+- kind: word
+  id: w-rapid
+  fields:
+  - ko
+  why: w-fast와 ko(빠른·신속한)가 가까워 정답이 둘 — rapid는 속도가 급격히 큰 쪽(rapid infuser)
+- kind: word
+  id: w-update
+  fields:
+  - ko
+  why: w-alert와 ko(알리다·알려주다)가 가까워 정답이 둘 — update는 경과를 계속 전하는 쪽
+- kind: word
+  id: w-closure
+  fields:
+  - ko
+  why: '''temporary closure''는 봉합이 아니라 손상통제 때 하는 임시 폐쇄'
+- kind: word
+  id: w-free
+  fields:
+  - en
+  - ipa
+  why: 태그된 문장이 'flowing freely' 부사 하나뿐이라 헤드워드를 부사(freely)로
+- kind: sentence
+  situation: 예상 출혈량 파악
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 예상 출혈량 파악
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 흡인 출혈량 측정
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 흡인 출혈량 측정
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 흡인 출혈량 측정
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 흡인 출혈량 측정
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 거즈 무게 출혈 추정
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 거즈 무게 출혈 추정
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 출혈량 증가 추세 보고
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 출혈량 증가 추세 보고
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 출혈량 증가 추세 보고
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 응고검사 결과 반영
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 저혈량 초기 징후
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 저혈량 초기 징후
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 세포회수기 사용
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 출혈 원인 팀 논의
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 급성 대량 출혈
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 급성 대량 출혈
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 혈압 급강하 순환 허탈
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 혈압 급강하 순환 허탈
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 심정지 임박 출혈
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 심정지 임박 출혈
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리
+- kind: sentence
+  situation: 심정지 임박 출혈
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 정리

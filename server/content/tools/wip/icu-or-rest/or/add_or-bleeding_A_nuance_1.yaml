@@ -1,0 +1,56 @@
+예상 출혈량 파악:
+  - kind: slider
+    words: [w-loss, w-expect]
+    cue: "Before a quick skin-lesion removal, the surgeon says there will be barely any bleeding."
+    scale: [Minimal blood loss, Moderate blood loss, Major blood loss]
+    answerAt: 0
+    why: "수술 전에 예상 출혈량을 말할 때는 minimal·moderate·major처럼 단계를 나눠 불러요. 피부 병변을 간단히 떼어 내는 정도라면 minimal이고, 큰 수술일수록 뒤쪽 단계로 올라가요."
+    example: "We expect minimal blood loss with this procedure."
+    exKo: "이 수술은 출혈이 거의 없을 것으로 예상해요."
+  - kind: context
+    words: [w-ebl]
+    word: EBL
+    ko: 추정실혈량
+    scenes:
+      - {who: 순환 간호사 → 마취과, icon: speech, en: "EBL is about 400 so far, and the canister is still filling.", ok: true}
+      - {who: 수술 기록, icon: board, en: "EBL 400 mL; no blood products given.", ok: true}
+      - {who: 불안한 보호자에게, icon: me, en: "Her EBL is 400 mL so far, which is what we expected.", ok: false, fix: "She has lost a little blood so far, about what we expected, and we're watching it closely."}
+    why: "EBL은 의료진끼리 쓰는 약어이고 차트에도 이 형태로 남겨요. 보호자에게는 약어와 숫자만 던지면 낯설고 차갑게 들려서, 지금 어떤 상태인지 쉬운 말로 풀어 줘요."
+흡인 출혈량 측정:
+  - kind: slider
+    words: [w-canister, w-milliliter]
+    cue: "Over the last ten minutes the suction canister has barely moved — only a few milliliters."
+    scale: [a trickle, a steady flow, a gush]
+    answerAt: 0
+    why: "피가 조금씩 새는 정도는 trickle, 일정한 속도로 이어지면 steady flow, 한꺼번에 쏟아지면 gush예요. 몇 분 동안 몇 밀리리터밖에 늘지 않았다면 trickle에 가까워요."
+    example: "It's just a trickle now."
+    exKo: "지금은 조금씩 새는 정도예요."
+  - kind: swap
+    words: [w-subtract, w-irrigation, w-canister]
+    who: "순환 간호사 → 집도의 · 흡인통 보고"
+    icon: speech
+    before: ["Dr. Kim, the canister shows 600 milliliters, ", "and it's all blood", "."]
+    options: [so I'll subtract the irrigation, and it's all blood, and nothing needs to be recorded]
+    answer: so I'll subtract the irrigation
+    notes: {so I'll subtract the irrigation: "흡인통에는 세척액도 섞여 있으니 그 양을 빼야 실제 출혈량이 나온다. 숫자를 그대로 올리지 않고 보정하겠다고 알리는 말이다.", and it's all blood: "세척액을 쓴 수술이라면 통의 눈금이 곧 출혈량이 아니다. 출혈량을 부풀려 보고하게 된다.", and nothing needs to be recorded: "출혈량은 기록하고 합산해 가며 팀과 공유한다. 기록할 필요가 없다는 말은 틀리다."}
+    why: "흡인통의 숫자는 세척액이 섞여 있을 수 있어서, 뺀 값을 출혈량으로 보고해요. '전부 피'라고 말하면 실제보다 많게 전달돼요."
+    ko: "흡인통에 600밀리리터인데, 세척액을 빼고 계산할게요"
+거즈 무게 출혈 추정:
+  - kind: slider
+    words: [w-sponge, w-dry]
+    cue: "You hold up a used sponge: it's clearly full of blood, but nothing runs off it."
+    scale: [damp, soaked, dripping]
+    answerAt: 1
+    why: "damp는 눅눅한 정도, soaked는 피가 가득 배어 있지만 흘러내리지는 않는 상태, dripping은 들면 뚝뚝 떨어지는 상태예요. 무게로 출혈량을 추정하려면 거즈가 얼마나 젖었는지부터 구분해요."
+    example: "These sponges are soaked, not just damp."
+    exKo: "이 거즈들은 눅눅한 정도가 아니라 흠뻑 젖었어요."
+  - kind: swap
+    words: [w-weigh, w-sponge, w-estimate, w-loss]
+    who: "순환 간호사 → 스크럽 · 거즈 출혈 추정"
+    icon: speech
+    before: ["I'll ", "look at", " the sponges to estimate the loss."]
+    options: [weigh, look at, count]
+    answer: weigh
+    notes: {weigh: "젖은 거즈 무게에서 마른 무게를 빼면 흡수된 피의 양을 추정할 수 있다. 눈대중보다 정확하다.", look at: "눈으로 보는 것만으로는 출혈량을 숫자로 추정하기 어렵다.", count: "개수는 계수 절차에 필요하지만, 출혈량을 추정하는 방법은 아니다."}
+    why: "거즈로 출혈량을 추정할 때는 눈대중이 아니라 무게를 재서 마른 무게를 빼요."
+    ko: "거즈 무게를 재서 출혈량을 추정할게요"

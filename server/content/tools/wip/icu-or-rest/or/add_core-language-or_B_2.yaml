@@ -1,0 +1,86 @@
+situations:
+- title: 전화·영상 통역 활용
+  s:
+  - ["원격 안내", monitor, "'a phone or video interpreter'처럼 선택지를 or로 묶어 방식이 하나가 아님을 알려요. right now로 기다림 없이 쓸 수 있다고 안심시켜요.", "a printed or poster", "지금 바로 전화나 영상 안내를 쓸 수 있어요.", "지금 바로 전화나 영상 상담을 받을 수 있어요.", "video", "radio", "paper", "email"]
+  - ["연결 준비", gear, "'set up'은 장비와 연결을 쓸 수 있게 갖춘다는 구동사예요. Let me로 환자가 기다리는 동안 내가 하겠다고 제안해요.", "the music", "원격 진료 연결선을 준비해 드릴게요.", "원격 통역 비용표를 준비해 드릴게요.", "remote", "spare", "broken", "noisy"]
+  - ["음질 안내", speaker, "'You'll hear'은 환자 입장에서 앞으로 경험할 일을 말해요. clearly가 소리 품질을, on this device가 어떤 장비인지를 짚어요.", "on this paper", "이 기기로 통역사 얼굴이 또렷하게 보이실 거예요.", "이 기기로 통역사 이름이 또렷하게 들리실 거예요.", "interpreter", "recording", "alarm", "music"]
+  - ["환경 조정", bell, "so let's로 문제에서 해결책으로 바로 넘어가요. 'quiet corner'는 방 안 구석이라는 구체적 자리를 말해 조용한 곳을 찾자는 제안이 돼요.", "a spare cord", "화면 밝기가 어두우니 밝은 자리를 찾아볼게요.", "화면이 흔들리니 평평한 자리를 찾아볼게요.", "loud", "dark", "small", "slow"]
+  - ["얼굴 보이기", me, "take off는 입고 있던 것을 벗는 구동사이고 for a moment가 잠깐뿐임을 알려 안심시켜요. so you can ~로 목적을 말해 마스크를 벗는 이유를 환자가 알아요.", "my watch", "잠깐 안경을 벗어서 제 얼굴을 보여드릴게요.", "잠깐 마스크를 벗어서 제 이름표를 보여드릴게요.", "mask", "shoes", "coat", "badge"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 원격 통역 연결 4문장 순서
+    why: 전화나 영상 통역을 쓸 수 있다고 알리고 연결을 준비한 뒤, 목소리가 또렷이 들린다고 안내하고, 소리가 시끄러우면 조용한 자리를 찾아요.
+    lines:
+    - ["We can use a phone or video interpreter right now.", monitor, "지금 바로 전화나 영상 통역을 쓸 수 있어요", "제안"]
+    - ["Let me set that up for you.", gear, "제가 그걸 준비해 드릴게요", "준비"]
+    - ["You'll hear them clearly on this device.", speaker, "이 기기로 또렷하게 들리실 거예요", "안내"]
+    - ["If it's still too loud, tell me and we'll find a quiet corner.", bell, "여전히 시끄러우면 말씀해 주세요, 조용한 자리를 찾을게요", "조정"]
+- title: 동의 이해 재확인
+  s:
+  - ["다시 말하기", speech, "'what you understood'는 방금 들은 내용을 어떻게 받아들였는지 말하게 해요. 'in your own words'를 붙이면 따라 읽기가 아니라 자기 말로 풀게 돼요.", "what you wore", "이해하신 걸 말씀하시려고 자료를 보세요.", "이해하신 걸 알고 싶어서 다시 여쭤보는 거예요.", "understood", "signed", "ordered", "drew"]
+  - ["다시 설명", redo, "Let's로 함께 다시 보자는 어조를 만들어 환자가 잘못한 느낌을 줄여요. unclear는 환자가 못 알아들은 탓이 아니라 설명이 흐릿했다는 뉘앙스도 풍겨요.", "the bill", "불명확한 가격을 다시 짚어 볼게요.", "불명확한 그림을 다시 짚어 볼게요.", "unclear", "unsigned", "unpaid", "unfinished"]
+  - ["충분한 설명", shield, "informed는 설명을 듣고 이해한 뒤 내린 동의라는 뜻으로 동의 앞에 붙는 핵심어예요. truly를 붙여 형식이 아니라 실질을 강조해요.", "fully paid", "이게 정말 충분히 안전한 수술인지 확실히 하고 싶어요.", "이게 정말 중요한 동의라서 확실히 하고 싶어요.", "informed", "rushed", "urgent", "costly"]
+  - ["부분 짚기", pushpin, "Point to는 말이 어려운 환자도 손으로 답할 수 있게 하는 지시예요. any part로 어느 부분이든 괜찮다고 열어 둬요.", "any pen", "이해 안 되면 가리키려고 다시 읽어 주세요.", "이해 안 되신 부분이 있으면 제가 기억해 둘게요.", "understand", "remember", "sign", "finish"]
+  - ["먼저 확인", check, "before we ~로 순서를 먼저 말하면 환자가 다음에 뭘 할지 예측할 수 있어요. is understood는 수동태라 환자 탓이 아니라 이해라는 상태에 초점을 둬요.", "everything is quiet", "다 이해되셨는지 확인하려고 다시 짚어 볼게요.", "다시 짚은 다음에 쉬는 시간을 가질게요.", "understood", "printed", "labeled", "stored"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 이해 재확인 4문장 순서
+    why: 이해한 내용을 자기 말로 하게 하고, 설명을 다시 한 뒤, 끝나면 모호한 부분을 가리키게 하고, 모두 명확해지면 넘어가요.
+    lines:
+    - ["Can you tell me in your own words what you understood?", speech, "이해하신 걸 환자분 말로 말씀해 주시겠어요?", "질문"]
+    - ["Thank you — let me explain it again, more slowly.", redo, "고마워요, 더 천천히 다시 설명해 드릴게요", "설명"]
+    - ["When I'm done, point to any part that's still unclear.", pushpin, "끝나면 아직 불명확한 부분을 가리켜 주세요", "짚기"]
+    - ["Once everything is clear, we'll move on together.", check, "모두 명확해지면 함께 넘어갈게요", "마무리"]
+- title: 문화적 표현 차이 조율
+  s:
+  - ["공감 표현", faceWorried, "'I understand'로 먼저 감정을 인정하고 may be로 단정하지 않고 가능성만 열어 둬요. difficult to discuss는 주제 자체가 무겁다는 뜻이에요.", "easy to explain", "이게 이해하시기 어려운 얘기일 수 있다는 거 알아요.", "이게 비용 얘기라 부담될 수 있다는 거 알아요.", "difficult", "easy", "rare", "pleasant"]
+  - ["선택권", shield, "only what you're comfortable with로 환자가 말할 범위를 스스로 정하게 해요. Please share로 요구가 아니라 부탁으로 시작해요.", "who you're", "편하신 만큼만 보여 주시면 돼요.", "편하신 자세로만 앉아 주시면 돼요.", "share", "ask", "hide", "cover"]
+  - ["존중 표현", handshake2, "We respect…는 병원이 환자의 선택을 인정한다는 선언이에요. preferences처럼 선호를 쓰면 강요가 아니라 존중 대상이라는 어감이에요.", "your seating plan", "여기서는 환자분의 식사 선호를 존중해요.", "여기서는 환자분의 문화적 선호를 기록해요.", "respect", "record", "repeat", "rewrite"]
+  - ["선택권", shield, "You don't have to로 의무가 없음을 분명히 해 압박을 풀어요. anything that's difficult for you로 기준을 환자의 느낌에 맡겨요.", "buy anything", "어려운 글은 억지로 읽지 않으셔도 돼요.", "어려운 얘기는 억지로 하다가 쉬어도 돼요.", "difficult", "boring", "expensive", "noisy"]
+  - ["속도 존중", compass, "at your own pace는 속도를 환자에게 맡기는 표현이에요. when you share this로 어떤 순간에 해당하는지 조건을 붙여요.", "at the same time", "이 서류를 읽으실 땐 환자분 속도에 맞춰 천천히 하세요.", "이 얘기를 하실 땐 환자분 속도에 맞춰 천천히 숨 쉬세요.", "pace", "risk", "expense", "peril"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 문화 차이 조율 4문장 순서
+    why: 말하기 어렵다는 걸 먼저 인정하고, 편한 만큼만 말하게 하고, 그 너머는 안 해도 된다고 하며, 선택을 존중한다고 마무리해요.
+    lines:
+    - ["First, I understand this may be difficult to discuss.", faceWorried, "먼저, 말씀하시기 어려울 수 있다는 거 알아요", "공감"]
+    - ["Please share only what you're comfortable with.", shield, "편하신 만큼만 얘기해 주세요", "범위"]
+    - ["Anything beyond that, you don't have to answer.", lock, "그 너머는 대답하지 않으셔도 돼요", "선택"]
+    - ["Whatever you choose, we'll respect it and go at your pace.", handshake2, "무엇을 고르시든 존중하고 속도에 맞출게요", "존중"]
+- title: 진정 후 비언어 소통
+  s:
+  - ["반응 요청", me, "if you can hear me로 조건을 붙여 반응이 곧 들린다는 신호가 되게 해요. 말 대신 손으로 답하는 것이라 진정 후에도 소통할 수 있어요.", "reach me", "제 얼굴이 보이시면 제 손을 꽉 쥐어 보세요.", "제 말이 들리시면 눈을 깜빡여 보세요.", "hand", "ear", "nose", "knee"]
+  - ["통증 표현", pushpin, "by pointing or nodding으로 말 없이 알릴 수 있는 방법을 두 가지 줘요. Let me know는 알려 달라는 가장 흔한 부탁 표현이에요.", "by waiting", "추위는 가리키거나 고개를 끄덕여서 알려 주세요.", "졸음은 가리키거나 고개를 끄덕여서 알려 주세요.", "nodding", "singing", "laughing", "sleeping"]
+  - ["계속 관찰", magnify, "I'm watching은 진행형이라 지금 계속 지켜보고 있다는 느낌을 줘요. for any discomfort로 무엇을 보는지 밝혀 환자가 안심해요.", "the door", "혹시 불편한 게 있는지 목소리를 계속 듣고 있어요.", "혹시 불편한 게 있는지 얼굴을 가끔 살피고 있어요.", "watching", "wiping", "washing", "warming"]
+  - ["예·아니오", check, "once for yes and twice for no처럼 for로 횟수와 뜻을 짝지어 약속을 만들어요. 말이 안 나오는 환자도 두 가지 답은 할 수 있어요.", "once for pain", "네일 땐 한 번, 아니오일 땐 두 번 눈을 깜빡여 주세요.", "네일 땐 한 번, 아니오일 땐 두 번 손을 흔들어 주세요.", "twice", "thrice", "never", "slowly"]
+  - ["안심 표현", faceWorried, "even if로 못 하는 부분을 인정하면서 들린다는 믿음을 전해요. I know로 시작해 의심이 아니라 확신으로 말해요.", "you are cold", "아직 말씀은 못 하셔도 보이시는 거 알아요.", "아직 말씀은 못 하셔도 졸리신 거 알아요.", "yet", "again", "either", "today"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 진정 후 비언어 소통 4문장 순서
+    why: 들린다는 걸 알고 있다고 안심시키고, 손으로 예·아니오를 약속하고, 통증은 가리키거나 끄덕이게 하며, 놓칠까 봐 얼굴도 살핀다고 말해요.
+    lines:
+    - ["I know you can hear me, even if you can't speak yet.", faceWorried, "아직 말씀은 못 하셔도 들리시는 거 알아요", "안심"]
+    - ["So squeeze my hand once for yes and twice for no.", check, "그러니 네일 땐 한 번, 아니오일 땐 두 번 쥐어 주세요", "약속"]
+    - ["Let me know your pain by pointing or nodding.", pushpin, "통증은 가리키거나 끄덕여서 알려 주세요", "통증"]
+    - ["In case you can't, I'm watching your face for any discomfort.", magnify, "그럴 수 없을 때를 대비해 얼굴을 살피고 있어요", "관찰"]
+- title: 통역 통한 불안 완화
+  s:
+  - ["공감 표현", faceWorried, "Through the interpreter로 환자의 말이 통역을 거쳐 전해졌음을 밝혀요. I hear that…은 들은 감정을 되짚어 주는 공감의 틀이에요.", "tired", "통역사를 통해 들으니 많이 피곤하신가 봐요.", "통역사를 통해 들으니 많이 아프신가 봐요.", "scared", "tired", "angry", "bored"]
+  - ["정상화", shield, "It's normal to ~는 감정이 이상한 게 아니라고 말해 줘요. we're here for you로 혼자가 아니라는 약속을 이어 붙여요.", "to ask this often", "이렇게 느끼시는 건 자연스러운 거예요 — 저희가 설명해 드릴게요.", "이렇게 졸리신 건 자연스러운 거예요 — 저희가 곁에 있을게요.", "normal", "rare", "strange", "unfair"]
+  - ["단계 설명", bulb, "so you feel more in control로 설명하는 이유가 환자의 통제감임을 밝혀요. each step은 한 번에 다 말하지 않고 단계별로 알려 주겠다는 신호예요.", "each price", "더 안심하실 수 있게 각 서류를 설명해 드릴게요.", "더 빨리 끝낼 수 있게 각 단계를 설명해 드릴게요.", "feel", "look", "sound", "stay"]
+  - ["공감 표현", faceWorried, "I know로 감정을 먼저 알아봐 주고 and로 바로 정상이라고 이어요. completely는 normal을 한껏 강조해 부끄러워할 필요가 없다고 말해요.", "you're sleepy", "피곤하신 거 알아요, 그건 아주 자연스러운 거예요.", "답답하신 거 알아요, 그건 아주 자연스러운 거예요.", "completely", "slightly", "partly", "hardly"]
+  - ["함께 진행", handshake2, "one step at a time은 부담을 잘게 나눠 준다는 관용구예요. 끝에 together를 따로 붙여 혼자가 아니라고 강조해요.", "one bite", "한 단계씩 함께 차근차근 살펴 갈게요.", "한 시간씩 함께 천천히 해 나갈게요.", "together", "alone", "apart", "separately"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 불안 완화 4문장 순서
+    why: 들은 두려움을 되짚어 공감하고, 정상이라고 말한 뒤, 단계를 설명해 통제감을 주고, 한 단계씩 함께 가자고 마무리해요.
+    lines:
+    - ["Through the interpreter, I hear that you're scared.", faceWorried, "통역사를 통해 많이 무서우신 걸 들었어요", "공감"]
+    - ["That's completely normal, and we're here for you.", shield, "그건 아주 자연스러워요, 저희가 곁에 있어요", "정상"]
+    - ["Let me explain the steps so you feel more in control.", bulb, "더 안심하시도록 단계를 설명해 드릴게요", "설명"]
+    - ["We'll take them one at a time, together.", handshake2, "그 단계들을 하나씩 함께 해 나갈게요", "동행"]

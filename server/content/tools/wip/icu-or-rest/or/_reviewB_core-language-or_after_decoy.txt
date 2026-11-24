@@ -1,0 +1,642 @@
+
+## S0 통역 서비스 요청
+0.0 decoy='from you' | ko: 제가 전문 통역사를 불러드릴게요.
+   chunks: Let me get / a professional interpreter / for you / .
+   r0: [from you] a professional interpreter for you .
+   r1: Let me get [from you] for you .
+   r2: Let me get a professional interpreter [from you] .
+0.1 decoy='for children' | ko: 지금 바로 이용할 수 있는 통역 서비스가 있어요.
+   chunks: We have / interpreter services / available / right away / .
+   r0: [for children] interpreter services available right away .
+   r1: We have [for children] available right away .
+   r2: We have interpreter services [for children] right away .
+   r3: We have interpreter services available [for children] .
+0.2 decoy='I used to' | ko: 다 이해하셨는지 확실히 하고 싶어요.
+   chunks: I want to / make sure / you understand / everything / .
+   r0: [I used to] make sure you understand everything .
+   r1: I want to [I used to] you understand everything .
+   r2: I want to make sure [I used to] everything .
+   r3: I want to make sure you understand [I used to] .
+0.3 decoy='Which country' | ko: 집에서는 어떤 언어를 쓰세요?
+   chunks: What language / do you speak / at home / ?
+   r0: [Which country] do you speak at home ?
+   r1: What language [Which country] at home ?
+   r2: What language do you speak [Which country] ?
+0.4 decoy='The consent form' | ko: 통역사가 몇 분 안에 도착할 거예요.
+   chunks: The interpreter / will be here / in just a few / minutes / .
+   r0: [The consent form] will be here in just a few minutes .
+   r1: The interpreter [The consent form] in just a few minutes .
+   r2: The interpreter will be here [The consent form] minutes .
+   r3: The interpreter will be here in just a few [The consent form] .
+
+## S1 동의 통역 확인
+1.0 decoy='the billing form' | ko: 통역사가 동의서 내용을 환자분 언어로 설명해 드릴 거예요.
+   chunks: The interpreter / will explain / the consent / in your language / .
+   r0: [the billing form] will explain the consent in your language .
+   r1: The interpreter [the billing form] the consent in your language .
+   r2: The interpreter will explain [the billing form] in your language .
+   r3: The interpreter will explain the consent [the billing form] .
+1.1 decoy='Do you recommend' | ko: 지금 동의하시는 게 뭔지 이해가 되세요?
+   chunks: Do you understand / what you're / agreeing to / ?
+   r0: [Do you recommend] what you're agreeing to ?
+   r1: Do you understand [Do you recommend] agreeing to ?
+   r2: Do you understand what you're [Do you recommend] ?
+1.2 decoy='with this pamphlet' | ko: 궁금한 건 통역사를 통해 물어보세요.
+   chunks: Please ask / any questions / through the interpreter / .
+   r0: [with this pamphlet] any questions through the interpreter .
+   r1: Please ask [with this pamphlet] through the interpreter .
+   r2: Please ask any questions [with this pamphlet] .
+1.3 decoy='where this hurts' | ko: 이게 무슨 뜻인지 환자분 말로 다시 말씀해 주실래요?
+   chunks: Can you tell me / in your own words / what this / means / ?
+   r0: [where this hurts] in your own words what this means ?
+   r1: Can you tell me [where this hurts] what this means ?
+   r2: Can you tell me in your own words [where this hurts] means ?
+   r3: Can you tell me in your own words what this [where this hurts] ?
+1.4 decoy='to rewrite it' | ko: 고개만 끄덕이시는 걸로는 부족해요 — 직접 다시 설명해 주셔야 해요.
+   chunks: A nod isn't enough / — I need you / to explain it / back / .
+   r0: [to rewrite it] — I need you to explain it back .
+   r1: A nod isn't enough [to rewrite it] to explain it back .
+   r2: A nod isn't enough — I need you [to rewrite it] back .
+   r3: A nod isn't enough — I need you to explain it [to rewrite it] .
+
+## S2 금식·준비 통역 안내
+2.0 decoy='your parking' | ko: 통역사가 금식 지침을 하나하나 짚어 드릴 거예요.
+   chunks: The interpreter / will go over / your fasting / instructions / .
+   r0: [your parking] will go over your fasting instructions .
+   r1: The interpreter [your parking] your fasting instructions .
+   r2: The interpreter will go over [your parking] instructions .
+   r3: The interpreter will go over your fasting [your parking] .
+2.1 decoy='before the scan' | ko: 자정 이후로는 음식도 물도 안 돼요, 아시겠죠?
+   chunks: No food / or drink / after midnight / , okay / ?
+   r0: [before the scan] or drink after midnight , okay ?
+   r1: No food [before the scan] after midnight , okay ?
+   r2: No food or drink [before the scan] , okay ?
+   r3: No food or drink after midnight [before the scan] ?
+2.2 decoy='the discharge papers' | ko: 준비 단계를 이해하셨는지 확인해 볼게요.
+   chunks: Let me confirm / you understood / the prep steps / .
+   r0: [the discharge papers] you understood the prep steps .
+   r1: Let me confirm [the discharge papers] the prep steps .
+   r2: Let me confirm you understood [the discharge papers] .
+2.3 decoy=', even talking' | ko: 먹지도 마시지도 말라는 건 물조차도 안 된다는 뜻이에요.
+   chunks: Nothing to eat / or drink / means nothing at all / , even water / .
+   r0: [, even talking] or drink means nothing at all , even water .
+   r1: Nothing to eat [, even talking] means nothing at all , even water .
+   r2: Nothing to eat or drink [, even talking] , even water .
+   r3: Nothing to eat or drink means nothing at all [, even talking] .
+2.4 decoy='what food' | ko: 몇 시부터 금식해야 하는지 다시 말씀해 주세요.
+   chunks: Tell me back / what time / you need to / stop eating / .
+   r0: [what food] what time you need to stop eating .
+   r1: Tell me back [what food] you need to stop eating .
+   r2: Tell me back what time [what food] stop eating .
+   r3: Tell me back what time you need to [what food] .
+
+## S3 마취 설명 통역
+3.0 decoy='how the monitor' | ko: 통역사가 마취가 어떻게 작동하는지 설명해 드릴 거예요.
+   chunks: The interpreter / will explain / how the anesthesia / works / .
+   r0: [how the monitor] will explain how the anesthesia works .
+   r1: The interpreter [how the monitor] how the anesthesia works .
+   r2: The interpreter will explain [how the monitor] works .
+   r3: The interpreter will explain how the anesthesia [how the monitor] .
+3.1 decoy="You'll be warm" | ko: 잠들어 계셔서 아무것도 못 느끼실 거예요.
+   chunks: You'll be asleep / and won't feel / anything / .
+   r0: [You'll be warm] and won't feel anything .
+   r1: You'll be asleep [You'll be warm] anything .
+   r2: You'll be asleep and won't feel [You'll be warm] .
+3.2 decoy='any pets' | ko: 걱정되는 게 있으면 말씀해 주세요.
+   chunks: Tell me / if you have / any concerns / about it / .
+   r0: [any pets] if you have any concerns about it .
+   r1: Tell me [any pets] any concerns about it .
+   r2: Tell me if you have [any pets] about it .
+   r3: Tell me if you have any concerns [any pets] .
+3.3 decoy='the lights' | ko: 잠드시고 나면 이 순간을 전혀 기억 못 하실 거예요.
+   chunks: Once you're / asleep / , you won't remember / any of this / .
+   r0: [the lights] asleep , you won't remember any of this .
+   r1: Once you're [the lights] , you won't remember any of this .
+   r2: Once you're asleep [the lights] any of this .
+   r3: Once you're asleep , you won't remember [the lights] .
+3.4 decoy='will talk to you' | ko: 마취팀이 내내 곁에서 지켜봐 드릴 거예요.
+   chunks: The anesthesia team / will watch over you / the entire / time / .
+   r0: [will talk to you] will watch over you the entire time .
+   r1: The anesthesia team [will talk to you] the entire time .
+   r2: The anesthesia team will watch over you [will talk to you] time .
+   r3: The anesthesia team will watch over you the entire [will talk to you] .
+
+## S4 통증 소통 통역
+4.0 decoy='from head to toe' | ko: 통역사를 통해 통증이 0부터 10 중 어느 정도인지 말씀해 주세요.
+   chunks: Through the interpreter / , tell me / your pain / from zero to ten / .
+   r0: [from head to toe] , tell me your pain from zero to ten .
+   r1: Through the interpreter [from head to toe] your pain from zero to ten .
+   r2: Through the interpreter , tell me [from head to toe] from zero to ten .
+   r3: Through the interpreter , tell me your pain [from head to toe] .
+4.1 decoy='the exit is' | ko: 그게 더 편하시면 아픈 곳을 가리켜 주세요.
+   chunks: Point to where / it hurts / if that's / easier / .
+   r0: [the exit is] it hurts if that's easier .
+   r1: Point to where [the exit is] if that's easier .
+   r2: Point to where it hurts [the exit is] easier .
+   r3: Point to where it hurts if that's [the exit is] .
+4.2 decoy='your schedule' | ko: 통증은 저희가 함께 조절해 드릴게요.
+   chunks: We'll manage / your pain / together / .
+   r0: [your schedule] your pain together .
+   r1: We'll manage [your schedule] together .
+   r2: We'll manage your pain [your schedule] .
+4.3 decoy='which doctor' | ko: 이 차트에서 지금 느끼시는 것과 맞는 숫자를 보여주세요.
+   chunks: Show me / on this chart / which number / matches how you feel / .
+   r0: [which doctor] on this chart which number matches how you feel .
+   r1: Show me [which doctor] which number matches how you feel .
+   r2: Show me on this chart [which doctor] matches how you feel .
+   r3: Show me on this chart which number [which doctor] .
+4.4 decoy='the clipboard back' | ko: 한 시간마다 통역사와 함께 다시 와서 확인할게요.
+   chunks: I'll bring / the interpreter back / every hour / to check on you / .
+   r0: [the clipboard back] the interpreter back every hour to check on you .
+   r1: I'll bring [the clipboard back] every hour to check on you .
+   r2: I'll bring the interpreter back [the clipboard back] to check on you .
+   r3: I'll bring the interpreter back every hour [the clipboard back] .
+
+## S5 가족 통역 한계 인지
+5.0 decoy='a parking permit' | ko: 의료 동의를 위해서는 전문 통역사가 필요해요.
+   chunks: For medical consent / , we need / a professional interpreter / .
+   r0: [a parking permit] , we need a professional interpreter .
+   r1: For medical consent [a parking permit] a professional interpreter .
+   r2: For medical consent , we need [a parking permit] .
+5.1 decoy='comfort' | ko: 정확성과 가족분의 안전을 위한 거예요.
+   chunks: It's for accuracy / and your family member's / safety / .
+   r0: [comfort] and your family member's safety .
+   r1: It's for accuracy [comfort] safety .
+   r2: It's for accuracy and your family member's [comfort] .
+5.2 decoy='to knit' | ko: 따님은 계속 곁에서 지지해 주셔도 좋아요.
+   chunks: Your daughter / is welcome / to stay / and support her / .
+   r0: [to knit] is welcome to stay and support her .
+   r1: Your daughter [to knit] to stay and support her .
+   r2: Your daughter is welcome [to knit] and support her .
+   r3: Your daughter is welcome to stay [to knit] .
+5.3 decoy='about politics' | ko: 따님이 돕고 싶어 하시는 거 알아요, 신뢰의 문제가 아니에요.
+   chunks: I know / she wants to help / , and this isn't / about trust / .
+   r0: [about politics] she wants to help , and this isn't about trust .
+   r1: I know [about politics] , and this isn't about trust .
+   r2: I know she wants to help [about politics] about trust .
+   r3: I know she wants to help , and this isn't [about politics] .
+5.4 decoy='records every word' | ko: 훈련된 통역사는 한 마디도 놓치지 않고 다 잡아내요.
+   chunks: A trained interpreter / catches every word / so nothing / gets missed / .
+   r0: [records every word] catches every word so nothing gets missed .
+   r1: A trained interpreter [records every word] so nothing gets missed .
+   r2: A trained interpreter catches every word [records every word] gets missed .
+   r3: A trained interpreter catches every word so nothing [records every word] .
+
+## S6 전화·영상 통역 활용
+6.0 decoy='a text or email' | ko: 지금 바로 전화나 영상 통역을 쓸 수 있어요.
+   chunks: We can use / a phone or video / interpreter / right now / .
+   r0: [a text or email] a phone or video interpreter right now .
+   r1: We can use [a text or email] interpreter right now .
+   r2: We can use a phone or video [a text or email] right now .
+   r3: We can use a phone or video interpreter [a text or email] .
+6.1 decoy='the music' | ko: 원격 통역 연결선을 준비해 드릴게요.
+   chunks: Let me set up / the remote / interpreting line / .
+   r0: [the music] the remote interpreting line .
+   r1: Let me set up [the music] interpreting line .
+   r2: Let me set up the remote [the music] .
+6.2 decoy='on this paper' | ko: 이 기기로 통역사 목소리가 또렷하게 들리실 거예요.
+   chunks: You'll hear / the interpreter / clearly / on this device / .
+   r0: [on this paper] the interpreter clearly on this device .
+   r1: You'll hear [on this paper] clearly on this device .
+   r2: You'll hear the interpreter [on this paper] on this device .
+   r3: You'll hear the interpreter clearly [on this paper] .
+6.3 decoy='a spare cord' | ko: 화면 소리가 시끄러우니 조용한 자리를 찾아볼게요.
+   chunks: The screen is loud / , so let's / find / a quiet corner / .
+   r0: [a spare cord] , so let's find a quiet corner .
+   r1: The screen is loud [a spare cord] find a quiet corner .
+   r2: The screen is loud , so let's [a spare cord] a quiet corner .
+   r3: The screen is loud , so let's find [a spare cord] .
+6.4 decoy='my watch' | ko: 잠깐 마스크를 벗어서 제 얼굴을 보여드릴게요.
+   chunks: I'll take off my mask / for a moment / so you can see / my face / .
+   r0: [my watch] for a moment so you can see my face .
+   r1: I'll take off my mask [my watch] so you can see my face .
+   r2: I'll take off my mask for a moment [my watch] my face .
+   r3: I'll take off my mask for a moment so you can see [my watch] .
+
+## S7 동의 이해 재확인
+7.0 decoy='what you wore' | ko: 제 말로 이해하신 걸 다시 말씀해 주시겠어요?
+   chunks: Can you / tell me / in your own words / what you understood / ?
+   r0: [what you wore] tell me in your own words what you understood ?
+   r1: Can you [what you wore] in your own words what you understood ?
+   r2: Can you tell me [what you wore] what you understood ?
+   r3: Can you tell me in your own words [what you wore] ?
+7.1 decoy='the bill' | ko: 불명확한 부분을 다시 짚어 볼게요.
+   chunks: Let's go over / the part / that's unclear / again / .
+   r0: [the bill] the part that's unclear again .
+   r1: Let's go over [the bill] that's unclear again .
+   r2: Let's go over the part [the bill] again .
+   r3: Let's go over the part that's unclear [the bill] .
+7.2 decoy='fully paid' | ko: 이게 정말 충분히 설명 들으신 동의인지 확실히 하고 싶어요.
+   chunks: I want / to be sure / this is / truly informed / .
+   r0: [fully paid] to be sure this is truly informed .
+   r1: I want [fully paid] this is truly informed .
+   r2: I want to be sure [fully paid] truly informed .
+   r3: I want to be sure this is [fully paid] .
+7.3 decoy='any pen' | ko: 이해 안 되신 부분이 있으면 가리켜 주세요.
+   chunks: Point to / any part / you didn't / understand / .
+   r0: [any pen] any part you didn't understand .
+   r1: Point to [any pen] you didn't understand .
+   r2: Point to any part [any pen] understand .
+   r3: Point to any part you didn't [any pen] .
+7.4 decoy='everything is quiet' | ko: 다시 짚기 전에 다 이해되셨는지 확인해 볼게요.
+   chunks: Let's make sure / everything is understood / before we / go over it / again / .
+   r0: [everything is quiet] everything is understood before we go over it again .
+   r1: Let's make sure [everything is quiet] before we go over it again .
+   r2: Let's make sure everything is understood [everything is quiet] go over it again .
+   r3: Let's make sure everything is understood before we [everything is quiet] again .
+   r4: Let's make sure everything is understood before we go over it [everything is quiet] .
+
+## S8 문화적 표현 차이 조율
+8.0 decoy='easy to explain' | ko: 이게 말씀하시기 어려운 얘기일 수 있다는 거 알아요.
+   chunks: I understand / this may be / difficult to discuss / .
+   r0: [easy to explain] this may be difficult to discuss .
+   r1: I understand [easy to explain] difficult to discuss .
+   r2: I understand this may be [easy to explain] .
+8.1 decoy="who you're" | ko: 편하신 만큼만 얘기해 주시면 돼요.
+   chunks: Please share only / what you're / comfortable with / .
+   r0: [who you're] what you're comfortable with .
+   r1: Please share only [who you're] comfortable with .
+   r2: Please share only what you're [who you're] .
+8.2 decoy='your seating plan' | ko: 여기서는 환자분의 문화적 선호를 존중해요.
+   chunks: We respect / your cultural preferences / here / .
+   r0: [your seating plan] your cultural preferences here .
+   r1: We respect [your seating plan] here .
+   r2: We respect your cultural preferences [your seating plan] .
+8.3 decoy='buy anything' | ko: 어려운 얘기는 억지로 하지 않으셔도 돼요.
+   chunks: You don't have to / discuss anything / that's difficult / for you / .
+   r0: [buy anything] discuss anything that's difficult for you .
+   r1: You don't have to [buy anything] that's difficult for you .
+   r2: You don't have to discuss anything [buy anything] for you .
+   r3: You don't have to discuss anything that's difficult [buy anything] .
+8.4 decoy='at the same time' | ko: 이 얘기를 하실 땐 환자분 속도에 맞춰 천천히 하세요.
+   chunks: Please go / at your own pace / when you share / this / .
+   r0: [at the same time] at your own pace when you share this .
+   r1: Please go [at the same time] when you share this .
+   r2: Please go at your own pace [at the same time] this .
+   r3: Please go at your own pace when you share [at the same time] .
+
+## S9 진정 후 비언어 소통
+9.0 decoy='reach me' | ko: 제 말이 들리시면 제 손을 꽉 쥐어 보세요.
+   chunks: Squeeze my hand / if you can / hear me / .
+   r0: [reach me] if you can hear me .
+   r1: Squeeze my hand [reach me] hear me .
+   r2: Squeeze my hand if you can [reach me] .
+9.1 decoy='by waiting' | ko: 통증은 가리키거나 고개를 끄덕여서 알려 주세요.
+   chunks: Let me know / your pain / by pointing / or nodding / .
+   r0: [by waiting] your pain by pointing or nodding .
+   r1: Let me know [by waiting] by pointing or nodding .
+   r2: Let me know your pain [by waiting] or nodding .
+   r3: Let me know your pain by pointing [by waiting] .
+9.2 decoy='the door' | ko: 혹시 불편한 게 있는지 얼굴을 계속 살피고 있어요.
+   chunks: I'm watching / your face / for any discomfort / .
+   r0: [the door] your face for any discomfort .
+   r1: I'm watching [the door] for any discomfort .
+   r2: I'm watching your face [the door] .
+9.3 decoy='once for pain' | ko: 네일 땐 한 번, 아니오일 땐 두 번 손을 쥐어 주세요.
+   chunks: Squeeze my hand / once for yes / and twice / for no / .
+   r0: [once for pain] once for yes and twice for no .
+   r1: Squeeze my hand [once for pain] and twice for no .
+   r2: Squeeze my hand once for yes [once for pain] for no .
+   r3: Squeeze my hand once for yes and twice [once for pain] .
+9.4 decoy='you are cold' | ko: 아직 말씀은 못 하셔도 들리시는 거 알아요.
+   chunks: I know / you can hear me / , even if / you can't speak yet / .
+   r0: [you are cold] you can hear me , even if you can't speak yet .
+   r1: I know [you are cold] , even if you can't speak yet .
+   r2: I know you can hear me [you are cold] you can't speak yet .
+   r3: I know you can hear me , even if [you are cold] .
+
+## S10 통역 통한 불안 완화
+10.0 decoy='tired' | ko: 통역사를 통해 들으니 많이 무서우신가 봐요.
+   chunks: Through the interpreter / , I hear / that you're / scared / .
+   r0: [tired] , I hear that you're scared .
+   r1: Through the interpreter [tired] that you're scared .
+   r2: Through the interpreter , I hear [tired] scared .
+   r3: Through the interpreter , I hear that you're [tired] .
+10.1 decoy='to ask this often' | ko: 이렇게 느끼시는 건 자연스러운 거예요 — 저희가 곁에 있을게요.
+   chunks: It's normal / to feel this way / — we're here / for you / .
+   r0: [to ask this often] to feel this way — we're here for you .
+   r1: It's normal [to ask this often] — we're here for you .
+   r2: It's normal to feel this way [to ask this often] for you .
+   r3: It's normal to feel this way — we're here [to ask this often] .
+10.2 decoy='each price' | ko: 더 안심하실 수 있게 각 단계를 설명해 드릴게요.
+   chunks: Let me explain / each step / so you feel / more in control / .
+   r0: [each price] each step so you feel more in control .
+   r1: Let me explain [each price] so you feel more in control .
+   r2: Let me explain each step [each price] more in control .
+   r3: Let me explain each step so you feel [each price] .
+10.3 decoy="you're sleepy" | ko: 무서우신 거 알아요, 그건 아주 자연스러운 거예요.
+   chunks: I know / you're scared / , and that's completely / normal / .
+   r0: [you're sleepy] you're scared , and that's completely normal .
+   r1: I know [you're sleepy] , and that's completely normal .
+   r2: I know you're scared [you're sleepy] normal .
+   r3: I know you're scared , and that's completely [you're sleepy] .
+10.4 decoy='one meal' | ko: 한 단계씩 함께 천천히 해 나갈게요.
+   chunks: We'll take this / one step / at a time / , together / .
+   r0: [one meal] one step at a time , together .
+   r1: We'll take this [one meal] at a time , together .
+   r2: We'll take this one step [one meal] , together .
+   r3: We'll take this one step at a time [one meal] .
+
+## S11 의료 용어 평이한 설명
+11.0 decoy='on this form' | ko: 더 쉬운 말로 설명해 드릴게요.
+   chunks: Let me explain / that / in simpler words / .
+   r0: [on this form] that in simpler words .
+   r1: Let me explain [on this form] in simpler words .
+   r2: Let me explain that [on this form] .
+11.1 decoy='helps you eat' | ko: 그 용어는 그냥 숨 쉬는 걸 돕는 관을 뜻해요.
+   chunks: That term / just means / the tube / that helps you breathe / .
+   r0: [helps you eat] just means the tube that helps you breathe .
+   r1: That term [helps you eat] the tube that helps you breathe .
+   r2: That term just means [helps you eat] that helps you breathe .
+   r3: That term just means the tube [helps you eat] .
+11.2 decoy='still on the way' | ko: 여전히 헷갈리는 게 있으면 뭐든 물어보세요.
+   chunks: Ask me / anything that's / still unclear / .
+   r0: [still on the way] anything that's still unclear .
+   r1: Ask me [still on the way] still unclear .
+   r2: Ask me anything that's [still on the way] .
+11.3 decoy='bigger fonts' | ko: 매 단계를 이해하시도록 더 쉬운 말을 쓸게요.
+   chunks: I'll use / simpler words / so you understand / every step / .
+   r0: [bigger fonts] simpler words so you understand every step .
+   r1: I'll use [bigger fonts] so you understand every step .
+   r2: I'll use simpler words [bigger fonts] every step .
+   r3: I'll use simpler words so you understand [bigger fonts] .
+11.4 decoy='each drawing' | ko: 통역사를 통해 용어 하나하나를 설명해 볼게요.
+   chunks: Let's explain / each term / through the interpreter / .
+   r0: [each drawing] each term through the interpreter .
+   r1: Let's explain [each drawing] through the interpreter .
+   r2: Let's explain each term [each drawing] .
+
+## S12 통역 정확성 확인
+12.0 decoy='the patient pronounced' | ko: 환자분이 그걸 정확하게 이해했는지 확인해 줄 수 있어요?
+   chunks: Can you confirm / the patient understood / that correctly / ?
+   r0: [the patient pronounced] the patient understood that correctly ?
+   r1: Can you confirm [the patient pronounced] that correctly ?
+   r2: Can you confirm the patient understood [the patient pronounced] ?
+12.1 decoy='the spelling' | ko: 통역 내용이 정확한지 검증해 봅시다.
+   chunks: Let's verify / the interpretation / is accurate / .
+   r0: [the spelling] the interpretation is accurate .
+   r1: Let's verify [the spelling] is accurate .
+   r2: Let's verify the interpretation [the spelling] .
+12.2 decoy='what the monitor' | ko: 방금 환자분이 한 말을 다시 말해 주세요.
+   chunks: Please repeat back / what the patient / just said / .
+   r0: [what the monitor] what the patient just said .
+   r1: Please repeat back [what the monitor] just said .
+   r2: Please repeat back what the patient [what the monitor] .
+12.3 decoy='every page' | ko: 통역사가 모든 말을 정확하게 잡아냈는지 알아야 해요.
+   chunks: I need to know / the interpreter caught / every word / correctly / .
+   r0: [every page] the interpreter caught every word correctly .
+   r1: I need to know [every page] every word correctly .
+   r2: I need to know the interpreter caught [every page] correctly .
+   r3: I need to know the interpreter caught every word [every page] .
+12.4 decoy='that the address' | ko: 동의 내용이 정확했는지 환자분과 확인해 주세요.
+   chunks: Confirm / with the patient / that the consent / was accurate / .
+   r0: [that the address] with the patient that the consent was accurate .
+   r1: Confirm [that the address] that the consent was accurate .
+   r2: Confirm with the patient [that the address] was accurate .
+   r3: Confirm with the patient that the consent [that the address] .
+
+## S13 청각장애 수어 통역
+13.0 decoy='a private room' | ko: 환자분을 위해 수어 통역사를 준비해 드릴게요.
+   chunks: We'll arrange / a sign language interpreter / for you / .
+   r0: [a private room] a sign language interpreter for you .
+   r1: We'll arrange [a private room] for you .
+   r2: We'll arrange a sign language interpreter [a private room] .
+13.1 decoy='the ceiling' | ko: 각 지침마다 통역사를 봐 주세요.
+   chunks: Please watch / the interpreter / for each instruction / .
+   r0: [the ceiling] the interpreter for each instruction .
+   r1: Please watch [the ceiling] for each instruction .
+   r2: Please watch the interpreter [the ceiling] .
+13.2 decoy='to calm' | ko: 천천히 해야 하면 알려 주세요.
+   chunks: Let me know / if you need me / to slow / down / .
+   r0: [to calm] if you need me to slow down .
+   r1: Let me know [to calm] to slow down .
+   r2: Let me know if you need me [to calm] down .
+   r3: Let me know if you need me to slow [to calm] .
+13.3 decoy='a spare pillow' | ko: 지금 바로 수어 통역사를 찾아 드릴게요.
+   chunks: We'll find / a sign language interpreter / right away / .
+   r0: [a spare pillow] a sign language interpreter right away .
+   r1: We'll find [a spare pillow] right away .
+   r2: We'll find a sign language interpreter [a spare pillow] .
+13.4 decoy='Watch my feet' | ko: 아무것도 놓치지 않도록 제 얼굴과 손을 봐 주세요.
+   chunks: Watch my face / and hands / so you don't / miss anything / .
+   r0: [Watch my feet] and hands so you don't miss anything .
+   r1: Watch my face [Watch my feet] so you don't miss anything .
+   r2: Watch my face and hands [Watch my feet] miss anything .
+   r3: Watch my face and hands so you don't [Watch my feet] .
+
+## S14 응급 신속 통역 확보
+14.0 decoy='with a clipboard' | ko: 지금 바로 전화선으로 통역사가 필요해요.
+   chunks: We need / an interpreter / on the line / immediately / .
+   r0: [with a clipboard] an interpreter on the line immediately .
+   r1: We need [with a clipboard] on the line immediately .
+   r2: We need an interpreter [with a clipboard] immediately .
+   r3: We need an interpreter on the line [with a clipboard] .
+14.1 decoy='as neatly as' | ko: 긴급 상황이에요 — 최대한 빨리 연결해 주세요.
+   chunks: This is urgent / — connect us / as fast as / possible / .
+   r0: [as neatly as] — connect us as fast as possible .
+   r1: This is urgent [as neatly as] as fast as possible .
+   r2: This is urgent — connect us [as neatly as] possible .
+   r3: This is urgent — connect us as fast as [as neatly as] .
+14.2 decoy='the paperwork' | ko: 지금 바로 필수적인 것만 전달합시다.
+   chunks: Let's get / the essentials / across / right now / .
+   r0: [the paperwork] the essentials across right now .
+   r1: Let's get [the paperwork] across right now .
+   r2: Let's get the essentials [the paperwork] right now .
+   r3: Let's get the essentials across [the paperwork] .
+14.3 decoy='a new badge' | ko: 기다릴 수 없어요 — 지금 바로 통역사를 데려다주세요.
+   chunks: We can't wait / — get me / an interpreter / right now / .
+   r0: [a new badge] — get me an interpreter right now .
+   r1: We can't wait [a new badge] an interpreter right now .
+   r2: We can't wait — get me [a new badge] right now .
+   r3: We can't wait — get me an interpreter [a new badge] .
+14.4 decoy='Charge the tablet' | ko: 시간을 놓치지 않게 바로 전화선을 연결해 주세요.
+   chunks: Connect the line / immediately / so we don't / lose time / .
+   r0: [Charge the tablet] immediately so we don't lose time .
+   r1: Connect the line [Charge the tablet] so we don't lose time .
+   r2: Connect the line immediately [Charge the tablet] lose time .
+   r3: Connect the line immediately so we don't [Charge the tablet] .
+
+## S15 통역 없는 응급 동의
+15.0 decoy='a calm voice' | ko: 지금 쓸 수 있는 모든 방법으로 소통할게요.
+   chunks: We'll use / every available means / to communicate / now / .
+   r0: [a calm voice] every available means to communicate now .
+   r1: We'll use [a calm voice] to communicate now .
+   r2: We'll use every available means [a calm voice] now .
+   r3: We'll use every available means to communicate [a calm voice] .
+15.1 decoy='the lunch order' | ko: 응급 상황과 동의 절차를 기록해 둡시다.
+   chunks: Let's document / the emergency / and the consent / process / .
+   r0: [the lunch order] the emergency and the consent process .
+   r1: Let's document [the lunch order] and the consent process .
+   r2: Let's document the emergency [the lunch order] process .
+   r3: Let's document the emergency and the consent [the lunch order] .
+15.2 decoy='visiting hours' | ko: 환자의 안전을 위해 응급 규정에 따라 진행하는 게 정당해요.
+   chunks: Patient safety / justifies proceeding / under emergency / provisions / .
+   r0: [visiting hours] justifies proceeding under emergency provisions .
+   r1: Patient safety [visiting hours] under emergency provisions .
+   r2: Patient safety justifies proceeding [visiting hours] provisions .
+   r3: Patient safety justifies proceeding under emergency [visiting hours] .
+15.3 decoy='without a chart' | ko: 통역사 없이 진행하는 이유를 기록해야 해요.
+   chunks: We need / to document / why we're proceeding / without an interpreter / .
+   r0: [without a chart] to document why we're proceeding without an interpreter .
+   r1: We need [without a chart] why we're proceeding without an interpreter .
+   r2: We need to document [without a chart] without an interpreter .
+   r3: We need to document why we're proceeding [without a chart] .
+15.4 decoy='This is a drill' | ko: 응급 상황이라 쓸 수 있는 모든 방법을 다 쓸게요.
+   chunks: This is an emergency / , so we'll use / every means / available / .
+   r0: [This is a drill] , so we'll use every means available .
+   r1: This is an emergency [This is a drill] every means available .
+   r2: This is an emergency , so we'll use [This is a drill] available .
+   r3: This is an emergency , so we'll use every means [This is a drill] .
+
+## S16 언어장벽 알레르기 미확인
+16.0 decoy='in spite of' | ko: 언어 장벽 때문에 알레르기를 확인할 수가 없어요.
+   chunks: We can't confirm / allergies / due to / the language barrier / .
+   r0: [in spite of] allergies due to the language barrier .
+   r1: We can't confirm [in spite of] due to the language barrier .
+   r2: We can't confirm allergies [in spite of] the language barrier .
+   r3: We can't confirm allergies due to [in spite of] .
+16.1 decoy='a witness' | ko: 약을 주기 전에 통역사부터 데려옵시다.
+   chunks: Let's get / an interpreter / before any / medication / .
+   r0: [a witness] an interpreter before any medication .
+   r1: Let's get [a witness] before any medication .
+   r2: Let's get an interpreter [a witness] medication .
+   r3: Let's get an interpreter before any [a witness] .
+16.2 decoy='a billing error' | ko: 이건 안전 위험이에요 — 지금 바로 표시해 둘게요.
+   chunks: This is / a safety risk / — I'm flagging / it now / .
+   r0: [a billing error] a safety risk — I'm flagging it now .
+   r1: This is [a billing error] — I'm flagging it now .
+   r2: This is a safety risk [a billing error] it now .
+   r3: This is a safety risk — I'm flagging [a billing error] .
+16.3 decoy='directions' | ko: 알레르기 이력을 확인하기 전엔 약을 주지 않을 거예요.
+   chunks: We won't give / medication / until we confirm / the allergy history / .
+   r0: [directions] medication until we confirm the allergy history .
+   r1: We won't give [directions] until we confirm the allergy history .
+   r2: We won't give medication [directions] the allergy history .
+   r3: We won't give medication until we confirm [directions] .
+16.4 decoy='is a real puzzle' | ko: 언어 장벽은 여기서 안전에 실제 위험이 돼요.
+   chunks: The language barrier / is a real risk / to safety / here / .
+   r0: [is a real puzzle] is a real risk to safety here .
+   r1: The language barrier [is a real puzzle] to safety here .
+   r2: The language barrier is a real risk [is a real puzzle] here .
+   r3: The language barrier is a real risk to safety [is a real puzzle] .
+
+## S17 오역 위험 정보 누락
+17.0 decoy='what I ordered' | ko: 그 통역 내용은 제가 한 말과 안 맞았어요.
+   chunks: That interpretation / didn't match / what I said / .
+   r0: [what I ordered] didn't match what I said .
+   r1: That interpretation [what I ordered] what I said .
+   r2: That interpretation didn't match [what I ordered] .
+17.1 decoy='a critical delay' | ko: 치명적인 실수를 막기 위해 멈추고 명확히 합시다.
+   chunks: Let's stop / and clarify / to avoid / a critical error / .
+   r0: [a critical delay] and clarify to avoid a critical error .
+   r1: Let's stop [a critical delay] to avoid a critical error .
+   r2: Let's stop and clarify [a critical delay] a critical error .
+   r3: Let's stop and clarify to avoid [a critical delay] .
+17.2 decoy='the room key' | ko: 핵심 정보를 놓치는 위험을 감수할 수 없어요.
+   chunks: We can't / risk losing / key information / .
+   r0: [the room key] risk losing key information .
+   r1: We can't [the room key] key information .
+   r2: We can't risk losing [the room key] .
+17.3 decoy='what I wrote' | ko: 잠깐 멈춰 주세요 — 그건 제가 한 말과 안 맞아요.
+   chunks: Stop / for a moment / — that doesn't match / what I said / .
+   r0: [what I wrote] for a moment — that doesn't match what I said .
+   r1: Stop [what I wrote] — that doesn't match what I said .
+   r2: Stop for a moment [what I wrote] what I said .
+   r3: Stop for a moment — that doesn't match [what I wrote] .
+17.4 decoy='closing the chart' | ko: 핵심 정보를 놓치기 전에 지금 바로 명확히 합시다.
+   chunks: Let's clarify this / now / , before we risk / losing key information / .
+   r0: [closing the chart] now , before we risk losing key information .
+   r1: Let's clarify this [closing the chart] , before we risk losing key information .
+   r2: Let's clarify this now [closing the chart] losing key information .
+   r3: Let's clarify this now , before we risk [closing the chart] .
+
+## S18 위기 설명 신속 통역
+18.0 decoy='Please print this' | ko: 이걸 긴급하고 또렷하게 통역해 주세요.
+   chunks: Please interpret this / urgently / and clearly / .
+   r0: [Please print this] urgently and clearly .
+   r1: Please interpret this [Please print this] and clearly .
+   r2: Please interpret this urgently [Please print this] .
+18.1 decoy='has been charted' | ko: 환자분 상태가 변했어요 — 지금 바로 알려야 해요.
+   chunks: The patient's condition / has changed / — they need / to know now / .
+   r0: [has been charted] has changed — they need to know now .
+   r1: The patient's condition [has been charted] — they need to know now .
+   r2: The patient's condition has changed [has been charted] to know now .
+   r3: The patient's condition has changed — they need [has been charted] .
+18.2 decoy='Keep it moving' | ko: 잘못 이해하지 않도록 간단하게 유지하세요.
+   chunks: Keep it simple / so nothing / is misunderstood / .
+   r0: [Keep it moving] so nothing is misunderstood .
+   r1: Keep it simple [Keep it moving] is misunderstood .
+   r2: Keep it simple so nothing [Keep it moving] .
+18.3 decoy='word by word' | ko: 환자분 상태가 또 변하기 전에 급히 통역해야 해요.
+   chunks: We need to interpret this / urgently / before her condition / changes again / .
+   r0: [word by word] urgently before her condition changes again .
+   r1: We need to interpret this [word by word] before her condition changes again .
+   r2: We need to interpret this urgently [word by word] changes again .
+   r3: We need to interpret this urgently before her condition [word by word] .
+18.4 decoy='Explain this twice' | ko: 잘못 이해되지 않게 간단하게 설명해 주세요.
+   chunks: Explain this simply / so nothing / gets misunderstood / .
+   r0: [Explain this twice] so nothing gets misunderstood .
+   r1: Explain this simply [Explain this twice] gets misunderstood .
+   r2: Explain this simply so nothing [Explain this twice] .
+
+## S19 이해 불가 응급 진행
+19.0 decoy='a casual chat' | ko: 환자분이 완전히 이해하지 못해도 이건 진짜 응급 상황이에요.
+   chunks: The patient can't / fully understand / , but this is / a true emergency / .
+   r0: [a casual chat] fully understand , but this is a true emergency .
+   r1: The patient can't [a casual chat] , but this is a true emergency .
+   r2: The patient can't fully understand [a casual chat] a true emergency .
+   r3: The patient can't fully understand , but this is [a casual chat] .
+19.1 decoy='under normal rules' | ko: 응급 동의 절차에 따라 진행하고 그 이유를 기록해요.
+   chunks: We proceed / under emergency consent / and document why / .
+   r0: [under normal rules] under emergency consent and document why .
+   r1: We proceed [under normal rules] and document why .
+   r2: We proceed under emergency consent [under normal rules] .
+19.2 decoy='to relax' | ko: 내내 소통을 계속 시도합시다.
+   chunks: Let's keep trying / to communicate / throughout / .
+   r0: [to relax] to communicate throughout .
+   r1: Let's keep trying [to relax] throughout .
+   r2: Let's keep trying to communicate [to relax] .
+19.3 decoy='under a court order' | ko: 진짜 응급 상황이라 응급 동의 절차로 진행할게요.
+   chunks: This is / a true emergency / , so we proceed / under emergency consent / .
+   r0: [under a court order] a true emergency , so we proceed under emergency consent .
+   r1: This is [under a court order] , so we proceed under emergency consent .
+   r2: This is a true emergency [under a court order] under emergency consent .
+   r3: This is a true emergency , so we proceed [under a court order] .
+19.4 decoy='every visitor' | ko: 계속 소통을 시도하면서 매 단계를 기록할게요.
+   chunks: We'll keep trying / to communicate / and document / every step / .
+   r0: [every visitor] to communicate and document every step .
+   r1: We'll keep trying [every visitor] and document every step .
+   r2: We'll keep trying to communicate [every visitor] every step .
+   r3: We'll keep trying to communicate and document [every visitor] .
+
+## S20 나쁜 소식 통역 전달
+20.0 decoy='carry this box' | ko: 정말 죄송해요 — 통역사가 이 소식을 전하는 걸 도와드릴 거예요.
+   chunks: I'm so sorry / — the interpreter / will help me / share this news / .
+   r0: [carry this box] — the interpreter will help me share this news .
+   r1: I'm so sorry [carry this box] will help me share this news .
+   r2: I'm so sorry — the interpreter [carry this box] share this news .
+   r3: I'm so sorry — the interpreter will help me [carry this box] .
+20.1 decoy='to sign this' | ko: 이걸 받아들이는 데 필요한 시간을 다 가지세요.
+   chunks: Take all / the time / you need / to process this / .
+   r0: [to sign this] the time you need to process this .
+   r1: Take all [to sign this] you need to process this .
+   r2: Take all the time [to sign this] to process this .
+   r3: Take all the time you need [to sign this] .
+20.2 decoy='to greet' | ko: 가족분들을 지지해 드리려고 저희가 곁에 있어요.
+   chunks: We're here / to support / your family / .
+   r0: [to greet] to support your family .
+   r1: We're here [to greet] your family .
+   r2: We're here to support [to greet] .
+20.3 decoy='to be late' | ko: 이 소식이 힘드시다는 거 알아요, 전하게 되어 죄송해요.
+   chunks: I know / this news is hard / , and I'm sorry / to share it / .
+   r0: [to be late] this news is hard , and I'm sorry to share it .
+   r1: I know [to be late] , and I'm sorry to share it .
+   r2: I know this news is hard [to be late] to share it .
+   r3: I know this news is hard , and I'm sorry [to be late] .
+20.4 decoy='your neighbors' | ko: 통역사를 통해 매 순간 가족분들을 지지해 드릴게요.
+   chunks: Through the interpreter / , we'll support / your family / every step / of the way / .
+   r0: [your neighbors] , we'll support your family every step of the way .
+   r1: Through the interpreter [your neighbors] your family every step of the way .
+   r2: Through the interpreter , we'll support [your neighbors] every step of the way .
+   r3: Through the interpreter , we'll support your family [your neighbors] of the way .
+   r4: Through the interpreter , we'll support your family every step [your neighbors] .
