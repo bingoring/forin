@@ -1,0 +1,146 @@
+# A 문장 수정 + 그 문장의 B 필드(새 문장 기준으로 다시 씀). 키 = "상황.문장"(0부터)
+# fields_changed = changes-icu-nutrition.yaml에 적을 v44 필드
+"0.6":
+  fields_changed: [en, chunks, ko, words]
+  why: "먹기 시작의 조건은 장 기능이 아니라 삼킴 평가 — 가족에게 잘못된 기준을 줌"
+  en: "Once he passes a swallow test, we'll try the first spoonful by mouth."
+  chunks: ["Once he passes", "a swallow test", ", we'll try", "the first spoonful", "by mouth", "."]
+  ko: "삼킴 검사를 통과하면 입으로 첫 숟가락을 시도해 볼 거예요."
+  words: [w-swallow, w-try, w-first, w-spoonful, w-mouth]
+  why_v46: "Once로 삼킴 검사 통과를 다음 단계의 조건으로 말해요. first spoonful처럼 아주 작은 양부터 시작한다고 알려 줘요."
+  distractorsKo:
+    - "삼킴 검사를 통과하면 입으로 두 번째 숟가락을 시도해 볼 거예요."
+    - "삼킴 검사를 통과하면 입으로 첫 푸딩을 시도해 볼 거예요."
+"0.9":
+  fields_changed: [ko]
+  why: "so you can help too의 help(돕다)와 ko '직접 해 드릴'이 어긋남"
+  ko: "어떻게 하는지 보여드릴 테니 같이 도와주실 수도 있어요."
+  distractorsKo:
+    - "어떻게 하는지 보여드릴 테니 같이 지켜보실 수도 있어요."
+    - "어디에 두는지 보여드릴 테니 같이 도와주실 수도 있어요."
+"4.3":
+  fields_changed: [ko]
+  why: "does feel은 촉진(만져 보니) — 보이네요가 아님"
+  ko: "오늘 배가 만져 보니 좀 팽팽하고 부풀어 있네요."
+  distractorsKo:
+    - "오늘 배가 만져 보니 좀 따뜻하고 부풀어 있네요."
+    - "오늘 다리가 만져 보니 좀 팽팽하고 부어 있네요."
+"9.0":
+  fields_changed: [ko]
+  why: "압력을 '설치'하는 것처럼 읽힘 — 장치를 설치하고 잰다로"
+  ko: "지금 방광압 측정 장치를 설치하고 잴게요."
+  distractorsKo:
+    - "지금 방광압을 재기 전에 환자를 눕힐게요."
+    - "방광압은 배 속의 압력을 알려 줘요."
+"11.2":
+  fields_changed: [ko]
+  why: "'그의'는 환자를 가리키는 어색한 직역 — 환자 상태에"
+  ko: "환자 상태에 맞춰 영양액을 조절할게요."
+  distractorsKo:
+    - "환자 취향에 맞춰 영양액을 조절할게요."
+    - "환자 상태에 맞춰 조명을 조절할게요."
+"12.5":
+  fields_changed: [en, chunks, ko]
+  why: "that이 '가족에게 말한 일'을 가리켜 뜻이 꼬임 — 좋은 징후를 먼저 말하고 가족에게 알렸다고 이음"
+  en: "That's a great sign, and I told her family."
+  chunks: ["That's", "a great sign", ", and I told", "her family", "."]
+  ko: "아주 좋은 징후라서 가족분께도 알려드렸어요."
+  why_v46: "That's로 앞서 들은 소식을 가리키며 평가를 먼저 말하고, and I told로 그 소식을 가족에게 전했다고 덧붙여요. a great sign은 회복 쪽으로 가는 신호라는 뜻이에요."
+  distractorsKo:
+    - "아주 좋은 징후라서 가족분께도 보여드렸어요."
+    - "아주 흔한 징후라서 가족분께도 알려드렸어요."
+"13.4":
+  fields_changed: [en, chunks, ko, words]
+  why: "IR은 투시실에서 넣는다 — 침상 삽입이 아님"
+  en: "Interventional radiology will place the tube under fluoroscopy."
+  chunks: ["Interventional radiology", "will place", "the tube", "under fluoroscopy", "."]
+  ko: "영상의학과에서 투시 영상을 보며 관을 넣어 줄 거예요."
+  words: [w-radiology, w-place, w-tube]
+  why_v46: "will place로 앞으로 영상의학과가 하는 일을 알려요. under fluoroscopy는 투시 영상을 보면서 넣는다는 뜻이에요."
+  distractorsKo:
+    - "소화기내과에서 투시 영상을 보며 관을 넣어 줄 거예요."
+    - "영상의학과에서 투시 영상을 보며 정맥관을 넣어 줄 거예요."
+"15.6":
+  fields_changed: [en, chunks, ko, words]
+  why: "복부구획증후군에 지시 없는 수액 추가는 복압을 올릴 수 있음 — 곁을 지키는 말로"
+  en: "I'll stay with him while we wait for the surgeon."
+  chunks: ["I'll stay", "with him", "while we wait", "for the surgeon", "."]
+  ko: "외과의사를 기다리는 동안 제가 곁에 있을게요."
+  words: [w-stay, w-wait, w-surgeon]
+  tag: "곁 지키기"
+  icon: "handshake2"
+  why_v46: "while로 수술팀을 기다리는 시간에 하는 일을 말해요. stay with him은 환자를 혼자 두지 않고 곁을 지키겠다는 뜻이에요."
+  distractorsKo:
+    - "마취의사를 기다리는 동안 제가 곁에 있을게요."
+    - "외과의사를 기다리는 동안 상태가 변할 수 있어요."
+"16.0":
+  fields_changed: [ko]
+  why: "resuscitation을 CPR('소생술')로 읽게 함 — 쇼크에 대한 수액·혈압 소생 처치"
+  ko: "급식을 모두 중단하고 지금 바로 소생 처치(수액·혈압 유지)를 시작해요."
+  distractorsKo:
+    - "소생 처치(수액·혈압 유지)를 시작하면서 수술팀을 부를게요."
+    - "급식 중단과 소생 처치(수액·혈압 유지)가 지금 가장 먼저예요."
+"16.2":
+  fields_changed: [ko]
+  why: "support를 '지지'로 쓰면 어색 — w-support '보조하다'와 맞춰 유지하도록 돕고"
+  ko: "혈압을 유지하도록 돕고 광범위 항생제를 투여해요."
+  distractorsKo:
+    - "혈압은 수액부터 충분히 주면서 유지하도록 도와요."
+    - "광범위 항생제는 장 속 세균을 겨냥해서 투여해요."
+"16.4":
+  fields_changed: [en, chunks, ko, words]
+  why: "간호사가 괴사 진단·수술 필요를 단언 — 걱정과 평가 요청으로"
+  en: "I'm worried this could be dead bowel, and surgery needs to see her now."
+  chunks: ["I'm worried", "this could be", "dead bowel", ", and surgery needs", "to see her now", "."]
+  ko: "장이 괴사된 것일까 봐 걱정돼서, 수술팀이 지금 바로 봐야 해요."
+  words: [w-worry, w-dead, w-bowel, w-need, w-surgery]
+  tag: "우려 전달"
+  why_v46: "I'm worried로 단정하지 않고 걱정으로 말하고, could be로 아직 확정이 아닌 가능성임을 밝혀요. surgery needs to see her로 수술팀의 평가를 요청해요."
+  distractorsKo:
+    - "장이 막힌 것일까 봐 걱정돼서, 수술팀이 지금 바로 봐야 해요."
+    - "장이 꼬인 것일까 봐 걱정돼서, 수술팀이 지금 바로 봐야 해요."
+"16.5":
+  fields_changed: [en, chunks, ko, words]
+  why: "지시 없는 수액 투여로 읽힘 — 수액을 준비하는 말로"
+  en: "I'm getting fluids ready and calling the physician right away."
+  chunks: ["I'm getting", "fluids ready", "and calling the physician", "right away", "."]
+  ko: "수액을 준비하면서 바로 의사에게 연락하고 있어요."
+  words: [w-fluid, w-call, w-physician, w-rightaway]
+  why_v46: "getting fluids ready와 calling을 and로 묶은 현재진행형으로 두 일을 동시에 하고 있다고 알려요. right away는 지체 없이라는 뜻이에요."
+  distractorsKo:
+    - "수액을 준비하려고 정맥로를 확인하고 있어요."
+    - "수액은 장으로 가는 혈류를 받쳐 주는 거예요."
+"16.6":
+  fields_changed: [en, chunks, ko, words]
+  why: "RRT는 보통 일반 병동용 — ICU 안에서는 중환자 전담의를 부름"
+  en: "Get the intensivist to the bedside now."
+  chunks: ["Get", "the intensivist", "to the bedside", "now", "."]
+  ko: "중환자 전담의를 지금 침상으로 불러 주세요."
+  words: [w-bedside]
+  why_v46: "명령형 Get은 짧고 분명하게 요청해서 위급한 순간에 쓰기 좋아요. to the bedside now로 장소와 시점을 함께 알려요."
+  decoy: "to the lobby"
+  distractorsKo:
+    - "중환자 전담의를 부르는 동안 제가 곁에 있을게요."
+    - "중환자 전담의가 오면 바로 인계할게요."
+  blank: {answer: "bedside", options: ["bedside", "pharmacy", "entrance", "basement"]}
+"20.6":
+  fields_changed: [ko]
+  why: "'그에게' 직역 — 이분께"
+  ko: "지금 이분께 편안함이 어떤 의미일지 함께 생각해봐요."
+  distractorsKo:
+    - "지금 이분께 건강이 어떤 의미일지 함께 생각해봐요."
+    - "지금 가족께 편안함이 어떤 의미일지 함께 생각해봐요."
+# chunks만 (S10~S12)
+"1.5":
+  fields_changed: [chunks]
+  why: "구 경계를 끊은 청크 — Keeping / the head of the bed up / lowers / his aspiration risk"
+  chunks: ["Keeping", "the head of the bed up", "lowers", "his aspiration risk", "."]
+  decoy: "his fall risk"
+"9.4":
+  fields_changed: [chunks]
+  why: "구 경계를 끊은 청크(to his / reading)"
+  chunks: ["Let's", "compare it", "to his reading", "from this morning", "."]
+"19.6":
+  fields_changed: [chunks]
+  why: "구 경계를 끊은 청크(for any new / changes)"
+  chunks: ["I'll watch", "his heart monitor", "for any", "new changes", "."]

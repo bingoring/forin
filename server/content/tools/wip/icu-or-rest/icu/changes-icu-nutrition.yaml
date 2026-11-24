@@ -92,11 +92,6 @@ changes:
   - ko
   why: ko '배변'은 bowel sounds·dead bowel 문장과 안 맞고 w-movement와도 겹친다 — 가름
 - kind: word
-  id: w-tolerance
-  fields:
-  - ko
-  why: '''내성''은 약물 내성으로 읽히기 쉽다 — feeding tolerance는 급식을 견디는 정도'
-- kind: word
   id: w-slow
   fields:
   - ko
@@ -106,12 +101,6 @@ changes:
   fields:
   - ko
   why: '''혈압을 지지하다''는 어색하다 — support her pressure는 혈압을 보조(유지)하다'
-- kind: word
-  id: w-get
-  fields:
-  - ko
-  - example
-  why: ko '~하게 되다'는 get an x-ray·get antibiotics 같은 문장에 안 맞는다 — '마련하다'로, 'get comfortable/get her sitting up' 문장은 태그를 뺌 — 옛 예문 문장에서 태그를 뺐으므로 예문을 태그된 문장으로 바꿈
 - kind: word
   id: w-target
   fields:
@@ -250,8 +239,9 @@ changes:
   situation: 영양 요구·경로 사정
   index: 9
   fields:
+  - ko
   - words
-  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: 'so you can help too의 help(돕다)와 ko ''직접 해 드릴''이 어긋남 / 이전: 쉬운 말 태그를 뺌 — 문장은 그대로'
 - kind: sentence
   situation: 장관영양 시작·내성 관찰
   index: 2
@@ -268,8 +258,9 @@ changes:
   situation: 장관영양 시작·내성 관찰
   index: 5
   fields:
+  - chunks
   - words
-  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: '구 경계를 끊은 청크 — Keeping / the head of the bed up / lowers / his aspiration risk / 이전: 쉬운 말 태그를 뺌 — 문장은 그대로'
 - kind: sentence
   situation: 장관영양 시작·내성 관찰
   index: 6
@@ -328,8 +319,9 @@ changes:
   situation: 배변·복부 팽만 관찰
   index: 3
   fields:
+  - ko
   - words
-  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: 'does feel은 촉진(만져 보니) — 보이네요가 아님 / 이전: 쉬운 말 태그를 뺌 — 문장은 그대로'
 - kind: sentence
   situation: 배변·복부 팽만 관찰
   index: 6
@@ -400,8 +392,9 @@ changes:
   situation: 복강내압 측정
   index: 0
   fields:
+  - ko
   - words
-  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: '압력을 ''설치''하는 것처럼 읽힘 — 장치를 설치하고 잰다로 / 이전: 쉬운 말 태그를 뺌 — 문장은 그대로'
 - kind: sentence
   situation: 복강내압 측정
   index: 3
@@ -412,8 +405,9 @@ changes:
   situation: 복강내압 측정
   index: 4
   fields:
+  - chunks
   - words
-  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: '구 경계를 끊은 청크(to his / reading) / 이전: 쉬운 말 태그를 뺌 — 문장은 그대로'
 - kind: sentence
   situation: 복강내압 측정
   index: 5
@@ -478,8 +472,11 @@ changes:
   situation: 위잔여량·촉진제 사용
   index: 5
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: 'that이 ''가족에게 말한 일''을 가리켜 뜻이 꼬임 — 좋은 징후를 먼저 말하고 가족에게 알렸다고 이음 / 이전: 쉬운 말 태그를 뺌 — 문장은 그대로'
 - kind: sentence
   situation: 위잔여량·촉진제 사용
   index: 6
@@ -514,26 +511,34 @@ changes:
   situation: 장허혈·괴사 응급
   index: 0
   fields:
+  - ko
   - words
-  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: 'resuscitation을 CPR(''소생술'')로 읽게 함 — 쇼크에 대한 수액·혈압 소생 처치 / 이전: 쉬운 말 태그를 뺌 — 문장은 그대로'
 - kind: sentence
   situation: 장허혈·괴사 응급
   index: 2
   fields:
+  - ko
   - words
-  why: pressure의 ko는 '압력' — support her pressure는 혈압이라 태그를 뺌 — 문장은 그대로
+  why: 'support를 ''지지''로 쓰면 어색 — w-support ''보조하다''와 맞춰 유지하도록 돕고 / 이전: pressure의 ko는 ''압력'' — support her pressure는 혈압이라 태그를 뺌 — 문장은 그대로'
 - kind: sentence
   situation: 장허혈·괴사 응급
   index: 4
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: '간호사가 괴사 진단·수술 필요를 단언 — 걱정과 평가 요청으로 / 이전: 쉬운 말 태그를 뺌 — 문장은 그대로'
 - kind: sentence
   situation: 장허혈·괴사 응급
   index: 6
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: 'RRT는 보통 일반 병동용 — ICU 안에서는 중환자 전담의를 부름 (w-get 태그도 뺌) / 이전: 쉬운 말 태그를 뺌 — 문장은 그대로'
 - kind: sentence
   situation: 대량 흡인 사건 위기
   index: 1
@@ -574,8 +579,9 @@ changes:
   situation: 심한 재영양증후군 위기
   index: 6
   fields:
+  - chunks
   - words
-  why: change의 ko는 동사 '바꾸다' — any new changes는 명사라 태그를 뺌 — 문장은 그대로
+  why: '구 경계를 끊은 청크(for any new / changes) / 이전: change의 ko는 동사 ''바꾸다'' — any new changes는 명사라 태그를 뺌 — 문장은 그대로'
 - kind: sentence
   situation: 장기 영양불량 예후 소통
   index: 0
@@ -610,5 +616,144 @@ changes:
   situation: 장기 영양불량 예후 소통
   index: 6
   fields:
+  - ko
   - words
-  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: '''그에게'' 직역 — 이분께 / 이전: 쉬운 말 태그를 뺌 — 문장은 그대로'
+- kind: word
+  id: w-well
+  fields:
+  - example
+  why: 예문을 바뀐 문장에 맞춤(그 말이 태그된 문장으로)
+- kind: word
+  id: w-try
+  fields:
+  - example
+  why: 예문을 바뀐 문장에 맞춤(그 말이 태그된 문장으로)
+- kind: word
+  id: w-spoonful
+  fields:
+  - example
+  why: 예문을 바뀐 문장에 맞춤(그 말이 태그된 문장으로)
+- kind: word
+  id: w-great
+  fields:
+  - example
+  why: 예문을 바뀐 문장에 맞춤(그 말이 태그된 문장으로)
+- kind: word
+  id: w-sign
+  fields:
+  - example
+  why: 예문을 바뀐 문장에 맞춤(그 말이 태그된 문장으로)
+- kind: word
+  id: w-radiology
+  fields:
+  - example
+  why: 예문을 바뀐 문장에 맞춤(그 말이 태그된 문장으로)
+- kind: word
+  id: w-place
+  fields:
+  - example
+  why: 예문을 바뀐 문장에 맞춤(그 말이 태그된 문장으로)
+- kind: word
+  id: w-bedside
+  fields:
+  - example
+  why: 예문을 바뀐 문장에 맞춤(그 말이 태그된 문장으로)
+- kind: word
+  id: w-wait
+  fields:
+  - example
+  why: 예문을 바뀐 문장에 맞춤(그 말이 태그된 문장으로)
+- kind: word
+  id: w-surgeon
+  fields:
+  - example
+  why: 예문을 바뀐 문장에 맞춤(그 말이 태그된 문장으로)
+- kind: word
+  id: w-resuscitation
+  fields:
+  - ko
+  why: 소생술은 CPR로 읽힌다 — 이 문장의 resuscitation은 쇼크에 대한 수액·혈압 소생 처치
+- kind: word
+  id: w-dead
+  fields:
+  - example
+  why: 예문을 바뀐 문장에 맞춤(그 말이 태그된 문장으로)
+- kind: word
+  id: w-bottom
+  fields:
+  - en
+  - ipa
+  why: 문장은 bottomed out(구동사) — 헤드워드를 bottom out으로
+- kind: word
+  id: w-waste
+  fields:
+  - en
+  - ipa
+  why: 문장은 wasting away(구동사) — 헤드워드를 waste away로
+- kind: word-remove
+  id: w-work
+  why: 문장 0.6이 삼킴 검사 기준으로 바뀌어 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-get
+  why: ko '마련하다'가 남은 문장(get an x-ray·get a CT scan·get broad antibiotics·Get … here)에 하나도 맞지 않는다 — 쉬운 말이라 태그를 빼고 지움
+- kind: word-remove
+  id: w-rapid
+  why: 문장 16.6이 중환자 전담의 호출로 바뀌어 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-response
+  why: 문장 16.6이 중환자 전담의 호출로 바뀌어 어느 문장도 태그하지 않게 됐다
+- kind: sentence
+  situation: 영양 요구·경로 사정
+  index: 6
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 먹기 시작의 조건은 장 기능이 아니라 삼킴 평가 — 가족에게 잘못된 기준을 줌
+- kind: sentence
+  situation: 영양 목표 열량·단백 조정
+  index: 2
+  fields:
+  - ko
+  why: '''그의''는 환자를 가리키는 어색한 직역 — 환자 상태에'
+- kind: sentence
+  situation: 유문후 급식 전환
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: IR은 투시실에서 넣는다 — 침상 삽입이 아님
+- kind: sentence
+  situation: 유문후 급식 전환
+  index: 5
+  fields:
+  - words
+  why: w-get 삭제로 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 장허혈 감별 징후
+  index: 5
+  fields:
+  - words
+  why: w-get 삭제로 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 복부구획증후군 급변 위기
+  index: 6
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 복부구획증후군에 지시 없는 수액 추가는 복압을 올릴 수 있음 — 곁을 지키는 말로
+- kind: sentence
+  situation: 장허혈·괴사 응급
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 지시 없는 수액 투여로 읽힘 — 수액을 준비하는 말로

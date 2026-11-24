@@ -1,0 +1,54 @@
+# 뉘앙스 수정. 키 = "상황.종류" (상황 번호는 0부터). set: 바꿀 필드. scenes: {장면 번호: {필드}}
+"13.pair":
+  set:
+    words: [w-place, w-resume, w-aspiration]
+    pairs: [[place, a post-pyloric tube], [resume, the feeds], [aspiration, risk]]
+    decoys: [the pylorus]
+    why: "place a post-pyloric tube는 유문 아래로 관을 넣는다는 뜻이고, resume the feeds는 위치를 확인한 뒤 급식을 다시 시작한다는 뜻이에요. aspiration risk는 위 내용물이 기도로 들어갈 위험을 한 덩어리로 부르는 말이에요."
+"2.slider":
+  set:
+    cue: 'Patient: "It stung sharply going in, but it passed quickly."'
+    why: "날카롭게 따끔했지만 곧 지나갔다면 a sharp sting이에요. 견디기 힘든 통증(unbearable pain)은 아니라서, 삼키면 더 수월하다고 설명하며 천천히 넣어요. 참기 힘들어하면 멈추고 알려요."
+"7.slider":
+  set:
+    scale: [slow enough, a little fast, too fast]
+    answerAt: 2
+    why: "오래 굶은 환자에게 첫날부터 목표량까지 올리면 인과 칼륨 같은 수치가 급격히 떨어질 수 있어서 too fast예요. 재영양증후군을 막으려면 낮게 시작해 천천히 늘리고, 영양 계획은 영양사와 의료진이 정해요."
+"4.slider":
+  set:
+    words: [w-painful]
+    scale: [a little sore, painful, very painful]
+    answerAt: 2
+    why: "단단하고 정말 아프다고 하면 약간 쑤시는 정도(a little sore)가 아니라 통증이 아주 심한 상태(very painful)예요. 통증이 있거나 배가 더 단단해지면 급식은 지시와 프로토콜에 따라 보류하고 의료진에게 바로 알려요."
+"12.slider":
+  set:
+    example: "That's a great sign, and I told her family."
+    exKo: "아주 좋은 징후라서 가족분께도 알려드렸어요."
+"0.context":
+  set:
+    why_replace: ["NPO, tube, rate처럼", "NPO, tube, intake처럼"]
+  scenes:
+    1: {en: "Can you chart his nutrition intake for this shift?"}
+"2.context":
+  scenes:
+    0: {en: "The x-ray is done, so can you confirm the tube tip before we feed?"}
+"3.context":
+  scenes:
+    1: {en: "If he starts coughing during the feed, stop it and suction his airway."}
+"15.context":
+  scenes:
+    0: {en: "His pressure is over twenty-five — should I call surgery?"}
+"1.context":
+  set:
+    why_append: " 요즘 미국 ICU는 위잔여량을 일상적으로 재지 않는 곳도 있어, 잴지와 간격은 병원 프로토콜을 따라요."
+"14.context":
+  set:
+    why_replace: ["몸이 산소를 잘 받는지 보는 검사 수치가 높아서 배를 자세히 본다고", "혈액검사 수치 하나가 원하는 것보다 높아서 배를 자세히 본다고"]
+  scenes:
+    2: {fix: "One of her blood tests is higher than we'd like, so we're checking her belly carefully."}
+"13.context":
+  scenes:
+    0: {en: "We'll have suction ready at the bedside when he comes back from IR."}
+"16.slider":
+  set:
+    why_replace: ["바로 신속대응팀과 의사를 부르고", "바로 중환자 전담의와 담당의를 부르고"]

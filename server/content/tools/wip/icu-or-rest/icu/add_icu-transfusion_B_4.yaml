@@ -1,0 +1,134 @@
+situations:
+- title: "수혈 거부 환자 관리"
+  s:
+  - ["이해 표현", "faceWorried", "먼저 이해를 표현하고 'that's alright'로 환자의 결정을 판단하지 않는다는 점을 전해요.", ", and that's unfortunate", "수액 제제가 선택지가 아니라는 걸 이해해요, 괜찮아요.", "혈액 제제가 선택지가 아니라는 걸 이해해요, 고마워요.", "option", "answer", "accident", "insult"]
+  - ["존중·기록", "pencil", "결정을 존중한다고 먼저 말하고 기록으로 남겨 모든 팀원이 같은 정보를 보게 해요.", "your complaint", "결정을 존중하고 불만을 기록해 둘게요.", "결정을 존중하고 이름을 기록해 둘게요.", "respect", "question", "doubt", "resent"]
+  - ["허용 범위 질문", "speech", "신념에 따라 허용 범위가 사람마다 달라서(분획 제제, 자가 혈액 등) 'exactly'로 구체적으로 물어요.", "what your doctors", "보험상 정확히 어디까지 허용되는지 말씀해 주시겠어요?", "신념상 정확히 어디까지 허용되는지 적어 주시겠어요?", "beliefs", "bills", "pets", "hobbies"]
+  - ["팀 공유", "handshake2", "환자의 뜻이 모든 팀원에게 전달되어야 응급 상황에서도 존중돼요. 'make sure'는 확실히 전달하겠다는 약속이에요.", "everyone in the lobby", "팀 전체가 그 일정을 알도록 확실히 해둘게요.", "팀 전체가 그 이름을 알도록 확실히 해둘게요.", "everyone", "nobody", "someone", "anyone"]
+  - ["보존 전략", "bulb", "혈액을 아끼는 방법이 여러 가지라 팀과 함께 논의하면 환자의 신념 안에서 선택할 수 있어요.", "with your guests", "팀과 함께 혈액 보존 선택지를 조사해 봐요.", "팀과 함께 혈액 기부 선택지를 이야기해 봐요.", "talk", "argue", "bargain", "gamble"]
+  - ["철분·채혈", "lab", "철분을 보충하면 자기 혈액 생성을 돕고, 채혈을 줄이면 불필요한 혈액 손실을 막아요.", "and record", "철분은 최대화하고 소변검사는 최소화할 수 있어요.", "비타민은 최대화하고 채혈은 최소화할 수 있어요.", "iron", "sugar", "salt", "sodium"]
+  - ["세포회수·소형 튜브", "gear", "수술 중 흘린 피를 모아 되돌려 주는 세포회수와 작은 튜브는 혈액 손실을 줄여요. 'where we can'은 가능한 곳에서만 쓴다는 뜻이에요.", "extra lab tubes", "가능하면 세포회수술과 더 작은 검사 라벨을 쓸게요.", "가능하면 세포회수술과 더 작은 검사 트레이를 쓸게요.", "salvage", "donation", "banking", "typing"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "수혈 거부 환자 응대 4문장 순서"
+    why: "이해를 표현하고 결정을 존중하며 기록한 뒤, 그 뜻 안에서 보존 방법을 논의하고 팀에 공유해요."
+    lines:
+    - ["I understand blood products aren't an option for you, and that's alright.", "faceWorried", "혈액 제제가 선택지가 아니라는 걸 이해해요, 괜찮아요", "이해"]
+    - ["I respect your decision and I'll document your wishes.", "pencil", "결정을 존중하고 뜻을 기록해 둘게요", "존중"]
+    - ["Within those wishes, let's talk about blood-conservation options with your team.", "bulb", "그 뜻 안에서 팀과 함께 혈액 보존 선택지를 이야기해 봐요", "논의"]
+    - ["With the plan set, I'll make sure everyone on your team knows your wishes.", "handshake2", "계획이 정해지면 팀 전체가 그 뜻을 알도록 확실히 해둘게요", "공유"]
+- title: "대량수혈 프로토콜 발동·조율"
+  s:
+  - ["프로토콜 발동", "siren", "대량출혈이 확인되면 혈액은행에 프로토콜을 알려 제제가 정해진 구성으로 계속 오게 해요. 'now'가 지체 없이 발동한다는 뜻이에요.", "the fire drill", "지금 대량수혈 프로토콜 서식을 펼칠게요.", "지금 대량수혈 프로토콜 번호를 찾을게요.", "activating", "rehearsing", "reviewing", "revising"]
+  - ["팀·역할 요청", "bell", "대량수혈은 사람과 제제, 역할이 동시에 필요해서 'right now'로 급함을 분명히 해요.", ", the printer", "지금 당장 팀과 냉장 운반함, 방 배정이 필요해요.", "지금 당장 팀과 휠체어, 역할 배정이 필요해요.", "roles", "uniforms", "badges", "parking"]
+  - ["역할 배정", "handshake2", "각자 맡을 일을 이름 붙여 말하면 위기 중에도 겹치거나 빠지는 일이 없어요.", ", I'll prime", "당신은 성분을 추적하고, 당신은 혈액을 밀어 넣고, 저는 급속주입기를 준비할게요.", "당신은 성분을 추적하고, 당신은 혈액을 밀어 넣고, 저는 급속주입기를 가져올게요.", "rapid", "slow", "small", "dry"]
+  - ["역할 수행", "bell", "'Everyone'으로 전원을 부르고 'let's move'로 바로 행동하게 해요.", "and speak up", "모두 배정된 자리를 맡고 움직입시다.", "모두 배정된 역할을 맡고 장갑을 낍시다.", "assigned", "optional", "temporary", "voluntary"]
+  - ["계속 보내기", "speech", "다음 운반함을 요청하며 'keep them coming'으로 멈추지 말라고 해요. 부를 대상을 먼저 말하는 방식이에요.", "Pharmacy", "혈액은행, 다음 냉장 운반함을 보내고 계속 알려 주세요.", "혈액은행, 다음 약품 운반함을 보내고 계속 보내 주세요.", "next", "last", "empty", "old"]
+  - ["누적 세기", "pencil", "지금까지 준 제제를 세어 두면 비율과 총량을 맞추고 다음 요청 수를 정할 수 있어요. 'so far'는 누계를 뜻해요.", "of every visitor", "지금까지 온 제제 수를 계속 셀게요.", "지금까지 준 약 수를 계속 셀게요.", "given", "drawn", "washed", "broken"]
+  - ["누계 호명", "speech", "누계를 소리 내어 부르면 팀이 같은 숫자를 보고 다음 요청을 맞춰요. 호명 주기는 병원 프로토콜에 따라 달라요.", "the weather", "십 분마다 누군가 번호를 큰 소리로 알려 주세요.", "십 분마다 누군가 누계를 조용히 알려 주세요.", "minutes", "seconds", "hours", "days"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "대량수혈 발동과 조율 4문장 순서"
+    why: "프로토콜을 발동하고 팀을 불러 모은 뒤, 모인 사람에게 역할을 나누고 모두 움직이게 해요."
+    lines:
+    - ["I'm activating the massive transfusion protocol now.", "siren", "지금 대량수혈 프로토콜을 발동할게요", "발동"]
+    - ["I need the team, the cooler, and roles assigned right now.", "bell", "지금 당장 팀과 냉장 운반함, 역할 배정이 필요해요", "요청"]
+    - ["With the team here, you track products, you push blood, I'll run the rapid infuser.", "handshake2", "팀이 모였으니 당신은 성분을 추적하고, 당신은 혈액을 밀어 넣고, 저는 급속주입기를 다룰게요", "배정"]
+    - ["With your roles named, everyone, let's move.", "bell", "역할이 정해졌으니 모두 움직입시다", "실행"]
+- title: "급성 용혈 아나필락시스 위기"
+  s:
+  - ["위기 보고", "siren", "저혈압과 협착음이 수혈 직후에 나타나면 아나필락시스를 강하게 의심하는 신호예요. 'right after'가 시간 관계를 짚어요.", "with a headache", "제제를 준 직후 저혈압에 두통까지 있어요.", "제제를 걸기 전에 저혈압에 협착음까지 있어요.", "stridor", "bruising", "jaundice", "tremor"]
+  - ["진단·지시", "siren", "진단 이름을 말하고 바로 지시를 내려 팀이 에피네프린을 준비하게 해요. 'get'은 가져오라는 짧은 명령이에요.", "This is a migraine", "이건 아나필락시스예요 — 지금 에피네프린 라벨 읽어 주세요.", "이건 아나필락시스예요 — 지금 에피네프린 위치 알려 주세요.", "anaphylaxis", "hypothermia", "migraine", "dehydration"]
+  - ["중단·에피 투여", "siren", "아나필락시스의 1차 약은 근육주사 에피네프린이라 수혈을 멈추는 즉시 줘요(처방·프로토콜에 따라).", "IM vitamins", "수혈을 멈추고 근육주사로 에피네프린을 지금 챙길게요.", "수혈을 멈추고 근육주사로 에피네프린을 지금 준비할게요.", "epinephrine", "atropine", "lidocaine", "naloxone"]
+  - ["수액·코드 호출", "siren", "저혈압에는 수액을 크게 열어 순환을 받쳐 주고, 기도 문제가 있어 코드 팀을 불러요. 'wide'는 최대한 빠르게라는 뜻이에요.", "the lab team", "수액을 최대로 열고 코드 팀 번호를 찾을게요.", "수액을 최대로 열고 코드 팀 명단을 볼게요.", "wide", "partly", "slightly", "halfway"]
+  - ["기도 위기", "siren", "기도가 위험하면 삽관을 미리 준비해야 해요. 'compromised'는 기도가 위협받아 곧 막힐 수 있다는 뜻이에요.", "prepare to weigh him", "기도가 손상됐으니 삽관 장비를 가져오세요.", "기도가 손상됐으니 흡인 장비를 준비하세요.", "intubate", "discharge", "transfer", "weigh"]
+  - ["2차 투여", "pill", "에피네프린은 반응이 없으면 몇 분 간격으로 반복할 수 있어요(처방·프로토콜에 따라). 'if she doesn't improve'가 반복 투여 조건이에요.", "a second bag", "호전되지 않으면 두 번째 용량을 뽑아 둘게요.", "호전되지 않으면 두 번째 용량을 점검할게요.", "second", "fourth", "fifth", "tenth"]
+  - ["응급 카트", "siren", "응급 카트에는 기도와 약물 장비가 모여 있어 위기 때 가장 먼저 침상으로 옮겨요. 'right now'가 급함을 말해요.", "to the pharmacy", "지금 바로 응급 카트 열쇠를 침상으로 가져오세요.", "지금 바로 응급 카트 점검표를 침상으로 가져오세요.", "crash", "linen", "meal", "supply"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "수혈 중 아나필락시스 대응 4문장 순서"
+    why: "증상을 보고하고 중단과 에피네프린을 지시한 뒤, 수액과 코드 호출을 하고, 호전이 없으면 두 번째 용량을 줘요."
+    lines:
+    - ["She's hypotensive with stridor right after the unit.", "siren", "제제를 준 직후 저혈압에 협착음까지 있어요", "보고"]
+    - ["This is anaphylaxis — stop the transfusion and get the epi now.", "siren", "이건 아나필락시스예요 — 수혈을 멈추고 지금 에피네프린 주세요", "지시"]
+    - ["With the epi going in, I'm opening fluids wide and calling the code team.", "siren", "에피네프린이 들어가는 동안 수액을 최대로 열고 코드 팀을 부를게요", "수액·호출"]
+    - ["If she still doesn't improve, I'll push a second dose.", "pill", "그래도 호전되지 않으면 두 번째 용량을 줄게요", "재투여"]
+- title: "DIC 출혈·혈전 동반 위기"
+  s:
+  - ["증상·검사", "bell", "모든 부위에서 스며 나오는 출혈과 검사 이상이 함께면 DIC를 의심해요. 'scream'은 검사가 DIC를 강하게 시사한다는 구어 표현이에요.", "from his left arm", "모든 부위에서 스며 나오고 검사 결과도 DKA를 가리켜요.", "한 부위에서만 스며 나오고 검사 결과도 DIC를 가리켜요.", "oozing", "itching", "sweating", "shivering"]
+  - ["천자 부위 출혈", "bell", "채혈과 정맥 천자 부위마다 피가 멈추지 않는 것은 DIC의 대표 소견이에요.", "from every dental", "모든 천자 부위에서 통증이 있어요 — 이건 DIC예요.", "모든 천자 부위에서 출혈이 있어요 — 이건 감염이에요.", "every", "one", "that", "no"]
+  - ["원인 치료", "bulb", "DIC는 패혈증 같은 원인 질환이 만든 결과라 근본 원인을 치료해야 멈출 수 있어요. 'right away'가 지체 없이 한다는 뜻이에요.", "the paperwork", "근본 원인을 바로 설명해야 해요.", "근본 원인을 바로 기록해야 해요.", "underlying", "cosmetic", "imaginary", "trivial"]
+  - ["성분 보충", "lab", "DIC에서는 소모된 응고 성분을 검사 결과에 맞춰 보충해요. 'per the labs'는 수치를 근거로 한다는 뜻이에요.", ", iron", "검사 결과에 따라 섬유소원과 혈소판, 혈장을 준비할게요.", "검사 결과에 따라 섬유소원과 혈소판, 혈장을 요청할게요.", "fibrinogen", "chloride", "magnesium", "phosphate"]
+  - ["핵심 원칙", "bulb", "성분 보충은 임시방편이고 유발 요인을 치료하는 것이 DIC 관리의 핵심이에요. 'The key'가 가장 중요한 한 가지를 짚어요.", "the latest labs", "핵심은 근본 유발 요인을 이해하는 거예요.", "핵심은 근본 유발 요인을 피하는 거예요.", "key", "risk", "myth", "cost"]
+  - ["라인·부위 관찰", "monitor", "채혈과 정맥 라인 부위는 DIC에서 가장 먼저 새는 곳이라 하나하나 봐요.", "for new messages", "새로운 소리가 있는지 모든 라인과 부위를 지켜볼게요.", "새로운 스밈이 있는지 모든 침대와 부위를 지켜볼게요.", "line", "bed", "chart", "door"]
+  - ["패혈증 평가", "speech", "DIC의 흔한 원인이 패혈증이라 원인 평가를 팀과 맞춰요. 'coordinate'는 역할과 순서를 맞춘다는 뜻이에요.", "on the dental", "패혈증 정밀검사를 두고 약사와 조율할게요.", "패혈증 일정표를 두고 팀과 조율할게요.", "sepsis", "hearing", "vision", "dental"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "DIC 대응 4문장 순서"
+    why: "DIC임을 알리고 근본 원인 치료가 핵심이라 말한 뒤, 성분을 보충하며 새는 곳을 지켜봐요."
+    lines:
+    - ["He's bleeding from every puncture site — this is DIC.", "bell", "모든 천자 부위에서 출혈이 있어요 — 이건 DIC예요", "진단"]
+    - ["The key is the underlying trigger, so I'll coordinate on the sepsis workup.", "bulb", "핵심은 근본 유발 요인이라 패혈증 정밀검사를 조율할게요", "원인"]
+    - ["Alongside that, I'll replace fibrinogen, platelets, and plasma per the labs.", "lab", "그와 함께 검사 결과에 따라 섬유소원과 혈소판, 혈장을 보충할게요", "보충"]
+    - ["With those replaced, I'll watch every line and site for new oozing.", "monitor", "보충하고 나면 새로운 스밈이 있는지 모든 라인과 부위를 지켜볼게요", "관찰"]
+- title: "TRALI 급성 호흡부전 위기"
+  s:
+  - ["위기 보고", "siren", "혈장 수혈 직후의 급성 호흡부전은 TRALI를 의심하는 전형적인 시간 관계예요.", "acute kidney", "혈장을 준 직후 급성 신부전이 왔어요.", "혈장을 받기 전에 급성 호흡부전이 왔어요.", "respiratory", "neurological", "gastrointestinal", "cardiovascular"]
+  - ["중단·감별", "siren", "TRALI는 수액 과부하가 아니라 폐 손상이라 이뇨제로 해결되지 않아요. 중단 지시와 감별을 한 문장에 담았어요.", "— this is a rash", "수혈을 멈추세요 — 이건 과부하가 아니라 알레르기예요.", "수혈을 멈추세요 — 이건 TRALI가 아니라 과부하예요.", "TRALI", "TACO", "DIC", "sepsis"]
+  - ["충만압 근거", "lab", "충만압이 정상이면 심장이나 수액 때문이 아니라는 근거가 돼요. 'so'가 근거에서 결론으로 이어요.", "are rising", "체온이 정상이라 수액 과부하는 아니에요.", "혈압이 정상이라 수액 과부하는 아니에요.", "normal", "elevated", "rising", "climbing"]
+  - ["폐보호 환기", "gear", "TRALI는 ARDS와 비슷해 폐보호 환기(낮은 일회호흡량)와 산소 지지가 중심이에요(처방에 따라).", "and a new mask", "폐보호 환기와 고농도 산소 기록이 필요해요.", "폐보호 환기와 고농도 산소 점검이 필요해요.", "ventilation", "dialysis", "hydration", "sedation"]
+  - ["혈액은행 보고", "bell", "TRALI는 공여자 항체와 연관될 수 있어 혈액은행이 같은 공여 혈액을 점검해야 해요. 반응 보고가 그 첫 단계예요.", "to the billing office", "이 반응을 약국에 보고하세요.", "이 반응을 원무과에 보고하세요.", "reaction", "delivery", "invoice", "schedule"]
+  - ["환기 조정 보조", "gear", "환기 설정은 의료진이 정하고 간호사는 조정을 돕고 환자 반응을 지켜봐요.", "adjust her TV", "팀이 인공호흡기 전원을 조정하도록 도울게요.", "팀이 인공호흡기 설정을 확인하도록 도울게요.", "ventilator", "pillow", "curtain", "telephone"]
+  - ["밤 산소 감시", "monitor", "TRALI는 산소 요구가 갑자기 변할 수 있어 가까이서 지켜봐요. 'keep close watch'는 눈을 떼지 않는다는 표현이에요.", "on her appetite", "오늘 밤은 방 온도를 가까이서 지켜볼게요.", "오늘 밤은 혈당 수치를 가까이서 지켜볼게요.", "oxygen", "sugar", "chloride", "magnesium"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "TRALI 위기 대응 4문장 순서"
+    why: "호흡부전을 보고하고 중단과 감별을 알린 뒤, 폐보호 환기를 하고 혈액은행에 보고해요."
+    lines:
+    - ["She's in acute respiratory failure right after the plasma.", "siren", "혈장을 준 직후 급성 호흡부전이 왔어요", "보고"]
+    - ["Stop the transfusion — this is TRALI, not overload.", "siren", "수혈을 멈추세요 — 이건 과부하가 아니라 TRALI예요", "중단"]
+    - ["So she needs lung-protective ventilation and high oxygen.", "gear", "그래서 폐보호 환기와 고농도 산소가 필요해요", "환기"]
+    - ["With that going, report the reaction to the blood bank.", "bell", "그게 진행되는 동안 이 반응을 혈액은행에 보고하세요", "보고"]
+- title: "대량수혈 저칼슘 심정지 위기"
+  s:
+  - ["위기 보고", "siren", "QT 연장은 저칼슘의 심전도 신호이고 'about to arrest'는 곧 심정지로 갈 수 있다는 경고예요.", "to sleep", "QT가 늘어나고 있고 곧 호흡곤란이 올 것 같아요.", "PR이 늘어나고 있고 곧 심정지가 올 것 같아요.", "stretching", "shrinking", "blinking", "sleeping"]
+  - ["위중한 저칼슘", "siren", "이온화 칼슘이 위중하게 낮으면 즉시 정맥으로 칼슘을 줘요(프로토콜·처방에 따라). 수치와 행동을 한 문장에 담았어요.", "slightly low", "이온화 칼슘이 위중하게 낮아요 — 지금 칼슘을 가져올게요.", "이온화 칼슘이 위중하게 낮아요 — 지금 칼슘을 점검할게요.", "critically", "slightly", "mildly", "barely"]
+  - ["즉시 투여 지시", "siren", "'before he codes'로 지체의 위험을 밝혀 바로 투여하게 하는 지시예요.", ", before the lab calls", "코드가 오기 전에 지금 칼슘을 가져오세요.", "코드가 오기 전에 지금 칼슘을 살피세요.", "calcium", "iron", "zinc", "copper"]
+  - ["압박·코드", "siren", "맥박이 없다면 압박을 즉시 시작하고 코드를 불러요. 두 행동을 'and'로 묶어 동시에 한다는 뜻이에요.", "the lab", "흉부압박 자리를 잡고 코드를 부르세요.", "흉부압박을 시작하고 약사를 부르세요.", "compressions", "incisions", "injections", "infusions"]
+  - ["라운드별 칼슘", "pill", "대량수혈 중에는 제제를 줄 때마다 칼슘을 함께 보충해 시트르산염 효과를 상쇄해요(프로토콜에 따라).", "with each shift", "성분을 줄 때마다 라운드별로 칼슘을 계속 점검하세요.", "성분을 줄 때마다 라운드별로 칼슘을 계속 요청하세요.", "round", "shift", "meal", "visit"]
+  - ["코드 팀 호출", "bell", "필요한 팀과 장소, 급함을 한 문장에 담아 부르는 호출이에요. 'right now'가 지체 없이 오라는 뜻이에요.", "the dietitian", "지금 바로 코드 팀 번호가 필요해요.", "지금 바로 약사가 필요해요.", "team", "menu", "badge", "map"]
+  - ["제제마다 칼슘", "pill", "제제를 새로 걸 때마다 칼슘을 함께 주면 칼슘 하락을 앞질러 막아요(프로토콜에 따라).", "we label", "제제를 걸 때마다 계속 칼슘을 살필게요.", "제제를 걸 때마다 계속 칼슘을 뽑아 둘게요.", "pushing", "hiding", "wasting", "refusing"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "저칼슘 심정지 위기 4문장 순서"
+    why: "위험을 보고하고 칼슘을 주면서 코드 팀을 부른 뒤, 이후 제제마다 칼슘을 계속 줘요."
+    lines:
+    - ["His QT is stretching and he's about to arrest.", "siren", "QT가 늘어나고 있고 곧 심정지가 올 것 같아요", "보고"]
+    - ["Ionized calcium is critically low — I'm pushing calcium now.", "siren", "이온화 칼슘이 위중하게 낮아요 — 지금 칼슘을 밀어 넣을게요", "투여"]
+    - ["I need the code team here right now.", "bell", "지금 바로 코드 팀이 필요해요", "호출"]
+    - ["With them coming, I'll keep pushing calcium every time we hang another unit.", "pill", "그들이 오는 동안 제제를 걸 때마다 계속 칼슘을 밀어 넣을게요", "유지"]
+- title: "수혈 불응 지속출혈 목표 소통"
+  s:
+  - ["상황 설명", "faceWorried", "'but'으로 노력과 결과의 어긋남을 대비해 가족이 현실을 이해하게 해요.", "sleeping", "계속 수혈하고 있지만 구토도 계속되고 있어요.", "계속 검사하고 있지만 출혈도 계속되고 있어요.", "transfusing", "hydrating", "discharging", "sedating"]
+  - ["사실 전달", "faceWorried", "'Despite everything'은 모든 노력에도 불구하고라는 뜻이라 최선을 다했음을 알리면서 사실을 전해요.", "Since lunch", "모든 걸 했는데도 기침이 멈추지 않고 있어요.", "모든 걸 했는데도 구토가 멈추지 않고 있어요.", "bleeding", "vomiting", "coughing", "shaking"]
+  - ["대화 시작", "speech", "'I need to'는 중요한 이야기를 시작한다는 신호이고 'realistic'은 희망을 꺾지 않고 현실을 말하는 단어예요.", "about the weather", "현실적으로 어떤 일정인지 이야기 나누고 싶어요.", "현실적으로 어떤 비용인지 이야기 나누고 싶어요.", "realistic", "expensive", "scheduled", "pending"]
+  - ["솔직한 소통", "speech", "'I want to be honest'는 어려운 소식을 전하기 전에 솔직하게 말하겠다는 예고예요.", "about the cafeteria", "지금 보고 있는 상황을 간단하게 말씀드리고 싶어요.", "지금 보고 있는 상황을 솔직하게 물어보고 싶어요.", "honest", "rude", "formal", "vague"]
+  - ["환자 뜻 묻기", "speech", "환자가 직접 말할 수 없을 때는 'what he would want'로 환자의 뜻을 기준으로 이야기를 시작해요.", "what he would eat", "그가 먹었을 것에 대해 이야기해 봐요.", "그가 두려워했을 것에 대해 이야기해 봐요.", "want", "wear", "eat", "read"]
+  - ["가치 질문", "speech", "과거에 한 말을 묻는 질문이라 가족이 환자의 가치관을 기억해 내도록 도와요. 'mattered most'는 가장 소중했던 것이에요.", "what cost most", "그에게 가장 어려웠던 게 뭔지 말한 적이 있나요?", "그에게 가장 중요했던 게 뭔지 쓴 적이 있나요?", "mattered", "bothered", "bored", "cost"]
+  - ["뜻에 맞춘 돌봄", "shield", "'make sure'는 약속이고 'matches'는 돌봄을 환자의 뜻에 맞춘다는 뜻이에요.", "matches his budget", "그의 돌봄이 예산에 맞도록 확실히 해둘게요.", "그의 서류가 뜻에 맞도록 확실히 해둘게요.", "wishes", "budget", "uniform", "parking"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "목표 소통 4문장 순서"
+    why: "현재 상황을 알린 뒤 현실을 이야기하겠다고 열고, 환자의 뜻을 묻고, 그 뜻에 맞춰 돌보겠다고 약속해요."
+    lines:
+    - ["We keep transfusing, but he keeps bleeding.", "faceWorried", "계속 수혈하고 있지만 출혈도 계속되고 있어요", "상황"]
+    - ["So I need to talk with you about what's realistic.", "speech", "그래서 현실적으로 어떤 상황인지 이야기 나누고 싶어요", "시작"]
+    - ["Did he ever say what mattered most to him?", "speech", "그에게 가장 중요했던 게 뭔지 말한 적이 있나요?", "질문"]
+    - ["Whatever he said, we'll make sure his care matches his wishes.", "shield", "그가 무슨 말을 했든 그의 돌봄이 뜻에 맞도록 확실히 해둘게요", "약속"]

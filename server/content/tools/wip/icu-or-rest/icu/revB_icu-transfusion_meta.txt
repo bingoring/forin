@@ -1,0 +1,336 @@
+
+######## S0 수혈 전 확인·동의
+[0.0] tag=두 사람 확인 icon=shield | Two of us will verify the patient ID and unit at the bedside.
+   why: 독립 이중 확인은 두 사람이 침상에서 직접 해야 해요. 'Two of us'로 시작하면 혼자 하지 않는다는 점이 먼저 전해져요.
+[0.1] tag=환자 식별 icon=speech | Let's read her name and date of birth out loud together.
+   why: 이름과 생년월일은 환자 식별에 쓰는 두 가지 식별자예요. 소리 내어 읽으면 눈으로만 볼 때 놓치는 불일치를 잡아내요.
+[0.2] tag=백 대조 icon=check | I'll say the blood type and you check it against the bag.
+   why: 한 사람이 말하고 다른 사람이 백 라벨을 보며 확인해야 서로 독립된 확인이 돼요. 'against'는 말한 값을 실물과 맞대 본다는 뜻이에요.
+[0.3] tag=불일치 중단 icon=bell | If anything doesn't match, we stop right here.
+   why: 하나라도 어긋나면 진행하지 않는 것이 수혈 확인의 원칙이에요. 'right here'는 그 자리에서 바로 멈춘다는 느낌을 줘요.
+[0.4] tag=일치 보고 icon=check | Blood type, unit number, and expiration all match.
+   why: 항목을 하나씩 짚어 말하면 확인이 빠짐없이 끝났다는 점이 상대에게 분명히 전해져요.
+[0.5] tag=동의서 확인 icon=pencil | Consent is signed and in the chart.
+   why: 응급이 아니라면 서명된 동의서가 차트에 있어야 수혈을 시작할 수 있어요. 서명과 보관 위치를 함께 말해 확인 범위를 분명히 해요.
+[0.6] tag=동의 재확인 icon=speech | I'll confirm consent with him before we hang this unit.
+   why: 서명이 있어도 환자는 언제든 마음을 바꿀 수 있어요. 'before we hang'은 걸기 전에 본인 뜻을 한 번 더 듣겠다는 시점을 밝혀요.
+
+######## S1 수혈 시작·초기 감시
+[1.0] tag=초기 속도 icon=gear | I'll run it slow for the first fifteen minutes.
+   why: 첫 십오 분은 반응이 가장 잘 나타나는 시간이라 천천히 시작하며 지켜봐요. 시간을 숫자로 붙여 말하면 감시 구간이 분명해져요.
+[1.1] tag=수혈 시작 icon=play | We'll start the transfusion now that everything checks out.
+   why: 'now that'은 확인이 끝났다는 이유를 앞세워 시작한다는 뜻이에요. 확인 없이 시작하지 않는 순서가 문장에 담겨요.
+[1.2] tag=기저 기록 icon=chartup | Baseline vitals are recorded before we start.
+   why: 시작 전 활력징후가 있어야 수혈 중 변화를 비교할 수 있어요. 'before we start'가 기록 시점을 못 박아요.
+[1.3] tag=곁에서 재평가 icon=monitor | I'll stay at the bedside and reassess vitals shortly.
+   why: 시작 직후에는 곁에 머물며 활력징후를 다시 봐요. 'shortly'는 곧 다시 확인하겠다는 약속이에요.
+[1.4] tag=이상 시 알림 icon=bell | If anything feels off, tell me right away.
+   why: 열이나 오한 같은 반응은 환자가 먼저 느끼는 경우가 많아요. 'right away'로 바로 말해 달라고 해야 환자가 참고 있지 않아요.
+[1.5] tag=감시 설명 icon=stetho | I'm watching his heart rate and blood pressure closely.
+   why: 무엇을 보고 있는지 말해 주면 환자가 안심하고 증상을 알려 줘요. 'closely'는 눈을 떼지 않는다는 뜻이에요.
+[1.6] tag=재방문 약속 icon=calendar | I'll check back in fifteen minutes to see how he's tolerating it.
+   why: 시간을 구체적으로 말하면 환자가 언제 다시 올지 알고 기다릴 수 있어요. 'tolerating'은 수혈을 잘 견디는지를 묻는 말이에요.
+
+######## S2 수혈 반응 징후 인지
+[2.0] tag=반응 징후 icon=bell | Fever, rash, or dyspnea can signal a transfusion reaction.
+   why: 발열·발진·호흡곤란은 수혈 반응의 대표 징후예요. 'can signal'은 가능성을 말해 환자를 겁주지 않고 경계를 알려요.
+[2.1] tag=환자 안내 icon=speech | Tell me right away if you feel chilled, itchy, or achy in your back.
+   why: 오한·가려움·허리 통증은 환자가 먼저 느끼는 반응 신호예요. 증상을 구체적으로 말해 주면 환자가 무엇을 알려야 할지 알아요.
+[2.2] tag=징후 보고 icon=chartup | His temperature just spiked and he's got a new rash on his chest.
+   why: 수치와 부위를 짚어 보고하면 받는 사람이 상황을 바로 그려요. 'just spiked'는 방금 올랐다는 시점을 알려 줘요.
+[2.3] tag=중단·라인 유지 icon=siren | I'm stopping the transfusion and keeping the line open with saline.
+   why: 반응이 의심되면 먼저 수혈을 멈추고 정맥 라인은 생리식염수로 열어 두어야 해요. 라인을 막으면 약을 줄 길이 사라져요.
+[2.4] tag=활력·보고 icon=chartup | I'll take a full set of vitals and notify the provider.
+   why: 중단 직후에는 전체 활력징후를 재고 의료진에게 알려야 해요. 'full set'은 일부가 아니라 전부를 뜻해요.
+[2.5] tag=선중단 후질문 icon=bell | We stop first and ask questions after.
+   why: 원인을 따지기 전에 일단 멈추는 것이 안전한 순서예요. 'first … after'로 순서를 말에 담았어요.
+[2.6] tag=기록·관찰 icon=pencil | I'll document the reaction and watch him closely.
+   why: 증상과 시간, 한 처치를 기록해야 이후 보고와 검토가 가능해요. 'closely'가 기록만 하고 떠나지 않는다는 점을 알려요.
+
+######## S3 혈액 성분 종류 이해
+[3.0] tag=적혈구 용도 icon=lab | Packed red cells raise oxygen-carrying capacity.
+   why: 농축 적혈구는 산소를 나르는 혈색소를 채워 줘서 빈혈이나 출혈에 써요. 'raise'로 능력이 오른다는 방향을 말해요.
+[3.1] tag=성분별 역할 icon=lab | FFP replaces clotting factors, platelets treat thrombocytopenia.
+   why: FFP는 응고인자를, 혈소판은 혈소판 수치를 채워요. 두 성분을 한 문장에 나란히 놓으면 역할이 덜 헷갈려요.
+[3.2] tag=동결침전제 icon=lab | Cryoprecipitate is for low fibrinogen.
+   why: 동결침전제에는 섬유소원이 많이 들어 있어 섬유소원이 낮을 때 써요. 'is for'로 용도를 짧게 말해요.
+[3.3] tag=혈소판 용도 icon=lab | Platelets help when his count is low or he's actively bleeding.
+   why: 혈소판은 수치가 낮거나 활동성 출혈이 있을 때 지혈을 도와요. 'actively'는 지금 피가 나는 중임을 뜻해요.
+[3.4] tag=혈장 용도 icon=lab | Plasma corrects clotting problems from liver disease or bleeding.
+   why: 혈장에는 응고인자가 모두 들어 있어 간질환 같은 응고 문제를 바로잡아요.
+[3.5] tag=선택 이유 icon=bulb | For him, we're giving red cells because his hemoglobin is low.
+   why: 'because'로 성분을 고른 이유를 바로 붙이면 환자나 동료가 왜 이 성분인지 이해해요.
+[3.6] tag=선택 설명 icon=speech | I'll explain why we chose this component for his labs.
+   why: 검사 결과를 근거로 설명하면 환자나 가족이 성분 선택을 납득해요. 'why we chose'는 결정 이유를 말하겠다는 예고예요.
+
+######## S4 혈액 취급·보관
+[4.0] tag=반출 후 시작 icon=calendar | Blood must be started within thirty minutes of leaving the fridge.
+   why: 냉장고를 나온 혈액은 30분 안에 시작해야 해요(병원 지침에 따라 다를 수 있어요). 'within'으로 한계 시간을 정했어요.
+[4.1] tag=주입 한도 icon=calendar | It has to be infused within four hours of hanging.
+   why: 건 지 네 시간 안에 다 주입해야 세균 번식 위험을 줄여요. 'infused'는 다 들어가는 것까지를 뜻해요.
+[4.2] tag=반출 시간 확인 icon=calendar | I always check how long the unit's been out of the fridge.
+   why: 냉장고 밖 시간이 길면 시작 한도를 넘길 수 있어서 걸기 전에 따져 봐요. 'always'는 예외 없이 확인한다는 뜻이에요.
+[4.3] tag=시간 초과 icon=bell | This one's been out for almost an hour already.
+   why: 한 시간 가까이 밖에 있었다면 30분 한도를 이미 넘긴 거예요. 'already'가 시간이 이미 지났다는 느낌을 줘요.
+[4.4] tag=반납 icon=speech | If we can't start it, I'll send it back to the blood bank.
+   why: 시간 안에 시작할 수 없으면 쓰지 않고 혈액은행으로 돌려보내야 해요. 병동 냉장고에 다시 넣으면 안 돼요.
+[4.5] tag=만료 금지 icon=shield | We can't risk giving blood that's expired.
+   why: 유효기간이 지난 혈액은 세균 오염이나 용혈 위험이 커서 줄 수 없어요. 'can't risk'는 감수할 수 없다는 강한 금지예요.
+[4.6] tag=시간 재확인 icon=check | I'll recheck the time on every unit before I hang it.
+   why: 제제마다 걸기 직전에 반출 시간을 다시 보면 한도를 넘긴 혈액을 막을 수 있어요. 'every unit'은 예외가 없다는 뜻이에요.
+
+######## S5 수혈 중 활력 주기 기록
+[5.0] tag=기록 주기 icon=chartup | I'll record vitals at fifteen minutes, then hourly.
+   why: 수혈 시작 십오 분쯤에 한 번, 이후 정해진 주기로 기록하는 흐름이에요(병원 지침에 따라 달라요). 'then'으로 주기가 바뀐다고 알려요.
+[5.1] tag=모니터·일정 icon=monitor | Keep the monitor on him and log vitals on the transfusion schedule.
+   why: 수혈 중에는 모니터를 계속 붙이고 정해진 시점마다 기록하라는 지시예요. 'Keep'은 떼지 말라는 명령형이에요.
+[5.2] tag=상태 보고 icon=chartup | Temperature is stable and there's no new tachycardia.
+   why: 체온과 심박이 안정적이라는 보고는 반응 징후가 없다는 근거예요. 'no new'는 새로 생긴 것이 없다는 뜻이에요.
+[5.3] tag=모니터 점검 icon=monitor | The monitor is on and alarms are set.
+   why: 모니터가 켜졌는지와 알람이 설정됐는지를 함께 말해 감시 장치가 제대로 작동함을 확인해요.
+[5.4] tag=산소포화도 icon=monitor | His oxygen saturation is holding steady at ninety-eight percent.
+   why: 수치와 함께 'holding steady'라고 말하면 지금 값뿐 아니라 변화가 없다는 점도 전해져요.
+[5.5] tag=악화 표시 icon=bell | I'll flag anything that trends the wrong way.
+   why: 수치가 나쁜 방향으로 가는 추세를 일찍 알리는 것이 안전의 핵심이에요. 'flag'는 눈에 띄게 표시하고 보고한다는 말이에요.
+[5.6] tag=정상 범위 icon=check | So far every reading looks within normal range.
+   why: 'So far'는 지금까지는 괜찮다는 뜻이라 앞으로 변할 수 있음을 남겨 계속 감시한다는 인상을 줘요.
+
+######## S6 급성 용혈반응 초기 대응
+[6.0] tag=증상 보고 icon=bell | He's got back pain, chills, and dark urine.
+   why: 허리 통증·오한·검은 소변은 급성 용혈의 전형적인 소견이에요. 증상을 나열해 보고하면 의료진이 바로 반응을 의심해요.
+[6.1] tag=중단·튜빙 분리 icon=siren | I'm stopping the transfusion and disconnecting the tubing.
+   why: 용혈 반응이 의심되면 즉시 중단하고 혈액이 든 튜빙을 분리해요. 생리식염수는 새 튜빙으로 연결해 라인을 열어 둬요.
+[6.2] tag=반응 의심 icon=bell | This looks like an acute hemolytic reaction.
+   why: 'looks like'로 확진이 아니라 강한 의심임을 밝혀요. 급성 용혈은 ABO 불일치 같은 면역 반응으로 적혈구가 빠르게 깨지는 거예요.
+[6.3] tag=라인 유지 icon=gear | I'll keep the line open with normal saline.
+   why: 새 튜빙으로 생리식염수를 연결해 정맥 라인을 열어 두면 약을 바로 줄 수 있어요. 'normal saline'은 0.9% 식염수예요.
+[6.4] tag=제제·검체 반납 icon=lab | Send the unit and a blood sample back for a reaction workup.
+   why: 남은 혈액 백과 환자 혈액 검체를 혈액은행으로 보내야 원인을 확인하는 검사를 할 수 있어요.
+[6.5] tag=즉시 보고 icon=bell | I'll notify the provider and the blood bank right away.
+   why: 의료진과 혈액은행 두 곳에 모두 알려야 해요. 혈액은행이 같은 시기에 나간 제제를 점검할 수 있어요.
+[6.6] tag=소변량 감시 icon=monitor | I'll watch his urine output closely for the next few hours.
+   why: 용혈로 신장이 손상될 수 있어 소변량을 계속 봐요. 'for the next few hours'는 감시 기간을 정해 줘요.
+
+######## S7 TACO와 TRALI 감별
+[7.0] tag=산소 저하 보고 icon=bell | She's desaturating an hour into the unit.
+   why: 수혈 중 산소포화도가 떨어지면 TACO나 TRALI 같은 호흡 관련 반응을 먼저 의심해요. 'into the unit'은 수혈을 시작하고 얼마나 지났는지를 나타내요.
+[7.1] tag=TACO 특징 icon=lab | TACO points to volume overload with hypertension.
+   why: TACO는 수혈 속도나 양 때문에 순환이 넘치는 상태라 혈압이 오르고 폐에 물이 차요.
+[7.2] tag=TRALI 특징 icon=lab | TRALI is non-cardiogenic with normal filling pressures.
+   why: TRALI는 심장이 아니라 폐 모세혈관이 다쳐서 생겨 충만압은 정상이에요.
+[7.3] tag=TACO 단서 icon=stetho | Crackles and a raised jugular vein point us toward TACO.
+   why: 폐의 수포음과 경정맥 팽창은 체액 과부하 소견이라 TACO 쪽을 가리켜요.
+[7.4] tag=중단·산소 지지 icon=siren | Either way, I'm stopping the transfusion and supporting oxygenation.
+   why: TACO든 TRALI든 수혈을 멈추고 산소화를 지지하는 것이 공통 첫 대응이에요.
+[7.5] tag=체위·산소 icon=gear | I'll sit him upright and apply extra oxygen.
+   why: 상체를 세우면 폐 울혈이 덜해져 숨쉬기 쉬워지고, 추가 산소로 저산소를 막아요.
+[7.6] tag=영상 요청 icon=lab | I'll ask for a chest X-ray to help us tell them apart.
+   why: 흉부 X선에서 폐부종 양상과 심장 크기를 보면 TACO와 TRALI를 가르는 데 도움이 돼요. 단독으로 확진하지는 못해요.
+
+######## S8 대량수혈 비율 관리
+[8.0] tag=프로토콜 가동 icon=siren | We're running the massive transfusion protocol.
+   why: 대량 출혈일 때 정해진 비율로 혈액제제를 빠르게 주는 절차예요. 'We're running'은 이미 진행 중임을 알려요.
+[8.1] tag=1:1:1 비율 icon=lab | I'm giving plasma, platelets, and red cells at a one-to-one-to-one ratio.
+   why: 대량수혈에서는 혈장·혈소판·적혈구를 비슷한 비율로 줘서 희석성 응고장애를 막아요.
+[8.2] tag=비율 유지 icon=gear | Keep the ratio steady no matter how many units we send up.
+   why: 제제 수가 늘어도 비율을 흔들지 않아야 해요. 'no matter how many'는 상황이 바뀌어도 변하지 않는다는 뜻이에요.
+[8.3] tag=추적·가온 icon=gear | I'll track each unit and warm the products.
+   why: 대량수혈은 저체온이 응고를 더 망가뜨려서 제제를 데우고, 각 제제를 추적해야 기록이 맞아요.
+[8.4] tag=다음 운반함 icon=bell | Next cooler is on the way from the blood bank.
+   why: 다음 제제가 오는 중임을 알리면 팀이 끊김 없이 다음 단계를 준비해요. 'on the way'는 이미 출발했다는 뜻이에요.
+[8.5] tag=성분 호명 icon=speech | I'll call out each product as it goes up.
+   why: 올라가는 성분을 소리 내어 부르면 팀원이 무엇이 들어가는지 함께 듣고 기록이 빠지지 않아요.
+[8.6] tag=번호 기록 icon=pencil | Someone needs to log every unit number for the chart.
+   why: 제제 번호를 모두 차트에 남겨야 나중에 어느 제제가 들어갔는지 추적할 수 있어요. 'Someone'은 역할 배정이 필요하다는 신호예요.
+
+######## S9 응고검사 해석·성분 선택
+[9.0] tag=검사 결과 icon=lab | His INR is up and fibrinogen is low.
+   why: INR 상승은 응고인자 부족을, 낮은 섬유소원은 피브린을 만들 재료가 부족함을 뜻해요.
+[9.1] tag=성분 선택 icon=lab | The elevated INR calls for plasma or PCC.
+   why: INR이 높으면 응고인자를 보충하는 혈장이나 PCC를 써요.
+[9.2] tag=동결침전제 선택 icon=lab | Low fibrinogen means we should give cryoprecipitate.
+   why: 섬유소원이 낮을 때는 섬유소원이 풍부한 동결침전제를 줘요.
+[9.3] tag=우선순위 질문 icon=speech | Which products should we give him first?
+   why: 'which products'로 선택지를 열어 두고 'first'로 순서를 물으면 처방자가 우선순위를 정해 줄 수 있어요.
+[9.4] tag=교정 후 재검 icon=lab | I'll recheck coags after correction.
+   why: 교정한 뒤 응고검사를 다시 봐야 치료가 효과 있었는지 알 수 있어요. 'coags'는 응고검사를 줄여 부르는 말이에요.
+[9.5] tag=재채혈 icon=lab | I'll draw a repeat panel in about an hour.
+   why: 교정 효과를 보려면 시간을 두고 다시 채혈해요. 'in about an hour'는 대략적인 시점을 말해요.
+[9.6] tag=재보고 icon=bell | If the numbers don't improve, I'll call the provider back.
+   why: 교정 후에도 수치가 그대로면 처방을 바꿔야 하니 의료진에게 다시 알려요. 'back'은 이미 알렸던 사람에게 다시 연락한다는 뜻이에요.
+
+######## S10 저칼슘·시트르산 독성 감시
+[10.0] tag=저칼슘 위험 icon=bell | After all these units, his calcium could drop fast.
+   why: 혈액 보존제인 시트르산염이 칼슘과 결합해서, 제제를 많이 줄수록 칼슘이 떨어질 수 있어요.
+[10.1] tag=이온화 칼슘 icon=lab | Citrate binds calcium, so I'll monitor ionized calcium.
+   why: 시트르산염이 칼슘에 붙으면 활성 칼슘(이온화 칼슘)이 줄 수 있어서 총칼슘이 아니라 이온화 칼슘을 봐요.
+[10.2] tag=확인 주기 icon=lab | I'm checking his ionized calcium after every few units.
+   why: 제제를 몇 개 줄 때마다 이온화 칼슘을 보면 떨어지기 전에 알아챌 수 있어요(병원 프로토콜에 따라 달라요).
+[10.3] tag=증상 감시 icon=stetho | Watch for perioral tingling and a prolonged QT.
+   why: 입 주위 저림은 저칼슘의 초기 증상이고, QT 연장은 심전도에서 보이는 위험 신호예요.
+[10.4] tag=보충 준비 icon=pill | I'll have calcium ready to replace per protocol.
+   why: 칼슘은 프로토콜에 따라 보충해요. 미리 준비해 두면 수치가 떨어질 때 바로 줄 수 있어요.
+[10.5] tag=환자 안내 icon=speech | Tell me if your lips or fingers start tingling.
+   why: 저칼슘 증상은 환자가 먼저 느끼는 경우가 많아요. 입술과 손가락을 짚어 말하면 어디를 느껴야 하는지 알려 줘요.
+[10.6] tag=즉시 보충 icon=siren | I'll give calcium now before it drops any further.
+   why: 칼슘이 이미 떨어졌다면 더 떨어지기 전에 바로 주어 부정맥을 막아요(처방·프로토콜에 따라). 'any further'는 이미 떨어졌음을 전제해요.
+
+######## S11 항응고 역전 관리
+[11.0] tag=역전 필요 icon=bell | He's bleeding on warfarin, so we need to reverse him.
+   why: 와파린 복용 중 출혈은 항응고 효과를 되돌려야 하는 상황이에요. 'so'가 출혈과 역전의 인과를 이어요.
+[11.1] tag=역전제 투여 icon=pill | I'll give four-factor PCC and IV vitamin K now.
+   why: 4인자 PCC는 응고인자를 바로 채우고, 정맥 비타민 K는 간에서 새 인자가 만들어지게 해 효과를 이어 줘요(처방에 따라).
+[11.2] tag=DOAC 역전제 icon=pill | For his DOAC, we may need the specific reversal agent.
+   why: DOAC은 와파린과 달리 약마다 전용 역전제가 따로 있어요.
+[11.3] tag=약 확인 icon=magnify | Let's confirm which anticoagulant he's actually on.
+   why: 어떤 항응고제인지에 따라 역전 방법이 달라서 먼저 확인해요. 'actually'는 추정이 아니라 실제 복용약을 확인한다는 뜻이에요.
+[11.4] tag=INR 재검 icon=lab | I'll recheck the INR after reversal.
+   why: 역전한 뒤 INR이 내려갔는지 다시 봐야 효과를 알 수 있어요.
+[11.5] tag=출혈 감시 icon=monitor | I'll watch him closely for any new bleeding.
+   why: 역전 후에도 출혈이 이어질 수 있어 새 출혈 징후를 계속 봐요. 'any new'는 작은 변화까지 포함해요.
+[11.6] tag=의료진 보고 icon=speech | Once the INR corrects, I'll update the provider.
+   why: INR이 교정되면 결과를 알려 다음 처방을 정하게 해요. 'update'는 달라진 상황을 알려 준다는 뜻이에요.
+
+######## S12 혈소판 수혈 적응 판단
+[12.0] tag=수치와 상태 icon=lab | His platelets are low, but he's not bleeding right now.
+   why: 수치가 낮아도 출혈이 없으면 바로 수혈하지 않을 수 있다는 점을 'but'으로 대비해요.
+[12.1] tag=예방 기준 icon=chartup | The prophylactic threshold is usually ten thousand.
+   why: 출혈이 없을 때 예방적 혈소판 수혈 기준은 보통 1만/μL 안팎이에요(병원과 상황에 따라 달라요). 'usually'는 예외가 있다는 뜻이에요.
+[12.2] tag=보류 icon=calendar | So we can hold off and just recheck his count later.
+   why: 출혈이 없고 수치가 기준 위면 수혈을 보류하고 수치만 다시 봐도 돼요. 'hold off'는 지금은 하지 않는다는 뜻이에요.
+[12.3] tag=시술 전 기준 icon=scalpel | Before a procedure, we aim for a higher count.
+   why: 시술이나 수술 전에는 출혈 위험을 줄이려고 더 높은 수치를 목표로 해요(시술마다 달라요).
+[12.4] tag=출혈 시 기준 icon=bell | Active bleeding changes the threshold entirely.
+   why: 활동성 출혈이 있으면 예방 기준이 아니라 더 높은 치료 기준을 써요. 'entirely'는 완전히 다른 기준이 된다는 뜻이에요.
+[12.5] tag=출혈 시 수혈 icon=siren | If he starts bleeding, we transfuse right away.
+   why: 출혈이 시작되면 수치와 상관없이 바로 수혈을 결정해요. 'right away'는 기다리지 않는다는 뜻이에요.
+[12.6] tag=기준 확인 icon=speech | I'll ask the provider which threshold applies today.
+   why: 병원과 환자 상황에 따라 기준이 달라 처방자에게 오늘 적용 기준을 확인해요. 'applies today'는 그날 상태에 맞춘다는 뜻이에요.
+
+######## S13 알레르기·발열 반응 관리
+[13.0] tag=과거 반응 icon=bell | She got hives with the last unit.
+   why: 지난 수혈 때 두드러기가 있었다는 과거력은 다음 수혈 계획에 영향을 줘요. 'the last unit'은 직전 수혈을 가리켜요.
+[13.1] tag=경미 반응 대응 icon=pill | For mild hives, I'll pause and give an antihistamine.
+   why: 경미한 두드러기는 수혈을 잠시 멈추고 항히스타민제를 준 뒤 처방에 따라 재개 여부를 정해요. 'mild'가 대응 수준을 가르는 기준이에요.
+[13.2] tag=중등도 이상 icon=siren | If she develops wheezing, I'll stop and escalate.
+   why: 쌕쌕거림은 아나필락시스로 갈 수 있는 호흡 증상이라 완전히 중단하고 상급에 보고해요. 'escalate'는 더 높은 단계의 도움을 부르는 말이에요.
+[13.3] tag=경미 소견 icon=check | A little redness alone doesn't mean we stop the unit.
+   why: 약간의 발적만 있고 다른 증상이 없으면 수혈 중단이 필요하지 않을 수 있어요. 'alone'은 다른 증상이 함께 없다는 조건을 나타내요.
+[13.4] tag=전처치 icon=pill | We can premedicate before the next unit.
+   why: 반응 병력이 있으면 다음 수혈 전에 미리 약을 줄 수 있어요(처방에 따라). 'can'은 선택지가 있다는 뜻이에요.
+[13.5] tag=투여 시점 icon=pill | I'll give the antihistamine thirty minutes ahead of time.
+   why: 전처치 약은 수혈 시작 삼십 분쯤 전에 주는 경우가 많아요(처방 기준에 따라 달라요). 'ahead of time'은 미리라는 뜻이에요.
+[13.6] tag=전처치 문의 icon=speech | Should we premedicate this time, given her history?
+   why: 병력을 근거로 말하며 처방자에게 의견을 묻는 문장이에요. 'given'이 이유를 가볍게 덧붙여요.
+
+######## S14 수혈 거부 환자 관리
+[14.0] tag=이해 표현 icon=faceWorried | I understand blood products aren't an option for you, and that's alright.
+   why: 먼저 이해를 표현하고 'that's alright'로 환자의 결정을 판단하지 않는다는 점을 전해요.
+[14.1] tag=존중·기록 icon=pencil | I respect your decision and I'll document your wishes.
+   why: 결정을 존중한다고 먼저 말하고 기록으로 남겨 모든 팀원이 같은 정보를 보게 해요.
+[14.2] tag=허용 범위 질문 icon=speech | Can you tell me exactly what your beliefs allow?
+   why: 신념에 따라 허용 범위가 사람마다 달라서(분획 제제, 자가 혈액 등) 'exactly'로 구체적으로 물어요.
+[14.3] tag=팀 공유 icon=handshake2 | I'll make sure everyone on your team knows your wishes.
+   why: 환자의 뜻이 모든 팀원에게 전달되어야 응급 상황에서도 존중돼요. 'make sure'는 확실히 전달하겠다는 약속이에요.
+[14.4] tag=보존 전략 icon=bulb | Let's talk about blood-conservation options with your team.
+   why: 혈액을 아끼는 방법이 여러 가지라 팀과 함께 논의하면 환자의 신념 안에서 선택할 수 있어요.
+[14.5] tag=철분·채혈 icon=lab | We can maximize iron and minimize blood draws.
+   why: 철분을 보충하면 자기 혈액 생성을 돕고, 채혈을 줄이면 불필요한 혈액 손실을 막아요.
+[14.6] tag=세포회수·소형 튜브 icon=gear | We'll use cell salvage and smaller lab tubes where we can.
+   why: 수술 중 흘린 피를 모아 되돌려 주는 세포회수와 작은 튜브는 혈액 손실을 줄여요. 'where we can'은 가능한 곳에서만 쓴다는 뜻이에요.
+
+######## S15 대량수혈 프로토콜 발동·조율
+[15.0] tag=프로토콜 발동 icon=siren | I'm activating the massive transfusion protocol now.
+   why: 대량출혈이 확인되면 혈액은행에 프로토콜을 알려 제제가 정해진 구성으로 계속 오게 해요. 'now'가 지체 없이 발동한다는 뜻이에요.
+[15.1] tag=팀·역할 요청 icon=bell | I need the team, the cooler, and roles assigned right now.
+   why: 대량수혈은 사람과 제제, 역할이 동시에 필요해서 'right now'로 급함을 분명히 해요.
+[15.2] tag=역할 배정 icon=handshake2 | You track products, you push blood, I'll run the rapid infuser.
+   why: 각자 맡을 일을 이름 붙여 말하면 위기 중에도 겹치거나 빠지는 일이 없어요.
+[15.3] tag=역할 수행 icon=bell | Everyone, take your assigned role and let's move.
+   why: 'Everyone'으로 전원을 부르고 'let's move'로 바로 행동하게 해요.
+[15.4] tag=계속 보내기 icon=speech | Blood bank, send the next cooler and keep them coming.
+   why: 다음 운반함을 요청하며 'keep them coming'으로 멈추지 말라고 해요. 부를 대상을 먼저 말하는 방식이에요.
+[15.5] tag=누적 세기 icon=pencil | I'll keep count of every unit we've given so far.
+   why: 지금까지 준 제제를 세어 두면 비율과 총량을 맞추고 다음 요청 수를 정할 수 있어요. 'so far'는 누계를 뜻해요.
+[15.6] tag=누계 호명 icon=speech | Someone call out the running totals every ten minutes.
+   why: 누계를 소리 내어 부르면 팀이 같은 숫자를 보고 다음 요청을 맞춰요. 호명 주기는 병원 프로토콜에 따라 달라요.
+
+######## S16 급성 용혈 아나필락시스 위기
+[16.0] tag=위기 보고 icon=siren | She's hypotensive with stridor right after the unit.
+   why: 저혈압과 협착음이 수혈 직후에 나타나면 아나필락시스를 강하게 의심하는 신호예요. 'right after'가 시간 관계를 짚어요.
+[16.1] tag=진단·지시 icon=siren | This is anaphylaxis — get the epi now.
+   why: 진단 이름을 말하고 바로 지시를 내려 팀이 에피네프린을 준비하게 해요. 'get'은 가져오라는 짧은 명령이에요.
+[16.2] tag=중단·에피 투여 icon=siren | Stop the transfusion — I'm giving IM epinephrine now.
+   why: 아나필락시스의 1차 약은 근육주사 에피네프린이라 수혈을 멈추는 즉시 줘요(처방·프로토콜에 따라).
+[16.3] tag=수액·코드 호출 icon=siren | I'm opening fluids wide and calling the code team.
+   why: 저혈압에는 수액을 크게 열어 순환을 받쳐 주고, 기도 문제가 있어 코드 팀을 불러요. 'wide'는 최대한 빠르게라는 뜻이에요.
+[16.4] tag=기도 위기 icon=siren | Airway is compromised, prepare to intubate.
+   why: 기도가 위험하면 삽관을 미리 준비해야 해요. 'compromised'는 기도가 위협받아 곧 막힐 수 있다는 뜻이에요.
+[16.5] tag=2차 투여 icon=pill | I'll push a second dose if she doesn't improve.
+   why: 에피네프린은 반응이 없으면 몇 분 간격으로 반복할 수 있어요(처방·프로토콜에 따라). 'if she doesn't improve'가 반복 투여 조건이에요.
+[16.6] tag=응급 카트 icon=siren | Get the crash cart to the bedside right now.
+   why: 응급 카트에는 기도와 약물 장비가 모여 있어 위기 때 가장 먼저 침상으로 옮겨요. 'right now'가 급함을 말해요.
+
+######## S17 DIC 출혈·혈전 동반 위기
+[17.0] tag=증상·검사 icon=bell | He's oozing from every site and his labs scream DIC.
+   why: 모든 부위에서 스며 나오는 출혈과 검사 이상이 함께면 DIC를 의심해요. 'scream'은 검사가 DIC를 강하게 시사한다는 구어 표현이에요.
+[17.1] tag=천자 부위 출혈 icon=bell | He's bleeding from every puncture site — this is DIC.
+   why: 채혈과 정맥 천자 부위마다 피가 멈추지 않는 것은 DIC의 대표 소견이에요.
+[17.2] tag=원인 치료 icon=bulb | We have to treat the underlying cause right away.
+   why: DIC는 패혈증 같은 원인 질환이 만든 결과라 근본 원인을 치료해야 멈출 수 있어요. 'right away'가 지체 없이 한다는 뜻이에요.
+[17.3] tag=성분 보충 icon=lab | I'll replace fibrinogen, platelets, and plasma per the labs.
+   why: DIC에서는 소모된 응고 성분을 검사 결과에 맞춰 보충해요. 'per the labs'는 수치를 근거로 한다는 뜻이에요.
+[17.4] tag=핵심 원칙 icon=bulb | The key is treating the underlying trigger.
+   why: 성분 보충은 임시방편이고 유발 요인을 치료하는 것이 DIC 관리의 핵심이에요. 'The key'가 가장 중요한 한 가지를 짚어요.
+[17.5] tag=라인·부위 관찰 icon=monitor | I'll watch every line and site for new oozing.
+   why: 채혈과 정맥 라인 부위는 DIC에서 가장 먼저 새는 곳이라 하나하나 봐요.
+[17.6] tag=패혈증 평가 icon=speech | I'll coordinate with the team on the sepsis workup.
+   why: DIC의 흔한 원인이 패혈증이라 원인 평가를 팀과 맞춰요. 'coordinate'는 역할과 순서를 맞춘다는 뜻이에요.
+
+######## S18 TRALI 급성 호흡부전 위기
+[18.0] tag=위기 보고 icon=siren | She's in acute respiratory failure right after the plasma.
+   why: 혈장 수혈 직후의 급성 호흡부전은 TRALI를 의심하는 전형적인 시간 관계예요.
+[18.1] tag=중단·감별 icon=siren | Stop the transfusion — this is TRALI, not overload.
+   why: TRALI는 수액 과부하가 아니라 폐 손상이라 이뇨제로 해결되지 않아요. 중단 지시와 감별을 한 문장에 담았어요.
+[18.2] tag=충만압 근거 icon=lab | Her filling pressures are normal, so this isn't fluid overload.
+   why: 충만압이 정상이면 심장이나 수액 때문이 아니라는 근거가 돼요. 'so'가 근거에서 결론으로 이어요.
+[18.3] tag=폐보호 환기 icon=gear | She needs lung-protective ventilation and high oxygen.
+   why: TRALI는 ARDS와 비슷해 폐보호 환기(낮은 일회호흡량)와 산소 지지가 중심이에요(처방에 따라).
+[18.4] tag=혈액은행 보고 icon=bell | Report the reaction to the blood bank.
+   why: TRALI는 공여자 항체와 연관될 수 있어 혈액은행이 같은 공여 혈액을 점검해야 해요. 반응 보고가 그 첫 단계예요.
+[18.5] tag=환기 조정 보조 icon=gear | I'll help the team adjust her ventilator settings.
+   why: 환기 설정은 의료진이 정하고 간호사는 조정을 돕고 환자 반응을 지켜봐요.
+[18.6] tag=밤 산소 감시 icon=monitor | I'll keep close watch on her oxygen levels tonight.
+   why: TRALI는 산소 요구가 갑자기 변할 수 있어 가까이서 지켜봐요. 'keep close watch'는 눈을 떼지 않는다는 표현이에요.
+
+######## S19 대량수혈 저칼슘 심정지 위기
+[19.0] tag=위기 보고 icon=siren | His QT is stretching and he's about to arrest.
+   why: QT 연장은 저칼슘의 심전도 신호이고 'about to arrest'는 곧 심정지로 갈 수 있다는 경고예요.
+[19.1] tag=위중한 저칼슘 icon=siren | Ionized calcium is critically low — I'm pushing calcium now.
+   why: 이온화 칼슘이 위중하게 낮으면 즉시 정맥으로 칼슘을 줘요(프로토콜·처방에 따라). 수치와 행동을 한 문장에 담았어요.
+[19.2] tag=즉시 투여 지시 icon=siren | Push the calcium now, before he codes.
+   why: 'before he codes'로 지체의 위험을 밝혀 바로 투여하게 하는 지시예요.
+[19.3] tag=압박·코드 icon=siren | Start compressions and call the code.
+   why: 맥박이 없다면 압박을 즉시 시작하고 코드를 불러요. 두 행동을 'and'로 묶어 동시에 한다는 뜻이에요.
+[19.4] tag=라운드별 칼슘 icon=pill | Keep giving calcium with each round of products.
+   why: 대량수혈 중에는 제제를 줄 때마다 칼슘을 함께 보충해 시트르산염 효과를 상쇄해요(프로토콜에 따라).
+[19.5] tag=코드 팀 호출 icon=bell | I need the code team here right now.
+   why: 필요한 팀과 장소, 급함을 한 문장에 담아 부르는 호출이에요. 'right now'가 지체 없이 오라는 뜻이에요.
+[19.6] tag=제제마다 칼슘 icon=pill | I'll keep pushing calcium every time we hang another unit.
+   why: 제제를 새로 걸 때마다 칼슘을 함께 주면 칼슘 하락을 앞질러 막아요(프로토콜에 따라).
+
+######## S20 수혈 불응 지속출혈 목표 소통
+[20.0] tag=상황 설명 icon=faceWorried | We keep transfusing, but he keeps bleeding.
+   why: 'but'으로 노력과 결과의 어긋남을 대비해 가족이 현실을 이해하게 해요.
+[20.1] tag=사실 전달 icon=faceWorried | Despite everything, the bleeding isn't stopping.
+   why: 'Despite everything'은 모든 노력에도 불구하고라는 뜻이라 최선을 다했음을 알리면서 사실을 전해요.
+[20.2] tag=대화 시작 icon=speech | I need to talk with you about what's realistic.
+   why: 'I need to'는 중요한 이야기를 시작한다는 신호이고 'realistic'은 희망을 꺾지 않고 현실을 말하는 단어예요.
+[20.3] tag=솔직한 소통 icon=speech | I want to be honest with you about what we're seeing.
+   why: 'I want to be honest'는 어려운 소식을 전하기 전에 솔직하게 말하겠다는 예고예요.
+[20.4] tag=환자 뜻 묻기 icon=speech | Let's talk about what he would want.
+   why: 환자가 직접 말할 수 없을 때는 'what he would want'로 환자의 뜻을 기준으로 이야기를 시작해요.
+[20.5] tag=가치 질문 icon=speech | Did he ever say what mattered most to him?
+   why: 과거에 한 말을 묻는 질문이라 가족이 환자의 가치관을 기억해 내도록 도와요. 'mattered most'는 가장 소중했던 것이에요.
+[20.6] tag=뜻에 맞춘 돌봄 icon=shield | We'll make sure his care matches his wishes.
+   why: 'make sure'는 약속이고 'matches'는 돌봄을 환자의 뜻에 맞춘다는 뜻이에요.

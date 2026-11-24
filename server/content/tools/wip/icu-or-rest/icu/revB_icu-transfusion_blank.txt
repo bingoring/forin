@@ -1,0 +1,777 @@
+
+######## S0 수혈 전 확인·동의
+[0.0] ans=bedside
+   *Two of us will verify the patient ID and unit at the [bedside].
+    Two of us will verify the patient ID and unit at the [pharmacy].
+    Two of us will verify the patient ID and unit at the [blood bank].
+    Two of us will verify the patient ID and unit at the [lobby].
+[0.1] ans=date of birth
+   *Let's read her name and [date of birth] out loud together.
+    Let's read her name and [room number] out loud together.
+    Let's read her name and [blood type] out loud together.
+    Let's read her name and [diagnosis] out loud together.
+[0.2] ans=blood type
+   *I'll say the [blood type] and you check it against the bag.
+    I'll say the [heart rate] and you check it against the bag.
+    I'll say the [temperature] and you check it against the bag.
+    I'll say the [blood pressure] and you check it against the bag.
+[0.3] ans=match
+   *If anything doesn't [match], we stop right here.
+    If anything doesn't [leak], we stop right here.
+    If anything doesn't [expire], we stop right here.
+    If anything doesn't [clot], we stop right here.
+[0.4] ans=expiration
+   *Blood type, unit number, and [expiration] all match.
+    Blood type, unit number, and [temperature] all match.
+    Blood type, unit number, and [destination] all match.
+    Blood type, unit number, and [description] all match.
+[0.5] ans=signed
+   *Consent is [signed] and in the chart.
+    Consent is [pending] and in the chart.
+    Consent is [withdrawn] and in the chart.
+    Consent is [expired] and in the chart.
+[0.6] ans=consent
+   *I'll confirm [consent] with him before we hang this unit.
+    I'll confirm [payment] with him before we hang this unit.
+    I'll confirm [insurance] with him before we hang this unit.
+    I'll confirm [visitation] with him before we hang this unit.
+
+######## S1 수혈 시작·초기 감시
+[1.0] ans=run
+   *I'll [run] it slow for the first fifteen minutes.
+    I'll [flush] it slow for the first fifteen minutes.
+    I'll [spike] it slow for the first fifteen minutes.
+    I'll [pause] it slow for the first fifteen minutes.
+[1.1] ans=transfusion
+   *We'll start the [transfusion] now that everything checks out.
+    We'll start the [surgery] now that everything checks out.
+    We'll start the [dialysis] now that everything checks out.
+    We'll start the [intubation] now that everything checks out.
+[1.2] ans=Baseline
+   *[Baseline] vitals are recorded before we start.
+    [Random] vitals are recorded before we start.
+    [Partial] vitals are recorded before we start.
+    [Evening] vitals are recorded before we start.
+[1.3] ans=reassess
+   *I'll stay at the bedside and [reassess] vitals shortly.
+    I'll stay at the bedside and [restock] vitals shortly.
+    I'll stay at the bedside and [relabel] vitals shortly.
+    I'll stay at the bedside and [rewarm] vitals shortly.
+[1.4] ans=anything
+   *If [anything] feels off, tell me right away.
+    If [nothing] feels off, tell me right away.
+    If [everyone] feels off, tell me right away.
+    If [nobody] feels off, tell me right away.
+[1.5] ans=closely
+   *I'm watching his heart rate and blood pressure [closely].
+    I'm watching his heart rate and blood pressure [rarely].
+    I'm watching his heart rate and blood pressure [briefly].
+    I'm watching his heart rate and blood pressure [randomly].
+[1.6] ans=tolerating
+   *I'll check back in fifteen minutes to see how he's [tolerating] it.
+    I'll check back in fifteen minutes to see how he's [refusing] it.
+    I'll check back in fifteen minutes to see how he's [ordering] it.
+    I'll check back in fifteen minutes to see how he's [measuring] it.
+
+######## S2 수혈 반응 징후 인지
+[2.0] ans=dyspnea
+   *Fever, rash, or [dyspnea] can signal a transfusion reaction.
+    Fever, rash, or [hunger] can signal a transfusion reaction.
+    Fever, rash, or [boredom] can signal a transfusion reaction.
+    Fever, rash, or [thirst] can signal a transfusion reaction.
+[2.1] ans=chilled
+   *Tell me right away if you feel [chilled], itchy, or achy in your back.
+    Tell me right away if you feel [hungry], itchy, or achy in your back.
+    Tell me right away if you feel [sleepy], itchy, or achy in your back.
+    Tell me right away if you feel [thirsty], itchy, or achy in your back.
+[2.2] ans=spiked
+   *His temperature just [spiked] and he's got a new rash on his chest.
+    His temperature just [dropped] and he's got a new rash on his chest.
+    His temperature just [steadied] and he's got a new rash on his chest.
+    His temperature just [settled] and he's got a new rash on his chest.
+[2.3] ans=line
+   *I'm stopping the transfusion and keeping the [line] open with saline.
+    I'm stopping the transfusion and keeping the [filter] open with saline.
+    I'm stopping the transfusion and keeping the [bag] open with saline.
+    I'm stopping the transfusion and keeping the [chamber] open with saline.
+[2.4] ans=notify
+   *I'll take a full set of vitals and [notify] the provider.
+    I'll take a full set of vitals and [educate] the provider.
+    I'll take a full set of vitals and [quote] the provider.
+    I'll take a full set of vitals and [hire] the provider.
+[2.5] ans=questions
+   *We stop first and ask [questions] after.
+    We stop first and ask [charges] after.
+    We stop first and ask [appeals] after.
+    We stop first and ask [refunds] after.
+[2.6] ans=document
+   *I'll [document] the reaction and watch him closely.
+    I'll [delete] the reaction and watch him closely.
+    I'll [hide] the reaction and watch him closely.
+    I'll [rename] the reaction and watch him closely.
+
+######## S3 혈액 성분 종류 이해
+[3.0] ans=raise
+   *Packed red cells [raise] oxygen-carrying capacity.
+    Packed red cells [lower] oxygen-carrying capacity.
+    Packed red cells [drain] oxygen-carrying capacity.
+    Packed red cells [block] oxygen-carrying capacity.
+[3.1] ans=thrombocytopenia
+   *FFP replaces clotting factors, platelets treat [thrombocytopenia].
+    FFP replaces clotting factors, platelets treat [thrombocytosis].
+    FFP replaces clotting factors, platelets treat [hypoglycemia].
+    FFP replaces clotting factors, platelets treat [neutropenia].
+[3.2] ans=fibrinogen
+   *Cryoprecipitate is for low [fibrinogen].
+    Cryoprecipitate is for low [hemoglobin].
+    Cryoprecipitate is for low [platelets].
+    Cryoprecipitate is for low [potassium].
+[3.3] ans=bleeding
+   *Platelets help when his count is low or he's actively [bleeding].
+    Platelets help when his count is low or he's actively [vomiting].
+    Platelets help when his count is low or he's actively [coughing].
+    Platelets help when his count is low or he's actively [sleeping].
+[3.4] ans=corrects
+   *Plasma [corrects] clotting problems from liver disease or bleeding.
+    Plasma [causes] clotting problems from liver disease or bleeding.
+    Plasma [hides] clotting problems from liver disease or bleeding.
+    Plasma [doubles] clotting problems from liver disease or bleeding.
+[3.5] ans=hemoglobin
+   *For him, we're giving red cells because his [hemoglobin] is low.
+    For him, we're giving red cells because his [platelets] is low.
+    For him, we're giving red cells because his [fibrinogen] is low.
+    For him, we're giving red cells because his [potassium] is low.
+[3.6] ans=labs
+   *I'll explain why we chose this component for his [labs].
+    I'll explain why we chose this component for his [meals].
+    I'll explain why we chose this component for his [visits].
+    I'll explain why we chose this component for his [rooms].
+
+######## S4 혈액 취급·보관
+[4.0] ans=fridge
+   *Blood must be started within thirty minutes of leaving the [fridge].
+    Blood must be started within thirty minutes of leaving the [freezer].
+    Blood must be started within thirty minutes of leaving the [warmer].
+    Blood must be started within thirty minutes of leaving the [incubator].
+[4.1] ans=infused
+   *It has to be [infused] within four hours of hanging.
+    It has to be [ordered] within four hours of hanging.
+    It has to be [thawed] within four hours of hanging.
+    It has to be [typed] within four hours of hanging.
+[4.2] ans=always
+   *I [always] check how long the unit's been out of the fridge.
+    I [rarely] check how long the unit's been out of the fridge.
+    I [barely] check how long the unit's been out of the fridge.
+    I [seldom] check how long the unit's been out of the fridge.
+[4.3] ans=out
+   *This one's been [out] for almost an hour already.
+    This one's been [in] for almost an hour already.
+    This one's been [up] for almost an hour already.
+    This one's been [off] for almost an hour already.
+[4.4] ans=blood bank
+   *If we can't start it, I'll send it back to the [blood bank].
+    If we can't start it, I'll send it back to the [pharmacy].
+    If we can't start it, I'll send it back to the [laundry].
+    If we can't start it, I'll send it back to the [cafeteria].
+[4.5] ans=expired
+   *We can't risk giving blood that's [expired].
+    We can't risk giving blood that's [fresh].
+    We can't risk giving blood that's [tested].
+    We can't risk giving blood that's [labeled].
+[4.6] ans=recheck
+   *I'll [recheck] the time on every unit before I hang it.
+    I'll [rename] the time on every unit before I hang it.
+    I'll [reorder] the time on every unit before I hang it.
+    I'll [resell] the time on every unit before I hang it.
+
+######## S5 수혈 중 활력 주기 기록
+[5.0] ans=hourly
+   *I'll record vitals at fifteen minutes, then [hourly].
+    I'll record vitals at fifteen minutes, then [weekly].
+    I'll record vitals at fifteen minutes, then [yearly].
+    I'll record vitals at fifteen minutes, then [monthly].
+[5.1] ans=monitor
+   *Keep the [monitor] on him and log vitals on the transfusion schedule.
+    Keep the [curtain] on him and log vitals on the transfusion schedule.
+    Keep the [camera] on him and log vitals on the transfusion schedule.
+    Keep the [lamp] on him and log vitals on the transfusion schedule.
+[5.2] ans=stable
+   *Temperature is [stable] and there's no new tachycardia.
+    Temperature is [rising] and there's no new tachycardia.
+    Temperature is [falling] and there's no new tachycardia.
+    Temperature is [unknown] and there's no new tachycardia.
+[5.3] ans=alarms
+   *The monitor is on and [alarms] are set.
+    The monitor is on and [lights] are set.
+    The monitor is on and [blinds] are set.
+    The monitor is on and [fans] are set.
+[5.4] ans=percent
+   *His oxygen saturation is holding steady at ninety-eight [percent].
+    His oxygen saturation is holding steady at ninety-eight [degrees].
+    His oxygen saturation is holding steady at ninety-eight [liters].
+    His oxygen saturation is holding steady at ninety-eight [pounds].
+[5.5] ans=flag
+   *I'll [flag] anything that trends the wrong way.
+    I'll [rename] anything that trends the wrong way.
+    I'll [reorder] anything that trends the wrong way.
+    I'll [relabel] anything that trends the wrong way.
+[5.6] ans=reading
+   *So far every [reading] looks within normal range.
+    So far every [alarm] looks within normal range.
+    So far every [monitor] looks within normal range.
+    So far every [lead] looks within normal range.
+
+######## S6 급성 용혈반응 초기 대응
+[6.0] ans=back
+   *He's got [back] pain, chills, and dark urine.
+    He's got [knee] pain, chills, and dark urine.
+    He's got [foot] pain, chills, and dark urine.
+    He's got [ankle] pain, chills, and dark urine.
+[6.1] ans=tubing
+   *I'm stopping the transfusion and disconnecting the [tubing].
+    I'm stopping the transfusion and disconnecting the [monitor].
+    I'm stopping the transfusion and disconnecting the [bracelet].
+    I'm stopping the transfusion and disconnecting the [chart].
+[6.2] ans=reaction
+   *This looks like an acute hemolytic [reaction].
+    This looks like an acute hemolytic [injury].
+    This looks like an acute hemolytic [infection].
+    This looks like an acute hemolytic [surgery].
+[6.3] ans=line
+   *I'll keep the [line] open with normal saline.
+    I'll keep the [filter] open with normal saline.
+    I'll keep the [bag] open with normal saline.
+    I'll keep the [chamber] open with normal saline.
+[6.4] ans=workup
+   *Send the unit and a blood sample back for a reaction [workup].
+    Send the unit and a blood sample back for a reaction [refund].
+    Send the unit and a blood sample back for a reaction [invoice].
+    Send the unit and a blood sample back for a reaction [tour].
+[6.5] ans=provider
+   *I'll notify the [provider] and the blood bank right away.
+    I'll notify the [pharmacist] and the blood bank right away.
+    I'll notify the [dietitian] and the blood bank right away.
+    I'll notify the [therapist] and the blood bank right away.
+[6.6] ans=urine
+   *I'll watch his [urine] output closely for the next few hours.
+    I'll watch his [diet] output closely for the next few hours.
+    I'll watch his [visitor] output closely for the next few hours.
+    I'll watch his [sleep] output closely for the next few hours.
+
+######## S7 TACO와 TRALI 감별
+[7.0] ans=desaturating
+   *She's [desaturating] an hour into the unit.
+    She's [hydrating] an hour into the unit.
+    She's [sedating] an hour into the unit.
+    She's [stretching] an hour into the unit.
+[7.1] ans=volume
+   *TACO points to [volume] overload with hypertension.
+    TACO points to [protein] overload with hypertension.
+    TACO points to [calcium] overload with hypertension.
+    TACO points to [glucose] overload with hypertension.
+[7.2] ans=non-cardiogenic
+   *TRALI is [non-cardiogenic] with normal filling pressures.
+    TRALI is [hypovolemic] with normal filling pressures.
+    TRALI is [septic] with normal filling pressures.
+    TRALI is [anaphylactic] with normal filling pressures.
+[7.3] ans=jugular
+   *Crackles and a raised [jugular] vein point us toward TACO.
+    Crackles and a raised [radial] vein point us toward TACO.
+    Crackles and a raised [carotid] vein point us toward TACO.
+    Crackles and a raised [femoral] vein point us toward TACO.
+[7.4] ans=oxygenation
+   *Either way, I'm stopping the transfusion and supporting [oxygenation].
+    Either way, I'm stopping the transfusion and supporting [hydration].
+    Either way, I'm stopping the transfusion and supporting [sedation].
+    Either way, I'm stopping the transfusion and supporting [nutrition].
+[7.5] ans=oxygen
+   *I'll sit him upright and apply extra [oxygen].
+    I'll sit him upright and apply extra [blankets].
+    I'll sit him upright and apply extra [pillows].
+    I'll sit him upright and apply extra [lotion].
+[7.6] ans=chest
+   *I'll ask for a [chest] X-ray to help us tell them apart.
+    I'll ask for a [knee] X-ray to help us tell them apart.
+    I'll ask for a [wrist] X-ray to help us tell them apart.
+    I'll ask for a [ankle] X-ray to help us tell them apart.
+
+######## S8 대량수혈 비율 관리
+[8.0] ans=massive
+   *We're running the [massive] transfusion protocol.
+    We're running the [pediatric] transfusion protocol.
+    We're running the [outpatient] transfusion protocol.
+    We're running the [neonatal] transfusion protocol.
+[8.1] ans=ratio
+   *I'm giving plasma, platelets, and red cells at a one-to-one-to-one [ratio].
+    I'm giving plasma, platelets, and red cells at a one-to-one-to-one [sequence].
+    I'm giving plasma, platelets, and red cells at a one-to-one-to-one [pattern].
+    I'm giving plasma, platelets, and red cells at a one-to-one-to-one [schedule].
+[8.2] ans=steady
+   *Keep the ratio [steady] no matter how many units we send up.
+    Keep the ratio [uneven] no matter how many units we send up.
+    Keep the ratio [random] no matter how many units we send up.
+    Keep the ratio [rushed] no matter how many units we send up.
+[8.3] ans=warm
+   *I'll track each unit and [warm] the products.
+    I'll track each unit and [shake] the products.
+    I'll track each unit and [stir] the products.
+    I'll track each unit and [dilute] the products.
+[8.4] ans=cooler
+   *Next [cooler] is on the way from the blood bank.
+    Next [stretcher] is on the way from the blood bank.
+    Next [pump] is on the way from the blood bank.
+    Next [scanner] is on the way from the blood bank.
+[8.5] ans=product
+   *I'll call out each [product] as it goes up.
+    I'll call out each [patient] as it goes up.
+    I'll call out each [pill] as it goes up.
+    I'll call out each [pump] as it goes up.
+[8.6] ans=number
+   *Someone needs to log every unit [number] for the chart.
+    Someone needs to log every unit [color] for the chart.
+    Someone needs to log every unit [size] for the chart.
+    Someone needs to log every unit [shape] for the chart.
+
+######## S9 응고검사 해석·성분 선택
+[9.0] ans=fibrinogen
+   *His INR is up and [fibrinogen] is low.
+    His INR is up and [hemoglobin] is low.
+    His INR is up and [platelets] is low.
+    His INR is up and [potassium] is low.
+[9.1] ans=elevated
+   *The [elevated] INR calls for plasma or PCC.
+    The [normal] INR calls for plasma or PCC.
+    The [falling] INR calls for plasma or PCC.
+    The [stable] INR calls for plasma or PCC.
+[9.2] ans=cryoprecipitate
+   *Low fibrinogen means we should give [cryoprecipitate].
+    Low fibrinogen means we should give [immunoglobulin].
+    Low fibrinogen means we should give [albumin].
+    Low fibrinogen means we should give [glucose].
+[9.3] ans=first
+   *Which products should we give him [first]?
+    Which products should we give him [never]?
+    Which products should we give him [twice]?
+    Which products should we give him [daily]?
+[9.4] ans=coags
+   *I'll recheck [coags] after correction.
+    I'll recheck [A1C] after correction.
+    I'll recheck [cultures] after correction.
+    I'll recheck [urine] after correction.
+[9.5] ans=repeat
+   *I'll draw a [repeat] panel in about an hour.
+    I'll draw a [random] panel in about an hour.
+    I'll draw a [partial] panel in about an hour.
+    I'll draw a [private] panel in about an hour.
+[9.6] ans=improve
+   *If the numbers don't [improve], I'll call the provider back.
+    If the numbers don't [expire], I'll call the provider back.
+    If the numbers don't [arrive], I'll call the provider back.
+    If the numbers don't [leave], I'll call the provider back.
+
+######## S10 저칼슘·시트르산 독성 감시
+[10.0] ans=calcium
+   *After all these units, his [calcium] could drop fast.
+    After all these units, his [sodium] could drop fast.
+    After all these units, his [chloride] could drop fast.
+    After all these units, his [phosphate] could drop fast.
+[10.1] ans=binds
+   *Citrate [binds] calcium, so I'll monitor ionized calcium.
+    Citrate [boosts] calcium, so I'll monitor ionized calcium.
+    Citrate [raises] calcium, so I'll monitor ionized calcium.
+    Citrate [feeds] calcium, so I'll monitor ionized calcium.
+[10.2] ans=units
+   *I'm checking his ionized calcium after every few [units].
+    I'm checking his ionized calcium after every few [shifts].
+    I'm checking his ionized calcium after every few [visits].
+    I'm checking his ionized calcium after every few [meals].
+[10.3] ans=tingling
+   *Watch for perioral [tingling] and a prolonged QT.
+    Watch for perioral [swelling] and a prolonged QT.
+    Watch for perioral [redness] and a prolonged QT.
+    Watch for perioral [itching] and a prolonged QT.
+[10.4] ans=replace
+   *I'll have calcium ready to [replace] per protocol.
+    I'll have calcium ready to [remove] per protocol.
+    I'll have calcium ready to [dilute] per protocol.
+    I'll have calcium ready to [count] per protocol.
+[10.5] ans=lips
+   *Tell me if your [lips] or fingers start tingling.
+    Tell me if your [eyes] or fingers start tingling.
+    Tell me if your [ears] or fingers start tingling.
+    Tell me if your [hair] or fingers start tingling.
+[10.6] ans=give
+   *I'll [give] calcium now before it drops any further.
+    I'll [hold] calcium now before it drops any further.
+    I'll [count] calcium now before it drops any further.
+    I'll [weigh] calcium now before it drops any further.
+
+######## S11 항응고 역전 관리
+[11.0] ans=warfarin
+   *He's bleeding on [warfarin], so we need to reverse him.
+    He's bleeding on [insulin], so we need to reverse him.
+    He's bleeding on [digoxin], so we need to reverse him.
+    He's bleeding on [lisinopril], so we need to reverse him.
+[11.1] ans=vitamin K
+   *I'll give four-factor PCC and IV [vitamin K] now.
+    I'll give four-factor PCC and IV [vitamin C] now.
+    I'll give four-factor PCC and IV [vitamin D] now.
+    I'll give four-factor PCC and IV [vitamin B] now.
+[11.2] ans=specific
+   *For his DOAC, we may need the [specific] reversal agent.
+    For his DOAC, we may need the [generic] reversal agent.
+    For his DOAC, we may need the [routine] reversal agent.
+    For his DOAC, we may need the [common] reversal agent.
+[11.3] ans=anticoagulant
+   *Let's confirm which [anticoagulant] he's actually on.
+    Let's confirm which [antibiotic] he's actually on.
+    Let's confirm which [antiemetic] he's actually on.
+    Let's confirm which [antacid] he's actually on.
+[11.4] ans=INR
+   *I'll recheck the [INR] after reversal.
+    I'll recheck the [A1C] after reversal.
+    I'll recheck the [TSH] after reversal.
+    I'll recheck the [BNP] after reversal.
+[11.5] ans=bleeding
+   *I'll watch him closely for any new [bleeding].
+    I'll watch him closely for any new [itching].
+    I'll watch him closely for any new [coughing].
+    I'll watch him closely for any new [sweating].
+[11.6] ans=corrects
+   *Once the INR [corrects], I'll update the provider.
+    Once the INR [climbs], I'll update the provider.
+    Once the INR [spikes], I'll update the provider.
+    Once the INR [doubles], I'll update the provider.
+
+######## S12 혈소판 수혈 적응 판단
+[12.0] ans=bleeding
+   *His platelets are low, but he's not [bleeding] right now.
+    His platelets are low, but he's not [vomiting] right now.
+    His platelets are low, but he's not [wheezing] right now.
+    His platelets are low, but he's not [shivering] right now.
+[12.1] ans=prophylactic
+   *The [prophylactic] threshold is usually ten thousand.
+    The [therapeutic] threshold is usually ten thousand.
+    The [diagnostic] threshold is usually ten thousand.
+    The [cosmetic] threshold is usually ten thousand.
+[12.2] ans=recheck
+   *So we can hold off and just [recheck] his count later.
+    So we can hold off and just [retype] his count later.
+    So we can hold off and just [reprint] his count later.
+    So we can hold off and just [resell] his count later.
+[12.3] ans=procedure
+   *Before a [procedure], we aim for a higher count.
+    Before a [meal], we aim for a higher count.
+    Before a [shower], we aim for a higher count.
+    Before a [visit], we aim for a higher count.
+[12.4] ans=entirely
+   *Active bleeding changes the threshold [entirely].
+    Active bleeding changes the threshold [slightly].
+    Active bleeding changes the threshold [barely].
+    Active bleeding changes the threshold [hardly].
+[12.5] ans=transfuse
+   *If he starts bleeding, we [transfuse] right away.
+    If he starts bleeding, we [discharge] right away.
+    If he starts bleeding, we [admit] right away.
+    If he starts bleeding, we [transfer] right away.
+[12.6] ans=threshold
+   *I'll ask the provider which [threshold] applies today.
+    I'll ask the provider which [menu] applies today.
+    I'll ask the provider which [uniform] applies today.
+    I'll ask the provider which [parking] applies today.
+
+######## S13 알레르기·발열 반응 관리
+[13.0] ans=hives
+   *She got [hives] with the last unit.
+    She got [cramps] with the last unit.
+    She got [blisters] with the last unit.
+    She got [bruises] with the last unit.
+[13.1] ans=mild
+   *For [mild] hives, I'll pause and give an antihistamine.
+    For [severe] hives, I'll pause and give an antihistamine.
+    For [chronic] hives, I'll pause and give an antihistamine.
+    For [recurrent] hives, I'll pause and give an antihistamine.
+[13.2] ans=wheezing
+   *If she develops [wheezing], I'll stop and escalate.
+    If she develops [yawning], I'll stop and escalate.
+    If she develops [blinking], I'll stop and escalate.
+    If she develops [hiccups], I'll stop and escalate.
+[13.3] ans=stop
+   *A little redness alone doesn't mean we [stop] the unit.
+    A little redness alone doesn't mean we [hang] the unit.
+    A little redness alone doesn't mean we [warm] the unit.
+    A little redness alone doesn't mean we [label] the unit.
+[13.4] ans=next
+   *We can premedicate before the [next] unit.
+    We can premedicate before the [last] unit.
+    We can premedicate before the [same] unit.
+    We can premedicate before the [old] unit.
+[13.5] ans=antihistamine
+   *I'll give the [antihistamine] thirty minutes ahead of time.
+    I'll give the [antibiotic] thirty minutes ahead of time.
+    I'll give the [antacid] thirty minutes ahead of time.
+    I'll give the [antiemetic] thirty minutes ahead of time.
+[13.6] ans=history
+   *Should we premedicate this time, given her [history]?
+    Should we premedicate this time, given her [mood]?
+    Should we premedicate this time, given her [weight]?
+    Should we premedicate this time, given her [schedule]?
+
+######## S14 수혈 거부 환자 관리
+[14.0] ans=option
+   *I understand blood products aren't an [option] for you, and that's alright.
+    I understand blood products aren't an [answer] for you, and that's alright.
+    I understand blood products aren't an [accident] for you, and that's alright.
+    I understand blood products aren't an [insult] for you, and that's alright.
+[14.1] ans=respect
+   *I [respect] your decision and I'll document your wishes.
+    I [question] your decision and I'll document your wishes.
+    I [doubt] your decision and I'll document your wishes.
+    I [resent] your decision and I'll document your wishes.
+[14.2] ans=beliefs
+   *Can you tell me exactly what your [beliefs] allow?
+    Can you tell me exactly what your [bills] allow?
+    Can you tell me exactly what your [pets] allow?
+    Can you tell me exactly what your [hobbies] allow?
+[14.3] ans=everyone
+   *I'll make sure [everyone] on your team knows your wishes.
+    I'll make sure [nobody] on your team knows your wishes.
+    I'll make sure [someone] on your team knows your wishes.
+    I'll make sure [anyone] on your team knows your wishes.
+[14.4] ans=talk
+   *Let's [talk] about blood-conservation options with your team.
+    Let's [argue] about blood-conservation options with your team.
+    Let's [bargain] about blood-conservation options with your team.
+    Let's [gamble] about blood-conservation options with your team.
+[14.5] ans=iron
+   *We can maximize [iron] and minimize blood draws.
+    We can maximize [sugar] and minimize blood draws.
+    We can maximize [salt] and minimize blood draws.
+    We can maximize [sodium] and minimize blood draws.
+[14.6] ans=salvage
+   *We'll use cell [salvage] and smaller lab tubes where we can.
+    We'll use cell [donation] and smaller lab tubes where we can.
+    We'll use cell [banking] and smaller lab tubes where we can.
+    We'll use cell [typing] and smaller lab tubes where we can.
+
+######## S15 대량수혈 프로토콜 발동·조율
+[15.0] ans=activating
+   *I'm [activating] the massive transfusion protocol now.
+    I'm [rehearsing] the massive transfusion protocol now.
+    I'm [reviewing] the massive transfusion protocol now.
+    I'm [revising] the massive transfusion protocol now.
+[15.1] ans=roles
+   *I need the team, the cooler, and [roles] assigned right now.
+    I need the team, the cooler, and [uniforms] assigned right now.
+    I need the team, the cooler, and [badges] assigned right now.
+    I need the team, the cooler, and [parking] assigned right now.
+[15.2] ans=rapid
+   *You track products, you push blood, I'll run the [rapid] infuser.
+    You track products, you push blood, I'll run the [slow] infuser.
+    You track products, you push blood, I'll run the [small] infuser.
+    You track products, you push blood, I'll run the [dry] infuser.
+[15.3] ans=assigned
+   *Everyone, take your [assigned] role and let's move.
+    Everyone, take your [optional] role and let's move.
+    Everyone, take your [temporary] role and let's move.
+    Everyone, take your [voluntary] role and let's move.
+[15.4] ans=next
+   *Blood bank, send the [next] cooler and keep them coming.
+    Blood bank, send the [last] cooler and keep them coming.
+    Blood bank, send the [empty] cooler and keep them coming.
+    Blood bank, send the [old] cooler and keep them coming.
+[15.5] ans=given
+   *I'll keep count of every unit we've [given] so far.
+    I'll keep count of every unit we've [drawn] so far.
+    I'll keep count of every unit we've [washed] so far.
+    I'll keep count of every unit we've [broken] so far.
+[15.6] ans=minutes
+   *Someone call out the running totals every ten [minutes].
+    Someone call out the running totals every ten [seconds].
+    Someone call out the running totals every ten [hours].
+    Someone call out the running totals every ten [days].
+
+######## S16 급성 용혈 아나필락시스 위기
+[16.0] ans=stridor
+   *She's hypotensive with [stridor] right after the unit.
+    She's hypotensive with [bruising] right after the unit.
+    She's hypotensive with [jaundice] right after the unit.
+    She's hypotensive with [tremor] right after the unit.
+[16.1] ans=anaphylaxis
+   *This is [anaphylaxis] — get the epi now.
+    This is [hypothermia] — get the epi now.
+    This is [migraine] — get the epi now.
+    This is [dehydration] — get the epi now.
+[16.2] ans=epinephrine
+   *Stop the transfusion — I'm giving IM [epinephrine] now.
+    Stop the transfusion — I'm giving IM [atropine] now.
+    Stop the transfusion — I'm giving IM [lidocaine] now.
+    Stop the transfusion — I'm giving IM [naloxone] now.
+[16.3] ans=wide
+   *I'm opening fluids [wide] and calling the code team.
+    I'm opening fluids [partly] and calling the code team.
+    I'm opening fluids [slightly] and calling the code team.
+    I'm opening fluids [halfway] and calling the code team.
+[16.4] ans=intubate
+   *Airway is compromised, prepare to [intubate].
+    Airway is compromised, prepare to [discharge].
+    Airway is compromised, prepare to [transfer].
+    Airway is compromised, prepare to [weigh].
+[16.5] ans=second
+   *I'll push a [second] dose if she doesn't improve.
+    I'll push a [fourth] dose if she doesn't improve.
+    I'll push a [fifth] dose if she doesn't improve.
+    I'll push a [tenth] dose if she doesn't improve.
+[16.6] ans=crash
+   *Get the [crash] cart to the bedside right now.
+    Get the [linen] cart to the bedside right now.
+    Get the [meal] cart to the bedside right now.
+    Get the [supply] cart to the bedside right now.
+
+######## S17 DIC 출혈·혈전 동반 위기
+[17.0] ans=oozing
+   *He's [oozing] from every site and his labs scream DIC.
+    He's [itching] from every site and his labs scream DIC.
+    He's [sweating] from every site and his labs scream DIC.
+    He's [shivering] from every site and his labs scream DIC.
+[17.1] ans=every
+   *He's bleeding from [every] puncture site — this is DIC.
+    He's bleeding from [one] puncture site — this is DIC.
+    He's bleeding from [that] puncture site — this is DIC.
+    He's bleeding from [no] puncture site — this is DIC.
+[17.2] ans=underlying
+   *We have to treat the [underlying] cause right away.
+    We have to treat the [cosmetic] cause right away.
+    We have to treat the [imaginary] cause right away.
+    We have to treat the [trivial] cause right away.
+[17.3] ans=fibrinogen
+   *I'll replace [fibrinogen], platelets, and plasma per the labs.
+    I'll replace [chloride], platelets, and plasma per the labs.
+    I'll replace [magnesium], platelets, and plasma per the labs.
+    I'll replace [phosphate], platelets, and plasma per the labs.
+[17.4] ans=key
+   *The [key] is treating the underlying trigger.
+    The [risk] is treating the underlying trigger.
+    The [myth] is treating the underlying trigger.
+    The [cost] is treating the underlying trigger.
+[17.5] ans=line
+   *I'll watch every [line] and site for new oozing.
+    I'll watch every [bed] and site for new oozing.
+    I'll watch every [chart] and site for new oozing.
+    I'll watch every [door] and site for new oozing.
+[17.6] ans=sepsis
+   *I'll coordinate with the team on the [sepsis] workup.
+    I'll coordinate with the team on the [hearing] workup.
+    I'll coordinate with the team on the [vision] workup.
+    I'll coordinate with the team on the [dental] workup.
+
+######## S18 TRALI 급성 호흡부전 위기
+[18.0] ans=respiratory
+   *She's in acute [respiratory] failure right after the plasma.
+    She's in acute [neurological] failure right after the plasma.
+    She's in acute [gastrointestinal] failure right after the plasma.
+    She's in acute [cardiovascular] failure right after the plasma.
+[18.1] ans=TRALI
+   *Stop the transfusion — this is [TRALI], not overload.
+    Stop the transfusion — this is [TACO], not overload.
+    Stop the transfusion — this is [DIC], not overload.
+    Stop the transfusion — this is [sepsis], not overload.
+[18.2] ans=normal
+   *Her filling pressures are [normal], so this isn't fluid overload.
+    Her filling pressures are [elevated], so this isn't fluid overload.
+    Her filling pressures are [rising], so this isn't fluid overload.
+    Her filling pressures are [climbing], so this isn't fluid overload.
+[18.3] ans=ventilation
+   *She needs lung-protective [ventilation] and high oxygen.
+    She needs lung-protective [dialysis] and high oxygen.
+    She needs lung-protective [hydration] and high oxygen.
+    She needs lung-protective [sedation] and high oxygen.
+[18.4] ans=reaction
+   *Report the [reaction] to the blood bank.
+    Report the [delivery] to the blood bank.
+    Report the [invoice] to the blood bank.
+    Report the [schedule] to the blood bank.
+[18.5] ans=ventilator
+   *I'll help the team adjust her [ventilator] settings.
+    I'll help the team adjust her [pillow] settings.
+    I'll help the team adjust her [curtain] settings.
+    I'll help the team adjust her [telephone] settings.
+[18.6] ans=oxygen
+   *I'll keep close watch on her [oxygen] levels tonight.
+    I'll keep close watch on her [sugar] levels tonight.
+    I'll keep close watch on her [chloride] levels tonight.
+    I'll keep close watch on her [magnesium] levels tonight.
+
+######## S19 대량수혈 저칼슘 심정지 위기
+[19.0] ans=stretching
+   *His QT is [stretching] and he's about to arrest.
+    His QT is [shrinking] and he's about to arrest.
+    His QT is [blinking] and he's about to arrest.
+    His QT is [sleeping] and he's about to arrest.
+[19.1] ans=critically
+   *Ionized calcium is [critically] low — I'm pushing calcium now.
+    Ionized calcium is [slightly] low — I'm pushing calcium now.
+    Ionized calcium is [mildly] low — I'm pushing calcium now.
+    Ionized calcium is [barely] low — I'm pushing calcium now.
+[19.2] ans=calcium
+   *Push the [calcium] now, before he codes.
+    Push the [iron] now, before he codes.
+    Push the [zinc] now, before he codes.
+    Push the [copper] now, before he codes.
+[19.3] ans=compressions
+   *Start [compressions] and call the code.
+    Start [incisions] and call the code.
+    Start [injections] and call the code.
+    Start [infusions] and call the code.
+[19.4] ans=round
+   *Keep giving calcium with each [round] of products.
+    Keep giving calcium with each [shift] of products.
+    Keep giving calcium with each [meal] of products.
+    Keep giving calcium with each [visit] of products.
+[19.5] ans=team
+   *I need the code [team] here right now.
+    I need the code [menu] here right now.
+    I need the code [badge] here right now.
+    I need the code [map] here right now.
+[19.6] ans=pushing
+   *I'll keep [pushing] calcium every time we hang another unit.
+    I'll keep [hiding] calcium every time we hang another unit.
+    I'll keep [wasting] calcium every time we hang another unit.
+    I'll keep [refusing] calcium every time we hang another unit.
+
+######## S20 수혈 불응 지속출혈 목표 소통
+[20.0] ans=transfusing
+   *We keep [transfusing], but he keeps bleeding.
+    We keep [hydrating], but he keeps bleeding.
+    We keep [discharging], but he keeps bleeding.
+    We keep [sedating], but he keeps bleeding.
+[20.1] ans=bleeding
+   *Despite everything, the [bleeding] isn't stopping.
+    Despite everything, the [vomiting] isn't stopping.
+    Despite everything, the [coughing] isn't stopping.
+    Despite everything, the [shaking] isn't stopping.
+[20.2] ans=realistic
+   *I need to talk with you about what's [realistic].
+    I need to talk with you about what's [expensive].
+    I need to talk with you about what's [scheduled].
+    I need to talk with you about what's [pending].
+[20.3] ans=honest
+   *I want to be [honest] with you about what we're seeing.
+    I want to be [rude] with you about what we're seeing.
+    I want to be [formal] with you about what we're seeing.
+    I want to be [vague] with you about what we're seeing.
+[20.4] ans=want
+   *Let's talk about what he would [want].
+    Let's talk about what he would [wear].
+    Let's talk about what he would [eat].
+    Let's talk about what he would [read].
+[20.5] ans=mattered
+   *Did he ever say what [mattered] most to him?
+    Did he ever say what [bothered] most to him?
+    Did he ever say what [bored] most to him?
+    Did he ever say what [cost] most to him?
+[20.6] ans=wishes
+   *We'll make sure his care matches his [wishes].
+    We'll make sure his care matches his [budget].
+    We'll make sure his care matches his [uniform].
+    We'll make sure his care matches his [parking].

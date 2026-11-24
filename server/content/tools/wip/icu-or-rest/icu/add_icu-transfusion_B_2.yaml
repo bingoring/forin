@@ -1,0 +1,115 @@
+situations:
+- title: "수혈 시작·초기 감시"
+  s:
+  - ["초기 속도", "gear", "첫 십오 분은 반응이 가장 잘 나타나는 시간이라 천천히 시작하며 지켜봐요. 시간을 숫자로 붙여 말하면 감시 구간이 분명해져요.", "on the pump", "처음 십오 분은 서류를 천천히 살필게요.", "처음 십오 분은 침대를 천천히 낮출게요.", "run", "flush", "spike", "pause"]
+  - ["수혈 시작", "play", "'now that'은 확인이 끝났다는 이유를 앞세워 시작한다는 뜻이에요. 확인 없이 시작하지 않는 순서가 문장에 담겨요.", "so that", "다 확인됐으니 이제 환자 이송을 시작할게요.", "다 확인됐으니 이제 환자 교육을 시작할게요.", "transfusion", "surgery", "dialysis", "intubation"]
+  - ["기저 기록", "chartup", "시작 전 활력징후가 있어야 수혈 중 변화를 비교할 수 있어요. 'before we start'가 기록 시점을 못 박아요.", "in the hallway", "시작 전에 기저 체중을 기록해요.", "시작 전에 기저 식사량을 기록해요.", "Baseline", "Random", "Partial", "Evening"]
+  - ["곁에서 재평가", "monitor", "시작 직후에는 곁에 머물며 활력징후를 다시 봐요. 'shortly'는 곧 다시 확인하겠다는 약속이에요.", "and review the orders", "침상 곁에 있으면서 곧 활력징후를 다시 알려 드릴게요.", "침상 곁에 있으면서 곧 의료진을 다시 부를게요.", "reassess", "restock", "relabel", "rewarm"]
+  - ["이상 시 알림", "bell", "열이나 오한 같은 반응은 환자가 먼저 느끼는 경우가 많아요. 'right away'로 바로 말해 달라고 해야 환자가 참고 있지 않아요.", "in your own words", "뭔가 필요하면 곧바로 말해 주세요.", "뭔가 궁금하면 곧바로 말해 주세요.", "anything", "nothing", "everyone", "nobody"]
+  - ["감시 설명", "stetho", "무엇을 보고 있는지 말해 주면 환자가 안심하고 증상을 알려 줘요. 'closely'는 눈을 떼지 않는다는 뜻이에요.", "and urine output", "그녀의 심박수와 혈압을 세심하게 지켜보고 있어요.", "그의 체온과 혈압을 세심하게 지켜보고 있어요.", "closely", "rarely", "briefly", "randomly"]
+  - ["재방문 약속", "calendar", "시간을 구체적으로 말하면 환자가 언제 다시 올지 알고 기다릴 수 있어요. 'tolerating'은 수혈을 잘 견디는지를 묻는 말이에요.", "to get", "십오 분 뒤에 다시 와서 잘 먹는지 볼게요.", "십오 분 뒤에 다시 와서 잘 자는지 볼게요.", "tolerating", "refusing", "ordering", "measuring"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "수혈 시작과 초기 감시 4문장 순서"
+    why: "시작 전 기록이 먼저이고, 확인이 끝나 시작한 뒤에는 천천히 흘리며 곁에서 지켜봐요."
+    lines:
+    - ["Baseline vitals are recorded before we start.", "chartup", "시작 전에 기저 활력징후를 기록해요", "기록"]
+    - ["We'll start the transfusion now that everything checks out.", "play", "다 확인됐으니 이제 수혈을 시작할게요", "시작"]
+    - ["I'll run it slow for the first fifteen minutes.", "gear", "처음 십오 분은 천천히 흐르게 할게요", "속도"]
+    - ["Through all of it, I'll stay at the bedside and watch his heart rate and blood pressure closely.", "monitor", "그 모든 동안 침상 곁에서 심박수와 혈압을 세심하게 지켜볼게요", "감시"]
+- title: "수혈 반응 징후 인지"
+  s:
+  - ["반응 징후", "bell", "발열·발진·호흡곤란은 수혈 반응의 대표 징후예요. 'can signal'은 가능성을 말해 환자를 겁주지 않고 경계를 알려요.", "can prevent", "발열이나 발진, 호흡곤란은 수혈 반응의 원인일 수 있어요.", "발열이나 두통, 호흡곤란은 수혈 반응의 신호일 수 있어요.", "dyspnea", "hunger", "boredom", "thirst"]
+  - ["환자 안내", "speech", "오한·가려움·허리 통증은 환자가 먼저 느끼는 반응 신호예요. 증상을 구체적으로 말해 주면 환자가 무엇을 알려야 할지 알아요.", ", or thirsty for water", "오한이 나거나 가렵거나 머리가 쑤시면 바로 말해 주세요.", "땀이 나거나 가렵거나 허리가 쑤시면 바로 말해 주세요.", "chilled", "hungry", "sleepy", "thirsty"]
+  - ["징후 보고", "chartup", "수치와 부위를 짚어 보고하면 받는 사람이 상황을 바로 그려요. 'just spiked'는 방금 올랐다는 시점을 알려 줘요.", "on his arm", "체온이 갑자기 올랐고 팔에 새 발진이 생겼어요.", "체온이 갑자기 올랐고 가슴에 새 멍이 생겼어요.", "spiked", "dropped", "steadied", "settled"]
+  - ["중단·라인 유지", "siren", "반응이 의심되면 먼저 수혈을 멈추고 정맥 라인은 생리식염수로 열어 두어야 해요. 라인을 막으면 약을 줄 길이 사라져요.", "with a bandage", "수혈을 멈추고 생리식염수로 병실 문을 열어 둘게요.", "수혈을 멈추고 생리식염수로 침대 커튼을 열어 둘게요.", "line", "filter", "bag", "chamber"]
+  - ["활력·보고", "chartup", "중단 직후에는 전체 활력징후를 재고 의료진에게 알려야 해요. 'full set'은 일부가 아니라 전부를 뜻해요.", "the pharmacist", "활력징후를 전부 재고 원무과에 알릴게요.", "활력징후를 전부 재고 약국에 알릴게요.", "notify", "educate", "quote", "hire"]
+  - ["선중단 후질문", "bell", "원인을 따지기 전에 일단 멈추는 것이 안전한 순서예요. 'first … after'로 순서를 말에 담았어요.", "and sign forms", "일단 멈추고 나서 시간을 물어요.", "일단 멈추고 나서 비용을 물어요.", "questions", "charges", "appeals", "refunds"]
+  - ["기록·관찰", "pencil", "증상과 시간, 한 처치를 기록해야 이후 보고와 검토가 가능해요. 'closely'가 기록만 하고 떠나지 않는다는 점을 알려요.", "the schedule", "서류를 기록하고 세심하게 지켜볼게요.", "비용을 기록하고 세심하게 지켜볼게요.", "document", "delete", "hide", "rename"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "수혈 반응 대응 4문장 순서"
+    why: "징후를 보고하고 수혈을 멈춘 뒤, 활력징후와 의료진 보고를 하고 기록하며 계속 지켜봐요."
+    lines:
+    - ["His temperature just spiked and he's got a new rash on his chest.", "chartup", "체온이 갑자기 올랐고 가슴에 새 발진이 생겼어요", "징후"]
+    - ["Because of that, I'm stopping the transfusion and keeping the line open with saline.", "siren", "그래서 수혈을 멈추고 생리식염수로 라인을 열어 둘게요", "중단"]
+    - ["Once it's stopped, I'll take a full set of vitals and notify the provider.", "chartup", "멈췄으니 활력징후를 전부 재고 의료진에게 알릴게요", "보고"]
+    - ["With the provider notified, I'll document the reaction and watch him closely.", "pencil", "의료진에 알렸으니 반응을 기록하고 세심하게 지켜볼게요", "기록"]
+- title: "혈액 성분 종류 이해"
+  s:
+  - ["적혈구 용도", "lab", "농축 적혈구는 산소를 나르는 혈색소를 채워 줘서 빈혈이나 출혈에 써요. 'raise'로 능력이 오른다는 방향을 말해요.", "measure", "농축 적혈구는 응고 능력을 높여요.", "농축 혈장은 산소 운반 능력을 높여요.", "raise", "lower", "drain", "block"]
+  - ["성분별 역할", "lab", "FFP는 응고인자를, 혈소판은 혈소판 수치를 채워요. 두 성분을 한 문장에 나란히 놓으면 역할이 덜 헷갈려요.", ", red cells treat", "FFP는 알부민을 대체하고, 혈소판은 혈소판감소증을 치료해요.", "FFP는 응고인자를 대체하고, 적혈구는 혈소판감소증을 치료해요.", "thrombocytopenia", "thrombocytosis", "hypoglycemia", "neutropenia"]
+  - ["동결침전제", "lab", "동결침전제에는 섬유소원이 많이 들어 있어 섬유소원이 낮을 때 써요. 'is for'로 용도를 짧게 말해요.", "low hemoglobin", "동결침전제는 낮은 헤모글로빈을 위한 거예요.", "동결침전제는 낮은 칼륨을 위한 거예요.", "fibrinogen", "hemoglobin", "platelets", "potassium"]
+  - ["혈소판 용도", "lab", "혈소판은 수치가 낮거나 활동성 출혈이 있을 때 지혈을 도와요. 'actively'는 지금 피가 나는 중임을 뜻해요.", "or he's slowly", "수치가 낮거나 활동성 구토가 있을 때 혈소판이 도움이 돼요.", "수치가 낮거나 활동성 감염이 있을 때 혈소판이 도움이 돼요.", "bleeding", "vomiting", "coughing", "sleeping"]
+  - ["혈장 용도", "lab", "혈장에는 응고인자가 모두 들어 있어 간질환 같은 응고 문제를 바로잡아요.", "from low iron", "혈장은 간질환이나 출혈로 인한 호흡 문제를 교정해요.", "혈장은 간질환이나 빈혈로 인한 응고 문제를 교정해요.", "corrects", "causes", "hides", "doubles"]
+  - ["선택 이유", "bulb", "'because'로 성분을 고른 이유를 바로 붙이면 환자나 동료가 왜 이 성분인지 이해해요.", "because his platelets are high", "이 환자는 헤모글로빈이 낮아서 혈소판을 드리는 거예요.", "이 환자는 혈소판이 낮아서 적혈구를 드리는 거예요.", "hemoglobin", "platelets", "fibrinogen", "potassium"]
+  - ["선택 설명", "speech", "검사 결과를 근거로 설명하면 환자나 가족이 성분 선택을 납득해요. 'why we chose'는 결정 이유를 말하겠다는 예고예요.", "for his room", "그의 식사 시간 때문에 이 성분을 고른 이유를 설명할게요.", "그의 검사 결과 때문에 이 병실을 고른 이유를 설명할게요.", "labs", "meals", "visits", "rooms"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "적혈구 선택 설명 4문장 순서"
+    why: "수치를 말하고, 그 수치에 맞는 성분이 무엇을 하는지 설명한 뒤, 선택 이유를 밝히고 다른 성분이 왜 아닌지 덧붙여요."
+    lines:
+    - ["His hemoglobin is low.", "lab", "헤모글로빈이 낮아요", "수치"]
+    - ["So packed red cells will raise his oxygen-carrying capacity.", "lab", "그래서 농축 적혈구가 산소 운반 능력을 높여 줄 거예요", "효과"]
+    - ["That's why we chose this component for his labs.", "bulb", "그래서 그의 검사 결과에 맞춰 이 성분을 골랐어요", "이유"]
+    - ["For the same reason, plasma and platelets aren't what he needs right now.", "shield", "같은 이유로 혈장과 혈소판은 지금 필요하지 않아요", "제외"]
+- title: "혈액 취급·보관"
+  s:
+  - ["반출 후 시작", "calendar", "냉장고를 나온 혈액은 30분 안에 시작해야 해요(병원 지침에 따라 다를 수 있어요). 'within'으로 한계 시간을 정했어요.", "of cooling", "알부민은 냉장고를 나온 지 삼십 분 안에 시작해야 해요.", "혈액은 보온기를 나온 지 삼십 분 안에 시작해야 해요.", "fridge", "freezer", "warmer", "incubator"]
+  - ["주입 한도", "calendar", "건 지 네 시간 안에 다 주입해야 세균 번식 위험을 줄여요. 'infused'는 다 들어가는 것까지를 뜻해요.", "of labeling", "건 지 네 시간 안에 다 기록해야 해요.", "건 지 네 시간 안에 다 주문해야 해요.", "infused", "ordered", "thawed", "typed"]
+  - ["반출 시간 확인", "calendar", "냉장고 밖 시간이 길면 시작 한도를 넘길 수 있어서 걸기 전에 따져 봐요. 'always'는 예외 없이 확인한다는 뜻이에요.", "how cold", "제제가 냉장고 안에 얼마나 있었는지 항상 확인해요.", "제제가 카트 밖에 얼마나 있었는지 항상 확인해요.", "always", "rarely", "barely", "seldom"]
+  - ["시간 초과", "bell", "한 시간 가까이 밖에 있었다면 30분 한도를 이미 넘긴 거예요. 'already'가 시간이 이미 지났다는 느낌을 줘요.", "before almost", "이건 벌써 거의 두 시간이나 밖에 나와 있었어요.", "이건 벌써 거의 한 시간이나 안에 들어 있었어요.", "out", "in", "up", "off"]
+  - ["반납", "speech", "시간 안에 시작할 수 없으면 쓰지 않고 혈액은행으로 돌려보내야 해요. 병동 냉장고에 다시 넣으면 안 돼요.", "to the pharmacy", "시작할 수 없으면 약국으로 반납할게요.", "시작할 수 없으면 간호사실로 반납할게요.", "blood bank", "pharmacy", "laundry", "cafeteria"]
+  - ["만료 금지", "shield", "유효기간이 지난 혈액은 세균 오염이나 용혈 위험이 커서 줄 수 없어요. 'can't risk'는 감수할 수 없다는 강한 금지예요.", "that's donated", "유효기간이 지난 혈액을 버릴 위험을 감수할 수 없어요.", "유효기간이 지난 혈액을 줄 비용을 감수할 수 없어요.", "expired", "fresh", "tested", "labeled"]
+  - ["시간 재확인", "check", "제제마다 걸기 직전에 반출 시간을 다시 보면 한도를 넘긴 혈액을 막을 수 있어요. 'every unit'은 예외가 없다는 뜻이에요.", "before I order it", "걸기 전에 모든 제제의 색깔을 다시 확인할게요.", "걸기 전에 모든 제제의 개수를 다시 확인할게요.", "recheck", "rename", "reorder", "resell"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "혈액 시간 관리 4문장 순서"
+    why: "시간 규칙을 먼저 말하고, 규칙에 따라 시간을 확인하며, 넘긴 제제는 돌려보내요."
+    lines:
+    - ["Blood must be started within thirty minutes of leaving the fridge.", "calendar", "혈액은 냉장고를 나온 지 삼십 분 안에 시작해야 해요", "규칙"]
+    - ["So I'll recheck the time on every unit before I hang it.", "check", "그래서 걸기 전에 모든 제제의 시간을 다시 확인할게요", "확인"]
+    - ["This one's been out for almost an hour already.", "bell", "이건 벌써 거의 한 시간이나 밖에 나와 있었어요", "초과"]
+    - ["Since we can't start it, I'll send it back to the blood bank.", "speech", "시작할 수 없으니 혈액은행으로 반납할게요", "반납"]
+- title: "수혈 중 활력 주기 기록"
+  s:
+  - ["기록 주기", "chartup", "수혈 시작 십오 분쯤에 한 번, 이후 정해진 주기로 기록하는 흐름이에요(병원 지침에 따라 달라요). 'then'으로 주기가 바뀐다고 알려요.", "daily", "십오 분에 체중을 기록하고, 그 뒤로는 매시간 기록할게요.", "십오 분에 활력징후를 기록하고, 그 뒤로는 매시간 알려 드릴게요.", "hourly", "weekly", "yearly", "monthly"]
+  - ["모니터·일정", "monitor", "수혈 중에는 모니터를 계속 붙이고 정해진 시점마다 기록하라는 지시예요. 'Keep'은 떼지 말라는 명령형이에요.", "on the visiting schedule", "모니터를 계속 달아 두고 수혈 일정표에 식사량을 기록하세요.", "카메라를 계속 달아 두고 수혈 일정표에 활력징후를 기록하세요.", "monitor", "curtain", "camera", "lamp"]
+  - ["상태 보고", "chartup", "체온과 심박이 안정적이라는 보고는 반응 징후가 없다는 근거예요. 'no new'는 새로 생긴 것이 없다는 뜻이에요.", "no new visitors", "체온은 안정적이고 새로운 서맥도 없어요.", "혈압은 안정적이고 새로운 빈맥도 없어요.", "stable", "rising", "falling", "unknown"]
+  - ["모니터 점검", "monitor", "모니터가 켜졌는지와 알람이 설정됐는지를 함께 말해 감시 장치가 제대로 작동함을 확인해요.", "and curtains", "모니터는 켜져 있고 조명도 설정돼 있어요.", "펌프는 켜져 있고 알람도 설정돼 있어요.", "alarms", "lights", "blinds", "fans"]
+  - ["산소포화도", "monitor", "수치와 함께 'holding steady'라고 말하면 지금 값뿐 아니라 변화가 없다는 점도 전해져요.", "at ninety-eight degrees", "산소포화도는 구십팔 퍼센트로 서서히 올라가고 있어요.", "산소포화도는 구십이 퍼센트로 일정하게 유지되고 있어요.", "percent", "degrees", "liters", "pounds"]
+  - ["악화 표시", "bell", "수치가 나쁜 방향으로 가는 추세를 일찍 알리는 것이 안전의 핵심이에요. 'flag'는 눈에 띄게 표시하고 보고한다는 말이에요.", "the same way", "잘못된 곳에 놓인 게 있으면 바로 표시할게요.", "잘못 적어 둔 게 있으면 바로 표시할게요.", "flag", "rename", "reorder", "relabel"]
+  - ["정상 범위", "check", "'So far'는 지금까지는 괜찮다는 뜻이라 앞으로 변할 수 있음을 남겨 계속 감시한다는 인상을 줘요.", "looks above", "지금까지 모든 알람이 정상 범위 안이에요.", "지금까지 모든 모니터가 정상 범위 안이에요.", "reading", "alarm", "monitor", "lead"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "수혈 중 활력 관리 4문장 순서"
+    why: "감시 장치가 켜졌다고 알리고, 기록 주기를 말한 뒤, 첫 점검 결과를 보고하고, 이후 나빠지는 추세를 표시한다고 약속해요."
+    lines:
+    - ["The monitor is on and alarms are set.", "monitor", "모니터는 켜져 있고 알람도 설정돼 있어요", "장치"]
+    - ["With that on, I'll record vitals at fifteen minutes, then hourly.", "chartup", "그게 켜져 있으니 십오 분에, 그 뒤로는 매시간 활력징후를 기록할게요", "주기"]
+    - ["At that first check, every reading looks within normal range.", "check", "그 첫 점검에서 모든 측정값이 정상 범위 안이에요", "결과"]
+    - ["From here, I'll flag anything that trends the wrong way.", "bell", "여기서부터는 잘못된 방향으로 가는 게 있으면 바로 표시할게요", "경계"]
+- title: "급성 용혈반응 초기 대응"
+  s:
+  - ["증상 보고", "bell", "허리 통증·오한·검은 소변은 급성 용혈의 전형적인 소견이에요. 증상을 나열해 보고하면 의료진이 바로 반응을 의심해요.", ", and dry skin", "허리 통증과 오한, 맑은 소변이 있어요.", "다리 통증과 오한, 검은 소변이 있어요.", "back", "knee", "foot", "ankle"]
+  - ["중단·튜빙 분리", "siren", "용혈 반응이 의심되면 즉시 중단하고 혈액이 든 튜빙을 분리해요. 생리식염수는 새 튜빙으로 연결해 라인을 열어 둬요.", "the monitor", "수혈을 멈추고 침대 시트를 분리할게요.", "수혈을 멈추고 포장 박스를 분리할게요.", "tubing", "monitor", "bracelet", "chart"]
+  - ["반응 의심", "bell", "'looks like'로 확진이 아니라 강한 의심임을 밝혀요. 급성 용혈은 ABO 불일치 같은 면역 반응으로 적혈구가 빠르게 깨지는 거예요.", "a rare", "급성 감염 반응처럼 보여요.", "만성 용혈반응처럼 보여요.", "reaction", "injury", "infection", "surgery"]
+  - ["라인 유지", "gear", "새 튜빙으로 생리식염수를 연결해 정맥 라인을 열어 두면 약을 바로 줄 수 있어요. 'normal saline'은 0.9% 식염수예요.", "with a bandage", "생리식염수로 창문을 열어 둘게요.", "생리식염수로 커튼을 열어 둘게요.", "line", "filter", "bag", "chamber"]
+  - ["제제·검체 반납", "lab", "남은 혈액 백과 환자 혈액 검체를 혈액은행으로 보내야 원인을 확인하는 검사를 할 수 있어요.", "for a price check", "반응 정밀검사를 위해 서류와 혈액 검체를 반납하세요.", "반응 정밀검사를 위해 제제와 혈액 상자를 반납하세요.", "workup", "refund", "invoice", "tour"]
+  - ["즉시 보고", "bell", "의료진과 혈액은행 두 곳에 모두 알려야 해요. 혈액은행이 같은 시기에 나간 제제를 점검할 수 있어요.", "and the pharmacy", "의료진과 약국에 바로 알릴게요.", "원무과와 혈액은행에 바로 알릴게요.", "provider", "pharmacist", "dietitian", "therapist"]
+  - ["소변량 감시", "monitor", "용혈로 신장이 손상될 수 있어 소변량을 계속 봐요. 'for the next few hours'는 감시 기간을 정해 줘요.", "his food intake", "앞으로 몇 시간은 식사량을 세심하게 지켜볼게요.", "앞으로 며칠은 소변량을 세심하게 지켜볼게요.", "urine", "diet", "visitor", "sleep"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "급성 용혈반응 대응 4문장 순서"
+    why: "증상을 보고하고 수혈을 멈춘 뒤, 라인을 열어 둔 채 의료진과 혈액은행에 알려요."
+    lines:
+    - ["He's got back pain, chills, and dark urine.", "bell", "허리 통증과 오한, 검은 소변이 있어요", "증상"]
+    - ["Because of that, I'm stopping the transfusion and disconnecting the tubing.", "siren", "그래서 수혈을 멈추고 튜빙을 분리할게요", "중단"]
+    - ["With that off, I'll keep the line open with normal saline.", "gear", "그게 떨어졌으니 생리식염수로 라인을 열어 둘게요", "라인"]
+    - ["With the line open, I'll notify the provider and the blood bank right away.", "bell", "라인을 열어 뒀으니 의료진과 혈액은행에 바로 알릴게요", "보고"]

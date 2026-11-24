@@ -1,0 +1,130 @@
+# 뉘앙스·순서 수정 데이터 — 키 "상황.뉘앙스번호"(0부터)는 그 항목의 필드를 덮어쓴다.
+nuance:
+  "0.0":   # slider 0 — cue에 모자를 넣어 why와 맞춤, example은 타임아웃으로
+    cue: "Doctor: \"Are we good to start?\" You: the cap, mask, gown, gloves and drape are all on."
+    example: "Everything is ready — let's do the time-out."
+    exKo: "다 준비됐어요, 타임아웃부터 할게요."
+  "0.1":   # context 0 — sterile → field
+    word: field
+    ko: 멸균 영역
+    words: [w-field]
+    scenes:
+      - {who: 의사에게 보고, icon: stetho, en: "The sterile field is set up and the drape is on.", ok: true}
+      - {who: 동료 간호사, icon: handshake2, en: "Careful — don't reach over the field.", ok: true}
+      - {who: 가족에게, icon: home, en: "Please stay back from the sterile field.", ok: false, fix: "Please stay back from the blue sheets so they stay germ-free."}
+    why: "의료진에게 field는 손대면 안 되는 구역을 가리키는 정확한 말이에요. 가족에게는 무엇을 피하라는 건지 보이지 않으니, 눈에 보이는 것(파란 천)으로 말해요."
+  "6.0":   # slider 6 — 하나씩 튀는 것으로도 읽히던 cue
+    cue: "Colleague: \"Three or four extra beats in a row every time the wire moves.\""
+  "7.0":   # slider 7 — 방형파 검사가 가르치는 한 축
+    scale: [underdamped, optimally damped, overdamped]
+    answerAt: 2
+    why: "방형파 검사에서 진동 없이 바로 가라앉으면 overdamped예요. 진동이 여러 번이면 underdamped(수축기가 높게 보여요), 한두 번이면 적정이에요. overdamped는 수축기가 낮게, 이완기가 높게 보여 실제 혈압을 가릴 수 있어서 공기·꺾임·혈전·연결부를 확인해요."
+  "7.1":   # context 7 — pressure → damped
+    word: damped
+    ko: 감쇠된
+    words: [w-damped]
+    scenes:
+      - {who: 의사에게 보고, icon: stetho, en: "The trace looks damped, so the pressure may be off.", ok: true}
+      - {who: 동료 간호사, icon: handshake2, en: "It's damped again — can you check the pressure bag?", ok: true}
+      - {who: 환자에게, icon: me, en: "Your trace is damped right now.", ok: false, fix: "The number from the line in your arm isn't accurate right now, so we're fixing the line."}
+    why: "의료진끼리는 damped가 파형이 눌렸다는 짧고 정확한 말이에요. 환자에게 trace가 damped라고 하면 무슨 뜻인지 모르니, 라인 수치가 지금 정확하지 않아 손보는 중이라고 말해요."
+  "8.1":   # context 8 — leak → output
+    word: output
+    ko: 배출량
+    words: [w-output]
+    scenes:
+      - {who: 의사에게 보고, icon: stetho, en: "Output jumped to 200 mL of fresh blood in an hour.", ok: true}
+      - {who: 동료 간호사, icon: handshake2, en: "Can you mark the output on the canister?", ok: true}
+      - {who: 환자에게, icon: me, en: "Your output just jumped to 200 mL.", ok: false, fix: "More fluid than before is coming out of your tube, so I'm letting your doctor know."}
+    why: "의료진끼리는 output이 배액량을 가리키는 짧은 말이에요. 환자에게 output과 수치만 던지면 무슨 일인지 몰라 불안하니, 전보다 많이 나오고 있고 의사에게 알린다고 풀어 말해요."
+  "13.1":  # context 13 — drip → co-infuse
+    word: co-infuse
+    ko: 같이 주입하다
+    words: [w-coinfuse]
+    scenes:
+      - {who: 의사에게 보고, icon: stetho, en: "Pharmacy says we can't co-infuse these two drips.", ok: true}
+      - {who: 동료 간호사, icon: handshake2, en: "Can we co-infuse these in the same lumen?", ok: true}
+      - {who: 환자에게, icon: me, en: "We can't co-infuse these two drips, so I'm separating the lumens.", ok: false, fix: "Two of your medicines can't mix in the same tube, so I'm giving them through separate tubes."}
+    why: "의료진끼리는 co-infuse가 한 관강으로 같이 넣는다는 짧은 말이에요. 환자에게 co-infuse와 lumen은 낯서니, 두 약이 한 관에서 섞이면 안 돼서 따로 준다고 말해요."
+  "14.1":  # context 14 — pulse → distal
+    word: distal
+    ko: 원위의
+    words: [w-distal]
+    scenes:
+      - {who: 의사에게 보고, icon: stetho, en: "The distal pulse is present and the site is dry.", ok: true}
+      - {who: 동료 간호사, icon: handshake2, en: "Can you check the distal pulse while I hold pressure?", ok: true}
+      - {who: 환자에게, icon: me, en: "Distal pulse intact, and I'm monitoring for hematoma.", ok: false, fix: "I'm feeling the pulse below the spot to make sure blood is flowing well."}
+  "16.0":  # slider 16 — 약함 → 강함 순서
+    scale: [a trace of blood, a little blood, significant blood loss]
+    answerAt: 2
+  "16.1":  # context 16 — blood loss → large-bore
+    word: large-bore
+    ko: 굵은 게이지의
+    words: [w-largebore]
+    scenes:
+      - {who: 의사에게 보고, icon: stetho, en: "Her pressure's holding, but I'd like two large-bore IVs.", ok: true}
+      - {who: 동료 간호사, icon: handshake2, en: "Grab two large-bore IV kits, please.", ok: true}
+      - {who: 가족에게, icon: home, en: "We're placing two large-bore IVs in her arms.", ok: false, fix: "We're putting in two bigger IVs so we can give fluids and blood quickly if she needs them."}
+    why: "의료진끼리는 large-bore IV가 수액·혈액을 빨리 넣는 굵은 정맥로라는 짧은 말이에요. 가족에게는 large-bore가 낯서니, 더 굵은 주사로 필요하면 수액과 혈액을 빨리 줄 수 있다고 풀어 줘요."
+  "17.1":  # context 17 — wound → occlusive
+    word: occlusive
+    ko: 밀폐성의
+    words: [w-occlusive]
+    scenes:
+      - {who: 의사에게 보고, icon: stetho, en: "The wound is covered with an occlusive dressing, taped on three sides.", ok: true}
+      - {who: 동료 간호사, icon: handshake2, en: "Hand me the occlusive dressing and the tape.", ok: true}
+      - {who: 환자에게, icon: me, en: "I've put an occlusive dressing over your chest tube site.", ok: false, fix: "The tube came out, so I've covered the spot to keep air from getting in, and I'm right here with you."}
+    why: "의료진끼리는 occlusive dressing이 공기가 못 들어오게 막는 드레싱이라는 정확한 말이에요. 환자에게는 occlusive가 낯서고 겁나니, 공기가 못 들어오게 덮었고 곁에 있다고 말해요."
+  "4.1":   # context 4 — dressing → intact
+    word: intact
+    ko: 온전한
+    words: [w-intact]
+    scenes:
+      - {who: 의사에게 보고, icon: stetho, en: "The dressing is intact, dated, and dry.", ok: true}
+      - {who: 동료 간호사, icon: handshake2, en: "Is his dressing still intact? The edges looked loose.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your transparent semipermeable dressing is intact.", ok: false, fix: "The clear cover over your line looks good and dry."}
+    why: "의료진끼리는 intact, dated, dry처럼 점검 항목을 짧게 말해요. 환자에게 intact나 semipermeable 같은 말은 낯서니, 덮개가 잘 붙어 있고 말랐다고만 전해요."
+  "18.0":  # slider 18 — 한 축(숨 들이쉬기의 세기)
+    scale: [took a deep breath, gasped, gasping for air]
+    answerAt: 1
+    why: "gasp는 놀라거나 숨이 막혀 갑자기 숨을 들이켜는 거예요. took a deep breath는 스스로 깊게 쉬는 숨이고, gasping for air는 숨을 못 쉬어 계속 헐떡이는 거예요. 캡이 풀린 뒤 gasp가 보이면 라인을 잠그고 바로 알려요."
+  "18.1":  # context 18 — position → Trendelenburg
+    word: Trendelenburg
+    ko: 트렌델렌버그
+    words: [w-trendelenburg]
+    scenes:
+      - {who: 의사에게 보고, icon: stetho, en: "I've put him in left lateral Trendelenburg position and clamped the line.", ok: true}
+      - {who: 동료 간호사, icon: handshake2, en: "Help me get him into left lateral Trendelenburg.", ok: true}
+      - {who: 가족에게, icon: home, en: "We've put him in the left lateral Trendelenburg position.", ok: false, fix: "We've turned him onto his left side with his head low, and we're staying right with him."}
+    why: "의료진끼리는 Trendelenburg 같은 체위 이름이 정확하고 짧아요. 가족에게 left lateral Trendelenburg는 낯서니, 왼쪽으로 눕히고 머리를 낮췄다고 모습 그대로 말해요."
+  "19.0":  # slider 19 (선택) — 세기가 비슷하던 두 칸
+    scale: [a few streaks, clots in the sputum, frank hemoptysis]
+order:
+  "0":
+    lines:
+      "1": {ko: "그게 끝났으니 멸균 영역을 준비할게요"}
+  "1":
+    lines:
+      "0": {ko: "영점 기준점에 수평 잡고 영점 조정할게요"}
+  "4":
+    why: "드레싱 상태를 먼저 보고, 그 아래 삽입부가 깨끗한지 살핀 뒤, 그래도 가장자리가 들떠 있으면 교환하고, 마지막에 기록해요."
+    lines:
+      "0": {en: "The dressing is dated and dry.", ko: "드레싱은 날짜도 있고 건조해요"}
+      "2": {en: "With the site clean, I'll still change it because the edges are lifting.", ko: "부위는 깨끗해도 가장자리가 들떠서 교환할게요"}
+  "8":
+    lines:
+      "2": {en: "Once they're tight, I'll trace the tubing from the chest wall to the canister."}
+  "10":
+    why: "파형을 보며 쐐기압으로 넘어가는 것을 설명하고, 측정 직후 풍선을 빼고, 위치 이동이 의심되면 알린 뒤 의사에게 카테터를 당겨 달라고 요청하고 파형을 다시 확인해요."
+    lines:
+      "3": {en: "To fix that, I'll ask the physician to pull it back, then recheck the trace.", ko: "그걸 고치려고 의사에게 당겨 달라고 요청하고 파형을 다시 확인할게요", note: 요청}
+  "15":
+    lines:
+      "1": {ko: "그래서 지금 바늘 감압이랑 흉관 삽입을 요청할게요"}
+      "2": {ko: "그동안 감압 키트 가져왔어요, 어디에 둘지 말씀해주세요"}
+  "18":
+    lines:
+      "2": {ko: "라인을 막았으니 지금 좌측 측와위 트렌델렌버그로 눕혀 주세요"}
+  "20":
+    lines:
+      "2": {ko: "그동안 응고 검사와 교차시험이 필요하고, 혈액도 바로 받아야 해요"}

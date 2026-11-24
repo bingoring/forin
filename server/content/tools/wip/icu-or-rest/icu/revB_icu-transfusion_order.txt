@@ -1,0 +1,210 @@
+
+######## S0 수혈 전 확인·동의
+ORDER ko=수혈 전 확인 4문장 순서 | why=두 사람이 하겠다고 알린 뒤 이름과 생년월일을 함께 읽고, 일치를 보고한 다음 걸기 전에 동의를 다시 확인해요.
+   - Two of us will verify the patient ID and unit at the bedside. [shield] 두 사람이 침상에서 환자 ID와 제제를 확인할 거예요 (안내) 13w
+   - So let's read her name and date of birth out loud together. [speech] 그러니 이름과 생년월일을 소리 내어 함께 읽어요 (식별) 12w
+   - With those read, blood type, unit number, and expiration all match. [check] 그걸 읽고 나니 혈액형과 제제 번호, 유효기간이 모두 일치해요 (일치) 11w
+   - With all of that matching, I'll confirm consent with him before we hang this unit. [pencil] 그게 다 맞으니 이 제제를 걸기 전에 환자에게 동의를 다시 확인할게요 (동의) 15w
+  swap1<->2: So let's read her name and date of birth out loud together. | Two of us will verify the patient ID and unit at the bedside. | With those read, blood type, unit number, and expiration all match. | With all of that matching, I'll confirm consent with him before we hang this unit.
+  swap2<->3: Two of us will verify the patient ID and unit at the bedside. | With those read, blood type, unit number, and expiration all match. | So let's read her name and date of birth out loud together. | With all of that matching, I'll confirm consent with him before we hang this unit.
+  swap3<->4: Two of us will verify the patient ID and unit at the bedside. | So let's read her name and date of birth out loud together. | With all of that matching, I'll confirm consent with him before we hang this unit. | With those read, blood type, unit number, and expiration all match.
+
+######## S1 수혈 시작·초기 감시
+ORDER ko=수혈 시작과 초기 감시 4문장 순서 | why=시작 전 기록이 먼저이고, 확인이 끝나 시작한 뒤에는 천천히 흘리며 곁에서 지켜봐요.
+   - Baseline vitals are recorded before we start. [chartup] 시작 전에 기저 활력징후를 기록해요 (기록) 7w
+   - We'll start the transfusion now that everything checks out. [play] 다 확인됐으니 이제 수혈을 시작할게요 (시작) 9w
+   - I'll run it slow for the first fifteen minutes. [gear] 처음 십오 분은 천천히 흐르게 할게요 (속도) 9w
+   - Through all of it, I'll stay at the bedside and watch his heart rate and blood pressure closely. [monitor] 그 모든 동안 침상 곁에서 심박수와 혈압을 세심하게 지켜볼게요 (감시) 18w
+  swap1<->2: We'll start the transfusion now that everything checks out. | Baseline vitals are recorded before we start. | I'll run it slow for the first fifteen minutes. | Through all of it, I'll stay at the bedside and watch his heart rate and blood pressure closely.
+  swap2<->3: Baseline vitals are recorded before we start. | I'll run it slow for the first fifteen minutes. | We'll start the transfusion now that everything checks out. | Through all of it, I'll stay at the bedside and watch his heart rate and blood pressure closely.
+  swap3<->4: Baseline vitals are recorded before we start. | We'll start the transfusion now that everything checks out. | Through all of it, I'll stay at the bedside and watch his heart rate and blood pressure closely. | I'll run it slow for the first fifteen minutes.
+
+######## S2 수혈 반응 징후 인지
+ORDER ko=수혈 반응 대응 4문장 순서 | why=징후를 보고하고 수혈을 멈춘 뒤, 활력징후와 의료진 보고를 하고 기록하며 계속 지켜봐요.
+   - His temperature just spiked and he's got a new rash on his chest. [chartup] 체온이 갑자기 올랐고 가슴에 새 발진이 생겼어요 (징후) 13w
+   - Because of that, I'm stopping the transfusion and keeping the line open with saline. [siren] 그래서 수혈을 멈추고 생리식염수로 라인을 열어 둘게요 (중단) 14w
+   - Once it's stopped, I'll take a full set of vitals and notify the provider. [chartup] 멈췄으니 활력징후를 전부 재고 의료진에게 알릴게요 (보고) 14w
+   - With the provider notified, I'll document the reaction and watch him closely. [pencil] 의료진에 알렸으니 반응을 기록하고 세심하게 지켜볼게요 (기록) 12w
+  swap1<->2: Because of that, I'm stopping the transfusion and keeping the line open with saline. | His temperature just spiked and he's got a new rash on his chest. | Once it's stopped, I'll take a full set of vitals and notify the provider. | With the provider notified, I'll document the reaction and watch him closely.
+  swap2<->3: His temperature just spiked and he's got a new rash on his chest. | Once it's stopped, I'll take a full set of vitals and notify the provider. | Because of that, I'm stopping the transfusion and keeping the line open with saline. | With the provider notified, I'll document the reaction and watch him closely.
+  swap3<->4: His temperature just spiked and he's got a new rash on his chest. | Because of that, I'm stopping the transfusion and keeping the line open with saline. | With the provider notified, I'll document the reaction and watch him closely. | Once it's stopped, I'll take a full set of vitals and notify the provider.
+
+######## S3 혈액 성분 종류 이해
+ORDER ko=적혈구 선택 설명 4문장 순서 | why=수치를 말하고, 그 수치에 맞는 성분이 무엇을 하는지 설명한 뒤, 선택 이유를 밝히고 다른 성분이 왜 아닌지 덧붙여요.
+   - His hemoglobin is low. [lab] 헤모글로빈이 낮아요 (수치) 4w
+   - So packed red cells will raise his oxygen-carrying capacity. [lab] 그래서 농축 적혈구가 산소 운반 능력을 높여 줄 거예요 (효과) 9w
+   - That's why we chose this component for his labs. [bulb] 그래서 그의 검사 결과에 맞춰 이 성분을 골랐어요 (이유) 9w
+   - For the same reason, plasma and platelets aren't what he needs right now. [shield] 같은 이유로 혈장과 혈소판은 지금 필요하지 않아요 (제외) 13w
+  swap1<->2: So packed red cells will raise his oxygen-carrying capacity. | His hemoglobin is low. | That's why we chose this component for his labs. | For the same reason, plasma and platelets aren't what he needs right now.
+  swap2<->3: His hemoglobin is low. | That's why we chose this component for his labs. | So packed red cells will raise his oxygen-carrying capacity. | For the same reason, plasma and platelets aren't what he needs right now.
+  swap3<->4: His hemoglobin is low. | So packed red cells will raise his oxygen-carrying capacity. | For the same reason, plasma and platelets aren't what he needs right now. | That's why we chose this component for his labs.
+
+######## S4 혈액 취급·보관
+ORDER ko=혈액 시간 관리 4문장 순서 | why=시간 규칙을 먼저 말하고, 규칙에 따라 시간을 확인하며, 넘긴 제제는 돌려보내요.
+   - Blood must be started within thirty minutes of leaving the fridge. [calendar] 혈액은 냉장고를 나온 지 삼십 분 안에 시작해야 해요 (규칙) 11w
+   - So I'll recheck the time on every unit before I hang it. [check] 그래서 걸기 전에 모든 제제의 시간을 다시 확인할게요 (확인) 12w
+   - This one's been out for almost an hour already. [bell] 이건 벌써 거의 한 시간이나 밖에 나와 있었어요 (초과) 9w
+   - Since we can't start it, I'll send it back to the blood bank. [speech] 시작할 수 없으니 혈액은행으로 반납할게요 (반납) 13w
+  swap1<->2: So I'll recheck the time on every unit before I hang it. | Blood must be started within thirty minutes of leaving the fridge. | This one's been out for almost an hour already. | Since we can't start it, I'll send it back to the blood bank.
+  swap2<->3: Blood must be started within thirty minutes of leaving the fridge. | This one's been out for almost an hour already. | So I'll recheck the time on every unit before I hang it. | Since we can't start it, I'll send it back to the blood bank.
+  swap3<->4: Blood must be started within thirty minutes of leaving the fridge. | So I'll recheck the time on every unit before I hang it. | Since we can't start it, I'll send it back to the blood bank. | This one's been out for almost an hour already.
+
+######## S5 수혈 중 활력 주기 기록
+ORDER ko=수혈 중 활력 관리 4문장 순서 | why=감시 장치가 켜졌다고 알리고, 기록 주기를 말한 뒤, 첫 점검 결과를 보고하고, 이후 나빠지는 추세를 표시한다고 약속해요.
+   - The monitor is on and alarms are set. [monitor] 모니터는 켜져 있고 알람도 설정돼 있어요 (장치) 8w
+   - With that on, I'll record vitals at fifteen minutes, then hourly. [chartup] 그게 켜져 있으니 십오 분에, 그 뒤로는 매시간 활력징후를 기록할게요 (주기) 11w
+   - At that first check, every reading looks within normal range. [check] 그 첫 점검에서 모든 측정값이 정상 범위 안이에요 (결과) 10w
+   - From here, I'll flag anything that trends the wrong way. [bell] 여기서부터는 잘못된 방향으로 가는 게 있으면 바로 표시할게요 (경계) 10w
+  swap1<->2: With that on, I'll record vitals at fifteen minutes, then hourly. | The monitor is on and alarms are set. | At that first check, every reading looks within normal range. | From here, I'll flag anything that trends the wrong way.
+  swap2<->3: The monitor is on and alarms are set. | At that first check, every reading looks within normal range. | With that on, I'll record vitals at fifteen minutes, then hourly. | From here, I'll flag anything that trends the wrong way.
+  swap3<->4: The monitor is on and alarms are set. | With that on, I'll record vitals at fifteen minutes, then hourly. | From here, I'll flag anything that trends the wrong way. | At that first check, every reading looks within normal range.
+
+######## S6 급성 용혈반응 초기 대응
+ORDER ko=급성 용혈반응 대응 4문장 순서 | why=증상을 보고하고 수혈을 멈춘 뒤, 라인을 열어 둔 채 의료진과 혈액은행에 알려요.
+   - He's got back pain, chills, and dark urine. [bell] 허리 통증과 오한, 검은 소변이 있어요 (증상) 8w
+   - Because of that, I'm stopping the transfusion and disconnecting the tubing. [siren] 그래서 수혈을 멈추고 튜빙을 분리할게요 (중단) 11w
+   - With that off, I'll keep the line open with normal saline. [gear] 그게 떨어졌으니 생리식염수로 라인을 열어 둘게요 (라인) 11w
+   - With the line open, I'll notify the provider and the blood bank right away. [bell] 라인을 열어 뒀으니 의료진과 혈액은행에 바로 알릴게요 (보고) 14w
+  swap1<->2: Because of that, I'm stopping the transfusion and disconnecting the tubing. | He's got back pain, chills, and dark urine. | With that off, I'll keep the line open with normal saline. | With the line open, I'll notify the provider and the blood bank right away.
+  swap2<->3: He's got back pain, chills, and dark urine. | With that off, I'll keep the line open with normal saline. | Because of that, I'm stopping the transfusion and disconnecting the tubing. | With the line open, I'll notify the provider and the blood bank right away.
+  swap3<->4: He's got back pain, chills, and dark urine. | Because of that, I'm stopping the transfusion and disconnecting the tubing. | With the line open, I'll notify the provider and the blood bank right away. | With that off, I'll keep the line open with normal saline.
+
+######## S7 TACO와 TRALI 감별
+ORDER ko=호흡곤란 수혈 반응 대응 4문장 순서 | why=산소 저하를 보고하고 단서를 짚은 뒤, 어느 쪽이든 수혈을 멈추며 산소를 지지하고, 구별을 위해 영상을 요청해요.
+   - She's desaturating an hour into the unit. [bell] 제제를 시작한 지 한 시간 만에 산소포화도가 떨어지고 있어요 (보고) 7w
+   - Crackles and a raised jugular vein point us toward TACO. [stetho] 수포음과 경정맥 팽창은 TACO 쪽을 가리켜요 (단서) 10w
+   - Whichever it is, I'm stopping the transfusion and supporting oxygenation. [siren] 어느 쪽이든 수혈을 멈추고 산소화를 지지할게요 (중단) 10w
+   - I'll ask for a chest X-ray to help us tell them apart. [lab] 가슴 엑스레이를 요청해서 둘을 구별하는 데 도움을 받을게요 (영상) 12w
+  swap1<->2: Crackles and a raised jugular vein point us toward TACO. | She's desaturating an hour into the unit. | Whichever it is, I'm stopping the transfusion and supporting oxygenation. | I'll ask for a chest X-ray to help us tell them apart.
+  swap2<->3: She's desaturating an hour into the unit. | Whichever it is, I'm stopping the transfusion and supporting oxygenation. | Crackles and a raised jugular vein point us toward TACO. | I'll ask for a chest X-ray to help us tell them apart.
+  swap3<->4: She's desaturating an hour into the unit. | Crackles and a raised jugular vein point us toward TACO. | I'll ask for a chest X-ray to help us tell them apart. | Whichever it is, I'm stopping the transfusion and supporting oxygenation.
+
+######## S8 대량수혈 비율 관리
+ORDER ko=대량수혈 진행 4문장 순서 | why=프로토콜 가동을 알리고 비율을 말한 뒤, 그 비율을 지키려고 추적하고 데우며, 모든 제제 번호를 기록해요.
+   - We're running the massive transfusion protocol. [siren] 대량수혈 프로토콜을 진행하고 있어요 (가동) 6w
+   - I'm giving plasma, platelets, and red cells at a one-to-one-to-one ratio. [lab] 혈장과 혈소판, 적혈구를 일대일대일 비율로 드리고 있어요 (비율) 11w
+   - To keep that ratio steady, I'll track each unit and warm the products. [gear] 그 비율을 지키려고 제제마다 추적하고 성분을 데울게요 (유지) 13w
+   - For all of that, someone needs to log every unit number for the chart. [pencil] 그 모든 것을 위해 누군가 차트에 넣을 모든 제제 번호를 기록해야 해요 (기록) 14w
+  swap1<->2: I'm giving plasma, platelets, and red cells at a one-to-one-to-one ratio. | We're running the massive transfusion protocol. | To keep that ratio steady, I'll track each unit and warm the products. | For all of that, someone needs to log every unit number for the chart.
+  swap2<->3: We're running the massive transfusion protocol. | To keep that ratio steady, I'll track each unit and warm the products. | I'm giving plasma, platelets, and red cells at a one-to-one-to-one ratio. | For all of that, someone needs to log every unit number for the chart.
+  swap3<->4: We're running the massive transfusion protocol. | I'm giving plasma, platelets, and red cells at a one-to-one-to-one ratio. | For all of that, someone needs to log every unit number for the chart. | To keep that ratio steady, I'll track each unit and warm the products.
+
+######## S9 응고검사 해석·성분 선택
+ORDER ko=응고검사 해석과 후속 4문장 순서 | why=결과를 말하고 그에 맞는 성분을 정한 뒤, 교정 후 재검하고, 그래도 좋아지지 않으면 의료진에게 다시 알려요.
+   - His INR is up and fibrinogen is low. [lab] INR은 올랐고 섬유소원은 낮아요 (결과) 8w
+   - So the plan is plasma or PCC for the INR and cryoprecipitate for the fibrinogen. [lab] 그러니 INR에는 혈장이나 PCC, 섬유소원에는 동결침전제를 쓰는 계획이에요 (계획) 15w
+   - After correction, I'll recheck coags. [lab] 교정 후에 응고검사를 재확인할게요 (재검) 5w
+   - If those numbers don't improve, I'll call the provider back. [bell] 그 수치가 호전되지 않으면 의료진에게 다시 연락할게요 (재보고) 10w
+  swap1<->2: So the plan is plasma or PCC for the INR and cryoprecipitate for the fibrinogen. | His INR is up and fibrinogen is low. | After correction, I'll recheck coags. | If those numbers don't improve, I'll call the provider back.
+  swap2<->3: His INR is up and fibrinogen is low. | After correction, I'll recheck coags. | So the plan is plasma or PCC for the INR and cryoprecipitate for the fibrinogen. | If those numbers don't improve, I'll call the provider back.
+  swap3<->4: His INR is up and fibrinogen is low. | So the plan is plasma or PCC for the INR and cryoprecipitate for the fibrinogen. | If those numbers don't improve, I'll call the provider back. | After correction, I'll recheck coags.
+
+######## S10 저칼슘·시트르산 독성 감시
+ORDER ko=저칼슘 감시와 보충 4문장 순서 | why=칼슘이 떨어질 수 있다고 알리고 이온화 칼슘을 확인하며, 보충을 준비한 뒤 바로 줘요.
+   - After all these units, his calcium could drop fast. [bell] 이렇게 많은 제제를 준 뒤라 칼슘이 빠르게 떨어질 수 있어요 (위험) 9w
+   - That's because citrate binds calcium, so I'm checking his ionized calcium after every few units. [lab] 시트르산염이 칼슘과 결합하기 때문이라 제제를 몇 개 줄 때마다 이온화 칼슘을 확인하고 있어요 (감시) 15w
+   - With that monitoring, I'll have calcium ready to replace per protocol. [pill] 그 감시와 함께 프로토콜에 따라 칼슘을 보충할 준비를 해둘게요 (준비) 11w
+   - With it ready, I'll give calcium now before it drops any further. [siren] 준비해 뒀으니 더 떨어지기 전에 지금 칼슘을 줄게요 (투여) 12w
+  swap1<->2: That's because citrate binds calcium, so I'm checking his ionized calcium after every few units. | After all these units, his calcium could drop fast. | With that monitoring, I'll have calcium ready to replace per protocol. | With it ready, I'll give calcium now before it drops any further.
+  swap2<->3: After all these units, his calcium could drop fast. | With that monitoring, I'll have calcium ready to replace per protocol. | That's because citrate binds calcium, so I'm checking his ionized calcium after every few units. | With it ready, I'll give calcium now before it drops any further.
+  swap3<->4: After all these units, his calcium could drop fast. | That's because citrate binds calcium, so I'm checking his ionized calcium after every few units. | With it ready, I'll give calcium now before it drops any further. | With that monitoring, I'll have calcium ready to replace per protocol.
+
+######## S11 항응고 역전 관리
+ORDER ko=항응고 역전 4문장 순서 | why=역전이 필요하다고 밝히고 역전제를 준 뒤, 효과를 재검하며 교정되면 의료진에게 알려요.
+   - He's bleeding on warfarin, so we need to reverse him. [bell] 와파린 복용 중 출혈이 있어서 역전이 필요해요 (필요) 10w
+   - I'll give four-factor PCC and IV vitamin K now. [pill] 지금 4인자 PCC와 정맥주사 비타민 K를 줄게요 (투여) 9w
+   - After reversal, I'll recheck the INR. [lab] 역전 후에 INR을 다시 확인할게요 (재검) 6w
+   - Once that INR corrects, I'll update the provider. [speech] 그 INR이 교정되면 의료진에게 알릴게요 (보고) 8w
+  swap1<->2: I'll give four-factor PCC and IV vitamin K now. | He's bleeding on warfarin, so we need to reverse him. | After reversal, I'll recheck the INR. | Once that INR corrects, I'll update the provider.
+  swap2<->3: He's bleeding on warfarin, so we need to reverse him. | After reversal, I'll recheck the INR. | I'll give four-factor PCC and IV vitamin K now. | Once that INR corrects, I'll update the provider.
+  swap3<->4: He's bleeding on warfarin, so we need to reverse him. | I'll give four-factor PCC and IV vitamin K now. | Once that INR corrects, I'll update the provider. | After reversal, I'll recheck the INR.
+
+######## S12 혈소판 수혈 적응 판단
+ORDER ko=혈소판 수혈 판단 4문장 순서 | why=수치와 상태를 말하고 보류하는 이유를 밝힌 뒤, 출혈이 생기면 바로 수혈하고 그때는 기준이 달라진다고 설명해요.
+   - His platelets are low, but he's not bleeding right now. [lab] 혈소판은 낮지만 지금은 출혈이 없어요 (상태) 10w
+   - So we can hold off and just recheck his count later. [calendar] 그러니 보류하고 나중에 수치만 다시 확인하면 돼요 (보류) 11w
+   - But if he starts bleeding, we transfuse right away. [siren] 하지만 출혈이 시작되면 바로 수혈해요 (예외) 9w
+   - In that case, the threshold changes entirely. [chartup] 그 경우에는 역치가 완전히 바뀌어요 (기준) 7w
+  swap1<->2: So we can hold off and just recheck his count later. | His platelets are low, but he's not bleeding right now. | But if he starts bleeding, we transfuse right away. | In that case, the threshold changes entirely.
+  swap2<->3: His platelets are low, but he's not bleeding right now. | But if he starts bleeding, we transfuse right away. | So we can hold off and just recheck his count later. | In that case, the threshold changes entirely.
+  swap3<->4: His platelets are low, but he's not bleeding right now. | So we can hold off and just recheck his count later. | In that case, the threshold changes entirely. | But if he starts bleeding, we transfuse right away.
+
+######## S13 알레르기·발열 반응 관리
+ORDER ko=알레르기 반응 병력 관리 4문장 순서 | why=과거 반응을 알리고 전처치를 의료진에게 묻고, 승인되면 약을 미리 준 뒤, 그래도 쌕쌕거림이 생기면 중단하고 보고해요.
+   - She got hives with the last unit. [bell] 지난번 제제 때 두드러기가 났어요 (병력) 7w
+   - Should we premedicate this time, given her history? [speech] 그녀의 과거력을 감안하면 이번엔 전처치해야 할까요? (문의) 8w
+   - With that ordered, I'll give the antihistamine thirty minutes ahead of time. [pill] 처방이 나면 삼십 분 미리 항히스타민제를 줄게요 (투약) 12w
+   - If she still develops wheezing, I'll stop and escalate. [siren] 그래도 쌕쌕거림이 생기면 멈추고 상급 보고할게요 (보고) 9w
+  swap1<->2: Should we premedicate this time, given her history? | She got hives with the last unit. | With that ordered, I'll give the antihistamine thirty minutes ahead of time. | If she still develops wheezing, I'll stop and escalate.
+  swap2<->3: She got hives with the last unit. | With that ordered, I'll give the antihistamine thirty minutes ahead of time. | Should we premedicate this time, given her history? | If she still develops wheezing, I'll stop and escalate.
+  swap3<->4: She got hives with the last unit. | Should we premedicate this time, given her history? | If she still develops wheezing, I'll stop and escalate. | With that ordered, I'll give the antihistamine thirty minutes ahead of time.
+
+######## S14 수혈 거부 환자 관리
+ORDER ko=수혈 거부 환자 응대 4문장 순서 | why=이해를 표현하고 결정을 존중하며 기록한 뒤, 그 뜻 안에서 보존 방법을 논의하고 팀에 공유해요.
+   - I understand blood products aren't an option for you, and that's alright. [faceWorried] 혈액 제제가 선택지가 아니라는 걸 이해해요, 괜찮아요 (이해) 12w
+   - I respect your decision and I'll document your wishes. [pencil] 결정을 존중하고 뜻을 기록해 둘게요 (존중) 9w
+   - Within those wishes, let's talk about blood-conservation options with your team. [bulb] 그 뜻 안에서 팀과 함께 혈액 보존 선택지를 이야기해 봐요 (논의) 11w
+   - With the plan set, I'll make sure everyone on your team knows your wishes. [handshake2] 계획이 정해지면 팀 전체가 그 뜻을 알도록 확실히 해둘게요 (공유) 14w
+  swap1<->2: I respect your decision and I'll document your wishes. | I understand blood products aren't an option for you, and that's alright. | Within those wishes, let's talk about blood-conservation options with your team. | With the plan set, I'll make sure everyone on your team knows your wishes.
+  swap2<->3: I understand blood products aren't an option for you, and that's alright. | Within those wishes, let's talk about blood-conservation options with your team. | I respect your decision and I'll document your wishes. | With the plan set, I'll make sure everyone on your team knows your wishes.
+  swap3<->4: I understand blood products aren't an option for you, and that's alright. | I respect your decision and I'll document your wishes. | With the plan set, I'll make sure everyone on your team knows your wishes. | Within those wishes, let's talk about blood-conservation options with your team.
+
+######## S15 대량수혈 프로토콜 발동·조율
+ORDER ko=대량수혈 발동과 조율 4문장 순서 | why=프로토콜을 발동하고 팀을 불러 모은 뒤, 모인 사람에게 역할을 나누고 모두 움직이게 해요.
+   - I'm activating the massive transfusion protocol now. [siren] 지금 대량수혈 프로토콜을 발동할게요 (발동) 7w
+   - I need the team, the cooler, and roles assigned right now. [bell] 지금 당장 팀과 냉장 운반함, 역할 배정이 필요해요 (요청) 11w
+   - With the team here, you track products, you push blood, I'll run the rapid infuser. [handshake2] 팀이 모였으니 당신은 성분을 추적하고, 당신은 혈액을 밀어 넣고, 저는 급속주입기를 다룰게요 (배정) 15w
+   - With your roles named, everyone, let's move. [bell] 역할이 정해졌으니 모두 움직입시다 (실행) 7w
+  swap1<->2: I need the team, the cooler, and roles assigned right now. | I'm activating the massive transfusion protocol now. | With the team here, you track products, you push blood, I'll run the rapid infuser. | With your roles named, everyone, let's move.
+  swap2<->3: I'm activating the massive transfusion protocol now. | With the team here, you track products, you push blood, I'll run the rapid infuser. | I need the team, the cooler, and roles assigned right now. | With your roles named, everyone, let's move.
+  swap3<->4: I'm activating the massive transfusion protocol now. | I need the team, the cooler, and roles assigned right now. | With your roles named, everyone, let's move. | With the team here, you track products, you push blood, I'll run the rapid infuser.
+
+######## S16 급성 용혈 아나필락시스 위기
+ORDER ko=수혈 중 아나필락시스 대응 4문장 순서 | why=증상을 보고하고 중단과 에피네프린을 지시한 뒤, 수액과 코드 호출을 하고, 호전이 없으면 두 번째 용량을 줘요.
+   - She's hypotensive with stridor right after the unit. [siren] 제제를 준 직후 저혈압에 협착음까지 있어요 (보고) 8w
+   - This is anaphylaxis — stop the transfusion and get the epi now. [siren] 이건 아나필락시스예요 — 수혈을 멈추고 지금 에피네프린 주세요 (지시) 12w
+   - With the epi going in, I'm opening fluids wide and calling the code team. [siren] 에피네프린이 들어가는 동안 수액을 최대로 열고 코드 팀을 부를게요 (수액·호출) 14w
+   - If she still doesn't improve, I'll push a second dose. [pill] 그래도 호전되지 않으면 두 번째 용량을 줄게요 (재투여) 10w
+  swap1<->2: This is anaphylaxis — stop the transfusion and get the epi now. | She's hypotensive with stridor right after the unit. | With the epi going in, I'm opening fluids wide and calling the code team. | If she still doesn't improve, I'll push a second dose.
+  swap2<->3: She's hypotensive with stridor right after the unit. | With the epi going in, I'm opening fluids wide and calling the code team. | This is anaphylaxis — stop the transfusion and get the epi now. | If she still doesn't improve, I'll push a second dose.
+  swap3<->4: She's hypotensive with stridor right after the unit. | This is anaphylaxis — stop the transfusion and get the epi now. | If she still doesn't improve, I'll push a second dose. | With the epi going in, I'm opening fluids wide and calling the code team.
+
+######## S17 DIC 출혈·혈전 동반 위기
+ORDER ko=DIC 대응 4문장 순서 | why=DIC임을 알리고 근본 원인 치료가 핵심이라 말한 뒤, 성분을 보충하며 새는 곳을 지켜봐요.
+   - He's bleeding from every puncture site — this is DIC. [bell] 모든 천자 부위에서 출혈이 있어요 — 이건 DIC예요 (진단) 10w
+   - The key is the underlying trigger, so I'll coordinate on the sepsis workup. [bulb] 핵심은 근본 유발 요인이라 패혈증 정밀검사를 조율할게요 (원인) 13w
+   - Alongside that, I'll replace fibrinogen, platelets, and plasma per the labs. [lab] 그와 함께 검사 결과에 따라 섬유소원과 혈소판, 혈장을 보충할게요 (보충) 11w
+   - With those replaced, I'll watch every line and site for new oozing. [monitor] 보충하고 나면 새로운 스밈이 있는지 모든 라인과 부위를 지켜볼게요 (관찰) 12w
+  swap1<->2: The key is the underlying trigger, so I'll coordinate on the sepsis workup. | He's bleeding from every puncture site — this is DIC. | Alongside that, I'll replace fibrinogen, platelets, and plasma per the labs. | With those replaced, I'll watch every line and site for new oozing.
+  swap2<->3: He's bleeding from every puncture site — this is DIC. | Alongside that, I'll replace fibrinogen, platelets, and plasma per the labs. | The key is the underlying trigger, so I'll coordinate on the sepsis workup. | With those replaced, I'll watch every line and site for new oozing.
+  swap3<->4: He's bleeding from every puncture site — this is DIC. | The key is the underlying trigger, so I'll coordinate on the sepsis workup. | With those replaced, I'll watch every line and site for new oozing. | Alongside that, I'll replace fibrinogen, platelets, and plasma per the labs.
+
+######## S18 TRALI 급성 호흡부전 위기
+ORDER ko=TRALI 위기 대응 4문장 순서 | why=호흡부전을 보고하고 중단과 감별을 알린 뒤, 폐보호 환기를 하고 혈액은행에 보고해요.
+   - She's in acute respiratory failure right after the plasma. [siren] 혈장을 준 직후 급성 호흡부전이 왔어요 (보고) 9w
+   - Stop the transfusion — this is TRALI, not overload. [siren] 수혈을 멈추세요 — 이건 과부하가 아니라 TRALI예요 (중단) 9w
+   - So she needs lung-protective ventilation and high oxygen. [gear] 그래서 폐보호 환기와 고농도 산소가 필요해요 (환기) 8w
+   - With that going, report the reaction to the blood bank. [bell] 그게 진행되는 동안 이 반응을 혈액은행에 보고하세요 (보고) 10w
+  swap1<->2: Stop the transfusion — this is TRALI, not overload. | She's in acute respiratory failure right after the plasma. | So she needs lung-protective ventilation and high oxygen. | With that going, report the reaction to the blood bank.
+  swap2<->3: She's in acute respiratory failure right after the plasma. | So she needs lung-protective ventilation and high oxygen. | Stop the transfusion — this is TRALI, not overload. | With that going, report the reaction to the blood bank.
+  swap3<->4: She's in acute respiratory failure right after the plasma. | Stop the transfusion — this is TRALI, not overload. | With that going, report the reaction to the blood bank. | So she needs lung-protective ventilation and high oxygen.
+
+######## S19 대량수혈 저칼슘 심정지 위기
+ORDER ko=저칼슘 심정지 위기 4문장 순서 | why=위험을 보고하고 칼슘을 주면서 코드 팀을 부른 뒤, 이후 제제마다 칼슘을 계속 줘요.
+   - His QT is stretching and he's about to arrest. [siren] QT가 늘어나고 있고 곧 심정지가 올 것 같아요 (보고) 9w
+   - Ionized calcium is critically low — I'm pushing calcium now. [siren] 이온화 칼슘이 위중하게 낮아요 — 지금 칼슘을 밀어 넣을게요 (투여) 10w
+   - I need the code team here right now. [bell] 지금 바로 코드 팀이 필요해요 (호출) 8w
+   - With them coming, I'll keep pushing calcium every time we hang another unit. [pill] 그들이 오는 동안 제제를 걸 때마다 계속 칼슘을 밀어 넣을게요 (유지) 13w
+  swap1<->2: Ionized calcium is critically low — I'm pushing calcium now. | His QT is stretching and he's about to arrest. | I need the code team here right now. | With them coming, I'll keep pushing calcium every time we hang another unit.
+  swap2<->3: His QT is stretching and he's about to arrest. | I need the code team here right now. | Ionized calcium is critically low — I'm pushing calcium now. | With them coming, I'll keep pushing calcium every time we hang another unit.
+  swap3<->4: His QT is stretching and he's about to arrest. | Ionized calcium is critically low — I'm pushing calcium now. | With them coming, I'll keep pushing calcium every time we hang another unit. | I need the code team here right now.
+
+######## S20 수혈 불응 지속출혈 목표 소통
+ORDER ko=목표 소통 4문장 순서 | why=현재 상황을 알린 뒤 현실을 이야기하겠다고 열고, 환자의 뜻을 묻고, 그 뜻에 맞춰 돌보겠다고 약속해요.
+   - We keep transfusing, but he keeps bleeding. [faceWorried] 계속 수혈하고 있지만 출혈도 계속되고 있어요 (상황) 7w
+   - So I need to talk with you about what's realistic. [speech] 그래서 현실적으로 어떤 상황인지 이야기 나누고 싶어요 (시작) 10w
+   - Did he ever say what mattered most to him? [speech] 그에게 가장 중요했던 게 뭔지 말한 적이 있나요? (질문) 9w
+   - Whatever he said, we'll make sure his care matches his wishes. [shield] 그가 무슨 말을 했든 그의 돌봄이 뜻에 맞도록 확실히 해둘게요 (약속) 11w
+  swap1<->2: So I need to talk with you about what's realistic. | We keep transfusing, but he keeps bleeding. | Did he ever say what mattered most to him? | Whatever he said, we'll make sure his care matches his wishes.
+  swap2<->3: We keep transfusing, but he keeps bleeding. | Did he ever say what mattered most to him? | So I need to talk with you about what's realistic. | Whatever he said, we'll make sure his care matches his wishes.
+  swap3<->4: We keep transfusing, but he keeps bleeding. | So I need to talk with you about what's realistic. | Whatever he said, we'll make sure his care matches his wishes. | Did he ever say what mattered most to him?

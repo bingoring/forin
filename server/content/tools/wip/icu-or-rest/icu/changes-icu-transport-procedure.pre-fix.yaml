@@ -1,0 +1,410 @@
+theme: icu-transport-procedure
+changes:
+- kind: word
+  id: w-level
+  fields:
+  - ko
+  why: ko '수치'가 w-reading과 같아 듣고 뜻 고르기에서 정답이 둘이 된다 — level은 'oxygen level'의 '수준'으로 가름
+- kind: word
+  id: w-reading
+  fields:
+  - ko
+  why: ko '수치'가 w-level과 같아 가름 — pulse ox reading은 기기가 잰 '측정값'
+- kind: word
+  id: w-set
+  fields:
+  - ko
+  why: ko '준비된'이 w-ready와 같아 정답이 둘이 된다 — all set·set up은 '갖춰진'
+- kind: word
+  id: w-med
+  fields:
+  - ko
+  why: ko '약물'이 w-drug·w-medication과 같아 정답이 셋이 된다 — 태그된 문장은 emergency meds·code meds라 '응급약'
+- kind: word
+  id: w-medication
+  fields:
+  - ko
+  why: ko '약물'이 w-med·w-drug와 같아 가름 — medication list는 환자 약 목록
+- kind: word
+  id: w-free
+  fields:
+  - ko
+  why: ko '벗어난'이 w-clear와 같아 정답이 둘이 된다 — free of tension은 '당김이 없는'
+- kind: word
+  id: w-begin
+  fields:
+  - ko
+  why: ko '시작하다'가 w-start와 같아 정답이 둘이 된다 — 가름
+- kind: word
+  id: w-sat
+  fields:
+  - ko
+  why: ko '산소포화도'가 w-saturation과 같아 정답이 둘이 된다 — sats는 SpO2를 부르는 줄임말
+- kind: word
+  id: w-vent
+  fields:
+  - ko
+  why: ko '인공호흡기'가 w-ventilator와 같아 정답이 둘이 된다 — vent는 현장 줄임말
+- kind: word
+  id: w-manage
+  fields:
+  - ko
+  why: ko '맡다'가 w-take와 같아 정답이 둘이 된다 — manage the airway는 '관리하다'
+- kind: word
+  id: w-take
+  fields:
+  - ko
+  why: ko '맡다'가 w-manage와 같아 가름 — take the first round는 '차례를 담당하다'
+- kind: word
+  id: w-drip
+  fields:
+  - ko
+  why: ko '주입'이 w-infusion과 같아 정답이 둘이 된다 — drips는 지속 주입 중인 약
+- kind: word
+  id: w-change
+  fields:
+  - ko
+  why: 태그된 문장 셋이 모두 동사(anything changes는 변하다, could change management는 바꾸다)라 명사 '변화'를 동사로
+- kind: word
+  id: w-unit
+  fields:
+  - ko
+  why: 태그된 문장의 the unit은 우리 중환자실이라 '병동'보다 맞는다
+- kind: word
+  id: w-hold
+  fields:
+  - ko
+  why: 태그된 8문장이 hold and reassess(멈추다)부터 hold pressure·sats are holding(유지하다)까지 걸쳐 '보류하다' 하나로는 안 맞는다
+- kind: word
+  id: w-second
+  fields:
+  - ko
+  why: 태그된 문장이 for a second(잠깐)·five seconds(초)·the second we are clear(~하는 순간)로 걸쳐 있어 '잠깐'만으로는 안 맞는다
+- kind: word
+  id: w-moment
+  fields:
+  - ko
+  why: ko '순간'이 w-second와 겹쳐 가름 — the moment we clear는 '~하는 순간'
+- kind: word
+  id: w-monitor
+  fields:
+  - ko
+  why: 명사(transport monitor)와 동사(I'll monitor her vitals)로 모두 쓰여 둘 다 담는다
+- kind: word
+  id: w-steady
+  fields:
+  - ko
+  why: ko '안정적인'이 w-stable '안정된'과 사실상 같아 정답이 둘이 된다 — steady는 '일정한'
+- kind: word
+  id: w-switch
+  fields:
+  - ko
+  why: ko '전환'이 w-convert '전환하다'와 겹쳐 가름 — switch to the backup cylinder는 바꿔 쓰는 것
+- kind: word
+  id: w-pressure
+  fields:
+  - ko
+  why: 태그된 문장이 blood pressure(혈압)·hold pressure(압박)라 '압력'만으로는 안 맞는다
+- kind: word
+  id: w-call
+  fields:
+  - ko
+  why: call for help(부르다)와 call the attending·please call(전화하다)이 섞여 있다
+- kind: word
+  id: w-support
+  fields:
+  - ko
+  why: support the airway·more support는 '지지'보다 '보조'가 자연스럽다
+- kind: word
+  id: w-emergency
+  fields:
+  - ko
+  why: emergency call button(비상)과 emergency procedure(응급)가 섞여 있다
+- kind: word-remove
+  id: w-behind
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-come
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-door
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-eat
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-eye
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-find
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-get
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-make
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-room
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-say
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-use
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-way
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: sentence
+  situation: 시술 진정 전 사정·동의
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 시술 후 회복 관찰
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 시술 후 회복 관찰
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 승압·주입 유지
+  index: 2
+  fields:
+  - words
+  why: run의 ko는 '작동하다' — runs dry·run the meds·run out은 다른 뜻이라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 승압·주입 유지
+  index: 5
+  fields:
+  - words
+  why: recovery의 ko는 명사 '회복' — it recovered·doesn't recover는 동사라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 시술 진정 깊이 적정
+  index: 5
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 악화 대비 계획
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 악화 대비 계획
+  index: 2
+  fields:
+  - words
+  why: run의 ko는 '작동하다' — runs dry·run the meds·run out은 다른 뜻이라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 악화 대비 계획
+  index: 5
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 악화 대비 계획
+  index: 6
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 베드사이드 시술 보조
+  index: 0
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 베드사이드 시술 보조
+  index: 2
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 베드사이드 시술 보조
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 베드사이드 시술 보조
+  index: 4
+  fields:
+  - words
+  why: keep의 ko는 '유지하다' — keep count는 '세어 두다'라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 병원간 이송 인계·문서
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 병원간 이송 인계·문서
+  index: 5
+  fields:
+  - words
+  why: route의 ko는 '경로' — en route는 '이동 중'이라는 관용 표현이라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 검사실 안전
+  index: 2
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 검사실 안전
+  index: 5
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 검사실 안전
+  index: 6
+  fields:
+  - words
+  why: clear의 ko는 '벗어난' — cleared for the scanner는 '승인됐다'라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 위험-이익 판단 소통
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 위험-이익 판단 소통
+  index: 5
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 심정지 대응
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 심정지 대응
+  index: 2
+  fields:
+  - words
+  why: bag의 ko는 '백' — bagging은 백으로 환기하는 동사라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 심정지 대응
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 발관·라인 이탈 위기
+  index: 0
+  fields:
+  - words
+  why: bag의 ko는 '백' — bagging은 백으로 환기하는 동사라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 발관·라인 이탈 위기
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 시술 진정 중 호흡정지 위기
+  index: 0
+  fields:
+  - words
+  why: bag의 ko는 '백' — bagging은 백으로 환기하는 동사라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 시술 진정 중 호흡정지 위기
+  index: 2
+  fields:
+  - words
+  why: recovery의 ko는 명사 '회복' — it recovered·doesn't recover는 동사라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 시술 진정 중 호흡정지 위기
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 시술 중 대량출혈 급변
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌; unit의 ko는 '중환자실' — two units of blood는 혈액 단위라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 시술 중 대량출혈 급변
+  index: 6
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: MRI 중 응급상황 대응
+  index: 0
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: MRI 중 응급상황 대응
+  index: 3
+  fields:
+  - words
+  why: scan의 ko는 '검사' — 'not scanned'는 MRI 선별을 마치지 않았다는 뜻이라 태그를 뺌; 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: MRI 중 응급상황 대응
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 산소·전원 소진 위기
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌; run의 ko는 '작동하다' — runs dry·run the meds·run out은 다른 뜻이라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 산소·전원 소진 위기
+  index: 2
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 산소·전원 소진 위기
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 산소·전원 소진 위기
+  index: 5
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 이송 중 산소·전원 소진 위기
+  index: 6
+  fields:
+  - words
+  why: 쉬운 말 태그를 뺌; run의 ko는 '작동하다' — runs dry·run the meds·run out은 다른 뜻이라 태그를 뺌 — 문장은 그대로
