@@ -1,0 +1,529 @@
+특수 검체 취급 지침:
+- kind: slider
+  words:
+  - w-special
+  - w-handle
+  - w-protocol
+  - w-ice
+  cue: The requisition marks the specimen for special handling, and you aren't sure what that means.
+  scale:
+  - I'll handle it the same way as every other specimen.
+  - I'll just guess and put it on some ice.
+  - I'll call the lab to check its protocol.
+  answerAt: 2
+  why: 특수 취급이라고 적힌 검체는 어떻게 다뤄야 하는지 검사실의 지침을 먼저 확인해요. 여느 검체처럼 다루거나 짐작으로 얼음에 올리면 검사에 쓸 수 없게 될 수 있어요.
+  example: I'll confirm the protocol with the lab.
+  exKo: 검사실에 지침을 확인할게요.
+- kind: context
+  words:
+  - w-protocol
+  word: protocol
+  ko: 지침
+  scenes:
+  - who: 간호사 → 순환간호사
+    icon: speech
+    en: Let me check the lab protocol before we handle this.
+    ok: true
+  - who: 간호사 → 이송 담당자
+    icon: pager
+    en: Protocol says it's special handling, so, you know, be careful or whatever.
+    ok: false
+    fix: Per the lab protocol, take it straight to pathology and don't set it down.
+  - who: 차트 기록
+    icon: board
+    en: Specimen handled per lab protocol and delivered to pathology.
+    ok: true
+  why: 뜻은 셋 다 '지침'이에요. 동료에게는 먼저 지침을 확인하겠다고 말하고, 차트에는 지침대로 처리해 전달했다고 적어요. 하지만 이송 담당자에게 '조심하든지 말든지'라고 하면 무엇을 해야 하는지 알 수 없어요. 지침에 따라 구체적으로 무엇을 하라고 알려요.
+- kind: swap
+  words:
+  - w-special
+  - w-protocol
+  who: 간호사 → 순환간호사 · 특수 취급
+  icon: me
+  before:
+  - ''
+  - It's special handling, but formalin works for everything.
+  - ''
+  options:
+  - It needs special handling, so I'll confirm the protocol with the lab.
+  - It's special handling, but formalin works for everything.
+  - Special handling is just a suggestion on the form.
+  answer: It needs special handling, so I'll confirm the protocol with the lab.
+  notes:
+    It needs special handling, so I'll confirm the protocol with the lab.: 정해진 취급법을 먼저 확인하는 올바른 순서예요.
+    It's special handling, but formalin works for everything.: 포르말린에 넣으면 쓸 수 없게 되는 검사도 있어요.
+    Special handling is just a suggestion on the form.: 특수 취급 표시는 따라야 하는 지시예요.
+  why: 특수 취급 표시는 지침을 확인해 따라요. 포르말린이 만능이라 여기거나 권고로 넘기지 않아요.
+  ko: 특수 취급이 필요하니 검사실에 지침을 확인할게요
+검체 손상 방지 이송:
+- kind: slider
+  words:
+  - w-compress
+  - w-flat
+  - w-fold
+  - w-steady
+  - w-crush
+  - w-carry
+  cue: You're carrying a delicate tissue specimen down the hall to pathology.
+  scale:
+  - I'll squeeze it into the smallest cup.
+  - I'll carry it flat and keep it steady.
+  - I'll jog it down so it arrives sooner.
+  answerAt: 1
+  why: 연한 조직은 눌리거나 접히지 않게 평평하고 안정적으로 옮겨요. 작은 컵에 구겨 넣거나 뛰면서 흔들면 조직 모양이 망가져 병리 판독이 어려워져요.
+  example: I'll carry this flat and steady.
+  exKo: 평평하고 안정적으로 옮길게요.
+- kind: context
+  words:
+  - w-crush
+  word: crush
+  ko: 으스러뜨리다
+  scenes:
+  - who: 차트 기록
+    icon: board
+    en: The tissue got crushed a bit, no big deal.
+    ok: false
+    fix: Specimen crushed during transport; surgeon and pathology notified.
+  - who: 간호사 → 이송 담당자
+    icon: pager
+    en: Please don't crush it — carry the container flat.
+    ok: true
+  - who: 간호사 → 순환간호사
+    icon: speech
+    en: Let's choose a container that won't crush it.
+    ok: true
+  why: 뜻은 셋 다 '으스러뜨리다'예요. 이송 담당자에게는 누르지 말고 평평하게 들라고 하고, 동료에게는 눌리지 않을 용기를 고르자고 말해요. 하지만 차트에 '조금 눌렸는데 별일 아니다'라고 적으면 사고 기록이 되지 않아요. 무슨 일이 있었고 누구에게 알렸는지 적어요.
+- kind: swap
+  words:
+  - w-crush
+  - w-compress
+  who: 간호사 → 순환간호사 · 용기 선택
+  icon: me
+  before:
+  - ''
+  - Any container will do, just squeeze it in.
+  - ''
+  options:
+  - Any container will do, just squeeze it in.
+  - Let's choose a container that won't crush it.
+  - A smaller container is better, it'll hold still.
+  answer: Let's choose a container that won't crush it.
+  notes:
+    Any container will do, just squeeze it in.: 눌려서 모양이 망가지면 판독이 어려워져요.
+    Let's choose a container that won't crush it.: 조직이 눌리지 않을 크기의 용기를 고르는 올바른 선택이에요.
+    A smaller container is better, it'll hold still.: 좁으면 눌려서 조직이 상해요.
+  why: 연한 조직은 눌리지 않는 용기를 골라요. 아무 용기에 구겨 넣거나 작은 용기가 낫다고 하지 않아요.
+  ko: 눌리지 않을 용기를 골라요
+병리 요청서 일치:
+- kind: slider
+  words:
+  - w-site
+  - w-side
+  - w-requisition
+  - w-match
+  - w-discrepancy
+  cue: The requisition says right breast, but the surgeon just said left.
+  scale:
+  - I'll resolve that with you before sending.
+  - I'll send it and flag it to pathology after.
+  - I'll just change it myself to match.
+  answerAt: 0
+  why: 부위나 좌우가 다르면 보내기 전에 집도의와 함께 바로잡아요. 일단 보내고 알리거나 혼자 고치면 잘못된 부위로 진단이 나갈 수 있어요.
+  example: I'll fix any discrepancy before sending.
+  exKo: 보내기 전에 불일치를 바로잡을게요.
+- kind: context
+  words:
+  - w-site
+  word: site
+  ko: 부위
+  scenes:
+  - who: 간호사 → 집도의
+    icon: speech
+    en: Let's confirm the site and side before I send this.
+    ok: true
+  - who: 간호사 → 병리 기사
+    icon: pager
+    en: The site? Somewhere on the left, or maybe right, whatever it says.
+    ok: false
+    fix: The site is the left breast, and the side matches the requisition.
+  - who: 차트 기록
+    icon: board
+    en: Site and side verified against the requisition before sending.
+    ok: true
+  why: 뜻은 셋 다 '부위'예요. 집도의에게는 보내기 전에 부위와 쪽을 확인하자고 하고, 차트에는 요청서와 대조해 확인했다고 적어요. 하지만 병리 쪽에 '왼쪽 어딘가, 아니면 오른쪽'이라고 하면 어디서 떼어 낸 것인지 알 수 없어요. 부위와 쪽을 정확히 말해요.
+- kind: swap
+  words:
+  - w-site
+  - w-side
+  who: 간호사 → 집도의 · 부위 불일치
+  icon: me
+  before:
+  - ''
+  - The site is close enough, I'll send it anyway.
+  - ''
+  options:
+  - The site is close enough, I'll send it anyway.
+  - Pathology will figure out the side from the tissue.
+  - The site doesn't match, so I'll fix it before sending.
+  answer: The site doesn't match, so I'll fix it before sending.
+  notes:
+    The site is close enough, I'll send it anyway.: 부위가 다른 채 보내면 진단이 엉뚱한 곳 기준으로 나와요.
+    Pathology will figure out the side from the tissue.: 조직만 보고 좌우를 알 수 없어요.
+    The site doesn't match, so I'll fix it before sending.: 다른 점을 말하고 보내기 전에 바로잡는 올바른 순서예요.
+  why: 부위가 요청서와 다르면 보내기 전에 바로잡아요. 비슷하다며 보내거나 병리과의 눈에 맡기지 않아요.
+  ko: 부위가 일치하지 않아서 보내기 전에 고칠게요
+라벨 없는 검체 발견:
+- kind: slider
+  words:
+  - w-unlabeled
+  - w-stop
+  - w-identify
+  - w-container
+  cue: You find a container with tissue in it and no label on it.
+  scale:
+  - I'll label it with my best guess.
+  - I'll set it with the others, it's fine.
+  - I'm stopping to find out whose it is.
+  answerAt: 2
+  why: 라벨 없는 용기는 누구의 어느 조직인지 알 수 없어서 멈추고 집도의와 함께 확인해요. 짐작으로 붙이거나 다른 용기와 섞으면 다른 환자의 결과가 될 수 있어요.
+  example: We can't send this without a label.
+  exKo: 라벨 없이는 이걸 보낼 수 없어요.
+- kind: context
+  words:
+  - w-unlabeled
+  word: unlabeled
+  ko: 라벨 없는
+  scenes:
+  - who: 간호사 → 순환간호사
+    icon: speech
+    en: We have an unlabeled container on the back table.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Unlabeled container found; specimen held and surgeon notified.
+    ok: true
+  - who: 간호사 → 병리 기사
+    icon: pager
+    en: We've got an unlabeled thing, but I'm sure it's his.
+    ok: false
+    fix: We found an unlabeled container, so we're holding it until the surgeon identifies it.
+  why: 뜻은 셋 다 '라벨이 없는'이에요. 동료에게는 라벨 없는 용기가 있다고 알리고, 차트에는 검체를 보류하고 집도의에게 알렸다고 적어요. 하지만 병리 쪽에 '확실히 그 사람 것'이라고 하면 확인하지 않은 채 단정하는 말이에요. 아직 확인 중이라 보류한다고 말해요.
+- kind: swap
+  words:
+  - w-unlabeled
+  - w-identify
+  who: 간호사 → 집도의 · 라벨 없는 용기
+  icon: me
+  before:
+  - ''
+  - It's probably his, so I'll label it and send it.
+  - ''
+  options:
+  - I'm holding it until the surgeon tells us whose it is.
+  - It's probably his, so I'll label it and send it.
+  - I'll send it as is and add the label at pathology.
+  answer: I'm holding it until the surgeon tells us whose it is.
+  notes:
+    I'm holding it until the surgeon tells us whose it is.: 누구 것인지 확인될 때까지 보류하는 올바른 대응이에요.
+    It's probably his, so I'll label it and send it.: 짐작으로 라벨하면 다른 환자의 이름이 붙을 수 있어요.
+    I'll send it as is and add the label at pathology.: 병리과는 그 검체가 누구 것인지 알 수 없어요.
+  why: 라벨 없는 용기는 누구 것인지 확인될 때까지 보류해요. 짐작으로 붙이거나 그대로 보내지 않아요.
+  ko: 집도의가 누구 것인지 말해 줄 때까지 보류할게요
+검체 분실 즉시 대응:
+- kind: slider
+  words:
+  - w-missing
+  - w-search
+  - w-report
+  - w-field
+  - w-stop
+  - w-container
+  cue: The count shows two specimens went in, and you can find only one.
+  scale:
+  - I'll look for it quietly once the case is over.
+  - I'm stopping to search and tell the surgeon.
+  - I'll chalk it up to a counting mistake.
+  answerAt: 1
+  why: 검체가 없어졌다면 바로 멈추고 찾으면서 집도의에게 알려요. 수술이 끝난 뒤 조용히 찾거나 센 것이 틀렸다고 넘기면 찾을 수 있는 때를 놓쳐요.
+  example: Let's report it right away.
+  exKo: 바로 보고해요.
+- kind: context
+  words:
+  - w-field
+  word: field
+  ko: 수술 시야
+  scenes:
+  - who: 간호사 → 병리 기사
+    icon: pager
+    en: It's somewhere in the field probably, who knows.
+    ok: false
+    fix: We're searching the surgical field and every container for it now.
+  - who: 간호사 → 집도의
+    icon: speech
+    en: I'm searching the field and the containers for the missing one.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Surgical field and containers searched; specimen not found, surgeon notified.
+    ok: true
+  why: 뜻은 셋 다 '수술 시야'예요. 집도의에게는 수술 시야와 용기를 찾고 있다고 알리고, 차트에는 어디를 찾았고 누구에게 알렸는지 적어요. 하지만 병리 쪽에 '시야 어딘가 있겠지, 누가 알아'라고 하면 사실을 알 수 없어요. 지금 어디를 찾고 있는지 분명히 알려요.
+- kind: swap
+  words:
+  - w-missing
+  - w-report
+  who: 간호사 → 집도의 · 분실 보고
+  icon: me
+  before:
+  - ''
+  - It's probably nothing, let's wait and see.
+  - ''
+  options:
+  - It's probably nothing, let's wait and see.
+  - One specimen is missing, so I'm reporting it right now.
+  - I'll mention the missing one after the case.
+  answer: One specimen is missing, so I'm reporting it right now.
+  notes:
+    It's probably nothing, let's wait and see.: 기다리는 사이 찾을 기회를 놓쳐요.
+    One specimen is missing, so I'm reporting it right now.: 사실을 바로 알리는 올바른 대응이에요.
+    I'll mention the missing one after the case.: 수술 중이어야 찾을 수 있는 것을 미루는 것이에요.
+  why: 검체가 없어지면 바로 보고해요. 기다려 보거나 수술이 끝난 뒤로 미루지 않아요.
+  ko: 검체 하나가 없어져서 지금 바로 보고할게요
+냉동절편 결과 수술 변경:
+- kind: slider
+  words:
+  - w-positive
+  - w-extend
+  - w-resection
+  - w-prep
+  - w-additional
+  - w-margin
+  cue: The surgeon says the frozen margin came back positive and wants to extend the resection.
+  scale:
+  - I'll get set up for a wider resection now.
+  - I'll wait to see if the surgeon asks again.
+  - I'll prepare nothing until the result is final.
+  answerAt: 0
+  why: 집도의가 절제 범위를 넓히겠다고 하면 간호사는 바로 필요한 기구와 용기를 준비해요. 다시 말하길 기다리거나 결과가 확정될 때까지 준비를 미루면 수술이 지연돼요.
+  example: I'll prep for a wider resection.
+  exKo: 더 넓은 절제를 위해 준비할게요.
+- kind: context
+  words:
+  - w-positive
+  word: positive
+  ko: 양성
+  scenes:
+  - who: 간호사 → 수술팀
+    icon: speech
+    en: Pathology called the margin positive, so the surgeon will extend.
+    ok: true
+  - who: 간호사 → 보호자
+    icon: faceWorried
+    en: The margins came back positive, so there's still cancer there.
+    ok: false
+    fix: The surgeon will come talk to you after surgery and explain everything.
+  - who: 차트 기록
+    icon: board
+    en: Frozen section margin reported positive to surgeon at 11:20.
+    ok: true
+  why: 뜻은 셋 다 '양성'이에요. 수술팀에게는 병리과가 알려 준 결과를 전하고, 차트에는 누구에게 언제 보고했는지 적어요. 하지만 보호자에게 결과를 해석해 말하는 것은 간호사의 일이 아니에요. 수술 후 집도의가 직접 설명하고, 간호사는 그 면담을 안내해요.
+- kind: swap
+  words:
+  - w-positive
+  - w-extend
+  - w-prep
+  who: 간호사 → 수술팀 · 결과 전달
+  icon: me
+  before:
+  - ''
+  - The margin is positive, so we're done here.
+  - ''
+  options:
+  - The margin is positive, so we're done here.
+  - The margin is positive, but we'll keep going unchanged.
+  - The margin is positive, so the surgeon is extending — let's set up.
+  answer: The margin is positive, so the surgeon is extending — let's set up.
+  notes:
+    The margin is positive, so we're done here.: 양성이면 더 잘라야 하므로 마무리할 때가 아니에요.
+    The margin is positive, but we'll keep going unchanged.: 결과가 나왔는데도 준비를 바꾸지 않으면 추가 절제에 대응하지 못해요.
+    The margin is positive, so the surgeon is extending — let's set up.: 결과와 집도의의 결정을 전하고 준비로 이어가는 올바른 말이에요.
+  why: 양성 결과를 받으면 집도의의 결정을 전하고 추가 준비로 이어가요. 마무리하거나 아무것도 바꾸지 않지 않아요.
+  ko: 절제연이 양성이라 집도의가 범위를 넓히니 준비해요
+오염 검체 재채취:
+- kind: slider
+  words:
+  - w-sample
+  - w-touch
+  - w-discard
+  - w-collect
+  - w-kit
+  - w-sterile
+  cue: A culture sample just touched the back table, which is not sterile.
+  scale:
+  - It was only a second, so I'll send it.
+  - I'll rinse the tip off and use it again.
+  - I'll tell the surgeon and use a new kit.
+  answerAt: 2
+  why: 무균이 아닌 곳에 닿은 시료는 오염된 것이라 집도의에게 알리고 새 키트로 다시 채취할지 정해요. 잠깐이라며 보내거나 씻어서 쓰면 균 배양 결과를 믿을 수 없어요.
+  example: Let's collect a fresh sample with a new kit.
+  exKo: 새 키트로 새 검체를 채취해요.
+- kind: context
+  words:
+  - w-surface
+  word: surface
+  ko: 표면
+  scenes:
+  - who: 간호사 → 집도의
+    icon: speech
+    en: This sample touched a non-sterile surface — we need a new one.
+    ok: true
+  - who: 간호사 → 미생물 검사실
+    icon: pager
+    en: It sat on a surface for a second, it's fine.
+    ok: false
+    fix: It touched a non-sterile surface, so we're collecting a new sample.
+  - who: 차트 기록
+    icon: board
+    en: Sample contacted a non-sterile surface; new sample collected with sterile kit.
+    ok: true
+  why: 뜻은 셋 다 '표면'이에요. 집도의에게는 무균이 아닌 표면에 닿았다고 알리고, 차트에는 닿은 사실과 재채취를 적어요. 하지만 미생물검사실에 '잠깐 있었는데 괜찮다'며 보내면 오염된 시료를 정상으로 믿고 검사하게 돼요. 무균이 아닌 표면에 닿았다는 사실을 분명히 알려요.
+- kind: swap
+  words:
+  - w-sample
+  - w-touch
+  who: 간호사 → 집도의 · 시료 오염
+  icon: me
+  before:
+  - ''
+  - It touched the table, but the sample is probably fine.
+  - ''
+  options:
+  - It touched the table, so I'll tell the surgeon and recollect.
+  - It touched the table, but the sample is probably fine.
+  - It touched the table, so the lab can decide later.
+  answer: It touched the table, so I'll tell the surgeon and recollect.
+  notes:
+    It touched the table, so I'll tell the surgeon and recollect.: 사실을 알리고 새로 채취하는 올바른 대응이에요.
+    It touched the table, but the sample is probably fine.: 오염 가능성을 무시하면 배양 결과를 믿을 수 없어요.
+    It touched the table, so the lab can decide later.: 검사실은 보낸 뒤에는 오염 여부를 알 수 없어요.
+  why: 오염된 시료는 집도의에게 알리고 다시 채취해요. 괜찮을 거라 넘기거나 검사실에 미루지 않아요.
+  ko: 탁자에 닿아서 집도의에게 알리고 다시 채취할게요
+잘못된 환자 라벨:
+- kind: slider
+  words:
+  - w-label
+  - w-belong
+  - w-identity
+  - w-verify
+  - w-stop
+  - w-send
+  cue: The label on the container shows another patient's name.
+  scale:
+  - I'll just cross out the name and write ours in.
+  - I'm stopping to recheck the patient's identity.
+  - I'll peel it off and no one will know.
+  answerAt: 1
+  why: 다른 환자 이름이 붙어 있으면 멈추고 신원을 다시 확인해요. 이름을 고쳐 쓰거나 몰래 떼면 검체의 출처를 알 수 없고 사고 기록도 남지 않아요.
+  example: I'll verify identity again.
+  exKo: 신원을 한 번 더 확인할게요.
+- kind: context
+  words:
+  - w-identity
+  word: identity
+  ko: 신원
+  scenes:
+  - who: 간호사 → 병리 기사
+    icon: pager
+    en: Identity? It's one of ours, we'll figure it out.
+    ok: false
+    fix: The label has another patient's identity on it, so we're verifying before we send anything.
+  - who: 간호사 → 집도의
+    icon: speech
+    en: Let's verify the patient's identity before we relabel anything.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Wrong patient label found; identity re-verified and incident reported.
+    ok: true
+  why: 뜻은 셋 다 '신원'이에요. 집도의에게는 다시 라벨하기 전에 확인하자고 하고, 차트에는 오류를 발견하고 신원을 다시 확인해 보고했다고 적어요. 하지만 병리 쪽에 '우리 환자일 것'이라고 하면 확인하지 않은 채 단정하는 말이에요. 아직 확인 중이라 보내지 않는다고 말해요.
+- kind: swap
+  words:
+  - w-identity
+  - w-verify
+  who: 간호사 → 집도의 · 라벨 오류
+  icon: me
+  before:
+  - ''
+  - I'll just fix the name myself and send it on.
+  - ''
+  options:
+  - I'll just fix the name myself and send it on.
+  - I'm stopping to verify identity before anything goes out.
+  - Pathology will notice the wrong name and call us.
+  answer: I'm stopping to verify identity before anything goes out.
+  notes:
+    I'll just fix the name myself and send it on.: 신원을 확인하지 않은 채 이름만 고치면 검체의 출처를 보증할 수 없어요.
+    I'm stopping to verify identity before anything goes out.: 보내기 전에 멈추고 신원을 확인하는 올바른 대응이에요.
+    Pathology will notice the wrong name and call us.: 병리과는 이름이 틀렸는지 알 방법이 없어요.
+  why: 라벨의 환자가 다르면 멈추고 신원부터 다시 확인해요. 혼자 고쳐 보내거나 병리과가 알아채길 기다리지 않아요.
+  ko: 보내기 전에 멈추고 신원부터 확인할게요
+대체 불가 검체 위기:
+- kind: slider
+  words:
+  - w-replace
+  - w-carry
+  - w-handoff
+  - w-confirm
+  - w-specimen
+  - w-log
+  - w-check
+  cue: The specimen is the only tissue from this case and can't be taken again.
+  scale:
+  - I'll hand it to whoever is walking past.
+  - I'll give it to the runner and trust it'll get there.
+  - I'll have it signed for and confirm it arrived.
+  answerAt: 2
+  why: 다시 얻을 수 없는 검체는 인계마다 서명을 남기고 도착을 확인해요. 지나가는 사람에게 넘기거나 잘 갈 거라고 믿고 맡기면 사라져도 어디서 놓쳤는지 알 수 없어요.
+  example: Two people will confirm this handoff together.
+  exKo: 두 사람이 함께 이 인계를 확인할게요.
+- kind: context
+  words:
+  - w-log
+  word: log
+  ko: 일지에 적다
+  scenes:
+  - who: 간호사 → 순환간호사
+    icon: speech
+    en: I'll log the handoff before I leave the room.
+    ok: true
+  - who: 간호사 → 이송 담당자
+    icon: pager
+    en: Just log it somewhere, I guess, whatever.
+    ok: false
+    fix: Please sign the handoff log with your name and the time.
+  - who: 차트 기록
+    icon: board
+    en: 'Handoff logged: time, name and receiver''s signature.'
+    ok: true
+  why: 뜻은 셋 다 '일지에 적다'예요. 동료에게는 방을 나가기 전에 적겠다고 알리고, 차트에는 시간과 이름과 서명을 적었다고 기록해요. 하지만 이송 담당자에게 '아무 데나 적든지'라고 하면 무엇을 어디에 적으라는 것인지 알 수 없어요. 인계 기록지에 이름과 시간을 적으라고 분명히 말해요.
+- kind: swap
+  words:
+  - w-replace
+  - w-confirm
+  - w-handoff
+  who: 간호사 → 순환간호사 · 대체 불가
+  icon: me
+  before:
+  - ''
+  - If it gets lost, we can just replace it.
+  - ''
+  options:
+  - If it gets lost, we can just replace it.
+  - Losing it won't matter, we have the notes.
+  - It can't be replaced, so two of us will confirm every handoff.
+  answer: It can't be replaced, so two of us will confirm every handoff.
+  notes:
+    If it gets lost, we can just replace it.: 다시 얻을 수 없는 검체라서 잃으면 되돌릴 수 없어요.
+    Losing it won't matter, we have the notes.: 기록이 있어도 조직 검체는 대신할 수 없어요.
+    It can't be replaced, so two of us will confirm every handoff.: 대체할 수 없다는 사실에 맞춰 인계마다 두 사람이 확인해요.
+  why: 대체할 수 없는 검체는 인계마다 두 사람이 확인해요. 잃어도 된다고 여기지 않아요.
+  ko: 대체할 수 없어서 인계마다 두 사람이 확인할게요

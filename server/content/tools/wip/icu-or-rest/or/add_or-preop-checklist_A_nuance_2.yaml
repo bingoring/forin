@@ -1,0 +1,142 @@
+"예방적 항생제 준비":
+  - kind: slider
+    words: [w-antibiotic, w-incision, w-ready]
+    cue: "The antibiotic is drawn up, and incision is about 20 minutes away."
+    scale: ["Give it after the case.", "Give it before incision, within the hour.", "Give it hours early, just to be extra safe."]
+    answerAt: 1
+    why: "예방적 항생제는 절개 전 보통 한 시간 안에 들어가야 효과가 있어요(항생제에 따라 기준 시간은 달라요). 수술 후에 주면 의미가 없고, 너무 일찍 주면 수술 중 농도가 떨어질 수 있어요."
+    example: "We need it in within 60 minutes before incision."
+    exKo: "절개 전 60분 안에는 들어가야 해요."
+  - kind: swap
+    words: [w-antibiotic, w-give, w-ready]
+    who: "간호사 → 집도의 · 항생제 준비"
+    icon: stetho
+    before: ["The antibiotic is ready — ", "I'll give it whenever someone tells me to", "."]
+    options: ["I'll give it whenever someone tells me to", "I'll give it now so it's in before incision", "I'll give it after the first cut"]
+    answer: "I'll give it now so it's in before incision"
+    notes:
+      "I'll give it whenever someone tells me to": "누가 시킬 때까지 기다리면 시각을 놓쳐요. 간호사가 시점을 먼저 챙겨야 해요."
+      "I'll give it now so it's in before incision": "절개 전에 들어가도록 시점을 스스로 챙겨 말해요."
+      "I'll give it after the first cut": "절개 뒤에 주면 예방 효과가 떨어져요."
+    why: "예방 항생제는 절개 전에 들어가야 의미가 있어요. 준비됐다고만 하지 말고 언제 주는지까지 말해요."
+    ko: "지금 줘서 절개 전에 들어가게 할게요"
+"혈액형·교차적합 미완료":
+  - kind: slider
+    words: [w-hold, w-incomplete, w-crossmatch]
+    cue: "The case needs blood ready per policy, the crossmatch isn't finished, and the surgeon is waiting."
+    scale: ["FYI — the crossmatch isn't done yet.", "I'd like to hold until blood is ready.", "Cancel the whole case until blood is ready."]
+    answerAt: 1
+    why: "혈액이 준비돼야 하는 수술이면 간호사는 확인되지 않은 채 시작하지 않도록 보류를 요청해요. 알리기만 하면 약해서 시작될 수 있고, 취소는 집도의가 정할 일이에요."
+    example: "We can't start this case without blood ready."
+    exKo: "혈액이 준비되지 않으면 이 건은 시작할 수 없어요."
+  - kind: context
+    words: [w-expedite]
+    word: expedite
+    ko: 신속히 처리하다
+    scenes:
+      - {who: 혈액은행 직원에게, icon: speaker, en: "Could you expedite the crossmatch for Room 4? The case is waiting.", ok: true}
+      - {who: 불안한 가족에게, icon: me, en: "We've asked the blood bank to expedite the crossmatch on your husband's blood.", ok: false, fix: "We've asked the blood bank to rush it, and I'll tell you as soon as it's done."}
+      - {who: 마취과 동료에게, icon: monitor, en: "The blood bank is expediting the crossmatch — I'll update you when it's done.", ok: true}
+    why: "expedite는 병원 안에서 일을 서두르게 할 때 쓰는 말이에요. 가족에게는 딱딱하고 낯설게 들려서 '서둘러 달라고 했고, 끝나면 알려 드릴게요'처럼 풀어 말하는 게 좋아요."
+"필수 검사 결과 누락":
+  - kind: slider
+    words: [w-critical, w-required, w-proceed]
+    cue: "The required potassium for a dialysis patient isn't back, and the OR is waiting for the patient."
+    scale: ["Mention it at handoff.", "Remind the team that it's still missing today.", "Tell the surgeon and anesthesia now."]
+    answerAt: 2
+    why: "꼭 필요한 검사 결과가 없으면 진행 여부는 집도의와 마취과가 정해야 해요. 간호사는 시작 전에 직접 알려야 하고, 인계 때 말하거나 상기만 시키면 늦어요."
+    example: "This lab is critical before we can proceed."
+    exKo: "이 검사는 진행 전에 꼭 필요한 수치예요."
+  - kind: swap
+    words: [w-required, w-result]
+    who: "간호사 → 환자 · 검사 결과 누락"
+    icon: me
+    before: ["The potassium is required for this case, ", "so we're cancelling your surgery", ". I'll let the team know and keep you updated."]
+    options: ["so we're cancelling your surgery", "so don't worry about it", "so we need to wait for it to come back"]
+    answer: "so we need to wait for it to come back"
+    notes:
+      "so we're cancelling your surgery": "취소는 간호사가 정할 일이 아니에요. 집도의와 마취과가 판단해요."
+      "so don't worry about it": "필요한 결과가 없는데 걱정 말라는 건 거짓 안심이에요."
+      "so we need to wait for it to come back": "결과를 기다려야 한다는 사실만 말하고, 결정은 팀에 맡겨요."
+    why: "수술 여부는 간호사가 단정하지 않아요. 지금 기다리는 중이라는 사실을 말하고 팀에 알려 업데이트해 주겠다고 해요."
+    ko: "결과가 나올 때까지 기다려야 해요"
+"인공관절·심박동기 정보":
+  - kind: slider
+    words: [w-pacemaker, w-pass, w-implant]
+    cue: "The patient hands you a pacemaker card with the model and implant date."
+    scale: ["Record it and pass it to the surgical team.", "Call cardiology to the OR right away.", "Cancel the surgery until cardiology reviews it."]
+    answerAt: 0
+    why: "간호사는 기기 정보를 기록하고 수술팀에 전달해요. 심장내과를 부를지, 소작이나 자석을 어떻게 쓸지는 집도의와 마취과가 정해요. 바로 부르거나 취소하는 것은 간호사의 몫이 아니에요."
+    example: "I'll pass this to the surgical team."
+    exKo: "이 정보를 수술팀에 전달할게요."
+  - kind: context
+    words: [w-implant]
+    word: implant
+    ko: 이식물
+    scenes:
+      - {who: 수술팀 동료에게, icon: board, en: "The chart lists a right hip implant.", ok: true}
+      - {who: 환자에게, icon: me, en: "Do you have any metal implants, like a pacemaker or a joint replacement?", ok: true}
+      - {who: 환자의 보호자에게, icon: speaker, en: "Please list all the implants your mother has had, including any intracorporeal prosthetic devices.", ok: false, fix: "Does your mother have anything metal in her body, like a heart device or a new knee?"}
+    why: "implant는 차트나 의료진 사이에서 정확한 말이에요. 보호자에게는 '몸속에 금속이 있는지'처럼 쉽게 물어야 대답이 나와요."
+"항생제 투여 시각 지연":
+  - kind: slider
+    words: [w-delay, w-schedule, w-antibiotic]
+    cue: "The start time slipped 30 minutes, and the antibiotic isn't in yet."
+    scale: ["Do nothing — it's fine.", "Tell the team and give it before incision.", "Tell the team to cancel the case today."]
+    answerAt: 1
+    why: "시작이 늦어진 만큼 투여 시점도 다시 맞춰야 해요. 팀에 알리고 절개 전에 주도록 챙기는 게 맞아요. 그냥 두면 시기를 놓치고, 취소는 과해요."
+    example: "I'll adjust the timing and document it."
+    exKo: "시각을 조정하고 기록해 둘게요."
+  - kind: swap
+    words: [w-document, w-timing]
+    who: "간호사 → 마취과 · 투여 시각 지연"
+    icon: monitor
+    before: ["I'll give it now and ", "chart the originally planned time", "."]
+    options: ["document the exact time it actually goes in", "chart the originally planned time", "skip charting it since we're late"]
+    answer: "document the exact time it actually goes in"
+    notes:
+      "document the exact time it actually goes in": "실제로 들어간 시각을 그대로 기록해요. 차트는 사실이어야 해요."
+      "chart the originally planned time": "실제와 다른 시각을 적는 것이라 기록이 거짓이 돼요."
+      "skip charting it since we're late": "늦었어도 기록을 빼면 안 돼요. 투여 시각이 나중에 확인돼야 해요."
+    why: "투약 기록은 실제 시각으로 남겨야 해요. 늦었다는 이유로 생략하거나 계획 시각을 적으면 안 돼요."
+    ko: "실제로 들어간 정확한 시각을 기록할게요"
+"정맥로 불량 재확보":
+  - kind: slider
+    words: [w-pinch, w-feel]
+    cue: "Before the stick, a nervous patient asks, 'Will it hurt?'"
+    scale: ["You'll feel a small pinch.", "It will sting, but it's quick.", "It's going to hurt, so brace yourself."]
+    answerAt: 0
+    why: "주사 전에는 '작은 따끔함'이라고 솔직하고 부드럽게 말하는 게 보통이에요. 더 세게 말하면 불안만 커지고 몸도 굳어요."
+    example: "You'll feel a small pinch."
+    exKo: "작은 따끔함이 느껴질 거예요."
+  - kind: swap
+    words: [w-try, w-flow, w-site]
+    who: "간호사 → 환자 · IV 다시 잡기"
+    icon: me
+    before: ["That IV isn't flowing well, ", "so your veins aren't good enough", ". Let me try a new site on your other arm."]
+    options: ["so your veins aren't good enough", "and that happens sometimes", "so I messed it up"]
+    answer: "and that happens sometimes"
+    notes:
+      "so your veins aren't good enough": "환자 탓처럼 들려서 위축돼요."
+      "and that happens sometimes": "흔히 있는 일이라고 알려 줘 환자 탓도 내 탓도 아니라는 느낌을 줘요."
+      "so I messed it up": "스스로를 깎아내려 환자가 불안해해요."
+    why: "IV가 잘 안 되는 건 흔한 일이에요. 환자를 탓하지도 자책하지도 않고 담담히 다음 계획을 말해요."
+    ko: "그럴 때가 가끔 있어요"
+"의치·보청기 제거 거부":
+  - kind: slider
+    words: [w-denture, w-airway, w-return]
+    cue: "Patient: 'I won't take out my teeth in front of everyone!'"
+    scale: ["It's your choice.", "I understand — we'll label them and return them right away.", "If you don't take them out, we simply can't do your surgery."]
+    answerAt: 1
+    why: "의치는 기도 안전 때문에 빼야 하는 경우가 많아요. 거절하는 마음을 이해해 주고 이름표를 붙여 보관했다가 돌려준다고 말하면 협조해요. 환자 마음대로 하라는 말도, 협박처럼 들리는 말도 알맞지 않아요."
+    example: "We'll keep them labeled and return them in recovery."
+    exKo: "이름표를 붙여 보관했다가 회복실에서 돌려드릴게요."
+  - kind: context
+    words: [w-airway]
+    word: airway
+    ko: 기도
+    scenes:
+      - {who: 마취과 동료에게, icon: monitor, en: "Dentures are out — airway is clear.", ok: true}
+      - {who: 겁먹은 환자에게, icon: me, en: "Dentures can slip and block your airway, and you could aspirate.", ok: false, fix: "Taking them out helps us keep you breathing safely."}
+      - {who: 회복실 간호사에게, icon: board, en: "Dentures are bagged and labeled; airway was clear at induction.", ok: true}
+    why: "의료진끼리는 airway와 aspirate 같은 말이 정확하고 빨라요. 겁먹은 환자에게는 위험을 늘어놓기보다 '안전하게 숨 쉬게 하려고'라고 말하는 게 좋아요."

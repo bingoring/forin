@@ -152,3 +152,13 @@ keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't a
   `pipeline/TASK.md` B 절에 "~려고" 쏠림(or-bleeding 105문장 중 73문장)·보고 대신 다시 재기 실패를 덧붙임.
   남은 작은 일: core-language-or 15.2 "The surgeon says…"·or-bleeding 16.0 "anesthesia is…"는 상황 persona가 그 당사자라 대화 상대에게 3인칭으로 말하게 됨(다음 손질 때 persona 또는 문장 조정), core 18.2·18.4 거의 같은 문장, or-bleeding order 17 셋째 줄 상대 바뀜, 검사기 V21 금칙어 목록 보강(cun·kus·kill·crypt·gin 등이 안 잡힘).
   남은 OR: 25주제.
+
+- **OR 묶음 5 (2주제, 2026-11-17 저작 → 2026-11-24 합침)**: core-family-or·or-emergency-open. 2026-11-17 오후 사용자 지시로 한 번 중지했다가 같은 날 밤 이어서 함(중지분 부분 파일은 지우고 다시).
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | changes(KP 반영 후) |
+  |---|---|---|---|
+  | core-family-or | 59(8) — 간호사가 합병증·나쁜 소식·선택지 고지(keyPhrase와 뉘앙스가 모순), "혈압 70대=안정", 즉시 알림 약속 | 112(14·26) — 연락·대기 확인 대상 바꾸기, 면담 연결을 다른 일로, healed/cured 빈칸 | 162 |
+  | or-emergency-open | 53(1) — "someone call the code"(사망 선언으로도 읽힘), 간호사 약 준비·기도 관리 | 154(49·52) — 위기 소견·장비·제제 바꾸기, 계수 대상, 비임상 장소, order S7 신생아팀 순서 | 136 |
+  keyPhrase 결정(사용자 2026-11-24 전부 '추천대로'): core-family-or 바꿈 6(15·16·20 — 간호사 고지 → 집도의 면담 연결·동석, "what he would want"; 16.3 en도 함께), or-emergency-open 바꿈 6(복창 "Got it — we're packing…", FFP를 묻기, DIC를 묻기, MTP는 혈액은행에 전화, "coordinate the transfusion", "Blood bank says…") / chunks 24문장(core 16·emergency 8). seed brief·goals·skills 12곳도 맞춤. 작업 `../kp-2026-11-24/`. 정본 합침, OR 위반 0.
+  발견: 앱이 swap·context·빈칸 보기를 적힌 순서대로 보여 주는데 정답 위치가 크게 쏠려 있음(ER swap 371/373 첫 칸, ICU 빈칸 81% 첫 칸, OR context 어색 장면 전부 셋째) — 앱에서 섞는 별도 작업으로 넘김. 묶음 5부터 저작·수정 지시에 주제 안 위치 섞기를 넣음.
+  남은 작은 일: core-family-or 15.3 "hard news to hear"가 새 장면(간호사가 알리지 않음)과 약하게 어긋남, 15·16 상황 title("소식 전달") 변경 여부.
+  남은 OR: 23주제(묶음 6 preop-checklist·specimen 저작 중).
