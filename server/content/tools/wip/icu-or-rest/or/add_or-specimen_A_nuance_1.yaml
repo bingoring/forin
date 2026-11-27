@@ -1,0 +1,337 @@
+검체 용기 라벨 부착:
+- kind: slider
+  words:
+  - w-label
+  - w-container
+  cue: The surgeon hands off the gallbladder and the cup in front of you is still blank.
+  scale:
+  - I'll label it later, once we're closing.
+  - I'm labeling it now and reading it aloud.
+  - I'll label it once, so nobody needs to recheck.
+  answerAt: 1
+  why: 검체는 떼어 낸 그 자리에서 바로 라벨을 붙이고 소리 내어 읽어 확인해요. 나중으로 미루면 검체가 뒤섞일 수 있고, 한 번 붙였다고 확인을 생략하면 라벨 오류를 놓쳐요.
+  example: I'll read the label back to you.
+  exKo: 라벨에 적은 내용을 다시 읽어 드릴게요.
+- kind: context
+  words:
+  - w-label
+  word: label
+  ko: 라벨
+  scenes:
+  - who: 간호사 → 집도의
+    icon: speech
+    en: I'm labeling the container now — gallbladder, from Mr. Kim.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Specimen labeled with two patient identifiers and sent to pathology.
+    ok: true
+  - who: 간호사 → 병리 기사
+    icon: pager
+    en: It's got a label on it somewhere, I think — can't really read it.
+    ok: false
+    fix: The container is labeled with the patient's name, date of birth, specimen name and site.
+  why: 뜻은 셋 다 '라벨'이에요. 집도의에게는 지금 붙이고 있다고 짧게, 차트에는 식별자와 이송을 건조하게 적어요. 하지만 병리 쪽에는 무엇이 적혀 있는지 분명히 말해야 해요. '어딘가 있는 것 같다'는 말은 검체를 믿고 받을 수 없게 만들어요.
+- kind: swap
+  words:
+  - w-label
+  - w-container
+  who: 간호사 → 순환간호사 · 라벨 시점
+  icon: me
+  before:
+  - ''
+  - I'll label it later, when things calm down.
+  - ''
+  options:
+  - I'm labeling it right now and I'll read it aloud.
+  - I'll label it later, when things calm down.
+  - I'll send it as is — the requisition has her name.
+  answer: I'm labeling it right now and I'll read it aloud.
+  notes:
+    I'm labeling it right now and I'll read it aloud.: 검체를 떼어 낸 자리에서 바로 붙이고 소리 내어 확인하니 뒤섞일 틈이 없어요.
+    I'll label it later, when things calm down.: 나중으로 미루면 어느 용기가 어느 조직인지 헷갈리기 쉬워요.
+    I'll send it as is — the requisition has her name.: 용기 자체에 라벨이 없으면 요청서만 믿고 보낼 수 없어요.
+  why: 라벨은 검체가 나온 자리에서 바로 붙이고 소리 내어 확인해요. 미루지도, 요청서에 기대지도 않아요.
+  ko: 지금 바로 라벨을 붙이고 소리 내어 읽을게요
+조직명 구두 확인:
+- kind: pair
+  words:
+  - w-read
+  - w-say
+  - w-record
+  - w-confirm
+  pairs:
+  - - out
+    - loud
+  - - word for
+    - word
+  - - on the
+    - record
+  decoys:
+  - the room
+  why: '''out loud(소리 내어)'', ''word for word(한 마디도 빼지 않고)'', ''on the record(기록으로 남겨)''는 서로 바꿔 끼울 수 없는 굳은 짝이에요. 검체 이름은 소리 내어 읽고, 들은 그대로 적고, 기록으로 남겨요.'
+- kind: context
+  words:
+  - w-appendix
+  word: appendix
+  ko: 맹장
+  scenes:
+  - who: 간호사 → 집도의
+    icon: speech
+    en: Can you confirm this is the appendix before I bag it?
+    ok: true
+  - who: 간호사 → 병리 기사
+    icon: pager
+    en: It's an appendix, or something like that, I think.
+    ok: false
+    fix: The specimen is the appendix, confirmed verbally with Dr. Park.
+  - who: 차트 기록
+    icon: board
+    en: 'Specimen confirmed verbally with Dr. Park: appendix.'
+    ok: true
+  why: 뜻은 셋 다 '맹장(충수)'이에요. 집도의에게는 맹장이 맞는지 묻고, 차트에는 누구와 확인했는지 적어요. 하지만 병리 쪽에 '맹장인 것 같다'고 하면 확인된 이름인지 알 수 없어요. 누구와 확인했는지 밝히며 분명한 이름으로 말해요.
+- kind: swap
+  words:
+  - w-confirm
+  - w-specimen
+  who: 간호사 → 집도의 · 검체 이름 확인
+  icon: me
+  before:
+  - ''
+  - The container says appendix, so I'll just go with that.
+  - ''
+  options:
+  - The container says appendix, so I'll just go with that.
+  - Say the specimen name out loud and I'll read it back.
+  - I already wrote it down, so no need to say it again.
+  answer: Say the specimen name out loud and I'll read it back.
+  notes:
+    The container says appendix, so I'll just go with that.: 용기에 적힌 이름만 믿으면 틀린 라벨을 그대로 보내게 돼요.
+    Say the specimen name out loud and I'll read it back.: 집도의가 말하고 간호사가 복창하면 두 사람이 같은 이름을 확인해요.
+    I already wrote it down, so no need to say it again.: 적어 둔 것과 실제가 다를 수 있어 소리 내어 확인하는 과정을 생략하면 안 돼요.
+  why: 검체 이름은 집도의가 말하고 간호사가 복창해 확인해요. 용기나 이미 적은 메모만 믿지 않아요.
+  ko: 검체 이름을 소리 내어 말씀해 주세요, 제가 다시 읽을게요
+검체 보존액 선택:
+- kind: slider
+  words:
+  - w-formalin
+  - w-saline
+  - w-fixative
+  cue: The requisition marks the gallbladder as routine pathology, and the surgeon asks where it goes.
+  scale:
+  - It goes in formalin, as the requisition says.
+  - I'd put it in saline, just to keep it moist.
+  - Let's skip the container, pathology can sort it.
+  answerAt: 0
+  why: 요청서가 일반 병리 검사라고 하면 고정액인 포르말린에 담가요. 신선한 상태가 필요한 검사만 생리식염수나 마른 상태로 보내고, 어느 쪽인지 확실치 않으면 병리과에 물어요.
+  example: Let me check the requisition first.
+  exKo: 먼저 요청서를 확인해 볼게요.
+- kind: context
+  words:
+  - w-formalin
+  word: formalin
+  ko: 포르말린
+  scenes:
+  - who: 간호사 → 동료
+    icon: speech
+    en: This one goes in formalin, and the next one stays fresh.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Plopped it in some formalin, I guess.
+    ok: false
+    fix: Specimen placed in formalin, labeled and sent to pathology.
+  - who: 간호사 → 병리 기사
+    icon: pager
+    en: The gallbladder is in formalin, labeled and on its way.
+    ok: true
+  why: 뜻은 셋 다 '포르말린'이에요. 동료와 병리 쪽에는 무엇이 어디에 들었는지 짧고 분명하게 말해요. 하지만 차트에 '대충 넣었다'고 적으면 기록으로 쓸 수 없어요. 차트에는 무엇을 어디에 담아 보냈는지 건조하게 적어요.
+- kind: swap
+  words:
+  - w-formalin
+  - w-fixative
+  who: 간호사 → 집도의 · 보존액 확인
+  icon: me
+  before:
+  - ''
+  - Just put it in formalin, the lab won't mind.
+  - ''
+  options:
+  - Just put it in formalin, the lab won't mind.
+  - Pathology will sort out the fixative later.
+  - Let me check the requisition for the right fixative.
+  answer: Let me check the requisition for the right fixative.
+  notes:
+    Just put it in formalin, the lab won't mind.: 신선한 상태가 필요한 검체라면 포르말린에 넣는 순간 쓸 수 없게 돼요.
+    Pathology will sort out the fixative later.: 검체가 이미 상한 뒤에는 병리과도 되돌릴 수 없어요.
+    Let me check the requisition for the right fixative.: 요청서로 알맞은 고정 방식을 먼저 확인하는 올바른 순서예요.
+  why: 고정액은 요청서를 보고 정해요. 일단 넣고 나중에 맡기면 되돌릴 수 없어요.
+  ko: 요청서에서 맞는 고정액을 먼저 확인할게요
+검체 전달 기록:
+- kind: slider
+  words:
+  - w-sign
+  - w-receive
+  - w-log
+  cue: A courier takes two specimens from you and starts to walk away.
+  scale:
+  - Have a good one, they're all yours.
+  - No signature needed, I trust you got them.
+  - Please sign here to show you received them.
+  answerAt: 2
+  why: 검체를 넘길 때는 받는 사람이 받았다는 서명을 남기고, 누가 언제 받았는지 기록해요. 인사만 하고 넘기거나 서명을 생략하면 검체가 사라져도 누구에게 갔는지 알 수 없어요.
+  example: I'll log the time and your name.
+  exKo: 시간과 이름을 기록할게요.
+- kind: context
+  words:
+  - w-handoff
+  word: handoff
+  ko: 인계
+  scenes:
+  - who: 간호사 → 순환간호사
+    icon: speech
+    en: I'll finish the handoff on these two specimens before I scrub out.
+    ok: true
+  - who: 간호사 → 병리 기사
+    icon: pager
+    en: 'Handoff done: two specimens, signed and logged at 10:20.'
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Gave the specimens to some guy, handoff whenever.
+    ok: false
+    fix: Handoff of two specimens to the courier at 10:20, receipt signed.
+  why: 뜻은 셋 다 '인계'예요. 동료와 병리 쪽에는 몇 개를 언제 넘겼는지 분명히 말해요. 차트에 '아무개에게 아무 때나'라고 쓰면 누가 받았는지 추적할 수 없어요. 차트에는 몇 개를 누구에게 언제 넘겼고 서명을 받았는지 적어요.
+- kind: swap
+  words:
+  - w-sign
+  - w-handoff
+  who: 간호사 → 이송 담당자 · 인계 서명
+  icon: me
+  before:
+  - ''
+  - Take them down, you don't need to sign anything.
+  - ''
+  options:
+  - Please sign for them, and I'll log the time.
+  - Take them down, you don't need to sign anything.
+  - Just text me when you get there, that's fine.
+  answer: Please sign for them, and I'll log the time.
+  notes:
+    Please sign for them, and I'll log the time.: 받았다는 서명과 시간이 남아 인계 경로를 되짚을 수 있어요.
+    Take them down, you don't need to sign anything.: 서명이 없으면 도중에 사라져도 누가 받았는지 몰라요.
+    Just text me when you get there, that's fine.: 나중에 문자로 알리는 것은 기록이 아니고 받은 사람의 서명도 없어요.
+  why: 검체 인계는 받는 사람의 서명과 시간을 남겨요. 서명을 생략하거나 문자로 대신하지 않아요.
+  ko: 받았다는 서명을 해 주세요, 시간은 제가 기록할게요
+냉동절편 검체 준비:
+- kind: slider
+  words:
+  - w-frozen
+  - w-fixative
+  - w-surgeon
+  cue: The surgeon says, "Send this to frozen section." You're holding the specimen.
+  scale:
+  - I'll hold it until we finish the case, then send it.
+  - I'll put it in formalin first, just to be safe.
+  - It goes in fresh with no fixative, straight to pathology.
+  answerAt: 2
+  why: 냉동절편은 수술 중 결과를 기다리는 검사라서 고정액에 담그지 않고 신선한 상태로 곧바로 병리과에 보내요. 포르말린에 넣으면 검사를 할 수 없고, 수술이 끝날 때까지 두면 집도의가 결과를 기다리지 못해요.
+  example: Pathology is waiting for it.
+  exKo: 병리과에서 기다리고 있어요.
+- kind: context
+  words:
+  - w-frozen
+  word: frozen
+  ko: 냉동된
+  scenes:
+  - who: 간호사 → 집도의
+    icon: speech
+    en: The frozen specimen is on its way to pathology now.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Frozen section specimen sent fresh to pathology at 10:35.
+    ok: true
+  - who: 간호사 → 병리 기사
+    icon: pager
+    en: It's frozen, you know, like icy cold, just in case.
+    ok: false
+    fix: This is a frozen section specimen — it's fresh, with no fixative, and the surgeon is waiting.
+  why: 뜻은 셋 다 '냉동절편(검체)'이에요. 병리 쪽에는 냉동절편 검체이고 신선하며 고정액이 없고 집도의가 기다린다는 사실이 필요해요. '꽁꽁 얼린'이라는 뜻으로 말하면 검체를 실제로 얼린 것처럼 들려 헷갈려요.
+- kind: swap
+  words:
+  - w-frozen
+  - w-fixative
+  who: 간호사 → 순환간호사 · 냉동절편 처리
+  icon: me
+  before:
+  - ''
+  - Put it in formalin first so it keeps.
+  - ''
+  options:
+  - Put it in formalin first so it keeps.
+  - Send it fresh, straight to pathology, no fixative.
+  - Chill it on ice and send it when we close.
+  answer: Send it fresh, straight to pathology, no fixative.
+  notes:
+    Put it in formalin first so it keeps.: 고정액에 넣으면 냉동절편 검사를 할 수 없어요.
+    Send it fresh, straight to pathology, no fixative.: 냉동절편은 신선한 상태로 바로 병리과에 가요.
+    Chill it on ice and send it when we close.: 수술이 끝날 때까지 보내지 않으면 집도의가 결과를 기다릴 수 없어요.
+  why: 냉동절편 검체는 고정액 없이 신선한 채로 곧바로 병리과에 가요.
+  ko: 고정액 없이 신선한 채로 곧바로 병리과에 보내요
+검체 방향 표시:
+- kind: slider
+  words:
+  - w-suture
+  - w-mark
+  - w-orientation
+  cue: The surgeon places a short suture on one edge of the specimen and tells you what it marks.
+  scale:
+  - I'll trust pathology to figure it out.
+  - I'll remember which side it is.
+  - I'll write that on the requisition now.
+  answerAt: 2
+  why: 방향을 표시한 봉합사가 무엇을 뜻하는지는 집도의가 말하고, 간호사는 그 내용을 요청서에 바로 적어요. 기억에 맡기거나 병리과가 알아서 알아내길 기대하면 방향 정보가 사라져요.
+  example: Short suture means superior.
+  exKo: 짧은 봉합사는 위쪽이라는 뜻이에요.
+- kind: context
+  words:
+  - w-orientation
+  word: orientation
+  ko: 방향
+  scenes:
+  - who: 간호사 → 집도의
+    icon: speech
+    en: Can you tell me the orientation before I write it down?
+    ok: true
+  - who: 간호사 → 병리 기사
+    icon: pager
+    en: The orientation is marked with sutures and written on the requisition.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: 'Orientation: the stuff on top is kinda up, I guess.'
+    ok: false
+    fix: 'Orientation marked per surgeon: short suture superior, long suture lateral.'
+  why: 뜻은 셋 다 '방향'이에요. 집도의에게는 방향을 말해 달라고 요청하고, 병리 쪽에는 봉합사와 요청서로 표시했다고 전해요. 차트에 '위쪽인 것 같다'고 적으면 근거가 없어요. 집도의가 말한 대로 어느 봉합사가 어느 방향인지 적어요.
+- kind: swap
+  words:
+  - w-mark
+  - w-suture
+  who: 간호사 → 집도의 · 방향 표시
+  icon: me
+  before:
+  - ''
+  - Which suture marks which side? I'll remember.
+  - ''
+  options:
+  - Which suture marks which side? I'll remember.
+  - I'll write which suture marks which side now.
+  - Pathology can see which side is which.
+  answer: I'll write which suture marks which side now.
+  notes:
+    Which suture marks which side? I'll remember.: 기억에만 의존하면 요청서에 남지 않아 병리과가 방향을 알 수 없어요.
+    I'll write which suture marks which side now.: 집도의가 말한 대로 요청서에 바로 적어 두는 올바른 방법이에요.
+    Pathology can see which side is which.: 떼어 낸 조직만 봐서는 위·옆을 알 수 없어요.
+  why: 봉합사가 어느 방향을 뜻하는지는 요청서에 바로 적어요. 기억에도 병리과의 눈썰미에도 맡기지 않아요.
+  ko: 어느 봉합사가 어느 쪽인지 지금 적을게요

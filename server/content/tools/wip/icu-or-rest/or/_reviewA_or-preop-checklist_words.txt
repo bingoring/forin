@@ -1,0 +1,459 @@
+w-confirm | confirm | 확인하다 | tag=확인·점검 | dEn=['conform', 'comfort'] | dKo=['취소하다', '연기하다'] | chips=[['con', 'firm']] | decoy=['com', 'form']
+   cue=들은 말이나 적힌 기록이 맞다고 확정해 두는 일 — 그냥 믿고 넘어가지 않는다
+   ex=I'm going to confirm a few things before your surgery. / 수술 전에 몇 가지 확인할게요.
+w-surgery | surgery | 수술 | tag=수술 단계 | dEn=['therapy', 'anatomy'] | dKo=['진료', '검사'] | chips=[['sur', 'ger', 'y']] | decoy=['ser', 'jer']
+   cue=마취를 하고 몸을 열어 치료하는 일 — 환자가 곧 들어갈 것
+   ex=I'm going to confirm a few things before your surgery. / 수술 전에 몇 가지 확인할게요.
+w-dob | date of birth | 생년월일 | tag=확인·점검 | dEn=['date of surgery', 'place of birth'] | dKo=['출생지', '입원일'] | chips=[['date'], ['of'], ['birth']] | decoy=['berth', 'for']
+   cue=이름과 함께 묻는, 환자 본인이 맞는지 가려내는 두 번째 신원 정보
+   ex=Can you tell me your name and date of birth? / 성함과 생년월일을 말씀해 주시겠어요?
+w-procedure | procedure | 시술 | tag=수술 단계 | dEn=['process', 'prescription'] | dKo=['처방', '진찰'] | chips=[['pro', 'ce', 'dure']] | decoy=['pre', 'cure']
+   cue=수술보다 작게, 몸에 도구를 넣거나 대어 하는 처치 — 오늘 받을 일을 물을 때 쓰는 말
+   ex=What procedure are you having today? / 오늘 어떤 시술을 받으시나요?
+w-checklist | checklist | 점검표 | tag=서류·기록 | dEn=['worklist', 'waitlist'] | dKo=['명단', '처방전'] | chips=[['check', 'list']] | decoy=['cheek', 'last']
+   cue=빠짐없이 하나씩 줄을 그어 가며 확인하는 목록
+   ex=Let's go through your checklist step by step. / 점검표를 단계별로 함께 확인할게요.
+w-step | step | 단계 | tag=안내·소통 | dEn=['stem', 'steep'] | dKo=['속도', '방향'] | chips=[['step']] | decoy=['stop']
+   cue=한 번에 하나씩 차례로 밟아 가는 과정의 한 칸
+   ex=Let's go through your checklist step by step. / 점검표를 단계별로 함께 확인할게요.
+w-explain | explain | 설명하다 | tag=안내·소통 | dEn=['explore', 'expand'] | dKo=['질문하다', '요약하다'] | chips=[['ex', 'plain']] | decoy=['plane', 'com']
+   cue=상대가 이해하도록 이유와 방법을 풀어서 말해 주는 일
+   ex=I'll explain each step as we go. / 진행하면서 각 단계를 설명해 드릴게요.
+w-routine | routine | 일상적인 | tag=안내·소통 | dEn=['urgent', 'random'] | dKo=['응급의', '특수한'] | chips=[['rou', 'tine']] | decoy=['rut', 'teen']
+   cue=특별한 이유 없이 모든 환자에게 늘 하는 — 겁먹을 일 아니라고 안심시킬 때
+   ex=This is just a routine check before we take you back. / 들어가시기 전에 하는 그냥 일상적인 확인이에요.
+w-check | check | 점검하다 | tag=확인·점검 | dEn=['chat', 'chase'] | dKo=['고치다', '버리다'] | chips=[['check']] | decoy=['chick']
+   cue=빠진 것이나 틀린 곳이 없는지 눈으로 훑어 살피는 일
+   ex=This is just a routine check before we take you back. / 들어가시기 전에 하는 그냥 일상적인 확인이에요.
+w-lab | lab | 검사(실) | tag=검사·혈액 | dEn=['lap', 'lamp'] | dKo=['병동', '약제실'] | chips=[['lab']] | decoy=['lap']
+   cue=혈액이나 소변을 보내 수치를 알아내는 곳, 또는 그 결과
+   ex=Are all the labs and imaging back in the chart? / 검사와 영상 결과가 전부 차트에 들어와 있나요?
+w-imaging | imaging | 영상 검사 | tag=검사·혈액 | dEn=['imagery', 'packaging'] | dKo=['혈액 검사', '소변 검사'] | chips=[['im', 'ag', 'ing']] | decoy=['in', 'age']
+   cue=엑스선·CT·MRI처럼 몸속을 사진으로 찍어 보는 검사를 묶어 부르는 말
+   ex=Are all the labs and imaging back in the chart? / 검사와 영상 결과가 전부 차트에 들어와 있나요?
+w-chart | chart | 차트 | tag=서류·기록 | dEn=['chat', 'charm'] | dKo=['처방전', '진단서'] | chips=[['chart']] | decoy=['chat']
+   cue=환자 한 명의 병력·검사·처치가 모여 있는 기록 한 벌
+   ex=Are all the labs and imaging back in the chart? / 검사와 영상 결과가 전부 차트에 들어와 있나요?
+w-typescreen | type-and-screen | 혈액형·항체 선별검사 | tag=검사·혈액 | dEn=['type-and-cross', 'tape-and-screen'] | dKo=['혈액 응고 시간 검사', '소변 세균 배양 검사'] | chips=[['type-', 'and-', 'screen']] | decoy=['tape-', 'cross']
+   cue=수혈이 필요할 때를 대비해 미리 혈액형과 항체 유무를 알아 두는 검사
+   ex=The CBC and type-and-screen are both here. / CBC와 type-and-screen 둘 다 와 있어요.
+w-flag | flag | 표시해 두다 | tag=확인·점검 | dEn=['flip', 'flush'] | dKo=['지워 두다', '숨겨 두다'] | chips=[['flag']] | decoy=['flap']
+   cue=눈에 띄게 표시를 붙여 놓아 나중에 다시 보게 하는 일
+   ex=I'll flag anything that's still pending. / 아직 대기 중인 게 있으면 표시해 둘게요.
+w-pending | pending | 대기 중인 | tag=검사·혈액 | dEn=['ending', 'trending'] | dKo=['완료된', '취소된'] | chips=[['pend', 'ing']] | decoy=['pen', 'end']
+   cue=결과나 처리가 아직 나오지 않고 기다리는 중인 상태
+   ex=I'll flag anything that's still pending. / 아직 대기 중인 게 있으면 표시해 둘게요.
+w-potassium | potassium | 칼륨 | tag=검사·혈액 | dEn=['sodium', 'calcium'] | dKo=['나트륨', '칼슘'] | chips=[['po', 'tas', 'si', 'um']] | decoy=['pat', 'ask']
+   cue=심장 박동에 영향을 주는 전해질 — 너무 높으면 위험해서 수술 전에 꼭 보는 수치
+   ex=I don't see the potassium result yet. / 칼륨 결과가 아직 안 보이네요.
+w-result | result | 결과 | tag=검사·혈액 | dEn=['resort', 'resource'] | dKo=['원인', '과정'] | chips=[['re', 'sult']] | decoy=['res', 'salt']
+   cue=검사를 마치고 나온 값이나 판정
+   ex=I don't see the potassium result yet. / 칼륨 결과가 아직 안 보이네요.
+w-iv | IV | 정맥주사 | tag=정맥로 | dEn=['IM', 'IO'] | dKo=['근육주사', '피하주사'] | chips=[['IV']] | decoy=['VI']
+   cue=팔 혈관에 꽂은 가는 관으로 수액과 약을 넣는 길 — 두 글자 약어로 부른다
+   ex=I'm checking that your IV is running well. / IV가 잘 흐르고 있는지 확인하고 있어요.
+w-run | run | 들어가다 | tag=정맥로 | dEn=['rub', 'rush'] | dKo=['막히다', '고이다'] | chips=[['run']] | decoy=['ran']
+   cue=수액이 막히지 않고 혈관 속으로 내려가는 동안의 상태를 말하는 동사
+   ex=I'm checking that your IV is running well. / IV가 잘 흐르고 있는지 확인하고 있어요.
+w-feel | feel | 느끼다 | tag=신체·상태 | dEn=['fell', 'fee'] | dKo=['참다', '숨기다'] | chips=[['feel']] | decoy=['fill']
+   cue=몸에서 느껴지는 감각을 환자가 알아차리는 일
+   ex=Let me know if you feel any burning at the site. / 부위에 타는 듯한 느낌이 들면 말씀해 주세요.
+w-burn | burn | 화끈거리다 | tag=신체·상태 | dEn=['burst', 'bruise'] | dKo=['가렵다', '저리다'] | chips=[['burn']] | decoy=['bun']
+   cue=주사 놓은 자리가 불에 덴 듯 화끈거리는 증상 — 새고 있다는 신호일 수 있다
+   ex=Let me know if you feel any burning at the site. / 부위에 타는 듯한 느낌이 들면 말씀해 주세요.
+w-site | site | 부위 | tag=신체·상태 | dEn=['sight', 'cite'] | dKo=['방향', '자세'] | chips=[['site']] | decoy=['sit']
+   cue=주사를 꽂았거나 수술할 자리, 몸의 특정 지점
+   ex=Let me know if you feel any burning at the site. / 부위에 타는 듯한 느낌이 들면 말씀해 주세요.
+w-line | line | (정맥)라인 | tag=정맥로 | dEn=['lime', 'link'] | dKo=['모니터선', '소변줄'] | chips=[['line']] | decoy=['lane']
+   cue=혈관에 꽂아 수액과 약이 들어가게 하는 가느다란 관
+   ex=This line will give you fluids and medication during surgery. / 이 라인으로 수술 중에 수액과 약물이 들어가요.
+w-fluid | fluid | 수액 | tag=정맥로 | dEn=['fluent', 'flute'] | dKo=['혈액', '소변'] | chips=[['flu', 'id']] | decoy=['fruit', 'ed']
+   cue=혈관으로 넣는 맑은 물 같은 주입액 — 탈수를 막고 약의 통로가 된다
+   ex=This line will give you fluids and medication during surgery. / 이 라인으로 수술 중에 수액과 약물이 들어가요.
+w-medication | medication | 약물 | tag=투약 | dEn=['meditation', 'mediation'] | dKo=['처방', '처치'] | chips=[['med', 'i', 'ca', 'tion']] | decoy=['mod', 'a']
+   cue=치료를 위해 환자에게 주는 약 전부를 가리키는 말
+   ex=This line will give you fluids and medication during surgery. / 이 라인으로 수술 중에 수액과 약물이 들어가요.
+w-flow | flow | 흐르다 | tag=정맥로 | dEn=['glow', 'flaw'] | dKo=['고이다', '멈추다'] | chips=[['flow']] | decoy=['flaw']
+   cue=수액이 막힘 없이 내려가는 속도나 상태
+   ex=It's flowing well and there's no swelling. / 잘 흐르고 있고 붓기도 없어요.
+w-swell | swell | 붓다 | tag=신체·상태 | dEn=['smell', 'spell'] | dKo=['쪼그라들다', '마르다'] | chips=[['swell']] | decoy=['smell']
+   cue=혈관 밖으로 새어 들어간 수액 때문에 주사 자리가 부풀어 오르는 일
+   ex=It's flowing well and there's no swelling. / 잘 흐르고 있고 붓기도 없어요.
+w-ring | ring | 반지 | tag=소지품 | dEn=['rink', 'rind'] | dKo=['팔찌', '목걸이'] | chips=[['ring']] | decoy=['rang']
+   cue=손가락에 끼는 둥근 금속 장신구 — 수술 전에 빼 둔다
+   ex=Do you have any rings, piercings, or dentures on? / 지금 반지나 피어싱, 틀니를 착용하고 계신가요?
+w-piercing | piercing | 피어싱 | tag=소지품 | dEn=['pricing', 'parsing'] | dKo=['문신', '흉터'] | chips=[['pierc', 'ing']] | decoy=['pearl', 'pricing']
+   cue=귀·혀·배꼽 등 몸에 구멍을 뚫어 단 금속 장신구
+   ex=Do you have any rings, piercings, or dentures on? / 지금 반지나 피어싱, 틀니를 착용하고 계신가요?
+w-denture | denture | 틀니 | tag=소지품 | dEn=['dentist', 'venture'] | dKo=['보청기', '안경'] | chips=[['den', 'ture']] | decoy=['dent', 'tru']
+   cue=빠진 치아를 대신해 입안에 끼웠다 뺄 수 있는 인공 이
+   ex=Do you have any rings, piercings, or dentures on? / 지금 반지나 피어싱, 틀니를 착용하고 계신가요?
+w-remove | remove | 제거하다 | tag=소지품 | dEn=['remote', 'reform'] | dKo=['착용하다', '고정하다'] | chips=[['re', 'move']] | decoy=['pre', 'mood']
+   cue=붙어 있거나 착용한 것을 떼어 내는 일
+   ex=We remove metal so it doesn't interfere with the equipment. / 장비에 방해가 되지 않도록 금속은 제거해요.
+w-metal | metal | 금속 | tag=소지품 | dEn=['medal', 'mental'] | dKo=['플라스틱', '유리'] | chips=[['met', 'al']] | decoy=['mat', 'ale']
+   cue=반지·피어싱·핀처럼 전기를 통하게 하는 단단한 재료
+   ex=We remove metal so it doesn't interfere with the equipment. / 장비에 방해가 되지 않도록 금속은 제거해요.
+w-interfere | interfere | 방해하다 | tag=안전·위험 | dEn=['interview', 'interact'] | dKo=['도와주다', '보조하다'] | chips=[['inter', 'fere']] | decoy=['enter', 'fear']
+   cue=다른 것이 제대로 작동하는 데 끼어들어 방해가 되는 일
+   ex=We remove metal so it doesn't interfere with the equipment. / 장비에 방해가 되지 않도록 금속은 제거해요.
+w-equipment | equipment | 장비 | tag=기기·이식물 | dEn=['equation', 'employment'] | dKo=['소모품', '약품'] | chips=[['equip', 'ment']] | decoy=['quip', 'meant']
+   cue=수술실의 모니터·소작기·조명처럼 쓰는 기계와 도구를 통틀어 부르는 말
+   ex=We remove metal so it doesn't interfere with the equipment. / 장비에 방해가 되지 않도록 금속은 제거해요.
+w-belongings | belongings | 소지품 | tag=소지품 | dEn=['believing', 'benefits'] | dKo=['의료기록', '처방약'] | chips=[['be', 'long', 'ings']] | decoy=['bee', 'ping']
+   cue=환자가 입원할 때 몸에 지니고 온 개인 물건 전부 — 잃어버리지 않게 따로 맡아 둔다
+   ex=I'll keep your belongings in a labeled bag for you. / 소지품은 이름표를 붙인 가방에 보관해 드릴게요.
+w-label | label | 이름표를 붙이다 | tag=소지품 | dEn=['labor', 'lapse'] | dKo=['포장하다', '보관하다'] | chips=[['la', 'bel']] | decoy=['lay', 'bell']
+   cue=물건에 이름이나 정보를 적은 딱지를 붙여 누구 것인지 알아보게 하는 일
+   ex=I'll keep your belongings in a labeled bag for you. / 소지품은 이름표를 붙인 가방에 보관해 드릴게요.
+w-bag | bag | 가방 | tag=소지품 | dEn=['bug', 'bin'] | dKo=['상자', '서랍'] | chips=[['bag']] | decoy=['big']
+   cue=물건을 넣어 들고 다니거나 맡겨 두는 천이나 비닐로 된 주머니
+   ex=I'll keep your belongings in a labeled bag for you. / 소지품은 이름표를 붙인 가방에 보관해 드릴게요.
+w-empty | empty | 비우다 | tag=신체·상태 | dEn=['employ', 'emit'] | dKo=['채우다', '막다'] | chips=[['emp', 'ty']] | decoy=['imp', 'tie']
+   cue=차 있던 것을 다 내보내 속을 텅 비게 하는 일
+   ex=Have you emptied your bladder recently? / 최근에 방광을 비우셨나요?
+w-bladder | bladder | 방광 | tag=신체·상태 | dEn=['ladder', 'blender'] | dKo=['신장', '대장'] | chips=[['blad', 'der']] | decoy=['bad', 'dare']
+   cue=소변을 모아 두는 아랫배의 주머니
+   ex=Have you emptied your bladder recently? / 최근에 방광을 비우셨나요?
+w-recently | recently | 최근에 | tag=안내·소통 | dEn=['rarely', 'regularly'] | dKo=['곧바로', '가끔'] | chips=[['re', 'cent', 'ly']] | decoy=['ree', 'sent']
+   cue=얼마 전, 바로 앞선 짧은 기간 안에 있었던 일을 가리키는 부사
+   ex=Have you emptied your bladder recently? / 최근에 방광을 비우셨나요?
+w-restroom | restroom | 화장실 | tag=안내·소통 | dEn=['bedroom', 'restaurant'] | dKo=['휴게실', '대기실'] | chips=[['rest', 'room']] | decoy=['best', 'boom']
+   cue=미국 병원에서 환자에게 화장실을 정중하게 가리킬 때 쓰는 말
+   ex=If not, I can help you to the restroom now. / 아니면 지금 화장실 가시는 걸 도와드릴게요.
+w-comfortable | comfortable | 편안한 | tag=신체·상태 | dEn=['comparable', 'collectable'] | dKo=['안정된', '건강한'] | chips=[['com', 'fort', 'able']] | decoy=['con', 'for']
+   cue=몸이 아프거나 거북하지 않고 편히 있을 수 있는 상태
+   ex=This keeps you comfortable during the procedure. / 이렇게 하면 시술 중에 더 편안하실 거예요.
+w-need | need | 필요하다 | tag=안내·소통 | dEn=['nod', 'knead'] | dKo=['거절하다', '미루다'] | chips=[['need']] | decoy=['seed']
+   cue=없으면 곤란해서 반드시 있어야 하는 것을 말하는 동사
+   ex=Let me know if you need the restroom before we go back. / 들어가시기 전에 화장실이 필요하면 말씀해 주세요.
+w-wait | wait | 기다리다 | tag=안내·소통 | dEn=['weigh', 'wade'] | dKo=['서두르다', '떠나다'] | chips=[['wait']] | decoy=['weight']
+   cue=무언가가 일어날 때까지 움직이지 않고 시간을 보내는 일
+   ex=It's better to go now than to wait once you're in the OR. / 수술실에 들어가서 참는 것보다 지금 가시는 게 나아요.
+w-better | better | 더 나은 | tag=안내·소통 | dEn=['bitter', 'butter'] | dKo=['더 나쁜', '더 빠른'] | chips=[['bet', 'ter']] | decoy=['bit', 'tear']
+   cue=지금 것보다 더 좋은 쪽을 가리키는 비교의 말
+   ex=It's better to go now than to wait once you're in the OR. / 수술실에 들어가서 참는 것보다 지금 가시는 게 나아요.
+w-antibiotic | antibiotic | 항생제 | tag=투약 | dEn=['antibody', 'antiviral'] | dKo=['진통제', '마취제'] | chips=[['anti', 'bi', 'ot', 'ic']] | decoy=['ante', 'by']
+   cue=수술 부위에 세균이 자라 감염되는 것을 막으려고 절개 전에 주는 약
+   ex=The pre-op antibiotic is ready to give. / 수술 전 항생제는 투여 준비가 됐어요.
+w-ready | ready | 준비된 | tag=수술 단계 | dEn=['reedy', 'steady'] | dKo=['연기된', '취소된'] | chips=[['read', 'y']] | decoy=['reed', 'ie']
+   cue=필요한 준비가 다 끝나 곧바로 쓸 수 있는 상태
+   ex=The pre-op antibiotic is ready to give. / 수술 전 항생제는 투여 준비가 됐어요.
+w-give | give | 투여하다 | tag=투약 | dEn=['live', 'glide'] | dKo=['받다', '빼다'] | chips=[['give']] | decoy=['dive']
+   cue=약이나 수액을 환자의 몸에 들어가게 하는 일을 말하는 동사
+   ex=The pre-op antibiotic is ready to give. / 수술 전 항생제는 투여 준비가 됐어요.
+w-incision | incision | 절개 | tag=수술 단계 | dEn=['decision', 'division'] | dKo=['봉합', '마취'] | chips=[['in', 'ci', 'sion']] | decoy=['on', 'ssion']
+   cue=수술을 시작하며 메스로 피부를 가르는 첫 단계
+   ex=We need it in within 60 minutes before incision. / 절개 전 60분 안에는 들어가야 해요.
+w-document | document | 기록하다 | tag=서류·기록 | dEn=['dominate', 'decorate'] | dKo=['서명하다', '삭제하다'] | chips=[['doc', 'u', 'ment']] | decoy=['dock', 'men']
+   cue=한 일의 내용과 시각을 차트에 글로 남겨 두는 일
+   ex=I'll document the exact time it goes in. / 정확한 투여 시각을 기록해 둘게요.
+w-exact | exact | 정확한 | tag=서류·기록 | dEn=['extra', 'exotic'] | dKo=['대략적인', '평균의'] | chips=[['ex', 'act']] | decoy=['ox', 'art']
+   cue=조금도 어긋남 없이 딱 맞는 — 시각을 적을 때 대충이 아니라는 뜻
+   ex=I'll document the exact time it goes in. / 정확한 투여 시각을 기록해 둘게요.
+w-draw | draw | 약을 뽑다 | tag=투약 | dEn=['drag', 'drop'] | dKo=['섞다', '버리다'] | chips=[['draw']] | decoy=['draft']
+   cue=약병에서 주사기로 필요한 양을 빨아올려 담는 일
+   ex=Has the antibiotic been drawn up yet? / 항생제는 미리 뽑아 뒀나요?
+w-surgeon | surgeon | 집도의 | tag=수술 단계 | dEn=['sergeant', 'surgical'] | dKo=['마취과 의사', '순환간호사'] | chips=[['sur', 'geon']] | decoy=['sir', 'gene']
+   cue=수술을 하기로 한 의사 — 시작 허락과 수술 결정은 이 사람이 한다
+   ex=I'll give it as soon as the surgeon is ready. / 집도의가 준비되는 대로 바로 투여할게요.
+w-crossmatch | crossmatch | 교차적합 | tag=검사·혈액 | dEn=['crossword', 'matchbook'] | dKo=['혈액형 검사', '헌혈'] | chips=[['cross', 'match']] | decoy=['boss', 'batch']
+   cue=환자의 혈액과 줄 혈액을 실제로 섞어 보고 맞는지 확인하는 검사
+   ex=The crossmatch is still incomplete. / 교차적합 검사가 아직 미완료예요.
+w-incomplete | incomplete | 미완료의 | tag=확인·점검 | dEn=['incorrect', 'inactive'] | dKo=['불필요한', '불가능한'] | chips=[['in', 'com', 'plete']] | decoy=['on', 'pet']
+   cue=다 끝나지 않고 일부가 아직 남아 있는 상태
+   ex=The crossmatch is still incomplete. / 교차적합 검사가 아직 미완료예요.
+w-hold | hold | 보류하다 | tag=안전·위험 | dEn=['fold', 'hoard'] | dKo=['재촉하다', '마무리하다'] | chips=[['hold']] | decoy=['bold']
+   cue=해야 할 일을 지금은 시작하지 않고 잠시 미뤄 두는 일
+   ex=Should we hold until blood is available? / 혈액이 준비될 때까지 보류할까요?
+w-blood | blood | 혈액 | tag=검사·혈액 | dEn=['bloom', 'flood'] | dKo=['소변', '림프'] | chips=[['blood']] | decoy=['flood']
+   cue=혈관을 흐르며 산소를 나르는 붉은 액체 — 많이 잃으면 채워야 한다
+   ex=Should we hold until blood is available? / 혈액이 준비될 때까지 보류할까요?
+w-available | available | 이용 가능한 | tag=검사·혈액 | dEn=['valuable', 'avoidable'] | dKo=['사용 중인', '만료된'] | chips=[['a', 'vail', 'able']] | decoy=['ail', 'ible']
+   cue=필요할 때 바로 가져다 쓸 수 있게 준비돼 있는 상태
+   ex=Should we hold until blood is available? / 혈액이 준비될 때까지 보류할까요?
+w-call | call | 전화하다 | tag=안내·소통 | dEn=['fall', 'curl'] | dKo=['문자하다', '방문하다'] | chips=[['call']] | decoy=['cell']
+   cue=전화로 연락해 상대를 부르거나 알리는 일
+   ex=I'll call the blood bank to expedite it. / 혈액은행에 전화해서 서둘러 달라고 할게요.
+w-bloodbank | blood bank | 혈액은행 | tag=검사·혈액 | dEn=['blood drive', 'food bank'] | dKo=['약제부', '영양과'] | chips=[['blood'], ['bank']] | decoy=['flood', 'bark']
+   cue=수혈용 혈액을 보관하고 환자에게 맞춰 내주는 병원 부서
+   ex=I'll call the blood bank to expedite it. / 혈액은행에 전화해서 서둘러 달라고 할게요.
+w-expedite | expedite | 신속히 처리하다 | tag=안내·소통 | dEn=['expel', 'expire'] | dKo=['연기하다', '취소하다'] | chips=[['ex', 'pe', 'dite']] | decoy=['ox', 'pea']
+   cue=급한 일을 다른 일보다 앞세워 더 빨리 끝나게 재촉하는 일
+   ex=I'll call the blood bank to expedite it. / 혈액은행에 전화해서 서둘러 달라고 할게요.
+w-case | case | (수술) 건 | tag=수술 단계 | dEn=['cast', 'cash'] | dKo=['환자', '상황'] | chips=[['case']] | decoy=['cave']
+   cue=수술실에서 환자 한 명에게 하는 수술 한 건을 가리키는 말
+   ex=We can't start this case without blood ready. / 혈액이 준비되지 않으면 이 건은 시작할 수 없어요.
+w-required | required | 필수의 | tag=확인·점검 | dEn=['requested', 'retired'] | dKo=['선택적인', '추가의'] | chips=[['re', 'quired']] | decoy=['pre', 'quit']
+   cue=규정이나 상황 때문에 없으면 안 되는, 반드시 갖춰야 하는
+   ex=The required potassium level isn't back yet. / 필수 칼륨 수치가 아직 안 나왔어요.
+w-level | level | 수치 | tag=검사·혈액 | dEn=['lever', 'label'] | dKo=['순서', '위치'] | chips=[['level']] | decoy=['lever']
+   cue=혈액 속에 들어 있는 물질의 양을 잰 값
+   ex=The required potassium level isn't back yet. / 필수 칼륨 수치가 아직 안 나왔어요.
+w-anesthesia | anesthesia | 마취(과) | tag=수술 단계 | dEn=['analgesia', 'amnesia'] | dKo=['소독', '진통'] | chips=[['an', 'es', 'the', 'sia']] | decoy=['on', 'is']
+   cue=수술 중 통증과 의식을 없애 주는 처치 — 이 과의 의사가 환자의 호흡과 혈압을 지킨다
+   ex=I'll let the surgeon and anesthesia know. / 집도의와 마취과에 알릴게요.
+w-critical | critical | 중대한 | tag=안전·위험 | dEn=['cynical', 'clinical'] | dKo=['사소한', '일시적인'] | chips=[['crit', 'i', 'cal']] | decoy=['cut', 'ill']
+   cue=이게 없으면 다음 단계로 못 넘어갈 만큼 결정적으로 중요한
+   ex=This lab is critical before we can proceed. / 이 검사는 진행 전에 꼭 필요한 수치예요.
+w-proceed | proceed | 진행하다 | tag=수술 단계 | dEn=['precede', 'process'] | dKo=['중단하다', '되돌리다'] | chips=[['pro', 'ceed']] | decoy=['pre', 'seed']
+   cue=멈춰 있던 일을 이어서 다음 단계로 나아가는 일
+   ex=This lab is critical before we can proceed. / 이 검사는 진행 전에 꼭 필요한 수치예요.
+w-pacemaker | pacemaker | 심박동기 | tag=기기·이식물 | dEn=['peacemaker', 'placemat'] | dKo=['제세동기', '인공판막'] | chips=[['pace', 'mak', 'er']] | decoy=['pack', 'ear']
+   cue=심장 박동을 일정하게 지켜 주려고 가슴에 심어 둔 작은 전기 기기
+   ex=Do you have a pacemaker or any metal implants? / 심박동기나 다른 금속 이식물이 있으신가요?
+w-implant | implant | 이식물 | tag=기기·이식물 | dEn=['implement', 'import'] | dKo=['붕대', '봉합사'] | chips=[['im', 'plant']] | decoy=['in', 'plan']
+   cue=수술로 몸속에 넣어 둔 인공 기구나 부품을 통틀어 부르는 말
+   ex=Do you have a pacemaker or any metal implants? / 심박동기나 다른 금속 이식물이 있으신가요?
+w-place | place | 넣다(두다) | tag=기기·이식물 | dEn=['plant', 'plate'] | dKo=['빼내다', '옮기다'] | chips=[['place']] | decoy=['plane']
+   cue=어떤 것을 정해진 자리에 놓거나 몸속에 넣어 두는 일
+   ex=When and where was it placed? / 언제 어디에 삽입하셨나요?
+w-pass | pass | 전달하다 | tag=안내·소통 | dEn=['past', 'pause'] | dKo=['막다', '숨기다'] | chips=[['pass']] | decoy=['mass']
+   cue=들은 정보를 다음 사람에게 넘겨 알리는 일
+   ex=I'll pass this to the surgical team. / 이 정보를 수술팀에 전달할게요.
+w-surgical | surgical | 수술의 | tag=수술 단계 | dEn=['surgeon', 'subtle'] | dKo=['내과의', '응급의'] | chips=[['sur', 'gi', 'cal']] | decoy=['sir', 'gym']
+   cue=수술과 관련되거나 수술을 하는 쪽을 가리키는 형용사
+   ex=I'll pass this to the surgical team. / 이 정보를 수술팀에 전달할게요.
+w-team | team | 팀 | tag=안내·소통 | dEn=['tear', 'term'] | dKo=['환자', '보호자'] | chips=[['team']] | decoy=['teen']
+   cue=한 환자의 수술을 함께 맡은 사람들의 모임
+   ex=I'll pass this to the surgical team. / 이 정보를 수술팀에 전달할게요.
+w-joint | joint | 관절 | tag=신체·상태 | dEn=['point', 'junction'] | dKo=['근육', '인대'] | chips=[['joint']] | decoy=['paint']
+   cue=뼈와 뼈가 이어져 구부러지는 곳 — 무릎·고관절 등
+   ex=Do you have any joint replacements or other implants? / 인공관절이나 다른 이식물이 있으신가요?
+w-replacement | replacement | 치환술 | tag=기기·이식물 | dEn=['placement', 'requirement'] | dKo=['제거술', '봉합술'] | chips=[['re', 'place', 'ment']] | decoy=['pre', 'meant']
+   cue=닳거나 망가진 부위를 인공 부품으로 바꿔 끼우는 일
+   ex=Do you have any joint replacements or other implants? / 인공관절이나 다른 이식물이 있으신가요?
+w-adjust | adjust | 조절하다 | tag=안내·소통 | dEn=['adjourn', 'adopt'] | dKo=['고정하다', '중단하다'] | chips=[['ad', 'just']] | decoy=['add', 'gust']
+   cue=상황에 맞게 정도나 시점을 알맞게 고쳐 맞추는 일
+   ex=I'll adjust the timing and document it. / 시각을 조정하고 기록해 둘게요.
+w-timing | timing | 시점 | tag=투약 | dEn=['tinting', 'tiding'] | dKo=['순서', '용량'] | chips=[['tim', 'ing']] | decoy=['time', 'in']
+   cue=어떤 일을 언제 하느냐 하는, 때를 정하는 문제
+   ex=I'll adjust the timing and document it. / 시각을 조정하고 기록해 둘게요.
+w-behind | behind | 뒤처진 | tag=수술 단계 | dEn=['beside', 'beyond'] | dKo=['앞선', '정시의'] | chips=[['be', 'hind']] | decoy=['bee', 'find']
+   cue=정해 둔 시각이나 계획보다 늦어진 상태를 가리키는 말
+   ex=We're already behind schedule for the antibiotic. / 항생제 투여가 벌써 일정보다 늦어졌어요.
+w-schedule | schedule | 일정 | tag=수술 단계 | dEn=['scheme', 'shuttle'] | dKo=['순번', '장소'] | chips=[['sched', 'ule']] | decoy=['sketch', 'rule']
+   cue=수술이나 투약이 언제 있는지 시각별로 짜 놓은 계획표
+   ex=We're already behind schedule for the antibiotic. / 항생제 투여가 벌써 일정보다 늦어졌어요.
+w-delay | delay | 지연시키다 | tag=수술 단계 | dEn=['decay', 'deploy'] | dKo=['앞당기다', '줄이다'] | chips=[['de', 'lay']] | decoy=['dev', 'lap']
+   cue=해야 할 일을 정한 때보다 늦게 하도록 미루는 일
+   ex=Let's give it right now so we don't delay the incision. / 절개가 늦어지지 않게 지금 바로 투여합시다.
+w-start | start | 시작하다 | tag=수술 단계 | dEn=['stare', 'stir'] | dKo=['끝내다', '쉬다'] | chips=[['start']] | decoy=['stars']
+   cue=어떤 일을 처음으로 시작해 움직이게 하는 일
+   ex=This line isn't flowing well, so I'll start a new one. / 이 라인이 잘 안 흘러서 새로 잡을게요.
+w-pinch | pinch | 따끔함 | tag=신체·상태 | dEn=['pitch', 'patch'] | dKo=['쑤심', '둔함'] | chips=[['pinch']] | decoy=['pinky']
+   cue=바늘이 들어갈 때 아주 잠깐 느끼는 살짝 꼬집는 듯한 아픔
+   ex=You'll feel a small pinch. / 작은 따끔함이 느껴질 거예요.
+w-choose | choose | 고르다 | tag=정맥로 | dEn=['chew', 'chill'] | dKo=['버리다', '바꾸다'] | chips=[['choose']] | decoy=['loose']
+   cue=여럿 가운데 마음에 드는 것이나 맞는 것을 가려내는 일
+   ex=I'm choosing a better spot for the surgery. / 수술에 더 알맞은 자리를 고르고 있어요.
+w-spot | spot | 자리 | tag=정맥로 | dEn=['spore', 'spout'] | dKo=['시간', '방향'] | chips=[['spot']] | decoy=['shot']
+   cue=혈관을 찾아 바늘을 꽂기로 한 구체적인 한 지점
+   ex=I'm choosing a better spot for the surgery. / 수술에 더 알맞은 자리를 고르고 있어요.
+w-try | try | 시도하다 | tag=안내·소통 | dEn=['dry', 'cry'] | dKo=['포기하다', '거절하다'] | chips=[['try']] | decoy=['tray']
+   cue=될지 안 될지 몰라도 해 보는 일
+   ex=Let me try a new IV site on your other arm. / 반대쪽 팔에 새로 IV 부위를 잡아 볼게요.
+w-arm | arm | 팔 | tag=신체·상태 | dEn=['arc', 'art'] | dKo=['다리', '어깨'] | chips=[['arm']] | decoy=['farm']
+   cue=어깨에서 손목까지 이어진 몸의 부위 — 주로 여기 혈관에 주사를 꽂는다
+   ex=Let me try a new IV site on your other arm. / 반대쪽 팔에 새로 IV 부위를 잡아 볼게요.
+w-airway | airway | 기도 | tag=안전·위험 | dEn=['hallway', 'subway'] | dKo=['식도', '혈관'] | chips=[['air', 'way']] | decoy=['hair', 'wait']
+   cue=코와 입에서 폐까지 공기가 지나다니는 길 — 마취 중에 막히면 안 된다
+   ex=The dentures need to come out for your airway to stay safe. / 기도가 안전하려면 틀니를 빼셔야 해요.
+w-safe | safe | 안전한 | tag=안전·위험 | dEn=['save', 'sale'] | dKo=['위험한', '불편한'] | chips=[['safe']] | decoy=['sage']
+   cue=다치거나 잘못될 위험이 없는 상태
+   ex=The dentures need to come out for your airway to stay safe. / 기도가 안전하려면 틀니를 빼셔야 해요.
+w-keep | keep | 보관하다 | tag=소지품 | dEn=['kneel', 'keen'] | dKo=['버리다', '내주다'] | chips=[['keep']] | decoy=['peek']
+   cue=잃어버리지 않게 가지고 있다가 나중에 돌려주려고 맡아 두는 일
+   ex=We'll keep them labeled and return them in recovery. / 이름표를 붙여 보관했다가 회복실에서 돌려드릴게요.
+w-return | return | 돌려주다 | tag=소지품 | dEn=['retire', 'retain'] | dKo=['빌리다', '가져가다'] | chips=[['re', 'turn']] | decoy=['pre', 'torn']
+   cue=맡아 둔 것을 원래 주인에게 도로 건네주는 일
+   ex=We'll keep them labeled and return them in recovery. / 이름표를 붙여 보관했다가 회복실에서 돌려드릴게요.
+w-recovery | recovery | 회복실 | tag=수술 단계 | dEn=['discovery', 'delivery'] | dKo=['병동', '응급실'] | chips=[['re', 'cov', 'ery']] | decoy=['ree', 'cover']
+   cue=수술이 끝난 환자가 마취에서 깨어 몸을 추스르는 곳
+   ex=We'll keep them labeled and return them in recovery. / 이름표를 붙여 보관했다가 회복실에서 돌려드릴게요.
+w-understand | understand | 이해하다 | tag=안내·소통 | dEn=['undergo', 'underline'] | dKo=['동의하다', '기억하다'] | chips=[['under', 'stand']] | decoy=['wonder', 'stan']
+   cue=상대가 한 말의 뜻과 사정을 알아듣고 받아들이는 일
+   ex=I understand it's uncomfortable, but this keeps your airway clear. / 불편하신 거 알지만, 이렇게 해야 기도가 깨끗하게 유지돼요.
+w-uncomfortable | uncomfortable | 불편한 | tag=신체·상태 | dEn=['unavoidable', 'unacceptable'] | dKo=['불안한', '불쾌한'] | chips=[['un', 'com', 'fort', 'able']] | decoy=['on', 'fore']
+   cue=몸이나 마음이 거북하고 편하지 않은 느낌
+   ex=I understand it's uncomfortable, but this keeps your airway clear. / 불편하신 거 알지만, 이렇게 해야 기도가 깨끗하게 유지돼요.
+w-clear | clear | 트인 | tag=안전·위험 | dEn=['clean', 'clever'] | dKo=['좁아진', '막힌'] | chips=[['clear']] | decoy=['cheer']
+   cue=막히거나 가려진 곳 없이 훤하게 트여 있는 상태
+   ex=I understand it's uncomfortable, but this keeps your airway clear. / 불편하신 거 알지만, 이렇게 해야 기도가 깨끗하게 유지돼요.
+w-wake | wake | 깨다 | tag=수술 단계 | dEn=['wave', 'waste'] | dKo=['잠들다', '쓰러지다'] | chips=[['wake']] | decoy=['wage']
+   cue=마취나 잠에서 정신이 돌아와 눈을 뜨는 일
+   ex=You'll get them right back as soon as you wake up. / 깨어나자마자 바로 돌려드릴게요.
+w-sleeve | sleeve | 압박 슬리브 | tag=기기·이식물 | dEn=['sleet', 'slide'] | dKo=['붕대', '깁스'] | chips=[['sleeve']] | decoy=['sleeper']
+   cue=다리를 감싸고 공기를 넣었다 뺐다 하며 피가 잘 돌게 하는 소매 모양의 기구
+   ex=These sleeves gently squeeze your legs to prevent clots. / 이 슬리브가 다리를 조여서 혈전을 예방해요.
+w-squeeze | squeeze | 조이다 | tag=신체·상태 | dEn=['sneeze', 'squeal'] | dKo=['늘이다', '풀다'] | chips=[['squeeze']] | decoy=['freeze']
+   cue=양쪽에서 눌러 부드럽게 조여 주는 일
+   ex=These sleeves gently squeeze your legs to prevent clots. / 이 슬리브가 다리를 조여서 혈전을 예방해요.
+w-leg | leg | 다리 | tag=신체·상태 | dEn=['log', 'lag'] | dKo=['팔', '허리'] | chips=[['leg']] | decoy=['peg']
+   cue=엉덩이 아래에서 발목까지 이어진 몸의 부위
+   ex=These sleeves gently squeeze your legs to prevent clots. / 이 슬리브가 다리를 조여서 혈전을 예방해요.
+w-prevent | prevent | 예방하다 | tag=안전·위험 | dEn=['present', 'prevail'] | dKo=['치료하다', '진단하다'] | chips=[['pre', 'vent']] | decoy=['pro', 'event']
+   cue=나쁜 일이 생기기 전에 미리 막는 일
+   ex=These sleeves gently squeeze your legs to prevent clots. / 이 슬리브가 다리를 조여서 혈전을 예방해요.
+w-clot | clot | 혈전 | tag=신체·상태 | dEn=['cloth', 'slot'] | dKo=['종양', '고름'] | chips=[['clot']] | decoy=['plot']
+   cue=혈관 안에서 피가 엉겨 굳어 흐름을 막는 덩어리
+   ex=These sleeves gently squeeze your legs to prevent clots. / 이 슬리브가 다리를 조여서 혈전을 예방해요.
+w-thinner | thinner | 혈액희석제 | tag=투약 | dEn=['thinker', 'thicker'] | dKo=['혈압강하제', '이뇨제'] | chips=[['thin', 'ner']] | decoy=['tin', 'near']
+   cue=피가 엉겨 굳지 않게 하려고 먹거나 맞는 약 — 수술 전에는 마지막 복용 시각을 묻는다
+   ex=Have you been given a blood thinner today? / 오늘 혈액희석제를 투여받으셨나요?
+w-prevention | prevention | 예방 조치 | tag=안전·위험 | dEn=['prevalence', 'presentation'] | dKo=['예후', '진단'] | chips=[['pre', 'ven', 'tion']] | decoy=['pro', 'vent']
+   cue=나쁜 일이 생기지 않게 미리 하는 조치
+   ex=I'll confirm the VTE prevention orders. / VTE 예방 오더를 확인해 둘게요.
+w-order | order | 지시 | tag=서류·기록 | dEn=['odor', 'offer'] | dKo=['권유', '보고'] | chips=[['order']] | decoy=['border']
+   cue=의사가 치료·검사·약을 하라고 적어 둔 공식 지시
+   ex=I'll confirm the VTE prevention orders. / VTE 예방 오더를 확인해 둘게요.
+w-compression | compression | 압박 | tag=기기·이식물 | dEn=['composition', 'compassion'] | dKo=['확장', '절개'] | chips=[['com', 'pres', 'sion']] | decoy=['con', 'press']
+   cue=다리 같은 부위를 눌러 조여 주는 방식
+   ex=Let's put these compression sleeves on before we go back. / 들어가시기 전에 압박 슬리브를 착용시켜 드릴게요.
+w-bloodsugar | blood sugar | 혈당 | tag=검사·혈액 | dEn=['blood salt', 'blood pressure'] | dKo=['혈압', '체온'] | chips=[['blood'], ['sug', 'ar']] | decoy=['flood', 'sung']
+   cue=혈액 속 포도당의 양 — 당뇨 환자는 수술 전에 반드시 잰다
+   ex=I'm going to check your blood sugar now. / 지금 혈당을 확인해 볼게요.
+w-insulin | insulin | 인슐린 | tag=투약 | dEn=['inhalant', 'insulate'] | dKo=['항응고제', '진통제'] | chips=[['in', 'su', 'lin']] | decoy=['on', 'sue']
+   cue=혈당을 낮추려고 주사로 놓는 호르몬 약
+   ex=Did you take your insulin or diabetes pills this morning? / 오늘 아침에 인슐린이나 당뇨약을 드셨나요?
+w-diabetes | diabetes | 당뇨병 | tag=신체·상태 | dEn=['dyslexia', 'diagnosis'] | dKo=['고혈압', '천식'] | chips=[['di', 'a', 'be', 'tes']] | decoy=['dye', 'bee']
+   cue=혈당 조절이 잘 안 되는 만성 질환
+   ex=Did you take your insulin or diabetes pills this morning? / 오늘 아침에 인슐린이나 당뇨약을 드셨나요?
+w-pill | pill | 알약 | tag=투약 | dEn=['pull', 'poll'] | dKo=['주사', '가루약'] | chips=[['pill']] | decoy=['pail']
+   cue=물과 함께 삼키는 작고 동그란 약
+   ex=Did you take your insulin or diabetes pills this morning? / 오늘 아침에 인슐린이나 당뇨약을 드셨나요?
+w-number | number | 숫자 | tag=검사·혈액 | dEn=['member', 'nature'] | dKo=['단위', '이름'] | chips=[['num', 'ber']] | decoy=['numb', 'bar']
+   cue=검사에서 나온 크기를 숫자로 나타낸 것
+   ex=We'll adjust if the number is too high or low. / 수치가 너무 높거나 낮으면 조절할게요.
+w-dose | dose | 용량 | tag=투약 | dEn=['dome', 'dove'] | dKo=['횟수', '농도'] | chips=[['dose']] | decoy=['rose']
+   cue=한 번에 주는 약의 양
+   ex=We can give a small dose of insulin if it's needed before surgery. / 필요하면 수술 전에 소량의 인슐린을 줄 수 있어요.
+w-consent | consent | 동의서 | tag=서류·기록 | dEn=['consult', 'content'] | dKo=['처방전', '진단서'] | chips=[['con', 'sent']] | decoy=['can', 'cent']
+   cue=수술을 받겠다고 환자가 이해하고 서명해 둔 종이 — 부위와 시술이 적혀 있다
+   ex=The consent says left, but the chart says right. / 동의서에는 왼쪽인데 차트에는 오른쪽이라고 돼 있어요.
+w-stop | stop | 멈추다 | tag=안전·위험 | dEn=['step', 'shop'] | dKo=['계속하다', '서두르다'] | chips=[['stop']] | decoy=['step']
+   cue=하던 일을 그 자리에서 곧바로 멈추는 일
+   ex=We need to stop and verify before proceeding. / 진행하기 전에 멈추고 대조 확인해야 해요.
+w-verify | verify | 대조 확인하다 | tag=확인·점검 | dEn=['vary', 'verge'] | dKo=['수정하다', '복사하다'] | chips=[['ver', 'i', 'fy']] | decoy=['very', 'fly']
+   cue=서로 다른 두 기록을 나란히 놓고 같은지 직접 맞춰 보는 일
+   ex=We need to stop and verify before proceeding. / 진행하기 전에 멈추고 대조 확인해야 해요.
+w-correct | correct | 맞는 | tag=확인·점검 | dEn=['corrupt', 'concrete'] | dKo=['틀린', '비슷한'] | chips=[['cor', 'rect']] | decoy=['core', 'rec']
+   cue=틀린 데가 없이 옳은 것을 가리키는 형용사
+   ex=I'll get the surgeon to confirm the correct side. / 집도의에게 맞는 쪽을 확인받을게요.
+w-side | side | 쪽(측) | tag=신체·상태 | dEn=['site', 'slide'] | dKo=['위쪽', '아래쪽'] | chips=[['side']] | decoy=['wide']
+   cue=몸의 오른쪽·왼쪽 중 어느 한쪽 — 수술 부위를 가를 때 꼭 맞춰야 한다
+   ex=I'll get the surgeon to confirm the correct side. / 집도의에게 맞는 쪽을 확인받을게요.
+w-mismatch | mismatch | 불일치 | tag=확인·점검 | dEn=['mistake', 'mishap'] | dKo=['일치', '누락'] | chips=[['mis', 'match']] | decoy=['miss', 'batch']
+   cue=맞아야 할 두 기록이 서로 어긋나 있는 상태
+   ex=This mismatch needs to be resolved before we start. / 이 불일치는 시작 전에 해결돼야 해요.
+w-resolve | resolve | 해결하다 | tag=확인·점검 | dEn=['revolve', 'reserve'] | dKo=['미루다', '숨기다'] | chips=[['re', 'solve']] | decoy=['pre', 'sold']
+   cue=어긋난 문제를 풀어서 더는 남지 않게 끝내는 일
+   ex=This mismatch needs to be resolved before we start. / 이 불일치는 시작 전에 해결돼야 해요.
+w-critically | critically | 위급하게 | tag=안전·위험 | dEn=['typically', 'closely'] | dKo=['가끔', '약간'] | chips=[['crit', 'i', 'cal', 'ly']] | decoy=['cut', 'ill']
+   cue=당장 손쓰지 않으면 위험할 만큼 심각한 정도를 말하는 부사
+   ex=The potassium is critically high at 6.8. / 칼륨 수치가 6.8로 위급하게 높아요.
+w-value | value | 측정값 | tag=검사·혈액 | dEn=['valve', 'vague'] | dKo=['종류', '기준'] | chips=[['val', 'ue']] | decoy=['vat', 'you']
+   cue=검사기가 재서 나온 하나의 측정된 크기
+   ex=This value is dangerous and we can't ignore it. / 이 수치는 위험해서 무시할 수 없어요.
+w-dangerous | dangerous | 위험한 | tag=안전·위험 | dEn=['dangling', 'generous'] | dKo=['안전한', '예민한'] | chips=[['dan', 'ger', 'ous']] | decoy=['den', 'ear']
+   cue=그대로 두면 환자가 다칠 수 있는 위험이 큰 상태
+   ex=This value is dangerous and we can't ignore it. / 이 수치는 위험해서 무시할 수 없어요.
+w-ignore | ignore | 무시하다 | tag=안전·위험 | dEn=['inform', 'ignite'] | dKo=['기록하다', '보고하다'] | chips=[['ig', 'nore']] | decoy=['in', 'more']
+   cue=있는 것을 알면서도 신경 쓰지 않고 그냥 넘기는 일
+   ex=This value is dangerous and we can't ignore it. / 이 수치는 위험해서 무시할 수 없어요.
+w-repeat | repeat | 반복하다 | tag=확인·점검 | dEn=['repel', 'retreat'] | dKo=['멈추다', '건너뛰다'] | chips=[['re', 'peat']] | decoy=['pre', 'bee']
+   cue=이미 한 일을 다시 한 번 되풀이해서 하는 일
+   ex=Let's get a repeat level before we go any further. / 더 진행하기 전에 수치를 한 번 더 재 봅시다.
+w-infuse | infuse | 주입하다 | tag=투약 | dEn=['infest', 'inflate'] | dKo=['제거하다', '희석하다'] | chips=[['in', 'fuse']] | decoy=['on', 'fuel']
+   cue=약이나 수액이 일정한 시간에 걸쳐 혈관 속으로 서서히 들어가게 하는 일
+   ex=Can we hold incision until it's infused? / 다 들어갈 때까지 절개를 보류할 수 있을까요?
+w-cut | cut | 가르다 | tag=수술 단계 | dEn=['cast', 'cost'] | dKo=['봉합하다', '소독하다'] | chips=[['cut']] | decoy=['cup']
+   cue=메스로 피부를 가르는 일 — 수술이 시작되는 순간의 동사
+   ex=We can't cut until the antibiotic is fully in. / 항생제가 완전히 들어갈 때까지 절개할 수 없어요.
+w-push | push | 밀어 넣다 | tag=투약 | dEn=['pull', 'plush'] | dKo=['당기다', '섞다'] | chips=[['push']] | decoy=['rush']
+   cue=주사기 속 약을 손으로 밀어 혈관 안으로 넣는 일
+   ex=Please push it now so we're not delayed any further. / 더 지연되지 않게 지금 투여해 주세요.
+w-release | release | 불출하다 | tag=검사·혈액 | dEn=['relief', 'relay'] | dKo=['보관하다', '폐기하다'] | chips=[['re', 'lease']] | decoy=['pre', 'least']
+   cue=혈액은행이 보관 중이던 혈액을 환자에게 쓰라고 내주는 일
+   ex=Can we release emergency O-negative now? / 지금 응급 O형 Rh음성을 방출할 수 있을까요?
+w-emergency | emergency | 응급 | tag=안전·위험 | dEn=['emergent', 'emission'] | dKo=['예약', '외래'] | chips=[['e', 'mer', 'gen', 'cy']] | decoy=['me', 'agent']
+   cue=곧바로 손쓰지 않으면 생명이 위험해서 서두르는 상황
+   ex=Can we release emergency O-negative now? / 지금 응급 O형 Rh음성을 방출할 수 있을까요?
+w-onegative | O-negative | O형 Rh음성 | tag=검사·혈액 | dEn=['O-positive', 'A-negative'] | dKo=['A형 Rh양성', 'AB형 Rh음성'] | chips=[['O-', 'neg', 'a', 'tive']] | decoy=['pos', 'ate']
+   cue=혈액형을 아직 모를 때도 누구에게나 급히 줄 수 있어 응급에 쓰는 혈액형
+   ex=Can we release emergency O-negative now? / 지금 응급 O형 Rh음성을 방출할 수 있을까요?
+w-activate | activate | 발동시키다 | tag=안전·위험 | dEn=['activity', 'cultivate'] | dKo=['해제하다', '보류하다'] | chips=[['ac', 'ti', 'vate']] | decoy=['on', 'vote']
+   cue=대기 중이던 비상 절차를 가동시켜 실제로 움직이게 하는 일
+   ex=I'm activating the massive transfusion protocol. / 대량수혈 프로토콜을 발동시킬게요.
+w-massive | massive | 대량의 | tag=안전·위험 | dEn=['passive', 'missile'] | dKo=['소량의', '일시적인'] | chips=[['mass', 'ive']] | decoy=['mess', 'give']
+   cue=양이 아주 많아서 보통 방법으로는 감당이 안 되는
+   ex=I'm activating the massive transfusion protocol. / 대량수혈 프로토콜을 발동시킬게요.
+w-transfusion | transfusion | 수혈 | tag=검사·혈액 | dEn=['transition', 'transaction'] | dKo=['헌혈', '채혈'] | chips=[['trans', 'fu', 'sion']] | decoy=['train', 'sian']
+   cue=다른 사람의 혈액을 정맥으로 넣어 잃은 피를 채워 주는 일
+   ex=I'm activating the massive transfusion protocol. / 대량수혈 프로토콜을 발동시킬게요.
+w-protocol | protocol | 프로토콜 | tag=서류·기록 | dEn=['protein', 'prototype'] | dKo=['소견서', '처방전'] | chips=[['pro', 'to', 'col']] | decoy=['pre', 'cool']
+   cue=병원이 위급한 상황마다 정해 둔 순서와 역할이 적힌 공식 절차
+   ex=I'm activating the massive transfusion protocol. / 대량수혈 프로토콜을 발동시킬게요.
+w-bleed | bleed | 출혈하다 | tag=신체·상태 | dEn=['blend', 'breed'] | dKo=['응고되다', '멈추다'] | chips=[['bleed']] | decoy=['blend']
+   cue=상처나 혈관에서 피가 몸 밖이나 몸속으로 새어 나오는 일
+   ex=This patient is bleeding heavily and needs blood right now. / 이 환자는 출혈이 심해서 지금 바로 혈액이 필요해요.
+w-heavy | heavily | 심하게 | tag=신체·상태 | dEn=['hardly', 'hastily'] | dKo=['가볍게', '천천히'] | chips=[['heav', 'i', 'ly']] | decoy=['hay', 'lie']
+   cue=정도가 아주 세고 많게 — 출혈이 걷잡을 수 없을 때 쓰는 부사
+   ex=This patient is bleeding heavily and needs blood right now. / 이 환자는 출혈이 심해서 지금 바로 혈액이 필요해요.
+w-bipolar | bipolar | 양극성의 | tag=기기·이식물 | dEn=['monopolar', 'bicycle'] | dKo=['단극성', '직류'] | chips=[['bi', 'polar']] | decoy=['by', 'pole']
+   cue=전기가 두 집게 끝 사이에서만 흘러 몸 전체로 퍼지지 않는 소작 방식
+   ex=We should use bipolar and place the pad away from the device. / 양극성 소작을 쓰고 패드는 기기에서 멀리 두어야 해요.
+w-pad | pad | 패드 | tag=기기·이식물 | dEn=['pat', 'pan'] | dKo=['붕대', '전선'] | chips=[['pad']] | decoy=['pod']
+   cue=전류가 몸을 빠져나가도록 환자의 피부에 붙이는 접지 패드
+   ex=We should use bipolar and place the pad away from the device. / 양극성 소작을 쓰고 패드는 기기에서 멀리 두어야 해요.
+w-device | device | 기기 | tag=기기·이식물 | dEn=['devise', 'divide'] | dKo=['약물', '시술'] | chips=[['de', 'vice']] | decoy=['den', 'vise']
+   cue=심박동기처럼 몸에 달거나 심어 두고 작동하는 의료 기계
+   ex=We should use bipolar and place the pad away from the device. / 양극성 소작을 쓰고 패드는 기기에서 멀리 두어야 해요.
+w-cardiology | cardiology | 심장내과 | tag=기기·이식물 | dEn=['cardiac', 'neurology'] | dKo=['신경과', '소화기내과'] | chips=[['car', 'dio', 'lo', 'gy']] | decoy=['care', 'dial']
+   cue=심장과 혈관 질환을 보는 진료과 — 심박동기 점검도 여기서 맡는다
+   ex=Do we need cardiology or a magnet on standby? / 심장내과나 자석을 대기시켜야 할까요?
+w-magnet | magnet | 자석 | tag=기기·이식물 | dEn=['magnate', 'magnify'] | dKo=['전극', '배터리'] | chips=[['mag', 'net']] | decoy=['mug', 'nut']
+   cue=심박동기 위에 올려 일정한 박동 모드로 바꿀 때 쓰기도 하는 쇠붙이를 끌어당기는 물건
+   ex=Do we need cardiology or a magnet on standby? / 심장내과나 자석을 대기시켜야 할까요?
+w-standby | standby | 대기 | tag=수술 단계 | dEn=['stand-in', 'bystander'] | dKo=['출발', '퇴원'] | chips=[['stand', 'by']] | decoy=['stone', 'buy']
+   cue=곧 필요할지 몰라 자리를 지키며 바로 움직일 준비를 하고 있는 상태
+   ex=Do we need cardiology or a magnet on standby? / 심장내과나 자석을 대기시켜야 할까요?
+w-setting | setting | 설정 | tag=기기·이식물 | dEn=['settling', 'sitting'] | dKo=['제조사', '모델명'] | chips=[['set', 'ting']] | decoy=['sat', 'tin']
+   cue=기계가 어떤 방식으로 작동하게 맞춰 둔 값이나 모드
+   ex=Let's confirm the pacemaker settings before we start. / 시작 전에 심박동기 설정을 확인합시다.
+w-timeout | time-out | 타임아웃 | tag=확인·점검 | dEn=['time-in', 'time-lapse'] | dKo=['휴식 시간', '회의 시간'] | chips=[['time-', 'out']] | decoy=['tide-', 'our']
+   cue=시작 직전에 모든 팀원이 하던 일을 멈추고 환자·부위·시술을 소리 내어 맞춰 보는 절차
+   ex=We still need the time-out even in an emergency. / 응급 상황에서도 타임아웃은 여전히 필요해요.
+w-essential | essential | 필수 요소 | tag=확인·점검 | dEn=['essence', 'estimate'] | dKo=['부수적인', '임의의'] | chips=[['es', 'sen', 'tial']] | decoy=['as', 'son']
+   cue=빼고는 안 되는, 반드시 확인해야 하는 핵심 항목
+   ex=It only takes thirty seconds to confirm the essentials. / 필수 요소를 확인하는 데 30초밖에 안 걸려요.
+w-skip | skip | 생략하다 | tag=안전·위험 | dEn=['skim', 'ship'] | dKo=['반복하다', '마치다'] | chips=[['skip']] | decoy=['slip']
+   cue=하기로 한 단계를 건너뛰고 넘어가는 일
+   ex=Skipping the time-out isn't worth the risk, even now. / 지금도 타임아웃을 생략할 만한 위험은 아니에요.
+w-risk | risk | 위험성 | tag=안전·위험 | dEn=['rink', 'rash'] | dKo=['효과', '이익'] | chips=[['risk']] | decoy=['disk']
+   cue=나쁜 결과가 생길 수 있는 가능성이나 부담
+   ex=Skipping the time-out isn't worth the risk, even now. / 지금도 타임아웃을 생략할 만한 위험은 아니에요.
+w-together | together | 함께 | tag=안내·소통 | dEn=['tougher', 'toward'] | dKo=['따로', '먼저'] | chips=[['to', 'geth', 'er']] | decoy=['too', 'get']
+   cue=여러 사람이 한자리에서 같이 하는 방식을 말하는 부사
+   ex=Patient, site, and procedure—let's verify together. / 환자, 부위, 시술—함께 확인합시다.
+w-assume | assume | 가정하다 | tag=안전·위험 | dEn=['resume', 'assure'] | dKo=['확신하다', '의심하다'] | chips=[['as', 'sume']] | decoy=['us', 'some']
+   cue=확인하지 못한 것을 일단 그럴 것이라고 정해 두고 대하는 일
+   ex=Let's get imaging and assume it's MRI-unsafe for now. / 영상을 찍고 일단 MRI 비호환으로 가정합시다.
+w-mriunsafe | MRI-unsafe | MRI 비호환의 | tag=기기·이식물 | dEn=['MRI-safe', 'MRI-ready'] | dKo=['CT 촬영용의', '초음파용의'] | chips=[['MRI-', 'un', 'safe']] | decoy=['CRT-', 'on']
+   cue=자기장이 센 검사실에 들어가면 몸속 기구가 움직이거나 달아올라 위험할 수 있어 들여보낼 수 없는 것
+   ex=Let's get imaging and assume it's MRI-unsafe for now. / 영상을 찍고 일단 MRI 비호환으로 가정합시다.
+w-reach | reach | 연락하다 | tag=안내·소통 | dEn=['reap', 'teach'] | dKo=['잃다', '피하다'] | chips=[['reach']] | decoy=['peach']
+   cue=전화나 방문으로 어떤 사람과 연락이 닿는 일
+   ex=I'll try to reach the family or prior records. / 가족이나 이전 기록에 연락을 시도해 볼게요.
+w-prior | prior | 이전의 | tag=서류·기록 | dEn=['priest', 'prime'] | dKo=['현재의', '다음의'] | chips=[['pri', 'or']] | decoy=['pro', 'our']
+   cue=지금보다 앞서 있었던 — 지난 기록이나 병력을 가리키는 말
+   ex=I'll try to reach the family or prior records. / 가족이나 이전 기록에 연락을 시도해 볼게요.
+w-record | record | 기록 문서 | tag=서류·기록 | dEn=['recall', 'recipe'] | dKo=['처방', '복사본'] | chips=[['rec', 'ord']] | decoy=['rack', 'odd']
+   cue=병력과 검사가 문서나 화면에 적혀 보관된 것
+   ex=I'll try to reach the family or prior records. / 가족이나 이전 기록에 연락을 시도해 볼게요.
+w-treat | treat | 다루다 | tag=안내·소통 | dEn=['tread', 'trail'] | dKo=['무시하다', '구별하다'] | chips=[['treat']] | decoy=['threat']
+   cue=어떤 것을 일정한 방식으로 대하고 다루는 일
+   ex=We should treat this device as unknown until we know more. / 더 알기 전까지는 이 기기를 미상으로 다뤄야 해요.
+w-unknown | unknown | 알 수 없는 | tag=안내·소통 | dEn=['unfair', 'unseen'] | dKo=['확실한', '흔한'] | chips=[['un', 'known']] | decoy=['on', 'shown']
+   cue=누구도 아직 정체를 알지 못하는 상태
+   ex=We should treat this device as unknown until we know more. / 더 알기 전까지는 이 기기를 미상으로 다뤄야 해요.

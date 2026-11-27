@@ -1,0 +1,305 @@
+"복강경 장비 세팅":
+- "kind": "slider"
+  "words":
+  - "w-confirm"
+  - "w-work"
+  - "w-check"
+  "cue": "Kelly: \"Is the tower ready for the case?\""
+  "scale":
+  - "I think the tower is working fine."
+  - "Yes, I checked each unit and it works."
+  - "It's flawless, so I won't check it again."
+  "answerAt": 1
+  "why": "장비는 '아마 괜찮다'는 짐작이 아니라 직접 확인한 사실로 말해야 해요. '완벽하니 다시 안 본다'는 단정은 점검 절차와 맞지 않고, 소독간호사도 믿고 이어 갈 수 없어요."
+  "example": "I'll confirm everything's working before draping."
+  "exKo": "수술포를 덮기 전에 전부 작동하는지 확인할게요."
+- "kind": "swap"
+  "words":
+  - "w-monitor"
+  - "w-light"
+  - "w-source"
+  - "w-insufflator"
+  "who": "순회간호사 → 소독간호사 · 장비 상태 알림"
+  "icon": "speaker"
+  "before":
+  - "Kelly, "
+  - "the tower seems to be on"
+  - ". I'll confirm everything before draping."
+  "options":
+  - "all the equipment in the whole room is on and ready to go"
+  - "the tower seems to be on"
+  - "the monitor, light source, and insufflator are on"
+  "answer": "the monitor, light source, and insufflator are on"
+  "notes":
+    "all the equipment in the whole room is on and ready to go": "방 안의 모든 장비를 다 확인한 것처럼 들리는 과장이에요. 실제로 본 장비만 말해야 해요."
+    "the tower seems to be on": "'seems'는 확인하지 않은 느낌이라 소독간호사가 다시 확인해야 해요."
+    "the monitor, light source, and insufflator are on": "무엇이 켜졌는지 항목으로 말해 줘서 소독간호사가 빠진 게 없는지 바로 알 수 있어요."
+  "why": "켜진 장비를 하나씩 짚어 말하면 팀이 같은 그림을 보고 준비를 이어 갈 수 있어요."
+  "ko": "켈리, 모니터, 광원, 기복기가 켜져 있어요. 수술포 덮기 전에 전부 확인할게요"
+"기복 CO2 준비":
+- "kind": "slider"
+  "words":
+  - "w-gauge"
+  - "w-read"
+  - "w-normal"
+  "cue": "Aaron glances at the tank and asks, \"How's the CO2 supply?\""
+  "scale":
+  - "The tank gauge reads normal, and the tank is full."
+  - "The gauge is excellent, so we won't look again."
+  - "We're completely safe — nothing can go wrong."
+  "answerAt": 0
+  "why": "정상 수치는 보이는 그대로 담담히 알리면 돼요. 수치가 정상이라고 '다시 안 봐도 된다', '아무 일도 없다'까지 말하면 감시를 멈추게 하는 말이 돼요."
+  "example": "The tank pressure gauge reads normal."
+  "exKo": "탱크 압력 게이지가 정상으로 나타납니다."
+- "kind": "context"
+  "words":
+  - "w-insufflation"
+  "word": "insufflation"
+  "ko": "기복(가스 주입)"
+  "scenes":
+  - "who": "소독간호사에게"
+    "icon": "speaker"
+    "en": "Insufflation starts once the surgeon is ready."
+    "ok": true
+  - "who": "수술 전 환자에게"
+    "icon": "me"
+    "en": "We'll start insufflation after you're asleep, and the pressure limit will be set."
+    "ok": false
+    "fix": "After you're asleep, we'll fill your belly with gas so the surgeon has room to work."
+  - "who": "마취과 동료에게"
+    "icon": "monitor"
+    "en": "Insufflation began after we confirmed the CO2 line."
+    "ok": true
+  "why": "insufflation은 수술실 안에서 쓰는 정확한 말이에요. 환자에게는 '배에 가스를 채워 공간을 만든다'처럼 풀어서 말해야 해요."
+- "kind": "swap"
+  "words":
+  - "w-set"
+  - "w-insufflation"
+  - "w-pressure"
+  - "w-limit"
+  "who": "순회간호사 → 동료 · 압력 한계 설정"
+  "icon": "speaker"
+  "before":
+  - "Let's set the insufflation pressure limit "
+  - "to whatever feels right to everyone"
+  - "."
+  "options":
+  - "to whatever the surgeon asked for"
+  - "to whatever feels right to everyone"
+  - "to the highest setting available, to be safe"
+  "answer": "to whatever the surgeon asked for"
+  "notes":
+    "to whatever the surgeon asked for": "기복 압력은 집도의가 정하는 값이에요. 요청받은 값에 맞춰 설정해야 해요."
+    "to whatever feels right to everyone": "감으로 정하는 값이 아니라서 기준이 없어요."
+    "to the highest setting available, to be safe": "가장 높게 두는 것은 안전이 아니라 위험에 가까워요."
+  "why": "압력 한계는 집도의의 요청에 따라 맞춘다고 말해야 팀이 같은 값을 보고 움직여요."
+  "ko": "집도의가 요청한 값으로 기복 압력 한계를 설정합시다"
+"카메라·광원 준비":
+- "kind": "slider"
+  "words":
+  - "w-light"
+  - "w-right"
+  - "w-intensity"
+  "cue": "Megan asks, \"Is the camera picture ready for insertion?\""
+  "scale":
+  - "It's probably fine, I think."
+  - "The picture looks okay to me."
+  - "Light and white balance are done."
+  "answerAt": 2
+  "why": "'괜찮은 것 같다'는 말은 준비를 확인했는지 알 수 없어요. 광원 세기와 화이트밸런스처럼 한 일을 구체적으로 말해야 삽입 전에 믿고 넘어갈 수 있어요."
+  "example": "The light source is at the right intensity."
+  "exKo": "광원이 적절한 세기로 맞춰져 있습니다."
+- "kind": "swap"
+  "words":
+  - "w-defog"
+  - "w-lens"
+  - "w-insertion"
+  "who": "순회간호사 → 소독간호사 · 렌즈 준비"
+  "icon": "speaker"
+  "before":
+  - "Megan, "
+  - "I'll get to the lens as soon as I have time"
+  - "."
+  "options":
+  - "the lens will be fine without it"
+  - "I'll defog the lens before insertion"
+  - "I'll get to the lens as soon as I have time"
+  "answer": "I'll defog the lens before insertion"
+  "notes":
+    "the lens will be fine without it": "김서림을 없애지 않고 넘어가면 삽입 직후 시야가 흐려질 수 있어요."
+    "I'll defog the lens before insertion": "무엇을 언제 하는지 분명해서 소독간호사가 기다릴 때를 알 수 있어요."
+    "I'll get to the lens as soon as I have time": "'soon'은 시점이 분명하지 않아 팀이 일정을 잡기 어려워요."
+  "why": "삽입 전에 한다는 시점까지 말해 주면 소독간호사가 스코프를 건네는 때를 맞출 수 있어요."
+  "ko": "메건, 삽입 전에 렌즈 김서림을 없앨게요"
+"로봇 도킹 준비":
+- "kind": "slider"
+  "words":
+  - "w-cart"
+  - "w-align"
+  - "w-lineup"
+  - "w-lock"
+  "cue": "Justin asks, \"Is the cart ready for docking?\""
+  "scale":
+  - "The cart is basically there."
+  - "It's lined up and the wheels are locked."
+  - "It's perfect, so we can dock without checking."
+  "answerAt": 1
+  "why": "도킹 전에는 정렬과 바퀴 잠금처럼 확인한 것을 말해야 해요. '대충 됐다'는 모호하고, 확인 없이 도킹해도 된다는 말은 절차를 건너뛰게 해요."
+  "example": "I'll confirm the cart is aligned."
+  "exKo": "카트가 정렬됐는지 확인할게요."
+- "kind": "swap"
+  "words":
+  - "w-lock"
+  - "w-wheel"
+  - "w-dock"
+  "who": "간호사 → 순회간호사 · 도킹 직전"
+  "icon": "speaker"
+  "before":
+  - "Justin, "
+  - "we're good to go, everything looks fine"
+  - "."
+  "options":
+  - "I've locked the wheels, so we can dock"
+  - "we're good to go, everything looks fine"
+  - "the cart is heavy, so it won't move anyway"
+  "answer": "I've locked the wheels, so we can dock"
+  "notes":
+    "I've locked the wheels, so we can dock": "도킹 전에 한 일(바퀴 잠금)을 근거로 말해서 팀이 안심하고 이어 갈 수 있어요."
+    "we're good to go, everything looks fine": "무엇을 확인했는지 알 수 없어서 팀이 다시 물어봐야 해요."
+    "the cart is heavy, so it won't move anyway": "잠그지 않고도 괜찮다는 가정이라 도킹 중 카트가 밀릴 수 있어요."
+  "why": "도킹은 팀이 함께 하는 절차예요. 확인한 단계를 말해야 다음 사람이 이어 갈 수 있어요."
+  "ko": "저스틴, 바퀴를 고정했으니 도킹해도 됩니다"
+"트로카 준비":
+- "kind": "slider"
+  "words":
+  - "w-trocar"
+  - "w-size"
+  - "w-millimeter"
+  - "w-ready"
+  "cue": "Christine asks which trocar sizes are ready."
+  "scale":
+  - "We have a few trocars ready."
+  - "We have trocars in several sizes."
+  - "5- and 12-mm trocars are ready."
+  "answerAt": 2
+  "why": "소독간호사는 어떤 크기가 있는지 알아야 순서를 짜요. 개수나 '여러 크기'가 아니라 5밀리미터, 12밀리미터처럼 크기를 구체적으로 말해야 해요."
+  "example": "I have 5-millimeter and 12-millimeter ready."
+  "exKo": "5밀리미터와 12밀리미터를 준비해 뒀습니다."
+- "kind": "context"
+  "words":
+  - "w-trocar"
+  "word": "trocar"
+  "ko": "트로카"
+  "scenes":
+  - "who": "수술 전 환자에게"
+    "icon": "me"
+    "en": "We'll place a trocar in your belly, and the trocar stays in until the end."
+    "ok": false
+    "fix": "We'll place a few small tubes through tiny cuts in your belly so the surgeon can work."
+  - "who": "소독간호사에게"
+    "icon": "speaker"
+    "en": "The 5-millimeter trocar goes in first."
+    "ok": true
+  - "who": "차트 기록"
+    "icon": "board"
+    "en": "Trocars placed without difficulty; ports closed at the end."
+    "ok": true
+  "why": "trocar는 수술실에서 쓰는 기구 이름이에요. 환자에게는 '작은 구멍으로 넣는 관'처럼 쉽게 풀어서 말해야 겁먹지 않아요."
+- "kind": "swap"
+  "words":
+  - "w-open"
+  - "w-trocar"
+  - "w-tray"
+  "who": "순회간호사 → 소독간호사 · 트레이 준비"
+  "icon": "speaker"
+  "before":
+  - "Christine, "
+  - "I'll open the tray when I get a chance"
+  - "."
+  "options":
+  - "I'll open the trocar tray soon"
+  - "I'll open the tray when I get a chance"
+  - "I'll open the trocar tray now"
+  "answer": "I'll open the trocar tray now"
+  "notes":
+    "I'll open the trocar tray soon": "'soon'이라 소독간호사가 언제 받을지 알 수 없어요."
+    "I'll open the tray when I get a chance": "트로카 트레이인지도, 시점도 분명하지 않아요."
+    "I'll open the trocar tray now": "무엇을 지금 한다고 분명히 말해서 소독간호사가 바로 받을 준비를 해요."
+  "why": "수술 직전에는 '무엇을, 지금'을 같이 말해야 준비가 겹치지 않아요."
+  "ko": "크리스틴, 지금 트로카 트레이를 열게요"
+"체위 조정 확인":
+- "kind": "slider"
+  "words":
+  - "w-pad"
+  - "w-point"
+  - "w-protect"
+  - "w-secure"
+  "cue": "You've just finished checking the whole patient setup. Brandon asks, \"How are we looking?\""
+  "scale":
+  - "Everything is padded and secured."
+  - "All padded, but let's reposition just in case."
+  - "This position isn't safe — we must start over."
+  "answerAt": 0
+  "why": "확인이 끝났으면 사실대로 담담히 알리면 돼요. 문제가 없는데 다시 하자고 하거나 안전하지 않다고 말하면 팀이 불필요하게 멈춰요."
+  "example": "Let's check the heels and elbows for padding."
+  "exKo": "패딩을 위해 발뒤꿈치와 팔꿈치를 확인합시다."
+- "kind": "swap"
+  "words":
+  - "w-check"
+  - "w-heel"
+  - "w-elbow"
+  - "w-pad"
+  "who": "간호사 → 순회간호사 · 패딩 확인"
+  "icon": "speaker"
+  "before":
+  - "Brandon, I've checked "
+  - "pretty much everything"
+  - " for padding."
+  "options":
+  - "just the arms"
+  - "the heels and elbows"
+  - "pretty much everything"
+  "answer": "the heels and elbows"
+  "notes":
+    "just the arms": "팔만 확인했다는 말이라 발뒤꿈치처럼 눌리기 쉬운 곳이 빠져요."
+    "the heels and elbows": "눌리기 쉬운 부위를 짚어 말해서 어디까지 봤는지 분명해요."
+    "pretty much everything": "무엇을 봤는지 알 수 없어서 상대가 다시 확인하게 돼요."
+  "why": "패딩은 눌리기 쉬운 부위마다 확인해요. 부위를 짚어 말해야 빠진 곳을 찾을 수 있어요."
+  "ko": "브랜든, 패딩은 발뒤꿈치와 팔꿈치까지 확인했어요"
+"기복 압력 감시":
+- "kind": "slider"
+  "words":
+  - "w-pressure"
+  - "w-number"
+  - "w-watch"
+  "cue": "Natalie asks, \"Has anything changed with the gas pressure?\""
+  "scale":
+  - "Nothing has changed at all, really."
+  - "Still at 15 and holding steady."
+  - "It's climbing fast — stop it now!"
+  "answerAt": 1
+  "why": "감시 결과는 구체적인 수치와 변화 여부로 말해야 해요. '변화 없다'는 막연하고, 오르지도 않는데 급하게 멈추라고 하면 팀이 혼란스러워요."
+  "example": "I'll watch the pressure number closely."
+  "exKo": "압력 수치를 면밀히 지켜볼게요."
+- "kind": "swap"
+  "words":
+  - "w-pressure"
+  - "w-insufflation"
+  - "w-watch"
+  "who": "간호사 → 순회간호사 · 압력 보고"
+  "icon": "speaker"
+  "before":
+  - "Natalie, "
+  - "the pressure looks okay"
+  - ", and I'll keep watching."
+  "options":
+  - "the pressure looks okay"
+  - "the pressure is way too high for this case"
+  - "the pressure is at 15 right now"
+  "answer": "the pressure is at 15 right now"
+  "notes":
+    "the pressure looks okay": "'okay'는 보는 사람마다 기준이 달라 수치를 알 수 없어요."
+    "the pressure is way too high for this case": "수치 없이 높다고만 하면 근거가 없고, 판단은 집도의가 해요."
+    "the pressure is at 15 right now": "지금 수치를 그대로 말해서 팀이 같은 값을 보고 판단할 수 있어요."
+  "why": "압력은 수치로 보고해야 집도의와 마취과가 같은 기준으로 판단해요."
+  "ko": "나탈리, 지금 압력은 15예요. 계속 지켜볼게요"

@@ -1,0 +1,127 @@
+situations:
+- title: 냉동절편 신속 이송
+  s:
+  - ["즉시 이송", run, "'needs to go'는 선택이 아니라 꼭 해야 하는 일로 들려요. 'now'를 끝에 붙여 기다릴 수 없다고 못 박아요.", "needs a label", "이 냉동절편은 지금 바로 라벨해야 해요.", "이 냉동절편은 지금 바로 포장해야 해요.", "now", "alone", "first", "again"]
+  - ["곧바로 가져가기", run, "'Please'가 붙어 정중하지만 분명한 요청이에요. 'straight to'는 도중에 들르지 말고 곧장이라는 뜻이에요.", "twice", "곧바로 병리과로 요청서를 가져다주세요.", "곧바로 병리과로 운반 상자를 가져다주세요.", "straight", "carefully", "quietly", "gently"]
+  - ["결과 연락", pager, "'the moment'는 'as soon as'와 비슷하게 그 순간 바로라는 시간 표현이에요. 'Call me'는 명령형이지만 부탁이라 가깝게 들려요.", "the day", "결과 나오는 대로 바로 문자 주세요.", "결과 나오는 대로 바로 메모 주세요.", "result", "slide", "label", "ticket"]
+  - ["긴급 요청", faceWorried, "'needs'는 지금 필요한 것이라는 뜻이고 'quickly'는 속도가 중요하다는 뜻이에요. 누가 필요로 하는지 앞에 밝혀요.", "this chest film", "마취팀이 이 냉동절편 결과를 빨리 필요로 해요.", "집도의가 이 냉동절편 사본을 빨리 필요로 해요.", "surgeon", "nurse", "resident", "scrub tech"]
+  - ["직접 운반", run, "'myself'는 남에게 맡기지 않고 내가 직접 한다는 뜻이에요. 'I'll'은 지금 정해서 하겠다는 말이에요.", "on a cart", "제가 직접 검사실에 전화할게요.", "제가 직접 검사실 문을 열어둘게요.", "myself", "quickly", "alone", "safely"]
+  - ["결과 전달 요청", pager, "'Let me know'는 알려 달라는 가장 흔한 부탁이에요. 'as soon as it's ready'는 준비되는 즉시라는 뜻이에요.", "just once", "결과 나오는 대로 가져다 주세요.", "결과 나오는 대로 인쇄해 주세요.", "ready", "late", "lost", "wrong"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 냉동절편 신속 이송 4문장 순서
+    why: 지금 가야 한다고 알리고, 그래서 곧장 병리과로 가져다 달라고 청하고, 집도의가 기다린다고 이유를 말한 뒤 결과가 나오면 바로 연락해 달라고 해요.
+    lines:
+    - ["This frozen needs to go now.", run, "이 냉동절편은 지금 바로 가야 해요", "알림"]
+    - ["Since it can't wait, please run it straight to pathology.", run, "기다릴 수 없으니 곧바로 병리과로 가져다주세요", "요청"]
+    - ["The surgeon needs their answer quickly.", faceWorried, "집도의가 그 답을 빨리 필요로 해요", "이유"]
+    - ["Call me the moment you have it.", pager, "그러니 결과 나오는 대로 바로 전화 주세요", "연락"]
+- title: 배양 검체 무균 채취
+  s:
+  - ["새 면봉", bandage, "'fresh'와 'sterile'을 겹쳐 새것이고 무균이라는 두 조건을 함께 말해요. 'for the culture'는 이 면봉의 용도를 밝혀요.", "for the wound", "배양 검체용으로 새 무균 장갑을 써요.", "배양 검체용으로 새 무균 포를 써요.", "sterile", "large", "small", "short"]
+  - ["가장자리 접촉 금지", shield, "'Avoid -ing'는 'Don't'보다 부드럽게 하지 말라는 말이에요. 'edges'로 닿으면 안 되는 부분을 짚어요.", "Avoid pressing", "용기 뚜껑 안쪽은 만지지 마세요.", "용기 겉면은 만지지 마세요.", "edges", "label", "handle", "base"]
+  - ["마르기 전 이송", run, "'before it dries out'은 마르면 안 되는 이유를 말해요. 'micro'는 미생물검사실을 줄여 부르는 병원 말이에요.", "to the cart", "마르기 전에 미생물검사실에 연락할게요.", "마르기 전에 미생물검사실 서식을 채울게요.", "dries", "cools", "spills", "breaks"]
+  - ["무균 유지", shield, "'the whole time'은 시작부터 끝까지 한 순간도 예외가 없다는 뜻이에요. 'keep … sterile'은 무균인 채로 둔다는 말이에요.", "on the tray", "이 면봉은 내내 손 높이로 유지해요.", "이 면봉은 내내 곧게 세워 유지해요.", "swab", "gown", "tray", "cup"]
+  - ["장갑 접촉 금지", shield, "'with your glove'는 장갑을 낀 손으로도 안 된다는 뜻이에요. 장갑이 용기 가장자리에 닿으면 균이 옮겨요.", "with a pen", "장갑으로 용기 가장자리를 닦지 마세요.", "장갑으로 용기 가장자리를 두드리지 마세요.", "glove", "towel", "pen", "cap"]
+  - ["즉시 발송", run, "'right away'는 미루지 않고 곧바로라는 뜻이에요. 배양 검체는 시간이 지나면 결과가 달라질 수 있어요.", "the report", "배양 검체를 바로 미생물검사실용 용기에 담을게요.", "배양 검체를 바로 미생물검사실 요청서에 적을게요.", "culture", "stain", "report", "slide"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 배양 검체 무균 채취 4문장 순서
+    why: 새 무균 면봉을 고르고, 용기에 넣을 때 가장자리를 피하고, 넣고 나면 마르기 전에 미생물검사실로 보내고, 나간 시각을 남겨요.
+    lines:
+    - ["Let's use a fresh sterile swab for the culture.", bandage, "배양 검체용으로 새 무균 면봉을 써요", "준비"]
+    - ["While you place it, keep it off the container's edge.", shield, "넣는 동안 용기 가장자리에 닿지 않게 해요", "취급"]
+    - ["Once it's in, I'll get it to micro before it dries out.", run, "들어가면 마르기 전에 미생물검사실로 보낼게요", "이송"]
+    - ["After that, I'll log the time it left.", pencil, "그 뒤에 나간 시각을 기록할게요", "기록"]
+- title: 다수 검체 혼동 방지
+  s:
+  - ["하나씩 라벨", pushpin, "'one at a time'은 한꺼번에 하지 않고 차례로 한다는 뜻이에요. 'each'로 하나도 빼지 않는다는 점을 말해요.", "every tray", "검체를 하나씩 순서대로 포장해요.", "검체를 하나씩 순서대로 세어요.", "label", "count", "open", "sort"]
+  - ["A·B 구분", compass, "A와 B 두 이름에 왼쪽·오른쪽을 짝지어 어느 것이 어느 쪽인지 한 문장에 못 박아요. 세미콜론이 두 묶음을 가르는 구실을 해요.", ", weighed", "이건 검체 A, 왼쪽이고, 검체 B는 다음에 나와요.", "이건 검체 A, 왼쪽이고, 검체 B는 따로 둘게요.", "left", "upper", "lower", "outer"]
+  - ["각각 확인", check, "'each'로 하나씩 빠짐없이 확인한다는 뜻이에요. 'before the next comes off'는 다음 것이 나오면 헷갈리기 쉬우니 그 전에 끝낸다는 이유예요.", "I'll weigh each", "다음 것이 나오기 전에 각각 포장할게요.", "다음 것이 나오기 전에 각각 세어 볼게요.", "next", "last", "first", "final"]
+  - ["혼동 방지", shield, "\"Let's not\"으로 같이 하지 말자고 해요. 'mix up'은 서로 뒤바뀌어 헷갈린다는 뜻이에요.", "the next", "이 두 검체를 서로 닿지 않도록 해요.", "이 두 검체를 흔들지 않도록 해요.", "mix", "pick", "line", "stack"]
+  - ["먼저 라벨", pushpin, "'this one'은 지금 손에 든 것을 가리켜요. 'before the next comes off'로 다음 것이 나오기 전에 끝낸다는 순서를 말해요.", "the drape", "다음 것이 수술 시야에서 나오기 전에 이걸 먼저 사진 찍을게요.", "다음 것이 수술 시야에서 나오기 전에 이걸 먼저 옆으로 옮길게요.", "field", "table", "stand", "cart"]
+  - ["즉시 라벨", pushpin, "'its own'은 용기마다 따로 하나씩이라는 뜻이에요. 'right away'로 받자마자 붙인다는 점을 더해요.", "with a lid", "각 용기는 바로 자기 뚜껑을 받아요.", "각 용기는 바로 자기 쟁반을 받아요.", "own", "first", "new", "extra"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 다수 검체 혼동 방지 4문장 순서
+    why: 헷갈리지 말자는 목표를 먼저 말하고, 지금 것이 무엇인지 밝힌 뒤 그대로 라벨하고, 다음 것이 나오기 전에 그 라벨을 함께 확인해요.
+    lines:
+    - ["Let's not mix up these two specimens.", shield, "이 두 검체를 헷갈리지 않도록 해요", "목표"]
+    - ["This one is specimen A, left; the next is specimen B, right.", compass, "이건 검체 A 왼쪽, 다음은 검체 B 오른쪽이에요", "구분"]
+    - ["So I'll label it that way before the next comes off the field.", pushpin, "그러니 그대로 다음 것이 나오기 전에 라벨할게요", "라벨"]
+    - ["I'll confirm that label with you before the next one comes off.", check, "다음 것이 나오기 전에 그 라벨을 함께 확인할게요", "확인"]
+- title: margin 방향 보존
+  s:
+  - ["절제연 표시", compass, "'marks'는 어느 쪽인지 알려 주는 표시라는 뜻이에요. 'lateral'은 몸 중심에서 바깥쪽이라는 방향 낱말이에요.", "The stitch tugs", "이 바늘땀이 측면 절제연에 닿아 있어요.", "이 바늘땀이 측면 절제연 가까이 있어요.", "stitch", "staple", "clip", "clamp"]
+  - ["봉합사 유지", shield, "'in place'는 있는 자리에서 움직이지 않는다는 뜻이에요. 방향 봉합사는 표지라서 위치가 바뀌면 의미가 없어져요.", "in a row", "방향 봉합사는 그대로 세어요.", "방향 봉합사는 그대로 적어요.", "orientation", "spare", "silk", "steel"]
+  - ["절제연 기재", pencil, "'document'는 기록으로 남긴다는 격식 있는 동사예요. 'on the requisition'으로 병리과가 보는 서류에 남겨요.", "the weights", "요청서에 절제연을 스캔할게요.", "요청서에 절제연을 복사할게요.", "margins", "prices", "colors", "codes"]
+  - ["봉합사 보호", shield, "\"Don't\"는 금지를 분명히 해요. 'by mistake'는 일부러가 아니라 실수로라도 안 된다는 점을 짚어요.", "at the knot", "실수로 방향 봉합사를 당기지 마세요.", "실수로 방향 봉합사를 풀지 마세요.", "cut", "move", "dye", "tie"]
+  - ["대응 기록", pencil, "'which … which'가 짝을 이뤄 바늘땀과 절제연의 대응을 말해요. 'note'는 간단히 적어 둔다는 뜻이에요.", "belongs to which tray", "어떤 바늘땀이 어떤 절제연을 표시하는지 그려둘게요.", "어떤 바늘땀이 어떤 절제연을 표시하는지 확인할게요.", "note", "ask", "read", "count"]
+  - ["명확한 기재", pencil, "'clearly'는 읽는 사람이 헷갈리지 않게 분명히라는 뜻이에요. 'this'는 앞에서 말한 내용을 가리켜요.", "Let's staple this", "요청서에 이걸 명확하게 붙여요.", "요청서에 이걸 명확하게 말해요.", "clearly", "quickly", "loosely", "lightly"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: margin 방향 보존 4문장 순서
+    why: 바늘땀이 어느 절제연을 표시하는지 밝히고, 그래서 봉합사를 그대로 두고, 대응을 요청서에 적은 뒤 적은 것들을 실수로 자르지 않아요.
+    lines:
+    - ["The stitch marks the lateral margin.", compass, "그 바늘땀이 측면 절제연을 표시해요", "표시"]
+    - ["That's why we keep the orientation sutures in place.", shield, "그래서 방향 봉합사를 그대로 둬요", "유지"]
+    - ["I'll note which stitch marks which margin on the requisition.", pencil, "어떤 바늘땀이 어떤 절제연인지 요청서에 적을게요", "기재"]
+    - ["Please don't cut any of the ones I just listed by mistake.", shield, "방금 적은 것들은 실수로 자르지 마세요", "주의"]
+- title: 검체 크기·개수 기록
+  s:
+  - ["개수 질문", magnify, "'How many'는 셀 수 있는 것의 수를 묻는 의문사예요. 'are we sending'은 지금 함께 보내는 것을 가리켜요.", "can they", "몇 조각을 받는 건가요?", "몇 조각을 남기는 건가요?", "pieces", "slides", "blocks", "tubes"]
+  - ["총 개수 확인", check, "'total'을 끝에 붙여 전부 합쳐서 몇 개인지를 말해요. \"Let's confirm\"은 같이 맞춰 보자는 제안이에요.", "in jars", "총 세 조각인지 세어 봐요.", "총 세 조각인지 적어 봐요.", "fragments", "bags", "jars", "forms"]
+  - ["크기·개수 기재", pencil, "'size and count'를 한 묶음으로 적어 병리과가 받은 것과 맞춰 볼 수 있어요. 'on the form'은 적는 곳을 정해요.", "in the margin", "서식에 크기와 무게를 기록할게요.", "서식에 크기와 날짜를 기록할게요.", "count", "weight", "color", "shape"]
+  - ["세고 기록", check, "'before I write them down'은 적기 전에 세어야 숫자가 틀리지 않는다는 이유예요. 'pieces'는 낱개를 가리켜요.", "the bags", "적기 전에 조각 크기를 재어요.", "적기 전에 조각 무게를 달아요.", "count", "weigh", "photograph", "scan"]
+  - ["조각별 크기", magnify, "'each fragment'는 하나하나 빠짐없이라는 뜻이에요. 크기는 조각마다 다를 수 있어서 따로 봐야 해요.", "every bag", "각 조각의 무게를 확인할게요.", "각 조각의 색깔을 확인할게요.", "size", "weight", "color", "shape"]
+  - ["서식 기재 상태", board, "'is documented'는 수동태라 누가 적었는지보다 기록이 남아 있다는 사실을 말해요. 'on the form'이 적힌 곳이에요.", "is printed", "총 무게는 서식에 문서화돼 있어요.", "총 시간은 서식에 문서화돼 있어요.", "documented", "printed", "folded", "stapled"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 검체 크기·개수 기록 4문장 순서
+    why: 몇 조각인지 묻고, 함께 센 뒤 총 개수를 말해 확인을 받고, 확인된 개수와 크기를 서식에 적어요.
+    lines:
+    - ["How many pieces are we sending?", magnify, "몇 조각을 보내는 건가요?", "질문"]
+    - ["Let's count them before I write anything down.", check, "적기 전에 그것들을 세어요", "계수"]
+    - ["Counting them, I get three fragments in total.", check, "세어 보니 총 세 조각이에요", "결과"]
+    - ["Good, I'll record that count and each size on the form.", pencil, "좋아요, 그 개수와 각 크기를 서식에 적을게요", "기록"]
+- title: 특수 검체 취급 지침
+  s:
+  - ["특수 취급", lab, "'needs'는 반드시 필요하다는 뜻이고 'special handling'은 보통과 다른 취급이라는 뜻이에요. 'This specimen'으로 어느 것인지 정해요.", "extra gloves", "이 검체는 특수 포장이 필요해요.", "이 검체는 특수 라벨이 필요해요.", "special", "gentle", "rapid", "daily"]
+  - ["보존 방법 질문", lab, "'on ice'와 'in a specific media'를 'or'로 이어 어느 쪽인지 묻는 질문이에요. 'Does it go'는 어떻게 보내는지를 물어요.", "on a tray", "이거 얼음에 놓나요, 아니면 특정 용기에 넣나요?", "이거 얼음에 놓나요, 아니면 특정 봉투에 넣나요?", "media", "bag", "jar", "box"]
+  - ["지침 확인", pager, "'the protocol'은 정해진 절차를 가리켜요. 'with the lab'으로 확인할 곳을 검사실로 정해요.", "for the day", "검사실에 지침을 보낼게요.", "검사실에 지침을 요청할게요.", "protocol", "schedule", "invoice", "price"]
+  - ["취급 전 확인", check, "'before we handle this'는 만지고 나면 되돌릴 수 없으니 먼저 확인한다는 이유예요. \"Let's check\"는 같이 해 보자는 제안이에요.", "the roster", "이걸 취급하기 전에 지침을 출력해요.", "이걸 취급하기 전에 지침을 외워요.", "handle", "move", "open", "weigh"]
+  - ["얼음 지시", shield, "'goes on ice'와 'not in formalin'을 맞세워 어느 쪽인지 분명히 해요. 쉼표 뒤 'not'이 아닌 쪽을 못 박아요.", "on a cart", "이 검체는 포르말린이 아니라 검사실로 보내요.", "이 검체는 포르말린이 아니라 얼음이라고 적어요.", "formalin", "saline", "water", "alcohol"]
+  - ["전화 이유", pager, "'to confirm'은 전화하는 목적을 밝혀요. 'special handling'은 앞에서 말한 특수 취급을 다시 가리켜요.", "the schedule", "특수 취급을 알리러 검사실에 전화할게요.", "특수 취급을 설명하러 검사실에 전화할게요.", "confirm", "explain", "change", "order"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 특수 검체 취급 지침 4문장 순서
+    why: 특수 취급이 필요하다고 알리고, 어떤 방법인지 묻고, 그 답을 검사실에 확인하고, 답을 받아 그대로 포장해요.
+    lines:
+    - ["This specimen needs special handling.", lab, "이 검체는 특수 취급이 필요해요", "알림"]
+    - ["Does it go on ice or in a specific media?", lab, "이거 얼음에 놓나요, 아니면 특정 배지에 넣나요?", "질문"]
+    - ["I'll call the lab to confirm which one.", pager, "어느 쪽인지 검사실에 전화해서 확인할게요", "확인"]
+    - ["Once they answer, we'll pack it exactly that way.", check, "답을 받으면 정확히 그대로 포장해요", "실행"]
+- title: 검체 손상 방지 이송
+  s:
+  - ["압박 금지", shield, "\"Let's not\"은 같이 하지 말자는 부드러운 금지예요. 'compress'는 눌러서 모양을 상하게 한다는 뜻이에요.", "the tray", "검체를 접지 말아요.", "검체를 흔들지 말아요.", "compress", "shake", "drop", "twist"]
+  - ["평평하게 놓기", shield, "'so it doesn't fold'는 평평하게 놓는 이유를 뒤에 붙여요. 'flat'은 펴진 채로라는 뜻이에요.", "when you", "젖지 않게 평평하게 놓아요.", "미끄러지지 않게 평평하게 놓아요.", "flat", "upright", "apart", "aside"]
+  - ["안정적 운반", run, "'steady'는 흔들리지 않고 고르게라는 뜻이에요. 'to pathology'로 가는 목적지가 정해져요.", "in a bag", "병리과까지 조용히 옮겨요.", "병리과까지 복도로 옮겨요.", "steady", "fast", "high", "low"]
+  - ["용기 선택", shield, "'that won't crush this'는 어떤 용기를 고를지 기준을 밝혀요. 용기가 단단하고 넉넉해야 눌리지 않아요.", "a cooler", "이걸 새지 않을 용기를 골라요.", "이걸 열리지 않을 용기를 골라요.", "crush", "leak", "open", "tip"]
+  - ["접힘 방지", shield, "\"Don't fold\"는 금지가 앞에 와서 안 되는 행동이 먼저 들려요. 'when you place it'은 넣는 그 순간을 가리켜요.", "with the tweezers", "용기에 넣을 때 검체가 떨어지지 않게 하세요.", "용기에 넣을 때 검체가 흔들리지 않게 하세요.", "fold", "shake", "drop", "tilt"]
+  - ["끝까지 평평하게", run, "'the whole way'는 출발부터 도착까지 내내라는 뜻이에요. 'flat and steady'는 두 조건을 한꺼번에 말해요.", "and fast", "가는 내내 평평하고 조용히 옮길게요.", "가는 내내 평평하고 두 손으로 옮길게요.", "flat", "upright", "loose", "high"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 검체 손상 방지 이송 4문장 순서
+    why: 누르지 말자는 원칙을 말하고, 그래서 안 눌리는 용기를 고르고, 그 안에 평평하게 놓고, 같은 모양 그대로 병리과까지 옮겨요.
+    lines:
+    - ["Let's not compress the specimen.", shield, "검체를 압박하지 말아요", "원칙"]
+    - ["So choose a container that won't crush it.", shield, "그러니 그걸 으스러뜨리지 않을 용기를 골라요", "용기"]
+    - ["Place it flat in there so it doesn't fold.", shield, "그 안에 접히지 않게 평평하게 놓아요", "배치"]
+    - ["I'll carry it to pathology that way.", run, "그 상태로 병리과까지 옮길게요", "이송"]

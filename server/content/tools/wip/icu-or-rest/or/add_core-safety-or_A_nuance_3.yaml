@@ -1,0 +1,259 @@
+팀 안전 브리핑:
+- kind: slider
+  words: [w-concern, w-backup, w-plan]
+  cue: "At the briefing the surgeon asks, \"Any concerns?\" and you notice the backup suction isn't set up."
+  scale:
+  - "No concerns from me — everything looks ready to start."
+  - "A small one, but it can probably wait until the case ends."
+  - "One concern — backup suction isn't set up, so let's fix it."
+  answerAt: 2
+  why: 브리핑은 아직 계획을 바꿀 수 있는 때예요. 무엇이 문제인지 구체적으로 지금 말해야 대비할 수 있어요. 없다고 하거나 나중으로 미루면 필요할 때 장비가 없어요.
+  example: "One concern — backup suction isn't set up, so let's fix it."
+  exKo: 우려가 하나 있어요 — 예비 석션이 설치되지 않았으니 해결해요.
+- kind: context
+  words: [w-briefing]
+  word: briefing
+  ko: 브리핑
+  scenes:
+  - {who: 간호사 → 팀, icon: speech, en: "Let's start the briefing: plan, roles, and backup.", ok: true}
+  - {who: 수술 기록, icon: board, en: "Pre-procedure briefing held with all team members; roles assigned.", ok: true}
+  - {who: 간호사 → 환자, icon: faceWorried, en: "A multidisciplinary briefing apportions intraoperative accountabilities.", ok: false, fix: "Before your surgery the whole team has a short briefing so everyone knows their job."}
+  why: 뜻은 셋 다 '브리핑'이에요. 팀에는 계획·역할·대비책을 짚자고 짧게, 기록에는 참석과 역할 배정을 건조하게 적어요. 하지만 환자에게 'multidisciplinary'나 'apportions accountabilities'라고 하면 알아듣지 못하고 차갑게 들려요. 환자에게는 팀이 각자 할 일을 맞춘다고 쉬운 말로 해요.
+- kind: swap
+  words: [w-say, w-concern, w-plan]
+  who: 간호사 → 팀 · 계획 단계에서 우려 말하기
+  icon: speech
+  before: ["", "I'll mention it if it becomes a problem.", ""]
+  options:
+  - "I'll say my concern now, while we can still plan for it."
+  - "I'll mention it if it becomes a problem."
+  - "It's probably nothing, so I'll keep it to myself."
+  answer: "I'll say my concern now, while we can still plan for it."
+  notes:
+    "I'll say my concern now, while we can still plan for it.": 아직 계획을 세울 수 있을 때 말해야 대비할 수 있어요.
+    "I'll mention it if it becomes a problem.": 문제가 된 뒤에 말하면 이미 대응할 시간이 없어요.
+    "It's probably nothing, so I'll keep it to myself.": 혼자 판단해 삼키면 팀이 알 기회를 잃어요.
+  why: 브리핑은 우려를 계획에 반영할 수 있는 시간이에요. 지금 말해야 대비책을 만들 수 있고, 문제가 된 뒤나 혼자 삼키는 건 안전을 해쳐요.
+  ko: 아직 계획을 세울 수 있을 때 지금 우려를 말할게요
+wrong-site 임박 저지:
+- kind: slider
+  words: [w-stop, w-wrong, w-side, w-consent]
+  cue: "The surgeon picks up the scalpel for the right knee, but the consent says left."
+  scale:
+  - "Excuse me, I think the side might be wrong."
+  - "Stop — this is the wrong side. The consent says left."
+  - "Stop! You rush every case, and now you're on the wrong side!"
+  answerAt: 1
+  why: 임박한 오류 앞에서는 '멈추세요'와 사실을 짧고 분명하게 말해요. 머뭇거리면 칼이 닿기 전에 못 막을 수 있고, 사람을 탓하면 방어하느라 확인이 늦어져요.
+  example: "Stop — this is the wrong side. The consent says left."
+  exKo: 멈추세요 — 틀린 쪽이에요. 동의서에는 왼쪽이라고 되어 있어요.
+- kind: context
+  words: [w-halt]
+  word: halt
+  ko: 중단하다
+  scenes:
+  - {who: 수술 기록, icon: board, en: "Procedure halted pending site verification; consent and mark reviewed.", ok: true}
+  - {who: 간호사 → 보호자, icon: faceWorried, en: "We will halt the case while a laterality discrepancy is adjudicated by the risk office.", ok: false, fix: "We caught a mix-up before it caused any harm, so we halted the case to re-check everything."}
+  - {who: 간호사 → 집도의, icon: speech, en: "Please halt — the consent says left, not right.", ok: true}
+  why: 뜻은 셋 다 '중단하다'예요. 집도의에게는 짧고 분명하게, 기록에는 이유와 확인 내용을 건조하게 적어요. 하지만 보호자에게 'laterality discrepancy'나 'adjudicated by the risk office'라고 하면 무슨 일인지 알 수 없고 겁나요. 보호자에게는 실수를 해가 가기 전에 잡아 멈추고 다시 확인한다고 쉬운 말로 해요.
+- kind: swap
+  words: [w-forward, w-move, w-side, w-confirm]
+  who: 간호사 → 팀 · 멈춘 직후 재개 압박
+  icon: speech
+  before: ["", "It's probably fine, so let's keep moving.", ""]
+  options:
+  - "I'm not moving forward until the side is confirmed."
+  - "It's probably fine, so let's keep moving."
+  - "We'll confirm the side after the first cut."
+  answer: "I'm not moving forward until the side is confirmed."
+  notes:
+    "I'm not moving forward until the side is confirmed.": 부위가 확인되기 전에는 나아가지 않겠다고 내 입장을 분명히 말해요.
+    "It's probably fine, so let's keep moving.": 아마 괜찮다는 짐작으로 진행하면 틀린 부위를 수술할 수 있어요.
+    "We'll confirm the side after the first cut.": 절개 뒤에는 되돌릴 수 없어요.
+  why: 멈춘 뒤에 압박이 와도 확인이 끝나기 전에는 진행하지 않아요. 짐작이나 사후 확인으로 되돌리면 안 돼요.
+  ko: 부위가 확인될 때까지 앞으로 나아가지 않을게요
+이물 잔류 위기 대응:
+- kind: slider
+  words: [w-miss, w-find, w-xray, w-actually]
+  cue: "You've searched twice and the missing sponge hasn't been found, but the surgeon is ready to close."
+  scale:
+  - "We shouldn't close yet — can we get an X-ray first?"
+  - "Let's close now and look into it afterward."
+  - "We stay here until we find it, however long it takes."
+  answerAt: 0
+  why: 거즈가 안 나왔으면 닫기 전에 영상으로 확인하자고 요청해요. 닫을지는 집도의가 정하지만 확인되지 않았다는 사실과 방법을 말하는 것은 간호사의 몫이에요. 닫고 나중에 보자는 말이나 무한정 붙잡겠다는 말은 도움이 안 돼요.
+  example: "We shouldn't close yet — can we get an X-ray first?"
+  exKo: 아직 닫으면 안 돼요 — 먼저 엑스레이를 찍을 수 있을까요?
+- kind: context
+  words: [w-notice]
+  word: notice
+  ko: 알아차리다
+  scenes:
+  - {who: 간호사 → 보호자, icon: faceWorried, en: "A retained foreign object was noticed during count reconciliation.", ok: false, fix: "We noticed one sponge hasn't been accounted for, so we're checking carefully before we finish — we'll update you."}
+  - {who: 간호사 → 집도의, icon: speech, en: "I noticed the count was off and said so right away.", ok: true}
+  - {who: 수술 기록, icon: board, en: "Count discrepancy noticed at closure; X-ray ordered by surgeon.", ok: true}
+  why: 뜻은 셋 다 '알아차리다'예요. 집도의에게는 알아챈 즉시 말했다고, 기록에는 언제 알아챘고 어떻게 했는지 건조하게 적어요. 하지만 보호자에게 'retained foreign object'라고 단정하면 이미 몸에 남은 것처럼 들려 큰 충격이에요. 보호자에게는 확인 중이라고 쉬운 말로 해요.
+- kind: swap
+  words: [w-say, w-moment, w-notice, w-gone, w-search]
+  who: 간호사 → 집도의 · 거즈 하나 부족
+  icon: speech
+  before: ["", "It's probably in the trash, so let's just close.", ""]
+  options:
+  - "It's probably in the trash, so let's just close."
+  - "I said something the moment I noticed it was gone — we need to search before we close."
+  - "I'll look for it quietly after the case."
+  answer: "I said something the moment I noticed it was gone — we need to search before we close."
+  notes:
+    "It's probably in the trash, so let's just close.": 찾지 않고 짐작으로 닫으면 몸에 남을 수 있어요.
+    "I said something the moment I noticed it was gone — we need to search before we close.": 알아챈 순간 말했다고 사실을 알리고 닫기 전에 찾아야 한다고 요청해요.
+    "I'll look for it quietly after the case.": 수술 뒤에 찾으면 이미 환자 몸을 닫은 뒤라 늦어요.
+  why: 없어진 것을 알아챈 순간 바로 말하고 닫기 전에 찾도록 요청해요. 짐작으로 넘기거나 나중으로 미루면 환자 몸에 남을 수 있어요.
+  ko: 사라진 걸 알아챈 순간 바로 말했어요 — 닫기 전에 찾아야 해요
+수술 화재 발생 대응:
+- kind: slider
+  words: [w-fire, w-field, w-oxygen, w-stop, w-extinguisher, w-flame]
+  cue: "A flame appears on the drapes near the cautery."
+  scale:
+  - "Is that smoke? I'll have a quick look in a minute."
+  - "A small flame at the drapes — let's keep an eye on it."
+  - "Fire on the field! Stop the oxygen and get the extinguisher!"
+  answerAt: 2
+  why: 불꽃이 보이면 확인을 미루거나 지켜보지 않고 즉시 크게 외쳐요. 산소 차단, 불붙은 물질 제거, 소화기 확보가 필요하다는 것을 분명히 알려요.
+  example: "Fire on the field! Stop the oxygen and get the extinguisher!"
+  exKo: 필드에 화재예요! 산소를 끊고 소화기를 가져오세요!
+- kind: context
+  words: [w-extinguisher]
+  word: extinguisher
+  ko: 소화기
+  scenes:
+  - {who: 간호사 → 동료, icon: speech, en: "Get the extinguisher — now!", ok: true}
+  - {who: 수술 기록, icon: board, en: "Fire on drapes put out with saline; extinguisher brought to bedside, not used.", ok: true}
+  - {who: 간호사 → 보호자, icon: faceWorried, en: "The fire was suppressed prior to deployment of the extinguisher.", ok: false, fix: "There was a small fire, and we put it out quickly — no one was hurt."}
+  why: 뜻은 셋 다 '소화기'예요. 동료에게는 짧고 급하게 가져오라고 하고, 기록에는 사용 여부를 건조하게 남겨요. 하지만 보호자에게 'suppressed prior to deployment'라고 하면 알아듣기 어렵고 차갑게 들려요. 보호자에게는 작은 불이었고 빨리 껐다고 쉬운 말로 해요.
+- kind: swap
+  words: [w-shout, w-flame]
+  who: 간호사 → 팀 · 불꽃 발견 즉시
+  icon: speech
+  before: ["", "I'll mention the flame once I'm sure it's a fire.", ""]
+  options:
+  - "I'll mention the flame once I'm sure it's a fire."
+  - "Someone should probably tell the surgeon about the flame."
+  - "I'll shout it the second I see the flame."
+  answer: "I'll shout it the second I see the flame."
+  notes:
+    "I'll mention the flame once I'm sure it's a fire.": 확신할 때까지 기다리면 불이 커져요.
+    "Someone should probably tell the surgeon about the flame.": 누군가에게 미루면 아무도 외치지 않아요. 본인이 외쳐요.
+    "I'll shout it the second I see the flame.": 확인을 기다리지 않고 본 즉시 직접 외치면 모두가 동시에 들어요.
+  why: 불꽃은 확신이 서기 전에 본 즉시 직접 외쳐요. '누군가'에게 미루거나 확신을 기다리면 대응이 늦어요.
+  ko: 불꽃을 보는 즉시 외칠게요
+검체 분실 위기:
+- kind: slider
+  words: [w-specimen, w-unaccounted, w-stop, w-search]
+  cue: "At the end of the case, you can't find one of the specimen cups that was handed off."
+  scale:
+  - "One specimen is unaccounted for — let's search now."
+  - "One cup is missing, but I'm sure it'll turn up soon."
+  - "Someone threw away a specimen, and I'm reporting them!"
+  answerAt: 0
+  why: 없어진 사실을 바로 알리고 멈춰서 찾아요. 곧 나올 거라고 낙관하면 찾을 시간을 놓치고, 누가 버렸는지부터 따지면 비난이 되어 협조가 깨져요.
+  example: "One specimen is unaccounted for — let's search now."
+  exKo: 검체 하나의 행방이 확인되지 않아요 — 지금 찾아요.
+- kind: context
+  words: [w-unaccounted]
+  word: unaccounted
+  ko: 행방이 확인되지 않은
+  scenes:
+  - {who: 수술 기록, icon: board, en: "One specimen unaccounted for at closure; search initiated and pathology notified.", ok: true}
+  - {who: 간호사 → 보호자, icon: faceWorried, en: "Sir, your wife's tissue is currently unaccounted for.", ok: false, fix: "We can't find one of the samples yet. We're looking for it now, and we'll tell you as soon as we know."}
+  - {who: 간호사 → 집도의, icon: speech, en: "One specimen is unaccounted for — I'm reporting it right now.", ok: true}
+  why: 뜻은 셋 다 '행방이 확인되지 않은'이에요. 집도의에게는 바로 보고한다고 짧게, 기록에는 건조하게 남겨요. 하지만 보호자에게 아내의 조직이 'unaccounted for'라고만 하면 차갑고 어떻게 되고 있는지 알 수 없어요. 보호자에게는 지금 찾고 있고 알게 되면 알려 주겠다고 쉬운 말로 해요.
+- kind: swap
+  words: [w-notice, w-miss, w-say, w-away]
+  who: 간호사 → 집도의 · 검체 누락 알림
+  icon: speech
+  before: ["", "I'll wait to see if it turns up, then report it.", ""]
+  options:
+  - "I'll wait to see if it turns up, then report it."
+  - "Someone should look for the missing specimen."
+  - "I noticed it was missing and I'm saying so right away."
+  answer: "I noticed it was missing and I'm saying so right away."
+  notes:
+    "I'll wait to see if it turns up, then report it.": 기다리며 보고를 늦추면 찾을 시간이 줄어요.
+    "Someone should look for the missing specimen.": 누군가에게 미루면 아무도 나서지 않아요. 알린 사람이 직접 말해요.
+    "I noticed it was missing and I'm saying so right away.": 알아챘다고 사실을 말하고 즉시 알려서 바로 찾기 시작할 수 있어요.
+  why: 검체가 없어진 것을 알면 기다리지 않고 즉시 직접 알려요. 누군가에게 미루거나 보고를 늦추면 찾을 기회를 잃어요.
+  ko: 없어진 걸 알아채서 바로 말씀드려요
+위해사건 즉시 보고:
+- kind: slider
+  words: [w-keep, w-device, w-packaging, w-exactly]
+  cue: "A device malfunctions during the case, and a colleague starts to toss it and its box into the trash."
+  scale:
+  - "Could you put it aside? We can sort it out later."
+  - "Please keep the device and box as they are."
+  - "Hands off! Touch it and you'll be written up!"
+  answerAt: 1
+  why: 문제가 된 기기와 포장은 조사를 위해 그대로 보존해야 해요. 구체적으로 무엇을 어떻게 두라고 말하면 되고, 옆으로 치우라고만 하면 흐트러지고, 협박하면 팀 관계가 깨져요.
+  example: "Please keep the device and box as they are."
+  exKo: 기기와 상자를 지금 그대로 두세요.
+- kind: context
+  words: [w-notify]
+  word: notify
+  ko: 알리다
+  scenes:
+  - {who: 수술 기록, icon: board, en: "Charge nurse and surgeon notified at 10:05; device sequestered.", ok: true}
+  - {who: 간호사 → 보호자, icon: faceWorried, en: "Per policy, risk management will be notified of the occurrence.", ok: false, fix: "We're notifying the right people now, and we'll update you as soon as we can."}
+  - {who: 간호사 → 책임 간호사, icon: bell, en: "I'm notifying you right away: the device failed during the case.", ok: true}
+  why: 뜻은 셋 다 '알리다'예요. 책임 간호사에게는 바로 알린다고 짧게, 기록에는 누구에게 언제 알렸는지 건조하게 남겨요. 하지만 보호자에게 'Per policy, risk management…'라고 하면 방어적이고 무슨 일인지 알 수 없어요. 보호자에게는 알아야 할 사람에게 알리는 중이고 곧 설명하겠다고 쉬운 말로 해요.
+- kind: swap
+  words: [w-say, w-away, w-anything, w-move]
+  who: 간호사 → 책임 간호사 · 사건 직후
+  icon: speech
+  before: ["", "I'll tell you after my shift, once things calm down.", ""]
+  options:
+  - "I'm telling you right away, before anything gets moved."
+  - "I'll tell you after my shift, once things calm down."
+  - "I'll write it up first, and you can read it later."
+  answer: "I'm telling you right away, before anything gets moved."
+  notes:
+    "I'm telling you right away, before anything gets moved.": 아무것도 옮겨지기 전에 바로 알리면 현장 그대로 조사할 수 있어요.
+    "I'll tell you after my shift, once things calm down.": 근무 뒤로 미루면 기기와 현장이 이미 달라져 있어요.
+    "I'll write it up first, and you can read it later.": 보고서만 남기고 말로 알리지 않으면 당장 필요한 조치가 늦어요.
+  why: 위해사건은 아무것도 옮겨지기 전에 즉시 책임자에게 직접 알려요. 근무 뒤로 미루거나 글만 남기면 조치와 조사가 늦어져요.
+  ko: 아무것도 옮겨지기 전에 바로 말씀드려요
+안전 위반 압력 저항:
+- kind: slider
+  words: [w-understand, w-pressure, w-skip, w-step]
+  cue: "The surgeon is behind schedule and says, \"Skip the count — we're late.\""
+  scale:
+  - "Okay, I'll skip it this once and do it later."
+  - "I don't think we should skip it, but it's up to you."
+  - "I understand the pressure, but I can't skip it."
+  answerAt: 2
+  why: 압박을 이해한다고 인정하면서도 단계는 건너뛸 수 없다고 분명히 해요. 한 번만이라고 넘어가면 기준이 무너지고, 결정을 상대에게 넘기면 안전 단계가 선택이 돼 버려요.
+  example: "I understand the pressure, but I can't skip it."
+  exKo: 압박은 이해하지만 건너뛸 수 없어요.
+- kind: context
+  words: [w-protect]
+  word: protect
+  ko: 보호하다
+  scenes:
+  - {who: 간호사 → 환자, icon: faceWorried, en: "This step is a mitigation control that attenuates iatrogenic risk to protect you.", ok: false, fix: "This step is here to protect you, so we never skip it."}
+  - {who: 간호사 → 집도의, icon: speech, en: "I understand the pressure, but this step protects the patient.", ok: true}
+  - {who: 수술 기록, icon: board, en: "Safety step completed as required to protect the patient; no deviation.", ok: true}
+  why: 뜻은 셋 다 '보호하다'예요. 집도의에게는 압박은 알지만 환자를 위한 단계라고 짧게, 기록에는 건조하게 남겨요. 하지만 환자에게 'mitigation control'이나 'iatrogenic risk'라고 하면 무슨 뜻인지 모르고 차가워요. 환자에게는 당신을 지키려는 단계라고 쉬운 말로 해요.
+- kind: swap
+  words: [w-skip, w-step, w-second]
+  who: 간호사 → 집도의 · 시간 압박
+  icon: speech
+  before: ["", "Okay, we'll skip it since we're short on time.", ""]
+  options:
+  - "Okay, we'll skip it since we're short on time."
+  - "Let's take thirty seconds to do this step right."
+  - "I'll do it later, when we have more time."
+  answer: "Let's take thirty seconds to do this step right."
+  notes:
+    "Okay, we'll skip it since we're short on time.": 시간이 없다는 이유로 건너뛰면 단계의 의미가 사라져요.
+    "Let's take thirty seconds to do this step right.": 시간이 얼마 안 걸린다는 것을 보여 주며 제대로 하자고 해요.
+    "I'll do it later, when we have more time.": 나중으로 미루면 그 시점에는 이미 소용이 없어요.
+  why: 시간 압박에는 건너뛰지 않고 짧은 시간을 제안해 제대로 해요. 나중으로 미루면 단계가 무의미해져요.
+  ko: 이 단계는 제대로 하게 삼십 초만 써요

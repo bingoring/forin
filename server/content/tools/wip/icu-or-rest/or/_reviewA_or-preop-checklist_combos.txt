@@ -1,0 +1,219 @@
+
+## 0 slider ans=0 cue=Anxious patient: 'Why are you asking me all of this again? Is something wrong?'
+    0 * It's routine — we ask everyone. 31
+    1   It's an important safety step. 30
+    2   It's critical, so answer exactly. 33
+
+## 0 swap ko=모든 환자분께 똑같이 쓰는 점검표예요 ans=it's the same list we use with every patient
+    "Hi, I'm going to confirm a few things before surgery — so you don't forget anything important. I'll explain each step as we go."
+    "Hi, I'm going to confirm a few things before surgery — it's the same list we use with every patient. I'll explain each step as we go."
+    "Hi, I'm going to confirm a few things before surgery — because mistakes happen here a lot. I'll explain each step as we go."
+
+## 1 slider ans=1 cue=It's 6 p.m. The potassium for tomorrow's 7 a.m. case isn't back yet.
+    0   Mention it at shift change. 27
+    1 * Flag it and follow up with the lab. 35
+    2   Call the surgeon at home right now to report it. 48
+
+## 1 context word=pending ko=대기 중인
+    걱정하는 보호자에게 | His labs are pending and nobody knows when they'll be back. | False | We're still waiting on one lab result, and I'm following up on it right now. | has word: True
+    마취과 동료에게 | Potassium is still pending — I've flagged it. | True |  | has word: True
+    환자에게 | One of your labs is still pending, and I'm following up with the lab. | True |  | has word: True
+    why= pending은 의료진끼리나 환자에게 쓰는 평범한 말이에요. 하지만 걱정하는 보호자에게 '아무도 모른다'고 하면 방치처럼 들려요. 누가 언제까지 확인 중인지를 함께 말해야 안심해요.
+
+## 2 slider ans=2 cue=Patient: 'My arm is swelling and burning right at the IV, and it's getting worse.'
+    0   Keep watching it and chart any changes. 39
+    1   Slow the drip and recheck it a little later. 44
+    2 * Stop the infusion and assess the site now. 42
+
+## 2 swap ko=IV 부위가 화끈거리거나 붓는 것 같으면 말씀해 주세요 ans=if you notice any burning or swelling
+    'Let me know if anything feels off at the IV site.'
+    'Let me know if it gets too painful to bear at the IV site.'
+    'Let me know if you notice any burning or swelling at the IV site.'
+
+## 3 slider ans=1 cue=Patient: 'It's just a tiny piercing — it can't matter.'
+    0   It's small, so it's probably fine. 34
+    1 * Even small metal can interfere, so it comes out. 48
+    2   Any metal is deadly, so it must be cut off right away. 54
+
+## 3 context word=interfere ko=방해하다
+    불안한 환자에게 | Your piercing will interfere with the cautery and could burn you. | False | Metal can get in the way of our equipment, so we take it off to keep you safe. | has word: True
+    환자에게 · 차분한 설명 | Metal can interfere with the equipment, so we take it off before surgery. | True |  | has word: True
+    수술팀 동료에게 | Jewelry can interfere with the cautery, so it comes off. | True |  | has word: True
+    why= 동료에게는 소작기에 방해된다고 짧게 말하면 충분해요. 불안한 환자에게 '화상을 입는다'고 하면 사실이어도 겁이 나요. '장비에 방해가 되니 안전하게 빼 둔다'고 말하는 게 좋아요.
+
+## 4 slider ans=0 cue=Patient: 'I went right before I changed into the gown.'
+    0 * That's fine — I'll note it. 27
+    1   Let's try once more to be safe. 31
+    2   You must go again before we move. 33
+
+## 4 swap ko=들어가시기 전에 화장실이 필요하면 말씀해 주세요 ans=need the restroom
+    'Let me know if you need the restroom before we head back.'
+    'Let me know if you need to void before we head back.'
+    'Let me know if you are about to burst before we head back.'
+
+## 5 slider ans=1 cue=The antibiotic is drawn up, and incision is about 20 minutes away.
+    0   Give it after the case. 23
+    1 * Give it before incision, within the hour. 41
+    2   Give it hours early, just to be extra safe. 43
+
+## 5 swap ko=지금 줘서 절개 전에 들어가게 할게요 ans=I'll give it now so it's in before incision
+    "The antibiotic is ready — I'll give it whenever someone tells me to."
+    "The antibiotic is ready — I'll give it now so it's in before incision."
+    "The antibiotic is ready — I'll give it after the first cut."
+
+## 6 slider ans=1 cue=The case needs blood ready per policy, the crossmatch isn't finished, and the surgeon is waiting.
+    0   FYI — the crossmatch isn't done yet. 36
+    1 * I'd like to hold until blood is ready. 38
+    2   Cancel the whole case until blood is ready. 43
+
+## 6 context word=expedite ko=신속히 처리하다
+    혈액은행 직원에게 | Could you expedite the crossmatch for Room 4? The case is waiting. | True |  | has word: True
+    불안한 가족에게 | We've asked the blood bank to expedite the crossmatch on your husband's blood. | False | We've asked the blood bank to rush it, and I'll tell you as soon as it's done. | has word: True
+    마취과 동료에게 | The blood bank is expediting the crossmatch — I'll update you when it's done. | True |  | has word: False
+    why= expedite는 병원 안에서 일을 서두르게 할 때 쓰는 말이에요. 가족에게는 딱딱하고 낯설게 들려서 '서둘러 달라고 했고, 끝나면 알려 드릴게요'처럼 풀어 말하는 게 좋아요.
+
+## 7 slider ans=2 cue=The required potassium for a dialysis patient isn't back, and the OR is waiting for the patient.
+    0   Mention it at handoff. 22
+    1   Remind the team that it's still missing today. 46
+    2 * Tell the surgeon and anesthesia now. 36
+
+## 7 swap ko=결과가 나올 때까지 기다려야 해요 ans=so we need to wait for it to come back
+    "The potassium is required for this case, so we're cancelling your surgery. I'll let the team know and keep you updated."
+    "The potassium is required for this case, so don't worry about it. I'll let the team know and keep you updated."
+    "The potassium is required for this case, so we need to wait for it to come back. I'll let the team know and keep you updated."
+
+## 8 slider ans=0 cue=The patient hands you a pacemaker card with the model and implant date.
+    0 * Record it and pass it to the surgical team. 43
+    1   Call cardiology to the OR right away. 37
+    2   Cancel the surgery until cardiology reviews it. 47
+
+## 8 context word=implant ko=이식물
+    수술팀 동료에게 | The chart lists a right hip implant. | True |  | has word: True
+    환자에게 | Do you have any metal implants, like a pacemaker or a joint replacement? | True |  | has word: True
+    환자의 보호자에게 | Please list all the implants your mother has had, including any intracorporeal prosthetic devices. | False | Does your mother have anything metal in her body, like a heart device or a new knee? | has word: True
+    why= implant는 차트나 의료진 사이에서 정확한 말이에요. 보호자에게는 '몸속에 금속이 있는지'처럼 쉽게 물어야 대답이 나와요.
+
+## 9 slider ans=1 cue=The start time slipped 30 minutes, and the antibiotic isn't in yet.
+    0   Do nothing — it's fine. 23
+    1 * Tell the team and give it before incision. 42
+    2   Tell the team to cancel the case today. 39
+
+## 9 swap ko=실제로 들어간 정확한 시각을 기록할게요 ans=document the exact time it actually goes in
+    "I'll give it now and document the exact time it actually goes in."
+    "I'll give it now and chart the originally planned time."
+    "I'll give it now and skip charting it since we're late."
+
+## 10 slider ans=0 cue=Before the stick, a nervous patient asks, 'Will it hurt?'
+    0 * You'll feel a small pinch. 26
+    1   It will sting, but it's quick. 30
+    2   It's going to hurt, so brace yourself. 38
+
+## 10 swap ko=그럴 때가 가끔 있어요 ans=and that happens sometimes
+    "That IV isn't flowing well, so your veins aren't good enough. Let me try a new site on your other arm."
+    "That IV isn't flowing well, and that happens sometimes. Let me try a new site on your other arm."
+    "That IV isn't flowing well, so I messed it up. Let me try a new site on your other arm."
+
+## 11 slider ans=1 cue=Patient: 'I won't take out my teeth in front of everyone!'
+    0   It's your choice. 17
+    1 * I understand — we'll label them and return them right away. 59
+    2   If you don't take them out, we simply can't do your surgery. 60
+
+## 11 context word=airway ko=기도
+    마취과 동료에게 | Dentures are out — airway is clear. | True |  | has word: True
+    겁먹은 환자에게 | Dentures can slip and block your airway, and you could aspirate. | False | Taking them out helps us keep you breathing safely. | has word: True
+    회복실 간호사에게 | Dentures are bagged and labeled; airway was clear at induction. | True |  | has word: True
+    why= 의료진끼리는 airway와 aspirate 같은 말이 정확하고 빨라요. 겁먹은 환자에게는 위험을 늘어놓기보다 '안전하게 숨 쉬게 하려고'라고 말하는 게 좋아요.
+
+## 12 slider ans=2 cue=Patient on a blood thinner says, 'My last dose was this morning.'
+    0   Chart it. 9
+    1   Mention it at handoff and in the chart notes. 45
+    2 * Tell the surgeon and anesthesia right away. 43
+
+## 12 context word=compression ko=압박
+    환자에게 | Bilateral intermittent pneumatic compression is running on both legs. | False | These sleeves gently squeeze your legs to keep your blood moving. | has word: True
+    마취과 동료에게 | Compression sleeves are on, both legs. | True |  | has word: True
+    순환간호사에게 | Compression is on, and the VTE orders are confirmed. | True |  | has word: True
+    why= 동료에게는 compression이 켜졌다고 짧게 보고하면 돼요. 환자에게 장비 이름을 늘어놓으면 알아듣지 못해요. 슬리브가 다리를 부드럽게 눌러 피가 돌게 한다고 말해요.
+
+## 13 slider ans=1 cue=Fasting patient with diabetes: her blood sugar is well above the usual target.
+    0   Fine — no need to tell anyone. 30
+    1 * Tell the team and follow the orders. 36
+    2   Give insulin on your own right away, to be safe. 48
+
+## 13 swap ko=팀에 알리고 정해진 계획대로 할게요 ans=so I'll tell the team and we'll follow the plan for it
+    "Your blood sugar is a bit above target, so I'll give you some insulin right now."
+    "Your blood sugar is a bit above target, so don't worry — it'll come down on its own."
+    "Your blood sugar is a bit above target, so I'll tell the team and we'll follow the plan for it."
+
+## 14 slider ans=2 cue=Consent says left knee; the surgeon's site marking says right.
+    0   Tell the circulator when you have a free moment. 48
+    1   Bring it up at the time-out with the team. 42
+    2 * Stop and report it now — we can't start yet. 44
+
+## 14 context word=mismatch ko=불일치
+    집도의에게 | There's a mismatch: the consent says left and the chart says right. | True |  | has word: True
+    순환간호사에게 | Laterality mismatch between the consent and the chart — we need to resolve it. | True |  | has word: True
+    수술 전 환자에게 | There's a mismatch — somebody wrote the wrong side on your paperwork. | False | I want to double-check one detail on your paperwork with the surgeon before we go in. | has word: True
+    why= 의료진끼리는 mismatch로 문제를 정확히 짚어 말해요. 환자에게 '누가 틀렸다'고 단정하면 불안과 불신만 커져요. 서류를 확인한다고만 말하는 게 좋아요.
+
+## 15 slider ans=2 cue=Potassium is 6.8 and the case is next.
+    0   Recheck it at the next scheduled draw tomorrow. 47
+    1   Mention it at handoff. 22
+    2 * Call the surgeon and anesthesia now. 36
+
+## 15 swap ko=칼륨이 위급하게 높아요 ans=critically high
+    "The potassium is 6.8 — critically high. I'm calling you now."
+    "The potassium is 6.8 — slightly off, probably fine. I'm calling you now."
+    "The potassium is 6.8 — something to look at later. I'm calling you now."
+
+## 16 slider ans=2 cue=The surgeon picks up the scalpel, and the antibiotic isn't in.
+    0   Mention it after the case. 26
+    1   Ask if it can go in soon. 25
+    2 * Ask to hold incision now. 25
+
+## 16 context word=hold ko=보류하다
+    마취과 동료에게 | Please hold the case until the antibiotic is in. | True |  | has word: True
+    집도의에게 | Hold your scalpel — you're about to make a mistake! | False | Can we hold incision for a moment? The antibiotic isn't in yet. | has word: True
+    순환간호사에게 | We're holding incision until the antibiotic is in. | True |  | has word: True
+    why= hold는 동료끼리는 짧게 해도 되지만, 집도의에게는 '실수한다'고 몰아붙이지 말고 정중하게 요청해야 해요. 이유를 함께 말하면 받아들이기 쉬워요.
+
+## 17 slider ans=1 cue=Heavy bleeding, and there's no crossmatched blood in the room.
+    0   Make a note of it. 18
+    1 * Tell anesthesia and the surgeon now, and call for blood. 56
+    2   Take charge and start giving blood on your own authority. 57
+
+## 17 swap ko=혈액은행에 전화해서 대량수혈 프로토콜을 가동할게요 ans=calling the blood bank to activate the massive transfusion protocol
+    "I'm waiting to see if the bleeding slows down."
+    "I'm calling the blood bank to activate the massive transfusion protocol."
+    "I'm activating the massive transfusion protocol myself."
+
+## 18 slider ans=1 cue=The surgeon plans monopolar cautery near the chest; the patient has a pacemaker.
+    0   Mention it after the case. 26
+    1 * Raise it with the surgeon and anesthesia first. 47
+    2   Refuse to let the case proceed until a cardiologist agrees. 59
+
+## 18 context word=bipolar ko=양극 소작의
+    집도의에게 | With the pacemaker, would you consider bipolar cautery? | True |  | has word: True
+    마취과 동료에게 | The surgeon plans bipolar only — magnet's on standby. | True |  | has word: True
+    걱정하는 보호자에게 | We'll use bipolar for your husband because of his heart device. | False | We'll use a type of cautery that's safer for his pacemaker. | has word: True
+    why= 수술실에서 bipolar는 전기 소작 방식을 뜻해요. 보호자에게는 정신과 용어로 들려 오해할 수 있어요. '심박동기에 더 안전한 소작 방식'이라고 풀어 말해요.
+
+## 19 slider ans=1 cue=Trauma surgeon: 'We don't have time for a time-out!'
+    0   OK, we'll skip it. 18
+    1 * It only takes seconds — let's confirm the essentials. 53
+    2   I won't do anything until the whole checklist is finished. 58
+
+## 19 swap ko=그래야 맞는 환자와 부위를 확인할 수 있어요 ans=it's how we confirm the right patient and site
+    "Even in an emergency, we do a quick time-out — it's only a formality."
+    "Even in an emergency, we do a quick time-out — it's up to the surgeon whether we do it."
+    "Even in an emergency, we do a quick time-out — it's how we confirm the right patient and site."
+
+## 20 slider ans=2 cue=Unconscious patient: a device shows on the chest film, and nobody knows what it is.
+    0   Note it for later. 18
+    1   Check the records and call the family when you can. 51
+    2 * Treat it as MRI-unsafe until it's proven safe. 46
+
+## 20 swap ko=일단 MRI 비호환으로 가정합시다 ans=let's assume it's MRI-unsafe
+    "We don't know what that device is, so let's assume it's MRI-unsafe until we hear otherwise."
+    "We don't know what that device is, so let's assume it's MRI-safe until we hear otherwise."
+    "We don't know what that device is, so let's ignore it for now until we hear otherwise."

@@ -1,0 +1,450 @@
+### 0. 복강경 장비 세팅
+- **0.0 decoy** [기타] `the back table` — the back table — '뒤 테이블을 세팅하자'가 이 장면에서 실제로 하는 다른 일(그대로 맞는 문장)
+  - 새 값: `unplug`
+- **0.1 오답1** [기타] "모니터, 광원, 기복기는 타워에 모입니다." — 둘 다 사실문(정답만 보고 모양) — 같은 보고 틀에서 '켜짐'만 '꽂힘'으로(해 없음, 다음 줄에서 작동 확인)
+  - 새 값(같은 틀 세부): **"모니터, 광원, 기복기가 꽂혀 있습니다."**
+- **0.1 빈칸** [정답둘] camera head/foot pedal/suction tubing/light source (정답 light source) — camera head — 타워 장비라 '켜져 있다'가 그대로 성립(정답 둘)
+  - 새 값: answer `light source` · foot pedal / light source / suction tubing / trocar tray
+- **0.2 빈칸** [정답둘] labeled/sterile/packed/working (정답 working) — sterile — '덮기 전에 멸균 확인'이 그대로 성립(정답 둘)
+  - 새 값: answer `working` · labeled / working / unplugged / packed
+- **0.3 빈칸** [정답둘] dim/clear/faded/small (정답 clear) — dim·small — '어둡고 또렷'·'작고 또렷'도 보고로 성립해 ko 없이 못 정함. and sharp와 어긋나는 말로
+  - 새 값: answer `clear` · blurry / clear / grainy / hazy
+- **0.5 오답1** [기타] "지금 광원 선을 꽂을게요." — 두 오답 모두 정답보다 김(길이로 정답이 드러남) — 앞 단계를 정답 길이 이하로
+  - 새 값(앞 단계): **"광원 선을 꽂을게요."**
+- **0.5 decoy** [정답둘] `for you` — for you — 'I'll turn on the light source for you.'가 ko와 거의 같음(지금만 빠짐)
+  - 새 값: `at the end`
+
+### 1. 기복 CO2 준비
+- **1.0 오답1** [기타] "CO2 탱크는 단단한 금속 통이에요." — 둘 다 사실문('단단한 금속 통' — 장면과 먼 사실) — 같은 틀에서 '연결'만 '카트에 묶임'으로
+  - 새 값(같은 틀 세부): **"CO2 탱크는 가득 찼고 카트에 묶여 있습니다."**
+- **1.0 빈칸** [정답둘] full/empty/spare/new (정답 full) — new — 새 탱크는 가득 찬 탱크(정답 둘), empty도 보고로 성립
+  - 새 값: answer `full` · sterile / full / sharp / foggy
+- **1.1 오답1** [기타] "설정 전에 전원을 켭시다." — '설정 전에' — 정답 ko에 없는 전에 표지(몰림). 표지 없는 앞 단계로
+  - 새 값(앞 단계): **"기복기 전원 스위치를 켭시다."**
+- **1.1 오답2** [기타] "기복 압력 한계는 기기에서 정합니다." — '정하다' 어간이 오답에만 6번(되풀이 상한)
+  - 새 값(사실): **"압력 한계는 기복기 화면에서 골라요."**
+- **1.2 오답2** [기타] "기복 전 유량은 기기에서 읽어요." — 두 오답 모두 정답보다 김 — 사실문을 짧게
+  - 새 값(사실): **"유량은 분당 리터로 읽어요."**
+- **1.2 빈칸** [정답둘] color/weight/brand/flow (정답 flow) — weight — 탱크 무게로 잔량을 보는 실제 확인(정답 둘), brand는 장면과 동떨어짐
+  - 새 값: answer `flow` · flow / brightness / focus / color
+- **1.3 오답1** [기타] "탱크 압력 게이지는 탱크 위에 달립니다." — 둘 다 사실문 — 게이지를 읽는 바로 앞 단계(정상이라는 판정은 넣지 않음)
+  - 새 값(앞 단계): **"탱크 밸브를 열고 압력 게이지를 봅니다."**
+- **1.3 빈칸** [정답둘] normal/high/low/zero (정답 normal) — high/low/zero — 계기 값 보고는 넷 다 성립해 ko 없이 못 정함 → reads가 맞는 명사 자리로
+  - 새 값: answer `gauge` · valve / gauge / hose / filter
+- **1.4 오답1** [기타] "유량 눈금을 먼저 읽어 봅시다." — '먼저 읽어 봅시다' — 먼저 표지(정답 ko에 없음) + 유지를 읽기로 바꿈. 같은 틀에서 '유지'만 '입력'으로
+  - 새 값(같은 틀 세부): **"유량 속도를 기기에 입력합시다."**
+- **1.4 빈칸** [정답둘] table height/flow rate/camera angle/room noise (정답 flow rate) — camera angle·table height — '일정하게 유지'가 그대로 성립(정답 둘)
+  - 새 값: answer `flow rate` · flow rate / tank weight / port size / room noise
+- **1.5 오답1** [기타] "연결 확인 전에 호스를 정리할게요." — '연결 확인 전에' — 전에 표지(정답 ko에 없음). 확인은 남기고 '다시'만 '손으로'
+  - 새 값(같은 틀 세부): **"전부 연결됐는지 손으로 확인할게요."**
+- **1.5 빈칸** [정답둘] charged/stacked/connected/wrapped (정답 connected) — charged — '전부 충전됐는지 다시 확인'이 성립(정답 둘)
+  - 새 값: answer `connected` · stacked / connected / wrapped / folded
+
+### 2. 카메라·광원 준비
+- **2.0 빈칸** [정답둘] reposition/disconnect/white-balance/disinfect (정답 white-balance) — reposition·disinfect — 카메라에 그대로 하는 일(정답 둘)
+  - 새 값: answer `white-balance` · disconnect / relabel / white-balance / repackage
+- **2.1 빈칸** [정답둘] height/intensity/distance/temperature (정답 intensity) — temperature — 광원 색온도로 성립(정답 둘)
+  - 새 값: answer `intensity` · intensity / speed / volume / weight
+- **2.2 decoy** [정답둘] `for the team` — for the team — 'I'll defog the lens for the team.'이 ko에서 시점만 빠진 같은 행동 + 4.2와 같은 decoy
+  - 새 값: `after closure`
+- **2.3 오답1** [기타] "화이트밸런스 확인 전에 흰 거즈를 폅시다." — '확인 전에' — 전에 표지(정답 ko에 없음)
+  - 새 값(앞 단계): **"화이트밸런스용 흰 거즈를 폅시다."**
+- **2.4 오답1** [기타] "렌즈는 스코프 맨 끝에 붙습니다." — 2.2 오답2와 글자 그대로 같은 문장 + 둘 다 사실문 — 같은 틀에서 '깨끗'만 '따뜻'으로
+  - 새 값(같은 틀 세부): **"렌즈가 따뜻하고 준비된 것 같습니다."**
+- **2.5 오답1** [기타] "스코프를 광케이블에 이을게요." — 두 오답 모두 정답보다 김 — 같은 앞 단계를 짧게
+  - 새 값(앞 단계): **"스코프를 카메라에 이을게요."**
+- **2.5 빈칸** [정답둘] camera/trocar/cable/scope (정답 scope) — camera — 스코프를 흔히 camera라 부름, trocar — '천천히 삽입'이 그대로 성립(정답 둘)
+  - 새 값: answer `scope` · label / scope / cable / drape
+
+### 3. 로봇 도킹 준비
+- **3.0 오답1** [기타] "로봇 앞 바닥을 먼저 비웁시다." — '먼저' 표지(정답 ko에 없음) — 표지만 뺀 앞 단계
+  - 새 값(앞 단계): **"로봇 앞 바닥을 비웁시다."**
+- **3.0 빈칸** [정답둘] robot/tower/table/stand (정답 robot) — tower·table — '제자리로 가져오자'가 그대로 성립(정답 둘). 빈칸을 position으로
+  - 새 값: answer `position` · storage / focus / position / the hallway
+- **3.1 오답1** [기타] "팔 덮개를 먼저 펼게요." — '먼저' 표지(정답 ko에 없음) — 표지만 뺀 앞 단계
+  - 새 값(앞 단계): **"팔에 멸균 덮개를 씌울게요."**
+- **3.2 오답1** [기타] "카트는 바퀴가 네 개 달렸어요." — 둘 다 사실문('바퀴가 네 개' — 장면과 먼 사실) — 확인을 남긴 뒤 단계로
+  - 새 값(뒤 단계): **"정렬을 확인한 카트를 밀게요."**
+- **3.2 빈칸** [정답둘] plugged in/aligned/covered/parked (정답 aligned) — plugged in·parked — 카트 점검으로 그대로 성립(정답 둘)
+  - 새 값: answer `aligned` · aligned / tilted / folded / labeled
+- **3.3 오답2** [기타] "카트 바닥에 포트 자리 표시가 붙습니다." — 둘 다 사실문 — 맞춘 다음 단계(잠금)
+  - 새 값(뒤 단계): **"포트 자리와 일렬로 맞춘 카트를 잠급니다."**
+- **3.3 빈칸** [정답둘] floor marks/wheel locks/power cords/port sites (정답 port sites) — floor marks — 바닥 표시와 맞추는 방이 있어 성립(정답 둘)
+  - 새 값: answer `port sites` · power cords / port sites / door frames / light switches
+- **3.4 decoy** [정답둘] `on the cart` — on the cart — 'Let's lock the wheels on the cart.'가 ko에서 시점만 빠진 같은 행동
+  - 새 값: `the drawers`
+- **3.5 오답1** [기타] "각 팔 끝에는 번호표가 하나씩 붙습니다." — 둘 다 사실문 — 확인을 남긴 뒤 단계
+  - 새 값(뒤 단계): **"여유 공간을 확인한 팔에 기구를 끼울게요."**
+- **3.5 빈칸** [정답둘] a battery/clearance/a number/a handle (정답 clearance) — a number — 로봇팔에는 실제로 번호가 있음(참인 말)
+  - 새 값: answer `clearance` · a battery / a handle / clearance / a cushion
+
+### 4. 트로카 준비
+- **4.0 오답1** [기타] "어떤 트로카 크기를 나중에 원하세요?" — '먼저→나중에' 반대말 뒤집기(⑤) — 같은 틀에서 '원하다'만 '열다'로
+  - 새 값(같은 틀 세부): **"어떤 트로카 크기를 먼저 열까요?"**
+- **4.1 오답1** [기타] "5밀리미터와 12밀리미터는 일회용입니다." — 둘 다 사실문 — 같은 틀에서 '준비'만 '세어'로
+  - 새 값(같은 틀 세부): **"5밀리미터와 12밀리미터를 세어 뒀습니다."**
+- **4.1 빈칸** [정답둘] wrapped/ready/counted/boxed (정답 ready) — counted·wrapped — '세어 뒀다·포장된 채로 있다'가 그대로 성립(정답 둘)
+  - 새 값: answer `ready` · ready / bent / dull / broken
+- **4.2 빈칸** [정답둘] ports/bags/labels/folders (정답 ports) — labels — '삽입 전에 라벨 확인'이 성립(정답 둘)
+  - 새 값: answer `ports` · folders / ports / stools / pillows
+- **4.2 decoy** [정답둘] `for the team` — for the team — 2.2와 같은 decoy, 'Let's confirm the ports for the team.'이 ko와 거의 같음
+  - 새 값: `the gowns`
+- **4.3 오답1** [기타] "트레이를 열기 전에 손을 씻을게요." — '열기 전에' — 전에 표지(정답 ko에 없음)
+  - 새 값(앞 단계): **"트로카 트레이를 테이블에 둘게요."**
+- **4.5 오답1** [기타] "개수를 세기 전에 트레이를 폅시다." — 두 오답 모두 정답보다 김 — 같은 앞 단계를 짧게(전에는 정답 ko에도 있음)
+  - 새 값(앞 단계): **"세기 전에 트레이를 폅시다."**
+- **4.5 빈칸** [정답둘] tag/stack/count/sort (정답 count) — sort·tag — 시작 전 정리로 성립(정답 둘)
+  - 새 값: answer `count` · paint / weigh / count / stack
+- **order** [기타] swap34 자연스러움 — 'Once we start, the 5-mm port goes in first. / Let's count those two sizes before we start.'로 읽어도 대화가 성립(those two sizes가 두 줄 앞을 가리켜도 통함)
+  - 4줄: en "After the count, the 5-millimeter port goes in first." · ko "다 세고 나면 5밀리미터 포트가 먼저 들어가요" · note `순서` · icon `pushpin`
+  - why: "크기를 묻고, 준비한 두 크기를 답하고, 시작 전에 그 두 크기를 세고, 센 다음 5밀리미터 포트가 먼저 들어간다고 알리는 순서예요. 답변과 those two sizes, After the count가 앞 줄을 가리켜 순서가 하나로 정해져요."
+
+### 5. 체위 조정 확인
+- **5.0 오답1** [기타] "패딩은 젤 소재로 만들어집니다." — 둘 다 사실문 — 확인을 남긴 앞 단계
+  - 새 값(앞 단계): **"확인할 패드를 꺼냅시다."**
+- **5.0 빈칸** [정답둘] lighting/draping/padding/charting (정답 padding) — draping — '체위와 드레이핑 확인'이 성립(정답 둘)
+  - 새 값: answer `padding` · padding / lighting / charting / billing
+- **5.1 오답1** [안전] "압박점이 전부 표시되고 있나요?" — '표시되고 있나요' — 보호 여부 확인을 표시 여부 확인으로 바꿈(확인 내용 바꾸기)
+  - 새 값(앞 단계): **"압박점에 댈 패드가 더 있나요?"**
+- **5.1 오답2** [안전] "압박점이 전부 몇 군데인가요?" — '몇 군데인가요' — 보호 확인을 개수 질문으로 바꿈(빠뜨린 확인)
+  - 새 값(사실): **"압박점은 뼈가 튀어나온 곳이에요."**
+- **5.1 빈칸** [정답둘] marked/protected/reddened/numbered (정답 protected) — reddened — 압박점이 붉어졌는지 묻는 피부 확인으로 성립(정답 둘)
+  - 새 값: answer `protected` · numbered / protected / painted / sterile
+- **5.2 빈칸** [정답둘] bed/table/chair/stretcher (정답 table) — bed — 수술대를 bed라고도 함, stretcher — 이송 중 고정으로 성립(정답 둘)
+  - 새 값: answer `table` · chair / wall / table / cart
+- **5.3 오답1** [안전] "혈액순환을 위해 발뒤꿈치와 팔꿈치를 확인합시다." — '혈액순환을 위해' — 무엇을 보는지(패딩)를 다른 것으로 바꿈(확인 대상 바꾸기)
+  - 새 값(앞 단계): **"확인할 발뒤꿈치와 팔꿈치에서 담요를 걷어 냅시다."**
+- **5.3 빈칸** [정답둘] swelling/padding/bruising/pulses (정답 padding) — swelling·bruising·pulses — 발뒤꿈치·팔꿈치 점검으로 그대로 성립(정답 넷)
+  - 새 값: answer `padding` · padding / labels / sutures / stickers
+- **5.4 오답2** [기타] "팔은 얇은 담요 한 장으로 덮습니다." — 둘 다 사실문 — 고정 다음 단계
+  - 새 값(뒤 단계): **"옆에 고정한 팔 위에 시트를 덮습니다."**
+- **5.4 빈칸** [기타] tucked/folded/crossed/raised (정답 tucked) — folded — at the sides와 함께 '접어 둔'으로 읽혀 경계
+  - 새 값: answer `tucked` · stacked / tucked / crossed / raised
+- **5.5 오답1** [기타] "안전 스트랩은 허벅지 위에 둘러요." — 둘 다 사실문 — 확인은 남기고 '다시'만 '같이'로
+  - 새 값(같은 틀 세부): **"안전 스트랩을 같이 확인할게요."**
+- **5.5 decoy** [기타] `the arm boards` — the arm boards — 체위 장면에서 실제로 하는 다른 확인(그대로 맞는 문장)
+  - 새 값: `the sharps box`
+- **order** [기타] 3줄 시제 — 'Once those are padded, the arms are tucked…'는 조건절 뒤에 이미 끝난 상태를 말해 어색함(청유로)
+  - 3줄: en "Once those are padded, let's tuck the arms safely at the sides." · ko "거기에 패딩하면 팔을 옆에 안전하게 고정해요"
+
+### 6. 기복 압력 감시
+- **6.0 오답1** [기타] "기복 압력은 mmHg로 읽어요." — 두 오답 모두 정답보다 김 — 사실문을 짧게
+  - 새 값(사실): **"압력 단위는 mmHg예요."**
+- **6.0 빈칸** [정답둘] flow/volume/rate/pressure (정답 pressure) — flow·rate — 기복 유량 15 L/min이 그대로 성립(정답 둘)
+  - 새 값: answer `pressure` · tubing / button / pressure / cable
+- **6.1 오답1** [기타] "과하게 차면 복부가 팽팽해집니다." — '과하게 차면' — 면 표지(정답 ko에 없음). 상한을 지키는 앞 단계로
+  - 새 값(앞 단계): **"높이 오르지 않게 경보음을 켭시다."**
+- **6.1 오답2** [기타] "수치는 모니터 위쪽에서 읽어요." — 두 오답 모두 정답보다 김 — 사실문을 짧게
+  - 새 값(사실): **"수치는 화면 위쪽에 떠요."**
+- **6.1 빈칸** [정답둘] too fast/too early/too often/too high (정답 too high) — too fast·too early — '너무 빨리 오르지 않게'가 그대로 성립(정답 둘). 빈칸을 climb으로(too high와 어긋나는 동사)
+  - 새 값: answer `climb` · drop / fall / sink / climb
+- **6.2 오답1** [안전] "말씀하시기 전에 복부를 봐 주세요." — '말씀하시기 전에 복부를 봐' — 알리기 전에 다시 보게 함(보고를 늦춤)
+  - 새 값(같은 틀 세부): **"복부가 너무 팽팽해지면 압력을 낮춰 주세요."**
+- **6.3 오답1** [기타] "압력 수치는 숫자와 막대로 나와요." — 둘 다 사실문 — 감시는 남는 같은 틀(읽어 주기)
+  - 새 값(같은 틀 세부): **"압력 수치를 소리 내어 읽어 줄게요."**
+- **6.4 오답1** [기타] "15는 눈금에 빨간 선으로 보여요." — 둘 다 사실문 — 15 아래 유지의 앞 단계(기기 한계 설정)
+  - 새 값(앞 단계): **"15 한계를 기기에 걸어 둡시다."**
+- **6.5 오답1** [기타] "복부 쪽 상태를 조금 확인합시다." — '복부 쪽 상태를 조금 확인합시다' — 상태 보고를 모호한 행동으로(뜻이 흐림)
+  - 새 값(사실): **"팽창은 기복 가스 때문이에요."**
+- **6.5 오답2** [안전] "복부에 거즈가 조금 붙었습니다." — '거즈가 조금 붙었습니다' — 팽창 경고를 가벼운 일로(잘못된 안심)
+  - 새 값(같은 틀 세부): **"복부가 조금 단단해진 것 같습니다."**
+- **6.5 빈칸** [정답둘] distended/relaxed/flattened/bruised (정답 distended) — bruised·flattened — 복부 관찰 보고로 성립해 ko 없이 못 정함. 빈칸을 abdomen으로
+  - 새 값: answer `abdomen` · abdomen / monitor / screen / cable
+- **order** [안전] 4줄 시간 한정(TASK 10번) — 'After I call it out, tell me…'는 복부가 팽팽해진 것을 내가 수치를 읽어 준 뒤에만 알리게 해 보고를 늦춤
+  - 4줄: en "Besides my readings, tell me if the abdomen gets too tense." · ko "제 수치와 별도로, 복부가 너무 팽팽해지면 말씀해 주세요"
+  - why: "현재 압력을 보고하고, 너무 높이 오르지 않게 하자고 하고, 그러려고 수치를 지켜보며 읽어 주고, 그 수치와 별도로 복부가 팽팽해지면 알려 달라고 하는 순서예요. it과 my readings가 앞 줄을 가리켜 순서가 하나로 정해져요."
+
+### 7. CO2 흡수 EtCO2 상승
+- **7.0 오답1** [안전] "CO2를 흡수하면서 EtCO2를 지켜보고 있습니다." — 'EtCO2를 지켜보고 있습니다' — 상승 보고가 빠짐(잘못된 안심). 상승은 남기고 원인만
+  - 새 값(같은 틀 세부): **"CO2를 주입하면서 EtCO2가 오르고 있습니다."**
+- **7.1 오답1** [기타] "분당 환기량은 모니터에 뜹니다." — 둘 다 사실문 — 바로 앞 단계(설정 화면으로)
+  - 새 값(앞 단계): **"환기 설정 화면으로 갑시다."**
+- **7.1 오답2** [기타] "분당 환기량은 리터로 셉니다." — 두 오답 모두 정답보다 김 — 사실문을 짧게
+  - 새 값(사실): **"환기량은 리터로 세요."**
+- **7.2 오답1** [기타] "기복 압력은 집도의가 설정해 둡니다." — 둘 다 사실문 — 낮추기를 남긴 앞 단계
+  - 새 값(앞 단계): **"압력을 낮추는 시점을 집도의와 정해요."**
+- **7.2 오답2** [기타] "기복 압력이 낮으면 시야가 좁아집니다." — '낮으면' — 면 표지(정답 ko에 없음) + 두 오답 모두 정답보다 김
+  - 새 값(사실): **"낮은 압력은 시야를 좁게 만듭니다."**
+- **7.3 오답1** [안전] "EtCO2 수치를 꾸준히 지켜보고 있습니다." — '지켜보고 있습니다' — 상승 보고가 빠짐(잘못된 안심). 상승은 남기고 '꾸준히'만
+  - 새 값(같은 틀 세부): **"EtCO2 수치가 갑자기 오르고 있습니다."**
+- **7.3 빈칸** [정답둘] flashing/beeping/climbing/printing (정답 climbing) — flashing·beeping — 모니터 수치가 깜박이는 보고로 성립(정답 둘)
+  - 새 값: answer `climbing` · printing / climbing / spelling / folding
+- **7.4 오답1** [기타] "환기 설정은 마취과가 맡습니다." — 둘 다 사실문 — 감시하는 같은 틀
+  - 새 값(같은 틀 세부): **"환기 설정을 크게 띄웁시다."**
+- **7.4 빈칸** [정답둘] settings/tubing/filters/labels (정답 settings) — tubing — 환기 회로 꺾임 감시로 성립(정답 둘)
+  - 새 값: answer `settings` · labels / colors / settings / filters
+- **7.5 오답1** [안전] "마취과에 알리기 직전에 압력을 볼게요." — '알리기 직전에 압력을 볼게요' — 보고 전에 다시 재기(보고를 늦춤) + 직전 표지
+  - 새 값(사실): **"압력을 낮추는 일은 집도의가 결정해요."**
+- **7.5 빈칸** [정답둘] pressure/table/tank/bed (정답 pressure) — table·bed — '테이블을 내려야 하면 마취과에 알림'이 성립(정답 둘)
+  - 새 값: answer `pressure` · tank / clock / curtain / pressure
+- **order** [기타] swap34 자연스러움 — '…increase minute ventilation. / If the numbers keep climbing, we may need to lower… / With the ventilation up, let's watch the settings.'가 그대로 성립(4줄이 3줄을 가리키지 않음)
+  - 3줄: en "With the ventilation up, let's watch the EtCO2 closely." · ko "환기를 늘렸으니 EtCO2를 면밀히 지켜봐요"
+  - 4줄: en "If it keeps climbing as we watch, we may need to lower the insufflation pressure." · ko "지켜봐도 계속 오르면 기복 압력을 낮춰야 할 수 있어요"
+  - why: "EtCO2 상승을 보고하고, 낮추려고 환기를 늘리고, 늘린 뒤 EtCO2를 지켜보고, 지켜봐도 계속 오르면 압력 인하를 예고하는 순서예요. it, With the ventilation up, as we watch가 앞 줄을 가리켜 순서가 하나로 정해져요."
+
+### 8. 로봇팔 충돌 방지
+- **8.0 오답1** [기타] "팔들이 너무 느리게 움직이고 있습니다." — 두 오답 모두 정답보다 김 — 같은 보고 틀을 짧게
+  - 새 값(같은 틀 세부): **"팔들이 너무 느려지고 있습니다."**
+- **8.0 빈칸** [정답둘] loud/warm/close/slow (정답 close) — slow·loud·warm — 로봇팔 상태 보고로 성립해 ko 없이 못 정함
+  - 새 값: answer `close` · close / shiny / sticky / quiet
+- **8.1 오답1** [기타] "팔을 먼저 멈추고 각도를 다시 잡읍시다." — '팔을 먼저 멈추고' — 먼저 표지 + 간격 두기가 빠짐(일부만). 간격을 남긴 앞 단계로
+  - 새 값(앞 단계): **"새 포트 자리를 간격 넓게 표시합시다."**
+- **8.1 오답2** [기타] "포트 간격이 좁으면 팔끼리 부딪힙니다." — '좁으면' — 면 표지(정답 ko에 없음)
+  - 새 값(사실): **"좁은 포트 간격은 충돌로 이어집니다."**
+- **8.2 오답1** [안전] "카트에서 팔 덮개를 조정할게요." — '팔 덮개를 조정' — 충돌을 막는 위치 조정 대신 다른 일. 조정은 남기고 장소만
+  - 새 값(같은 틀 세부): **"콘솔에서 팔 위치를 조정할게요."**
+- **8.2 오답2** [기타] "카트 옆면에 팔 위치 표시등이 있어요." — '카트 옆면 표시등' — 근거가 불확실한 사실
+  - 새 값(사실): **"팔 위치는 포트 자리에 맞춰요."**
+- **8.2 decoy** [정답둘] `for the surgeon` — for the surgeon — 'I'll adjust the arm position for the surgeon.'이 ko에서 장소만 빠진 같은 행동
+  - 새 값: `from the console`
+- **8.3 오답1** [안전] "팔에 더 굵은 번호를 붙입시다." — '굵은 번호를 붙입시다' — 공간 확보 대신 다른 일
+  - 새 값(앞 단계): **"팔 사이 공간을 눈으로 재요."**
+- **8.4 오답1** [기타] "각도는 팔 관절에서 정해집니다." — 둘 다 사실문 — 각도를 다시 잡기 바로 앞 단계(쪽은 그대로)
+  - 새 값(앞 단계): **"왼쪽 팔 클러치를 눌러 풀게요."**
+- **8.4 빈칸** [정답둘] upper/lower/left/far (정답 left) — upper/lower/far — 방향어끼리는 ko 없이 못 정함. 빈칸을 port로
+  - 새 값: answer `port` · sink / port / chart / door
+- **8.5 오답1** [기타] "팔 충돌은 두 팔이 겹치면 생겨요." — '겹치면' — 면 표지(정답 ko에 없음)
+  - 새 값(사실): **"팔 충돌은 두 팔이 겹칠 때 생겨요."**
+- **8.5 decoy** [정답둘] `on the screen` — on the screen — '화면에서 팔 충돌을 살피라'가 그대로 맞는 말
+  - 새 값: `arm labels`
+
+### 9. 개복 전환 대비
+- **9.0 오답1** [기타] "개방 세트는 기구 수가 많습니다." — 둘 다 사실문 — 같은 틀에서 '대기'만 '카트에 두기'로(방 안, 해 없음)
+  - 새 값(같은 틀 세부): **"개방 세트를 카트에 둡시다."**
+- **9.0 빈칸** [정답둘] spare/open/extra/small (정답 open) — spare·extra — '예비 세트를 대기'가 그대로 성립(정답 둘)
+  - 새 값: answer `open` · dirty / expired / open / empty
+- **9.1 오답1** [기타] "전환 속도는 팀 연습에 달렸습니다." — 둘 다 사실문 — 같은 틀(필요하면 빠르게 ~할 수 있다)
+  - 새 값(같은 틀 세부): **"필요하면 빠르게 세트를 열 수 있어요."**
+- **9.2 오답1** [기타] "개복술 트레이에는 긴 기구가 담깁니다." — 둘 다 사실문 — 같은 틀에서 '준비 상태'만 '뒤 테이블'로(방 안)
+  - 새 값(같은 틀 세부): **"개복술 트레이를 뒤 테이블에 둘게요."**
+- **9.2 빈칸** [정답둘] thoracotomy/laparotomy/craniotomy/tracheostomy (정답 laparotomy) — tracheostomy — 응급 기도 트레이 대기는 어느 수술방에서나 성립(정답 둘)
+  - 새 값: answer `laparotomy` · thoracotomy / craniotomy / cataract / laparotomy
+- **9.3 오답1** [기타] "개방 트레이는 보통 방 밖에서 준비됩니다." — 둘 다 사실문 — 확인을 남긴 뒤 단계
+  - 새 값(뒤 단계): **"확인한 개방 트레이는 그대로 둡시다."**
+- **9.4 decoy** [안전] `is dark` — is dark — '피가 검으면 전환' 같은 틀린 판단 기준을 조립하게 함
+  - 새 값: `if the suction`
+
+### 10. 트렌델렌버그 순환 영향
+- **10.0 오답1** [기타] "트렌델렌버그는 머리를 낮추는 체위입니다." — 둘 다 사실문 — 같은 체위, '이미 들어감'만 '들어가는 중'으로
+  - 새 값(같은 틀 세부): **"지금 가파른 트렌델렌버그로 내리는 중입니다."**
+- **10.1 오답1** [기타] "머리가 낮으면 얼굴이 붓기 쉽습니다." — '머리가 낮으면' — 면 표지 + 둘 다 사실문. 혈압 감시를 촘촘히 하는 앞 단계
+  - 새 값(앞 단계): **"혈압 커프 주기를 짧게 맞추세요."**
+- **10.1 decoy** [기타] `and the blue drape` — and the blue drape — drape가 decoy에 6번(14.0·8.3·10.1·15.1·16.0·18.1) 몰림
+  - 새 값: `and the wall clock`
+- **10.2 오답1** [기타] "테이블은 리모컨으로 기울기를 조절합니다." — 둘 다 사실문 — 수평 맞추기를 남긴 앞 단계
+  - 새 값(앞 단계): **"수평 맞추는 간격을 집도의와 의논합시다."**
+- **10.2 빈칸** [정답둘] periodically/carefully/quickly/slowly (정답 periodically) — carefully·slowly — '조심히/천천히 수평'이 그대로 성립(정답 둘). 빈칸을 level로
+  - 새 값: answer `level` · level / wipe / label / lock
+- **10.2 decoy** [정답둘] `for anesthesia` — for anesthesia — 'Let's level the table for anesthesia.'가 '주기적으로'만 빠진 같은 행동
+  - 새 값: `the monitor`
+- **10.3 오답1** [기타] "혈압은 체위를 바꾸면 달라집니다." — '바꾸면' — 면 표지(정답 ko에 없음)
+  - 새 값(사실): **"혈압은 체위 영향을 크게 받아요."**
+- **10.3 빈칸** [정답둘] pulse/oxygen/glucose/pressure (정답 pressure) — pulse·oxygen — 이 체위에서 맥박·산소가 낮다는 보고로 성립(정답 둘)
+  - 새 값: answer `pressure` · clock / pressure / drape / mirror
+- **10.4 오답1** [기타] "얼굴과 눈에는 보호 패드를 댑니다." — 둘 다 사실문 — 확인은 남기고 '면밀히'만 '자주'로
+  - 새 값(같은 틀 세부): **"얼굴과 눈을 자주 확인합시다."**
+- **10.4 빈칸** [정답둘] ears/eyes/nose/lips (정답 eyes) — ears·nose·lips — 트렌델렌버그 얼굴 부종 점검으로 성립(정답 넷). 빈칸을 closely로
+  - 새 값: answer `closely` · rarely / loudly / closely / backward
+- **order** [안전] 3줄 시간 한정(TASK 10번) — 'Between those, watch the pressure…'는 혈압·부종 감시를 수평 맞추기 사이에만 하게 만듦 + swap23('To ease that'이 부종을 가리켜도 통함)
+  - 2줄: en "To ease that steep tilt, let's level the table periodically." · ko "가파른 기울기를 덜려고 주기적으로 테이블을 수평으로 맞춥시다"
+  - 3줄: en "Even with those breaks, watch the pressure and facial swelling." · ko "그렇게 쉬어 가도 혈압과 얼굴 부종을 계속 지켜보세요"
+  - why: "체위를 알리고, 그 기울기의 영향을 덜려고 테이블을 주기적으로 수평으로 맞추고, 그렇게 쉬어 가도 혈압과 얼굴 부종을 계속 지켜보고, 혈압이 더 떨어지면 알리는 순서예요. that steep tilt와 those breaks와 it이 앞 줄을 가리켜 순서가 하나로 정해져요."
+
+### 11. 장비 고장 대응
+- **11.1 오답1** [기타] "튜빙은 기복기와 환자를 이어요." — 둘 다 사실문 — 확인을 남긴 뒤 단계
+  - 새 값(뒤 단계): **"확인한 튜빙을 다시 꽂읍시다."**
+- **11.1 빈칸** [정답둘] tubing/camera/cart/monitor (정답 tubing) — camera·monitor — '카메라와 연결부 점검'이 성립(정답 둘)
+  - 새 값: answer `tubing` · stool / pillow / badge / tubing
+- **11.2 오답1** [기타] "가져오기 직전에 문을 열게요." — '가져오기 직전에 문을 열게요' — 직전 표지
+  - 새 값(뒤 단계): **"예비 유닛을 바로 꽂을게요."**
+- **11.3 오답1** [기타] "교체하기 앞서 전원을 끕시다." — '교체하기 앞서' — 앞서 표지. 표지 없는 바로 앞 단계로
+  - 새 값(앞 단계): **"지금 고장 난 기복기 전원을 끕시다."**
+- **11.3 빈칸** [정답둘] humidifier/monitor/insufflator/camera (정답 insufflator) — monitor·camera — '예비 모니터로 교체'가 성립(정답 둘)
+  - 새 값: answer `insufflator` · insufflator / stretcher / curtain / mattress
+- **11.4 오답2** [기타] "압력이 낮으면 복강이 덜 부풀어요." — '낮으면' — 면 표지(정답 ko에 없음)
+  - 새 값(사실): **"낮은 가스 압력은 복강을 덜 부풀게 합니다."**
+- **11.4 빈칸** [정답둘] pressure/flow/volume/level (정답 pressure) — flow·volume·level — 가스 유량·양 경고로 성립해 ko 없이 못 정함. 빈칸을 error로
+  - 새 값: answer `error` · bar / error / zip / area
+- **11.5 오답1** [기타] "재설정하면 저장된 설정이 지워집니다." — '재설정하면' — 면 표지 + 둘 다 사실문
+  - 새 값(앞 단계): **"재설정 버튼을 기계 뒤쪽에서 찾을게요."**
+- **11.5 decoy** [안전] `and write it down` — and write it down — 조립하면 '재설정하고 적어 둘게요' — 다시 확인을 기록으로 바꿈
+  - 새 값: `and the clock`
+
+### 12. 렌즈 시야 관리
+- **12.0 빈칸** [정답둘] heating/filling/fogging/lighting (정답 fogging) — heating/lighting up — 'X up' 보고로 성립(정답 둘). 빈칸을 scope로
+  - 새 값: answer `scope` · glove / bulb / scope / mask
+- **12.1 오답2** [기타] "렌즈 표면은 쉽게 긁힙니다." — 둘 다 사실문 — 같은 틀에서 '김서림'만 '얼룩'으로(같은 상황 다른 문장의 정답 '닦기'는 피함)
+  - 새 값(같은 틀 세부): **"렌즈를 데워서 얼룩을 없앱시다."**
+- **12.1 빈칸** [정답둘] wrap/warm/rinse/mark (정답 warm) — rinse — '헹구고 김서림 제거'가 성립(정답 둘)
+  - 새 값: answer `warm` · mark / count / stamp / warm
+- **12.2 오답1** [기타] "스코프는 닦아도 금방 다시 흐려집니다." — 둘 다 사실문 — 같은 틀에서 '빠르게'만 '천천히'로(해 없음)
+  - 새 값(같은 틀 세부): **"닦아서 천천히 다시 삽입할게요."**
+- **12.2 오답2** [기타] "삽입하면 시야가 순간 끊깁니다." — '삽입하면' — 면 표지(정답 ko에 없음)
+  - 새 값(사실): **"다시 삽입할 땐 시야가 잠깐 끊깁니다."**
+- **12.3 오답2** [기타] "시야가 흐리면 조작이 어렵습니다." — '흐리면' — 면 표지 + 둘 다 사실문. 같은 보고 틀(둘 다 스코프를 손볼 일)
+  - 새 값(같은 틀 세부): **"시야가 자꾸 어두워집니다."**
+- **12.3 빈칸** [정답둘] bright/narrow/blurry/dark (정답 blurry) — dark·narrow — 시야 보고로 성립(정답 둘)
+  - 새 값: answer `blurry` · blurry / louder / colder / heavier
+- **12.4 오답2** [기타] "워머 온도는 따로 맞춥니다." — 둘 다 사실문 — 담그기 바로 앞 단계
+  - 새 값(앞 단계): **"워머 뚜껑을 미리 젖힙시다."**
+- **12.4 빈칸** [정답둘] cooler/basin/warmer/dryer (정답 warmer) — basin — 따뜻한 식염수 대야에 담그는 방법으로 성립(정답 둘)
+  - 새 값: answer `warmer` · cooler / warmer / dryer / freezer
+- **12.5 오답1** [기타] "렌즈를 닦기 전에 장갑부터 바꿀게요." — '장갑부터 바꿀게요' — 장갑 앞 단계가 주제에서 5번 되풀이(12.5·14.3·17.1·18.4·20.1) + 부터 표지
+  - 새 값(앞 단계): **"렌즈를 닦기 전에 김서림 방지액을 바를게요."**
+
+### 13. 로봇 응급 언도킹 준비
+- **13.0 오답1** [기타] "응급 언도킹은 집도의 지시를 따라요." — 둘 다 사실문 — 검토 바로 앞 단계
+  - 새 값(앞 단계): **"언도킹 절차서를 펼칩시다."**
+- **13.0 오답2** [기타] "언도킹 절차는 로봇마다 다릅니다." — '다르다' 어간이 오답에만 7번(되풀이 상한)
+  - 새 값(사실): **"언도킹 절차는 매뉴얼에 실려 있어요."**
+- **13.1 오답1** [기타] "전환해야 할 경우 역할은 미리 정해 둡니다." — 둘 다 사실문(같은 머리말에 사실만 붙임) — 같은 틀에서 '역할'만 '위치'로
+  - 새 값(같은 틀 세부): **"전환해야 할 경우 모두 자기 위치를 알고 있습니다."**
+- **13.2 오답1** [기타] "해제 방법은 매뉴얼에 적힙니다." — 둘 다 사실문 — 같은 틀에서 '해제 준비'만 '레버 찾기'로
+  - 새 값(같은 틀 세부): **"카트에서 해제 레버를 찾을게요."**
+- **13.2 빈칸** [정답둘] manual/release/switch/brake (정답 release) — manual — '매뉴얼을 카트에 준비'가 성립(정답 둘)
+  - 새 값: answer `release` · pillow / lamp / release / mirror
+- **13.3 오답1** [기타] "언도킹 순서는 로봇 매뉴얼에 나옵니다." — 둘 다 사실문 — 같은 틀에서 '아는지 확인'만 '연습'으로(해 없음)
+  - 새 값(같은 틀 세부): **"모두 언도킹 순서를 한 번 연습해 봅시다."**
+- **13.4 오답1** [기타] "해제 레버는 응급 전용입니다." — 둘 다 사실문 — 같은 틀에서 '연습'만 '확인'으로
+  - 새 값(같은 틀 세부): **"지금 해제 레버를 확인해 볼게요."**
+- **13.4 빈칸** [정답둘] inspect/oil/tag/practice (정답 practice) — inspect — '해제 레버 점검'이 그대로 맞는 준비(정답 둘)
+  - 새 값: answer `practice` · polish / relabel / unplug / practice
+
+### 14. 최소침습 검체 회수
+- **14.0 오답2** [기타] "회수백은 검체 크기에 맞춰 고릅니다." — 두 오답 모두 정답보다 김 — 사실문을 짧게
+  - 새 값(사실): **"회수백은 크기가 여러 가지예요."**
+- **14.0 빈칸** [정답둘] biohazard/drainage/retrieval/laundry (정답 retrieval) — biohazard — 검체 운반용 생물위해 백으로 성립(정답 둘)
+  - 새 값: answer `retrieval` · retrieval / laundry / trash / paper
+- **14.1 오답1** [기타] "꺼낸 검체는 병리과로 보냅니다." — 둘 다 사실문 — 꺼낸 뒤 단계
+  - 새 값(뒤 단계): **"검체를 바로 용기에 담을게요."**
+- **14.2 오답1** [기타] "확인에 앞서 백을 열게요." — '확인에 앞서' — 앞서 표지
+  - 새 값(앞 단계): **"확인할 검체를 꺼낼게요."**
+- **14.2 빈칸** [정답둘] complete/labeled/damaged/pink (정답 complete) — labeled — '검체에 라벨이 됐는지 확인'이 성립(정답 둘)
+  - 새 값: answer `complete` · shiny / complete / folded / sterile
+- **14.3 오답1** [기타] "확인 전에 장갑부터 바꿉시다." — '장갑부터 바꿉시다' — 장갑 앞 단계 되풀이 + 부터 표지
+  - 새 값(앞 단계): **"확인 전에 백 입구를 벌립시다."**
+- **14.3 빈칸** [정답둘] seal/label/weigh/wrap (정답 seal) — label — '라벨 붙이기 전에 백 재확인'이 성립(정답 둘)
+  - 새 값: answer `seal` · fold / shake / seal / flip
+- **14.4 오답1** [기타] "검체를 온전하고 완전하게 보존합시다." — 두 오답 모두 정답보다 김 — 같은 보고 틀에서 '완전'만 '깨끗'으로
+  - 새 값(같은 틀 세부): **"검체가 온전하고 깨끗해 보입니다."**
+- **14.4 빈칸** [정답둘] firm/intact/dark/round (정답 intact) — firm·dark·round — 검체 모양 보고로 성립해 ko 없이 못 정함
+  - 새 값: answer `intact` · frozen / striped / sticky / intact
+- **14.5 빈칸** [정답둘] weigh/label/wrap/tape (정답 label) — weigh·tape — '나가기 전에 무게 재기·테이프 붙이기'가 성립(정답 둘)
+  - 새 값: answer `label` · label / stamp / fold / spin
+- **14.5 decoy** [안전] `the cart` — the cart — 'I'll label the cart'(검체 대신 카트에 라벨)를 조립하게 함
+  - 새 값: `the freezer`
+
+### 15. 기복 가스 색전
+- **15.1 decoy** [기타] `a spare drape` — a spare drape — drape 몰림 + 어느 자리에도 뜻이 안 맞음
+  - 새 값: `in tank pressure`
+- **15.3 오답2** [기타] "눕힌 환자는 머리와 어깨를 함께 받칩니다." — 둘 다 사실문 — 돌리기를 남긴 바로 앞 단계(문장당 하나)
+  - 새 값(앞 단계): **"왼쪽으로 돌릴 환자 양옆에 사람을 세웁시다."**
+- **15.4 오답1** [기타] "요청하기 직전에 위치를 외칠게요." — '요청하기 직전에 위치를 외칠게요' — 직전 표지
+  - 새 값(사실): **"도움은 크고 분명하게 불러요."**
+- **15.4 빈칸** [정답둘] supplies/help/gloves/a cart (정답 help) — a cart — 응급 카트(crash cart)를 부르는 말로 성립(정답 둘)
+  - 새 값: answer `help` · gloves / help / a pen / paperwork
+- **15.4 decoy** [기타] `the elevator` — the elevator — 위기 장면과 동떨어진 우스운 조각(모양으로 걸러짐)
+  - 새 값: `for a refill`
+- **15.5 오답1** [기타] "압력은 CO2 주입으로 오릅니다." — 두 오답 모두 정답보다 김 — 사실문을 짧게
+  - 새 값(사실): **"압력은 CO2로 오릅니다."**
+- **15.5 오답2** [기타] "압력이 높으면 순환이 줄어듭니다." — '높으면' — 면 표지(정답 ko에 없음)
+  - 새 값(사실): **"높은 압력은 정맥 순환을 줄입니다."**
+- **15.5 빈칸** [기타] volume/noise/pressure/light (정답 pressure) — volume·noise·light — 장면과 동떨어진 말 둘(파일럿 2번) → 같은 장비 쪽 틀린 말
+  - 새 값: answer `pressure` · camera / drape / pressure / light
+- **order** [안전] 임상 순서 — 가스 색전 의심 시 가장 먼저 할 일은 기복 중단·가스 해제(원인 제거)인데 카드는 호출을 2줄, 기복 중단을 3줄 'As I call'에 묶어 호출 뒤로 밀림 + swap34('Left lateral … for the gas already in' / 'As I call, stop insufflation')가 그대로 읽혀 순서가 못 박히지 않음(저작자 메모)
+  - 2줄: en "On that suspicion, stop insufflation and release the pneumoperitoneum." · ko "그 의심이 들면 기복을 멈추고 복강 가스를 빼요" · note `중단` · icon `siren`
+  - 3줄: en "With the gas off, left lateral, head down, and 100% oxygen." · ko "가스를 끊었으면 왼쪽 측위, 머리 낮춤, 100% 산소" · note `체위` · icon `siren`
+  - 4줄: en "While we position him, I'll call for help right now." · ko "체위를 잡는 동안 지금 바로 도움을 요청할게요" · note `호출` · icon `pager`
+  - why: "징후로 색전을 의심하면 원인인 기복부터 멈추고 가스를 빼고, 가스를 끊었으면 이미 들어간 가스에 왼쪽 측위·머리 낮춤·100% 산소를 하고, 체위를 잡는 동안 도움을 부르는 순서예요. On that suspicion, With the gas off, While we position him이 앞 줄을 가리켜 순서가 하나로 정해져요."
+
+### 16. 트로카 혈관 손상
+- **16.0 decoy** [기타] `a loose drape` — a loose drape — drape가 decoy에 6번 몰림
+  - 새 값: `a loose clamp`
+- **16.1 오답2** [기타] "트로카 손상은 삽입 중에 생겨요." — 두 오답 모두 정답보다 김 — 사실문을 짧게
+  - 새 값(사실): **"혈관 손상은 삽입 때 생겨요."**
+- **16.3 decoy** [기타] `with the camera` — with the camera — camera가 decoy에 4번(8.4·15.0·16.3·19.2) 몰림
+  - 새 값: `on the monitor`
+- **16.4 decoy** [기타] `to the lounge` — to the lounge — 위기 장면과 동떨어진 우스운 조각
+  - 새 값: `to the chart`
+- **16.5 빈칸** [정답둘] irrigation/suction/cautery/clamps (정답 suction) — clamps·irrigation·cautery — 출혈 장면에서 그대로 필요한 것(정답 넷)
+  - 새 값: answer `suction` · smoke / fog / noise / suction
+- **order** [기타] swap23 자연스러움 — 'There's brisk bleeding. / At that rate, suspect a major vessel injury. / First, let's apply pressure… / On that suspicion, …'가 그대로 성립('At that rate'가 1줄을 가리킴, 저작자 메모)
+  - 3줄: en "Even with pressure on, it's still brisk—suspect a major vessel injury." · ko "압박해도 여전히 빨라요 — 주요 혈관 손상을 의심해요" · note `의심` · icon `siren`
+  - why: "출혈을 알리고, 가장 먼저 그 자리를 바로 압박하고, 압박해도 여전히 빠르면 큰 혈관 손상을 의심하고, 그 의심으로 개복 전환 준비와 호출을 하는 순서예요. that site, Even with pressure on, On that suspicion이 앞 줄을 가리켜 순서가 하나로 정해져요."
+
+### 17. 긴급 개복 전환
+- **17.0 오답2** [기타] "전환하면 절개가 훨씬 커져요." — '전환하면' — 면 표지(정답 ko에 없음)
+  - 새 값(사실): **"개복은 복강경보다 절개가 훨씬 큽니다."**
+- **17.0 decoy** [기타] `to paper` — to paper — 동떨어진 조각
+  - 새 값: `to robotic`
+- **17.1 오답1** [기타] "개봉하기 직전에 장갑을 확인하세요." — '개봉하기 직전에 장갑을 확인' — 직전 표지 + 장갑 되풀이
+  - 새 값(앞 단계): **"개봉할 트레이를 바로 꺼내세요."**
+- **17.2 오답1** [기타] "들여오기 앞서 문을 엽시다." — '들여오기 앞서 문을 엽시다' — 앞서 표지
+  - 새 값(앞 단계): **"들여올 일손을 고릅시다."**
+- **17.3 오답1** [기타] "침착하면 실수가 많이 줄어듭니다." — '침착하면' — 면 표지 + 둘 다 사실문. 같은 틀에서 '침착'만 '목소리'로
+  - 새 값(같은 틀 세부): **"빠르게 움직이되 목소리를 낮춥시다."**
+- **17.4 빈칸** [정답둘] bin/lid/box/tray (정답 tray) — box — 기구 상자(container)를 여는 말로 성립(정답 둘)
+  - 새 값: answer `tray` · tray / window / door / curtain
+- **17.5 오답1** [기타] "일손 요청은 소리 내어 합니다." — 두 오답 모두 정답보다 김 — 사실문을 짧게
+  - 새 값(사실): **"일손은 소리 내어 불러요."**
+- **17.5 빈칸** [정답둘] clean/sterile/wet/extra (정답 extra) — sterile·clean — '멸균된 손(스크럽한 사람)이 필요'가 성립(정답 둘)
+  - 새 값: answer `extra` · wet / extra / cold / tired
+- **order** [기타] swap23 자연스러움('On top of that'은 Also처럼 어느 줄 뒤에도 붙음) + 4줄 ko '일손이 오는 동안'이 en(With all of that going on)과 다르고 why의 'hands coming in'이 카드에 없음
+  - 3줄: en "With us both on that, let's get another set of hands in the room." · ko "우리 둘이 그걸 맡는 동안 일손을 더 들입시다"
+  - 4줄: ko "이 모든 걸 하면서 빠르게, 침착하게 움직여요"
+  - why: "전환을 알리고, 그 일로 나는 트레이를 열고 상대는 필드를 준비하고, 둘이 그걸 맡는 동안 일손을 더 들이고, 이 모든 일을 하면서 빠르게 움직이되 침착하라는 순서예요. For that, With us both on that, With all of that going on이 앞 줄을 가리켜 순서가 하나로 정해져요."
+
+### 18. 로봇 고장 긴급 언도킹
+- **18.0 오답1** [기타] "로봇은 콘솔과 카트로 나뉩니다." — 둘 다 사실문 — 같은 고장 보고, '반응 없음'만 '경고음'으로(대응 같음)
+  - 새 값(같은 틀 세부): **"로봇이 고장 나서 경고음을 내고 있습니다."**
+- **18.1 오답1** [기타] "언도킹하기 직전에 팔 위치를 읽읍시다." — '언도킹하기 직전에 팔 위치를 읽읍시다' — 직전 표지
+  - 새 값(앞 단계): **"언도킹할 팔 순서를 부릅시다."**
+- **18.1 decoy** [기타] `all drapes` — all drapes — drape 몰림
+  - 새 값: `all trays`
+- **18.2 오답1** [기타] "전환 준비는 소독간호사도 돕습니다." — 둘 다 사실문 — 준비를 남긴 바로 앞 단계
+  - 새 값(앞 단계): **"준비할 트레이를 가져오세요."**
+- **18.3 decoy** [기타] `to the music` — to the music — 동떨어진 우스운 조각
+  - 새 값: `The light source isn't`
+- **18.4 오답1** [기타] "풀어내기 앞서 장갑을 낍시다." — '풀어내기 앞서 장갑을' — 앞서 표지 + 장갑 되풀이
+  - 새 값(앞 단계): **"손으로 풀 레버를 찾읍시다."**
+- **18.4 decoy** [기타] `by phone` — by phone — 동떨어진 우스운 조각
+  - 새 값: `by the light`
+
+### 19. 피하기종 호흡 위기
+- **19.0 오답1** [기타] "염발음은 손으로 눌러 느낍니다." — 둘 다 사실문 — 같은 보고, 범위를 더 무거운 쪽으로(대응 같음·잘못된 안심 아님)
+  - 새 값(같은 틀 세부): **"얼굴까지 염발음이 퍼지고 있습니다."**
+- **19.0 빈칸** [정답둘] swelling/redness/numbness/crepitus (정답 crepitus) — swelling — 피하기종은 목까지 붓는 것으로도 보고됨(정답 둘)
+  - 새 값: answer `crepitus` · sunburn / redness / crepitus / numbness
+- **19.0 decoy** [기타] `the ceiling` — the ceiling — 동떨어진 우스운 조각
+  - 새 값: `the waist`
+- **19.1 오답1** [기타] "기도 압력은 환기 장치에서 잽니다." — 두 오답 모두 정답보다 김 — 사실문을 짧게
+  - 새 값(사실): **"기도 압력은 환기기에서 재요."**
+- **19.1 오답2** [기타] "압력이 높으면 폐에 부담입니다." — '높으면' — 면 표지(정답 ko에 없음)
+  - 새 값(사실): **"높은 기도 압력은 폐에 부담을 줍니다."**
+- **19.2 오답1** [기타] "복강 내 가스를 빼면 폐가 편해집니다." — '빼면' — 면 표지(정답 ko에 없음)
+  - 새 값(사실): **"복강 내 가스를 빼는 일은 폐의 부담을 덜어 줍니다."**
+- **19.2 빈칸** [정답둘] ventilation/circulation/hydration/nutrition (정답 ventilation) — circulation — 가스 해제 후 순환 지원도 성립(정답 둘)
+  - 새 값: answer `ventilation` · nutrition / hydration / digestion / ventilation
+- **19.3 오답1** [기타] "피부 밑 공기는 눌러 보면 느껴집니다." — '눌러 보면' — 면 표지 + 둘 다 사실문. 같은 소견, '만져짐'만 '들림'으로
+  - 새 값(같은 틀 세부): **"피부 밑에서 뿌드득거리는 게 들립니다."**
+- **19.4 오답2** [기타] "압력이 빠르게 오르면 환기가 어려워집니다." — '오르면' — 면 표지(정답 ko에 없음)
+  - 새 값(사실): **"빠르게 오르는 기도 압력은 환기를 어렵게 만듭니다."**
+- **19.4 빈칸** [기타] pressures/alarms/lights/doors (정답 pressures) — doors — 장면과 동떨어진 말(파일럿 2번)
+  - 새 값: answer `pressures` · pressures / alarms / lights / tables
+- **19.5 오답1** [기타] "가스를 천천히 빼면 순환이 안정됩니다." — '빼면' — 면 표지(정답 ko에 없음)
+  - 새 값(사실): **"가스를 천천히 빼는 까닭은 순환 때문이에요."**
+- **19.5 빈칸** [정답둘] tubing/monitor/airway/chart (정답 airway) — tubing·monitor — '회로·모니터 재확인'이 성립(정답 둘)
+  - 새 값: answer `airway` · chart / airway / clock / calendar
+
+### 20. 시야 상실 대량 출혈
+- **20.0 오답1** [기타] "시야를 잃으면 영상이 온통 붉게 보입니다." — '잃으면' — 면 표지(정답 ko에 없음)
+  - 새 값(사실): **"피로 가득한 필드는 영상을 온통 붉게 만듭니다."**
+- **20.0 decoy** [기타] `of tape` — of tape — 동떨어진 우스운 조각
+  - 새 값: `of smoke`
+- **20.1 오답1** [기타] "압박을 가하기 앞서 장갑을 낍시다." — '가하기 앞서 장갑을' — 앞서 표지 + 장갑 되풀이
+  - 새 값(앞 단계): **"압박을 가할 큰 거즈를 바로 건넵시다."**
+- **20.4 오답2** [기타] "압박을 유지하면 출혈이 줄어듭니다." — '유지하면' — 면 표지(정답 ko에 없음)
+  - 새 값(사실): **"압박을 계속 유지하는 것은 출혈을 줄입니다."**
+- **order** [안전] 3줄 시간 한정(TASK 10번) — 'For when he's back, let's apply pressure…'는 압박을 집도의가 돌아올 때를 위한 대비로 읽혀 지혈을 늦춤
+  - 3줄: en "As I call him, let's apply pressure and prepare to convert." · ko "제가 부르는 동안 압박하고 전환을 준비해요"
+  - why: "시야를 잃었다고 알리고, 그러니 집도의를 부르고, 부르는 그 순간 압박하며 전환을 준비하고, 압박이 걸린 채로 흡인하며 혈액 팩을 더 들이는 순서예요. With the view gone, As I call him, With pressure on이 앞 줄을 가리켜 순서가 하나로 정해져요."

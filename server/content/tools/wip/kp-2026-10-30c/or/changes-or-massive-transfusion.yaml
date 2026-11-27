@@ -1,0 +1,531 @@
+theme: or-massive-transfusion
+changes:
+- kind: sentence
+  situation: 수혈 전 이중 확인
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-patient, w-name'
+- kind: sentence
+  situation: 수혈 전 이중 확인
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-patient'
+- kind: sentence
+  situation: 혈액 가온 적용
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-cold, w-blood, w-patient'
+- kind: sentence
+  situation: 혈액 가온 적용
+  index: 4
+  fields:
+  - words
+  why: '태그 더하기: w-setting'
+- kind: sentence
+  situation: 혈액 가온 적용
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-blood'
+- kind: sentence
+  situation: 수혈 속도 조정
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-patient'
+- kind: sentence
+  situation: 수혈 속도 조정
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-minute'
+- kind: sentence
+  situation: 혈액 도착 인계
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-each'
+- kind: sentence
+  situation: 혈액 도착 인계
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-time'
+- kind: sentence
+  situation: 수혈 중 활력 기록
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-start'
+- kind: sentence
+  situation: 수혈 중 활력 기록
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-minute'
+- kind: sentence
+  situation: 수혈 중 활력 기록
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-each'
+- kind: sentence
+  situation: MTP 비율 준비
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-way'
+- kind: sentence
+  situation: MTP 비율 준비
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-far'
+- kind: sentence
+  situation: 저칼슘 칼슘 보충
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-blood'
+- kind: sentence
+  situation: 저칼슘 칼슘 보충
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-minute'
+- kind: sentence
+  situation: 수혈 저체온 예방
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-room'
+- kind: sentence
+  situation: 수혈 저체온 예방
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-minute'
+- kind: sentence
+  situation: 수혈 저체온 예방
+  index: 5
+  fields:
+  - words
+  why: '태그 더하기: w-hypothermia, w-prevent'
+- kind: sentence
+  situation: 혈액은행 재고 조율
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-soon'
+- kind: sentence
+  situation: 혈액은행 재고 조율
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-blood'
+- kind: sentence
+  situation: 산-염기 대사 감시
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-blood'
+- kind: sentence
+  situation: 산-염기 대사 감시
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-minute'
+- kind: sentence
+  situation: 산-염기 대사 감시
+  index: 4
+  fields:
+  - words
+  why: '태그 더하기: w-ph'
+- kind: sentence
+  situation: 산-염기 대사 감시
+  index: 5
+  fields:
+  - words
+  why: '태그 더하기: w-report'
+- kind: sentence
+  situation: 급성 용혈반응
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-blood'
+- kind: sentence
+  situation: 급성 용혈반응
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-blood'
+- kind: sentence
+  situation: 고칼륨혈증 부정맥
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-fast'
+- kind: sentence
+  situation: 시트르산 저칼슘 위기
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-minute'
+- kind: sentence
+  situation: 혈액 재고 소진 위기
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-down, w-last'
+- kind: sentence
+  situation: 혈액 재고 소진 위기
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-blood'
+- kind: sentence
+  situation: 혈액 재고 소진 위기
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: w-blood'
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-signoff
+  fields:
+  - ko
+  why: 같은 뜻 단어와 가르거나 태그된 문장 뜻에 맞춤
+- kind: word-remove
+  id: w-cold
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-blood
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-drop
+  fields:
+  - ko
+  why: 같은 뜻 단어와 가르거나 태그된 문장 뜻에 맞춤
+- kind: word
+  id: w-prbc
+  fields:
+  - ko
+  why: 같은 뜻 단어와 가르거나 태그된 문장 뜻에 맞춤
+- kind: word-remove
+  id: w-each
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-start
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-way
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-far
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-bind
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로
+- kind: word-remove
+  id: w-room
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-alongside
+  fields:
+  - ko
+  why: 같은 뜻 단어와 가르거나 태그된 문장 뜻에 맞춤
+- kind: word
+  id: w-oneg
+  fields:
+  - ko
+  why: 같은 뜻 단어와 가르거나 태그된 문장 뜻에 맞춤
+- kind: word-remove
+  id: w-soon
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-rightaway
+  fields:
+  - ko
+  why: 같은 뜻 단어와 가르거나 태그된 문장 뜻에 맞춤
+- kind: word
+  id: w-dilute
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로
+- kind: word
+  id: w-climb
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로
+- kind: word-remove
+  id: w-fast
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-depress
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형 헤드워드를 원형으로 + 뜻도 원형에 맞춤
+- kind: word
+  id: w-fall
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형 헤드워드를 원형으로 + 뜻도 원형에 맞춤
+- kind: word-remove
+  id: w-down
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-last
+  why: 너무 쉬움(공통 쉬운 단어 또는 판단분) — 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-onegative
+  fields:
+  - ko
+  why: 같은 뜻 단어와 가르거나 태그된 문장 뜻에 맞춤
+- kind: word
+  id: w-rise
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형 헤드워드를 원형으로 + 뜻도 원형에 맞춤
+- kind: word-add
+  id: w-setting
+  why: 쉬운 w-time 대신 가르칠 말 — 가온 상황 문장 4에 이미 있다
+- kind: word-add
+  id: w-hypothermia
+  why: 저체온 예방 상황의 문장 5에 이미 있는 핵심 말 — 쉬운 단어를 뺀 자리를 채움
+- kind: word-add
+  id: w-prevent
+  why: 저체온 예방 상황의 문장 5에 이미 있는 말 — 쉬운 단어를 뺀 자리를 채움
+- kind: word-add
+  id: w-ph
+  why: 산-염기 상황의 문장 4에 이미 있는 말 — 쉬운 단어를 뺀 자리를 채움
+- kind: sentence
+  situation: 혈액 제제 확인
+  index: 5
+  fields:
+  - chunks
+  why: B/A 수정 목록 반영 — 구 경계 조각
+- kind: sentence
+  situation: 혈액 가온 적용
+  index: 0
+  fields:
+  - ko
+  why: B/A 수정 목록 반영 — ko 고침
+- kind: sentence
+  situation: 혈액 도착 인계
+  index: 4
+  fields:
+  - chunks
+  why: B/A 수정 목록 반영 — 구 경계 조각
+- kind: sentence
+  situation: MTP 비율 준비
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: B/A 수정 목록 반영 — 문장 고침
+- kind: sentence
+  situation: MTP 비율 준비
+  index: 5
+  fields:
+  - chunks
+  why: B/A 수정 목록 반영 — 구 경계 조각
+- kind: sentence
+  situation: 혈소판·FFP 순서
+  index: 3
+  fields:
+  - chunks
+  why: B/A 수정 목록 반영 — 구 경계 조각
+- kind: sentence
+  situation: 수혈 반응 초기 감시
+  index: 3
+  fields:
+  - chunks
+  why: B/A 수정 목록 반영 — 구 경계 조각
+- kind: sentence
+  situation: 시트르산 저칼슘 위기
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  why: B/A 수정 목록 반영 — 문장 고침
+- kind: sentence
+  situation: TRALI 급성 호흡곤란
+  index: 2
+  fields:
+  - ko
+  why: B/A 수정 목록 반영 — ko 고침
+- kind: sentence
+  situation: TRALI 급성 호흡곤란
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: B/A 수정 목록 반영 — 문장 고침
+- kind: sentence
+  situation: 혈액 재고 소진 위기
+  index: 1
+  fields:
+  - ko
+  why: B/A 수정 목록 반영 — ko 고침
+- kind: sentence
+  situation: 혈액 재고 소진 위기
+  index: 4
+  fields:
+  - ko
+  why: B/A 수정 목록 반영 — ko 고침
+- kind: sentence
+  situation: 혈액 재고 소진 위기
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  why: B/A 수정 목록 반영 — 문장 고침
+- kind: sentence
+  situation: 순환 과부하 TACO
+  index: 5
+  fields:
+  - chunks
+  why: B/A 수정 목록 반영 — 구 경계 조각
+- kind: word
+  id: w-drop
+  fields:
+  - example
+  why: 수정 목록 반영(ko·example 정리)
+- kind: word
+  id: w-support
+  fields:
+  - ko
+  why: 수정 목록 반영(ko·example 정리)
+- kind: word
+  id: w-release
+  fields:
+  - ko
+  why: 수정 목록 반영(ko·example 정리)
+- kind: word-remove
+  id: w-request
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 19.2 문장을 바꿔 어느 문장도 태그하지 않게 됨(regional blood request → 혈액은행이 지역 공급처에 주문)'
+- kind: sentence
+  situation: 혈액 재고 소진 위기
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): Should we activate a regional blood request → Should we ask the blood bank to order from the regional supplier(미국에서 쓰는 절차 이름이 아님 — 지역 공급처 긴급 주문은 병원 혈액은행이 함; 검토 A K3); −w-activate·−w-request 태그 +w-bank 태그(w-activate는 19.4에 남음, w-request는 word-remove)'
+- kind: word
+  id: w-activate
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 옛 예문 문장을 바꿔 그 단어가 없어짐 — 같은 상황의 다른 문장으로 옮김'
+- kind: word
+  id: w-regional
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 순환 과부하 TACO
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): Slow the transfusion → Stop the transfusion(반응이 의심되면 미국 관행은 일단 멈추고 평가·보고; judge A); −w-slow 태그(3.1·20.4에 남음) +w-stop 태그'
+- kind: word
+  id: w-taco
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 혈액 가온 적용
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s route this / through / the warmer) → Let''s route / this / through the warmer — 문장은 그대로'
+- kind: sentence
+  situation: 수혈 속도 조정
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We can slow it / if the numbers / stabilize) → We can / slow it / if the numbers stabilize — 문장은 그대로'
+- kind: sentence
+  situation: 수혈 저체온 예방
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''ll raise / the room / temperature) → I''ll / raise / the room temperature — 문장은 그대로'
+- kind: sentence
+  situation: 희석성 응고장애
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(There''s diffuse oozing / from / the field) → There''s / diffuse oozing / from the field — 문장은 그대로'
+- kind: sentence
+  situation: 산-염기 대사 감시
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s get / an arterial / blood gas) → Let''s / get / an arterial blood gas — 문장은 그대로'
+- kind: sentence
+  situation: 반복 응고검사
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We''ll dose / product / off the latest results) → We''ll / dose product / off the latest results — 문장은 그대로'
+- kind: sentence
+  situation: 고칼륨혈증 부정맥
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Watch / the rhythm—it could / deteriorate fast) → Watch / the rhythm—it / could deteriorate fast — 문장은 그대로'
+- kind: sentence
+  situation: TRALI 급성 호흡곤란
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Sats are falling / with new / pulmonary edema) → Sats / are falling / with new pulmonary edema — 문장은 그대로'
+- kind: sentence
+  situation: 혈액 재고 소진 위기
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-30 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We''re down / to our last / two units) → We''re / down to / our last two units — 문장은 그대로'

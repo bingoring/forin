@@ -1,0 +1,102 @@
+- title: 개복 중 심정지
+  s:
+    - {tag: "압박 시작", icon: siren, why: "대시 앞에 근거(맥박 없음), 뒤에 행동을 말해 왜 시작하는지가 한 호흡에 전달돼요. starting … now는 지금 시작하는 중임을 알려요.", decoy: "the stopwatch now", dk: ["맥박이 없어요 — 압박하려고 침대를 낮춰요.", "맥박이 없어요 — 다시 흉부압박을 시작할게요."], bl: [pulse, rash, bruise, fever]}
+    - {tag: "카트 보고", icon: check, why: "카트 도착과 약 준비를 짧은 수동태 두 개로 이어 보고해요. 코드에서 현재 상태를 빠르게 공유하는 방식이에요.", decoy: "is at the door", dk: ["응급 카트가 왔고 에피네프린도 꺼내 뒀어요.", "응급 카트가 왔고 에피네프린도 라벨을 붙여 뒀어요."], bl: [drawn, capped, wasted, expired]}
+    - {tag: "타이밍", icon: bell, why: "run the code timing은 코드 시간을 관리한다는 현장 표현이에요. call it out으로 소리 내어 알려 모두가 같은 시간 정보를 갖게 해요.", decoy: "the code cart", dk: ["코드 타이밍을 재면서 에피네프린 시각을 말할게요.", "코드 타이밍을 재면서 압박 횟수를 말할게요."], bl: [timing, volume, weight, tone]}
+    - {tag: "코드 호출", icon: pager, why: "someone을 써서 특정인이 아닌 곁의 누군가에게 부탁하는 현장 말투예요. now로 지체 없이 부르라는 급함을 전해요.", decoy: "the cart", dk: ["흉부압박이 교대됐어요 — 누가 지금 코드를 불러 주세요.", "흉부압박이 이어지고 있어요 — 누가 지금 코드를 불러 주세요."], bl: [call, name, mark, copy]}
+    - {tag: "약 준비", icon: pill, why: "draw … and keep timing …에서 and가 약 준비와 시간 관리를 동시에 맡는다는 뜻이에요. keep으로 한 번이 아니라 계속한다고 약속해요.", decoy: "and keep the vial cold", dk: ["에피네프린을 뽑으면서 압박 횟수를 계속 셀게요.", "에피네프린을 꺼내면서 코드 타이밍을 계속 잴게요."], bl: [draw, hang, pour, freeze]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 개복 중 심정지 4문장 순서
+    why: 압박을 시작하고, 압박이 시작됐으니 코드를 부르게 하고, 부른 코드에 카트가 도착해 약이 준비되고, 카트가 온 상태에서 타이밍을 재요. you called·With the cart here가 앞 줄을 가리켜요.
+    lines:
+      - {en: "No pulse — I'm starting compressions now.", icon: siren, ko: "맥박이 없어요 — 지금 압박을 시작해요", note: 시작}
+      - {en: "Compressions are started — someone call the code now.", icon: pager, ko: "압박이 시작됐어요 — 누가 지금 코드를 불러 주세요", note: 호출}
+      - {en: "The crash cart you called for is here and epinephrine is drawn.", icon: check, ko: "부르신 응급 카트가 왔고 에피네프린도 뽑아 뒀어요", note: 보고}
+      - {en: "With the cart here, I'll run the code timing and call it out.", icon: bell, ko: "카트가 왔으니 코드 타이밍을 재며 말할게요", note: 타이밍}
+- title: 산모 대량 출혈 위기
+  s:
+    - {tag: "프로토콜 개시", icon: siren, why: "Activating은 주어 I를 줄인 현장 말투예요. 프로토콜 이름을 정확히 말해야 혈액은행과 팀이 같은 절차를 떠올려요.", decoy: "discharge protocol", dk: ["산과 대량수혈 프로토콜을 개시하고 방송해요.", "산과 대량수혈 프로토콜 개시를 요청하고 있어요."], bl: [massive, minor, tiny, brief]}
+    - {tag: "상황 보고", icon: pill, why: "Uterotonics are in은 들어갔다(투여됐다)는 병원 속어예요. 약을 보고한 뒤 and로 다음 행동을 이어 지금 하는 일을 알려요.", decoy: "for more sutures", dk: ["자궁수축제는 투여됐고 혈액을 먼저 요청하고 있어요.", "자궁수축제는 준비됐고 혈액을 더 요청하고 있어요."], bl: [in, out, "off", up]}
+    - {tag: "추적 약속", icon: chartup, why: "track A and B로 추정 실혈량과 들어간 팩을 함께 본다고 말해요. as we go는 상황이 진행되는 내내라는 뜻이에요.", decoy: "as we rotate", dk: ["진행하면서 추정 실혈량과 소변량을 추적할게요.", "진행하면서 추정 체온과 팩을 추적할게요."], bl: [units, tickets, meals, shifts]}
+    - {tag: "혈액 도착", icon: pager, why: "is sending은 진행형이라 지금 팩이 오는 중임을 알려요. for the massive transfusion이 보내는 목적을 밝혀요.", decoy: "for the next shift", dk: ["혈액은행이 대량수혈용 팩을 세고 있어요.", "혈액은행이 대량수혈용 팩을 받고 있어요."], bl: [sending, returning, storing, counting]}
+    - {tag: "요청·추적", icon: chartup, why: "-ing 두 개를 and로 이어 동시에 하고 있는 두 일을 말해요. every unit으로 팩이 하나도 빠지지 않음을 강조해요.", decoy: "every drain", dk: ["자궁수축제를 요청하면서 팩 하나하나를 세고 있어요.", "자궁수축제를 요청하면서 팩 하나하나를 표시하고 있어요."], bl: [every, one, the, a]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 산모 대량 출혈 4문장 순서
+    why: 프로토콜을 개시하고, 혈액은행이 팩을 보내는 상황을 알리고, 그 팩 말고도 더 요청하고, 도착하는 팩을 추적해요. for it·beyond those·arrives가 앞 줄을 가리켜요.
+    lines:
+      - {en: "Activating the OB massive transfusion protocol.", icon: siren, ko: "산과 대량수혈 프로토콜을 개시해요", note: 개시}
+      - {en: "Blood bank is sending units for it.", icon: pager, ko: "혈액은행이 그걸 위해 팩을 보내고 있어요", note: 도착}
+      - {en: "Uterotonics are in, and I'm calling for even more units beyond those.", icon: pill, ko: "자궁수축제는 들어갔고 그 외 팩도 더 요청해요", note: 요청}
+      - {en: "I'll track EBL and every unit that arrives as we go.", icon: chartup, ko: "진행하며 추정 실혈량과 도착하는 팩을 추적해요", note: 추적}
+- title: 신생아 소생 지원
+  s:
+    - {tag: "소생 시작", icon: baby, why: "대시 앞에 위치, 뒤에 시작하는 행동을 붙이는 현장 보고 틀이에요. starting resuscitation은 주어 I를 줄인 진행형이에요.", decoy: "on the table", dk: ["아기가 워머 위에 있어요 — 소생술하려고 장갑을 껴요.", "아기가 저울 위에 있어요 — 소생술을 시작할게요."], bl: [warmer, scale, cart, crib]}
+    - {tag: "장비 보고", icon: check, why: "ready와 set은 장비를 쓸 수 있는 상태로 두었다는 뜻의 짝이에요. 앞은 형용사, 뒤는 수동태로 말을 바꿔 두 장비를 구분해요.", decoy: "the tape is cut", dk: ["백밸브마스크는 준비됐고 흡인도 켜졌어요.", "산소마스크는 준비됐고 흡인도 세팅됐어요."], bl: [ready, stuck, loose, empty]}
+    - {tag: "인계 질문", icon: speech, why: "taking over는 책임을 넘겨받는다는 구동사예요. now로 지금 소생 책임이 넘어가는지 시점을 물어 질문을 짧게 줄여요.", decoy: "waiting outside", dk: ["신생아팀이 지금 도착했나요?", "신생아팀이 지금 인계하고 있나요?"], bl: [taking, giving, keeping, making]}
+    - {tag: "장비 약속", icon: pushpin, why: "bring과 set up을 and로 이어 가져오는 일과 세팅하는 일을 한 문장으로 약속해요. set up은 쓸 수 있게 갖춰 놓는다는 뜻이에요.", decoy: "mark the chart", dk: ["백밸브마스크를 가져오고 튜빙을 세팅할게요.", "산소마스크를 가져오고 흡인을 세팅할게요."], bl: [bring, borrow, wash, hide]}
+    - {tag: "인계 준비", icon: handshake2, why: "ready to take over는 넘겨받을 준비가 됐다는 말이에요. now가 붙어 이제 책임이 넘어가는 시점임을 알려요.", decoy: "to rehearse", dk: ["신생아팀이 지금 이송할 준비가 됐어요.", "신생아팀이 지금 도울 준비가 됐어요."], bl: [over, up, out, "off"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 신생아 소생 지원 4문장 순서
+    why: 아기를 워머에 두고 소생술을 시작하고, 그 소생을 위해 장비를 갖췄다고 알리고, 그 준비가 된 상태에서 팀의 인계를 묻고, 인계받을 때 보고하겠다고 약속해요. for it·all that·them이 앞 줄을 가리켜요.
+    lines:
+      - {en: "Baby's on the warmer — starting resuscitation.", icon: baby, ko: "아기가 워머 위에 있어요 — 소생술을 시작해요", note: 시작}
+      - {en: "Bag-mask ready and suction is set for it.", icon: check, ko: "그걸 위해 백밸브마스크와 흡인을 갖췄어요", note: 장비}
+      - {en: "With all that set, is the neonatal team taking over now?", icon: speech, ko: "다 갖췄는데 신생아팀이 지금 인계받나요", note: 질문}
+      - {en: "We'll give them a full report when they take over.", icon: handshake2, ko: "인계받을 때 전체 보고를 드릴게요", note: 보고}
+- title: 파종성 응고장애
+  s:
+    - {tag: "출혈 보고", icon: siren, why: "oozing은 스며 나오다라는 뜻으로 조금씩 계속 나오는 출혈을 묘사해요. 증상을 먼저 말하고 대시 뒤에 이름을 붙여요.", decoy: "from the port", dk: ["곳곳에서 흘러나오고 있어요 — 이건 DIC예요.", "곳곳에서 배어 나오고 있어요 — 이건 감염이에요."], bl: [oozing, swelling, sweating, shaking]}
+    - {tag: "제제 요청", icon: pill, why: "필요한 것을 이름으로 곧장 나열하고 now를 붙이는 요청이에요. 응급에서는 설명보다 목록이 급함을 전하고, 제제는 처방에 따라 전달해요.", decoy: "a warmer", dk: ["지금 FFP와 혈소판, 크라이오가 모자라요.", "지금 FFP와 혈소판, 크라이오가 쓰이고 있어요."], bl: [need, count, store, return]}
+    - {tag: "준비 보고", icon: pager, why: "is preparing은 지금 진행 중인 준비를 말해요. the products는 혈액 제제를 가리키는 병원 표현이라 하나하나 되풀이하지 않아도 돼요.", decoy: "the paperwork", dk: ["혈액은행이 제제를 분류하고 있어요.", "혈액은행이 제제를 보내고 있어요."], bl: [products, tickets, meals, rooms]}
+    - {tag: "요청 약속", icon: pager, why: "call … and request …는 먼저 전화하고 이어서 요청 내용을 말한다는 순서를 한 문장에 담아요. more를 붙여 이미 받은 것에 더해 달라는 뜻을 전해요.", decoy: "more tubing", dk: ["혈액은행에 전화해서 혈소판을 먼저 요청할게요.", "혈액은행에 메시지로 혈소판을 더 요청할게요."], bl: [platelets, forms, gloves, lids]}
+    - {tag: "제제 필요", icon: siren, why: "from everywhere처럼 전치사를 더해 한 곳이 아니라 여러 곳에서임을 강조해요. 증상을 말한 뒤 we need로 요청을 이어요.", decoy: "from the drain", dk: ["곳곳에서 흘러나오고 있어요 — 지금 FFP와 크라이오가 필요해요.", "곳곳에서 배어 나오고 있어요 — 지금 FFP와 크라이오가 모자라요."], bl: [cryo, iron, saline, albumin]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 파종성 응고장애 4문장 순서
+    why: 출혈을 알리고, 필요한 제제를 나열하고, 그 전체를 혈액은행에 요청하고, 혈액은행이 그 제제를 준비 중이라고 확인해요. all of that·those products가 앞 줄을 가리켜요.
+    lines:
+      - {en: "She's oozing everywhere — this is DIC.", icon: siren, ko: "곳곳에서 배어 나와요 — 이건 DIC예요", note: 보고}
+      - {en: "I need FFP, platelets, and cryo now.", icon: pill, ko: "지금 FFP와 혈소판, 크라이오가 필요해요", note: 요청}
+      - {en: "I'll call blood bank and request all of that.", icon: pager, ko: "혈액은행에 전화해 전부 요청할게요", note: 전화}
+      - {en: "Blood bank is preparing those products now.", icon: check, ko: "혈액은행이 그 제제를 준비 중이에요", note: 확인}
+- title: 손상통제 수술 전환
+  s:
+    - {tag: "전환 제안", icon: scalpel, why: "Let's로 팀이 함께 할 일을 제안해요. 수술 방법의 전환은 집도의가 정하니 간호사는 제안이나 질문으로 말하는 쪽이 안전해요.", decoy: "a pressure dressing", dk: ["패킹하고 임시 봉합을 같이 합시다.", "패킹하기 전에 거즈를 펴요."], bl: [pack, cut, clamp, stitch]}
+    - {tag: "계획 공유", icon: hospital, why: "We'll …로 팀 전체의 계획을 말해요. in ICU로 소생을 이어 갈 장소를, come back으로 수술을 이어서 한다는 뜻을 담아요.", decoy: "with the team", dk: ["회복실에서 소생시키고 다시 돌아올게요.", "중환자실에서 소생시키고 다시 보낼게요."], bl: [ICU, lab, clinic, office]}
+    - {tag: "물품 준비", icon: check, why: "have + 물건 + ready는 준비해 둔 상태라는 뜻이에요. 미리 준비해 두었다고 보고하면 결정이 났을 때 바로 움직일 수 있어요.", decoy: "the transport monitor", dk: ["임시 봉합 물품을 꺼내 뒀어요.", "임시 봉합 물품을 세어 뒀어요."], bl: [supplies, forms, notes, orders]}
+    - {tag: "이송 제안", icon: hospital, why: "두 단계를 and로 이어 봉합 후 이송이라는 순서를 말해요. get her to ICU의 get은 데려가다라는 뜻이에요.", decoy: "to the lounge", dk: ["임시 봉합을 하고 회복실로 옮깁시다.", "임시 봉합을 하고 엘리베이터로 옮깁시다."], bl: [closure, delivery, session, anesthesia]}
+    - {tag: "재수술 계획", icon: calendar, why: "pack now and come back later처럼 지금 할 일과 나중에 할 일을 시간 낱말로 나눠 말해요. come back to close는 같은 환자에게 돌아와 봉합한다는 뜻이에요.", decoy: "to count later", dk: ["지금 패킹하고 곧 다시 와서 봉합할게요.", "지금 패킹하고 나중에 다시 와서 소독할게요."], bl: [back, up, out, down]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 손상통제 수술 전환 4문장 순서
+    why: 패킹과 임시 봉합을 제안하고, 그 봉합 물품이 준비됐다고 알리고, 물품이 준비된 상태에서 봉합 후 중환자실 이송을 말하고, 그곳에서 소생시키고 돌아온다고 계획을 맺어요. that closure·With those supplies ready·there가 앞 줄을 가리켜요.
+    lines:
+      - {en: "Let's pack and do a temporary closure.", icon: scalpel, ko: "패킹하고 임시 봉합을 합시다", note: 제안}
+      - {en: "I have the supplies for that closure ready.", icon: check, ko: "그 봉합 물품을 준비해 뒀어요", note: 준비}
+      - {en: "With those supplies ready, let's get her to ICU after that closure.", icon: hospital, ko: "물품이 준비됐으니 그 봉합 후 중환자실로 옮깁시다", note: 이송}
+      - {en: "We'll resuscitate her there and come back.", icon: calendar, ko: "거기서 소생시키고 다시 돌아올게요", note: 계획}
+- title: 다중 위기 동시 대응
+  s:
+    - {tag: "역할 분담", icon: handshake2, why: "You take …, I'll …처럼 두 사람의 몫을 쉼표로 나란히 말하면 누가 무엇을 하는지 한 번에 정리돼요. 역할은 팀이 같이 정하는 거예요.", decoy: "the paperwork", dk: ["선생님이 기도를 맡으시면 저는 흡인을 관리할게요.", "선생님이 기도를 맡으시면 저는 수액을 관리할게요."], bl: [airway, cart, door, phone]}
+    - {tag: "역할 배정", icon: handshake2, why: "assign a role to each …는 사람마다 맡을 일을 정해 준다는 구조예요. pair of hands로 사람을 손으로 세어 일손이 모자란 장면을 생생하게 말해요.", decoy: "a radio", dk: ["손 하나하나에 장비를 배정합시다.", "손 하나하나에 구역을 배정합시다."], bl: [role, locker, chair, badge]}
+    - {tag: "상황 공유", icon: speaker, why: "keep + 목적어 + updated는 계속 최신 상태로 알려 주다라는 뜻이에요. 위기에서는 한 번 알리고 끝내지 않고 바뀔 때마다 공유해야 해요.", decoy: "as it clears", dk: ["상황이 바뀌는 대로 팀 전체에 계속 방송할게요.", "상황이 바뀌는 대로 방 전체에 계속 알릴게요."], bl: [whole, half, new, night]}
+    - {tag: "역할 약속", icon: handshake2, why: "while로 두 일이 동시에 진행됨을 보여 줘요. manage와 handle을 나눠 써 두 사람의 몫을 구분해요.", decoy: "the lights", dk: ["선생님이 출혈을 처치하시는 동안 저는 수혈을 관리할게요.", "선생님이 출혈을 처치하시는 동안 저는 수액을 관리할게요."], bl: [bleeding, swelling, rash, bruise]}
+    - {tag: "역할 변경", icon: redo, why: "as the situation changes로 바꾸는 때를 상황이 변하는 순간으로 잡아요. 처음 분담에 고정하지 않고 상황에 맞춰 바꾼다는 뜻이에요.", decoy: "as the clock", dk: ["상황이 바뀌는 대로 위치도 바꿀게요.", "상황이 바뀌는 대로 순서도 바꿀게요."], bl: [roles, names, colors, labels]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 다중 위기 동시 대응 4문장 순서
+    why: 손마다 역할을 배정하자고 하고, 배정된 역할로 서로의 몫을 말하고, 그 역할을 상황에 따라 바꾸겠다고 하고, 바뀔 때마다 팀에 알려요. With roles assigned·those roles·every swap이 앞 줄을 가리켜요.
+    lines:
+      - {en: "Let's assign a role to each pair of hands.", icon: handshake2, ko: "손 하나하나에 역할을 배정합시다", note: 배정}
+      - {en: "With roles assigned, you take the airway, I'll manage the transfusion.", icon: handshake2, ko: "역할이 정해졌으니 선생님은 기도를, 저는 수혈을 맡을게요", note: 분담}
+      - {en: "We'll swap those roles as the situation changes.", icon: redo, ko: "상황이 바뀌는 대로 그 역할을 바꿀게요", note: 변경}
+      - {en: "I'll keep the whole team updated on every swap.", icon: speaker, ko: "바뀔 때마다 팀 전체에 계속 알릴게요", note: 공유}

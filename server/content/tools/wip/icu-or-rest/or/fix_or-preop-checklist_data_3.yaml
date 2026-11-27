@@ -1,0 +1,169 @@
+# 뉘앙스 수정 데이터 — 키 "상황:kind". 있는 필드만 덮어쓴다. scale_set은 slider scale의 일부만 바꿀 때 {인덱스: 값}.
+nuance:
+  "0:slider":     # N16 정답 둘 (중간 보기도 참말)
+    scale_set: {1: "It's a strict rule, so please answer carefully."}
+    why: 불안한 환자에게는 '모든 환자에게 늘 하는 일'이라고 담담히 말하는 게 사실이고 안심도 돼요. '엄격한 규칙'이라거나 'critical'이라는 말은 부담과 겁만 줘요.
+  "1:context":    # N1 pending -> flag (같은 말이 세 장면 모두에)
+    words: [w-flag, w-pending]
+    word: flag
+    ko: 표시해 두다
+    scenes:
+      - who: 걱정하는 보호자에게
+        icon: speaker
+        en: I've flagged his potassium as pending.
+        ok: false
+        fix: We're still waiting on one blood test, and I'm checking on it right now.
+      - who: 마취과 동료에게
+        icon: monitor
+        en: Potassium is still pending — I've flagged it.
+        ok: true
+      - who: 차트 기록에
+        icon: board
+        en: K+ pending; flagged for OR team, lab notified.
+        ok: true
+    why: flag는 의료진끼리 '눈에 띄게 표시해 뒀다'는 업무 말이에요. 보호자에게는 무엇을 했는지 와닿지 않으니 기다리는 중이고 확인하고 있다고 풀어 말해요.
+  "3:context":    # N2 interfere
+    scenes:
+      - who: 불안한 환자에게
+        icon: me
+        en: Metallic jewelry may interfere with electrosurgical grounding, so it must be removed.
+        ok: false
+        fix: Metal can get in the way of our equipment, so we take it off to keep you safe.
+      - who: 차트 기록에
+        icon: board
+        en: Navel ring removed; metal may interfere with cautery.
+        ok: true
+      - who: 수술팀 동료에게
+        icon: board
+        en: Jewelry can interfere with the cautery, so it comes off.
+        ok: true
+    why: 동료·기록에는 짧은 임상어가 맞지만, 불안한 환자에게 규정 문구를 그대로 읽으면 딱딱하고 겁나요. 장비에 방해가 되니 안전하게 빼 둔다고 풀어 말해요.
+  "8:context":    # N3 implant
+    scenes:
+      - who: 수술팀 동료에게
+        icon: board
+        en: The chart lists a right hip implant.
+        ok: true
+      - who: 차트 기록에
+        icon: board
+        en: "Implants: R hip 2019, dual-chamber pacemaker 2021."
+        ok: true
+      - who: 환자의 보호자에게
+        icon: speaker
+        en: Please list all implants with device type and implant date.
+        ok: false
+        fix: Does your mother have anything metal in her body, like a heart device or a new knee?
+    why: implant는 차트나 의료진 사이에서 정확한 말이에요. 보호자에게 기기 종류와 삽입 날짜를 목록으로 써 달라고 하면 어려워서, '몸속에 금속이 있는지'처럼 쉽게 물어야 대답이 나와요.
+  "11:context":   # N6 airway -> aspirate
+    words: [w-denture, w-airway]
+    word: aspirate
+    ko: 흡인하다
+    scenes:
+      - who: 마취과 동료에게
+        icon: monitor
+        en: Dentures are out, so there's less risk she'll aspirate.
+        ok: true
+      - who: 겁먹은 환자에게
+        icon: me
+        en: Dentures can slip, and you could aspirate.
+        ok: false
+        fix: Taking them out helps us keep your breathing safe while you're asleep.
+      - who: 회복실 간호사에게
+        icon: board
+        en: No signs she aspirated; dentures bagged and labeled.
+        ok: true
+    why: 의료진끼리는 aspirate 같은 말이 정확하고 빨라요. 겁먹은 환자에게는 위험을 늘어놓기보다 '자는 동안 숨을 안전하게 지키려고'라고 말하는 게 좋아요.
+  "14:context":   # N4 mismatch
+    scenes:
+      - who: 집도의에게
+        icon: stetho
+        en: "There's a mismatch: the consent says left and the chart says right."
+        ok: true
+      - who: 순환간호사에게
+        icon: board
+        en: Laterality mismatch between the consent and the chart — we need to resolve it.
+        ok: true
+      - who: 수술 전 환자에게
+        icon: me
+        en: There's a laterality mismatch on your consent form.
+        ok: false
+        fix: Can you tell me which side we're operating on today? I want to make sure your paperwork matches.
+    why: 의료진끼리는 mismatch로 문제를 정확히 짚어 말해요. 환자에게 서류 용어로 불일치를 알리면 낯설고 불안해요. 오늘 어느 쪽을 수술하는지 환자 입으로 말하게 하고, 서류가 맞는지 확인한다고 해요.
+  "16:context":   # N5 hold
+    scenes:
+      - who: 마취과 동료에게
+        icon: monitor
+        en: Please hold the case until the antibiotic is in.
+        ok: true
+      - who: 걱정하는 보호자에게
+        icon: speaker
+        en: We're holding incision until the antibiotic is infused.
+        ok: false
+        fix: The surgery will start in a few minutes — he's getting a medicine to prevent infection first.
+      - who: 순환간호사에게
+        icon: board
+        en: We're holding incision until the antibiotic is in.
+        ok: true
+    why: hold incision은 수술팀 사이의 말이에요. 보호자에게는 무엇을 왜 기다리는지 쉬운 말로 풀어 말해요.
+  "18:context":   # N7 ko
+    ko: 양극성의
+  "15:swap":      # N8 지금 말하는 상대(마취과)에게 전화한다는 뒷말
+    before_set: {2: ". I wanted you to hear it right away."}
+  "5:swap":       # N9 상대는 마취과, 예방 항생제는 마취과가 투여
+    who: 간호사 → 마취과 · 항생제 준비
+    icon: monitor
+    before: ["The antibiotic is ready — ", "it can wait until after the first cut", "."]
+    options: ["it can wait until after the first cut", "let's get it in now so it's in before incision", "give it whenever it's convenient for you"]
+    answer: let's get it in now so it's in before incision
+    notes:
+      "it can wait until after the first cut": 절개 뒤에 주면 예방 효과가 떨어져요.
+      "let's get it in now so it's in before incision": 절개 전에 들어가도록 지금 함께 시점을 맞추자고 말해요.
+      "give it whenever it's convenient for you": 시점을 상대 편한 때에 맡기면 절개 전 기준을 놓쳐요.
+    why: 예방 항생제는 절개 전에 들어가야 의미가 있어요. 준비됐다고만 하지 말고 지금 넣자고 시점까지 말해요.
+    ko: 지금 넣어서 절개 전에 들어가게 합시다
+  "9:swap":       # N10 상대는 마취과
+    before_set: {0: "Let's give it now, and I'll "}
+  "17:swap":      # KP 17.2를 유지하므로 3번 보기를 '혼자 결정'으로, ko는 발동으로 통일
+    before: ["I'm ", "deciding on the massive transfusion protocol myself", "."]
+    options: ["waiting to see if the bleeding slows down", "calling the blood bank to activate the massive transfusion protocol", "deciding on the massive transfusion protocol myself"]
+    notes:
+      "waiting to see if the bleeding slows down": 대량 출혈에서 지켜보기만 하면 늦어요.
+      "calling the blood bank to activate the massive transfusion protocol": 혈액은행에 전화해 프로토콜을 가동하는 간호사의 역할을 정확히 말해요.
+      "deciding on the massive transfusion protocol myself": 발동 여부는 집도의·마취과가 정해요. 혼자 정한다고 하면 업무 범위를 넘어요.
+    ko: 혈액은행에 전화해서 대량수혈 프로토콜을 발동할게요
+  "10:slider":    # N11 중간 보기도 솔직한 정답
+    scale_set: {1: "It's going to sting quite a lot."}
+  "11:slider":    # N12 정답이 S8과 같은 약속 + N15 길이
+    scale_set: {0: "That's fine — keep them in if you'd like.", 1: "I understand — we'll label them and give them back in recovery."}
+  "20:slider":    # N13 정답 둘
+    scale: ["Assume it's fine and carry on.", "Note it and look into it after the case.", "Treat it as MRI-unsafe until it's proven safe."]
+    answerAt: 2
+    why: 정체를 모르는 몸속 기기는 MRI에 안전하다고 확인되기 전까지 비호환으로 다뤄야 해요. 그냥 진행하거나 수술 뒤로 미루면 MRI실에서 사고가 날 수 있어요.
+  "15:slider":    # N14 강약 불분명
+    scale: ["Note it and recheck tomorrow.", "Ask for a repeat level and wait for it.", "Call the surgeon and anesthesia now."]
+    answerAt: 2
+    why: 칼륨 6.8은 위급한 수치라 곧바로 집도의와 마취과에 알려야 해요. 내일 재검하거나 재검 결과를 기다리기만 하면 위험해요.
+  "12:slider":    # W5(w-blood 태그 제거) + N15
+    words: [w-thinner, w-dose]
+    scale_set: {0: "Chart it and move on to the next task."}
+  "17:slider":
+    scale_set: {0: "Make a note of it and keep watching the field.", 2: "Start giving blood on your own."}
+  "19:slider":
+    scale_set: {0: "OK, we'll skip it this time since it's urgent.", 2: "Do nothing until the full checklist is done."}
+  "5:slider":
+    scale_set: {0: "Give it after the case is finished, in recovery."}
+  "7:slider":     # S18: w-critical 삭제 + N15
+    words: [w-lab, w-required, w-proceed]
+    scale_set: {0: "Mention it at handoff to the next nurse later."}
+  "9:slider":
+    scale_set: {0: "Leave it — the original timing is still fine."}
+  "1:slider":
+    scale_set: {2: "Call the surgeon at home now."}
+  "3:slider":
+    scale_set: {2: "Any metal is deadly — cut it off."}
+  "6:slider":
+    scale_set: {2: "Cancel the whole case."}
+  "13:slider":
+    scale_set: {2: "Give insulin on your own now."}
+  "18:slider":
+    scale_set: {2: "Refuse to start without cardiology."}

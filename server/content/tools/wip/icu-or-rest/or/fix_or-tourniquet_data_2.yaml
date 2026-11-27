@@ -1,0 +1,147 @@
+# order 카드 (상황 번호 -> why, lines {줄번호: 바꿀 필드})
+order:
+  0:
+    why: "먼저 사지 폐색압을 기준으로 압력을 정하고, 그 값이 팔에서는 보통 낮다는 점을 말한 뒤, 올리기 전에 그 설정을 같이 확인하고, 합의가 되면 올립니다."
+    lines:
+      0: {en: "I'm setting the cuff pressure based on limb occlusion pressure.", ko: "사지 폐색압을 기준으로 커프 압력을 설정해요"}
+  4:
+    why: "사지에 맞는 크기를 고르겠다고 하고, 맞으면서 가장 넓은 커프를 꺼내고, 그 커프가 겹침과 조임이 알맞은지 보고, 느슨한지도 확인해요."
+    lines:
+      1: {en: "Here is the widest cuff that still fits.", ko: "맞는 것 중 가장 넓은 커프예요"}
+  6:
+    why: "최대에 가까워진다고 말하고, 집도의에게 알려 주고, 한계에 닿았으면 팀에 알리고, 닿았으니 집도의가 감압을 정해야 한다고 말해요."
+    lines:
+      3: {en: "Since we're there, the surgeon needs to decide on deflating.", ko: "거기까지 왔으니 집도의가 감압을 정해야 해요", note: "결정"}
+  7:
+    lines:
+      1: {en: "Anesthesia, be prepared for the changes release will bring.", ko: "마취과는 풀면 따라올 변화에 대비해 주세요"}
+  10:
+    why: "위험이 더해진다고 알리고, 이 사지에 안전한지 논의하자고 하고, 혈관 병력을 집도의에게 알리고, 그 병력을 알린 뒤 여전히 안전한지 집도의에게 물어요."
+    lines:
+      3: {en: "With that history flagged, let's ask the surgeon if it's still safe.", ko: "그 병력을 알렸으니 여전히 안전한지 집도의에게 물어봅시다"}
+  11:
+    why: "소아 사지는 더 낮은 압력이 필요하다고 말하고, 아이 체구로 다시 계산하고, 새 값에 맞춰 알맞은 커프 크기를 고르고, 그 선택을 올리기 전에 함께 확인해요."
+    lines:
+      2: {en: "With the new number in hand, I'll choose the right cuff size.", ko: "새 값이 있으니 알맞은 커프 크기를 고를게요"}
+  13:
+    why: "재관류 뒤 재적용 타이머를 다시 맞춘다고 말하고, 이번에는 얼마나 오래 갈지 집도의에게 묻고, 다시 올리기 전에 휴식을 두고, 그 시점부터 새 간격을 추적해요."
+    lines:
+      0: {en: "After reperfusion, we reset the timer for reinflation.", ko: "재관류 후에는 재적용 타이머를 다시 맞춰요"}
+      1: {en: "So let's ask the surgeon how long this round can go.", ko: "그러니 이번에는 얼마나 오래 갈지 집도의에게 물어봅시다", note: "문의"}
+  14:
+    why: "커프 아래 다리가 울혈돼 보인다고 말하고, 구혈이 충분했는지 확인하고, 보이는 것을 기록하고, 그 색 변화를 집도의에게 보고해요."
+    lines:
+      1: {ko: "구혈이 충분했는지 확인할게요"}
+      3: {en: "Once that's documented, I'll report the color changes to the surgeon.", ko: "그걸 기록하고 나면 색 변화를 집도의에게 보고할게요"}
+  15:
+    why: "최대 안전 시간에 왔다고 말하고, 집도의에게 바로 알리고, 집도의가 그 한계를 넘길 수 없다고 해서 지금 공기를 빼고, 내려가면 그 시각을 적어요."
+    lines:
+      1: {en: "I'm telling the surgeon right away.", ko: "이걸 바로 집도의에게 알릴게요"}
+      2: {en: "The surgeon agrees we can't go past it, so we deflate now.", ko: "집도의가 한계를 넘길 수 없다고 하니 지금 빼요"}
+  17:
+    lines:
+      2: {en: "After that report, we'll need a neuro assessment postoperatively.", ko: "그 보고 뒤에 수술 후 신경학적 평가가 필요할 거예요"}
+  18:
+    why: "수술 영역에서 출혈이 계속된다고 말하고, 지혈대가 완전히 막지 못하는 것 같다고 추정하고, 장비와 압력이 맞는지 확인하고, 원인이 나올 때까지 계속 해결해요."
+    lines:
+      0: {en: "There's continued bleeding in the field.", ko: "수술 영역에서 출혈이 계속돼요"}
+
+# 뉘앙스: 상황 번호 -> [{at, set | replace}]
+nuance:
+  1:
+    - at: 0
+      set:
+        scale: ["Keep it in my head", "Jot it in my notes", "Mark it on the board"]
+        answerAt: 2
+        why: "올린 시각은 모두가 바로 볼 수 있게 보드에 표시하고, 정식 기록도 남겨요. 머릿속이나 내 메모에만 두면 팀이 볼 수 없어요."
+  2:
+    - at: 0
+      set:
+        scale: ["Leave it — the cuff will flatten it", "Tug at the fold a little", "Smooth the padding flat first"]
+        answerAt: 2
+        why: "패딩이 접힌 곳은 커프 압력이 한 점에 몰려 피부 손상으로 이어질 수 있어요. 커프를 감기 전에 직접 매끄럽게 펴는 것이 맞아요. 커프가 눌러 펴 주기를 기대하거나 조금만 당겨서는 접힌 곳이 남아요."
+    - at: 1
+      set:
+        ko: "피부가 아프지 않게 커프 밑에 부드러운 패드를 대요"
+  4:
+    - at: 1
+      set:
+        who: "순환 간호사 → 레지던트 · 커프 감기"
+  8:
+    - at: 0
+      set:
+        scale: ["Tell the scrub only", "Tell the surgeon and scrub", "Call it out to the whole room"]
+        why: "허혈 시간은 팀 모두가 알아야 하는 정보라서 방 전체에 들리게 소리 내어 알려요. 스크럽에게만, 또는 집도의와 스크럽에게만 말하면 나머지는 시간을 몰라요."
+    - at: 1
+      replace:
+        kind: context
+        words: [w-ischemia]
+        word: ischemia
+        ko: 허혈
+        scenes:
+          - {who: 수술팀 전체에게, icon: speech, en: "I'll call out the ischemia time every fifteen minutes.", ok: true}
+          - {who: 집도의에게, icon: speech, en: "Dr. Lee, ischemia time is at one hour.", ok: true}
+          - {who: 깨어 있는 환자에게, icon: me, en: "Your ischemia time is at one hour now.", ok: false, fix: "The cuff has been on for a while, and we're keeping track of the time."}
+        why: "ischemia는 피가 통하지 않는 상태를 뜻하는 임상어라 의료진끼리는 정확하지만, 깨어 있는 환자에게는 겁나게 들려요. 환자에게는 '커프를 감은 지 좀 됐고 시간을 지키고 있다'로 말해요."
+  9:
+    - at: 0
+      set:
+        why: "'established'는 마취가 자리 잡아 효과가 충분히 나는 상태예요. 원위 커프는 마취된 자리 위에 올려야 해서, 블록이 자리 잡은 뒤에야 바꿀 수 있어요. 막 시작했거나 풀리는 중이라고 말하면 순서 판단이 달라져요."
+  10:
+    - at: 1
+      set_swap_answer:
+        old: "the leg has PVD — shall we discuss whether it's safe"
+        new: "the leg has PVD — let's discuss whether it's safe"
+        ko: "다리에 말초혈관질환이 있어요 — 안전한지 의논해요"
+  11:
+    - at: 0
+      set:
+        why: "아이는 혈압이 낮고 사지가 가늘어 더 낮은 압력으로도 혈류가 막혀요. 필요 이상 압력은 신경·피부 손상을 키워요. 실제 값은 집도의가 정해요."
+    - at: 1
+      set:
+        who: "순환 간호사 → 동료 간호사 · 커프 준비"
+  12:
+    - at: 0
+      set:
+        cue: "After the prep, you lift the cuff edge and the padding is wet from end to end."
+    - at: 1
+      set:
+        who: "순환 간호사 → 레지던트 · 패딩 정리"
+  14:
+    - at: 0
+      set:
+        scale: ["Normal in color", "Slightly flushed", "Visibly congested"]
+        answerAt: 2
+        why: "검붉게 붓고 피가 찬 모습은 울혈(congested)이에요. 커프 압력이 동맥압보다 낮거나 구혈이 부족하면 정맥 피만 갇혀 이렇게 돼요. 색 변화는 집도의에게 보고해요."
+  15:
+    - at: 1
+      set:
+        ko: "최대 안전 시간에 이르렀어요"
+  17:
+    - at: 0
+      set:
+        cue: "In recovery, with the anesthesia worn off, the patient still can't wiggle the toes."
+  18:
+    - at: 0
+      set:
+        cue: "The field is mostly dry, with just a little blood seeping at the edges."
+  19:
+    - at: 0
+      set:
+        why: "'surge'는 갑자기 크게 치솟는 것이에요. 지혈대를 풀면 막혀 있던 사지의 이산화탄소·칼륨·젖산이 한꺼번에 돌아와 수치가 확 뛰어요. 조금 바뀌거나 서서히 변하는 것과는 달라요."
+  20:
+    - at: 0
+      set:
+        cue: "The tourniquet was up longer than planned, but the leg looks and feels normal for now."
+        why: "오래 올려 두었으면 구획 징후를 지켜볼 만한 우려예요. 간호사는 진단을 확정하지 않고 징후를 관찰해 보고해요. '걱정 없다'와 '확진' 모두 맞지 않아요. 다리가 단단하게 붓거나 통증이 심해지면 지켜보지 말고 바로 집도의에게 보고해요."
+    - at: 1
+      replace:
+        kind: context
+        words: [w-compartment]
+        word: compartment
+        ko: 구획
+        scenes:
+          - {who: 수술 기록, icon: board, en: "Compartments soft; monitoring for compartment syndrome.", ok: true}
+          - {who: 집도의에게, icon: speech, en: "Dr. Kim, the compartments feel soft so far — I'll keep checking.", ok: true}
+          - {who: 마취에서 깬 환자에게, icon: me, en: "We're checking your compartments for swelling.", ok: false, fix: "We'll keep checking your leg for swelling and pain over the next few hours."}
+        why: "compartment는 근육을 감싼 칸을 가리키는 임상어라 의료진끼리는 정확하지만 환자에게는 낯설어요. 환자에게는 '다리가 붓거나 아픈지 계속 볼게요'로 말해요."

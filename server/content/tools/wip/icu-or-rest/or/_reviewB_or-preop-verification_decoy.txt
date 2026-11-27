@@ -1,0 +1,765 @@
+
+## S0 환자 신원 2가지 확인
+0.0 decoy='your room number' | ko: 성함과 생년월일을 말씀해 주시겠어요?
+   chunks: Can you / tell me / your full name / and date of birth / ?
+   r0: [your room number] tell me your full name and date of birth ?
+   r1: Can you [your room number] your full name and date of birth ?
+   r2: Can you tell me [your room number] and date of birth ?
+   r3: Can you tell me your full name [your room number] ?
+0.1 decoy='introduce who we are' | ko: 들어가기 전에 신원을 확인하고 싶어서요.
+   chunks: I just want to / confirm who you are / before we go / in / .
+   r0: [introduce who we are] confirm who you are before we go in .
+   r1: I just want to [introduce who we are] before we go in .
+   r2: I just want to confirm who you are [introduce who we are] in .
+   r3: I just want to confirm who you are before we go [introduce who we are] .
+0.2 decoy='the schedule' | ko: 감사합니다 — 차트와 일치하네요.
+   chunks: Thank you / — that matches / your chart / .
+   r0: [the schedule] — that matches your chart .
+   r1: Thank you [the schedule] your chart .
+   r2: Thank you — that matches [the schedule] .
+0.3 decoy="you've already read this twice" | ko: 이미 한 번 대답하신 걸 알지만, 다시 여쭤봐야 해요.
+   chunks: I know / you've already answered this once / , but I need to ask / again / .
+   r0: [you've already read this twice] you've already answered this once , but I need to ask again .
+   r1: I know [you've already read this twice] , but I need to ask again .
+   r2: I know you've already answered this once [you've already read this twice] again .
+   r3: I know you've already answered this once , but I need to ask [you've already read this twice] .
+0.4 decoy='we have the right form' | ko: 이건 수술 전에 정확한 환자인지 확인하는 데 도움이 돼요.
+   chunks: This helps us / make sure / we have the right patient / before surgery / .
+   r0: [we have the right form] make sure we have the right patient before surgery .
+   r1: This helps us [we have the right form] we have the right patient before surgery .
+   r2: This helps us make sure [we have the right form] before surgery .
+   r3: This helps us make sure we have the right patient [we have the right form] .
+0.5 decoy='your allergy' | ko: 성함을 소리 내어 말씀해 주시겠어요?
+   chunks: Can you say / your name / out loud for me / , please / ?
+   r0: [your allergy] your name out loud for me , please ?
+   r1: Can you say [your allergy] out loud for me , please ?
+   r2: Can you say your name [your allergy] , please ?
+   r3: Can you say your name out loud for me [your allergy] ?
+
+## S1 수술 부위·측 확인
+1.0 decoy='Which floor' | ko: 오늘 어느 쪽을 수술하나요?
+   chunks: Which side / are we operating on / today / ?
+   r0: [Which floor] are we operating on today ?
+   r1: Which side [Which floor] today ?
+   r2: Which side are we operating on [Which floor] ?
+1.1 decoy='the nearest sink' | ko: 정확한 위치를 저에게 가리켜 주시겠어요?
+   chunks: Can you / point to / the exact spot / for me / ?
+   r0: [the nearest sink] point to the exact spot for me ?
+   r1: Can you [the nearest sink] the exact spot for me ?
+   r2: Can you point to [the nearest sink] for me ?
+   r3: Can you point to the exact spot [the nearest sink] ?
+1.2 decoy='with the pharmacy' | ko: 그러면 오른쪽 무릎이시네요 — 차트로 확인해 볼게요.
+   chunks: So that's / your right knee / — let me confirm / with your chart / .
+   r0: [with the pharmacy] your right knee — let me confirm with your chart .
+   r1: So that's [with the pharmacy] — let me confirm with your chart .
+   r2: So that's your right knee [with the pharmacy] with your chart .
+   r3: So that's your right knee — let me confirm [with the pharmacy] .
+1.3 decoy='which form' | ko: 어느 쪽인지 저에게 말씀해 주셔야 해요, 그냥 보여주시는 게 아니라요.
+   chunks: I need you / to tell me / which side / , not just show me / .
+   r0: [which form] to tell me which side , not just show me .
+   r1: I need you [which form] which side , not just show me .
+   r2: I need you to tell me [which form] , not just show me .
+   r3: I need you to tell me which side [which form] .
+1.4 decoy='We call twice' | ko: 여기서 혼동이 생기면 심각해질 수 있어서 두 번 여쭤봐요.
+   chunks: We ask twice / because a mix-up / here / would be serious / .
+   r0: [We call twice] because a mix-up here would be serious .
+   r1: We ask twice [We call twice] here would be serious .
+   r2: We ask twice because a mix-up [We call twice] would be serious .
+   r3: We ask twice because a mix-up here [We call twice] .
+1.5 decoy='what you brought in' | ko: 집도의가 오른쪽 무릎에 표시했고, 그건 말씀하신 것과 일치해요.
+   chunks: Your surgeon marked / the right knee / , and that matches / what you told me / .
+   r0: [what you brought in] the right knee , and that matches what you told me .
+   r1: Your surgeon marked [what you brought in] , and that matches what you told me .
+   r2: Your surgeon marked the right knee [what you brought in] what you told me .
+   r3: Your surgeon marked the right knee , and that matches [what you brought in] .
+
+## S2 수술 동의서 서명 확인
+2.0 decoy='this visitor pass' | ko: 이 동의서에 서명하신 걸 확인해 주시겠어요?
+   chunks: Can you confirm / you signed / this consent form / ?
+   r0: [this visitor pass] you signed this consent form ?
+   r1: Can you confirm [this visitor pass] this consent form ?
+   r2: Can you confirm you signed [this visitor pass] ?
+2.1 decoy='the room' | ko: 이게 오늘 예상하신 수술과 일치하나요?
+   chunks: Does this match / the surgery / you're expecting today / ?
+   r0: [the room] the surgery you're expecting today ?
+   r1: Does this match [the room] you're expecting today ?
+   r2: Does this match the surgery [the room] ?
+2.2 decoy='and the stamp' | ko: 여기 서명과 날짜가 보이네요.
+   chunks: I see / your signature / and the date / here / .
+   r0: [and the stamp] your signature and the date here .
+   r1: I see [and the stamp] and the date here .
+   r2: I see your signature [and the stamp] here .
+   r3: I see your signature and the date [and the stamp] .
+2.3 decoy='you remember' | ko: 서명하시는 내용을 이해하신다는 걸 알 수 있게 이 줄을 읽어 주세요.
+   chunks: Please read this line / so I know / you understand / what you're signing / .
+   r0: [you remember] so I know you understand what you're signing .
+   r1: Please read this line [you remember] you understand what you're signing .
+   r2: Please read this line so I know [you remember] what you're signing .
+   r3: Please read this line so I know you understand [you remember] .
+2.4 decoy='in the lobby' | ko: 서식에 적힌 모든 내용이 접수처에서 말씀하신 것과 일치해요.
+   chunks: Everything on the form / matches / what you told me / at the desk / .
+   r0: [in the lobby] matches what you told me at the desk .
+   r1: Everything on the form [in the lobby] what you told me at the desk .
+   r2: Everything on the form matches [in the lobby] at the desk .
+   r3: Everything on the form matches what you told me [in the lobby] .
+2.5 decoy='tomorrow' | ko: 이건 당신의 서명이고, 어제 날짜로 되어 있네요.
+   chunks: This is your signature / , and it's dated / yesterday / .
+   r0: [tomorrow] , and it's dated yesterday .
+   r1: This is your signature [tomorrow] yesterday .
+   r2: This is your signature , and it's dated [tomorrow] .
+
+## S3 수술 부위 표시 확인
+3.0 decoy='the schedule' | ko: 집도의가 한 표시를 확인해 볼게요.
+   chunks: Let me check / the marking / the surgeon made / .
+   r0: [the schedule] the marking the surgeon made .
+   r1: Let me check [the schedule] the surgeon made .
+   r2: Let me check the marking [the schedule] .
+3.1 decoy='on this form' | ko: 여기 팔에 이니셜이 보이네요.
+   chunks: I can see / the initials / here / on your arm / .
+   r0: [on this form] the initials here on your arm .
+   r1: I can see [on this form] here on your arm .
+   r2: I can see the initials [on this form] on your arm .
+   r3: I can see the initials here [on this form] .
+3.2 decoy='signed' | ko: 그건 정확한 부위가 표시되어 있다는 걸 확인해 줘요.
+   chunks: That confirms / we have / the correct site / marked / .
+   r0: [signed] we have the correct site marked .
+   r1: That confirms [signed] the correct site marked .
+   r2: That confirms we have [signed] marked .
+   r3: That confirms we have the correct site [signed] .
+3.3 decoy='his notes' | ko: 집도의는 당신이 아직 깨어 있는 동안 이니셜에 서명해요.
+   chunks: Your surgeon signs / his initials / while you're still / awake / .
+   r0: [his notes] his initials while you're still awake .
+   r1: Your surgeon signs [his notes] while you're still awake .
+   r2: Your surgeon signs his initials [his notes] awake .
+   r3: Your surgeon signs his initials while you're still [his notes] .
+3.4 decoy='at the monitor' | ko: 표시를 보시고 맞는 위치인지 말씀해 주시겠어요?
+   chunks: Can you look / at the mark / and tell me / if that's the right spot / ?
+   r0: [at the monitor] at the mark and tell me if that's the right spot ?
+   r1: Can you look [at the monitor] and tell me if that's the right spot ?
+   r2: Can you look at the mark [at the monitor] if that's the right spot ?
+   r3: Can you look at the mark and tell me [at the monitor] ?
+3.5 decoy='in pencil' | ko: 지워지지 않는 잉크로 한 표시만 받고, 병동에서 쓴 펜 표시는 받지 않아요.
+   chunks: We only accept / a mark made / in permanent ink / , not pen from the floor / .
+   r0: [in pencil] a mark made in permanent ink , not pen from the floor .
+   r1: We only accept [in pencil] in permanent ink , not pen from the floor .
+   r2: We only accept a mark made [in pencil] , not pen from the floor .
+   r3: We only accept a mark made in permanent ink [in pencil] .
+
+## S4 알레르기 밴드 대조
+4.0 decoy='any worries' | ko: 어떤 알레르기가 있으신지 말씀해 주시겠어요?
+   chunks: Can you / tell me about / any allergies / you have / ?
+   r0: [any worries] tell me about any allergies you have ?
+   r1: Can you [any worries] any allergies you have ?
+   r2: Can you tell me about [any worries] you have ?
+   r3: Can you tell me about any allergies [any worries] ?
+4.1 decoy='your discharge plan' | ko: 알레르기 밴드를 차트와 대조해 볼게요.
+   chunks: Let me check / your allergy band / against / your chart / .
+   r0: [your discharge plan] your allergy band against your chart .
+   r1: Let me check [your discharge plan] against your chart .
+   r2: Let me check your allergy band [your discharge plan] your chart .
+   r3: Let me check your allergy band against [your discharge plan] .
+4.2 decoy='the whole family' | ko: 팀 전체가 이걸 알도록 확실히 할게요.
+   chunks: I'll make sure / the whole team / knows / about this / .
+   r0: [the whole family] the whole team knows about this .
+   r1: I'll make sure [the whole family] knows about this .
+   r2: I'll make sure the whole team [the whole family] about this .
+   r3: I'll make sure the whole team knows [the whole family] .
+4.3 decoy='on my phone' | ko: 저는 페니실린에 알레르기가 있고, 밴드 바로 여기에 적혀 있어요.
+   chunks: I'm allergic to penicillin / , and it's written / right here / on my band / .
+   r0: [on my phone] , and it's written right here on my band .
+   r1: I'm allergic to penicillin [on my phone] right here on my band .
+   r2: I'm allergic to penicillin , and it's written [on my phone] on my band .
+   r3: I'm allergic to penicillin , and it's written right here [on my phone] .
+4.4 decoy='you wrote last year' | ko: 차트에도 방금 말씀하신 것과 같은 알레르기가 적혀 있나요?
+   chunks: Does your chart / list / the same allergy / you just told me / ?
+   r0: [you wrote last year] list the same allergy you just told me ?
+   r1: Does your chart [you wrote last year] the same allergy you just told me ?
+   r2: Does your chart list [you wrote last year] you just told me ?
+   r3: Does your chart list the same allergy [you wrote last year] ?
+4.5 decoy='so you can see it' | ko: 한눈에 보이도록 빨간 밴드를 채워 드릴게요.
+   chunks: I'm putting / a red band on you / so everyone can see it / at a glance / .
+   r0: [so you can see it] a red band on you so everyone can see it at a glance .
+   r1: I'm putting [so you can see it] so everyone can see it at a glance .
+   r2: I'm putting a red band on you [so you can see it] at a glance .
+   r3: I'm putting a red band on you so everyone can see it [so you can see it] .
+
+## S5 금식 여부 구두 확인
+5.0 decoy='to read or sign' | ko: 마지막으로 드시거나 마신 게 언제였나요?
+   chunks: When did you last have / anything / to eat / or drink / ?
+   r0: [to read or sign] anything to eat or drink ?
+   r1: When did you last have [to read or sign] to eat or drink ?
+   r2: When did you last have anything [to read or sign] or drink ?
+   r3: When did you last have anything to eat [to read or sign] ?
+5.1 decoy='last month' | ko: 오늘 아침에 물이나 약을 드셨나요?
+   chunks: Did you have / any water / or medications / this morning / ?
+   r0: [last month] any water or medications this morning ?
+   r1: Did you have [last month] or medications this morning ?
+   r2: Did you have any water [last month] this morning ?
+   r3: Did you have any water or medications [last month] ?
+5.2 decoy="you've been resting" | ko: 좋아요 — 충분히 오래 금식하신 거네요.
+   chunks: Good / — that means / you've been fasting / long enough / .
+   r0: [you've been resting] — that means you've been fasting long enough .
+   r1: Good [you've been resting] you've been fasting long enough .
+   r2: Good — that means [you've been resting] long enough .
+   r3: Good — that means you've been fasting [you've been resting] .
+5.3 decoy='a small bandage' | ko: 작은 사탕이나 물 한 모금도 포함되니, 정확하게 말씀해 주세요.
+   chunks: Even a small candy / or a sip of water / counts / , so please tell me exactly / .
+   r0: [a small bandage] or a sip of water counts , so please tell me exactly .
+   r1: Even a small candy [a small bandage] counts , so please tell me exactly .
+   r2: Even a small candy or a sip of water [a small bandage] , so please tell me exactly .
+   r3: Even a small candy or a sip of water counts [a small bandage] .
+5.4 decoy='makes patients queasy' | ko: 위가 가득 차 있으면 마취가 위험해질 수 있어서 음식과 물을 여쭤봐요.
+   chunks: I ask about food and drink / because a full stomach / makes anesthesia / risky / .
+   r0: [makes patients queasy] because a full stomach makes anesthesia risky .
+   r1: I ask about food and drink [makes patients queasy] makes anesthesia risky .
+   r2: I ask about food and drink because a full stomach [makes patients queasy] risky .
+   r3: I ask about food and drink because a full stomach makes anesthesia [makes patients queasy] .
+5.5 decoy='after sunrise' | ko: 지시대로 자정 이후로 금식하셨죠, 맞나요?
+   chunks: You followed instructions / and stopped eating / after midnight / , correct / ?
+   r0: [after sunrise] and stopped eating after midnight , correct ?
+   r1: You followed instructions [after sunrise] after midnight , correct ?
+   r2: You followed instructions and stopped eating [after sunrise] , correct ?
+   r3: You followed instructions and stopped eating after midnight [after sunrise] ?
+
+## S6 동의서 수술명 불일치
+6.0 decoy='what we scheduled' | ko: 여기서 잠시 멈추고 싶어요 — 동의서가 말씀하신 것과 일치하지 않네요.
+   chunks: I want to pause here / — the consent / doesn't match / what you described / .
+   r0: [what we scheduled] — the consent doesn't match what you described .
+   r1: I want to pause here [what we scheduled] doesn't match what you described .
+   r2: I want to pause here — the consent [what we scheduled] what you described .
+   r3: I want to pause here — the consent doesn't match [what we scheduled] .
+6.1 decoy='with the paperwork' | ko: 집도의와 이걸 명확히 할 때까지 모든 걸 보류할게요.
+   chunks: Let me hold everything / until we clarify / this / with your surgeon / .
+   r0: [with the paperwork] until we clarify this with your surgeon .
+   r1: Let me hold everything [with the paperwork] this with your surgeon .
+   r2: Let me hold everything until we clarify [with the paperwork] with your surgeon .
+   r3: Let me hold everything until we clarify this [with the paperwork] .
+6.2 decoy='copied' | ko: 이게 정정될 때까지 진행하지 않을게요.
+   chunks: I won't proceed / until this is / corrected / .
+   r0: [copied] until this is corrected .
+   r1: I won't proceed [copied] corrected .
+   r2: I won't proceed until this is [copied] .
+6.3 decoy='same-day surgery' | ko: 잠깐만요 — 서식에는 복강경이라고 되어 있는데, 저는 개복 수술이라고 들었어요.
+   chunks: Wait / — this form says laparoscopic / , but I was told / it'd be open surgery / .
+   r0: [same-day surgery] — this form says laparoscopic , but I was told it'd be open surgery .
+   r1: Wait [same-day surgery] , but I was told it'd be open surgery .
+   r2: Wait — this form says laparoscopic [same-day surgery] it'd be open surgery .
+   r3: Wait — this form says laparoscopic , but I was told [same-day surgery] .
+6.4 decoy='A smudge like this' | ko: 이런 불일치가 있으면 멈추고 먼저 집도의에게 확인해요.
+   chunks: A mismatch like this / means we stop / and check with your surgeon / first / .
+   r0: [A smudge like this] means we stop and check with your surgeon first .
+   r1: A mismatch like this [A smudge like this] and check with your surgeon first .
+   r2: A mismatch like this means we stop [A smudge like this] first .
+   r3: A mismatch like this means we stop and check with your surgeon [A smudge like this] .
+6.5 decoy='the supply list' | ko: 누군가 서명하기 전에 지금 서류를 정정해요.
+   chunks: We correct the paperwork / now / , before anyone signs / anything else / .
+   r0: [the supply list] now , before anyone signs anything else .
+   r1: We correct the paperwork [the supply list] , before anyone signs anything else .
+   r2: We correct the paperwork now [the supply list] anything else .
+   r3: We correct the paperwork now , before anyone signs [the supply list] .
+
+## S7 환자가 부위를 다르게 진술
+7.0 decoy='is a bit faded' | ko: 왼쪽이라고 하셨는데 표시는 오른쪽에 있네요 — 멈춥시다.
+   chunks: You said left / , but the marking / is on the right / — let's stop / .
+   r0: [is a bit faded] , but the marking is on the right — let's stop .
+   r1: You said left [is a bit faded] is on the right — let's stop .
+   r2: You said left , but the marking [is a bit faded] — let's stop .
+   r3: You said left , but the marking is on the right [is a bit faded] .
+7.1 decoy='to finish my notes' | ko: 앞으로 나아가기 전에 이걸 명확히 해야 해요.
+   chunks: I need / to clarify this / before we move / forward / .
+   r0: [to finish my notes] to clarify this before we move forward .
+   r1: I need [to finish my notes] before we move forward .
+   r2: I need to clarify this [to finish my notes] forward .
+   r3: I need to clarify this before we move [to finish my notes] .
+7.2 decoy='the correct date' | ko: 정확한 쪽을 확인하도록 집도의를 모셔올게요.
+   chunks: I'll bring in / your surgeon / to confirm / the correct side / .
+   r0: [the correct date] your surgeon to confirm the correct side .
+   r1: I'll bring in [the correct date] to confirm the correct side .
+   r2: I'll bring in your surgeon [the correct date] the correct side .
+   r3: I'll bring in your surgeon to confirm [the correct date] .
+7.3 decoy='on the whiteboard' | ko: 방금 말씀하신 것이 몸에 표시된 것과 일치하지 않아요.
+   chunks: What you just told me / doesn't match / what's marked / on your body / .
+   r0: [on the whiteboard] doesn't match what's marked on your body .
+   r1: What you just told me [on the whiteboard] what's marked on your body .
+   r2: What you just told me doesn't match [on the whiteboard] on your body .
+   r3: What you just told me doesn't match what's marked [on the whiteboard] .
+7.4 decoy='the chart and the schedule' | ko: 말씀과 표시가 어긋나는 순간 저희는 멈춰요.
+   chunks: We stop / the moment / your words and the marking / disagree / .
+   r0: [the chart and the schedule] the moment your words and the marking disagree .
+   r1: We stop [the chart and the schedule] your words and the marking disagree .
+   r2: We stop the moment [the chart and the schedule] disagree .
+   r3: We stop the moment your words and the marking [the chart and the schedule] .
+7.5 decoy='in writing' | ko: 집도의가 직접 매듭짓기 전까지는 아무도 앞으로 나아가지 않아요.
+   chunks: Nobody moves forward / until your surgeon / settles this / in person / .
+   r0: [in writing] until your surgeon settles this in person .
+   r1: Nobody moves forward [in writing] settles this in person .
+   r2: Nobody moves forward until your surgeon [in writing] in person .
+   r3: Nobody moves forward until your surgeon settles this [in writing] .
+
+## S8 부위 표시 없이 입실
+8.0 decoy="isn't clipped" | ko: 부위가 표시되지 않았어요 — 아직 진행할 수 없어요.
+   chunks: The site / isn't marked / — we can't proceed / yet / .
+   r0: [isn't clipped] isn't marked — we can't proceed yet .
+   r1: The site [isn't clipped] — we can't proceed yet .
+   r2: The site isn't marked [isn't clipped] yet .
+   r3: The site isn't marked — we can't proceed [isn't clipped] .
+8.1 decoy='to sign' | ko: 집도의에게 표시를 부탁하고 나서 계속할 수 있을까요?
+   chunks: Can we get / the surgeon / to mark / before we continue / ?
+   r0: [to sign] the surgeon to mark before we continue ?
+   r1: Can we get [to sign] to mark before we continue ?
+   r2: Can we get the surgeon [to sign] before we continue ?
+   r3: Can we get the surgeon to mark [to sign] ?
+8.2 decoy='name band' | ko: 이걸 부위 표시 누락으로 보고할게요.
+   chunks: I'm reporting this / as a missing / site marking / .
+   r0: [name band] as a missing site marking .
+   r1: I'm reporting this [name band] site marking .
+   r2: I'm reporting this as a missing [name band] .
+8.3 decoy='from the lobby' | ko: 이 환자는 병동에서 곧장 올라왔고 표시가 없어요.
+   chunks: This patient came / straight from the floor / without / a mark / .
+   r0: [from the lobby] straight from the floor without a mark .
+   r1: This patient came [from the lobby] without a mark .
+   r2: This patient came straight from the floor [from the lobby] a mark .
+   r3: This patient came straight from the floor without [from the lobby] .
+8.4 decoy='and photographed' | ko: 부위가 표시되고 확인될 때까지 모든 수술을 보류해요.
+   chunks: We hold every case / until the site / is marked / and confirmed / .
+   r0: [and photographed] until the site is marked and confirmed .
+   r1: We hold every case [and photographed] is marked and confirmed .
+   r2: We hold every case until the site [and photographed] and confirmed .
+   r3: We hold every case until the site is marked [and photographed] .
+8.5 decoy='meet the family' | ko: 지금 바로 표시하러 오시라고 집도의를 호출했어요.
+   chunks: I paged the surgeon / to come / mark the site / right now / .
+   r0: [meet the family] to come mark the site right now .
+   r1: I paged the surgeon [meet the family] mark the site right now .
+   r2: I paged the surgeon to come [meet the family] right now .
+   r3: I paged the surgeon to come mark the site [meet the family] .
+
+## S9 언어 장벽 신원 확인 지연
+9.0 decoy='a pen' | ko: 통역사를 모셔서 신원을 확인할게요.
+   chunks: Let me get / an interpreter / so we can confirm / your details / .
+   r0: [a pen] an interpreter so we can confirm your details .
+   r1: Let me get [a pen] so we can confirm your details .
+   r2: Let me get an interpreter [a pen] your details .
+   r3: Let me get an interpreter so we can confirm [a pen] .
+9.1 decoy='through the doorway' | ko: 통역사를 통해 성함과 생년월일을 말씀해 주세요.
+   chunks: Please tell me / your name / and date of birth / through the interpreter / .
+   r0: [through the doorway] your name and date of birth through the interpreter .
+   r1: Please tell me [through the doorway] and date of birth through the interpreter .
+   r2: Please tell me your name [through the doorway] through the interpreter .
+   r3: Please tell me your name and date of birth [through the doorway] .
+9.2 decoy='every form' | ko: 매 단계를 이해하고 계신지 확실히 하고 싶어요.
+   chunks: I want to / make sure / you understand / every step / .
+   r0: [every form] make sure you understand every step .
+   r1: I want to [every form] you understand every step .
+   r2: I want to make sure [every form] every step .
+   r3: I want to make sure you understand [every form] .
+9.3 decoy='for the elevator' | ko: 통역사가 올 때까지 기다렸다가 다른 걸 여쭤볼게요.
+   chunks: We wait / for the interpreter / before we ask / anything else / .
+   r0: [for the elevator] for the interpreter before we ask anything else .
+   r1: We wait [for the elevator] before we ask anything else .
+   r2: We wait for the interpreter [for the elevator] anything else .
+   r3: We wait for the interpreter before we ask [for the elevator] .
+9.4 decoy='every sound' | ko: 이 방식이 더 느리지만, 모든 질문을 이해하셔야 해요.
+   chunks: It's slower this way / , but I need you / to understand / every question / .
+   r0: [every sound] , but I need you to understand every question .
+   r1: It's slower this way [every sound] to understand every question .
+   r2: It's slower this way , but I need you [every sound] every question .
+   r3: It's slower this way , but I need you to understand [every sound] .
+9.5 decoy='your seat number' | ko: 통역사를 통해, 성함을 말씀해 주시겠어요?
+   chunks: Through the interpreter / , can you / tell me / your full name / ?
+   r0: [your seat number] , can you tell me your full name ?
+   r1: Through the interpreter [your seat number] tell me your full name ?
+   r2: Through the interpreter , can you [your seat number] your full name ?
+   r3: Through the interpreter , can you tell me [your seat number] ?
+
+## S10 진정 상태 동의 유효성
+10.0 decoy='this order' | ko: 이 동의서는 진정되기 전에 서명됐나요?
+   chunks: Was this consent signed / before she was / sedated / ?
+   r0: [this order] before she was sedated ?
+   r1: Was this consent signed [this order] sedated ?
+   r2: Was this consent signed before she was [this order] ?
+10.1 decoy='its dosage' | ko: 이미 투약됐다면 그 효력을 확인해야 해요.
+   chunks: If she was already medicated / , we need / to verify / its validity / .
+   r0: [its dosage] , we need to verify its validity .
+   r1: If she was already medicated [its dosage] to verify its validity .
+   r2: If she was already medicated , we need [its dosage] its validity .
+   r3: If she was already medicated , we need to verify [its dosage] .
+10.2 decoy='the supplies' | ko: 진행하기 전에 시점을 확인합시다.
+   chunks: Let's check / the timing / before we proceed / .
+   r0: [the supplies] the timing before we proceed .
+   r1: Let's check [the supplies] before we proceed .
+   r2: Let's check the timing [the supplies] .
+10.3 decoy='any phone call' | ko: 동의는 진정 전에 이루어져야지, 그 후여선 안 돼요.
+   chunks: Consent has to happen / before any sedation / , not / after / .
+   r0: [any phone call] before any sedation , not after .
+   r1: Consent has to happen [any phone call] , not after .
+   r2: Consent has to happen before any sedation [any phone call] after .
+   r3: Consent has to happen before any sedation , not [any phone call] .
+10.4 decoy='when she arrived' | ko: 정확히 언제 서명했고 언제 투약됐는지 기록을 꺼내서 볼게요.
+   chunks: I'll pull the record / to see exactly / when she signed / and when she was medicated / .
+   r0: [when she arrived] to see exactly when she signed and when she was medicated .
+   r1: I'll pull the record [when she arrived] when she signed and when she was medicated .
+   r2: I'll pull the record to see exactly [when she arrived] and when she was medicated .
+   r3: I'll pull the record to see exactly when she signed [when she arrived] .
+10.5 decoy='a new band' | ko: 시점이 잘못됐다면 진행하기 전에 새 동의서를 받아요.
+   chunks: If the timing is wrong / , we get / a new consent / before we proceed / .
+   r0: [a new band] , we get a new consent before we proceed .
+   r1: If the timing is wrong [a new band] a new consent before we proceed .
+   r2: If the timing is wrong , we get [a new band] before we proceed .
+   r3: If the timing is wrong , we get a new consent [a new band] .
+
+## S11 응급 수술 동의 시간 부족
+11.0 decoy='and repeat it' | ko: 구두 동의를 받고 즉시 문서화합시다.
+   chunks: Let's get verbal consent / and document it / immediately / .
+   r0: [and repeat it] and document it immediately .
+   r1: Let's get verbal consent [and repeat it] immediately .
+   r2: Let's get verbal consent and document it [and repeat it] .
+11.1 decoy='and allergies' | ko: 시각과 증인을 기록에 남길게요.
+   chunks: I'll note / the time / and witnesses / on the record / .
+   r0: [and allergies] the time and witnesses on the record .
+   r1: I'll note [and allergies] and witnesses on the record .
+   r2: I'll note the time [and allergies] on the record .
+   r3: I'll note the time and witnesses [and allergies] .
+11.2 decoy='family consent' | ko: 응급 동의 하에 진행하고, 지금 바로 기록하고 있어요.
+   chunks: We proceed / under emergency consent / — I'm charting it / now / .
+   r0: [family consent] under emergency consent — I'm charting it now .
+   r1: We proceed [family consent] — I'm charting it now .
+   r2: We proceed under emergency consent [family consent] now .
+   r3: We proceed under emergency consent — I'm charting it [family consent] .
+11.3 decoy='a full report' | ko: 완전한 동의를 받을 시간이 없어요 — 지금 움직여야 해요.
+   chunks: There's no time / for a full consent / — we need / to move now / .
+   r0: [a full report] for a full consent — we need to move now .
+   r1: There's no time [a full report] — we need to move now .
+   r2: There's no time for a full consent [a full report] to move now .
+   r3: There's no time for a full consent — we need [a full report] .
+11.4 decoy='Two visitors' | ko: 두 명의 임상의가 구두 동의에 서명하고 증인이 되어 줄 거예요.
+   chunks: Two clinicians / will witness / and sign off / on the verbal consent / .
+   r0: [Two visitors] will witness and sign off on the verbal consent .
+   r1: Two clinicians [Two visitors] and sign off on the verbal consent .
+   r2: Two clinicians will witness [Two visitors] on the verbal consent .
+   r3: Two clinicians will witness and sign off [Two visitors] .
+11.5 decoy='we called' | ko: 우리가 시작한 정확한 시각을 지금 바로 기록하고 있어요.
+   chunks: I'm documenting / the exact time / we started / , right now / .
+   r0: [we called] the exact time we started , right now .
+   r1: I'm documenting [we called] we started , right now .
+   r2: I'm documenting the exact time [we called] , right now .
+   r3: I'm documenting the exact time we started [we called] .
+
+## S12 소아 법적 대리 동의
+12.0 decoy='primary doctor' | ko: 당신이 법적 보호자이신가요?
+   chunks: Are you / his / legal guardian / ?
+   r0: [primary doctor] his legal guardian ?
+   r1: Are you [primary doctor] legal guardian ?
+   r2: Are you his [primary doctor] ?
+12.1 decoy='the visitor log' | ko: 그를 대신해서 동의서에 서명해 주셔야 해요.
+   chunks: I'll need you / to sign / the consent / on his behalf / .
+   r0: [the visitor log] to sign the consent on his behalf .
+   r1: I'll need you [the visitor log] the consent on his behalf .
+   r2: I'll need you to sign [the visitor log] on his behalf .
+   r3: I'll need you to sign the consent [the visitor log] .
+12.2 decoy='to the hospital' | ko: 환자와의 관계를 확인해도 될까요?
+   chunks: Can I confirm / your relationship / to the patient / ?
+   r0: [to the hospital] your relationship to the patient ?
+   r1: Can I confirm [to the hospital] to the patient ?
+   r2: Can I confirm your relationship [to the hospital] ?
+12.3 decoy='under anesthesia' | ko: 부모나 법적 보호자가 열여덟 살 미만 아이를 대신해 서명해야 해요.
+   chunks: A parent or legal guardian / must sign / for a child / under eighteen / .
+   r0: [under anesthesia] must sign for a child under eighteen .
+   r1: A parent or legal guardian [under anesthesia] for a child under eighteen .
+   r2: A parent or legal guardian must sign [under anesthesia] under eighteen .
+   r3: A parent or legal guardian must sign for a child [under anesthesia] .
+12.4 decoy='your insurance card' | ko: 누가 대신 서명했는지 문서화하기 위해 신분증이 필요해요.
+   chunks: I need your ID / to document / who signed / on his behalf / .
+   r0: [your insurance card] to document who signed on his behalf .
+   r1: I need your ID [your insurance card] who signed on his behalf .
+   r2: I need your ID to document [your insurance card] on his behalf .
+   r3: I need your ID to document who signed [your insurance card] .
+12.5 decoy='this one floor' | ko: 서명하시면 그 동의서는 이 시술 하나만 포함해요.
+   chunks: Once you sign / , that consent covers / this one procedure / only / .
+   r0: [this one floor] , that consent covers this one procedure only .
+   r1: Once you sign [this one floor] this one procedure only .
+   r2: Once you sign , that consent covers [this one floor] only .
+   r3: Once you sign , that consent covers this one procedure [this one floor] .
+
+## S13 양측 수술 측 혼동 방지
+13.0 decoy='each room' | ko: 각 쪽을 따로, 한 번에 하나씩 확인할게요.
+   chunks: We'll confirm / each side / separately / , one at a time / .
+   r0: [each room] each side separately , one at a time .
+   r1: We'll confirm [each room] separately , one at a time .
+   r2: We'll confirm each side [each room] , one at a time .
+   r3: We'll confirm each side separately [each room] .
+13.1 decoy='and then the chart' | ko: 오른쪽 눈을 확인하고 그다음 왼쪽을 확인할게요.
+   chunks: Let me verify / the right eye / and then / the left / .
+   r0: [and then the chart] the right eye and then the left .
+   r1: Let me verify [and then the chart] and then the left .
+   r2: Let me verify the right eye [and then the chart] the left .
+   r3: Let me verify the right eye and then [and then the chart] .
+13.2 decoy='billed' | ko: 두 시술 모두 개별적으로 문서화돼요.
+   chunks: Both procedures / are documented / individually / .
+   r0: [billed] are documented individually .
+   r1: Both procedures [billed] individually .
+   r2: Both procedures are documented [billed] .
+13.3 decoy='or tape' | ko: 두 눈을 동시에 표시하거나 준비하지 않아요.
+   chunks: We never mark / or prep / both eyes / at the same moment / .
+   r0: [or tape] or prep both eyes at the same moment .
+   r1: We never mark [or tape] both eyes at the same moment .
+   r2: We never mark or prep [or tape] at the same moment .
+   r3: We never mark or prep both eyes [or tape] .
+13.4 decoy='its own bill' | ko: 각 눈마다 각자의 동의서와 부위 확인, 타임아웃이 따로 있어요.
+   chunks: Each eye gets / its own consent / , its own site check / , its own time-out / .
+   r0: [its own bill] its own consent , its own site check , its own time-out .
+   r1: Each eye gets [its own bill] , its own site check , its own time-out .
+   r2: Each eye gets its own consent [its own bill] , its own time-out .
+   r3: Each eye gets its own consent , its own site check [its own bill] .
+13.5 decoy='the paperwork' | ko: 오른쪽 눈을 완전히 끝내고 나서야 왼쪽을 시작해요.
+   chunks: We finish the right eye / completely / before we ever start / the left / .
+   r0: [the paperwork] completely before we ever start the left .
+   r1: We finish the right eye [the paperwork] before we ever start the left .
+   r2: We finish the right eye completely [the paperwork] the left .
+   r3: We finish the right eye completely before we ever start [the paperwork] .
+
+## S14 추가 시술 동의 범위
+14.0 decoy='the planned transfer' | ko: 동의서는 계획된 시술만 포함해요.
+   chunks: The consent / only covers / the planned procedure / .
+   r0: [the planned transfer] only covers the planned procedure .
+   r1: The consent [the planned transfer] the planned procedure .
+   r2: The consent only covers [the planned transfer] .
+14.1 decoy='extra time' | ko: 그 이상은 당신의 허락이 필요해요.
+   chunks: Anything beyond that / would need / your permission / .
+   r0: [extra time] would need your permission .
+   r1: Anything beyond that [extra time] your permission .
+   r2: Anything beyond that would need [extra time] .
+14.2 decoy='paid for' | ko: 정확히 무엇에 동의하셨는지 명확히 할게요.
+   chunks: Let me clarify exactly / what you've / agreed to / .
+   r0: [paid for] what you've agreed to .
+   r1: Let me clarify exactly [paid for] agreed to .
+   r2: Let me clarify exactly what you've [paid for] .
+14.3 decoy='an old scar' | ko: 안에서 다른 걸 발견하더라도, 여전히 먼저 물어볼 거예요.
+   chunks: If they find something else / in there / , they'll still ask you / first / .
+   r0: [an old scar] in there , they'll still ask you first .
+   r1: If they find something else [an old scar] , they'll still ask you first .
+   r2: If they find something else in there [an old scar] first .
+   r3: If they find something else in there , they'll still ask you [an old scar] .
+14.4 decoy='a separate bill' | ko: 이 범위 밖의 것은 당신의 별도 동의가 필요해요.
+   chunks: Anything outside this scope / needs / a separate consent / from you / .
+   r0: [a separate bill] needs a separate consent from you .
+   r1: Anything outside this scope [a separate bill] a separate consent from you .
+   r2: Anything outside this scope needs [a separate bill] from you .
+   r3: Anything outside this scope needs a separate consent [a separate bill] .
+14.5 decoy="and didn't pay for" | ko: 무엇에 동의했고 무엇에 동의하지 않았는지 확실히 아셨으면 해요.
+   chunks: I want to make sure / you know exactly / what you did / and didn't agree to / .
+   r0: [and didn't pay for] you know exactly what you did and didn't agree to .
+   r1: I want to make sure [and didn't pay for] what you did and didn't agree to .
+   r2: I want to make sure you know exactly [and didn't pay for] and didn't agree to .
+   r3: I want to make sure you know exactly what you did [and didn't pay for] .
+
+## S15 타임아웃 중 표시 불일치
+15.0 decoy='and wristband' | ko: 잠시 멈춰야 해요 — 동의서와 표시가 일치하지 않아요.
+   chunks: I need us / to pause / — the consent and marking / don't match / .
+   r0: [and wristband] to pause — the consent and marking don't match .
+   r1: I need us [and wristband] — the consent and marking don't match .
+   r2: I need us to pause [and wristband] don't match .
+   r3: I need us to pause — the consent and marking [and wristband] .
+15.1 decoy='the correct date' | ko: 진행하기 전에 정확한 쪽을 확인합시다.
+   chunks: Let's verify / the correct side / before we proceed / .
+   r0: [the correct date] the correct side before we proceed .
+   r1: Let's verify [the correct date] before we proceed .
+   r2: Let's verify the correct side [the correct date] .
+15.2 decoy='leaves' | ko: 이게 해결될 때까지 아무도 시작하지 않아요.
+   chunks: Nobody starts / until this is / resolved / .
+   r0: [leaves] until this is resolved .
+   r1: Nobody starts [leaves] resolved .
+   r2: Nobody starts until this is [leaves] .
+15.3 decoy='for announcing' | ko: 이게 우리 타임아웃이고, 타임아웃은 정확히 이걸 잡기 위한 거예요.
+   chunks: This is our time-out / , and time-outs are exactly / for catching / this / .
+   r0: [for announcing] , and time-outs are exactly for catching this .
+   r1: This is our time-out [for announcing] for catching this .
+   r2: This is our time-out , and time-outs are exactly [for announcing] this .
+   r3: This is our time-out , and time-outs are exactly for catching [for announcing] .
+15.4 decoy='the chart and the band' | ko: 부위와 동의서가 일치할 때까지 모두 말을 멈춰요.
+   chunks: Everyone stops talking / until the site / and the consent / agree / .
+   r0: [the chart and the band] until the site and the consent agree .
+   r1: Everyone stops talking [the chart and the band] and the consent agree .
+   r2: Everyone stops talking until the site [the chart and the band] agree .
+   r3: Everyone stops talking until the site and the consent [the chart and the band] .
+15.5 decoy='on this floor' | ko: 이 방의 모든 목소리가 쪽을 확인할 때까지 저희는 한 치도 움직이지 않아요.
+   chunks: We don't move an inch / until every voice / in this room / confirms the side / .
+   r0: [on this floor] until every voice in this room confirms the side .
+   r1: We don't move an inch [on this floor] in this room confirms the side .
+   r2: We don't move an inch until every voice [on this floor] confirms the side .
+   r3: We don't move an inch until every voice in this room [on this floor] .
+
+## S16 동의 없이 유도 직전
+16.0 decoy='a confirmed room' | ko: 멈추세요 — 아직 확인된 동의서가 없어요.
+   chunks: Stop / — we don't have / a confirmed consent / yet / .
+   r0: [a confirmed room] — we don't have a confirmed consent yet .
+   r1: Stop [a confirmed room] a confirmed consent yet .
+   r2: Stop — we don't have [a confirmed room] yet .
+   r3: Stop — we don't have a confirmed consent [a confirmed room] .
+16.1 decoy='Please hold the line' | ko: 이게 서명될 때까지 유도를 보류해 주세요.
+   chunks: Please hold induction / until this is / signed / .
+   r0: [Please hold the line] until this is signed .
+   r1: Please hold induction [Please hold the line] signed .
+   r2: Please hold induction until this is [Please hold the line] .
+16.2 decoy='without enough light' | ko: 유효한 동의 없이는 진행할 수 없어요.
+   chunks: I can't let us / proceed / without valid consent / .
+   r0: [without enough light] proceed without valid consent .
+   r1: I can't let us [without enough light] without valid consent .
+   r2: I can't let us proceed [without enough light] .
+16.3 decoy='is delivered' | ko: 동의서가 확인될 때까지 약물을 주입하지 않아요.
+   chunks: We don't push / medication / until the consent / is confirmed / .
+   r0: [is delivered] medication until the consent is confirmed .
+   r1: We don't push [is delivered] until the consent is confirmed .
+   r2: We don't push medication [is delivered] is confirmed .
+   r3: We don't push medication until the consent [is delivered] .
+16.4 decoy='a second nurse' | ko: 서명된 서식 없이 이 환자를 마취 유도하는 게 마음이 편하지 않아요.
+   chunks: I'm not comfortable / inducing this patient / without / a signed form / .
+   r0: [a second nurse] inducing this patient without a signed form .
+   r1: I'm not comfortable [a second nurse] without a signed form .
+   r2: I'm not comfortable inducing this patient [a second nurse] a signed form .
+   r3: I'm not comfortable inducing this patient without [a second nurse] .
+16.5 decoy='Get me the schedule' | ko: 지금 동의서를 가져오세요, 아니면 여기서 모든 걸 보류할게요.
+   chunks: Get me the consent / now / , or we hold everything / right here / .
+   r0: [Get me the schedule] now , or we hold everything right here .
+   r1: Get me the consent [Get me the schedule] , or we hold everything right here .
+   r2: Get me the consent now [Get me the schedule] right here .
+   r3: Get me the consent now , or we hold everything [Get me the schedule] .
+
+## S17 신원 밴드 없는 무의식 환자
+17.0 decoy='the isolation' | ko: 저희는 미확인 환자 프로토콜을 따라요.
+   chunks: We follow / the unidentified patient / protocol / .
+   r0: [the isolation] the unidentified patient protocol .
+   r1: We follow [the isolation] protocol .
+   r2: We follow the unidentified patient [the isolation] .
+17.1 decoy='a temporary bed' | ko: 임시 신분증을 부여하고 모든 걸 문서화합시다.
+   chunks: Let's assign / a temporary ID / and document everything / .
+   r0: [a temporary bed] a temporary ID and document everything .
+   r1: Let's assign [a temporary bed] and document everything .
+   r2: Let's assign a temporary ID [a temporary bed] .
+17.2 decoy='the billing office' | ko: 이송팀을 통해 신원을 확인해요.
+   chunks: We confirm / identity / through the transferring team / .
+   r0: [the billing office] identity through the transferring team .
+   r1: We confirm [the billing office] through the transferring team .
+   r2: We confirm identity [the billing office] .
+17.3 decoy='unaccompanied' | ko: 이 환자는 의식이 없는 상태로 왔고, 그래서 이름을 물을 수 없어요.
+   chunks: This patient came in / unconscious / , so we can't ask / for a name / .
+   r0: [unaccompanied] unconscious , so we can't ask for a name .
+   r1: This patient came in [unaccompanied] , so we can't ask for a name .
+   r2: This patient came in unconscious [unaccompanied] for a name .
+   r3: This patient came in unconscious , so we can't ask [unaccompanied] .
+17.4 decoy='and badge' | ko: 미확인 환자마다 같은 임시 밴드와 번호를 받아요.
+   chunks: Every unidentified patient / gets the same / temporary band / and number / .
+   r0: [and badge] gets the same temporary band and number .
+   r1: Every unidentified patient [and badge] temporary band and number .
+   r2: Every unidentified patient gets the same [and badge] and number .
+   r3: Every unidentified patient gets the same temporary band [and badge] .
+17.5 decoy='visitors arrive' | ko: 이송팀이 기록이 도착하는 대로 신원을 확인할 거예요.
+   chunks: The transferring team / will confirm identity / as soon as / records arrive / .
+   r0: [visitors arrive] will confirm identity as soon as records arrive .
+   r1: The transferring team [visitors arrive] as soon as records arrive .
+   r2: The transferring team will confirm identity [visitors arrive] records arrive .
+   r3: The transferring team will confirm identity as soon as [visitors arrive] .
+
+## S18 잘못된 환자 입실
+18.0 decoy='the wrong tray' | ko: 이건 잘못된 환자예요 — 모두 멈추세요.
+   chunks: This is / the wrong patient / — everyone stop / .
+   r0: [the wrong tray] the wrong patient — everyone stop .
+   r1: This is [the wrong tray] — everyone stop .
+   r2: This is the wrong patient [the wrong tray] .
+18.1 decoy='The room and bed' | ko: 이름과 생년월일이 저희 수술 건과 일치하지 않아요.
+   chunks: The name and DOB / don't match / our case / .
+   r0: [The room and bed] don't match our case .
+   r1: The name and DOB [The room and bed] our case .
+   r2: The name and DOB don't match [The room and bed] .
+18.2 decoy='until we scan' | ko: 이걸 정정할 때까지 모든 걸 중단시킬게요.
+   chunks: I'm halting everything / until we correct / this / .
+   r0: [until we scan] until we correct this .
+   r1: I'm halting everything [until we scan] this .
+   r2: I'm halting everything until we correct [until we scan] .
+18.3 decoy='on my team' | ko: 이 사람은 제 명단에 있는 환자가 아니에요 — 멈추세요, 잘못된 사람이에요.
+   chunks: This isn't the patient / on my list / — stop, we have / the wrong person / .
+   r0: [on my team] on my list — stop, we have the wrong person .
+   r1: This isn't the patient [on my team] — stop, we have the wrong person .
+   r2: This isn't the patient on my list [on my team] the wrong person .
+   r3: This isn't the patient on my list — stop, we have [on my team] .
+18.4 decoy='this tray' | ko: 이름과 차트가 일치할 때까지 아무도 이 환자를 만지지 않아요.
+   chunks: Nobody touches / this patient / until the name / and chart match / .
+   r0: [this tray] this patient until the name and chart match .
+   r1: Nobody touches [this tray] until the name and chart match .
+   r2: Nobody touches this patient [this tray] and chart match .
+   r3: Nobody touches this patient until the name [this tray] .
+18.5 decoy='upstairs' | ko: 이 환자를 돌려보내고 정확한 환자를 데려올게요.
+   chunks: We send this patient / back / and bring up / the correct one / .
+   r0: [upstairs] back and bring up the correct one .
+   r1: We send this patient [upstairs] and bring up the correct one .
+   r2: We send this patient back [upstairs] the correct one .
+   r3: We send this patient back and bring up [upstairs] .
+
+## S19 동의 철회 의사 표현
+19.0 decoy='ask questions' | ko: 마음을 바꿀 모든 권리가 있으세요.
+   chunks: You have every right / to change / your mind / .
+   r0: [ask questions] to change your mind .
+   r1: You have every right [ask questions] your mind .
+   r2: You have every right to change [ask questions] .
+19.1 decoy='the music' | ko: 모든 걸 멈추고 집도의에게 알릴게요.
+   chunks: I'll stop everything / and let your surgeon / know / .
+   r0: [the music] and let your surgeon know .
+   r1: I'll stop everything [the music] know .
+   r2: I'll stop everything and let your surgeon [the music] .
+19.2 decoy='without a warning' | ko: 당신의 동의 없이는 아무것도 일어나지 않을 거예요.
+   chunks: Nothing / will happen / without your agreement / .
+   r0: [without a warning] will happen without your agreement .
+   r1: Nothing [without a warning] without your agreement .
+   r2: Nothing will happen [without a warning] .
+19.3 decoy='on Monday' | ko: 언제든, 지금 이 순간에도 마음을 바꾸실 수 있어요.
+   chunks: You can change your mind / at any point / , even / right now / .
+   r0: [on Monday] at any point , even right now .
+   r1: You can change your mind [on Monday] , even right now .
+   r2: You can change your mind at any point [on Monday] right now .
+   r3: You can change your mind at any point , even [on Monday] .
+19.4 decoy='to talk' | ko: 계속하고 싶지 않다고 말씀하시는 순간 저희는 멈춰요.
+   chunks: We stop the moment / you say / you don't want / to continue / .
+   r0: [to talk] you say you don't want to continue .
+   r1: We stop the moment [to talk] you don't want to continue .
+   r2: We stop the moment you say [to talk] to continue .
+   r3: We stop the moment you say you don't want [to talk] .
+19.5 decoy='this question' | ko: 집도의가 이 결정을 당신에게서 직접 들어야 해요.
+   chunks: Your surgeon needs / to hear / this decision / directly from you / .
+   r0: [this question] to hear this decision directly from you .
+   r1: Your surgeon needs [this question] this decision directly from you .
+   r2: Your surgeon needs to hear [this question] directly from you .
+   r3: Your surgeon needs to hear this decision [this question] .
+
+## S20 반대 측 수술 직전 인지
+20.0 decoy='the wrong table' | ko: 멈추세요 — 반대 쪽을 준비하고 있어요.
+   chunks: Stop / — you're prepping / the wrong side / .
+   r0: [the wrong table] — you're prepping the wrong side .
+   r1: Stop [the wrong table] the wrong side .
+   r2: Stop — you're prepping [the wrong table] .
+20.1 decoy='the right ear' | ko: 이 수술 건은 오른쪽이지, 왼쪽이 아니에요.
+   chunks: The case is / the right side / , not / the left / .
+   r0: [the right ear] the right side , not the left .
+   r1: The case is [the right ear] , not the left .
+   r2: The case is the right side [the right ear] the left .
+   r3: The case is the right side , not [the right ear] .
+20.2 decoy='completed' | ko: 이게 확인될 때까지 절개하지 않아요.
+   chunks: We do not incise / until this is / confirmed / .
+   r0: [completed] until this is confirmed .
+   r1: We do not incise [completed] confirmed .
+   r2: We do not incise until this is [completed] .
+20.3 decoy='a bulb looks dim' | ko: 쪽이 잘못돼 보이는 순간 모두 멈춰요.
+   chunks: Everyone freezes / the moment / a side looks wrong / .
+   r0: [a bulb looks dim] the moment a side looks wrong .
+   r1: Everyone freezes [a bulb looks dim] a side looks wrong .
+   r2: Everyone freezes the moment [a bulb looks dim] .
+20.4 decoy='leaves the tray' | ko: 쪽이 동의서와 일치할 때까지 메스가 피부에 닿지 않아요.
+   chunks: No blade touches skin / until the side / matches / the consent / .
+   r0: [leaves the tray] until the side matches the consent .
+   r1: No blade touches skin [leaves the tray] matches the consent .
+   r2: No blade touches skin until the side [leaves the tray] the consent .
+   r3: No blade touches skin until the side matches [leaves the tray] .
+20.5 decoy='and the supplies' | ko: 절개하기 전에 차트와 표시, 동의서를 다시 확인해요.
+   chunks: We re-check the chart / , the mark / , and the consent / before we incise / .
+   r0: [and the supplies] , the mark , and the consent before we incise .
+   r1: We re-check the chart [and the supplies] , and the consent before we incise .
+   r2: We re-check the chart , the mark [and the supplies] before we incise .
+   r3: We re-check the chart , the mark , and the consent [and the supplies] .

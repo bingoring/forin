@@ -1,0 +1,239 @@
+# A 몫 문장 재작성(A1~A15) + ko만 고치는 문장. 위치 = [상황 번호, 문장 번호] (원본 순서)
+# 필드: en ko chunks words tag icon why decoy distractorsKo blank(answer+options) — 쓴 것만 덮어씀
+rewrite:
+  - at: [2, 3]   # A1
+    en: Nothing to eat or drink means no water either, unless we say so.
+    ko: 먹지도 마시지도 말라는 건, 따로 말씀드리지 않는 한 물도 안 된다는 뜻이에요.
+    chunks: ["Nothing to eat", "or drink", "means no water either", ", unless we say so", "."]
+    tag: 금식 설명
+    icon: shield
+    why: "'no water either'로 앞 표현의 뜻을 풀고, ', unless we say so'로 마취팀이 허락하는 경우(약과 물 한 모금 등)가 따로 있다는 걸 열어 둬요. either는 앞의 부정을 이어받아 '물도 안 된다'를 말해요."
+    decoy: Nothing to wear
+    distractorsKo:
+      - 물도 위에 남으면 마취 중에 폐로 넘어가 위험해지는 일이 생기기도 해요.
+      - 먹지도 마시지도 말라는 건, 필요하면 언제든 물어보라는 뜻이에요.
+  - at: [2, 4]   # A2
+    en: Please tell me what time you need to stop eating.
+    ko: 몇 시부터 드시면 안 되는지 말씀해 주세요.
+    chunks: ["Please tell me", "what time", "you need to", "stop eating", "."]
+    tag: 시각 확인
+    icon: check
+    why: "Please tell me로 부탁하는 어조를 만들고, what time you need to stop eating으로 금식을 멈출 시각을 환자 입으로 직접 말하게 해요. 시각은 자정·새벽처럼 헷갈리기 쉬워서 들어 보면 이해가 확인돼요."
+    decoy: what food
+    distractorsKo:
+      - 시각을 말씀하시려고 메모부터 해 두세요.
+      - 금식 시각은 직접 말해 봐야 오래 기억나요.
+  - at: [3, 3]   # A3
+    en: Most people don't remember the surgery once they're asleep.
+    ko: 대부분은 잠드신 뒤의 수술 자체를 기억하지 못하세요.
+    chunks: ["Most people", "don't remember", "the surgery", "once they're asleep", "."]
+    tag: 기억 안내
+    icon: bulb
+    why: "'Most people'로 모든 환자에게 단정하지 않고 흔한 경우로 말해요. 'once they're asleep'은 잠든 뒤라는 시점을 열어서, 수술 중 일은 기억이 남지 않는 경우가 많다는 걸 안내해요."
+    decoy: while they're awake
+    distractorsKo:
+      - 대부분은 잠드신 뒤의 수술 준비를 기억하지 못하세요.
+      - 대부분은 잠드신 뒤의 수술 자체를 궁금해하지 않으세요.
+  - at: [4, 4]   # A4
+    en: I'll bring the interpreter back when I check your pain again.
+    ko: 통증을 다시 확인하러 올 때 통역사와 함께 올게요.
+    chunks: ["I'll bring", "the interpreter back", "when I check", "your pain again", "."]
+    tag: 재확인 약속
+    icon: bell
+    why: "'when I check your pain again'으로 약속을 실제로 다시 확인하러 올 때에 묶어서, 지킬 수 없는 정기 약속 대신 할 수 있는 일만 말해요. 'the interpreter back'의 back은 '다시 데려온다'는 뜻이에요."
+    decoy: your sleep again
+    distractorsKo:
+      - 통증을 다시 확인하려고 통역사 연결부터 살필게요.
+      - 통증은 다시 재어 봐야 변화를 알게 돼요.
+  - at: [5, 4]   # A5
+    en: A professional interpreter is trained to catch every word so nothing gets missed.
+    ko: 전문 통역사는 한 마디도 빠뜨리지 않도록 훈련받은 사람이에요.
+    chunks: ["A professional interpreter", "is trained", "to catch every word", "so nothing gets missed", "."]
+    words: [w-professional, w-interpreter, w-catch, w-word, w-nothing, w-miss]
+    tag: 이유 설명
+    icon: magnify
+    why: "'is trained to'로 '빠뜨리지 않도록 훈련받았다'는 자격을 말해서, 결과를 장담하지 않고 신뢰의 근거를 줘요. 'so nothing gets missed'는 그 훈련의 목적을 이어 붙여요."
+    decoy: A professional reporter
+    distractorsKo:
+      - 전문 통역사는 한 마디도 빠뜨리지 않도록 허가받은 사람이에요.
+      - 전문 통역사는 의학 용어를 빠뜨리지 않도록 훈련받은 사람이에요.
+  - at: [6, 3]   # A6
+    en: It's loud here, so let's find a quiet corner for the screen.
+    ko: 여기는 시끄러우니 화면을 둘 조용한 구석을 찾아볼게요.
+    chunks: ["It's loud here", ", so let's find", "a quiet corner", "for the screen", "."]
+    tag: 환경 조정
+    icon: bell
+    why: "'It's loud here'로 문제를 먼저 말하고 'so let's'로 함께 해결하자고 이어요. 소음 때문에 통역이 안 들리는 문제는 화면을 조용한 곳으로 옮기는 쪽으로 풀어요."
+    decoy: a bright corner
+    distractorsKo:
+      - 여기는 시끄러우니 화면을 둘 어두운 구석을 찾아볼게요.
+      - 여기는 시끄러우니 의자를 둘 조용한 구석을 찾아볼게요.
+  - at: [6, 4]   # A7 (장비 쓰는 안)
+    en: I'll switch to a clear mask so you can see my face.
+    ko: 제 얼굴이 보이시게 투명 마스크로 바꿔 쓸게요.
+    chunks: ["I'll switch", "to a clear mask", "so you can see", "my face", "."]
+    words: [w-mask, w-face]
+    tag: 얼굴 보이기
+    icon: me
+    why: "'to a clear mask'로 입 모양과 표정이 보이는 마스크로 바꾼다고 말해서 감염 관리 규칙은 지키면서 얼굴을 보여 줘요. 'so you can see my face'는 바꾸는 목적을 이어요."
+    decoy: to a cloth mask
+    distractorsKo:
+      - 제 얼굴이 보이시게 파란 마스크로 바꿔 쓸게요.
+      - 제 목소리가 들리시게 투명 마스크로 바꿔 쓸게요.
+  - at: [7, 4]   # A8
+    en: Let's go over it again and make sure everything is understood.
+    ko: 다시 짚어 보면서 다 이해되셨는지 확인할게요.
+    chunks: ["Let's go over it", "again", "and make sure", "everything is understood", "."]
+    tag: 다시 확인
+    icon: check
+    why: "'Let's go over it again'으로 함께 다시 짚자고 하고, 'and make sure everything is understood'로 이해 확인을 이어요. 수동태 'is understood'는 누가 못 알아들었는지를 가리키지 않아 환자가 위축되지 않아요."
+    decoy: slowly
+    distractorsKo:
+      - 다 이해되셨는지 확인한 다음에 다시 짚어 볼게요.
+      - 한 번 더 짚어 보면 놓친 부분이 줄어들어요.
+  - at: [12, 3]  # A9
+    en: If the interpreter didn't catch a word, I need to know.
+    ko: 통역사가 못 알아들은 말이 있으면 제가 알아야 해요.
+    chunks: ["If the interpreter", "didn't catch", "a word", ", I need to know", "."]
+    words: [w-interpreter, w-catch, w-word, w-need]
+    tag: 정확성 확인
+    icon: magnify
+    why: "'If ... didn't catch'로 '못 알아들었을 때'를 조건으로 걸어, 통역을 의심하는 말이 아니라 모르면 말해 달라는 요청이 돼요. 'I need to know'는 간호사가 직접 판단하지 않고 통역사에게서 알려 받겠다는 뜻이에요."
+    decoy: If the patient
+    blank:
+      answer: interpreter
+      options: [{en: interpreter}, {en: reporter}, {en: tutor}, {en: technician}]
+    distractorsKo:
+      - 통역사가 못 알아들은 말이 있으면 제가 기억해야 해요.
+      - 통역사가 모르는 말을 넘기면 오역이 생기기도 해요.
+  - at: [12, 4]  # A10
+    en: Let's confirm with the patient that she understood the consent.
+    ko: 동의 내용을 이해하셨는지 환자분과 함께 확인해 봅시다.
+    chunks: ["Let's confirm", "with the patient", "that she understood", "the consent", "."]
+    words: [w-confirm, w-consent, w-understand]
+    tag: 동의 확인
+    icon: check
+    why: "'Let's'로 간호사 혼자가 아니라 함께 확인하자고 하고, 'that she understood'로 확인할 것이 동의 내용의 정확성이 아니라 환자의 이해임을 분명히 해요. 동의 내용 설명은 시술자의 몫이에요."
+    decoy: that she remembered
+    distractorsKo:
+      - 동의 내용을 확인하려고 환자분 곁에 앉읍시다.
+      - 이해 확인이 서명보다 앞서야 안전한 동의예요.
+  - at: [13, 4]  # A11
+    en: Watch the interpreter's face and hands so you don't miss anything.
+    ko: 아무것도 놓치지 않도록 통역사의 얼굴과 손을 봐 주세요.
+    chunks: ["Watch", "the interpreter's face and hands", "so you don't miss", "anything", "."]
+    words: [w-watch, w-interpreter, w-face, w-miss, w-anything]
+    tag: 시선 안내
+    icon: magnify
+    why: "'Watch'로 시작해 눈을 어디에 둘지 먼저 알려 주고, 'so you don't miss anything'으로 이유를 붙여요. 수어는 손과 얼굴 표정이 함께 뜻을 만들어서 통역사의 얼굴과 손 둘 다 봐야 해요."
+    decoy: the clock and door
+    distractorsKo:
+      - 통역사의 얼굴과 손을 보려고 의자를 당겨 앉아 주세요.
+      - 수어는 손동작과 표정이 함께 뜻을 만드는 말이에요.
+  - at: [16, 3]  # A12
+    en: Unless it's an emergency, we'll confirm allergies before any medication.
+    ko: 응급이 아니면 약을 드리기 전에 알레르기부터 확인할게요.
+    chunks: ["Unless it's an emergency", ", we'll confirm", "allergies", "before any medication", "."]
+    words: [w-emergency, w-confirm, w-allergy, w-medication]
+    tag: 투약 전 확인
+    icon: shield
+    why: "'Unless it's an emergency'로 응급 예외를 먼저 밝히고, 'we'll confirm allergies before any medication'으로 평소의 순서(확인 → 투약)를 분명히 해요. '절대'가 아니라 '응급이 아니면'으로 좁혀서 지킬 수 있는 약속으로 말해요."
+    decoy: before any lunch
+    distractorsKo:
+      - 응급이 아니면 약을 드리기 전에 통역사부터 부를게요.
+      - 확인 없는 투약은 아나필락시스 위험을 더 키워요.
+  - at: [18, 3]  # A13
+    en: We need this interpreted urgently before her condition changes again.
+    ko: 환자분 상태가 또 변하기 전에 급히 통역이 필요해요.
+    chunks: ["We need this", "interpreted urgently", "before her condition", "changes again", "."]
+    tag: 급한 통역
+    icon: siren
+    why: "'We need this interpreted'는 통역이 필요하다고 요청할 뿐, 통역하는 일은 통역사의 몫으로 남겨요. 'before her condition changes again'으로 서두르는 이유를 붙여요."
+    decoy: before her lunch
+    distractorsKo:
+      - 환자분 상태가 또 변해서 급히 통역이 필요해요.
+      - 통역이 늦어질수록 설명이 점점 어려워져요.
+  - at: [18, 4]  # A14
+    en: I'll explain this simply so nothing gets misunderstood.
+    ko: 잘못 이해되지 않게 제가 간단하게 설명할게요.
+    chunks: ["I'll explain", "this simply", "so nothing", "gets misunderstood", "."]
+    tag: 쉬운 설명
+    icon: bulb
+    why: "'I'll explain'으로 설명하는 사람을 말하는 나 자신으로 잡아서, 통역사에게 설명을 맡기지 않고 통역은 그대로 옮기게 해요. 'so nothing gets misunderstood'는 쉽게 말하는 이유를 붙여요."
+    decoy: this twice
+    distractorsKo:
+      - 잊어버리지 않게 제가 간단하게 설명할게요.
+      - 쉬운 말은 번역에서 뜻이 덜 바뀌어요.
+  - at: [19, 3]  # A15
+    en: The surgeon called it a true emergency, so we're proceeding under emergency consent.
+    ko: 집도의가 진짜 응급이라고 판단해서 응급 동의 절차로 진행하고 있어요.
+    chunks: ["The surgeon called it", "a true emergency", ", so we're proceeding", "under emergency consent", "."]
+    tag: 응급 진행
+    icon: siren
+    why: "'The surgeon called it'으로 응급 판단의 주체를 시술자로 밝히고, 'so we're proceeding'으로 팀이 그 판단에 따라 지금 진행 중임을 말해요. 간호사가 직접 응급을 선언하는 말이 아니에요."
+    decoy: a minor issue
+    distractorsKo:
+      - 집도의가 진짜 응급이라고 의심해서 응급 동의 절차로 진행하고 있어요.
+      - 응급 동의 절차는 안전을 위해 예외로 허용되는 방식이에요.
+
+# ko만 고치는 문장(en·chunks 그대로, keyPhrase 포함) — distractorsKo를 새 ko에 맞춰 다시 씀
+ko_only:
+  - at: [7, 0]    # B1
+    ko: 이해하신 내용을 환자분 말로 다시 말씀해 주시겠어요?
+    distractorsKo:
+      - 말씀하실 땐 궁금한 것부터 먼저 물어보세요.
+      - 직접 들어 봐야 놓친 부분을 빠르게 다시 짚게 돼요.
+  - at: [14, 0]   # B2
+    ko: 지금 바로 통역사를 전화로 연결해야 해요.
+  - at: [14, 2]   # B3
+    ko: 지금 바로 꼭 필요한 내용부터 전달합시다.
+    distractorsKo:
+      - 꼭 필요한 내용을 전달하려고 순서부터 정합시다.
+      - 급할 땐 짧게 말해야 오해가 줄어요.
+  - at: [20, 0]   # B4
+    ko: 정말 죄송해요 — 통역사분이 제가 이 소식을 전할 수 있게 도와주실 거예요.
+    distractorsKo:
+      - 정말 죄송해요 — 통역사분이 제가 이 소식을 전할 수 있게 지켜보실 거예요.
+      - 정말 죄송해요 — 통역사분이 제가 이 일정을 전할 수 있게 도와주실 거예요.
+  - at: [14, 4]   # B5
+    ko: 시간을 허비하지 않게 바로 통역 회선을 연결해 주세요.
+    distractorsKo:
+      - 바로 연결하려고 스피커폰 소리부터 켜 주세요.
+      - 연결이 늦어지는 만큼 처치도 함께 늦어져요.
+    chunks: ["Connect", "the line", "immediately", "so we don't lose time", "."]
+  - at: [9, 3]    # B6
+    ko: "'네'면 한 번, '아니요'면 두 번 손을 쥐어 주세요."
+    distractorsKo:
+      - "'네'면 한 번, '아니요'면 두 번 눈을 깜빡여 주세요."
+      - "'네'면 한 번, '아니요'면 두 번 손을 들어 주세요."
+  - at: [17, 1]   # K4
+    ko: 중대한 실수를 막기 위해 멈추고 명확히 합시다.
+    distractorsKo:
+      - 명확히 하려고 제 말부터 짧게 고칩시다.
+      - 중대한 실수가 생기기 쉬운 순간이에요.
+  - at: [6, 1]    # K5
+    ko: 원격 통역 회선을 연결해 드릴게요.
+  - at: [12, 1]   # kP ko만(유지 시)
+    ko: 통역이 정확히 전달됐는지 함께 확인해 봅시다.
+    distractorsKo:
+      - 통역 내용을 검증하려고 메모해 봅시다.
+      - 작은 오역 하나가 치료를 크게 바꿔요.
+  - at: [18, 2]   # kP ko만(en 유지 시)
+    ko: 잘못 이해되지 않게 간단하게 말해 주세요.
+    distractorsKo:
+      - 잘못 이해되지 않게 조용하게 말해 주세요.
+      - 서두르지 않게 간단하게 말해 주세요.
+
+# chunks만 고치는 비 keyPhrase 문장(C1~C3)
+chunks_only:
+  - at: [1, 4]
+    chunks: ["A nod", "isn't enough", "— I need you", "to explain it back", "."]
+  - at: [7, 3]
+    chunks: ["Point to", "any part", "you didn't understand", "."]
+  - at: [10, 3]
+    chunks: ["I know you're scared", ", and that's", "completely normal", "."]
+
+# 문장 words 태그만 고침
+words_only:
+  - at: [18, 2]
+    words: [w-simple, w-nothing, w-misunderstand]   # K2: w-keep 태그 뺌

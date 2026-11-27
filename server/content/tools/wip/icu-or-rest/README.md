@@ -127,3 +127,48 @@ keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't a
 - **묶음 9 (ICU 마지막 3주제, 2026-10-30)**: core-language·core-family·core-safety-icu. 사용자 결정(전부 '추천대로'): 바꿈 8 — 통역사 설명 → 의사가 통역을 통해, 깜빡임 "한 번=예" 통일, 통역사 중재, 윤리위원회 "help decide", "I'm not hiding anything", "next few days", 독립 이중 확인 "each … then compare"(상황 2 goals[1]도), ICU 신속대응팀 → ICU 의사 / 유지 약 9 / chunks 24문장. 작업 `../kp-2026-10-30b/`. 정본 합침, ICU 위반 0.
   남은 작은 일: core-safety 2.4 "Let's stop and check this together before we give it."(비KP) "together" 표현 — 다음 손질 때.
   **ICU 66주제 한 번에 저작 완료.** 다음은 OR 33(묶음 1: massive-transfusion(Fable 표본)·count 수정 끝, keyPhrase 결정 3건 바꿈 받음; 묶음 2: preop-verification·tourniquet 저작 끝).
+
+- **OR 묶음 1 (2주제, 2026-10-30)**: or-massive-transfusion(Fable 표본)·or-count. 사용자 결정('추천대로'): 바꿈 3 — or-count 17 "Nothing leaves the room until we find it."(전원 정지 → 반출 금지, goals[1]도), MT 20 "Stop the transfusion—this looks like TACO."(tagline·goals[0]·skills도 '중단'으로), MT 19 "Should we ask the blood bank to order from the regional supplier?"(w-request 삭제) / 유지 나머지 / chunks or-count 6·MT 9문장(MT 6.1·7.0·11.1·17.0은 3조각 대안이 더 나빠 유지). 작업 `../kp-2026-10-30c/`. 정본 합침, OR 위반 0(경고 21은 이전 주제 MH 등).
+  남은 작은 일: or-count 17.0 "We're one needle / short" chunks(검토 목록 밖).
+
+- **OR 묶음 2·3 (4주제, 2026-10-30 저작 → 2026-11-17 합침)**: 묶음 2 preop-verification·tourniquet, 묶음 3 preop-assessment·difficult-airway.
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | changes(KP 반영 후) |
+  |---|---|---|---|
+  | or-preop-verification | 약 50(1) — 미확인 환자 같은 번호·마취 중 "먼저 물어본다" | 128(64·20) — 확인 대상 바꾸기·부분 정지 | 133 |
+  | or-tourniquet | 62(5) — smallest cuff·간호사 감압 단정·구획증후군 관찰 | 149(62 포함) | 114 |
+  | or-preop-assessment | 49(2) — 물 한 모금 단정·지킬 수 없는 약속 | B 사본 반영 | 166 |
+  | or-difficult-airway | 31(8) — 간호사가 FONA·시도 중단·국소마취 결정 | B 사본 반영(cric 시작 줄은 안전하게 바꿈) | 155 |
+  keyPhrase 결정(사용자 2026-11-17 전부 '추천대로'): tourniquet 바꿈 5(widest cuff, 타이머 재설정, deflate를 묻기, about to exceed, labs drawn or meds drawn up; 상황 13 brief·goals·skills도), preop-verification 유지 + chunks 2, difficult-airway 바꿈 8(go over plan, can we bag, should we switch, FONA 복창 2, head and neck, prepping for a code, Here's the LMA; 상황 brief·goals·skills 4곳), preop-assessment 바꿈 1(I'll set up for RSI) / chunks difficult-airway 5·preop-assessment 13 다시 자름(구를 지키면 V8 못 맞추는 7문장은 유지). 작업 `../kp-2026-11-17/`. 정본 합침, OR 위반 0.
+  남은 작은 일: difficult-airway S11 KP "Repeated tries only cause…"(→ can cause, 사용자 결정 필요), w-set ko `설치하다`(set up for RSI에는 '준비하다'), preop-assessment 3.3 ko 항응고제/w-thinner ko 불일치, w-confirm exKo, preop-verification '적-' 오답 6회(W19 활용형 미검출).
+  남은 OR: 27주제.
+
+- **OR 묶음 4 (2주제, 2026-11-17)**: core-language-or·or-bleeding.
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | changes(KP 반영 후) |
+  |---|---|---|---|
+  | core-language-or | 61(8) — 통역사가 설명·간호사가 통역·응급 선언, 마스크 벗기, 지킬 수 없는 약속 | 162(64·25) — 통역 확보를 책자 등으로, teach-back을 예/아니오로, "물조차"를 껌으로 | 178 |
+  | or-bleeding | 64(2) — 간호사가 클램프 결정, 수액 조절기 열기, pair 3 정답 둘 | 127(26·31) — 보고 대신 다시 재기, 맥박 없이 압박 빈칸 | 104 |
+  keyPhrase 결정(사용자 2026-11-17 전부 '추천대로'): core-language-or 바꿈 6(동의·금식·마취 설명 주체를 집도의·간호사·마취팀이 통역을 통해, 응급 예외는 "The surgeon says", "I'll keep it simple", teach-back), or-bleeding 바꿈 5(MTP는 혈액은행에 전화, 승압제는 마취과, 수액은 열 준비, FFP를 묻기, 손상통제를 묻기) / chunks 29문장(core 19·bleeding 10) 전부 다시 자름. seed brief·goals·skills·tagline 9곳도 맞춤. 작업 `../kp-2026-11-17b/`. 정본 합침, OR 위반 0.
+  주의: "I'm activating the massive transfusion protocol." keyPhrase가 or-preop-checklist에도 있음 — 그 주제 저작 때 같은 결정을 적용할 것.
+  `pipeline/TASK.md` B 절에 "~려고" 쏠림(or-bleeding 105문장 중 73문장)·보고 대신 다시 재기 실패를 덧붙임.
+  남은 작은 일: core-language-or 15.2 "The surgeon says…"·or-bleeding 16.0 "anesthesia is…"는 상황 persona가 그 당사자라 대화 상대에게 3인칭으로 말하게 됨(다음 손질 때 persona 또는 문장 조정), core 18.2·18.4 거의 같은 문장, or-bleeding order 17 셋째 줄 상대 바뀜, 검사기 V21 금칙어 목록 보강(cun·kus·kill·crypt·gin 등이 안 잡힘).
+  남은 OR: 25주제.
+
+- **OR 묶음 5 (2주제, 2026-11-17 저작 → 2026-11-24 합침)**: core-family-or·or-emergency-open. 2026-11-17 오후 사용자 지시로 한 번 중지했다가 같은 날 밤 이어서 함(중지분 부분 파일은 지우고 다시).
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | changes(KP 반영 후) |
+  |---|---|---|---|
+  | core-family-or | 59(8) — 간호사가 합병증·나쁜 소식·선택지 고지(keyPhrase와 뉘앙스가 모순), "혈압 70대=안정", 즉시 알림 약속 | 112(14·26) — 연락·대기 확인 대상 바꾸기, 면담 연결을 다른 일로, healed/cured 빈칸 | 162 |
+  | or-emergency-open | 53(1) — "someone call the code"(사망 선언으로도 읽힘), 간호사 약 준비·기도 관리 | 154(49·52) — 위기 소견·장비·제제 바꾸기, 계수 대상, 비임상 장소, order S7 신생아팀 순서 | 136 |
+  keyPhrase 결정(사용자 2026-11-24 전부 '추천대로'): core-family-or 바꿈 6(15·16·20 — 간호사 고지 → 집도의 면담 연결·동석, "what he would want"; 16.3 en도 함께), or-emergency-open 바꿈 6(복창 "Got it — we're packing…", FFP를 묻기, DIC를 묻기, MTP는 혈액은행에 전화, "coordinate the transfusion", "Blood bank says…") / chunks 24문장(core 16·emergency 8). seed brief·goals·skills 12곳도 맞춤. 작업 `../kp-2026-11-24/`. 정본 합침, OR 위반 0.
+  발견: 앱이 swap·context·빈칸 보기를 적힌 순서대로 보여 주는데 정답 위치가 크게 쏠려 있음(ER swap 371/373 첫 칸, ICU 빈칸 81% 첫 칸, OR context 어색 장면 전부 셋째) — 앱에서 섞는 별도 작업으로 넘김. 묶음 5부터 저작·수정 지시에 주제 안 위치 섞기를 넣음.
+  남은 작은 일: core-family-or 15.3 "hard news to hear"가 새 장면(간호사가 알리지 않음)과 약하게 어긋남, 15·16 상황 title("소식 전달") 변경 여부.
+  남은 OR: 23주제(묶음 6 preop-checklist·specimen 저작 중).
+
+- **OR 묶음 6 (2주제, 2026-11-24)**: or-preop-checklist·or-specimen.
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | changes(KP 반영 후) |
+  |---|---|---|---|
+  | or-preop-checklist | 44(2) — 수술 당일 항응고제 복용 전제, 소독간호사에게 항생제 push | 157(36·28) — 잘못된 안심("팀이 알아서"), 복용 확인을 "가져오셨나요"로 | 113 |
+  | or-specimen | 72(안전·범위·사실 18) — 백 테이블을 비멸균으로, 혼자 정정 모순, 냉동절편 결과 간호사 전달, 수술 중 직접 운반 | 312(175·95) — 확인·복창을 사진·적기로, 라벨·이송 대상 바꾸기 | 98 |
+  keyPhrase 결정(사용자 2026-11-24 전부 '추천대로'): preop-checklist 바꿈 5(MTP는 혈액은행에 전화 — or-bleeding과 같은 문장, 항생제는 마취과가 투여, 마취과 상대에게 3인칭 빼기 2, "Let's adjust the timing"), specimen 바꿈 6(hand-carried 되게, We'll fix, report 후 relabel, Call the room, the gallbladder, specific media) / chunks checklist 6·specimen 9. seed goals·brief·tagline 4곳. 작업 `../kp-2026-11-24b/`. 정본 합침, OR 위반 0.
+  사용자 결정(2026-11-24): 확인·위기 문장 오답은 "안전 우선, 하나는 같은 모양 목표" — `pipeline/TASK.md` B 절에 기록.
+  남은 작은 일: checklist 7.2 빈칸 let(오답 문법으로 걸러질 수 있음), slider 15 정답에 "surgeon and anesthesia" 남음, specimen 7.2/7.5·14.2/14.5·19.2/19.5 비슷한 문장 겹침, specimen W14 맹장→충수.
+  남은 OR: 21주제(묶음 7 minimally-invasive·core-safety-or 저작 중).

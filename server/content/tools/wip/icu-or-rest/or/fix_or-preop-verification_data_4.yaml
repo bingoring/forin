@@ -1,0 +1,44 @@
+# order 카드 수정 — 키 = 상황. lines: {줄번호(1부터): {en, ko, note?, icon?}}
+order:
+  5:
+    why: 마지막으로 먹은 때를 묻고, 작은 것도 해당된다며 그 시각을 정확히 말해 달라고 하고, 답을 듣고 충분히 금식했다고 판단하고, 마취팀이 볼 수 있게 기록해요.
+    lines:
+      2: {en: "Even a small candy counts, so please be exact about that time.", ko: 작은 사탕도 해당되니 그 시각을 정확하게 말씀해 주세요}
+  6:
+    why: 어긋난 점을 짚어 멈추고, 집도의와 명확히 할 때까지 보류하고, 명확해지면 집도의가 서류를 다시 쓴 뒤에 서명해요.
+    lines:
+      1: {ko: 잠깐만요 — 서식은 복강경인데 환자분은 개복 수술이라고 들으셨대요}
+      4: {en: "Once it's clarified, your surgeon redoes the paperwork before anyone signs anything else.", ko: 명확해지면 집도의가 서류를 다시 쓰고 나서 서명해요}
+  8:
+    ko: 표시 누락 4문장 순서
+    why: 표시가 없다고 멈추고, 집도의를 호출하고, 기다리는 동안 누락으로 보고하고, 표시와 확인이 되면 진행해요.
+    lines:
+      2: {en: "To fix it, I paged the surgeon to come mark the site right now.", ko: 바로잡으려고 지금 집도의를 호출했어요, note: 호출, icon: pager}
+      3: {en: "While we wait for them, I'm reporting this as a missing site marking.", ko: 기다리는 동안 이걸 부위 표시 누락으로 보고할게요, note: 보고, icon: pencil}
+  10:
+    lines:
+      3: {en: "If the timing is wrong, the surgeon gets a new consent before we proceed.", ko: 시점이 잘못됐다면 진행하기 전에 집도의가 동의를 새로 받아요}
+  11:
+    lines:
+      3: {en: "Per policy, two clinicians witness and sign off on it.", ko: 규정에 따라 임상의 두 명이 증인이 되어 서명해요}
+  12:
+    lines:
+      1: {ko: "법적 보호자 되시나요?"}
+      2: {en: "Thank you — a parent or legal guardian must sign for a child who's a minor.", ko: 감사합니다 — 미성년 아이는 부모나 법적 보호자가 서명해요}
+  13:
+    why: 눈마다 절차가 따로라고 알리고, 오른쪽을 끝내야 왼쪽을 시작하고, 오른쪽이 끝나면 왼쪽도 자기 타임아웃으로 시작하고, 둘 다 끝나면 각각 기록해요.
+    lines:
+      3: {en: "Once the right is done, we start the left with its own time-out.", ko: 오른쪽이 끝나면 왼쪽도 자기 타임아웃으로 시작해요, note: 시작, icon: compass}
+  14:
+    why: 동의가 계획된 시술만 포함한다고 알리고, 그 이상은 허락이 필요하다고 하고, 추가분의 허락은 이 서식에 적는다고 알리고, 그걸 감안해 무엇에 동의하셨는지 정확히 짚어요.
+    lines:
+      2: {ko: 그 이상은 환자분의 허락이 필요해요}
+      3: {en: "Your permission for any extra would go on this form now.", ko: 추가분에 대한 환자분의 허락은 이 서식에 적게 돼요, note: 서식, icon: pencil}
+  15:
+    lines:
+      3: {en: "So everyone stops what they're doing until the two agree.", ko: 그래서 둘이 일치할 때까지 모두 하던 일을 멈춰요}
+  16:
+    why: 멈추라고 하고, 동의서가 없으면 어떤 약물도 주입하지 않는다고 하고, 사전 투약도 안 되며 모든 걸 보류한다고 하고, 서명되면 유도를 시작해요.
+    lines:
+      2: {en: "Without it, we don't push any medication.", ko: 그게 없으면 어떤 약물도 주입하지 않아요}
+      3: {en: "Not even a premed — we hold everything right here.", ko: 사전 투약도 안 돼요 — 여기서 모든 걸 보류해요}

@@ -1,0 +1,424 @@
+0.0 수술 전에 몇 가지 확인할게요. | 수술 전에 몇 가지 알려 드릴게요. | 수술 전에 몇 가지 준비할게요. || decoy=a few forms | pos=0
+      I'm going to tag a few things before your surgery.
+      I'm going to pack a few things before your surgery.
+      I'm going to wrap a few things before your surgery.
+0.1 성함과 생년월일을 말씀해 주시겠어요? | 성함과 생년월일을 써 주시겠어요? | 성함과 생년월일을 보여 주시겠어요? || decoy=and home address | pos=1
+      Can you tell me your name and blood type?
+      Can you tell me your name and insurance plan?
+      Can you tell me your name and weight?
+0.2 오늘 어떤 시술을 받으시나요? | 오늘 어떤 시술을 원하시나요? | 오늘 어떤 시술을 설명 들으셨나요? || decoy=What diet | pos=2
+      What pain are you having today?
+      What allergy are you having today?
+      What symptom are you having today?
+0.3 점검표를 단계별로 함께 확인할게요. | 점검표를 단계별로 함께 출력할게요. | 점검표를 단계별로 함께 나눠 드릴게요. || decoy=from the start | pos=3
+      Let's go through your schedule step by step.
+      Let's go through your bill step by step.
+      Let's go through your receipt step by step.
+0.4 진행하면서 각 단계를 설명해 드릴게요. | 진행하면서 각 단계를 적어 드릴게요. | 진행하면서 각 단계를 소리 내어 읽어 드릴게요. || decoy=with a diagram | pos=0
+      I'll number each step as we go.
+      I'll label each step as we go.
+      I'll repeat each step as we go.
+0.5 들어가시기 전에 하는 그냥 일상적인 확인이에요. | 들어가시기 전에 하는 그냥 일상적인 질문이에요. | 들어가시기 전에 하는 그냥 일상적인 안내예요. || decoy=a standard form | pos=1
+      This is just a random check before we take you back.
+      This is just a special check before we take you back.
+      This is just a rare check before we take you back.
+1.0 검사와 영상 결과가 전부 차트에 들어와 있나요? | 검사와 영상 결과를 전부 차트에서 보여 주시겠어요? | 검사와 영상 결과 중 몇 개가 차트에 들어와 있나요? || decoy=and the notes | pos=2
+      Are all the labs and imaging ordered in the chart?
+      Are all the labs and imaging signed in the chart?
+      Are all the labs and imaging copied in the chart?
+1.1 CBC와 type-and-screen 둘 다 와 있어요. | CBC와 type-and-screen 둘 다 인쇄돼 있어요. | CBC와 type-and-screen 둘 다 오전에 나왔어요. || decoy=and the history | pos=3
+      The BMP and type-and-screen are both here.
+      The ECG and type-and-screen are both here.
+      The MRI and type-and-screen are both here.
+1.2 아직 대기 중인 게 있으면 표시해 둘게요. | 아직 대기 중인 게 있으면 따로 모아 둘게요. | 아직 대기 중인 게 있으면 번호를 적어 둘게요. || decoy=each result | pos=0
+      I'll copy anything that's still pending.
+      I'll sort anything that's still pending.
+      I'll date anything that's still pending.
+1.3 차트를 한 번 더 확인해 볼게요. | 차트를 한 번 더 출력해 볼게요. | 차트를 두 번 더 확인해 볼게요. || decoy=from the top | pos=1
+      Let me check the monitor one more time.
+      Let me check the printer one more time.
+      Let me check the list one more time.
+1.4 칼륨 결과가 아직 안 보이네요. | 칼륨 결과는 보통 늦게 나오네요. | 칼륨 결과는 따로 나오는 거네요. || decoy=a single result | pos=2
+      I don't see the sodium result yet.
+      I don't see the glucose result yet.
+      I don't see the calcium result yet.
+2.0 IV가 잘 흐르고 있는지 확인하고 있어요. | IV가 빨리 흐르고 있는지 확인하고 있어요. | IV가 잘 흐르고 있는지 기록하고 있어요. || decoy=is almost done | pos=3
+      I'm checking that your IV is leaking well.
+      I'm checking that your IV is clamped well.
+      I'm checking that your IV is beeping well.
+2.1 부위에 타는 듯한 느낌이 들면 말씀해 주세요. | 부위에 타는 듯한 느낌이 들면 손을 들어 주세요. | 부위에 타는 듯한 느낌이 들면 호출벨을 눌러 주세요. || decoy=any weight | pos=0
+      Let me know if you hear any burning at the site.
+      Let me know if you smell any burning at the site.
+      Let me know if you see any burning at the site.
+2.2 이 라인으로 수술 중에 수액과 약물이 들어가요. | 이 라인이 있으면 바늘을 또 찌르지 않아요. | 이 라인은 팔에 테이프로 고정해 둬요. || decoy=gentle pressure | pos=1
+      This mask will give you fluids and medication during surgery.
+      This cuff will give you fluids and medication during surgery.
+      This probe will give you fluids and medication during surgery.
+2.3 IV 부위를 잠깐만 볼게요. | IV 부위를 잠깐만 만져 볼게요. | IV 부위를 잠깐만 고정할게요. || decoy=talk to | pos=2
+      I just need to tape your IV site for a second.
+      I just need to touch your IV site for a second.
+      I just need to wipe your IV site for a second.
+2.4 잘 흐르고 있고 붓기도 없어요. | 잘 흐르고 있고 알람도 없어요. | 잘 흐르고 있고 흔들림도 없어요. || decoy=much swelling | pos=3
+      It's flowing well and there's some swelling.
+      It's flowing well and there's mild swelling.
+      It's flowing well and there's big swelling.
+3.0 지금 반지나 피어싱, 틀니를 착용하고 계신가요? | 지금 반지나 피어싱, 틀니를 가져오셨나요? | 지금 반지나 피어싱, 틀니가 불편하신가요? || decoy=or sandals | pos=0
+      Do you have any rings, piercings, or wigs on?
+      Do you have any rings, piercings, or braces on?
+      Do you have any rings, piercings, or hats on?
+3.1 장비에 방해가 되지 않도록 금속은 제거해요. | 장비가 상하지 않도록 금속은 제거해요. | 환자가 데지 않도록 금속은 제거해요. || decoy=the stretcher | pos=1
+      We remove plastic so it doesn't interfere with the equipment.
+      We remove paper so it doesn't interfere with the equipment.
+      We remove cotton so it doesn't interfere with the equipment.
+3.2 소지품은 이름표를 붙인 가방에 보관해 드릴게요. | 소지품은 이름표를 붙인 상자에 보관해 드릴게요. | 소지품은 이름표 붙인 가방째 사물함에 둘게요. || decoy=with a tag | pos=2
+      I'll carry your belongings in a labeled bag for you.
+      I'll pack your belongings in a labeled bag for you.
+      I'll mail your belongings in a labeled bag for you.
+3.3 반지와 피어싱을 빼 주시겠어요? | 반지와 피어싱을 뺄 때 알려 주시겠어요? | 반지와 피어싱을 빼며 앉아 주시겠어요? || decoy=for the record | pos=3
+      Can you show your ring and piercings for me?
+      Can you sort your ring and piercings for me?
+      Can you clean your ring and piercings for me?
+3.4 잃어버리지 않게 가방에 성함을 써 둘게요. | 잃어버리지 않게 가방에 생년월일을 써 둘게요. | 잃어버리지 않게 가방에 스티커를 붙여 둘게요. || decoy=on the lid | pos=0
+      I'll write your weight on the bag so nothing gets lost.
+      I'll write your age on the bag so nothing gets lost.
+      I'll write your ward on the bag so nothing gets lost.
+4.0 최근에 방광을 비우셨나요? | 최근에 방광이 불편하셨나요? | 오늘 방광을 비우셨나요? || decoy=your pockets | pos=1
+      Have you filled your bladder recently?
+      Have you cleaned your bladder recently?
+      Have you tested your bladder recently?
+4.1 아니면 지금 화장실 가시는 걸 도와드릴게요. | 아니면 지금 소변 컵을 가져다 드릴게요. | 아니면 지금 화장실 위치를 알려 드릴게요. || decoy=to the scale | pos=2
+      If not, I can help you to the lobby now.
+      If not, I can help you to the hallway now.
+      If not, I can help you to the elevator now.
+4.2 이렇게 하면 시술 중에 더 편안하실 거예요. | 이렇게 하면 시술 중에 더 안전하실 거예요. | 이렇게 하면 시술 후에 더 편안하실 거예요. || decoy=very quiet | pos=3
+      This keeps you unsettled during the procedure.
+      This keeps you overheated during the procedure.
+      This keeps you exhausted during the procedure.
+4.3 들어가시기 전에 화장실이 필요하면 말씀해 주세요. | 들어가시기 전에 화장실이 필요하면 손을 들어 주세요. | 들어가시기 전에 휠체어가 필요하면 말씀해 주세요. || decoy=while we walk | pos=0
+      Let me know if you need the blanket before we go back.
+      Let me know if you need the pillow before we go back.
+      Let me know if you need the charger before we go back.
+4.4 수술실에 들어가서 참는 것보다 지금 가시는 게 나아요. | 수술실에 들어가면 화장실에 가기 어려워요. | 수술실에 들어가서 부탁하는 것보다 지금 가시는 게 나아요. || decoy=than to nap | pos=1
+      It's better to go now than to wait once you're in the recovery.
+      It's better to go now than to wait once you're in the lobby.
+      It's better to go now than to wait once you're in the lab.
+5.0 수술 전 항생제는 투여 준비가 됐어요. | 수술 전 항생제는 투여 순서가 정해졌어요. | 수술 전 항생제는 투여 속도가 정해졌어요. || decoy=for review | pos=2
+      The pre-op antibiotic is ready to sign.
+      The pre-op antibiotic is ready to order.
+      The pre-op antibiotic is ready to return.
+5.1 절개 전 60분 안에는 들어가야 해요. | 절개 전에 약이 몸에 퍼져야 해요. | 절개 후에도 약이 몸에 남아야 해요. || decoy=the vial | pos=3
+      We need it in within 60 minutes before discharge.
+      We need it in within 60 minutes before arrival.
+      We need it in within 60 minutes before admission.
+5.2 정확한 투여 시각을 기록해 둘게요. | 정확한 투여 시각을 알림에 띄울게요. | 정확한 투여 경로를 기록해 둘게요. || decoy=the lab result | pos=0
+      I'll document the usual time it goes in.
+      I'll document the planned time it goes in.
+      I'll document the rough time it goes in.
+5.3 항생제는 미리 뽑아 뒀나요? | 항생제는 미리 처방받았나요? | 항생제는 미리 가져다 뒀나요? || decoy=been signed off | pos=1
+      Has the antibiotic been filled up yet?
+      Has the antibiotic been mixed up yet?
+      Has the antibiotic been rolled up yet?
+5.4 집도의가 준비되는 대로 바로 투여할게요. | 마취팀이 준비되는 대로 바로 투여할게요. | 집도의가 준비되는 대로 바로 투여 방법을 맞출게요. || decoy=I'll show it | pos=2
+      I'll give it as soon as the porter is ready.
+      I'll give it as soon as the clerk is ready.
+      I'll give it as soon as the driver is ready.
+6.0 교차적합 검사가 아직 미완료예요. | 교차적합은 혈액을 맞춰 보는 검사예요. | 교차적합은 검사실에서 하는 검사예요. || decoy=being washed | pos=3
+      The type is still incomplete.
+      The screen is still incomplete.
+      The antibody is still incomplete.
+6.1 혈액이 준비될 때까지 보류할까요? | 혈액이 준비되면 시작해도 될까요? | 혈액이 준비될 때까지 몇 분일까요? || decoy=until a form | pos=0
+      Should we hold while blood is available?
+      Should we hold since blood is available?
+      Should we hold after blood is available?
+6.2 혈액은행에 전화해서 서둘러 달라고 할게요. | 혈액은행에 전화해서 상황을 물어볼게요. | 혈액은행은 교차적합이 끝나면 보내요. || decoy=to thank them | pos=1
+      I'll call the blood bank to describe it.
+      I'll call the blood bank to measure it.
+      I'll call the blood bank to weigh it.
+6.3 혈액이 준비되지 않으면 이 건은 시작할 수 없어요. | 혈액이 준비되면 이 건은 시작할 수 있어요. | 교차적합이 끝나야 이 건은 시작할 수 있어요. || decoy=this form | pos=2
+      We can't start this list without blood ready.
+      We can't start this plan without blood ready.
+      We can't start this day without blood ready.
+6.4 교차적합 건은 검사실에 다시 확인해 볼게요. | 교차적합 건은 검사실에 다시 가 볼게요. | 교차적합 결과는 검사실에서 입력해요. || decoy=the invoice | pos=3
+      Let me follow up with the ward on the crossmatch.
+      Let me follow up with the desk on the crossmatch.
+      Let me follow up with the floor on the crossmatch.
+7.0 필수 칼륨 수치가 아직 안 나왔어요. | 필수 칼륨 수치는 아침에 채혈했어요. | 필수 칼륨 검사는 접수됐어요. || decoy=isn't clear | pos=0
+      The required magnesium level isn't back yet.
+      The required chloride level isn't back yet.
+      The required albumin level isn't back yet.
+7.1 결과가 나올 때까지 이 건은 보류할까요? | 결과가 나오면 이 건을 시작해도 될까요? | 필수 결과가 없으면 시작하기 어려워요. || decoy=the lab | pos=1
+      Do we book the case until it results?
+      Do we assign the case until it results?
+      Do we list the case until it results?
+7.2 집도의와 마취과에 알릴게요. | 집도의와 마취과가 결과를 봐요. | 마취과는 검사 수치를 먼저 봐요. || decoy=the whole room | pos=2
+      I'll let the chaplain and anesthesia know.
+      I'll let the dietitian and anesthesia know.
+      I'll let the volunteer and anesthesia know.
+7.3 이 검사는 진행 전에 꼭 필요한 수치예요. | 칼륨 이상은 심장 리듬을 흔들어요. | 이 검사는 채혈 후 몇 분이면 나오는 수치예요. || decoy=is on file | pos=3
+      This lab is critical before we can leave.
+      This lab is critical before we can enter.
+      This lab is critical before we can relax.
+7.4 몇 분 뒤에 결과를 다시 확인해 볼게요. | 몇 분 뒤에 결과를 다시 출력해 볼게요. | 결과는 나오는 대로 차트에 올라와요. || decoy=at the desk | pos=0
+      I'll check on the result alone in a few minutes.
+      I'll check on the result always in a few minutes.
+      I'll check on the result easily in a few minutes.
+8.0 심박동기나 다른 금속 이식물이 있으신가요? | 심박동기나 다른 이식물에 대해 설명 들으셨나요? | 심박동기 점검을 받으신 적이 있으신가요? || decoy=or any glasses | pos=1
+      Do you need a pacemaker or any metal implants?
+      Do you want a pacemaker or any metal implants?
+      Do you hear a pacemaker or any metal implants?
+8.1 언제 어디에 삽입하셨나요? | 언제 누가 삽입하셨나요? | 언제 어디에서 교체하셨나요? || decoy=and how long | pos=2
+      When and where was it tested?
+      When and where was it found?
+      When and where was it taken?
+8.2 이 정보를 수술팀에 전달할게요. | 심박동기 정보는 소작 방식에 쓰여요. | 수술팀이 이 정보를 브리핑에서 나눠요. || decoy=your name | pos=3
+      I'll pass this to the dental team.
+      I'll pass this to the billing team.
+      I'll pass this to the laundry team.
+8.3 인공관절이나 다른 이식물이 있으신가요? | 인공관절이나 다른 시술을 받으신 적 있나요? | 인공관절이나 다른 이식물이 언제 들어갔나요? || decoy=any broken bones | pos=0
+      Do you have any dental fillings or other implants?
+      Do you have any eye drops or other implants?
+      Do you have any hair dye or other implants?
+8.4 수술팀이 심박동기에 대해 확실히 알도록 할게요. | 심박동기가 있으면 소작기 설정이 달라져요. | 수술팀은 심박동기와 이식물 목록을 먼저 봐요. || decoy=your allergy | pos=1
+      I'll make sure the surgical team asks about your pacemaker.
+      I'll make sure the surgical team writes about your pacemaker.
+      I'll make sure the surgical team reads about your pacemaker.
+9.0 항생제가 아직 안 들어갔어요. | 항생제는 절개 때 들어가요. | 항생제는 정맥으로 들어가요. || decoy=isn't labeled | pos=2
+      The sedative hasn't gone in yet.
+      The painkiller hasn't gone in yet.
+      The fluid hasn't gone in yet.
+9.1 절개 전인 지금 투여할 수 있을까요? | 절개 전인 지금 약을 섞을 수 있을까요? | 절개 전인 지금 약을 준비할 수 있을까요? || decoy=right here | pos=3
+      Can we mix it now, before incision?
+      Can we send it now, before incision?
+      Can we draw it now, before incision?
+9.2 시각을 조정하고 기록해 둘게요. | 시각을 조정하고 알림을 켜 둘게요. | 시각을 조정하고 확인해 둘게요. || decoy=the order | pos=0
+      I'll adjust the timing and announce it.
+      I'll adjust the timing and circle it.
+      I'll adjust the timing and print it.
+9.3 항생제 투여가 벌써 일정보다 늦어졌어요. | 항생제 준비가 벌써 일정보다 늦어졌어요. | 항생제 승인이 벌써 일정보다 늦어졌어요. || decoy=for the biopsy | pos=1
+      We're already behind budget for the antibiotic.
+      We're already behind quota for the antibiotic.
+      We're already behind inventory for the antibiotic.
+9.4 절개가 늦어지지 않게 지금 바로 투여합시다. | 감염이 생기지 않게 지금 바로 투여합시다. | 집도의가 기다리지 않게 지금 바로 투여합시다. || decoy=so we keep quiet | pos=2
+      Let's mix it right now so we don't delay the incision.
+      Let's warm it right now so we don't delay the incision.
+      Let's chill it right now so we don't delay the incision.
+10.0 이 라인이 잘 안 흘러서 새로 잡을게요. | 이 라인이 오래돼서 새로 잡을게요. | 이 라인이 자꾸 울려서 새로 잡을게요. || decoy=, so I'll label | pos=3
+      This line isn't clamping well, so I'll start a new one.
+      This line isn't closing well, so I'll start a new one.
+      This line isn't sticking well, so I'll start a new one.
+10.1 작은 따끔함이 느껴질 거예요. | 작은 압박감이 느껴질 거예요. | 작은 차가움이 느껴질 거예요. || decoy=a sudden | pos=0
+      You'll feel a small cramp.
+      You'll feel a small chill.
+      You'll feel a small itch.
+10.2 수술에 더 알맞은 자리를 고르고 있어요. | 수술에 더 알맞은 자리를 표시하고 있어요. | 수술에 더 알맞은 크기를 고르고 있어요. || decoy=a bigger room | pos=1
+      I'm marking a better spot for the surgery.
+      I'm taping a better spot for the surgery.
+      I'm labeling a better spot for the surgery.
+10.3 반대쪽 팔에 새로 IV 부위를 잡아 볼게요. | 반대쪽 손에 새로 IV 부위를 잡아 볼게요. | 반대쪽 팔에 새로 IV 부위를 표시해 볼게요. || decoy=near the bed | pos=2
+      Let me bring a new IV site on your other arm.
+      Let me wrap a new IV site on your other arm.
+      Let me sign a new IV site on your other arm.
+10.4 새 라인은 훨씬 더 잘 흐를 거예요. | 새 라인은 훨씬 더 잘 고정될 거예요. | 새 라인은 훨씬 더 편할 거예요. || decoy=a slightly slower | pos=3
+      This new line should give you a much better grip.
+      This new line should give you a much better fit.
+      This new line should give you a much better view.
+11.0 기도가 안전하려면 틀니를 빼셔야 해요. | 치아가 안전하려면 틀니를 빼셔야 해요. | 마취가 안전하려면 틀니를 빼셔야 해요. || decoy=for your jaw | pos=0
+      The glasses need to come out for your airway to stay safe.
+      The earrings need to come out for your airway to stay safe.
+      The bracelets need to come out for your airway to stay safe.
+11.1 이름표를 붙여 보관했다가 회복실에서 돌려드릴게요. | 이름표를 붙여 보관했다가 병실에서 돌려드릴게요. | 이름표를 붙인 통에 보관했다가 회복실에서 돌려드릴게요. || decoy=in a drawer | pos=1
+      We'll keep them locked and return them in recovery.
+      We'll keep them wrapped and return them in recovery.
+      We'll keep them weighed and return them in recovery.
+11.2 시술 중 짧은 시간 동안만이에요. | 시술 중 조금만 불편하실 거예요. | 시술 중 저희가 계속 지켜볼게요. || decoy=for a quick look | pos=2
+      It's also for a short time during the procedure.
+      It's even for a short time during the procedure.
+      It's still for a short time during the procedure.
+11.3 불편하신 거 알지만, 이렇게 해야 기도가 깨끗하게 유지돼요. | 무서우신 거 알지만, 이렇게 해야 기도가 깨끗하게 유지돼요. | 불편하신 거 알지만, 이렇게 해야 호흡이 편안하게 유지돼요. || decoy=it's expensive | pos=3
+      I understand it's unfamiliar, but this keeps your airway clear.
+      I understand it's uncertain, but this keeps your airway clear.
+      I understand it's unpredictable, but this keeps your airway clear.
+11.4 깨어나자마자 바로 돌려드릴게요. | 깨어나자마자 바로 보여 드릴게요. | 깨어나자마자 바로 이름을 부를게요. || decoy=you smile | pos=0
+      You'll get them right back even if you wake up.
+      You'll get them right back in case you wake up.
+      You'll get them right back so that you wake up.
+12.0 이 슬리브가 다리를 조여서 혈전을 예방해요. | 이 슬리브가 다리를 조여서 붓기를 줄여요. | 이 슬리브가 다리를 조여서 피를 돌려요. || decoy=to warm your toes | pos=1
+      These sleeves gently squeeze your legs to prevent infection.
+      These sleeves gently squeeze your legs to prevent nausea.
+      These sleeves gently squeeze your legs to prevent allergies.
+12.1 오늘 혈액희석제를 투여받으셨나요? | 오늘 혈액희석제를 처방받으셨나요? | 오늘 혈액희석제가 걱정되시나요? || decoy=a sleeping pill | pos=2
+      Have you been offered a blood thinner today?
+      Have you been shown a blood thinner today?
+      Have you been taught a blood thinner today?
+12.2 VTE 예방 오더를 확인해 둘게요. | VTE 예방 오더를 인쇄해 둘게요. | VTE 예방 오더를 열어 둘게요. || decoy=prevention charts | pos=3
+      I'll print the VTE prevention orders.
+      I'll copy the VTE prevention orders.
+      I'll file the VTE prevention orders.
+12.3 들어가시기 전에 압박 슬리브를 착용시켜 드릴게요. | 들어가시기 전에 모자를 착용시켜 드릴게요. | 들어가시기 전에 압박 슬리브를 미리 켜 둘게요. || decoy=warm blankets on | pos=0
+      Let's put these cooling sleeves on before we go back.
+      Let's put these warming sleeves on before we go back.
+      Let's put these charging sleeves on before we go back.
+12.4 오늘 아침에 혈액희석제를 예정대로 드셨나요? | 오늘 아침에 혈액희석제를 예정대로 맞으셨나요? | 오늘 아침에 혈액희석제 복용을 적어 두셨나요? || decoy=on the phone | pos=1
+      Did you share your blood thinner as scheduled this morning?
+      Did you borrow your blood thinner as scheduled this morning?
+      Did you return your blood thinner as scheduled this morning?
+13.0 지금 혈당을 확인해 볼게요. | 지금 혈당 기록을 확인해 볼게요. | 지금 혈당 기기를 켤게요. || decoy=your weight | pos=2
+      I'm going to write your blood sugar now.
+      I'm going to sketch your blood sugar now.
+      I'm going to tape your blood sugar now.
+13.1 오늘 아침에 인슐린이나 당뇨약을 드셨나요? | 오늘 아침에 인슐린이나 당뇨약을 가져오셨나요? | 오늘 아침에 인슐린이나 당뇨약을 처방받으셨나요? || decoy=or herbal tea | pos=3
+      Did you take your insulin or allergy pills this morning?
+      Did you take your insulin or asthma pills this morning?
+      Did you take your insulin or thyroid pills this morning?
+13.2 수치가 너무 높거나 낮으면 조절할게요. | 수치가 너무 높거나 낮으면 표시할게요. | 수치가 너무 높거나 낮으면 의논할게요. || decoy=if the sheet | pos=0
+      We'll adjust if the bed is too high or low.
+      We'll adjust if the chair is too high or low.
+      We'll adjust if the light is too high or low.
+13.3 혈당이 조금 높아서 팀에 알릴게요. | 혈당이 꽤 높아서 팀에 알릴게요. | 혈당이 조금 높아서 팀에 문자로 알릴게요. || decoy=, so I'll text | pos=1
+      Your blood sugar is a little low, so I'll let the team know.
+      Your blood sugar is a little slow, so I'll let the team know.
+      Your blood sugar is a little odd, so I'll let the team know.
+13.4 필요하면 수술 전에 소량의 인슐린을 줄 수 있어요. | 인슐린은 정맥이나 피하로 줄 수 있어요. | 혈당 조절은 수술 전과 수술 중에 계속해요. || decoy=with a pen | pos=2
+      We can give a small dose of insulin if it's shipped before surgery.
+      We can give a small dose of insulin if it's stored before surgery.
+      We can give a small dose of insulin if it's packed before surgery.
+14.0 동의서에는 왼쪽인데 차트에는 오른쪽이라고 돼 있어요. | 동의서에는 왼쪽인데 일정표에는 오른쪽이라고 돼 있어요. | 동의서에는 왼쪽인데 영상에는 오른쪽이라고 돼 있어요. || decoy=but the pharmacy | pos=3
+      The consent says left, but the wristband says right.
+      The consent says left, but the calendar says right.
+      The consent says left, but the menu says right.
+14.1 진행하기 전에 멈추고 대조 확인해야 해요. | 진행하기 전에 멈추고 소리 내어 대조해야 해요. | 진행하기 전에 멈추고 차트로 대조 확인해야 해요. || decoy=and relax | pos=0
+      We need to stop and photograph before proceeding.
+      We need to stop and translate before proceeding.
+      We need to stop and repeat before proceeding.
+14.2 집도의에게 맞는 쪽을 확인받을게요. | 집도의에게 맞는 쪽을 표시받을게요. | 집도의에게 맞는 쪽을 차트에서 확인받을게요. || decoy=the final form | pos=1
+      I'll get the dentist to confirm the correct side.
+      I'll get the porter to confirm the correct side.
+      I'll get the driver to confirm the correct side.
+14.3 이 불일치는 시작 전에 해결돼야 해요. | 불일치가 해결되면 타임아웃을 다시 해요. | 불일치는 집도의와 팀이 함께 의논해서 풀어요. || decoy=needs to be framed | pos=2
+      This message needs to be resolved before we start.
+      This menu needs to be resolved before we start.
+      This mark needs to be resolved before we start.
+14.4 영상을 다시 열어서 맞는 쪽을 확인해 봅시다. | 영상을 다시 열어서 맞는 쪽을 가리켜 봅시다. | 영상을 다시 열어서 맞는 쪽을 동의서와 맞춰 봅시다. || decoy=the lunch order | pos=3
+      Let's pull up the menu to check the correct side again.
+      Let's pull up the calendar to check the correct side again.
+      Let's pull up the radio to check the correct side again.
+15.0 칼륨 수치가 6.8로 위급하게 높아요. | 칼륨 수치가 6.8로 방금 나왔어요. | 칼륨 수치가 6.8로 검사실에서 나왔어요. || decoy=at this point | pos=0
+      The sodium is critically high at 6.8.
+      The calcium is critically high at 6.8.
+      The glucose is critically high at 6.8.
+15.1 이게 바로잡힐 때까지 이 건은 보류해야 해요. | 이게 바로잡히면 이 건은 다시 시작해야 해요. | 이게 바로잡히면 이 건의 시각을 다시 정해야 해요. || decoy=the cart | pos=1
+      We should hold the case until this is filed.
+      We should hold the case until this is printed.
+      We should hold the case until this is copied.
+15.2 지금 바로 집도의와 마취과에 전화할게요. | 집도의와 마취과가 이 수치를 알아야 해요. | 일정은 집도의와 마취과가 함께 정해요. || decoy=from my phone | pos=2
+      I'm thanking the surgeon and anesthesia right now.
+      I'm greeting the surgeon and anesthesia right now.
+      I'm copying the surgeon and anesthesia right now.
+15.3 이 수치는 위험해서 무시할 수 없어요. | 이 수치는 심전도 변화로 이어져요. | 이 수치는 정상보다 훨씬 높아요. || decoy=copy it | pos=3
+      This value is familiar and we can't ignore it.
+      This value is visible and we can't ignore it.
+      This value is private and we can't ignore it.
+15.4 더 진행하기 전에 수치를 한 번 더 재 봅시다. | 더 진행하기 전에 수치를 두 번 더 재 봅시다. | 재검은 보통 새로 채혈해서 합니다. || decoy=before we sit | pos=0
+      Let's get a repeat form before we go any further.
+      Let's get a repeat photo before we go any further.
+      Let's get a repeat sheet before we go any further.
+16.0 잠깐만요—항생제가 아직 안 들어갔어요. | 잠깐만요—항생제가 아직 안 섞였어요. | 잠깐만요—항생제를 아직 안 챙겼어요. || decoy=hasn't been labeled | pos=1
+      Stop—the antibiotic hasn't been shown yet.
+      Stop—the antibiotic hasn't been sealed yet.
+      Stop—the antibiotic hasn't been wrapped yet.
+16.1 다 들어갈 때까지 절개를 보류할 수 있을까요? | 다 들어가려면 앞으로 몇 분이나 걸릴까요? | 다 들어갈 때까지 몇 분이나 보류할 수 있을까요? || decoy=the music | pos=2
+      Can we mark incision until it's infused?
+      Can we plan incision until it's infused?
+      Can we sketch incision until it's infused?
+16.2 지금 투여하고 시각을 기록할게요. | 지금 투여하고 시각을 부를게요. | 지금 투여하고 흐름을 봐 둘게요. || decoy=repeating the order | pos=3
+      I'm giving it now and documenting the name.
+      I'm giving it now and documenting the color.
+      I'm giving it now and documenting the weight.
+16.3 항생제가 완전히 들어갈 때까지 절개할 수 없어요. | 항생제가 완전히 들어갈 때까지 마취는 유지돼요. | 항생제가 완전히 들어갈 때까지 라인을 유지해요. || decoy=the monitor | pos=0
+      We can't cut until the saline is fully in.
+      We can't cut until the contrast is fully in.
+      We can't cut until the dye is fully in.
+16.4 더 지연되지 않게 지금 투여해 주세요. | 감염되지 않게 지금 투여해 주세요. | 더 걱정되지 않게 지금 투여해 주세요. || decoy=so we're not tired | pos=1
+      Please push it now so we're not tired any further.
+      Please push it now so we're not bored any further.
+      Please push it now so we're not hungry any further.
+17.0 교차적합된 혈액이 하나도 없어요. | 교차적합된 혈액은 요청하면 와요. | 교차적합된 혈액은 냉장 보관해요. || decoy=fresh plasma | pos=2
+      We have no crossmatched blood labeled.
+      We have no crossmatched blood counted.
+      We have no crossmatched blood warmed.
+17.1 지금 응급 O형 Rh음성을 방출할 수 있을까요? | O형 Rh음성은 응급 때 쓰는 혈액이에요. | 지금 응급 O형 Rh음성이 몇 단위 있나요? || decoy=extra blankets | pos=3
+      Can we sort emergency O-negative now?
+      Can we weigh emergency O-negative now?
+      Can we store emergency O-negative now?
+17.2 대량수혈 프로토콜을 발동시킬게요. | 대량수혈은 혈액은행과 함께 움직여요. | 대량수혈은 팀 전체가 같이 움직여요. || decoy=the safety protocol | pos=0
+      I'm activating the minor transfusion protocol.
+      I'm activating the routine transfusion protocol.
+      I'm activating the slow transfusion protocol.
+17.3 이 환자는 출혈이 심해서 지금 바로 혈액이 필요해요. | 이 환자는 출혈이 심해서 지금 바로 처치가 필요해요. | 이 환자는 혈압이 낮아서 지금 바로 혈액이 필요해요. || decoy=resting quietly | pos=1
+      This patient is sweating heavily and needs blood right now.
+      This patient is shaking heavily and needs blood right now.
+      This patient is coughing heavily and needs blood right now.
+17.4 대량수혈 프로토콜을 즉시 시작합시다. | 대량수혈은 혈액은행에 알려야 시작돼요. | 대량수혈은 출혈이 멈추면 끝나요. || decoy=the supply list | pos=2
+      Let's get the massive transfusion protocol booked immediately.
+      Let's get the massive transfusion protocol stored immediately.
+      Let's get the massive transfusion protocol printed immediately.
+18.0 이 환자는 심박동기가 있어서 소작이 방해될 수 있어요. | 이 환자는 심박동기가 있어서 자석이 방해될 수 있어요. | 이 환자는 심박동기가 있어서 영상이 방해될 수 있어요. || decoy=with us | pos=3
+      The patient has a stent—cautery could interfere with it.
+      The patient has a valve—cautery could interfere with it.
+      The patient has a splint—cautery could interfere with it.
+18.1 양극성 소작을 쓰고 패드는 기기에서 멀리 두어야 해요. | 양극성 소작은 전류가 두 끝 사이로만 흘러요. | 패드는 피부에 빈틈없이 완전히 붙어야 해요. || decoy=and note the time | pos=0
+      We should use bipolar and place the cuff away from the device.
+      We should use bipolar and place the tray away from the device.
+      We should use bipolar and place the drape away from the device.
+18.2 심장내과나 자석을 대기시켜야 할까요? | 심장내과나 자석이 필요한지 알아볼까요? | 심장내과나 자석이 대기 중인지 볼까요? || decoy=all night | pos=1
+      Do we need dermatology or a magnet on standby?
+      Do we need podiatry or a magnet on standby?
+      Do we need dentistry or a magnet on standby?
+18.3 시작 전에 심박동기 설정을 확인합시다. | 시작 전에 심박동기 제조사를 확인합시다. | 시작 전에 심박동기 기록을 같이 읽어 봅시다. || decoy=before we sign | pos=2
+      Let's confirm the pacemaker colors before we start.
+      Let's confirm the pacemaker sounds before we start.
+      Let's confirm the pacemaker logos before we start.
+18.4 만약을 위해 접지 패드를 기기에서 멀리 둘게요. | 접지 패드는 전류가 돌아오는 길이에요. | 만약을 위해 접지 패드 케이블을 정리해 둘게요. || decoy=the extra cable | pos=3
+      I'll keep the heating pad away from the device just in case.
+      I'll keep the cooling pad away from the device just in case.
+      I'll keep the sticky pad away from the device just in case.
+19.0 응급 상황에서도 타임아웃은 여전히 필요해요. | 응급 상황에서도 타임아웃은 여전히 짧아요. | 응급 상황에서도 체크리스트는 여전히 필요해요. || decoy=in a simulation | pos=0
+      We still need the scan even in an emergency.
+      We still need the tour even in an emergency.
+      We still need the speech even in an emergency.
+19.1 필수 요소를 확인하는 데 30초밖에 안 걸려요. | 필수 요소를 확인하는 데 1분밖에 안 걸려요. | 필수 요소를 읽는 데 30초밖에 안 걸려요. || decoy=a few breaths | pos=1
+      It only takes twenty seconds to confirm the essentials.
+      It only takes forty seconds to confirm the essentials.
+      It only takes fifty seconds to confirm the essentials.
+19.2 환자, 부위, 시술—함께 확인합시다. | 환자, 부위, 시술—차트로 함께 확인합시다. | 환자, 부위, 시술—한 번 더 함께 확인합시다. || decoy=twice | pos=2
+      Patient, site, and room—let's verify together.
+      Patient, site, and bed—let's verify together.
+      Patient, site, and insurance—let's verify together.
+19.3 지금도 타임아웃을 생략할 만한 위험은 아니에요. | 타임아웃은 팀이 같이 하는 확인이에요. | 타임아웃은 마취 뒤에 팀이 말로 하는 확인이에요. || decoy=even here | pos=3
+      Skipping the time-out isn't worth the rule, even now.
+      Skipping the time-out isn't worth the form, even now.
+      Skipping the time-out isn't worth the clock, even now.
+19.4 환자, 부위, 시술을 빨리 함께 확인합시다. | 환자, 부위, 시술을 소리 내어 함께 확인합시다. | 환자, 부위, 시술을 차분히 함께 확인합시다. || decoy=in order | pos=0
+      Let's confirm the patient, site, and procedure together, quietly.
+      Let's confirm the patient, site, and procedure together, calmly.
+      Let's confirm the patient, site, and procedure together, politely.
+20.0 어떤 이식물인지 확인할 수 없어요. | 이식물은 종류마다 MRI 가능이 달라요. | 이식물 정보는 기록이나 카드에 적혀요. || decoy=what size | pos=1
+      We can't confirm what allergy is in place.
+      We can't confirm what rash is in place.
+      We can't confirm what dressing is in place.
+20.1 영상을 찍고 일단 MRI 비호환으로 가정합시다. | 영상을 찍고 일단 이식물 크기를 재 봅시다. | 영상을 찍고 일단 이식물 종류를 적어 둡시다. || decoy=for the file | pos=2
+      Let's get labs and assume it's MRI-unsafe for now.
+      Let's get vitals and assume it's MRI-unsafe for now.
+      Let's get notes and assume it's MRI-unsafe for now.
+20.2 가족이나 이전 기록에 연락을 시도해 볼게요. | 가족이나 이전 기록을 직접 찾아볼게요. | 가족이나 이전 기록을 확인해 볼게요. || decoy=or a phone book | pos=3
+      I'll try to thank the family or prior records.
+      I'll try to greet the family or prior records.
+      I'll try to pay the family or prior records.
+20.3 더 알기 전까지는 이 기기를 미상으로 다뤄야 해요. | 미상 기기는 가장 안전한 쪽으로 가정해 다뤄요. | 기기 정보는 확인되는 대로 바로 공유해요. || decoy=this chart | pos=0
+      We should treat this device as fragile until we know more.
+      We should treat this device as private until we know more.
+      We should treat this device as heavy until we know more.
+20.4 만약을 위해 심박동기와 MRI 기록을 가까이 둡시다. | 만약을 위해 심박동기와 MRI 기록을 사본으로 남깁시다. | 만약을 위해 심박동기와 MRI 기록을 따로 보관합시다. || decoy=, just for fun | pos=1
+      Let's keep the pacemaker and MRI photos close by, just in case.
+      Let's keep the pacemaker and MRI bills close by, just in case.
+      Let's keep the pacemaker and MRI menus close by, just in case.

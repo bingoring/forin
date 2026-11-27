@@ -1,0 +1,91 @@
+situations:
+- title: 검체 보존액 선택
+  s:
+  - ["보존액 질문", lab, "'or'로 두 보존액을 나란히 놓아 둘 중 어느 쪽인지 묻는 선택 질문이 돼요. 'Should'는 정해 주기를 청하는 말이에요.", "Should this sit", "이거 포르말린 가져올까요, 생리식염수 가져올까요?", "이거 포르말린 먼저 열까요, 생리식염수 먼저 열까요?", "saline", "water", "alcohol", "glycerin"]
+  - ["검사 조건", lab, "'wants it fresh'는 고정하지 않은 상태 그대로를 원한다는 말이에요. 'for this test'로 이 검사에 한정된 조건이라고 밝혀요.", "for this stain", "이 검사는 집도의가 신선한 상태로 원해요.", "이 수술은 검사실에서 신선한 상태로 원해요.", "fresh", "sealed", "labeled", "weighed"]
+  - ["고정액 확인", pager, "'with pathology'로 물어볼 곳을 병리과로 정해요. 'I'll'은 지금 정해서 하겠다는 말이에요.", "the weight", "병리과에 고정액을 보여 드릴게요.", "병리과에 고정액을 주문할게요.", "fixative", "stain", "cassette", "slide"]
+  - ["즉시 고정", lab, "'straight'는 중간에 다른 단계 없이 곧바로라는 뜻이에요. 'goes into'는 안으로 들어간다는 방향이 있어요.", "This basin goes", "이 검체 병은 바로 포르말린에 라벨해요.", "이 용기는 바로 포르말린으로 채워요.", "straight", "gently", "fully", "twice"]
+  - ["요청서 확인", board, "'for the right fixative'는 무엇을 위해 보는지를 밝혀요. 보는 곳이 요청서라고 분명히 말해요.", "the shelf", "맞는 고정액인지 병 라벨을 확인해요.", "맞는 고정액인지 요청서를 복사해요.", "requisition", "invoice", "schedule", "receipt"]
+  - ["모르면 문의", pager, "'if we're not sure'로 확신이 없을 때만이라는 조건을 달아요. 'call'은 바로 닿는 방법이라 불확실함을 오래 두지 않아요.", "not busy", "확실하지 않으면 병리과에 문자 보낼게요.", "확실하지 않으면 병리과에 쪽지 남길게요.", "sure", "ready", "done", "late"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 검체 보존액 선택 4문장 순서
+    why: 먼저 어느 보존액인지 묻고, 검사실이 신선한 상태를 원한다는 조건을 밝힌 뒤, 확신이 없으니 병리과에 확인하고, 답을 받아 용기를 준비해요.
+    lines:
+    - ["Should this specimen go in formalin or saline?", lab, "이 검체는 포르말린에 담글까요, 생리식염수에 담글까요?", "질문"]
+    - ["The lab wants it fresh for this test.", lab, "이 검사는 검사실에서 신선한 상태로 원해요", "조건"]
+    - ["I'm not sure what that means here, so I'll call pathology.", pager, "여기서 그게 무슨 뜻인지 모르니 병리과에 전화할게요", "문의"]
+    - ["Once they answer, I'll label the right container for it.", pushpin, "답을 받으면 맞는 용기에 라벨을 붙일게요", "준비"]
+- title: 검체 전달 기록
+  s:
+  - ["인계 시작", handshake2, "'handing off'는 책임을 다른 사람에게 넘기는 인계를 가리켜요. 'now'를 끝에 붙여 지금 일어난다고 알려요.", "the forms", "지금 검체 두 개를 포장할게요.", "지금 검체 두 개를 세어 볼게요.", "specimens", "forms", "gowns", "gloves"]
+  - ["수령 서명", pencil, "'Can you … ?'로 부드럽게 서명을 부탁해요. 'that you received them'은 서명이 무엇을 증명하는지 밝혀요.", "when you", "보내셨다는 서명 해주시겠어요?", "받으셨다는 말씀 해주시겠어요?", "sign", "copy", "open", "carry"]
+  - ["시각·이름 기록", pencil, "'I'll log'는 기록으로 남기겠다는 말이에요. 시간과 이름을 한 묶음으로 적으면 나중에 누가 언제 받았는지 찾을 수 있어요.", "the temperature", "시간과 이름을 확인할게요.", "시간과 이름을 읽어 드릴게요.", "time", "weight", "color", "size"]
+  - ["개수 확인", check, "'before you sign'은 서명이 마지막 단계라는 순서를 알려요. 서명하기 전에 숫자부터 맞춰야 서명이 뜻을 가져요.", "the weight", "서명하기 전에 날짜를 확인해요.", "서명하기 전에 라벨을 확인해요.", "count", "tray", "bag", "lid"]
+  - ["수령 기록", pencil, "'who … and when'은 사람과 시각 둘을 한 문장에 묶어요. 'recording'은 지금 적어 두는 중이라는 진행형이에요.", "and where", "누가 언제 검체를 보냈는지 기록하고 있어요.", "누가 언제 검체를 열었는지 기록하고 있어요.", "received", "opened", "sent", "carried"]
+  - ["기록 부탁", board, "'Please'가 붙어 정중한 부탁이 돼요. 'on the handoff log'는 적을 장소를 정확히 가리켜요.", "the time", "인계 기록에 이름을 불러 주세요.", "인계 기록에서 이름을 찾아 주세요.", "handoff", "nursing", "discharge", "admission"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 검체 전달 기록 4문장 순서
+    why: 인계를 알리고, 건네는 검체를 함께 세고, 개수가 맞으면 서명을 청한 뒤, 서명 옆에 시각을 적어 기록을 닫아요.
+    lines:
+    - ["I'm handing off two specimens now.", handshake2, "지금 검체 두 개를 인계할게요", "알림"]
+    - ["Let's count them together.", check, "그것들을 함께 세어봐요", "계수"]
+    - ["Now that the count matches, please sign for them.", pencil, "개수가 맞으니 받으셨다고 서명해 주세요", "서명"]
+    - ["I'll log the time beside your signature.", board, "서명 옆에 시각을 적을게요", "기록"]
+- title: 냉동절편 검체 준비
+  s:
+  - ["용도 설명", lab, "'for frozen section'은 이 검체가 쓰일 용도를 먼저 밝혀요. 그 뒤 'no fixative'로 그 용도 때문에 하지 않는 일을 붙여요.", "This was", "이건 냉동절편용이라 용기는 따로 씁니다.", "이건 냉동절편용이라 요청서는 따로 씁니다.", "frozen", "rush", "extra", "final"]
+  - ["결과 대기", faceWorried, "'is waiting on'은 지금 이 순간 기다리는 중이라는 진행형이라 급하다는 느낌을 줘요. 'the result'는 정해진 한 결과를 가리켜요.", "at the table", "마취팀이 결과를 기다리고 있어요.", "순환간호사가 결과를 기다리고 있어요.", "surgeon", "assistant", "resident", "scrubber"]
+  - ["검사실 알림", pager, "'that it's on the way'는 아직 도착 전이라는 상태를 미리 알려요. 'I'll call'은 바로 닿는 방법이에요.", "if it's", "준비됐다고 검사실에 전화할게요.", "느리다고 검사실에 전화할게요.", "lab", "clinic", "pharmacy", "ward"]
+  - ["신속 이송", run, "'Let's get'은 같이 서두르자는 제안이에요. 'quickly'를 끝에 붙여 속도가 핵심이라고 알려요.", "paraffin block", "이 냉동절편을 빨리 용기에 담아요.", "이 냉동절편을 빨리 요청서와 맞춰요.", "quickly", "carefully", "gently", "neatly"]
+  - ["고정액 금지", shield, "문장 첫머리 'No'로 금지가 먼저 들려요. 'goes on'은 검체에 얹거나 묻힌다는 뜻이에요.", "stays in", "냉동 검체에는 소독액을 쓰지 않아요.", "냉동 검체에는 표백제를 쓰지 않아요.", "fixative", "label", "clamp", "paper"]
+  - ["결과 전달", pager, "'as soon as'는 그 일이 일어나는 즉시라는 시간 표현이에요. 'hear back'은 상대의 답을 듣는다는 말이에요.", "just before", "회신을 받는 대로 집도의에게 물어볼게요.", "회신을 받는 대로 집도의를 찾을게요.", "tell", "ask", "thank", "find"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 냉동절편 검체 준비 4문장 순서
+    why: 냉동절편용이라고 용도를 말하고, 그래서 고정액을 넣지 않는다고 하고, 포장한 뒤 검사실에 가는 중이라 알리고, 답이 오면 집도의에게 전해요.
+    lines:
+    - ["This specimen is for frozen section.", lab, "이 검체는 냉동절편용이에요", "용도"]
+    - ["That means no fixative goes in the container.", shield, "그래서 용기에 고정액을 넣지 않아요", "고정액"]
+    - ["With that done, I'll call the lab that it's on its way.", pager, "그렇게 하고 나서 검사실에 가는 중이라고 전화할게요", "알림"]
+    - ["When they reply, I'll tell the surgeon.", speech, "답을 주면 집도의에게 전할게요", "보고"]
+- title: 검체 방향 표시
+  s:
+  - ["방향 질문", magnify, "'Which'로 여러 봉합사 중 하나를 골라 달라고 물어요. 'marks'는 어떤 쪽인지 알려 주는 표시라는 뜻이에요.", "Which suture pulls", "어떤 봉합사가 위쪽 절제연에 닿아 있나요?", "어떤 봉합사가 위쪽 절제연을 지나가나요?", "superior", "inferior", "medial", "deep"]
+  - ["방향 표시", compass, "'clearly'를 끝에 붙여 누가 봐도 알아보게 표시하자는 말이에요. 'orientation'은 검체의 위·아래·옆을 가리켜요.", "the table edge", "방향을 명확하게 확인해요.", "방향을 명확하게 설명해요.", "orientation", "size", "weight", "shape"]
+  - ["요청서 기재", board, "'for pathology'로 받을 부서를 밝혀요. 병리과가 방향을 알려면 요청서에 적힌 것을 봐야 해요.", "I'll print it", "병리과용 요청서에 서명해둘게요.", "병리과용 요청서를 챙겨둘게요.", "pathology", "radiology", "pharmacy", "billing"]
+  - ["측면 표시", compass, "'This'로 손에 든 봉합사를 가리켜요. 'lateral'은 몸 중심에서 바깥쪽이라는 방향 낱말이에요.", "the sterile side", "이 봉합사가 측면 쪽에 묶여 있어요.", "이 봉합사가 측면 쪽에 놓여 있어요.", "lateral", "medial", "anterior", "distal"]
+  - ["닫기 전 확인", check, "'before you close'는 닫고 나면 다시 방향을 바로잡기 어렵다는 이유가 들어 있어요. \"Let's\"로 같이 확인하자고 해요.", "the weight", "닫기 전에 방향을 그려요.", "닫기 전에 방향을 사진 찍어요.", "close", "cut", "move", "leave"]
+  - ["절제연 기재", pencil, "'margin details'는 절제연에 관한 구체적 내용이에요. 'on the requisition'에 적어야 병리과가 같은 정보를 받아요.", "the bed number", "요청서에 절제연 세부 사항을 읽을게요.", "요청서에 절제연 세부 사항을 붙일게요.", "details", "dates", "prices", "colors"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 검체 방향 표시 4문장 순서
+    why: 어느 봉합사가 위쪽인지 묻고, 그것이 위쪽이라고 답하고, 그 내용을 요청서에 적은 뒤, 닫기 전에 적은 것을 읽어 맞는지 봐요.
+    lines:
+    - ["Which suture marks the superior margin?", magnify, "어떤 봉합사가 위쪽 절제연을 표시하나요?", "질문"]
+    - ["The short one marks it.", compass, "짧은 것이 그걸 표시해요", "답"]
+    - ["I'll write that on the requisition for pathology.", board, "그걸 병리과용 요청서에 적을게요", "기재"]
+    - ["Please read it back before you close.", speaker, "닫기 전에 그걸 다시 읽어 주세요", "확인"]
+- title: 라벨 정보 불일치
+  s:
+  - ["불일치 발견", faceWorried, "'doesn't match'는 같아야 할 두 정보가 어긋났다는 발견을 알려요. 어긋난 곳이 이름이라고 짚어 말해요.", "is stapled to", "라벨에 적힌 날짜가 요청서와 일치하지 않아요.", "라벨에 적힌 크기가 요청서와 일치하지 않아요.", "name", "date", "size", "color"]
+  - ["차트 대조", magnify, "'against'는 기준이 되는 자료와 맞대어 본다는 뜻이에요. 환자 차트가 가장 믿을 만한 기준이라 그쪽에 맞춰요.", "after", "환자 차트를 출력해서 확인해요.", "환자 차트를 옮겨서 보관해요.", "chart", "invoice", "schedule", "calendar"]
+  - ["정정 전 보류", lock, "'until'은 그때까지는 하지 않는다는 조건이에요. 'I won't'는 단호한 거절이라 조건이 충족되기 전에는 움직이지 않는다는 뜻이에요.", "I'll copy it", "이게 정정될 때까지 서명하지 않을게요.", "이게 정정될 때까지 포장하지 않을게요.", "corrected", "printed", "filed", "stamped"]
+  - ["요청서 불일치", faceWorried, "'specimen requisition'은 검체 보내는 요청서를 정확히 가리켜요. 라벨과 그 요청서가 어긋났다고 알려요.", "This lid", "이 라벨이 환자 차트와 일치하지 않아요.", "이 라벨이 검체 용기와 일치하지 않아요.", "specimen", "billing", "supply", "pharmacy"]
+  - ["라벨 정정", pencil, "\"Let's\"로 같이 고치자고 해요. 'before we send it'은 보내고 나면 고치기 어렵다는 이유예요.", "while we wait", "보내기 전에 라벨을 읽어요.", "보내기 전에 라벨을 세어요.", "fix", "lift", "copy", "move"]
+  - ["정정 후 재확인", check, "'and confirm it again'은 고친 것이 맞는지 한 번 더 확인한다는 뜻이에요. 'again'이 다시 본다는 점을 알려요.", "and sign below", "이름을 정정하고 다시 붙일게요.", "이름을 정정하고 다시 사진 찍을게요.", "correct", "print", "copy", "stamp"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 라벨 정보 불일치 4문장 순서
+    why: 불일치를 알리고, 그것을 환자 차트와 대조하고, 차트에 맞게 이름을 고친 뒤, 다시 확인할 때까지 보내지 않아요.
+    lines:
+    - ["The name on the label doesn't match the requisition.", faceWorried, "라벨의 이름이 요청서와 일치하지 않아요", "발견"]
+    - ["Let's verify that against the patient's chart.", magnify, "그걸 환자 차트와 대조해서 확인해요", "대조"]
+    - ["I'll correct the name to match the chart.", pencil, "차트에 맞게 이름을 정정할게요", "정정"]
+    - ["I won't send it until we've confirmed it again.", lock, "다시 확인하기 전에는 보내지 않을게요", "보류"]

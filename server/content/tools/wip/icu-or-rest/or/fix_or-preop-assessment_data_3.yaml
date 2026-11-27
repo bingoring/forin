@@ -1,0 +1,70 @@
+# 뉘앙스 — 키 "상황.순번"
+slider_patch:
+  "8.0":
+    cue: 'Patient: "After my last surgery I threw up twice and felt sick all night — I get carsick too, and I''ve never smoked." How do you flag the risk?'
+    why_append: " 이전 PONV·멀미·비흡연 같은 위험 인자가 겹치면 고위험으로 표시해요."
+  "17.0":
+    cue: 'Years ago, an unknown injection made his face swell and his head spin. Anesthesia is about to give his first meds. How closely do you watch him?'
+    why_append: " 붓기·어지러움이 다시 보이면 바로 마취과에 알려요."
+  "6.0":
+    example: "This doesn't always mean your surgery is canceled — the timing may just shift."
+    exKo: "수술이 꼭 취소된다는 뜻은 아니에요, 시간만 조정될 수 있어요."
+context_patch:
+  "13.1":
+    scene: 2
+    en: "Per HIPAA, her information is confidential and cannot be disclosed."
+    fix: "I'm sorry, I can't share her health information, but she's welcome to tell you herself."
+    why: "뜻은 셋 다 '비밀의'예요. 환자와 진료팀에는 비밀이 지켜진다고 말하지만, 가족에게 법 조항처럼 말하면 차갑게 들려요. 무엇을 검사했는지도 말하지 않고, 정중하게 본인에게 들으시라고 해요."
+  "17.1":
+    scene: 2
+    en: "We're monitoring your dizziness and facial angioedema for progression."
+    why: "뜻은 셋 다 '어지러움'이에요. 팀과 차트에는 증상을 짧게 적지만, angioedema·progression 같은 임상어는 환자에게 낯설어 불안을 키워요. 증상을 쉬운 말로 확인하고 지켜보겠다고 말해요."
+  "19.1":
+    scene: 0
+    en: "Once we confirm the last dose, the team will need to reassess his bleeding risk."
+  "3.1":
+    ko: "항혈전제"
+swap_new:   # N6: context 2.1 -> swap
+  "2.1":
+    kind: swap
+    words: [w-nausea, w-anesthesia]
+    who: "간호사 → 마취팀 · 병력 전달"
+    icon: speech
+    before: ["", "She felt a little queasy, no big deal", "."]
+    options: ["She had nausea after her last anesthesia", "She felt a little queasy, no big deal", "She had a hard time last time"]
+    answer: "She had nausea after her last anesthesia"
+    notes:
+      "She had nausea after her last anesthesia": "있었던 일과 시점을 분명히 말해서 마취팀이 위험 정보로 받는다."
+      "She felt a little queasy, no big deal": "별일 아니라고 줄여 말해서 위험 정보로 들리지 않는다."
+      "She had a hard time last time": "무엇이 힘들었는지 빠져 있어서 마취팀이 쓸 정보가 없다."
+    why: "마취팀에 지난 마취의 문제를 전할 때는 있었던 일과 시점을 분명히 말해요. '별일 아니에요'처럼 줄여 말하면 위험 정보로 들리지 않아요."
+    ko: "지난번 마취 뒤에 메스꺼움이 있었어요"
+swap_patch:
+  "4.1":
+    before1: "You're tachycardic, above the usual range."
+    old_before1: "Your heart rate is tachycardic, above the usual range."
+    old_ans: "Your pulse is a bit fast, which is common when nervous."
+    new_ans: "Your pulse is a bit fast, which is common when you're nervous."
+  "6.1":
+    ko: "마취과가 결정할 수 있게 알려야 해요"
+  "16.1":
+    ko: "심각한 반응 같아서 표시해 둘게요"
+orders:
+  "1":
+    why: "약을 먹었을 때의 반응을 묻고, 증상의 정도를 좁혀 묻고, 들은 내용을 알레르기로 기록하겠다고 전한 뒤, 그에 따라 차트에 표시해요."
+    lines:
+      2: {en: "From what you've described, I'll record it as an allergy.", ko: "말씀하신 걸로는 알레르기로 기록해 둘게요", note: "기록"}
+  "6":
+    why: "마신 양과 시각을 정확히 묻고, 그 내용을 마취팀에 보고해야 한다고 알리고, 그쪽이 결정한다고 말한 뒤, 어느 쪽이든 수술이 꼭 취소되는 건 아니라고 안심시켜요."
+    lines:
+      3: {en: "Either way, this doesn't always mean your surgery is canceled.", ko: "어느 쪽이든 수술이 꼭 취소된다는 뜻은 아니에요"}
+  "13":
+    why: "마취가 임신에 영향을 줄 수 있어 늘 확인한다고 이유를 말하고, 마지막 생리와 임신 가능성을 묻고, 개인적인 질문이라는 점을 인정하며 안전 때문이라고 한 뒤, 결과를 진료팀 밖에는 알리지 않는다고 해요."
+    lines:
+      3: {en: "Because it's personal, we won't share the result outside your care team.", ko: "개인적인 일이니 결과를 진료팀 밖에는 알리지 않아요"}
+  "19":
+    lines:
+      1: {en: "If no one told you to stop it, this isn't your fault.", ko: "끊으라고 한 사람이 없다면 환자분 잘못이 아니에요"}
+  "12":
+    lines:
+      2: {ko: "탓하려는 게 아니라 그 수치를 있는 그대로 알고 싶어요"}

@@ -1,0 +1,130 @@
+# 뉘앙스 수정. s=상황, n=뉘앙스 번호(0부터), scene={장면번호: {필드}}, set={필드}.
+nuance:
+  - s: 0
+    n: 1
+    set:
+      ko: 새 소식
+      why: "뜻은 셋 다 '새 소식'이에요. 동료에게는 짧게, 차트에는 건조하게 적어요. 하지만 대기 가족에게 마취 기록 용어와 수치를 늘어놓으면 알아듣지 못하고 겁만 나요. 가족에게는 소식이 있으면 찾아와 알려 주겠다고 쉽게 말해요."
+  - s: 2
+    n: 1
+    scene:
+      0: {en: "Is she stable? — Yes, stable, BP one-twenty over seventy and sats fine."}
+      2: {en: "She's hemodynamically stable — MAP in the seventies, SpO2 ninety-eight."}
+    set: {why: "뜻은 셋 다 '안정된'이에요. 동료에게는 수치를, 차트에는 짧은 약어로 적어요. 하지만 가족에게 혈역학·MAP·SpO2 같은 말을 쓰면 오히려 걱정만 커져요. 가족에게는 '안정적이고 수술이 진행 중'이라고만 쉽게 말해요."}
+  - s: 5
+    n: 0
+    set:
+      scale: ["We'll find you when it's all over, one way or another.", "We'll page you when we have an update.", "We'll page you the moment anything at all changes."]
+      answerAt: 1
+      words: [w-page, w-update]
+      example: "We'll page you when we have an update."
+      exKo: "소식이 있으면 호출해드릴게요."
+      why: "호출은 소식이 있을 때(집도의가 찾을 때 포함) 한다는 절차 그대로 말해요. '끝나면'은 막연하고, '무엇이든 바뀌는 순간'은 지킬 수 없는 약속이에요."
+  - s: 6
+    n: 1
+    scene:
+      2: {en: "The delay is attributable to the preceding case exceeding its scheduled block time."}
+    set: {why: "뜻은 셋 다 '지연'이에요. 동료에게는 짧게, 차트에는 사유와 시작 시각 미정을 적어요. 하지만 가족에게 '앞 수술이 예정 시간을 넘긴 탓'처럼 딱딱한 말을 쓰면 무슨 말인지 모르고 오히려 병원이 허둥대는 것으로 들려요. 가족에게는 사유를 쉽게 말하고 소식을 약속해요."}
+  - s: 6
+    n: 2
+    set:
+      answer: "A delay like this doesn't usually mean anything is wrong."
+      option1: "A delay like this doesn't usually mean anything is wrong."
+      notes_rename: {"A delay like this doesn't mean anything is wrong.": "A delay like this doesn't usually mean anything is wrong."}
+      ko: "이렇게 지연된다고 해서 보통 뭔가 잘못됐다는 뜻은 아니에요"
+  - s: 7
+    n: 1
+    scene:
+      1: {en: "OR RN reports surgeon being careful; case running long, no concerns."}
+  - s: 8
+    n: 1
+    scene:
+      2: {en: "Spouse presents as scared and tearful; anxiety appears moderate."}
+    set:
+      ko: 겁먹은
+      why: "뜻은 셋 다 '겁먹은'이에요. 동료에게는 도움을 청하는 말로, 차트에는 짧게 적어요. 하지만 가족 앞에서 차트 말투로 상태를 읽으면 환자 취급을 받는 기분이 들어요. 가족에게는 무서워도 괜찮다고 감정을 인정해 줘요."
+  - s: 9
+    n: 1
+    set: {why: "뜻은 셋 다 '외과의'예요. 동료에게는 호출을 부탁하고, 차트에는 누가 가족에게 알릴지 적어요. 하지만 가족에게 '수술 중 소견·허가된 가족만'이라고 하면 법 조문처럼 들려 차갑고 불안해요. 가족에게는 집도의가 직접 설명할 거라고 쉽게 말해요."}
+  - {s: 10, n: 0, set: {decoys: [each]}}
+  - s: 10
+    n: 1
+    scene:
+      2: {en: "Do you understand the postoperative plan of care as discussed?"}
+    set: {why: "뜻은 셋 다 '이해하다'예요. 동료에게는 통역사를 통해 확인하라고, 차트에는 통역을 통해 이해를 말로 확인했다고 적어요. 하지만 영어가 서툰 보호자에게 '수술 후 간호 계획' 같은 말로 이해를 물으면 알아듣지 못해요. 통역사를 부르겠다고 해요."}
+  - s: 10
+    n: 2
+    set:
+      before1: "Your teenage daughter can translate for us."
+      notes_rename: {"Your teenage son can translate for us.": "Your teenage daughter can translate for us."}
+      remove_words: [w-other]
+  - s: 11
+    n: 1
+    scene:
+      2: {en: "She's in pediatric PACU, phase one, on continuous pulse oximetry."}
+    set: {why: "뜻은 셋 다 '소아과의'예요. 동료에게는 소아 마취 합류를, 차트에는 소아 회복실 단계를 적어요. 하지만 보호자에게 회복실 단계·감시 용어를 그대로 말하면 무슨 뜻인지 몰라 불안해져요. 보호자에게는 아이를 전문으로 돌보는 팀이라고 쉽게 말해요."}
+  - {s: 11, n: 0, set: {scale: ["We treat children the very same way we treat all adults.", "The pediatric team specializes in caring for children.", "No child has ever had a problem in our care, not once."]}}
+  - s: 12
+    n: 1
+    scene:
+      2: {en: "Per unit rule, PACU visitation is limited to one visitor at a time."}
+    set: {why: "뜻은 셋 다 '규칙'이에요. 동료에게는 들어가기 전에 알려 주라고, 차트에는 안내했다고 적어요. 하지만 가족에게 규정 문구를 그대로 읽어 주면 사람이 아니라 문서를 읽는 것처럼 차가워요. 가족에게는 규칙의 이유를 말해 줘요."}
+  - {s: 12, n: 2, set: {ko: "환자분이 쉬고 회복하실 수 있게 한 번에 한 분만 면회하실 수 있어요"}}
+  - {s: 13, n: 0, set: {scale: ["Please wait right here in the waiting area until someone comes.", "The surgeon will come speak with you as soon as possible.", "I can tell you all of the details myself right now, if you'd like."]}}
+  - s: 13
+    n: 1
+    scene:
+      2: {fix: "The plan has changed, and the surgeon will explain."}
+  - {s: 14, n: 0, append_cue: " You want the family to feel the request is taken seriously, without promising."}
+  - s: 14
+    n: 1
+    scene:
+      2: {en: "Your request for pre-transport religious accommodation is pending OR approval."}
+    set: {why: "뜻은 셋 다 '요청'이에요. 동료에게는 어떻게 맞출지 묻고, 차트에는 원목 호출을 적어요. 하지만 보호자에게 '종교적 편의 요청이 수술실 승인 대기 중'이라고 하면 행정 용어로 들려 차가워요. 보호자에게는 최선을 다하고 팀에 확인하겠다고 말해요."}
+  - {s: 14, n: 2, set: {why: "종교적 요청은 존중하되, 지킬 수 있는 만큼만 말해요. 최선을 다하겠다는 말이 약속도 거절도 아닌 정직한 중간이에요."}}
+  - {s: 15, n: 0, append_cue: " She grabs your arm and asks, 'Are you leaving me here alone?'"}
+  - s: 16
+    n: 1
+    scene:
+      2: {en: "To be honest, the intraoperative findings are outside my scope to disclose."}
+    set: {why: "뜻은 셋 다 '솔직한'이에요. 동료에게는 솔직하되 집도의가 이끌게 하라고, 차트에는 요청을 적어요. 하지만 가족에게 '솔직히 수술 중 소견은 제가 공개할 범위 밖'처럼 업무 용어로 거절하면 차갑게 들려요. 솔직함은 집도의가 온다는 것과 곁에 있겠다는 말로 채워 줘요."}
+  - {s: 17, n: 0, set: {decoys: [sorrow]}}
+  - s: 17
+    n: 1
+    scene:
+      2: {en: "Sorry for the loss; the decedent's belongings will be released to next of kin."}
+    set: {why: "뜻은 셋 다 '상실'이에요. 동료에게는 휴지와 조용한 방을 부탁하고, 차트에는 원목·사회복지 연결을 적어요. 하지만 유가족에게 '고인·직계'처럼 서류 말투를 쓰면 슬픔을 업무로 다루는 것처럼 들려요. 준비되시면 돕겠다고 기다려 줘요."}
+  - {s: 18, n: 0, set: {scale: ["I can see you're a little bothered about the wait right now.", "I can see how upset and angry you are about this.", "I can see how upset and angry you are, and that's completely valid."]}}
+  - s: 18
+    n: 1
+    scene:
+      2: {en: "You're angry re: the delay — noted."}
+    set: {why: "뜻은 셋 다 '화난'이에요. 동료에게는 책임 간호사를 부르고, 차트에는 개인 공간을 권했다고 적어요. 하지만 차트 줄임말을 가족에게 그대로 말하면 감정을 기록 대상으로 다루는 것처럼 들려요. 감정을 인정하고 조용한 곳으로 모셔요."}
+  - {s: 19, n: 0, set: {scale: ["There's nothing to report to you at this point yet.", "Her condition changed, and the team is acting fast.", "She's crashing right now, and we may very well lose her."]}}
+  - s: 19
+    n: 1
+    scene:
+      2: {en: "Acute change in condition at 10:42; surgeon at bedside. Remain in the waiting area."}
+    set: {why: "뜻은 셋 다 '상태'예요. 동료에게는 팀이 들어갔다고, 차트에는 시각과 알림을 적어요. 하지만 가족에게 시각·용어를 그대로 읽어 주면 사실은 맞아도 사무적이고 명령처럼 들려요. 상태가 바뀌었고 팀이 움직이고 있다는 사실만 쉽게 말해요."}
+  - {s: 20, n: 0, set: {scale: ["I can't help you with this decision, I'm sorry.", "Whatever you decide, we'll support you fully.", "Honestly, I would definitely say yes to it."]}}
+  - s: 20
+    n: 1
+    scene:
+      2: {en: "As the surrogate, you need to decide on informed consent for the additional procedure."}
+    set: {why: "뜻은 셋 다 '결정하다'예요. 동료에게는 조용한 방을 부탁하고, 차트에는 집도의가 답을 들으러 온다고 적어요. 하지만 가족에게 '대리인·사전 동의' 같은 말을 쓰면 법 문서처럼 들려 부담만 줘요. 시간을 주고 어떤 결정이든 지지하겠다고 말해요."}
+orders:
+  4:
+    line: {3: {en: "After you've seen her, we'll walk you back to the waiting area.", ko: "뵙고 나면 저희가 대기실로 다시 모셔다 드릴게요"}}
+    why: "면회 조건을 말하고, 데리러 가는 방식을 알리고, 처음 모습을 미리 알려 준 뒤, 뵙고 나서 대기실로 다시 모셔 오겠다고 맺는 순서예요."
+  5:
+    line: {3: {en: "We'll reach you when we have an update.", ko: "소식이 있으면 연락드릴게요"}}
+    why: "연락 수단을 받고, 다른 수단도 있음을 알리고, 자리를 비울 때 할 일을 말한 뒤, 소식이 있으면 연락한다는 약속으로 마무리하는 순서예요."
+  6:
+    line: {2: {en: "That's why a delay like this doesn't usually mean anything is wrong.", ko: "그래서 이런 지연은 보통 문제가 있다는 뜻이 아니에요"}}
+  10:
+    line: {2: {en: "They can put everything I say into your language.", ko: "제 말은 통역사가 전부 어머님 언어로 옮겨 드려요"}}
+  11:
+    line: {0: {ko: "따님은 아주 믿을 만한 분들이 돌보고 있어요"}}
+  13:
+    line: {0: {ko: "수술팀이 지금 바로 처리해야 할 것을 발견했어요"}, 1: {en: "That changes the plan, but she's still stable.", ko: "그래서 계획이 바뀌었지만 여전히 안정적이세요"}}
+    why_sub: ["'This'", "'That'"]

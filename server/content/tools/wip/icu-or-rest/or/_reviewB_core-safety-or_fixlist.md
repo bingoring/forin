@@ -1,0 +1,544 @@
+## 고칠 것 — 192건 (안전 55 · 정답 둘 54 · 기타 83)
+decoy 32(안전 13 · 정답둘 16 · 기타 3) · 빈칸 34(안전 2 · 정답둘 10 · 기타 22) · order 11(안전 1 · 정답둘 0 · 기타 10) · 오답1 51(안전 20 · 정답둘 6 · 기타 25) · 오답2 63(안전 19 · 정답둘 22 · 기타 22) · tag 1(안전 0 · 정답둘 0 · 기타 1)
+
+문장 100개 · order 11장. 값은 전부 사본에 들어 있습니다. [안전]·[정답둘]·[기타]의 사유는 **원래 값**에 대한 것이고, 모양은 오답 두 칸(S 같은 틀·세부 / P 앞 단계 / N 뒤 단계 / F 사실) 전→후입니다. 빈칸 선택지 순서는 사본과 같고 정답 칸 자리는 원래와 같습니다.
+
+### 0. 수술 안전 문화 인지
+- **0.0** `Anyone can raise a concern here.` — 여기서는 누구든 우려를 제기할 수 있어요.  (모양 SS→SS)
+  - decoy [정답둘] `raise a hand` — `raise a hand` — 'Anyone can raise a hand here'는 수술장 문화에서 손을 들어 말한다는 뜻이라 ko와 거의 같음
+    - 새 값: `raise the bed`
+- **0.5** `This team wants to hear it if something feels wrong.` — 이 팀은 뭔가 잘못됐다고 느껴지면 그 말을 듣고 싶어 해요.  (모양 SS→SS)
+  - 빈칸 [정답둘] busy / funny / slow / wrong (정답 wrong) — funny — 'something feels funny'는 '뭔가 이상하다'는 관용 표현이라 wrong과 같은 뜻
+    - 새 값: answer `wrong` · busy / normal / slow / wrong
+- **order** [기타] 3↔4 교환이 자연스러움('…please say so today if something feels wrong. When someone does, we thank them'). 4줄이 3줄의 '고마워함'을 가리키게
+  - 4줄 "Knowing that, please say so today if something feels wrong." → **"Knowing you'll be thanked, please speak up today if something feels wrong."** (ko: 고맙다는 말을 들을 테니 오늘 뭔가 이상하면 말해 주세요)
+  - why → 우려를 다루는 방식을 소개하고, 누구나 제기할 수 있다고 한 뒤, 그러면 고마워한다고 알리고, 고마워할 테니 오늘 말해 달라고 청해요.
+
+### 1. 부위 표시 확인
+- **1.0** `Is the surgical site marked?` — 수술 부위에 표시가 되어 있나요?  (모양 PF→PF)
+  - 빈칸 [정답둘] painted / signed / marked / warmed (정답 marked) — signed — 부위 표시는 집도의 이니셜로 하는 곳이 많아('Sign your site') 'Is the site signed?'도 맞음
+    - 새 값: answer `marked` · painted / draped / marked / warmed
+- **1.1** `Let's confirm it matches the consent.` — 동의서와 일치하는지 확인해요.  (모양 PF→PF)
+  - 빈칸 [기타] hides / matches / weighs / opens (정답 matches) — hides·weighs·opens — 동의서와 엮으면 뜻이 안 되는 말이라 읽기만 해도 걸러짐(파일럿 2)
+    - 새 값: answer `matches` · replaces / matches / precedes / overrides
+  - decoy [정답둘] `the schedule` — `the schedule` — 'Let's confirm it matches the schedule'도 실제 하는 대조(수술 일정표)라 그 장면에서 맞는 다른 행동
+    - 새 값: `the wall clock`
+- **1.2** `The mark is visible after draping.` — 수술포를 덮은 뒤에도 표시가 보여요.  (모양 SS→SF)
+  - 오답1 [안전] "수술포를 덮은 뒤에도 소독 자국이 보여요." — 소독 자국이 보여요 — 보이는지 확인할 대상(표시)을 소독 자국으로 바꿈(상태 문장의 확인 대상 바꾸기)
+    - 새 값: **"소독한 뒤에도 표시가 보여요."**
+  - 오답2 [안전] "수술포를 덮은 뒤에도 환자 이름이 보여요." — 환자 이름이 보여요 — 같은 이유. 또 두 오답 모두 정답보다 김(길이 규칙)
+    - 새 값: **"표시는 지워지지 않는 펜으로 그려요."**
+  - 빈칸 [기타] dry / visible / loose / warm (정답 visible) — loose·warm — 표시에 붙지 않는 말이라 동떨어짐
+    - 새 값: answer `visible` · dry / visible / hidden / smudged
+- **1.3** `Can you show me where you marked the site?` — 부위를 어디에 표시했는지 보여주시겠어요?  (모양 PF→PF)
+  - 오답1 [기타] "표시를 보는 동안 드레이프를 걷을게요." — '~하는 동안' 틀이 오답에만 3번(1.3·1.5·4.3, 정답 ko 1번) — 같은 앞 단계를 다른 모양으로
+    - 새 값: **"보여 주실 표시 위의 드레이프를 걷을게요."**
+- **1.5** `Let's ask the patient to confirm the side themselves.` — 환자분께 직접 부위를 확인해 달라고 부탁해요.  (모양 PF→PF)
+  - 오답2 [정답둘] "본인이 직접 부위를 말씀하셔도 괜찮아요." — 본인이 직접 부위를 말씀하셔도 괜찮아요 — 환자가 직접 부위를 말하는 것은 정답 행동과 같음
+    - 새 값: **"부위 확인은 환자분이 깨어 계실 때 받아요."**
+  - decoy [안전] `the intern` — `the intern` — 조립하면 'Let's ask the intern to confirm the side themselves' — 환자 대신 인턴에게 쪽 확인(확인 주체 바꾸기)
+    - 새 값: `to hold the pillow`
+
+### 2. 타임아웃 참여
+- **2.0** `Let's do the time-out now.` — 지금 타임아웃을 진행해요.  (모양 PF→PF)
+  - 오답1 [기타] "타임아웃 위해 지금 팀이 모여요." — '타임아웃 위해' — 조사가 빠진 비문
+    - 새 값: **"타임아웃을 위해 지금 팀이 모여요."**
+  - 오답2 [기타] "타임아웃은 절개 직전에 진행돼요." — 타임아웃은 절개 직전에 진행돼요 — 2.4 오답1과 같은 사실 되풀이('직전'), 두 오답 모두 정답보다 김
+    - 새 값: **"타임아웃엔 다 참여해요."**
+- **2.1** `Patient, procedure, and site—everyone agree?` — 환자, 수술명, 부위—다들 동의하시나요?  (모양 SS→PF)
+  - 오답1 [안전] "환자, 수술명, 부위—다들 들으셨나요?" — 다들 들으셨나요 — 동의 확인을 '들었는지'로 바꿈(확인을 다른 질문으로)
+    - 새 값: **"동의를 물을 세 항목을 차례로 하나씩 불러요."**
+  - 오답2 [안전] "환자, 수술명, 부위—다들 준비되셨나요?" — 다들 준비되셨나요 — 동의 확인을 준비 여부로 바꿈
+    - 새 값: **"부위는 영상과 표시로도 한 번 더 대조해요."**
+  - decoy [정답둘] `ready` — `ready` — 'Patient, procedure, and site—everyone ready?'가 그 장면에서 그대로 쓰는 질문이고 동의 확인을 준비 확인으로 바꿈
+    - 새 값: `scrub`
+- **2.2** `Any concerns before we start?` — 시작하기 전에 우려되는 점 있으신가요?  (모양 PF→PF)
+  - decoy [정답둘] `Any changes` — `Any changes` — 'Any changes before we start?'는 타임아웃에서 실제 묻는 말
+    - 새 값: `Any visitors`
+- **2.3** `I'll read each item out loud so we all hear it.` — 모두가 듣도록 항목마다 소리 내어 읽을게요.  (모양 PF→PF)
+  - 빈칸 [기타] shout / read / chant / sing (정답 read) — chant·sing — 장면과 동떨어진 말, shout도 read 자리에서 문법·뜻이 겹침. 빈칸을 가르치는 말 hear(w-hear)로
+    - 새 값: answer `hear` · sign / hear / copy / file
+- **2.4** `Everyone stops what they're doing during the time-out.` — 타임아웃 동안에는 다들 하던 일을 멈춰요.  (모양 FF→FF)
+  - 빈칸 [안전] stops / finishes / repeats / doubles (정답 stops) — finishes·repeats·doubles — 넣어 읽으면 '타임아웃 동안 하던 일을 마저 끝낸다/두 배로 한다' — 멈추지 않는 문장. 동사 자리는 무엇을 넣어도 멈춤이 빠지므로 빈칸을 time-out(w-timeout)으로
+    - 새 값: answer `time-out` · time-out / handoff / turnover / dressing
+- **2.5** `If something's unclear, this is the moment to say it.` — 불분명한 게 있다면 지금이 말할 순간이에요.  (모양 PF→SF)
+  - 오답1 [안전] "불분명한 게 있다면 말할 사람을 지금 정해요." — 말할 사람을 지금 정해요 — 지금 말하기를 사람 정하기로 미룸(우려 표현을 다른 일로)
+    - 새 값: **"불편한 게 있다면 지금이 말할 순간이에요."**
+  - 오답2 [정답둘] "불분명한 게 있다면 작은 일도 환영이에요." — 작은 일도 환영이에요 — 말해 달라는 정답과 같은 초대, '작다'는 2.2·6.0 오답과 되풀이
+    - 새 값: **"불분명한 점이 풀릴 때까지 절개하지 않아요."**
+  - 빈칸 [기타] heavy / empty / unclear / thin (정답 unclear) — heavy·empty·thin — 동떨어진 말
+    - 새 값: answer `unclear` · routine / sterile / unclear / ready
+  - decoy [정답둘] `the place` — `the place` — 'this is the place to say it'은 ko와 같은 뜻의 다른 문장
+    - 새 값: `the reason`
+
+### 3. 계수 기본 참여
+- **3.0** `Let's count the sponges and needles.` — 거즈와 바늘을 함께 세요.  (모양 PF→PF)
+  - 오답2 [기타] "거즈와 바늘은 세는 물건이에요." — 두 오답 모두 정답(11자)보다 김 — 하나는 정답 길이 이하로
+    - 새 값: **"바늘은 상자에 꽂아요."**
+- **3.1** `I'll count out loud with you.` — 당신과 함께 소리 내어 셀게요.  (모양 PF→PF)
+  - 오답2 [기타] "소리 내어 세면 숫자가 귀에 남아요." — 두 오답 모두 정답보다 김
+    - 새 값: **"소리 내면 숫자가 귀에 남아요."**
+  - 빈칸 [기타] stack / wrap / count / tie (정답 count) — stack·wrap·tie — 'out loud'와 함께 쓸 수 없는 동사라 문법으로 걸러짐
+    - 새 값: answer `count` · read / guess / count / think
+- **3.2** `The initial count is correct.` — 초기 계수는 맞습니다.  (모양 SS→SS)
+  - 오답1 [기타] "초기 계수는 끝났습니다." — 두 오답 모두 정답(10자)보다 김
+    - 새 값: **"초기 계수는 늦습니다."**
+- **3.3** `I want to hear each number as we count together.` — 함께 셀 때 숫자마다 듣고 싶어요.  (모양 SF→SF)
+  - 오답2 [정답둘] "함께 셀 때는 숫자를 소리 내어 말해요." — 함께 셀 때는 숫자를 소리 내어 말해요 — 숫자를 듣겠다는 정답과 같은 요청
+    - 새 값: **"계수는 시작할 때와 봉합 때 해요."**
+  - 빈칸 [정답둘] hear / write / guess / echo (정답 hear) — echo(되받아 말하기)·write(순환간호사가 숫자를 적음)는 계수 장면에서 그대로 맞음
+    - 새 값: answer `hear` · hear / add / guess / round
+  - decoy [정답둘] `your voice` — `your voice` — 'I want to hear your voice as we count together'는 ko와 거의 같은 뜻
+    - 새 값: `each label`
+- **3.5** `I'll say each item clearly so nothing gets missed.` — 아무것도 놓치지 않도록 항목마다 분명하게 말할게요.  (모양 PF→SF)
+  - 오답1 [기타] "분명하게 말할 항목마다 번호를 하나씩 붙일게요." — '~할 항목마다 번호를 붙일게요' — 2.3 오답1과 같은 틀 돌려쓰기
+    - 새 값: **"아무것도 놓치지 않도록 항목마다 두 번씩 말할게요."**
+  - 오답2 [정답둘] "항목을 또박또박 한 번씩 부르면 빠지는 게 줄어요." — 또박또박 한 번씩 부르면 빠지는 게 줄어요 — 정답 문장을 풀어 쓴 같은 주장
+    - 새 값: **"계수하는 중에는 잡담으로 흐름을 끊지 않아요."**
+  - decoy [정답둘] `every number` — `every number` — 'I'll say every number clearly…'는 계수 장면에서 ko와 같은 뜻
+    - 새 값: `every shelf`
+
+### 4. 검체 라벨 확인
+- **4.0** `Let's read the specimen label together.` — 검체 라벨을 함께 읽어요.  (모양 PF→PF)
+  - decoy [정답둘] `the order sheet` — `the order sheet` — 'Let's read the order sheet together'는 라벨 대조에서 실제 함께 읽는 서류(그 장면에서 맞는 다른 행동)
+    - 새 값: `the door sign`
+- **4.1** `This is the right specimen and site?` — 이게 맞는 검체와 부위인가요?  (모양 PF→NF)
+  - 오답1 [기타] "맞는지 볼 검체를 들어요." — '맞는지 볼 검체를 들어요' — 오답에만 '보다'가 8번(원본, 상한 5), '들다' 준비 동사가 4.2와 되풀이. 뒤 단계로
+    - 새 값: **"맞으면 검체를 용기에 담아요."**
+- **4.2** `I'll confirm before it leaves the room.` — 방을 나가기 전에 확인할게요.  (모양 PF→NF)
+  - 오답1 [기타] "나가기 전에 확인할 검체를 들어요." — '확인할 검체를 들어요' — 4.1 오답1('볼 검체를 들어요')과 같은 틀, 두 오답 모두 정답보다 김. 뒤 단계로
+    - 새 값: **"확인되면 검체를 내보낼게요."**
+  - decoy [안전] `the floor` — `the floor` — 'before it leaves the floor' — 확인 시점을 방을 나간 뒤로 늦춤
+    - 새 값: `the tray`
+- **4.4** `Let's both read it before anyone touches the specimen.` — 누구든 검체를 만지기 전에 둘이 함께 읽어요.  (모양 PS→PS)
+  - 오답2 [안전] "누구든 검체를 만지기 전에 장갑을 먼저 껴요." — 장갑을 먼저 껴요 — 둘이 함께 읽기(대조)를 장갑 끼기로 바꿈. 새 값은 읽기를 남기고 기준 물건만 용기로
+    - 새 값: **"누구든 용기를 만지기 전에 둘이 함께 읽어요."**
+- **4.5** `I won't send it until we agree it's correct.` — 맞다고 동의할 때까지 보내지 않을게요.  (모양 PF→PF)
+  - 오답1 [기타] "맞다고 동의할 라벨을 둘이 함께 봐요." — '…라벨을 둘이 함께 봐요' — 오답에만 '보다' 몰림
+    - 새 값: **"맞다고 동의할 라벨을 둘이 함께 짚어요."**
+  - 오답2 [정답둘] "둘의 의견이 맞아야 보내는 거예요." — 둘의 의견이 맞아야 보내는 거예요 — 정답과 같은 뜻
+    - 새 값: **"보낸 뒤에는 라벨을 고치기 어려워요."**
+  - decoy [안전] `pack it` — `pack it` — 'I won't pack it until we agree' — 보내기 보류를 포장 보류로 좁힘(보내기는 열려 있음)
+    - 새 값: `rinse it`
+
+### 5. 화재 위험 인지
+- **5.0** `Let's watch the fire triangle here.` — 여기서 화재 삼각형을 살펴요.  (모양 SS→FS)
+  - 오답1 [안전] "여기서 화재 경보기를 살펴요." — 화재 경보기를 살펴요 — 살필 대상(화재 삼각형)을 경보기로 바꿈
+    - 새 값: **"불은 산소·연료·열로 나요."**
+- **5.1** `Oxygen, prep alcohol, and cautery together are a risk.` — 산소, 소독용 알코올, 소작기가 함께 있으면 위험해요.  (모양 FF→FF)
+  - 오답2 [정답둘] "산소와 소독용 알코올은 불꽃을 키우는 편이에요." — 산소와 소독용 알코올은 불꽃을 키우는 편이에요 — '함께 있으면 위험하다'는 정답과 같은 주장
+    - 새 값: **"소작기 끝은 쓰지 않을 때 꼭 홀스터에 넣어 둬요."**
+- **5.2** `Let the prep dry before we drape.` — 수술포를 덮기 전에 소독액을 말려요.  (모양 FF→FF)
+  - 빈칸 [기타] freeze / dry / expire / glow (정답 dry) — glow — 동떨어진 말
+    - 새 값: answer `dry` · freeze / dry / expire / cool
+- **5.3** `I always know where the three elements of fire are in this room.` — 이 방에서 화재의 세 요소가 어디 있는지 늘 알고 있어요.  (모양 SS→FS)
+  - 오답1 [안전] "이 방에서 소화기가 어디 있는지 늘 알고 있어요." — 소화기가 어디 있는지 늘 알고 있어요 — 위치를 알아 둘 대상(화재 세 요소)을 소화기로 바꿈
+    - 새 값: **"소화기가 있는 곳은 화재 훈련 때 다 같이 익혀요."**
+- **5.5** `I'll say something if the oxygen concentration seems high.` — 산소 농도가 높아 보이면 말할게요.  (모양 PF→SF)
+  - 오답1 [안전] "말할 산소 농도를 농도판에서 봐요." — 말할 산소 농도를 농도판에서 봐요 — 말하기 대신 다시 보기('보고 대신 다시 재기'), '농도판'은 없는 말. 새 값은 말할 일(유량)만 바꾼 같은 틀
+    - 새 값: **"산소 유량이 높아 보이면 말할게요."**
+  - 빈칸 [기타] high / loud / dim / dark (정답 high) — loud·dim·dark — 농도에 붙지 않는 말이라 동떨어짐
+    - 새 값: answer `high` · high / low / stable / normal
+
+### 6. speak-up 우려 표현
+- **6.0** `I have a concern I need to raise.` — 제기해야 할 우려가 있어요.  (모양 PF→SF)
+  - 오답1 [안전] "제기할 우려를 적을 종이가 있어요." — 제기할 우려를 적을 종이가 있어요 — 우려 말하기를 적기로 바꿈
+    - 새 값: **"제기해야 할 우려가 두 가지 있어요."**
+- **6.1** `Can we pause and double-check this?` — 잠시 멈추고 이걸 다시 확인할 수 있을까요?  (모양 PF→SF)
+  - 오답1 [안전] "다시 확인할 이걸 잠시 펼칠 수 있을까요?" — 다시 확인할 이걸 잠시 펼칠 수 있을까요 — 멈춤이 빠짐, 문장도 어색
+    - 새 값: **"잠시 멈추고 저걸 다시 확인할 수 있을까요?"**
+  - decoy [정답둘] `that tray` — `that tray` — 'Can we pause and double-check that tray?'는 ko('이걸 다시 확인')와 그대로 맞음
+    - 새 값: `and restock`
+- **6.2** `I'm not comfortable proceeding yet.` — 아직은 진행하기 편하지 않아요.  (모양 SS→FF)
+  - 오답1 [안전] "아직은 서두르기 편하지 않아요." — 서두르기 편하지 않아요 — 진행 거부를 '서두르지만 말자'로 좁힘(멈춤 범위 좁히기)
+    - 새 값: **"불편하다는 말은 멈추자는 신호예요."**
+  - 오답2 [안전] "아직은 서명하기 편하지 않아요." — 서명하기 편하지 않아요 — 진행 거부를 서명만 멈추기로 좁힘
+    - 새 값: **"불편함은 근거가 없어도 말해요."**
+  - decoy [안전] `signing` — `signing` — 조립하면 'I'm not comfortable signing yet' — 같은 멈춤 범위 좁히기
+    - 새 값: `sitting`
+- **6.4** `Before we go further, I need everyone to hear this.` — 더 나아가기 전에 모두가 이걸 들어야 해요.  (모양 PS→PS)
+  - 오답2 [기타] "더 나아가기 전에 모두가 이걸 가져가야 해요." — 가져가야 해요 — 장면에서 뜻이 서지 않는 말, 두 오답 모두 정답보다 김
+    - 새 값: **"더 나아가기 전에 모두가 손을 멈춰야 해요."**
+  - 빈칸 [기타] hear / sign / approve / vote (정답 hear) — vote — 'vote this'는 on이 빠진 비문이라 문법으로 걸러짐. approve는 문법이 맞고 장면에서 틀려 통과
+    - 새 값: answer `hear` · hear / sign / approve / initial
+  - decoy [정답둘] `to read this` — `to read this` — 'I need everyone to read this'는 그 장면에서 맞는 다른 요청
+    - 새 값: `to sit down`
+- **order** [기타] 2↔3('I have a concern. Because of that, can we pause…? It's that…')과 3↔4가 자연스럽게 읽힘. 3줄이 2줄의 '편하지 않음'을, 4줄이 3줄의 '멈춤'을 가리키게
+  - 3줄 "Because of that, can we pause and double-check this?" → **"Since I'm not comfortable, can we pause and double-check this?"** (ko: 편하지 않으니 잠시 멈추고 이걸 다시 확인할 수 있을까요)
+  - 4줄 "If that's a hassle, I'd still rather ask now than stay quiet." → **"Even if pausing is a hassle, I'd rather ask now than stay quiet."** (ko: 멈추는 게 번거로워도 조용히 있기보다 지금 물을게요)
+  - why → 우려가 있다고 알리고, 그 우려가 진행이 편하지 않다는 것임을 밝히고, 편하지 않으니 멈추고 확인하자고 청하고, 멈추는 게 번거로워도 묻겠다고 해요.
+
+### 7. 계수 불일치 초기 대응
+- **7.0** `The count is off by one sponge.` — 계수가 거즈 하나만큼 어긋났어요.  (모양 FF→FF)
+  - 오답2 [안전] "계수가 어긋나면 먼저 다시 세어요." — 계수가 어긋나면 먼저 다시 세어요 — 어긋남 보고 문장의 오답이 '보고 대신 다시 세기', 7.1 정답과도 겹침
+    - 새 값: **"계수는 두 간호사가 짝을 지어요."**
+- **7.1** `Let's stop and recount together.` — 멈추고 함께 다시 세요.  (모양 PF→PF)
+  - 오답1 [정답둘] "다시 셀 수 있게 함께 멈춰요." — 다시 셀 수 있게 함께 멈춰요 — 멈추고 함께 다시 세기와 같은 뜻
+    - 새 값: **"다시 세기 전에 거즈를 모아요."**
+  - 오답2 [정답둘] "다시 세는 건 짝과 맞춰요." — 다시 세는 건 짝과 맞춰요 — '함께 다시 세기'를 규칙으로 말한 같은 뜻
+    - 새 값: **"거즈는 묶음으로 와요."**
+  - decoy [안전] `and tidy up` — `and tidy up` — 조립하면 'Let's stop and tidy up together' — 계수가 어긋났을 때 치우면 거즈를 버릴 수 있음
+    - 새 값: `and rescrub`
+- **7.2** `Please hold closure until we resolve this.` — 이걸 해결할 때까지 봉합을 보류해 주세요.  (모양 FF→FS)
+  - 오답2 [기타] "봉합은 대개 외과의가 직접 마무리해요." — 봉합은 대개 외과의가 직접 마무리해요 — 전공의·PA가 닫는 일도 흔해 사실이 약함. 저작자가 같은 모양을 시도할 수 있다고 한 곳 — 봉합 보류를 남긴 같은 틀로
+    - 새 값: **"이걸 해결할 때까지 봉합사를 제가 들고 있을게요."**
+  - 빈칸 [기타] regret / resolve / rename / retire (정답 resolve) — rename·retire — 장면과 동떨어진 말
+    - 새 값: answer `resolve` · regret / resolve / record / label
+- **7.4** `Let's search the field before anyone leaves the room.` — 누구든 방을 나가기 전에 수술 부위를 수색해요.  (모양 PS→PF)
+  - 오답2 [안전] "누구든 방을 나가기 전에 가운을 벗어요." — 가운을 벗어요 — 위기 장면에서 수색 대신 옆 일
+    - 새 값: **"그래도 찾지 못하면 엑스레이로 확인해요."**
+  - decoy [정답둘] `the bed` — `the bed` — 'Let's search the bed…'는 실제 수색 범위(침대·린넨)라 그 장면에서 맞는 다른 행동
+    - 새 값: `the lockers`
+  - tag [기타] `방 나가기 전` — '방 나가기 전' — 문장이 하는 일(수술 부위 수색)이 아니라 시점만 말함
+    - 새 값: `부위 수색`
+- **7.5** `I won't stay quiet about a number that doesn't match.` — 맞지 않는 숫자에 대해 조용히 있지 않을게요.  (모양 FF→FS)
+  - 오답2 [정답둘] "맞지 않는 숫자는 바로 말할수록 좋아요." — 맞지 않는 숫자는 바로 말할수록 좋아요 — 조용히 있지 않겠다는 정답과 같은 주장. 새 값은 다른 사건(라벨 불일치 — 이것도 말할 일)으로 바꾼 같은 틀
+    - 새 값: **"맞지 않는 라벨에 대해 조용히 있지 않을게요."**
+- **order** [안전] 4줄 'If the number still doesn't match, we'll search the field' — 수술 부위 수색을 재계수 실패 뒤로 미룸. AORN 지침은 불일치를 알면 집도의가 바로 상처를 살피고 재계수와 함께 수색(TASK 10번, 모든 경우에 하는 일을 조건부로)
+  - 4줄 "If the number still doesn't match, we'll search the field." → **"Alongside the recount, let's search the field too."** (ko: 다시 세는 것과 함께 수술 부위도 수색해요, note: 수색)
+  - why → 어긋났다고 알리고, 해결될 때까지 봉합을 보류해 달라고 한 뒤, 그동안 다시 세고, 다시 세는 것과 함께 수술 부위를 찾아요.
+
+### 8. 검체 처리 확인
+- **8.0** `Let's confirm the fixative and label.` — 고정액과 라벨을 확인해요.  (모양 PF→PF)
+  - 오답2 [기타] "고정액 종류는 라벨로 알아요." — 두 오답 모두 정답(12자)보다 김
+    - 새 값: **"고정액은 라벨에 나와요."**
+- **8.1** `Does this go to pathology or micro?` — 이건 병리과로 가나요, 미생물실로 가나요?  (모양 SS→SF)
+  - 오답1 [안전] "이건 카트로 가나요, 상자로 가나요?" — 카트로 가나요, 상자로 가나요 — 목적지 확인을 운반 수단 질문으로 바꿈(확인 대상 바꾸기)
+    - 새 값: **"저건 병리과로 가나요, 미생물실로 가나요?"**
+  - 오답2 [안전] "이건 문으로 가나요, 창구로 가나요?" — 문으로 가나요, 창구로 가나요 — 같은 이유
+    - 새 값: **"미생물 검체는 포르말린에 넣지 않아요."**
+- **8.2** `I'll document the handling and time.` — 처리 과정과 시간을 문서화할게요.  (모양 PF→PF)
+  - 오답2 [정답둘] "처리 과정과 시간은 기록에 꼭 남아요." — 처리 과정과 시간은 기록에 꼭 남아요 — 문서화하겠다는 정답과 같은 주장, 두 오답 모두 정답보다 김
+    - 새 값: **"고정은 한 시간 안에 시작해요."**
+- **8.3** `Let's say out loud where each specimen is going.` — 검체마다 어디로 가는지 소리 내어 말해요.  (모양 SS→SF)
+  - 오답1 [안전] "검체마다 어디에 있는지 소리 내어 말해요." — 어디에 있는지 — 말할 대상(가는 곳)을 지금 있는 곳으로 바꿈
+    - 새 값: **"용기마다 어디로 가는지 소리 내어 말해요."**
+  - 오답2 [안전] "검체마다 어떻게 가는지 소리 내어 말해요." — 어떻게 가는지 — 가는 곳을 운반 방법으로 바꿈
+    - 새 값: **"검체마다 받는 검사실이 따로 있어요."**
+  - 빈칸 [기타] say / spell / shout / chant (정답 say) — chant — 동떨어진 말(저작자 지적)
+    - 새 값: answer `say` · say / spell / shout / guess
+- **8.4** `I'll write down the time so we both agree on it.` — 우리 둘 다 동의하도록 시간을 적어둘게요.  (모양 SS→SF)
+  - 오답2 [안전] "우리 둘 다 동의하도록 이름을 적어둘게요." — 이름을 적어둘게요 — 적을 대상(고정 시작 시간)을 이름으로 바꿈, 시간이 빠짐
+    - 새 값: **"시간은 보통 24시간제로 적어요."**
+- **order** [기타] 1↔2 교환이 자연스럽고 오히려 임상적으로 맞음 — 고정액은 목적지(병리 ↔ 미생물)에 따라 정해지므로 가는 곳을 먼저 물어야 함
+  - 1줄 "Let's confirm the fixative and label." → **"Does this go to pathology or micro?"** (ko: 이건 병리과로 가나요, 미생물실로 가나요, note: 질문, icon: lab)
+  - 2줄 "Does this go to pathology or micro?" → **"Pathology, then. Let's confirm the formalin and label for it."** (ko: 그럼 병리과네요. 그에 맞는 포르말린과 라벨을 확인해요, note: 확인, icon: lab)
+  - 3줄 "Pathology, then. I'll document the handling and time." → **"With that confirmed, I'll document the handling and time."** (ko: 확인되면 처리와 시간을 문서화할게요, note: 기록, icon: pencil)
+  - why → 가는 곳을 먼저 물어야 고정액을 고를 수 있어요. 병리과라는 답에 맞춰 고정액과 라벨을 확인하고, 확인한 뒤 기록하고, 기록한 뒤 가는 곳을 함께 소리 내어 말해요.
+
+### 9. wrong-site 예방 재확인
+- **9.0** `Let's re-verify the correct side.` — 맞는 쪽을 다시 확인해요.  (모양 PF→PF)
+  - 오답1 [기타] "다시 볼 동의서를 펴요." — '다시 볼 동의서를 펴요' — 오답에만 '보다'·'펴다' 몰림(펴다 원본 7번)
+    - 새 값: **"짚을 동의서를 꺼내요."**
+  - decoy [정답둘] `name` — `name` — 'Let's re-verify the correct name'은 그 장면에서 실제 하는 재확인
+    - 새 값: `table`
+- **9.1** `The consent, mark, and imaging all agree?` — 동의서, 표시, 영상이 다 일치하나요?  (모양 SS→PF)
+  - 오답1 [안전] "동의서, 표시, 영상이 다 준비됐나요?" — 다 준비됐나요 — 일치 확인을 준비 여부로 바꿈
+    - 새 값: **"일치하는지 따질 영상을 화면에 띄워요."**
+  - 오답2 [안전] "동의서, 표시, 영상이 다 있나요?" — 다 있나요 — 일치 확인을 있는지로 바꿈(셋이 있어도 서로 다를 수 있음)
+    - 새 값: **"좌우가 있는 수술은 표시가 꼭 필요해요."**
+  - decoy [기타] `all signed` — `all signed` — 일치 확인을 서명 여부로 바꾼 조립
+    - 새 값: `all printed`
+- **9.2** `I won't proceed until we all confirm.` — 다 함께 확인할 때까지 진행하지 않을게요.  (모양 PF→PF)
+  - 오답2 [정답둘] "다 함께 확인하고 나면 진행해도 돼요." — 다 함께 확인하고 나면 진행해도 돼요 — 정답과 같은 뜻
+    - 새 값: **"다 함께 확인이 끝나면 그 시각을 남겨요."**
+  - decoy [안전] `until we all sign` — `until we all sign` — 조립하면 'I won't proceed until we all sign' — 확인을 서명으로 바꾼 진행 조건
+    - 새 값: `until we all rest`
+- **9.3** `Before the incision, let's say the side out loud one more time.` — 절개 전에 부위를 한 번 더 소리 내어 말해요.  (모양 SS→SF)
+  - 오답2 [정답둘] "절개 전에 부위를 한 번 더 소리 내어 읽어요." — 소리 내어 읽어요 — 소리 내어 말하기와 같은 행동
+    - 새 값: **"표시는 덮은 천 사이로도 보여야 돼요."**
+  - 빈칸 [기타] in secret / out loud / by mail / on paper (정답 out loud) — by mail — 동떨어진 말
+    - 새 값: answer `out loud` · in secret / out loud / under our breath / on paper
+- **9.4** `If the mark doesn't match the consent, I need to know now.` — 표시가 동의서와 맞지 않으면 지금 알아야 해요.  (모양 FF→FF)
+  - 오답1 [기타] "표시는 외과의가 직접 그리는 경우가 많아요." — 표시는 외과의가 직접 그리는 경우가 많아요 — 1.0 오답2·15.4 오답1과 같은 사실 세 번
+    - 새 값: **"표시와 동의서가 다르면 절개는 미뤄져요."**
+  - 빈칸 [기타] match / fade / touch / cover (정답 match) — fade·touch·cover — 동의서와 엮으면 뜻이 서지 않는 말
+    - 새 값: answer `match` · match / replace / precede / outlast
+- **9.5** `I'll ask again even if I already asked once.` — 이미 한 번 물었어도 다시 물을게요.  (모양 FS→SS)
+  - 오답1 [정답둘] "한 번 물은 걸 다시 묻는 건 괜찮아요." — 한 번 물은 걸 다시 묻는 건 괜찮아요 — 정답과 같은 뜻
+    - 새 값: **"이미 두 번 물었어도 다시 물을게요."**
+
+### 10. 화재 위험 사전 소통
+- **10.0** `This is a high fire-risk case.` — 이건 화재 위험이 높은 케이스예요.  (모양 SS→SF)
+  - 오답1 [안전] "이건 출혈 위험이 높은 케이스예요." — 출혈 위험 — 팀에 알릴 위험의 종류를 바꿈(그대로 말하면 화재 대비가 빠짐)
+    - 새 값: **"이건 화재 위험이 높은 수술실이에요."**
+  - 오답2 [안전] "이건 감염 위험이 높은 케이스예요." — 감염 위험 — 같은 이유
+    - 새 값: **"목·얼굴 수술은 화재 위험이 커요."**
+- **10.1** `Let's lower the oxygen and let prep dry.` — 산소를 낮추고 소독액을 말려요.  (모양 FF→PF)
+  - 오답1 [기타] "불은 산소와 열과 연료로 나요." — 저작자가 같은 모양을 시도할 수 있다고 한 곳 — 산소 낮추기를 남긴 바로 앞 단계로(사실문 둘 줄이기)
+    - 새 값: **"산소를 낮추기 전에 마취과와 맞춰요."**
+  - 오답2 [기타] "소독액 속 알코올은 불에 약해요." — '알코올은 불에 약해요' — 뜻이 흐린 말, 5.2·17.1 오답(알코올 소독액은 불이 붙는 물질)과 같은 사실 되풀이
+    - 새 값: **"산소는 불꽃을 더 크게 키워요."**
+  - 빈칸 [기타] stir / rinse / shake / lower (정답 lower) — stir·rinse·shake — 산소에 붙지 않는 동떨어진 말
+    - 새 값: answer `lower` · humidify / filter / warm / lower
+- **10.2** `Where's the saline and the extinguisher?` — 생리식염수와 소화기는 어디 있나요?  (모양 SS→PF)
+  - 오답1 [안전] "생리식염수와 소화기는 몇 개 있나요?" — 몇 개 있나요 — 위치 확인을 개수 질문으로 바꿈(불이 나면 찾을 곳을 모름)
+    - 새 값: **"어디 있는지 모를 땐 주위부터 둘러봐요."**
+  - 오답2 [안전] "생리식염수와 소화기는 누가 챙겼나요?" — 누가 챙겼나요 — 위치 확인을 사람 질문으로 바꿈
+    - 새 값: **"식염수는 대야에 따로 담아 둬요."**
+- **10.4** `Let's agree on this together before the drapes go up.` — 수술포를 덮기 전에 함께 합의해요.  (모양 PS→PS)
+  - 오답2 [정답둘] "수술포를 덮기 전에 함께 맞춰요." — 수술포를 덮기 전에 함께 맞춰요 — '맞추다'가 '합의하다'와 같은 뜻. 새 값은 시점만 앞당김
+    - 새 값: **"소독하기 전에 함께 합의해요."**
+  - decoy [기타] `before we scrub` — `before we scrub` — 어느 청크 자리에도 모양이 맞지 않음('before we scrub go up')
+    - 새 값: `before the lights`
+- **10.5** `If the risk feels high, I'll say it before we begin.` — 위험이 높게 느껴지면 시작 전에 말할게요.  (모양 PF→SF)
+  - 오답1 [기타] "위험이 높게 느껴지면 말하게 시작 전에 숨을 골라요." — 말하게 시작 전에 숨을 골라요 — 7.3 오답1과 같은 말 되풀이
+    - 새 값: **"위험이 높게 느껴지면 브리핑 때 말할게요."**
+  - 오답2 [정답둘] "위험을 느끼면 시작 전에 짚어도 괜찮아요." — 위험을 느끼면 시작 전에 짚어도 괜찮아요 — 정답과 같은 뜻
+    - 새 값: **"화재 위험은 환자마다 미리 점수로 따져요."**
+  - 빈칸 [기타] heavy / high / slow / dark (정답 high) — heavy·slow·dark — 위험에 붙지 않는 동떨어진 말
+    - 새 값: answer `high` · low / high / minor / remote
+  - decoy [안전] `note it` — `note it` — 조립하면 'I'll note it before we begin' — 말하기를 적기로 바꿈
+    - 새 값: `pack it`
+
+### 11. 안전 체크리스트 준수
+- **11.0** `Let's complete the full safety checklist.` — 안전 체크리스트를 전부 완료해요.  (모양 PF→PF)
+  - 오답2 [기타] "체크리스트는 단계가 세 번으로 나뉘어요." — '단계가 세 번으로 나뉘어요' — 어색한 말, 두 오답 모두 정답보다 김
+    - 새 값: **"체크리스트는 세 단계로 나뉘어요."**
+- **11.1** `We don't skip any item, even when busy.` — 바쁠 때도 어떤 항목도 건너뛰지 않아요.  (모양 FS→FS)
+  - 오답1 [기타] "바쁜 때일수록 항목이 빠지는 법이죠." — '~법이죠' — 정답 ko에 없는 말투가 오답에만 6번(11.1·13.5·14.4·18.0·19.4 등)
+    - 새 값: **"바쁠 때일수록 항목이 잘 빠져요."**
+- **11.2** `Sign-in, time-out, and sign-out all done.` — 사인인, 타임아웃, 사인아웃 다 끝났어요.  (모양 SS→SS)
+  - 오답1 [기타] "사인인, 타임아웃, 사인아웃 다 나눴어요." — 다 나눴어요 — 체크리스트에 대해 뜻이 서지 않는 말(④ 약함)
+    - 새 값: **"사인인, 타임아웃, 사인아웃 다 출력했어요."**
+- **11.3** `I read every step out loud, even the ones we know by heart.` — 외우고 있는 단계라도 다 소리 내어 읽어요.  (모양 SS→SF)
+  - 오답2 [기타] "외우고 있는 단계라도 다 소리 내어 번호를 매겨요." — 번호를 매겨요 — 뜻이 흐림, 두 오답 모두 정답보다 김
+    - 새 값: **"외운 단계일수록 빠뜨리기 쉬워요."**
+  - 빈칸 [정답둘] read / list / count / chant (정답 read) — list — 'I list every step out loud'는 정답과 같은 뜻. chant는 동떨어진 말
+    - 새 값: answer `read` · read / skim / count / rush
+- **11.4** `Let's confirm each step together before we move on.` — 다음으로 넘어가기 전에 단계마다 함께 확인해요.  (모양 SS→SF)
+  - 오답1 [안전] "다음으로 넘어가기 전에 단계마다 함께 서명해요." — 함께 서명해요 — 확인을 서명으로 바꿈
+    - 새 값: **"다음으로 넘어가기 전에 단계를 두 번씩 함께 확인해요."**
+  - 오답2 [안전] "다음으로 넘어가기 전에 단계마다 함께 훑어요." — 함께 훑어요 — 확인을 대충 훑기로 낮춤
+    - 새 값: **"확인이 끝난 단계는 그때그때 표에 체크해요."**
+- **order** [기타] 2↔3 교환이 자연스러움('Let's complete… So let's confirm each of them… That means we don't skip') — 2줄은 1줄의 'full'을, 3줄은 2줄의 'skip'을 가리키게
+  - 2줄 "That means we don't skip any item, even when busy." → **"Full means we don't skip any item, even when busy."** (ko: 전부라는 건 바빠도 어떤 항목도 건너뛰지 않는다는 뜻이에요)
+  - 3줄 "So let's confirm each of them together before we move on." → **"Rather than skip one, let's confirm each together before we move on."** (ko: 하나라도 건너뛰는 대신 넘어가기 전에 하나씩 함께 확인해요)
+  - why → 전부 끝내자고 하고, '전부'는 건너뛰지 않는다는 뜻이라고 풀고, 건너뛰는 대신 하나씩 확인하자고 한 뒤, 재촉받아도 그렇게 하겠다고 다짐해요.
+
+### 12. 이식물·기기 안전 확인
+- **12.1** `Does it match the surgeon's request?` — 외과의의 요청과 일치하나요?  (모양 SS→SF)
+  - 오답1 [안전] "외과의의 요청서와 같이 왔나요?" — 요청서와 같이 왔나요 — 일치 확인을 동봉 여부로 바꿈
+    - 새 값: **"이것도 외과의 요청과 맞나요?"**
+  - 오답2 [안전] "외과의의 요청보다 늦게 왔나요?" — 요청보다 늦게 왔나요 — 일치 확인을 도착 시각으로 바꿈
+    - 새 값: **"이식물은 집도의가 앞서 살펴요."**
+  - 빈칸 [기타] break / match / dodge / beat (정답 match) — dodge·beat — 동떨어진 말
+    - 새 값: answer `match` · break / match / exceed / replace
+- **12.2** `I'll document the implant details.` — 이식물 상세 정보를 문서화할게요.  (모양 PF→PF)
+  - 오답2 [안전] "이식물 상세 정보는 나중에 다시 찾아봐요." — 나중에 다시 찾아봐요 — 기록을 나중으로 미룸, 두 오답 모두 정답보다 김
+    - 새 값: **"일련번호는 스티커에도 나와요."**
+- **12.3** `Can you read the serial number out loud with me?` — 저와 함께 일련번호를 소리 내어 읽어주시겠어요?  (모양 PF→PF)
+  - 빈칸 [정답둘] spell / dial / punch / read (정답 read) — spell — 영문·숫자가 섞인 일련번호는 'spell it out loud'가 그대로 맞는 말
+    - 새 값: answer `read` · type / dial / punch / read
+- **12.4** `I need to see the package before it's opened.` — 포장을 열기 전에 봐야 해요.  (모양 PF→NF)
+  - 오답1 [기타] "열기 전에 볼 포장에 불을 켜요." — '볼 포장에 불을 켜요' — 불 켜기 앞 단계가 7.4·1.0과 되풀이, 두 오답 모두 정답보다 김. 뒤 단계로
+    - 새 값: **"포장을 보면 그때 열어요."**
+  - 오답2 [기타] "열린 포장은 되돌릴 길이 없죠." — '~죠' — 정답 ko에 없는 말투
+    - 새 값: **"열린 포장은 다시 못 닫아요."**
+- **12.5** `Let's both sign off once the details are confirmed.` — 상세 정보가 확인되면 둘 다 서명해요.  (모양 PF→PF)
+  - 오답2 [안전] "서명은 확인을 마친 쪽의 몫이에요." — 서명은 확인을 마친 쪽의 몫이에요 — 둘이 서명하는 이중 확인을 한 사람 서명으로
+    - 새 값: **"서명은 이식물 추적에 쓰여요."**
+- **order** [기타] 1↔2 교환 경계 — 'Does it match…?'의 it이 장면의 이식물을 가리켜 1줄로 올 수 있음. those로 1줄의 크기·일련번호를 가리키게
+  - 2줄 "Does it match the surgeon's request?" → **"Do those match the surgeon's request?"** (ko: 그게 외과의 요청과 일치하나요)
+
+### 13. 근접오류 보고
+- **13.0** `That was a near-miss we should report.` — 그건 우리가 보고해야 할 근접오류였어요.  (모양 FF→FS)
+  - 오답1 [기타] "근접오류는 해가 닿기 직전에 멈춘 일이에요." — 두 오답 모두 정답보다 김('직전' 되풀이도 덜기)
+    - 새 값: **"근접오류는 해가 닿지 않고 멈춘 일이에요."**
+  - 오답2 [기타] "근접오류는 큰 사고의 신호일 때가 많아요." — 사실문 둘 → 같은 모양. 근접오류를 위해사건으로 올려 말해도 보고는 그대로라 해가 없음
+    - 새 값: **"그건 우리가 보고해야 할 위해사건이었어요."**
+  - decoy [정답둘] `a good catch` — `a good catch` — near-miss의 다른 말이라 'That was a good catch we should report'는 ko와 같은 뜻
+    - 새 값: `a long shift`
+- **13.2** `I'll file the safety report today.` — 오늘 안전 보고서를 제출할게요.  (모양 PF→PF)
+  - 오답2 [정답둘] "안전 보고서는 사건 후 되도록 빨리 내요." — 안전 보고서는 사건 후 되도록 빨리 내요 — 오늘 제출하겠다는 정답과 같은 주장, 두 오답 모두 정답보다 김
+    - 새 값: **"보고서는 처벌용이 아니에요."**
+  - 빈칸 [정답둘] file / frame / mail / fax (정답 file) — mail·fax — 보고서를 '보낸다'는 뜻이라 제출(file)과 겹침
+    - 새 값: answer `file` · file / frame / read / print
+- **13.4** `Let's say what happened so the team can learn from it.` — 팀이 배울 수 있도록 무슨 일이 있었는지 말해요.  (모양 SS→SS)
+  - decoy [정답둘] `what you saw` — `what you saw` — 'Let's say what you saw so the team can learn'은 ko와 거의 같은 뜻
+    - 새 값: `what we ordered`
+- **13.5** `I'd rather report a close call than say nothing.` — 아무 말도 안 하느니 차라리 아슬아슬했던 일을 보고할게요.  (모양 PF→PF)
+  - 오답2 [정답둘] "아슬아슬했던 일을 알려야 팀이 배움을 얻는 법이에요." — 알려야 팀이 배움을 얻는 법이에요 — 13.4 정답과 겹침, '~법이에요' 말투
+    - 새 값: **"근접오류 보고는 익명으로 받는 병원도 꽤 많아요."**
+- **order** [기타] 2↔3 교환이 자연스러움 — 'To help with that'의 that이 1줄의 'report'도 가리킬 수 있음. 2줄의 '예방'(목표)을 가리키게
+  - 3줄 "To help with that, I'll file the safety report today." → **"With that goal in mind, I'll file the safety report today."** (ko: 그 목표로 오늘 안전 보고서를 제출할게요)
+  - why → 근접오류였다고 말하고, 보고가 다음번 예방에 도움이 된다고 설명하고, 그 목표로 오늘 보고서를 내겠다고 한 뒤, 제출한 다음 팀이 배우도록 알려요.
+
+### 14. 팀 안전 브리핑
+- **14.0** `Let's brief the plan and key risks.` — 계획과 핵심 위험 요소를 브리핑해요.  (모양 PF→PF)
+  - 오답1 [기타] "브리핑할 계획과 핵심 위험 요소를 펴 둬요." — '계획과 핵심 위험 요소를 펴 둬요' — 위험 요소를 '편다'는 어색한 말, '펴다' 준비 동사 돌려쓰기
+    - 새 값: **"브리핑할 계획서를 팀에 돌려요."**
+  - 오답2 [기타] "브리핑은 시작 직전에 팀이 모여서 해요." — '직전' 사실 되풀이(2.0·2.4), 두 오답 모두 정답보다 김
+    - 새 값: **"브리핑에는 팀 전체가 같이 참여해요."**
+  - 빈칸 [정답둘] brief / rehearse / rewrite / reorder (정답 brief) — rehearse — 계획을 함께 짚어 보는 것이라 브리핑과 겹침
+    - 새 값: answer `brief` · brief / reprint / rewrite / reorder
+- **14.1** `Any concerns before we begin?` — 시작하기 전에 우려되는 점 있나요?  (모양 PF→SF)
+  - 오답1 [안전] "들을 우려가 있는지 시작 전에 둘러봐요." — 들을 우려가 있는지 시작 전에 둘러봐요 — 우려를 묻는 대신 둘러보기
+    - 새 값: **"마취하기 전에 우려되는 점 있나요?"**
+  - 오답2 [정답둘] "시작하기 전에 우려는 짚어도 괜찮아요." — 시작하기 전에 우려는 짚어도 괜찮아요 — 우려를 말해 달라는 정답과 같은 초대
+    - 새 값: **"우려가 나오면 계획을 바꿀 수 있어요."**
+  - decoy [정답둘] `Any updates` — `Any updates` — 'Any updates before we begin?'은 브리핑에서 실제 묻는 말
+    - 새 값: `Any deliveries`
+- **14.4** `I'll say my concern now, while we can still plan for it.` — 아직 계획을 세울 수 있을 때 지금 제 우려를 말할게요.  (모양 PF→SF)
+  - 오답1 [기타] "말할 제 우려를 아직 계획을 세울 수 있을 때 정해요." — 말할 제 우려를 … 정해요 — 말하기를 정하기로 미룸, '정하다'가 오답에만 5번(2.5·6.5·8.5·14.4·17.5)
+    - 새 값: **"아직 장비를 바꿀 수 있을 때 지금 제 우려를 말할게요."**
+  - 오답2 [정답둘] "아직 계획이 가능할 때 알리면 대비가 되는 법입니다." — 아직 계획이 가능할 때 알리면 대비가 되는 법입니다 — 정답의 이유를 그대로 말함, '~법입니다' 말투
+    - 새 값: **"브리핑에서는 집도의가 먼저 계획을 말해요."**
+  - 빈칸 [기타] rest / vote / run / plan (정답 plan) — rest·vote·run — 동떨어진 말(저작자 지적: run). 'run for it'은 '도망치다'
+    - 새 값: answer `plan` · pay / hope / ask / plan
+  - decoy [안전] `I'll say my concern today,` — `I'll say my concern today,` — 조립하면 말할 시점을 '오늘'로 늦춤
+    - 새 값: `I'll say my name now,`
+
+### 15. wrong-site 임박 저지
+- **15.0** `Stop—this is the wrong side.` — 멈추세요—틀린 쪽이에요.  (모양 FF→FF)
+  - 오답2 [기타] "멈춤은 직급과 무관한 권리예요." — 멈춤은 직급과 무관한 권리예요 — '멈춤은 …' 사실이 6.1·15.2와 세 번, 두 오답 모두 정답보다 김
+    - 새 값: **"가른 피부는 못 되돌려요."**
+- **15.1** `The consent says left, not right.` — 동의서에는 왼쪽이라고 되어 있지, 오른쪽이 아니에요.  (모양 SS→SF)
+  - 오답1 [기타] "동의서에는 왼쪽이라고 되어 있지, 날짜도 적혀 나와요." — '되어 있지, 날짜도 적혀 나와요' — '~지'에 이어지지 않는 비문
+    - 새 값: **"동의서에는 왼쪽이라고 되어 있지, 아래쪽이 아니에요."**
+  - 오답2 [기타] "동의서에는 왼쪽이라고 되어 있지, 시행일도 나와요." — '…시행일도 나와요' — 오답1과 사실상 같은 보기, 같은 비문
+    - 새 값: **"이 동의서는 환자 본인이 직접 서명한 문서예요."**
+- **15.2** `We halt now and re-verify everything.` — 지금 멈추고 모든 걸 다시 확인해요.  (모양 PF→PF)
+  - 오답2 [기타] "멈춤은 누구나 요청하는 거예요." — 멈춤은 누구나 요청하는 거예요 — 15.0·6.1과 같은 사실 되풀이
+    - 새 값: **"확인엔 영상과 표시도 들어가요."**
+- **15.3** `I need everyone to stop for one second.` — 모두 잠깐 멈춰야 해요.  (모양 SF→SF)
+  - 오답2 [정답둘] "잠깐 멈추는 데 일 초면 돼요." — 잠깐 멈추는 데 일 초면 돼요 — 잠깐 멈추자는 정답과 같은 뜻
+    - 새 값: **"멈출 땐 이유를 말해요."**
+  - 빈칸 [기타] stop / nod / bow / wave (정답 stop) — nod·bow·wave — 동떨어진 몸짓(저작자 지적: wave)
+    - 새 값: answer `stop` · stop / talk / move / turn
+  - decoy [안전] `to count` — `to count` — 조립하면 'I need everyone to count for one second' — 위기에서 멈춤을 다른 일로
+    - 새 값: `to wave`
+- **15.4** `I'm not moving forward until the side is confirmed.` — 부위가 확인될 때까지 앞으로 나아가지 않을게요.  (모양 FF→FF)
+  - 오답1 [기타] "부위는 집도의가 직접 표시하는 편이에요." — 부위는 집도의가 직접 표시하는 편이에요 — 1.0·9.4와 같은 사실 세 번째
+    - 새 값: **"부위가 확인되면 타임아웃을 한 번 더 거쳐요."**
+
+### 16. 이물 잔류 위기 대응
+- **16.1** `We can't close until it's found.` — 찾을 때까지 봉합할 수 없어요.  (모양 FF→FF)
+  - 오답1 [정답둘] "봉합은 계수가 맞은 뒤의 일이에요." — 봉합은 계수가 맞은 뒤의 일이에요 — '찾을 때까지 못 닫는다'는 정답과 같은 주장, 7.2 오답1과도 되풀이
+    - 새 값: **"작은 물품은 상처에 숨기 쉬워요."**
+  - decoy [정답둘] `leave` — `leave` — 'We can't leave until it's found'는 그 장면에서 맞는 말
+    - 새 값: `rest`
+- **16.2** `Let's search the field and get an X-ray.` — 수술 부위를 수색하고 엑스레이를 찍어요.  (모양 FF→FP)
+  - 오답2 [기타] "수색은 가까운 곳부터 차례로 이어져요." — 저작자가 같은 모양을 시도할 수 있다고 한 곳 — 수색을 남긴 바로 앞 단계로(사실문 둘 줄이기). 원래 값은 16.4 오답2와 같은 틀('수색은 … 이어져요')
+    - 새 값: **"수색하기 전에 머리 위 조명을 더 밝혀요."**
+- **16.3** `I said something the moment I noticed it was gone.` — 사라진 걸 알아챈 순간 바로 말했어요.  (모양 FF→SF)
+  - 오답1 [기타] "알아챈 순간부터 속도가 중요해요." — 사실문 둘 → 같은 모양(다른 사건 — 찢어진 거즈도 바로 말할 일이라 해가 없음)
+    - 새 값: **"찢어진 걸 알아챈 순간 바로 말했어요."**
+  - 오답2 [정답둘] "사라진 건 일찍 알릴수록 되찾기 좋죠." — 사라진 건 일찍 알릴수록 되찾기 좋죠 — 바로 말했다는 정답의 주장, '~죠' 말투
+    - 새 값: **"작은 조각도 몸에 남으면 위험해요."**
+- **16.4** `Let's recount before we search everywhere.` — 모든 곳을 수색하기 전에 다시 세요.  (모양 PF→PF)
+  - 오답2 [기타] "수색은 구역을 나눠 이어서 진행돼요." — 수색은 구역을 나눠 이어서 진행돼요 — 16.2 오답2와 같은 틀 되풀이
+    - 새 값: **"다시 센 숫자는 칠판에 적어요."**
+- **16.5** `I won't say it's fine until we actually find it.` — 실제로 찾을 때까지 괜찮다고 말하지 않을게요.  (모양 SS→SS)
+  - 빈칸 [기타] trade / wrap / find / name (정답 find) — trade — 동떨어진 말
+    - 새 값: answer `find` · bag / wrap / find / name
+- **order** [기타] 1↔2 교환이 자연스러움('Let's recount… We're still missing one sponge.' — 다시 센 뒤 여전히 없다는 흐름). 2줄이 1줄의 거즈를 it으로 가리키게
+  - 2줄 "Let's recount before we search everywhere." → **"Before we search everywhere, let's recount to check for it."** (ko: 모든 곳을 수색하기 전에 그걸 찾으려 다시 세요)
+
+### 17. 수술 화재 발생 대응
+- **17.0** `Fire on the field—stop the oxygen.` — 필드에 화재예요—산소를 차단하세요.  (모양 PF→PF)
+  - 오답2 [기타] "화재에는 산소와 열과 연료가 필요해요." — 화재에는 산소와 열과 연료가 필요해요 — 10.1 오답과 같은 사실 되풀이
+    - 새 값: **"산소가 많으면 작은 불꽃도 커져요."**
+  - decoy [안전] `the heater` — `the heater` — 조립하면 'stop the heater' — 산소 대신 다른 것을 끔
+    - 새 값: `the music`
+- **17.1** `Pour saline and remove burning material.` — 생리식염수를 붓고 타는 물질을 제거해요.  (모양 FF→FP)
+  - 오답2 [기타] "알코올 소독액은 쉽게 불이 붙는 물질이에요." — 알코올 소독액은 쉽게 불이 붙는 물질이에요 — 5.2 오답2와 같은 문장. 저작자가 같은 모양을 시도할 수 있다고 한 곳 — 붓기를 남긴 바로 앞 단계로
+    - 새 값: **"식염수를 붓기 전에 병뚜껑을 따요."**
+  - 빈칸 [기타] syrup / saline / soap / glue (정답 saline) — syrup·glue — 동떨어진 말
+    - 새 값: answer `saline` · contrast / saline / soap / heparin
+  - decoy [기타] `wet gauze` — `wet gauze` — 'remove wet gauze'는 타는 물질 대신 젖은 거즈를 치우는 조립
+    - 새 값: `the clipboard`
+- **17.2** `Get the extinguisher and call for help.` — 소화기를 가져오고 도움을 요청하세요.  (모양 FF→FF)
+  - 오답1 [기타] "소화기는 작은 불에 쓰는 장비예요." — 소화기는 작은 불에 쓰는 장비예요 — ASA 지침과 다름(초기 처치로 안 꺼질 때 CO2 소화기)
+    - 새 값: **"수술실엔 이산화탄소 소화기를 써요."**
+  - 오답2 [기타] "소화기는 복도 벽 쪽에 걸린 장비예요." — 복도 벽 쪽에 걸린 장비예요 — 병원마다 다른 위치를 사실처럼 말함
+    - 새 값: **"화재 경보 위치도 미리 익혀야 돼요."**
+  - decoy [안전] `the stretcher` — `the stretcher` — 조립하면 'Get the stretcher and call for help' — 소화기 대신 들것
+    - 새 값: `the scale`
+- **17.3** `I'll shout it the second I see the flame.` — 불꽃을 보는 즉시 외칠게요.  (모양 SS→SF)
+  - 오답2 [정답둘] "불꽃을 보는 즉시 세 번 외칠게요." — 세 번 외칠게요 — 외치기를 품고 있어 정답 둘(정답 행위에 하나를 더한 말), 두 오답 모두 정답보다 김
+    - 새 값: **"알코올 불꽃은 잘 안 보여요."**
+  - 빈칸 [기타] shout / whisper / mumble / giggle (정답 shout) — giggle — 동떨어진 말
+    - 새 값: answer `shout` · shout / whisper / mumble / write
+- **17.5** `Once it's out, I'll say what happened while it's fresh.` — 불이 꺼지면 기억이 생생할 때 무슨 일이 있었는지 말할게요.  (모양 PS→SF)
+  - 오답1 [기타] "기억이 생생할 때 말할 일을 불이 꺼지면 먼저 정할게요." — 말할 일을 … 먼저 정할게요 — 어색한 어순, '정하다' 되풀이
+    - 새 값: **"불이 꺼지면 환자를 살피고 무슨 일이 있었는지 말할게요."**
+  - 오답2 [안전] "불이 꺼지면 기억이 생생할 때 무슨 일이 있었는지 물을게요." — 물을게요 — 일어난 일을 말하기(보고)를 묻기로 바꿈
+    - 새 값: **"화재에 쓰인 물품은 조사를 위해 그대로 보존해요."**
+  - 빈칸 [정답둘] hot / dry / fresh / bright (정답 fresh) — hot — 'while it's hot'(식기 전에)은 while it's fresh와 거의 같은 뜻
+    - 새 값: answer `fresh` · cold / dry / fresh / bright
+- **order** [기타] 2↔3 교환이 자연스러움('stop the oxygen. While you do that, get the extinguisher…'), 'you'가 붓는 사람에게 소화기까지 시킴. 3줄이 2줄의 식염수를 가리키고 다른 사람에게 시키게
+  - 3줄 "While you do that, get the extinguisher and call for help." → **"While saline goes on, someone get the extinguisher and call for help."** (ko: 식염수를 붓는 동안 누군가 소화기를 가져오고 도움을 요청하세요)
+  - why → 화재를 알리며 산소를 막고, 산소가 꺼진 채 식염수를 붓고 타는 물질을 치우고, 식염수를 붓는 동안 다른 사람이 소화기와 도움을 청하고, 꺼진 뒤 일어난 일을 말해요.
+
+### 18. 검체 분실 위기
+- **18.0** `One specimen is unaccounted for.` — 검체 하나의 행방이 확인되지 않아요.  (모양 FF→FF)
+  - 오답1 [기타] "검체 하나의 행방은 라벨로 확인해요." — 행방은 라벨로 확인해요 — 라벨은 식별용이지 행방 추적이 아님(사실 약함)
+    - 새 값: **"검체는 다시 얻기 어려운 경우가 많아요."**
+  - 오답2 [기타] "행방은 인계 기록에 남는 법이에요." — '~법이에요' 말투(11.1 참고)
+    - 새 값: **"검체의 행방은 인계 기록에 남아요."**
+  - 빈칸 [기타] monitor / specimen / stretcher / elevator (정답 specimen) — elevator — 동떨어진 말
+    - 새 값: answer `specimen` · monitor / specimen / stretcher / clamp
+- **18.1** `Let's stop and search everywhere now.` — 지금 멈추고 모든 곳을 수색해요.  (모양 PF→PF)
+  - 빈칸 [안전] count / tidy / scrub / search (정답 search) — tidy — 넣어 읽으면 'Let's stop and tidy everywhere now' — 검체가 없어졌을 때 치우면 버릴 수 있음
+    - 새 값: answer `search` · count / chart / scrub / search
+- **18.3** `I noticed it was missing and said so right away.` — 없어진 걸 알아채고 즉시 말했어요.  (모양 FF→SS)
+  - 오답1 [안전] "없어진 검체는 먼저 찾는 게 급해요." — 없어진 검체는 먼저 찾는 게 급해요 — 보고보다 찾기를 앞세움(보고 시점 늦추기)
+    - 새 값: **"깨진 걸 알아채고 즉시 말했어요."**
+  - decoy [안전] `and wrote it down` — `and wrote it down` — 조립하면 말하는 대신 적기
+    - 새 값: `and sat down`
+- **18.4** `Let's check every step from the field to the lab.` — 필드부터 검사실까지 모든 단계를 확인해요.  (모양 PF→PF)
+  - 오답1 [정답둘] "확인할 길을 필드부터 검사실까지 걸어 봐요." — 확인할 길을 필드부터 검사실까지 걸어 봐요 — 길을 따라 걸어 보는 것이 곧 단계 확인
+    - 새 값: **"확인할 인계 기록을 필드부터 다 챙겨요."**
+- **18.5** `We don't stay quiet about a missing specimen.` — 검체가 없어진 일에 대해 조용히 있지 않아요.  (모양 SS→SS)
+  - 오답1 [정답둘] "검체가 없어진 일에 대해 혼자 걱정하지 않아요." — 혼자 걱정하지 않아요 — 조용히 있지 않음(말함)과 같은 뜻
+    - 새 값: **"기구가 없어진 일에 대해 조용히 있지 않아요."**
+  - 오답2 [안전] "검체가 없어진 일에 대해 서두르지 않아요." — 서두르지 않아요 — 검체 분실에 서두르지 않는다는 잘못된 안심·대응 지연
+    - 새 값: **"검체가 바뀐 일에 대해 조용히 있지 않아요."**
+- **order** [기타] 1↔2 교환 경계('Let's stop and search everywhere now. One specimen is unaccounted for.'도 위기에서 자연스러움). for it으로 1줄을 가리키게
+  - 2줄 "Let's stop and search everywhere now." → **"Let's stop and search everywhere for it now."** (ko: 지금 멈추고 그걸 찾아 모든 곳을 수색해요)
+
+### 19. 위해사건 즉시 보고
+- **19.0** `This is an adverse event we must report.` — 이건 우리가 보고해야 할 위해사건이에요.  (모양 FF→FF)
+  - 오답2 [정답둘] "위해사건은 안전 보고서의 대상이에요." — 위해사건은 안전 보고서의 대상이에요 — 보고해야 한다는 정답과 같은 주장
+    - 새 값: **"위해사건이 나면 환자 상태부터 살펴요."**
+  - decoy [안전] `a small delay` — `a small delay` — 조립하면 'This is a small delay we must report' — 위해사건을 작은 지연으로 낮춤(잘못된 안심)
+    - 새 값: `a new policy`
+- **19.1** `Let's preserve the device and packaging.` — 기기와 포장재를 보존해요.  (모양 PF→PF)
+  - 오답2 [기타] "기기와 포장재는 증거로 쓰여요." — 두 오답 모두 정답(12자)보다 김
+    - 새 값: **"포장재는 증거가 돼요."**
+- **19.2** `I'll notify the charge nurse and file the report.` — 책임 간호사에게 알리고 보고서를 제출할게요.  (모양 PF→SF)
+  - 오답1 [안전] "책임 간호사에게 알릴 내용을 보고서에 적을게요." — 알릴 내용을 보고서에 적을게요 — 책임 간호사에게 알리기가 빠짐(보고 대신 기록)
+    - 새 값: **"책임 간호사에게 알리고 보고서 양식을 열게요."**
+- **19.3** `I'm saying this right away before anything gets moved.` — 아무것도 옮겨지기 전에 즉시 말할게요.  (모양 FF→FF)
+  - 오답2 [정답둘] "즉시 말하면 증거가 그대로 남아요." — 즉시 말하면 증거가 그대로 남아요 — 정답의 이유를 그대로 말함
+    - 새 값: **"위해사건은 환자에게도 알려요."**
+- **19.4** `Let's keep everything exactly as it happened.` — 모든 걸 일어난 그대로 정확히 유지해요.  (모양 FF→FF)
+  - 오답1 [기타] "일어난 그대로여야 원인을 가려내는 법이죠." — '~법이죠' 말투(11.1 참고)
+    - 새 값: **"현장을 그대로 둬야 원인이 가려져요."**
+- **19.5** `I'll write down the time and what I saw.` — 시간과 제가 본 걸 적어둘게요.  (모양 SS→PF)
+  - 오답1 [안전] "날짜와 제가 본 걸 적어둘게요." — 날짜와 제가 본 걸 — 적을 대상(시간)을 날짜로 바꿈, 사건 시각이 빠짐
+    - 새 값: **"적을 시간을 시계로 확인해요."**
+  - 오답2 [안전] "시간과 제가 쓴 걸 적어둘게요." — 시간과 제가 쓴 걸 — 적을 대상(본 것)을 바꿈, '쓴 걸'은 뜻도 흐림
+    - 새 값: **"사건 메모엔 본 사실만 적어요."**
+- **order** [기타] 4줄 'After I file it, I'll write down the time and what I saw' — 보고서를 낸 뒤에야 시간과 본 것을 적음(보고서에 들어갈 내용이 나중). 1↔2 교환도 자연스러움('Right away, let's preserve…'가 1줄로 올 수 있음)
+  - 2줄 "Right away, let's preserve the device and packaging." → **"Because of that, let's preserve the device and packaging right away."** (ko: 그래서 바로 기기와 포장재를 보존해요)
+  - 3줄 "While it's kept as is, I'll notify the charge nurse and file the report." → **"While it's kept as is, I'll notify the charge nurse."** (ko: 그대로 둔 채 책임 간호사에게 알릴게요)
+  - 4줄 "After I file it, I'll write down the time and what I saw." → **"After that call, I'll write down the time and what I saw for the report."** (ko: 그 연락 뒤 보고서에 넣을 시간과 제가 본 걸 적을게요)
+  - why → 위해사건이라고 알리고, 그래서 기기와 포장재를 보존하고, 그대로 둔 채 책임 간호사에게 알린 뒤, 보고서에 넣을 시간과 본 것을 적어요.
+
+### 20. 안전 위반 압력 저항
+- **20.0** `I can't skip this safety step.` — 이 안전 단계는 건너뛸 수 없어요.  (모양 FF→SF)
+  - 오답1 [정답둘] "이 안전 단계는 보호를 위한 거예요." — 보호를 위한 거예요 — 20.1·20.4 정답(환자를 보호해요)과 겹침, 두 오답 모두 정답보다 김
+    - 새 값: **"이 안전 단계는 바꿀 수 없어요."**
+- **20.2** `Let's take thirty seconds to do it right.` — 제대로 하려면 삼십 초만 써요.  (모양 SS→SS)
+  - 빈칸 [정답둘] ten / thirty / ninety / sixty (정답 thirty) — ten·ninety·sixty — 숫자끼리는 ko 없이 못 정함(넷 다 문법상 맞음). 빈칸을 right(제대로)로
+    - 새 값: answer `right` · fast / right / later / alone
+- **20.4** `This step protects the patient, even under pressure.` — 압박 속에서도 이 단계는 환자를 보호해요.  (모양 SS→SS)
+  - 빈칸 [기타] protects / pleases / pays / passes (정답 protects) — pays·passes — 동떨어진 말
+    - 새 값: answer `protects` · protects / pleases / delays / exposes
+- **20.5** `I won't skip a safety step just because we're busy.` — 바쁘다는 이유로 안전 단계를 건너뛰지 않을게요.  (모양 FF→SF)
+  - 오답1 [기타] "안전 단계는 바쁜 때에도 팀 전체의 책임이에요." — 사실문 둘 → 같은 모양(이유만 바꿈, 건너뛰지 않음은 그대로)
+    - 새 값: **"피곤하다는 이유로 안전 단계를 건너뛰지 않을게요."**
+  - 빈칸 [정답둘] trim / bend / skip / stretch (정답 skip) — trim·bend — '안전 단계를 줄이지/눈감지 않겠다'는 정답과 같은 뜻
+    - 새 값: answer `skip` · print / repeat / skip / lead

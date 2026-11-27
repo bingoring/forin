@@ -1,0 +1,1459 @@
+===== 0 검체 용기 라벨 부착
+--0.0 EN: I'm labeling this container with the patient's name.
+   KO: 지금 이 용기에 환자분 이름으로 라벨을 붙이고 있어요. (30)
+   DK: 지금 이 가방에 환자분 이름으로 라벨을 붙이고 있어요. (30)
+   DK: 지금 이 용기에 환자분 이름으로 요청서를 붙이고 있어요. (31)
+   tag=라벨 부착 icon=pushpin | why: 'with the patient's name'을 뒤에 붙여 무엇으로 표시하는지 밝혀요. 'I'm … -ing'는 지금 하는 중이라는 진행형이에요.
+   chunks: I'm labeling / this container / with the patient's name / .  || decoy: that transport bag
+   =B: I'm labeling this [container] with the patient's name.
+    B: I'm labeling this [monitor] with the patient's name.
+    B: I'm labeling this [chart] with the patient's name.
+    B: I'm labeling this [stand] with the patient's name.
+--0.1 EN: This is gallbladder, correct?
+   KO: 이거 담낭 맞죠? (9)
+   DK: 이거 담낭 보셨죠? (10)
+   DK: 이거 담낭 받으셨죠? (11)
+   tag=종류 확인 icon=magnify | why: 문장 끝에 'correct?'를 붙이면 단정이 아니라 상대에게 확인을 구하는 질문이 돼요. 'This is'로 눈앞의 것을 가리켜요.
+   chunks: This is / gallbladder / , correct / ?  || decoy: , ready
+    B: This is gallbladder, [ready]?
+   =B: This is gallbladder, [correct]?
+    B: This is gallbladder, [sealed]?
+    B: This is gallbladder, [clean]?
+--0.2 EN: I'll add the date and time on the label.
+   KO: 라벨에 날짜와 시간을 적을게요. (17)
+   DK: 라벨에 날짜와 크기를 적을게요. (17)
+   DK: 라벨에 날짜와 시간을 읽을게요. (17)
+   tag=기재 icon=pencil | why: 'I'll'은 지금 정해서 하겠다는 말이라 바로 하겠다는 약속처럼 들려요. 날짜와 시간은 한 묶음으로 같이 적어요.
+   chunks: I'll add / the date / and time / on the label / .  || decoy: on the lid
+    B: I'll add the [size] and time on the label.
+    B: I'll add the [brand] and time on the label.
+   =B: I'll add the [date] and time on the label.
+    B: I'll add the [owner] and time on the label.
+--0.3 EN: Can you confirm this is the correct specimen?
+   KO: 이게 맞는 검체인지 확인해 주시겠어요? (21)
+   DK: 이게 맞는 검체인지 보여 주시겠어요? (20)
+   DK: 이게 맞는 검체인지 찾아 주시겠어요? (20)
+   tag=맞는지 확인 icon=check | why: 'Can you …?'는 지시보다 부드러운 부탁이에요. 'the correct specimen'에서 correct를 앞에 두어 맞는 것인지를 묻는다고 분명히 해요.
+   chunks: Can you confirm / this is / the correct specimen / ?  || decoy: the surgeon's list
+    B: Can you confirm this is the [spare] specimen?
+    B: Can you confirm this is the [clean] specimen?
+    B: Can you confirm this is the [extra] specimen?
+   =B: Can you confirm this is the [correct] specimen?
+--0.4 EN: I'm writing the patient's name on the label now.
+   KO: 지금 라벨에 환자분 이름을 적고 있어요. (22)
+   DK: 지금 라벨에 환자분 이름을 읽고 있어요. (22)
+   DK: 지금 서식에 환자분 이름을 적고 있어요. (22)
+   tag=이름 기재 icon=pencil | why: 문장 끝의 'now'는 지금 막 하는 중이라는 점을 더해요. 'the patient's name'은 소유격으로 누구의 이름인지 정해요.
+   chunks: I'm writing / the patient's name / on the label / now / .  || decoy: the surgeon's initials
+   =B: I'm writing the patient's name on the [label] now.
+    B: I'm writing the patient's name on the [drape] now.
+    B: I'm writing the patient's name on the [curtain] now.
+    B: I'm writing the patient's name on the [sheet] now.
+--0.5 EN: Let's check the date before I seal the container.
+   KO: 용기를 밀봉하기 전에 날짜를 확인해요. (21)
+   DK: 용기를 밀봉하기 전에 시간을 확인해요. (21)
+   DK: 용기를 옮기기 전에 날짜를 확인해요. (20)
+   tag=봉합 전 확인 icon=calendar | why: "Let's"로 같이 하자는 제안이 돼요. 'before'는 뒤따르는 동작보다 이 확인이 먼저라는 순서를 말해요.
+   chunks: Let's check / the date / before I seal / the container / .  || decoy: the biohazard bag
+    B: Let's check the date before I [fill] the container.
+   =B: Let's check the date before I [seal] the container.
+    B: Let's check the date before I [lift] the container.
+    B: Let's check the date before I [tip] the container.
+  ORDER ko=검체 용기 라벨 부착 4문장 순서 tag=대화 흐름 | why: 라벨을 붙이는 중이라고 알린 뒤 그것에 이름을 적고, 날짜와 시간을 더한 다음 밀봉 전에 함께 훑어요.
+   1. I'm labeling this container now.  (지금 이 용기에 라벨을 붙이고 있어요/개시/pushpin)
+   2. I'll write the patient's name on it.  (그 위에 환자분 이름을 적을게요/이름/pencil)
+   3. Right beside that name, I'll add the date and time.  (이름 옆에 날짜와 시간을 더 적을게요/날짜/calendar)
+   4. Let's read all of that together before I seal it.  (밀봉 전에 그걸 다 함께 읽어봐요/확인/check)
+   swap12: I'll write the patient's name on it. | I'm labeling this container now. | Right beside that name, I'll add the date and time. | Let's read all of that together before I seal it.
+   swap23: I'm labeling this container now. | Right beside that name, I'll add the date and time. | I'll write the patient's name on it. | Let's read all of that together before I seal it.
+   swap34: I'm labeling this container now. | I'll write the patient's name on it. | Let's read all of that together before I seal it. | Right beside that name, I'll add the date and time.
+===== 1 조직명 구두 확인
+--1.0 EN: Can you confirm this is the appendix?
+   KO: 이거 맹장 맞는지 확인해 주시겠어요? (20)
+   DK: 이거 맹장 맞는지 보여 주시겠어요? (19)
+   DK: 이거 맹장 맞는지 들어 주시겠어요? (19)
+   tag=구두 확인 icon=speaker | why: 'this is the appendix'를 질문 안에 넣어 상대가 직접 말로 맞다고 해 주기를 청해요. 'Can you'로 부드럽게 부탁해요.
+   chunks: Can you confirm / this is / the appendix / ?  || decoy: the incision
+    B: Can you confirm this is the [colon]?
+    B: Can you confirm this is the [ovary]?
+   =B: Can you confirm this is the [appendix]?
+    B: Can you confirm this is the [tonsil]?
+--1.1 EN: Let's read it out loud together.
+   KO: 함께 소리 내어 읽어봐요. (14)
+   DK: 함께 소리 내어 적어봐요. (14)
+   DK: 각자 소리 내어 읽어봐요. (14)
+   tag=함께 읽기 icon=speaker | why: 'out loud'는 눈으로만 훑지 않고 입으로 말한다는 뜻이에요. 'together'는 둘이 한목소리라는 점을 더해요.
+   chunks: Let's read it / out loud / together / .  || decoy: from the report
+    B: Let's read it out loud [alone].
+    B: Let's read it out loud [slowly].
+    B: Let's read it out loud [loudly].
+   =B: Let's read it out loud [together].
+--1.2 EN: I'll write down exactly what you say.
+   KO: 말씀하신 그대로 적을게요. (14)
+   DK: 말씀하신 그대로 따라 할게요. (16)
+   DK: 말씀하신 그대로 훑어볼게요. (15)
+   tag=그대로 기록 icon=pencil | why: 'exactly'는 말한 것에 손대지 않고 있는 그대로 적는다는 뜻이에요. 'write down'은 메모처럼 받아 적는다는 말이에요.
+   chunks: I'll write down / exactly / what you say / .  || decoy: after rounds
+   =B: I'll write down [exactly] what you say.
+    B: I'll write down [briefly] what you say.
+    B: I'll write down [later] what you say.
+    B: I'll write down [roughly] what you say.
+--1.3 EN: Say the specimen name clearly, please.
+   KO: 검체 이름을 또렷하게 말씀해 주세요. (20)
+   DK: 검체 이름을 천천히 말씀해 주세요. (19)
+   DK: 검체 이름을 크게 말씀해 주세요. (18)
+   tag=또렷이 말하기 icon=mic | why: 'clearly'를 문장 끝에 두어 알아듣기 쉽게 말해 달라고 해요. 'please'가 붙어 부탁의 어조가 돼요.
+   chunks: Say / the specimen name / clearly / , please / .  || decoy: to the nurse
+    B: Say the specimen name [quickly], please.
+   =B: Say the specimen name [clearly], please.
+    B: Say the specimen name [softly], please.
+    B: Say the specimen name [slowly], please.
+--1.4 EN: I'll record exactly what you confirm.
+   KO: 확인해 주신 그대로 기록할게요. (17)
+   DK: 확인해 주신 그대로 읽어 드릴게요. (19)
+   DK: 확인해 주신 그대로 옮겨 드릴게요. (19)
+   tag=확인 내용 기록 icon=pencil | why: 'what you confirm'은 상대가 확인해 준 내용 그 자체를 가리켜요. 기록은 상대가 말한 것에 맞춘다는 뜻이에요.
+   chunks: I'll record / exactly / what you confirm / .  || decoy: if I can
+    B: I'll [change] exactly what you confirm.
+    B: I'll [erase] exactly what you confirm.
+   =B: I'll [record] exactly what you confirm.
+    B: I'll [mail] exactly what you confirm.
+--1.5 EN: We confirm the specimen together before it leaves the room.
+   KO: 검체가 방을 떠나기 전에 함께 확인해요. (22)
+   DK: 검체가 포장되기 전에 함께 확인해요. (20)
+   DK: 검체가 방을 떠나기 전에 따로 확인해요. (22)
+   tag=함께 확인 icon=handshake2 | why: 'before it leaves the room'은 방을 나가기 전이 확인의 마지막 기회라는 뜻이에요. 'We'는 혼자가 아니라 팀이 같이 한다는 말이에요.
+   chunks: We confirm / the specimen together / before it leaves / the room / .  || decoy: at the door
+    B: We confirm the specimen [separately] before it leaves the room.
+    B: We confirm the specimen [twice] before it leaves the room.
+    B: We confirm the specimen [later] before it leaves the room.
+   =B: We confirm the specimen [together] before it leaves the room.
+  ORDER ko=조직명 구두 확인 4문장 순서 tag=대화 흐름 | why: 먼저 검체 이름을 말해 달라고 청하고, 말해 주면 그대로 받아 적고, 적은 것을 다시 읽어 맞는지 보고, 방을 떠나기 전에 함께 마무리해요.
+   1. Can you say the specimen name clearly?  (검체 이름을 또렷하게 말해 주시겠어요?/요청/mic)
+   2. I'll write down exactly what you said.  (말씀하신 그대로 적을게요/기록/pencil)
+   3. Now let's read it back and check it matches.  (이제 다시 읽어서 맞는지 봐요/대조/speaker)
+   4. Once it matches, we'll both sign off.  (맞으면 둘이 같이 마무리해요/마무리/handshake2)
+   swap12: I'll write down exactly what you said. | Can you say the specimen name clearly? | Now let's read it back and check it matches. | Once it matches, we'll both sign off.
+   swap23: Can you say the specimen name clearly? | Now let's read it back and check it matches. | I'll write down exactly what you said. | Once it matches, we'll both sign off.
+   swap34: Can you say the specimen name clearly? | I'll write down exactly what you said. | Once it matches, we'll both sign off. | Now let's read it back and check it matches.
+===== 2 검체 보존액 선택
+--2.0 EN: Should this go in formalin or saline?
+   KO: 이거 포르말린에 담글까요, 생리식염수에 담글까요? (27)
+   DK: 이거 포르말린 가져올까요, 생리식염수 가져올까요? (27)
+   DK: 이거 포르말린 먼저 열까요, 생리식염수 먼저 열까요? (29)
+   tag=보존액 질문 icon=lab | why: 'or'로 두 보존액을 나란히 놓아 둘 중 어느 쪽인지 묻는 선택 질문이 돼요. 'Should'는 정해 주기를 청하는 말이에요.
+   chunks: Should this go / in formalin / or saline / ?  || decoy: Should this sit
+   =B: Should this go in formalin or [saline]?
+    B: Should this go in formalin or [water]?
+    B: Should this go in formalin or [glycerin]?
+    B: Should this go in formalin or [oil]?
+--2.1 EN: The lab wants it fresh for this test.
+   KO: 이 검사는 검사실에서 신선한 상태로 원해요. (24)
+   DK: 이 검사는 집도의가 신선한 상태로 원해요. (23)
+   DK: 이 수술은 검사실에서 신선한 상태로 원해요. (24)
+   tag=검사 조건 icon=lab | why: 'wants it fresh'는 고정하지 않은 상태 그대로를 원한다는 말이에요. 'for this test'로 이 검사에 한정된 조건이라고 밝혀요.
+   chunks: The lab wants it / fresh / for this test / .  || decoy: for this stain
+    B: The lab wants it [sealed] for this test.
+   =B: The lab wants it [fresh] for this test.
+    B: The lab wants it [labeled] for this test.
+    B: The lab wants it [weighed] for this test.
+--2.2 EN: I'll confirm the fixative with pathology.
+   KO: 병리과에 고정액을 확인할게요. (16)
+   DK: 병리과에 고정액을 보여 드릴게요. (18)
+   DK: 병리과에 고정액을 주문할게요. (16)
+   tag=고정액 확인 icon=pager | why: 'with pathology'로 물어볼 곳을 병리과로 정해요. 'I'll'은 지금 정해서 하겠다는 말이에요.
+   chunks: I'll confirm / the fixative / with pathology / .  || decoy: the weight
+    B: I'll confirm the [stain] with pathology.
+    B: I'll confirm the [cassette] with pathology.
+   =B: I'll confirm the [fixative] with pathology.
+    B: I'll confirm the [slide] with pathology.
+--2.3 EN: This specimen goes straight into formalin.
+   KO: 이 검체는 바로 포르말린에 넣어요. (19)
+   DK: 이 검체 병은 바로 포르말린에 라벨해요. (22)
+   DK: 이 용기는 바로 포르말린으로 채워요. (20)
+   tag=즉시 고정 icon=lab | why: 'straight'는 중간에 다른 단계 없이 곧바로라는 뜻이에요. 'goes into'는 안으로 들어간다는 방향이 있어요.
+   chunks: This specimen goes / straight / into formalin / .  || decoy: This basin goes
+    B: This specimen goes [gently] into formalin.
+    B: This specimen goes [fully] into formalin.
+    B: This specimen goes [partly] into formalin.
+   =B: This specimen goes [straight] into formalin.
+--2.4 EN: Let's check the requisition for the right fixative.
+   KO: 맞는 고정액인지 요청서를 확인해요. (19)
+   DK: 맞는 고정액인지 병 라벨을 확인해요. (20)
+   DK: 맞는 고정액인지 요청서를 복사해요. (19)
+   tag=요청서 확인 icon=board | why: 'for the right fixative'는 무엇을 위해 보는지를 밝혀요. 보는 곳이 요청서라고 분명히 말해요.
+   chunks: Let's check / the requisition / for the right fixative / .  || decoy: the shelf
+   =B: Let's check the [requisition] for the right fixative.
+    B: Let's check the [invoice] for the right fixative.
+    B: Let's check the [schedule] for the right fixative.
+    B: Let's check the [receipt] for the right fixative.
+--2.5 EN: I'll call pathology if we're not sure.
+   KO: 확실하지 않으면 병리과에 전화할게요. (20)
+   DK: 확실하지 않으면 병리과에 문자 보낼게요. (22)
+   DK: 확실하지 않으면 병리과에 쪽지 남길게요. (22)
+   tag=모르면 문의 icon=pager | why: 'if we're not sure'로 확신이 없을 때만이라는 조건을 달아요. 'call'은 바로 닿는 방법이라 불확실함을 오래 두지 않아요.
+   chunks: I'll call pathology / if we're / not sure / .  || decoy: I'll fax pathology
+    B: I'll call pathology if we're not [ready].
+   =B: I'll call pathology if we're not [sure].
+    B: I'll call pathology if we're not [done].
+    B: I'll call pathology if we're not [late].
+  ORDER ko=검체 보존액 선택 4문장 순서 tag=대화 흐름 | why: 먼저 어느 보존액인지 묻고, 검사실이 신선한 상태를 원한다는 조건을 밝힌 뒤, 확신이 없으니 병리과에 확인하고, 답을 받아 용기를 준비해요.
+   1. Should this specimen go in formalin or saline?  (이 검체는 포르말린에 담글까요, 생리식염수에 담글까요?/질문/lab)
+   2. The lab wants it fresh for this test.  (이 검사는 검사실에서 신선한 상태로 원해요/조건/lab)
+   3. I'm not sure what that means here, so I'll call pathology.  (여기서 그게 무슨 뜻인지 모르니 병리과에 전화할게요/문의/pager)
+   4. Once they answer, I'll label the right container for it.  (답을 받으면 맞는 용기에 라벨을 붙일게요/준비/pushpin)
+   swap12: The lab wants it fresh for this test. | Should this specimen go in formalin or saline? | I'm not sure what that means here, so I'll call pathology. | Once they answer, I'll label the right container for it.
+   swap23: Should this specimen go in formalin or saline? | I'm not sure what that means here, so I'll call pathology. | The lab wants it fresh for this test. | Once they answer, I'll label the right container for it.
+   swap34: Should this specimen go in formalin or saline? | The lab wants it fresh for this test. | Once they answer, I'll label the right container for it. | I'm not sure what that means here, so I'll call pathology.
+===== 3 검체 전달 기록
+--3.0 EN: I'm handing off two specimens now.
+   KO: 지금 검체 두 개를 인계할게요. (17)
+   DK: 지금 검체 두 개를 정리할게요. (17)
+   DK: 지금 검체 두 개를 세어 볼게요. (18)
+   tag=인계 시작 icon=handshake2 | why: 'handing off'는 책임을 다른 사람에게 넘기는 인계를 가리켜요. 'now'를 끝에 붙여 지금 일어난다고 알려요.
+   chunks: I'm handing off / two specimens / now / .  || decoy: the forms
+    B: I'm handing off two [forms] now.
+    B: I'm handing off two [gowns] now.
+   =B: I'm handing off two [specimens] now.
+    B: I'm handing off two [gloves] now.
+--3.1 EN: Can you sign that you received them?
+   KO: 받으셨다는 서명 해주시겠어요? (16)
+   DK: 보내셨다는 서명 해주시겠어요? (16)
+   DK: 받으셨다는 말씀 해주시겠어요? (16)
+   tag=수령 서명 icon=pencil | why: 'Can you … ?'로 부드럽게 서명을 부탁해요. 'that you received them'은 서명이 무엇을 증명하는지 밝혀요.
+   chunks: Can you sign / that you / received them / ?  || decoy: when you
+    B: Can you [copy] that you received them?
+    B: Can you [carry] that you received them?
+    B: Can you [mail] that you received them?
+   =B: Can you [sign] that you received them?
+--3.2 EN: I'll log the time and your name.
+   KO: 시간과 이름을 기록할게요. (14)
+   DK: 시간과 이름을 확인할게요. (14)
+   DK: 시간과 이름을 읽어 드릴게요. (16)
+   tag=시각·이름 기록 icon=pencil | why: 'I'll log'는 기록으로 남기겠다는 말이에요. 시간과 이름을 한 묶음으로 적으면 나중에 누가 언제 받았는지 찾을 수 있어요.
+   chunks: I'll log / the time / and your name / .  || decoy: the temperature
+   =B: I'll log the [time] and your name.
+    B: I'll log the [weight] and your name.
+    B: I'll log the [temperature] and your name.
+    B: I'll log the [shape] and your name.
+--3.3 EN: Let's confirm the count before you sign.
+   KO: 서명하기 전에 개수를 확인해요. (17)
+   DK: 서명하기 전에 날짜를 확인해요. (17)
+   DK: 서명하기 전에 라벨을 확인해요. (17)
+   tag=개수 확인 icon=check | why: 'before you sign'은 서명이 마지막 단계라는 순서를 알려요. 서명하기 전에 숫자부터 맞춰야 서명이 뜻을 가져요.
+   chunks: Let's confirm / the count / before you sign / .  || decoy: the date
+    B: Let's confirm the [tray] before you sign.
+   =B: Let's confirm the [count] before you sign.
+    B: Let's confirm the [bag] before you sign.
+    B: Let's confirm the [lid] before you sign.
+--3.4 EN: I'm recording who received the specimens and when.
+   KO: 누가 언제 검체를 받았는지 기록하고 있어요. (24)
+   DK: 누가 언제 검체를 보냈는지 기록하고 있어요. (24)
+   DK: 누가 언제 검체를 열었는지 기록하고 있어요. (24)
+   tag=수령 기록 icon=pencil | why: 'who … and when'은 사람과 시각 둘을 한 문장에 묶어요. 'recording'은 지금 적어 두는 중이라는 진행형이에요.
+   chunks: I'm recording / who received the specimens / and when / .  || decoy: and where
+    B: I'm recording who [opened] the specimens and when.
+    B: I'm recording who [sent] the specimens and when.
+   =B: I'm recording who [received] the specimens and when.
+    B: I'm recording who [carried] the specimens and when.
+--3.5 EN: Please write your name on the handoff log.
+   KO: 인계 기록에 이름을 적어 주세요. (18)
+   DK: 인계 기록에 이름을 불러 주세요. (18)
+   DK: 인계 기록에서 이름을 찾아 주세요. (19)
+   tag=기록 부탁 icon=board | why: 'Please'가 붙어 정중한 부탁이 돼요. 'on the handoff log'는 적을 장소를 정확히 가리켜요.
+   chunks: Please write / your name / on the handoff log / .  || decoy: in pencil
+    B: Please write your name on the [nursing] log.
+    B: Please write your name on the [discharge] log.
+    B: Please write your name on the [admission] log.
+   =B: Please write your name on the [handoff] log.
+  ORDER ko=검체 전달 기록 4문장 순서 tag=대화 흐름 | why: 인계를 알리고, 건네는 검체를 함께 세고, 개수가 맞으면 서명을 청한 뒤, 서명 옆에 시각을 적어 기록을 닫아요.
+   1. I'm handing off two specimens now.  (지금 검체 두 개를 인계할게요/알림/handshake2)
+   2. Let's count them together.  (그것들을 함께 세어봐요/계수/check)
+   3. Now that the count matches, please sign for them.  (개수가 맞으니 받으셨다고 서명해 주세요/서명/pencil)
+   4. I'll log the time beside your signature.  (서명 옆에 시각을 적을게요/기록/board)
+   swap12: Let's count them together. | I'm handing off two specimens now. | Now that the count matches, please sign for them. | I'll log the time beside your signature.
+   swap23: I'm handing off two specimens now. | Now that the count matches, please sign for them. | Let's count them together. | I'll log the time beside your signature.
+   swap34: I'm handing off two specimens now. | Let's count them together. | I'll log the time beside your signature. | Now that the count matches, please sign for them.
+===== 4 냉동절편 검체 준비
+--4.0 EN: This is for frozen section—no fixative.
+   KO: 이건 냉동절편용이라 고정액은 안 씁니다. (22)
+   DK: 이건 냉동절편용이라 용기는 따로 씁니다. (22)
+   DK: 이건 냉동절편용이라 요청서는 따로 씁니다. (23)
+   tag=용도 설명 icon=lab | why: 'for frozen section'은 이 검체가 쓰일 용도를 먼저 밝혀요. 그 뒤 'no fixative'로 그 용도 때문에 하지 않는 일을 붙여요.
+   chunks: This is / for frozen / section—no fixative / .  || decoy: This tray is
+   =B: This is for [frozen] section—no fixative.
+    B: This is for [rush] section—no fixative.
+    B: This is for [extra] section—no fixative.
+    B: This is for [final] section—no fixative.
+--4.1 EN: The surgeon is waiting on the result.
+   KO: 집도의가 결과를 기다리고 있어요. (18)
+   DK: 마취팀이 결과를 기다리고 있어요. (18)
+   DK: 순환간호사가 결과를 기다리고 있어요. (20)
+   tag=결과 대기 icon=faceWorried | why: 'is waiting on'은 지금 이 순간 기다리는 중이라는 진행형이라 급하다는 느낌을 줘요. 'the result'는 정해진 한 결과를 가리켜요.
+   chunks: The surgeon / is waiting / on the result / .  || decoy: at the table
+    B: The [assistant] is waiting on the result.
+   =B: The [surgeon] is waiting on the result.
+    B: The [porter] is waiting on the result.
+    B: The [clerk] is waiting on the result.
+--4.2 EN: I'll call the lab that it's on the way.
+   KO: 가는 중이라고 검사실에 전화할게요. (19)
+   DK: 준비됐다고 검사실에 전화할게요. (17)
+   DK: 느리다고 검사실에 전화할게요. (16)
+   tag=검사실 알림 icon=pager | why: 'that it's on the way'는 아직 도착 전이라는 상태를 미리 알려요. 'I'll call'은 바로 닿는 방법이에요.
+   chunks: I'll call / the lab / that it's / on the way / .  || decoy: if it's
+    B: I'll call the [clinic] that it's on the way.
+    B: I'll call the [pharmacy] that it's on the way.
+   =B: I'll call the [lab] that it's on the way.
+    B: I'll call the [ward] that it's on the way.
+--4.3 EN: Let's get this frozen section to the lab quickly.
+   KO: 이 냉동절편을 빨리 검사실로 보내요. (20)
+   DK: 이 냉동절편을 빨리 쟁반에 담아요. (19)
+   DK: 이 냉동절편을 빨리 카트에 실어요. (19)
+   tag=신속 이송 icon=run | why: 'Let's get'은 같이 서두르자는 제안이에요. 'quickly'를 끝에 붙여 속도가 핵심이라고 알려요.
+   chunks: Let's get this / frozen section / to the lab / quickly / .  || decoy: paraffin block
+    B: Let's get this frozen section to the lab [carefully].
+    B: Let's get this frozen section to the lab [gently].
+    B: Let's get this frozen section to the lab [neatly].
+   =B: Let's get this frozen section to the lab [quickly].
+--4.4 EN: No fixative goes on a frozen specimen.
+   KO: 냉동 검체에는 고정액을 쓰지 않아요. (20)
+   DK: 냉동 검체에는 소독액을 쓰지 않아요. (20)
+   DK: 냉동 검체에는 표백제를 쓰지 않아요. (20)
+   tag=고정액 금지 icon=shield | why: 문장 첫머리 'No'로 금지가 먼저 들려요. 'goes on'은 검체에 얹거나 묻힌다는 뜻이에요.
+   chunks: No fixative / goes on / a frozen specimen / .  || decoy: stays in
+   =B: No [fixative] goes on a frozen specimen.
+    B: No [tape] goes on a frozen specimen.
+    B: No [clamp] goes on a frozen specimen.
+    B: No [paper] goes on a frozen specimen.
+--4.5 EN: I'll tell the surgeon as soon as I hear back.
+   KO: 회신을 받는 대로 집도의에게 전할게요. (21)
+   DK: 회신을 받는 대로 집도의에게 물어볼게요. (22)
+   DK: 회신을 받는 대로 집도의를 찾을게요. (20)
+   tag=결과 전달 icon=pager | why: 'as soon as'는 그 일이 일어나는 즉시라는 시간 표현이에요. 'hear back'은 상대의 답을 듣는다는 말이에요.
+   chunks: I'll tell / the surgeon / as soon as / I hear back / .  || decoy: just before
+    B: I'll [ask] the surgeon as soon as I hear back.
+   =B: I'll [tell] the surgeon as soon as I hear back.
+    B: I'll [thank] the surgeon as soon as I hear back.
+    B: I'll [find] the surgeon as soon as I hear back.
+  ORDER ko=냉동절편 검체 준비 4문장 순서 tag=대화 흐름 | why: 냉동절편용이라고 용도를 말하고, 그래서 고정액을 넣지 않는다고 하고, 포장한 뒤 검사실에 가는 중이라 알리고, 답이 오면 집도의에게 전해요.
+   1. This specimen is for frozen section.  (이 검체는 냉동절편용이에요/용도/lab)
+   2. That means no fixative goes in the container.  (그래서 용기에 고정액을 넣지 않아요/고정액/shield)
+   3. With that done, I'll call the lab that it's on its way.  (그렇게 하고 나서 검사실에 가는 중이라고 전화할게요/알림/pager)
+   4. When they reply, I'll tell the surgeon.  (답을 주면 집도의에게 전할게요/보고/speech)
+   swap12: That means no fixative goes in the container. | This specimen is for frozen section. | With that done, I'll call the lab that it's on its way. | When they reply, I'll tell the surgeon.
+   swap23: This specimen is for frozen section. | With that done, I'll call the lab that it's on its way. | That means no fixative goes in the container. | When they reply, I'll tell the surgeon.
+   swap34: This specimen is for frozen section. | That means no fixative goes in the container. | When they reply, I'll tell the surgeon. | With that done, I'll call the lab that it's on its way.
+===== 5 검체 방향 표시
+--5.0 EN: Which suture marks the superior margin?
+   KO: 어떤 봉합사가 위쪽 절제연을 표시하나요? (22)
+   DK: 어떤 봉합사가 위쪽 절제연에 닿아 있나요? (23)
+   DK: 어떤 봉합사가 위쪽 절제연을 지나가나요? (22)
+   tag=방향 질문 icon=magnify | why: 'Which'로 여러 봉합사 중 하나를 골라 달라고 물어요. 'marks'는 어떤 쪽인지 알려 주는 표시라는 뜻이에요.
+   chunks: Which suture / marks / the superior margin / ?  || decoy: holds
+    B: Which suture marks the [inferior] margin?
+    B: Which suture marks the [medial] margin?
+   =B: Which suture marks the [superior] margin?
+    B: Which suture marks the [deep] margin?
+--5.1 EN: Let's mark the orientation clearly.
+   KO: 방향을 명확하게 표시해요. (14)
+   DK: 방향을 명확하게 확인해요. (14)
+   DK: 방향을 명확하게 설명해요. (14)
+   tag=방향 표시 icon=compass | why: 'clearly'를 끝에 붙여 누가 봐도 알아보게 표시하자는 말이에요. 'orientation'은 검체의 위·아래·옆을 가리켜요.
+   chunks: Let's mark / the orientation / clearly / .  || decoy: the table edge
+    B: Let's mark the [procedure] clearly.
+    B: Let's mark the [equipment] clearly.
+    B: Let's mark the [paperwork] clearly.
+   =B: Let's mark the [orientation] clearly.
+--5.2 EN: I'll note it on the requisition for pathology.
+   KO: 병리과용 요청서에 적어둘게요. (16)
+   DK: 병리과용 요청서에 서명해둘게요. (17)
+   DK: 병리과용 요청서를 챙겨둘게요. (16)
+   tag=요청서 기재 icon=board | why: 'for pathology'로 받을 부서를 밝혀요. 병리과가 방향을 알려면 요청서에 적힌 것을 봐야 해요.
+   chunks: I'll note it / on the requisition / for pathology / .  || decoy: I'll print it
+   =B: I'll note it on the requisition for [pathology].
+    B: I'll note it on the requisition for [radiology].
+    B: I'll note it on the requisition for [pharmacy].
+    B: I'll note it on the requisition for [billing].
+--5.3 EN: This suture marks the lateral side.
+   KO: 이 봉합사가 측면 쪽을 표시해요. (18)
+   DK: 이 봉합사가 측면 쪽에 묶여 있어요. (20)
+   DK: 이 봉합사가 측면 쪽에 놓여 있어요. (20)
+   tag=측면 표시 icon=compass | why: 'This'로 손에 든 봉합사를 가리켜요. 'lateral'은 몸 중심에서 바깥쪽이라는 방향 낱말이에요.
+   chunks: This suture / marks / the lateral side / .  || decoy: the sterile side
+    B: This suture marks the [medial] side.
+   =B: This suture marks the [lateral] side.
+    B: This suture marks the [anterior] side.
+    B: This suture marks the [distal] side.
+--5.4 EN: Let's confirm the orientation before you close.
+   KO: 닫기 전에 방향을 확인해요. (15)
+   DK: 닫기 전에 방향을 그려요. (14)
+   DK: 닫기 전에 방향을 사진 찍어요. (17)
+   tag=닫기 전 확인 icon=check | why: 'before you close'는 닫고 나면 다시 방향을 바로잡기 어렵다는 이유가 들어 있어요. "Let's"로 같이 확인하자고 해요.
+   chunks: Let's confirm / the orientation / before you close / .  || decoy: the dressing
+    B: Let's confirm the orientation before you [cut].
+    B: Let's confirm the orientation before you [leave].
+   =B: Let's confirm the orientation before you [close].
+    B: Let's confirm the orientation before you [begin].
+--5.5 EN: I'll write the margin details on the requisition.
+   KO: 요청서에 절제연 세부 사항을 적을게요. (21)
+   DK: 요청서에 절제연 세부 사항을 그릴게요. (21)
+   DK: 요청서에 절제연 세부 사항을 붙일게요. (21)
+   tag=절제연 기재 icon=pencil | why: 'margin details'는 절제연에 관한 구체적 내용이에요. 'on the requisition'에 적어야 병리과가 같은 정보를 받아요.
+   chunks: I'll write / the margin details / on the requisition / .  || decoy: the bed number
+    B: I'll write the margin [dates] on the requisition.
+    B: I'll write the margin [prices] on the requisition.
+    B: I'll write the margin [names] on the requisition.
+   =B: I'll write the margin [details] on the requisition.
+  ORDER ko=검체 방향 표시 4문장 순서 tag=대화 흐름 | why: 어느 봉합사가 위쪽인지 묻고, 그것이 위쪽이라고 답하고, 그 내용을 요청서에 적은 뒤, 닫기 전에 적은 것을 읽어 맞는지 봐요.
+   1. Which suture marks the superior margin?  (어떤 봉합사가 위쪽 절제연을 표시하나요?/질문/magnify)
+   2. The short one marks it.  (짧은 것이 그걸 표시해요/답/compass)
+   3. I'll write that on the requisition for pathology.  (그걸 병리과용 요청서에 적을게요/기재/board)
+   4. Please read it back before you close.  (닫기 전에 그걸 다시 읽어 주세요/확인/speaker)
+   swap12: The short one marks it. | Which suture marks the superior margin? | I'll write that on the requisition for pathology. | Please read it back before you close.
+   swap23: Which suture marks the superior margin? | I'll write that on the requisition for pathology. | The short one marks it. | Please read it back before you close.
+   swap34: Which suture marks the superior margin? | The short one marks it. | Please read it back before you close. | I'll write that on the requisition for pathology.
+===== 6 라벨 정보 불일치
+--6.0 EN: The name on the label doesn't match the requisition.
+   KO: 라벨에 적힌 이름이 요청서와 일치하지 않아요. (25)
+   DK: 라벨에 적힌 이름이 환자 차트와 일치하지 않아요. (27)
+   DK: 라벨에 적힌 이름이 환자 팔찌와 일치하지 않아요. (27)
+   tag=불일치 발견 icon=faceWorried | why: 'doesn't match'는 같아야 할 두 정보가 어긋났다는 발견을 알려요. 어긋난 곳이 이름이라고 짚어 말해요.
+   chunks: The name / on the label / doesn't match / the requisition / .  || decoy: is stapled to
+   =B: The [name] on the label doesn't match the requisition.
+    B: The [date] on the label doesn't match the requisition.
+    B: The [size] on the label doesn't match the requisition.
+    B: The [number] on the label doesn't match the requisition.
+--6.1 EN: Let's verify against the patient's chart.
+   KO: 환자 차트와 대조해서 확인해요. (17)
+   DK: 환자 차트를 출력해서 확인해요. (17)
+   DK: 환자 차트를 옮겨서 보관해요. (16)
+   tag=차트 대조 icon=magnify | why: 'against'는 기준이 되는 자료와 맞대어 본다는 뜻이에요. 환자 차트가 가장 믿을 만한 기준이라 그쪽에 맞춰요.
+   chunks: Let's verify / against / the patient's chart / .  || decoy: after
+    B: Let's verify against the patient's [invoice].
+   =B: Let's verify against the patient's [chart].
+    B: Let's verify against the patient's [schedule].
+    B: Let's verify against the patient's [calendar].
+--6.2 EN: I won't send it until this is corrected.
+   KO: 이게 정정될 때까지 보내지 않을게요. (20)
+   DK: 이게 정정될 때까지 서명하지 않을게요. (21)
+   DK: 이게 정정될 때까지 포장하지 않을게요. (21)
+   tag=정정 전 보류 icon=lock | why: 'until'은 그때까지는 하지 않는다는 조건이에요. 'I won't'는 단호한 거절이라 조건이 충족되기 전에는 움직이지 않는다는 뜻이에요.
+   chunks: I won't send it / until this / is corrected / .  || decoy: I'll copy it
+    B: I won't send it until this is [printed].
+    B: I won't send it until this is [filed].
+   =B: I won't send it until this is [corrected].
+    B: I won't send it until this is [stamped].
+--6.3 EN: This label doesn't match the specimen requisition.
+   KO: 이 라벨이 검체 요청서와 일치하지 않아요. (23)
+   DK: 이 라벨이 환자 차트와 일치하지 않아요. (22)
+   DK: 이 라벨이 검체 병과 일치하지 않아요. (21)
+   tag=요청서 불일치 icon=faceWorried | why: 'specimen requisition'은 검체 보내는 요청서를 정확히 가리켜요. 라벨과 그 요청서가 어긋났다고 알려요.
+   chunks: This label / doesn't match / the specimen requisition / .  || decoy: This lid
+    B: This label doesn't match the [billing] requisition.
+    B: This label doesn't match the [supply] requisition.
+    B: This label doesn't match the [pharmacy] requisition.
+   =B: This label doesn't match the [specimen] requisition.
+--6.4 EN: Let's fix the label before we send it.
+   KO: 보내기 전에 라벨을 고쳐요. (15)
+   DK: 보내기 전에 라벨을 접어요. (15)
+   DK: 보내기 전에 라벨을 세어요. (15)
+   tag=라벨 정정 icon=pencil | why: "Let's"로 같이 고치자고 해요. 'before we send it'은 보내고 나면 고치기 어렵다는 이유예요.
+   chunks: Let's fix / the label / before we send it / .  || decoy: while we wait
+   =B: Let's [fix] the label before we send it.
+    B: Let's [lift] the label before we send it.
+    B: Let's [copy] the label before we send it.
+    B: Let's [turn] the label before we send it.
+--6.5 EN: I'll correct the name and confirm it again.
+   KO: 이름을 정정하고 다시 확인할게요. (18)
+   DK: 이름을 정정하고 다시 붙일게요. (17)
+   DK: 이름을 정정하고 다시 닫을게요. (17)
+   tag=정정 후 재확인 icon=check | why: 'and confirm it again'은 고친 것이 맞는지 한 번 더 확인한다는 뜻이에요. 'again'이 다시 본다는 점을 알려요.
+   chunks: I'll correct / the name / and confirm it again / .  || decoy: and sign below
+    B: I'll [print] the name and confirm it again.
+   =B: I'll [correct] the name and confirm it again.
+    B: I'll [stamp] the name and confirm it again.
+    B: I'll [trace] the name and confirm it again.
+  ORDER ko=라벨 정보 불일치 4문장 순서 tag=대화 흐름 | why: 불일치를 알리고, 그것을 환자 차트와 대조하고, 차트에 맞게 이름을 고친 뒤, 다시 확인할 때까지 보내지 않아요.
+   1. The name on the label doesn't match the requisition.  (라벨의 이름이 요청서와 일치하지 않아요/발견/faceWorried)
+   2. Let's verify that against the patient's chart.  (그걸 환자 차트와 대조해서 확인해요/대조/magnify)
+   3. I'll correct the name to match the chart.  (차트에 맞게 이름을 정정할게요/정정/pencil)
+   4. I won't send it until we've confirmed it again.  (다시 확인하기 전에는 보내지 않을게요/보류/lock)
+   swap12: Let's verify that against the patient's chart. | The name on the label doesn't match the requisition. | I'll correct the name to match the chart. | I won't send it until we've confirmed it again.
+   swap23: The name on the label doesn't match the requisition. | I'll correct the name to match the chart. | Let's verify that against the patient's chart. | I won't send it until we've confirmed it again.
+   swap34: The name on the label doesn't match the requisition. | Let's verify that against the patient's chart. | I won't send it until we've confirmed it again. | I'll correct the name to match the chart.
+===== 7 냉동절편 신속 이송
+--7.0 EN: This frozen needs to go now.
+   KO: 이 냉동절편은 지금 바로 가야 해요. (20)
+   DK: 이 냉동절편은 지금 바로 라벨해야 해요. (22)
+   DK: 이 냉동절편은 지금 바로 등록해야 해요. (22)
+   tag=즉시 이송 icon=run | why: 'needs to go'는 선택이 아니라 꼭 해야 하는 일로 들려요. 'now'를 끝에 붙여 기다릴 수 없다고 못 박아요.
+   chunks: This frozen / needs to go / now / .  || decoy: needs a label
+    B: This frozen needs to go [alone].
+    B: This frozen needs to go [first].
+   =B: This frozen needs to go [now].
+    B: This frozen needs to go [again].
+--7.1 EN: Please run it straight to pathology.
+   KO: 곧바로 병리과로 가져다주세요. (16)
+   DK: 곧바로 병리과로 서류 가져다주세요. (19)
+   DK: 곧바로 병리과로 상자 가져다주세요. (19)
+   tag=곧바로 가져가기 icon=run | why: 'Please'가 붙어 정중하지만 분명한 요청이에요. 'straight to'는 도중에 들르지 말고 곧장이라는 뜻이에요.
+   chunks: Please run it / straight / to pathology / .  || decoy: twice
+    B: Please run it [carefully] to pathology.
+    B: Please run it [quietly] to pathology.
+    B: Please run it [gently] to pathology.
+   =B: Please run it [straight] to pathology.
+--7.2 EN: Call me the moment you have a result.
+   KO: 결과 나오는 대로 바로 전화 주세요. (20)
+   DK: 결과 나오는 대로 바로 문자 주세요. (20)
+   DK: 결과 나오는 대로 바로 메모 주세요. (20)
+   tag=결과 연락 icon=pager | why: 'the moment'는 'as soon as'와 비슷하게 그 순간 바로라는 시간 표현이에요. 'Call me'는 명령형이지만 부탁이라 가깝게 들려요.
+   chunks: Call me / the moment / you have a result / .  || decoy: the day
+   =B: Call me the moment you have a [result].
+    B: Call me the moment you have a [slide].
+    B: Call me the moment you have a [ticket].
+    B: Call me the moment you have a [memo].
+--7.3 EN: The surgeon needs this frozen result quickly.
+   KO: 집도의가 이 냉동절편 결과를 빨리 필요로 해요. (26)
+   DK: 마취팀이 이 냉동절편 결과를 빨리 필요로 해요. (26)
+   DK: 집도의가 이 냉동절편 사본을 빨리 필요로 해요. (26)
+   tag=긴급 요청 icon=faceWorried | why: 'needs'는 지금 필요한 것이라는 뜻이고 'quickly'는 속도가 중요하다는 뜻이에요. 누가 필요로 하는지 앞에 밝혀요.
+   chunks: The surgeon needs / this frozen result / quickly / .  || decoy: this chest film
+    B: The [nurse] needs this frozen result quickly.
+   =B: The [surgeon] needs this frozen result quickly.
+    B: The [porter] needs this frozen result quickly.
+    B: The [clerk] needs this frozen result quickly.
+--7.4 EN: I'll carry it to the lab myself.
+   KO: 제가 직접 검사실로 가져갈게요. (17)
+   DK: 제가 직접 검사실에 전화할게요. (17)
+   DK: 제가 직접 검사실 문을 열어둘게요. (19)
+   tag=직접 운반 icon=run | why: 'myself'는 남에게 맡기지 않고 내가 직접 한다는 뜻이에요. 'I'll'은 지금 정해서 하겠다는 말이에요.
+   chunks: I'll carry it / to the lab / myself / .  || decoy: on a cart
+    B: I'll carry it to the lab [quickly].
+    B: I'll carry it to the lab [safely].
+   =B: I'll carry it to the lab [myself].
+    B: I'll carry it to the lab [calmly].
+--7.5 EN: Let me know the result as soon as it's ready.
+   KO: 결과 나오는 대로 알려 주세요. (17)
+   DK: 결과 나오는 대로 가져다 주세요. (18)
+   DK: 결과 나오는 대로 인쇄해 주세요. (18)
+   tag=결과 전달 요청 icon=pager | why: 'Let me know'는 알려 달라는 가장 흔한 부탁이에요. 'as soon as it's ready'는 준비되는 즉시라는 뜻이에요.
+   chunks: Let me know / the result / as soon as / it's ready / .  || decoy: just once
+    B: Let me know the result as soon as it's [late].
+    B: Let me know the result as soon as it's [lost].
+    B: Let me know the result as soon as it's [wrong].
+   =B: Let me know the result as soon as it's [ready].
+  ORDER ko=냉동절편 신속 이송 4문장 순서 tag=대화 흐름 | why: 지금 가야 한다고 알리고, 그래서 곧장 병리과로 가져다 달라고 청하고, 집도의가 기다린다고 이유를 말한 뒤 결과가 나오면 바로 연락해 달라고 해요.
+   1. This frozen needs to go now.  (이 냉동절편은 지금 바로 가야 해요/알림/run)
+   2. Since it can't wait, please run it straight to pathology.  (기다릴 수 없으니 곧바로 병리과로 가져다주세요/요청/run)
+   3. The surgeon needs their answer quickly.  (집도의가 그 답을 빨리 필요로 해요/이유/faceWorried)
+   4. Call me the moment you have it.  (그러니 결과 나오는 대로 바로 전화 주세요/연락/pager)
+   swap12: Since it can't wait, please run it straight to pathology. | This frozen needs to go now. | The surgeon needs their answer quickly. | Call me the moment you have it.
+   swap23: This frozen needs to go now. | The surgeon needs their answer quickly. | Since it can't wait, please run it straight to pathology. | Call me the moment you have it.
+   swap34: This frozen needs to go now. | Since it can't wait, please run it straight to pathology. | Call me the moment you have it. | The surgeon needs their answer quickly.
+===== 8 배양 검체 무균 채취
+--8.0 EN: Let's use a fresh sterile swab for the culture.
+   KO: 배양 검체용으로 새 무균 면봉을 써요. (21)
+   DK: 배양 검체용으로 새 무균 장갑을 써요. (21)
+   DK: 배양 검체용으로 새 무균 포를 써요. (20)
+   tag=새 면봉 icon=bandage | why: 'fresh'와 'sterile'을 겹쳐 새것이고 무균이라는 두 조건을 함께 말해요. 'for the culture'는 이 면봉의 용도를 밝혀요.
+   chunks: Let's use / a fresh / sterile swab / for the culture / .  || decoy: for the wound
+   =B: Let's use a fresh [sterile] swab for the culture.
+    B: Let's use a fresh [large] swab for the culture.
+    B: Let's use a fresh [small] swab for the culture.
+    B: Let's use a fresh [short] swab for the culture.
+--8.1 EN: Avoid touching the edges of the container.
+   KO: 용기 가장자리는 만지지 마세요. (17)
+   DK: 용기 뚜껑 안쪽은 만지지 마세요. (18)
+   DK: 용기 겉면은 만지지 마세요. (15)
+   tag=가장자리 접촉 금지 icon=shield | why: 'Avoid -ing'는 'Don't'보다 부드럽게 하지 말라는 말이에요. 'edges'로 닿으면 안 되는 부분을 짚어요.
+   chunks: Avoid touching / the edges / of the container / .  || decoy: Avoid pressing
+    B: Avoid touching the [handle] of the container.
+   =B: Avoid touching the [edges] of the container.
+    B: Avoid touching the [base] of the container.
+    B: Avoid touching the [neck] of the container.
+--8.2 EN: I'll get it to micro before it dries out.
+   KO: 마르기 전에 미생물검사실로 보낼게요. (20)
+   DK: 마르기 전에 미생물검사실에 연락할게요. (21)
+   DK: 마르기 전에 미생물검사실 서식을 채울게요. (23)
+   tag=마르기 전 이송 icon=run | why: 'before it dries out'은 마르면 안 되는 이유를 말해요. 'micro'는 미생물검사실을 줄여 부르는 병원 말이에요.
+   chunks: I'll get it / to micro / before it / dries out / .  || decoy: to the cart
+    B: I'll get it to micro before it [cools] out.
+    B: I'll get it to micro before it [spills] out.
+   =B: I'll get it to micro before it [dries] out.
+    B: I'll get it to micro before it [breaks] out.
+--8.3 EN: Let's keep this swab sterile the whole time.
+   KO: 이 면봉은 내내 무균 상태로 유지해요. (21)
+   DK: 이 면봉은 내내 손 높이로 유지해요. (20)
+   DK: 이 면봉은 내내 곧게 세워 유지해요. (20)
+   tag=무균 유지 icon=shield | why: 'the whole time'은 시작부터 끝까지 한 순간도 예외가 없다는 뜻이에요. 'keep … sterile'은 무균인 채로 둔다는 말이에요.
+   chunks: Let's keep / this swab sterile / the whole time / .  || decoy: on the tray
+    B: Let's keep this [tray] sterile the whole time.
+    B: Let's keep this [cup] sterile the whole time.
+    B: Let's keep this [bottle] sterile the whole time.
+   =B: Let's keep this [swab] sterile the whole time.
+--8.4 EN: Don't touch the container's edge with your glove.
+   KO: 장갑으로 용기 가장자리를 만지지 마세요. (22)
+   DK: 장갑으로 용기 가장자리를 닦지 마세요. (21)
+   DK: 장갑으로 용기 가장자리를 두드리지 마세요. (23)
+   tag=장갑 접촉 금지 icon=shield | why: 'with your glove'는 장갑을 낀 손으로도 안 된다는 뜻이에요. 장갑이 용기 가장자리에 닿으면 균이 옮겨요.
+   chunks: Don't touch / the container's edge / with your glove / .  || decoy: with a pen
+   =B: Don't touch the container's edge with your [glove].
+    B: Don't touch the container's edge with your [towel].
+    B: Don't touch the container's edge with your [pen].
+    B: Don't touch the container's edge with your [cap].
+--8.5 EN: I'll send the culture to micro right away.
+   KO: 배양 검체를 바로 미생물검사실로 보낼게요. (23)
+   DK: 배양 검체를 바로 미생물검사실용 용기에 담을게요. (27)
+   DK: 배양 검체를 바로 미생물검사실 일지에 적을게요. (26)
+   tag=즉시 발송 icon=run | why: 'right away'는 미루지 않고 곧바로라는 뜻이에요. 배양 검체는 시간이 지나면 결과가 달라질 수 있어요.
+   chunks: I'll send / the culture / to micro / right away / .  || decoy: the report
+    B: I'll send the [stain] to micro right away.
+   =B: I'll send the [culture] to micro right away.
+    B: I'll send the [report] to micro right away.
+    B: I'll send the [dressing] to micro right away.
+  ORDER ko=배양 검체 무균 채취 4문장 순서 tag=대화 흐름 | why: 새 무균 면봉을 고르고, 용기에 넣을 때 가장자리를 피하고, 넣고 나면 마르기 전에 미생물검사실로 보내고, 나간 시각을 남겨요.
+   1. Let's use a fresh sterile swab for the culture.  (배양 검체용으로 새 무균 면봉을 써요/준비/bandage)
+   2. While you place it, keep it off the container's edge.  (넣는 동안 용기 가장자리에 닿지 않게 해요/취급/shield)
+   3. Once it's in, I'll get it to micro before it dries out.  (들어가면 마르기 전에 미생물검사실로 보낼게요/이송/run)
+   4. After that, I'll log the time it left.  (그 뒤에 나간 시각을 기록할게요/기록/pencil)
+   swap12: While you place it, keep it off the container's edge. | Let's use a fresh sterile swab for the culture. | Once it's in, I'll get it to micro before it dries out. | After that, I'll log the time it left.
+   swap23: Let's use a fresh sterile swab for the culture. | Once it's in, I'll get it to micro before it dries out. | While you place it, keep it off the container's edge. | After that, I'll log the time it left.
+   swap34: Let's use a fresh sterile swab for the culture. | While you place it, keep it off the container's edge. | After that, I'll log the time it left. | Once it's in, I'll get it to micro before it dries out.
+===== 9 다수 검체 혼동 방지
+--9.0 EN: Let's label each specimen one at a time.
+   KO: 검체를 하나씩 순서대로 라벨해요. (18)
+   DK: 검체를 하나씩 순서대로 정렬해요. (18)
+   DK: 검체를 하나씩 순서대로 꺼내요. (17)
+   tag=하나씩 라벨 icon=pushpin | why: 'one at a time'은 한꺼번에 하지 않고 차례로 한다는 뜻이에요. 'each'로 하나도 빼지 않는다는 점을 말해요.
+   chunks: Let's label / each specimen / one at a time / .  || decoy: every tray
+    B: Let's [count] each specimen one at a time.
+    B: Let's [sort] each specimen one at a time.
+   =B: Let's [label] each specimen one at a time.
+    B: Let's [pack] each specimen one at a time.
+--9.1 EN: This is specimen A, left; specimen B, right.
+   KO: 이건 검체 A, 왼쪽이고, 검체 B는 오른쪽이에요. (28)
+   DK: 이건 검체 A, 왼쪽이고, 검체 B는 다음에 나와요. (29)
+   DK: 이건 검체 A, 왼쪽이고, 검체 B는 따로 둘게요. (28)
+   tag=A·B 구분 icon=compass | why: A와 B 두 이름에 왼쪽·오른쪽을 짝지어 어느 것이 어느 쪽인지 한 문장에 못 박아요. 세미콜론이 두 묶음을 가르는 구실을 해요.
+   chunks: This is / specimen A, left; specimen B / , right / .  || decoy: , weighed
+    B: This is specimen A, [upper]; specimen B, right.
+    B: This is specimen A, [lower]; specimen B, right.
+    B: This is specimen A, [outer]; specimen B, right.
+   =B: This is specimen A, [left]; specimen B, right.
+--9.2 EN: I'll confirm each before the next comes off.
+   KO: 다음 것이 나오기 전에 각각 확인할게요. (22)
+   DK: 다음 것이 나오기 전에 각각 옮길게요. (21)
+   DK: 다음 것이 나오기 전에 각각 세어 볼게요. (23)
+   tag=각각 확인 icon=check | why: 'each'로 하나씩 빠짐없이 확인한다는 뜻이에요. 'before the next comes off'는 다음 것이 나오면 헷갈리기 쉬우니 그 전에 끝낸다는 이유예요.
+   chunks: I'll confirm each / before the next / comes off / .  || decoy: I'll weigh each
+   =B: I'll confirm each before the [next] comes off.
+    B: I'll confirm each before the [last] comes off.
+    B: I'll confirm each before the [final] comes off.
+    B: I'll confirm each before the [other] comes off.
+--9.3 EN: Let's not mix up these two specimens.
+   KO: 이 두 검체를 헷갈리지 않도록 해요. (20)
+   DK: 이 두 검체를 서로 닿지 않도록 해요. (21)
+   DK: 이 두 검체를 흔들지 않도록 해요. (19)
+   tag=혼동 방지 icon=shield | why: "Let's not"으로 같이 하지 말자고 해요. 'mix up'은 서로 뒤바뀌어 헷갈린다는 뜻이에요.
+   chunks: Let's not mix up / these two / specimens / .  || decoy: the next
+    B: Let's not [pick] up these two specimens.
+   =B: Let's not [mix] up these two specimens.
+    B: Let's not [line] up these two specimens.
+    B: Let's not [stack] up these two specimens.
+--9.4 EN: I'll label this one before the next comes off the field.
+   KO: 다음 것이 수술 시야에서 나오기 전에 이걸 먼저 라벨할게요. (33)
+   DK: 다음 것이 수술 시야에서 나오기 전에 이걸 먼저 사진 찍을게요. (35)
+   DK: 다음 것이 수술 시야에서 나오기 전에 이걸 먼저 옆으로 옮길게요. (36)
+   tag=먼저 라벨 icon=pushpin | why: 'this one'은 지금 손에 든 것을 가리켜요. 'before the next comes off'로 다음 것이 나오기 전에 끝낸다는 순서를 말해요.
+   chunks: I'll label this one / before the next / comes off / the field / .  || decoy: the drape
+    B: I'll label this one before the next comes off the [table].
+    B: I'll label this one before the next comes off the [stand].
+   =B: I'll label this one before the next comes off the [field].
+    B: I'll label this one before the next comes off the [cart].
+--9.5 EN: Each container gets its own label right away.
+   KO: 각 용기는 바로 자기 라벨을 받아요. (20)
+   DK: 각 용기는 바로 자기 뚜껑을 받아요. (20)
+   DK: 각 용기는 바로 자기 쟁반을 받아요. (20)
+   tag=즉시 라벨 icon=pushpin | why: 'its own'은 용기마다 따로 하나씩이라는 뜻이에요. 'right away'로 받자마자 붙인다는 점을 더해요.
+   chunks: Each container gets / its own label / right away / .  || decoy: with a lid
+    B: Each container gets its [new] label right away.
+    B: Each container gets its [extra] label right away.
+    B: Each container gets its [spare] label right away.
+   =B: Each container gets its [own] label right away.
+  ORDER ko=다수 검체 혼동 방지 4문장 순서 tag=대화 흐름 | why: 헷갈리지 말자는 목표를 먼저 말하고, 지금 것이 무엇인지 밝힌 뒤 그대로 라벨하고, 다음 것이 나오기 전에 그 라벨을 함께 확인해요.
+   1. Let's not mix up these two specimens.  (이 두 검체를 헷갈리지 않도록 해요/목표/shield)
+   2. This one is specimen A, left; the next is specimen B, right.  (이건 검체 A 왼쪽, 다음은 검체 B 오른쪽이에요/구분/compass)
+   3. So I'll label it that way before the next comes off the field.  (그러니 그대로 다음 것이 나오기 전에 라벨할게요/라벨/pushpin)
+   4. I'll confirm that label with you before the next one comes off.  (다음 것이 나오기 전에 그 라벨을 함께 확인할게요/확인/check)
+   swap12: This one is specimen A, left; the next is specimen B, right. | Let's not mix up these two specimens. | So I'll label it that way before the next comes off the field. | I'll confirm that label with you before the next one comes off.
+   swap23: Let's not mix up these two specimens. | So I'll label it that way before the next comes off the field. | This one is specimen A, left; the next is specimen B, right. | I'll confirm that label with you before the next one comes off.
+   swap34: Let's not mix up these two specimens. | This one is specimen A, left; the next is specimen B, right. | I'll confirm that label with you before the next one comes off. | So I'll label it that way before the next comes off the field.
+===== 10 margin 방향 보존
+--10.0 EN: The stitch marks the lateral margin.
+   KO: 이 바늘땀이 측면 절제연을 표시해요. (20)
+   DK: 이 바늘땀이 측면 절제연에 닿아 있어요. (22)
+   DK: 이 바늘땀이 측면 절제연 가까이 있어요. (22)
+   tag=절제연 표시 icon=compass | why: 'marks'는 어느 쪽인지 알려 주는 표시라는 뜻이에요. 'lateral'은 몸 중심에서 바깥쪽이라는 방향 낱말이에요.
+   chunks: The stitch / marks / the lateral margin / .  || decoy: pulls
+   =B: The [stitch] marks the lateral margin.
+    B: The [staple] marks the lateral margin.
+    B: The [clip] marks the lateral margin.
+    B: The [clamp] marks the lateral margin.
+--10.1 EN: Let's keep the orientation sutures in place.
+   KO: 방향 봉합사는 그대로 유지해요. (17)
+   DK: 방향 봉합사는 그대로 세어요. (16)
+   DK: 방향 봉합사는 그대로 번호 매겨요. (19)
+   tag=봉합사 유지 icon=shield | why: 'in place'는 있는 자리에서 움직이지 않는다는 뜻이에요. 방향 봉합사는 표지라서 위치가 바뀌면 의미가 없어져요.
+   chunks: Let's keep / the orientation sutures / in place / .  || decoy: in a row
+    B: Let's keep the [absorbable] sutures in place.
+   =B: Let's keep the [orientation] sutures in place.
+    B: Let's keep the [permanent] sutures in place.
+    B: Let's keep the [temporary] sutures in place.
+--10.2 EN: I'll document the margins on the requisition.
+   KO: 요청서에 절제연을 문서화할게요. (17)
+   DK: 요청서에 절제연을 스캔할게요. (16)
+   DK: 요청서에 절제연을 복사할게요. (16)
+   tag=절제연 기재 icon=pencil | why: 'document'는 기록으로 남긴다는 격식 있는 동사예요. 'on the requisition'으로 병리과가 보는 서류에 남겨요.
+   chunks: I'll document / the margins / on the requisition / .  || decoy: the weights
+    B: I'll document the [prices] on the requisition.
+    B: I'll document the [colors] on the requisition.
+   =B: I'll document the [margins] on the requisition.
+    B: I'll document the [codes] on the requisition.
+--10.3 EN: Don't cut the orientation suture by mistake.
+   KO: 실수로 방향 봉합사를 자르지 마세요. (20)
+   DK: 실수로 방향 봉합사를 당기지 마세요. (20)
+   DK: 실수로 방향 봉합사를 풀지 마세요. (19)
+   tag=봉합사 보호 icon=shield | why: "Don't"는 금지를 분명히 해요. 'by mistake'는 일부러가 아니라 실수로라도 안 된다는 점을 짚어요.
+   chunks: Don't cut / the orientation suture / by mistake / .  || decoy: at the knot
+    B: Don't [move] the orientation suture by mistake.
+    B: Don't [dye] the orientation suture by mistake.
+    B: Don't [tie] the orientation suture by mistake.
+   =B: Don't [cut] the orientation suture by mistake.
+--10.4 EN: I'll note which stitch marks which margin.
+   KO: 어떤 바늘땀이 어떤 절제연을 표시하는지 적어둘게요. (28)
+   DK: 어떤 바늘땀이 어떤 절제연을 표시하는지 그려둘게요. (28)
+   DK: 어떤 바늘땀이 어떤 절제연을 표시하는지 확인할게요. (28)
+   tag=대응 기록 icon=pencil | why: 'which … which'가 짝을 이뤄 바늘땀과 절제연의 대응을 말해요. 'note'는 간단히 적어 둔다는 뜻이에요.
+   chunks: I'll note / which stitch / marks which margin / .  || decoy: belongs to which tray
+   =B: I'll [note] which stitch marks which margin.
+    B: I'll [ask] which stitch marks which margin.
+    B: I'll [read] which stitch marks which margin.
+    B: I'll [study] which stitch marks which margin.
+--10.5 EN: Let's write this on the requisition clearly.
+   KO: 요청서에 이걸 명확하게 적어요. (17)
+   DK: 요청서에 이걸 명확하게 붙여요. (17)
+   DK: 요청서에 이걸 명확하게 말해요. (17)
+   tag=명확한 기재 icon=pencil | why: 'clearly'는 읽는 사람이 헷갈리지 않게 분명히라는 뜻이에요. 'this'는 앞에서 말한 내용을 가리켜요.
+   chunks: Let's write this / on the requisition / clearly / .  || decoy: Let's staple this
+    B: Let's write this on the requisition [neatly].
+   =B: Let's write this on the requisition [clearly].
+    B: Let's write this on the requisition [loosely].
+    B: Let's write this on the requisition [lightly].
+  ORDER ko=margin 방향 보존 4문장 순서 tag=대화 흐름 | why: 바늘땀이 어느 절제연을 표시하는지 밝히고, 그래서 봉합사를 그대로 두고, 대응을 요청서에 적은 뒤 적은 것들을 실수로 자르지 않아요.
+   1. The stitch marks the lateral margin.  (그 바늘땀이 측면 절제연을 표시해요/표시/compass)
+   2. That's why we keep the orientation sutures in place.  (그래서 방향 봉합사를 그대로 둬요/유지/shield)
+   3. I'll note which stitch marks which margin on the requisition.  (어떤 바늘땀이 어떤 절제연인지 요청서에 적을게요/기재/pencil)
+   4. Please don't cut any of the ones I just listed by mistake.  (방금 적은 것들은 실수로 자르지 마세요/주의/shield)
+   swap12: That's why we keep the orientation sutures in place. | The stitch marks the lateral margin. | I'll note which stitch marks which margin on the requisition. | Please don't cut any of the ones I just listed by mistake.
+   swap23: The stitch marks the lateral margin. | I'll note which stitch marks which margin on the requisition. | That's why we keep the orientation sutures in place. | Please don't cut any of the ones I just listed by mistake.
+   swap34: The stitch marks the lateral margin. | That's why we keep the orientation sutures in place. | Please don't cut any of the ones I just listed by mistake. | I'll note which stitch marks which margin on the requisition.
+===== 11 검체 크기·개수 기록
+--11.0 EN: How many pieces are we sending?
+   KO: 몇 조각을 보내는 건가요? (14)
+   DK: 몇 조각을 받는 건가요? (13)
+   DK: 몇 조각을 남기는 건가요? (14)
+   tag=개수 질문 icon=magnify | why: 'How many'는 셀 수 있는 것의 수를 묻는 의문사예요. 'are we sending'은 지금 함께 보내는 것을 가리켜요.
+   chunks: How many pieces / are we / sending / ?  || decoy: can they
+    B: How many [slides] are we sending?
+    B: How many [blocks] are we sending?
+   =B: How many [pieces] are we sending?
+    B: How many [tubes] are we sending?
+--11.1 EN: Let's confirm three fragments total.
+   KO: 총 세 조각인지 확인해요. (14)
+   DK: 총 세 조각인지 물어봐요. (14)
+   DK: 총 세 조각인지 적어 봐요. (15)
+   tag=총 개수 확인 icon=check | why: 'total'을 끝에 붙여 전부 합쳐서 몇 개인지를 말해요. "Let's confirm"은 같이 맞춰 보자는 제안이에요.
+   chunks: Let's confirm / three fragments / total / .  || decoy: in jars
+    B: Let's confirm three [containers] total.
+    B: Let's confirm three [instruments] total.
+    B: Let's confirm three [dressings] total.
+   =B: Let's confirm three [fragments] total.
+--11.2 EN: I'll record the size and count on the form.
+   KO: 서식에 크기와 개수를 기록할게요. (18)
+   DK: 서식에 크기와 무게를 기록할게요. (18)
+   DK: 서식에 크기와 모양을 기록할게요. (18)
+   tag=크기·개수 기재 icon=pencil | why: 'size and count'를 한 묶음으로 적어 병리과가 받은 것과 맞춰 볼 수 있어요. 'on the form'은 적는 곳을 정해요.
+   chunks: I'll record / the size / and count / on the form / .  || decoy: in the margin
+   =B: I'll record the size and [count] on the form.
+    B: I'll record the size and [weight] on the form.
+    B: I'll record the size and [color] on the form.
+    B: I'll record the size and [shape] on the form.
+--11.3 EN: Let's count the pieces before I write them down.
+   KO: 적기 전에 조각 수를 세어요. (16)
+   DK: 적기 전에 조각 크기를 재어요. (17)
+   DK: 적기 전에 조각 무게를 달아요. (17)
+   tag=세고 기록 icon=check | why: 'before I write them down'은 적기 전에 세어야 숫자가 틀리지 않는다는 이유예요. 'pieces'는 낱개를 가리켜요.
+   chunks: Let's count / the pieces / before I write / them down / .  || decoy: the bags
+    B: Let's [measure] the pieces before I write them down.
+   =B: Let's [count] the pieces before I write them down.
+    B: Let's [photograph] the pieces before I write them down.
+    B: Let's [scan] the pieces before I write them down.
+--11.4 EN: I'll confirm the size of each fragment.
+   KO: 각 조각의 크기를 확인할게요. (16)
+   DK: 각 조각의 무게를 확인할게요. (16)
+   DK: 각 조각의 색깔을 확인할게요. (16)
+   tag=조각별 크기 icon=magnify | why: 'each fragment'는 하나하나 빠짐없이라는 뜻이에요. 크기는 조각마다 다를 수 있어서 따로 봐야 해요.
+   chunks: I'll confirm / the size / of each fragment / .  || decoy: every bag
+    B: I'll confirm the [weight] of each fragment.
+    B: I'll confirm the [shape] of each fragment.
+   =B: I'll confirm the [size] of each fragment.
+    B: I'll confirm the [texture] of each fragment.
+--11.5 EN: The total count is documented on the form.
+   KO: 총 개수는 서식에 문서화돼 있어요. (19)
+   DK: 총 무게는 서식에 문서화돼 있어요. (19)
+   DK: 총 시간은 서식에 문서화돼 있어요. (19)
+   tag=서식 기재 상태 icon=board | why: 'is documented'는 수동태라 누가 적었는지보다 기록이 남아 있다는 사실을 말해요. 'on the form'이 적힌 곳이에요.
+   chunks: The total count / is documented / on the form / .  || decoy: is printed
+    B: The total count is [printed] on the form.
+    B: The total count is [folded] on the form.
+    B: The total count is [stapled] on the form.
+   =B: The total count is [documented] on the form.
+  ORDER ko=검체 크기·개수 기록 4문장 순서 tag=대화 흐름 | why: 몇 조각인지 묻고, 함께 센 뒤 총 개수를 말해 확인을 받고, 확인된 개수와 크기를 서식에 적어요.
+   1. How many pieces are we sending?  (몇 조각을 보내는 건가요?/질문/magnify)
+   2. Let's count them before I write anything down.  (적기 전에 그것들을 세어요/계수/check)
+   3. Counting them, I get three fragments in total.  (세어 보니 총 세 조각이에요/결과/check)
+   4. Good, I'll record that count and each size on the form.  (좋아요, 그 개수와 각 크기를 서식에 적을게요/기록/pencil)
+   swap12: Let's count them before I write anything down. | How many pieces are we sending? | Counting them, I get three fragments in total. | Good, I'll record that count and each size on the form.
+   swap23: How many pieces are we sending? | Counting them, I get three fragments in total. | Let's count them before I write anything down. | Good, I'll record that count and each size on the form.
+   swap34: How many pieces are we sending? | Let's count them before I write anything down. | Good, I'll record that count and each size on the form. | Counting them, I get three fragments in total.
+===== 12 특수 검체 취급 지침
+--12.0 EN: This specimen needs special handling.
+   KO: 이 검체는 특수 취급이 필요해요. (18)
+   DK: 이 검체는 특수 포장이 필요해요. (18)
+   DK: 이 검체는 특수 서식이 필요해요. (18)
+   tag=특수 취급 icon=lab | why: 'needs'는 반드시 필요하다는 뜻이고 'special handling'은 보통과 다른 취급이라는 뜻이에요. 'This specimen'으로 어느 것인지 정해요.
+   chunks: This specimen / needs / special handling / .  || decoy: extra gloves
+   =B: This specimen needs [special] handling.
+    B: This specimen needs [gentle] handling.
+    B: This specimen needs [rapid] handling.
+    B: This specimen needs [daily] handling.
+--12.1 EN: Does it go on ice or in a specific media?
+   KO: 이거 얼음에 놓나요, 아니면 특정 배지에 넣나요? (27)
+   DK: 이거 얼음에 놓나요, 아니면 특정 용기에 넣나요? (27)
+   DK: 이거 얼음에 놓나요, 아니면 특정 봉투에 넣나요? (27)
+   tag=보존 방법 질문 icon=lab | why: 'on ice'와 'in a specific media'를 'or'로 이어 어느 쪽인지 묻는 질문이에요. 'Does it go'는 어떻게 보내는지를 물어요.
+   chunks: Does it go / on ice / or in / a specific media / ?  || decoy: on a tray
+    B: Does it go on ice or in a specific [bag]?
+   =B: Does it go on ice or in a specific [media]?
+    B: Does it go on ice or in a specific [jar]?
+    B: Does it go on ice or in a specific [box]?
+--12.2 EN: I'll confirm the protocol with the lab.
+   KO: 검사실에 지침을 확인할게요. (15)
+   DK: 검사실에 지침을 보낼게요. (14)
+   DK: 검사실에 지침을 건넬게요. (14)
+   tag=지침 확인 icon=pager | why: 'the protocol'은 정해진 절차를 가리켜요. 'with the lab'으로 확인할 곳을 검사실로 정해요.
+   chunks: I'll confirm / the protocol / with the lab / .  || decoy: for the day
+    B: I'll confirm the [price] with the lab.
+    B: I'll confirm the [budget] with the lab.
+   =B: I'll confirm the [protocol] with the lab.
+    B: I'll confirm the [roster] with the lab.
+--12.3 EN: Let's check the protocol before we handle this.
+   KO: 이걸 취급하기 전에 지침을 확인해요. (20)
+   DK: 이걸 취급하기 전에 지침을 출력해요. (20)
+   DK: 이걸 취급하기 전에 지침을 외워요. (19)
+   tag=취급 전 확인 icon=check | why: 'before we handle this'는 만지고 나면 되돌릴 수 없으니 먼저 확인한다는 이유예요. "Let's check"는 같이 해 보자는 제안이에요.
+   chunks: Let's check / the protocol / before we handle this / .  || decoy: the roster
+    B: Let's check the protocol before we [pack] this.
+    B: Let's check the protocol before we [open] this.
+    B: Let's check the protocol before we [tilt] this.
+   =B: Let's check the protocol before we [handle] this.
+--12.4 EN: This specimen goes on ice, not in formalin.
+   KO: 이 검체는 포르말린이 아니라 얼음에 놓아요. (24)
+   DK: 이 검체는 포르말린이 아니라 검사실로 보내요. (25)
+   DK: 이 검체는 포르말린이 아니라 얼음이라고 적어요. (26)
+   tag=얼음 지시 icon=shield | why: 'goes on ice'와 'not in formalin'을 맞세워 어느 쪽인지 분명히 해요. 쉼표 뒤 'not'이 아닌 쪽을 못 박아요.
+   chunks: This specimen goes / on ice / , not in formalin / .  || decoy: on a cart
+   =B: This specimen goes on ice, not in [formalin].
+    B: This specimen goes on ice, not in [saline].
+    B: This specimen goes on ice, not in [water].
+    B: This specimen goes on ice, not in [alcohol].
+--12.5 EN: I'll call the lab to confirm special handling.
+   KO: 특수 취급을 확인하러 검사실에 전화할게요. (23)
+   DK: 특수 취급을 알리러 검사실에 전화할게요. (22)
+   DK: 특수 취급을 설명하러 검사실에 전화할게요. (23)
+   tag=전화 이유 icon=pager | why: 'to confirm'은 전화하는 목적을 밝혀요. 'special handling'은 앞에서 말한 특수 취급을 다시 가리켜요.
+   chunks: I'll call the lab / to confirm / special handling / .  || decoy: the schedule
+    B: I'll call the lab to [explain] special handling.
+   =B: I'll call the lab to [confirm] special handling.
+    B: I'll call the lab to [change] special handling.
+    B: I'll call the lab to [order] special handling.
+  ORDER ko=특수 검체 취급 지침 4문장 순서 tag=대화 흐름 | why: 특수 취급이 필요하다고 알리고, 어떤 방법인지 묻고, 그 답을 검사실에 확인하고, 답을 받아 그대로 포장해요.
+   1. This specimen needs special handling.  (이 검체는 특수 취급이 필요해요/알림/lab)
+   2. Does it go on ice or in a specific media?  (이거 얼음에 놓나요, 아니면 특정 배지에 넣나요?/질문/lab)
+   3. I'll call the lab to confirm which one.  (어느 쪽인지 검사실에 전화해서 확인할게요/확인/pager)
+   4. Once they answer, we'll pack it exactly that way.  (답을 받으면 정확히 그대로 포장해요/실행/check)
+   swap12: Does it go on ice or in a specific media? | This specimen needs special handling. | I'll call the lab to confirm which one. | Once they answer, we'll pack it exactly that way.
+   swap23: This specimen needs special handling. | I'll call the lab to confirm which one. | Does it go on ice or in a specific media? | Once they answer, we'll pack it exactly that way.
+   swap34: This specimen needs special handling. | Does it go on ice or in a specific media? | Once they answer, we'll pack it exactly that way. | I'll call the lab to confirm which one.
+===== 13 검체 손상 방지 이송
+--13.0 EN: Let's not compress the specimen.
+   KO: 검체를 압박하지 말아요. (13)
+   DK: 검체를 접지 말아요. (11)
+   DK: 검체를 흔들지 말아요. (12)
+   tag=압박 금지 icon=shield | why: "Let's not"은 같이 하지 말자는 부드러운 금지예요. 'compress'는 눌러서 모양을 상하게 한다는 뜻이에요.
+   chunks: Let's not / compress / the specimen / .  || decoy: the tray
+    B: Let's not [shake] the specimen.
+    B: Let's not [drop] the specimen.
+   =B: Let's not [compress] the specimen.
+    B: Let's not [twist] the specimen.
+--13.1 EN: Place it flat so it doesn't fold.
+   KO: 접히지 않게 평평하게 놓아요. (16)
+   DK: 젖지 않게 평평하게 놓아요. (15)
+   DK: 미끄러지지 않게 평평하게 놓아요. (18)
+   tag=평평하게 놓기 icon=shield | why: 'so it doesn't fold'는 평평하게 놓는 이유를 뒤에 붙여요. 'flat'은 펴진 채로라는 뜻이에요.
+   chunks: Place it flat / so it / doesn't fold / .  || decoy: when you
+    B: Place it [upright] so it doesn't fold.
+    B: Place it [apart] so it doesn't fold.
+    B: Place it [aside] so it doesn't fold.
+   =B: Place it [flat] so it doesn't fold.
+--13.2 EN: Carry it steady to pathology.
+   KO: 병리과까지 안정적으로 옮겨요. (16)
+   DK: 병리과까지 조용히 옮겨요. (14)
+   DK: 병리과까지 복도로 옮겨요. (14)
+   tag=안정적 운반 icon=run | why: 'steady'는 흔들리지 않고 고르게라는 뜻이에요. 'to pathology'로 가는 목적지가 정해져요.
+   chunks: Carry it / steady / to pathology / .  || decoy: in a bag
+   =B: Carry it [steady] to pathology.
+    B: Carry it [fast] to pathology.
+    B: Carry it [high] to pathology.
+    B: Carry it [low] to pathology.
+--13.3 EN: Let's choose a container that won't crush this.
+   KO: 이걸 으스러뜨리지 않을 용기를 골라요. (21)
+   DK: 이걸 쏟아지지 않을 용기를 골라요. (19)
+   DK: 이걸 뒤집히지 않을 용기를 골라요. (19)
+   tag=용기 선택 icon=shield | why: 'that won't crush this'는 어떤 용기를 고를지 기준을 밝혀요. 용기가 단단하고 넉넉해야 눌리지 않아요.
+   chunks: Let's choose / a container / that won't crush this / .  || decoy: a cooler
+    B: Let's choose a container that won't [leak] this.
+   =B: Let's choose a container that won't [crush] this.
+    B: Let's choose a container that won't [tip] this.
+    B: Let's choose a container that won't [spill] this.
+--13.4 EN: Don't fold the specimen when you place it in the container.
+   KO: 용기에 넣을 때 검체가 접히지 않게 하세요. (24)
+   DK: 용기에 넣을 때 검체가 떨어지지 않게 하세요. (25)
+   DK: 용기에 넣을 때 검체가 흔들리지 않게 하세요. (25)
+   tag=접힘 방지 icon=shield | why: "Don't fold"는 금지가 앞에 와서 안 되는 행동이 먼저 들려요. 'when you place it'은 넣는 그 순간을 가리켜요.
+   chunks: Don't fold / the specimen / when you place it / in the container / .  || decoy: with the tweezers
+    B: Don't [shake] the specimen when you place it in the container.
+    B: Don't [drop] the specimen when you place it in the container.
+   =B: Don't [fold] the specimen when you place it in the container.
+    B: Don't [tilt] the specimen when you place it in the container.
+--13.5 EN: I'll carry this flat and steady the whole way.
+   KO: 가는 내내 평평하고 안정적으로 옮길게요. (22)
+   DK: 가는 내내 평평하고 조용히 옮길게요. (20)
+   DK: 가는 내내 평평하고 두 손으로 옮길게요. (22)
+   tag=끝까지 평평하게 icon=run | why: 'the whole way'는 출발부터 도착까지 내내라는 뜻이에요. 'flat and steady'는 두 조건을 한꺼번에 말해요.
+   chunks: I'll carry this / flat / and steady / the whole way / .  || decoy: and fast
+    B: I'll carry this [upright] and steady the whole way.
+    B: I'll carry this [loose] and steady the whole way.
+    B: I'll carry this [sideways] and steady the whole way.
+   =B: I'll carry this [flat] and steady the whole way.
+  ORDER ko=검체 손상 방지 이송 4문장 순서 tag=대화 흐름 | why: 누르지 말자는 원칙을 말하고, 그래서 안 눌리는 용기를 고르고, 그 안에 평평하게 놓고, 같은 모양 그대로 병리과까지 옮겨요.
+   1. Let's not compress the specimen.  (검체를 압박하지 말아요/원칙/shield)
+   2. So choose a container that won't crush it.  (그러니 그걸 으스러뜨리지 않을 용기를 골라요/용기/shield)
+   3. Place it flat in there so it doesn't fold.  (그 안에 접히지 않게 평평하게 놓아요/배치/shield)
+   4. I'll carry it to pathology that way.  (그 상태로 병리과까지 옮길게요/이송/run)
+   swap12: So choose a container that won't crush it. | Let's not compress the specimen. | Place it flat in there so it doesn't fold. | I'll carry it to pathology that way.
+   swap23: Let's not compress the specimen. | Place it flat in there so it doesn't fold. | So choose a container that won't crush it. | I'll carry it to pathology that way.
+   swap34: Let's not compress the specimen. | So choose a container that won't crush it. | I'll carry it to pathology that way. | Place it flat in there so it doesn't fold.
+===== 14 병리 요청서 일치
+--14.0 EN: Does the requisition match the specimen label?
+   KO: 요청서가 검체 라벨과 일치하나요? (18)
+   DK: 요청서가 검체 상자와 일치하나요? (18)
+   DK: 요청서가 검체 크기와 일치하나요? (18)
+   tag=일치 질문 icon=magnify | why: 'Does … match …?'는 두 서류가 같은지 묻는 기본 형태예요. 'the specimen label'은 검체 용기에 붙은 라벨을 가리켜요.
+   chunks: Does the requisition / match / the specimen label / ?  || decoy: mention
+   =B: Does the [requisition] match the specimen label?
+    B: Does the [invoice] match the specimen label?
+    B: Does the [receipt] match the specimen label?
+    B: Does the [brochure] match the specimen label?
+--14.1 EN: Let's confirm the site and side.
+   KO: 부위와 쪽을 확인해요. (12)
+   DK: 부위와 쪽을 찾아요. (11)
+   DK: 부위와 쪽을 보여 줘요. (13)
+   tag=부위·쪽 확인 icon=check | why: 'site'는 몸의 어느 부위인지, 'side'는 왼쪽·오른쪽을 가리켜요. 둘을 한 쌍으로 말해야 수술 부위가 확실해져요.
+   chunks: Let's confirm / the site / and side / .  || decoy: and chart
+    B: Let's confirm the site and [date].
+   =B: Let's confirm the site and [side].
+    B: Let's confirm the site and [name].
+    B: Let's confirm the site and [type].
+--14.2 EN: I'll fix any discrepancy before sending.
+   KO: 보내기 전에 불일치를 바로잡을게요. (19)
+   DK: 보내기 전에 불일치를 표시할게요. (18)
+   DK: 보내기 전에 불일치를 모아 볼게요. (19)
+   tag=불일치 정정 icon=pencil | why: 'any'를 붙여 어떤 불일치든 예외 없이 고친다는 뜻이 돼요. 'before sending'은 보내기 전이 고칠 마지막 기회라는 뜻이에요.
+   chunks: I'll fix / any discrepancy / before sending / .  || decoy: any smudge
+    B: I'll fix any [signature] before sending.
+    B: I'll fix any [appointment] before sending.
+   =B: I'll fix any [discrepancy] before sending.
+    B: I'll fix any [shipment] before sending.
+--14.3 EN: This requisition doesn't match the label.
+   KO: 이 요청서가 라벨과 일치하지 않아요. (20)
+   DK: 이 요청서가 환자 차트와 일치하지 않아요. (23)
+   DK: 이 요청서가 검체 가방과 일치하지 않아요. (23)
+   tag=불일치 발견 icon=faceWorried | why: 'doesn't match'는 같아야 할 두 가지가 어긋났다는 발견이에요. 어느 서류와 어느 라벨인지 'This'와 'the'로 짚어요.
+   chunks: This requisition / doesn't match / the label / .  || decoy: is clipped to
+    B: This requisition doesn't match the [chart].
+    B: This requisition doesn't match the [bill].
+    B: This requisition doesn't match the [order].
+   =B: This requisition doesn't match the [label].
+--14.4 EN: Let's check the site before we send this.
+   KO: 보내기 전에 부위를 확인해요. (16)
+   DK: 보내기 전에 부위를 사진 찍어요. (18)
+   DK: 보내기 전에 부위를 그려요. (15)
+   tag=부위 재확인 icon=check | why: 'before we send this'는 보낸 뒤에는 부위를 바로잡기 어렵다는 이유예요. "Let's check"는 같이 보자는 제안이에요.
+   chunks: Let's check / the site / before we send this / .  || decoy: as we speak
+   =B: Let's check the [site] before we send this.
+    B: Let's check the [side] before we send this.
+    B: Let's check the [number] before we send this.
+    B: Let's check the [type] before we send this.
+--14.5 EN: I'll correct this discrepancy right now.
+   KO: 지금 바로 이 불일치를 정정할게요. (19)
+   DK: 지금 바로 이 불일치를 기록할게요. (19)
+   DK: 지금 바로 이 불일치를 복사할게요. (19)
+   tag=즉시 정정 icon=pencil | why: 'right now'는 미루지 않고 지금이라는 뜻이에요. 'correct'는 틀린 것을 맞게 고친다는 동사예요.
+   chunks: I'll correct / this discrepancy / right now / .  || decoy: this stain
+    B: I'll [count] this discrepancy right now.
+   =B: I'll [correct] this discrepancy right now.
+    B: I'll [post] this discrepancy right now.
+    B: I'll [file] this discrepancy right now.
+  ORDER ko=병리 요청서 일치 4문장 순서 tag=대화 흐름 | why: 요청서와 라벨이 같은지 묻고, 다르다고 답하고, 그 불일치를 바로 고친 뒤 보내기 전에 부위를 다시 확인해요.
+   1. Does the requisition match the specimen label?  (요청서가 검체 라벨과 일치하나요?/질문/magnify)
+   2. No, the site on the two doesn't match.  (아니요, 둘의 부위가 일치하지 않아요/답/faceWorried)
+   3. I'll correct that discrepancy right now.  (그 불일치를 지금 바로 정정할게요/정정/pencil)
+   4. Once it's fixed, let's check the site again before we send this.  (고치면 보내기 전에 부위를 다시 확인해요/재확인/check)
+   swap12: No, the site on the two doesn't match. | Does the requisition match the specimen label? | I'll correct that discrepancy right now. | Once it's fixed, let's check the site again before we send this.
+   swap23: Does the requisition match the specimen label? | I'll correct that discrepancy right now. | No, the site on the two doesn't match. | Once it's fixed, let's check the site again before we send this.
+   swap34: Does the requisition match the specimen label? | No, the site on the two doesn't match. | Once it's fixed, let's check the site again before we send this. | I'll correct that discrepancy right now.
+===== 15 라벨 없는 검체 발견
+--15.0 EN: This container has no label.
+   KO: 이 용기에는 라벨이 없어요. (15)
+   DK: 이 용기에는 뚜껑이 없어요. (15)
+   DK: 이 용기에는 날짜가 없어요. (15)
+   tag=라벨 없음 icon=faceWorried | why: 'has no'는 있어야 할 것이 없다는 가장 짧은 표현이에요. 'This container'로 지금 손에 든 용기를 가리켜요.
+   chunks: This container / has no / label / .  || decoy: This bottle
+    B: This container has no [handle].
+    B: This container has no [stand].
+   =B: This container has no [label].
+    B: This container has no [cord].
+--15.1 EN: Stop—we can't send an unlabeled specimen.
+   KO: 멈추세요—라벨 없는 검체는 보낼 수 없어요. (24)
+   DK: 멈추세요—라벨 없는 검체는 포장할 수 없어요. (25)
+   DK: 멈추세요—라벨 없는 검체는 분류할 수 없어요. (25)
+   tag=발송 중지 icon=siren | why: 문장 앞 'Stop'이 먼저 들려 급하다는 느낌을 줘요. 'unlabeled'는 un-이 붙어 라벨이 없다는 뜻이에요.
+   chunks: Stop—we can't / send / an unlabeled specimen / .  || decoy: open
+    B: Stop—we can't send an [unsealed] specimen.
+    B: Stop—we can't send an [oversized] specimen.
+    B: Stop—we can't send an [duplicate] specimen.
+   =B: Stop—we can't send an [unlabeled] specimen.
+--15.2 EN: Let's identify it now with the surgeon.
+   KO: 지금 집도의와 함께 신원을 확인해요. (20)
+   DK: 지금 집도의와 함께 사진을 찍어요. (19)
+   DK: 지금 집도의와 함께 뚜껑을 닫아요. (19)
+   tag=신원 확인 icon=handshake2 | why: 'with the surgeon'으로 누구와 함께 하는지 밝혀요. 검체를 아는 사람은 수술 중 꺼낸 집도의예요.
+   chunks: Let's identify it / now / with the surgeon / .  || decoy: on the cart
+   =B: Let's [identify] it now with the surgeon.
+    B: Let's [measure] it now with the surgeon.
+    B: Let's [photograph] it now with the surgeon.
+    B: Let's [sketch] it now with the surgeon.
+--15.3 EN: We can't send this without a label.
+   KO: 라벨 없이는 이걸 보낼 수 없어요. (19)
+   DK: 요청서 없이는 이걸 보낼 수 없어요. (20)
+   DK: 서명 없이는 이걸 보낼 수 없어요. (19)
+   tag=라벨 필수 icon=shield | why: 'without'은 없이는이라는 뜻이라 조건이 먼저 들려요. 'We can't'로 개인 판단이 아니라 규칙이라는 느낌을 줘요.
+   chunks: We can't send / this / without a label / .  || decoy: without a pen
+    B: We can't send this without a [cap].
+   =B: We can't send this without a [label].
+    B: We can't send this without a [box].
+    B: We can't send this without a [pen].
+--15.4 EN: Let's stop and figure out whose specimen this is.
+   KO: 멈추고 이게 누구 검체인지 알아봐요. (20)
+   DK: 멈추고 이게 무슨 검체인지 알아봐요. (20)
+   DK: 멈추고 이게 어디 검체인지 알아봐요. (20)
+   tag=누구 검체인지 icon=magnify | why: 'whose'는 누구의라는 뜻이라 검체의 주인을 묻는 말이에요. "Let's stop and"로 일단 멈추고 알아본다는 순서를 말해요.
+   chunks: Let's stop / and figure out / whose specimen / this is / .  || decoy: it holds
+    B: Let's stop and figure out [which] specimen this is.
+    B: Let's stop and figure out [what] specimen this is.
+   =B: Let's stop and figure out [whose] specimen this is.
+    B: Let's stop and figure out [where] specimen this is.
+--15.5 EN: I'll label it as soon as we identify the patient.
+   KO: 환자를 확인하는 대로 라벨할게요. (18)
+   DK: 환자를 확인하는 대로 보관할게요. (18)
+   DK: 환자를 확인하는 대로 정리할게요. (18)
+   tag=확인 후 라벨 icon=pushpin | why: 'as soon as'는 그 일이 끝나는 즉시라는 시간 표현이에요. 환자를 확인해야 라벨에 쓸 이름이 정해져요.
+   chunks: I'll label it / as soon as / we identify / the patient / .  || decoy: I'll mail it
+    B: I'll label it as soon as we identify the [surgeon].
+    B: I'll label it as soon as we identify the [family].
+    B: I'll label it as soon as we identify the [donor].
+   =B: I'll label it as soon as we identify the [patient].
+  ORDER ko=라벨 없는 검체 발견 4문장 순서 tag=대화 흐름 | why: 라벨이 없다고 알리고, 그래서 보낼 수 없다고 막고, 집도의와 함께 누구 것인지 확인한 뒤 확인되면 라벨을 붙여요.
+   1. This container has no label.  (이 용기에는 라벨이 없어요/발견/faceWorried)
+   2. So we can't send it like this.  (그러니 이대로는 보낼 수 없어요/중지/siren)
+   3. To fix that, let's identify it now with the surgeon.  (해결하려면 지금 집도의와 함께 신원을 확인해요/확인/handshake2)
+   4. Once the surgeon says whose it is, I'll label it.  (집도의가 누구 것인지 말하면 라벨할게요/라벨/pushpin)
+   swap12: So we can't send it like this. | This container has no label. | To fix that, let's identify it now with the surgeon. | Once the surgeon says whose it is, I'll label it.
+   swap23: This container has no label. | To fix that, let's identify it now with the surgeon. | So we can't send it like this. | Once the surgeon says whose it is, I'll label it.
+   swap34: This container has no label. | So we can't send it like this. | Once the surgeon says whose it is, I'll label it. | To fix that, let's identify it now with the surgeon.
+===== 16 검체 분실 즉시 대응
+--16.0 EN: One specimen is unaccounted for.
+   KO: 검체 하나가 사라졌어요. (13)
+   DK: 검체 하나가 오염됐어요. (13)
+   DK: 검체 하나가 깨졌어요. (12)
+   tag=분실 알림 icon=siren | why: 'unaccounted for'는 어디 있는지 확인되지 않는다는 병원식 표현이에요. 'One specimen'으로 하나가 빠졌다고 짚어요.
+   chunks: One specimen / is unaccounted / for / .  || decoy: The tray
+   =B: One [specimen] is unaccounted for.
+    B: One [container] is unaccounted for.
+    B: One [needle] is unaccounted for.
+    B: One [sponge] is unaccounted for.
+--16.1 EN: Let's stop and search the field and containers.
+   KO: 멈추고 수술 시야와 용기들을 수색해요. (21)
+   DK: 수술 시야와 용기들을 수색하려고 조명을 켜요. (25)
+   DK: 멈추고 수술 카트와 용기들을 수색해요. (21)
+   tag=멈추고 수색 icon=siren | why: "Let's stop and"로 하던 일을 멈추고 함께 찾자는 제안이에요. 'the field and containers'로 찾을 곳을 구체적으로 짚어요.
+   chunks: Let's stop / and search / the field and containers / .  || decoy: the hallway and lobby
+    B: Let's stop and search the [floor] and containers.
+   =B: Let's stop and search the [field] and containers.
+    B: Let's stop and search the [table] and containers.
+    B: Let's stop and search the [cart] and containers.
+--16.2 EN: I'm reporting this to the surgeon and pathology now.
+   KO: 지금 집도의와 병리과에 이걸 보고할게요. (22)
+   DK: 지금 집도의와 병리과에 이 서식을 보고할게요. (25)
+   DK: 지금 집도의와 병리과에 이 서류를 보고할게요. (25)
+   tag=즉시 보고 icon=pager | why: 'to the surgeon and pathology'로 알릴 사람 둘을 한 번에 말해요. 'now'로 미루지 않고 지금이라고 못 박아요.
+   chunks: I'm reporting this / to the surgeon / and pathology / now / .  || decoy: the count
+    B: I'm [reading] this to the surgeon and pathology now.
+    B: I'm [printing] this to the surgeon and pathology now.
+   =B: I'm [reporting] this to the surgeon and pathology now.
+    B: I'm [filing] this to the surgeon and pathology now.
+--16.3 EN: We need to search every container on the field.
+   KO: 수술 시야의 용기를 전부 수색해야 해요. (22)
+   DK: 용기를 전부 수색하기 전에 불을 켜요. (21)
+   DK: 수술 시야의 용기를 전부 세어야 해요. (21)
+   tag=전부 수색 icon=magnify | why: 'every'로 하나도 빼지 않는다는 뜻이에요. 'We need to'는 선택이 아니라 필요하다는 말이에요.
+   chunks: We need / to search / every container / on the field / .  || decoy: under the bed
+    B: We need to search every [drawer] on the field.
+    B: We need to search every [bin] on the field.
+    B: We need to search every [bag] on the field.
+   =B: We need to search every [container] on the field.
+--16.4 EN: Let's report the missing specimen right away.
+   KO: 없어진 검체를 바로 보고해요. (16)
+   DK: 없어진 서식을 바로 보고해요. (16)
+   DK: 없어진 서류를 바로 보고해요. (16)
+   tag=바로 보고 icon=pager | why: 'right away'는 미루지 않고 곧바로라는 뜻이에요. 'the missing specimen'은 없어진 바로 그 검체를 가리켜요.
+   chunks: Let's report / the missing specimen / right away / .  || decoy: the empty tray
+   =B: Let's [report] the missing specimen right away.
+    B: Let's [weigh] the missing specimen right away.
+    B: Let's [number] the missing specimen right away.
+    B: Let's [wrap] the missing specimen right away.
+--16.5 EN: I'll search the field systematically before we panic.
+   KO: 당황하기 전에 수술 시야를 체계적으로 수색할게요. (27)
+   DK: 당황하기 전에 수술 시야를 빠르게 수색할게요. (25)
+   DK: 당황하기 전에 수술 카트를 체계적으로 수색할게요. (27)
+   tag=체계적 수색 icon=magnify | why: 'systematically'는 순서를 정해 빠짐없이라는 뜻이에요. 'before we panic'은 당황하면 놓치기 쉬워서라는 이유예요.
+   chunks: I'll search / the field / systematically / before we panic / .  || decoy: with a flashlight
+    B: I'll search the field [haphazardly] before we panic.
+   =B: I'll search the field [systematically] before we panic.
+    B: I'll search the field [frantically] before we panic.
+    B: I'll search the field [recklessly] before we panic.
+  ORDER ko=검체 분실 즉시 대응 4문장 순서 tag=대화 흐름 | why: 하나가 비었다고 알리고, 바로 집도의와 병리과에 보고하고, 그와 함께 멈추고 시야와 용기를 찾은 뒤 용기는 하나씩 전부 수색해요.
+   1. One specimen is unaccounted for.  (검체 하나가 사라졌어요/발견/siren)
+   2. I'm reporting this to the surgeon and pathology now.  (지금 집도의와 병리과에 이걸 보고할게요/보고/pager)
+   3. Alongside that, let's stop and search the field and containers.  (그와 함께 멈추고 시야와 용기들을 수색해요/수색/magnify)
+   4. That includes every container on the field, one by one.  (시야의 용기를 하나씩 전부 수색하는 것도 포함돼요/전수/magnify)
+   swap12: I'm reporting this to the surgeon and pathology now. | One specimen is unaccounted for. | Alongside that, let's stop and search the field and containers. | That includes every container on the field, one by one.
+   swap23: One specimen is unaccounted for. | Alongside that, let's stop and search the field and containers. | I'm reporting this to the surgeon and pathology now. | That includes every container on the field, one by one.
+   swap34: One specimen is unaccounted for. | I'm reporting this to the surgeon and pathology now. | That includes every container on the field, one by one. | Alongside that, let's stop and search the field and containers.
+===== 17 냉동절편 결과 수술 변경
+--17.0 EN: The frozen margins are positive.
+   KO: 냉동절편 절제연이 양성이에요. (16)
+   DK: 냉동절편 절제연이 도착했어요. (16)
+   DK: 냉동절편 절제연이 접수됐어요. (16)
+   tag=양성 보고 icon=faceWorried | why: 'are positive'는 암세포가 남았다는 뜻의 병리 결과 표현이에요. 'The frozen margins'로 어느 결과인지 짚어요.
+   chunks: The frozen / margins / are positive / .  || decoy: are tagged
+    B: The frozen margins are [ready].
+    B: The frozen margins are [labeled].
+   =B: The frozen margins are [positive].
+    B: The frozen margins are [sealed].
+--17.1 EN: We're extending the resection—let's set up.
+   KO: 절제 범위를 확대할게요—준비해요. (18)
+   DK: 절제 범위를 확대할게요—정리해요. (18)
+   DK: 절제 범위를 확대할게요—기록해요. (18)
+   tag=절제 확대 icon=scalpel | why: 'extending'은 범위를 늘린다는 진행형이에요. 대시 뒤 "let's set up"으로 바로 이어지는 행동을 말해요.
+   chunks: We're extending / the resection—let's / set up / .  || decoy: let's write down
+    B: We're extending the [incision]—let's set up.
+    B: We're extending the [dressing]—let's set up.
+    B: We're extending the [drape]—let's set up.
+   =B: We're extending the [resection]—let's set up.
+--17.2 EN: I'll prep additional specimen containers.
+   KO: 추가 검체 용기를 준비할게요. (16)
+   DK: 추가 검체 용기를 세어 볼게요. (17)
+   DK: 추가 검체 용기를 옮길게요. (15)
+   tag=용기 준비 icon=lab | why: 'additional'은 이미 있는 것 외에 더라는 뜻이에요. 'prep'은 'prepare'를 줄인 병원 속어예요.
+   chunks: I'll prep / additional / specimen containers / .  || decoy: I'll weigh
+   =B: I'll prep [additional] specimen containers.
+    B: I'll prep [smaller] specimen containers.
+    B: I'll prep [broken] specimen containers.
+    B: I'll prep [expensive] specimen containers.
+--17.3 EN: Let's tell the team the margins came back positive.
+   KO: 절제연이 양성으로 나왔다고 팀에 전해요. (22)
+   DK: 절제연이 접수됐다고 팀에 전해요. (18)
+   DK: 절제연이 도착했다고 팀에 전해요. (18)
+   tag=결과 공유 icon=speech | why: 'came back positive'는 검사 결과가 돌아와 양성이었다는 말이에요. 'the team'에게 알려야 모두가 같이 움직여요.
+   chunks: Let's tell / the team / the margins / came back positive / .  || decoy: were on the form
+    B: Let's [ask] the team the margins came back positive.
+   =B: Let's [tell] the team the margins came back positive.
+    B: Let's [thank] the team the margins came back positive.
+    B: Let's [remind] the team the margins came back positive.
+--17.4 EN: We need more containers if we're extending the resection.
+   KO: 절제 범위를 확대하면 용기가 더 필요해요. (23)
+   DK: 절제 범위를 확대하면 라벨이 더 필요해요. (23)
+   DK: 절제 범위를 확대하면 요청서가 더 필요해요. (24)
+   tag=용기 추가 icon=lab | why: 'if we're extending'은 확대가 사실일 때만이라는 조건이에요. 용기가 더 필요한 이유가 뒤에 와요.
+   chunks: We need / more containers / if we're extending / the resection / .  || decoy: if we're closing
+    B: We need [fewer] containers if we're extending the resection.
+    B: We need [broken] containers if we're extending the resection.
+   =B: We need [more] containers if we're extending the resection.
+    B: We need [expensive] containers if we're extending the resection.
+--17.5 EN: I'll prep for a wider resection right now.
+   KO: 지금 더 넓은 절제를 위해 준비할게요. (21)
+   DK: 지금 더 넓은 절제를 위해 기록할게요. (21)
+   DK: 지금 더 넓은 절제를 위해 정리할게요. (21)
+   tag=더 넓은 절제 준비 icon=scalpel | why: 'wider'는 더 넓은 쪽으로의 변화라는 뜻이에요. 'right now'로 미루지 않고 지금 준비한다고 해요.
+   chunks: I'll prep / for a wider resection / right now / .  || decoy: a longer incision
+    B: I'll prep for a [smaller] resection right now.
+    B: I'll prep for a [shorter] resection right now.
+    B: I'll prep for a [simpler] resection right now.
+   =B: I'll prep for a [wider] resection right now.
+  ORDER ko=냉동절편 결과 수술 변경 4문장 순서 tag=대화 흐름 | why: 양성이라는 결과를 말하고, 그래서 절제를 확대하고, 새 조직용 용기를 준비한 뒤 나오는 대로 용기마다 라벨해요.
+   1. The frozen margins are positive.  (냉동절편 절제연이 양성이에요/결과/faceWorried)
+   2. That means we're extending the resection.  (그래서 절제 범위를 확대해요/확대/scalpel)
+   3. I'll prep additional containers for the new tissue.  (새 조직용 추가 용기를 준비할게요/준비/lab)
+   4. I'll label each new container as soon as it's filled.  (새 용기는 채워지는 대로 라벨할게요/라벨/pushpin)
+   swap12: That means we're extending the resection. | The frozen margins are positive. | I'll prep additional containers for the new tissue. | I'll label each new container as soon as it's filled.
+   swap23: The frozen margins are positive. | I'll prep additional containers for the new tissue. | That means we're extending the resection. | I'll label each new container as soon as it's filled.
+   swap34: The frozen margins are positive. | That means we're extending the resection. | I'll label each new container as soon as it's filled. | I'll prep additional containers for the new tissue.
+===== 18 오염 검체 재채취
+--18.0 EN: This sample touched a non-sterile surface.
+   KO: 이 검체가 무균이 아닌 표면에 닿았어요. (22)
+   DK: 이 장갑이 무균이 아닌 표면에 닿았어요. (22)
+   DK: 이 가위가 무균이 아닌 표면에 닿았어요. (22)
+   tag=오염 발생 icon=faceWorried | why: 'touched'는 닿았다는 과거형이고 'non-sterile'은 무균이 아니라는 뜻이에요. 무엇이 닿았는지가 먼저 들려요.
+   chunks: This sample / touched / a non-sterile surface / .  || decoy: the metal tray
+   =B: This sample [touched] a non-sterile surface.
+    B: This sample [wiped] a non-sterile surface.
+    B: This sample [covered] a non-sterile surface.
+    B: This sample [filled] a non-sterile surface.
+--18.1 EN: Let's discard it and re-collect cleanly.
+   KO: 이걸 버리고 깨끗하게 다시 채취해요. (20)
+   DK: 이걸 버리고 서둘러 다시 채취해요. (19)
+   DK: 이걸 버리고 천천히 다시 채취해요. (19)
+   tag=버리고 재채취 icon=bandage | why: "Let's"로 같이 하자고 해요. 'discard'는 버린다는 뜻이고 're-'는 다시라는 뜻이에요.
+   chunks: Let's discard it / and re-collect / cleanly / .  || decoy: and re-label
+    B: Let's [sort] it and re-collect cleanly.
+   =B: Let's [discard] it and re-collect cleanly.
+    B: Let's [mark] it and re-collect cleanly.
+    B: Let's [wrap] it and re-collect cleanly.
+--18.2 EN: I'll open a new sterile kit.
+   KO: 새 무균 키트를 열게요. (13)
+   DK: 새 무균 포를 열게요. (12)
+   DK: 새 무균 가운을 열게요. (13)
+   tag=새 키트 icon=bandage | why: 'a new'가 새것이라는 점을 분명히 해요. 'sterile kit'는 포장이 뜯기지 않은 무균 도구 세트예요.
+   chunks: I'll open / a new / sterile kit / .  || decoy: I'll count
+    B: I'll open a new sterile [gown].
+    B: I'll open a new sterile [drape].
+   =B: I'll open a new sterile [kit].
+    B: I'll open a new sterile [glove].
+--18.3 EN: This sample isn't sterile anymore—let's discard it.
+   KO: 이 검체는 더 이상 무균이 아니에요—버려요. (24)
+   DK: 이 검체는 더 이상 무균이 아니에요—보고해요. (25)
+   DK: 이 검체는 더 이상 무균이 아니에요—사진 찍어요. (27)
+   tag=무균 상실 icon=faceWorried | why: 'isn't … anymore'는 예전에는 그랬지만 지금은 아니라는 뜻이에요. 대시 뒤에서 바로 할 일을 말해요.
+   chunks: This sample isn't / sterile anymore—let's / discard it / .  || decoy: let's log it
+    B: This sample isn't [dry] anymore—let's discard it.
+    B: This sample isn't [wet] anymore—let's discard it.
+    B: This sample isn't [full] anymore—let's discard it.
+   =B: This sample isn't [sterile] anymore—let's discard it.
+--18.4 EN: Let's collect a fresh sample with a new kit.
+   KO: 새 키트로 신선한 검체를 다시 채취해요. (22)
+   DK: 새 키트로 신선한 검체를 다시 분류해요. (22)
+   DK: 새 키트로 신선한 검체를 다시 접수해요. (22)
+   tag=새 키트로 채취 icon=bandage | why: 'a fresh sample'은 이미 쓴 것이 아닌 새 검체라는 뜻이에요. 'with a new kit'로 도구도 새것이라고 해요.
+   chunks: Let's collect / a fresh sample / with a new / kit / .  || decoy: a dry swab
+   =B: Let's collect a [fresh] sample with a new kit.
+    B: Let's collect a [dry] sample with a new kit.
+    B: Let's collect a [large] sample with a new kit.
+    B: Let's collect a [small] sample with a new kit.
+--18.5 EN: I'll confirm the surface was touched before we discard it.
+   KO: 버리기 전에 표면이 닿았는지 확인할게요. (22)
+   DK: 버리기 전에 표면이 젖었는지 확인할게요. (22)
+   DK: 버리기 전에 표면이 더러운지 확인할게요. (22)
+   tag=접촉 확인 icon=magnify | why: 'was touched'는 수동태라 누가 만졌는지보다 닿았다는 사실을 말해요. 'before we discard it'은 버리기 전에 확인한다는 순서예요.
+   chunks: I'll confirm / the surface / was touched / before we discard it / .  || decoy: the label
+    B: I'll confirm the surface was [wiped] before we discard it.
+   =B: I'll confirm the surface was [touched] before we discard it.
+    B: I'll confirm the surface was [cleaned] before we discard it.
+    B: I'll confirm the surface was [marked] before we discard it.
+  ORDER ko=오염 검체 재채취 4문장 순서 tag=대화 흐름 | why: 닿았다는 사실을 말하고, 그래서 무균이 아니라고 하고, 그 때문에 버리고 새 키트를 열고, 그 키트로 다시 채취해요.
+   1. This sample touched a non-sterile surface.  (이 검체가 무균이 아닌 표면에 닿았어요/발생/faceWorried)
+   2. That means it isn't sterile anymore.  (그래서 더 이상 무균이 아니에요/판단/faceWorried)
+   3. Because of that, we'll discard it and open a new sterile kit.  (그래서 버리고 새 무균 키트를 열 거예요/교체/bandage)
+   4. I'll collect a fresh sample with that kit.  (그 키트로 신선한 검체를 채취할게요/재채취/bandage)
+   swap12: That means it isn't sterile anymore. | This sample touched a non-sterile surface. | Because of that, we'll discard it and open a new sterile kit. | I'll collect a fresh sample with that kit.
+   swap23: This sample touched a non-sterile surface. | Because of that, we'll discard it and open a new sterile kit. | That means it isn't sterile anymore. | I'll collect a fresh sample with that kit.
+   swap34: This sample touched a non-sterile surface. | That means it isn't sterile anymore. | I'll collect a fresh sample with that kit. | Because of that, we'll discard it and open a new sterile kit.
+===== 19 잘못된 환자 라벨
+--19.0 EN: This label belongs to another patient.
+   KO: 이 라벨은 다른 환자 것이에요. (17)
+   DK: 이 요청서는 다른 환자 것이에요. (18)
+   DK: 이 팔찌는 다른 환자 것이에요. (17)
+   tag=라벨 오류 icon=faceWorried | why: 'belongs to'는 소유나 귀속을 말해요. 'another patient'로 지금 환자가 아니라 다른 사람의 것이라는 뜻이에요.
+   chunks: This label / belongs / to another patient / .  || decoy: another tray
+    B: This label [points] to another patient.
+    B: This label [goes] to another patient.
+   =B: This label [belongs] to another patient.
+    B: This label [sticks] to another patient.
+--19.1 EN: Stop—do not send this until it's corrected.
+   KO: 멈추세요—정정될 때까지 이걸 보내지 마세요. (24)
+   DK: 멈추세요—정정될 때까지 이걸 서명하지 마세요. (25)
+   DK: 멈추세요—정정될 때까지 이걸 포장하지 마세요. (25)
+   tag=보내기 중지 icon=siren | why: 'Stop'이 맨 앞에서 급하다는 느낌을 줘요. 'until it's corrected'는 고쳐질 때까지만이라는 조건이에요.
+   chunks: Stop—do not / send this / until it's corrected / .  || decoy: open this
+    B: Stop—do not [open] this until it's corrected.
+    B: Stop—do not [move] this until it's corrected.
+    B: Stop—do not [sign] this until it's corrected.
+   =B: Stop—do not [send] this until it's corrected.
+--19.2 EN: Let's re-verify identity and relabel now.
+   KO: 신원을 다시 확인하고 지금 다시 라벨해요. (23)
+   DK: 신원을 다시 확인하고 지금 다시 보관해요. (23)
+   DK: 신원을 다시 확인하고 지금 다시 정리해요. (23)
+   tag=재확인 후 재라벨 icon=pushpin | why: 're-'가 붙은 두 동사가 다시 한다는 뜻을 반복해요. 신원을 먼저 확인한 다음에 새 라벨을 붙여요.
+   chunks: Let's re-verify / identity / and relabel / now / .  || decoy: and rewrap
+   =B: Let's re-verify [identity] and relabel now.
+    B: Let's re-verify [order] and relabel now.
+    B: Let's re-verify [budget] and relabel now.
+    B: Let's re-verify [route] and relabel now.
+--19.3 EN: This patient's name doesn't match this label.
+   KO: 이 환자분 이름이 이 라벨과 일치하지 않아요. (25)
+   DK: 이 환자분 이름이 이 용기와 일치하지 않아요. (25)
+   DK: 이 환자분 이름이 이 차트와 일치하지 않아요. (25)
+   tag=이름 불일치 icon=faceWorried | why: 'doesn't match'는 같아야 할 두 가지가 어긋났다는 뜻이에요. 환자 이름과 라벨이 어긋났다고 짚어요.
+   chunks: This patient's name / doesn't match / this label / .  || decoy: is printed on
+    B: This patient's [date] doesn't match this label.
+   =B: This patient's [name] doesn't match this label.
+    B: This patient's [room] doesn't match this label.
+    B: This patient's [bed] doesn't match this label.
+--19.4 EN: Let's stop and confirm the correct patient.
+   KO: 멈추고 맞는 환자를 확인해요. (16)
+   DK: 멈추고 맞는 환자 차트를 열어요. (18)
+   DK: 멈추고 맞는 환자 서류를 모아요. (18)
+   tag=맞는 환자 확인 icon=handshake2 | why: 'the correct patient'에서 correct가 맞는 사람이라는 뜻을 만들어요. "Let's stop and"로 일단 멈추고 확인한다고 해요.
+   chunks: Let's stop / and confirm / the correct patient / .  || decoy: and call
+    B: Let's stop and confirm the [next] patient.
+    B: Let's stop and confirm the [first] patient.
+   =B: Let's stop and confirm the [correct] patient.
+    B: Let's stop and confirm the [same] patient.
+--19.5 EN: I'll verify identity again before we relabel it.
+   KO: 다시 라벨하기 전에 신원을 한 번 더 확인할게요. (27)
+   DK: 다시 라벨하기 전에 신원을 한 번 더 적어 둘게요. (28)
+   DK: 다시 라벨하기 전에 신원을 한 번 더 읽어 줄게요. (28)
+   tag=다시 확인 icon=check | why: 'again'을 붙여 이미 한 번 한 확인을 한 번 더 한다는 뜻이에요. 'before we relabel it'은 새 라벨을 붙이기 전이 마지막 기회라는 이유예요.
+   chunks: I'll verify identity / again / before we relabel it / .  || decoy: with the form
+    B: I'll verify identity again before we [rewrap] it.
+    B: I'll verify identity again before we [reseal] it.
+    B: I'll verify identity again before we [reopen] it.
+   =B: I'll verify identity again before we [relabel] it.
+  ORDER ko=잘못된 환자 라벨 4문장 순서 tag=대화 흐름 | why: 다른 환자의 라벨이라고 알리고, 그래서 고칠 때까지 멈추고, 맞는 환자를 함께 확인한 뒤 신원을 한 번 더 확인하고 새로 라벨해요.
+   1. This label belongs to another patient.  (이 라벨은 다른 환자 것이에요/발견/faceWorried)
+   2. So stop—nobody sends it until it's corrected.  (그러니 멈추세요, 정정될 때까지 아무도 보내지 않아요/중지/siren)
+   3. To correct it, let's confirm the correct patient together.  (고치려면 맞는 환자를 함께 확인해요/확인/handshake2)
+   4. After that, I'll verify identity once more and relabel it.  (그 다음 신원을 한 번 더 확인하고 다시 라벨할게요/재라벨/pushpin)
+   swap12: So stop—nobody sends it until it's corrected. | This label belongs to another patient. | To correct it, let's confirm the correct patient together. | After that, I'll verify identity once more and relabel it.
+   swap23: This label belongs to another patient. | To correct it, let's confirm the correct patient together. | So stop—nobody sends it until it's corrected. | After that, I'll verify identity once more and relabel it.
+   swap34: This label belongs to another patient. | So stop—nobody sends it until it's corrected. | After that, I'll verify identity once more and relabel it. | To correct it, let's confirm the correct patient together.
+===== 20 대체 불가 검체 위기
+--20.0 EN: This specimen can't be replaced.
+   KO: 이 검체는 대체할 수 없어요. (16)
+   DK: 이 검체는 복사할 수 없어요. (16)
+   DK: 이 검체는 반복할 수 없어요. (16)
+   tag=대체 불가 icon=faceWorried | why: 'can't be replaced'는 같은 것을 다시 얻을 수 없다는 뜻이에요. 수동태라 누가 하는지보다 불가능하다는 사실을 말해요.
+   chunks: This specimen / can't be / replaced / .  || decoy: This form
+   =B: This specimen can't be [replaced].
+    B: This specimen can't be [copied].
+    B: This specimen can't be [redone].
+    B: This specimen can't be [printed].
+--20.1 EN: Two of us will confirm every handoff.
+   KO: 인계할 때마다 두 사람이 확인할게요. (20)
+   DK: 인계할 때마다 세 사람이 확인할게요. (20)
+   DK: 인계할 때마다 두 사람이 서명할게요. (20)
+   tag=이중 확인 icon=handshake2 | why: 'Two of us'로 인원수를 먼저 밝혀요. 'every handoff'는 인계할 때마다 예외가 없다는 뜻이에요.
+   chunks: Two of us / will confirm / every handoff / .  || decoy: will carry
+    B: [Three] of us will confirm every handoff.
+   =B: [Two] of us will confirm every handoff.
+    B: [Four] of us will confirm every handoff.
+    B: [Five] of us will confirm every handoff.
+--20.2 EN: I'll hand-carry it to pathology myself.
+   KO: 제가 직접 손에 들고 병리과로 가져갈게요. (23)
+   DK: 제가 직접 카트에 싣고 병리과로 가져갈게요. (24)
+   DK: 제가 직접 가져가려고 카트를 밀어요. (20)
+   tag=직접 운반 icon=run | why: 'hand-carry'는 손에 들고 직접 옮긴다는 뜻이에요. 'myself'는 남에게 맡기지 않는다는 뜻이에요.
+   chunks: I'll hand-carry it / to pathology / myself / .  || decoy: in a cooler
+    B: I'll hand-carry it to pathology [again].
+    B: I'll hand-carry it to pathology [early].
+   =B: I'll hand-carry it to pathology [myself].
+    B: I'll hand-carry it to pathology [quietly].
+--20.3 EN: Let's not lose this specimen—it can't be replaced.
+   KO: 이 검체를 잃어버리면 안 돼요—대체할 수 없어요. (27)
+   DK: 이 검체를 흔들면 안 돼요—대체할 수 없어요. (25)
+   DK: 이 검체를 떨어뜨리면 안 돼요—대체할 수 없어요. (27)
+   tag=분실 방지 icon=shield | why: "Let's not lose"는 같이 잃지 않도록 하자는 부드러운 다짐이에요. 대시 뒤 이유가 그 이유를 더해요.
+   chunks: Let's not lose / this specimen—it can't / be replaced / .  || decoy: this paperwork
+    B: Let's not [stain] this specimen—it can't be replaced.
+    B: Let's not [print] this specimen—it can't be replaced.
+    B: Let's not [tear] this specimen—it can't be replaced.
+   =B: Let's not [lose] this specimen—it can't be replaced.
+--20.4 EN: Two people will confirm this handoff together.
+   KO: 두 사람이 함께 이 인계를 확인할게요. (21)
+   DK: 세 사람이 함께 이 인계를 확인할게요. (21)
+   DK: 두 사람이 함께 이 인계를 기록할게요. (21)
+   tag=함께 확인 icon=handshake2 | why: 'together'는 같이 한다는 뜻이고 'Two people'로 인원을 먼저 말해요. 한 사람이 아니라 둘이라 실수가 걸러져요.
+   chunks: Two people will confirm / this handoff / together / .  || decoy: this invoice
+   =B: Two people will confirm this handoff [together].
+    B: Two people will confirm this handoff [separately].
+    B: Two people will confirm this handoff [twice].
+    B: Two people will confirm this handoff [daily].
+--20.5 EN: I'll carry this to pathology and confirm it arrived safely.
+   KO: 이걸 병리과로 옮기고 잘 도착했는지 확인할게요. (26)
+   DK: 이걸 병리과로 옮기고 잘 도착했는지 기록할게요. (26)
+   DK: 이걸 병리과로 옮기고 잘 도착했는지 세어 볼게요. (27)
+   tag=도착 확인 icon=check | why: 'arrived safely'는 무사히 도착했다는 뜻이에요. 옮기는 데서 끝나지 않고 도착까지 확인한다는 점이 핵심이에요.
+   chunks: I'll carry this / to pathology / and confirm / it arrived safely / .  || decoy: and photograph it
+    B: I'll carry this to pathology and confirm it arrived [quickly].
+   =B: I'll carry this to pathology and confirm it arrived [safely].
+    B: I'll carry this to pathology and confirm it arrived [late].
+    B: I'll carry this to pathology and confirm it arrived [partly].
+--20.6 EN: I'll double-check the handoff log before I go.
+   KO: 가기 전에 인계 기록을 다시 확인할게요. (22)
+   DK: 가기 전에 인계 기록을 다시 출력할게요. (22)
+   DK: 가기 전에 인계 기록을 다시 복사할게요. (22)
+   tag=기록 재확인 icon=board | why: 'double-check'는 이미 확인한 것을 한 번 더 본다는 뜻이에요. 'before I go'는 떠나기 전이 마지막 기회라는 뜻이에요.
+   chunks: I'll double-check / the handoff log / before I go / .  || decoy: with the porter
+    B: I'll double-check the [nursing] log before I go.
+    B: I'll double-check the [billing] log before I go.
+   =B: I'll double-check the [handoff] log before I go.
+    B: I'll double-check the [supply] log before I go.
+  ORDER ko=대체 불가 검체 위기 4문장 순서 tag=대화 흐름 | why: 대체할 수 없다고 이유를 말하고, 그래서 인계를 두 사람이 확인하고, 합의하면 직접 병리과로 옮기고, 도착하면 무사히 닿았는지 확인해요.
+   1. This specimen can't be replaced.  (이 검체는 대체할 수 없어요/이유/faceWorried)
+   2. That's why two people will confirm every handoff.  (그래서 인계마다 두 사람이 확인해요/이중 확인/handshake2)
+   3. Once we both agree, I'll hand-carry it to pathology myself.  (둘이 합의하면 제가 직접 병리과로 들고 갈게요/운반/run)
+   4. On arrival, I'll confirm it got there safely.  (도착하면 무사히 닿았는지 확인할게요/도착/check)
+   swap12: That's why two people will confirm every handoff. | This specimen can't be replaced. | Once we both agree, I'll hand-carry it to pathology myself. | On arrival, I'll confirm it got there safely.
+   swap23: This specimen can't be replaced. | Once we both agree, I'll hand-carry it to pathology myself. | That's why two people will confirm every handoff. | On arrival, I'll confirm it got there safely.
+   swap34: This specimen can't be replaced. | That's why two people will confirm every handoff. | On arrival, I'll confirm it got there safely. | Once we both agree, I'll hand-carry it to pathology myself.

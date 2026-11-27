@@ -1,0 +1,86 @@
+# 상황 1~5 — 문장 순서대로 s[0..4]. dk=distractorsKo, bl=[정답, 오답3]
+- title: 응급 세팅 신속 준비
+  s:
+    - {tag: "신속 요청", icon: siren, why: "Let's로 함께 하자고 제안해 팀을 다그치지 않고, as fast as we can로 속도를 분명히 해요.", decoy: "the back table", dk: ["우리가 할 수 있는 한 꼼꼼히 방을 세팅합시다.", "우리가 할 수 있는 한 깔끔히 방을 세팅합시다."], bl: [room, table, sink, stool]}
+    - {tag: "세트 개봉", icon: gear, why: "I'm opening은 진행형이라 지금 손이 움직이고 있음을 알려요. basic으로 꼭 필요한 세트부터 연다는 범위를 밝혀요.", decoy: "the standard tray cover", dk: ["지금 큰 응급 세팅을 개봉하고 있어요.", "지금 기본 외래 세팅을 개봉하고 있어요."], bl: [emergency, routine, elective, outpatient]}
+    - {tag: "필요 묻기", icon: speech, why: "Tell me … first로 순서를 상대에게 맡기고, I'll grab it으로 가져오는 일을 내가 맡겠다고 해요.", decoy: "which gown you wear", dk: ["먼저 뭐가 필요한지 말씀해 주시면 제가 빌려 올게요.", "먼저 몇 개가 필요한지 말씀해 주시면 제가 가져올게요."], bl: [grab, sterilize, borrow, return]}
+    - {tag: "기한 알림", icon: bell, why: "마감을 숫자 대신 a few minutes로 말해, 급하지만 공황을 만들지 않고 목표 시간을 분명히 해요.", decoy: "with the sterile covers", dk: ["몇 분 안에 전부 포장돼야 해요.", "몇 분 안에 전부 분류돼야 해요."], bl: [ready, sealed, labeled, folded]}
+    - {tag: "추가 준비", icon: pushpin, why: "I'll bring … right away는 말이 끝나자마자 움직이겠다는 약속이에요. extra는 지금 있는 것 말고 더 얹는다는 뜻이에요.", decoy: "extra stools", dk: ["여분의 대야와 가운을 바로 가져올게요.", "여분의 장갑과 드레이프를 바로 가져올게요."], bl: [drapes, pillows, mattresses, stretchers]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 응급 세팅 준비 4문장 순서
+    why: 요청으로 시작해, 그 요청에 맞춰 세트를 열고, 세트 밖에 더 필요한 것을 묻고, 말한 것을 가져오는 순서예요. 뒤 줄이 앞 줄을 가리키는 말(for that·beyond that·whatever you name)로 이어져요.
+    lines:
+      - {en: "Let's get the room set up as fast as we can.", icon: siren, ko: "빨리 방을 세팅합시다", note: 요청}
+      - {en: "I'm opening the basic emergency setup for that now.", icon: gear, ko: "그걸 위해 기본 응급 세팅을 개봉해요", note: 개봉}
+      - {en: "Tell me what else you need beyond that setup.", icon: speech, ko: "그 세팅 말고 또 필요한 걸 말씀해 주세요", note: 질문}
+      - {en: "Whatever you name, I'll bring it with extra drapes right away.", icon: pushpin, ko: "말씀하신 걸 여분의 드레이프와 바로 가져올게요", note: 약속}
+- title: 응급 기구 세트 개방
+  s:
+    - {tag: "세트 개봉", icon: gear, why: "I를 줄인 -ing 문장이라 손을 움직이며 하는 현장 말투가 돼요. now로 지금 진행 중임을 알려요.", decoy: "a sterile table cover", dk: ["지금 표준 개복 세트를 개봉하고 있어요.", "지금 소형 개복 세트를 개봉하고 있어요."], bl: [lap, chest, eye, hand]}
+    - {tag: "계수 보고", icon: check, why: "up은 펼쳐져 쓸 수 있는 상태를 뜻해요. counted를 함께 말해 개복 전에 기구 수를 맞춰 봤다는 점을 빠뜨리지 않아요.", decoy: "and labeled", dk: ["작은 기구가 준비됐고 계수도 됐어요.", "주요 기구가 준비됐고 보관도 됐어요."], bl: [counted, boxed, stacked, moved]}
+    - {tag: "백업 묻기", icon: speech, why: "do you want opened로 열 물건을 상대가 정하게 해요. for backup이 목적을 밝혀 질문이 짧게 끝나요.", decoy: "for the next case", dk: ["교체용으로 또 뭘 열어 두길 원하세요?", "백업용으로 또 몇 개 열어 두길 원하세요?"], bl: [opened, folded, wrapped, stacked]}
+    - {tag: "백업 개봉", icon: gear, why: "in case는 지금 쓰지는 않지만 미리 대비한다는 표현이에요. 바로 열지 않고 열어 둔다는 점까지 알려요.", decoy: "as we count it", dk: ["필요할 경우를 대비해 백업 가운을 열어 둘게요.", "필요할 경우를 대비해 백업 대야를 열어 둘게요."], bl: [tray, gown, basin, bin]}
+    - {tag: "준비 보고", icon: check, why: "ready to go는 바로 진행해도 된다는 관용 표현이에요. fully counted를 앞에 두어 준비의 근거를 먼저 말해요.", decoy: "is neatly stacked", dk: ["작은 세트는 계수가 끝났고 진행할 준비가 됐어요.", "주요 세트는 포장이 끝났고 진행할 준비가 됐어요."], bl: [fully, partly, quickly, loosely]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기구 세트 개방 4문장 순서
+    why: 세트를 열고, 그 세트의 계수를 보고한 뒤, 그 계수를 마친 상태에서 백업을 묻고, 고른 것을 바로 여는 순서예요. 뒤 줄이 앞 줄의 세트·계수·답을 가리켜요.
+    lines:
+      - {en: "Opening the emergency lap set now.", icon: gear, ko: "응급 개복 세트를 개봉해요", note: 개봉}
+      - {en: "Major instruments from that set are up and counted.", icon: check, ko: "그 세트의 주요 기구가 준비되고 계수됐어요", note: 계수}
+      - {en: "With that count done, what else do you want opened for backup?", icon: speech, ko: "계수를 마쳤으니 백업으로 뭘 더 열까요", note: 질문}
+      - {en: "Whatever you pick, I'll open it right away.", icon: pushpin, ko: "고르시는 걸 바로 열게요", note: 약속}
+- title: 대량 흡인 준비
+  s:
+    - {tag: "흡인 준비", icon: monitor, why: "I've got …은 이미 확보해 둔 것을 보고하는 말이에요. on and ready로 켜짐과 바로 쓸 수 있음을 한 번에 말해요.", decoy: "two lights", dk: ["흡인기 두 대를 꽂아서 준비해 뒀어요.", "흡인통 두 개를 켜서 준비해 뒀어요."], bl: [suctions, lights, monitors, scopes]}
+    - {tag: "여분 대기", icon: pushpin, why: "standing by는 부르면 바로 쓸 수 있게 대기한다는 병원 표현이에요. extra로 가득 차거나 고장 날 때를 대비한 여분임을 알려요.", decoy: "are stacked together", dk: ["여분의 흡인통과 거즈가 대기 중이에요.", "여분의 흡인통과 튜빙이 복도에 있어요."], bl: [canisters, specimens, cassettes, speakers]}
+    - {tag: "교체 약속", icon: speech, why: "Say the word and …는 신호만 주면 바로 한다는 관용 표현이에요. fast로 교체 속도를 약속해 판단은 상대에게 남겨요.", decoy: "in the hall", dk: ["말씀만 하시면 제가 차분히 교체할게요.", "말씀만 하시면 제가 전부 교체할게요."], bl: [swap, count, label, lift]}
+    - {tag: "추가 세팅", icon: gear, why: "set up은 쓸 수 있게 갖춰 놓는다는 뜻이에요. an extra …를 하나 더 얹어 지금 있는 두 대 말고 선제로 대비하는 일임을 알려요.", decoy: "a step stool", dk: ["지금 여분의 튜빙을 하나 더 세팅할게요.", "지금 여분의 흡인기를 두 개 더 세팅할게요."], bl: [extra, old, idle, electric]}
+    - {tag: "추가 약속", icon: check, why: "we'll have … ready에서 have는 준비된 상태로 둔다는 뜻이에요. 지금은 충분하지만 신호가 오면 늘린다는 약속이에요.", decoy: "two long cords", dk: ["말씀만 하시면 세 대를 더 준비해 둘게요.", "말씀만 하시면 한 대를 더 준비해 둘게요."], bl: [ready, wet, noisy, dusty]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 흡인 준비 4문장 순서
+    why: 켜 둔 흡인기를 보고하고, 그에 딸린 여분 흡인통을 알리고, 그 여분으로 교체하겠다고 약속한 뒤, 같은 신호로 더 늘리겠다고 이어요. 뒤 줄이 for them·the extras·again으로 앞 줄을 가리켜요.
+    lines:
+      - {en: "I've got two suctions on and ready.", icon: monitor, ko: "흡인기 두 대를 켜 뒀어요", note: 보고}
+      - {en: "Extra canisters for them are standing by.", icon: pushpin, ko: "그것들의 여분 흡인통이 대기 중이에요", note: 여분}
+      - {en: "Say the word and I'll swap in the extras fast.", icon: speech, ko: "말씀만 하시면 여분으로 빨리 교체해요", note: 교체}
+      - {en: "Say the word again and we'll have two more suctions ready.", icon: gear, ko: "다시 말씀하시면 흡인기 두 대를 더 준비해요", note: 추가}
+- title: 혈액 확보 확인
+  s:
+    - {tag: "현황 보고", icon: check, why: "We have …로 지금 확보한 양을 짧게 보고해요. right here로 위치가 이 방 안임을 분명히 해요.", decoy: "in the old box", dk: ["바로 여기 상자에 팩이 있어요.", "바로 여기 쿨러에 얼음이 있어요."], bl: [cooler, freezer, drawer, closet]}
+    - {tag: "보급 안내", icon: pager, why: "can send more는 보낼 수 있다는 능력을 말해 아직 요청은 아님을 보여 줘요. within minutes로 보충 속도를 알려요.", decoy: "with the next cooler", dk: ["혈액은행에서 몇 분 안에 더 반납할 수 있어요.", "혈액은행에서 몇 분 안에 더 보관할 수 있어요."], bl: [send, cancel, return, store]}
+    - {tag: "연락 유지", icon: pager, why: "keep a line open은 연락이 끊기지 않게 유지한다는 표현이에요. 지금 부르는 것이 아니라 필요할 때 바로 닿게 해 두는 말이에요.", decoy: "a long line", dk: ["혈액은행과 연락선을 새로 열어 둘게요.", "혈액은행과 연락선을 직접 열어 둘게요."], bl: [open, busy, short, quiet]}
+    - {tag: "재확인", icon: magnify, why: "again은 이미 센 수를 다시 맞춰 본다는 뜻이에요. 확인과 세기를 and로 이어 쿨러 안의 실제 수를 확인해요.", decoy: "I'll wipe", dk: ["냉장고를 확인하고 팩을 다시 세어 볼게요.", "쿨러를 확인하고 얼음을 다시 세어 볼게요."], bl: [count, weigh, order, price]}
+    - {tag: "계속 보고", icon: pager, why: "keep … updated는 한 번 알리고 끝내지 않고 변화마다 계속 공유한다는 뜻이에요. as units go in이 알리는 때를 정해 줘요.", decoy: "as the labels print", dk: ["팩이 도착하는 대로 혈액은행에 계속 알립시다.", "팩이 쌓이는 대로 혈액은행에 계속 알립시다."], bl: [updated, billed, closed, thanked]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 혈액 확보 확인 4문장 순서
+    why: 지금 있는 양을 말하고, 더 보낼 수 있다고 알리고, 그 연락선을 열어 두겠다고 한 뒤, 팩이 들어갈 때마다 그 연락선을 갱신해요. more·them·that line이 앞 줄을 가리켜요.
+    lines:
+      - {en: "We have units in the cooler right here.", icon: check, ko: "바로 여기 쿨러에 팩이 있어요", note: 현황}
+      - {en: "Blood bank can send more within minutes.", icon: pager, ko: "혈액은행에서 몇 분 안에 더 보낼 수 있어요", note: 보급}
+      - {en: "I'll keep a line open with them.", icon: pager, ko: "그쪽과 연락선을 열어 둘게요", note: 연락}
+      - {en: "Let's keep that line updated as units go in.", icon: check, ko: "팩이 들어가는 대로 계속 알립시다", note: 갱신}
+- title: 신속 초기 계수
+  s:
+    - {tag: "계수 제안", icon: check, why: "Quick을 문장 맨 앞에 둔 동사 없는 현장 말투예요. before we open이 기준 계수를 개복 전에 해야 하는 이유를 박아요.", decoy: "before we scrub", dk: ["개복 전에 꼼꼼히 초기 계수를 합시다.", "개복 전에 신속히 최종 계수를 합시다."], bl: [baseline, final, partial, random]}
+    - {tag: "기록 보고", icon: pencil, why: "counted and recorded는 센 것과 적은 것을 나눠 말해요. 기록까지 말해야 나중에 대조할 수 있어요.", decoy: "and bagged", dk: ["거즈와 sharp가 계수됐고 서명됐어요.", "거즈와 sharp가 계수됐고 보관됐어요."], bl: [recorded, signed, scanned, filed]}
+    - {tag: "대조 예고", icon: pushpin, why: "reconcile은 기준 계수와 현재 계수를 맞춰 본다는 뜻이에요. at closing으로 마지막 대조 시점을 미리 예고해요.", decoy: "at the table", dk: ["봉합 때 전부 하나하나 대조할게요.", "봉합 때 전부 함께 대조할게요."], bl: [reconcile, replace, reorder, reclaim]}
+    - {tag: "계수 시작", icon: check, why: "even though로 급해도 계수는 건너뛰지 않는다는 태도를 한 문장에 담아요. get the count started는 시작을 내가 맡는다는 말투예요.", decoy: "it is a long case", dk: ["응급 상황이지만 계수를 이어 갈게요.", "수술 상황이지만 계수를 시작할게요."], bl: [emergency, weekend, holiday, training]}
+    - {tag: "재확인", icon: magnify, why: "double check는 한 번 더 확인한다는 관용 표현이에요. before we close로 마지막 확인의 시점을 못 박아 빠뜨림을 막아요.", decoy: "the specimen labels", dk: ["봉합 전에 바늘 계수를 다시 확인할게요.", "봉합 전에 거즈 계수를 같이 확인할게요."], bl: [close, open, leave, page]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 초기 계수 4문장 순서
+    why: 개복 전에 기준 계수를 하고, 센 것을 기록하고, 그 기록을 봉합 때 대조하겠다고 예고한 뒤, 그 대조의 일부로 거즈 계수를 한 번 더 확인해요. against that record·Part of that이 앞 줄을 가리켜요.
+    lines:
+      - {en: "Quick baseline count before we open.", icon: check, ko: "개복 전에 신속히 초기 계수를 해요", note: 계수}
+      - {en: "Sponges and sharps are counted and recorded.", icon: pencil, ko: "거즈와 sharp가 계수되고 기록됐어요", note: 기록}
+      - {en: "We'll reconcile everything against that record at closing.", icon: pushpin, ko: "봉합 때 그 기록과 전부 대조할게요", note: 대조}
+      - {en: "Part of that is one more check of the sponge count.", icon: magnify, ko: "그중에는 거즈 계수를 한 번 더 확인하는 일도 있어요", note: 재확인}

@@ -1,0 +1,264 @@
+"최소침습 검체 회수":
+- "kind": "slider"
+  "words":
+  - "w-specimen"
+  - "w-bag"
+  - "w-intact"
+  - "w-complete"
+  "cue": "Diana asks you how the specimen looks."
+  "scale":
+  - "The specimen is in the bag."
+  - "It looks intact and complete in the bag."
+  - "It's perfect, so we don't need to label it."
+  "answerAt": 1
+  "why": "검체는 온전한지, 빠진 게 없는지를 눈으로 본 만큼 구체적으로 말해야 해요. 라벨은 검체가 방을 나가기 전에 반드시 붙여야 하므로 생략해도 된다는 말은 틀려요."
+  "example": "I'll confirm the specimen is complete."
+  "exKo": "검체가 완전한지 확인할게요."
+- "kind": "swap"
+  "words":
+  - "w-label"
+  - "w-bag"
+  "who": "순회간호사 → 소독간호사 · 검체 표지"
+  "icon": "speaker"
+  "before":
+  - "Diana, I'll "
+  - "write on the bag later"
+  - "."
+  "options":
+  - "write on the bag later"
+  - "label the bag before it leaves the room"
+  - "send the bag out and label it at pathology"
+  "answer": "label the bag before it leaves the room"
+  "notes":
+    "write on the bag later": "'later'라서 방을 나가기 전에 붙인다는 보장이 없어요."
+    "label the bag before it leaves the room": "방을 나가기 전에 라벨을 붙여 검체가 뒤바뀌지 않게 해요."
+    "send the bag out and label it at pathology": "검체는 나가기 전에 라벨이 있어야 해서 병리과에서 붙이는 건 위험해요."
+  "why": "검체는 방을 나가기 전에 라벨을 붙여야 다른 환자 검체와 섞이지 않아요."
+  "ko": "다이애나, 방을 나가기 전에 백에 라벨을 붙일게요"
+"기복 가스 색전":
+- "kind": "slider"
+  "words":
+  - "w-sudden"
+  - "w-drop"
+  - "w-etco2"
+  - "w-hypotension"
+  - "w-suspect"
+  - "w-embolism"
+  "cue": "During insufflation his monitor numbers change abruptly in a worrying way. How firmly do you speak up to Warren?"
+  "scale":
+  - "His numbers look a little different from before, I think."
+  - "EtCO2 is dropping and pressure is low — can you check?"
+  - "Sudden EtCO2 drop, hypotension — suspect gas embolism!"
+  "answerAt": 2
+  "why": "갑자기 EtCO2가 떨어지면서 저혈압이 오면 가스 색전증을 먼저 의심해야 해요. 이럴 때는 완곡하게 묻지 말고 본 변화와 의심을 분명히 알려야 해요."
+  "example": "Sudden drop in EtCO2 with hypotension—suspect gas embolism."
+  "exKo": "저혈압을 동반한 갑작스러운 EtCO2 하락 — 가스 색전증을 의심하세요."
+- "kind": "swap"
+  "words":
+  - "w-sudden"
+  - "w-drop"
+  - "w-etco2"
+  - "w-hypotension"
+  "who": "순회간호사 → 마취과의사 · 급변 보고"
+  "icon": "speaker"
+  "before":
+  - "Warren, "
+  - "his numbers look a little off"
+  - "."
+  "options":
+  - "his numbers look a little off"
+  - "I'll fix this on my own and tell you later"
+  - "his EtCO2 dropped suddenly and his blood pressure is low"
+  "answer": "his EtCO2 dropped suddenly and his blood pressure is low"
+  "notes":
+    "his numbers look a little off": "무슨 수치가 어떻게 이상한지 알 수 없어서 마취과의사가 판단을 못 해요."
+    "I'll fix this on my own and tell you later": "마취과의사가 곧바로 알아야 하는 급변을 나중에 알리면 처치가 늦어져요."
+    "his EtCO2 dropped suddenly and his blood pressure is low": "어떤 수치가 어떻게 변했는지 정확히 알려서 마취과의사가 바로 판단해요."
+  "why": "급변은 수치와 변화를 구체적으로 알려야 마취과의사가 즉시 판단하고 움직여요."
+  "ko": "워런, EtCO2가 갑자기 떨어졌고 혈압이 낮아요"
+"트로카 혈관 손상":
+- "kind": "slider"
+  "words":
+  - "w-brisk"
+  - "w-bleed"
+  - "w-trocar"
+  "cue": "Blood is coming up fast around one of the ports. You tell Lisa."
+  "scale":
+  - "There's brisk bleeding at the trocar."
+  - "There's a lot of blood — maybe more than usual."
+  - "Everything is bleeding and we're losing him!"
+  "answerAt": 0
+  "why": "출혈은 어디서 어떻게 나는지를 보이는 대로 분명히 알려야 해요. 막연히 '피가 많다'고 하거나 감정적으로 크게 말하면 집도의가 위치와 정도를 알 수 없어요."
+  "example": "There's brisk bleeding at the trocar."
+  "exKo": "트로카 부위에서 출혈이 빠르게 진행되고 있습니다."
+- "kind": "swap"
+  "words":
+  - "w-open"
+  - "w-prep"
+  - "w-conversion"
+  "who": "순회간호사 → 외과의사 · 출혈 보고"
+  "icon": "speaker"
+  "before":
+  - "Lisa, there's brisk bleeding at the trocar, "
+  - "so I've decided we're converting"
+  - "."
+  "options":
+  - "so I'm getting the open tray ready for you"
+  - "so I've decided we're converting"
+  - "so you should just handle it"
+  "answer": "so I'm getting the open tray ready for you"
+  "notes":
+    "so I'm getting the open tray ready for you": "전환 결정은 집도의에게 맡기고 간호사는 준비를 한다고 말해요."
+    "so I've decided we're converting": "전환은 집도의가 결정하는 일이라 간호사가 정한 것처럼 말하면 안 돼요."
+    "so you should just handle it": "집도의에게 떠넘기는 말투라 협업에 맞지 않아요."
+  "why": "전환을 결정하는 건 집도의예요. 간호사는 필요할 때 바로 쓸 수 있게 기구를 준비한다고 알려요."
+  "ko": "리사, 트로카 부위에서 출혈이 빠르게 진행돼서 개복 트레이를 준비하고 있어요"
+"긴급 개복 전환":
+- "kind": "slider"
+  "words":
+  - "w-extra"
+  - "w-hand"
+  "cue": "The case is turning into an open case. How do you ask for more people?"
+  "scale":
+  - "We could use another person."
+  - "We need another person soon."
+  - "We need extra hands right now — call for more!"
+  "answerAt": 2
+  "why": "긴급 전환에서는 정중하되 분명하게 사람이 지금 더 필요하다고 말해야 해요. 'could use'나 'soon'은 급하다는 걸 전하지 못해요."
+  "example": "We need extra hands right now."
+  "exKo": "지금 일손이 더 필요합니다."
+- "kind": "swap"
+  "words":
+  - "w-quickly"
+  - "w-stay"
+  - "w-calm"
+  - "w-open"
+  "who": "순회간호사 → 소독간호사 · 긴급 전환"
+  "icon": "speaker"
+  "before":
+  - "Kevin, "
+  - "let's all slow down and wait for orders"
+  - " while I get the tray open."
+  "options":
+  - "let's all slow down and wait for orders"
+  - "let's move quickly and stay calm"
+  - "let's rush so nobody has time to think"
+  "answer": "let's move quickly and stay calm"
+  "notes":
+    "let's all slow down and wait for orders": "긴급 전환에서 느려지면 출혈 대응이 늦어져요."
+    "let's move quickly and stay calm": "빠르게 움직이면서도 침착함을 유지해 실수를 줄여요."
+    "let's rush so nobody has time to think": "서두르면 기구를 빠뜨리거나 오염시키기 쉬워요."
+  "why": "긴급 상황의 목표는 빠름과 침착함이에요. 둘 중 하나만 놓치면 실수가 생겨요."
+  "ko": "케빈, 빠르게 움직이되 침착함을 유지합시다"
+"로봇 고장 긴급 언도킹":
+- "kind": "slider"
+  "words":
+  - "w-robot"
+  - "w-fault"
+  - "w-respond"
+  "cue": "The surgeon moves the controls, but nothing on the robot happens. How do you tell Amber?"
+  "scale":
+  - "The robot seems a bit slow."
+  - "The robot has faulted and isn't responding."
+  - "The robot is dead and everything is ruined!"
+  "answerAt": 1
+  "why": "고장은 '무엇이 어떻게' 됐는지를 사실대로 말해야 응급 언도킹 판단이 빨라요. 느리다고만 하면 심각성이 전달되지 않고, 다 망했다는 과장은 도움이 안 돼요."
+  "example": "The robot has faulted and won't respond."
+  "exKo": "로봇이 고장 나서 반응하지 않습니다."
+- "kind": "swap"
+  "words":
+  - "w-console"
+  - "w-respond"
+  - "w-input"
+  "who": "간호사 → 순회간호사 · 콘솔 보고"
+  "icon": "speaker"
+  "before":
+  - "Amber, "
+  - "the console is acting weird, so something is off"
+  - "."
+  "options":
+  - "the console isn't responding to any input"
+  - "the console is acting weird, so something is off"
+  - "the console just needs a minute or two to catch up"
+  "answer": "the console isn't responding to any input"
+  "notes":
+    "the console isn't responding to any input": "어떤 입력에도 반응이 없다는 구체적 증상이라 언도킹 판단의 근거가 돼요."
+    "the console is acting weird, so something is off": "'이상하다'는 말은 증상을 알 수 없어서 판단이 늦어져요."
+    "the console just needs a minute or two to catch up": "기다리면 낫는다고 가정하는 말이라 응급 대응을 미뤄요."
+  "why": "콘솔 상태는 '어떤 입력에도 반응 없음'처럼 증상으로 말해야 팀이 바로 판단해요."
+  "ko": "앰버, 콘솔이 어떤 입력에도 반응하지 않아요"
+"피하기종 호흡 위기":
+- "kind": "slider"
+  "words":
+  - "w-crepitus"
+  - "w-crackle"
+  "cue": "As you press on his upper chest and the sides of his throat, it feels strange. What do you tell Roger?"
+  "scale":
+  - "I feel crackling under his skin up to the neck."
+  - "That's definitely life-threatening emphysema."
+  - "He's going to stop breathing — do something now!"
+  "answerAt": 0
+  "why": "만져지는 것을 위치와 함께 그대로 알리고 판단은 마취과의사에게 맡겨요. 진단명을 단정하거나 불안만 키우는 말은 간호사가 할 말이 아니에요."
+  "example": "There's crepitus up to the neck."
+  "exKo": "목까지 염발음이 퍼지고 있습니다."
+- "kind": "swap"
+  "words":
+  - "w-crepitus"
+  - "w-airway"
+  - "w-crackle"
+  "who": "순회간호사 → 마취과의사 · 피하기종 발견"
+  "icon": "speaker"
+  "before":
+  - "Roger, "
+  - "it's just a little air under the skin"
+  - "."
+  "options":
+  - "it's just a little air under the skin"
+  - "he definitely has a collapsed lung"
+  - "I feel crackling under the skin up to his neck"
+  "answer": "I feel crackling under the skin up to his neck"
+  "notes":
+    "it's just a little air under the skin": "'just a little'이라고 줄여 말하면 위기를 놓칠 수 있어요."
+    "he definitely has a collapsed lung": "폐 허탈 같은 진단은 간호사가 단정할 수 없어요."
+    "I feel crackling under the skin up to his neck": "만져지는 것과 범위를 그대로 알려서 마취과의사가 호흡을 판단해요."
+  "why": "피하기종은 어디까지 퍼졌는지가 중요해서 만져지는 범위를 구체적으로 알려야 해요."
+  "ko": "로저, 목까지 피부 밑에서 뿌드득거리는 게 만져져요"
+"시야 상실 대량 출혈":
+- "kind": "slider"
+  "words":
+  - "w-lose"
+  - "w-view"
+  - "w-field"
+  - "w-full"
+  - "w-blood"
+  "cue": "You can't see anything on the screen, only red. How do you tell Julia?"
+  "scale":
+  - "There's some blood in the field."
+  - "There's a lot of blood and a poor view."
+  - "We've lost the view — the field is full of blood."
+  "answerAt": 2
+  "why": "시야가 완전히 사라졌으면 일어난 일을 그대로 분명히 알려야 해요. 줄여 말하면 집도의가 위급도를 낮게 판단할 수 있어요."
+  "example": "We've lost the view—the field is full of blood."
+  "exKo": "시야를 잃었습니다 — 필드가 피로 가득합니다."
+- "kind": "swap"
+  "words":
+  - "w-suction"
+  - "w-unit"
+  - "w-blood"
+  "who": "순회간호사 → 외과의사 · 출혈 대응"
+  "icon": "speaker"
+  "before":
+  - "Julia, "
+  - "I've decided that we're converting to open right now"
+  - "."
+  "options":
+  - "I've decided that we're converting to open right now"
+  - "I'll get suction and more blood units ready"
+  - "let me know when you want anything from me"
+  "answer": "I'll get suction and more blood units ready"
+  "notes":
+    "I've decided that we're converting to open right now": "전환은 집도의가 결정해서 간호사가 정한 것처럼 말하면 안 돼요."
+    "I'll get suction and more blood units ready": "간호사가 할 수 있는 준비를 구체적으로 말해서 집도의가 바로 쓸 수 있어요."
+    "let me know when you want anything from me": "지금 필요한 것을 먼저 챙기지 않고 지시를 기다리기만 해요."
+  "why": "대량 출혈에서는 간호사가 먼저 챙길 수 있는 것(석션, 혈액)을 구체적으로 말해요."
+  "ko": "줄리아, 석션과 혈액 팩을 더 준비해 둘게요"
