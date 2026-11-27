@@ -1,0 +1,162 @@
+# A 검토 — 문장(S1~S15, KO1~KO7). sit=상황 제목, i=문장 순번(0부터), old_en=지금 문장 en(assert).
+# set 안의 blank는 {answer, options: [문자열 4개]}. why_change = changes 목록에 적을 이유.
+sentences:
+  - {sit: 기복 가스 색전, i: 3, old_en: "Let's get him flat and turn him left-side down.", why_change: "S1 안전 — 15.2 head down과 반대(flat). Durant 체위는 좌측위+머리 낮춤", set: {
+      en: "Let's tip his head down and turn him left-side down.",
+      ko: "머리를 낮추고 왼쪽이 아래로 가게 돌립시다.",
+      chunks: ["Let's tip", "his head down", "and turn him", "left-side down", "."],
+      words: [w-turn],
+      tag: 체위 변경, icon: siren,
+      why: "tip his head down과 turn him을 and로 이어 머리 낮춤과 좌측위를 연달아 말해요. left-side down은 왼쪽이 아래로 가게라는 뜻이에요.",
+      decoy: and warm him,
+      distractorsKo: ["환자를 돌릴 때는 여러 명이 함께 움직입니다.", "왼쪽으로 돌릴 환자 양옆에 사람을 세웁시다."],
+      blank: {answer: head, options: [hand, head, hip, heel]}}}
+  - {sit: 기복 가스 색전, i: 5, old_en: "We need to lower the pressure immediately.", why_change: "S2 안전 — 저혈압 장면에서 '혈압을 낮춘다'로 읽힘. 가스 색전의 처치는 기복기를 끄는 것", set: {
+      en: "I'm turning off the insufflator immediately.",
+      ko: "지금 즉시 기복기를 끌게요.",
+      chunks: ["I'm turning off", "the insufflator", "immediately", "."],
+      words: [w-insufflator, w-immediately],
+      tag: 기복기 끄기, icon: gear,
+      why: "I'm turning off처럼 진행형으로 지금 하고 있는 일을 소리 내어 알려 팀이 바로 듣게 해요. immediately를 끝에 붙여 지체 없이 한다고 말해요.",
+      decoy: the foot pedal,
+      distractorsKo: ["기복기는 복강에 CO2를 넣어요.", "멈추면 압력이 내려가요."],
+      blank: {answer: insufflator, options: [insufflator, light source, camera, warmer]}}}
+  - {sit: CO2 흡수 EtCO2 상승, i: 5, old_en: "I'll tell anesthesia if the pressure needs to come down.", why_change: "S3 3인칭 — 상대가 마취과의사", set: {
+      en: "I'll tell you right away if the pressure goes up.",
+      ko: "압력이 오르면 바로 말씀드릴게요.",
+      chunks: ["I'll tell you", "right away", "if the pressure", "goes up", "."],
+      words: [w-tell, w-pressure],
+      tag: 보고 약속, icon: pager,
+      why: "right away로 바로 알리겠다는 시점을 약속하고, if절로 어떤 변화를 알릴지 정해요. 상대에게 직접 말하니 you로 불러요.",
+      decoy: if the tank,
+      distractorsKo: ["압력은 CO2 주입으로 생겨요.", "높은 압력은 호흡에 부담을 줍니다."],
+      blank: {answer: pressure, options: [canister, tank, hose, pressure]}}}
+  - {sit: 피하기종 호흡 위기, i: 4, old_en: "Let's tell anesthesia the pressures are rising fast.", why_change: "S4 3인칭 — 상대가 마취과의사", set: {
+      en: "I'll tell the surgeon the pressures are rising fast.",
+      ko: "압력이 빠르게 오르고 있다고 집도의에게 알릴게요.",
+      chunks: ["I'll tell", "the surgeon", "the pressures", "are rising fast", "."],
+      words: [w-tell, w-surgeon, w-pressure, w-fast],
+      tag: 집도의 보고, icon: pager,
+      why: "tell the surgeon으로 알릴 대상을 먼저 밝히고, the pressures are rising fast를 문장째 담아 무엇이 변하는지 전해요.",
+      decoy: are in the log,
+      distractorsKo: ["기복 압력은 집도의가 높이거나 낮춥니다.", "빠르게 오르는 압력은 환기를 어렵게 만듭니다."],
+      blank: {answer: pressures, options: [pressures, alarms, lights, tables]}}}
+  - {sit: 트로카 혈관 손상, i: 4, old_en: "I'll call the surgeon back to the field.", why_change: "S5 3인칭 — 상대가 외과의", set: {
+      en: "Should I call a vascular surgeon now?",
+      ko: "지금 혈관외과 의사를 부를까요?",
+      chunks: ["Should I call", "a vascular surgeon", "now", "?"],
+      words: [w-call, w-surgeon],
+      tag: 지원 요청, icon: pager,
+      why: "Should I …?로 부를지를 묻는 형태라 결정은 상대에게 두면서 지원 요청을 바로 제안해요. now를 끝에 붙여 급하다고 알려요.",
+      decoy: a second cart,
+      distractorsKo: ["큰 혈관 손상은 피가 빨리 차요.", "혈관외과 의사는 당직표에 있어요."],
+      blank: {answer: surgeon, options: [tray, clamp, stapler, surgeon]}}}
+  - {sit: 시야 상실 대량 출혈, i: 5, old_en: "We need the surgeon back at the table now.", why_change: "S6 3인칭 — 상대가 외과의", set: {
+      en: "Should I call another surgeon to the table now?",
+      ko: "지금 다른 외과의를 테이블로 부를까요?",
+      chunks: ["Should I call", "another surgeon", "to the table", "now", "?"],
+      words: [w-call, w-surgeon, w-table],
+      tag: 지원 요청, icon: pager,
+      why: "Should I …?로 부를지를 상대에게 묻고, to the table로 어디로 와야 하는지, now로 급하다는 시점을 붙여요. another surgeon은 지금 집도의 말고 다른 외과의를 뜻해요.",
+      decoy: another monitor,
+      distractorsKo: ["외과의 한 명 더는 시야 확보에 도움이 돼요.", "대량 출혈에서는 손이 많을수록 도움이 돼요."],
+      blank: {answer: table, options: [desk, sink, table, scale]}}}
+  - {sit: 기복 압력 감시, i: 4, old_en: "Let's keep it under 15 if we can.", why_change: "S7 업무 범위 — 압력 값은 집도의가 정함", set: {
+      en: "If it goes over 15, let's tell the surgeon.",
+      ko: "15를 넘으면 집도의에게 알립시다.",
+      chunks: ["If it", "goes over 15", ", let's tell", "the surgeon", "."],
+      words: [w-tell, w-surgeon],
+      tag: 보고 기준, icon: shield,
+      why: "if절에 15라는 숫자 기준을 두고 let's tell로 누구에게 알릴지 청유로 이어요. 값을 정하는 사람은 집도의라 간호사는 넘으면 알리는 쪽이에요.",
+      decoy: is on the screen,
+      distractorsKo: ["기복 압력은 가스의 압력이에요.", "기복 압력은 복부를 팽팽하게 합니다."],
+      blank: {answer: surgeon, options: [surgeon, valve, hose, tank]}}}
+  - {sit: 개복 전환 대비, i: 4, old_en: "We'll convert if the bleeding doesn't stop.", why_change: "S8 업무 범위 — 개복 전환은 집도의 결정", set: {
+      en: "The surgeon may convert if the bleeding doesn't stop.",
+      ko: "출혈이 멈추지 않으면 집도의가 전환할 수도 있어요.",
+      chunks: ["The surgeon", "may convert", "if the bleeding", "doesn't stop", "."],
+      words: [w-surgeon, w-convert, w-bleed, w-stop],
+      tag: 전환 기준, icon: siren,
+      why: "may convert는 집도의가 판단해 전환할 수도 있다는 가능성을 말하고, if절은 전환으로 이어지는 조건인 멈추지 않는 출혈을 짚어요.",
+      decoy: if the monitor,
+      distractorsKo: ["연기가 멈추지 않으면 집도의가 전환할 수도 있어요.", "전환은 복강경에서 개복으로 바꾸는 일이에요."],
+      blank: {answer: bleeding, options: [noise, shaking, beeping, bleeding]}}}
+  - {sit: 시야 상실 대량 출혈, i: 3, old_en: "Let's get two more units on the way.", why_change: "S9 업무 범위 — 혈액은 마취과 처방", set: {
+      en: "Should I ask anesthesia for two more units?",
+      ko: "마취과에 혈액 두 팩을 더 요청할까요?",
+      chunks: ["Should I ask", "anesthesia", "for two more units", "?"],
+      words: [w-anesthesia, w-unit],
+      tag: 혈액 요청, icon: pill,
+      why: "Should I …?로 혈액을 더 요청할지 묻는 형태라 혈액을 처방하는 마취과의 몫을 지켜요. units는 수혈용 혈액 팩을 줄여 부르는 현장 말이에요.",
+      decoy: for two more cups,
+      distractorsKo: ["혈액 팩은 냉장 보관돼 있어요.", "대량 출혈에는 혈액 팩이 계속 쓰입니다."],
+      blank: {answer: units, options: [tools, gowns, masks, units]}}}
+  - {sit: 시야 상실 대량 출혈, i: 4, old_en: "I'll pack the area and hold pressure.", why_change: "S10 업무 범위 — 복강 안 패킹·압박은 집도의·보조의 일", set: {
+      en: "Do you want to pack the area and hold pressure?",
+      ko: "부위를 패킹하고 압박을 유지하시겠어요?",
+      chunks: ["Do you want", "to pack", "the area", "and hold pressure", "?"],
+      words: [w-pack, w-area, w-hold, w-pressure],
+      tag: 패킹 제안, icon: bandage,
+      why: "Do you want to …?로 패킹과 압박을 할지를 정중하게 묻는 제안이에요. pack과 hold 두 동작을 and로 이어 채우고 누르는 일을 말해요.",
+      decoy: the bag,
+      distractorsKo: ["패킹은 거즈로 부위를 빈틈없이 채웁니다.", "압박을 계속 유지하는 것은 출혈을 줄입니다."],
+      blank: {answer: pack, options: [pour, pack, paint, wash]}}}
+  - {sit: 로봇 응급 언도킹 준비, i: 5, old_en: "We'll undock quickly if the surgeon calls it.", why_change: "S11 — calls it은 '결정하다'라 w-call(호출하다) 태그가 다른 뜻에 붙었고 ko 알리면은 오역", set: {
+      ko: "집도의가 결정하면 빠르게 언도킹할게요.",
+      words: [w-undock, w-quickly, w-surgeon],
+      why: "if the surgeon calls it으로 언도킹을 결정하는 사람을 집도의로 못 박고, call it은 판단을 내려 선언한다는 관용 표현이에요."}}
+  - {sit: 카메라·광원 준비, i: 5, old_en: "I'll insert the scope slowly.", why_change: "S12 업무 범위 — 스코프 삽입은 집도의·카메라 보조", set: {
+      en: "Let's insert the scope slowly.",
+      ko: "스코프를 천천히 삽입합시다.",
+      chunks: ["Let's insert", "the scope", "slowly", "."],
+      tag: 천천히 삽입, icon: scalpel,
+      why: "Let's로 함께 하자고 청유하고, slowly를 문장 끝에 붙여 서두르지 않는다는 방식을 알려요. 삽입은 시야를 보며 천천히 하는 것이 기본이에요."}}
+  - {sit: 개복 전환 대비, i: 3, old_en: "Let's confirm the open tray is in the room.", why_change: "S13 ko — 개방은 개복의 뜻, 방은 수술방; chunks 구 경계(S15)", set: {
+      ko: "개복 트레이가 수술방에 있는지 확인합시다.",
+      chunks: ["Let's", "confirm", "the open tray", "is in the room", "."],
+      distractorsKo: ["확인한 개복 트레이는 그대로 둡시다.", "개복 트레이는 개복술에 쓰이는 기구예요."]}}
+  - {sit: 기복 CO2 준비, i: 3, old_en: "The tank pressure gauge reads normal.", why_change: "S14 — w-read ko(가리키다)와 맞춤", set: {
+      ko: "탱크 압력 게이지가 정상을 가리킵니다.",
+      distractorsKo: ["탱크 밸브를 열고 압력 게이지를 봅니다.", "탱크 압력 게이지는 밸브 가까이에 놓여요."]}}
+  - {sit: 로봇 도킹 준비, i: 4, old_en: "Let's lock the wheels before docking.", why_change: "S14 — w-lock ko(잠그다)와 맞춤", set: {
+      ko: "도킹 전에 바퀴를 잠급시다.",
+      distractorsKo: ["잠금 전에 카트를 정렬합시다.", "잠금 레버는 바퀴 아래예요."]}}
+  - {sit: 체위 조정 확인, i: 4, old_en: "The arms are tucked safely at the sides.", why_change: "S14 — w-tuck ko(끼워 넣다)와 맞춤", set: {
+      ko: "팔은 몸 양옆에 안전하게 끼워 넣어 두었습니다.",
+      why: "tucked는 몸 옆에 끼워 넣었다는 뜻이고, safely로 끼이거나 늘어지지 않게 했다는 점을 알려요.",
+      distractorsKo: ["팔은 팔 받침대 위에 안전하게 올려 두었습니다.", "옆에 끼워 넣은 팔 위에 시트를 덮습니다."]}}
+  - {sit: 최소침습 검체 회수, i: 4, old_en: "The specimen looks intact and complete.", why_change: "S14 — w-complete ko(빠짐없는)와 맞춤", set: {
+      ko: "검체가 온전하고 빠진 데 없어 보입니다.",
+      distractorsKo: ["검체가 온전하고 깨끗해 보입니다.", "검체는 온전해야 병리 판독이 쉽습니다."]}}
+  # S15 chunks 구 경계(비 keyPhrase)
+  - {sit: 복강경 장비 세팅, i: 4, old_en: "Let's check the cables before we plug everything in.", why_change: "S15 chunks 구 경계(구동사 plug in 보존)", set: {
+      chunks: ["Let's check", "the cables", "before", "we plug everything in", "."]}}
+  - {sit: 기복 CO2 준비, i: 5, old_en: "I'll double-check that everything's connected.", why_change: "S15 chunks 구 경계", set: {
+      chunks: ["I'll double-check", "that", "everything's connected", "."]}}
+  - {sit: 렌즈 시야 관리, i: 5, old_en: "I'll wipe the lens before we go back in.", why_change: "S15 chunks 구 경계(구동사 go back in 보존)", set: {
+      chunks: ["I'll wipe", "the lens", "before", "we go back in", "."]}}
+  - {sit: 최소침습 검체 회수, i: 3, old_en: "Let's double-check the bag before we seal it.", why_change: "S15 chunks 구 경계(seal it 보존)", set: {
+      chunks: ["Let's double-check", "the bag", "before", "we seal it", "."]}}
+  - {sit: 로봇 고장 긴급 언도킹, i: 3, old_en: "The console isn't responding to any input.", why_change: "S15 chunks 구 경계(isn't responding 보존)", set: {
+      chunks: ["The console", "isn't responding", "to any input", "."]}}
+  # KO1~KO7 — keyPhrase ko만(en·chunks 그대로)
+  - {sit: 개복 전환 대비, i: 0, old_en: "Let's have the open set on standby.", why_change: "KO1 ko — 개방 세트는 개복 세트", set: {
+      ko: "개복 세트를 대기시켜 둡시다.",
+      distractorsKo: ["개복 세트를 카트에 둡시다.", "개복 세트는 묶음으로 나옵니다."]}}
+  - {sit: 기복 가스 색전, i: 1, old_en: "Sudden drop in EtCO2 with hypotension—suspect gas embolism.", why_change: "KO2 ko — 마취과의사에게 하는 명령으로 읽히지 않게(주어를 뺀 call-out)", set: {
+      ko: "저혈압과 함께 EtCO2가 갑자기 떨어졌어요 — 가스 색전증이 의심돼요.",
+      why: "원인을 설명하기보다 징후 둘을 짧게 나열한 뒤 suspect로 의심을 덧붙여요. 위기에서는 주어를 빼고 명사구와 동사 하나로 압축해요."}}
+  - {sit: 트로카 혈관 손상, i: 1, old_en: "Suspect a major vessel injury.", why_change: "KO3 ko — 외과의에게 하는 명령으로 읽히지 않게", set: {
+      ko: "주요 혈관 손상이 의심돼요.",
+      why: "주어를 뺀 call-out이라 진단을 단정하지 않고 의심한다고 알리고, major vessel은 큰 혈관이라는 뜻이에요."}}
+  - {sit: 기복 가스 색전, i: 0, old_en: "Stop insufflation and release the pneumoperitoneum.", why_change: "KO4 ko — '가스를 해제'는 어색", set: {
+      ko: "기복을 멈추고 복강 내 가스를 빼세요."}}
+  - {sit: 피하기종 호흡 위기, i: 2, old_en: "Let's release the pneumoperitoneum and support ventilation.", why_change: "KO5 ko — w-support ko(보조하다)와 맞춤", set: {
+      ko: "복강 내 가스를 빼고 환기를 보조합시다.",
+      distractorsKo: ["복강 내 가스를 빼는 일은 폐의 부담을 덜어 줍니다.", "환기 보조는 마취과가 이끌어 갑니다."]}}
+  - {sit: 최소침습 검체 회수, i: 2, old_en: "I'll confirm the specimen is complete.", why_change: "KO6 ko — w-complete ko(빠짐없는)와 맞춤", set: {
+      ko: "검체가 빠짐없이 다 나왔는지 확인할게요.",
+      distractorsKo: ["확인할 검체를 빠짐없이 트레이에 놓을게요.", "검체 모양은 병리과에서 다시 봅니다."]}}
+  - {sit: 기복 압력 감시, i: 0, old_en: "The insufflation pressure is at 15.", why_change: "KO7 ko — 직역 정리", set: {
+      ko: "기복 압력은 15예요.",
+      distractorsKo: ["단위는 mmHg예요.", "압력 숫자는 화면에 떠요."]}}

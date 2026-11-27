@@ -1,0 +1,64 @@
+# A 검토 — 단어(W1~W16)·뉘앙스(N1~N10) 값. 문장·order는 data_2·3.
+words:
+  w-insufflation: {distractorsEn: [inspiration, insulation]}
+  w-insufflator: {distractorsEn: [insulator, incubator]}
+  w-normal: {distractorsEn: [natural, formal]}
+  w-clamp:
+    distractorsEn: [clasp, cramp]
+    cue: 수술 중 무언가를 꽉 물어 붙잡아 두는 장치
+  w-pneumoperitoneum:
+    chips: [[pneumo, periton, eum]]
+    decoyChips: [thorac]
+  w-low:
+    example: The pressure looks low in this position.
+    exKo: 이 체위에서 혈압이 낮아 보입니다.
+  w-call:
+    example: I'll call for help right now.
+    exKo: 지금 바로 도움을 요청할게요.
+  w-blood: {distractorsEn: [bloom, flood]}
+  w-defog: {distractorsEn: [deflate, deflect]}
+  w-minute: {distractorsEn: [mental, mineral]}
+  w-distend: {distractorsEn: [distort, descend]}
+  w-crepitus: {ko: 염발음(피부 밑 공기)}
+  w-support: {ko: 보조하다}
+  w-open: {ko: 열다(개복의)}
+  w-embolism: {decoyChips: [bowl]}
+  w-ventilation: {chips: [[vent, il, ation]]}
+  w-deflate: {chips: [[de, flate]]}
+word_remove:
+  w-flat: "S1로 15.3에서 flat이 빠져 어느 문장도 태그하지 않게 됐다"
+# 문장 example을 다른 문장으로 옮기는 단어(W17). example_from = 그 문장 en (ko는 문장에서 읽음)
+example_from:
+  w-anesthesia: "Should I ask anesthesia for two more units?"
+  w-field: "I'll open the tray while you prep the field."
+nuance:
+  - {sit: CO2 흡수 EtCO2 상승, n: 0, kind: slider, set: {
+      scale: ["The EtCO2 looks a bit different from before.", "EtCO2 is climbing; what's your call on ventilation?", "EtCO2 is climbing from the CO2 — turn up the ventilator."],
+      answerAt: 1,
+      why: "마취과의사에게는 막연한 느낌이 아니라 수치가 어느 쪽으로 가는지 말하고, 환기를 어떻게 할지는 그쪽에 물어요. 환기기를 올리라고 지시하는 것은 간호사가 할 말이 아니에요."}}
+  - {sit: 트로카 혈관 손상, n: 0, kind: slider, set: {
+      scale: ["There's a lot of blood — maybe more than usual.", "There's brisk bleeding at the trocar.", "Everything is bleeding and we're losing him!"],
+      answerAt: 1}}
+  - {sit: 기복 압력 감시, n: 0, kind: slider, set: {
+      scale: ["I haven't looked lately, but probably not.", "Still at 15 and holding steady.", "It's climbing fast — stop it now!"],
+      why: "감시 결과는 구체적인 수치와 변화 여부로 말해야 해요. 안 보고 짐작으로 답하면 감시가 아니고, 오르지도 않는데 급하게 멈추라고 하면 팀이 혼란스러워요."}}
+  - {sit: 로봇팔 충돌 방지, n: 1, kind: swap, set: {
+      why: "멸균 포를 덮은 팔은 멸균 팀(보조·소독간호사)이 카트 쪽에서 맞춰요. 내가 무엇을 맞출지 구체적으로 말해야 해요."},
+     notes: {"the surgeon's console settings": "콘솔 설정은 집도의가 다루는 것이라 간호사가 건드릴 부분이 아니에요."}}
+  - {sit: 카메라·광원 준비, n: 1, kind: swap, set: {who: "간호사 → 소독간호사 · 렌즈 준비"},
+     rename_option: {"the lens will be fine without it": "the lens will be fine without defogging"}}
+  - {sit: 렌즈 시야 관리, n: 1, kind: swap, set: {who: "간호사 → 소독간호사 · 스코프 재삽입"}}
+  - {sit: 긴급 개복 전환, n: 1, kind: swap, set: {ko: "케빈, 제가 트레이를 여는 동안 빠르게 움직이되 침착함을 유지합시다"}}
+  - {sit: 시야 상실 대량 출혈, n: 1, kind: swap, set: {
+      words: [w-suction, w-blood, w-anesthesia],
+      ko: "줄리아, 석션을 더 준비하고 혈액은 마취과에 물어볼게요",
+      why: "대량 출혈에서는 간호사가 먼저 챙길 수 있는 석션을 준비하고, 혈액은 마취과와 맞춰요."},
+     rename_option: {"I'll get suction and more blood units ready": "I'll get more suction and ask anesthesia about blood"},
+     set_answer: "I'll get more suction and ask anesthesia about blood",
+     set_note: {"I'll get more suction and ask anesthesia about blood": "지금 할 수 있는 준비를 하고, 혈액은 처방하는 마취과에 물어요."}}
+  - {sit: 로봇 도킹 준비, n: 1, kind: swap, set: {ko: "저스틴, 바퀴를 잠갔으니 도킹해도 돼요"}}
+  - {sit: 긴급 개복 전환, n: 0, kind: slider, set: {
+      scale: ["We could use another person in here.", "We'll need another person pretty soon.", "We need extra hands right now."],
+      answerAt: 2}}
+  - {sit: 렌즈 시야 관리, n: 0, kind: slider, set: {
+      scale: ["Let's try something quick to clear it up.", "Let's clean the lens off again.", "Let's warm and defog the lens first."]}}

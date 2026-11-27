@@ -1,0 +1,39 @@
+# A 검토 — order(상황 제목, 줄 번호 0~3). why_sub = [옛 문구, 새 문구] 치환(옛 문구가 정확히 한 번 있어야 함)
+orders:
+  - sit: 카메라·광원 준비
+    lines:
+      3: {en: "The lens looks clean and ready, so let's insert the scope slowly.", ko: "렌즈가 깨끗하니 스코프를 천천히 삽입합시다"}
+  - sit: 로봇 도킹 준비
+    lines:
+      2: {ko: "정렬됐으니 도킹 전에 바퀴를 잠급시다"}
+    why_sub: [["바퀴를 고정하고", "바퀴를 잠그고"]]
+  - sit: 체위 조정 확인
+    lines:
+      2: {ko: "거기에 패딩하고 팔을 몸 옆에 안전하게 끼워 넣어요"}
+    why_sub: [["팔을 옆에 고정하고", "팔을 옆에 끼워 넣고"]]
+  - sit: 기복 압력 감시
+    lines:
+      0: {ko: "기복 압력은 15예요"}
+  - sit: 개복 전환 대비
+    lines:
+      0: {ko: "개복 세트를 대기시켜 둡시다"}
+      1: {ko: "그 세트가 수술방에 있는지 확인합시다"}
+      3: {en: "With everything within reach, we're ready if the surgeon converts.", ko: "다 닿는 곳에 있으니 집도의가 전환해도 준비됐어요", note: 준비}
+    why: "개복 세트를 대기시키고, 그 세트가 방에 있는지 확인하고, 방에 있으니 기구를 손 닿는 곳에 두고, 모든 것이 닿는 곳에 있으니 집도의가 전환해도 준비돼 있는 순서예요. 각 줄이 앞 줄을 가리켜 순서가 하나로 정해져요."
+  - sit: 로봇 응급 언도킹 준비
+    lines:
+      3: {ko: "해제가 준비되면 집도의가 결정할 때 언도킹해요"}
+    why_sub: [["집도의가 알릴 때", "집도의가 결정할 때"]]
+  - sit: 최소침습 검체 회수
+    lines:
+      2: {ko: "꺼내면 검체가 빠짐없이 다 나왔는지 확인할게요"}
+    why_sub: [["검체가 완전한지 확인하고", "검체가 빠짐없이 나왔는지 확인하고"]]
+  - sit: 피하기종 호흡 위기
+    lines:
+      2: {ko: "압력이 오르니 가스를 빼고 환기를 보조해요"}
+    why_sub: [["환기를 지원하고", "환기를 보조하고"]]
+  - sit: 시야 상실 대량 출혈
+    lines:
+      2: {en: "While we hold pressure, I'll call for more hands.", ko: "압박하는 동안 일손을 더 부를게요", note: 호출, icon: pager}
+      3: {en: "With help on the way, suction and get more units in the room.", ko: "도움이 오는 사이 흡인하고 혈액 팩을 더 들여요", note: 흡인, icon: siren}
+    why: "시야를 잃었다고 알리고, 그 즉시 압박하며 전환을 준비하고, 압박하는 동안 일손을 더 부르고, 도움이 오는 사이 흡인하며 혈액 팩을 더 들이는 순서예요. 지혈이 먼저이고 호출은 압박과 동시에 해요. With the view gone, While we hold pressure, With help on the way가 앞 줄을 가리켜 순서가 하나로 정해져요."
