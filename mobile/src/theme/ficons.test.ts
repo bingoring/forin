@@ -15,8 +15,8 @@ const REF = join(
   'design-handoff_v25', 'reference', 'forin-pixel-icons.jsx',
 );
 
-// The handoff lives in `docs/waypoint` in this repo. It used to be the `docs/dlc` git
-// submodule, which CI checked out without — so these files were absent there, and this
+// The handoff lives in `docs/waypoint` in this repo. It used to be a git submodule,
+// which CI checked out without — so these files were absent there, and this
 // suite crashed on every push for eight commits before anyone looked at the runs.
 //
 // Skipping when it is absent is right, but only because the comparison is not the only

@@ -11,7 +11,7 @@
 - 레이아웃:
   ```
   forin/
-  ├── docs/dlc/            ← waypoint 서브모듈 (프레임워크 + 본 기획 문서 home)
+  ├── docs/waypoint/       ← 본 기획 문서 home (waypoint 플러그인)
   ├── mobile/              ← React Native + Expo 앱
   ├── server/              ← Go API 서버
   ├── packages/contract/   ← openapi.yaml + 생성된 TS 클라이언트
