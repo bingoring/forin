@@ -1,0 +1,198 @@
+# A 몫(단어·뉘앙스·context·문장) 수정 데이터 — fix_core-safety-or.py가 읽는다.
+words:
+  w-might: {distractorsEn: [must, shall]}
+  w-material: {distractorsEn: [mineral, memorial]}
+  w-anything:
+    ko: 무엇이든
+    cue: 어느 것이든 가리지 않고 하나라도 — 기기든 포장이든 옮겨지기 전에 알린다는 말에 쓴다
+    _chg: {fields: [ko], why: "아무것도(= nothing)와 뜻이 겹쳐 영어 고르기에서 정답이 둘 — 문장은 '무엇이든'(before anything gets moved)"}
+  w-signoff:
+    ko: 서명해 승인하다
+    cue: 확인을 마쳤다는 뜻으로 이름을 적어 승인한다는 동사구 — 둘이 함께 이렇게 해야 기록이 끝난다
+    _chg: {fields: [ko], why: "sign off는 확인을 마쳤다고 서명해 승인하는 것 — '넘기다'(인계)가 아님"}
+  w-away: {distractorsEn: [right there, far away]}
+  w-serial: {distractorsKo: [무작위의, 대략의]}
+  w-flame: {distractorsEn: [frame, fluke]}
+  w-timeout: {distractorsKo: [회복 관찰, 인수인계]}
+  w-step: {distractorsKo: [방향, 결과]}
+  w-backup: {distractorsKo: [지원서, 일정표]}
+  w-xray: {cue: 수술대 위에서 이동식 장비로 바로 찍는 방사선 사진 — 잔류가 의심되는 거즈를 찾을 때 쓴다}
+  w-check:
+    cue: 빠짐이나 이상이 없는지 직접 들여다본다는 동사 — 차트나 한 가지 사항을 다시 볼 때
+    decoyChips_replace: [chick, chuck]
+  w-hear:
+    cue: 귀로 말이 들어와 알아듣는다는 뜻 — 타임아웃 항목을 모두가 이렇게 하도록 소리 내어 읽는다
+    distractorsEn: [heal, heat]
+  w-open: {distractorsEn: [omit, offer]}
+  w-site: {distractorsEn: [sight, size]}
+  w-procedure: {distractorsEn: [process, pressure]}
+  w-lower: {distractorsKo: [높이다, 유지하다]}
+  w-show: {distractorsKo: [숨기다, 설명하다]}
+  w-file: {distractorsKo: [삭제하다, 검토하다]}
+  w-skip: {distractorsKo: [반복하다, 확인하다]}
+  w-sponge: {cue: 수술 중 피와 체액을 닦고 막는 흡수성 천 — 하나라도 빠지면 안 되는 물품}
+  w-plan: {cue: 무엇을 어떻게 할지 미리 정해 둔 방안 — 시작 전에 팀 모두가 알아야 하는 것}
+  w-package: {cue: 무균 상태로 제품을 싸 놓은 꾸러미 — 열기 전에 이름과 크기를 눈으로 본다}
+  w-packaging: {cue: 제품을 감싼 상자·비닐 같은 겉싸개 — 문제가 생긴 기기와 함께 그대로 두는 것}
+  w-event: {cue: 어떤 일이 일어난 한 건 — 환자에게 해가 간 일을 가리킬 때}
+  w-everything: {cue: 빠짐없이 전부를 한꺼번에 가리키는 대명사 — 멈추고 이것을 다시 확인한다}
+  w-rush: {decoyChips_replace: [lush, rash]}
+  w-number: {decoyChips_replace: [bar, burr]}
+  w-comfortable: {decoyChips_replace: [come, con]}
+  w-loud:
+    en: out loud
+    ipa: /aʊt ˈlaʊd/
+    chips: [[out], [loud]]
+    decoyChips: [owl, load]
+    distractorsEn: [out cold, out back]
+    cue: 속으로 읽지 않고 남들이 듣게 소리를 내서 — 항목·숫자·이름을 이렇게 읽는다
+    _chg: {fields: [en, ipa], why: "일곱 문장 모두 out loud — 단독 loud(시끄러운)가 아니라 out loud 구(소리 내어)로"}
+  w-speak:
+    en: speak up
+    ipa: /spik ʌp/
+    chips: [[speak], [up]]
+    decoyChips: [peak, op]
+    distractorsEn: [speed up, sneak up]
+    cue: 속에 담아 두지 않고 우려를 용기 내어 입 밖으로 꺼낸다는 구동사 — 안전한 팀이 서로 북돋는 일
+    _chg: {fields: [en, ipa], why: "문장은 모두 speak up — 단독 speak(말하다)가 아니라 speak up 구(말을 꺼내다)로"}
+  w-miss:
+    example: I noticed it was missing and said so right away.
+    exKo: 없어진 걸 알아채고 즉시 말했어요.
+  w-search:
+    ko: 샅샅이 찾다
+    _chg: {fields: [ko], why: "수색하다는 경찰 수색 같은 말 — 수술실에서는 샅샅이 찾다"}
+  w-signin:
+    ko: 마취 전 확인
+    _chg: {fields: [ko], why: "Sign In은 마취 전 단계 — 입실 확인이 아님"}
+  w-heart:
+    icon: bulb
+    _chg: {fields: [icon], why: "by heart(외워서)에 청진기 아이콘이 맞지 않음"}
+
+# w-might 등은 distractorsEn/Ko, cue 같은 v45 필드(changes 불필요)
+
+nuance:
+  # (상황 index, kind) → 덮어쓸 필드
+  - {si: 7, kind: pair, set: {decoys: [the count is correct], why: "계수가 안 맞으면 봉합을 보류하고(hold closure), 소리 내어 함께 다시 세고(recount), 수술 필드를 샅샅이 찾아요(search the field). 동사마다 목적어가 정해져 있어요."}}
+  - si: 9
+    kind: slider
+    set:
+      scale: ["Okay, if you've checked it, I won't say anything else.", "I know, but I'd like to say the side out loud once more.", "We have to redo the whole verification from the start!"]
+      answerAt: 1
+  - si: 11
+    kind: slider
+    set:
+      scale: ["Okay, we'll skip it this once because we're busy.", "I hear you, but I'll read the checklist — it's quick.", "Skipping the checklist is against the rules, period!"]
+      answerAt: 1
+  - si: 16
+    kind: slider
+    set:
+      scale: ["We shouldn't close yet — can we get an X-ray first?", "We stay here until we find it, however long it takes.", "Nobody closes anything — I'm calling risk management now!"]
+      answerAt: 0
+      why: 거즈가 안 나왔으면 닫기 전에 영상으로 확인하자고 요청해요. 닫을지는 집도의가 정하지만, 확인되지 않았다는 사실과 방법을 말하는 것은 간호사의 몫이에요. 무한정 붙잡겠다거나 요청도 하기 전에 위로 보고부터 하겠다는 말은 도움이 안 돼요. 요청이 받아들여지지 않으면 그때 지휘 체계로 올려요.
+  - si: 18
+    kind: slider
+    set:
+      scale: ["One cup is missing, but I'm sure it'll turn up soon.", "One specimen is unaccounted for — let's search now.", "Someone threw away a specimen, and I'm reporting them!"]
+      answerAt: 1
+  - si: 19
+    kind: slider
+    set:
+      scale: ["It's broken anyway, so toss it — I'll note it later.", "Please keep the device and box as they are.", "Hands off! Touch it and you'll be written up!"]
+      why: 문제가 된 기기와 포장은 조사를 위해 그대로 보존해야 해요. 무엇을 어떻게 두라고 구체적으로 말하면 되고, 어차피 고장 났다고 버리게 두면 원인을 밝힐 수 없고, 협박하면 팀 관계가 깨져요.
+  - si: 3
+    kind: slider
+    set:
+      why: 둘이 함께 센 숫자가 맞으면 맞다고 분명히 말하고 기록해요. 근거 없이 '혹시 모르니'를 덧붙이면 확인이 끝났는지 흐려져요. 계수는 정해진 때마다 다시 하고, 의심이 들면 무엇이 의심스러운지 말하고 다시 세요.
+  - si: 1
+    kind: slider
+    set:
+      why: 표시가 분명하고 동의서와 맞으면 본 대로 짧게 말하면 돼요. 의심할 근거가 있으면 그 근거를 말하고 다시 확인하자고 해요. 근거 없이 '모두 멈춰요!'라고 하면, 진짜 불일치가 났을 때 써야 할 강한 말의 힘이 약해져요.
+  - si: 5
+    kind: slider
+    set:
+      cue: The skin prep is alcohol-based, the cautery is about to be used, and some prep has pooled in the skin folds.
+  - si: 4
+    kind: slider
+    set:
+      why: 라벨은 이름 하나로 되지 않고 환자 식별자 두 가지와 검체 이름·부위까지 채워져야 해요. 나중에 채우자고 하면 검체가 뒤섞일 수 있어요. 보내기 전에 라벨이 완성됐는지 확인하겠다고 분명히 말해요.
+  - si: 1
+    kind: swap
+    set:
+      options: ["Looks fine to me.", "The mark must be under there somewhere; let's go on.", "I can't see the mark after draping — can we confirm the site first?"]
+      answer: "I can't see the mark after draping — can we confirm the site first?"
+      notes:
+        "Looks fine to me.": 보이지도 않는 표시를 확인했다는 듯 넘기는 말이에요.
+        "The mark must be under there somewhere; let's go on.": 눈으로 확인하지 않고 짐작으로 진행하자는 말이라 위험해요.
+        "I can't see the mark after draping — can we confirm the site first?": 표시가 안 보인다는 사실을 말하고, 진행하기 전에 부위를 확인하자고 요청해요.
+      why: 표시는 수술포를 덮은 뒤에도 보여야 해요. 안 보이면 짐작하지 않고 그 사실을 말한 뒤, 진행하기 전에 부위를 확인하자고 요청해요.
+      ko: 수술포를 덮은 뒤 표시가 안 보여요 — 먼저 부위를 확인할 수 있을까요?
+      words: [w-mark, w-drape, w-confirm, w-site]
+  - si: 3
+    kind: swap
+    set:
+      notes:
+        "You count, and I'll just trust your number.": 두 사람이 함께 보고 세는 것이 아니라 한 사람의 숫자를 믿는 거예요.
+      ko: 함께 소리 내어 셀게요 — 둘 다 같은 숫자를 듣도록요
+  - si: 20
+    kind: swap
+    set:
+      options: ["Okay, we'll skip it since we're short on time.", "Let's take a moment to do this step right.", "I'll do it later, when we have more time."]
+      answer: "Let's take a moment to do this step right."
+      notes:
+        "Okay, we'll skip it since we're short on time.": 시간이 없다는 이유로 건너뛰면 단계의 의미가 사라져요.
+        "Let's take a moment to do this step right.": 잠깐이면 된다고 하면서도 시간을 못 박지 않고 제대로 하자고 해요.
+        "I'll do it later, when we have more time.": 나중으로 미루면 그 시점에는 이미 소용이 없어요.
+      why: 시간 압박에는 건너뛰지 않고 잠깐 시간을 들여 제대로 하자고 해요. 나중으로 미루면 단계가 무의미해져요.
+      ko: 이 단계는 잠깐 시간을 들여 제대로 해요
+      words: [w-skip, w-step]
+  - si: 15
+    kind: swap
+    set:
+      ko: 수술할 쪽이 확인될 때까지 앞으로 나아가지 않을게요
+
+context:
+  # (상황 index) → 덮어쓸 필드, scenes는 (index)별 덮어쓰기
+  - si: 9
+    set: {why: "뜻은 셋 다 '동의서'예요. 같은 수술팀에는 동의서·표시·영상이 맞는다고 짧게, 기록에는 서명과 일치 여부를 건조하게 적어요. 하지만 환자에게 'laterality'나 'planned procedure' 같은 서류 말을 쓰면 무슨 뜻인지 몰라 불안해져요. 환자에게는 어느 쪽 무릎인지 적힌 서류라고 쉬운 말로 해요."}
+    scenes: {2: {en: Your consent documents the laterality of the planned procedure.}}
+  - si: 17
+    set: {why_replace: ["보호자에게는 작은 불이었고 빨리 껐다고 쉬운 말로 해요.", "보호자에게는 무슨 일이 있었고 빨리 껐다는 것만 쉬운 말로 하고, 다쳤는지와 자세한 경과는 집도의가 설명해요."]}
+    scenes: {2: {fix: "There was a small fire on the drapes, and it was put out quickly. Your surgeon will talk with you about it."}}
+  - si: 15
+    set: {why: "뜻은 셋 다 '중단하다'예요. 집도의에게는 짧고 분명하게, 기록에는 이유와 확인 내용을 건조하게 적어요. 하지만 보호자에게 'laterality discrepancy'나 'pending resolution'이라고 하면 무슨 일인지 알 수 없고 겁나요. 보호자에게는 확인하느라 잠시 멈췄다고 쉬운 말로 하고, 무슨 일이었는지는 집도의가 설명해요."}
+    scenes: {1: {en: We halted the case pending resolution of a laterality discrepancy., fix: "We paused before starting to double-check some details, and your surgeon will talk with you."}}
+  - si: 7
+    set: {why_replace: ["숫자가 안 맞아 다시 세는 일상 절차라고", "숫자가 안 맞아 확실히 하려고 다시 센다고"]}
+    scenes: {0: {fix: "The sponge count didn't match, so we're counting again to be sure."}}
+  - si: 3
+    set: {ko: 계수(하다)}
+    scenes: {1: {en: Our count was reconciled against the initial tally per protocol.}}
+  - si: 18
+    set: {word: unaccounted for}
+  - si: 12
+    scenes: {2: {en: "Implant size 5; serial and lot recorded; verified with surgeon."}}
+
+sentences:
+  # S2 chunks (비KP)
+  - {si: 0, j: 5, chunks: [This team wants, to hear it, if something, feels wrong, "."], chg: [chunks]}
+  - {si: 1, j: 4, chunks: [I want to, double-check, this, against the consent form, "."], chg: [chunks]}
+  - {si: 5, j: 3, chunks: [I always know, where, the three elements of fire, are in this room, "."], chg: [chunks]}
+  - {si: 20, j: 3, chunks: ["I hear that we're in a rush,", but, I still need, this step, "."], chg: [chunks]}
+  # S1
+  - si: 19
+    j: 4
+    en: "Once the patient is safe, let's keep everything exactly as it was."
+    ko: 환자가 안전해지면, 모든 걸 그때 그대로 정확히 둬요.
+    chunks: ["Once the patient is safe,", "let's keep", everything, exactly as it was, "."]
+    words: [w-keep, w-everything, w-exactly]
+    chg: [en, ko, chunks, words]
+  # S3 / KO (ko만)
+  - {si: 1, j: 5, ko: 환자분께 직접 수술할 쪽을 확인해 달라고 부탁해요., chg: [ko]}
+  - {si: 9, j: 3, ko: 절개 전에 수술할 쪽을 한 번 더 소리 내어 말해요., chg: [ko]}
+  - {si: 15, j: 4, ko: 수술할 쪽이 확인될 때까지 앞으로 나아가지 않을게요., chg: [ko]}
+  - {si: 7, j: 4, ko: 누구든 방을 나가기 전에 수술 필드를 샅샅이 찾아봐요., chg: [ko]}
+  - {si: 16, j: 4, ko: 모든 곳을 샅샅이 찾기 전에 다시 세요., chg: [ko]}
+  - {si: 3, j: 1, ko: 같이 소리 내어 셀게요., chg: [ko]}
+  - {si: 16, j: 2, ko: 수술 필드를 샅샅이 찾아보고 엑스레이를 찍어요., chg: [ko]}
+  - {si: 18, j: 1, ko: 지금 멈추고 모든 곳을 샅샅이 찾아봐요., chg: [ko]}
+  - {si: 0, j: 2, ko: 우리는 서로가 말을 꺼낼 수 있게 지지해요., chg: [ko]}

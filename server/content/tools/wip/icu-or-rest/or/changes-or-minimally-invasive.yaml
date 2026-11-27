@@ -295,3 +295,289 @@ changes:
   fields:
   - words
   why: 쉬운 단어 태그 정리 / 헤드워드와 뜻이 다른 태그 빼기
+- kind: word
+  id: w-insert
+  fields:
+  - example
+  why: 예문이 바뀐(또는 옮긴) 문장에 맞춤 — 문장 변경(A 검토)
+- kind: word
+  id: w-scope
+  fields:
+  - example
+  why: 예문이 바뀐(또는 옮긴) 문장에 맞춤 — 문장 변경(A 검토)
+- kind: word
+  id: w-open
+  fields:
+  - ko
+  why: ko 카드에 개복 뜻이 보이게 — 은행 문장 8개 중 5개가 개복
+- kind: word
+  id: w-low
+  fields:
+  - example
+  why: 7.2에서 태그를 뺐는데 example이 동사 lower 문장 그대로 — 태그 있는 문장(10.3)으로
+- kind: word
+  id: w-anesthesia
+  fields:
+  - example
+  why: 예문이 바뀐(또는 옮긴) 문장에 맞춤 — 문장 변경(A 검토)
+- kind: word
+  id: w-bleed
+  fields:
+  - example
+  why: 예문이 바뀐(또는 옮긴) 문장에 맞춤 — 문장 변경(A 검토)
+- kind: word
+  id: w-stop
+  fields:
+  - example
+  why: 예문이 바뀐(또는 옮긴) 문장에 맞춤 — 문장 변경(A 검토)
+- kind: word
+  id: w-call
+  fields:
+  - example
+  why: calls it은 결정하다(S11에서 태그를 뺌) — 호출 뜻 문장(15.4)으로
+- kind: word
+  id: w-immediately
+  fields:
+  - example
+  why: 예문이 바뀐(또는 옮긴) 문장에 맞춤 — 문장 변경(A 검토)
+- kind: word
+  id: w-field
+  fields:
+  - example
+  why: 예문이 바뀐(또는 옮긴) 문장에 맞춤 — 문장 변경(A 검토)
+- kind: word
+  id: w-crepitus
+  fields:
+  - ko
+  why: 징후(염발음)와 병명(피하기종)을 섞음 — 피부 밑 공기로
+- kind: word
+  id: w-support
+  fields:
+  - ko
+  why: 호흡 '지원'은 어색 — 보조하다(massive-transfusion과 같은 기준)
+- kind: word
+  id: w-fast
+  fields:
+  - example
+  why: 예문이 바뀐(또는 옮긴) 문장에 맞춤 — 문장 변경(A 검토)
+- kind: word
+  id: w-pack
+  fields:
+  - example
+  why: 예문이 바뀐(또는 옮긴) 문장에 맞춤 — 문장 변경(A 검토)
+- kind: word
+  id: w-area
+  fields:
+  - example
+  why: 예문이 바뀐(또는 옮긴) 문장에 맞춤 — 문장 변경(A 검토)
+- kind: word
+  id: w-hold
+  fields:
+  - example
+  why: 예문이 바뀐(또는 옮긴) 문장에 맞춤 — 문장 변경(A 검토)
+- kind: word-remove
+  id: w-flat
+  why: S1로 15.3에서 flat이 빠져 어느 문장도 태그하지 않게 됐다
+- kind: sentence
+  situation: 복강경 장비 세팅
+  index: 4
+  fields:
+  - chunks
+  why: S15 chunks 구 경계(구동사 plug in 보존)
+- kind: sentence
+  situation: 기복 CO2 준비
+  index: 3
+  fields:
+  - ko
+  why: S14 — w-read ko(가리키다)와 맞춤
+- kind: sentence
+  situation: 기복 CO2 준비
+  index: 5
+  fields:
+  - chunks
+  why: S15 chunks 구 경계
+- kind: sentence
+  situation: 카메라·광원 준비
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  why: S12 업무 범위 — 스코프 삽입은 집도의·카메라 보조
+- kind: sentence
+  situation: 로봇 도킹 준비
+  index: 4
+  fields:
+  - ko
+  why: S14 — w-lock ko(잠그다)와 맞춤
+- kind: sentence
+  situation: 체위 조정 확인
+  index: 4
+  fields:
+  - ko
+  why: S14 — w-tuck ko(끼워 넣다)와 맞춤
+- kind: sentence
+  situation: 기복 압력 감시
+  index: 0
+  fields:
+  - ko
+  why: KO7 ko — 직역 정리
+- kind: sentence
+  situation: 기복 압력 감시
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: S7 업무 범위 — 압력 값은 집도의가 정함
+- kind: sentence
+  situation: CO2 흡수 EtCO2 상승
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  why: S3 3인칭 — 상대가 마취과의사
+- kind: sentence
+  situation: 개복 전환 대비
+  index: 0
+  fields:
+  - ko
+  why: KO1 ko — 개방 세트는 개복 세트
+- kind: sentence
+  situation: 개복 전환 대비
+  index: 3
+  fields:
+  - ko
+  - chunks
+  why: S13 ko — 개방은 개복의 뜻, 방은 수술방; chunks 구 경계(S15)
+- kind: sentence
+  situation: 개복 전환 대비
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: S8 업무 범위 — 개복 전환은 집도의 결정
+- kind: sentence
+  situation: 렌즈 시야 관리
+  index: 5
+  fields:
+  - chunks
+  why: S15 chunks 구 경계(구동사 go back in 보존)
+- kind: sentence
+  situation: 로봇 응급 언도킹 준비
+  index: 5
+  fields:
+  - ko
+  - words
+  why: S11 — calls it은 '결정하다'라 w-call(호출하다) 태그가 다른 뜻에 붙었고 ko 알리면은 오역
+- kind: sentence
+  situation: 최소침습 검체 회수
+  index: 2
+  fields:
+  - ko
+  why: KO6 ko — w-complete ko(빠짐없는)와 맞춤
+- kind: sentence
+  situation: 최소침습 검체 회수
+  index: 3
+  fields:
+  - chunks
+  why: S15 chunks 구 경계(seal it 보존)
+- kind: sentence
+  situation: 최소침습 검체 회수
+  index: 4
+  fields:
+  - ko
+  why: S14 — w-complete ko(빠짐없는)와 맞춤
+- kind: sentence
+  situation: 기복 가스 색전
+  index: 0
+  fields:
+  - ko
+  why: KO4 ko — '가스를 해제'는 어색
+- kind: sentence
+  situation: 기복 가스 색전
+  index: 1
+  fields:
+  - ko
+  why: KO2 ko — 마취과의사에게 하는 명령으로 읽히지 않게(주어를 뺀 call-out)
+- kind: sentence
+  situation: 기복 가스 색전
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: S1 안전 — 15.2 head down과 반대(flat). Durant 체위는 좌측위+머리 낮춤
+- kind: sentence
+  situation: 기복 가스 색전
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  why: S2 안전 — 저혈압 장면에서 '혈압을 낮춘다'로 읽힘. 가스 색전의 처치는 기복기를 끄는 것
+- kind: sentence
+  situation: 트로카 혈관 손상
+  index: 1
+  fields:
+  - ko
+  why: KO3 ko — 외과의에게 하는 명령으로 읽히지 않게
+- kind: sentence
+  situation: 트로카 혈관 손상
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: S5 3인칭 — 상대가 외과의
+- kind: sentence
+  situation: 로봇 고장 긴급 언도킹
+  index: 3
+  fields:
+  - chunks
+  why: S15 chunks 구 경계(isn't responding 보존)
+- kind: sentence
+  situation: 피하기종 호흡 위기
+  index: 2
+  fields:
+  - ko
+  why: KO5 ko — w-support ko(보조하다)와 맞춤
+- kind: sentence
+  situation: 피하기종 호흡 위기
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: S4 3인칭 — 상대가 마취과의사
+- kind: sentence
+  situation: 시야 상실 대량 출혈
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: S9 업무 범위 — 혈액은 마취과 처방
+- kind: sentence
+  situation: 시야 상실 대량 출혈
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  why: S10 업무 범위 — 복강 안 패킹·압박은 집도의·보조의 일
+- kind: sentence
+  situation: 시야 상실 대량 출혈
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  why: S6 3인칭 — 상대가 외과의

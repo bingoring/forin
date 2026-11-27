@@ -21,3 +21,5 @@ stage: 09-lesson-four-steps
 
 - 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.
 - 2026-11-27 OR 묶음 1~6 master 반영(#39). 묶음 7(or-minimally-invasive·core-safety-or)은 검토 A 끝, 검토 B 중지 / 다음: B 검토 파일 완결 확인 → 수정 → keyPhrase 결정
+- 2026-11-27 묶음 7 검토 B 완결 확인(브랜치 `content/2-9-or-batch7`). core-safety-or는 목록과 사본이 맞음(192건). minimally-invasive는 검토자가 마지막 점검(빈칸 27건 되돌림 등)을 사본에 반영한 뒤 목록을 다시 만들기 전에 멈춰서, 사본 기준으로 목록을 다시 조립함(198 → 171건) (1c2cf3f) / 다음: Sonnet 수정 → keyPhrase 결정 → 정본 합침
+- 2026-11-27 묶음 7 Sonnet 수정. core-safety-or는 A 51·B 192 반영, changes 94, 사실문 둘 24 → 14 (226d573). or-minimally-invasive는 A 49·B 171 반영, changes 105, 사실문 둘 75 → 33. 메인 세션이 16.4 오답(위기 호출 대신 기구 가져오기)과 9.4 빈칸 fogging(정답 둘)을 고침 (f59f4ba). 둘 다 검사 통과·keyPhrase 63/63 / 다음: keyPhrase 결정(후보 8문장) → order 16(core-safety) 3줄·3.1 오답 손질 → 정본 합침
