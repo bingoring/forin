@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="design_doc_mode" content="canvas" />
+<title>forin Notebook - Extras</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+body { margin: 0; }
+a { color: #3E362B; } a:hover { color: #C75146; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="forin-notebook.jsx"></script>
+<script type="text/babel" src="forin-notebook-ui.jsx"></script>
+<script type="text/babel" src="forin-notebook-avatar.jsx"></script>
+<script type="text/babel" src="forin-notebook-extras.jsx"></script>
+<script type="text/babel">
+function NbExtrasApp() {
+  return (
+    <DesignCanvas>
+      <DCSection id="nb-extras" title="forin Notebook — 재미 콘텐츠" subtitle="나이트 라디오 · 환자 후일담 쪽지 · 은어 도감 · 쉬는 시간 미니게임">
+        <DCArtboard eager={true} id="nbx-radio" label="A · 나이트 근무 라디오" width={402} height={874}><window.NightRadio/></DCArtboard>
+        <DCArtboard eager={true} id="nbx-handoff" label="B · 환자 인수인계 노트 (그 후 이야기)" width={402} height={874}><window.HandoffNotes/></DCArtboard>
+        <DCArtboard eager={true} id="nbx-slang" label="C · 슬랭/약어 카드 도감" width={402} height={874}><window.SlangDeck/></DCArtboard>
+        <DCArtboard eager={true} id="nbx-games" label="D · 미니게임 허브" width={402} height={874}><window.GameHub/></DCArtboard>
+        <DCArtboard eager={true} id="nbx-plane" label="E · 종이비행기 날리기 (인게임)" width={402} height={874}><window.PlaneGame/></DCArtboard>
+        <DCArtboard eager={true} id="nbx-circle" label="F · 완벽한 원 그리기 (인게임)" width={402} height={874}><window.CircleGame/></DCArtboard>
+        <DCArtboard eager={true} id="nbx-runner" label="G · 복도 달리기 (인게임)" width={402} height={874}><window.RunnerGame/></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<NbExtrasApp/>);
+</script>
+</body>
+</html>

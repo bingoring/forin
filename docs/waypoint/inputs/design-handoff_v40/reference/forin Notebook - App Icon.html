@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="design_doc_mode" content="canvas"/>
+<title>forin Notebook - App Icon</title>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet"/>
+<style>
+body{margin:0;font-family:"Pretendard",sans-serif}
+a{color:#3E362B}a:hover{color:#C75146}
+.board{position:absolute;background:#FFFdf4;border:1px solid #E0D6C0;box-shadow:0 4px 14px rgba(62,54,43,.12);padding:22px 24px 18px}
+.board h2{margin:0 0 14px;font-family:"Gaegu",cursive;font-size:22px;color:#3E362B;font-weight:400}
+.row{display:flex;gap:26px;align-items:flex-end}
+.cell{text-align:center}
+.cell .cap{font-family:"Gaegu",cursive;font-size:14px;color:#9A8F7C;margin-top:8px}
+.icon-lg{width:160px;height:160px;border-radius:36px;overflow:hidden;box-shadow:0 6px 16px rgba(62,54,43,.25);display:block}
+.icon-sm{width:60px;height:60px;border-radius:14px;overflow:hidden;box-shadow:0 3px 8px rgba(62,54,43,.25);display:block;margin:0 auto}
+</style>
+</head>
+<body>
+
+<!-- 확정: A · 여권 커버 -->
+<div class="board" style="left:40px;top:40px;box-shadow:0 4px 14px rgba(62,54,43,.12),0 0 0 3px #5F8D5A">
+<h2>✔ 확정 · 여권 커버 — 스토어 원본 1024px</h2>
+<div class="row">
+<div class="cell">
+<svg style="width:220px;height:220px;border-radius:49px;overflow:hidden;box-shadow:0 8px 20px rgba(62,54,43,.3);display:block" viewBox="0 0 1024 1024">
+<rect width="1024" height="1024" fill="#2E4636"/>
+<rect width="1024" height="1024" fill="url(#grainA)" opacity=".5"/>
+<defs>
+<radialGradient id="vinA" cx=".5" cy=".42" r=".75"><stop offset=".55" stop-color="rgba(0,0,0,0)"/><stop offset="1" stop-color="rgba(0,0,0,.28)"/></radialGradient>
+<pattern id="grainA" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="none"/><circle cx="1.5" cy="2" r=".6" fill="rgba(0,0,0,.05)"/><circle cx="4.5" cy="5" r=".5" fill="rgba(255,255,255,.03)"/></pattern>
+</defs>
+<rect width="1024" height="1024" fill="url(#vinA)"/>
+<rect x="118" y="100" width="788" height="824" fill="none" stroke="rgba(212,180,106,.85)" stroke-width="14"/>
+<rect x="140" y="122" width="744" height="780" fill="none" stroke="rgba(212,180,106,.4)" stroke-width="5"/>
+<circle cx="512" cy="462" r="200" fill="none" stroke="#D4B46A" stroke-width="19"/>
+<circle cx="512" cy="462" r="163" fill="none" stroke="rgba(212,180,106,.55)" stroke-width="9"/>
+<text x="512" y="564" text-anchor="middle" font-family="Gaegu,cursive" font-size="330" fill="#D4B46A">f</text>
+<text x="512" y="812" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="70" font-weight="700" letter-spacing="34" fill="#D4B46A">FORIN</text>
+</svg>
+<div class="cap">1024px 원본 (220px 표시)</div>
+</div>
+<div class="cell">
+<svg class="icon-lg" viewBox="0 0 120 120">
+<rect width="120" height="120" fill="#2E4636"/>
+<rect x="14" y="12" width="92" height="96" fill="none" stroke="rgba(212,180,106,.85)" stroke-width="1.8"/>
+<circle cx="60" cy="54" r="24" fill="none" stroke="#D4B46A" stroke-width="2.4"/>
+<circle cx="60" cy="54" r="19.5" fill="none" stroke="rgba(212,180,106,.55)" stroke-width="1.2"/>
+<text x="60" y="66" text-anchor="middle" font-family="Gaegu,cursive" font-size="40" fill="#D4B46A">f</text>
+<text x="60" y="96" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8.5" font-weight="700" letter-spacing="4" fill="#D4B46A">FORIN</text>
+</svg>
+<div class="cap">중형 — 테두리+FORIN 유지</div>
+</div>
+<div class="cell">
+<svg class="icon-sm" viewBox="0 0 120 120">
+<rect width="120" height="120" fill="#2E4636"/>
+<circle cx="60" cy="60" r="30" fill="none" stroke="#D4B46A" stroke-width="3.4"/>
+<text x="60" y="76" text-anchor="middle" font-family="Gaegu,cursive" font-size="52" fill="#D4B46A">f</text>
+</svg>
+<div class="cap">소형 — 금장 f만</div>
+</div>
+</div>
+</div>
+
+<!-- A · 여권 커버 (원 시안) -->
+<div class="board" style="left:40px;top:430px">
+<h2>A · 여권 커버 — 딥그린 + 금장 f (시안)</h2>
+<div class="row">
+<div class="cell">
+<svg class="icon-lg" viewBox="0 0 120 120">
+<rect width="120" height="120" fill="#2E4636"/>
+<rect x="14" y="12" width="92" height="96" fill="none" stroke="rgba(212,180,106,.85)" stroke-width="1.8"/>
+<circle cx="60" cy="54" r="24" fill="none" stroke="#D4B46A" stroke-width="2.4"/>
+<circle cx="60" cy="54" r="19.5" fill="none" stroke="rgba(212,180,106,.55)" stroke-width="1.2"/>
+<text x="60" y="66" text-anchor="middle" font-family="Gaegu,cursive" font-size="40" fill="#D4B46A">f</text>
+<text x="60" y="96" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8.5" font-weight="700" letter-spacing="4" fill="#D4B46A">FORIN</text>
+</svg>
+<div class="cap">160px</div>
+</div>
+<div class="cell">
+<svg class="icon-sm" viewBox="0 0 120 120">
+<rect width="120" height="120" fill="#2E4636"/>
+<circle cx="60" cy="60" r="30" fill="none" stroke="#D4B46A" stroke-width="3.4"/>
+<text x="60" y="76" text-anchor="middle" font-family="Gaegu,cursive" font-size="52" fill="#D4B46A">f</text>
+</svg>
+<div class="cap">60px (소형은 f만)</div>
+</div>
+</div>
+</div>
+
+<!-- B · 수첩 종이 -->
+<div class="board" style="left:460px;top:430px">
+<h2>B · 근무 수첩 — 크림 종이 + 잉크 f + 도장</h2>
+<div class="row">
+<div class="cell">
+<svg class="icon-lg" viewBox="0 0 120 120">
+<rect width="120" height="120" fill="#F1EBDD"/>
+<g stroke="rgba(62,54,43,.08)" stroke-width="1.5">
+<line x1="0" y1="30" x2="120" y2="30"/><line x1="0" y1="52" x2="120" y2="52"/><line x1="0" y1="74" x2="120" y2="74"/><line x1="0" y1="96" x2="120" y2="96"/>
+</g>
+<line x1="20" y1="0" x2="20" y2="120" stroke="rgba(199,81,70,.35)" stroke-width="1.6"/>
+<text x="64" y="86" text-anchor="middle" font-family="Gaegu,cursive" font-size="86" fill="#3E362B">f</text>
+<g transform="rotate(-14 92 32)">
+<circle cx="92" cy="32" r="17" fill="none" stroke="#C75146" stroke-width="2"/>
+<circle cx="92" cy="32" r="14" fill="none" stroke="#C75146" stroke-width="1"/>
+<text x="92" y="36" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="700" fill="#C75146">DAY 1</text>
+</g>
+</svg>
+<div class="cap">160px</div>
+</div>
+<div class="cell">
+<svg class="icon-sm" viewBox="0 0 120 120">
+<rect width="120" height="120" fill="#F1EBDD"/>
+<line x1="20" y1="0" x2="20" y2="120" stroke="rgba(199,81,70,.35)" stroke-width="1.6"/>
+<text x="66" y="92" text-anchor="middle" font-family="Gaegu,cursive" font-size="96" fill="#3E362B">f</text>
+</svg>
+<div class="cap">60px</div>
+</div>
+</div>
+</div>
+
+<!-- C · 테이프 쪽지 -->
+<div class="board" style="left:40px;top:720px">
+<h2>C · 테이프 쪽지 — 그린 바탕 + 종이 f</h2>
+<div class="row">
+<div class="cell">
+<svg class="icon-lg" viewBox="0 0 120 120">
+<rect width="120" height="120" fill="#5F8D5A"/>
+<g transform="rotate(-3 60 62)">
+<rect x="26" y="30" width="68" height="66" fill="#FFFdf4" stroke="#3E362B" stroke-width="1.6"/>
+<text x="60" y="86" text-anchor="middle" font-family="Gaegu,cursive" font-size="54" fill="#3E362B">f</text>
+</g>
+<rect x="44" y="20" width="34" height="13" fill="rgba(169,203,227,.75)" transform="rotate(-5 61 26)"/>
+</svg>
+<div class="cap">160px</div>
+</div>
+<div class="cell">
+<svg class="icon-sm" viewBox="0 0 120 120">
+<rect width="120" height="120" fill="#5F8D5A"/>
+<g transform="rotate(-3 60 62)">
+<rect x="22" y="26" width="76" height="72" fill="#FFFdf4" stroke="#3E362B" stroke-width="1.8"/>
+<text x="60" y="88" text-anchor="middle" font-family="Gaegu,cursive" font-size="62" fill="#3E362B">f</text>
+</g>
+</svg>
+<div class="cap">60px</div>
+</div>
+</div>
+</div>
+
+<!-- D · 입국 도장 -->
+<div class="board" style="left:460px;top:720px">
+<h2>D · 입국 도장 — 크림 + 이중선 스탬프</h2>
+<div class="row">
+<div class="cell">
+<svg class="icon-lg" viewBox="0 0 120 120">
+<rect width="120" height="120" fill="#F1EBDD"/>
+<g stroke="rgba(62,54,43,.07)" stroke-width="1.5">
+<line x1="0" y1="36" x2="120" y2="36"/><line x1="0" y1="62" x2="120" y2="62"/><line x1="0" y1="88" x2="120" y2="88"/>
+</g>
+<g transform="rotate(-12 60 60)">
+<circle cx="60" cy="60" r="40" fill="none" stroke="#4A6FA5" stroke-width="3"/>
+<circle cx="60" cy="60" r="34" fill="none" stroke="#4A6FA5" stroke-width="1.4"/>
+<text x="60" y="76" text-anchor="middle" font-family="Gaegu,cursive" font-size="46" fill="#4A6FA5">f</text>
+<text x="60" y="38" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="700" letter-spacing="2" fill="#4A6FA5">FORIN</text>
+</g>
+</svg>
+<div class="cap">160px</div>
+</div>
+<div class="cell">
+<svg class="icon-sm" viewBox="0 0 120 120">
+<rect width="120" height="120" fill="#F1EBDD"/>
+<g transform="rotate(-12 60 60)">
+<circle cx="60" cy="60" r="42" fill="none" stroke="#4A6FA5" stroke-width="4"/>
+<text x="60" y="80" text-anchor="middle" font-family="Gaegu,cursive" font-size="56" fill="#4A6FA5">f</text>
+</g>
+</svg>
+<div class="cap">60px</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

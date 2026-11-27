@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="design_doc_mode" content="canvas" />
+<title>forin Notebook - Lounge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+body { margin: 0; }
+a { color: #3E362B; } a:hover { color: #C75146; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="forin-notebook.jsx"></script>
+<script type="text/babel" src="forin-notebook-lounge.jsx"></script>
+<script type="text/babel">
+function NbLoungeApp() {
+  return (
+    <DesignCanvas>
+      <DCSection id="nb-lounge" title="forin Notebook — 라운지 (상황판 개편안)" subtitle="같은 직업 해외이직 커뮤니티: 피드 · AI 대화 연속 구간 공유 · 현지 근무자 프로필 + 동료 요청">
+        <DCArtboard eager={true} id="nb-lg-feed" label="A · 라운지 피드 (검색·필터·글)" width={402} height={874}><window.LoungeFeed/></DCArtboard>
+        <DCArtboard eager={true} id="nb-lg-share" label="B · 대화 공유 작성 (연속 턴 선택)" width={402} height={874}><window.LoungeShare/></DCArtboard>
+        <DCArtboard eager={true} id="nb-lg-profile" label="C · 상대 프로필 (동료 요청)" width={402} height={874}><window.LoungeProfile/></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<NbLoungeApp/>);
+</script>
+</body>
+</html>

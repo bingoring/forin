@@ -230,7 +230,7 @@ STEP 2 문장 화면은 문장마다 낱장 한 장입니다. 낱장 머리에 *
 아래에 **"왜?" 해설**이 펼쳐집니다. 프롬프트는 네 유형(듣고 뜻 고르기·청크 조립·빈칸·대화 순서)이 돌아가며
 나오는데, 핸드오프는 각 유형의 **오답을 저작**합니다 — 그래야 "같은 품사끼리의 대비"가 나옵니다. 그 재료를
 문장마다, 그리고 상황마다 한 장의 순서 배열 카드로 씁니다. 정본은
-`docs/dlc/projects/forin/02-construction/lesson-fidelity-v46/build-spec-index.md` §D,
+`docs/waypoint/02-construction/lesson-fidelity-v46/build-spec-index.md` §D,
 화면은 `inputs/design-handoff_v46/reference/forin-notebook-lesson-sent-live.jsx`의 `SENTS`입니다.
 
 **전부 선택 필드입니다.** 없으면 앱이 대체해서 그립니다(§R3). 그러나 **쓴 것은 검사기가 모양을 봅니다**(V18·V19).

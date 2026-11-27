@@ -9,7 +9,7 @@
     python3 report_locale_binding.py --dept GEN --list     # 부서별 목록
     python3 report_locale_binding.py --themes              # 주제 단위 밀도
 
-설계는 `docs/dlc/projects/forin/02-construction/curriculum-v3-locale-binding/README.md`에 있다.
+설계는 `docs/waypoint/02-construction/curriculum-v3-locale-binding/README.md`에 있다.
 """
 from __future__ import annotations
 

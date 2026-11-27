@@ -1,6 +1,6 @@
 // NbStampNode — the postage-stamp waypoint on the irregular stamp trail.
 // journey-binder-v42 Task H, task-H-brief.md §3 (정본) ·
-// docs/dlc/projects/forin/inputs/design-handoff_v42/reference/forin-notebook-journey2.jsx
+// docs/waypoint/inputs/design-handoff_v42/reference/forin-notebook-journey2.jsx
 // `Stamp()` 42~76행.
 //
 // Purely presentational — it does not know about pressing (StationTrack wraps it in its

@@ -1,7 +1,7 @@
 // 수첩 모션 — 값이 참조 CSS와 같은지, 그리고 CSS처럼 움직이는지.
 //
 // 값 대조는 손으로 옮긴 숫자를 다시 손으로 적지 않는다: 참조 JSX의 `@keyframes` 문자열을 직접
-// 읽어서 nbMotion의 명세 표와 맞춘다(ficons.test와 같은 방식 — CI는 docs/dlc 서브모듈을 받는다).
+// 읽어서 nbMotion의 명세 표와 맞춘다(ficons.test와 같은 방식 — 핸드오프는 레포의 docs/waypoint에 있다).
 // 움직임 대조는 화면에서 "움직이긴 하는데 다르다"로만 드러나는 둘을 잡는다: 구간마다 이징이 다시
 // 걸리는지, 그리고 opacity처럼 중간 키프레임에 이름이 없는 속성이 그 키프레임에서 꺾이지 않는지.
 jest.mock('react-native-worklets', () => ({
@@ -22,7 +22,7 @@ import { trackMounts } from '../../testing/mountRegistry';
 
 const track = trackMounts();
 
-const REF = join(__dirname, '..', '..', '..', '..', 'docs', 'dlc', 'projects', 'forin', 'inputs', 'design-handoff_v46', 'reference');
+const REF = join(__dirname, '..', '..', '..', '..', 'docs', 'waypoint', 'inputs', 'design-handoff_v46', 'reference');
 const css = [
   'forin-notebook-lesson-words-live.jsx',
   'forin-notebook-lesson-nuance.jsx',
@@ -31,7 +31,7 @@ const css = [
 ].map((f) => readFileSync(join(REF, f), 'utf8')).join('\n')
   // v48 키트(핸드오프 v49)의 `#v48-kit-css`. `--r`은 요소마다 달라 stampSpec(rot)의 rot로 서니
   // 대조에서는 기본값(-8deg)으로 푼다.
-  + '\n' + readFileSync(join(__dirname, '..', '..', '..', '..', 'docs', 'dlc', 'projects', 'forin', 'inputs', 'design-handoff_v49', 'reference', 'forin-notebook-v48-kit.jsx'), 'utf8')
+  + '\n' + readFileSync(join(__dirname, '..', '..', '..', '..', 'docs', 'waypoint', 'inputs', 'design-handoff_v49', 'reference', 'forin-notebook-v48-kit.jsx'), 'utf8')
     .replace(/var\(--r,(-?[\d.]+deg)\)/g, '$1');
 
 // ── 참조 CSS 읽기 ──────────────────────────────────────────────────────────

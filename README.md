@@ -7,7 +7,7 @@
 말한 문장을 발음 채점받고, 틀린 표현이 자동으로 복습 카드가 되어 돌아온다.
 
 **현재 상태:** iOS TestFlight 내부 배포 중 (build 2, 2026-08-19). 서버는 Cloud Run prod 가동.
-자세한 진행 상황은 [`STATUS.md`](docs/dlc/projects/forin/STATUS.md).
+자세한 진행 상황은 [`STATUS.md`](docs/waypoint/STATUS.md).
 
 ## 무엇이 들어 있나
 
@@ -40,8 +40,7 @@
 
 ```
 forin/
-├── docs/dlc/            # Waypoint 서브모듈 — 프레임워크 + forin 기획 문서
-│   └── projects/forin/  # PRD·도메인·아키텍처·운영 (기획 SoT)
+├── docs/waypoint/       # forin 기획 문서 — PRD·도메인·아키텍처·운영 (기획 SoT)
 ├── mobile/              # React Native + Expo 앱
 ├── server/              # Go API 서버
 ├── packages/contract/   # openapi.yaml + 생성된 TS 클라이언트
@@ -60,17 +59,17 @@ forin/
 
 ## 개발 방식 — Waypoint
 
-기획·개발은 [Waypoint](https://github.com/bingoring/waypoint) 프레임워크로 진행한다.
+기획·개발은 [Waypoint](https://github.com/bingoring/waypoint) 플러그인(`waypoint@waypoint`)으로 진행한다.
 AI 제안 → 사람 승인 게이트 기반이며, 각 단계는 Markdown 문서가 단일 진실 공급원이다.
 
-- **현재 상태:** [`STATUS.md`](docs/dlc/projects/forin/STATUS.md)
-- **결정 로그(감사 추적):** [`DECISIONS.md`](docs/dlc/projects/forin/DECISIONS.md) — 결정마다 근거와
+- **현재 상태:** [`STATUS.md`](docs/waypoint/STATUS.md)
+- **결정 로그(감사 추적):** [`DECISIONS.md`](docs/waypoint/DECISIONS.md) — 결정마다 근거와
   **탈락한 대안**, 미검증 항목을 남긴다
-- **제품 기획:** [`prd.md`](docs/dlc/projects/forin/prd.md) · **기술 방향:** [`prd-tech.md`](docs/dlc/projects/forin/prd-tech.md)
+- **제품 기획:** [`prd.md`](docs/waypoint/prd.md) · **기술 방향:** [`prd-tech.md`](docs/waypoint/prd-tech.md)
 - **구현 스펙(Build Spec):** 구현이 무거운 단계는 코딩 전에 스펙을 쓴다 —
-  [발음](docs/dlc/projects/forin/02-construction/pronunciation/build-spec-index.md) ·
-  [커리큘럼 v2](docs/dlc/projects/forin/02-construction/curriculum-v2/build-spec-index.md) ·
-  [다국어](docs/dlc/projects/forin/02-construction/i18n/build-spec-index.md)
+  [발음](docs/waypoint/02-construction/pronunciation/build-spec-index.md) ·
+  [커리큘럼 v2](docs/waypoint/02-construction/curriculum-v2/build-spec-index.md) ·
+  [다국어](docs/waypoint/02-construction/i18n/build-spec-index.md)
 
 ## 셋업
 

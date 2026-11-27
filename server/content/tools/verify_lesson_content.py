@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """v44 4단계 학습 콘텐츠(단어 은행 · 문장)의 상호 참조가 실제로 맞는지 검사한다.
 
-설계는 `docs/dlc/projects/forin/02-construction/lesson-four-steps-v44/`의
+설계는 `docs/waypoint/02-construction/lesson-four-steps-v44/`의
 build-spec-index.md §2·§2-1·§2-2·§6, implementation-plan.md §B에 있다.
 
 생성기(gen_lexicon.py · gen_sentences.py)보다 **먼저** 쓴 도구다. STEP 1(단어)은 따로 저작하지

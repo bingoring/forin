@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="design_doc_mode" content="canvas" />
+<title>forin Notebook - Dialogue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet" />
+<style>
+body { margin: 0; }
+a { color: #3E362B; } a:hover { color: #C75146; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="forin-notebook.jsx"></script>
+<script type="text/babel" src="forin-notebook-ui.jsx"></script>
+<script type="text/babel" src="forin-notebook-avatar.jsx"></script>
+<script type="text/babel" src="forin-notebook-career.jsx"></script>
+<script type="text/babel" src="forin-notebook-lesson.jsx"></script>
+<script type="text/babel" src="forin-notebook-dialogue.jsx"></script>
+<script type="text/babel">
+function NbDialogueApp() {
+  return (
+    <DesignCanvas>
+      <DCSection id="nb-lesson" title="forin Notebook — 상황 학습 4단계" subtitle="허브(4단계 티켓) → STEP1 단어 플래시카드 → STEP2 문장 조립 → STEP3 가이드 응답(한국어 1문장 → 말하기/타이핑) → STEP4 자유 대화 · 아이콘·큰 버튼 우선, 텍스트 최소">
+        <DCArtboard eager={true} id="nb-les-hub" label="A · 상황 허브 (시작 전 · 0/4)" width={402} height={874}><window.LessonHub done={0}/></DCArtboard>
+        <DCArtboard eager={true} id="nb-les-hub2" label="A' · 상황 허브 (2/4 진행)" width={402} height={874}><window.LessonHub done={2}/></DCArtboard>
+        <DCArtboard eager={true} id="nb-les-hub-b" label="A-b · 허브 · 중급 레벨 (단어 건너뜀)" width={402} height={874}><window.LessonHub done={0} level="b"/></DCArtboard>
+        <DCArtboard eager={true} id="nb-les-hub-c" label="A-c · 허브 · 실전 레벨 (단어·문장 건너뜀)" width={402} height={874}><window.LessonHub done={0} level="c"/></DCArtboard>
+        <DCArtboard eager={true} id="nb-les-word" label="B · STEP 1 단어 플래시카드" width={402} height={874}><window.LessonWords/></DCArtboard>
+        <DCArtboard eager={true} id="nb-les-sent-listen" label="C1 · STEP 2 · 듣고 고르기" width={402} height={874}><window.LessonSentListen/></DCArtboard>
+        <DCArtboard eager={true} id="nb-les-sent" label="C2 · STEP 2 · 청크 조립" width={402} height={874}><window.LessonSentences/></DCArtboard>
+        <DCArtboard eager={true} id="nb-les-sent-blank" label="C3 · STEP 2 · 빈칸 채우기" width={402} height={874}><window.LessonSentBlank/></DCArtboard>
+        <DCArtboard eager={true} id="nb-les-sent-order" label="C4 · STEP 2 · 순서 배열" width={402} height={874}><window.LessonSentOrder/></DCArtboard>
+        <DCArtboard eager={true} id="nb-les-sent2" label="C' · STEP 2 완료 (따라 말하기 점수)" width={402} height={874}><window.LessonSentenceDone/></DCArtboard>
+        <DCArtboard eager={true} id="nb-dlg-opt" label="D · STEP 3 가이드 응답 · 말하기" width={402} height={874}><window.DialogueOptions mode="speak"/></DCArtboard>
+        <DCArtboard eager={true} id="nb-dlg-opt-type" label="D' · STEP 3 가이드 응답 · 타이핑" width={402} height={874}><window.DialogueOptions mode="type" typed="Can you tell me the mechanism of"/></DCArtboard>
+        <DCArtboard eager={true} id="nb-dlg-speak" label="E · STEP 4 자유 대화" width={402} height={874}><window.DialogueSpeak/></DCArtboard>
+      </DCSection>
+      <DCSection id="nb-brief-old" title="상황 준비 (구 D · 참고)" subtitle="Home에서 이관 — 4단계 허브(A)가 대체">
+        <DCArtboard eager={true} id="nb-brief" label="구 · 상황 준비 (브리핑)" width={402} height={874}><window.BriefingScrapbook/></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<NbDialogueApp/>);
+</script>
+</body>
+</html>

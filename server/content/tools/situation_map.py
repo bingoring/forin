@@ -5,7 +5,7 @@
 다시 돌려 덮어쓴다.
 
     python3 server/content/tools/situation_map.py ER \
-        -o docs/dlc/projects/forin/02-construction/departments/er/situation-map.html
+        -o docs/waypoint/02-construction/departments/er/situation-map.html
 
 주제 → 난이도 계단(Lv1/2/3) → 상황 순으로 접히며, 검색과 응급도 필터가 붙는다.
 """

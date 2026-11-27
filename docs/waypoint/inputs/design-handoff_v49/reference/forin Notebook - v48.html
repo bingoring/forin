@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>forin Notebook - v48 (홈 v47 풍 · 신호 키트)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet" />
+<style>body{margin:0}a{color:#3E362B}a:hover{color:#C75146}</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="forin-notebook.jsx"></script>
+<script type="text/babel" src="forin-notebook-ui.jsx"></script>
+<script type="text/babel" src="forin-notebook-avatar.jsx"></script>
+<script type="text/babel" src="forin-notebook-journey.jsx"></script>
+<script type="text/babel" src="forin-notebook-v48-kit.jsx"></script>
+<script type="text/babel" src="forin-notebook-v48-journey.jsx"></script>
+<script type="text/babel" src="forin-notebook-v48-lab.jsx"></script>
+<script type="text/babel" src="forin-notebook-v48-games.jsx"></script>
+<script type="text/babel" src="forin-notebook-v48-profile.jsx"></script>
+<script type="text/babel">
+function V48App() {
+  return (
+    <DesignCanvas>
+      <DCSection id="v48-work" title="v48 · 일터 (배치 유지 · 신호만 맞춤)" subtitle="이어서 = 노란 ▶ + 후광 · 진행 = 노란 링 · 완료 = 초록 이중선 도장 · 잠김 = 점선 + 자물쇠">
+        <DCArtboard eager={true} id="v48-g" label="G · 서가 — 이어서 ▶ · 연필 원 · 바인더 들림" width={402} height={874}><window.ShelfV48/></DCArtboard>
+        <DCArtboard eager={true} id="v48-e" label="E · 부서 바인더 — 링+▶ · 색 칩 범례" width={402} height={874}><window.BinderV48/></DCArtboard>
+        <DCArtboard eager={true} id="v48-h" label="H · 정거장 — 지금 우표 후광 · 하단 이어서 바" width={402} height={874}><window.TrailV48/></DCArtboard>
+        <DCArtboard eager={true} id="v48-i" label="I · G→E 전환 (탭해서 체험)" width={402} height={874}><window.FlyV48/></DCArtboard>
+      </DCSection>
+      <DCSection id="v48-review" title="v48 · 리뷰랩 · 휴게실 · 나" subtitle="히어로 = 홈 이어서 바 · 알약 · 표정 등급 · 타일 · 원 격자">
+        <DCArtboard eager={true} id="v48-lab" label="리뷰랩 — 히어로 바 · 알약 · ⌄ 맥락 · 표정 등급(누르면 카드가 넘어감)" width={402} height={874}><window.LabV48/></DCArtboard>
+        <DCArtboard eager={true} id="v48-game" label="휴게실 — 2×2 타일 · 남은 판 점 · 잠긴 게임 칩" width={402} height={874}><window.GamesV48/></DCArtboard>
+        <DCArtboard eager={true} id="v48-me" label="나 — 원 아바타 · 불꽃 알약 · 칭호/히든 같은 원 · 🔊 알약" width={402} height={874}><window.ProfileV48/></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<V48App/>);
+</script>
+</body>
+</html>

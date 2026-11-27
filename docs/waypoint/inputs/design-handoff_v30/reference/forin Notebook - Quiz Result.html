@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="design_doc_mode" content="canvas" />
+<title>forin Notebook - Quiz & Result</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>body { margin: 0; } a { color: #3E362B; } a:hover { color: #C75146; }</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="forin-notebook.jsx"></script>
+<script type="text/babel" src="forin-notebook-ui.jsx"></script>
+<script type="text/babel" src="forin-notebook-session.jsx"></script>
+<script type="text/babel">
+function NbSessionApp() {
+  return (
+    <DesignCanvas>
+      <DCSection id="nb-session" title="forin Notebook — 퀴즈 · 결과 · 복습 세션" subtitle="6가지 퀴즈 유형(잇기·받아쓰기·문장완성·객관식·순서·체크) + 근무 완료 도장 + 플래시카드 SRS">
+        <DCArtboard eager={true} id="nb-quiz-sentence" label="A · 퀴즈 — 문장 완성 (칩)" width={402} height={874}><window.QuizSentence/></DCArtboard>
+        <DCArtboard eager={true} id="nb-quiz-match" label="B · 퀴즈 — 용어 잇기" width={402} height={874}><window.QuizMatch/></DCArtboard>
+        <DCArtboard eager={true} id="nb-quiz-mcq" label="C · 퀴즈 — 객관식 (치료적 소통)" width={402} height={874}><window.QuizMCQ/></DCArtboard>
+        <DCArtboard eager={true} id="nb-quiz-dict" label="D · 퀴즈 — 받아쓰기" width={402} height={874}><window.QuizDictation/></DCArtboard>
+        <DCArtboard eager={true} id="nb-quiz-order" label="E · 퀴즈 — 순서 배열 (분만 단계)" width={402} height={874}><window.QuizOrder/></DCArtboard>
+        <DCArtboard eager={true} id="nb-quiz-flags" label="F · 퀴즈 — 안전 체크 (조영 CT)" width={402} height={874}><window.QuizFlags/></DCArtboard>
+        <DCArtboard eager={true} id="nb-result" label="G · 결과 — 시나리오 클리어" width={402} height={874}><window.ResultNb/></DCArtboard>
+        <DCArtboard eager={true} id="nb-review-session" label="H · 오늘의 복습 세션" width={402} height={874}><window.ReviewSessionNb/></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<NbSessionApp/>);
+</script>
+</body>
+</html>

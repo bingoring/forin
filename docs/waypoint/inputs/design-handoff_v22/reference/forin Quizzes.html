@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>forin · Quizzes (퀴즈 화면)</title>
+
+<style>
+@font-face {
+  font-family: 'Galmuri11';
+  src: url('https://cdn.jsdelivr.net/gh/quiple/galmuri/dist/Galmuri11.woff2') format('woff2');
+  font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: 'Galmuri11';
+  src: url('https://cdn.jsdelivr.net/gh/quiple/galmuri/dist/Galmuri11-Bold.woff2') format('woff2');
+  font-weight: 700; font-display: swap;
+}
+@font-face {
+  font-family: 'DungGeunMo';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.3/NeoDunggeunmo.woff') format('woff');
+  font-weight: 400; font-display: swap;
+}
+</style>
+
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" />
+
+<style>
+  html, body, #root {
+    height: 100%; margin: 0; padding: 0;
+    background: #f0eee9;
+    font-family: 'Galmuri11', 'DungGeunMo', 'Pretendard', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  svg { shape-rendering: crispEdges; }
+  button { font-family: inherit; }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<!-- Starter components -->
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<!-- forin shared UI + character/object libraries (needed by screens) -->
+<script type="text/babel" src="forin-ui.jsx"></script>
+<script type="text/babel" src="chibi-npcs.jsx"></script>
+<script type="text/babel" src="forin-npcs-smooth.jsx"></script>
+<script type="text/babel" src="forin-faces.jsx"></script>
+<script type="text/babel" src="interior-shared.jsx"></script>
+<script type="text/babel" src="interior-objects-er.jsx"></script>
+<script type="text/babel" src="interior-objects-er2.jsx"></script>
+<script type="text/babel" src="interior-objects-er3.jsx"></script>
+<script type="text/babel" src="interior-er.jsx"></script>
+<script type="text/babel" src="interior-objects-or2.jsx"></script>
+<script type="text/babel" src="interior-or.jsx"></script>
+<script type="text/babel" src="interior-objects-icu2.jsx"></script>
+<script type="text/babel" src="interior-objects-peds2.jsx"></script>
+<script type="text/babel" src="interior-peds.jsx"></script>
+<script type="text/babel" src="interior-icu.jsx"></script>
+<script type="text/babel" src="interior-objects-pharma2.jsx"></script>
+<script type="text/babel" src="interior-pharma.jsx"></script>
+<script type="text/babel" src="interior-clinics.jsx"></script>
+<script type="text/babel" src="interior-objects-ward2.jsx"></script>
+<script type="text/babel" src="interior-ward.jsx"></script>
+<script type="text/babel" src="interior-objects-surg2.jsx"></script>
+<script type="text/babel" src="interior-surgward.jsx"></script>
+<script type="text/babel" src="interior-objects-ortho2.jsx"></script>
+<script type="text/babel" src="interior-orthoward.jsx"></script>
+<script type="text/babel" src="interior-objects-ld2.jsx"></script>
+<script type="text/babel" src="interior-ld.jsx"></script>
+<script type="text/babel" src="interior-nursery.jsx"></script>
+<script type="text/babel" src="interior-objects-onco2.jsx"></script>
+<script type="text/babel" src="interior-onco.jsx"></script>
+<script type="text/babel" src="interior-objects-rad2.jsx"></script>
+<script type="text/babel" src="interior-rad.jsx"></script>
+<script type="text/babel" src="interior-objects-rehab2.jsx"></script>
+<script type="text/babel" src="interior-rehab.jsx"></script>
+<script type="text/babel" src="interior-objects-endo2.jsx"></script>
+<script type="text/babel" src="interior-endo.jsx"></script>
+<script type="text/babel" src="interior-objects-dial2.jsx"></script>
+<script type="text/babel" src="interior-dial.jsx"></script>
+<script type="text/babel" src="interior-infusion.jsx"></script>
+<script type="text/babel" src="interior-objects-psych2.jsx"></script>
+<script type="text/babel" src="interior-psych.jsx"></script>
+<script type="text/babel" src="interior-objects-hospice2.jsx"></script>
+<script type="text/babel" src="interior-hospice.jsx"></script>
+<script type="text/babel" src="interior-objects-geri2.jsx"></script>
+<script type="text/babel" src="interior-geri.jsx"></script>
+<script type="text/babel" src="interior-objects-nicu2.jsx"></script>
+<script type="text/babel" src="interior-nicu.jsx"></script>
+<script type="text/babel" src="interior-objects-picu2.jsx"></script>
+<script type="text/babel" src="interior-picu.jsx"></script>
+<script type="text/babel" src="interior-objects-postpartum2.jsx"></script>
+<script type="text/babel" src="interior-postpartum.jsx"></script>
+<script type="text/babel" src="interior-objects-cards2.jsx"></script>
+<script type="text/babel" src="interior-cards.jsx"></script>
+<script type="text/babel" src="interior-objects-eye2.jsx"></script>
+<script type="text/babel" src="interior-specialty.jsx"></script>
+<script type="text/babel" src="interior-objects-spd2.jsx"></script>
+<script type="text/babel" src="interior-spd.jsx"></script>
+<script type="text/babel" src="interior-objects-sim2.jsx"></script>
+<script type="text/babel" src="interior-sim.jsx"></script>
+<script type="text/babel" src="interior-objects-lounge2.jsx"></script>
+<script type="text/babel" src="interior-lounge.jsx"></script>
+<script type="text/babel" src="interior-objects-morgue2.jsx"></script>
+<script type="text/babel" src="interior-morgue.jsx"></script>
+<script type="text/babel" src="interior-womenkids-opd.jsx"></script>
+<script type="text/babel" src="interior-objects-derm2.jsx"></script>
+<script type="text/babel" src="interior-dermcenter.jsx"></script>
+<script type="text/babel" src="ds-shared.jsx"></script>
+
+<!-- screens -->
+<script type="text/babel" src="screens-onboarding.jsx"></script>
+<script type="text/babel" src="screens-map.jsx"></script>
+<script type="text/babel" src="buildings-v2.jsx"></script>
+<script type="text/babel" src="screens-explore-v2.jsx"></script>
+<script type="text/babel" src="scenarios-data.jsx"></script>
+<script type="text/babel" src="screen-event-board.jsx"></script>
+<script type="text/babel" src="screen-elevator.jsx"></script>
+<script type="text/babel" src="screen-campus-hub.jsx"></script>
+<script type="text/babel" src="screen-home.jsx"></script>
+<script type="text/babel" src="screen-colleagues.jsx"></script>
+<script type="text/babel" src="screen-room-gallery.jsx"></script>
+<script type="text/babel" src="screen-objects-v2.jsx"></script>
+<script type="text/babel" src="screen-briefing.jsx"></script>
+<script type="text/babel" src="screens-dialogue.jsx"></script>
+<script type="text/babel" src="screen-pronunciation.jsx"></script>
+<script type="text/babel" src="screens-quiz.jsx"></script>
+<script type="text/babel" src="screens-quiz-depts.jsx"></script>
+<script type="text/babel" src="screens-quiz-bank.jsx"></script>
+<script type="text/babel" src="screens-quiz-anatomy.jsx"></script>
+<script type="text/babel" src="screens-quiz-sbar.jsx"></script>
+<script type="text/babel" src="screens-quiz-triage.jsx"></script>
+<script type="text/babel" src="screens-quiz-listen.jsx"></script>
+<script type="text/babel" src="screens-quiz-dosage.jsx"></script>
+<script type="text/babel" src="screens-progress.jsx"></script>
+<script type="text/babel" src="screens-review-lab.jsx"></script>
+
+<!-- App entry (screens only) -->
+<script type="text/babel" src="app-quizzes.jsx"></script>
+</body>
+</html>
