@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="design_doc_mode" content="canvas" />
+<title>forin Notebook - Avatar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+body { margin: 0; }
+a { color: #3E362B; } a:hover { color: #C75146; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="forin-notebook-avatar.jsx"></script>
+<script type="text/babel">
+const { NbAvatar, NbAvatarAssets: A } = window;
+const HW = '"Gaegu",cursive';
+function Cell({ label, children }) {
+  return (
+    <div style={{ textAlign: 'center' }}>
+      <div style={{ background: '#FFFdf4', border: '1px solid #E0D6C0', boxShadow: '0 2px 5px rgba(62,54,43,.12)', padding: 4 }}>{children}</div>
+      <div style={{ fontFamily: HW, fontSize: 13, color: '#6B6152', marginTop: 3 }}>{label}</div>
+    </div>
+  );
+}
+function Strip({ items, render, cols = 8 }) {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 12, padding: 16, background: '#F1EBDD' }}>
+      {items.map(k => <Cell key={k} label={k}>{render(k)}</Cell>)}
+    </div>
+  );
+}
+function rand(arr, i) { return arr[i % arr.length]; }
+function CombosGrid() {
+  const combos = [];
+  for (let i = 0; i < 24; i++) {
+    combos.push({
+      skin: rand(A.skins, i * 3 + 1), hair: rand(A.hairs, i * 5 + 2), hairColor: rand(A.hairColors, i * 7 + 3),
+      eyes: rand(A.eyes, i * 2 + 1), mouth: rand(A.mouths, i * 3 + 2), outfit: rand(A.outfits, i * 4 + 1),
+      outfitColor: rand(A.outfitColors, i * 5 + 4), hat: rand(A.hats, i % 3 === 0 ? i : 0), bg: rand(A.bgs, i * 2 + 3),
+      acc: rand(A.accs, i % 2 === 0 ? i + 1 : 0),
+    });
+  }
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)', gap: 12, padding: 16, background: '#F1EBDD' }}>
+      {combos.map((p, i) => <Cell key={i} label={'#' + (i + 1)}><NbAvatar size={76} {...p}/></Cell>)}
+    </div>
+  );
+}
+function App() {
+  const base = { size: 76 };
+  return (
+    <DesignCanvas>
+      <DCSection id="nb-avatar" title="forin Notebook — NbAvatar 에셋 시스템" subtitle="레이어: 배경→뒷머리→옷→얼굴→입→눈→앞머리→모자→액세서리 · props 조합">
+        <DCArtboard eager={true} id="av-skin" label={`피부색 (${A.skins.length})`} width={780} height={190}><Strip items={A.skins} render={k => <NbAvatar {...base} skin={k}/>}/></DCArtboard>
+        <DCArtboard eager={true} id="av-hair" label={`머리 스타일 (${A.hairs.length})`} width={880} height={490}><Strip cols={9} items={A.hairs} render={k => <NbAvatar {...base} hair={k}/>}/></DCArtboard>
+        <DCArtboard eager={true} id="av-hairc" label={`머리 색 (${A.hairColors.length})`} width={780} height={330}><Strip cols={6} items={A.hairColors} render={k => <NbAvatar {...base} hair="bob" hairColor={k}/>}/></DCArtboard>
+        <DCArtboard eager={true} id="av-eyes" label={`눈 (${A.eyes.length})`} width={780} height={330}><Strip cols={6} items={A.eyes} render={k => <NbAvatar {...base} eyes={k}/>}/></DCArtboard>
+        <DCArtboard eager={true} id="av-mouth" label={`입 (${A.mouths.length})`} width={780} height={330}><Strip cols={6} items={A.mouths} render={k => <NbAvatar {...base} mouth={k}/>}/></DCArtboard>
+        <DCArtboard eager={true} id="av-outfit" label={`옷 종류 (${A.outfits.length})`} width={780} height={330}><Strip cols={6} items={A.outfits} render={k => <NbAvatar {...base} outfit={k}/>}/></DCArtboard>
+        <DCArtboard eager={true} id="av-outc" label={`옷 색 (${A.outfitColors.length})`} width={780} height={330}><Strip cols={6} items={A.outfitColors} render={k => <NbAvatar {...base} outfitColor={k}/>}/></DCArtboard>
+        <DCArtboard eager={true} id="av-hat" label={`모자 (${A.hats.length})`} width={780} height={330}><Strip cols={6} items={A.hats} render={k => <NbAvatar {...base} hair="bob" hat={k}/>}/></DCArtboard>
+        <DCArtboard eager={true} id="av-bg" label={`배경 (${A.bgs.length})`} width={780} height={420}><Strip cols={5} items={A.bgs} render={k => <NbAvatar {...base} bg={k}/>}/></DCArtboard>
+        <DCArtboard eager={true} id="av-acc" label={`액세서리 (${A.accs.length})`} width={780} height={330}><Strip cols={6} items={A.accs} render={k => <NbAvatar {...base} acc={k}/>}/></DCArtboard>
+        <DCArtboard eager={true} id="av-combos" label="랜덤 조합 24" width={880} height={480}><CombosGrid/></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

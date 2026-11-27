@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="design_doc_mode" content="canvas"/>
+<title>forin Notebook - Retention</title>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>body{margin:0}a{color:#3E362B}a:hover{color:#C75146}</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="forin-notebook.jsx"></script>
+<script type="text/babel" src="forin-notebook-ui.jsx"></script>
+<script type="text/babel" src="forin-notebook-retention.jsx"></script>
+<script type="text/babel">
+function App() {
+  return (
+    <DesignCanvas>
+      <DCSection id="nb-retention" title="forin Notebook — 리텐션 시스템" subtitle="죄책감 대신 구체적 이득 · 스트릭은 안전망 · 알림은 사용자 통제">
+        <DCArtboard eager={true} id="nbr-push" label="A · 잠금화면 푸시 3종" width={402} height={874}><window.PushLock/></DCArtboard>
+        <DCArtboard eager={true} id="nbr-streak" label="B · 스트릭 보호 (동결권·복구권·위기 모먼트)" width={402} height={874}><window.StreakGuard/></DCArtboard>
+        <DCArtboard eager={true} id="nbr-settings" label="C · 알림 설정 (출근 시간 약속)" width={402} height={874}><window.NotifSettings/></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

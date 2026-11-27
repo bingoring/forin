@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="design_doc_mode" content="canvas" />
+<title>forin Notebook - Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+body { margin: 0; }
+a { color: #3E362B; } a:hover { color: #C75146; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="forin-notebook.jsx"></script>
+<script type="text/babel" src="forin-notebook-ui.jsx"></script>
+<script type="text/babel" src="forin-notebook-career.jsx"></script>
+<script type="text/babel" src="forin-notebook-avatar.jsx"></script>
+<script type="text/babel" src="forin-notebook-ui.jsx"></script>
+<script type="text/babel" src="forin-notebook-home2.jsx"></script>
+<script type="text/babel">
+function NbHomeApp() {
+  return (
+    <DesignCanvas>
+      <DCSection id="nb-home2" title="forin Notebook — 홈 개선안 · 출근 브리핑 데스크" subtitle="기기 시간 연동 라이브 병동 + 오늘의 호출 + 브리핑 3칸 + 이어서 하기 + 오늘의 문장 + 동료 소식">
+        <DCArtboard eager={true} id="nbh2-day" label="A · DAY (호출 대기 · 1/3)" width={402} height={874}><window.HomeV2 mode="day"/></DCArtboard>
+        <DCArtboard eager={true} id="nbh2-evening" label="B · EVENING (호출 응답 완료 · 2/3)" width={402} height={874}><window.HomeV2 mode="evening" answered={true} done={2}/></DCArtboard>
+        <DCArtboard eager={true} id="nbh2-night" label="C · NIGHT (브리핑 완료 · 3/3)" width={402} height={874}><window.HomeV2 mode="night" answered={true} done={3}/></DCArtboard>
+      </DCSection>
+      <DCSection id="nb-home-old" title="기존 홈 (참고)" subtitle="개선 전 버전">
+        <DCArtboard eager={true} id="nbh-old" label="기존 홈" width={402} height={874}><window.HomeScrapbook/></DCArtboard>
+      </DCSection>
+      <DCSection id="nb" title="일터 · 커리큘럼 (기존)" subtitle="검색 + 즐겨찾기 + 건물 아코디언 · 층 바텀시트 · 브리핑 · UI 킷">
+        <DCArtboard eager={true} id="nb-career" label="B · 일터" width={402} height={874}><window.CareerScrapbook/></DCArtboard>
+        <DCArtboard eager={true} id="nb-floor" label="C · 층 바텀시트" width={402} height={874}><window.FloorSheetScrapbook/></DCArtboard>
+        <DCArtboard eager={true} id="nb-brief" label="D · 상황 준비 (브리핑)" width={402} height={874}><window.BriefingScrapbook/></DCArtboard>
+        <DCArtboard eager={true} id="nb-kit" label="Z · NbUI 컴포넌트 킷" width={402} height={880}><window.ScreenNbKit/></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<NbHomeApp/>);
+</script>
+</body>
+</html>
