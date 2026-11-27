@@ -11,27 +11,26 @@ import { join } from 'path';
 import { FEMOJI, FICONS } from './ficons';
 
 const REF = join(
-  __dirname, '..', '..', '..', 'docs', 'dlc', 'projects', 'forin', 'inputs',
+  __dirname, '..', '..', '..', 'docs', 'waypoint', 'inputs',
   'design-handoff_v25', 'reference', 'forin-pixel-icons.jsx',
 );
 
-// The handoff lives in the `docs/dlc` git submodule, which points at a PRIVATE repo.
-// CI checks out the app without it, so these files are simply absent there — and this
+// The handoff lives in `docs/waypoint` in this repo. It used to be the `docs/dlc` git
+// submodule, which CI checked out without — so these files were absent there, and this
 // suite crashed on every push for eight commits before anyone looked at the runs.
 //
 // Skipping when it is absent is right, but only because the comparison is not the only
 // guard: the generated table is committed, and the app renders from that. What the
 // comparison catches is a hand-edit or a missed regeneration, which is a thing that
-// happens on a developer's machine — where the submodule IS checked out. So the check
+// happens on a developer's machine — where the handoff IS present. So the check
 // runs exactly where it can catch something.
 //
-// Deliberately NOT a silent skip: an absent submodule prints why, so a local run that
+// Deliberately NOT a silent skip: an absent handoff prints why, so a local run that
 // quietly stopped comparing does not look like a passing comparison.
 const REF_PRESENT = existsSync(REF);
 if (!REF_PRESENT) {
   console.warn(
-    '[ficons] docs/dlc submodule not checked out — skipping the 1:1 parity comparison.\n' +
-    '         Run `git submodule update --init docs/dlc` to enable it locally.',
+    '[ficons] docs/waypoint handoff not found — skipping the 1:1 parity comparison.',
   );
 }
 const itWithHandoff = REF_PRESENT ? test : test.skip;
@@ -121,7 +120,7 @@ test('the parity comparison is not silently skipped where it can run', () => {
   if (!REF_PRESENT) {
     // Absent is legitimate — but say which environment chose to skip, so a CI log that
     // stopped comparing does not read like a CI log that compared.
-    console.warn('[ficons] parity comparison skipped: docs/dlc submodule absent');
+    console.warn('[ficons] parity comparison skipped: docs/waypoint handoff absent');
     return;
   }
   // Present: the handoff parsed and carried a full set. If this passes, so did the

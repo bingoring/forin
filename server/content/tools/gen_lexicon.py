@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """1차 — 주제(theme) 하나가 품은 상황 전부를 모델에 주고 단어 은행 30개 이상을 받는다.
 
-설계는 `docs/dlc/projects/forin/02-construction/lesson-four-steps-v44/`의
+설계는 `docs/waypoint/02-construction/lesson-four-steps-v44/`의
 build-spec-index.md §6 결정 2, implementation-plan.md §B에 있다.
 
     python3 gen_lexicon.py --dept er --theme core-safety-er

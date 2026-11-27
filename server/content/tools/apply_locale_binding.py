@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """판정 결과를 seed YAML의 `localeBound` 필드로 반영한다.
 
-설계는 `docs/dlc/projects/forin/02-construction/curriculum-v3-locale-binding/README.md`에 있다.
+설계는 `docs/waypoint/02-construction/curriculum-v3-locale-binding/README.md`에 있다.
 표식은 **저작 시점의 메타데이터**다. DB에도 API에도 계약에도 넣지 않는다 — 런타임이 읽을 일이
 없는 것에 마이그레이션 비용을 치를 이유가 없다.
 

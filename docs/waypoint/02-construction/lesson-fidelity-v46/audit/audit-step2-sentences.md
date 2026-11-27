@@ -1,13 +1,13 @@
 # STEP 2 문장 — 핸드오프 v46 대조 감사 (읽기 전용)
 
 - 날짜: 2026-10-07 · 브랜치 `feat/journey-ia` (be5123e)
-- 핸드오프 경로 약칭: `H/` = `docs/dlc/projects/forin/inputs/design-handoff_v46/reference/`
+- 핸드오프 경로 약칭: `H/` = `docs/waypoint/inputs/design-handoff_v46/reference/`
   - `SL` = `H/forin-notebook-lesson-sent-live.jsx` (SentStudyLive, v46 신규)
   - `NU` = `H/forin-notebook-lesson-nuance.jsx` (ImmersionReel · ContextMatch · SwapOne + keyframes)
   - `LS` = `H/forin-notebook-lesson.jsx` (C1~C4 정적, C' LessonSentenceDone)
   - `WL` = `H/forin-notebook-lesson-words-live.jsx` (단어장 — 통일 기준, nb-tear/rise/stub/shake/ok/reveal keyframes 정의처)
   - `UI` = `H/forin-notebook-ui.jsx` (NbPaper·NbButton·NbTag·NbMark·NbMemo) · `NB` = `H/forin-notebook.jsx` (NbIcon)
-  - `07` = `docs/dlc/projects/forin/inputs/design-handoff_v46/07_NOTEBOOK_REDESIGN.md`
+  - `07` = `docs/waypoint/inputs/design-handoff_v46/07_NOTEBOOK_REDESIGN.md`
 - 우리 쪽 약칭: `S` = `mobile/src/app/scenario/[id]/sentences.tsx` · `P` = `mobile/src/components/lesson/SentPrompt.tsx` · `D` = `mobile/src/data/sentenceDrill.ts` · `U` = `mobile/src/components/nb/NbUI.tsx` · `I` = `mobile/src/components/nb/NbIcon.tsx` · `W` = `mobile/src/app/scenario/[id]/words.tsx` · `R` = `mobile/src/components/lesson/RecallPrompt.tsx` · `K` = `mobile/src/i18n/catalog/ko.ts`
 
 ---

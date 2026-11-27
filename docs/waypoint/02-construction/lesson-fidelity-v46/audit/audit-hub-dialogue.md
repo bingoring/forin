@@ -3,10 +3,10 @@
 읽기 전용 감사(2026-10-07). 코드는 고치지 않았다.
 
 **약칭**
-- 핸드오프 (`docs/dlc/projects/forin/inputs/design-handoff_v46/reference/`):
+- 핸드오프 (`docs/waypoint/inputs/design-handoff_v46/reference/`):
   `lesson.jsx` = forin-notebook-lesson.jsx · `dialogue.jsx` = forin-notebook-dialogue.jsx ·
   `ui.jsx` = forin-notebook-ui.jsx · `nb.jsx` = forin-notebook.jsx · `07` = ../07_NOTEBOOK_REDESIGN.md
-- 스펙: `spec` = docs/dlc/projects/forin/02-construction/lesson-four-steps-v44/build-spec-index.md ·
+- 스펙: `spec` = docs/waypoint/02-construction/lesson-four-steps-v44/build-spec-index.md ·
   `plan` = 같은 폴더 implementation-plan.md
 - 우리 (`mobile/src/`): `hub` = app/scenario/[id]/index.tsx · `ST` = components/lesson/StepTrack.tsx ·
   `GT` = components/lesson/GuidedTarget.tsx · `dlg` = app/dialogue/[id].tsx · `NbUI` = components/nb/NbUI.tsx ·

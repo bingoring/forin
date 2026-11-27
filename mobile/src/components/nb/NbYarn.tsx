@@ -1,6 +1,6 @@
 // NbYarn — the red thread that pins together every stamp the learner has already
 // passed. journey-binder-v42 Task H, task-H-brief.md §4 (정본) ·
-// docs/dlc/projects/forin/inputs/design-handoff_v42/reference/forin-notebook-journey2.jsx
+// docs/waypoint/inputs/design-handoff_v42/reference/forin-notebook-journey2.jsx
 // `Yarn()` 78~100행.
 //
 // A quadratic Bezier through every point, with the control point nudged off the true

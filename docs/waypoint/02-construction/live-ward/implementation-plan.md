@@ -8,7 +8,7 @@
 
 **Tech Stack:** React Native · Expo · react-native-svg · Animated(네이티브 드라이버) · Go · Redis(go-redis) · Jest · react-test-renderer.
 
-**Spec:** `docs/dlc/projects/forin/02-construction/live-ward/` (build-spec-index.md · business-logic-model.md · frontend-components.md)
+**Spec:** `docs/waypoint/02-construction/live-ward/` (build-spec-index.md · business-logic-model.md · frontend-components.md)
 
 ## Global Constraints
 

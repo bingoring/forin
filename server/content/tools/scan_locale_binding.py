@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """목적지(미국) 제도에 기대는 상황 후보를 뽑는다.
 
-설계는 `docs/dlc/projects/forin/02-construction/curriculum-v3-locale-binding/README.md`에 있다.
+설계는 `docs/waypoint/02-construction/curriculum-v3-locale-binding/README.md`에 있다.
 이 도구는 **판정하지 않는다.** 사람이나 검토자가 볼 후보와 근거를 낼 뿐이다. 키워드는 후보를
 좁히는 수단이지 판정 기준이 아니다 — 제도를 언급하지 않으면서 제도를 전제하는 상황이 있고,
 반대로 언급만 하고 제도와 무관한 상황도 있다.

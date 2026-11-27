@@ -1,7 +1,7 @@
 # infra — forin 서버 인프라 (Terraform)
 
 Cloud Run + Cloud SQL(서울) + Upstash Redis. 설계 근거는
-`docs/dlc/projects/forin/03-operations/01-deployment.md`.
+`docs/waypoint/03-operations/01-deployment.md`.
 
 ## 최초 1회 (사람이 해야 하는 것)
 

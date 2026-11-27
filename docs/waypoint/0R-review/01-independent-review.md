@@ -21,7 +21,7 @@ scope: 2-5 맵/탐험 엔진 (mobile)
 
 - Construction 2-5 산출물: `mobile/src/engine/**`, `mobile/src/map/**`, `mobile/tsconfig.json`, `mobile/package.json`(jest)
 - 설계/결정: `../02-construction/05-map-engine.md`, `../DECISIONS.md`
-- 리뷰어 지시: `../../_templates/reviewer-brief-template.md` (채워서 사용)
+- 리뷰어 지시: `waypoint:review-gate` 스킬의 리뷰어 지시 템플릿 (채워서 사용)
 
 ## 체크리스트
 

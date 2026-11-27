@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """2차 — 상황 하나와 그 주제의 은행 전체를 함께 주고 문장 5개 이상을 받는다.
 
-설계는 `docs/dlc/projects/forin/02-construction/lesson-four-steps-v44/`의
+설계는 `docs/waypoint/02-construction/lesson-four-steps-v44/`의
 build-spec-index.md §6 결정 2, implementation-plan.md §B에 있다.
 
     python3 gen_sentences.py --dept er --theme core-safety-er --title "환자 2인 확인"

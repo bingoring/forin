@@ -8,7 +8,7 @@
 
 **Tech Stack:** Go(gencontent 템플릿 생성기 · cmd/audit CLI · themed 조립), YAML 콘텐츠, 표준 `testing`.
 
-**Spec:** `docs/dlc/projects/forin/02-construction/curriculum-v3-audit/` (build-spec-index · business-logic-model · business-rules) + P1 `../curriculum-v3/`.
+**Spec:** `docs/waypoint/02-construction/curriculum-v3-audit/` (build-spec-index · business-logic-model · business-rules) + P1 `../curriculum-v3/`.
 
 ## Global Constraints
 
@@ -455,8 +455,8 @@ git commit -m "test(curriculum-v3 P2): 고아-0 + 깊이-20 + Topic-Theme 게이
 ### Task 6: 상태 기록 + 마무리
 
 **Files:**
-- Modify: `docs/dlc/projects/forin/02-construction/curriculum-v3-audit/build-spec-index.md` (status)
-- Modify: `docs/dlc/projects/forin/STATUS.md`
+- Modify: `docs/waypoint/02-construction/curriculum-v3-audit/build-spec-index.md` (status)
+- Modify: `docs/waypoint/STATUS.md`
 
 - [ ] **Step 1: 전체 테스트** — `cd server && go test ./...` 그린. `cd mobile && npx jest`(P2는 서버·콘텐츠라 모바일 무영향이지만 확인).
 

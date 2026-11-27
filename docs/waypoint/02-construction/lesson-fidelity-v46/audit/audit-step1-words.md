@@ -6,7 +6,7 @@
 
 | 약어 | 파일 |
 |---|---|
-| WL | `docs/dlc/projects/forin/inputs/design-handoff_v46/reference/forin-notebook-lesson-words-live.jsx` (341줄, 전부 읽음) |
+| WL | `docs/waypoint/inputs/design-handoff_v46/reference/forin-notebook-lesson-words-live.jsx` (341줄, 전부 읽음) |
 | UI | 같은 폴더 `forin-notebook-ui.jsx` (NbPaper·NbButton·NbTag·NbMark·NbStamp 등, L1–227) |
 | NBJ | 같은 폴더 `forin-notebook.jsx` (NbIcon L7–49) |
 | DOC | `design-handoff_v46/07_NOTEBOOK_REDESIGN.md` L200–231 (STEP 1 회상형, 뉘앙스 학습, 마감 규칙, 통일 규칙) |

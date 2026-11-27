@@ -14,7 +14,7 @@ import { dirname, join } from 'path';
 import vm from 'vm';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const SRC = join(here, '..', '..', 'docs', 'dlc', 'projects', 'forin', 'inputs',
+const SRC = join(here, '..', '..', 'docs', 'waypoint', 'inputs',
   'design-handoff_v25', 'reference', 'forin-pixel-icons.jsx');
 const OUT = join(here, '..', 'src', 'theme', 'ficons.ts');
 

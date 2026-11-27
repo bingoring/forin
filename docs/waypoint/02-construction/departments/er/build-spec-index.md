@@ -16,7 +16,7 @@ updated: 2026-07-01
 | 그리드 | 40 cols × 60 rows · floorTheme `clinical` · scale **0.85** |
 | playerStart | `{19,28}` (중앙 너스 스테이션 well) · 엘리베이터 진입 시 `?ex&ey` 오버라이드 |
 
-> **이 폴더가 부서 Build Spec의 기준 인스턴스.** 네 아티팩트를 각각 별도 파일로 정의한다([템플릿](../../../../../_templates/build-spec/)).
+> **이 폴더가 부서 Build Spec의 기준 인스턴스.** 네 아티팩트를 각각 별도 파일로 정의한다(템플릿: `waypoint:build-spec` 스킬).
 > 다른 부서는 이 구조·밀도를 따른다.
 
 ## §2. 아티팩트 매니페스트

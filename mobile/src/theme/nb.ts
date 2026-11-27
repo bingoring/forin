@@ -10,7 +10,7 @@
 // like a mistake rather than a blend. Screens are ported one at a time (see
 // components/nb), and until a screen is ported it keeps the pixel tokens.
 //
-// Source of truth: docs/dlc/projects/forin/inputs/design-handoff_v29/07_NOTEBOOK_REDESIGN.md
+// Source of truth: docs/waypoint/inputs/design-handoff_v29/07_NOTEBOOK_REDESIGN.md
 // and reference/forin-notebook-ui.jsx (window.NbUI).
 
 export const nb = {

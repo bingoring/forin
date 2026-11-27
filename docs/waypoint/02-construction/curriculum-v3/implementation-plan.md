@@ -8,7 +8,7 @@
 
 **Tech Stack:** Go(서버), pgx + sqlc(DB), YAML 콘텐츠, testify 없음(표준 `testing`), 기존 `content.Scenario`/`contentfile.Load`/`ContentRepo.Seed`.
 
-**Spec:** `docs/dlc/projects/forin/02-construction/curriculum-v3/` (build-spec-index.md · domain-entities.md · business-rules.md · business-logic-model.md)
+**Spec:** `docs/waypoint/02-construction/curriculum-v3/` (build-spec-index.md · domain-entities.md · business-rules.md · business-logic-model.md)
 
 ## Global Constraints
 
@@ -948,8 +948,8 @@ git commit -m "feat(curriculum-v3): 추가 엔드포인트 /me/curriculum/tracks
 
 **Files:**
 - Create: `server/internal/curriculum/themed/orphan_gate_test.go`
-- Modify: `docs/dlc/projects/forin/02-construction/curriculum-v3/build-spec-index.md` (상태 PHASE-1-IMPLEMENTED)
-- Modify: `docs/dlc/projects/forin/STATUS.md`
+- Modify: `docs/waypoint/02-construction/curriculum-v3/build-spec-index.md` (상태 PHASE-1-IMPLEMENTED)
+- Modify: `docs/waypoint/STATUS.md`
 
 **Interfaces:** 없음(문서·게이트 테스트).
 

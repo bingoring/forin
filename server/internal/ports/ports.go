@@ -219,7 +219,7 @@ type PronunciationPort interface {
 }
 
 // ---- Speech attempt / reference persistence (pronunciation loop, Build Spec
-// docs/dlc/projects/forin/02-construction/pronunciation/) ----
+// docs/waypoint/02-construction/pronunciation/) ----
 
 // SpeechAttemptInput is what the domain layer hands to SpeechRepo.InsertAttempt.
 // It mirrors PronunciationResult + the bookkeeping fields the caller adds (which

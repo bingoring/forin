@@ -1,6 +1,6 @@
 // StationTrack — 2단계(주제 화면)의 그림. journey-binder-v42 Task H,
 // .superpowers/sdd/journey-binder-v42/task-H-brief.md (정본, §1~§8) ·
-// docs/dlc/projects/forin/inputs/design-handoff_v42/reference/forin-notebook-journey2.jsx
+// docs/waypoint/inputs/design-handoff_v42/reference/forin-notebook-journey2.jsx
 // `Stamp()`/`Yarn()`/`StampTrail()`.
 //
 // Task H는 이 화면의 그림만 바꾼다 — 정거장 지그재그 지도를 불규칙 우표 산책길로. 아래는

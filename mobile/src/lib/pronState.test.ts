@@ -1,5 +1,5 @@
 // State-transition tests for the pronunciation loop route. The diagram this
-// mirrors is business-logic-model.md §3 (docs/dlc/projects/forin/
+// mirrors is business-logic-model.md §3 (docs/waypoint/
 // 02-construction/pronunciation); the three tests task-8-brief.md specifies
 // verbatim come first, the rest round out full transition coverage.
 import { next } from './pronState';

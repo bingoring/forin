@@ -1,7 +1,7 @@
 // 수첩 모션 — 핸드오프 v46의 CSS keyframes를 RN Animated로.
 //
 // 정본(R1):
-//   WL = docs/dlc/projects/forin/inputs/design-handoff_v46/reference/forin-notebook-lesson-words-live.jsx L12–33
+//   WL = docs/waypoint/inputs/design-handoff_v46/reference/forin-notebook-lesson-words-live.jsx L12–33
 //        (nb-tear-r/l · nb-rise · nb-stub · nb-shake · nb-ok · nb-reveal)
 //   NU = 같은 폴더 forin-notebook-lesson-nuance.jsx L13–25 (nb-swipe-out · nb-swipe-in · nb-reveal · nb-ok)
 //   LS = 같은 폴더 forin-notebook-lesson.jsx L10–16 (nbl-pop)
@@ -385,7 +385,7 @@ export function nbPressTransform(p: Animated.Value, rot: number) {
 
 // ── v48 신호 키트의 모션 ─────────────────────────────────────────────────────
 //
-// 정본: docs/dlc/projects/forin/inputs/design-handoff_v49/reference/forin-notebook-v48-kit.jsx
+// 정본: docs/waypoint/inputs/design-handoff_v49/reference/forin-notebook-v48-kit.jsx
 //   (`#v48-kit-css` — v48-breathe · v48-pop · v48-stamp · v48-wiggle · v48-tap · .v48-press · .v48-lift)
 // 값은 그 CSS 그대로이고, nbMotion.test가 그 파일을 직접 읽어 대조한다.
 // 기존 `.nb-press`(60ms · 1.5,2 · 0°)와 값이 다르다 — 사용처는 그대로 두고 키트만 이 값을 쓴다.
