@@ -1,8 +1,7 @@
 ---
+id: R-2
 phase: 0R-review
 stage: 02-independent-review
-status: AI_PROPOSED
-updated: 2026-08-03
 scope: 시나리오 런타임 · 성장/경제 · 커리큘럼 · 캠퍼스(v19) — server + mobile
 ---
 
@@ -84,3 +83,7 @@ NPC 역할이 동료(nurse/doctor/charge/resident/attending…)면 `score = Peer
 
 - [x] 진짜 결함이 수정되고 재검증됐는가?
 - [ ] Operations(Phase 3) 진입 승인 (사람)
+
+## 진행 기록
+
+- 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.

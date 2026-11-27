@@ -1,8 +1,7 @@
 ---
+id: R-1
 phase: 0R-review
 stage: 01-independent-review
-status: AI_PROPOSED
-updated: 2026-06-21
 scope: 2-5 맵/탐험 엔진 (mobile)
 ---
 
@@ -98,3 +97,7 @@ scope: 2-5 맵/탐험 엔진 (mobile)
   RN의 locationX는 뷰의 **비변환 로컬 좌표(0..worldW)** 라 ÷TILE이 맞음. tsc 0·jest 47/47·expo export.
 - **교훈: 게이트의 "디바이스 확인" 항목이 실제 안전장치였다.** 독립 리뷰의 speculative HIGH를 코드로 과교정하기보다, 불확실한
   런타임 동작은 디바이스 검증으로 확정해야 함. (CLI로 확인 불가한 finding은 "수정"보다 "검증"이 우선.)
+
+## 진행 기록
+
+- 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.

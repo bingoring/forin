@@ -1,8 +1,7 @@
 ---
+id: 2-1
 phase: 02-construction
 stage: 01-server-foundation
-status: HUMAN_APPROVED
-updated: 2026-06-08
 ---
 
 # [Stage 2-1] 서버 기반 (Go stdlib · 헥사고날)
@@ -95,3 +94,7 @@ server/
 
 ✅ **구현 완료**(`/server`, forin `b9ccd2f`) · `go build/vet/test` 통과 · `docker compose` 런타임
 `/healthz`·`/readyz` 200, 인증 미들웨어 negative-path 확인(2026-06-08). → `02-domain-content-api.md`
+
+## 진행 기록
+
+- 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.

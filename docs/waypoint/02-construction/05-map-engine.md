@@ -1,8 +1,7 @@
 ---
+id: 2-5
 phase: 02-construction
 stage: 05-map-engine
-status: IN_PROGRESS
-updated: 2026-06-11
 ---
 
 # [Stage 2-5] 맵 / 탐험 엔진 (품질 축)
@@ -311,3 +310,7 @@ patrol 왕복·wander 이탈금지·seed 안정성), 플레이어 이동이 dir+
 ## 다음 단계
 
 승인 후 → 구현 → `STATUS.md` 갱신 → `06-screens-flows.md`
+
+## 진행 기록
+
+- 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.

@@ -1,8 +1,7 @@
 ---
+id: 2-7
 phase: 02-construction
 stage: 07-growth-economy-review
-status: PENDING
-updated: 2026-06-12
 ---
 
 # [Stage 2-7] 성장 · 경제 · 복습 · 이벤트 전달
@@ -41,3 +40,7 @@ updated: 2026-06-12
 ## 다음 단계
 
 승인 후 → 구현 → `STATUS.md` 갱신 → `08-integration-e2e.md`
+
+## 진행 기록
+
+- 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.

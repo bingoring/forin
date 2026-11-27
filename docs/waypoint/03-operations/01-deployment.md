@@ -1,8 +1,7 @@
 ---
+id: 3-1
 phase: 03-operations
 stage: 01-deployment
-status: AI_PROPOSED
-updated: 2026-08-15
 ---
 
 # [Stage 3-1] Deployment
@@ -889,3 +888,7 @@ android 빌드는 여전히 0개다).
 - **prod**: `promote.yml` image_tag=`3dec716…`(run 39038152584, 사용자 승인) 성공 — 리비전 `forin-api-prod-00066` 100%, `/readyz` 200, `/auth/dev` 404.
 - **OTA**: `ota.yml` production(run 39039526895, 사용자 승인) 성공 — iOS group `9d9962ab…` runtimeVersion `3e73ea75…`(TestFlight 1.0.0 빌드 19~21과 같은 지문 → 도달),
   android group `4ef34e62…` runtimeVersion `7d074d78…`(android 빌드 없음 — 받을 기기 없음). 서버를 먼저 올린 뒤 OTA(새 홈이 서버의 새 필드를 읽는다).
+
+## 진행 기록
+
+- 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.

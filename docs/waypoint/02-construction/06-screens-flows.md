@@ -1,8 +1,7 @@
 ---
+id: 2-6
 phase: 02-construction
 stage: 06-screens-flows
-status: IN_PROGRESS
-updated: 2026-06-12
 ---
 
 # [Stage 2-6] 화면 · 플로우
@@ -177,3 +176,7 @@ Info.plist에 `forin`·`app.forin.mobile` 스킴 등록 확인.
 ## 다음 단계
 
 승인 후 → 구현 → `STATUS.md` 갱신 → `07-growth-economy-review.md`
+
+## 진행 기록
+
+- 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.

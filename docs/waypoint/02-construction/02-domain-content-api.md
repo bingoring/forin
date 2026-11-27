@@ -1,8 +1,7 @@
 ---
+id: 2-2
 phase: 02-construction
 stage: 02-domain-content-api
-status: HUMAN_APPROVED
-updated: 2026-06-09
 ---
 
 # [Stage 2-2] 도메인·콘텐츠 API + 계약
@@ -139,3 +138,7 @@ AI 대화·교정·음성(2-3), 모바일(2-4+), 경제 수치 튜닝(2-7).
 ## 다음 단계
 
 승인 후 → 구현 → `STATUS.md` 갱신 → `03-ai-layer.md`
+
+## 진행 기록
+
+- 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.

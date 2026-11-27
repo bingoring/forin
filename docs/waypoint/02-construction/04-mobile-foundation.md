@@ -1,8 +1,7 @@
 ---
+id: 2-4
 phase: 02-construction
 stage: 04-mobile-foundation
-status: HUMAN_APPROVED
-updated: 2026-06-10
 ---
 
 # [Stage 2-4] 모바일 기반 (Expo · 디자인 시스템)
@@ -94,3 +93,7 @@ updated: 2026-06-10
 ## 다음 단계
 
 승인 후 → 구현 → `STATUS.md` 갱신 → `05-map-engine.md`
+
+## 진행 기록
+
+- 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.

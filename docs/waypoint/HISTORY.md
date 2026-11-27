@@ -1,0 +1,1419 @@
+2026-11-27 STATUS 정리 때 옮긴 기록이다. 이후로는 쓰지 않는다.
+
+# forin — Waypoint Status
+
+**Framework:** [Waypoint](https://github.com/bingoring/waypoint)
+**PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
+**Design handoff:** [inputs/design-handoff_v48/](inputs/design-handoff_v48/README.md) (최신) · [v47](inputs/design-handoff_v47/README.md) · [v42](inputs/design-handoff_v42/README.md) · [v40](inputs/design-handoff_v40/README.md) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
+**Decisions (audit):** [DECISIONS.md](DECISIONS.md)
+**Last updated:** 2026-10-28
+
+> ⏸ **OR 한 번에 저작 묶음 7 — or-minimally-invasive·core-safety-or 중지(2026-11-24, 사용자 지시).** 저작 A·B·합친 파일·검토 A 끝. 검토 B 두 건은 중간에 멈춤(fix-*-B.md·_reviewB_*_after.yaml 저장됨, core-safety-or는 마지막 점검 직전, minimally-invasive는 끝까지 썼는지 미확인). 다음: B 검토 파일 완결 확인 → 필요하면 B 다시 → Sonnet 수정 → keyPhrase 결정 → 정본 합침. 작업 파일은 content/or-batch6 브랜치(wip/icu-or-rest/or)에 커밋됨. 검토 A keyPhrase 후보: minimally-invasive 4(7.1 환기·13.1 역할·15.0·20.2), core-safety-or 4(16.2 X-ray·16.1·10.1 산소·20.2 thirty seconds).
+>
+> ✅ **OR 한 번에 저작 묶음 6 — or-preop-checklist·or-specimen 합침(2026-11-24).** keyPhrase 11문장 교체(MTP·항생제 투여 주체·직접 운반·혼자 재라벨·결과 받는 곳 등), chunks 15문장, OR 위반 0. 확인·위기 문장 오답 기준 결정(안전 우선, 하나는 같은 모양) → TASK.md. 머지·배포 보류. 묶음 7 저작 중, 남은 OR 21주제.
+>
+> ✅ **OR 한 번에 저작 묶음 5 — core-family-or·or-emergency-open 합침(2026-11-24).** keyPhrase 12문장 교체(간호사 고지 → 집도의 면담 연결, DIC·FFP를 묻기, MTP는 혈액은행 연락 등), chunks 24문장, OR 위반 0. 앱 보기 위치 쏠림 발견 → 별도 작업. 머지·배포 보류. 묶음 6(preop-checklist·specimen) 저작 중, 남은 OR 23주제.
+>
+> ✅ **OR 한 번에 저작 묶음 4 — core-language-or·or-bleeding 합침(2026-11-17).** keyPhrase 11문장 교체(설명 주체를 집도의·마취팀이 통역을 통해, MTP는 혈액은행 연락, 승압제는 마취과 등), chunks 29문장, OR 위반 0. TASK.md에 '~려고' 쏠림 규칙 추가. 머지·배포 보류. 묶음 5(emergency-open·core-family-or) 진행 중, 남은 OR 25주제.
+>
+> ✅ **OR 한 번에 저작 묶음 2·3 — preop-verification·tourniquet·preop-assessment·difficult-airway 합침(2026-11-17).** keyPhrase 14문장 교체(커프 폭·감압은 집도의·FONA 복창 등), chunks 20문장, OR 위반 0. 머지·배포는 사용자 지시로 보류. 남은 OR 27주제.
+>
+> ✅ **OR 한 번에 저작 묶음 1 — massive-transfusion·count 합침(2026-10-30).** keyPhrase 3문장 교체(반출 금지·수혈 중단·혈액은행 지역 주문), chunks 15문장 다시 자름, OR 위반 0. 머지·배포는 사용자 지시로 보류. 묶음 2(preop-verification·tourniquet)는 검토 중.
+>
+> ✅ **ICU 한 번에 저작 묶음 9 — 마지막 3주제 합침, ICU 66주제 완료(2026-10-30).** core-language·core-family·core-safety-icu: keyPhrase 8문장 교체(통역사·깜빡임·윤리위원회·독립 이중 확인·ICU 의사 호출 등), ICU 위반 0.
+> **운영 배포는 묶어서(묶음 4~9 미배포, 사용자 "머지 및 배포는 나중에").** PR #29→…→#33. 진행 중: OR 33주제(묶음 1 keyPhrase 반영, 묶음 2 검토). `pipeline/TASK.md`에 종속절 틀은 오답 하나에만 규칙 추가.
+
+> 🔨 **ICU 한 번에 저작 묶음 8 — 2주제 합침(2026-10-30).** mobility-prevention·core-handoff-icu: 저작 A‖B → Opus 검토 A‖B → Sonnet 수정 → keyPhrase 결정(사용자 '추천대로': 바꿈 5 — ICU 신속대응팀 → 담당의, X-ray는 기흉 배제 등, 유지 7) → 정본 합침, ICU 위반 0.
+> **운영 배포는 묶어서(묶음 4~8 미배포, 사용자 "머지 및 배포는 나중에").** PR #29→#30→#31→#32 순서로 쌓임. 진행 중: core-language·core-family 검토, core-safety 저작(ICU 마지막 3). 그다음 OR 33.
+
+> 🔨 **ICU 한 번에 저작 묶음 7 — 4주제 합침(2026-10-29).** invasive-lines·nutrition·transfusion·transport-procedure: 저작 A‖B → Opus 검토 A‖B → Sonnet 수정 → keyPhrase 63/63 →
+> keyPhrase 결정(사용자 '추천대로': 바꿈 13 — ICU 신속대응팀·코드팀 호출 → 의사 호출, MRI 압박 즉시 등, 유지 13) → 정본 합침, ICU 위반 0(새 경고는 W13 의도된 오답 10).
+> **운영 배포는 묶어서(묶음 4~7 미배포).** PR #29→#30→#31 순서로 쌓임. 남은 ICU 5(mobility-prevention·core 4) · OR 33.
+
+> 🔨 **ICU 한 번에 저작 묶음 6 — 4주제 합침(2026-10-29).** gi-bleed·liver-failure·stroke-icu·brain-death: 저작 A‖B → Opus 검토 A‖B(안전 186건) → Sonnet 수정 →
+> keyPhrase 63/63 대조 → keyPhrase 결정(사용자 '추천대로': 바꿈 13·유지 18, chunks 31문장) → 정본 합침, ICU 위반 0(새 주제 경고 0). B 저작 실패 유형을 TASK.md에 더 적음.
+> **운영 배포는 묶어서(묶음 4·5·6 미배포).** PR #29(묶음 5) 위에 쌓은 브랜치. 묶음 7(invasive-lines·nutrition) 수정 진행 중. 남은 ICU: 미착수 7 · OR 33.
+
+> 🔨 **ICU 한 번에 저작 묶음 5 — 4주제 합침(2026-10-28).** endocrine-crisis·glycemic·raised-icp·status-epilepticus: 저작 A‖B → Opus 검토 A‖B(안전 178건) → Sonnet 수정 →
+> keyPhrase 63/63 대조 → keyPhrase 결정(사용자: 안전 6·표현 5 바꿈, 유지 권고분도 대안대로 → 22문장 바꿈, chunks 24문장) → 정본 합침, ICU 위반 0(새 주제 경고 0).
+> B 저작의 되풀이 실패 7가지를 `pipeline/TASK.md`에 적음. **운영 배포는 묶어서(묶음 4·5 미배포).** 묶음 6(gi-bleed·liver-failure 검토, stroke-icu·brain-death 저작) 진행 중. 남은 ICU: 미착수 11 · OR 33.
+
+> 🔨 **ICU 한 번에 저작 묶음 4 — 4주제 합침(2026-10-28).** post-arrest(Fable 표본 판정 A·B)·sepsis·aki-crrt·electrolytes, 모두 처음부터: 저작 A‖B → Opus 검토 A‖B(안전 153건) →
+> Sonnet 수정 → keyPhrase 원문 63/63 대조 → keyPhrase 결정 12건(사용자 '추천대로': 바꿈 9 — Overcooling below target·metabolic acidosis(시트르산 축적, 상황 설명도)·fever 분리 등, 유지 3) + keyPhrase chunks 다시 자르기 22문장 → 정본 합침, ICU 위반 0(새 주제 경고 0).
+> **PR #28 머지(2026-10-28) — 운영 배포는 사용자 지시로 묶음을 쌓아 두었다가 한 번에(staging seed·prod promote·prod seed 미실행).** 사용량 한도로 서브에이전트가 한 번 끊겼다가 이어서 마침. 묶음 5(endocrine-crisis·glycemic·raised-icp·status-epilepticus) 저작 진행 중. 남은 ICU: 미착수 15 · OR 33. 기록 `server/content/tools/wip/icu-or-rest/README.md`.
+
+> 🔨 **ICU 한 번에 저작 묶음 3 — 4주제 합침(2026-10-27).** airway·delirium·infection-prevention·pain-nonverbal: 저작 A‖B → Opus 검토 A‖B(안전 179건) → Sonnet 수정 →
+> keyPhrase 원문 63/63 대조 → keyPhrase 결정 22건(사용자 '추천대로': 바꿈 18·유지 4) 반영 → 정본 합침, ICU 위반 0(새 주제 경고 0). V21 금칙어 확대·영어 오답까지 검사 → 정본 ER 21·ICU 3·OR 1건 정리.
+> **운영 반영 완료(2026-10-27, PR #27 staging seed → prod promote → prod seed).** 남은 ICU: post-arrest·sepsis·미착수 19 · OR 33. 기록 `server/content/tools/wip/icu-or-rest/README.md`.
+
+> ✅ **ICU keyPhrase 결정 대기 27건 처리(2026-10-26, 사용자 '추천대로').** 바꿈 21(보장·약속 완곡화, 업무범위 — RT에게 요청·처방 받기·PRN per order,
+> 사실 — PPV 높으면 반응·DOAC 처방대로·goals of care·pressure line 등), keyPhrase 아닌 2건 바로 고침, 그대로 4(why 보강 1). 딸린 order·뉘앙스·예문·v46 필드는 Opus가 함께 고침,
+> 정본 keyPhrases 21줄 교체 → 7주제 `--replace` → ICU 위반 0(경고 18은 파일럿 주제의 기존 W18·W21). **PR #25·#26 운영 반영 완료(2026-10-27, staging seed → prod promote → prod seed).** 기록 `server/content/tools/wip/icu-or-rest/README.md` 끝.
+
+> 🔨 **ICU·OR 한 번에 저작 재개 — ICU 8주제 정본 합침(2026-10-25~26, 브랜치 `content/icu-or-onepass-rest`).** Workflow 없이 메인 세션이 같은 공정을
+> 서브에이전트로 돌린다(사용자: "조금씩 진행하고 보고"). 묶음 1(ards-proning·arrhythmia·cardiogenic) + 묶음 2(hemodynamics·mech-ventilation·resp-support·sedation·shock):
+> 합치기·검사 → Opus 검토 A‖B → Sonnet 수정 → **메인 세션이 검사 재실행 + keyPhrase en 원문 대조(주제마다 63/63)** → 정본 합침 → gencontent·부서 검사(위반 0, 새 주제 경고 0)·go test·모바일 콘텐츠 테스트.
+> 검토가 잡은 안전 항목 273건(응급 문장 오답이 처치를 다른 일로 바꾸거나 같은 틀을 되풀이하는 갈래가 대부분)을 반영. keyPhrase en은 손대지 않음 —
+> **결정 대기 27건**(재개 문서 `server/content/tools/wip/icu-or-rest/README.md`에 목록). 남은 ICU: airway·delirium(B 저작부터), 끊긴 4주제(처음부터), 미착수 19 · OR 33 전부.
+> 이 기기 메모: 시스템 python에 PyYAML이 없어 세션 venv를 쓴다. workflow.js의 ROOT는 다른 기기 경로.
+
+> 🔧 **master mobile CI 간헐 실패 원인 수정(2026-10-25).** `387db54`의 `guidedTarget.test` 실패(`findNodeHandle` of undefined)는 그 파일 탓이 아니었다 —
+> `oldHomeDoors.test`(홈 v48 자료 선반)가 트리를 언마운트하지 않아, v49에서 `NewDot`에 붙은 한 번 흔들림(.4s 지연, 네이티브 드라이버)이 파일이 끝난 뒤
+> 같은 워커의 다음 파일 실행 중에 터졌다(`mountRegistry` 머리말의 다섯 번째 사례). 순서 고정 재현(3/3) → `trackMounts` 적용 → 재현 0/3, 전체 jest 3회 그린.
+> 마운트하고 언마운트하지 않는 나머지 두 파일(typewriter·nbInlineSelect)은 같은 방법으로 확인해 새는 타이머 없음. "간헐 1"은 이것이었다.
+
+> 🎨 **v49 홈 v47 풍 맞추기 구현(2026-10-19).** 핸드오프 v49(개정 지시서 응답) 1:1 — 공통 신호 키트 `components/nb/V48.tsx`(Go·GoBar·Ring·Done·Locked·IconDot·NewDot·Pill·Chev,
+> breathe·press·lift·pop·stamp·wiggle·tap 참조 키프레임 대조·reduce motion), 홈 '이어서' 바를 키트로 합침. 일터(G Go 원·연필 원·바인더 들림, E 링·도장·색 칩 범례, H 후광·GoBar),
+> 리뷰랩(GoBar 히어로·알약 2·얼굴 등급 버튼·카드 기울며 넘어감·Chev 맥락), 휴게실(2×2 타일·노란 점 5칸·Locked 칩·🏆), 나(홈 아바타 원·불꽃 알약·같은 원 격자·IconDot 설정 행).
+> **리뷰랩 '복습 대기 = 저장' 버그 원인 수정** — 서버 `GET /me/review`에 덱 총수·마스터 수(`ReviewRepo.CountCards`) 추가 → server 배포 필요. 사용자 결정으로 입구 없는 화면
+> (상황판·루트·나이트·내부/엘리베이터·온보딩 옛 페이지) 삭제·나 › 공개 숨김. 지도 엔진 `src/map/**` 70파일 약 1.46만 줄은 고아로 남김(삭제 결정 대기). Build Spec `copy-declutter-v47/v49-build-spec.md`.
+> 검증: tsc 0·jest 177 스위트(간헐 1 단독 통과)·go test·시뮬레이터 4화면.
+
+> 🧹 **v47 설명 배제 3차(2026-10-19, 사용자 요청).** 갱신된 v47 핸드오프 반입(`0bf3b66` — 2차 정리 30곳·진입점 재배치·서가 공통 필수 행 제거) 후,
+> 전 화면 감사 3건(일터·학습 / 라운지·리뷰랩·나 / 온보딩·게임·기타) → 앱 적용: 설명 키 74개 지움·약 45개 줄임(4개 언어), '다시 듣기 · n회' 되살림(1차에서 같이 사라짐),
+> 온보딩 목적지 뒤로 버그·모범답안 오류 표시 버그 수정, 고아 키 정리. tsc 0·jest 177 스위트 통과, 시뮬레이터 리뷰랩 확인. 브랜치 `fix/copy-declutter-v47`.
+> 홈 v47 풍 맞추기는 **디자인 지시서(v48 요청, 2026-10-19 개정 — 배치 유지·설명 축소·유추 가능한 누름·귀엽게·홈 풍 통일, 대상 일터·리뷰랩·게임 허브·프로필)** [`02-construction/copy-declutter-v47/design-brief.md`](02-construction/copy-declutter-v47/design-brief.md) —
+> 결정 필요: 입구 없는 화면 4묶음(상황판·루트·나이트·내부/엘리베이터)과 온보딩 옛 페이지 처리, 나 › 공개(라이브 병동 없음) 숨김. 적용 목록 `apply-list.md`.
+
+> ⏸️ **다음 세션 시작점 (2026-10-16 인계) — ICU·OR 나머지 66주제 한 번에 저작, Workflow 중단(사용자 지시).**
+> - 상태·재개 방법 정본: [`server/content/tools/wip/icu-or-rest/README.md`](../../../../server/content/tools/wip/icu-or-rest/README.md) (재개용 `workflow.js`·`args.json` 같은 폴더, 브랜치 `content/icu-or-onepass-rest`, 마지막 커밋 `cab025e`).
+> - **ICU 8주제 A·B 저작 끝** (ards-proning·arrhythmia·cardiogenic·hemodynamics·mech-ventilation·resp-support·sedation·shock) → combine부터. **2주제 A만**(airway·delirium) → B부터.
+>   끊긴 4주제(infection-prevention·pain-nonverbal·post-arrest·sepsis)는 처음부터. 나머지 ICU 19 + OR 33 미착수. 정본에는 아직 아무것도 안 합침.
+> - Workflow 주의: 파이프라인이라 TaskStop 말고는 새 에이전트를 막을 수 없고 멈추면 돌던 것도 끊김 → **topics를 10~15개씩 잘라** 돌릴 것. 새 세션에서 Workflow opt-in 재확인.
+> - 배포: PR #18(파일럿 4주제·비속어 정리·V21)·#19(keyPhrase 8건·W18~W21) **prod promote 완료**, prod seed 완료(2026-10-16) — 운영 ER 비속어 조각 정리·keyPhrase 결정 반영됨.
+> - 비용 참고: 주제당 Fable 빼고 약 122만 토큰, 66주제 약 8,000만. 이번 중단까지 저작 약 20회분(약 450만) 사용.
+
+> 🏁 **홈 "달력 한 장 + 버튼 하나"(v47·v48) — 구현 완료, Build Spec `IMPLEMENTED` (2026-10-17, 새 콘텐츠 진행보다 먼저 — 사용자).**
+> 핸드오프 v47·v48 반입. 홈 = 상단 줄(아바타·연속 불꽃·호출 배지) · 근무 달력(탭하면 그날 부서 도장) · 이어서 버튼 하나(링 = 부서 트랙, 5칸 = 주제).
+> 서버가 `todayOne.dept`·`deptProgress`와 달력 항목 `dept`를 싣는다(계약 재생성). 구 홈 Extras는 라운지 휴게실(게임 2개, 순위 없음) ·
+> 리뷰랩 자료 선반(인계 노트·슬랭, 새 항목 배지)으로. 문구 "설명 배제" 21키 삭제·2키 축약, 고아 키 30개 정리. 사용자 결정: 과별 출근 카드는
+> 입구 없이 제거(맵 도달 불가), 그림 없는 이관은 홈에서만 빼고 보류, 메인 레포는 브랜치 + PR. 구현 중 발견: 오늘의 상황판(`/board`) 입구가
+> 홈 버튼 하나뿐이라 함께 사라졌다 — 사용자 결정으로 다음 핸드오프까지 입구 없이 둔다. 검증: go test(실 DB)·계약·tsc·jest 1,335 그린, 로컬 스모크 홈·달력 단정 통과, iOS 시뮬레이터
+> 런타임이 없어 Expo 웹으로 화면 확인. PR #20 머지(`3dec716`) → staging 스모크 151/0 → **prod promote + production OTA 완료**(배포 §12.9).
+> 스펙 [`02-construction/home-calendar-v47/`](02-construction/home-calendar-v47/build-spec-index.md).
+
+> 🔧 **파일럿 후속(2026-10-16, 사용자 결정 '제안대로'):** PR #18 머지 → staging 배포·seed 완료, prod promote 승인 대기. keyPhrase 8건 바꿈·1건 유지
+> (단정 위로 4 완곡화, 기증 = 전문팀 연결 + 상황 brief·goal 정렬, rescue NIV에 'if the physician agrees', vaporizers removed, MH 선언은 마취과 — 같은 상황 비KP 1문장 포함),
+> slider '응답 고르기' 허용. 검사기 W18~W21(decoy·빈칸 오답 되풀이, 오답 ko 어간 되풀이, slider 정답 위치·길이 편향, 확인 뒤집는 빈칸 오답) 추가 — 새 주제 0건 목표,
+> 기존 ER은 경고 수백 건(정리 미정). 남은 결정 거리: ICU 기증 keyPhrase "we'll follow whatever you decide"(본인 기증 등록은 가족이 뒤집을 수 없음, UAGA),
+> OR 다른 주제의 "…he can hear you". ICU v45b 8주제는 한 번에 저작으로 다시 함.
+
+> ✅ **ICU·OR 한 번에 저작 파일럿 완료(2026-10-16).** 4주제 정본 합침(ICU weaning `8b4b57d`·eol-goals `a6ae700`, OR timeout `3d0a3a5`·MH),
+> 부서 검사 위반 0·경고 0, Go 테스트 통과. 합계 568만 토큰(주제당 Fable 빼고 평균 약 122만, 벽시계 약 1시간) → 35주제 부서 약 4,300만,
+> ICU·OR 나머지 66주제 약 8,000만, v44부터 필요한 26개 부서 약 11억. Opus 검토 고칠 것 81~360건/주제, **응급·임종 주제에서 오답 안전 실패 집중**
+> (호출 대상·확인 주체·시점·처치 행동 바꿔치기) → Opus 검토 생략 불가. **Fable 판정이 Opus가 놓친 비속어 오답 조각을 잡음** → ER 정본의 `cum`×5·`ass`×1,
+> OR `ass`×1 정리 + 검사기 V21(오답 조각 금칙어, `a8adf88`) — **ER 수정은 배포·seed 전까지 운영에 남아 있음.**
+> 결정 대기: keyPhrase 9건(eol 5·weaning 1·MH 3)과 slider '응답 고르기' 허용 여부, 확장 범위·순서. 검사기 후보 4(decoy·빈칸 오답 되풀이, 어간 되풀이,
+> slider 정답 위치·길이 편향, 확인 뒤집는 빈칸 오답). 보고 `server/content/tools/wip/icu-or-pilot/REPORT.md`, 토큰 `TOKENS.md`.
+
+> 🧪 **ICU·OR 한 번에 저작 파일럿 착수(2026-10-16, 사용자 결정).** v44만 있는 주제를 v45(단어 회상·뉘앙스)+v46(문장 낱장·order·오답 재설계)까지
+> 한 번에 — 주제마다 Sonnet 저작 A(단어·뉘앙스) ‖ B(문장 낱장·order) → `combine_halves.py` → Opus 검토 A ‖ B → Sonnet 수정 → `--replace` 합치기.
+> 대상 ICU `icu-eol-goals`·`icu-weaning-extubation`, OR `or-timeout`·`or-malignant-hyperthermia`(저장소 `server/content/tools/wip/icu-or-pilot/`).
+> v44→v45+v46 `--replace` 한 번 합치기는 사본에서 왕복 동일 확인. **표본 판정은 Fable 유지**(사용자 재확인 — Opus는 이미 검토자라 독립성이 없음).
+> `briefing.line`은 시드 스키마·gencontent·합치기에 연결돼 있지 않아 빠짐(연결 작업 필요). 브리프 되풀이 상한을 모든 낱말 규칙으로 갱신.
+> 목적: 단계별 토큰 실측 → 26개 부서 규모 산정. 이미 v45 저작된 ICU 8주제(`wip/icu-v45b`)의 처리(v46만 얹기 vs 폐기)는 따로 결정.
+
+> 🔧 **홈 화면 나이트 근무 라디오 입구 제거(2026-10-15, 사용자 결정).** 완성도가 아직 낮아서 홈 카드(v38)만 뺐다. `/night` 화면·서버 API·문구는 그대로 둔다.
+> 같은 날 일터 탭 6칸 변경은 production 채널 OTA로 배포(빌드 19~21과 iOS 지문 `3e73ea75` 일치).
+
+> 🔧 **일터 탭 `내 부서` 카드 진행 막대 = 핸드오프 G 한 줄 6칸(2026-10-15, 사용자 지적).** TestFlight 1.0.0(19)에서 막대가 주제마다 1칸(ER 35칸, 12칸씩 3줄)이라
+> 부서 수처럼 읽혔다. 사용자 결정: 참조 G처럼 한 줄 6칸, 칸 하나 = 이어진 주제 한 묶음(35 → 6·6·6·6·6·5, 주제가 6개 미만이면 주제당 1칸).
+> 채움은 묶음 안 상황 진도, 묶음의 주제가 전부 끝나야 초록. journey-binder-v42 스펙 V5를 이 결정으로 대체. `BinderShelf.tsx` `groupTopics`.
+
+> 🚩 **학습 화면 핸드오프 1:1(v46) — 착수 (2026-10-07).** 사용자 지적: 학습 화면(STEP 1 회상 6장+뉘앙스 2장, STEP 2, 워밍업 릴)이
+> 핸드오프와 전체적으로 다르고(조각 칩 모양·선택 상태·정답 뒤 넘김 애니메이션), 릴 스와이프 연출을 사용자 의견 없이 범위에서
+> 뺐다 — **핸드오프는 전부 그대로, 빼야 하면 먼저 묻는다**. v46 반입(STEP 2를 단어장과 같은 낱장 플래시카드로, 디자인 통일 규칙).
+> 1:1 대조 감사 3종(차이 382건, STEP 1·2 애니메이션은 하나도 없었음)을 스펙 폴더 `audit/`에 남기고, 결정 9건(StepTrack은 STEP 화면에서
+> 뺌, STEP 2는 아트보드 순서로 화면 분리, 허브 결정 4 유지, 글리프는 아이콘, 대화 무대는 핸드오프 모양+끌어 조절, 노트=이 상황 교정노트,
+> 콘텐츠 새 필드는 화면 먼저+ER 저작, 순서 배열은 따로 저작 등)으로 Build Spec. 진행: T1·T2(공용 부품·애니메이션·낱장 묶음) ‖ T5(스키마).
+> 스펙 [`02-construction/lesson-fidelity-v46/`](02-construction/lesson-fidelity-v46/build-spec-index.md).
+> **T1·T2 완료(2026-10-07):** NbUI 공용 값(버튼 하드 그림자·게이지 2톤·도장 3px double·형광펜 55%·태그 패딩 0·테이프 그림자·줄 27–28,
+> 모든 수첩 화면), `.nb-press` 0.06s, `nbMotion`(참조 `@keyframes`를 테스트가 직접 대조), `faceWorried`, 낱장 묶음 `SheetStack`
+> (뜯김 620ms → 다음 장 rise·stub, 화면에는 아직 안 붙임). 모노 700·도장 800은 글꼴 자산이 없어 보류(사용자 결정 대기). 모바일 169 스위트
+> 그린. 커밋 `38dead1`·`fad7e4b`·`ffde156`. 보고 [`t1-t2-report.md`](02-construction/lesson-fidelity-v46/t1-t2-report.md).
+> **T5 콘텐츠 기반 완료(2026-10-07, ER 저작 전):** §D 확정 — 문장 `tag`·`icon`·`why`·`decoy`·`distractorsKo`·`blank{answer, options[en,icon]×4}`,
+> 상황 `order{ko, why, lines[en,icon,ko?,note?]×4, tag?, icon?}`, context `word+ko`·swap `ko`(전부 선택). Go·파이썬 검사 V18·V19·V14 같은 규칙,
+> 새 DB 컬럼 `scenarios.lesson_order`(마이그레이션 000043 — 개발 DB는 아직 42), `GET /me/lesson/{id}`의 `order`, 계약·모바일 타입 갱신.
+> 합치기는 정본과 같은 블록을 원문 그대로 두고 v46은 `--replace`로만, `export_dept_lessons.py`(바탕 뽑기·`--roundtrip` 바이트 동일 검사,
+> ER·ICU·OR 동일). 지시서·파이프라인 "v46 보강" 절. 커밋 `af9c086`·`eb7948f`·`8c2cbef`·`d32afd4`·`5067568`·`fbeed86`.
+> 보고 [`t5-report.md`](02-construction/lesson-fidelity-v46/t5-report.md). 남은 것: ER 저작(결정 14 파이프라인).
+> **T3 STEP 1 단어장 완료(2026-10-08):** WordStudyLive 1:1 — 낱장 묶음에 올려 판정 뒤 좌/우 뜯김→다음 장 rise, 오답 흔들림, 해설 nb-reveal·이중선 도장 nb-ok, 헤더(나가기·초록 STEP 태그, StepTrack 뺌), 진행 칸 색 전환, 헤드라인 문장 안 형광펜(`MarkedText`), 조각별 빼기·빗금·하드 그림자·내 답, 저울 그라디언트 축·점 .15s, 짝 글로우·→·예고 60%, STEP 2 버튼 상시. 변이 22건 확인. 남은 차이: 보기 섞음(미승인)·글꼴 굵기(T1)·저울/짝 `ko`·`icon` 저작(T5). 커밋 `b9a7731`. 보고 [`t3-report.md`](02-construction/lesson-fidelity-v46/t3-report.md).
+> **T6 허브 완료(2026-10-08):** 감사 허브 행 — 진행 중 티켓 바깥 2.5px 링, 태그 10.5 + shield·siren, 감정 칩 한국어 감정어(기분 13개 × 4개 언어),
+> `+60 XP`·`노트 자동저장`, 부제 커리큘럼 좌표(서버 `GET /me/lesson`의 새 `course` — 여정 journey에서 주제·순번/전체), 한 줄 상황 형광펜
+> (새 선택 필드 `briefing.line` `[[…]]`, 적재 검사; ER 저작 전이라 지금은 brief 그대로), 완료 도장 ✓·CTA ›·↺(NbIcon `redo` 새로), 건너뜀 카드 빗금,
+> 줄노트 27–28, 모노 자간 0. StepTrack 연결선은 실제로 끝낸 단계 뒤만 실선. 남은 차이·시뮬레이터 확인 목록은
+> [`t6-report.md`](02-construction/lesson-fidelity-v46/t6-report.md).
+> **T4 STEP 2 완료(2026-10-08):** 아트보드 순서로 화면 분리 — 릴(뒷카드 2·swipe-out 380→in·감상 칩 다시 고르기/저장 1회) → 문장장
+> (SheetStack, listen·build·blank·listen·order·build 주기, 다시 듣기 실제 2회, 해설·이중선 도장·흔들림·좌/우 뜯김·DONE 집계) → C5 → C6 → C'(점수 원).
+> 문장 헷갈려요 API `POST /me/lesson/{id}/sentences/confused`, 문장 안 형광펜 `NbInline`(아래 45%). 커밋 `4e0fb48`·`6b9b32c`·`3a6adcb`.
+> 확인 필요한 해석(문장장 CTA "다음", C5·C6 k/K, 틀림→노트 범위)과 시뮬레이터 목록은 [`t4-report.md`](02-construction/lesson-fidelity-v46/t4-report.md).
+> **T7 대화 완료(2026-10-08):** D/D'/E를 핸드오프 1:1로 — 무대 `#F6E3DC` E 236·D 168(이름표·감정 태그 왼쪽, 스피커 오른쪽, 끌어 조절 유지·키 v2),
+> D 입력 `말하기/타이핑` 알약 + 84px 홀드 마이크(떼면 STT, 받아쓴 줄은 작성 중 말풍선) + 타이핑 카드(밑줄 필기란·단어 칩 삽입),
+> D 레일 `▷ 보내기 · 듣기 · 노트`(노트 = 이 상황 교정노트 바텀시트, 새 API `GET /me/review/scenarios/{id}`), 힌트 버튼·카드 안 듣기 제거,
+> 메시지 밴드 128 + 그래버 ②. E 말풍선 블록·종이 레일. 픽셀 잔재(PixelIcon 음성 토글·남색 로딩·FIcon 시트·하드코딩 한국어·픽셀 기분 색) 제거.
+> 커밋 `234a46d`·`ae9f955`·`54a13bd`·`3d9026b`. 남은 차이·시뮬레이터 확인 목록은 [`t7-report.md`](02-construction/lesson-fidelity-v46/t7-report.md).
+>
+> **T8 시뮬레이터 대조 진행 중(2026-10-08):** 허브·릴(스와이프·위치)·STEP 1(뜯김·절취 조각·진행 칸·GOOD 도장·판정)·문장 듣기(RETRY 도장·why 상자)·
+> 조각 맞추기·대화 D(마이크·레일·전환) 확인. 고친 것: STEP 2 본문 52pt 밀림(Yoga가 절대 위치 자식에 부모 padding을 더해 상단 여백 이중, `2556963`),
+> 펼친 미션 목록이 대화 열 아래로 가려짐(`7b877c1`), 아래 깔린 다음 장이 현재 장 아래로 비어져 나옴 → 현재 장 높이로 자름(사용자 결정),
+> 문장장 아래 상시 '다음' 버튼(눌러도 무반응) → DONE에서만(사용자 결정), 보기 섞음 유지(사용자 결정) — 셋 다 §7 승인 기록.
+> ER 시험 주제(core-safety-er) v46 필드·순서 배열 카드 저작(`cae9931`). 이어서 빈칸·순서·DONE·C5·C' 대조 — C' PASSED 도장 잘림·위치 고침,
+> **빈칸 선택지의 판정 아이콘(check·cross) 53개가 답을 드러내던 것** 발견 → V18 금지·교체(`bd96b5c`·`c892fd1`). 남은 대조: C6·대화 E.
+> 보고 [`t8-report.md`](02-construction/lesson-fidelity-v46/t8-report.md).
+> **ER 34주제 v46 저작 진행 중(2026-10-08):** 지시서 보강(파일럿 교훈 다섯 갈래, V18 정답 아이콘≠문장 아이콘·선택지 아이콘 중복·판정 아이콘 금지,
+> `e1c9cd4`) 뒤 바탕 34개 뽑기. 저작 끝 3(core-language·family·handoff, `5058519`) → Opus 검토 중, 저작 중 2(pain-sedation·procedures).
+> 저작자 공통 보고였던 '선택지 아이콘이 낱말과 안 맞음'은 **사용자 결정으로 빈칸 선택지 아이콘 폐지**(STEP 1 고르기 줄, `cdf7b75`)로 해소.
+> **합친 주제 4/35**: core-safety·family·handoff·language(`c892fd1`·`4a66b73`·`7675c78`). 검토 중 2(pain-sedation·procedures), 저작 중 3(chestpain·arrhythmia·arrest).
+> **합친 주제 8/35**(+pain-sedation·procedures·chestpain·arrhythmia). 수정 중 4(arrest·shock·asthma-copd·dyspnea), 검토 중 1(stroke). 저작 지시에
+> 자기 점검 8~10(distractorsKo 뒤집기·context word 장면 부재·order 조건부)을 필수로 추가 — 뒤 주제 검토에서 줄었는지 볼 것(dyspnea·asthma에서 distractorsKo는 개선).
+> **C5 장면 재저작(사용자 결정 2026-10-08)**: 핸드오프 CTX는 같은 말이 세 장면 모두에 있는데, 합친 ER context 145개 중 104개는 어색한 장면이 다른 말을 씀
+> (예: drowsy 제목인데 어색한 장면은 "CNS depression") → 장면 `en`·`fix`를 고쳐 핸드오프대로. 검사기 W14(경고), 저작 지시 9번. 합친 13주제는 별도 정비 패스.
+> **C5 장면 정비 완료(2026-10-08)**: 합쳐 둔 13주제를 세 묶음(A·B·C)으로 Sonnet 수정 → Opus 검토(고칠 것 16·24·19) → Sonnet 반영, ER 정본 **W14 0건**.
+> 그 뒤 새 주제는 저작 단계에서 바로 정비. 검사기 W14는 낱말별 어간 비교(pass away↔passed away, verify↔verified, warm↔rewarming).
+> **합친 ER 주제 26/35**(+gi-bleed·diabetic·genitourinary·anaphylaxis·poisoning). 수정 중 environmental, 검토 중 alcohol-withdrawal·fever-infection·psych·sepsis, 남은 4(deescalation·peds·geriatric·obgyn).
+> **학습 버튼·파형(2026-10-09, 사용자 요청):** 단어장·문장장 확인/판정 버튼을 맨 아래(34)로, 단어장 다음 단계 버튼은 끝났을 때만. 듣고 뜻 고르기 파형이 TTS 재생 중 움직임(단어 경계마다 튐). §7 기록, 시뮬레이터 확인.
+> **오답 보기 재설계(사용자 결정 2026-10-09):** 듣고 뜻 고르기에서 정답 뜻만 길어 듣지 않고도 맞힘(ER 4,160문장 중 2,946). 결정: 문장 `distractorsKo`는
+> **정답 `ko`를 한 군데(많아야 둘)만 바꾼 말**, 같은 틀·같은 길이(공백 뺀 글자 1.25배·3자 이내 — 검사기 V20 오류), 바꾼 자리는 `en`에서 들리는 낱말,
+> 뜻은 분명히 다르게, 뒤집기·부정 금지, **안전 시험**(그대로 하면 다치는 용량·부위·경로·약·시점·잘못된 안심 금지 — 처치 지시문은 안전한 옆 단계로).
+> 단어 보기·빈칸 선택지는 길이 기준만 더함(W16·W17 경고). 범위: ER 문장 distractorsKo **전부 재저작** + 길이로 걸린 단어 보기·빈칸.
+> 지시서·TASK·REVIEW 갱신(예전 "같은 상황의 다른 말" 규칙 대체). 파형은 한 색으로(`3f2601b`).
+> **범위(사용자 결정 2026-10-09, 주간 토큰 사정):** 이번 주는 25주제(5묶음 — core 4·abdominal·alcohol-withdrawal·anaphylaxis·arrest·arrhythmia·asthma-copd·bleeding-wound·burn·chest-abd-trauma·chestpain·deescalation·diabetic·dyspnea·environmental·fever-infection·genitourinary·geriatric·gi-bleed·head-trauma·obgyn·ortho-trauma)만 저작·Opus 검토·반영. **남은 10주제(pain-sedation·peds·poisoning·polytrauma·procedures·psych·seizure-loc·sepsis·shock·stroke)는 다음 주** — 그때까지 정본 검사에 이 주제들의 V20이 남는다. 표본: Sonnet 저작은 길이·들리는 자리는 좋으나 안전 시험을 놓침(911 빠진 오답 등) → Opus 검토 생략 불가.
+> **오답 보기 재저작 25주제 완료(2026-10-09):** 5묶음 Sonnet 저작 → Opus 검토(고칠 것 57·62·96·56·125, 안전·처치 빠짐·바꿔치기 다수) → Sonnet 반영 → 합치기. 커밋 `a5f3684`·`4c04a61`·`316cd37`·`b7a4f46`·`08c7184`. 합친 주제 V20 0·위반 0, go test 통과, 시뮬레이터에서 에피펜 문제 보기 확인. 정답이 가장 긴/짧은 보기 12%/8%(우연 33%) — 길이 단서 없음. 검토가 더한 규칙: 옆 단계 낱말(기록·확인·사진·"제가"·약사) 주제당 5회 이하, 오답 둘 중 하나는 정답 길이 이하, 지시("다시 오세요"·911·물러나세요) 보존, 고지 문장에서 탓·감쌈 금지. 남은 10주제는 TODO.
+> **오답 보기 재저작 ER 35주제 완료(2026-10-10):** 남은 10주제(D6·D7)도 같은 흐름. 커밋 `f28046b`·`c223eee`. **ER 정본 검사 위반 0**(V20 0·W16 0·W17 0, 경고 96은 기존 W13 등). 검토가 더한 규칙: 되풀이 상한은 **모든 낱말**(오답에만 나오는 낱말 주제당 5회, 의문사·숫자 7회 — D6이 기록·확인을 피해 "설명" 33회·"가족" 20회로 옮겨 간 것을 잡음), 처치가 하나뿐인 문장은 그 처치의 참인 다른 효과를 오답으로(들리고 해가 없으면 허용). 앞서 합친 25주제의 모든-낱말 되풀이는 최대 15회(diabetic 혈압)·대부분 6~10회 — 약한 단서로 남음(정리 여부 사용자 결정 대기).
+> **TODO (2026-10-09 점검 — 남은 일):**
+> - [x] ~~오답 보기 재저작 남은 10주제~~ — 2026-10-10 완료.
+> - [x] ~~앞서 합친 25주제의 모든-낱말 되풀이 정리~~ — 2026-10-10 완료(13주제, 오답 84줄; Sonnet 정리 + 표 직접 검토로 9건 바로잡음). ER 정본에 8회 넘는 오답 전용 낱말 없음.
+> - [ ] **`briefing.line` ER 저작** — T6 화면·검사(`ValidateHubLine`)는 있으나 ER 751상황 모두 비어 있음(허브는 brief 문단을 형광펜 없이). 지시서에 넣고 결정 14 파이프라인으로 저작. **T5 체크는 이 저작 전이라 잘못 체크됨** — 저작 후 다시 체크.
+> - [ ] T7 시뮬레이터 확인 목록 중 미확인: D 마이크 홀드 녹음, 키보드 올라올 때 무대·카드, 그래버 끌기와 크기 기억, iPhone SE(667) 레일 위치.
+> - [ ] Android 실기 확인(층 순서·그림자·T1 편차 3·4) — 한 번도 안 함.
+> - [ ] 대화 E 힌트 내용이 다음에 할 말이 아니라 방금 한 말을 설명함(AI 힌트 프롬프트 확인).
+> - [x] ~~v22 발음 루프 최종 교차 리뷰~~ — 2026-10-10 실행, [`pronunciation/cross-review.md`](02-construction/pronunciation/cross-review.md): 차단 1(durationMs 0 — 고침)·중요 5·사소 14. 중요 처리(2026-10-10): I5 음절 라벨 철자(`c2c4f27`)·I2 `pronunciationEnabled`로 진입점 숨김, 못 읽으면 보임(`b23cb30`)·I3 `/stt` 검증 공유+무대본 평가 1회, 실패 시 STT 폴백(`46160f0`, 로컬 Azure 스모크 200·scored)·I4 참조 생성 사용자별 일일 200(UTC, `SPEECH_REFERENCE_DAILY_LIMIT`, 캐시 히트 제외, Redis fail-open, 429 `reference_quota_exceeded`)(`81a8051`). I1 Android 녹음 — expo-audio `useAudioStream` PCM16 → 앱에서 RIFF 헤더(`lib/wav.ts`, Android 전용 `useWavRecorder.android.ts`, 대화 화면도), 16kHz 아니면 보간(`86b5989`). 앱 함수로 만든 WAV를 로컬 서버 `/pronunciation`에 보내 200·overall 95·durationMs 4408 확인. **Android 실기 미확인**(에뮬레이터 AVD 없음 — 발음·대화 녹음 200, 파형, 9.5초 자동 정지, R7 임시 파일 삭제, 보간 경로 음질). **사소 14건·I4 (c)·rateLimit 처리(2026-10-10, 상세는 cross-review §6):** S1 origin 허용집합 8종+모바일 `PronOrigin`(`bf4ce01`)·S2 advisory lock(`a58a038`)·S9 공백 문장 400(`8fcc8aa`)·S4 STT 15초 상한/S10 실제 샘플레이트 Content-Type/S11 캐시 쓰기 실패 로그/S13 주석/S14b 로케일 1회(`996e458`)·I4(c) 마이그레이션 `000044_speech_reference_last_used`+`cmd/speechrefgc`(`9c57fd6`, 스케줄 미등록)·rateLimit `TRUSTED_PROXY_HOPS`(기본 staging/prod 1, 그 외 0)+유휴 정리(`1380df9`)·S3/S5/S8 모바일(`f77bd66`, 문구 `pron.tryNo` 4개 언어). **안 함:** S6 다음 문장 배선·S7 약물명 하이라이트(진입점별 정책/새 계약 — 보류, build-spec §7)·S14 a/c/d. **I4 (b)(참조를 커리큘럼 문장으로 제한)는 정책 결정이라 남김.** 남은 것: I4 (b), 계정·이력 삭제 경로(자유 발화 문장 보존), Android 실기.
+> - [x] ~~CI 실 DB 테스트~~ — 2026-10-10 server CI에 Postgres 16 서비스(`fb8988a`), 약 50개 DB 테스트가 CI에서 실행·통과(PR #14). contract drift도 고침(`317e8d7`).
+> - [ ] 커리큘럼 v3 fan-out: WARD·미태깅 140건·라이브 전환.
+> - [ ] **ICU·OR 나머지 66주제 한 번에 저작**(진행 중 — 위 인계, `wip/icu-or-rest/README.md`) → 정본 합치기·검사·시뮬레이터·PR·배포.
+> - [ ] 26개 부서(v44부터) 한 번에 저작 — 부서당 약 5,000만, 합계 약 11억 토큰. ICU·OR 결과를 보고 범위·순서 결정(사용자).
+> - [ ] `briefing.line` 연결: 시드 스키마(`cmd/gencontent/seeds.go`)·gencontent·`merge_dept_lessons.py`/`export_dept_lessons.py`에 `line` 필드 → 그 뒤 ER부터 저작(지시서에 추가).
+> - [ ] 결정 대기 keyPhrase: ICU 기증 "There's no pressure — we'll follow whatever you decide."(본인 기증 등록은 가족이 못 뒤집음, UAGA), OR 다른 주제 "Talk to him gently — he can hear you."(단정), 그리고 ICU·OR 66주제 검토가 새로 낼 목록.
+> - [ ] ER 정본 W18~W21 경고 수백 건(decoy·빈칸 오답 되풀이, 어간 되풀이, slider 편향, 확인 뒤집는 빈칸 오답) 정리 여부 — 사용자 결정.
+> - [ ] 검사기에 없는 것: 문장 decoy·빈칸·오답 ko의 비속어 검사(V21은 단어 오답 조각만), slider '응답 고르기' 허용 기준 문서화(사용자 허용 2026-10-16).
+> - [ ] 스토어: iOS 1.0.0(19) **altool로 업로드 완료(2026-10-12, Delivery 97d374c7…)** — Apple 처리 후 TestFlight 확인 필요. ASC `/v1/builds` 403이 남아 EAS submit은 막힘(배포 §12.8) — ASC 상단 '대한민국 규정 준수 요구 사항' 완료 필요. Android Play 신원 확인.
+> - [ ] 모바일 전체 jest를 한 번에 돌리면 부하로 매번 다른 스위트가 시간 초과(따로 돌리면 통과) — 원인 미확인.
+> **T8 시뮬레이터 대조 완료(2026-10-09):** 대화 E 같음, C6 고침 2건(본문 스크롤·윗줄 덮음 — 사용자 결정, §7). 대시 표기 공백 대시로 통일(사용자 결정, `b42e320`).
+> **v44 문장 수정 157건 완료(2026-10-09):** 6묶음 Sonnet 수정 → Opus 재검토(바뀐 문장·딸린 필드만) → Sonnet 반영 → 합치기. 커밋 `bea77ab`(G5)·`9ec0903`(G2)·`ecf782e`(G3)·`cf98434`(G1)·`54e9ddd`(G4)·`b5629ef`(G6), 매번 ER 위반 0·V16 0·go test 통과.
+> keyPhrase 63건은 정본 시드에 직접 반영(`wip/er-v44fix/apply_keyphrases.py`, 기록 `keyphrases-applied.tsv`), 시드 필드 패치 11건(`apply_seed_patch.py`, `seed-patch-G*.yaml`: core-family 기증 장면 tagline·brief·goals, anaphylaxis 7.2 피부 증상 장면, head-trauma 뇌탈출 = 동료 RN, abdominal·sepsis brief/goals).
+> 재검토가 범위에 더한 것: head-trauma 대시 청크 6문장, sepsis 20.3(번들 "done"), diabetic 20.3 `ko`, core-handoff 3.5 his.
+> ~~남은 결정(작음): 대시 표기~~ → 공백 대시로 통일함. 대시 표기 — 정본은 공백 대시가 다수(ER 284:42)인데 burn·chest-abd-trauma 5문장은 마침표 두 문장으로 나눔(되돌려 통일할지). 재검토 판정은 공백 대시가 표준.
+> **결정 11 예외 승인(사용자, 2026-10-08):** v46 검토가 보고만 한 v44 필드 항목을 **157건 전부** 검토 권고대로 고친다(사실·안전 58·문법·뜻 55·문체·선호 44, 처방 없음 57은 Sonnet이 새로 씀). obgyn 19.4 빈칸은 sorry 쪽으로. 목록 `server/content/tools/wip/v44fix-items.md`. 흐름: 정본에서 새로 뽑기(`wip/er-v44fix/`) → Sonnet 수정(`changes/er/changes-<t>.yaml`에 전부 기록) → Opus 재검토(바뀐 문장과 거기 기대는 필드만) → 합치기·V16 0.
+> **ER v46 저작 완료 35/35(2026-10-08)** — 나머지 9주제(environmental·alcohol-withdrawal·fever-infection·psych·sepsis·deescalation·peds·geriatric·obgyn) 합침(마지막 `66ae399` obgyn·`4f1d88d` geriatric). 정본 ER 위반 0·W14 0(경고 97은 W13 등 기존). 남은 T5 몫 없음; T8 시뮬레이터 대조 남은 2건(C6 한 단어 바꾸기·대화 E), 결정 대기(아래) 사용자 확인.
+> (아래 v44 결정 대기 항목은 2026-10-09 157건 수정으로 모두 처리됨 — obgyn 19.4 빈칸은 sorry로, 19.4 `en`은 S19 간호사 고지 구조라 유지[Opus 판정])
+> 결정 대기 추가: obgyn 19.4 빈칸(태아 사망 고지 `has passed`가 `ko`에도 맞아 정답 둘 — `is lost`만 교체 또는 빈칸을 sorry 쪽으로), 6.3 `en` 진단 고지 틀, 19.5 `ko` "막을 수 없었다" 단정 → "당신이 한 어떤 일도 원인이 아니에요" 권고(결정 11 보고 6건 중).
+> 결정 대기 추가(v44 문장, 중요): geriatric 10.1 keyPhrase "nothing leaves this room without your say" — 미국은 노인 학대 신고(APS) 의무라 지킬 수 없는 비밀 약속(keyPhrase·태그 함께), 19.4 "Drink some water … before surgery"(NPO 확인 전), 19.5 "keep you moving"(수술 전 고관절 골절); peds 10.5 "nothing more", 17.3 영아 사망 원인 단정; sepsis 5.3 번들 "done"→"started", 14.3 통역 3인칭.
+> 결정 대기 추가(v44 문장, 중요): fever-infection 20.0 keyPhrase "airborne and contact precautions" — 수막구균은 **비말(droplet)** 격리(CDC). 고치면 keyPhrase·chunks·w-contact→w-droplet·S20 pair 함께. 같은 주제 10.3 "within a minute"(열성경련 과장된 안심), anaphylaxis 20.0/20.3 시각 모순, psych 1.1 자해↔자살 질문.
+> 결정 대기 추가(v44 문장): head-trauma 18.3 "Left pupil remains reactive and equal"(우측 산대와 모순), bleeding-wound 12.2 비문 "How is your blood sugar been controlled", polytrauma 15.4 긴장성 기흉 압력 방향.
+> **결정 대기 — v44 문장 사실 오류(결정 11, 검토가 보고만 함)**: arrest 16.2 keyPhrase `high on the sternum`(2015 이후 임산부도 일반 위치),
+> arrest 10.3 "한 라운드에 에피 두 번", arrest 20.3 출혈 잡힐 때까지 압박 보류, procedures 9.4 항생제 시험 용량·5.5 정맥 시도 무제한·18.2 이중 확인,
+> arrhythmia 15.2 "진정 중 충격을 느낌", asthma 20.0↔20.3 다른 환자, pain-sedation 15.4 날록손.
+> 결정 대기 추가: core-family S17 장기기증 흐름(병상 간호사가 먼저 꺼냄 — 미국은 OPO 통보 뒤 OPO·지정 요청자가 청함, keyPhrase 설계라 v44 문장은 그대로, why·order만 고침).
+>
+> 🏁 **서가 건물 간지(v45) — 완료, Build Spec `IMPLEMENTED` (2026-10-07).** 핸드오프 v45가 서가를 건물 인덱스 탭
+> 5개로 나눴다. 먼저 건물 구성이 실제와 맞는지 조사했다 — 미국 대학병원은 본관·여성/소아·암센터·행동건강/재활·외래로
+> 나뉘는 사례가 흔하고, 캠퍼스(엘리베이터 5동)가 이미 이 모양이었다. 어긋난 것은 본관 2F의 **피부과**(대부분 외래)
+> 하나라 **외래·진단동 5F로 옮겼다**(사용자 결정, 서버 표·엘리베이터·번역 키·피부과 첫날 안내문). 건물은 서버가
+> `freeRoam[].building`·`goalBuilding`으로 싣고 클라이언트는 추측하지 않는다. 엘리베이터가 서지 않는 **공통 General은
+> 본관 탭**(사용자 결정, 표에 층을 지어내지 않고 규칙으로). 서가: 첫 탭 = 목표 부서의 건물, 목표는 패널에 다시 꽂지 않음,
+> 빈 탭 없음, 처음 보는 건물도 탭으로 묶어 부서를 잃지 않음, 제목 줄 `바인더 N권 · 건물 M`. 공통 필수 카드·추천 상자·
+> 읽던 곳 테이프는 옮기지 않았다. 시뮬레이터로 서가·탭 전환·피부과 엘리베이터 진입까지 확인. 서버 전체 그린, 모바일
+> 165 스위트 1,154건. 커밋 `59628c0`·`979f7c0`·`8e72218`. 스펙
+> [`02-construction/binder-shelf-buildings-v45/`](02-construction/binder-shelf-buildings-v45/build-spec-index.md).
+> **v45 남은 항목 닫음(2026-10-07):** 문장 릴 끝의 "감상 하나" 칩 — 스펙 2-9 §11-8. 릴에 `feels` 3~4개와 해설을 필수로(V14),
+> ER 릴 17개 손저작, `POST /me/lesson/{id}/reel/feel`이 교정노트에 `nuance` 카드 한 장, 칩을 골라야 다음으로. 시뮬레이터·DB로 확인.
+>
+> 🏁 **여정 3단 바인더 v42 — 완료, Build Spec `IMPLEMENTED` (2026-10-07).** 9/23 착수 뒤 E 간지(`4ebc23b`) → G 서가
+> (`ec421de`·`6a294e9`) → H 우표 산책길(`69d5528`) → 표지 연출 I/J(`ce5e027`와 결함 수정 6건) → v43 간지 3구간
+> 게이지(`934accc`)까지 들어가 있었는데 STATUS에 완료가 기록되지 않았다(기록 누락). 10/7 감사(스펙 §5~§8 대 코드·테스트)로
+> 남은 것을 닫았다(`d7ac4fe`): **간지 카드의 주제 아이콘** — 레지스트리에 아이콘이 아예 없어 `themes.yaml`에 `icon`을 두고
+> 955개를 채웠다(배정 Sonnet, 전수 검토 Opus 419개 수정, 맞는 그림이 없으면 부서 대표 아이콘). 서버는 그대로 실어 나르기만
+> 하고 허용 집합(NbIcon)은 모바일 테스트가 지킨다. 진행 중 카드 주황 테두리, 머리말 아이콘 액자, 내 부서 게이지 마지막 줄 폭(V5),
+> 테스트 구멍 3곳(주제 15개·진입 스크롤·목표 부서 미언급 — 변이 확인). 일부러 바꾼 것(간지 게이지 v43, '마지막으로 본 부서
+> 테이프' 뺌, 지터 문장)은 스펙에 정정 기록(§10). 곁가지로 `contentIcons.test`가 오늘 저장소에 넣은 `content/tools/wip/`
+> YAML을 정본처럼 훑어 깨져 있던 것을 고쳤다. 서버 전체 그린, 모바일 165 스위트 1,146건. **운영 반영은 서버 배포만**(레지스트리는
+> 부팅 때 파일에서 읽는다 — 시드 불필요). 다음: v45 건물 탭 서가(스펙 2-9 §11이 "이 스테이지 밖"으로 미룬 것).
+>
+> 🚩 **여정 3단 바인더 — v42 핸드오프 반영 착수 (2026-09-23).** 핸드오프 v42가 일터 탭의 확정
+> 플로우를 **G 바인더 서가 → E 차트 바인더 간지 → H 불규칙 우표 산책길** 세 단으로 정했다. 지금 두 단
+> (일터 탭 = 목표 부서의 주제 목록 → 주제 화면)에서 **부서를 고르는 일이 화면으로 올라온다.** P3-C가 세운
+> 경계(주제 밖은 목록, 주제 안은 선형)는 그대로 두고 겉모습과 깊이 하나만 바꾼다.
+> **핸드오프 도안 두 곳을 뺐다** — ① `공통 필수` 카드("모든 부서가 공유, 어느 바인더에서 해도 한 번만"):
+> 우리 코어 주제는 부서마다 따로 있고 부서 없는 공통 주제는 0건이라, 그대로 옮기면 화면이 사실과 다른
+> 말을 한다. ② 주제 `locked` 상태와 "앞 주제 완료 시 열림": 주제는 잠기지 않는다(J1·J3) — P3-C가 직전에
+> 고친 결함이라 되돌리지 않는다. **진행도 바는 주제 하나당 칸 하나로 한 줄 12칸씩 접는다**(주제 35개 = 3줄).
+> 상황 수에 비례시키지 않는 이유는 주제당 상황이 20~23개로 거의 같아 비례로 얻는 정보가 없는 반면, 35개를
+> 한 줄에 배분하면 칸이 획보다 얇아지기 때문이다. **서가는 네트워크 요청을 추가하지 않는다** —
+> `GET /me/journey` 한 번이 `goalDept` + `freeRoam[]{dept,passed,total}`로 29개 부서 전부와 진행도를 이미
+> 담는다. **서버는 `?dept=` 인자 하나만 늘렸다**(`67a5a35`): 목표를 바꾸지 않고 다른 부서 트랙을 그린다 —
+> `goalDept`는 항상 진짜 목표, `track.dept`가 보고 있는 부서. 허용 집합은 층이 아니라 저작 콘텐츠
+> (`hasTopic`, J9). 배치고사·메인 루프·리텐션은 이 단계가 아니다(보류).
+> 스펙: [`02-construction/journey-binder-v42/`](02-construction/journey-binder-v42/build-spec-index.md).
+
+> 🚩 **커리큘럼 v3 P3-B — Task 19: `MilestoneFlag` 배선 + 서버 리터럴 정리 (2026-09-20).**
+> Task 16이 "마무리됐다"고 선언한 뒤에도 정본(`frontend-components.md` §1/§2/§6)이 요구한
+> `MilestoneFlag`(트랙 끝 구간 시험 깃발)를 모바일이 실제로는 그리지 않고 있었다 — 서버는
+> `TrackGroup.Milestone`을 이미 보내고 있었지만(`themed.milestoneFor`), 지도가 그 필드를
+> 읽지 않아 증상이 드러나지 않았을 뿐이다. 같은 자리에서 **`milestoneFor`가 `Name: "구간
+> 시험"`을 하드코딩**하고 있던 것도 함께 닫았다 — 모바일이 그 이름을 읽기 시작하는 순간
+> en/ja/de 화면에 한국어가 찍혔을 결함이라, 최종 브랜치 검토가 둘을 한 항목으로 묶었다.
+> **모바일**: `MilestoneFlag.tsx`(신규, props `{title, state}` — onPress 없음. 누르는 게
+> 아니라 표시다) + `JourneyMap.tsx`가 트랙당 하나만, 서버가 안 보내면 그리지 않는 방식으로
+> 배치. 깃발이 트랙 끝에 붙으며 필요해진 세로 여백은 `MILESTONE_ALLOWANCE`(20+34=54)로
+> `mapHeight`에만 더했다 — `BOTTOM_PAD`(고정 바 몫)는 그대로 둠. **서버**: 엔진은 로케일을
+> 모르므로 번역은 `journey_handler.go`가 정거장/스텝 이름과 같은 자리에서 한다(`i18n.Tr`,
+> 키 `milestone.name`, en만 저작, ja/de는 기존 관례대로 한국어 폴백). 계약(스키마)은 이미
+> `Milestone{Name,State}`를 갖고 있어 변경 없음 — `make contract` 드리프트 0. 모바일
+> +11 tests(151 suites/946)·서버 +4 tests, 전부 성질별로 실제로 깨뜨려 확인 후 원복.
+> 상세: forin 저장소(메인) `.superpowers/sdd/implementation-plan/task-19-report.md`.
+>
+> 🏁 **커리큘럼 v3 P3-B — 여정 지도 Task 16(마지막) 완료. L3·L4.4 닫힘, Build Spec `IMPLEMENTED`.**
+> 스모크에 `/me/journey` · `GET /me/journey/stations/{themeKey}` · `PATCH /me/goal-dept` 단정을 추가했다
+> (목표 부서 조회 · 도장 ≤ 정거장 수 · 목표가 칩에 중복되지 않음 · 정거장 목록엔 잠금 없음(J1) vs 정거장
+> 시트엔 잠금 있음(J2, 자물쇠는 계단·스텝에만) · `now`는 시트당 최대 1 · 알 수 없는 부서 400 · 저장한 목표를
+> 여정이 그대로 그림). **로컬 postgres·redis·`go run ./cmd/api`로 실 서버를 띄워 스모크를 직접 돌렸다
+> (150 passed, 1 failed — 아래).**
+> **그 실행이 이 브랜치 최대 결함을 드러냈다:** `/me/journey`가 T5에서 선 이래 `i18n.Tr`을 한 번도 부르지
+> 않아 모든 로케일에 한국어 주제명을 냈다(단위 테스트는 이름을 고정 반환하는 스텁을 써서 번역 경로를
+> 지나가지 않았다) — 이번 태스크 이전에 이미 고쳐져 있었고, 스모크가 그 수정을 실 카탈로그로 처음
+> 증명했다. **같은 실행에서 또 하나 드러남:** 정거장 시트(`GET /me/journey/stations/{themeKey}`)의 첫
+> 스텝을 임의로 골라 번역을 단정하면 자주 거짓 실패한다 — 실 카탈로그의 영문 번역은 20386개 시나리오 중
+> **303개뿐**이라 대부분 스텝이 정직하게 한국어로 남는다(콘텐츠 공백이지 코드 결함 아님). 단정을 번역이
+> 확인된 고정 시나리오(`SCN-ER-00001`/실제 테마 `er-chestpain` — 스크립트가 처음 가정한 `core-safety-er`가
+> 아니었다)로 옮겨 재확인했다. **무관하게 함께 드러난 것 1건**: `⑮ REPUTATION`의 `SCN-HOSPICE-00108` acuity
+> 단정(2026-08-10 작성, `critical` 기대)이 이후 HOSPICE 콘텐츠 저작 커밋(2026-09-14)에서 `routine`으로
+> 재태깅되며 깨져 있다 — 여정과 무관해 이 태스크에서 손대지 않았다. **게이트**: `go build/vet ./...`·
+> `gofmt -l`(펀치 미포함 7개 파일 기존 드리프트, 이 브랜치 변경분 아님)·`go test -count=1 ./...` 전부 그린·
+> `make contract`(swag v2.0.0-rc5 고정) 드리프트 0·모바일 `tsc --noEmit` 0·`jest` 149 suites/929 tests 그린.
+> 상세: forin 저장소(메인, 이 서브모듈 밖) `.superpowers/sdd/implementation-plan/task-16-report.md`.
+> **이로써 P3-B(여정 지도)가 마무리됐다.** 남는 것은 P3-A의 L5(DB 시드 + prod 승격)뿐.
+>
+> 📝 **커리큘럼 v3 P3-A — 라이브 엔진 전환 스펙(AI_PROPOSED, 2026-09-14).** P1 엔진 + P2 콘텐츠를 라이브가
+> 실제 소비하도록 v2 하드코딩 커리큘럼(`internal/curriculum`)에서 themed 엔진으로 전환하고, 소비 지점 전부를
+> **단일 도메인 포트 `learning.Journey`** 뒤에 두어 부품 교체 구도로 정리한 뒤 **v2 은퇴(삭제)**하는 설계.
+> 계기: 부서를 seed 정본으로 낼 때마다 v2 카탈로그가 gen id를 참조해 깨지는 whack-a-mole(사용자가 6개
+> 부서 수동 재지정). 결정(사용자): **부서별 패치가 아니라 라이브 전환으로 근본 해결**. 설계 원칙: 단일 포트·
+> 단일 엔진, 모든 것은 (레지스트리+태그+진도) 파생 순수 함수, 정책은 교체 가능한 부품, 확장 seam 6종 명시
+> (UGC·사용자 번들 커리큘럼·새 트랙/스텝 종류가 데이터/부품으로 붙음), 은퇴는 삭제로 끝냄. 단계 L1(포트+엔진,
+> additive) → L2(핸들러 컷오버+어댑터+계약) → L3(클라 이행) → L4(v2 삭제+엔진 불변식) → L5(DB 시드+승격).
+> **콘텐츠 fan-out(ONCO·GERI 등)의 green 착지가 L1~L2+L4에 게이트됨** — 전환이 파이프라인을 다시 열어준다.
+> 스펙: [`02-construction/curriculum-v3-live/`](02-construction/curriculum-v3-live/build-spec-index.md). 사용자 승인 → 구현 착수.
+> **L1 완료(2026-09-14)**: `internal/domain/learning`(포트 `Journey`·직업군 조회 `Journeys`·값/응답 타입·정책
+> `GuidancePolicy`/`TierUnlockPolicy`/`ExamPolicy`+Default) + `themed.Engine`(Tracks·Next·Resume·Guidance·Locate,
+> 부팅 역인덱스)·`themed.Registry`(직업군→엔진). 응답 타입(TrackGroup 등)을 themed→learning 이관, 정책 3종을
+> 실사용 배선(가이드=엔진, 티어해금=resolve, 시험=assemble). **additive — 라이브 무영향**(핸들러는 아직 v2, tracks는
+> 동일 wire). 신규 단위 테스트 + 전체 29패키지 그린. 특성 테스트(계획 L1.5)는 v2(하드코딩)와 엔진(themed)이 서로
+> 다른 카탈로그라 1:1 대조가 무의미 → 시맨틱 단위 테스트로 대체(정직한 편차). **다음: L2 핸들러 컷오버 + `/me/curriculum`
+> 어댑터 + `cmd/api` 직업군 순회 부팅.**
+>
+> ✅ **커리큘럼 v3 P2 — SURGWARD(일반 외과 병동) 완료 (2026-09-14, 11/29).** 부서 코어 4(신원·투약·낙상·수술 부위 안전 ·
+> 언어·동의 · 회복실 인수·교대·전동 인계 · 가족 소통) + 심화 31(첫 사정·PCA·PONV·조기 보행·VTE·호흡기·상처·SSI·배액관·
+> 비위관·장폐색·식이·I&O·요정체·발열 감별·출혈·패혈증·문합부 누출·섬망·장루·수술 전 준비·ERAS·혈당·수혈·갑상선/경부·
+> 유방·간담췌·비만대사·노인·신속대응·퇴원) = 35주제 × 21 = 735(patient 46% · colleague 31% · family 23%). **파이프라인
+> 개선**: 클러스터 지시에 35주제 전체 소유표를 넣어 경계 침범을 줄였고, 주제 단위 증분 기록으로 사용량 한도 중단에도 작업이
+> 보존됐다(8클러스터 모두 한 번 이상 중단). 교차 검증에 **제목 bigram 유사도 스캔**을 추가 — 제목이 다른 같은 상황 5쌍을
+> 찾아 재저작(D-P2-B), 임상 표현 3건 교정(근긴장이상을 알레르기로 기록 → 약물이상반응, 체중 편견 대사 완화 등). 검증
+> 스크립트가 `collabWith` 리스트 표기(`["OR"]`, Go string 필드 디코드 실패)를 문자열로 정규화. **v2 카탈로그 10스텝 재지정**
+> (7F 수술 후 첫 만남·회복 돕기·이상 징후 — 손저작이 없어 새 gen id로) + 인사 `00900` theme 태그 → SURGWARD 고아 0.
+> audit: 35주제 전부 21 · THIN 0 · dup 0. 게이트 3종 통과. 누적 태깅 8101 · 385주제. ⚠️ 첫 CI는 `contract`·`deploy`
+> 레드 — 콘텐츠와 무관하게 `swag@latest`가 rc6(9/13 배포)로 바뀌어 계약 출력이 달라졌다. 생성기 버전 고정으로 해소
+> ([DECISIONS](DECISIONS.md) 2026-09-14).
+>
+> ✅ **커리큘럼 v3 P2 — PHARMA(중앙약국) 완료 (2026-09-13, 10/29).** 학습자가 간호사이므로 약물 안전·약사/처방의
+> 협업·복약 교육 접점으로 구성했다(colleague 49% · patient 31% · family 19%). 부서 코어 4(투약 안전·약물 용어/통역·약제부
+> 인계·복약 교육) + 심화 31(고위험약·항응고제·인슐린·마약류·전용 의심·TDM·무균조제·IV 호환성·소아 용량 …) = 35주제 × 21
+> = 735. 8클러스터 병렬 저작 → **검증·조립 스크립트**(주제당 21·6/9/6·필수 필드·enum·교차 클러스터 중복) → 같은 상황
+> 5쌍 재저작(D-P2-B), 임상 수치 3건 교정(aPTT 노모그램 구간·부메타니드 환산·에피펜 엄지 오주사 처치), 페르소나 이름
+> 중복 118건 성씨 교체. **손저작 `scn-pharma-*` 14 + 인사 `00900`에 theme 태그**(R-P2-2) → PHARMA 고아 0. audit: 35주제
+> 전부 21~23 · THIN 0 · dup 0. 게이트 3종 통과(v2 재지정 불필요 — PHARMA v2는 손저작만 가리킴 · `go test ./...` 그린 ·
+> 계약 무드리프트). 누적 태깅 7366 · 350주제.
+>
+> ⚠️ **정정 — 완료 부서의 "고아 0"은 생성분 기준이었다.** ER·ICU·OR·PEDS 각 15, LD·NICU·PICU·PSYCH 각 13, WARD 1 =
+> **손저작·인사 113건이 아직 미태깅**이다(R3 고아-0 게이트를 켜기 전에 태깅 필요). ⚠️ **퀴즈 스키마 드리프트**: APGAR 포맷
+> 추가 뒤 퀴즈 파일을 재생성하지 않아, `gencontent`를 돌리면 29개 `quizzes/gen-*.yaml`에 `apgar: []`가 붙는다(무해).
+> 부서 커밋에서는 되돌리고 별도 커밋으로 처리할 것.
+>
+> 🔧 **CI 복구 (2026-09-13) — 9/8부터 5일간 staging 배포 0이었다.** ①계약 드리프트(`ModelAnswerGroup.steps`·
+> `/me/curriculum/tracks`가 재생성 없이 들어감) ②P2 정본 재발급으로 라이브 v2 카탈로그 60스텝이 틀린 시나리오를
+> 가리킴(WARD 커밋부터 server 테스트 레드). 계약 재생성 + v2 스텝 재지정(손저작 `scn-*` 우선 44/60). 로컬 server
+> vet·`test ./...`·계약 무드리프트·mobile tsc·jest 907 그린. master 직접 push(`dcf675e`) → **CI 4종(server·contract·
+> mobile·deploy) 전부 그린**, staging 배포 + 스모크 **139/0** + 이미지 `staging-verified-dcf675e…` 태그. **리뷰랩 v40 서버 변경이
+> 비로소 staging에 올랐다**(아래 v40 항목의 "서버=promote"는 그때 실제로 배포되지 않았다). prod는 `promote.yml` 수동 승격 대기. **fan-out 게이트 추가**: 부서 커밋 전 v2 재지정 + `go test ./...` 전체 + 계약 무드리프트. [DECISIONS](DECISIONS.md) 2026-09-13.
+>
+> 📝 **커리큘럼 v3 P3-B — 여정 지도 Build Spec 작성 완료 (`READY`, 2026-09-20).** L3가 "P3-B 스펙과
+> 합류"라고만 적혀 있고 그 스펙이 없어 막혀 있던 것을 썼다. 핸드오프 v41 `08_JOURNEY_RESOURCES.md`가
+> 화면 3종·컴포넌트·토큰·데이터 모델을 이미 정해 두었으므로, 스펙의 일은 **그 핸드오프와 L2가 만든
+> `learning.Journey` 포트를 잇는 것**이었다. 인덱스 + 아티팩트 4종:
+> [`curriculum-v3-journey/`](02-construction/curriculum-v3-journey/build-spec-index.md).
+> **범위는 화면 A(여정 지도) + B(정거장 시트)다.** C(면허 로드맵)는 국가 트랙 데이터가 서버에 없어
+> 별도 스펙으로 미뤘다.
+> **결정 여섯 가지(§3에 근거와 함께 기록).** ①목표 부서는 **여정 화면에서 고르고 서버에 저장**하되
+> 고르기 전에는 진도에서 추론해 그려 주고 **저장하지 않는다** ②**정거장은 잠그지 않는다** — 잠금은
+> 정거장 안의 난이도 계단과 스텝에만 ③옛 장소 찾기(장소→부서→시나리오)는 **제거**한다. 부서→주제→
+> 시나리오와 두 깊이 구조가 공존할 이유가 없다(사용자 지적) ④인테리어 진입은 **홈 탭**이 이미 갖고
+> 있으므로 그대로 두고, **탐험 모드는 설정 토글**(기기 로컬)로 둔다 ⑤여정 응답은 **한 부서 + 자유 탐방
+> 요약**이다 — 전체 29부서는 **340KB**인데 한 부서는 **11.7KB**다(실측) ⑥라우트를 여정 네임스페이스로
+> 통일한다(`GET /me/journey` · `GET /me/journey/stations/{themeKey}` · `PATCH /me/goal-dept`).
+> **②는 조사 뒤에 정했다.** 듀오링고는 2022년 나무에서 한 줄 경로로 바꾸며 선택권을 없앴고 반발이
+> 컸다(해커뉴스·청원·보도). CEO는 되돌리지 않았지만 `Jump here?`라는 탈출구를 남겼다. 다만 그 선형성은
+> **언어가 누적적**이라 성립한다 — 현재형을 모르면 과거형을 못 한다. 우리 35개 주제는 대체로 병렬이고
+> (수혈을 건너뛰고 낙상을 해도 구멍이 나지 않는다), 학습자는 **다음 달에 투석실로 배치되는 간호사**일
+> 수 있다. 듀오링고가 잠금으로 사려 한 "어디부터"의 답은 우리에겐 **이어하기**가 이미 준다.
+> ✅ **확인한 사실 둘.** ①**인테리어와 시나리오 매핑은 v3 재생산에 깨지지 않았다** — 24개 부서
+> 인테리어가 가리키는 시나리오 **299개가 전부 손저작 범위**(`SCN-<부서>-000xx`)이고 재생산은 생성
+> 범위만 갈아엎었다. 게다가 그 손저작들을 전부 태깅했으므로 **같은 시나리오에 여정 지도와 인테리어 NPC
+> 두 문으로 닿는다.** ②**`collab` 트랙 주제가 0건**이라 핸드오프의 협업 링은 자리만 만들고 화면에
+> 나오지 않는다.
+> ⚠️ **스펙 자체 검토가 두 가지를 잡았다**: `/me/curriculum/tracks`의 운명이 빠져 있었고(여정이 대신
+> 하므로 소비자가 0이 된다 → 함께 삭제로 명시), 검증의 grep 기준이 새 경로에도 걸리게 쓰여 있었다.
+> **이 스펙이 끝나면 L3와 L4.4가 함께 닫힌다** — 캠퍼스 프레젠터(`curriculum_legacy.go`)는 클라이언트가
+> 옮겨 갈 때까지만 살기로 한 것이었다. 남는 것은 L5(DB 시드 + prod 승격)뿐이다.
+>
+> 🎉 **커리큘럼 v3 P3-A — L4 v2 은퇴 완료 (2026-09-20). 전환을 시작한 이유가 영구히 닫혔다.**
+> `internal/curriculum` **2,610줄을 삭제**했고 `cmd/gencontent`는 더 이상 카탈로그를 생성하지 않는다.
+> 이제 학습 경로는 주제 레지스트리와 각 시나리오의 `theme` 태그에서 런타임에 파생되므로, **부서를 seed
+> 정본으로 낼 때마다 v2 카탈로그가 gen id를 참조해 깨지던 whack-a-mole(L-E1)이 끝났다** — 사용자가 6개
+> 부서를 수동 재지정해야 했던 그 문제다. 게이트: v2 import 0 · v2 파일 0 · `catalog_gen` 미생성 ·
+> `go vet`·`test -count=1 ./...` 그린 · 계약 무드리프트 · 모바일 tsc 0 · jest 907/907.
+> **삭제가 삭제로 끝났다.** v2 패키지를 지우자 컴파일러가 잔존 참조를 **하나도 찾지 못했다** — L2에서
+> 소비 지점을 전부 포트로 옮겨 둔 것이 그대로 증명된 셈이다. 죽은 코드도, 호환 별칭도 남기지 않았다.
+> **L3보다 먼저 했다.** L3는 "P3-B 여정 지도 UI 스펙과 합류"인데 **그 스펙이 아직 없고**, 모바일에는
+> tracks 타입과 호출 함수만 있을 뿐 그것을 쓰는 화면이 없다. L4.4가 "L3 이행 완료 시 어댑터 삭제,
+> 아니면 deprecation 주석"으로 이미 갈라 두어 L4는 L3 없이 실행 가능했다. 캠퍼스 프레젠터는 지울 때
+> 무엇을 함께 지워야 하는지 적은 주석과 함께 남겼다.
+> **시드 가드가 절반으로 줄었다 — 기능 축소가 아니라 설계 변화다.** 예전에는 하드코딩 카탈로그가 번들과
+> **독립적으로** id를 지명해서, 번들에서 시나리오가 빠지면 스텝이 허공을 가리켰다. 이제 경로가 **그
+> 번들의 태그에서 파생**되므로 번들을 떠난 시나리오는 경로도 함께 떠난다 — 카탈로그 쪽 dangling이
+> 구조적으로 불가능해졌다. 남은 절반(시도·복습 카드·대화 세션이 가리키는 id)은 그대로 지킨다.
+> 언어 커버리지 검사의 "경로"도 태그 있는 시나리오로 바꿨다(태그 없는 시나리오는 어느 여정도 닿지
+> 않으므로 어떤 언어도 막지 않는다).
+> **구 가드를 엔진 불변식 5종으로 대체했다**(`themed/invariants_test.go`, 실제 콘텐츠 번들 위에서):
+> 고아 0 · 모든 스텝이 실재 시나리오와 제목으로 해석됨 · 모든 주제가 임계 이상 · 부서 코어가 트랙을
+> 이끎 · 신규 학습자에게 시작점이 있음. 구 가드(`TestEveryStepNamesItsContent`)는 **아무도 저지르지
+> 않은 이유로 깨질 수 있었다** — 부서를 재저작해 제목이 바뀌면 다른 곳에 쓰인 카탈로그가 옛 제목을
+> 주장했다. 두 번째 목록이 없어진 지금 그 실패는 성립하지 않는다.
+> ⚠️ **불변식이 실제 콘텐츠 소견을 하나 잡았다: ER의 세 주제가 20건이다**(`core-safety-er` ·
+> `core-family-er` · `er-deescalation`). 저작 목표는 21인데 `cmd/audit`의 게이트가 20이라 여태
+> "THIN 0"으로 보고돼 왔다. 불변식도 같은 20으로 맞춰 두 검사가 어긋나지 않게 했고, **3건의 공백은
+> 콘텐츠 작업으로 남긴다.** 아울러 불변식을 쓰면서 스텝 이름이 R19에 따라 `·` 뒤(페르소나)를 떼고
+> 붙는다는 것을 확인했다 — 목록이 등장인물이 아니라 경로로 읽히게 하는 규칙이다.
+> **남은 것: L3**(모바일이 tracks를 소비하도록 화면 배선 — **P3-B 스펙 작성이 선행**) → **L5**(DB 시드 +
+> prod 승격). prod 승격은 반드시 prod 시드 뒤여야 한다.
+>
+> 🟡 **스테이징 콘텐츠 시드 — 2026-09-20 00:35 실행 완료(1분 46초). 배포 재실행은 전환 완료 후로 미뤘다(사용자 결정).**
+> L2 컷오버(`1c943fc`) 이후 `deploy` 잡이 실패한다. 스모크 **132 통과 · 6 실패**이고, 실패 6건은 전부
+> `buildings=0` 하나에서 파생된다(커리큘럼 수 0 · 이어하기 0 · 상태 없음 · 이름과 층 표기가 빈 문자열).
+> **서버 코드의 결함이 아니다.** 로컬 `go test`·계약·모바일은 전부 그린이고, 프레젠터는 태그가 실린
+> 카탈로그 위에서 정상 동작한다(단위 테스트 13건이 그것을 고정한다).
+>
+> **원인:** 컷오버로 라이브 캠퍼스 화면이 **DB의 시나리오 주제 태그**에 의존하게 되었는데, 스테이징은
+> 태그가 실린 콘텐츠로 시드된 적이 없다. `deploy.yml`은 **마이그레이션만** 돌리고 콘텐츠 시드는 수동
+> 워크플로(`seed.yml`)다 — 6.8MB 카탈로그를 한 트랜잭션에서 통째로 교체하는 일이라 매 배포에 넣지 않도록
+> 일부러 갈라 둔 구조다(그 판단 자체는 그대로 유효하다).
+>
+> **조치:** `seed` 워크플로를 `environment: staging`으로 수동 실행한 뒤 `deploy`를 재실행해 스모크를 확인한다.
+> prod 승격은 **prod 시드가 끝난 뒤**여야 한다 — 시드 없이 승격하면 prod의 커리어 탭이 통째로 빈다.
+> (Build Spec의 L5.1이 "themes/tags를 DB에 시드"로 이미 잡아 둔 단계이고, L2가 그 선행 조건을 앞당겨
+> 드러낸 것이다.)
+>
+> ⚠️ **함께 드러난 구멍: `/me/curriculum/tracks`는 스모크가 한 번도 검사하지 않았다.** 그래서 여정
+> 엔드포인트가 비어 있었다는 사실이 P1 이후 줄곧 보이지 않았다. 라이브 `/me/curriculum`이 하드코딩
+> 카탈로그에서 나오는 동안에는 태그가 없어도 화면이 채워졌기 때문이다. **스모크에 tracks 단정을 추가**해야
+> 같은 유형이 다시 조용히 지나가지 않는다(트랙 수·정거장 수·이어하기 1개).
+>
+> ✅ **커리큘럼 v3 P3-A — L2 핸들러 컷오버 완료 (2026-09-20).** 라이브 학습 경험의 소비 지점이 전부
+> 도메인 포트 `learning.Journey` 뒤로 들어갔다. **`internal/adapters`의 v2 커리큘럼 import가 0건**이고
+> (L2의 green 게이트), `/me/curriculum`은 엔진 위의 **캠퍼스 프레젠터**가 된다. 두 엔진이 공존하던
+> 상태(L-E2)가 끝났다. 게이트: `go vet` · `test -count=1 ./...` 그린 · 계약 무드리프트 · 모바일 tsc 0 ·
+> jest 907/907. 계약은 스키마 이름만 바뀌고 **구 형태의 필드는 전부 동일**해 클라이언트가 보는 JSON은
+> 그대로다(네 스키마의 속성 집합을 기계로 대조해 확인했다).
+> **계획서가 정하지 않은 갈림길이 넷 있었고, 그중 둘은 사용자 결정으로 갈랐다.**
+> ① **포트에 `Steps(theme, p)`를 더했다(사용자 결정).** L2.4는 "TrackGroup → BuildingGroup 어댑터"라고만
+> 적혀 있었는데, `TrackGroup`은 난이도별 **개수만** 담고 스텝 목록이 없다(정거장 시트에서 지연 로드하도록
+> 설계됐기 때문이다). 반면 라이브 모바일의 커리어 탭 층 시트는 `c.steps`로 스텝을 그리고 `c.next`로 다음
+> 스텝 이름을 보여 준다 — 문구대로 매핑했다면 L3까지 한 릴리스 동안 그 목록이 빈 채 나갔을 것이다.
+> 이 메서드는 **P3-B의 정거장 시트가 쓸 지연 로드와 같은 것**이라 어댑터가 사라져도 남는다. v2의
+> `resolveOne`을 1:1 이식해 대화 한 건이 두 행(도움 있는 회차·혼자 하는 회차)으로 펼쳐지는 사다리와
+> `done/now/lock/optional` 규칙을 그대로 옮겼고, 단위 테스트 5건으로 고정했다.
+> ② **주제 이름 955개를 영어로 번역했다(사용자 결정).** v2는 커리큘럼 이름 89개가 영어로 있었는데 v3
+> 주제는 **0개**여서, 컷오버가 오히려 영어 커버리지를 줄이는 상황이었다. ⚠️ **`themes.yaml`의 `nameKey`는
+> i18n 키로 쓸 수 없다** — `theme.core.safety` 하나가 29개 부서의 **서로 다른 이름**("산모·신생아 안전
+> 확인"·"감염 시신 취급과 직원 안전"·"환자 투석처방 2인 확인…")을 가리켜서, 한 영어 문자열을 붙이면 28개가
+> 틀린다. 그래서 **주제 키**로 키잉했다(고유 955개). 번역자 8명이 부서 맥락으로 옮겼고(직역이 아니라 미국
+> 현장 용어 — `irAE`·`crash C-section`·`intradialytic hypotension`), 검증은 955/955 · 누락 0 · 빈 값 0 ·
+> 한글 혼입 0 · **부서 내 영어 이름 중복 0**이다. `internal/i18n/theme_en.go`.
+> ③ **층 지도를 `internal/domain/campus`로 옮겼다.** 프레젠터가 부서를 건물·층에 놓으려면 그 표가
+> 필요한데 `cmd/gencontent`(package main) 안에 있어 임포트할 수 없었다. 손저작 4개 층(본관 1F 응급·P1
+> 약제부·3F 수술실·4F ICU)을 더해 **24개 층 전체**를 담고 v2의 표시 순서를 그대로 보존했으며, gencontent는
+> `Authored` 플래그로 생성 대상만 거른다. 모바일에 같은 표가 또 있는데, 세 번째 사본을 만드는 대신 서버
+> 쪽 정본을 하나로 합쳤다.
+> ④ **캠퍼스 뷰의 이어하기 폴백.** 엔진의 이어하기가 **층이 없는 부서**(GEN — 리프트가 설 수 없고 부서
+> 시트에서만 닿는 범용 뱅크)에 떨어지면 이 화면은 그 자리를 그릴 수 없다. 플래그까지 같이 버리면 커리어
+> 탭에 이어하기가 하나도 없게 되므로, **엔진의 답은 그대로 두고 화면이 보여 줄 수 있는 첫 자리로 포인터만
+> 옮긴다.** v2도 GEN 커리큘럼이 없어 같은 모양이었다. 스모크의 "이어하기 정확히 하나" 단정이 이 구멍을
+> 드러냈다 — 신규 학습자는 첫 주제가 DERM이라 걸리지 않지만, 최근 시도가 GEN이면 0개가 된다.
+> **의도된 차이 하나:** 캠퍼스 뷰의 `done/total`은 **회차 기준**(대화 하나가 두 행)이고 여정 뷰의
+> `done/total`은 **상황 기준**이다. 한 화면 안에서 목록과 숫자가 어긋나지 않는 쪽을 택했고, 홈 카드도 같은
+> 표현을 읽어 커리어 탭과 숫자가 갈라지지 않는다.
+> **남긴 것:** 요청마다의 직업군 해석은 `journeyFor` 한 곳으로 모으되 오늘은 `"nurse"`를 돌려준다. 직업군은
+> 토큰이 아니라 사용자 행에 있어 매 요청 읽으면 대화 채점·시나리오 조회 같은 뜨거운 경로에 질의가 하나 더
+> 붙는데 아직 답이 달라질 수 없다. 부팅의 `"nurse"` 하드코딩(S7·R-L16)은 **`content/<prof>/` 순회로 교체**해
+> 새 직업군이 디렉터리만으로 붙는다. 일본어·독일어 주제 이름(955×2)은 i18n P6 백로그에 남는다 — 서버가
+> 보내는 콘텐츠는 여전히 영어 카탈로그 하나뿐이고 ja/de는 한국어 원문으로 폴백한다.
+> **다음: L3 클라이언트 이행**(모바일 여정·홈이 tracks를 소비) → L4 v2 은퇴(삭제) → L5 DB 시드·승격.
+>
+> ✅ **미태깅 손저작 139건 태깅 완료 — orphans 0 (2026-09-19).** `tagged 20386 / 20386`으로 전 시나리오가
+> 주제에 붙었다. 대상은 ER·ICU·OR 각 15건, DIAL·ENDO·GERI·HOSPICE·INFUSION·REHAB·WOMENKIDS 각 13건,
+> 그리고 `SCN-ORIENT-*` 3건이다. 부서마다 에이전트를 붙여 그 부서 35주제 중 하나를 고르게 했고,
+> 판정 기준은 **소재가 스치듯 등장하는지가 아니라 그 장면에서 학습자가 실제로 하는 일이 어느 주제의
+> 영역인지**로 두었다. 부서 첫 인사(`00900`)는 앞 부서들의 관례대로 `core-language-<code>`에 붙였다.
+> 배정 139건을 기계로 전수 검증했다 — 키가 `themes.yaml`에 존재하는지, **시나리오 id의 부서 접두사와
+> 주제의 부서가 일치하는지**(엉뚱한 부서 주제에 붙는 것을 막는다), 중복 id가 없는지. 불일치 0건.
+> **`SCN-ORIENT-*` 3건은 `themes.yaml`에 부서가 없어 부서 주제로 붙일 수 없었다.** 사용자 결정으로
+> GEN(입원 수속·병동 오리엔테이션·통역을 담은 범용 부서) 코어에 배정했다 — 첫 출근 자기소개 →
+> `core-language-gen`, 인계 받기 → `core-handoff-gen`, 첫 환자 인사와 신원 확인 → `core-safety-gen`.
+> ⚠️ **주제 지도의 공백이 드러났다.** 전용 칸이 없어 차선을 택한 사례가 여섯 건 있다 — WOMENKIDS의
+> 소아 천식·성장통·야뇨증 3건(천식·성장통·야뇨증 주제가 아예 없어 `core-family-womenkids`로),
+> ICU 코드블루 2건(진행 중인 심폐소생술 주제가 없어 이름에 "소생"이 든 `icu-shock`으로 — `icu-post-arrest`는
+> 심정지 **이후** 관리다), OR 기구 패스(전용 주제가 없어 거즈 계수 대사를 근거로 `or-count`로).
+> ENDO 캡슐내시경과 REHAB 휠체어 이송도 같은 형태다. **이 여섯 자리는 나중에 주제를 늘릴 때 먼저 볼
+> 후보다.** 배정 자체는 남은 후보 중 가장 가까운 것이라 그대로 채택했다.
+> 게이트: `cmd/audit` **orphans 0 · THIN 0 · dup-titles 0** · server vet · `test -count=1 ./...` 그린 ·
+> `make contract` 무드리프트. **이로써 라이브 전환 전에 남은 콘텐츠 선행 조건이 전부 닫혔다.**
+>
+> 🎉 **재생산 8/8 — WARD(일반 내과 병동) 완료 = D-P2-F 완주 (2026-09-19).** 주제 35개의 키·이름을
+> 유지하고 21상황을 전면 재설계해 735건을 다시 냈다. 수혈 관리 주제가 "수혈 동의 확인→혈액형 교차
+> 채혈→수혈 전 기준 활력징후→혈액 이중 확인→수혈 목적 설명→정맥로 확보 확인"이라는 한 번의 수혈을
+> 여섯 토막 낸 구성에서, 거부하는 환자·종교적 이유·반응이 일어난 사례·지난번 반응 때문에 두려워하는
+> 환자·혈액이 늦게 도착해 시간이 촉박한 경우처럼 서로 다른 수혈 사례 21개로 바뀌었다.
+> 지표: 제목 평균 **9.7자 → 43.4자**(최소 33자·최대 55자) · **`sub` 고유값 140종 → 735종**
+> (구 `sub`은 735건 중 502건이 `"63y / Female"` 형식이었고 평균 9.4자였다. 신 `sub`은 평균 30.7자로
+> 전건이 그 사람이 이 상황에 놓인 이유를 담는다) · 기존 19,257개 제목과 동일 0·유사도 0.62 이상 0 ·
+> **부서 내부 유사도 0** · 방 표기 정본 13종 **전부** 사용 · 화자 patient 484(65.9%) ·
+> colleague 170(23.1%) · family 81(11.0%)로 정본 목표(68/20/12)에 근접 · acuity
+> **critical 140(19.0%) → 94(12.8%)** · 티어1 210건 전부 routine.
+> **이 부서는 앞 일곱 부서와 정반대 축을 쓴다.** PICU는 아이가 진정되어 있어 대화가 부모와 팀을
+> 향했지만(family 55%·colleague 43%·patient 2%), WARD는 **환자 본인이 대화의 주된 상대**다.
+> 환자는 의식이 있고 자기 몸에 대해 말하며 거절할 수 있다. 그래서 상황을 가르는 축을 "부모가 어느
+> 국면에 있는가"에서 **"환자가 무엇을 가지고 들어왔는가"와 "입원 경과의 어느 지점인가"**로 바꿨다.
+> 나머지 두 축은 이 부서 고유의 임상 행위에서 왔다 — 한 사람이 여러 환자를 동시에 맡아
+> **여러 요구 사이에서 우선순위를 말로 정리하는 일**, 그리고 **악화를 가장 먼저 알아채 의사를 부르고
+> 설득하는 일**이다.
+> **acuity 기준도 부서에 맞게 다시 세웠다.** PICU는 모든 아이가 이미 위중해 "지금 무너지고 있는가"가
+> 기준이었지만, WARD는 반대로 대부분이 안정되어 있고 악화 인지 계열 주제에 급박성이 몰린다. 기준을
+> **"지금 이 순간 생명이나 장기가 위태로운가"**로 두고 네 가지를 명시적으로 배제했다 — ①환자가 화를
+> 내거나 거부하는 것(이 부서에서 가장 흔한 착오다) ②통증 호소 자체 ③퇴원 대화와 완화·임종 돌봄
+> ④만성질환을 여럿 안고 있다는 사실. 저작 직후 티어3 여섯 건이 전부 critical인 주제가 일곱 개여서
+> 내가 전수를 읽어 8건을 내렸고, 검수가 잡은 `urgent` 과다 12건을 더해 **총 20건을 하향**했다.
+> **설계 단계에서 부서 내부 유사도 0을 달성했다.** PICU에서는 여덟 쌍이 0.62 이상으로 걸려 일곱 건을
+> 다시 써야 했는데, 원인이 지시서의 "막히는 지점" 목록을 설계자들이 문구째 재사용한 것이었다.
+> 이번에는 "목록의 문구를 제목에 그대로 옮기지 말고 그때마다 그 주제의 임상 언어로 구체화하라"는
+> 조항을 설계 지시서에 넣었고, 걸린 쌍이 없었다. **설계 지시서에 실패 사례를 조항으로 적으면 다음
+> 부서에서 그 유형이 사라진다**는 것이 D-P2-F 일곱 부서에 걸쳐 반복 확인됐다.
+> **검수 지목 91건 전부 채택 · 불채택 0건**(누적 불채택은 33건에서 늘지 않았다). 앞 부서들(PICU 11건)
+> 보다 지목이 훨씬 많아, 규모가 큰 묶음 두 개를 내가 실물로 검증한 뒤 채택했다 — ①**c8의 tagline
+> 화자 불일치 12건**: 티어3 동료 seed의 페르소나가 당직의인데 tagline이 "이십 분째 오한이 멎지
+> 않는다" 같은 환자의 말이거나 "빨리 와서 직접 봐 달라" 같은 학습자 자신의 말이었다(상대역이 학습자의
+> 대사를 읽는 대화가 된다) ②**c1의 화자 변경 7건**: 정본 `focus`가 "경고 신호를 **환자의 말로** 옮겨
+> 전하기", "예약과 연락처를 **환자가 꺼내 볼 형태로** 남기기"처럼 환자를 명시했는데 일곱 건 전부
+> `role: family`로 저작되어, 퇴원 후 혼자 해낼 일을 환자에게 가르친다는 이 부서의 정체성이 지워졌다.
+> 임상 오류 중 무거운 것들: **흡입기 색 반전**(주황색을 구조약이라 했으나 미국에서 구조약은 파란색이고
+> 주황색은 흡입 스테로이드 유지약이다 — 발작 때 잘못된 흡입기를 집게 된다) · **인슐린 중단을 저혈당의
+> 근거로 제시**(인슐린 중단은 반대로 고혈당·케톤산증 쪽 요인이다) · **얼음이 수분 제한을 깨지 않는다는
+> 교육**(얼음도 녹은 부피로 허용량에서 차감한다) · **DNR을 편안함 위주 돌봄과 같은 것으로 서술**
+> (DNR은 심정지 시 소생술만 하지 않는다는 뜻이고 나머지 처방은 이어진다) · **혈압 하강과 맥박 상승이
+> 겹친 조합을 "걱정할 것 없다"고 안심**(초기 보상성 악화의 전형이다) · **수혈 반응 의심 시 중단을
+> 의사가 고르는 선택지로 제시** · **임박한 호흡정지를 코드 대상에서 제외** · **개봉해 사용 중인 인슐린
+> 펜도 냉장 보관하라는 것처럼 읽히는 교육**(사용 중인 펜은 실온에 두고 28일 뒤 폐기한다).
+> ⚠️ **검증 스크립트의 결함을 찾아 고쳤다.** `qa_redo.py`의 ⑯번 게이트(아이 화자에 성인 나이대)가
+> **PEDS에서 추가된 소아 부서 전용 검사인데 부서를 가리지 않고 적용**되어 478건을 잡아냈다. 전부
+> 오탐이다 — 소아 부서에서는 `patient`가 곧 아이라 성인 나이대가 붙으면 페르소나가 부모의 것이라는
+> 뜻이지만, WARD는 환자가 성인이다. **WARD가 이 게이트가 생긴 뒤 처음 돌리는 성인 부서라 드러났다.**
+> `PEDIATRIC = {PEDS, PICU, NICU, NURSERY}`에서만 작동하도록 조건을 달고 사유를 주석으로 남겼다.
+> 재저작자가 지목 1건을 "이미 문제없었다"며 넘긴 것도 실물을 읽어 확인한 결과 검수자가 옳았다 —
+> 청색증으로 발견된 `critical` 장면의 goals가 "재연결·의식 확인"과 "곁을 지키며 관찰"뿐이고 활력징후
+> 재측정도 도움 요청도 없어, 이 부서의 핵심 학습(악화 인지 → 즉시 보고)이 지워져 있었다. 내가 고쳤다.
+> 손저작 인사 1건(`SCN-WARD-00900`)을 `core-language-ward`에 태깅해 **WARD 고아 0 · orphans 140 → 139.**
+> v2 스텝 10건 namesync. 35주제 전부 21건 · THIN 0 · dup-titles 0 · `tagged 20247 / 20386`.
+> server vet · `test -count=1 ./...` 그린, `cmd/audit` · `make contract` 무드리프트.
+> **D-P2-F 8부서 5,880상황 재생산이 전부 끝났다.** 남은 것은 미태깅 손저작 139건과 라이브 전환(L2~L5)이다.
+>
+> ✅ **재생산 7/8 — PICU(소아 중환자실) 완료 (2026-09-19, D-P2-F).** 주제 35개의 키·이름을 유지하고
+> 21상황을 전면 재설계해 735건을 다시 냈다. 인공호흡기 이탈 주제가 "이탈 기준 확인→진정 감량→
+> 자발호흡 시험→발관 준비→발관→발관 후 관찰"이라는 한 사건을 여섯 토막 낸 구성에서 서로 다른
+> 아이와 부모의 독립된 장면 21개로 바뀌었다.
+> 지표: 제목 평균 **9.2자 → 38.2자**(최소 26자·최대 61자) · **`sub` 고유값 60종 → 735종**
+> (구 `sub`은 735건 중 733건이 12자 이하였고 "환자 어머니" 219건·"동료 간호사" 157건·"환자 아버지"
+> 109건으로 사실상 네 가지였다. 신 `sub`은 평균 33.4자로 전건이 그 사람이 이 상황에 놓인 이유를
+> 담는다) · 기존 19,230개 제목과 동일 0·유사도 0.62 이상 0 · 부서 내부 유사도 0 · 방 표기 정본
+> 11종 **전부** 사용 · 화자 family 403(54.8%) · colleague 318(43.3%) · patient 14(1.9%)로 정본
+> 목표(57/42/1)와 거의 일치 · acuity **critical 199(27.1%) → 106(14.4%)** · 티어1 210건 전부 routine.
+> **이 부서는 앞 여섯 부서와 상황을 가르는 축이 다르다.** 정체성이 **아이가 대개 말을 하지 못한다**는
+> 것(진정·인공호흡기·의식 없음)이어서 대화가 부모와 팀을 향한다. PEDS가 "아이의 연령"을 축으로
+> 삼았다면 PICU는 **부모가 어느 국면에 있는지**와 **팀 안에서 무엇이 어긋나는지**가 축이다.
+> 설계 지시서에 이 전환을 명시하고 부모의 국면 열한 가지와 팀 안에서 어긋나는 지점 일곱 가지를
+> 축으로 제시했다.
+> **acuity 기준을 이 부서에 맞게 다시 세웠다.** PICU는 모든 아이가 이미 위중하므로 "위중한가"를
+> 기준으로 삼으면 전건이 critical이 된다. 기준을 **"지금 이 순간 무너지고 있는가"**로 바꾸고 세
+> 가지를 명시적으로 배제했다 — ①인공호흡기·승압제·투석 회로가 달려 있다는 사실 자체 ②뇌사 판정과
+> 임종 돌봄(이미 되돌릴 수 없는 일이고 필요한 것은 시간과 설명이다) ③부모의 감정. 저작 직후
+> 티어3의 critical이 64%였고 **티어3 6건 전부가 critical인 주제가 일곱 개**여서, 내가 전수 목록을
+> 읽어 16건을 urgent로 내렸다(→51%). 하향 유형은 네 가지다: **사고를 막은 장면**(펌프 속도 오입력을
+> 주입 직전에 발견, 처방과 다른 농도의 주사액을 거는 순간 걸러냄 — 차단했으므로 위협이 없었다),
+> **확인·살펴보는 장면**, **부모의 감정을 다루는 대화**, **계산·준비·팀 조율**. 가장 크게 조정된
+> `core-safety-picu`는 6/6 → 1/6이 되었는데, 이 주제가 본질적으로 사고를 예방하는 주제여서 critical이
+> 드문 것이 맞다.
+> **설계 제목 수정 9건 중 7건은 내 지시서가 만든 결함이었다.** 부서 내부 유사도 검사에서 8쌍이
+> 0.62 이상으로 걸렸고, 원인은 내가 "막히는 지점" 목록을 구체적으로 제시하자 **각 설계자가 자기
+> 묶음 안에서 그 문구를 주제 이름만 바꿔 재사용**한 것이었다(`○○를 두고 팀 안에서 판단이 갈려 그
+> 자리에서 근거를 정리해 말하기`가 세 주제, `다른 병상의 급한 일과 겹쳐 손이 모자란 사이 변화를
+> 놓치지 않기`가 세 주제 등). PEDS의 "focus를 상세하게 쓰면 저작자가 옮겨 적는다"와 같은 계열이다 —
+> **구체적인 목록을 주면 그것이 뼈대로 굳는다.** 7건을 각 주제의 임상 내용으로 교체하고 지시서에
+> "목록의 문구를 제목에 그대로 옮기지 말고 그때마다 그 주제의 임상 언어로 구체화하라"는 조항을 넣었다.
+> **저작 8명 전원이 쓰기 단위 제한을 지켜 PEDS의 출력 한도 사고가 재발하지 않았다.** 7건씩 12~16회로
+> 나눠 쓰며 매회 파싱을 검증했고, 그 과정에서 **저작자들이 YAML 함정을 스스로 잡았다** — c5는
+> `speakingStyle` 값이 큰따옴표로 시작하는 것을 두 건, c2는 인라인 맵 안의 따옴표 조각이
+> flow-mapping을 깨뜨린 것을 고쳤다. 지시서에 조항으로 넣기 전에는 내가 나중에 발견해야 했던 유형이다.
+> 저작 중 게이트를 미리 돌려 c7의 티어1 urgent 2건(위험 신호 교육·용량 재확인이라는 **소재**가
+> 급박성으로 오인된 경우)과 keyPhrases 전역 중복 1건을 잡아 해당 저작자가 고쳤고, c7은 피드백을
+> 받은 뒤 스스로 3건을 더 하향하고 티어3을 critical 14/urgent 5/routine 5로 분산했다.
+> **검수 지목 11건 전부 채택 · 불채택 0건**(누적 불채택은 33건에서 늘지 않았다). acuity 과다 4 ·
+> 권한 침범 1(`"I'll explain every line before you decide anything."` — 간호사가 동의서를 한 줄씩
+> 설명하고 서명 시점까지 관여) · 반복 뼈대 5(`picu-vent-weaning`에서 "무너지는 부모 곁에 있기" 3건과
+> 목소리 변화 3건, `picu-brain-death`에서 "심장이 뛰는데 사망을 믿지 못하는 부모" 2건,
+> `core-family-picu`와 `picu-post-arrest`의 쌍) · 내용 빈약 1(뇌사 주제의 대기실 소란이 주제 고유
+> 내용 없이 어느 상황에도 옮겨 쓸 수 있었다) · 주제 경계 1(`picu-electrolyte`의 한 seed가 전해질
+> 임상 없이 통역 문제만 다뤄 `core-language-picu`를 침범 → 칼륨 상승이 심전도 변화로 이어진다는
+> 임상을 중심에 놓고 재저작).
+> **c3와 c7은 결함 없음이었다.** 이 부서에서 가장 위험한 두 주제가 지시서만으로 정확히 구현됐다 —
+> `picu-brain-death` 21건이 판정(의사)과 기증 요청(장기조달기관)을 전부 분리하고 거절의 자유를
+> 반복 확인했으며, `picu-palliative`는 장치 감량을 "가족과 팀이 함께 정한 것"으로 처리해 간호사의
+> 결정권 침범이 없었다. c7에서는 저작물이 위험 신호를 정면으로 가르쳤다 — **당직의가 "아이가
+> 조용해졌으니 호전"이라 단정할 때 간호사가 근거를 들어 반박하는 장면**이 여러 건 있었다.
+> 손저작 12건과 인사 1건을 주제에 태깅해 **orphans 153 → 140**. v2 참조는 손저작 10건과 인사뿐이라
+> namesync 0건. 35주제 전부 21건 이상·THIN 0·dup-titles 0·`tagged 20246 / 20386`. server vet·
+> `test -count=1 ./...` 그린, `cmd/audit`·`make contract` 무드리프트.
+>
+> ✅ **재생산 6/8 — PEDS(소아과 병동) 완료 (2026-09-18, D-P2-F).** 주제 35개의 키·이름을 유지하고
+> 21상황을 전면 재설계해 735건을 다시 냈다. 정맥로 확보 주제가 "준비물 확인→아이 달래기→부위 선정→
+> 천자→고정→부모에게 설명"이라는 한 사건을 여섯 토막 낸 구성에서 서로 다른 아이와 부모의 독립된
+> 장면 21개로 바뀌었다.
+> 지표: 제목 평균 **9.2자 → 42.1자**(최소 28자·최대 62자) · **`sub` 고유값 84종 → 735종**
+> (구 `sub`은 735건 중 733건이 12자 이하였고 "환자 어머니" 하나가 276건, "동료 간호사"가 143건이었다.
+> 신 `sub`은 평균 34.5자로 전건이 그 사람이 이 상황에 놓인 이유를 담는다) · 기존 19,177개 제목과 동일 0·
+> 유사도 0.62 이상 0 · 부서 내부 유사도 0 · 방 표기 정본 14종 **전부** 사용 · 화자 family 498(67.8%) ·
+> patient 121(16.5%) · colleague 116(15.8%) · acuity routine 564 · urgent 143 · **critical 144(19.6%)
+> → 28(3.8%)**.
+> **`focus`의 장문화를 막자 옮겨적기가 사라졌다.** ONCO에서 임상시험 주제 21건이 통째로 유사도
+> 0.86~0.91이 된 원인이 그 주제의 `focus`가 이미 지시문 수준으로 상세했다는 점이어서, 설계 지시서에
+> ①`focus`를 한 줄 메모로만 쓸 것 ②지시서의 예시 제목을 그대로 쓰지 말 것 두 조항을 넣었다. 결과는
+> focus 평균 24.1자(최대 41자) · 예시 제목 유입 0건 · 주제 내 제목 유사쌍(0.45 이상) 0건이고, 저작
+> 단계의 `brief`-`focus` 유사도 최댓값이 클러스터별로 0.159~0.323에 머물렀다.
+> **설계 단계 수정 5건은 전부 제목에 박힌 권한 침범이었다.** 통역을 통해 간호사가 동의를 설명하고
+> 서명을 받음 / 부모의 퇴원 요구를 "막아서기" / 집 약 투여를 "단호히 제지하기"가 계산 주제인
+> `peds-weight-based-dosing`에 들어가 경계까지 넘음 / 임의 투약 제지의 `focus`가 "정면에서 막아서는
+> 대응". 나머지 1건은 열성경련에서 "신고를 망설였다"가 학대 의무신고와 혼동되어 "구급차 부르기"로
+> 고쳤다. **부모가 간호사를 막아서는 장면은 정당하므로 방향을 구별해 판정했다.**
+> **저작 8명 중 1명이 출력 토큰 한도(64000)로 실패해 재투입했다.** 84건을 한 번에 출력하려 한 것이
+> 원인이고 파일에 아무것도 남지 않았다. 다른 클러스터가 21건씩 쌓는데 **파일 자체가 없는 것**이
+> 징후였다. "한 번의 쓰기에 7건까지만, 84건이면 쓰기 호출이 12번 이상 되는 것이 정상"으로 재투입해
+> 성공했다. 또 **완료된 클러스터만으로 게이트를 먼저 돌려** 제목 오타 1건("여덟"→"여덕"에 절단까지)과
+> YAML 파싱 오류 1건을 저작 중에 잡아 해당 에이전트가 스스로 고쳤다. 저작자가 키릴 문자 혼입
+> (`триage`) 1건을 자체 교정했다.
+> **YAML이 깨지는 두 번째 함정을 발견해 지시서에 넣었다**: 값이 따옴표로 시작하면 파싱이 실패한다
+> (`brief: "그냥 이상했어요" 정도로 …`). 같은 항목의 `speakingStyle`에 `"그냥", "아마"로 얼버무린다`처럼
+> 따옴표와 콤마가 겹치면 두 결함이 한꺼번에 난다.
+> **`critical` 전수 확인을 파이프라인의 정식 단계로 올렸다.** 게이트는 티어1의 비-routine만 잡으므로
+> 티어2·3의 과도한 `critical`은 기계로 걸리지 않는다. 34건을 훑어 7건을 `urgent`로 내렸다 — 소수점이
+> 열 배 밀린 것·파운드를 킬로그램으로 착각한 것·약국 준비 용량이 상한을 넘은 것을 **투약 직전에 막은**
+> 4건(차단했으므로 위협이 없었다), 각성 섬망 1건, 부모의 감정을 다루는 대화 2건.
+> **티어1 `urgent` 예외를 신설했다.** `peds-resp-deterioration`은 주제 자체가 악화 인지여서 기초
+> 난이도조차 급박하다. 내 지시서가 "함몰이 새로 생긴 경우 = urgent"라고 써 놓고 같은 문서에서
+> "티어1은 routine"을 요구해 **모순이 있었고 저작자는 임상 정확성을 택했다.** 기존 29부서에 티어1
+> 비-routine이 이미 흔하다(ER 82·PICU 71·ICU 57)는 점이 그 판단을 뒷받침한다. 이 주제만 티어1
+> `urgent`를 허용하고 `critical`은 여전히 결함으로 본다(티어1 routine 204 / urgent 6).
+> **검수 지목 22건 중 21건 채택 · 1건 불채택.** 채택: 권한 경계 3(간호사가 동의를 요구·서명 시점을
+> 통제·진단의 무게를 직접 재구성), 구조 반복 5(`peds-injury-prevention`은 티어2·3의 15건 중 13건이
+> "사고 후 교육 시점 판단"이어서 소재까지 겹치는 4건을 정본의 미충족 축으로 교체, `core-handoff-peds`
+> 2건은 감정만 달라 한 건을 인계 항목 자체의 오류 정정으로 전환), 주제 경계 2(단추 전지 삼킴이
+> `peds-foreign-body`의 재발 예방과 중복 / 탈수 퇴원 지침에 섞인 식사 재개는 `peds-gastroenteritis`
+> 영역), 내용 빈약 2, 정합성 3, **`peds-autism-sensory` 3건**(21건 전부 부모·동료 화자여서 감각 조정의
+> 대상인 아이가 한 번도 말하지 않았고 연령 표기도 없었다 → 여섯 살·아홉 살·열세 살이 직접 말하는
+> 장면으로 교체. 여섯 살은 `No. Too loud.`, 열세 살은 복도의 조명과 소음을 스스로 분석해 설명한다).
+> 같은 지적을 받은 `peds-febrile-seizure`는 호발 연령이 생후 6개월~5세여서 아이가 발작을 서술할 수
+> 없으므로 검수가 스스로 제외했다. 불채택 1건은 이혼한 부모에게 인계를 나눠 전달하는 건을
+> `core-family-peds`로 옮기라는 지목인데, 정본 `core-handoff-peds`에 "교대마다 같은 질문을 받는 부모의
+> 피로"가 축으로 있고 이 seed는 인계를 두 사람에게 같은 밀도로 전달하는 실무 문제여서 유지했다.
+> 제목을 7건 교체하면서 지도·클러스터·설계를 함께 갱신하고 취합·유사도 검사를 다시 통과했다.
+> 손저작 14건과 인사 1건을 주제에 태깅해 **orphans 168 → 153**. v2 스텝 1건(`SCN-PEDS-00640`) 재동기.
+> 35주제 전부 21건 이상·THIN 0·dup-titles 0·`tagged 20233 / 20386`. server vet·`test -count=1 ./...`
+> 그린, `cmd/audit`·`make contract` 무드리프트.
+>
+> ✅ **재생산 5/8 — ONCO(종양내과 병동·항암 주입실) 완료 (2026-09-18, D-P2-F).** 주제 35개의 키·이름을
+> 유지하고 21상황을 전면 재설계해 735건을 다시 냈다. 일혈 주제가 "주입 부위 확인→통증 호소 청취→주입
+> 중단→잔류 약물 제거→냉온 적용→기록과 보고"라는 한 사건을 여섯 토막 낸 구성에서 서로 다른 환자의
+> 독립된 장면 21개로 바뀌었다.
+> 지표: 제목 평균 **8.6자 → 43.5자**(최소 28자) · `sub` 인구통계 0% · 기존 19,136개 제목과 동일 0·
+> 유사도 0.62 이상 0 · 부서 내부 유사도 0 · 방 표기 정본 15종 중 14종 사용 · 화자 patient 520(70.7%) ·
+> family 115 · colleague 100 · acuity routine 556 · urgent 133 · critical 46(6.3%).
+> **설계 단계에서 내가 고칠 것이 처음으로 0건이었다.** 앞 네 부서에서 매번 4~7건을 직접 수정했는데,
+> NICU의 두 교훈을 설계 지시에 미리 넣은 결과다 — ①정본 초점을 축약하지 말고 그대로 옮기고 "축을
+> 하나도 빠뜨리지 마십시오"를 명시 ②**감정의 강도만 바꾼 반복을 금지**하고 "막히는 지점으로 가르라"는
+> 구체적 목록(비용·가족의 반대·수치심·환자가 사실을 숨김·주변의 말이 상처가 됨)을 붙였다. 설계자 6명이
+> 전원 정본 초점의 축 반영을 스스로 대조해 보고했고, 권한·연속성·한자 혼입 기계 스캔도 0건이었다.
+> **저작 단계에서 89건이 걸러졌다(지시서 효과의 최대치).** 저작자들이 자체 검증으로 `brief` 옮겨적기를
+> c2 25건·c5 22건·c6 21건·c7 21건 찾아 전량 재작성했다. c7은 **임상시험 주제 21건이 통째로 유사도
+> 0.86~0.91**이었고 원인은 그 주제의 `focus`가 이미 지시문 수준으로 상세해 어미만 바꾸기 쉬웠다는
+> 것이었다. 대량 결함이 검수까지 가지 않고 저작에서 잡혔다. 내가 게이트로 잡은 것은 1건
+> (tagline에 `(through interpreter)` 무대 지시 + `role: patient`인데 발화가 통역사의 3인칭).
+> **검수 지목 46건 중 17건 채택 · 29건 불채택.** 이번 부서는 불채택이 처음으로 채택보다 많았다.
+> 채택: acuity 8(재발 절망·새 원발암 충격·후기 부작용 조율·압박 슬리브 비순응·신경독성 후회·아이에게
+> 알릴 시점 조율·안정적 식사 중 식이 교육), **권한 침범 2**(간호사가 "시간이 얼마 남지 않았다"고 예후를
+> 확언 / **주입 재개를 간호사가 결정** — 재개는 처방의 몫이고 간호사는 사정·보고 후 지시를 수행한다),
+> **완화의료 오해 미교정 1**(아들이 완화의료를 "죽게 내버려 두는 것"으로 규정하는데 간호사 발화가 감정만
+> 인정하고 넘어갔다 — 정본이 "포기가 아니라는 설명"을 축으로 명시했으므로 교정 문장을 넣었다),
+> **반복 구조 6건 교체**(격리 고립감 4건이 `goals`까지 "판단 없이 받고 자원 연계"로 되풀이 / 보호자
+> 소진 3건이 수면 부족→감정 은폐→완전 붕괴로 강도만 커짐 / 고칼슘 티어3이 6건 중 5건이 급성 신경악화 /
+> 배변 수치심 3건이 `mood`까지 sad 동일).
+> **불채택의 근거를 남긴다.** ①**간호사 동료를 `colleague`로 쓴 15건** — 검수가 정본의 동료 목록을
+> 배타적으로 읽었으나, **PSYCH 정본은 "야간 담당 간호사", LD는 "수술실 간호사", NICU는 "신생아 전문
+> 간호사"를 동료 화자에 명시하고 ONCO 정본만 간호사가 빠져 있었다.** 게다가 ONCO의 `core-handoff-onco`가
+> "교대·전동 인계"를 주제로 두어 간호사 간 대화를 전제한다 — **정본 문서의 누락**이므로 정본과 저작
+> 지시서의 화자 목록에 `동료 간호사(주입실·병동·야간 담당)·사례관리자`를 추가했다. ②**척수압박 `critical`
+> 4건** — 내가 저작 지시서의 critical 예시에 "척수압박이 진행되어 힘이 빠지고 있는 상태"를 명시했고
+> 4건이 정확히 그 상태다(검수는 A항목 문구만 보고 판단했다). ③환경미화 직원·사례관리자·재정상담
+> 담당자를 동료로 쓴 3건과 손위 형제를 가족으로 쓴 1건 — 정본의 화자 예시는 배타적 목록이 아니고 항암
+> 오염물 취급은 종양내과 고유 업무다(LD 시어머니·NICU 형제와 같은 유형). ④**2회짜리 반복 묶음 6개**
+> (매운 음식 타협·지연성 손상 관찰·고위험 일혈 대응·SVC 급성 부종·가족의 강권·혼자 사는 환자 안전망) —
+> **판정 기준을 세웠다: 같은 뼈대가 3회 이상이면 교체하고 2회는 난이도와 촉발 계기가 다르면 구별된
+> 장면으로 본다.**
+> 임상 최우선 항목은 전 구간에서 정확했다 — 일혈 순서(주입 중단→바늘 유지→잔류 약물 흡인) 21건 전부,
+> SVC 체위(상체 세움) 21건 전부, irAE의 다장기성과 치료 종료 후 발생, 호중구감소성 발열=응급, 암성
+> 통증의 변비 예방 동시 시작, 피로의 교정 가능한 원인 우선, 림프부종의 혈압·채혈 회피, 악액질의 대사
+> 변화, 외부 방사선치료의 방사능 잔류 없음.
+> 최종 게이트: `qa_redo.py` 18게이트 전부 통과 · `go test -count=1 ./...` 29패키지 그린 ·
+> `tagged 20218 / 20386` · **ONCO 고아 0**(themes.yaml 키와 직접 대조) · **THIN 0**(35주제 전부 21 이상) ·
+> dup-titles 0 · 계약 무드리프트 · v2 스텝 재지정 불필요(손저작·인사만 참조, namesync 0건).
+> 손저작 13건 태깅으로 전체 고아 181 → **168**. 다음은 PEDS(제목 평균 9.2자).
+>
+> ✅ **재생산 4/8 — NICU(신생아 집중치료실) 완료 (2026-09-18, D-P2-F).** 주제 35개의 키·이름을 유지하고
+> 21상황을 전면 재설계해 735건을 다시 냈다. 계면활성제 주제가 "투여 준비→체위→투여→직후 관찰→설정
+> 조정→부모 설명"이라는 한 번의 처치를 여섯 토막 낸 구성에서, 서로 다른 아기와 부모의 독립된 장면
+> 21개로 바뀌었다.
+> **이 부서는 구조가 달랐다 — 환자가 말하지 않는다.** 신생아는 발화하지 않으므로 `patient` 화자가
+> 금지이고 모든 영어 대화가 부모와 동료를 향한다. 그래서 상황을 가르는 축도 "환자가 무엇을 호소하는가"가
+> 아니라 **누가 무엇을 묻고 무엇을 견디는가**로 바꿔 지시했다(수치를 다 외워 따지는 부모, 무서워서
+> 만지지 못하는 부모, 주말에만 오는 아버지, 아이와 떨어져 먼저 퇴원한 산모). `persona`도 아기가 아니라
+> 말하는 사람이고 `ageRange`는 그 사람의 나이다. **저작물 735건에 `patient` 0건.**
+> 지표: 제목 평균 **8.6자 → 45.8자**(최소 27자) · `sub` 인구통계 0% · 기존 19,089개 제목과 동일 0·
+> 유사도 0.62 이상 0 · 부서 내부 유사도 0 · 방 표기 정본 13종만 사용 ·
+> acuity routine 542 · urgent 154 · critical 39(5.3%).
+> **화자 배분은 정본 목표에 못 미쳤고 원인이 설계 단계에 있었다.** 정본은 `family` 52% · `colleague`
+> 48%를 의도했으나 실제는 526/209(72%/28%)다. 지도 제목을 세어 보니 **가족 명시 472건(64%)·동료 명시
+> 117건(16%)** 으로 저작 단계에서는 조정할 수 없는 구조였고, 저작자 8명이 독립적으로 같은 진단을 냈다.
+> 다만 **클러스터별 차이가 결정적이었다** — c6(체온조절·선천성심질환·교환수혈·제대카테터)은 51/49로
+> 목표에 정확히 맞았고 c2(통역·무호흡·성장·IVH·퇴원교육)는 90/10이었다. 처치와 동료 협업이 많은 주제는
+> 동료가 자연히 늘고 부모 교육이 본질인 주제는 가족으로 잠긴다. 부서 전체 목표를 주제마다 강요하면
+> 장면이 왜곡되므로, 검수에 "제목이 화자를 지정하지 않았는데 가족으로 저작된 항목 중 동료가 더 자연스러운
+> 것"만 찾게 했고 그 결과로 7건을 동료 장면으로 교체했다(209건으로 소폭 개선).
+> **취합 전 직접 수정 4건**: ①**정본 누락 1건이 내 잘못이었다** — `core-family-nicu`는 주제 이름 자체가
+> "부모 유대·NICU 스트레스·**나쁜 소식**·퇴원 준비"인데 21상황에 나쁜 소식을 전하는 장면이 하나도 없었고
+> "만지기를 두려워하는 부모"·"매일 수치만 묻는 부모"도 빠진 채 조부모·방문 조율이 다섯 건씩 반복됐다.
+> 내가 설계 프롬프트에 범위를 정본보다 좁게 적은 것이 원인이어서 중복분 4건을 빠진 축으로 교체했다.
+> ②**임상 지침 오류 1건** — 소생 주제의 `focus`가 "활발하지 않은 아기만 기관 흡인 대상"이라고 썼는데
+> 2015년 개정 이후 **태변 착색 양수에서 일상적 기관 흡인은 권장되지 않는다**(활발하지 않은 아기에게도
+> 양압 환기가 먼저다). 저작·검수 지시서에도 명시했다. ③권한 침범 1건(간호사가 전화 통역으로 수혈 동의를
+> "받아내기") ④부서 내부 유사 1건(같은 설계자가 두 주제에 같은 문형을 써 0.643).
+> **검수 지목 16건 중 11건 채택 + 중복 교체 7건.** acuity 7건(부모의 절박함·회고적 절차 개선 요청·
+> 나쁜 소식 후 정서적 동행·수술 전 마지막 접촉은 급박성이 아니다 / `keyPhrase`가 "not a spike"라고
+> 하면서 urgent인 내적 모순 1건 포함), 권한 침범 1건(간호사가 뇌 초음파 등급을 근거로 발달 예후를 확언),
+> 정합성 2건(제목은 "어머니"인데 persona가 외할아버지·아버지), **주제 경계 1건 — 괴사성 장염은 감염 격리
+> 사유가 아닌데 `격리실`에서 "다른 부모들의 시선"을 다뤄 `nicu-isolation`을 침범**(제목까지 "관찰을
+> 강화하려 병상을 옮긴 뒤"로 정정).
+> **같은 구조의 반복 7건은 제목까지 교체했다** — 저혈당 주제에 "반복 채혈에 괴로워하는 부모" 4건이
+> 감정 강도만 바꿔 실려 있었고(게다가 채혈 통증은 `nicu-blood-draw`의 영역이다), 산소포화 주제에
+> "뒤늦게 알고 왜 말 안 했느냐" 3건, 기관지폐이형성증은 21건 전부 `family`, 선천성 기형 수술에 같은
+> 대처 구조 2건이 있었다. 21번 플레이해도 같은 장면을 만나면 재생산의 목적이 무너지므로 **내가 seed
+> 7건을 직접 다시 썼다**(수유 상담가와 섭취량 확인 / 저혈당의 뇌 영향 질문에 아는 것과 모르는 것을
+> 구분 / 감량 실패를 후퇴가 아닌 시도로 설명 / 다른 아기와 비교하며 감량을 재촉하는 부모 / 호흡치료사와
+> 야간 기록 대조 / 가정 산소 업체와 방문 간호 일정 공백 / 다음 수술팀에 부모의 이해 수준 전달).
+> **5건은 불채택**: 형제를 `family` 화자로 쓴 3건(정본의 "부모·조부모"는 예시이고 주제 초점이 "형제의
+> 방문"을 요구한다), 제대 카테터 절차 항목이 `family`인 2건(저작된 장면은 부모가 그 절차를 지켜보며
+> 묻는 것이고 이는 부서 정체성인 "장비를 부모 말로 옮기기"에 정확히 부합한다).
+> **게이트 17 → 18**: 부서 정본에서 "`patient`를 쓰지 마십시오" 선언을 읽어 **부서별 금지 화자**를
+> 검사하도록 `qa_redo.py`를 보완했다. **`namesync.py`가 3건을 재동기했다** — NICU의 v2 스텝은
+> `00145`·`00582`·`00833`을 참조하는데, LD에서 접두사 판정 결함을 고치지 않았다면 뒤의 2건을 놓쳐
+> 커리큘럼 스텝이 틀린 이름으로 남았다.
+> 최종 게이트: `qa_redo.py` 18게이트 전부 통과 · `go test -count=1 ./...` 29패키지 그린 ·
+> `tagged 20205 / 20386` · **NICU 고아 0**(themes.yaml 키와 직접 대조) · **THIN 0**(35주제 전부 21 이상) ·
+> dup-titles 0 · 계약 무드리프트 · v2 스텝 3건 재동기. 손저작 13건 태깅으로 전체 고아 194 → **181**.
+> 다음은 ONCO(제목 평균 8.6자).
+>
+> ✅ **재생산 3/8 — LD(분만실·산과) 완료 (2026-09-18, D-P2-F).** 주제 35개의 키·이름을 유지하고
+> 21상황을 전면 재설계해 735건을 다시 냈다. 산후 출혈 주제가 "출혈량 확인→자궁 마사지→정맥로 확보→
+> 활력징후→옥시토신→의사 호출"이라는 한 번의 응급 대응을 여섯 토막 낸 구성에서, 패드가 십 분 만에
+> 다시 젖은 산모·고혈압 병력에 메틸에르고노빈 지시가 내려온 산모·천식 산모에게 프로스타글란딘이
+> 지시된 상황처럼 **서로 다른 산모의 독립된 장면 21개**로 바뀌었다.
+> 지표: 제목 평균 **8.5자 → 43.6자**(최소 29자) · `sub`이 정형 인구통계인 비율 **85% → 0%**(8부서 중
+> 가장 나빴던 항목) · 기존 19,027개 제목과 동일 0·유사도 0.62 이상 0 · 부서 내부 유사도 0 ·
+> 방 표기 정본 13종만 사용. 화자 patient 555(75.5%) · colleague 115 · family 65.
+> **acuity 분포를 부서 성격으로 설명했다**: routine 450 · urgent 168 · **critical 117(15.9%)** 로
+> PSYCH(4.2%)의 네 배인데, 티어별로 쪼개 보니 **critical 117건 중 112건이 티어3**이고 티어2는 5건뿐이었다.
+> 분만실의 티어3은 제대 탈출·자간증 발작처럼 몇 분 안에 두 생명이 걸린 장면이고 정신과의 티어3은 법적
+> 권한·관계 충돌이라, 부서 성격의 정당한 편차다. 견갑난산의 티어2 6건도 전부 "기동이 진행 중인 순간"의
+> 서로 다른 역할(시간 기록·치골 위 압박 보조·인력 호출·겁먹은 배우자 관리)이어서 그대로 뒀다.
+> **지시서 이월 효과가 누적됐다** — RAD·PSYCH에서 효과가 측정된 「권한 경계」절과 `brief` 옮겨적기
+> 0.62 기준을 LD판으로 옮기고 분만실 고유 내용으로 교체했다. acuity 절에는 **"진통이 아프다는 것은
+> 급박성이 아니다"**(통증은 이 부서의 기본 조건)와 **"상실 자체는 critical이 아니다"**를 명시했다.
+> 결과: `brief` 옮겨적기 0건, 검수 3명이 735건에서 권한 침범 **2건만** 지목(RAD 6건 → PSYCH 0건 → LD 2건).
+> **설계 확정 전 직접 수정 6건**: 권한 침범 2(간호사가 제왕절개 동의를 배우자 통역으로 직접 받음 /
+> 견갑난산 뒤 아기 팔의 "정상 소견"을 간호사가 설명), **임상 용어 오류 1(`상견갑 압박`은 표준에 없는
+> 용어 → 치골 위 압박으로 정정. 견갑난산 기동은 맥로버츠와 치골 위 압박이고 자궁 저부 압박은 금기다)**,
+> 표준 예방 조치 1("맨손으로라도 받을 준비" → 아기를 안전하게 받는 축으로), 진단적 단정 1, 어색한 제목 1.
+> 내가 쓴 `focus`에 한자 조각(`몇十 초`)이 섞인 것도 전수 점검으로 잡았다.
+> **검수 지목 10개 항목 중 8건 채택**: acuity 3(회음부 감염 초기·분만 결정 통보·태아 사망 고지는 전신
+> 악화 전 단계이거나 소식 전달이므로 critical 부적합), 권한 경계 3(척추마취 후 저혈압에서 간호사가
+> 승압제를 스스로 투여 → 수액·체위 조치 후 마취과 호출 / **트리아지에서 간호사가 입원 기준 충족을
+> 선언하고 이동을 결정한 2건** — 둘 다 티어1에서 나왔다), 정합성 1(이송 중인 장면의 room이 수술실),
+> tagline 구조 반복 1(경막외 주제 21건 중 7건이 `is that …?` 의문형 → 4건 재작성해 1건으로).
+> **2건은 불채택**: ①제왕절개 후 자궁 저부 마사지가 `ld-uterine-atony` 침범이라는 지목 — `REDO-THEMES`가
+> 이 주제의 범위에 "수술 후 자궁 저부 확인"을 명시하고 있고 이 seed의 고유 가치는 절개 부위가 아픈
+> 산모에게 마사지 통증을 예고하는 소통이다(대신 brief를 확인·보고 축으로 조정). ②시어머니를 `family`
+> 화자로 쓴 것이 정본의 "배우자·파트너·산모의 어머니"를 벗어난다는 지목 — 예시 목록이 배타적이라 볼
+> 근거가 약하고, 한국인 간호사 학습자에게 문화적으로 유효한 소재다.
+> **검증 스크립트 2건 수정(남은 5부서에 이월)**: ①`namesync.py`가 생성 id를 `...-001` 접두사로만
+> 판정해 **`SCN-LD-00801`·`00822` 같은 상위 범위를 건너뛰고 있었다.** 고치지 않았으면 v2 스텝 2건이
+> 옛 이름으로 남아 실제 시나리오와 어긋난 채 방치됐다(9월에 CI를 5일간 레드로 만든 것과 같은 유형).
+> 생성 파일에 그 id가 있는지로 판정하도록 바꿔 실제로 2건이 재동기됐다. ②`qa_redo.py`에 **규격 외 필드·
+> persona 규격 외 필드·필수 필드 누락 게이트 3종 추가(14 → 17게이트)**. 이 게이트가 LD에서 1건을 잡았고,
+> 같은 유형으로 **이미 서빙되던 PSYCH·ER 2건까지 찾아냈다**(별도 커밋 `fc6741c`).
+> 최종 게이트: `qa_redo.py` 17게이트 전부 통과 · `go test -count=1 ./...` 29패키지 그린 ·
+> `tagged 20192 / 20386` · **LD 고아 0**(themes.yaml 키와 직접 대조) · **THIN 0**(35주제 전부 21~22) ·
+> dup-titles 0 · 계약 무드리프트 · v2 스텝 2건 재동기. LD 손저작 13건 태깅으로 전체 고아 207 → **194**.
+> 다음은 NICU(제목 평균 8.6자).
+>
+> ✅ **재생산 2/8 — PSYCH(정신건강의학과 병동) 완료 (2026-09-18, D-P2-F).** 주제 35개의 키·이름을
+> 유지하고 21상황을 전면 재설계해 735건을 다시 냈다. 자살 위험 사정 주제가 "개방형 질문→C-SSRS 시작→
+> 안심→과거 시도력→보호 요인→절망감"이라는 한 번의 면담을 여섯 토막 낸 구성에서, 약을 모아 둔 환자·
+> 집에 총기를 보관한 환자·부인하지만 유언 같은 말을 남긴 환자·퇴원 서명 직후 고백한 환자처럼 **서로 다른
+> 환자의 독립된 장면 21개**로 바뀌었다.
+> 지표: 제목 평균 **8.0자 → 41.7자**(최소 29자·최대 56자) · `sub`이 정형 인구통계인 비율 **0%** ·
+> 기존 18,973개 제목과 동일 0·유사도 0.62 이상 0 · 부서 내부 유사도 0 · 방 표기 정본 19종만 사용.
+> **acuity 최종 분포**: routine 465 · urgent 239 · critical 31(4.2%).
+> 파이프라인: 설계 6명(**경계가 맞닿는 주제를 한 사람에게 묶어** 침범 예방 — 자살위험·자해·폭력위험·
+> 디에스컬레이션·격리강박·환경안전 6개를 한 묶음으로) → `merge_design.py` → `title_sim.py`(신설) →
+> `split_map.py` 8클러스터(성씨 범위 A·B·C…V·W·Y·Z) → 저작 8명 → `qa_redo.py` 14게이트 →
+> 제3자 검수 3명 전량 독해(210·273·252건).
+> **신설 스크립트 `title_sim.py`**: 매번 임시 코드로 돌리던 전역 제목 대조를 스크립트화했다(새 지도의
+> 735제목 대 기존 전량, 완전 동일·유사도·부서 내부 유사도 3종. 길이 비율 프루닝으로 35초). 이미 완료된
+> RAD 지도로 돌려 기록된 수치를 그대로 재현하는 것으로 검증했다.
+> **지시서 보강 — 권한 경계 절 신설.** RAD 검수 지목 21건 중 6건이 권한 침범이었는데 정신과 맥락의 같은
+> 함정(전기경련요법 동의 설명 주체·비자의 입원 결정·경고 의무 직접 통보·진단 통보·대리 동의 적격성 판단)에
+> 대한 경고가 지시서에 없었다. 저작 지시서에 「권한 경계」절을, 검수 지시서 A항목에 해당 조항을 추가했고
+> **반대 방향(간호사 고유 업무를 의사에게 넘기는 서술)도 결함으로 명시**했다. 효과가 실측됐다 — 저작물에
+> "이 거부가 유효한지는 제가 정하는 게 아니라 팀이 정식으로 검토할 일입니다"처럼 경계를 지키는 발화가
+> 나왔고, 검수 3명이 권한 침범을 **735건 전량에서 0건** 보고했다.
+> **`brief`가 `focus`의 옮겨적기인 사례 0건(RAD은 74건).** RAD의 교훈을 지시서에 유사도 0.62 기준과
+> 좋음·나쁨 예시로 박아 넣은 결과이며, 저작자 8명이 모두 자체적으로 유사도를 계산해 보고했다.
+> **설계 확정 전 직접 수정 7건**(제목은 지도에 고정되어 검수 단계에서 고칠 수 없으므로 취합 전이 유일한
+> 기회다): 권한 침범 4(간호사가 가족에게 진단명을 처음 통보 / 대리 동의를 간호사가 받음 / 응급 투약에
+> "동의를 구함" — 응급에서는 동의가 아니라 고지다 / 위험물을 간호사가 몸싸움으로 압수), 티어1에 놓인
+> 급성 근긴장이상을 티어2와 교환(티어1은 `routine`이 규칙이라 그대로 두면 저작자가 규칙과 임상 정확성
+> 사이에서 충돌한다), 앞 상황을 전제하는 "이어서 묻기" 1, 비문책 원칙에 어긋나는 "추궁하기" 1.
+> **검수 지목 22건 전량 실물 확인 후 처리**: ①acuity 17건 — RAD과 **양상이 달랐다**. RAD은 티어1에
+> urgent·critical이 붙는 문제였는데 PSYCH은 티어1 위반이 전무한 대신 **티어2~3에서 "이미 벌어진 사건에
+> 대한 정서적으로 무거운 대화"를 urgent로 태깅**하는 유형이 c4에 집중됐다(지연성 운동이상 고지·소송 언급·
+> 재입원 노출·검사 결과 불신·팀 대응 회의). 같은 주제 안에서 더 무거운 seed가 routine인데 가벼운 쪽이
+> urgent인 내부 불일치가 근거였다. ②정합성 3건 — 긴장증 2건은 제목이 "말도 움직임도 없는 환자"인데
+> tagline에 발화가 있었다(최소 발화 자체는 부정증·언어상동증으로 타당하므로 **제목이 고정인 만큼 내용으로
+> 축을 되돌려** "몇 시간째 말이 없다가 같은 단어만 되풀이하는"으로 상태를 정확히 기술), persona 성별이
+> 제목의 "어머니"와 어긋난 1건. ③**임상 원칙 위반 1건(최우선)** — OCD 주제에서 간호사가 대칭 강박 의식을
+> 환자와 "함께" 수행했다. 같은 주제의 다른 seed가 확인 강박의 안심 제공을 정확히 거절하고, 또 다른 seed는
+> 어머니의 의식 대행을 "증상을 유지시켜 온 패턴"으로 비판하는데 이 seed만 정면으로 모순됐다. 강박 행동
+> 대행은 확인 대행과 같은 accommodation이므로 brief·keyPhrases 3·goals 2를 재작성해 "대신 맞춰 주지 않되
+> 부정도 하지 않고 스스로 정리할 시간을 확보"로 바꿨다. ④**제목의 법적 기간 단정 1건** — "72시간 절차"가
+> 제목에 박혀 있었으나 자의 퇴원 요구 후 보류 기간은 주마다 다르다. 지도·클러스터·seed의 제목을 함께
+> "심사 기간"으로 고쳤다(RAD의 납 차폐 제목 수정과 같은 사례).
+> **검수 지적 1건은 불채택** — 가족 식사 자리의 `room`이 `가족 상담실`이라 `병동 식당`이어야 한다는
+> 지목이었으나, 섭식장애의 가족 식사 세션은 실제로 치료 공간에서 진행하는 표준 개입이다. 대신 brief에
+> "가족 식사 세션 중"을 명시해 모호함만 없앴다(SPECIALTY에서도 검수 권고와 반대 방향이 맞은 사례가 있었다).
+> **검증 스크립트 결함 1건 수정** — `Darius Van Dyke`가 성씨 범위 이탈로 잡혔는데 규칙을 지킨 이름이었고
+> `qa_redo.py`가 성씨를 끝 단어(`Dyke`)로만 본 것이 원인이었다. 성씨를 **첫 단어를 제외한 나머지**로
+> 판정하도록 고쳤으므로 남은 6부서에서 복합 성씨가 오탐되지 않는다.
+> **v2 스텝 재지정 불필요** — PSYCH의 v2 카탈로그 11스텝은 전부 손저작 `SCN-PSYCH-00001`~`00012`와 인사
+> `00900`만 가리키고 생성 id를 참조하지 않는다(`namesync.py` 0건). RAD은 10건이었다.
+> 아울러 PSYCH 손저작 13건을 주제에 태깅해 전체 고아가 220 → **207**로 줄었다.
+> 최종 게이트: `qa_redo.py` 14게이트 전부 통과 · `go test -count=1 ./...` 29패키지 그린 ·
+> `tagged 20179 / 20386` · **PSYCH 고아 0**(themes.yaml 키와 직접 대조) · **THIN 0**(35주제 전부 21~22) ·
+> dup-titles 0 · 계약 무드리프트. 다음은 LD(제목 평균 8.5자).
+>
+> ✅ **재생산 1/8 — RAD(영상의학과) 완료 (2026-09-17, D-P2-F).** 주제 35개의 키·이름을 유지하고 21상황을
+> 전면 재설계해 735건을 다시 냈다. 절차 분할이 실제로 사라졌다 — 조영제 아나필락시스 주제가 "초기 증상
+> 인지→즉시 중단→도움 요청→활력징후→기도 관찰→산소 준비"에서 경증 두드러기·목소리 잠김·혈압 저하·첫
+> 반응·반응 후 설명·재검사 거부처럼 **서로 다른 환자의 독립된 장면 21개**로 바뀌었다.
+> 지표: 제목 평균 **7.9자 → 42.5자**(최소 25자) · `sub`이 정형 인구통계인 비율 **65% → 0%** ·
+> 방 표기 64종 → 23종 정본 · 기존 19,321개 제목과 동일 0·유사도 0.62 이상 0 · 부서 내부 유사도 0.
+> 파이프라인: 설계 6명(인접 주제 묶음 배분 — 조영제 5주제+정맥로를 한 사람에게) → `merge_design.py`로
+> 취합 검증 → 8클러스터 저작(성씨 범위 A·B·C…V·W·Y·Z) → `qa_redo.py` 14게이트 → 제3자 검수 3명 전량 독해.
+> **신설 스크립트 2개**: `merge_design.py`(주제 키·이름 정합·6/9/6·제목 20자 이상·`-기` 종결·중복 0),
+> `qa_redo.py`(오염·지도 정합·방 목록·mood·role·티어1 acuity·`sub` 인구통계·성명 3축·성씨 범위·
+> keyPhrases 전역 중복·brief↔focus 유사도·goals 유사도·tagline 서두 반복·타 부서 제목 동일).
+> **적발·수정 내역:** ①`brief`가 `focus`의 어미만 바꾼 것 **74건**(c1 38·c2 20·나머지 16) — 원저작자에게
+> 되돌려 재작성, 저작 지시서에 유사도 0.62 기준과 좋음·나쁨 예시를 넣어 재발을 막았다. ②검수 지목 **21건**
+> 전량 실물 확인 후 수정 — 권한 침범 6건(중재시술 동의에서 간호사가 목적·위험·대안을 직접 설명하고 대리
+> 동의까지 받음 / 간호사가 이번 영상과 이전 영상을 비교해 "변화 없음"을 전달), `acuity` 과다 10건(인계·가족
+> 갈등 중재·대화 가능한 트리아지·낙상 직후 사정·치료 창이 닫힌 뒤의 대화·호출벨 안내·일정 조율), 과소 1건,
+> 주제 경계 침범 3건(제목이 고정이므로 **내용으로 축을 되돌렸다** — 코어 가족의 동의 능력 평가를 소통
+> 경계로, 정맥로의 일혈 처치를 연결부·정맥로 점검으로, 검사 전 불안의 트라우마 반응은 촉발 요인을 좁은
+> 공간에서 기억 자체로), 정합성 1건(CT 혈관촬영 `room`이 `혈관조영실` → `CT 검사실`).
+> ③**임상 지침 갱신 3건** — ACR·AAPM의 2021년 이후 공동 권고는 **환자에 대한 일상적 납 차폐를 권장하지
+> 않고**(태아 선량 감소 효과가 미미하고 자동노출제어로 다른 부위 선량이 오히려 늘 수 있다) 조사 범위·촬영
+> 조건 최적화를 권장한다. 이 때문에 제목 2건까지 고쳤다(`생식선 차폐를 원칙대로 적용하기` → `임신 여부
+> 확인 절차를 규정대로 지키기`, `차폐와 프로토콜 조정` → `프로토콜 조정`). 보호자·직원 차폐 6건은 지금도
+> 표준이므로 그대로 뒀다. ④**함정 적발** — `seeds-rad/`에 9월 14일 첫 저작의 구 파일이 남아 있어 저작
+> 직후 건수가 정확히 735로 나왔고 완료로 오인했다(제목이 `첫 CT 안내`). 8부서분 구 파일을 `seeds-pre-redo/`로,
+> 구 지도를 `maps-pre-redo/`로 이관하고 **"저작물의 모든 제목이 새 지도에 있는지"를 오염 판정 게이트**로 삼았다.
+> 아울러 RAD 손저작 13건을 주제에 태깅해 전체 고아가 233 → 220으로 줄었다.
+> 최종 게이트: `qa_redo.py` 14게이트 전부 통과 · `go test -count=1 ./...` 29패키지 그린 ·
+> `tagged 20166 / 20386` · **RAD 고아 0 · THIN 0** · dup-titles 0 · 계약 무드리프트 ·
+> v2 스텝 10건 `namesync` 재동기. **8부서 주제 정본(`REDO-THEMES-*.md`)은 전부 확정**해 두었고
+> PSYCH 지시서 3종도 준비됐다. 다음은 PSYCH.
+>
+> 🔁 **커리큘럼 v3 P2 재생산 착수 — 초기 8부서(D-P2-F, 2026-09-17).** 29부서 완주 직후 부서 간 품질을
+> 측정해 **초기 8부서가 D-P2-B의 전제를 못 지키고 있음**을 확인했다. 21상황이 서로 구별되는 장면이 아니라
+> **한 사건을 시간 순서로 쪼갠 절차 단계**다(WARD 수혈: 동의 확인→교차 채혈→기준 활력징후→이중 확인→목적
+> 설명→정맥로 확보 / RAD 조영제 아나필락시스: 초기 증상 인지→즉시 중단→도움 요청→활력징후→기도 관찰→산소
+> 준비 / PSYCH 자살 위험: 개방형 질문→C-SSRS 시작→안심→과거 시도력→보호 요인→절망감). 이 구조에서는 21회
+> 플레이해도 서로 다른 임상 상황을 만나지 못하고, 단계는 이어지는데 페르소나는 매번 바뀌어 내적 모순까지 생긴다.
+> 제목 평균 길이(RAD 7.9·PSYCH 8.0·LD 8.5·NICU 8.6·ONCO 8.6·PEDS 9.2·PICU 9.2·WARD 9.7자)는 원인이 아니라
+> 증상이다 — 절차 단계에 이름을 붙이면 명사구가 되고, 장면을 서술하면 길어진다. **사용자 결정: 하위 8부서
+> 5,880상황 전량 재생산.** 중위 10부서(OR·GERI·ER·ENDO·DIAL·ICU·INFUSION·DERM·SURGWARD·PHARMA)는 제목이
+> 10~15자로 짧지만 절차 분할이 아니어서 손대지 않는다(DERM은 14.0자인데 품질 기준 절을 갖춘 파이프라인을
+> 온전히 통과했다 — **제목 길이는 판정 기준이 아니다**). 재생산 방식: **주제 35개의 키·이름은 유지**하고(손저작
+> 시나리오와 v2 스텝이 참조하므로 바꾸면 고아가 생긴다) 21상황만 전면 재설계, **735건 규모 유지**(v2가 참조하는
+> `SCN-<CODE>-00101`~`00835` id 보존, 이름은 `namesync.py`가 재동기), 방 목록 부서별 정본화(RAD은 64종이
+> `CT 1`·`CT 검사실`·`RAD Waiting`·`IR Suite`로 뒤섞여 있었다 → 23종), 이 8부서의 미태깅 손저작 94건 동시 태깅.
+> 새 지시서 3종: `REDO-THEMES-<code>.md`(주제 키·이름·초점·경계 정본) · `DESIGN-SPEC-redo-<code>.md`(최상위
+> 규칙 = **절차 단계로 쪼개지 마십시오**, 상황을 가르는 축 5가지 명시) · `AUTHORING-SPEC-redo-<code>.md`
+> (`sub`에 인구통계 금지 → 그 사람이 이 상황에 놓인 이유를 쓰게 함). 검증 스크립트 `merge_design.py` 신설
+> (주제 키·이름 정합 · 6/9/6 · 제목 20자 이상 · `~하기` 종결 · 부서 내 중복 0 · 타 부서 제목과 동일 0).
+> **RAD 설계 진행 중**(6명 병렬, 인접 주제를 같은 설계자에게 묶어 경계 침범 예방: 조영제 5주제+정맥로 한 묶음).
+> [DECISIONS](DECISIONS.md) 2026-09-17 D-P2-F.
+>
+> 🎉 **커리큘럼 v3 P2 — SIM(간호부·감염관리·시뮬랩) 완료 = 29/29 완주 (2026-09-17).** D-P2-E대로 15주제 ×
+> 21 = 315상황. 코어 4 유지(안전=훈련장 안전·감염관리 · 언어 · 인계=SBAR 시뮬 · 가족=표준화 가족 역할).
+> 심화 11 = 사전 브리핑 · 구조화된 디브리핑 · 술기 루브릭 · 팀 리더십 · 위기 자원 관리 · 근접사례 리뷰 ·
+> 수행 피드백 · 자기 성찰 · 동료 평가 · 재응시 · 대량재해 시뮬. `feedback` 축이 LOUNGE와 겹쳐
+> `sim-instructor-feedback`으로 구체화했다. 지도 검증: 기존 19,292건 제목과 완전 동일 0 · 유사도 0.62
+> 이상 0 · 제목 평균 36.5자. audit: 15주제 전부 21 이상 · THIN 0 · dup-title 0 · SIM 고아 0.
+> 게이트 3종 통과. 누적 태깅 20153 · 955주제 · **전 부서 THIN 0 · dup-title 0**. v2 스텝 10개 namesync.
+>
+> **① 이 부서만의 예외 규칙**: `patient`·`family`를 쓸 수 있으나 **실제 환자가 아니라 표준화 환자·가족
+> 역할을 맡은 배우**다. `sub`에 배우임을 반드시 밝히게 했고 38건 전부 표기되어 누락 0이다.
+> 화자는 colleague 88% · patient 4% · family 8%(D-P2-E 목표 80/15/5) — 평가·회고 주제에 표준화 환자를
+> 억지로 넣으면 타당성이 깨져 강제하지 않았고, 검수에서 "표준화 환자가 더 자연스러운데 동료로 쓰인 항목"을
+> 찾게 했으나 0건이었다.
+>
+> **② `acuity: critical`을 0으로 통일했다.** 클러스터마다 6·2·0·0으로 갈렸는데, **훈련이므로 실제로
+> 다치는 사람이 없다**. 0으로 맞춰야 다른 부서의 `critical`이 "진짜 위험"이라는 의미를 유지한다.
+> 이로써 부서별 `acuity` 기준이 세 갈래로 정리됐다: 임상 부서(환자 위험) · MORGUE(살아 있는 사람의
+> 신체 위협만) · SIM(critical 없음).
+>
+> **③ 검수 2건만 지목됐다(c3·c4는 0건).** ⓐ**동료 평가자가 제도적 결론을 통보** — "This means a retake"를
+> 동료 참가자가 말했는데 재응시 확정은 지도자의 권한이다 → 관찰 사실 전달과 기록까지로 한정 ⓑ**"마지막
+> 시도"가 재응시 이상의 불이익을 암시** → 제목은 지도 고정이므로 "이번 주기의 마지막이고 그다음은
+> 해고가 아니라 별도 지원 계획"임을 지도자가 밝히게 고쳤다. 검수자가 "디브리핑 주제가 이 부서에서 가장
+> 잘 만들어졌다"고 평가했다(advocacy-inquiry가 명시적으로 구현됨).
+>
+> ⚠️ **검증 방법의 결함을 발견해 정정했다(중요).** 그동안 부서별 고아를 `cmd/audit` 출력에서
+> `grep -c 'SCN-<DEPT>'`로 확인했는데, **audit은 고아를 앞 15건만 출력한다**(`firstN(rep.Orphans, 15)`).
+> 즉 15건 넘게 밀린 뒤로는 그 grep이 무의미했다. 직접 계산해 보니 **NURSERY와 SPECIALTY에 미태깅
+> 손저작이 12건씩 남아 있었다** — 두 부서의 "고아 0" 보고는 틀렸다. 24건을 태깅해 바로잡았고,
+> **이번 세션에서 착지한 9부서(ORTHOWARD·NURSERY·DERM·SPECIALTY·GEN·LOUNGE·SPD·MORGUE·SIM)는 전부 고아 0**임을
+> 스크립트로 재확인했다. 아울러 **기존 부서의 미태깅 손저작이 STATUS에 적혀 있던 113건이 아니라 실제
+> 233건**임이 드러났다(OR·PEDS·ER·ICU 각 15 / INFUSION·GERI·PICU·REHAB·HOSPICE·PSYCH·ONCO·WOMENKIDS·
+> NICU·RAD·ENDO·LD·DIAL 각 13 / ORIENT 3 / WARD 1). **부서 고아를 확인할 때는 audit 출력을 grep하지 말고
+> themes.yaml 대조로 직접 세야 한다.**
+>
+> ✅ **커리큘럼 v3 P2 — MORGUE(영안실·부검실) 완료 (2026-09-17, 28/29).** D-P2-E대로 15주제 × 21 = 315상황.
+> 코어 4 유지(안전=감염 시신 취급 · 언어=사망을 말하는 언어 · 인계 · 가족=유족 소통). 심화 11 = 시신 인수와
+> 보관 · 신원 확인 · 유족 참관 · 부검 절차 · 조직·장기 기증 · 문화·종교 관습 이행 · 소지품과 귀중품 ·
+> 장례식장 인계 · 무연고 사망 · 소아 사망 · 직원 디브리핑. **`role: patient` 0건**(고인 비발화).
+> 지도 검증: 기존 18,977건 제목과 완전 동일 0 · 유사도 0.62 이상 0 · 제목 평균 40.2자(전 부서 최장).
+> audit: 15주제 전부 21 이상 · THIN 0 · dup-title 0 · MORGUE 고아 0(손저작 12건 + 인사 1건 태깅).
+> 게이트 3종 통과. 누적 태깅 19801 · 940주제. v2 스텝 10개 namesync.
+>
+> **① HOSPICE와의 경계가 이 부서 설계의 핵심이었다.** 착수 전에 기존 콘텐츠를 확인해 보니
+> `hospice-postmortem-care`가 **병실 쪽 사후 처치 전반을 이미 다루고 있었다**(임종 확인 후 시간 드리기 ·
+> 사후 신체 정돈 · 작별 시간 · **종교·문화 관습 확인** · **유품 정리 지원** · **장례사 연락 안내** ·
+> 사망 서류 설명). D-P2-E가 MORGUE에 배정한 주제 중 셋이 여기 겹칠 수 있었다. 그래서 축을 **병실 임종
+> 직후(HOSPICE) 대 영안실 이송 후(MORGUE)**로 갈랐다 — 문화 관습은 HOSPICE가 "확인", MORGUE가 "실제
+> 이행"; 소지품은 HOSPICE가 "정리 지원", MORGUE가 "입고 목록·봉인·반환 서명·분실 주장"; 장례식장은
+> HOSPICE가 "연락 안내", MORGUE가 "실제 인계". D-P2-E의 "사후 처치"도 축 이름이 겹쳐
+> `morgue-body-receiving`으로, "유족 첫 대면"은 코어에 흡수하고 `morgue-viewing`으로 대체했다.
+>
+> **② 검수 12건 수정.** ⓐ제목이 내용과 무관("**다인종** 사망 사고"인데 실제 내용은 다수 사상자 동시
+> 유입) → **지도까지 함께 고쳐** 제목을 정정하고 전역 유일성을 재확인 ⓑ완곡어 교정 주제가 **자기모순** —
+> `"no longer with us"`를 고치라면서 대안으로 또 완곡어 `"passed away"`를 제시(같은 주제 첫 항목은
+> `"died"`를 쓰라고 가르친다) → `"died on [date]"`로 ⓒ**HOSPICE 경계 침범 2건** — 병실 복도에서 임종
+> 통보를 코칭하는 장면 → 영안실 접수·참관실로 이동 ⓓ**LOUNGE 경계 침범 2건** — 직원 디브리핑이 누적
+> 소진을 다뤄 LOUNGE 영역으로 넘어감 → "이번 사례 직후"로 좁힘 ⓔroom 부적합 3건 ⓕ영어 문법 오류 1건
+> ⓖ티어3인데 routine 1건. **AI 자체 발견 3건**: 빈 tagline(`"..."`—침묵 장면이라 비워 뒀던 것을 첫 응답으로),
+> tagline 중복 1건, 그리고 c1의 `critical` 22건 이상치.
+>
+> **③ `acuity: critical` 기준을 MORGUE용으로 좁혔다(중요).** 환자가 이미 사망했으므로 SPD 기준을 그대로
+> 쓸 수 없다. 검수자가 "되돌릴 수 없는 오류" 조항을 **정보 오류(오인 시신 참관·잘못된 이름 통보)에도
+> 적용할지** 판단을 넘겼고, **신체·건강 위협으로 한정**하기로 결정했다 — 정보·절차 오류는 즉시 바로잡아야
+> 하지만 누구의 몸도 위험하지 않으므로 `urgent`다. 적용 결과 critical이 **30 → 7건**(c1 4 · c2 0 · c3 1 ·
+> c4 2)이 되었고, 남은 7건은 부검 중 찔림 · 감염 노출 3건 · 유족 실신 · 폭력 위험 2건으로 전부 신체 위협이다.
+>
+> **④ 화자 비율은 억지로 맞추지 않았다(정직한 편차).** D-P2-E는 `family` 60%를 의도했으나 실제는
+> **49% · colleague 51%** 다. 저작자 둘과 검수자 하나가 같은 이유를 들었다 — 감염 시신 취급 · 시신 인수 ·
+> 교대 인계 · 직원 디브리핑에는 유족이 등장하지 않는 것이 자연스럽고, 억지로 넣으면 임상적 타당성이
+> 깨진다. 검수에서 "유족이 더 자연스러운데 동료로 쓰인 항목"을 따로 찾게 했고 0건이었다.
+>
+> ✅ **커리큘럼 v3 P2 — SPD(중앙공급·영양·하역) 완료 (2026-09-17, 27/29 · 첫 15주제 부서).** D-P2-E대로
+> **15주제 × 21 = 315상황**으로 냈다(임상 부서의 35주제 대비 축소 — 주제 축 자체가 좁아 15가 정직한 규모).
+> 코어 4 = 멸균과 환자 안전 · 공급 현장에서 통하는 말 · 교대와 인계 · **타 부서 요청 응대**(가족 소통 대체,
+> 신규 nameKey `theme.core.request`). 심화 11 = 멸균 물품 요청 · 재고 조달 · 기구 추적 · 재처리 절차 ·
+> 리콜 · 유효기간과 포장 상태 · 케이스 카트 · 내시경 소독 · 대여 장비 · 오염 노출 · 신규 물품 교육.
+> **`role` 315건 전부 `colleague`**(환자·가족 각 0). 지도 검증: 기존 18,662건 제목과 완전 동일 0 ·
+> 유사도 0.62 이상 0 · 제목 평균 38.5자. audit: 15주제 전부 21 이상 · THIN 0 · dup-title 0 · SPD 고아 0
+> (손저작 12건 + 인사 1건 태깅). 게이트 3종 통과. 누적 태깅 19473 · 925주제. v2 스텝 10개 namesync.
+>
+> **파이프라인 정비**: `split_map.py`가 35주제만 받던 것을 **15주제도 받도록** 고치고(주제 수에 따라
+> 클러스터를 8개 또는 4개로 자동 결정, 인자로 덮어쓰기 가능), `assemble.py` 코어 순서 표에
+> `core-request-*`를 추가해 네 번째 코어가 order 40에 들어가게 했다. 남은 MORGUE·SIM은 이 설비를 그대로 쓴다.
+>
+> **저작 품질이 처음으로 기계 검증 무수정 통과했다.** 지시서에 「품질 기준」 + 성씨 3축 검증을 넣은 뒤
+> 무수정 비율이 올라갔다(DERM 성씨 37건 → SPECIALTY·GEN·LOUNGE 소수 → **SPD 0건**).
+>
+> **검수 20건 수정 — 이번 부서는 `acuity` 기준 문제가 지배적이었다(14건).** ⓐ**화학적 지표 시점 역전** —
+> 외부 화학적 지표는 사이클 **후**에 변색하는 것이 정상인데 적재 **전**에 "변색됐는지" 점검하고 미변색을
+> 문제 삼았다 → 적재 전에는 부착과 미변색이 정상이고 **이미 변색된 포장을 골라내며**, 변색 확인은
+> 사이클 후에 한다는 논리로 정정(제목은 지도 고정이라 살렸다) ⓑ**`spd-sterile-request` 4건의 화자가
+> 통째로 역전** — 주제는 "요청하는 쪽"인데 tagline이 요청자, keyPhrases가 중앙공급 직원 목소리여서
+> 학습자 역할이 뒤바뀌었다 → 양쪽 목소리를 맞바꿨다(persona도 중앙공급 측으로 교체) ⓒ**`acuity: critical`
+> 14건 하향**. 검수자가 기준 판단을 AI에게 넘겼고, **`acuity`는 오염 노출 여부만이 아니라 장면의 임상적
+> 급박성**이라는 다른 부서 용례에 맞춰 두 갈래로 확정했다: `critical` = 불합격·오염 물품이 **이미 환자에게
+> 사용되거나 수술실로 나간 것이 확인된 경우** 또는 **물품 부재가 진행 중인 생명 위협에 직결되는 경우**
+> (활성 출혈), `urgent` = 노출 여부 조사 중 · 노출 전 차단 · 일정 압박만 있는 경우. 적용 결과 critical이
+> 30 → 16건으로 줄고 클러스터 편차도 11/6/6/7 → **5/4/4/3**으로 고르게 맞았다. 남은 16건은 확인된 노출 ·
+> 진행 중 생명 위협 · 직원 실제 부상(찔림·체액·화학물질) · 배양 양성으로 성격이 일관된다.
+>
+> ✅ **커리큘럼 v3 P2 — LOUNGE(락커·휴게실·식당) 완료 (2026-09-16, 26/29 · 비임상 첫 부서).** D-P2-E 결정대로
+> 35주제(735)를 **직장 생활 축**으로 냈다. 코어 4 = 직원 안전 · 직장에서 통하는 말 · 교대와 인계 조율 ·
+> **동료 관계와 팀워크**(가족 소통 대체, 신규 nameKey `theme.core.peer`). 심화 31 = 근무 조건(근무표 협상 ·
+> 초과근무 · 휴가 · 병가 연락 · 육아 휴직 · 부서 이동) · 경력(신규 입사 첫 주 · 프리셉터 · 이직 통보 · 면접 ·
+> 성과 평가 · 피드백) · 관계(동료 갈등 · 괴롭힘 · 차별과 미세공격 · 문화 차이 · 경계 설정 · 번아웃 · 동료 실수
+> 지적 · 상사와 의견 차이) · 제도(인시던트 리포트 문화 · 직원 부상 보고 · 위원회 발언 · 보수교육 · 면허 갱신 ·
+> 급여 · 노조) · 소통(이메일 · 내부 전화 · 휴게실 스몰토크 · 사교 행사). D-P2-E의 26개에 5개를 보태 31을
+> 채웠다(신규 입사 첫 주 · 병가 연락 · 초과근무 · 면허 갱신 · 휴게실 스몰토크).
+> **`role`은 735건 전부 `colleague`** — 환자가 등장하지 않는 유일한 부서다(D-P2-E의 patient 0 예측대로).
+> 지도 검증: 기존 17,927건 제목과 완전 동일 0 · 유사도 0.62 이상 0 · 제목 평균 35.9자. audit: 35주제 전부
+> 21 이상(손저작 12건 + 인사 1건 태깅으로 12주제가 22~23) · THIN 0 · dup-title 0 · **LOUNGE 고아 0**.
+> 게이트 3종 통과. 누적 태깅 19145 · 910주제. v2 스텝 10개는 `authored_support.go`에 namesync.
+>
+> **검수 10건 수정 — 절반이 주제 경계 침범이었다.** ⓐ**W-4 구식 개념** — "본인을 부양가족으로 청구"은 2020년
+> 개정 전 양식 개념이다(현행은 4단계 구조) → Step 2 복수 소득·Step 3 부양가족 질문으로 교체 ⓑ**번아웃이
+> 자살 사고를 암시**하는데 대응이 "다음 주 말고 오늘 얘기해 보라" 수준으로 미온적 → 냉소·탈인격화 징후로
+> 되돌려 주제 경계 유지 ⓒ노출 후 예방 검사를 미루는 주체가 **인사과**로 설정됨(실제 소관은 직원 건강실) →
+> 전화(내부)로 직원 건강실과 교섭하는 구도로 교정 ⓓ차별 주제인데 **보호 속성이 드러나지 않아** 일반 형평성
+> 문제로 읽힘 → 억양을 이유로 발언이 밀린 인과를 명시 ⓔ억양 놀림 상황이 core-language와 small-talk에
+> **사실상 동일하게 중복** → small-talk 쪽을 "여러 명이 웃는 자리에서 분위기를 깨지 않고 끊고 화제를 돌리는"
+> 사회적 기술로 차별화 ⓕ갈등 주제에 갈등 요소가 없음(그냥 안부 묻기) → 어제의 마찰 뒤 침묵으로 재구성
+> ⓖ~ⓙ**core-peer 3건과 unit-transfer 1건이 lounge-bullying 영역을 침범**(반복 배제 신고·중재 요청) →
+> 제목은 지도에서 고정이므로 **에스컬레이션 단계로 갈라 재배치**했다: core-peer = 신고 전 상담/합류 요청/
+> 팀 규칙 요청, bullying = 반복·의도 확인 후 공식 절차, unit-transfer = 이동이 계기라는 인과와 일정 조정.
+> **AI 자체 발견 6건**: `brief`가 `focus`를 어미만 바꿔 쓴 5건 재작성 + keyPhrase 전역 중복 1건.
+> ⚠️ **자체 실수 1건**: 수정한 `brief`를 큰따옴표로 시작해 YAML 파싱이 깨졌다(c6). 검수자 보고 중에
+> 발견해 고쳤다 — **편집 후 반드시 8파일 재파싱할 것**. `acuity: critical`은 정전으로 인공호흡기 환자가
+> 걸린 1건만 남겼다(이 부서에서 유일하게 정당). `assemble.py`의 코어 순서 표에 `core-peer-*`·
+> `core-request-*`를 추가해 두었다(SPD의 4번째 코어 대비).
+>
+> ✅ **커리큘럼 v3 P2 — GEN 지도 재설계 + 저작 완료 (2026-09-16, 25/29 · 임상 완주).** GEN은 겹침 24/31 ·
+> 고유 환자군 없음 · 게임 내 배치 없음 · v2 스텝 없음이라는 진단에 따라 **사용자 결정으로 지도를 폐기하고
+> 재설계**했다. 새 정체성은 "부서를 가리지 않고 통하는 **병원 시스템과 환자 소통의 기본기**" — 기존 744개
+> 심화 주제 키를 전수 대조해 한 건도 겹치지 않는 35주제를 골랐고, D-P2-E의 LOUNGE(직원 직장 생활 축)와도
+> 경계를 갈랐다. 축: 입·퇴원 여정(수속·오리엔테이션·병상 배정·ED→병동 인수·자의 퇴원·퇴원 후 전화) ·
+> 언어 장벽(공인 통역 3자 통화·가족 통역의 한계·건강 문해력·되말하기·장애 편의·이름과 호칭) ·
+> 기록(적시 기록·정정과 누락) · 병실 생활(호출벨·면회·동거 환자 갈등·소음과 사생활·녹음 촬영·귀중품·
+> 배식·장비 요청·길 안내) · 제도와 권리(보험 문의·무보험 지원·사회복지 연계·대리 의사결정자·동의 절차의
+> 역할 경계·환자 권리·불만과 서비스 회복·화난 환자). **재설계 검증**: 735 제목이 기존 17,192건과 완전 동일
+> 0건 · 유사도 0.62 이상 0건 · 제목 평균 37.4자(전 부서 최장, RAD 7.9 대비). 화자 family 156 · colleague 145로
+> 다른 부서보다 높다(부서 간 인계와 가족 대상 시스템 설명이 중심). audit: 35주제 전부 21(손저작 화재 대응을
+> core-safety-gen에 태깅해 22) · THIN 0 · dup-title 0 · GEN 고아 0. 게이트 3종 통과. 누적 태깅 18397 · 875주제.
+> **v2 스텝이 없어 namesync 불필요**(29부서 중 유일).
+>
+> **검수에서 17건 수정 — 전부 제도·권한 오류 계열이다.** 검수 지시서의 분류 A를 이 부서에 맞게 "임상 오류"에서
+> **"제도·권한 오류"**로 교체한 것이 적중했다. ⓐ**에피네프린 1 mg IM** — 심정지(1 mg IV/IO)와 아나필락시스
+> (0.3~0.5 mg IM) 프로토콜을 섞은 오류 ⓑ간호사가 **생검을 다시 설명하고 동의를 받아냄**(→ 중단·시행 의사 호출·
+> 재동의 확인) ⓒ간호사가 **AMA 임상 위험을 단독 재설명** 2건(→ 담당의 재호출) ⓓ서명 거부 건에서 간호사가
+> 직접 위험 전달 시도(→ 의사의 설명 시도와 거부 사실을 기록) ⓔ가족 통역 동의서 재절차를 간호사가 수행
+> (→ 의사가 공인 통역으로 재설명) ⓕ퇴원 후 전화에서 간호사가 **약 중단을 지시**(→ 퇴원 처방 기록 근거) ⓖ대리
+> 의사결정자에서 **본인 결정 능력 사정이 누락**돼 곧바로 법정 순위 적용(→ 능력 확인 선행 + 회복 시 결정권 환원)
+> ⓗ동의서 증인 자격 근거를 **유언장 증인 규정(수혜자·상속인 제외)으로 잘못 제시**(→ 이해관계 없는 목격자로
+> 강요 방지) ⓘ간호사가 **주법 미성년자 동의 예외를 스스로 판단**(→ 정책 문서·담당 부서 확인으로 이관)
+> ⓙ정보 창구를 형제 합의만으로 지정(→ 환자 본인 지정 연락처 확인) ⓚ퇴원 기준을 "we use"로 간호사 주체처럼
+> 서술 ⓛ식사 주제가 연하곤란 치료식으로 이탈(→ 이미 결정된 처방 전달로 축소) ⓜ자선 진료 "상한선" 제목과
+> 내용 불일치(→ 소득 구간별 청구 상한을 서면 확인) ⓝ응급실 접수 상황의 room 불일치.
+> **AI 자체 발견 2건**: `gen-patient-rights`의 brief 21건이 지도 focus의 어미만 바꿔 옮겨적은 상태여서 **전건
+> 재작성**(기계 지표 brief≈focus 20건 → 0), 티어1 acuity 위반 2건 정정. 최종 기계 지표: keyPhrases 2205문장
+> 전부 고유 · 제목·tagline·성명·성씨 중복 0 · brief≈focus 0 · goals 동어반복 0 · sub 인구통계 형식 0.
+>
+> ✅ **커리큘럼 v3 P2 — SPECIALTY(전문 외래) 완료 + 검수 단계 신설 (2026-09-16, 24/29).** 부서 코어 4 + 심화 31
+> (안과: 백내장 수술 후 · 녹내장 · 점안법 · 유리체내 주사 · 시력검사 준비 / 이비인후과: 청력검사 · 이비인후
+> 증상 · 편도 수술 후 · 부비동 수술 후 / 내분비: 당뇨 추적 · 인슐린 교육 · 저혈당 대응 · 갑상선 / 류마티스:
+> RA 관리 · 생물학적 제제 / 통증: 만성 통증 사정 · 통증 주사 준비 · 비약물 조절 · 마약성 진통제 합의 /
+> 신경과: 두통 클리닉 · 발작 교육 / 내시경 준비 · 대장내시경 정결 / 외래 공통: 검사 결과 전달 · 협진 의뢰 ·
+> 시술 전 동의 · 복약 순응 · 새 진단 지지 · 생활습관 상담 · 자기관리 목표 · 증상 악화 대응) = 735
+> (patient 637 · family 60 · colleague 38). audit: 35주제 전부 21(인사 태깅으로 core-language는 22) · THIN 0 ·
+> dup-title 0 · 고아 0. 게이트 3종 통과. 누적 태깅 17661 · 840주제.
+>
+> **① 저작 지시서에 「품질 기준」 절을 신설했다**(tagline 구어체·주제 내 문장 구조 반복 금지 / keyPhrases
+> 일반론 금지·전역 중복 금지 / brief는 focus 옮겨적기 금지 / goals 두 항목의 층위 분리 / persona 다양성 /
+> 난이도-acuity 정합성) + 성씨 3축 검증 요구. 효과가 측정됐다: **keyPhrases 2205문장 전부 서로 다름**(DERM은
+> 2건 중복), 성씨 중복 0(DERM은 37건), 기계 지표(tagline 서두 반복 · brief≈focus · goals 동어반복 ·
+> sub 인구통계 형식 · 티어1 acuity 위반) **전부 0**.
+>
+> **② 제3자 검수 단계를 신설했다(사용자 지시).** 저작에 참여하지 않은 검수 에이전트 4명이 클러스터 2개씩
+> **735건 전량**을 읽고 A(임상 오류)·B(영어 부자연스러움)·C(내용 빈약)·D(정합성)로 분류해 지목만 하게 했다.
+> **10건 지목 → 전건 실물 확인 후 수정.** 실질적인 것: ⓐ**HIPAA 위반** — 대기 환자에게 다른 환자의 증상
+> (흉통)을 노출 ⓑ**간호사 권한 범위 초과** — 간호사가 영상 소견을 스스로 해석해 암 의심을 선언(같은 구조의
+> 다른 항목은 "확진 아님"으로 처리해 내부 일관성도 깨졌다) ⓒ**응급 우선순위 오류** — SpO2 84%에서 첫 행동이
+> 전문과 호출(→ 산소·신속대응팀 우선) ⓓ**안내염 오개념** — 외부 화농성 분비물을 안내염 근거로 서술
+> (→ 표면 감염과 구분하고 통증·시력 저하를 핵심 징후로) ⓔ항응고제 중단을 획일적 "2일"로 단정
+> (→ 처방의 상의로) ⓕ5세 아동에게 기저귀 표현 ⓖ산동 후 회복 방향을 거꾸로 서술(근거리가 더 오래 흐리다)
+> ⓗ범용 코칭 대사에 통증 특유 내용 부재. **검수자와 1건 판단이 달랐다**: 국소 안검 알레르기 반응 2건의
+> acuity 불일치를 critical로 올리라는 지적이었으나, 기도가 "확인 중"이지 폐색이 아니므로 **반대로 critical
+> 쪽을 urgent로 내려** 맞췄다(critical은 지금 생명이 위협받는 상황에 한정).
+>
+> **③ 부서 간 품질 편차를 정량 측정했다(미결 과제).** 제목 평균 길이가 RAD 7.9 · PSYCH 8.0 · WARD 9.7 대
+> ORTHOWARD 23.0 · NURSERY 25.3 · REHAB 26.0으로 갈리고, `sub`이 `"63y / Male"` 같은 단순 인구통계인 비율이
+> LD 85% · DIAL 84% · INFUSION 82% · ER 74% · WARD 68% · RAD 65% · SURGWARD 46%인데 최근 부서는 0%다.
+> 초기 부서는 상황 제목이 "수혈 동의 확인"처럼 절차 체크리스트에 가까워 D-P2-B(주제=구별 상황의 경로)에서
+> 의도한 형태와 어긋난다. 일부 keyPhrases가 임상 정보 없는 일반 위로문이다(RAD: "Most people have no problems
+> at all with this scan."). 반면 전 부서 일반 위로문 비율은 1~4%, 한국어 오타 0건, 제목 중복 0건으로 구조는
+> 건전하다. **사용자 결정(2026-09-16): 남은 부서를 먼저 마치고 재생산 범위를 결정한다.**
+>
+> **④ WARD↔SURGWARD 겹침은 설계상 정당함을 확인했다(사용자 질문).** 심화 31 중 겹치는 것은 11개
+> (수혈·섬망·장루·혈전 예방·상처·도뇨관·혈당·퇴원 교육·조기 보행·수분 전해질·통증)로, 어느 병동에서든
+> 일어나는 간호 기본기다. 나머지 20은 내과(투석·COPD·심부전·폐렴·항응고·RRT·완화의료)와 외과(수술 후 사정·
+> PONV·ERAS·SSI·배액관·비위관·장폐색·문합부 누출·갑상선 경부·유방·간담췌·비만대사)로 완전히 갈린다.
+> 제목 중복 0 · 유사도 0.6 이상 0건. **반면 GEN은 겹침이 24/31이고 고유 환자군·게임 내 배치·v2 스텝이
+> 모두 없다** → 지도 재설계 결정의 근거.
+>
+> ✅ **커리큘럼 v3 P2 — DERM(피부과 센터) 완료 (2026-09-16, 23/29).** 부서 코어 4 + 심화 31(병변 문진 · 전신 피부
+> 검진 · 더모스코피 · 생검과 결과 설명 · 모즈 수술 · 절제 창상 · 흑색종 의심 · 냉동치료 · 레이저 미용시술 ·
+> 광선치료 준비/이상반응 · 첩포검사 · 접촉피부염 · 아토피와 심리사회 부담 · 건선 전신치료/생물학적 제제 ·
+> 여드름과 이소트레티노인 iPLEDGE · 두드러기와 혈관부종 · 약물 발진 · 봉와직염 · 진균 감염 · 손발톱과 모발 ·
+> 국소 스테로이드 · 소양증 · 소아 피부 · 자외선 차단 · 창상 드레싱 · 병변 사진 촬영) = 35주제 × 21 = 735
+> (patient 655 · family 54 · colleague 26 — 외래 부서 중 환자 직접 발화 비중이 가장 높다). audit: 35주제 전부 21
+> (인사 태깅으로 core-language는 22) · THIN 0 · dup-title 0 · DERM 고아 0. 게이트 3종 통과(29패키지 그린 ·
+> 계약 무드리프트 · v2 스텝 10개 repoint). 누적 태깅 16925 · 805주제. 청소년 비중이 큰 주제(여드름 ·
+> 이소트레티노인)는 `ageRange: 10s` 환자와 보호자를 섞어 배분했고, iPLEDGE는 실제 위험관리 프로그램 요건
+> (이중 피임 · 월별 등록과 임신 검사 · 헌혈 금지 · 기분 변화 선별)을 반영했다. **수선 1건**: c1 클러스터가 성명
+> 전체의 유일성만 검사해 **성씨 37개가 두 번씩 쓰였다** — 미사용 A·B·C 성씨로 기계 교체했다. 저작 지시에
+> "성씨도 재사용 금지"를 명시했음에도 검증 범위를 성명 전체로 좁혀 잡은 사례이므로, 이후 부서에서는 지시와
+> 함께 **성씨 단위 검증**을 따로 요구한다.
+>
+> ✅ **커리큘럼 v3 P2 — NURSERY(신생아실) 완료 (2026-09-15, 22/29).** 부서 코어 4(안전 · 언어 · 인계 · 가족) +
+> 심화 31(신생아 사정 · 재태연령 · 활력징후 · 체온조절 · 첫 목욕 · 제대 관리 · 포경수술 후 관리 · 생리적/병리적
+> 황달 · 광선치료 · 빌리루빈 교육 · 저혈당 · 체중 추이 · 탈수와 수유 · 모유수유 젖물림 · 군집 수유 · 조제유 수유 ·
+> 피부 접촉 · 속싸개 · 안전한 수면 · 모자 동실 · 형제 유대 · 비타민 K · B형 간염 · 대사/청력/중증심질환 선별검사 ·
+> 패혈증 감시 · 경고 징후 · 카시트 안전 · 퇴원 준비) = 35주제 × 21 = 735. **화자 배분: family 573 · colleague 162 ·
+> patient 0** — 신생아가 발화하지 못하므로 환자 역할을 0으로 두었다(NICU 선례와 동일한 정직한 편차). 방은 산모
+> 병실(212)과 신생아실(172)이 중심이다. audit: 35주제 전부 21(인사 태깅으로 core-language는 22) · THIN 0 ·
+> dup-title 0 · NURSERY 고아 0. 게이트 3종 통과(전체 29패키지 그린 · 계약 무드리프트 · v2 스텝 10개 repoint).
+> 누적 태깅 16189 · 770주제. **ORTHOWARD의 학습을 적용해 처음부터 `model: sonnet`으로 투입**했고(Opus 한도),
+> 8클러스터가 한 번의 중단도 없이 완주했다. 클러스터별 성씨 첫 글자 배정으로 735건의 이름·성씨 중복이 0이고,
+> 저작 단계 QA 이슈도 0이어서 사후 수선이 필요하지 않았다(직전 부서는 2건 수선).
+>
+> ✅ **커리큘럼 v3 P2 — ORTHOWARD(정형외과 병동) 완료 (2026-09-15, 21/29).** 부서 코어 4(안전 · 언어 · 인계 ·
+> 가족 교육) + 심화 31(고관절/무릎/척추 치환 · 탈구 금기 · 창상 배액 · 수술 부위 감염 · 고관절/장골 골절 · 견인 ·
+> 외고정 · 석고 · 보조기 · 절단 급성기 · 신경혈관 사정 · 구획증후군 · DVT 예방 · 폐색전 · 지방색전 · 실혈 수혈 ·
+> PCA·신경차단 · 돌발 통증 · 오피오이드 변비 · 항응고 교육 · 체중부하 · CPM · 이송 보행 · 낙상 예방 · 압력손상 ·
+> 노인 섬망 · 재활 전원 · 가정 보조기구) = 35주제 × 21 = 735(patient 627 · family 61 · colleague 47 — 정형 병동은
+> 성인 환자가 직접 발화하는 비중이 가장 높은 부서다). audit: 35주제 전부 21(인사 태깅으로 core-language는 22) ·
+> THIN 0 · dup-title 0 · ORTHOWARD 고아 0. 게이트 3종 통과. 누적 태깅 15453 · 735주제.
+> **한도 대응이 이번 부서의 핵심 학습이다**: Opus 저작 에이전트 8개가 워크스페이스 한도(복구 2026-10-01)로 동시에
+> 죽었으나, ①주제 단위 증분 저장 덕분에 441건이 보존됐고 ②주제 완결 단위가 21의 배수로 딱 끊겨 부분 저작 주제가
+> 0이었으므로, 미완 주제만 지목해 **`model: sonnet` 에이전트로 append 재투입**해 294건을 마쳤다. 한도는 모델별로
+> 걸린다 — haiku 프로브와 sonnet 저작은 정상이었다. 클러스터마다 **페르소나 성씨 첫 글자 범위를 배정**해(A·B·C /
+> D·E·F / …) 이전 부서에서 118건 발생했던 이름 중복을 예방했고, 실제로 735건의 이름·성씨 중복이 모두 0이었다.
+> 수선 2건: 변비 주제 티어 2에서 4개 상황의 순서가 지도와 어긋나 재정렬(집합·난이도는 일치), 이송 관련 두 상황의
+> tagline이 동일해 한쪽을 재저작. ⚠️ **부수 발견**: `make contract`가 로컬에 swag이 없어 조용히 실패해 "드리프트
+> 없음"으로 오독될 수 있었다. 고정 버전으로 재실행하니 **c44e792(P3-A L1) 이후 계약이 재생성되지 않아 CI 계약 검사가
+> 레드 상태**였다(응답 타입 4종의 패키지 경로가 themed→domain/learning으로 바뀜). 별도 커밋 `158fef3`으로 해소했다.
+>
+> 🔨 **커리큘럼 v3 P2 — 부서 콘텐츠 fan-out 진행 (2026-09-09~).** 각 부서를 동일 파이프라인으로 낸다: 택소노미 설계
+> (서브에이전트) → 8클러스터 병렬 저작(seed 1건당 상황 1건, 페르소나 뻥튀기 없음) → 정규화·조립 `topics/<code>.yaml`
+> → `themes.yaml` 부서별 코어 4 + 심화 31 → 재생성 → audit(주제 전부 ≥20·THIN 0·dup-title 0·부서 고아 0). 부서 구조는
+> 11 도메인 · 35주제 · 각 21 상황(기초 6/응용 9/위기 6) = 735. **완료(26/29)**: ER(736) · ICU · OR · WARD · PEDS · NICU · PICU · LD · PSYCH · PHARMA · SURGWARD ·
+> ONCO · GERI · RAD · ENDO · DIAL · INFUSION · HOSPICE · REHAB · WOMENKIDS · ORTHOWARD · NURSERY · DERM · SPECIALTY · GEN (각 735)
+> **+ 비임상 LOUNGE(735) · SPD(315) · MORGUE(315) · SIM(315)**. 🎉 **29/29 완주 — P2 콘텐츠 fan-out 종료.** 누적 태깅 14717 · 700주제. WOMENKIDS=여성소아외래(산과·부인과·소아 외래), 화자는 여성 본인·부모·청소년 혼합. map 중복 제목 32건 후행괄호 유일화, 청소년 ageRange teens→10s 정규화. 착지 파이프라인은 전부 비-LLM(스크립트·go·git)이라 주간 한도와 무관하게 실행 가능. HOSPICE 화자는 가족(531) 위주(임종·완화), REHAB는 환자(530) 위주(재활 능동 참여). map 스키마 편차 정규화(domains·title→name·평면 situations→티어 딕셔너리), 저작 상황을 `{title,focus}` 명시형으로 주어 제목 뭉갬 예방(HOSPICE c4·c6은 `fix_titles.py`로 사후 수선). 무효 collabWith(비-부서 코드 PSY·CHAP·SW·PT·OT·PHARM)는 QA 후 제거. seed 시 v2 스텝은 안정
+> 손저작 scn으로 repoint해 v2에 남긴다(L-U5; ONCO·GERI 각 10스텝 repoint → 전체 테스트 그린). 부서별 코어는 `core-*-<code>`(dept 스코프)로 그 부서 트랙을 이끈다(D-P2-D). 화자
+> 배분은 부서 특성대로: ICU 동료·가족, OR 동료, WARD 환자, PEDS·NICU 부모(가족) 위주(NICU는 신생아 비발화라 환자역할 0).
+> tagline 선행 무대지시 괄호는 QA 정규화로 제거(WARD 49건, PEDS·NICU 0건 — 저작 지시로 예방). 비임상 위치(LOUNGE·SPD·
+> MORGUE·SIM 등)는 35×21 임상 모델이 안 맞아 **D-P2-E로 곳마다 다른 규모를 결정했다**(LOUNGE 35주제=직장 생활 축 ·
+> SPD·MORGUE·SIM 각 15주제). **다음**: 남은 임상 4부서(NURSERY · DERM · GEN · SPECIALTY — map 4종 모두 준비·검증 완료)
+> **다음**: 기존 부서 손저작 **233건** 태깅(아래 ⚠️ 참조) → DB 시드 + 계약 전환 → P3-A 라이브 전환(L2~L4).
+>
+> ✅ **커리큘럼 v3 P2 — ER 정본 콘텐츠(기함) + 파이프라인 (2026-09-09).** 파이프라인과 첫 부서 콘텐츠를 함께 냈다.
+> **① 파이프라인**: `cmd/gencontent`에 seed 경로를 신설했다(`seeds.go`) — `content/nurse/topics/<code>.yaml`이
+> 있으면 seed 1건당 시나리오 **1건**만 생성하고(페르소나×난이도 뻥튀기 폐지), 없으면 기존 Topic 뱅크로 폴백한다.
+> 이로써 D-P2-B(주제 = 구별 상황들의 경로)·D-P2-C(페르소나는 선택 재도전)를 코드로 실현했다. **② 접근 전환(스펙 대비
+> 정직한 기록)**: P2 초안은 "290 Topic 재태깅·수작업 0"이었으나, 사용자의 "구별 상황=경로" 재정의로 실제 실행은
+> **대규모 신규 저작**이 됐다 — 기존 콘텐츠는 부서당 구별 상황이 ~10개뿐이라 묶기만으로는 주제당 20+가 안 나오기
+> 때문이다. **③ ER 산출**: 공통 코어 4주제 + 부서 심화 31주제 = **35주제 × 각 20~23 구별 상황 = 736 상황**을
+> LLM 보조 서브에이전트 8클러스터 병렬 저작 → 정규화(빈 tagline·소아 나이·collabWith 정리) → 조립했다
+> (`content/nurse/topics/er.yaml`, 저작 정본). `themes.yaml`을 35주제 레지스트리로 정본화했다. **④ 검증**(`cmd/audit`):
+> ER 736 전부 태깅 · 35주제 전부 ≥20(THIN 0) · **dup-title 0**(뻥튀기 중복 소멸) · **ER 고아 0**. 전체 orphan 2944는
+> 나머지 28부서가 legacy 뱅크를 유지 중이라 정상(부서별 vertical slice). 빌드·themed/gencontent 테스트 그린.
+ **결정 D-P2-D(부서별 코어, 2026-09-09)**: 코어 4주제(인계·언어·가족·안전)는 부서 맥락이 실재하므로(ROSC 후 ICU 인계 vs
+> ER→병동 인계, ICU 임종 상담 vs 소아 보호자, ICU 번들·억제 vs 병동 낙상) **부서별로** 둔다 — `track:core` + `dept:<코드>`,
+> 키 `core-<주제>-<코드>`, 낮은 order로 그 부서 트랙을 이끈다(전역 공통 주제는 두지 않되 엔진은 `dept:""`로 지원). resolve
+> 그룹핑을 "주제의 dept로 묶고 dept 비면 CORE"로 바꿨다(단일 라인 변경 + 부서별 코어 테스트 추가, 무회귀). ER을 이 모델로
+> 정렬(`core-*-er`, dept:ER). **다음**: 나머지 28부서 fan-out(같은 파이프라인·부서별 코어 4 + 심화) → DB 시드 + 라이브
+> `/me/curriculum` 계약 전환 → P3 여정 지도 UI.
+>
+> 🔨 **커리큘럼 v3 P1 구현 완료 (2026-09-09).** 주제 조립 엔진을 새 하위 패키지 `server/internal/curriculum/themed`에
+> 격리해 구축했다(기존 하드코딩 89 커리큘럼·라이브 `/me/curriculum`은 그대로 서빙 — 회귀 0). 구성: `Assemble`
+> (태그→주제→난이도 계단, 프록시 유추 없이 명시 `theme` 태그만 읽어 v2 D6 회피)·`Resolve`(트랙 그룹핑 CORE→부서,
+> passed/here/open + 티어 해금 + 이어하기 + 협업 collabWith)·`Catalog`(부팅 시 1회 조립 캐시). DB는 마이그레이션
+> 000038(`scenarios.theme`/`collab_with` + 인덱스), seed 적재, `ListScenarioTags` 조회 추가. 런타임 레지스트리는
+> api가 이미 갖는 `cfg.ContentDir`의 `nurse/themes.yaml`을 slang·night와 동일 패턴으로 로드. **추가 엔드포인트**
+> `GET /me/curriculum/tracks`(라이브 미교체) + 클라이언트 타입(UI 미배선). 태그가 비어도 빈 트랙(안전) — P2와 병행
+> 개발 가능. 서버·모바일 전체 테스트 그린. **다음: P2 전수조사 태깅**(themes.yaml ~100개 확정 + 전 시나리오 태그
+> 부여 → R3 고아-0 게이트 활성화), 이후 P3 여정 지도 UI + 라이브 계약 전환(promote+OTA).
+>
+> 📝 **P2 전수조사 스펙 초안(2026-09-09).** 핵심 통찰: 태깅은 "3,044개 LLM 분류"가 아니라 "290 Topic
+> 큐레이션"이다 — 생성 시나리오(≈2,741)는 gencontent가 290 Topic을 페르소나×난이도로 전개해 만들고
+> **소스 Topic을 알고 있으므로**, Topic에 `Theme`을 배정하면 생성기가 태그를 자동 emit(수작업 0). 손저작
+> 303개만 반자동 매핑+검수. 주제 = Topic 2~3개 묶음(≥20 상황). 7단계 파이프라인(측정→묶음→배정→손저작
+> 태깅→정리→보강→검증), audit 도구(읽기 전용 분포·고아·중복·thin 리포트), 부서 단위 vertical slice(ER
+> 먼저). **핵심 제약**: 시나리오 id는 위치 순번이라 Topic 재배치가 진도를 깨므로 append-우선 or 정본 재발급
+> (진도 리셋 수용) 중 착수 시 선택. 스펙: [`02-construction/curriculum-v3-audit/`](02-construction/curriculum-v3-audit/build-spec-index.md). **사용자 검토 대기.**
+
+> 📝 **커리큘럼 v3 — 주제 기반 심화 커리큘럼 + 여정 지도 (스펙, 2026-09-09).** v41 여정 지도
+> 입력을 계기로, 얕은 커리큘럼(부서당 3~6개·스텝 2~4개, 전체 상황의 10%만 편입)을 **주제 단위 심화
+> 커리큘럼**(한 주제 = 상황 20~30개+, 난이도 계단)으로 재설계한다. 실측: 상황 3,044개 중 326개만 편입,
+> 약 2,718개가 고아. 사용자 결정: 학습이 주 목적 → 커리큘럼을 깊게, **자유 탐방 없이 모든 상황을 주제로
+> 편입**, 3계층(공통 코어·부서 심화·협업). 매핑을 Go 하드코딩 89개 나열에서 **상황이 `theme` 태그를
+> 선언 → 주제가 자동 조립**으로 뒤집는다(v2가 D6로 하드코딩 후퇴했으나, v3는 프록시 유추가 아니라 명시
+> 태그 그룹핑이라 재발 없음). **3단계 프로그램**: P1(주제 스키마+데이터 모델, 이번 스펙) → P2(전수조사
+> 태깅·보강·정리) → P3(여정 지도 UI). 스펙: [`02-construction/curriculum-v3/`](02-construction/curriculum-v3/build-spec-index.md)
+> (index+domain-entities+business-rules+business-logic-model). **사용자 검토 대기 → 승인 시 P1 구현 계획.**
+
+> ✅ **리뷰랩 모범답안 v40 재구성 + 교정 설명 모국어화(2026-09-08).** 리뷰랩·인수인계의 모범답안
+> 화면을 v40 핸드오프(`forin-notebook-lab.jsx` LabModel)대로 맞췄다. **① 인수인계 '표현 다시 보기'**가
+> 그동안 일반 모범답안 목록으로만 이동해 어떤 대화였는지 볼 수 없던 문제 — 이제 해당 시나리오를 찾아
+> 펼쳐 준다(`/model-answers?scenario=…` → 목록이 페이지를 넘겨가며 해당 그룹을 찾아 `scrollToIndex`).
+> **② 모범답안 목록 v40 재디자인**: 각 행이 부서 두들(ER=사이렌·ICU=모니터·분만실=아기·약국=알약,
+> `deptNbIcon`) + "날짜 · N단계 · 모범 일치 ok/st" + 교정이 있으면 '개선' 태그. 히어로 헤드도 '교정 N개'
+> → 'N단계'로. **N단계**는 그 시나리오에서 학습자가 실제 발화한 턴 수(서버 신규 지표: `dialogue_turns`
+> role='user'를 `conversation_sessions`로 조인해 집계), **모범 일치**는 `max(0, 단계−교정)` — 교정 없이
+> 넘어간 턴 수. `Correct()`가 변경된 답변만 카드로 저장하므로 '일치'는 교정 카드만으로는 구할 수 없어
+> 발화 턴 수를 원천으로 삼았다. **③ 교정 설명(왜?) 모국어화**: 모범답안·다이얼로그(보기 선택 후 교정)의
+> 설명이 타겟 언어(영어)로 나오던 문제 — `engine.go` `Correct()` 시스템 프롬프트에서 note를 학습자의
+> 모국어(`Native`)로 쓰도록 강제. **서버=promote(steps 쿼리 + note 프롬프트), 클라이언트=OTA.**
+> 서버·모바일 전체 테스트 그린(mobile 904, i18n 4개 언어 키 패리티 포함).
+
+> ✅ **앱 아이콘 v40 — 여권 커버(2026-09-07).** 딥그린 #2E4636 + 금장 #D4B46A 이중 테두리 + 금장 이중원
+> 안 손글씨 f + FORIN. iOS 풀 커버(1024 불투명), Android 적응형(전경=금장 f 엠블럼·배경 딥그린·모노크롬),
+> 스플래시·웹 파비콘까지 동일 브랜드. `mobile/scripts/make-icon.py`(Pillow, 번들 Gaegu·IBM Plex Mono)로
+> 재현. 시안=v40 `forin Notebook - App Icon.html` 확정본 A. **아이콘은 네이티브 자산 → OTA 아님, EAS
+> 빌드 + 스토어 제출 필요.** 렌더는 headless라 실기기 미검증(미리보기 HTML로만 확인).
+
+> ✅ **다국어 — 콘텐츠 이름 영어 로컬라이즈 Phase 1 + 캠퍼스 버그(2026-09-07).** 서버 i18n 파이프라인
+> (`Accept-Language` → `i18n.Tr(locale, 키, 한국어폴백)`)이 커리큘럼 이름·층 헤딩·상태 태그 3곳에만
+> 연결돼 있고 카탈로그도 en 하나뿐이라, 콘텐츠(상황·시나리오·브리핑·이벤트·모범답안)가 비한국어에서도
+> 한국어로 나오던 문제. **Phase 1(영어·이름류 먼저)**: `content_en.go` 신규(시나리오 303 + 이벤트 12 =
+> 315개 제목, 콘텐츠 ID 키)를 en에 병합하고, 상황 카드(`/me/situations`)·시나리오 브리핑(`/scenarios/{id}`)
+> ·모범답안(리뷰랩)·이벤트(`/events`)·홈 이어하기 title을 `Tr`로 배선. 건물 이름은 서버가 스타일 조회
+> 키로도 쓰므로 **클라이언트 i18n**(BUILDING_STYLE.nameKey, 4개 언어). 스테이징 스모크에 상황명·브리핑
+> 제목 검증 추가(그린). **남은 것(후속)**: ja/de 서버 카탈로그(현재 콘텐츠는 한국어 폴백), 브리핑 본문
+> prose(페르소나·brief·quick-info)·조언, 커리큘럼 스텝명 ~400개. **캠퍼스 버그 2건 동시 수정**: 즐겨찾기
+> 층 이름을 현재 커리큘럼에서 재해석(언어 전환 시 저장 시점 언어로 굳던 문제), floorPlace가 접두사만
+> 벗겨 남던 선행 가운뎃점(`· Emergency Centre`) 제거. **클라이언트=OTA, 서버=promote(스테이징 검증됨).**
+>
+> ✅ **홈 개편 v37 + 라이브 병동 실시간 프레즌스(2026-09).** 홈 화면을 v37 시안으로 재구성하고, 병동에
+> 실제 접속자를 최대 10명까지 익명 아바타로 반영한다. **폴링 + TTL** 방식(SSE 아님 — Cloud Run은 요청
+> 지속시간과 동시성 슬롯으로 과금하므로 세션 내내 슬롯을 잡는 SSE가 더 비싸다): Redis zset `ward:live`
+> (member=uid, score=마지막 접속 시각), 익명 id는 `hex(sha256(uid)[:6])`, `WARD_TTL=40s`. 포그라운드
+> 하트비트(홈 6s GET · 그 외 15s POST), 접속=왼쪽 등장·이탈=오른쪽 퇴장, 앱 끄면 사라짐. 나 탭에 병동
+> 노출 옵트아웃 토글. 클라이언트는 `lib/wardPresence.ts`(useSyncExternalStore) + `LiveWardNb`.
+>
+> ✅ **v38 재미 콘텐츠 3종 완료(2026-09) — 슬랭 도감 · 나이트 라디오 · 환자 인수인계 노트.**
+> ①**병원 은어 도감**: 하루 1장씩 미국 임상 약어·은어를 수집한다. 카드는 **서버 콘텐츠**(`content/slang/us.yaml`
+> 205장)라 앱 재배포 없이 배포만으로 늘어난다. `GET /slang`(당일 드롭)·`POST /slang/collect`, 마이그
+> 000036. ②**나이트 근무 라디오**: 밤 10시~새벽 5시에 열리는 조용한 채널 — 앰비언트 루프(numpy로 직접
+> 합성한 32s 심리스 WAV)와 '오늘 밤의 이야기'(하루 회전, 한 문장 따라 말하기). `content/night/stories.yaml`,
+> `GET /night?i=N`. ③**환자 인수인계 노트**: 클리어한 환자에게서 후일담 쪽지가 온다(LLM 생성, 인카운터당
+> 1회, 점수별 확률 게이트). 감사(답장→환자 되답장)·후속(다음 시나리오)·복습(모범답안) 3종. `GET /handoff`·
+> `POST /handoff/{id}/read`·`POST /handoff/{id}/reply`, 마이그 000037. 홈에 세 진입점, 인수인계는 미읽음
+> 배지. i18n 4개 언어. 스모크 ㉓ 추가. **prod 반영 완료**(서버 promote `55f519f` + production OTA).
+>
+> ✅ **v38 쉬는 시간 미니게임 허브 + v39 탭탭 농구(2026-09).** 홈의 '쉬는 시간' 진입점 아래 게임 허브
+> (`app/games/`)를 붙였다. 게임 점수·플레이 제한은 **기기 로컬**(`lib/gameScores.ts`, SecureStore·부팅 시
+> 재수화): 하루 20판(광고 보상형 top-up +5판 최대 3회), 게임별 최고기록. **①탭탭 농구**(`games/hoops.tsx`,
+> v39 '왼오른 농구' 디자인) — 골대 하나만 보이고 넣으면 카메라가 반대편으로 슬라이드하며 새 높이의 골대가
+> 등장. 자체 물리 루프(rAF·서브스텝 적분): 탭=전진+상승 홉·비대칭 중력(상승 1800/하강 2700)·바닥/림/백보드
+> 튕김(림은 앞·뒤 z분리로 공이 통과하는 연출)·클린(림 미접촉, 백보드 뱅크는 클린)/뱅크/2연속 불(3점·궤적
+> 불길)·6초 샷클락(0초 후 공중이면 라스트 찬스 슬로우모션). 효과음 3종(gen-sfx.py: 휙·림·게임오버). **②완벽한
+> 원 그리기**(`games/circle.tsx`) — 한 붓 원, 편차 색상 획 + 잘한 곳/삐끗 콜아웃, 5초 제한, 로컬 최고기록.
+> 나이트 라디오는 트랙 3종(합성 빗소리·여름·왈츠)으로 확장. **모바일 전용(OTA), 서버 변경 없음.** 상세 시안은
+> [inputs/design-handoff_v39](inputs/design-handoff_v39/README.md) `forin-notebook-extras.jsx §H`.
+> **미검증(headless):** 물리 감(중력·속도·튕김)·카메라 슬라이드·림 z순서·효과음은 실기기 확인이 정본이며
+> 수치는 반복 튜닝 중. 게임 로직은 순수 함수(`pointsFor`/`nextStreak`)와 화면 렌더만 테스트가 커버한다.
+>
+> ✅ **TestFlight 피드백 19건 처리 완료 → prod 배포 + TestFlight build 2 제출(2026-08-19).**
+> 그룹별: **A**(#1 이모지 제거 → 아이콘 42종) · **B**(#11 키보드·#6 DM 정렬·#18 바텀시트 제스처·
+> #19 글자 크기 +15%) · **E**(#16 효과음 6종·#17 페르소나별 TTS) · **G**(#12 최근 10일 리듬·#15 이탈
+> 연출+재개) · **C**([커리큘럼 v2](02-construction/curriculum-v2/build-spec-index.md) — 층별 테마
+> 커리큘럼 **89개**·커리어 탭 병합·이어하기·신규 오리엔테이션 3편) · **D**([다국어](02-construction/i18n/build-spec-index.md)
+> — P1~P5 완료, UI 4개 언어·서버 로케일 파이프라인·목적지 준비 상태) · **F**(#9 아바타 편집 + 얼굴
+> 스캔·#10 배지→칭호 통합 + 코믹 히든 4) · **#8** 초상 애니메이션 · **#13** 첫 행동 우선 배치.
+> 결정 근거는 [DECISIONS](DECISIONS.md) 2026-08-18~19 참조.
+>
+> **배포 결과(직접 확인):** prod가 마이그레이션 000023 + 새 계약을 서빙한다 — `/readyz` 200,
+> `POST /auth/dev` 404, `/config/economy`의 `readyDestinations=['us']`(P5가 prod에 있다는 증거).
+> 스테이징 스모크 **92/0**(단정 76 → 98). iOS build 2(커밋 `973856a`) TestFlight 제출 완료.
+>
+> ⚠️ **8커밋 동안 스테이징이 빨간 상태였다.** 계약 변경(`{chapters}`→`{buildings}`)과 10일 리듬으로
+> 스모크 단정이 낡았는데 로컬 초록만 보고 푸시를 계속했다. 실패 4건 전부 옛 계약 검사였고 서버 회귀는
+> 없었다. 남은 1건은 스모크 자체의 환경 의존 버그(`grep '[가-힣]'`가 러너 로케일에서
+> `Invalid collation character`). **계약을 바꾸는 커밋은 파이프라인 확인을 같은 체크포인트에 넣는다.**
+>
+> ⚠️ **미검증(headless 한계):** ①얼굴 스캔의 실제 카메라 정확도 — 합성 JPEG로만 검증했고 타원 가이드
+> 기준 머리 밴드 위치는 이마 높이에 따라 조정이 필요할 수 있다 ②언어 변경 시 화면 재렌더 ③ja/de 의료
+> 용어의 임상 정확성(원어민 검수) ④89개 커리큘럼 목록의 스크롤 감각 ⑤마이그레이션·`/me/ui-lang` 실 DB
+> 왕복은 스모크에서 통과했으나 CI 단위 테스트에는 `TEST_DATABASE_URL`이 없다.
+>
+> 🏗 **남은 작업:** [다국어](02-construction/i18n/build-spec-index.md) **P6**(인테리어 en 779 · ja/de 각
+> 970 · 커리큘럼 스텝 400×3 — 앱은 폴백으로 정상 동작) · ja/de 임상 용어 원어민 검수 ·
+> **D8**(손저작 시나리오 57개가 `acuity` 미선언 → `Code Blue`·`아나필락시스`가 routine으로 취급되어
+> 평판의 응급 차원이 움직이지 않는다).
+>
+> ✅ **홈 탭 + 동료 시스템(핸드오프 v20→v21) 구현 완료(2026-08-10).** Build Spec U1~U10 전부.
+> 서버(마이그레이션·도메인·저장소·`GET /me/home`·동료 API 13종·콘텐츠 시드) + 모바일(탭 5개·홈 10모듈·
+> 동료 4화면·프로필 카드). 실 DB 2사용자 E2E + 시뮬레이터 렌더 검증 + **스모크 48/0**(기존 24) + 계약 재생성.
+> Build Spec `IMPLEMENTED`. 상세는 [`home-colleagues/`](02-construction/home-colleagues/build-spec-index.md).
+>
+> ✅ **2026-08 마감분**: 온보딩 화면 · 소셜 로그인(Apple/Google/**Kakao 공식 SDK**) · 로그아웃 ·
+> 앱 식별자 `app.forin.mobile` 확정 · 브랜드 아이콘/스플래시 교체.
+>
+> 🏗 **이전 초점(2026-07): 시나리오 런타임 + 화면 플로우 마감.** 맵/부서 인테리어(2-5)는 완결. 그 위로 실제 학습 루프를
+> 배선 중 — 브리핑→AI 다이얼로그(교정→리뷰랩 자동 등록)⇄퀴즈→클리어→성장 리포트/리뷰랩. 상세 진행은 아래 표 및
+> [DECISIONS](DECISIONS.md) 2026-07-18~29 참조.
+>
+> ⚠️ **Handoff v8 채택(2026-06-27) — 맵/화면 대규모 재설계.** 5개 파빌리온 캠퍼스 + 엘리베이터 + 부서 마스터
+> 블루프린트(ER/OR/ICU/Peds/Pharma 대형화) + 입원 병동(내·외·정형)·피부과 센터. **외래 클리닉 엔진(5d-iii)은 폐기**(redundant).
+
+---
+
+## Phase 1 — Inception (What)
+
+| 스테이지 | 문서 | 상태 |
+|---------|------|------|
+| 1-1 Context Synthesis | [01-context-synthesis.md](01-inception/01-context-synthesis.md) | HUMAN_APPROVED |
+| 1-2 Domain Model | [02-domain-model.md](01-inception/02-domain-model.md) | HUMAN_APPROVED |
+| 1-3 Architecture Decision ⚠️ | [03-architecture-decision.md](01-inception/03-architecture-decision.md) | AI_PROPOSED |
+
+## Phase 2 — Construction (How)
+
+> 1-3 아키텍처 승인으로 확정(2026-06-08). + 콘텐츠 워크스트림 병행.
+
+| 스테이지 | 문서 | 상태 |
+|---------|------|------|
+| 2-1 서버 기반 | [01-server-foundation.md](02-construction/01-server-foundation.md) | HUMAN_APPROVED |
+| 2-2 도메인·콘텐츠 API + 계약 | [02-domain-content-api.md](02-construction/02-domain-content-api.md) | HUMAN_APPROVED |
+| 2-3 AI 레이어 | [03-ai-layer.md](02-construction/03-ai-layer.md) | HUMAN_APPROVED |
+| 2-4 모바일 기반 | [04-mobile-foundation.md](02-construction/04-mobile-foundation.md) | HUMAN_APPROVED |
+| 2-5 맵/탐험 엔진 | [05-map-engine.md](02-construction/05-map-engine.md) | 재오픈 · v8 계획 HUMAN_APPROVED (5a~5e ✅ 엔진코어 · **5f 캠퍼스/엔진델타 + 5g 부서 마스터블루프린트 ×9** — §5v; 5f ✅ · 5g-a ER ✅ · 5g-b OR ✅ · 5g-c ICU ✅ · **5g-d Peds+NICU ✅**(외래·놀이·계측→4bed 병동→NICU 유리 전실·인큐베이터; pedsEquipment 16종) · **5g-e Pharmacy ✅**(수령창구·기송관→조제실·마약류 금고→무균 전실·에어샤워·무균조제실; pharmaEquipment 21종; 엘리베이터 타워 P1 + ER portal) · **5g-f 내과 병동 ✅**(서비스 스트립→간호 스테이션→4인 만성질환 병실(커튼)→1인실·VRE 격리; wardEquipment 16종; 엘리베이터 타워 8F) · 장비 handoff **v13**(2.5D+접지그림자) 전 부서 반영 · **5g-g 외과 병동 ✅**(처치·드레싱룸→간호 스테이션·보행→4인 수술후 병실→대수술 중증실; surgEquipment 8종·ward2 재사용; 엘리베이터 타워 7F) · **5g-h 정형외과 병동 ✅**(PT통로·석고실→간호 스테이션·보조기→4인 골절/견인 병실→고관절 골절실; orthoEquipment 11종; 엘리베이터 타워 6F) · **입원 병동 3종 완결**(내과 8F·외과 7F·정형 6F) · **5g-i 피부과 센터 ✅**(로비→진료실1/2→광선치료실→레이저 처치실; dermEquipment 11종; 엘리베이터 타워 2F) · **🎉 5g 부서 마스터블루프린트 9종 전부 완결**) |
+> 🎙 **핸드오프 v22 발음 루프 완료(2026-08-15~18)** — v21 대비 문서는 `04_SCREENS.md`만 +30줄이고 실질은
+> **발음·스피킹 피드백** 신규(⑤b 4상태 + 리뷰랩 진입점)다. 감사 결과 `POST /pronunciation`은 있으나 **완전
+> 무상태**였고 Azure 요청이 `Granularity: Word`라 음소가 없었다 — 서버 기능 추가로 T1~T9 구현, **T10(검증)이
+> 실 Azure 왕복으로 실측**: `PhonemeAlphabet: IPA`가 REST에서 실제로 먹고(SAPI 아님) `Offset`/`Duration`도
+> 실려 온다(문서만으론 불가했던 확인). 실측 중 결함 2건 발견·수정 — ①참조오디오 24kHz vs 채점 입력 16kHz
+> 불일치(스모크가 리샘플로 우회) ②SoT의 "PhraseCard"가 실은 리뷰랩 탭(`lab.tsx`)인데 마이크 액션이 다른
+> 동명 화면(`review.tsx`)에 붙어 있었음. 스모크 22 assert 추가(로컬 79/0·staging 76/0). staging의 레거시
+> 백필 실적용 여부 1건은 DB 직접 접근이 막혀 미확인으로 남음(Build Spec §8). 11b/11c 목록·드릴 화면은 여전히
+> 범위 밖(2주 이력 전제, §0). Build Spec [`pronunciation/`](02-construction/pronunciation/build-spec-index.md)
+> `IMPLEMENTED`·`comprehensive`. 결정 근거는 [DECISIONS](DECISIONS.md) 2026-08-15 / 2026-08-18.
+
+| 2-6 화면·플로우 | [06-screens-flows.md](02-construction/06-screens-flows.md) | **완료(2026-08-10)** — 온보딩(splash/login/locale/job/level) ✅ · 캠퍼스/인테리어/상황판 ✅ · 브리핑→**AI 다이얼로그**(🎤 STT/🔊 TTS·번역·QUICK INFO)⇄**퀴즈 10종**→클리어(result) ✅ · **프로필(나) + 성장 리포트(/growth 푸시)** ✅ · **리뷰랩**(PhraseCard·필터·복습 세션·맥락·등급 안내) ✅ · 뱃지/스티커 탭 상세 ✅. **소셜 로그인 마감(2026-08)**: Apple/Google/Kakao 실동작 확인 — Google은 iOS/Android 클라이언트 등록 검증, Kakao는 **공식 SDK(@react-native-kakao)로 전환**(직접 OIDC는 KOE033으로 차단됨). 프로필 탭 **로그아웃** 추가. 앱 아이콘·네이티브 스플래시를 브랜드 픽셀 아트로 교체(Expo 기본값 제거).
+**홈 탭 + 동료 시스템 ✅(2026-08-10)**: 앱 진입 첫 화면을 목록(커리어 탭)에서 **오늘의 한 가지**로 교체. 홈 10모듈 전부 실데이터(`GET /me/home` 1왕복) — 값 없으면 모듈을 숨긴다(더미 금지). 동료는 초대 코드 기반이며 관계 타입 `peer/mentor/mentee`를 처음부터 데이터에 둬 **멘토–멘티 확장 시 화면 수정 불필요**. [Build Spec](02-construction/home-colleagues/build-spec-index.md)
+**온보딩 저장/재진입 ✅(2026-08-10)** — 검증 중 결함 2건 발견·수정: ①선택값이 라우트 파라미터로만 존재해 **중간 이탈 시 3단계가 유실**됐다 → 기기 로컬 드래프트에 단계별 저장 + 게이트가 **중단 지점부터 재개**(부분 저장을 서버에 보내면 `onboarded=true`가 찍혀 나머지를 영영 건너뛴다) ②온보딩 완료·로그인 후 목적지가 여전히 `/campus`였다(홈 탭 도입 시 게이트만 고친 회귀) → `/(tabs)`. 재진입 스킵 자체는 정상이었다(`onboarded: null` 초기값 덕에 깜빡임 없음).
+**2-6 완료.** (클리어 컨페티는 감사 결과 `result/[id].tsx`에 **이미 구현돼 있었음**)
+
+**2026-08-18~19 TestFlight 피드백 반영:** 커리어 탭을 **건물 → 층 → 커리큘럼 한 계층**으로 병합(세그먼트
+2개·`CH.N` 로드맵 25행 삭제) · 커리큘럼 **25 → 89**(24개 층 전수 손저작, 주제 290개 전부 사용, 신규
+`SCN-ORIENT-*` 3개로 도착→인사→인계받기 저작) · 홈/커리어의 **이어하기**를 최근 시도 기준으로 · 효과음
+6종 + 페르소나별 TTS · 앱 **UI 언어 설정**(ko/en/ja/de, 즉시 반영) · 글자 크기 +15%.
+**선결 결함 D1:** 손저작 챕터 1·2의 스텝 이름 11개가 실제 시나리오와 무관했다(id는 존재해 시드 가드는
+통과, 두 문자열을 비교하는 테스트가 없었음) → `catalog_content_test.go`가 89개 커리큘럼 전 스텝을 대조한다. |
+| 2-7 성장·경제·복습·이벤트 전달 | [07-growth-economy-review.md](02-construction/07-growth-economy-review.md) | **체크리스트 전 항목 완료(2026-08-10)** — XP/레벨/커리어 패스 ✅ · SM-2 복습(스케줄·마스터리·세션) ✅ · 성장 집계 `GET /me/stats`(기기 TZ 버킷팅) ✅ · 칭찬 스티커(시나리오 클리어당) ✅. **평판→NPC 반응 가중 ✅(2026-08-10)** — 소비 측(NPC 톤 4밴드)은 이미 있었고 **생산 측이 통째로 없어** 전원이 기본값 50에 고정돼 있었다. 등급 기반 획득 + 차원 결정을 **부서가 아닌 시나리오 긴급도**로(모든 병동·직업 확장 대비) 구현. [Build Spec](02-construction/reputation/build-spec-index.md). **유기적 환류 ✅(2026-08-10)** — 보상이 **입장 조건**으로 재사용된다: 방·핫스팟이 `requires`를 선언하고 `GET /me/access/{interiorId}`가 학습자 스냅샷(레벨·클리어·칭호·평판·미션)으로 평가해 잠금과 **이유**를 돌려준다(`domain/access`). ER 트라우마 룸이 첫 사례.
+**감사(2026-08-10):** 아래는 "남음"으로 적혀 있었으나 **실제로는 이미 구현돼 있었음** — 칭호·히든미션(서버 영속 확인) · 일일 풀 00:00 리셋+가중 샘플링(`content_repo.go:461`) · 메인 루트 그래프 · 보상형 광고 top-up · 경제 수치 테이블(25필드 `GET /config/economy`). 2-7 체크리스트 전 항목 완료. |
+| 2-8 통합·E2E | [08-integration-e2e.md](02-construction/08-integration-e2e.md) | AI_PROPOSED — **전체 여정 스모크 `server/scripts/e2e_smoke.sh`(48 assert, 48/0 pass, 재실행 가능)**: 인증·온보딩·토큰 회전·커리큘럼·대화+교정·클리어(XP)·SM-2·일일풀+광고·미션·부서 상황·에러 경로. 남음(Phase 3 이관): AI 비용·지연 모니터링·분석 이벤트·성능/부하·스토어 메타·권한·개인정보 |
+| 2-9 상황 학습 4단계 (v44) | [lesson-four-steps-v44/build-spec-index.md](02-construction/lesson-four-steps-v44/build-spec-index.md) | **콘텐츠 생산 3/29 부서(2026-09-26~28)** — 상황 하나를 `단어 → 문장 → 가이드 대화 → 자유 대화` 네 단계로 배우게 하는 작업. §1에서 **회차 사다리가 살아남는다**는 것을 먼저 확인했다(STEP 3/4가 기존 두 회차에 그대로 얹힌다). 네 단계가 **한 줄로 이어져야** 한다는 요구(§2-1) 때문에 생성 순서를 뒤집었다 — 단어를 먼저 뽑지 않고 **그 상황에서 간호사가 실제로 할 말을 쓴 다음 거기 쓰인 단어를 거슬러 올라가** 은행을 만든다. 그 덕에 "은행에는 있는데 아무 문장도 안 쓰는 단어"가 구조적으로 0이다. **ER 736 · ICU 735 · OR 735 상황 완료** — 문장 12,516개 · 단어 22,357개 · 29개 부서 검사 위반 0 · 경고 0. 검사기는 `server/content/tools/verify_lesson_content.py`(규칙 V1~V11 · 어형 표본 148건)가 지키고, 도구는 부서 무관하다(`split_theme_inputs.py` → 저작 → `merge_dept_lessons.py`). **부서마다 말의 구조가 다르다**는 것이 이 작업의 핵심 발견이다 — ER은 환자가 말하고, ICU는 환자가 못 말해 대화 상대가 보호자로 옮겨 가고, OR은 한 부서 안에 수술 전·수술 중·회복실 세 세계가 있다. 지시서를 주제 이름만 바꿔 돌리면 앞 부서 말투가 그대로 나온다. 부서별 기록과 그때마다 배운 것은 Build Spec §8~§10. **남음: 26개 부서 · 17,850개 상황**(부서당 서브에이전트 토큰 600만~700만·반나절). **구현 착수(2026-09-30)** — E의 개명 절 완료. `GuideChoices`→`GuideGuided`(`"choices"`→`"guided"`). **개명이 상수 하나가 아니었다** — 저장된 `guide` 값을 `"choices"`와 직접 견주는 곳이 둘(ClearedPassGuides 쿼리의 CASE, 그 옆 Go)이라, 서버가 `"guided"`를 쓰는 순간 **가이드 회차 클리어가 자유 회차로 담겼을 것**이다(혼자 해 본 적 없는 사람의 자유 회차가 완료로 찍힌다). 규칙이 두 곳에 적혀 있던 것이 원인이라 쿼리는 값을 그대로 내고 `learning.IsGuided` 한 곳이 판정한다. 모바일도 같은 모양으로 `data/guideRung` — 화면 셋이 `=== 'choices'`로 견주고 있었다. 딥링크(`?guide=choices`)와 2026-09-30 이전 저장 행은 계속 받는다(변이 3건 확인). 계약 재생성(enum 두 줄). **곁가지로 단어 아이콘 525건이 빈 자리였음이 드러났다** — 저작 지시서의 허용 목록을 손으로 적으며 NbIcon에 없는 `round`를 넣었고 그대로 퍼졌다. 다섯 종을 옮기고 목록을 NbIcon에서 뽑아 넣었으며, `contentIcons` 테스트를 갈라 은행 아이콘은 NbIcon으로 따로 지킨다(변이 2건). 모바일 156 스위트 1,068건 전부 통과(기존 실패 1건도 해소). **E 완료(2026-09-30)** — `GET /me/lesson/{scenarioId}`(상황·레벨·단계 4개·단어·문장) + `POST …/steps/{words|sentences}`. **문장과 단어 은행이 DB까지 오지 않고 있었다** — 번들에는 실려 있었지만 `Seed()`가 둘 다 버렸고 `GetScenario`도 읽지 않았다. 엔드포인트부터 썼다면 영원히 빈 응답이었을 것이다. 마이그레이션 000040(`scenarios.sentences` · `lexicons` · `lesson_step_clears`, CHECK 없음)으로 싣고, 로컬 재시드로 상황 2,206건 · 문장 12,516개 · 은행 105개가 들어온 것을 확인했다. 상태에 **`empty`**를 더했다(콘텐츠 없는 26개 부서 — `skip`이면 `그래도 할래요`가 빈 화면을 연다, 사용자 결정). 스펙 §6 결정 3. 스펙의 '8개 미만이면 은행에서 채운다'는 런타임에 하지 않는다 — V3가 저작 때 강제하고 실측 0건, 채우면 §2-1 보장이 깨진다. 변이 2건(빈 판정 제거·개수 고정) 확인, 실 DB repo 테스트 통과, 로컬 API 실호출 확인. 계약 +521줄(삭제 0). **운영 반영 시 배포 후 `seed.yml` 수동 실행 필요.** 화면 변화는 아직 없다(보기 3개 폐기는 J). **F 완료(2026-09-30)** — `components/lesson/StepTrack`. 레퍼런스의 개수·인덱스 대신 서버의 단계별 상태 배열을 받는다(개수로는 '건너뛰고 뒤를 끝냄'을 표현 못 한다). `empty`는 빗금 없는 점선 원. 변이 2건 확인, 모바일 157 스위트 중 156 통과 — 남은 1건 `passportFlow`는 전체 실행에서만 실패하고 단독 3/3 통과, 이번 변경을 빼도 같아서 기존 흔들림으로 본다. **G 완료(2026-09-30)** — **처음으로 화면이 바뀌었다.** 브리핑 화면이 있던 `/scenario/[id]`가 상황 허브가 됐고, 모든 진입점이 호출부 수정 없이 허브로 온다(사용자 결정 → 스펙 §6 결정 4). 그래서 허브에 탭바가 없고 CTA는 `bottom: 30`이다(핸드오프 프레임과 다름, 되돌릴 수 있음). `?guide=`는 읽지 않고 대화 단계가 자기 회차를 싣는다. 단계 메타의 XP(+20/+40)는 서버에 없는 값이라 목표 개수로 대신했다. STEP 1·2 화면 자리는 스텁. 변이 3건 확인, 모바일 158 스위트 전부 통과, 시뮬레이터에서 ER·DERM 확인. 로컬 8080 API를 새 빌드로 교체했다. **H 완료(2026-09-30)** — STEP 1 단어 플래시카드(칩은 단어 수만큼 줄바꿈, 듣기·따라하기, 헷갈려요/알아요). `헷갈려요`는 새 API로 교정노트에 한 번만 들어가고 제안 면(취소선 없음)으로 그려진다. 마지막 카드가 STEP 1을 기록하고 허브로 돌아간다(허브는 포커스마다 다시 읽음). **시뮬레이터에서 F의 연결선이 전혀 안 그려지던 것을 발견해 고쳤다** — 높이 0 상자와 한쪽 점선 테두리는 iOS에서 안 보이는데 테스트는 스타일 값만 봐서 통과했다. **Metro가 9/21부터 떠 있어서 `[id].tsx`→`[id]/` 폴더 이동을 반영하지 못해 Unmatched Route가 났다 — 재시작으로 해결(코드 문제 아님).** 모바일 159 스위트 전부 통과, 실 API로 카드 생성·중복 방지·거부 확인. **헷갈려요 누를 때 알아요가 깜빡이던 것 수정**(요청 중 두 버튼을 disabled=45%로 흐리던 것 → ref 가드). **v45 반영 결정(2026-09-30)** — 핸드오프 v45가 STEP 1을 회상형 단어장(조각 맞추기·영어 고르기·듣고 뜻 고르기)으로 바꾸고 뉘앙스 문항(저울·콜로케이션·문장 릴·같은 뜻 다른 장면·한 단어 바꾸기)을 더했다. 26개 부서 생산 전이라 **지금** 스키마를 넓힌다. 사용자 결정: H 플래시카드는 회상형으로 교체, 스키마 확장 후 전량 저작(ER·ICU·OR은 새 필드만 보강), 뉘앙스는 상황 단위. 문제 유형은 저작하지 않고 런타임이 돌린다(한 단어가 상황 21건에 나오므로). 조각 이음 규칙을 스펙에서 정했다(낱말 안은 붙이고 낱말 사이는 한 칸 — 문장 청크 규칙을 쓰면 `hypo tens ive`가 된다). 검사기 V12~V16, 파일럿 비용 관문(부서당 1,400만 초과 시 멈춤). 스펙 §11, 계획 'v45 재정렬'. v45의 바인더 서가 건물 탭은 이 스테이지 밖(별도 항목). **A' 완료(2026-09-30)** — Go 스키마·검증(V12~V15)·마이그레이션 000041. v44 콘텐츠 생성 출력 불변 확인. **B' 완료(2026-09-30)** — 검사기 V12~V16, 주제별 검사의 자동 V16, 합치기 도구의 부분 합치기·보강 패스(파일럿 3주제만 합쳤으면 나머지 32주제 은행이 지워질 구조였다), 지시서 v45·보강 모드. **E' 완료** — `missed` 기록(000042)·문장 `review`·`nuance[]`. **H' 완료** — 회상형 단어장(영어 고르기·조각 맞추기·듣고 뜻 고르기 + 저울·짝, 같은 장 아래 해설, 집계 후 STEP 2로). v44 콘텐츠는 같은 상황 단어로 오답을 채워 동작. **C' 파일럿 완료** — ER 3주제(통증·진정 171단어 / 흉복부 외상 200 / 가족 소통 161, 상황 62, 뉘앙스 133) 보강 후 정본 합침, 검사 0건. 주제당 약 16만 토큰·16~21분 → 새 부서 추정 1,150만/부서로 **관문(1,400만) 통과**. 오답·뉘앙스 품질 양호. **지시서의 사망 고지 예시가 틀렸다**(died→passed away; 미국 교육은 died를 분명히 말하라고 한다 — 저작자가 짚음). 검사기 구멍 여럿(목록 안 불리언, swap 빈 대상, reel 둘, pair 오답이 정답, 아이콘) 메움, 어형 오답은 경고(W13). 시뮬레이터에서 단서·오답·뉘앙스 카드 확인. 스펙 §11-7. **모델 정정** — 파일럿이 스펙(Sonnet)과 달리 Opus로 돌았다(모델 미지정). 사용자 결정: 생산 Sonnet · 검토 Fable(결정 9). 같은 2주제를 Sonnet으로 다시 저작해 Fable이 모델을 모른 채 비교 — **Opus 우세, Sonnet은 안전 문제(POSS 3단계를 정상으로)로 차단.** **결정 10**(사용자): 생산 Opus · 전수 검토 Fable · 수정 Opus, 관문 부서당 약 2,000만. **결정 11**(사용자 요청): v44 단어·문장을 가볍게 정리(쉬운 단어 태그 빼기·헤드워드 원형·틀린 ko·틀린 문장만) — 변경 목록(`changes-<주제>.yaml`)에 적힌 것만 V16이 허용. 합치기 도구에 `--replace`(수정본 갈아 끼우기, 같은 내용이면 바이트 동일 확인). 19:50부터 사용자 지시로 무확인 연속 진행. **I 완료** — STEP 2 문장(릴 → review 문장 먼저 · 듣고 고르기/청크/빈칸 회전 → 순서 배열 → context·swap → PASSED → 가이드 대화). 오답은 같은 상황 문장에서. **J 완료** — 가이드 대화가 보기 3개 대신 STEP 2 문장 하나를 한국어 목표로(goal 순, 힌트 청크 하나씩, intent로 교정). 문장 없는 상황은 보기 유지. 보기를 먼저 요청하던 경쟁 상태를 통합 테스트가 잡아 고침. **K1 완료**(mic 재작성·faceAngry), K2 할 것 없음. **ER 3주제 결정 10·11 반영 완료**(Fable 검토 → Opus 수정 → 정본 교체): 정답이 둘 이상 맞던 pair 15건, 정답이 되는 오답, 지연 출혈 환자를 안심시키던 문장 1건 수정, 쉬운 단어 33개 정리. 변경 목록은 `server/content/tools/changes/er/`(부서 검사는 `--baseline HEAD --changes` 로). **ER 35주제 보강 완료(2026-10-07)** — 패혈증은 현행 파이프라인(`169273b`), 쇼크·뇌졸중은 결정 13 실험분(`d0ab160`). 상황 736건 전부 뉘앙스. **결정 13(Sonnet 실험)**: 사용자는 결정 9가 Sonnet 5였다고 기억했으나 기록상 이미 `claude-sonnet-5-5`였다. 이번에는 저작 원본이 아니라 검토·수정을 거친 결과를 봤다 — A(Sonnet·Fable 검토·Sonnet 수정, 비용 약 84%)와 B(Sonnet·Opus 검토·Sonnet 수정, 약 50%) 모두 안전·사실 오류 0건까지 왔고(Sonnet 원본의 '삼킴 선별 전 주스'를 Opus 검토가 잡음), 합격선은 좁게 미달(정답 둘인 pair 1건, Sonnet 수정이 바꾼 값 주변을 다시 안 읽는 흠). **결정 14(사용자)**: 생산 Sonnet · 검토 Opus · 수정 Sonnet + 부서별 Fable 표본 판정. 지시서를 `server/content/tools/pipeline/`으로 정본화하고 검토에 기계적 전수 확인 절, 수정에 '고친 값 주변 다시 읽기' 절, 검사기에 V17(문장 ko를 고쳤는데 exKo가 옛 번역)을 더했다. **ICU 보강은 사용자 결정으로 일시 중지(2026-10-07)** — 저작이 주제당 22만~30만 토큰·25~35분으로 오래 걸려 ER만 끝내고 미뤄 둔 기능 구현을 먼저 한다. ICU는 8주제 저작 완료(코어 4 + 기도·신부전·ARDS·부정맥, Fable 검토 전), 5주제 중단, 22주제 미착수. 결과물과 재개 방법은 `server/content/tools/wip/icu-v45b/README.md`(커밋 `83a5981`). **/tmp 소실 사고(2026-10-06)**: Fable 모델 한도로 검토가 며칠 멈춘 사이 macOS 정기 정리가 `/tmp/lesson-*`와 세션 scratchpad를 비웠다. 서브에이전트 기록(`~/.claude/projects/…/subagents/*.jsonl`)의 Write·Edit·Bash를 시간순으로 다시 실행해 ICU 8주제와 ER 패혈증을 복구했고(각각 검사 위반 0건), 다른 주제 스크립트를 베낀 연쇄 의존이 있던 ER 쇼크·뇌졸중은 다시 저작한다. 이후 작업 공간은 저장소 `wip/`에 체크포인트마다 커밋한다. 사용량 한도(2026-10-01 00:50 리셋)로 에이전트 7개가 끊겨 재시작, 동시 실행을 5개로 줄였다. 2026-10-02 새벽 두 번째 한도(05:50 리셋)로 5개가 끊겨(노인 검토, 비뇨생식기·위장관 출혈·두부 외상·산부인과 저작) 리셋 뒤 남은 파일에서 이어 가게 재시작했다. **keyPhrase 사실 오류는 사용자 결정 대기**(스펙 §11 끝 목록 11건 — 2026-10-07에 패혈증 mottling, ICU X-ray 오더, 뇌졸중 동의, 쇼크 승압제 개시 추가. 처음 7건 — 임산부 심정지 압박 위치, 당뇨족 문장 문법, 항생제 반응 중 flush, 수막구균혈증 airborne(→droplet), 상황 제목 excited delirium(ACEP 철회), 노인 학대 "nothing leaves this room"(지킬 수 없는 비밀 약속), "Tetanus is updated"(→up to date)). 토큰 실측(결정 13): Sonnet 저작 약 27.5만·23분, Opus 검토 약 20만·10분, Fable 검토 약 20만·17~20분, Sonnet 수정 9~13만·1~3분. **남음: → C' ER 파일럿 → 보강 → D' 26개 부서 ‖ E' API → H' 회상형 → I → J → K** |
+
+> 🎨 **UI 마감(2026-08-11)**: 핸드오프 타이포·아이콘 어휘를 런타임까지 연결. ①**픽셀 폰트 실제 번들·로드** — tokens는
+> `DungGeunMo`/`Galmuri11`을 지정했지만 폰트 파일과 `useFonts`가 없어 **전 화면이 조용히 시스템 폰트로 폴백**하고 있었다
+> (tsc·jest는 그린). TTF 3종 번들(둥근모꼴은 WOFF→TTF 변환) + 폰트 준비 전 렌더 보류(단 로드 실패가 시작을 막지는 않음) +
+> 서브셋 없음(런타임 LLM 텍스트의 두부 방지). ②**이모지 → 아이콘 세트 31→73종**(범용 21 + 부서 21 신규 저작).
+> `PixelButton`/`PixelChip`에 `icon` 슬롯(`▶`는 폰트 베이스라인에 얹혀 있었다), 장식용 이모지는 교체가 아니라 **제거**,
+> 데이터의 이모지는 `EMOJI_ICON`+`iconFor()` 브리지로 흡수. **남은 것**: 맵 픽스처 방·층 아이콘 31파일
+> (`ElevatorScreen.tsx:250`·`FastTravelModal.tsx:44`에서 렌더) · 국기(라인 아이콘화 불가). [DECISIONS](DECISIONS.md) 2026-08-11 참조.
+
+> 📚 **커리큘럼 층 전수 커버(2026-08-11)**: 5챕터(본관 4개 층) → **25챕터 / 24개 층 전체**. 층 지도에서 생성(`cmd/gencontent/floors.go` → `catalog_gen.go`), 난이도 순 배치. 콘텐츠 공백이던 4개 층(내과·외과·정형·피부과)은 **뱅크 신규 저작**(29개 부서 3,200 시나리오). 층 표기 버그(존재하지 않는 "본관 5F") 정정.
+
+**병행 트랙:** [콘텐츠 워크스트림](content-workstream.md) — AI 작성(조사→초안→검수), **2-2 포맷 확정 후 본격 착수**. PENDING.
+
+## Phase R — Independent Code Review 🔍 (Construction → Operations 게이트)
+
+> 작성자와 **컨텍스트가 분리된** 독립·적대적 리뷰어가 코드를 검토한다. FRAMEWORK "리뷰 게이트" 참조.
+
+| 스테이지 | 문서 | 상태 |
+|---------|------|------|
+| R-1 Independent Code Review (2-5 맵 엔진 스코프) | [01-independent-review.md](0R-review/01-independent-review.md) | AI_PROPOSED (HIGH 1·MEDIUM 3·LOW 3·NIT 2 채택·수정; +6 테스트) |
+| R-2 Independent Code Review (2-6~2-8: 런타임·성장·커리큘럼·캠퍼스) | [02-independent-review.md](0R-review/02-independent-review.md) | AI_PROPOSED — 3 분리 에이전트 병렬 리뷰. **채택·수정 5**(Critical 2: warm 칭호 보너스 유실·top-up 레이스; Important 1: dept 캡 누적; Moderate 1: convSeconds 자정 clip; 하드닝 1). 스모크 24/0 재통과 |
+
+## Phase 3 — Operations (Ship)
+
+| 스테이지 | 문서 | 상태 |
+|---------|------|------|
+| 3-1 Deployment | [01-deployment.md](03-operations/01-deployment.md) | **9-A 서버 배포 실배포 완료(2026-08-13) — staging 스모크 57/0**. 콘솔 클릭 0회로 66리소스 생성(Cloud Run 서비스2·Job4·Cloud SQL1+DB2·Upstash2·시크릿10·WIF·Artifact Registry). 파이프라인 전 단계 통과 + `staging-verified` 태그 부착 확인. **첫 실경로가 정적 검증이 못 잡은 결함 3종을 잡았다**(Cloud SQL 에디션 기본값 / gcloud 프로젝션의 `:` 부분매칭·리스트 래핑 / 시크릿 후행 개행) — §11.1. 남음: 첫 승격·prod 시드(미실행, prod는 hello 플레이스홀더). **9-B 모바일 배선 완료(2026-08-13~14)** — `mobile.yml` 신설(tsc·jest CI 게이트, [run 31692228156](https://github.com/bingoring/forin/actions/runs/31692228156) success·38 suites/213 tests → 최종 리뷰 픽스 웨이브 이후 **39 suites/219 tests**)·EAS 프로필 환경 분리(조용한 폴백 2종 차단: `client.ts`의 localhost 폴백 + gitignore된 `mobile/.env`)·`expo-updates`+fingerprint 정책(`eas fingerprint:generate`로 40자 해시 실측)·`ota.yml`(prod 승격과 같은 승인 게이트)·제출 트랙 `alpha`(비공개 테스트, `internal` 아님) — §12. **`EXPO_TOKEN` 등록 후 `preview` 채널로 첫 실제 OTA 발행 완료(2026-08-14, §12.1)** — `eas update`가 fingerprint 정책을 실제로 소비함을 실증(발행된 runtimeVersion이 40자 지문 해시. **단 지문은 플랫폼별로 다르고 당시 대조한 것은 android 한쪽뿐이었다** — §12.1 정정). 동시에 `eas.json` 자체가 지문 입력(파일 해시)이라 설정 편집만으로도 지문이 바뀌어 이전 빌드에 도달하지 못할 수 있음이 드러났다. **iOS 제출 절 배선 완료(2026-08-15, §12.3)** — Apple 멤버십 승인, capability는 entitlements 근거로 `Sign In with Apple` 하나, `eas.json`에는 `ascAppId` 하나. `eas config`가 없는 키는 거부하지만 `ascAppId` 형식은 검증하지 않음을 실측해 그 공백을 jest로 메웠다(39 suites/**221 tests**). **첫 iOS 빌드 성공(2026-08-15, §12.4)** — `eas build`가 지문 해시를 바이너리에 박음이 실증됐고(마지막 미증명 항목 닫힘), 동시에 `eas build`가 수출 규정 프롬프트로 `app.json`을 바꿔 **커밋 전이면 OTA가 출시 빌드에 도달하지 않는다**는 함정이 드러나 `0adfdc9`로 닫았다. **첫 `eas submit` 성공(2026-08-15, §12.5)** — 바이너리가 App Store Connect에 올라갔고 9-B 배선이 전 구간 실경로로 증명됐다. **TestFlight 내부 배포 개시(2026-08-17, §12.7)** — 빌드는 이미 `VALID`였고(문서만 "Apple 처리 대기"로 멈춰 있었다) 실제 병목은 **베타 그룹 0개**였다. 내부 그룹 생성 + 소유자 추가로 `internalBuildState`가 `IN_BETA_TESTING`이 됐다. 내부/외부는 **테스터가 ASC 사용자인지**로 갈리며(`buildBetaDetail`이 두 상태를 동시에 보고), 두 번째 테스터는 최소 권한(`MARKETING`·앱 한정)으로 ASC 초대했고 **수락 전 그룹 배정은 409로 막힌다**(초대와 배정은 원자적이지 않다). 이 시점 `master`의 iOS 지문이 출시 IPA와 **일치**해 OTA 도달성은 정상이다. 남은 건 실기기 검증·두 번째 테스터 수락과 **Android 전량** — Play 개발자 계정 신원확인 진행 중·서비스 계정 키 미발급이 막고 있다(키 부재 재확인, android 빌드 0개). 이전 설계 요약: AI_PROPOSED(2026-08-12) — 호스팅 게이트 확정: **Cloud Run + Cloud SQL(서울)**, Redis는 **Upstash(도쿄)**. staging+prod(Cloud SQL 인스턴스 1개에 DB 2개). **이미지 하나·엔트리포인트 셋**(`/api`·`/migrate`·`/seed`, 같은 다이제스트) · 코드는 트래픽 전환으로 즉시 롤백/**스키마는 전진만**(마이그레이션 하위호환 강제) · **무키 CI(WIF)** · staging 자동+스모크 57 → **prod 수동 승격** · 콘텐츠 시드는 ID 축소 금지 게이트 + 수동 트리거 · 모바일은 `mobile.yml` 신설(tsc·jest가 CI에 없었음)·EAS 환경 분리·**OTA fingerprint 정책**·내부 트랙까지 · **IaC 전량 Terraform**(자동화 불가 경계 3종 명시). 구현은 9-A 서버 → 9-B 모바일 순 |
+| 3-2 Monitoring | [02-monitoring.md](03-operations/02-monitoring.md) | PENDING |
+
+---
+
+## AI 진입점
+
+> Construction(2-5~2-8) 완료 + Phase R 리뷰 게이트 통과(R-1 맵 엔진·R-2 런타임/성장/커리큘럼/캠퍼스, 채택 결함 수정·스모크 24/0).
+> **현재: 3-1의 9-A 서버 배포 실배포 완료(2026-08-13) — staging 스모크 57/0.** 서울 Cloud Run + Cloud SQL에 콘솔 클릭
+> 0회로 인프라를 세우고, `verify`(계약 드리프트 포함) → build → migrate → 배포 → 스모크 → `staging-verified` 태그까지
+> 실경로로 통과했다. **9-B 모바일 배선도 완료(2026-08-13~14)** — `mobile.yml` CI green·EAS 프로필 환경 분리·
+> `expo-updates` fingerprint·`ota.yml` 승인 게이트·제출 트랙 `alpha`(비공개)까지 배선됐다(§12). **`EXPO_TOKEN` 등록
+> 후 `preview` 채널로 첫 실제 OTA도 발행했다(2026-08-14, §12.1)** — `eas update`가 fingerprint 정책을 실제로
+> 소비함을 실증했고, 동시에 `eas.json` 자체가 지문 입력이라 설정 편집만으로 지문이 바뀔 수 있음도 드러났다. 단
+> **Apple 멤버십 승인(2026-08-15) → iOS 제출 절 배선(§12.3) → 첫 실제 iOS 빌드 성공(§12.4).** 포털 capability는
+> entitlements 근거로 `Sign In with Apple` 하나만, `eas.json`에는 `ascAppId` 하나만. **`eas build`가 지문 해시를
+> 바이너리에 박는다는 마지막 미증명 항목이 닫혔다**(`runtimeVersion` = `fingerprintHash` = `020e92a8…`). 동시에
+> **`eas build`가 지문 입력을 스스로 바꾼다**는 함정이 드러났다 — 수출 규정 프롬프트가 `app.json`에 필드를 추가하고
+> 그게 커밋되지 않아, 그 상태로 OTA를 발행하면 출시된 IPA에 도달하지 않으면서 런은 green이었다(`0adfdc9`로 닫음).
+> ****첫 `eas submit`도 성공해 바이너리가 App Store Connect에 올라갔다(§12.5)** — 9-B 배선이 전 구간 실경로로 증명됐다. 테스터가 붙을 prod도 확인했다(`/readyz` postgres·redis ok, `contentVersion 2026.06.08-seed1`, `/departments` 실데이터 — 시드 정상). 그 확인 중 **`/healthz`가 공개 URL로 컨테이너에 닿지 않음**을 발견해 3-2 입력에 경고로 남겼다(외부 업타임 체크에 쓰면 산 서비스를 죽음으로 보고한다). **TestFlight 내부 배포도 개시했다(2026-08-17, §12.7)** — 빌드는 이미 `VALID`였고
+> 병목은 "Apple 처리"가 아니라 **베타 그룹 0개**였다(비동기 외부 상태는 문서가 아니라 API에 물어야 한다).
+> 내부 그룹 생성 → `internalBuildState: IN_BETA_TESTING`. 남은 건 실기기 검증(소셜 로그인 3종·마이크·prod
+> 커리큘럼)·두 번째 테스터 수락 후 배정과 **Android 전량** — Play 개발자 계정 신원확인 진행 중·Google Play 서비스 계정
+> 키 미발급이 계속 막고 있다. **다음 진입점: 3-2 모니터링.** 위 자격증명이 갖춰지는 대로 첫 android `eas build`(네이티브
+> 의존이 EAS 빌더에서 처음 컴파일되는 지점이라 새 실패가 나올 수 있음)→테스터 배포로 넘어간다. Android는 개인
+> 계정이라 **비공개 테스트 12명/14일이
+> 출시 경로의 선행 조건**(2주 임계 경로)이므로 그 시점부터 시계를 돌린다. 병행 **콘텐츠 워크스트림**(커리큘럼 챕터
+> 스텝 시나리오 저작 · 평판 긴급도 250토픽 전수 검토 — 현재 14개만 태깅).
+> 규칙: `waypoint:start`·`waypoint:stage` 스킬 참조

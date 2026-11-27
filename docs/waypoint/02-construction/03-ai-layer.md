@@ -1,8 +1,7 @@
 ---
+id: 2-3
 phase: 02-construction
 stage: 03-ai-layer
-status: HUMAN_APPROVED
-updated: 2026-06-10
 ---
 
 # [Stage 2-3] AI 레이어 (대화·교정·음성)
@@ -131,3 +130,7 @@ forin 핵심 — LLM 대화 엔진, 답안 교정 파이프라인, STT/TTS/발�
 ## 다음 단계
 
 승인 후 → 구현 → `STATUS.md` 갱신 → `04-mobile-foundation.md`
+
+## 진행 기록
+
+- 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.

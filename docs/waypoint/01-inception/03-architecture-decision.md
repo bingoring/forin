@@ -1,8 +1,7 @@
 ---
+id: 1-3
 phase: 01-inception
 stage: 03-architecture-decision
-status: HUMAN_APPROVED
-updated: 2026-06-08
 ---
 
 # [Stage 1-3] Architecture Decision ⚠️
@@ -172,3 +171,7 @@ updated: 2026-06-08
 
 승인 후 → `STATUS.md`에서 1-3 상태를 `HUMAN_APPROVED`로 + Construction 스테이지 확정
 → Phase 2 첫 스테이지로 이동
+
+## 진행 기록
+
+- 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.

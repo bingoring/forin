@@ -1,8 +1,7 @@
 ---
+id: 2-8
 phase: 02-construction
 stage: 08-integration-e2e
-status: AI_PROPOSED
-updated: 2026-06-08
 ---
 
 # [Stage 2-8] 통합 · E2E
@@ -43,3 +42,7 @@ updated: 2026-06-08
 ## 다음 단계
 
 승인 후 → `STATUS.md` 갱신 → Phase 3 Operations
+
+## 진행 기록
+
+- 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.

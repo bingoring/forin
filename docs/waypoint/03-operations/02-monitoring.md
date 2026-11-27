@@ -1,8 +1,7 @@
 ---
+id: 3-2
 phase: 03-operations
 stage: 02-monitoring
-status: PENDING
-updated: 2026-06-04
 ---
 
 # [Stage 3-2] Monitoring
@@ -44,3 +43,7 @@ forin 운영 가시성(로깅·메트릭·알림·분석)을 정의·구축한�
 ## 다음 단계
 
 승인 후 → `STATUS.md` 갱신 → 운영 사이클 진입
+
+## 진행 기록
+
+- 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.

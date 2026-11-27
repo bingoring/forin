@@ -1,8 +1,7 @@
 ---
+id: 1-2
 phase: 01-inception
 stage: 02-domain-model
-status: HUMAN_APPROVED
-updated: 2026-06-08
 ---
 
 # [Stage 1-2] Domain Model
@@ -149,3 +148,7 @@ Level 진단 알고리즘, 경제 밸런싱 수치, AI 제공자/모델·비용�
 ## 다음 단계
 
 승인 후 → `STATUS.md`에서 1-2 상태를 `HUMAN_APPROVED`로 업데이트 → `03-architecture-decision.md`로 이동
+
+## 진행 기록
+
+- 이전 기록은 [HISTORY.md](../HISTORY.md)에 있다.
