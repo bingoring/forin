@@ -6,6 +6,8 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-10-28
 
+> ⏸ **OR 한 번에 저작 묶음 7 — or-minimally-invasive·core-safety-or 중지(2026-11-24, 사용자 지시).** 저작 A·B·합친 파일·검토 A 끝. 검토 B 두 건은 중간에 멈춤(fix-*-B.md·_reviewB_*_after.yaml 저장됨, core-safety-or는 마지막 점검 직전, minimally-invasive는 끝까지 썼는지 미확인). 다음: B 검토 파일 완결 확인 → 필요하면 B 다시 → Sonnet 수정 → keyPhrase 결정 → 정본 합침. 작업 파일은 content/or-batch6 브랜치(wip/icu-or-rest/or)에 커밋됨. 검토 A keyPhrase 후보: minimally-invasive 4(7.1 환기·13.1 역할·15.0·20.2), core-safety-or 4(16.2 X-ray·16.1·10.1 산소·20.2 thirty seconds).
+>
 > ✅ **OR 한 번에 저작 묶음 6 — or-preop-checklist·or-specimen 합침(2026-11-24).** keyPhrase 11문장 교체(MTP·항생제 투여 주체·직접 운반·혼자 재라벨·결과 받는 곳 등), chunks 15문장, OR 위반 0. 확인·위기 문장 오답 기준 결정(안전 우선, 하나는 같은 모양) → TASK.md. 머지·배포 보류. 묶음 7 저작 중, 남은 OR 21주제.
 >
 > ✅ **OR 한 번에 저작 묶음 5 — core-family-or·or-emergency-open 합침(2026-11-24).** keyPhrase 12문장 교체(간호사 고지 → 집도의 면담 연결, DIC·FFP를 묻기, MTP는 혈액은행 연락 등), chunks 24문장, OR 위반 0. 앱 보기 위치 쏠림 발견 → 별도 작업. 머지·배포 보류. 묶음 6(preop-checklist·specimen) 저작 중, 남은 OR 23주제.
