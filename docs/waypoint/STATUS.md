@@ -17,7 +17,7 @@
 | 2-6 | 화면·플로우 | MERGED | | | | [문서](02-construction/06-screens-flows.md) |
 | 2-7 | 성장·경제·복습·이벤트 전달 | MERGED | | | | [문서](02-construction/07-growth-economy-review.md) |
 | 2-8 | 통합·E2E | AI_PROPOSED | | 결과 검토: 전체 여정 스모크 48/0, 남은 항목은 3단계로 이관 | | [문서](02-construction/08-integration-e2e.md) |
-| 2-9 | 상황 학습 4단계 | IN_PROGRESS | 콘텐츠 | 구현: OR 묶음 7 검토 B 중지, 남은 OR 21주제 | | [문서](02-construction/09-lesson-four-steps.md) |
+| 2-9 | 상황 학습 4단계 | IN_PROGRESS | 콘텐츠 | 구현: OR 묶음 7 수정 단계, 남은 OR 21주제 | | [#45](https://github.com/bingoring/forin/pull/45) · [문서](02-construction/09-lesson-four-steps.md) |
 | R-1 | 독립 코드 리뷰: 맵 엔진 🔍 | MERGED | | | | [문서](0R-review/01-independent-review.md) |
 | R-2 | 독립 코드 리뷰: 런타임·성장 🔍 | MERGED | | | | [문서](0R-review/02-independent-review.md) |
 | 3-1 | Deployment | IN_PROGRESS | 출시 | 구현: iOS TestFlight 내부 배포, Android 미착수 | 오너 할 일 | [문서](03-operations/01-deployment.md) |
